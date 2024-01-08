@@ -5,6 +5,8 @@ import { BlockElement, OnBlur, OnKeyDown } from '@penx/extension-typings'
 import { ExtensionStore as ExtensionStoreJSON } from '@penx/store'
 
 export class ExtensionStore {
+  private static instance: ExtensionStore
+
   rules: AutoformatRule[] = []
 
   withFns: ((editor: PenxEditor) => Editor)[] = []
@@ -21,6 +23,13 @@ export class ExtensionStore {
 
   constructor(public store: ExtensionStoreJSON) {
     this.init()
+  }
+
+  public static getInstance(store: ExtensionStoreJSON): ExtensionStore {
+    if (!ExtensionStore.instance) {
+      ExtensionStore.instance = new ExtensionStore(store)
+    }
+    return ExtensionStore.instance
   }
 
   private init() {
