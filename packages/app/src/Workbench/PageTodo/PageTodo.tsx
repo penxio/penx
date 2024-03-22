@@ -15,7 +15,7 @@ export const PageTodo = () => {
     <Box p10>
       <Box w={['100%', 680]} mx-auto pb20 column gap3>
         <Box fontBold text4XL>
-          Good Morning, {user.username}.
+          Good Morning, {user.username}~
         </Box>
         <TodoFilter />
         {isTody && <TodayTodos />}
