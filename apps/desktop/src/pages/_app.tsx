@@ -13,11 +13,14 @@ import { store, StoreProvider } from '@penx/store'
 import { TrpcProvider } from '@penx/trpc-client'
 import { ClientOnly } from '~/components/ClientOnly'
 import '@glideapps/glide-data-grid/dist/index.css'
+import { app } from '@tauri-apps/api'
 import { emit, listen } from '@tauri-apps/api/event'
-import { AppEvent, isProd, isServer } from '@penx/constants'
+import { AppEvent, isServer } from '@penx/constants'
 import { db } from '@penx/local-db'
 
 initFower()
+
+const isDev = process.env.NODE_ENV === 'development'
 
 async function listenForHotkey(shortcut: string) {
   const { appWindow, WebviewWindow } = await import('@tauri-apps/api/window')
@@ -51,8 +54,8 @@ async function hideOnBlur() {
 
   listen('tauri://blur', () => {
     // console.log('---------appWindow:', appWindow)
-    if (isProd) {
-      // appWindow.hide()
+    if (!isDev) {
+      appWindow.hide()
     }
   })
 }
@@ -77,7 +80,7 @@ async function init() {
     version: string
   }
 
-  const { appWindow } = await import('@tauri-apps/api/window')
+  const { appWindow, WebviewWindow } = await import('@tauri-apps/api/window')
 
   if (appWindow.label === 'main') {
     listen(AppEvent.UPSERT_EXTENSION, async (data) => {
@@ -96,6 +99,8 @@ async function init() {
   listen('PreferencesClicked', (data) => {
     console.log('PreferencesClicked==========:', data.payload)
   })
+
+  listen('MenuEditorClicked', (data) => {})
 }
 
 if (!isServer) {

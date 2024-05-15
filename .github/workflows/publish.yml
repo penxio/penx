@@ -1,4 +1,4 @@
-name: 'Release App'
+name: 'publish'
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, macos-13, ubuntu-20.04, windows-latest]
+        platform: [macos-latest, ubuntu-20.04, windows-latest]
 
     env:
       working-directory: ./apps/desktop
@@ -79,7 +79,7 @@ jobs:
           python-version: '3.11'
 
       - name: install frontend dependencies
-        if: matrix.platform == 'macos-latest' || matrix.platform == 'macos-13'
+        if: matrix.platform == 'macos-latest'
         run: |
           NODE_OPTIONS=--max_old_space_size=8192 pnpm install
           NODE_OPTIONS=--max_old_space_size=8192 npx turbo run build --filter=desktop...
@@ -90,28 +90,11 @@ jobs:
           pnpm install
           npx turbo run build --filter=desktop...
 
-      - name: install dependencies (mac only)
-        if: matrix.platform == 'macos-latest'
-        run: |
-          rustup target add aarch64-apple-darwin
-
-      - name: Build Tauri App
-        if: matrix.platform != 'macos-latest'
-        uses: tauri-apps/tauri-action@v0
+      - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           releaseId: ${{ needs.create-release.outputs.release_id }}
-
-      - name: Build Tauri App (macOS aarch64)
-        if: matrix.platform == 'macos-latest'
-        uses: tauri-apps/tauri-action@v0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          releaseId: ${{ needs.create-release.outputs.release_id }}
-          args: --target aarch64-apple-darwin
-
 
   publish-release:
     permissions:

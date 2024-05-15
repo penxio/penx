@@ -44,8 +44,8 @@ function MyApp({ Component, pageProps }: Props<any>) {
       />
 
       <NextSeo
-        title="PenX: A structured knowledge base for geeks"
-        description="A structured knowledge base for geeks"
+        title="PenX: Your personal database"
+        description="Your personal database"
       />
 
       <SessionProvider session={pageProps.session} refetchInterval={0}>

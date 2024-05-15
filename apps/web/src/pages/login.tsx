@@ -69,7 +69,7 @@ export default function LoginPage() {
                   Welcome to PenX
                 </Box>
                 <Box as="p" textCenter mb6 leadingNormal px10 gray500 textBase>
-                  A structured knowledge base for geeks
+                  Your personal database
                 </Box>
 
                 {loginEntry}

@@ -98,7 +98,7 @@
         "width": 750,
         "height": 470,
         "alwaysOnTop": true,
-        "decorations": true,
+        "decorations": false,
         "transparent": true,
         "center": true,
         "skipTaskbar": true
@@ -115,6 +115,19 @@
         "visible": false,
         "center": true,
         "url": "editor.html"
+      },
+      {
+        "label": "dev_editor",
+        "fullscreen": false,
+        "resizable": true,
+        "title": "",
+        "width": 1000,
+        "height": 680,
+        "alwaysOnTop": true,
+        "decorations": true,
+        "visible": false,
+        "center": true,
+        "url": "http://localhost:3000/editor.html"
       }
     ],
     "macOSPrivateApi": true

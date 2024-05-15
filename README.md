@@ -5,7 +5,7 @@
 
 <h1 style="border-bottom: none">
     <b>PenX</b><br />
-     A structured knowledge base for geeks
+    Your personal database
     <br>
 </h1>
 

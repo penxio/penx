@@ -3,7 +3,7 @@
   "displayName": "PenX",
   "version": "0.0.6",
   "private": true,
-  "description": "A structured knowledge base for geeks",
+  "description": "Your personal database",
   "scripts": {
     "start": "next start",
     "dev": "run-p dev:*",

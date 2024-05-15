@@ -24,7 +24,7 @@ use serde_json::json;
 use rusqlite::{params, Connection, ParamsFromIter, Result, ToSql};
 
 use tauri::{
-    AppHandle, CustomMenuItem, Manager, SystemTray, SystemTrayEvent, SystemTrayMenu,
+    api, AppHandle, CustomMenuItem, Manager, SystemTray, SystemTrayEvent, SystemTrayMenu,
     SystemTrayMenuItem, Window,
 };
 
@@ -63,14 +63,11 @@ fn create_system_tray() -> SystemTray {
     let hide = CustomMenuItem::new("Hide".to_string(), "Hide");
     let editor = CustomMenuItem::new("Editor".to_string(), "Editor");
     let preferences = CustomMenuItem::new("Preferences".to_string(), "Preferences");
-    let devTools =
-        CustomMenuItem::new("ToggleDeveloperTools".to_string(), "Toggle Developer Tools");
     let tray_menu = SystemTrayMenu::new()
         .add_item(show)
         .add_item(hide)
         .add_item(editor)
         .add_item(preferences)
-        .add_item(devTools)
         .add_native_item(SystemTrayMenuItem::Separator)
         .add_item(quit);
     SystemTray::new().with_menu(tray_menu)
@@ -157,6 +154,7 @@ fn main() {
                 }
                 "Editor" => {
                     let window = app.get_window("editor").unwrap();
+                    window.emit("MenuEditorClicked", Some("Yes")).unwrap();
                     window.show().unwrap();
                     window.center().unwrap();
                 }
@@ -165,15 +163,6 @@ fn main() {
                     window.emit("PreferencesClicked", Some("Yes")).unwrap();
                     window.show().unwrap();
                     window.center().unwrap();
-                }
-                "ToggleDeveloperTools" => {
-                    // let window = app.get_window("main").unwrap();
-
-                    // if window.is_devtools_open() {
-                    //     window.close_devtools();
-                    // } else {
-                    //     window.open_devtools();
-                    // }
                 }
                 "Quit" => {
                     std::process::exit(0);

@@ -11,7 +11,7 @@ export function HomePage() {
     <Box bgWhite column gap4 toBetween toCenterX>
       <Box flex-1 toCenter column gap8 px={[20, 0]}>
         <Box
-          text={[42, 80, 100]}
+          text={[32, 40, 60]}
           maxW-900
           fontBold
           leadingNone
@@ -20,13 +20,13 @@ export function HomePage() {
           mt={[80, 120]}
           p0
         >
-          Structured
-          <br /> Knowledge Base
+          <Box fontLight>Your Personal</Box>
+          <Box text={[64, 100, 160]}>Database</Box>
         </Box>
 
         <Box textLG neutral500 maxW-640 textCenter leadingNormal>
-          An elegant App designed to help you capture, organize, and store your
-          thoughts, tasks, ideas, and information.
+          An elegant App designed to store things. Help you capture, organize,
+          and store your thoughts, tasks, ideas, and information.
         </Box>
 
         <Box toCenter gap2 flexWrap>
@@ -83,7 +83,42 @@ export function HomePage() {
           </Button>
         </Box>
 
-        <Box relative mt20 mb40>
+        <Box
+          relative
+          mt20
+          p10
+          shadow="0px 1px 10px 0px rgba(42,44,48,.03),0px 0px 90px 0px rgba(200, 200, 200,.3)"
+          // border
+          // borderNeutral200--T20
+          rounded-64
+          column
+          gapY5
+        >
+          <Box textCenter fontSemibold text={[40, 60]}>
+            PenX Architecture
+          </Box>
+          <Box
+            as="img"
+            src="/images/penx-architecture-2x.jpg"
+            w={['100%', '100%', 760, 840, 1200]}
+          />
+        </Box>
+
+        <Box relative mt20 p10 rounded-24 column>
+          <Box textCenter fontSemibold text={[40, 60]}>
+            PenX Command Palette
+          </Box>
+          <Box
+            as="img"
+            src="/images/search-bar.png"
+            w={['100%', '100%', 760, 840, 1000]}
+          />
+        </Box>
+
+        <Box relative mb40 column gap8>
+          <Box textCenter fontSemibold text={[40, 60]}>
+            PenX Editor
+          </Box>
           <Box
             display={['none', 'none', 'flex']}
             as="img"

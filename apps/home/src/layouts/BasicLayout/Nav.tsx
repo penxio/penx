@@ -35,7 +35,7 @@ export const Nav = () => {
 
     {
       text: 'Developer',
-      to: '/build-extension/create-first-extension',
+      to: 'https://docs.penx.io//build-extension/create-first-extension',
       isExternal: true,
     },
 

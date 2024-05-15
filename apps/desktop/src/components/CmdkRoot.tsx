@@ -154,7 +154,8 @@ export const CmdkRoot = () => {
       right0
       bottom0
       zIndex-10000
-      bgNeutral100
+      // bgNeutral100
+      bgWhite
       style={{
         backdropFilter: 'blur(200px)',
       }}
@@ -215,7 +216,6 @@ export const CmdkRoot = () => {
                 typeof item.subtitle === 'string'
                   ? item.subtitle
                   : item.subtitle?.value
-              console.log('item=========:', item)
 
               return (
                 <CommandItem
@@ -253,7 +253,18 @@ export const CmdkRoot = () => {
         </CommandList>
       </Box>
 
-      <Box h-48 borderTop borderNeutral200--T40 toCenterY px4></Box>
+      <Box h-48 borderTop borderNeutral200 toCenterY px4 toBetween>
+        <Image
+          src="/logo/128x128.png"
+          alt=""
+          width={20}
+          height={20}
+          style={{ borderRadius: 6 }}
+        />
+        <Box textSM gray400>
+          CMD+K
+        </Box>
+      </Box>
     </StyledCommand>
   )
 }
