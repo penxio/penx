@@ -1,6 +1,6 @@
-import { AppInfo, CommandType, TCommand } from '@/models'
 import { invoke } from '@tauri-apps/api/core'
 import { platform } from '@tauri-apps/plugin-os'
+import { AppInfo, CommandType, TCommand } from '../models'
 
 export function openTrash(): Promise<void> {
   return invoke('plugin:jarvis|open_trash')

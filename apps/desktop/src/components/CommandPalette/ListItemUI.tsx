@@ -83,6 +83,7 @@ export const ListItemUI = ({
           <Box text-14>{title}</Box>
           <Box text-12 zinc400>
             {subtitle}
+            {item.data.applicationPath}
           </Box>
           {item?.data?.alias && (
             <Box

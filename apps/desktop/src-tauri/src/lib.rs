@@ -5,7 +5,7 @@ mod server;
 mod util;
 
 use rusqlite::{Connection, ParamsFromIter, Result, ToSql};
-use std::thread;
+use std::{path::PathBuf, thread};
 use tauri::{LogicalSize, Manager, Runtime, Size, WebviewWindow, Window};
 use util::{convert_all_app_icons_to_png, handle_input, open_command};
 use window_shadows::set_shadow;
@@ -91,6 +91,13 @@ pub fn run() {
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_clipboard::init())
+        .plugin(tauri_plugin_jarvis::init())
+        .register_uri_scheme_protocol("appicon", |_app, request| {
+            let url = &request.uri().path()[1..];
+            let url = urlencoding::decode(url).unwrap().to_string();
+            let path = PathBuf::from(url);
+            return tauri_plugin_jarvis::utils::icns::load_icon(path);
+        })
         .invoke_handler(tauri::generate_handler![
             menu::on_button_clicked,
             greet,
@@ -101,7 +108,6 @@ pub fn run() {
             handle_input
         ])
         .setup(|mut app| {
-            println!("Hello from setup!");
             let handle = app.handle();
             let conn = Connection::open_in_memory();
 

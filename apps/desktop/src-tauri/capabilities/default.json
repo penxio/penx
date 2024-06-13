@@ -32,6 +32,8 @@
     "global-shortcut:allow-register",
     "global-shortcut:allow-unregister",
 
-    "http:default"
+    "http:default",
+
+    "jarvis:allow-all"
   ]
 }

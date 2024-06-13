@@ -117,9 +117,7 @@ function AppIcon({ icon, size = 20 }: { icon: string; size: number }) {
   const { isLoading, data = '' } = useQuery({
     queryKey: [icon],
     queryFn: async () => {
-      // TODO: handle fallback
-      const res = await getIcon(icon)
-      return res.icon
+      return getIcon(icon)
     },
   })
 

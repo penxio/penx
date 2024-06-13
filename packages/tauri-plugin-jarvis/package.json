@@ -4,17 +4,12 @@
   "author": "Huakun",
   "description": "",
   "type": "module",
-  "types": "./dist-js/index.d.ts",
-  "main": "./dist-js/index.cjs",
-  "module": "./dist-js/index.js",
   "exports": {
     "./commands": {
-      "types": "./dist-js/commands/index.d.ts",
-      "import": "./dist-js/commands.js"
+      "import": "./guest-js/commands/index.ts"
     },
     "./models": {
-      "types": "./dist-js/models/index.d.ts",
-      "import": "./dist-js/models.js"
+      "import": "./guest-js/models/index.ts"
     }
   },
   "files": [

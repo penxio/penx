@@ -1,5 +1,10 @@
+import { useEffect } from 'react'
 import { Box } from '@fower/react'
 import { Command } from 'cmdk'
+import {
+  getAllApps,
+  refreshApplicationsList,
+} from 'tauri-plugin-jarvis-api/commands'
 import { isServer } from '@penx/constants'
 import { store } from '@penx/store'
 import { ICommandItem } from '~/common/types'
@@ -39,6 +44,7 @@ if (!isServer) {
 
 export const CommandPalette = () => {
   const { value, setValue } = useValue()
+
   const { developingItems, commandItems, databaseItems, applicationItems } =
     useItems()
 
@@ -60,7 +66,6 @@ export const CommandPalette = () => {
   useQueryCommands()
 
   useReset(setValue)
-
   const isIframe = isCommandApp && currentCommand?.data?.runtime === 'iframe'
 
   const bodyHeight = isIframe

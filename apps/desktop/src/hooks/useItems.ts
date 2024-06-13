@@ -3,6 +3,11 @@ import { useQuery } from '@tanstack/react-query'
 import { invoke } from '@tauri-apps/api/core'
 import { BaseDirectory, readDir } from '@tauri-apps/plugin-fs'
 import { atom, useAtom, useSetAtom } from 'jotai'
+import {
+  getAllApps,
+  refreshApplicationsList,
+} from 'tauri-plugin-jarvis-api/commands'
+import { AppInfo } from 'tauri-plugin-jarvis-api/models'
 import { appEmitter } from '@penx/event'
 import { db } from '@penx/local-db'
 import { Node } from '@penx/model'
@@ -92,18 +97,23 @@ export function useCommands() {
 export function useLoadCommands() {
   return useQuery(['commands'], async () => {
     try {
+      await refreshApplicationsList()
       // const [extensions, databases, applicationsRes, entries] =
-      const [extensions, databases, applicationsRes] = await Promise.all([
-        db.listExtensions(),
-        db.listDatabases(),
-        invoke('handle_input', {
-          input: '',
-        }) as Promise<any[]>,
-        // readDir('appIcons', {
-        //   baseDir: BaseDirectory.AppData,
-        //   // recursive: true,
-        // }),
-      ])
+      const [extensions, databases, applicationsRes, allApps] =
+        await Promise.all([
+          db.listExtensions(),
+          db.listDatabases(),
+          invoke('handle_input', {
+            input: '',
+          }) as Promise<any[]>,
+          getAllApps(),
+          // readDir('appIcons', {
+          //   baseDir: BaseDirectory.AppData,
+          //   // recursive: true,
+          // }),
+        ])
+      // console.log('applicationsRes', applicationsRes)
+      // console.log('allApps', allApps)
 
       const commands = extensions.reduce((acc, cur) => {
         return [
@@ -164,28 +174,42 @@ export function useLoadCommands() {
         ]
       }, [] as ICommandItem[])
 
-      const applicationPaths = (applicationsRes[0] as string[]) || []
+      // const applicationPaths = (applicationsRes[0] as string[]) || []
 
-      const applicationItems = applicationPaths.reduce((acc, item) => {
-        const appName = getFileName(item).replace(/.app$/, '')
+      // const applicationItems = allApps.reduce((acc, item) => {
+      //   const appName = getFileName(item).replace(/.app$/, '')
 
-        return [
-          ...acc,
-          {
-            type: 'list-item',
-            title: appName,
-            subtitle: '',
-            icon: appName,
-            keywords: [],
-            data: {
-              type: 'Application',
-              applicationPath: item,
-              isApplication: true,
-            } as ICommandItem['data'],
-          } as ICommandItem,
-        ]
-      }, [] as ICommandItem[])
-
+      //   return [
+      //     ...acc,
+      //     {
+      //       type: 'list-item',
+      //       title: acc,
+      //       subtitle: '',
+      //       icon: appName,
+      //       keywords: [],
+      //       data: {
+      //         type: 'Application',
+      //         applicationPath: acc.app_desktop_path,
+      //         isApplication: true,
+      //         appIconPath: acc.icon_path,
+      //       } as ICommandItem['data'],
+      //     } as ICommandItem,
+      //   ]
+      // }, [] as ICommandItem[])
+      const applicationItems = allApps.map((appInfo: AppInfo) => {
+        return {
+          type: 'list-item',
+          title: appInfo.name,
+          subtitle: '',
+          icon: appInfo.icon_path,
+          keywords: [],
+          data: {
+            type: 'Application',
+            applicationPath: appInfo.app_desktop_path,
+            isApplication: true,
+          } as ICommandItem['data'],
+        } as ICommandItem
+      })
       return [...commands, ...databaseItems, ...applicationItems]
       // return [...commands, ...databaseItems]
     } catch (error) {

@@ -1,7 +1,7 @@
 import { convertFileSrc } from '@tauri-apps/api/core'
 import { FALLBACK_ICON_SYMBOL, icons } from './cache'
 
-export const getIcon = async (app_name: string) => {
+export const _getIcon = async (app_name: string) => {
   const { appDataDir, join, resolveResource } = await import(
     '@tauri-apps/api/path'
   )
@@ -37,4 +37,8 @@ export const getIcon = async (app_name: string) => {
   icon = convertFileSrc(iconPath)
   icons.set(app_name, icon)
   return { icon, fallbackIcon }
+}
+
+export const getIcon = (appIconPath: string) => {
+  return convertFileSrc(appIconPath, 'appicon')
 }

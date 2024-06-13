@@ -17,5 +17,6 @@ export interface ICommandItem extends IListItem {
 
     applicationPath: string
     isApplication: boolean
+    appIconPath?: string
   }
 }
