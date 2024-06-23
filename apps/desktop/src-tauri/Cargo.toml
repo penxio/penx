@@ -1,6 +1,6 @@
 [package]
 name = "PenX"
-version = "0.0.0"
+version = "0.3.32"
 description = "A Tauri App"
 authors = ["you"]
 edition = "2021"

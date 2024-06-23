@@ -24,8 +24,8 @@ jobs:
             args: "--target universal-apple-darwin --verbose"
           - platform: 'ubuntu-22.04' # for Tauri v1 you could replace this with ubuntu-20.04.
             args: "--verbose"
-          # - platform: 'windows-latest'
-          #   args: "--verbose"
+          - platform: 'windows-latest'
+            args: "--verbose"
 
     runs-on: ${{ matrix.settings.platform }}
     steps:

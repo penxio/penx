@@ -5,7 +5,7 @@ name: 'Release App'
 #     tags:
 #       - 'v*' 
 
-on: push
+# on: push
 
 jobs:
   create-release:
