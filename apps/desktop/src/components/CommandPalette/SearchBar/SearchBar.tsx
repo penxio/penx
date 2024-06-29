@@ -1,5 +1,6 @@
 import { Box } from '@fower/react'
 import { appEmitter } from '@penx/event'
+import { ConnectWallet } from '~/ConnectWallet'
 import { useCommandPosition } from '~/hooks/useCommandPosition'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCommands, useItems } from '~/hooks/useItems'
@@ -35,6 +36,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
       borderNeutral200
       relative
       h={searchBarHeight}
+      mr2
     >
       {isCommandApp && <BackRootButton pl3 mr--8 />}
 
@@ -88,6 +90,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
       {isCommandApp && currentCommand?.filters && (
         <SearchBarFilter filters={currentCommand?.filters} />
       )}
+      <ConnectWallet></ConnectWallet>
 
       <CommandAppLoading />
     </Box>

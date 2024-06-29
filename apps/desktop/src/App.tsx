@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { WagmiProvider } from 'wagmi'
 import { ToastContainer } from 'uikit'
 import { appEmitter } from '@penx/event'
 import { StoreProvider } from '@penx/store'
@@ -17,6 +18,7 @@ import { useInitThemeMode } from './hooks/useInitThemeMode'
 import { MainApp } from './MainApp'
 import '~/styles/globals.css'
 import '~/styles/command.scss'
+import { config } from './config'
 
 initFower()
 
@@ -56,11 +58,13 @@ function MyApp() {
 
   return (
     <StoreProvider>
-      <TrpcProvider>
-        <ToastContainer position="bottom-right" />
-        <MainApp />
-        <div id="portal" />
-      </TrpcProvider>
+      <WagmiProvider config={config}>
+        <TrpcProvider>
+          <ToastContainer position="bottom-right" />
+          <MainApp />
+          <div id="portal" />
+        </TrpcProvider>
+      </WagmiProvider>
     </StoreProvider>
   )
 }
