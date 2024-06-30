@@ -2,8 +2,8 @@ mod apple_script;
 mod hello;
 mod menu;
 mod server;
-mod util;
 mod tray;
+mod util;
 
 use rusqlite::{Connection, ParamsFromIter, Result, ToSql};
 use std::{path::PathBuf, thread};
@@ -11,6 +11,9 @@ use tauri::{is_dev, LogicalSize, Manager, Runtime, Size, WebviewWindow, Window};
 use util::{convert_all_app_icons_to_png, handle_input, open_command};
 use window_shadows::set_shadow;
 use window_vibrancy::{apply_blur, apply_vibrancy, NSVisualEffectMaterial};
+
+use std::fs;
+use std::io::Write;
 
 #[cfg(target_os = "macos")]
 use tauri::ActivationPolicy;
@@ -24,6 +27,21 @@ use objc::runtime::YES;
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
+}
+
+#[tauri::command]
+fn create_dot_file(file_path: &str, code_content: &str) -> Result<(), String> {
+    let path = PathBuf::from(file_path);
+
+    if let Some(parent) = path.parent() {
+        fs::create_dir_all(parent).map_err(|e| e.to_string())?;
+    }
+
+    let mut file = fs::File::create(path).map_err(|e| e.to_string())?;
+    file.write_all(code_content.as_bytes())
+        .map_err(|e| e.to_string())?;
+
+    Ok(())
 }
 
 #[tauri::command]
@@ -112,6 +130,7 @@ pub fn run() {
             set_window_properties,
             convert_all_app_icons_to_png,
             open_command,
+            create_dot_file,
             handle_input
         ])
         .setup(|app| {

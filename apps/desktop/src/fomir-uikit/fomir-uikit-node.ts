@@ -27,6 +27,12 @@ export interface PasswordInputNode extends FieldNode {
   componentProps?: InputProps
 }
 
+export interface LocationInputNode extends FieldNode {
+  component: 'LocationInput'
+  value?: string
+  componentProps?: InputProps
+}
+
 export interface SelectNode extends FieldNode {
   component: 'Select'
   componentProps?: SelectProps
@@ -73,6 +79,12 @@ export interface BoxNode extends BaseNode {
   css?: string
   text?: string
   children?: Node[]
+}
+
+export interface DividerNode extends BaseNode {
+  name?: string
+  label?: string
+  component: 'Divider'
 }
 
 export type FomirUIkitNode =

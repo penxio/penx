@@ -1,0 +1,38 @@
+{
+  "name": "mix",
+  "title": "Mix Demo",
+  "description": "This is a mix demo.",
+  "icon": {
+    "name": "lucide--moon",
+    "className": "bg-gradient-to-r from-violet-500 to-fuchsia-500"
+  },
+  "commands": [
+    {
+      "name": "markdown",
+      "title": "Markdown App",
+      "icon": {
+        "name": "lucide--pilcrow",
+        "className": "bg-gradient-to-r from-rose-500 to-purple-500"
+      },
+      "mode": "preset-ui"
+    },
+    {
+      "name": "list",
+      "title": "List App",
+      "icon": {
+        "name": "lucide--list",
+        "className": "bg-gradient-to-r from-blue-500 to-green-500"
+      },
+      "mode": "preset-ui"
+    },
+    {
+      "name": "form",
+      "title": "Form App",
+      "icon": {
+        "name": "lucide--pencil",
+        "className": "bg-gradient-to-r from-yellow-500 to-red-500"
+      },
+      "mode": "preset-ui"
+    }
+  ]
+}

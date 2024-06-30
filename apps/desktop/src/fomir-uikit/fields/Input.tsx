@@ -1,9 +1,7 @@
 import { FC, useRef } from 'react'
-import { Box } from '@fower/react'
 import { NodeProps, useFormContext } from 'fomir'
 import { InputNode } from '../fomir-uikit-node'
-import { Input as BoneInput, InputElement, InputGroup } from 'uikit'
-import { IconCloseSolid } from '@penx/icons'
+import { Input as BoneInput, InputGroup } from 'uikit'
 import { FormField } from '../FormField'
 
 export const Input: FC<NodeProps<InputNode>> = (props) => {
@@ -17,7 +15,6 @@ export const Input: FC<NodeProps<InputNode>> = (props) => {
       <InputGroup w={w}>
         <BoneInput
           ref={ref}
-          size="sm"
           disabled={disabled}
           type={'text'}
           value={value || ''}
@@ -32,7 +29,8 @@ export const Input: FC<NodeProps<InputNode>> = (props) => {
           onChange={props.handler.handleChange}
           {...componentProps}
         />
-        {!!value?.length && focused && (
+        {/* TODO: fix */}
+        {/* {!!value?.length && focused && (
           <InputElement>
             <Box
               inlineFlex
@@ -47,7 +45,7 @@ export const Input: FC<NodeProps<InputNode>> = (props) => {
               <IconCloseSolid neutral400 size={20} />
             </Box>
           </InputElement>
-        )}
+        )} */}
       </InputGroup>
     </FormField>
   )

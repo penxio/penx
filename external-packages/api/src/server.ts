@@ -13,6 +13,41 @@ import {
   type EventTarget,
 } from '@tauri-apps/api/event'
 import {
+  appCacheDir,
+  appConfigDir,
+  appDataDir,
+  appLocalDataDir,
+  appLogDir,
+  audioDir,
+  basename,
+  cacheDir,
+  configDir,
+  dataDir,
+  delimiter,
+  desktopDir,
+  dirname,
+  documentDir,
+  downloadDir,
+  executableDir,
+  extname,
+  fontDir,
+  homeDir,
+  isAbsolute,
+  join,
+  localDataDir,
+  normalize,
+  pictureDir,
+  publicDir,
+  resolve,
+  resolveResource,
+  resourceDir,
+  runtimeDir,
+  sep,
+  tempDir,
+  templateDir,
+  videoDir,
+} from '@tauri-apps/api/path'
+import {
   ask as dialogAsk,
   confirm as dialogConfirm,
   message as dialogMessage,
@@ -34,6 +69,7 @@ import {
   truncate as fsTruncate,
   writeFile as fsWriteFile,
   writeTextFile as fsWriteTextFile,
+  type WriteFileOptions,
 } from '@tauri-apps/plugin-fs'
 import {
   active as notificationActive,
@@ -88,6 +124,7 @@ import type {
   IFullAPI,
   INotificationServer,
   IOsServer,
+  IPathServer,
   IShellServer,
 } from './api/server-types'
 
@@ -190,7 +227,20 @@ export const fsApi: IFsServer = {
   fsRename,
   fsTruncate,
   fsWriteFile,
-  fsWriteTextFile,
+
+  // official api can't create dot file
+  fsWriteTextFile: async (path: string | URL, data: string, options?: WriteFileOptions) => {
+    if (typeof path === 'string') {
+      if (/(\\\.|\/\.)\w+$/.test(path)) {
+        await invoke('create_dot_file', {
+          filePath: path,
+          codeContent: data,
+        })
+        return
+      }
+    }
+    return fsWriteTextFile(path, data, options)
+  },
 }
 
 /* -------------------------------------------------------------------------- */
@@ -268,6 +318,46 @@ export const fetchApi: IFetchServer = {
     invoke<ArrayBuffer | number[]>('plugin:http|fetch_read_body', { rid }),
 }
 
+/**
+ * path
+ */
+
+export const pathApi: IPathServer = {
+  appCacheDir,
+  appConfigDir,
+  appDataDir,
+  appLocalDataDir,
+  appLogDir,
+  audioDir,
+  basename,
+  cacheDir,
+  configDir,
+  dataDir,
+  delimiter,
+  desktopDir,
+  dirname,
+  documentDir,
+  downloadDir,
+  executableDir,
+  extname,
+  fontDir,
+  homeDir,
+  isAbsolute,
+  join,
+  localDataDir,
+  normalize,
+  pictureDir,
+  publicDir,
+  resolve,
+  resolveResource,
+  resourceDir,
+  runtimeDir,
+  sep,
+  tempDir,
+  templateDir,
+  videoDir,
+}
+
 export const defaultServerAPI: IFullAPI = {
   ...clipboardApi,
   ...dialogApi,
@@ -277,4 +367,5 @@ export const defaultServerAPI: IFullAPI = {
   ...shellApi,
   ...fetchApi,
   ...eventApi,
+  ...pathApi,
 }

@@ -46,7 +46,7 @@ type AppEvents = {
 
   FOCUS_SEARCH_BAR_INPUT: undefined
 
-  SUBMIT_FORM_APP: undefined
+  SUBMIT_FORM_APP: number
 }
 
 export const appEmitter = mitt<AppEvents>()

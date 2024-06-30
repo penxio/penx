@@ -61,7 +61,7 @@ export const CommandAppActions = ({ onSelect }: Props) => {
             }
 
             if (isSubmitForm(item)) {
-              appEmitter.emit('SUBMIT_FORM_APP')
+              appEmitter.emit('SUBMIT_FORM_APP', index)
             }
 
             if (isCustomAction(item)) {

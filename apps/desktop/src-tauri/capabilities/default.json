@@ -32,6 +32,8 @@
     "fs:read-all",
     "fs:write-all",
     "fs:scope-home-recursive",
+    "fs:allow-write-file",
+    "fs:allow-write-text-file",
     "shell:default",
     "shell:allow-open",
     "shellx:allow-execute",

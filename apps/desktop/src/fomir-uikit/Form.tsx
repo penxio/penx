@@ -18,6 +18,7 @@ export const Form: FC<PropsWithChildren<FormRegisterProps>> = forwardRef<
       display={layout === 'inline' ? 'flex' : 'block'}
       toCenterY={layout === 'inline'}
       gapX5={layout === 'inline'}
+      gapY5
       flexWrap={layout === 'inline'}
     >
       {children}

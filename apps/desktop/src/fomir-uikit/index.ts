@@ -3,7 +3,9 @@ import { Box } from './fields/Box'
 import { Checkbox } from './fields/Checkbox'
 import { CheckboxGroup } from './fields/CheckboxGroup'
 import { CounterInput } from './fields/CounterInput'
+import { Divider } from './fields/Divider'
 import { Input } from './fields/Input'
+import { LocationInput } from './fields/LocationInput'
 import { NumberInput } from './fields/NumberInput'
 import { PasswordInput } from './fields/PasswordInput'
 import { RadioGroup } from './fields/RadioGroup'
@@ -16,14 +18,15 @@ import { Form } from './Form'
 
 export { FormField } from './FormField'
 
-export type { FomirUIkitNode as BoneUINode } from './fomir-uikit-node'
+export type { FomirUIkitNode } from './fomir-uikit-node'
 
-export const FomirBoneUI: FomirPlugin = {
+export const FomirUIkit: FomirPlugin = {
   components: {
     Form,
     Input,
     PasswordInput,
     NumberInput,
+    LocationInput,
     CounterInput,
     Checkbox,
     Switch,
@@ -34,7 +37,8 @@ export const FomirBoneUI: FomirPlugin = {
     Reset,
     Submit,
     Box,
+    Divider,
   },
 }
 
-export default FomirBoneUI
+export default FomirUIkit

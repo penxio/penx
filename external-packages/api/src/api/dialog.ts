@@ -14,6 +14,7 @@ export function constructAPI(api: Remote<IDialogServer>): IDialog {
   }
 }
 export const comlinkDialog: IDialog = constructAPI(defaultClientAPI)
+
 export const nativeDialog: IDialog = {
   ask: ask,
   confirm: confirm,

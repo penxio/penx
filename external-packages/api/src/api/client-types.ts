@@ -12,6 +12,41 @@ import type {
   once,
 } from '@tauri-apps/api/event'
 import type {
+  appCacheDir,
+  appConfigDir,
+  appDataDir,
+  appLocalDataDir,
+  appLogDir,
+  audioDir,
+  basename,
+  cacheDir,
+  configDir,
+  dataDir,
+  delimiter,
+  desktopDir,
+  dirname,
+  documentDir,
+  downloadDir,
+  executableDir,
+  extname,
+  fontDir,
+  homeDir,
+  isAbsolute,
+  join,
+  localDataDir,
+  normalize,
+  pictureDir,
+  publicDir,
+  resolve,
+  resolveResource,
+  resourceDir,
+  runtimeDir,
+  sep,
+  tempDir,
+  templateDir,
+  videoDir,
+} from '@tauri-apps/api/path'
+import type {
   ask,
   confirm,
   open as dialogOpen,
@@ -260,4 +295,44 @@ export interface IFetch {
   fetchCancel(rid: number): Promise<void>
   fetchSend(rid: number): Promise<FetchSendResponse>
   fetchReadBody(rid: number): Promise<ArrayBuffer | number[]>
+}
+
+/**
+ * fs
+ */
+
+export interface IPath {
+  appCacheDir: typeof appCacheDir
+  appConfigDir: typeof appConfigDir
+  appDataDir: typeof appDataDir
+  appLocalDataDir: typeof appLocalDataDir
+  appLogDir: typeof appLogDir
+  audioDir: typeof audioDir
+  basename: typeof basename
+  cacheDir: typeof cacheDir
+  configDir: typeof configDir
+  dataDir: typeof dataDir
+  delimiter: typeof delimiter
+  desktopDir: typeof desktopDir
+  dirname: typeof dirname
+  documentDir: typeof documentDir
+  downloadDir: typeof downloadDir
+  executableDir: typeof executableDir
+  extname: typeof extname
+  fontDir: typeof fontDir
+  homeDir: typeof homeDir
+  isAbsolute: typeof isAbsolute
+  join: typeof join
+  localDataDir: typeof localDataDir
+  normalize: typeof normalize
+  pictureDir: typeof pictureDir
+  publicDir: typeof publicDir
+  resolve: typeof resolve
+  resolveResource: typeof resolveResource
+  resourceDir: typeof resourceDir
+  runtimeDir: typeof runtimeDir
+  sep: typeof sep
+  tempDir: typeof tempDir
+  templateDir: typeof templateDir
+  videoDir: typeof videoDir
 }

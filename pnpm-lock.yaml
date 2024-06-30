@@ -1084,6 +1084,27 @@ importers:
         specifier: ^5.3.2
         version: 5.5.2
 
+  extension-samples/mix:
+    devDependencies:
+      '@penxio/api':
+        specifier: workspace:*
+        version: link:../../external-packages/api
+      '@penxio/preset-ui':
+        specifier: workspace:*
+        version: link:../../external-packages/preset-ui
+      '@penxio/react':
+        specifier: workspace:*
+        version: link:../../external-packages/react
+      penx-cli:
+        specifier: workspace:*
+        version: link:../../external-packages/cli
+      prettier:
+        specifier: ^3.2.5
+        version: 3.3.2
+      typescript:
+        specifier: ^5.3.2
+        version: 5.5.2
+
   extension-samples/preset-ui/base64:
     devDependencies:
       '@penxio/api':
@@ -1122,6 +1143,9 @@ importers:
 
   extension-samples/preset-ui/developer:
     devDependencies:
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../../../packages/local-db
       '@penxio/api':
         specifier: workspace:*
         version: link:../../../external-packages/api

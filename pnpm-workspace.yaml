@@ -3,6 +3,7 @@ packages:
   - 'packages/*'
   - 'external-packages/*'
   - 'packages/editor-extensions/*'
+  - 'extension-samples/mix'
   - 'extension-samples/preset-ui/*'
   - 'extension-samples/custom-ui-react/*'
   - 'extension-samples/custom-ui-vue/*'

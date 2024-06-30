@@ -13,6 +13,7 @@ import type {
   IFs,
   INotification,
   IOs,
+  IPath,
   IShellInternal,
 } from '../api/client-types'
 
@@ -131,6 +132,42 @@ export interface IFetchServer {
   fetchFetchReadBody: IFetch['fetchReadBody']
 }
 
+export interface IPathServer {
+  appCacheDir: IPath['appCacheDir']
+  appConfigDir: IPath['appConfigDir']
+  appDataDir: IPath['appDataDir']
+  appLocalDataDir: IPath['appLocalDataDir']
+  appLogDir: IPath['appLogDir']
+  audioDir: IPath['audioDir']
+  basename: IPath['basename']
+  cacheDir: IPath['cacheDir']
+  configDir: IPath['configDir']
+  dataDir: IPath['dataDir']
+  delimiter: IPath['delimiter']
+  desktopDir: IPath['desktopDir']
+  dirname: IPath['dirname']
+  documentDir: IPath['documentDir']
+  downloadDir: IPath['downloadDir']
+  executableDir: IPath['executableDir']
+  extname: IPath['extname']
+  fontDir: IPath['fontDir']
+  homeDir: IPath['homeDir']
+  isAbsolute: IPath['isAbsolute']
+  join: IPath['join']
+  localDataDir: IPath['localDataDir']
+  normalize: IPath['normalize']
+  pictureDir: IPath['pictureDir']
+  publicDir: IPath['publicDir']
+  resolve: IPath['resolve']
+  resolveResource: IPath['resolveResource']
+  resourceDir: IPath['resourceDir']
+  runtimeDir: IPath['runtimeDir']
+  sep: IPath['sep']
+  tempDir: IPath['tempDir']
+  templateDir: IPath['templateDir']
+  videoDir: IPath['videoDir']
+}
+
 /**
  * IFullAPI defines all APIs implemented in this package combined together
  * @example
@@ -143,6 +180,7 @@ export type IFullAPI = IClipboardServer &
   IDialogServer &
   IFsServer &
   IShellServer &
+  IPathServer &
   IOsServer &
   IFetchServer &
   IEventServer
