@@ -6,7 +6,20 @@ const projectId = '75879ee8d0e1f47758a4bb4577361f08'
 
 export const config = createConfig({
   chains: [mainnet, base],
-  connectors: [walletConnect({ projectId: projectId })],
+  connectors: [
+    walletConnect({
+      projectId: projectId,
+      qrModalOptions: {
+        // themeMode: 'dark',
+        // mobileWallets: [],
+        walletImages: {},
+        explorerRecommendedWalletIds: 'NONE',
+        mobileWallets: [],
+        enableExplorer: false,
+        themeVariables: {},
+      },
+    }),
+  ],
   transports: {
     [mainnet.id]: http(),
     [base.id]: http(),

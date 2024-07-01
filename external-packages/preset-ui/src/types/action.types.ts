@@ -22,6 +22,15 @@ export function isCopyToClipboard(obj: any): obj is CopyToClipboard {
   return obj.type === 'CopyToClipboard'
 }
 
+export interface ReleaseExtension extends BaseAction {
+  type: 'ReleaseExtension'
+  location: string
+}
+
+export function isReleaseExtension(obj: any): obj is ReleaseExtension {
+  return obj.type === 'ReleaseExtension'
+}
+
 export interface SubmitForm extends BaseAction {
   type: 'SubmitForm'
   onSubmit: (values: any) => Promise<void> | void

@@ -1,5 +1,6 @@
 import { Box } from '@fower/react'
-import { useConnect } from 'wagmi'
+import { WalletConnectModal } from '@walletconnect/modal'
+import { useChains, useConnect } from 'wagmi'
 import { Button } from 'uikit'
 import { IconWalletConnect } from '@penx/icons'
 

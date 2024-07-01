@@ -7,16 +7,21 @@ import {
   isFormApp,
   isListApp,
   isOpenInBrowser,
+  isReleaseExtension,
   isSubmitForm,
 } from '@penxio/preset-ui'
 import { open } from '@tauri-apps/plugin-shell'
 import { Captions, Copy, DoorOpenIcon, Globe } from 'lucide-react'
 import { writeText } from 'tauri-plugin-clipboard-api'
+import { toast } from 'uikit'
 import { appEmitter } from '@penx/event'
+import { store } from '@penx/store'
 import { workerStore } from '~/common/workerStore'
+import { commandLoadingAtom } from '~/hooks/useCommandAppLoading'
 import { useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { useValue } from '~/hooks/useValue'
 import { ListItemIcon } from '../ListItemIcon'
+import { releaseExtension } from './lib/releaseExtension'
 import { MenuItem } from './MenuItem'
 
 interface Props {
@@ -47,6 +52,41 @@ export const CommandAppActions = ({ onSelect }: Props) => {
     return []
   }, [ui, value])
 
+  async function selectAction(item: ActionItem, index: number) {
+    if (isOpenInBrowser(item)) {
+      await open(item.url)
+    }
+
+    if (isCopyToClipboard(item)) {
+      await writeText(item.content)
+    }
+
+    if (isSubmitForm(item)) {
+      appEmitter.emit('SUBMIT_FORM_APP', index)
+    }
+
+    if (isReleaseExtension(item)) {
+      try {
+        store.set(commandLoadingAtom, true)
+        await releaseExtension(item)
+        toast.success('Released successfully')
+      } catch (error) {
+        toast.warning('Failed to release extension!')
+      }
+      store.set(commandLoadingAtom, false)
+    }
+
+    if (isCustomAction(item)) {
+      workerStore.currentWorker!.postMessage({
+        type: 'action--custom-action',
+        itemIndex: itemIndexRef.current,
+        actionIndex: index,
+      })
+    }
+
+    onSelect?.()
+  }
+
   return (
     <>
       {actions.map((item, index) => (
@@ -54,27 +94,7 @@ export const CommandAppActions = ({ onSelect }: Props) => {
           key={index}
           shortcut="↵"
           onSelect={async () => {
-            if (isOpenInBrowser(item)) {
-              await open(item.url)
-            }
-
-            if (isCopyToClipboard(item)) {
-              await writeText(item.content)
-            }
-
-            if (isSubmitForm(item)) {
-              appEmitter.emit('SUBMIT_FORM_APP', index)
-            }
-
-            if (isCustomAction(item)) {
-              workerStore.currentWorker!.postMessage({
-                type: 'action--custom-action',
-                itemIndex: itemIndexRef.current,
-                actionIndex: index,
-              })
-            }
-
-            onSelect?.()
+            selectAction(item, index)
           }}
         >
           <Box toCenterY gap2 inlineFlex>

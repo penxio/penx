@@ -1,10 +1,8 @@
-import { getAccessToken } from '@privy-io/react-auth'
 import { get } from 'idb-keyval'
 
 export async function getHeaders() {
-  // const token = await get('PENX_TOKEN')
-  const token = await getAccessToken()
+  const token = localStorage.getItem('PENX_TOKEN') || (await get('PENX_TOKEN'))
   return {
-    Authorization: !token ? '' : `privy_${token}`,
+    Authorization: token || '',
   }
 }

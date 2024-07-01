@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
-    "@penx/store": "workspace:*",
-    "@privy-io/react-auth": "^1.68.0"
+    "@penx/store": "workspace:*"
   }
 }

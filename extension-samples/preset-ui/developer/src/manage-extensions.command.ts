@@ -1,6 +1,7 @@
 import { IListItem, ListApp } from '@penxio/preset-ui'
 import { shell } from '@penxio/api'
 import { db } from '@penx/local-db'
+import { Manifest } from './types'
 
 export async function main() {
   const app = new ListApp({
@@ -36,12 +37,10 @@ async function loadExtensions(app: ListApp) {
             },
           },
           {
-            type: 'CustomAction',
+            type: 'ReleaseExtension',
             icon: { name: 'lucide--rocket' },
             title: 'Release Extension',
-            onSelect: () => {
-              console.log('release....')
-            },
+            location: item.location,
           },
           {
             type: 'CustomAction',

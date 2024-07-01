@@ -2,6 +2,7 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import dev from './commands/dev'
+import build from './commands/build'
 import release from './commands/release'
 import login from './commands/login'
 import logout from './commands/logout'
@@ -11,6 +12,7 @@ yargs(hideBin(process.argv))
   .command(login)
   .command(logout)
   .command(dev)
+  .command(build)
   .command(release)
   .command(whoami)
   .alias('version', 'v')

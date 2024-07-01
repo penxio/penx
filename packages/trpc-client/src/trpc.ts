@@ -12,6 +12,8 @@ export const api = createTRPCClient<any>({
       url: `${BASE_URL}/api/trpc`,
       transformer: superjson,
       async headers() {
+        console.log('headers', await getHeaders())
+
         return await getHeaders()
       },
     }),
