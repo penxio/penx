@@ -110,6 +110,7 @@ export function main() {
 
       await db.upsertExtension(name, {
         isDeveloping: true,
+        location: appDir,
         ...manifest,
       })
 

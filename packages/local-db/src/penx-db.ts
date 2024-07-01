@@ -1,7 +1,6 @@
 import Dexie, { Table } from 'dexie'
 import { ICommand, IExtension, IFile, INode, ISpace } from '@penx/model-types'
 import { uniqueId } from '@penx/unique-id'
-import { getNewSpace } from './libs/getNewSpace'
 
 export class PenxDB extends Dexie {
   space!: Table<ISpace, string>
@@ -12,7 +11,7 @@ export class PenxDB extends Dexie {
   constructor() {
     // super('PenxDB')
     super('penx-local')
-    this.version(19).stores({
+    this.version(20).stores({
       // Primary key and indexed props
       space: 'id, name, userId',
       node: 'id, spaceId, databaseId, type, date, [type+spaceId+databaseId], [type+spaceId], [type+databaseId]',

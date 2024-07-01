@@ -40,6 +40,8 @@ export interface IExtension {
 
   author?: string
 
+  location?: string
+
   isDeveloping: boolean
 
   createdAt: Date

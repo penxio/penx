@@ -1,11 +1,12 @@
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useMemo, useRef } from 'react'
 import isEqual from 'react-fast-compare'
-import { Box } from '@fower/react'
+import { Box, FowerHTMLProps } from '@fower/react'
 import { useMutation } from '@tanstack/react-query'
+import { useVirtualizer } from '@tanstack/react-virtual'
 import { Button, Checkbox, Divider } from 'uikit'
 import { db } from '@penx/local-db'
 import { Command } from '@penx/model'
-import { IExtension } from '@penx/model-types'
+import { ICommand, IExtension } from '@penx/model-types'
 import { useValue } from '~/hooks/useValue'
 import { StyledCommandGroup } from '../../CommandComponents'
 import { ListItemIcon } from '../../ListItemIcon'
@@ -47,29 +48,31 @@ function Detail() {
   return <ExtensionDetail />
 }
 
-interface ItemProps {
+interface ItemProps extends FowerHTMLProps<'div'> {
   command: Command
   extension?: IExtension
 }
 
 const Item = memo(
-  function Item({ command, extension }: ItemProps) {
+  function Item({ command, extension, ...rest }: ItemProps) {
     return (
-      <Box key={command.name} toCenterY gap2>
-        <Box flex-2 toCenterY gap1 pl-6>
-          <ListItemIcon icon={command.icon} isApplication />
+      <Box key={command.name} h-40 py1 {...rest}>
+        <Box toCenterY gap2>
+          <Box flex-2 toCenterY gap1 pl-6>
+            <ListItemIcon icon={command.icon} isApplication />
 
-          <Box textSM>{command.title}</Box>
-        </Box>
-        <Box flex-1>
-          <SetAlias extension={extension} command={command} />
-        </Box>
-        <Box flex-1>
-          <BindingHotkey extension={extension} command={command} />
-        </Box>
+            <Box textSM>{command.title}</Box>
+          </Box>
+          <Box flex-1>
+            <SetAlias extension={extension} command={command} />
+          </Box>
+          <Box flex-1>
+            <BindingHotkey extension={extension} command={command} />
+          </Box>
 
-        <Box w-30 toRight>
-          <Checkbox defaultChecked={false} />
+          <Box w-30 toRight>
+            <Checkbox defaultChecked={false} />
+          </Box>
         </Box>
       </Box>
     )
@@ -81,8 +84,21 @@ const Item = memo(
 
 function ExtensionDetail() {
   const { value } = useValue()
-  const { data = [] } = useExtensions()
+  const { data = [], isLoading } = useExtensions()
   const extension = data.find((item) => item.id === value)
+
+  if (!extension || isLoading) return <Box flex-1></Box>
+
+  return <DetailList commands={extension.commands} extension={extension} />
+}
+
+interface DetailListProps {
+  commands: ICommand[]
+  extension: IExtension
+}
+
+function DetailList({ commands, extension }: DetailListProps) {
+  const parentRef = useRef<HTMLDivElement>()
 
   const { refetch } = useExtensions()
   const { mutateAsync, isPending } = useMutation({
@@ -90,17 +106,38 @@ function ExtensionDetail() {
     mutationFn: (id: string) => db.deleteExtension(id),
   })
 
-  if (!extension) return <Box flex-1></Box>
+  const rowVirtualizer = useVirtualizer({
+    count: commands.length,
+    getScrollElement: () => parentRef.current!,
+    estimateSize: () => 40,
+    overscan: 8,
+  })
+
+  const commandMap = useMemo(() => {
+    return commands.reduce((acc, cur, index) => {
+      acc.set(index, cur)
+      return acc
+    }, new Map<number, ICommand>())
+  }, [commands])
 
   const isBuiltin = extension.name.startsWith('penx/penx')
 
   return (
-    <Box flex-1 overflowAuto p3 column gap1>
-      <Box flex-1 column gap2>
-        {extension.commands.map((command) => {
+    <Box ref={parentRef} column flex-1 overflowAuto p3>
+      <Box relative w-100p style={{ height: `${rowVirtualizer.getTotalSize()}px` }}>
+        {rowVirtualizer.getVirtualItems().map((virtualItem) => {
+          const command = commandMap.get(virtualItem.index)!
           return (
             <Item
               key={command.name}
+              absolute
+              top0
+              left0
+              w-100p
+              h={`${virtualItem.size}px`}
+              style={{
+                transform: `translateY(${virtualItem.start}px)`,
+              }}
               command={Command.formExtension(extension, command)}
               extension={extension}
             />
@@ -108,18 +145,23 @@ function ExtensionDetail() {
         })}
       </Box>
 
-      <Button
-        colorScheme="red500"
-        variant="outline"
-        disabled={isPending || isBuiltin}
-        onClick={async () => {
-          if (isBuiltin) return
-          await mutateAsync(extension.id)
-          refetch()
-        }}
-      >
-        Uninstall Extension
-      </Button>
+      {extension.name !== 'penx/applications' && (
+        <Box flex-1 toCenterX toBottom>
+          <Button
+            w-100p
+            colorScheme="red500"
+            variant="outline"
+            disabled={isPending || isBuiltin}
+            onClick={async () => {
+              if (isBuiltin) return
+              await mutateAsync(extension.id)
+              refetch()
+            }}
+          >
+            Uninstall Extension
+          </Button>
+        </Box>
+      )}
     </Box>
   )
 }

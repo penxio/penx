@@ -22,6 +22,7 @@ struct ExtensionInfo {
     title: String,
     version: String,
     icon: String,
+    location: String,
     assets: String,
     commands: String,
 }
@@ -32,6 +33,7 @@ struct UpsertExtensionInput {
     title: String,
     version: String,
     icon: String,
+    location: String,
     assets: String,
     commands: String,
 }
@@ -87,6 +89,7 @@ async fn upsert_extension(
         name: input.name.to_string(),
         title: input.title.to_string(),
         version: input.version.to_string(),
+        location: input.location.to_string(),
         icon: input.icon.to_string(),
         assets: input.assets.to_string(),
         commands: input.commands.to_string(),

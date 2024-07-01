@@ -41,7 +41,10 @@ export async function registerAppHotkey(hotkey: string) {
       await appWindow?.setFocus()
 
       setTimeout(() => {
-        document.getElementById('searchBarInput')?.focus()
+        const $input =
+          document.getElementById('searchBarInput') || document.querySelector('.searchBarInput')
+
+        $input?.focus()
       }, 0)
     }
   })

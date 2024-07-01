@@ -13,6 +13,7 @@ type Payload = {
   commands: string
   assets: string
   name: string
+  location: string
   title: string
   icon: string
   version: string
@@ -23,7 +24,11 @@ export async function watchExtensionDevChange() {
 
   if (appWindow.label !== 'main') return
 
+  let isUpdating = false
   listen('UPSERT_EXTENSION', async (data) => {
+    if (isUpdating) return
+    isUpdating = true
+
     const payload = data.payload as Payload
     const commands = JSON.parse(payload.commands || '[]')
     const assets = JSON.parse(payload.assets || '{}')
@@ -43,11 +48,14 @@ export async function watchExtensionDevChange() {
     await db.upsertExtension(payload.name, {
       isDeveloping: true,
       title: payload.title,
+      location: payload.location,
       commands,
       assets,
       icon: getIcon(),
       version: payload.version,
     })
+
+    isUpdating = false
 
     const item = store.get(currentCommandAtom)
 

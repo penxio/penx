@@ -114,7 +114,7 @@ export class FormApp {
       }
 
       if (isCustomAction(action)) {
-        const { onClick, ...rest } = action
+        const { onSelect, ...rest } = action
         return rest
       }
       return action

@@ -1,4 +1,5 @@
 import { IListItem, ListApp } from '@penxio/preset-ui'
+import { shell } from '@penxio/api'
 import { db } from '@penx/local-db'
 
 export async function main() {
@@ -7,16 +8,52 @@ export async function main() {
     items: [],
   }).run()
 
+  await loadExtensions(app)
+}
+
+async function loadExtensions(app: ListApp) {
   const list = await db.listExtensions()
 
   const items: IListItem[] = list
     .filter((i) => i.isDeveloping)
     .map((item, index) => {
       return {
-        icon: index + 1,
+        icon: item.icon || index + 1,
         title: item.title,
-        actions: [{ type: 'CopyToClipboard', content: index.toString() }],
-      }
+        subtitle: item.location,
+        actions: [
+          {
+            type: 'CopyToClipboard',
+            title: 'Copy Path to Clipboard',
+            content: item.location || '',
+          },
+          {
+            type: 'CustomAction',
+            title: 'Show in Folder',
+            icon: { name: 'lucide--folder' },
+            onSelect: () => {
+              shell.open(item.location || '')
+            },
+          },
+          {
+            type: 'CustomAction',
+            icon: { name: 'lucide--rocket' },
+            title: 'Release Extension',
+            onSelect: () => {
+              console.log('release....')
+            },
+          },
+          {
+            type: 'CustomAction',
+            icon: { name: 'lucide--trash' },
+            title: 'Uninstall Developing Extension',
+            onSelect: async () => {
+              await db.deleteExtension(item.id)
+              await loadExtensions(app)
+            },
+          },
+        ],
+      } as IListItem
     })
 
   app.setState({ items })

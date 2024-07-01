@@ -9,12 +9,7 @@ interface Props {
   onKeyDown: KeyboardEventHandler<HTMLInputElement>
 }
 export const SearchInput = memo(
-  function SearchInput({
-    search,
-    searchBarHeight,
-    onValueChange,
-    onKeyDown,
-  }: Props) {
+  function SearchInput({ search, searchBarHeight, onValueChange, onKeyDown }: Props) {
     const ref = useRef<HTMLInputElement>()
 
     useEffect(() => {
@@ -31,6 +26,7 @@ export const SearchInput = memo(
       <StyledCommandInput
         ref={ref as any}
         id="searchBarInput"
+        className="searchBarInput"
         flex-1
         selectNone
         toCenterY
@@ -54,9 +50,6 @@ export const SearchInput = memo(
     )
   },
   (prev, next) => {
-    return (
-      prev.searchBarHeight === next.searchBarHeight &&
-      prev.search === next.search
-    )
+    return prev.searchBarHeight === next.searchBarHeight && prev.search === next.search
   },
 )

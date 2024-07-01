@@ -45,9 +45,10 @@ class Command {
     const assets = await assetsToStringMap()
 
     const data = {
-      name: `$DEVELOPING-${manifest.name}`,
+      name: manifest.name,
       title: manifest.title,
       version: manifest.version || '',
+      location: process.cwd(),
       icon: typeof manifest.icon === 'object' ? JSON.stringify(manifest.icon) : manifest.icon,
       commands: JSON.stringify(manifest.commands),
       assets: JSON.stringify(assets),

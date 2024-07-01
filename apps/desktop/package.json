@@ -46,6 +46,7 @@
     "@penxio/api": "workspace:*",
     "@penxio/preset-ui": "workspace:*",
     "@tanstack/react-query": "^5.45.1",
+    "@tanstack/react-virtual": "^3.8.1",
     "@tauri-apps/api": "2.0.0-beta.13",
     "@tauri-apps/plugin-dialog": "2.0.0-beta.5",
     "@tauri-apps/plugin-fs": "2.0.0-beta.5",

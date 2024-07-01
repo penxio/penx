@@ -150,6 +150,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.45.1
         version: 5.48.0(react@18.3.1)
+      '@tanstack/react-virtual':
+        specifier: ^3.8.1
+        version: 3.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tauri-apps/api':
         specifier: 2.0.0-beta.13
         version: 2.0.0-beta.13

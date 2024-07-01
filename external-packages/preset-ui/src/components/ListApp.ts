@@ -137,7 +137,7 @@ export class ListApp {
       if (isCustomActionPayload(event.data)) {
         const item = this.state.items[event.data.itemIndex]
         const action = item.actions![event.data.actionIndex]
-        isCustomAction(action) && action.onClick?.()
+        isCustomAction(action) && action.onSelect?.()
       }
 
       // handle function detail
@@ -170,7 +170,7 @@ export class ListApp {
         detail: typeof item.detail === 'function' ? 'functionDetail' : item.detail,
         actions: item.actions?.map((action) => {
           if (!isCustomAction(action)) return action
-          const { onClick, ...rest } = action
+          const { onSelect, ...rest } = action
           return rest
         }),
       }

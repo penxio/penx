@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { Box } from '@fower/react'
 import {
+  ActionItem,
   isCopyToClipboard,
   isCustomAction,
   isFormApp,
@@ -9,12 +10,13 @@ import {
   isSubmitForm,
 } from '@penxio/preset-ui'
 import { open } from '@tauri-apps/plugin-shell'
-import { DoorOpenIcon } from 'lucide-react'
+import { Captions, Copy, DoorOpenIcon, Globe } from 'lucide-react'
 import { writeText } from 'tauri-plugin-clipboard-api'
 import { appEmitter } from '@penx/event'
 import { workerStore } from '~/common/workerStore'
 import { useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { useValue } from '~/hooks/useValue'
+import { ListItemIcon } from '../ListItemIcon'
 import { MenuItem } from './MenuItem'
 
 interface Props {
@@ -76,15 +78,28 @@ export const CommandAppActions = ({ onSelect }: Props) => {
           }}
         >
           <Box toCenterY gap2 inlineFlex>
-            <Box gray800>
-              <DoorOpenIcon size={16} />
-            </Box>
+            <Box neutral800>{getIcon(item)}</Box>
             <Box>{item.title || getDefaultTitle(item)}</Box>
           </Box>
         </MenuItem>
       ))}
     </>
   )
+}
+
+function getIcon(item: ActionItem) {
+  if (isOpenInBrowser(item)) {
+    return <Globe size={16} />
+  }
+
+  if (isCopyToClipboard(item)) {
+    return <Copy size={16} />
+  }
+
+  if (isSubmitForm(item)) {
+    return <Captions size={16} />
+  }
+  return <ListItemIcon icon={item.icon} />
 }
 
 function getDefaultTitle(item: any) {
@@ -99,5 +114,5 @@ function getDefaultTitle(item: any) {
   if (isSubmitForm(item)) {
     return 'Submit form'
   }
-  return 'TODO:'
+  return ''
 }
