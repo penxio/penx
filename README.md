@@ -22,7 +22,7 @@ Deploy a dynamic blog using Cloudflare Pages, D1, R2, and AI. 100% run on Cloudf
 
 There two way to deploy PenX:
 - Deploy with PenX One-click tools (recommended). [Deploy now ](https://penx.io/self-hosted)
-- Deploy with source code. [Deploy now ](https://zio.penx.io/posts/adb15255-7a4d-4978-84da-0ab1ba5e3764)
+- Deploy with source code. [Deploy now ](https://penx.io/docs/deploy-penx-with-one-click-tools)
 
 ## Technology stack
 
