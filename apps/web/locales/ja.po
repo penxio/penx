@@ -1,0 +1,1271 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-03-28 13:38+0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ja\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:36
+msgid "100% run on Cloudflare and deploy freely."
+msgstr ""
+
+#: app/[lang]/site/[domain]/(blog)/areas/[slug]/page.tsx:66
+#: app/[lang]/site/[domain]/(blog)/areas/[slug]/book/AboutItem.tsx:34
+#: app/[lang]/root/Nav.tsx:36
+#: components/theme-ui/NavigationItem.tsx:25
+#: components/AreaDialog/AreaForm.tsx:228
+#: themes/wide/components/Sidebar.tsx:68
+#: themes/garden/components/Sidebar.tsx:68
+msgid "About"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:121
+msgid "Access control"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:199
+msgid "Access token"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:91
+#: app/[lang]/~/(dashboard)/settings/navigation/page.tsx:34
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:202
+msgid "Add"
+msgstr ""
+
+#: components/Creation/CoverUpload.tsx:110
+msgid "Add cover"
+msgstr ""
+
+#: components/Creation/CoverUpload.tsx:110
+msgid "Add image"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagDialog.tsx:25
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:25
+msgid "Add navigation"
+msgstr ""
+
+#: components/Creation/AddNoteDialog/AddNoteDialog.tsx:154
+msgid "Add note"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:115
+msgid "Add to favorites"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeDialog.tsx:26
+msgid "Add type"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:86
+msgid "Add widget"
+msgstr ""
+
+#: components/Creation/Tags.tsx:123
+msgid "Adding tag"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:27
+msgid "AI-assistants"
+msgstr ""
+
+#: components/theme-ui/grid-ui/PodcastCard.tsx:29
+#: components/theme-ui/grid-ui/FriendsCard.tsx:27
+#: components/theme-ui/grid-ui/ArticleCard.tsx:39
+msgid "All"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:96
+#: lib/getWidgetName.tsx:10
+msgid "All creations"
+msgstr ""
+
+#: themes/card/pages/HomePage.tsx:39
+msgid "All posts"
+msgstr ""
+
+#: themes/card/pages/HomePage.tsx:64
+#: themes/aside/pages/HomePage.tsx:62
+msgid "All projects"
+msgstr ""
+
+#: components/LoginDialog/RegisterForm.tsx:124
+msgid "Already have an account"
+msgstr ""
+
+#: components/theme-ui/NavigationItem.tsx:22
+#: themes/wide/components/Sidebar.tsx:64
+#: themes/garden/components/Sidebar.tsx:64
+msgid "AMA"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/partner-program/WithdrawDialog/WithdrawForm.tsx:70
+msgid "Amount"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:207
+msgid "Analytics"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:153
+msgid "Appearance"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:163
+#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:123
+msgid "Archive"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:225
+#: app/[lang]/~/(dashboard)/settings/archived/layout.tsx:29
+#: app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:36
+msgid "Archived"
+msgstr ""
+
+#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:52
+msgid "Are you sure delete it permanently?"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:142
+msgid "Are you sure you want to delete this post?"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeItem.tsx:93
+msgid "Are you sure you want to delete this property?"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/cards/AreaCard.tsx:38
+#: app/[lang]/~/(dashboard)/areas/AreaHeader.tsx:14
+msgid "Area"
+msgstr ""
+
+#: components/database-ui/views/TableView/ColumnMenu/EditField.tsx:45
+msgid "Area name"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:104
+#: app/[lang]/site/[domain]/(blog)/areas/page.tsx:52
+#: components/theme-ui/NavigationItem.tsx:19
+#: themes/wide/components/Sidebar.tsx:60
+#: themes/garden/components/Sidebar.tsx:60
+msgid "Areas"
+msgstr ""
+
+#: lib/getMoldName.tsx:17
+msgid "Article"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:89
+#: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:10
+#: lib/getMoldName.tsx:7
+msgid "Articles"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:45
+msgid "Asset"
+msgstr ""
+
+#: app/[lang]/root/cli-login/CliLogin.tsx:67
+msgid "Authorize CLI login"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:257
+msgid "Authors"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/partner-program/WithdrawDialog/WithdrawForm.tsx:74
+msgid "Available"
+msgstr ""
+
+#: components/theme-ui/BackLinks.tsx:29
+msgid "Backlinks"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:215
+msgid "Backup"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/payout-account/PayoutAccountDialog/PayoutAccountForm.tsx:117
+msgid "Bank"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:92
+msgid "Beautiful themes"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:108
+msgid "Billing & plan"
+msgstr ""
+
+#: components/AreaInfo.tsx:43
+msgid "Book"
+msgstr ""
+
+#: lib/getMoldName.tsx:22
+msgid "Bookmark"
+msgstr ""
+
+#: lib/getMoldName.tsx:12
+msgid "Bookmarks"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/CardStyleSelect.tsx:28
+msgid "Bordered"
+msgstr ""
+
+#: app/[lang]/root/(home)/InstallExtensionButton.tsx:28
+msgid "Browser extension"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:36
+msgid "Build for super individual"
+msgstr ""
+
+#: app/[lang]/root/(home)/Slogan.tsx:22
+msgid "Build your own <0>Digital Garden</0>"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:103
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:137
+msgid "Builtin"
+msgstr ""
+
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:88
+msgid "By subscribing, you'll receive the latest posts directly in your inbox."
+msgstr ""
+
+#: app/[lang]/root/cli-login/CliLogin.tsx:49
+#: components/Creation/PublishDialog/PublishForm.tsx:270
+#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:62
+msgid "Cancel"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/GardenSettingsContent.tsx:116
+msgid "Card style"
+msgstr ""
+
+#: components/Creation/ChangeType.tsx:39
+msgid "Change type"
+msgstr ""
+
+#: app/[lang]/site/[domain]/subscribe/page.tsx:59
+msgid "Choose a subscription plan"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/ThemeDesignTitle.tsx:152
+msgid "Classic"
+msgstr ""
+
+#: app/[lang]/root/cli-login/CliLogin.tsx:58
+msgid "CLI login successfully"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:187
+msgid "Collaborators"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:105
+#: lib/getWidgetName.tsx:14
+msgid "Collection"
+msgstr ""
+
+#: components/AreaInfo.tsx:49
+msgid "Column"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:172
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:125
+#: components/theme-ui/PostActions/Comment/CommentSheet.tsx:35
+msgid "Comments"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:83
+msgid "Comments built-in"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/partner-program/WithdrawDialog/WithdrawForm.tsx:106
+msgid "Confirm"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/DesignSettings.tsx:118
+msgid "Container width"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:44
+msgid "Content"
+msgstr ""
+
+#: components/theme-ui/ContributeButton.tsx:35
+msgid "Contribute"
+msgstr ""
+
+#: components/Creation/CreationMoreMenu.tsx:72
+msgid "Copy html"
+msgstr ""
+
+#: components/Creation/CreationMoreMenu.tsx:65
+msgid "Copy link"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:238
+msgid "Coupons"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/AreasPopover/AreasPopover.tsx:104
+msgid "Create area"
+msgstr ""
+
+#: components/AreaDialog/AreaForm.tsx:330
+#: components/AreaDialog/AreaDialog.tsx:36
+msgid "Create field"
+msgstr ""
+
+#: components/LoginDialog/LoginForm.tsx:130
+msgid "Create one"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:70
+msgid "Created At"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:55
+msgid "Created date"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:52
+msgid "Creation counts"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:119
+#: app/[lang]/~/(dashboard)/settings/creation-types/page.tsx:18
+msgid "Creation types"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AreaWidgets.tsx:23
+msgid "Creations"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:105
+msgid "Custom"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:94
+msgid "Customize your site with a variety of visually appealing themes."
+msgstr ""
+
+#: components/Profile/ProfilePopover.tsx:110
+#: components/Profile/Profile.tsx:60
+msgid "Dashboard"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:76
+msgid "Data ownership"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:50
+#: app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:56
+msgid "Date"
+msgstr ""
+
+#: components/theme-ui/LangSwitcher.tsx:68
+msgid "Default"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:156
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:186
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:59
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:87
+#: components/Creation/CreationMoreMenu.tsx:105
+#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:74
+msgid "Delete"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetDialog/DeleteButton.tsx:45
+msgid "Delete permanently"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:72
+msgid "Delete tag"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:143
+msgid "Delete this post"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:141
+msgid "Delete this post?"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeItem.tsx:95
+msgid "Delete this Property"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeItem.tsx:91
+msgid "Delete this property?"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:163
+msgid "Deliver your newsletter"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:30
+msgid "Deploy in 10 minutes"
+msgstr ""
+
+#: app/[lang]/root/(home)/DeployOwnButton.tsx:21
+msgid "Deploy my own"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:111
+msgid "Deploy new site"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:89
+msgid "Deploy PenX with One-click tools"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:33
+msgid "Deploy your own site to Cloudflare Pages in 10 minutes."
+msgstr ""
+
+#: components/AreaDialog/AreaForm.tsx:210
+msgid "Description"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/app-sidebar.tsx:68
+msgid "Design my site"
+msgstr ""
+
+#: app/[lang]/root/(home)/page.tsx:74
+msgid "Digital gardens"
+msgstr ""
+
+#: app/[lang]/root/(home)/SiteCount.tsx:34
+msgid "digital gardens created"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:234
+msgid "Discover"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:211
+msgid "Domain"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:28
+msgid "Drafts"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:47
+msgid "Easily create and send newsletters to keep your audience engaged."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:141
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesign.tsx:38
+#: app/[lang]/~/(dashboard)/creations/Projects/PostItem.tsx:95
+#: app/[lang]/~/(dashboard)/creations/Podcasts/PostItem.tsx:91
+#: app/[lang]/~/(dashboard)/creations/Friends/PostItem.tsx:98
+#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:103
+msgid "Edit"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagDialog.tsx:27
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:27
+msgid "Edit navigation"
+msgstr ""
+
+#: components/LoginDialog/RegisterForm.tsx:80
+msgid "Email"
+msgstr ""
+
+#: components/LoginDialog/LoginDialog.tsx:56
+msgid "Email validate Link sent"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:85
+msgid "Engage with your audience through integrated comment features."
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:29
+msgid "Enhance your content creation with AI-powered tools and suggestions."
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:70
+msgid "Enjoy a seamless writing experience with our intuitive editor."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:129
+msgid "Failed to Restore"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetDialog/AssetDialog.tsx:70
+msgid "Failed to update public status!"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:113
+#: lib/getWidgetName.tsx:17
+msgid "Favorites"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:210
+msgid "Featured"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:105
+msgid "Features"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:50
+msgid "Filename"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:109
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:166
+msgid "Footer"
+msgstr ""
+
+#: lib/getMoldName.tsx:23
+msgid "Friend"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:111
+#: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:14
+#: components/theme-ui/NavigationItem.tsx:21
+#: components/theme-ui/grid-ui/FriendsCard.tsx:21
+#: lib/getMoldName.tsx:13
+#: themes/wide/components/Sidebar.tsx:63
+#: themes/garden/components/Sidebar.tsx:63
+msgid "Friends"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:124
+msgid "Gate this post, config who can read this post."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:94
+msgid "General"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/ThemeDesignTitle.tsx:155
+msgid "Grid"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:132
+#: components/theme-ui/NavigationItem.tsx:23
+#: themes/wide/components/Sidebar.tsx:66
+#: themes/garden/components/Sidebar.tsx:66
+msgid "Guestbook"
+msgstr ""
+
+#: app/[lang]/root/(home)/Slogan.tsx:31
+msgid "Having your own garden, start planting, and watch it grow."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:102
+#: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:108
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:163
+msgid "Header"
+msgstr ""
+
+#: components/theme-ui/NavigationItem.tsx:14
+#: components/Profile/ProfilePopover.tsx:92
+#: themes/wide/components/Sidebar.tsx:53
+#: themes/garden/components/Sidebar.tsx:53
+msgid "Home"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:152
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:82
+#: lib/getMoldName.tsx:21
+msgid "Image"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetDialog/AssetDialog.tsx:65
+msgid "Image public status updated successfully!"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:12
+#: lib/getMoldName.tsx:11
+msgid "Images"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:222
+msgid "Import/Export"
+msgstr ""
+
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:104
+msgid "Introduction"
+msgstr ""
+
+#: themes/wide/pages/HomePage.tsx:43
+#: themes/paper/pages/HomePage.tsx:31
+#: themes/docs/pages/HomePage.tsx:23
+#: themes/card/pages/HomePage.tsx:31
+#: themes/aside/pages/HomePage.tsx:39
+msgid "Latest"
+msgstr ""
+
+#: components/theme-ui/grid-ui/CommentsCard.tsx:28
+msgid "Latest comments"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:53
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:120
+msgid "Link"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:86
+msgid "Link accounts"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:130
+msgid "Location"
+msgstr ""
+
+#: components/LoginDialog/RegisterForm.tsx:130
+#: components/LoginDialog/LoginForm.tsx:118
+msgid "Log in"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:173
+#: components/Profile/ProfilePopover.tsx:154
+msgid "Log out"
+msgstr ""
+
+#: app/[lang]/root/cli-login/CliLogin.tsx:26
+msgid "Login to PenX CLI"
+msgstr ""
+
+#: components/AreaDialog/AreaForm.tsx:127
+msgid "logo"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:78
+msgid "Maintain full control over your content and data."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/page.tsx:13
+#: app/[lang]/~/(dashboard)/Sidebar/app-sidebar.tsx:87
+msgid "Manage tags"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/page.tsx:21
+msgid "Manage your creation types."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/DesignSettings.tsx:162
+msgid "Margin"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:132
+#: components/theme-ui/MembershipEntry/MembershipEntry.tsx:26
+#: themes/aside/components/Sidebar.tsx:80
+msgid "Membership"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:54
+msgid "Memberships built-in"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:68
+msgid "Modern editor"
+msgstr ""
+
+#: themes/docs/pages/HomePage.tsx:38
+msgid "Most Popular"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:80
+msgid "My sites"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:49
+#: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:73
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:107
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:77
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:88
+#: components/AreaDialog/AreaForm.tsx:177
+msgid "Name"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:159
+msgid "Navigation"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/page.tsx:21
+msgid "Navigation links"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:45
+msgid "Newsletters built-in"
+msgstr ""
+
+#: components/theme-ui/Pagination.tsx:48
+#: components/theme-ui/Pagination.tsx:53
+msgid "Next"
+msgstr ""
+
+#: components/LoginDialog/LoginForm.tsx:124
+msgid "No account"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/components/NoCreationYet.tsx:7
+#: app/[lang]/site/[domain]/(blog)/areas/[slug]/PanelSidebar/components/NoCreationYet.tsx:7
+msgid "No creation yet!"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Tasks/TasksList.tsx:31
+msgid "No creations yet."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Notes/NoteList.tsx:36
+msgid "No notes yet."
+msgstr ""
+
+#: themes/wide/pages/HomePage.tsx:47
+#: themes/paper/pages/HomePage.tsx:44
+#: themes/minimal/pages/HomePage.tsx:44
+#: themes/micro/pages/HomePage.tsx:46
+#: themes/docs/pages/HomePage.tsx:27
+#: themes/card/pages/HomePage.tsx:45
+#: themes/aside/pages/HomePage.tsx:43
+msgid "No posts found."
+msgstr ""
+
+#: themes/aside/pages/TagListPage.tsx:17
+msgid "No tags found."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:85
+#: lib/getMoldName.tsx:18
+msgid "Note"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:11
+#: components/theme-ui/NoteListWidget.tsx:20
+#: components/theme-ui/NavigationItem.tsx:18
+#: lib/getMoldName.tsx:8
+#: themes/wide/components/Sidebar.tsx:59
+#: themes/garden/components/Sidebar.tsx:59
+msgid "Notes"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:56
+msgid "Offer exclusive content and benefits to loyal members."
+msgstr ""
+
+#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:55
+msgid "Once deleted, You can't undo this action."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:37
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:79
+msgid "Open in new panel"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:58
+#: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:136
+#: app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:53
+#: app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:59
+msgid "Operation"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:63
+msgid "Optimize your content for search engines with ease."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:179
+msgid "Options"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:141
+msgid "Orders"
+msgstr ""
+
+#: lib/getMoldName.tsx:25
+msgid "Page"
+msgstr ""
+
+#: lib/getMoldName.tsx:15
+msgid "Pages"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:135
+msgid "Paid members"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:193
+#: app/[lang]/root/Nav.tsx:61
+msgid "Partner program"
+msgstr ""
+
+#: components/LoginDialog/RegisterForm.tsx:96
+msgid "Password"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:133
+msgid "Path"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:80
+msgid "Payout account"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/payout-account/PayoutAccountDialog/PayoutAccountForm.tsx:124
+msgid "Paypal"
+msgstr ""
+
+#: app/[lang]/root/(home)/Slogan.tsx:29
+msgid "PenX is a tool for building a digital garden."
+msgstr ""
+
+#: components/theme-ui/PhotoListWidget.tsx:20
+msgid "Photos"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:226
+msgid "Pick a date"
+msgstr ""
+
+#: components/LoginDialog/LoginDialog.tsx:59
+msgid "Please check your email for the verification link."
+msgstr ""
+
+#: app/[lang]/root/cli-login/CliLogin.tsx:29
+msgid "Please confirm your authorization for this login."
+msgstr ""
+
+#: app/[lang]/root/cli-login/CliLogin.tsx:61
+msgid "please try again~"
+msgstr ""
+
+#: lib/getMoldName.tsx:19
+msgid "Podcast"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:97
+#: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:13
+#: components/theme-ui/PodcastListWidget.tsx:20
+#: components/theme-ui/NavigationItem.tsx:17
+#: components/theme-ui/grid-ui/PodcastCard.tsx:23
+#: lib/getMoldName.tsx:9
+#: themes/wide/components/Sidebar.tsx:58
+#: themes/garden/components/Sidebar.tsx:58
+msgid "Podcasts"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:47
+msgid "Post"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/posts/layout.tsx:30
+#: components/theme-ui/NavigationItem.tsx:15
+#: themes/wide/components/Sidebar.tsx:54
+#: themes/garden/components/Sidebar.tsx:54
+msgid "Posts"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:108
+msgid "Powerful features to build to digital garden"
+msgstr ""
+
+#: components/Creation/Tags.tsx:128
+msgid "Press Enter to add a tag."
+msgstr ""
+
+#: components/theme-ui/Pagination.tsx:25
+#: components/theme-ui/Pagination.tsx:37
+msgid "Previous"
+msgstr ""
+
+#: app/[lang]/root/Nav.tsx:48
+msgid "Pricing"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:138
+msgid "Products"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:74
+msgid "Profile"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/cards/ProjectCard.tsx:41
+#: lib/getMoldName.tsx:24
+msgid "Project"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:118
+#: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:15
+#: components/theme-ui/NavigationItem.tsx:20
+#: lib/getMoldName.tsx:14
+#: themes/wide/components/Sidebar.tsx:62
+#: themes/garden/components/Sidebar.tsx:62
+#: themes/card/pages/HomePage.tsx:56
+#: themes/aside/pages/HomePage.tsx:54
+msgid "Projects"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:60
+msgid "Public"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetDialog/AssetDialog.tsx:53
+msgid "Public visit"
+msgstr ""
+
+#: components/Creation/CreationMoreMenu.tsx:55
+#: components/Creation/PublishDialog/PublishForm.tsx:278
+msgid "Publish"
+msgstr ""
+
+#: components/Creation/AddNoteDialog/AddNoteDialog.tsx:141
+msgid "Publish directly"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:89
+msgid "Publish your creation"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:32
+msgid "Published"
+msgstr ""
+
+#: components/theme-ui/PostMetadata.tsx:43
+msgid "Published on"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:83
+msgid "Read the deployment guide"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:121
+#: lib/getWidgetName.tsx:20
+msgid "Recently edited"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:129
+#: lib/getWidgetName.tsx:23
+msgid "Recently opened"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/PanelHome.tsx:34
+msgid "Recently visited"
+msgstr ""
+
+#: components/LoginDialog/RegisterForm.tsx:118
+msgid "Register"
+msgstr ""
+
+#: components/LoginDialog/LoginDialog.tsx:41
+msgid "Register to PenX"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:113
+msgid "Remove from favorites"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:65
+msgid "Rename"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:136
+msgid "Restore"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:128
+msgid "Restored successfully!"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:127
+msgid "Restoring..."
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/DesignSettings.tsx:140
+msgid "Row height"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:91
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:202
+msgid "Save"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/QuickSearchTrigger.tsx:23
+msgid "Search"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:158
+msgid "Select a location"
+msgstr ""
+
+#: components/Creation/PropList.tsx:107
+msgid "Select a property"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/creations/Friends/PostItem.tsx:151
+msgid "Select a status"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:132
+msgid "Select a type"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:203
+msgid "SEO"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:61
+msgid "SEO friendly"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/layout.tsx:34
+#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:131
+#: components/Profile/ProfilePopover.tsx:127
+msgid "Settings"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/CardStyleSelect.tsx:24
+msgid "Shadow"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:49
+msgid "Show all"
+msgstr ""
+
+#: components/LoginButton.tsx:28
+msgid "Sign in"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:39
+msgid "Sign in to deploy"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:158
+msgid "Single select"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/DesignSettings.tsx:101
+msgid "Site background"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:65
+msgid "Size"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:123
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:93
+#: components/Creation/PublishDialog/PublishForm.tsx:99
+#: components/AreaDialog/AreaForm.tsx:193
+msgid "Slug"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:162
+msgid "Socials"
+msgstr ""
+
+#: app/[lang]/root/(home)/StartWritingButton.tsx:29
+msgid "Start writing"
+msgstr ""
+
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:136
+msgid "Submit"
+msgstr ""
+
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:35
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:48
+msgid "Submit Link"
+msgstr ""
+
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:58
+msgid "Submit successfully!"
+msgstr ""
+
+#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:59
+msgid "Submit your link"
+msgstr ""
+
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:125
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterCard.tsx:37
+msgid "Subscribe"
+msgstr ""
+
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:85
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterCard.tsx:29
+msgid "Subscribe to"
+msgstr ""
+
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:64
+msgid "Subscribed successfully!"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:178
+#: app/[lang]/~/(dashboard)/settings/subscribers/page.tsx:15
+msgid "Subscribers"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:153
+msgid "Support"
+msgstr ""
+
+#: components/theme-ui/Toc.tsx:77
+msgid "Table of contents"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:104
+#: components/Creation/Tags.tsx:81
+msgid "Tag"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:112
+#: components/theme-ui/NavigationItem.tsx:24
+#: themes/wide/components/Sidebar.tsx:67
+#: themes/sue/components/PostListWithTag.tsx:32
+#: themes/paper/pages/TagListPage.tsx:14
+#: themes/paper/components/PostListWithTag.tsx:32
+#: themes/minimal/pages/TagListPage.tsx:14
+#: themes/minimal/components/PostListWithTag.tsx:32
+#: themes/micro/pages/TagListPage.tsx:14
+#: themes/micro/components/PostListWithTag.tsx:32
+#: themes/garden/pages/TagListPage.tsx:14
+#: themes/garden/components/Sidebar.tsx:67
+#: themes/docs/pages/TagListPage.tsx:14
+#: themes/docs/components/PostListWithTag.tsx:32
+#: themes/card/components/PostListWithTag.tsx:32
+#: themes/aside/pages/TagListPage.tsx:14
+#: themes/aside/components/Sidebar.tsx:88
+msgid "Tags"
+msgstr ""
+
+#: app/[lang]/root/(home)/FeatureList.tsx:38
+msgid "Tailored for individual creators to express themselves freely."
+msgstr ""
+
+#: lib/getMoldName.tsx:20
+msgid "Task"
+msgstr ""
+
+#: lib/getMoldName.tsx:10
+msgid "Tasks"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:149
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:75
+msgid "Text"
+msgstr ""
+
+#: app/[lang]/root/(home)/Slogan.tsx:37
+msgid "The Best Tool for <0>Learning in Public</0>"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/membership/MembershipTiers.tsx:43
+msgid "Tiers"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:123
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:107
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:71
+msgid "Title"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/assets/AssetDialog/DeleteButton.tsx:47
+msgid "Trash"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:127
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:123
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:139
+#: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:55
+msgid "Type"
+msgstr ""
+
+#: components/Creation/CreationMoreMenu.tsx:92
+msgid "Unpublish"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/CardStyleSelect.tsx:32
+msgid "Unstyled"
+msgstr ""
+
+#: app/[lang]/root/self-hosted/SelfHostedPage.tsx:102
+msgid "Update API token"
+msgstr ""
+
+#: components/AreaDialog/AreaForm.tsx:328
+#: components/AreaDialog/AreaDialog.tsx:34
+msgid "Update field"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeDialog.tsx:26
+msgid "Update type"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:56
+#: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:90
+msgid "Updated successfully!"
+msgstr ""
+
+#: components/Creation/PublishDialog/PublishForm.tsx:170
+#: components/Creation/PublishDialog/PublishForm.tsx:176
+msgid "Upgrade"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:144
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:155
+msgid "URL"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:41
+#: app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:50
+msgid "User"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/Sidebar/VisitSiteButton.tsx:39
+msgid "Visit my site"
+msgstr ""
+
+#: app/[lang]/~/(dashboard)/settings/payout-account/PayoutAccountDialog/PayoutAccountForm.tsx:110
+msgid "Wallet"
+msgstr ""
+
+#: components/LoginDialog/LoginDialog.tsx:29
+msgid "Welcome to PenX"
+msgstr ""
+
+#: themes/square/components/CreatePostButton.tsx:27
+msgid "Write"
+msgstr ""
+
+#: components/theme-ui/NavigationItem.tsx:16
+#: components/theme-ui/grid-ui/ArticleCard.tsx:33
+#: themes/wide/pages/BlogPage.tsx:25
+#: themes/wide/components/Sidebar.tsx:56
+#: themes/sue/pages/BlogPage.tsx:25
+#: themes/square/pages/BlogPage.tsx:25
+#: themes/publication/pages/BlogPage.tsx:25
+#: themes/paper/pages/BlogPage.tsx:25
+#: themes/minimal/pages/BlogPage.tsx:25
+#: themes/micro/pages/BlogPage.tsx:25
+#: themes/maple/pages/BlogPage.tsx:25
+#: themes/garden/pages/BlogPage.tsx:25
+#: themes/garden/components/Sidebar.tsx:56
+#: themes/docs/pages/BlogPage.tsx:25
+#: themes/card/pages/BlogPage.tsx:25
+#: themes/aside/pages/BlogPage.tsx:25
+msgid "Writings"
+msgstr ""
+
+#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:100
+msgid "Your email"
+msgstr ""

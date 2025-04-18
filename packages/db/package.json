@@ -1,0 +1,35 @@
+{
+  "name": "@penx/db",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint . --max-warnings 0",
+    "dev": "npm run db:generate",
+    "build": "npm run db:generate",
+    "db:generate": "pnpm with-env prisma generate",
+    "db:push": "pnpm with-env prisma db push --skip-generate",
+    "db:migrate": "pnpm with-env prisma migrate dev --create-only --name init",
+    "seed": "npx prisma db seed",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "devDependencies": {
+    "@penx/eslint-config": "workspace:*",
+    "@penx/typescript-config": "workspace:*",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^9.24.0",
+    "prisma": "^6.6.0",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "prisma-extension-pagination": "^0.7.5"
+  }
+}
