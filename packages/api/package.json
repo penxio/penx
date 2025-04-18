@@ -1,0 +1,23 @@
+{
+  "name": "@penx/api",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "devDependencies": {
+    "@penx/eslint-config": "workspace:*",
+    "@penx/typescript-config": "workspace:*",
+    "eslint": "^9.24.0",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {}
+}

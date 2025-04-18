@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  penx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: postgresql://user:demo@43.154.135.183:5437/demo
+    container_name: penx
+    ports:
+      - '3000:3000'

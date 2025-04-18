@@ -4,13 +4,17 @@
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 80,
-  "plugins": ["@ianvs/prettier-plugin-sort-imports"],
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindFunctions": ["cn", "cva", "withCn"],
+  "tailwindStylesheet": "./app/globals.css",
   "importOrder": [
     "^react",
     "<BUILTIN_MODULES>",
     "<THIRD_PARTY_MODULES>",
     "^~(.*)$",
-    "^@(.*)$",
     "^[./]"
   ]
 }
