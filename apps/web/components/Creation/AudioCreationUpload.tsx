@@ -1,15 +1,15 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { Creation } from '@/lib/theme.types'
-import { api } from '@/lib/trpc'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { Creation } from '@penx/types'
+import { api } from '@penx/trpc-client'
 import { uploadFile } from '@/lib/uploadFile'
-import { getUrl } from '@/lib/utils'
+import { getUrl } from '@penx/utils'
 import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
 import { useSiteContext } from '../SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 
 interface Props {
   creation: Creation

@@ -1,5 +1,5 @@
 import { useSpaceContext } from '@/components/SpaceContext'
-import { SUBGRAPH_URL } from '@/lib/constants'
+import { SUBGRAPH_URL } from '@penx/constants'
 import { Holder } from '@/lib/types'
 import { useQuery } from '@tanstack/react-query'
 import { gql, request } from 'graphql-request'

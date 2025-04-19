@@ -1,6 +1,6 @@
-import { calculateSHA256FromFile } from './calculateSHA256FromFile'
-import { IPFS_GATEWAY, IPFS_UPLOAD_URL, STATIC_URL } from './constants'
-import { api } from './trpc'
+import { IPFS_GATEWAY, IPFS_UPLOAD_URL, STATIC_URL } from '@penx/constants'
+import { api } from '@penx/trpc-client'
+import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 
 type UploadReturn = {
   hash?: string

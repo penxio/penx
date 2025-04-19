@@ -1,4 +1,4 @@
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 
 export function useCollaborators() {
   return trpc.collaborator.listSiteCollaborators.useQuery(undefined, {

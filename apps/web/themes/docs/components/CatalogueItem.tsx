@@ -8,7 +8,7 @@ import {
   CatalogueNodeType,
   ICatalogueNode,
 } from '@/lib/model'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 
 interface CatalogueItemProps {

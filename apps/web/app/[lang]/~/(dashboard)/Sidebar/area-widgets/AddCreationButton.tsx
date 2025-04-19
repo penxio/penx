@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { useAddCreation } from '@/hooks/useAddCreation'
 import { Widget } from '@/lib/types'
 import { Area } from '@penx/db/client'

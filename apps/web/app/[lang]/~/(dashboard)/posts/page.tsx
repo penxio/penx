@@ -1,4 +1,4 @@
-import { CreationStatus } from '@/lib/constants'
+import { CreationStatus } from '@penx/constants'
 import { PostList } from './components/PostList'
 
 export const dynamic = 'force-static'

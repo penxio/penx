@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { Creation } from '@/lib/theme.types'
+import { Creation } from '@penx/types'
 
 export const CreationContext = createContext({} as Creation)
 

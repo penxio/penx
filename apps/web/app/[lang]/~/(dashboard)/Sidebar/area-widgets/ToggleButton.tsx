@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { toggleCollapsed } from '@/hooks/useAreaItem'
 import { Widget } from '@/lib/types'
 import { Area } from '@penx/db/client'

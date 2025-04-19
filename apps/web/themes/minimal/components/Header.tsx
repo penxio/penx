@@ -1,8 +1,8 @@
 import { Profile } from '@/components/Profile/Profile'
 import { MobileSidebarSheet } from '@/components/theme-ui/MobileSidebar'
 import { Navigation } from '@/components/theme-ui/Navigation'
-import { Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn } from '@penx/utils'
 
 interface Props {
   site: Site

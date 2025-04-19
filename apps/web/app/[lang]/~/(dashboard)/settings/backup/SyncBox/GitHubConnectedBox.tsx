@@ -1,10 +1,10 @@
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { useSiteContext } from '@/components/SiteContext'
 import { Github } from '@/components/theme-ui/SocialIcon/icons'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { updateSiteState } from '@/hooks/useSite'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 import { ExternalLink } from 'lucide-react'
 
 interface Props {

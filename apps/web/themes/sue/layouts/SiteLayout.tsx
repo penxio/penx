@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Footer } from '@/components/theme-ui/Footer'
 import { GridLayoutContainer } from '@/components/theme-ui/grid-ui'
-import { Site } from '@/lib/theme.types'
+import { Site } from '@penx/types'
 import { Header } from '../components/Header'
 import SectionContainer from '../components/SectionContainer'
 

@@ -1,4 +1,4 @@
-import { WidgetType } from '@/lib/constants'
+import { WidgetType } from '@penx/constants'
 import { Widget } from '@/lib/types'
 import { AllCreations } from './widgets/AllCreations'
 import { CreationList } from './widgets/CreationList'

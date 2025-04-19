@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { DeployStatus } from '@/lib/types'
 
 interface Props {

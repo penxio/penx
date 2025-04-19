@@ -1,7 +1,7 @@
 import { MembershipEntry } from '@/components/theme-ui/MembershipEntry'
 import { Link } from '@/lib/i18n'
-import { Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn } from '@penx/utils'
 
 interface Props {
   site: Site

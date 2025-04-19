@@ -1,7 +1,7 @@
 import { Image } from '@/components/Image'
 import { Link } from '@/lib/i18n'
-import { Site } from '@/lib/theme.types'
-import { cn, getUrl } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 import { Area } from '@penx/db/client'
 
 interface Props {

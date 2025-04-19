@@ -1,4 +1,4 @@
-import { isNavigator } from '@/lib/constants'
+import { isNavigator } from '@penx/constants'
 
 export interface INetworkInformation extends EventTarget {
   readonly downlink: number

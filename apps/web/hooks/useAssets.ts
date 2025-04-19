@@ -1,9 +1,9 @@
 import isEqual from 'react-fast-compare'
 import { useSiteContext } from '@/components/SiteContext'
 import { localDB } from '@/lib/local-db'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
-import { RouterOutputs } from '@/server/_app'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
+import { RouterOutputs } from '@penx/api'
 import { useQuery } from '@tanstack/react-query'
 
 export type Asset = RouterOutputs['asset']['list'][0]

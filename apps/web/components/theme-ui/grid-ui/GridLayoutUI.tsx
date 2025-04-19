@@ -1,4 +1,4 @@
-import { CardStyle, GardenCardType, SocialType } from '@/lib/constants'
+import { CardStyle, GardenCardType, SocialType } from '@penx/constants'
 import {
   Creation,
   CreationType,
@@ -6,8 +6,8 @@ import {
   LayoutItem,
   Project,
   Site,
-} from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+} from '@penx/types'
+import { cn } from '@penx/utils'
 import { AreaCard } from './AreaCard'
 import { ArticleCard } from './ArticleCard'
 import { CommentsCard } from './CommentsCard'

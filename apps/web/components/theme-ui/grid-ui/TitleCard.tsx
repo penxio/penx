@@ -1,4 +1,4 @@
-import { LayoutItem } from '@/lib/theme.types'
+import { LayoutItem } from '@penx/types'
 
 export function TitleCard({ item }: { item: LayoutItem }) {
   return (

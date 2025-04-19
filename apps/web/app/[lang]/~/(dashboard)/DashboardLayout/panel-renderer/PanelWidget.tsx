@@ -3,7 +3,7 @@
 import { useSiteContext } from '@/components/SiteContext'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import { getWidgetName } from '@/lib/getWidgetName'
-import { CreationType } from '@/lib/theme.types'
+import { CreationType } from '@penx/types'
 import { Panel, PanelType, Widget } from '@/lib/types'
 import { Mold } from '@penx/db/client'
 import { ClosePanelButton } from '../ClosePanelButton'

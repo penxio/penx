@@ -1,8 +1,8 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Badge } from '@penx/ui/components/badge'
+import { Badge } from '@penx/uikit/ui/badge'
 import {
   Select,
   SelectContent,
@@ -11,17 +11,17 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
-import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
-import { trpc } from '@/lib/trpc'
-import { cn } from '@/lib/utils'
+} from '@penx/uikit/ui/select'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+import { trpc } from '@penx/trpc-client'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { produce } from 'immer'
 import { useLoading } from './hooks/useLoading'
 import { useThemeName } from './hooks/useThemeName'
 import 'react-resizable'
 import { Dispatch, SetStateAction } from 'react'
-import { defaultLayouts } from '@/lib/constants'
+import { defaultLayouts } from '@penx/constants'
 import { DesignMode } from './GardenDesign/hooks/DesignContext'
 
 const themes = [

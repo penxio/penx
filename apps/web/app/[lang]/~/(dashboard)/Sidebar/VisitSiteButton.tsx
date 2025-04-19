@@ -1,14 +1,14 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/ui/components/tooltip'
-import { ROOT_DOMAIN } from '@/lib/constants'
+} from '@penx/uikit/ui/tooltip'
+import { ROOT_DOMAIN } from '@penx/constants'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import { Trans } from '@lingui/react/macro'
 import { ExternalLink, GlobeIcon, LinkIcon } from 'lucide-react'

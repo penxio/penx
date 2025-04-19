@@ -1,16 +1,16 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { Input } from '@penx/ui/components/input'
-import { MenuItem } from '@penx/ui/components/menu/MenuItem'
-import { Menu } from '@penx/ui/components/menu/Menu'
+import { Input } from '@penx/uikit/ui/input'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+import { Menu } from '@penx/uikit/ui/menu/Menu'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
-import { Separator } from '@penx/ui/components/separator'
+} from '@penx/uikit/ui/popover'
+import { Separator } from '@penx/uikit/ui/separator'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
-import { bgColorMaps, textColorMaps } from '@/lib/color-helper'
-import { cn } from '@/lib/utils'
+import { bgColorMaps, textColorMaps } from '@penx/libs/color-helper'
+import { cn } from '@penx/utils'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { PenLine } from 'lucide-react'
 import { toast } from 'sonner'

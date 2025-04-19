@@ -1,4 +1,4 @@
-import { NETWORK, ROOT_DOMAIN } from '@/lib/constants'
+import { NETWORK, ROOT_DOMAIN } from '@penx/constants'
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import {
@@ -7,7 +7,6 @@ import {
   initUserByFarcasterInfo,
   initUserByGoogleInfo,
 } from '@/lib/initUser'
-import { prisma } from '@penx/db'
 import { getServerSession, getSessionOptions } from '@/lib/session'
 import {
   AccountWithUser,
@@ -22,15 +21,7 @@ import {
   isWalletLogin,
   SessionData,
 } from '@/lib/types'
-import { getAccountAddress } from '@/lib/utils'
-import { generateNonce } from '@/server/lib/generateNonce'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
-import {
-  BillingCycle,
-  PlanType,
-  ProviderType,
-  Subscription,
-} from '@penx/db/client'
 import { compareSync } from 'bcrypt-edge'
 import { getIronSession, IronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
@@ -41,6 +32,14 @@ import {
   validateSiweMessage,
   type SiweMessage,
 } from 'viem/siwe'
+import { prisma } from '@penx/db'
+import {
+  BillingCycle,
+  PlanType,
+  ProviderType,
+  Subscription,
+} from '@penx/db/client'
+import { generateNonce } from '@penx/utils/generateNonce'
 
 // export const runtime = 'edge'
 
@@ -53,7 +52,6 @@ async function updateSession(
   session.message = ''
   session.uid = account.userId
   session.userId = account.userId
-  session.address = getAccountAddress(account)
   session.email = account.user.email || ''
   session.ensName = account.user?.ensName as string
   session.name = account.user.name as string

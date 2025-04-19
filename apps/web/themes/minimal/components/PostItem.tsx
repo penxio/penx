@@ -1,9 +1,9 @@
-import { PlateEditor } from '@/components/editor/plate-editor'
+import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { Image } from '@/components/Image'
 import { PodcastTips } from '@/components/theme-ui/PodcastTips'
 import { Link } from '@/lib/i18n'
-import { Creation, CreationType } from '@/lib/theme.types'
-import { formatDate } from '@/lib/utils'
+import { Creation, CreationType } from '@penx/types'
+import { formatDate } from '@penx/utils'
 import { PodcastIcon } from 'lucide-react'
 
 interface PostItemProps {

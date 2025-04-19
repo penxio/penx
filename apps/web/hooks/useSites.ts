@@ -1,4 +1,4 @@
-import { api, trpc } from '@/lib/trpc'
+import { api, trpc } from '@penx/trpc-client'
 import { useInfiniteQuery } from '@tanstack/react-query'
 
 export function useSites() {

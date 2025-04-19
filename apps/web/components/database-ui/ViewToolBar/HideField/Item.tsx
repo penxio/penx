@@ -1,9 +1,9 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
-import { Switch } from '@penx/ui/components/switch'
+import { Switch } from '@penx/uikit/ui/switch'
 import { ViewColumn } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { FieldIcon } from '../../shared/FieldIcon'

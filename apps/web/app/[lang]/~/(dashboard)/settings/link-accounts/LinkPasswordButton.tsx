@@ -1,8 +1,8 @@
 'use client'
 
 import { usePasswordDialog } from '@/components/PasswordDialog/usePasswordDialog'
-import { Button } from '@penx/ui/components/button'
-import { cn } from '@/lib/utils'
+import { Button } from '@penx/uikit/ui/button'
+import { cn } from '@penx/utils'
 import { KeyIcon } from 'lucide-react'
 
 export function LinkPasswordButton() {

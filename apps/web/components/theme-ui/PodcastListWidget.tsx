@@ -1,9 +1,9 @@
 import { Link } from '@/lib/i18n'
-import { Creation, Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Creation, Site } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
-import { Badge } from '@penx/ui/components/badge'
+import { Badge } from '@penx/uikit/ui/badge'
 import { PageTitle } from './PageTitle'
 import { PodcastTips } from './PodcastTips'
 

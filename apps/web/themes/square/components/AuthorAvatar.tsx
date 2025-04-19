@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
-import { Creation } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Creation } from '@penx/types'
+import { cn } from '@penx/utils'
 
 interface Props {
   creation: Creation

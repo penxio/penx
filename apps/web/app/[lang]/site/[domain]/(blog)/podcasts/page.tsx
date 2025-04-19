@@ -2,7 +2,7 @@ import { NoteListWidget } from '@/components/theme-ui/NoteListWidget'
 import { PodcastListWidget } from '@/components/theme-ui/PodcastListWidget'
 import { initLingui } from '@/initLingui'
 import { getPodcasts, getSite } from '@/lib/fetchers'
-import { AppearanceConfig } from '@/lib/theme.types'
+import { AppearanceConfig } from '@penx/types'
 import linguiConfig from '@/lingui.config'
 import { Metadata } from 'next'
 

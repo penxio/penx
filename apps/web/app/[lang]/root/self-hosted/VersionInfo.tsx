@@ -1,14 +1,14 @@
 'use client'
 
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/ui/components/tooltip'
+} from '@penx/uikit/ui/tooltip'
 import { compareVersions } from '@/lib/compareVersions'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { HostedSite } from '@penx/db/client'
 import { ArrowUp } from 'lucide-react'
 

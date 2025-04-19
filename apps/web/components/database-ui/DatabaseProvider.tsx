@@ -10,14 +10,14 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useQueryDatabase } from '@/hooks/useQueryDatabase'
-import { getRandomColorName } from '@/lib/color-helper'
-import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@/lib/constants'
+import { getRandomColorName } from '@penx/libs/color-helper'
+import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { IFilterResult, IOptionNode } from '@/lib/model'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 import {
   ColumnType,
   Filter,
@@ -27,8 +27,8 @@ import {
   ViewColumn,
   ViewType,
 } from '@/lib/types'
-import { uniqueId } from '@/lib/unique-id'
-import { RouterInputs, RouterOutputs } from '@/server/_app'
+import { uniqueId } from '@penx/unique-id'
+import { RouterInputs, RouterOutputs } from '@penx/api'
 import { Column, Record as Row, View } from '@penx/db/client'
 import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'

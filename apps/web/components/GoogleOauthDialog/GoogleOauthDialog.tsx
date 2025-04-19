@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
 import LoadingCircle from '@/components/icons/loading-circle'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import {
   Dialog,
@@ -11,7 +11,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
+} from '@penx/uikit/ui/dialog'
 import { getGoogleUserInfo } from '@/lib/getGoogleUserInfo'
 import { useRouter } from '@/lib/i18n'
 import { useSearchParams } from 'next/navigation'
@@ -43,7 +43,6 @@ export function GoogleOauthDialog() {
 
         push('/~')
       } catch (error) {
-        console.log('>>>>>>>>>>>>erorr:', error)
         toast.error('Failed to sign in with Google. Please try again.')
       }
 

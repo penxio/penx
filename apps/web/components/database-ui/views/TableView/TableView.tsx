@@ -3,7 +3,7 @@
 import { useCallback } from 'react'
 import { isMobile } from 'react-device-detect'
 import { cellRenderers } from '@/components/cells'
-import { DATABASE_TOOLBAR_HEIGHT, SIDEBAR_WIDTH } from '@/lib/constants'
+import { DATABASE_TOOLBAR_HEIGHT, SIDEBAR_WIDTH } from '@penx/constants'
 import { getDataEditorTheme } from '@/lib/getDataEditorTheme'
 import {
   DataEditor,

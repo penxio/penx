@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Calendar } from '@penx/ui/components/calendar'
+import { Calendar } from '@penx/uikit/ui/calendar'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
+} from '@penx/uikit/ui/popover'
 import { useRouter } from '@/lib/i18n'
 import { format } from 'date-fns'
 import { CalendarDays } from 'lucide-react'

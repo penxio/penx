@@ -1,6 +1,6 @@
-import { ELEMENT_P } from '@/lib/constants'
+import { ELEMENT_P } from '@penx/constants'
 import { INode, NodeType } from '@/lib/model'
-import { uniqueId } from '@/lib/unique-id'
+import { uniqueId } from '@penx/unique-id'
 
 type Input = {
   userId: string

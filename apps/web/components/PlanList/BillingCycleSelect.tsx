@@ -1,8 +1,8 @@
 'use client'
 
-import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
 import { BillingCycle } from '@penx/db/client'
-import { Badge } from '@penx/ui/components/badge'
+import { Badge } from '@penx/uikit/ui/badge'
 import { useBillingCycle } from './useBillingCycle'
 
 export function BillingCycleSelect() {

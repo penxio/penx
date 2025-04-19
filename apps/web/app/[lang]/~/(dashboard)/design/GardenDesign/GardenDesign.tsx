@@ -1,9 +1,9 @@
 'use client'
 
 import GridLayout from 'react-grid-layout'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { Link } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { CardRender } from './CardRender'
 import { DeleteCardButton } from './DeleteCardButton'

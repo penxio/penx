@@ -4,7 +4,7 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+    "./lib/*": "./src/lib/*.ts"
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
@@ -19,5 +19,16 @@
     "eslint": "^9.24.0",
     "typescript": "5.8.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@penx/db": "workspace:*",
+    "@penx/libs": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/constants": "workspace:*",
+    "@penx/types": "workspace:*",
+    "@penx/utils": "workspace:*",
+    "bcrypt-edge": "^0.1.0"
+  },
+  "peerDependencies": {
+    "next": "^15.3.0"
+  }
 }

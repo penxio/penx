@@ -2,7 +2,7 @@
 
 import { Image } from '@/components/Image'
 import { Link } from '@/lib/i18n'
-import { getUrl } from '@/lib/utils'
+import { getUrl } from '@penx/utils'
 import { Area } from '@penx/db/client'
 
 interface Props {

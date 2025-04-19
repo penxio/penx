@@ -2,8 +2,8 @@ import type { MutableRefObject } from 'react'
 import { Profile } from '@/components/Profile/Profile'
 import { CatalogueNode, CatalogueTree } from '@/lib/catalogue'
 import { ICatalogueNode } from '@/lib/model'
-import { Site } from '@/lib/theme.types'
-import { cn, getUrl } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 import { CatalogueItem } from './CatalogueItem'
 
 export interface TreeItem extends Omit<CatalogueNode, 'children'> {

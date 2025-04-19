@@ -1,9 +1,9 @@
 'use client'
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { useSite } from '@/hooks/useSite'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 
 export default function DeleteDomain({ domain }: { domain: string }) {
   const { refetch } = useSite()

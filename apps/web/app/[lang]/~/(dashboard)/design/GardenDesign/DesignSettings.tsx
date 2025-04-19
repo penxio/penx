@@ -11,9 +11,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
+} from '@penx/uikit/ui/form'
 import { useSite } from '@/hooks/useSite'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'
 import { produce } from 'immer'

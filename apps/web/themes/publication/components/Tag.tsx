@@ -1,6 +1,6 @@
 import { Link } from '@/lib/i18n'
-import { CreationTag } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { CreationTag } from '@penx/types'
+import { cn } from '@penx/utils'
 import { slug } from 'github-slugger'
 
 interface Props {

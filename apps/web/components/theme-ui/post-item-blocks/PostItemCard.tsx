@@ -1,6 +1,6 @@
 import { Link } from '@/lib/i18n'
-import { Creation, CreationType } from '@/lib/theme.types'
-import { cn, formatDate } from '@/lib/utils'
+import { Creation, CreationType } from '@penx/types'
+import { cn, formatDate } from '@penx/utils'
 import Image from 'next/image'
 import { Node } from 'slate'
 import { PodcastTips } from '../PodcastTips'

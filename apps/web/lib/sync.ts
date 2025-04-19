@@ -1,5 +1,5 @@
 import { WorkerEvents } from './constants'
-import { api } from './trpc'
+import { api } from '@penx/trpc-client'
 
 export async function sync(isWorker = false) {}
 

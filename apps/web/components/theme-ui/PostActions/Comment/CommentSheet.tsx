@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { CommentWidget } from '@/components/CommentWidget'
-import { Button } from '@penx/ui/components/button'
-import { Input } from '@penx/ui/components/input'
-import { Label } from '@penx/ui/components/label'
+import { Button } from '@penx/uikit/ui/button'
+import { Input } from '@penx/uikit/ui/input'
+import { Label } from '@penx/uikit/ui/label'
 import {
   Sheet,
   SheetClose,
@@ -14,8 +14,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@penx/ui/components/sheet'
-import { Creation } from '@/lib/theme.types'
+} from '@penx/uikit/ui/sheet'
+import { Creation } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { CommentAmount } from './CommentAmount'
 

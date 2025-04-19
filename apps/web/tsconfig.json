@@ -45,7 +45,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@penx/ui/*": ["../../packages/ui/src/*"]
+      "@penx/uikit/*": ["../../packages/uikit/src/*"]
     }
   },
   "include": [

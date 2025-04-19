@@ -308,11 +308,11 @@ msgstr ""
 msgid "Contribute"
 msgstr ""
 
-#: components/Creation/CreationMoreMenu.tsx:72
+#: components/Creation/CreationMoreMenu.tsx:68
 msgid "Copy html"
 msgstr ""
 
-#: components/Creation/CreationMoreMenu.tsx:65
+#: components/Creation/CreationMoreMenu.tsx:61
 msgid "Copy link"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgstr ""
 #: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:186
 #: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:60
 #: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:87
-#: components/Creation/CreationMoreMenu.tsx:105
+#: components/Creation/CreationMoreMenu.tsx:101
 #: components/Creation/DeletePostDialog/DeletePostDialog.tsx:74
 msgid "Delete"
 msgstr ""
@@ -923,7 +923,7 @@ msgstr ""
 msgid "Public visit"
 msgstr ""
 
-#: components/Creation/CreationMoreMenu.tsx:55
+#: components/Creation/CreationMoreMenu.tsx:51
 #: components/Creation/PublishDialog/PublishForm.tsx:278
 msgid "Publish"
 msgstr ""
@@ -1187,7 +1187,7 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: components/Creation/CreationMoreMenu.tsx:92
+#: components/Creation/CreationMoreMenu.tsx:88
 msgid "Unpublish"
 msgstr ""
 

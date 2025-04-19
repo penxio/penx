@@ -5,29 +5,29 @@ import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { Image } from '@/components/Image'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Badge } from '@penx/ui/components/badge'
-import { Button } from '@penx/ui/components/button'
-import { Calendar } from '@penx/ui/components/calendar'
+import { Badge } from '@penx/uikit/ui/badge'
+import { Button } from '@penx/uikit/ui/button'
+import { Calendar } from '@penx/uikit/ui/calendar'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
+} from '@penx/uikit/ui/popover'
 import {
   refetchAreaCreations,
   useAreaCreations,
 } from '@/hooks/useAreaCreations'
 import { Creation } from '@/hooks/useCreation'
 import { updateMainPanel } from '@/hooks/usePanels'
-import { CreationStatus, ROOT_DOMAIN } from '@/lib/constants'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import { Link } from '@/lib/i18n'
-import { Prop } from '@/lib/theme.types'
-import { api } from '@/lib/trpc'
+import { Prop } from '@penx/types'
+import { api } from '@penx/trpc-client'
 import { Panel, PanelType } from '@/lib/types'
-import { uniqueId } from '@/lib/unique-id'
-import { cn, getUrl } from '@/lib/utils'
+import { uniqueId } from '@penx/unique-id'
+import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import {

@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { Comment, User } from '@penx/db/client'
 import { ArrowRight, MessageCircle, Trash2 } from 'lucide-react'
 import { CommentInput } from './CommentInput'

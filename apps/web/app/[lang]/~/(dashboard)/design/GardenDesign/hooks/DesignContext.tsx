@@ -9,8 +9,8 @@ import {
   useState,
 } from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { defaultLayouts } from '@/lib/constants'
-import { LayoutItem } from '@/lib/theme.types'
+import { defaultLayouts } from '@penx/constants'
+import { LayoutItem } from '@penx/types'
 import { useThemeName } from '../../hooks/useThemeName'
 
 export enum Device {

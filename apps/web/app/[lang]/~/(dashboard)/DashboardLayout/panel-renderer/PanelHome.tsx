@@ -6,7 +6,7 @@ import { AreaInfo } from '@/components/AreaInfo'
 import { useAreaCreations } from '@/hooks/useAreaCreations'
 import { updateMainPanel } from '@/hooks/usePanels'
 import { Panel, PanelType } from '@/lib/types'
-import { uniqueId } from '@/lib/unique-id'
+import { uniqueId } from '@penx/unique-id'
 import { Trans } from '@lingui/react/macro'
 import { ClockIcon } from 'lucide-react'
 

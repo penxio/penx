@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import { useSite } from '@/hooks/useSite'
 import { PayoutAccountDialog } from './PayoutAccountDialog/PayoutAccountDialog'
 import { usePayoutAccountDialog } from './PayoutAccountDialog/usePayoutAccountDialog'

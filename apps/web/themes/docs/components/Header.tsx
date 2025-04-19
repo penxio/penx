@@ -2,10 +2,10 @@ import { Profile } from '@/components/Profile/Profile'
 import { MobileSidebarSheet } from '@/components/theme-ui/MobileSidebar/MobileSidebarSheet'
 import { Navigation } from '@/components/theme-ui/Navigation'
 import { SocialNav } from '@/components/theme-ui/SocialNav'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Link } from '@/lib/i18n'
-import { Site } from '@/lib/theme.types'
-import { cn, getUrl } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 import { Sidebar } from './Sidebar'
 
 interface Props {

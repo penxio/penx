@@ -1,11 +1,11 @@
 'use client'
 
-import { BaseProductPlugin } from '@/components/custom-plate-plugins/product'
+import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
 import {
   serverSideComponents,
   serverSideEditor,
-} from '@/components/editor/server-side-editor'
-import { getUrl } from '@/lib/utils'
+} from '@penx/uikit/editor/server-side-editor'
+import { getUrl } from '@penx/utils'
 import {
   BaseParagraphPlugin,
   createSlateEditor,

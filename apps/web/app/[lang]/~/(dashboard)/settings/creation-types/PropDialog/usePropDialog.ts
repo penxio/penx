@@ -1,4 +1,4 @@
-import { Prop } from '@/lib/theme.types'
+import { Prop } from '@penx/types'
 import { Mold } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
 

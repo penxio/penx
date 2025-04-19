@@ -5,8 +5,8 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
-import { Separator } from '@penx/ui/components/separator'
+} from '@penx/uikit/ui/popover'
+import { Separator } from '@penx/uikit/ui/separator'
 import { Filter } from 'lucide-react'
 import { ToolbarBtn } from '../ToolbarBtn'
 import { FilterBtns } from './FilterBtns'

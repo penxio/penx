@@ -3,7 +3,7 @@ import { cellRenderers } from '@/components/cells'
 import { FileCell } from '@/components/cells/file-cell'
 import { SystemDateCell } from '@/components/cells/system-date-cell'
 import { Asset } from '@/hooks/useAssets'
-import { STATIC_URL } from '@/lib/constants'
+import { STATIC_URL } from '@penx/constants'
 import { getDataEditorTheme } from '@/lib/getDataEditorTheme'
 import DataEditor, {
   DataEditorProps,

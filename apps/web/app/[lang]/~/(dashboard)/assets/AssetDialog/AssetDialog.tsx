@@ -1,19 +1,19 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
-import { Switch } from '@penx/ui/components/switch'
+} from '@penx/uikit/ui/dialog'
+import { Switch } from '@penx/uikit/ui/switch'
 import { useAssets } from '@/hooks/useAssets'
 import { useLoadAsset } from '@/hooks/useLoadAsset'
-import { placeholderBlurhash, STATIC_URL } from '@/lib/constants'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { trpc } from '@/lib/trpc'
+import { placeholderBlurhash, STATIC_URL } from '@penx/constants'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { Asset } from '@penx/db/client'
 import { ExternalLink, Trash2, X } from 'lucide-react'

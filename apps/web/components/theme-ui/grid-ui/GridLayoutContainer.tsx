@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from 'react'
-import { DesignMode, Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { DesignMode, Site } from '@penx/types'
+import { cn } from '@penx/utils'
 
 interface Props {
   site: Site

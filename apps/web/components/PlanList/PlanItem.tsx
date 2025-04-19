@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { PlanType } from '@penx/db/client'
 import { Check, XIcon } from 'lucide-react'
 import { UpgradeButton } from './UpgradeButton'

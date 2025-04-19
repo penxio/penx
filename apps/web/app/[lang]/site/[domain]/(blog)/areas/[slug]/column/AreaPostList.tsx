@@ -1,4 +1,4 @@
-import { AreaWithCreations } from '@/lib/theme.types'
+import { AreaWithCreations } from '@penx/types'
 import { PostItem } from './PostItem'
 
 interface Props {

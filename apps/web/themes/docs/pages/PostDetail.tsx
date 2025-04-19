@@ -10,8 +10,8 @@ import { PostSubtitle } from '@/components/theme-ui/PostSubtitle'
 import { SubscribeNewsletterCard } from '@/components/theme-ui/SubscribeNewsletter/SubscribeNewsletterCard'
 import { Toc } from '@/components/theme-ui/Toc'
 import { Link } from '@/lib/i18n'
-import { Creation, Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Creation, Site } from '@penx/types'
+import { cn } from '@penx/utils'
 import { ExternalLink } from 'lucide-react'
 
 interface LayoutProps {

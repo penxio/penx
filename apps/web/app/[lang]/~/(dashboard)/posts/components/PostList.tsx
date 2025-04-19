@@ -2,7 +2,7 @@
 
 import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
 import { useSiteContext } from '@/components/SiteContext'
-import { CreationStatus } from '@/lib/constants'
+import { CreationStatus } from '@penx/constants'
 import { PostItem } from './PostItem'
 
 interface PostListProps {

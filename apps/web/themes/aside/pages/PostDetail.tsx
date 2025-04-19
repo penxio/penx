@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { PostPageWidget } from '@/components/theme-ui/PostPageWidget'
-import { Creation, Site } from '@/lib/theme.types'
+import { Creation, Site } from '@penx/types'
 
 interface Props {
   site: Site

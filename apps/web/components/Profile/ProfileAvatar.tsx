@@ -3,9 +3,9 @@
 import { forwardRef, HTMLAttributes } from 'react'
 import { useSession } from '@/components/session'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
-import { cn, getUrl, isAddress } from '@/lib/utils'
 import { ChevronDown, Copy } from 'lucide-react'
 import { toast } from 'sonner'
+import { cn, getUrl } from '@penx/utils'
 import { UserAvatar } from '../UserAvatar'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -34,9 +34,6 @@ export const ProfileAvatar = forwardRef<HTMLDivElement, Props>(
     const { copy } = useCopyToClipboard()
     let name = session?.name || ''
 
-    if (isAddress(name)) {
-      name = name.slice(0, 3) + '...' + name.slice(-4)
-    }
     let src = image || session?.picture
     if (src) src = getUrl(src)
 

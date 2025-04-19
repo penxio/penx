@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { withCn, withRef } from '@udecode/cn'
 import { Command } from 'cmdk'
 

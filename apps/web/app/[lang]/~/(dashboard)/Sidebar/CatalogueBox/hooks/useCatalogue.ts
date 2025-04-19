@@ -1,9 +1,9 @@
 import { useAreaContext } from '@/components/AreaContext'
 import { CatalogueTree, CreateCatalogueNodeOptions } from '@/lib/catalogue'
 import { CatalogueNodeType, ICatalogueNode } from '@/lib/model'
-import { queryClient } from '@/lib/queryClient'
-import { trpc } from '@/lib/trpc'
-import { uniqueId } from '@/lib/unique-id'
+import { queryClient } from '@penx/query-client'
+import { trpc } from '@penx/trpc-client'
+import { uniqueId } from '@penx/unique-id'
 
 export function useCatalogue() {
   const field = useAreaContext()

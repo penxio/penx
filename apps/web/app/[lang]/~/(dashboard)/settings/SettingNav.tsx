@@ -3,11 +3,11 @@
 import { PropsWithChildren } from 'react'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Separator } from '@penx/ui/components/separator'
+import { Separator } from '@penx/uikit/ui/separator'
 import { Link, usePathname } from '@/lib/i18n'
 import { isSuperAdmin } from '@/lib/isSuperAdmin'
-import { Features } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Features } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {}

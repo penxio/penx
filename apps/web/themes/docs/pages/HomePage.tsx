@@ -1,7 +1,7 @@
 import { ContentRender } from '@/components/theme-ui/ContentRender'
 import { PageTitle } from '@/components/theme-ui/PageTitle'
-import { LATEST_POSTS_LIMIT } from '@/lib/constants'
-import { Creation, Site } from '@/lib/theme.types'
+import { LATEST_POSTS_LIMIT } from '@penx/constants'
+import { Creation, Site } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { PostItem } from '../components/PostItem'
 

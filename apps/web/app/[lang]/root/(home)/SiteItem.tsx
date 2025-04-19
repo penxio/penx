@@ -1,12 +1,12 @@
 'use client'
 
 import { useMemo } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
-import { isServer, ROOT_DOMAIN } from '@/lib/constants'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { isServer, ROOT_DOMAIN } from '@penx/constants'
 import { getSiteDomain, SiteWithDomains } from '@/lib/getSiteDomain'
 import { Link } from '@/lib/i18n'
 import { MySite } from '@/lib/types'
-import { cn, getUrl } from '@/lib/utils'
+import { cn, getUrl } from '@penx/utils'
 
 interface Props {
   site: MySite

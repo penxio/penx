@@ -3,9 +3,9 @@
 import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
 import { useSiteContext } from '@/components/SiteContext'
 import { useAreaCreations } from '@/hooks/useAreaCreations'
-import { getTextColorByName } from '@/lib/color-helper'
+import { getTextColorByName } from '@penx/libs/color-helper'
 import { Panel } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Mold } from '@penx/db/client'
 import { BookmarkItem } from './BookmarkItem'
 

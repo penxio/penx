@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { api } from '@/lib/trpc'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 
 // Define the maximum number of polling attempts to prevent infinite polling

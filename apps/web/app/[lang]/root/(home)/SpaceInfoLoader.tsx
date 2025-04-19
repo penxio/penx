@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useQueryLogoImages } from '@/hooks/useLogoImages'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { SpaceOnEvent } from '@/lib/types'
 
 interface Props {

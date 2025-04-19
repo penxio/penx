@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { updateSiteState } from '@/hooks/useSite'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { StripeType } from '@penx/db/client'
 
 export function ConnectStripe() {

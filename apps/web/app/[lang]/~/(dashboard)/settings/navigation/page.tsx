@@ -1,9 +1,9 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@penx/ui/components/card'
-import { trpc } from '@/lib/trpc'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/ui/card'
+import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { NavigationList } from './NavigationList'
 import { useNavLinkDialog } from './NavLinkDialog/useNavLinkDialog'

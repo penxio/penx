@@ -1,7 +1,7 @@
 import { Profile } from '@/components/Profile/Profile'
 import { initLingui } from '@/initLingui'
 import { getSite, getTiers } from '@/lib/fetchers'
-import { AppearanceConfig } from '@/lib/theme.types'
+import { AppearanceConfig } from '@penx/types'
 import linguiConfig from '@/lingui.config'
 import { Trans } from '@lingui/react/macro'
 import Image from 'next/image'

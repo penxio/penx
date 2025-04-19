@@ -3,7 +3,7 @@ import { FriendsProvider } from '@/components/FriendsContext'
 import { ProjectsProvider } from '@/components/ProjectsContext'
 import { GridLayoutUI } from '@/components/theme-ui/grid-ui/GridLayoutUI'
 import { initLingui } from '@/initLingui'
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import {
   getCreations,
   getFriends,
@@ -15,7 +15,7 @@ import {
 } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { redirectTo404 } from '@/lib/redirectTo404'
-import { AppearanceConfig, CreationType, DesignMode } from '@/lib/theme.types'
+import { AppearanceConfig, CreationType, DesignMode } from '@penx/types'
 import linguiConfig from '@/lingui.config'
 import { Metadata } from 'next'
 

@@ -3,7 +3,7 @@
 import React, { HTMLAttributes, PropsWithChildren, useMemo } from 'react'
 import { useSession } from '@/components/session'
 import { Link, usePathname } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Merienda } from 'next/font/google'
 import { ProfilePopover } from '../Profile/ProfilePopover'
 import { useSiteContext } from '../SiteContext'

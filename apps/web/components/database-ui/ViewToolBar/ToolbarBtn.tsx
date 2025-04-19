@@ -1,7 +1,7 @@
 'use client'
 
 import React, { forwardRef, PropsWithChildren } from 'react'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 
 interface Props {
   icon?: React.ReactElement

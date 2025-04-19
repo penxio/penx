@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { WidgetType } from '@/lib/constants'
+import { WidgetType } from '@penx/constants'
 import { Widget } from '@/lib/types'
 import { Trans } from '@lingui/react/macro'
 import { Mold } from '@penx/db/client'

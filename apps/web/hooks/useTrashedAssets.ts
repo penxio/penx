@@ -1,6 +1,6 @@
 import { useSiteContext } from '@/components/SiteContext'
-import { trpc } from '@/lib/trpc'
-import { RouterOutputs } from '@/server/_app'
+import { trpc } from '@penx/trpc-client'
+import { RouterOutputs } from '@penx/api'
 
 export type Asset = RouterOutputs['asset']['list'][0]
 

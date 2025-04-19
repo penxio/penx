@@ -1,6 +1,6 @@
 import { getCreations, getSite } from '@/lib/fetchers'
-import { CreationType } from '@/lib/theme.types'
-import { getUrl } from '@/lib/utils'
+import { CreationType } from '@penx/types'
+import { getUrl } from '@penx/utils'
 import { headers } from 'next/headers'
 import { Podcast } from '../lib/node-podcast'
 

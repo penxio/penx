@@ -2,9 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
   FormControl,
@@ -13,20 +13,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
+} from '@penx/uikit/ui/select'
 import { updateSiteState, useSite } from '@/hooks/useSite'
-import { defaultNavLinks } from '@/lib/constants'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { NavLink, NavLinkLocation, NavLinkType } from '@/lib/theme.types'
-import { api } from '@/lib/trpc'
+import { defaultNavLinks } from '@penx/constants'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
+import { api } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { produce } from 'immer'

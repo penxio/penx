@@ -2,10 +2,10 @@
 
 import { Dispatch, SetStateAction } from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { Input } from '@penx/ui/components/input'
+import { Input } from '@penx/uikit/ui/input'
 import { useSite } from '@/hooks/useSite'
-import { LayoutItem } from '@/lib/theme.types'
-import { trpc } from '@/lib/trpc'
+import { LayoutItem } from '@penx/types'
+import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'
 import { useDebouncedCallback } from 'use-debounce'
 import { useThemeName } from '../../hooks/useThemeName'

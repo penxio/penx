@@ -10,11 +10,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
+} from '@penx/uikit/ui/select'
 import { useSite } from '@/hooks/useSite'
 import { Link } from '@/lib/i18n'
-import { LayoutItem } from '@/lib/theme.types'
-import { trpc } from '@/lib/trpc'
+import { LayoutItem } from '@penx/types'
+import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { produce } from 'immer'
 import { useThemeName } from '../../hooks/useThemeName'

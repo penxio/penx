@@ -3,20 +3,20 @@
 import React, { forwardRef, useState } from 'react'
 import { useAreaContext } from '@/components/AreaContext'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@penx/ui/components/context-menu'
+} from '@penx/uikit/ui/context-menu'
 import { useAddCreation } from '@/hooks/useAddCreation'
 import { toggleCollapsed } from '@/hooks/useAreaItem'
 import { openWidgetPanel } from '@/hooks/usePanels'
-import { WidgetType } from '@/lib/constants'
+import { WidgetType } from '@penx/constants'
 import { getWidgetName } from '@/lib/getWidgetName'
 import { Widget } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react/macro'
 import { AnimatePresence, motion } from 'motion/react'

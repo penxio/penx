@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 
 export function useGitHubToken() {
   const { data: github, ...rest } = trpc.github.githubInfo.useQuery()

@@ -1,7 +1,7 @@
 'use client'
 
-import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
-import { CardStyle } from '@/lib/constants'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+import { CardStyle } from '@penx/constants'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {

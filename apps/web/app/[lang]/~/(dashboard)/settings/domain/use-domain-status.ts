@@ -1,5 +1,5 @@
 import { DomainResponse, DomainVerificationStatusProps } from '@/lib/types'
-import { fetcher } from '@/lib/utils'
+import { fetcher } from '@penx/utils'
 import useSWR from 'swr'
 
 export function useDomainStatus({

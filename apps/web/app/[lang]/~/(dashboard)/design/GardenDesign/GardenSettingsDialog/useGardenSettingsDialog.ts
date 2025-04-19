@@ -1,4 +1,4 @@
-import { LayoutItem } from '@/lib/theme.types'
+import { LayoutItem } from '@penx/types'
 import { Product } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Table,
   TableBody,
@@ -9,10 +9,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/ui/components/table'
+} from '@penx/uikit/ui/table'
 import { useSiteTags } from '@/hooks/useSiteTags'
 import { useSubscribers } from '@/hooks/useSubscribers'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { Site } from '@penx/db/client'
 import { format } from 'date-fns'

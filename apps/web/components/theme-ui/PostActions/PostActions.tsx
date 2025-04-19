@@ -1,6 +1,6 @@
 'use client'
 
-import { Creation } from '@/lib/theme.types'
+import { Creation } from '@penx/types'
 
 interface Props {
   creation: Creation

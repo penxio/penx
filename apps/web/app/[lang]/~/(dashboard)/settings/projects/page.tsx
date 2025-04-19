@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { FullPageDatabase } from '@/components/database-ui'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSite } from '@/hooks/useSite'
-import { PROJECT_DATABASE_NAME } from '@/lib/constants'
-import { api, trpc } from '@/lib/trpc'
+import { PROJECT_DATABASE_NAME } from '@penx/constants'
+import { api, trpc } from '@penx/trpc-client'
 
 export const dynamic = 'force-static'
 

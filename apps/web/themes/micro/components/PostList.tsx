@@ -1,6 +1,6 @@
 import { Pagination } from '@/components/theme-ui/Pagination'
 import { PostItem } from '@/components/theme-ui/post-item-blocks'
-import { Creation, PostListStyle, Site } from '@/lib/theme.types'
+import { Creation, PostListStyle, Site } from '@penx/types'
 
 interface PaginationProps {
   totalPages: number

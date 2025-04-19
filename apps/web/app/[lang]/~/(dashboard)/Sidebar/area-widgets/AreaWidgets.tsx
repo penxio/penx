@@ -2,8 +2,8 @@
 
 import { AddCreationButton } from '@/components/AddCreationButton'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Button } from '@penx/uikit/ui/button'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { useAppLoading } from '@/hooks/useAppLoading'
 import { useAreaCreations } from '@/hooks/useAreaCreations'
 import { Trans } from '@lingui/react/macro'

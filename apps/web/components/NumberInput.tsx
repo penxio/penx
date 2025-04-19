@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
-import { matchNumber } from '@/lib/utils'
-import { Input, InputProps } from '@penx/ui/components/input'
+import { matchNumber } from '@penx/utils'
+import { Input, InputProps } from '@penx/uikit/ui/input'
 
 export interface NumberInputProps
   extends Omit<

@@ -1,4 +1,4 @@
-import { RESPACE_SUBGRAPH_URL } from '@/lib/constants'
+import { RESPACE_SUBGRAPH_URL } from '@penx/constants'
 import { lastTradeQuery, spaceTokenTradesQuery } from '@/lib/prices/prices-gql'
 import { Trade } from '@/lib/types'
 import { request } from 'graphql-request'

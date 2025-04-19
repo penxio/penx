@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { Footer } from '@/components/theme-ui/Footer'
-import { Site, Tag } from '@/lib/theme.types'
+import { Site, Tag } from '@penx/types'
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 

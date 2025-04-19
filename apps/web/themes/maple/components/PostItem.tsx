@@ -1,8 +1,8 @@
 import { Image } from '@/components/Image'
 import { PodcastTips } from '@/components/theme-ui/PodcastTips'
 import { Link } from '@/lib/i18n'
-import { Creation, CreationType } from '@/lib/theme.types'
-import { cn, formatDate } from '@/lib/utils'
+import { Creation, CreationType } from '@penx/types'
+import { cn, formatDate } from '@penx/utils'
 import { Node } from 'slate'
 import Tag from './Tag'
 

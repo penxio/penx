@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
-import { Input } from '@penx/ui/components/input'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { trpc } from '@/lib/trpc'
+import { Button } from '@penx/uikit/ui/button'
+import { Input } from '@penx/uikit/ui/input'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { trpc } from '@penx/trpc-client'
 import { ExternalLink } from 'lucide-react'
 import { toast } from 'sonner'
 

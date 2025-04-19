@@ -1,7 +1,7 @@
 'use client'
 
 import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { usePages } from '@/hooks/usePages'
 import { useSite } from '@/hooks/useSite'
 import { CatalogueBox } from './CatalogueBox/CatalogueBox'

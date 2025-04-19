@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Separator } from '@penx/ui/components/separator'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Separator } from '@penx/uikit/ui/separator'
 import { useSite } from '@/hooks/useSite'
 import { getSiteCustomDomain } from '@/lib/getSiteDomain'
 import { CustomDomainForm } from './CustomDomainForm'

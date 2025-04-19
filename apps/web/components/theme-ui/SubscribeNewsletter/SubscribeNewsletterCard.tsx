@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
-import { Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Button } from '@penx/uikit/ui/button'
+import { Site } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { Mail } from 'lucide-react'
 import { SubscribeNewsletterDialog } from './SubscribeNewsletterDialog'

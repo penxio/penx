@@ -1,9 +1,9 @@
 'use client'
 
 import { useDomainStatus } from '@/app/[lang]/~/(dashboard)/settings/domain/use-domain-status'
-import { Badge } from '@penx/ui/components/badge'
+import { Badge } from '@penx/uikit/ui/badge'
 import { useSite } from '@/hooks/useSite'
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import { ExternalLink } from 'lucide-react'
 import LoadingCircle from './icons/loading-circle'

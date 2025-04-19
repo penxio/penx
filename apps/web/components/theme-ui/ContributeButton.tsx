@@ -2,7 +2,7 @@
 
 import { useSession } from '@/components/session'
 import { Link } from '@/lib/i18n'
-import { Site } from '@/lib/theme.types'
+import { Site } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { usePathname } from 'next/navigation'
 import { useLoginDialog } from '../LoginDialog/useLoginDialog'

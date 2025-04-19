@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
   DialogClose,
@@ -11,7 +11,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
+} from '@penx/uikit/ui/dialog'
 import {
   Form,
   FormControl,
@@ -20,10 +20,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { trpc } from '@/lib/trpc'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ExternalLink } from 'lucide-react'
 import { toast } from 'sonner'

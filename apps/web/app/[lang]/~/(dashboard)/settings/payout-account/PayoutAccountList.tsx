@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Table,
   TableBody,
@@ -9,8 +9,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/ui/components/table'
-import { api, trpc } from '@/lib/trpc'
+} from '@penx/uikit/ui/table'
+import { api, trpc } from '@penx/trpc-client'
 import { TransferMethod } from '@penx/db/client'
 import { format } from 'date-fns'
 import { Edit3, Eye, EyeOff } from 'lucide-react'

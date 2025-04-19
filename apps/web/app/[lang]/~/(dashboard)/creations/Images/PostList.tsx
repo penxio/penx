@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
 import { useSiteContext } from '@/components/SiteContext'
-import { Label } from '@penx/ui/components/label'
-import { Switch } from '@penx/ui/components/switch'
+import { Label } from '@penx/uikit/ui/label'
+import { Switch } from '@penx/uikit/ui/switch'
 import { useAreaCreations } from '@/hooks/useAreaCreations'
-import { CreationStatus } from '@/lib/constants'
+import { CreationStatus } from '@penx/constants'
 import { PostItem } from './PostItem'
 
 interface PostListProps {}

@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { Project } from '@/lib/theme.types'
+import { Project } from '@penx/types'
 
 export const ProjectsContext = createContext({} as Project[])
 

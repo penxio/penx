@@ -9,10 +9,10 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
+} from '@penx/uikit/ui/select'
 import { usePathname } from '@/lib/i18n'
 import { langMap } from '@/lib/supportLanguages'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { msg } from '@lingui/core/macro'
 import { useLingui } from '@lingui/react'
 import { useRouter } from 'next/navigation'

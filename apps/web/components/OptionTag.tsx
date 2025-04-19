@@ -1,5 +1,5 @@
-import { getBgColor } from '@/lib/color-helper'
-import { cn } from '@/lib/utils'
+import { getBgColor } from '@penx/libs/color-helper'
+import { cn } from '@penx/utils'
 import { X } from 'lucide-react'
 
 interface IOption {

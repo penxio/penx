@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Philosopher } from 'next/font/google'
 
 const logoFont = Philosopher({

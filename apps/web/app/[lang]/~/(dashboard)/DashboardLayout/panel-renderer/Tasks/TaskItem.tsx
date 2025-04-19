@@ -2,14 +2,14 @@
 
 import TextareaAutosize from 'react-textarea-autosize'
 import { useSiteContext } from '@/components/SiteContext'
-import { Checkbox } from '@penx/ui/components/checkbox'
+import { Checkbox } from '@penx/uikit/ui/checkbox'
 import {
   refetchAreaCreations,
   updateCreationById,
   useAreaCreations,
 } from '@/hooks/useAreaCreations'
 import { Creation, updateCreation } from '@/hooks/useCreation'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 
 interface PostItemProps {
   creation: Creation

@@ -1,5 +1,5 @@
-import { Creation, CreationType } from '@/lib/theme.types'
-import { cn, convertSecondsToTime } from '@/lib/utils'
+import { Creation, CreationType } from '@penx/types'
+import { cn, convertSecondsToTime } from '@penx/utils'
 import { ExternalLink, PodcastIcon } from 'lucide-react'
 
 interface Props {

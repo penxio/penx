@@ -1,8 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { Separator } from '@penx/ui/components/separator'
-import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
+import { Separator } from '@penx/uikit/ui/separator'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
 import { Link, usePathname } from '@/lib/i18n'
 import { UploadAssetButton } from './UploadAssetButton'
 

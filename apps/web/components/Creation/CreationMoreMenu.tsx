@@ -1,25 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/ui/components/popover'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { Creation } from '@/hooks/useCreation'
-import { editorDefaultValue } from '@/lib/constants'
-import { CreationType } from '@/lib/theme.types'
-import { api } from '@/lib/trpc'
-import { sleep } from '@/lib/utils'
+import { editorDefaultValue } from '@penx/constants'
 import { Trans } from '@lingui/react/macro'
 import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
+import { api } from '@penx/trpc-client'
+import { CreationType } from '@penx/types'
+import { useCreateEditor } from '@penx/uikit/editor/use-create-editor'
+import { Button } from '@penx/uikit/ui/button'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { sleep } from '@penx/utils'
 import { useDeletePageDialog } from '../DeletePageDialog/useDeleteDatabaseDialog'
-import { useCreateEditor } from '../editor/use-create-editor'
 import { useSiteContext } from '../SiteContext'
-import { Button } from '@penx/ui/components/button'
-import { MenuItem } from '@penx/ui/components/menu/MenuItem'
 import { useDeletePostDialog } from './DeletePostDialog/useDeletePostDialog'
 import { usePublishDialog } from './PublishDialog/usePublishDialog'
 

@@ -2,15 +2,15 @@
 
 import { useSession } from '@/components/session'
 import { useSite } from '@/hooks/useSite'
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import { getDashboardPath } from '@/lib/getDashboardPath'
 import { useRouter } from '@/lib/i18n'
 import { Trans } from '@lingui/react/macro'
 import { LoginButton } from '../LoginButton'
 import { LoginDialog } from '../LoginDialog/LoginDialog'
 import { useLoginDialog } from '../LoginDialog/useLoginDialog'
-import { Avatar, AvatarFallback } from '@penx/ui/components/avatar'
-import { Button, ButtonProps } from '@penx/ui/components/button'
+import { Avatar, AvatarFallback } from '@penx/uikit/ui/avatar'
+import { Button, ButtonProps } from '@penx/uikit/ui/button'
 import { ProfilePopover } from './ProfilePopover'
 
 interface Props {

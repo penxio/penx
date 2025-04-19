@@ -1,7 +1,7 @@
 'use client'
 
-import { Badge } from '@penx/ui/components/badge'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Badge } from '@penx/uikit/ui/badge'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Table,
   TableBody,
@@ -9,9 +9,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/ui/components/table'
+} from '@penx/uikit/ui/table'
 import { useCoupons } from '@/hooks/useCoupons'
-import { SECONDS_PER_DAY } from '@/lib/constants'
+import { SECONDS_PER_DAY } from '@penx/constants'
 
 export function CouponList() {
   const { data = [], isLoading } = useCoupons()

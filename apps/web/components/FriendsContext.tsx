@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { Friend } from '@/lib/theme.types'
+import { Friend } from '@penx/types'
 
 export const FriendsContext = createContext({} as Friend[])
 

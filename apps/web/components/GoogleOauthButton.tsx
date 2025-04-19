@@ -2,16 +2,16 @@
 
 import { PropsWithChildren, useEffect, useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button, ButtonProps } from '@penx/ui/components/button'
+import { Button, ButtonProps } from '@penx/uikit/ui/button'
 import {
   GOOGLE_CLIENT_ID,
   GOOGLE_DRIVE_OAUTH_REDIRECT_URI,
   GOOGLE_OAUTH_REDIRECT_URI,
-} from '@/lib/constants'
+} from '@penx/constants'
 import { usePathname } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { useSearchParams } from 'next/navigation'
 import qs from 'query-string'
 import { toast } from 'sonner'

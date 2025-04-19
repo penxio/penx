@@ -3,7 +3,7 @@ import { SessionData } from '@/lib/types'
 import {
   addCreationTag,
   AddCreationTagInput,
-} from '@/server/lib/addCreationTag'
+} from '@penx/api/lib/addCreationTag'
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'

@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
 import { useAreaContext } from '@/components/AreaContext'
 import { updateAreaState } from '@/hooks/useAreaItem'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 import { Widget } from '@/lib/types'
 import {
   closestCenter,

@@ -1,8 +1,8 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
   FormControl,
@@ -11,7 +11,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
+} from '@penx/uikit/ui/form'
 import {
   Select,
   SelectContent,
@@ -20,11 +20,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
+} from '@penx/uikit/ui/select'
 import { useSite } from '@/hooks/useSite'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { supportLanguages } from '@/lib/supportLanguages'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Site } from '@penx/db/client'
 import { toast } from 'sonner'

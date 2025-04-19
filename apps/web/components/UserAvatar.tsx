@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
-import { cn, getEnsAvatar, getUrl } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { cn, getUrl } from '@penx/utils'
 
 function hashCode(str: string) {
   let hash = 0

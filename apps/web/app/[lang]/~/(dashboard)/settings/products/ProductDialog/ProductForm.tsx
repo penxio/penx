@@ -2,12 +2,12 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@/components/editor/plate-editor'
+import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { FileUpload } from '@/components/FileUpload'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@/components/NumberInput'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
   FormControl,
@@ -16,14 +16,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
-import { Textarea } from '@penx/ui/components/textarea'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
+import { Textarea } from '@penx/uikit/ui/textarea'
 import { useSite } from '@/hooks/useSite'
-import { defaultNavLinks, editorDefaultValue } from '@/lib/constants'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { NavLink, NavLinkType } from '@/lib/theme.types'
-import { api, trpc } from '@/lib/trpc'
+import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { NavLink, NavLinkType } from '@penx/types'
+import { api, trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { produce } from 'immer'
 import { toast } from 'sonner'

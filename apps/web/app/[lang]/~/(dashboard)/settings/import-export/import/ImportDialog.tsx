@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { Badge } from '@penx/ui/components/badge'
+import { Badge } from '@penx/uikit/ui/badge'
 import {
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@penx/ui/components/tabs'
+} from '@penx/uikit/ui/dialog'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@penx/uikit/ui/tabs'
 import { usePostImport } from '@/hooks/usePostImport'
 import { ImportPostData, useImportTask } from '@/hooks/usePostImportTask'
 import { FileImportTab } from './FileImportTab'

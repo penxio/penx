@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Link } from '@/lib/i18n'
-import { Creation } from '@/lib/theme.types'
-import { cn, formatDate, getUrl } from '@/lib/utils'
+import { Creation } from '@penx/types'
+import { cn, formatDate, getUrl } from '@penx/utils'
 import Image from 'next/image'
 import Tag from './Tag'
 

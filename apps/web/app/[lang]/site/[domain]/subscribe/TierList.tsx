@@ -1,7 +1,7 @@
 'use client'
 
-import { Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Product } from '@penx/db/client'
 import { TierItem } from './TierItem'
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/ui/components/dialog'
+} from '@penx/uikit/ui/dialog'
 import { Trans } from '@lingui/react/macro'
 import { AreaForm } from './AreaForm'
 import { useAreaDialog } from './useAreaDialog'

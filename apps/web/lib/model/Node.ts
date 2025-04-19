@@ -5,7 +5,7 @@ import {
   ELEMENT_TODO,
   FILE_DATABASE_NAME,
   TODO_DATABASE_NAME,
-} from '@/lib/constants'
+} from '@penx/constants'
 import { format } from 'date-fns'
 import { calculateSHA256FromString } from '../encryption'
 import { INode, NodeType } from './INode'

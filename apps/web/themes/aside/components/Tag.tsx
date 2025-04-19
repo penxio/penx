@@ -1,5 +1,5 @@
 import { Link } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { slug } from 'github-slugger'
 
 interface Props {

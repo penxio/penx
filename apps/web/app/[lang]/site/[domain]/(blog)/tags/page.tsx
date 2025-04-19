@@ -1,7 +1,7 @@
 import { initLingui } from '@/initLingui'
 import { getSite, getTags } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AppearanceConfig } from '@/lib/theme.types'
+import { AppearanceConfig } from '@penx/types'
 import linguiConfig from '@/lingui.config'
 import { Metadata } from 'next'
 

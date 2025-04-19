@@ -1,14 +1,14 @@
 'use client'
 
 import * as React from 'react'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@penx/ui/components/dropdown-menu'
-import { cn } from '@/lib/utils'
+} from '@penx/uikit/ui/dropdown-menu'
+import { cn } from '@penx/utils'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 

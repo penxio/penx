@@ -1,6 +1,6 @@
-import { ProviderType } from '@penx/db/client'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { ProviderType } from '@penx/db/client'
 import { STATIC_URL, WidgetType } from './constants'
 import { AccountWithUser, Widget } from './types'
 import { uniqueId } from './unique-id'
@@ -155,82 +155,6 @@ export function isIOS(): boolean {
 
 export function isMobile(): boolean {
   return isAndroid() || isIOS()
-}
-
-export function getAccountAddress(account: AccountWithUser) {
-  if (account.providerType !== ProviderType.WALLET) return ''
-  return account.providerAccountId || ''
-}
-
-export function toReadableTime(duration: number) {
-  const seconds = Number(duration)
-  const secondsInAnHour = 3600
-  const SECONDS_PER_DAY = 86400
-  const secondsInADay = SECONDS_PER_DAY
-  if (seconds < secondsInADay) {
-    const hours = seconds / secondsInAnHour
-    return `${toFloorFixed(hours, 2)} hours`
-  } else {
-    const days = seconds / secondsInADay
-    return `${toFloorFixed(days, 2)} days`
-  }
-}
-
-export function validateEmail(email: string) {
-  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-  return regex.test(email)
-}
-
-export function formatUsername(name = '', left = 2, right = 3) {
-  if (isAddress(name)) {
-    return shortenAddress(name, left, right)
-  }
-  return name
-}
-
-export const formatDate = (date: string | Date, locale = 'en-US') => {
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }
-  const now = new Date(date).toLocaleDateString(locale, options)
-
-  return now
-}
-
-export function convertTimeToSeconds(time: string): number {
-  const parts = time.split(':')
-
-  if (parts.length === 3) {
-    const [hours, minutes, seconds] = parts.map(Number)
-    return hours * 3600 + minutes * 60 + seconds
-  } else if (parts.length === 2) {
-    const [minutes, seconds] = parts.map(Number)
-    return minutes * 60 + seconds
-  } else {
-    return 0
-  }
-}
-
-export function convertSecondsToTime(seconds: number): string {
-  const hours = Math.floor(seconds / 3600)
-  const minutes = Math.floor((seconds % 3600) / 60)
-  const secs = parseInt((seconds % 60) as any)
-
-  if (hours > 0) {
-    return `${hours}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
-  } else {
-    return `${minutes}:${String(secs).padStart(2, '0')}`
-  }
-}
-
-export function upperFirst(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
-export function getRandomInt(min: number, max: number) {
-  return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 export const getInitialWidgets = () => {

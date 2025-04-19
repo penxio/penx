@@ -1,5 +1,5 @@
-import { cacheHelper } from '@/lib/cache-header'
-import { SubscriptionTarget } from '@/lib/constants'
+import { cacheHelper } from '@penx/libs/cache-header'
+import { SubscriptionTarget } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { stripe } from '@/lib/stripe'
 import { Balance } from '@/lib/types'

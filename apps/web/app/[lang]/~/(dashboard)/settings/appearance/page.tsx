@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Card, CardContent, CardHeader, CardTitle } from '@penx/ui/components/card'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/ui/card'
 import { useSite } from '@/hooks/useSite'
 import { AppearanceSettingForm } from './AppearanceSettingForm'
 

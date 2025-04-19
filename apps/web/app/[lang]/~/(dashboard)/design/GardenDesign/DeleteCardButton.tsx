@@ -1,10 +1,10 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { useSite } from '@/hooks/useSite'
-import { LayoutItem } from '@/lib/theme.types'
-import { trpc } from '@/lib/trpc'
+import { LayoutItem } from '@penx/types'
+import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'
 import { Trash2 } from 'lucide-react'
 import { useThemeName } from '../hooks/useThemeName'

@@ -9,11 +9,11 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
+} from '@penx/uikit/ui/select'
 import { usePathname } from '@/lib/i18n'
 import { langMap } from '@/lib/supportLanguages'
-import { Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn } from '@penx/utils'
 import { useLingui } from '@lingui/react'
 import { Trans } from '@lingui/react/macro'
 import { useRouter } from 'next/navigation'

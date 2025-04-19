@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
-import { trpc } from '@/lib/trpc'
+import { Button } from '@penx/uikit/ui/button'
+import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'

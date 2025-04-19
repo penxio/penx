@@ -1,7 +1,7 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 import { Panel } from '@/lib/types'
 import { Trans } from '@lingui/react/macro'
 import { Mold } from '@penx/db/client'

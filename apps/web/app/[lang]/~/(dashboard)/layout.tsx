@@ -1,5 +1,5 @@
 // import '../../../globals.css'
-import "@penx/ui/globals.css"
+import "@penx/uikit/globals.css"
 // import '@farcaster/auth-kit/styles.css'
 import 'shikwasa/dist/style.css'
 import 'react-grid-layout/css/styles.css'
@@ -10,7 +10,7 @@ import { allMessages } from '@/appRouterI18n'
 import { LinguiClientProvider } from '@/components/LinguiClientProvider'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { initLingui } from '@/initLingui'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import linguiConfig from '@/lingui.config'
 // import { setI18n } from '@lingui/react/server'
 import { Metadata } from 'next'

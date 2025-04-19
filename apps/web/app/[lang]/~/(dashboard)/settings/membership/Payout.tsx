@@ -2,14 +2,14 @@
 
 import { useMemo } from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@penx/ui/components/card'
+} from '@penx/uikit/ui/card'
 import { Balance } from '@/lib/types'
 import { useWithdrawDialog } from './WithdrawDialog/useWithdrawDialog'
 import { WithdrawDialog } from './WithdrawDialog/WithdrawDialog'

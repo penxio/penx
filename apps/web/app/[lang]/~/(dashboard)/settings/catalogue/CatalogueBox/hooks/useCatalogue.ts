@@ -2,8 +2,8 @@ import { useSiteContext } from '@/components/SiteContext'
 import { updateSiteState } from '@/hooks/useSite'
 import { CatalogueTree, CreateCatalogueNodeOptions } from '@/lib/catalogue'
 import { CatalogueNodeType, ICatalogueNode } from '@/lib/model'
-import { trpc } from '@/lib/trpc'
-import { uniqueId } from '@/lib/unique-id'
+import { trpc } from '@penx/trpc-client'
+import { uniqueId } from '@penx/unique-id'
 
 export function useCatalogue() {
   const site = useSiteContext()

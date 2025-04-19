@@ -1,5 +1,5 @@
 import { useSiteContext } from '@/components/SiteContext'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 
 export function useAccessTokens() {
   const site = useSiteContext()

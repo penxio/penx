@@ -1,4 +1,4 @@
-import { Checkbox } from '@penx/ui/components/checkbox'
+import { Checkbox } from '@penx/uikit/ui/checkbox'
 import {
   ELEMENT_A,
   ELEMENT_CODE_BLOCK,
@@ -18,8 +18,8 @@ import {
   ELEMENT_P,
   ELEMENT_TODO,
   ELEMENT_UL,
-} from '@/lib/constants'
-import { cn, getUrl } from '@/lib/utils'
+} from '@penx/constants'
+import { cn, getUrl } from '@penx/utils'
 import { slug } from 'github-slugger'
 import { Node } from 'slate'
 import { Editable } from 'slate-react'

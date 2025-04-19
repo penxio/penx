@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import SocialIcon from '@/components/theme-ui/SocialIcon'
 import { Link } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { ArrowUpRight, ExternalLink, Flame } from 'lucide-react'
 import { toast } from 'sonner'

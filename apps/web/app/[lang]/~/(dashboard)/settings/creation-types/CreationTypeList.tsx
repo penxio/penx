@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { trpc } from '@/lib/trpc'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { trpc } from '@penx/trpc-client'
 import { CreationTypeItem } from './CreationTypeItem'
 
 export function CreationTypeList() {

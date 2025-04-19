@@ -1,1 +1,1 @@
-export { default } from "@penx/ui/postcss.config";
+export { default } from "@penx/uikit/postcss.config";

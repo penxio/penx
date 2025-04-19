@@ -1,5 +1,5 @@
 import { PageTitle } from '@/components/theme-ui/PageTitle'
-import { Creation, Site, Tag } from '@/lib/theme.types'
+import { Creation, Site, Tag } from '@penx/types'
 import { PostList } from './PostList'
 import { TagList } from './TagList'
 

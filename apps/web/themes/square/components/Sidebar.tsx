@@ -1,4 +1,4 @@
-import { Creation, Site } from '@/lib/theme.types'
+import { Creation, Site } from '@penx/types'
 import { AboutCard } from './AboutCard'
 import { FeaturedPosts } from './FeaturedPosts'
 import { MostPopular } from './MostPopular'

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -9,12 +9,12 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/ui/components/dialog'
-import { Input } from '@penx/ui/components/input'
+} from '@penx/uikit/ui/dialog'
+import { Input } from '@penx/uikit/ui/input'
 import { useSite } from '@/hooks/useSite'
-import { SocialType } from '@/lib/constants'
-import { LayoutItem } from '@/lib/theme.types'
-import { trpc } from '@/lib/trpc'
+import { SocialType } from '@penx/constants'
+import { LayoutItem } from '@penx/types'
+import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'
 import { useDebouncedCallback } from 'use-debounce'
 import { useThemeName } from '../../hooks/useThemeName'

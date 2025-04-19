@@ -2,7 +2,7 @@
 
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
 import { Space } from '@/domains/Space'
-import { Site } from '@/lib/theme.types'
+import { Site } from '@penx/types'
 import { SpaceType } from '@/lib/types'
 
 export const SpaceContext = createContext({} as Space)

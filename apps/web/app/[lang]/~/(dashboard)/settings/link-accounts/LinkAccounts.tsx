@@ -1,6 +1,6 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { PasswordDialog } from '@/components/PasswordDialog/PasswordDialog'
 import { useMyAccounts } from '@/hooks/useMyAccounts'
 import { ProviderType } from '@penx/db/client'

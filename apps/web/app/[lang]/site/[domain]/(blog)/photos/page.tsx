@@ -1,7 +1,7 @@
 import { PhotoListWidget } from '@/components/theme-ui/PhotoListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getPhotos, getSite } from '@/lib/fetchers'
-import { AppearanceConfig } from '@/lib/theme.types'
+import { AppearanceConfig } from '@penx/types'
 import linguiConfig from '@/lingui.config'
 import { Metadata } from 'next'
 

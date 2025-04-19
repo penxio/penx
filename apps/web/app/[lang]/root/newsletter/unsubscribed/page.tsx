@@ -1,5 +1,5 @@
-import { Button } from '@penx/ui/components/button'
-import { Card, CardContent, CardHeader } from '@penx/ui/components/card'
+import { Button } from '@penx/uikit/ui/button'
+import { Card, CardContent, CardHeader } from '@penx/uikit/ui/card'
 import { Link } from '@/lib/i18n'
 import { CheckCircle2 } from 'lucide-react'
 

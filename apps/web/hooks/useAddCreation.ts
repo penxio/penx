@@ -1,16 +1,16 @@
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { addCreation } from '@/hooks/useAreaCreations'
 import { useCollaborators } from '@/hooks/useCollaborators'
 import { updateCreationState } from '@/hooks/useCreation'
 import { addPanel } from '@/hooks/usePanels'
-import { editorDefaultValue } from '@/lib/constants'
+import { editorDefaultValue } from '@penx/constants'
 import { CreateCreationInput } from '@/lib/constants/schema.constants'
-import { CreationType } from '@/lib/theme.types'
-import { api } from '@/lib/trpc'
+import { CreationType } from '@penx/types'
+import { api } from '@penx/trpc-client'
 import { PanelType, SiteCreation } from '@/lib/types'
-import { uniqueId } from '@/lib/unique-id'
+import { uniqueId } from '@penx/unique-id'
 
 export function useAddCreation() {
   const { session } = useSession()

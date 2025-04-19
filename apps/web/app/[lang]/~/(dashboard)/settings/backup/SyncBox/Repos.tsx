@@ -1,6 +1,6 @@
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Card } from '@penx/ui/components/card'
-import { trpc } from '@/lib/trpc'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Card } from '@penx/uikit/ui/card'
+import { trpc } from '@penx/trpc-client'
 import { LockKeyhole } from 'lucide-react'
 import { GitHubConnectButton } from './GitHubConnectButton'
 

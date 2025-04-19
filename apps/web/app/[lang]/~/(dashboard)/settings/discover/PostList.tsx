@@ -1,7 +1,7 @@
 'use client'
 
-import { Badge } from '@penx/ui/components/badge'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Badge } from '@penx/uikit/ui/badge'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Table,
   TableBody,
@@ -9,8 +9,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/ui/components/table'
-import { trpc } from '@/lib/trpc'
+} from '@penx/uikit/ui/table'
+import { trpc } from '@penx/trpc-client'
 import { format } from 'date-fns'
 
 export function PostList() {

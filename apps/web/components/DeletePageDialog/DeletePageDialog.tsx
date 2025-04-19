@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
   DialogClose,
@@ -11,11 +11,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
+} from '@penx/uikit/ui/dialog'
 import { usePages } from '@/hooks/usePages'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { localDB } from '@/lib/local-db'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 import { useDeletePageDialog } from './useDeleteDatabaseDialog'
 

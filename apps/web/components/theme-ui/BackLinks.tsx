@@ -2,7 +2,7 @@
 
 import { CSSProperties, useEffect, useState } from 'react'
 import { Link } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { useCreationListContext } from '../CreationListContext'
 

@@ -1,10 +1,10 @@
 import { useSession } from '@/components/session'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
 import { Widget } from '@/lib/types'
-import { RouterOutputs } from '@/server/_app'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
+import { RouterOutputs } from '@penx/api'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 
 export type Area = Omit<
   RouterOutputs['area']['byId'],

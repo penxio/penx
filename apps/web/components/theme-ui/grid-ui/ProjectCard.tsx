@@ -1,7 +1,7 @@
 import { Image } from '@/components/Image'
 import { Link } from '@/lib/i18n'
-import { LayoutItem, Project, Site } from '@/lib/theme.types'
-import { getUrl } from '@/lib/utils'
+import { LayoutItem, Project, Site } from '@penx/types'
+import { getUrl } from '@penx/utils'
 import { ArrowUpRight } from 'lucide-react'
 
 export function ProjectCard({

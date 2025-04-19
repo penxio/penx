@@ -1,5 +1,5 @@
 import { getCreations, getSite } from '@/lib/fetchers'
-import { CreationType } from '@/lib/theme.types'
+import { CreationType } from '@penx/types'
 import { Feed } from 'feed'
 import { headers } from 'next/headers'
 

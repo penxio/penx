@@ -8,9 +8,9 @@ import {
   Project,
   Prop,
   Site,
-} from '@/lib/theme.types'
-import { getDatabaseData } from '@/server/lib/getDatabaseData'
-import { initAboutPage, initPages } from '@/server/lib/initPages'
+} from '@penx/types'
+import { getDatabaseData } from '@penx/api/lib/getDatabaseData'
+import { initAboutPage, initPages } from '@penx/api/lib/initPages'
 import { prisma } from '@penx/db'
 import { ProductType } from '@penx/db/client'
 import { gql, request } from 'graphql-request'

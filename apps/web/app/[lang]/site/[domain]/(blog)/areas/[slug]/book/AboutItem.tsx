@@ -1,8 +1,8 @@
 'use client'
 
 import { Link } from '@/lib/i18n'
-import { AreaWithCreations, Site } from '@/lib/theme.types'
-import { cn, getUrl } from '@/lib/utils'
+import { AreaWithCreations, Site } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { useParams } from 'next/navigation'
 

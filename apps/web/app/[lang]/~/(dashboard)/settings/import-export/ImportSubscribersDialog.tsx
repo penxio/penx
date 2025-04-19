@@ -1,11 +1,11 @@
+import { CheckCircle2, Loader2 } from 'lucide-react'
+import { ImportResult } from '@penx/types'
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
-import type { ImportResult } from '@/server/routers/subscriber'
-import { CheckCircle2, Loader2 } from 'lucide-react'
+} from '@penx/uikit/ui/dialog'
 
 interface ImportSubscribersDialogProps {
   result: ImportResult | null

@@ -5,7 +5,7 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "../../packages/ui/src/styles/globals.css",
+    "css": "../../packages/uikit/src/styles/globals.css",
     "baseColor": "neutral",
     "cssVariables": true
   },
@@ -13,8 +13,8 @@
     "components": "@/components",
     "hooks": "@/hooks",
     "lib": "@/lib",
-    "utils": "@penx/ui/lib/utils",
-    "ui": "@penx/ui/components"
+    "utils": "@penx/uikit/lib/utils",
+    "ui": "@penx/uikit/components"
   },
   "iconLibrary": "lucide"
 }

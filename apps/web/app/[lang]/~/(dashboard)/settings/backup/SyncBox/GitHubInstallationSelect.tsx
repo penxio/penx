@@ -1,14 +1,14 @@
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
-import { MenuItem } from '@penx/ui/components/menu/MenuItem'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
-import { trpc } from '@/lib/trpc'
+} from '@penx/uikit/ui/select'
+import { trpc } from '@penx/trpc-client'
 import { useQuery } from '@tanstack/react-query'
 import { Plus } from 'lucide-react'
 

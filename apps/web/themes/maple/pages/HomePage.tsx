@@ -1,6 +1,6 @@
-import { ProjectsBlock } from '@/components/custom-plate-plugins/projects/react/ProjectsBlock'
+import { ProjectsBlock } from '@penx/uikit/editor/custom-plate-plugins/projects/react/ProjectsBlock'
 import { ContentRender } from '@/components/theme-ui/ContentRender'
-import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@/lib/constants'
+import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@/lib/i18n'
 import {
   Creation,
@@ -8,8 +8,8 @@ import {
   Project,
   Site,
   Tag as TagEntity,
-} from '@/lib/theme.types'
-import { cn, formatDate } from '@/lib/utils'
+} from '@penx/types'
+import { cn, formatDate } from '@penx/utils'
 import Image from 'next/image'
 import { FeatureBox } from '../components/FeatureBox'
 import { PostItem } from '../components/PostItem'

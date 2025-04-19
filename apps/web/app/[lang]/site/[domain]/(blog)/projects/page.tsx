@@ -1,10 +1,10 @@
 import { FriendsProvider } from '@/components/FriendsContext'
 import { ProjectsProvider } from '@/components/ProjectsContext'
 import { ContentRender } from '@/components/theme-ui/ContentRender'
-import { editorDefaultValue } from '@/lib/constants'
+import { editorDefaultValue } from '@penx/constants'
 import { getPage, getProjects, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { CreationType } from '@/lib/theme.types'
+import { CreationType } from '@penx/types'
 import { Metadata } from 'next'
 
 export const dynamic = 'force-static'

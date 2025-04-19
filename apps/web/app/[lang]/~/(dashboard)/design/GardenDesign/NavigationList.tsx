@@ -2,8 +2,8 @@
 
 import React from 'react'
 import { useSiteContext } from '@/components/SiteContext'
-import { defaultNavLinks } from '@/lib/constants'
-import { NavLink } from '@/lib/theme.types'
+import { defaultNavLinks } from '@penx/constants'
+import { NavLink } from '@penx/types'
 
 export const NavigationList = () => {
   const site = useSiteContext()

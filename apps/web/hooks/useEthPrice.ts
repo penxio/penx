@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { store } from '@/store'
 import { atom, useAtom } from 'jotai'
 

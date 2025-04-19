@@ -1,7 +1,7 @@
 'use client'
 
-import { STATIC_URL } from '@/lib/constants'
-import { trpc } from '@/lib/trpc'
+import { STATIC_URL } from '@penx/constants'
+import { trpc } from '@penx/trpc-client'
 import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 

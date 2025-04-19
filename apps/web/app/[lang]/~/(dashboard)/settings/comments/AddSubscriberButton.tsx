@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { useAddSubscriberDialog } from './AddSubscriberDialog/useAddSubscriberDialog'
 
 export function AddSubscriberButton() {

@@ -1,13 +1,13 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@penx/ui/components/card'
+} from '@penx/uikit/ui/card'
 import { useDeleteSiteDialog } from './DeleteSiteDialog/useDeleteSiteDialog'
 
 interface Props {}

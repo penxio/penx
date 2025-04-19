@@ -2,8 +2,8 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
-import { cn } from '@/lib/utils'
+} from '@penx/uikit/ui/popover'
+import { cn } from '@penx/utils'
 import { Colorful } from '@uiw/react-color'
 
 export function ColorPicker({

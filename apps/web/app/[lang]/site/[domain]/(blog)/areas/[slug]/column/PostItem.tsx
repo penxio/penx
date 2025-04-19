@@ -1,7 +1,7 @@
 'use client'
 
 import { JSX } from 'react'
-import { PlateEditor } from '@/components/editor/plate-editor'
+import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { PodcastTips } from '@/components/theme-ui/PodcastTips'
 import { PostActions } from '@/components/theme-ui/PostActions'
 import { CommentSheet } from '@/components/theme-ui/PostActions/Comment/CommentSheet'
@@ -11,8 +11,8 @@ import {
   Creation,
   CreationType,
   User,
-} from '@/lib/theme.types'
-import { cn, formatDate, getUrl } from '@/lib/utils'
+} from '@penx/types'
+import { cn, formatDate, getUrl } from '@penx/utils'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { Node } from 'slate'

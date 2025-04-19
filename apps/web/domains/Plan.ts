@@ -1,4 +1,4 @@
-import { editorDefaultValue, SECONDS_PER_DAY } from '@/lib/constants'
+import { editorDefaultValue, SECONDS_PER_DAY } from '@penx/constants'
 import { precision } from '@/lib/math'
 import { FEE_RATE } from './Space'
 

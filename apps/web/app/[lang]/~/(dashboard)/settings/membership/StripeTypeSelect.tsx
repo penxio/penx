@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { StripeType } from '@penx/db/client'
 
 interface StripeTypeSelectProps {

@@ -2,7 +2,7 @@
 
 import { mappedByKey } from '@/lib/shared'
 import { ViewType } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { useDatabaseContext } from '../DatabaseProvider'
 import { ViewIcon } from './ViewIcon'
 import { ViewMenu } from './ViewMenu'

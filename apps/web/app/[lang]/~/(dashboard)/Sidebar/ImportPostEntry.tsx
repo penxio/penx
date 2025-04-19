@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { useMyAccounts } from '@/hooks/useMyAccounts'
 import { Link } from '@/lib/i18n'
 import { ProviderType } from '@penx/db/client'

@@ -1,4 +1,4 @@
-import { Creation, PostListStyle } from '@/lib/theme.types'
+import { Creation, PostListStyle } from '@penx/types'
 import { PostItemCard } from './PostItemCard'
 import { PostItemSimple } from './PostItemSimple'
 

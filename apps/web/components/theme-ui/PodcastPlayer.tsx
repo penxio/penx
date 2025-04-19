@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { Creation } from '@/lib/theme.types'
-import { cn, getUrl } from '@/lib/utils'
+import { Creation } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 import { Player } from 'shikwasa'
 import { useSiteContext } from '../SiteContext'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 
 interface Props {
   creation: Creation

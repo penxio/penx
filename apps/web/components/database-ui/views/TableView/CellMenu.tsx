@@ -1,4 +1,4 @@
-import { MenuItem } from '@penx/ui/components/menu/MenuItem'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import { IRowNode } from '@/lib/model'
 import { Record } from '@penx/db/client'
 import {

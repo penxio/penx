@@ -1,8 +1,8 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { CreationStatus } from '@/lib/constants'
-import { trpc } from '@/lib/trpc'
+import { CreationStatus } from '@penx/constants'
+import { trpc } from '@penx/trpc-client'
 import { PostItem } from './PostItem'
 
 interface PostListProps {}

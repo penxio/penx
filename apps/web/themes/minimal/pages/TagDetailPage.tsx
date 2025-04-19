@@ -1,4 +1,4 @@
-import { Creation, Site, Tag } from '@/lib/theme.types'
+import { Creation, Site, Tag } from '@penx/types'
 import { PostListWithTag } from '../components/PostListWithTag'
 
 interface Props {

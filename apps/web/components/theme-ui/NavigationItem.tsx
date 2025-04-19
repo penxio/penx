@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Link } from '@/lib/i18n'
-import { NavLink } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { NavLink } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {

@@ -7,7 +7,7 @@ import {
   Project,
   Site,
   Tag,
-} from '@/lib/theme.types'
+} from '@penx/types'
 
 interface Props {
   site: Site

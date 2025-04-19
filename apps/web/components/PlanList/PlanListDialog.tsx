@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
+} from '@penx/uikit/ui/dialog'
 import { PlanList } from './PlanList'
 import { usePlanListDialog } from './usePlanListDialog'
 

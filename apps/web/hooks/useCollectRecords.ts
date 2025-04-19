@@ -1,4 +1,4 @@
-import { PENX_SUBGRAPH_URL } from '@/lib/constants'
+import { PENX_SUBGRAPH_URL } from '@penx/constants'
 import { MintRecord } from '@/lib/types'
 import { useQuery } from '@tanstack/react-query'
 import { gql, request } from 'graphql-request'

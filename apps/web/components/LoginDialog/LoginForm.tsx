@@ -2,21 +2,21 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useRouter } from '@/lib/i18n'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useAuthStatus } from './useAuthStatus'

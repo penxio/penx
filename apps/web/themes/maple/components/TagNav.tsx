@@ -1,7 +1,7 @@
 'use client'
 
 import { Link } from '@/lib/i18n'
-import { Tag as TagEntity } from '@/lib/theme.types'
+import { Tag as TagEntity } from '@penx/types'
 import { slug } from 'github-slugger'
 
 interface Props {

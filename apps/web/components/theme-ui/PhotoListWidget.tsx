@@ -1,9 +1,9 @@
-import { Creation, Site } from '@/lib/theme.types'
-import { cn, getUrl } from '@/lib/utils'
+import { Creation, Site } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { ArrowUpRight } from 'lucide-react'
-import { Badge } from '@penx/ui/components/badge'
+import { Badge } from '@penx/uikit/ui/badge'
 import { ContentRender } from './ContentRender'
 import { PageTitle } from './PageTitle'
 

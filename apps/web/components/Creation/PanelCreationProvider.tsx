@@ -7,14 +7,14 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useCollaborators } from '@/hooks/useCollaborators'
 import { Creation, useCreation } from '@/hooks/useCreation'
 import { useSiteTags } from '@/hooks/useSiteTags'
 import { appEmitter } from '@/lib/app-emitter'
 import { UpdateCreationInput } from '@/lib/constants/schema.constants'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 import { Panel } from '@/lib/types'
 import { CreationTag, Tag } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'

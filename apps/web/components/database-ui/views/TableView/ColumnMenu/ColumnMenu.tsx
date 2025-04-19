@@ -3,9 +3,9 @@
 import { useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { useDatabaseContext } from '@/components/database-ui/DatabaseProvider'
-import { Input } from '@penx/ui/components/input'
-import { MenuItem } from '@penx/ui/components/menu/MenuItem'
-import { Menu } from '@penx/ui/components/menu/Menu'
+import { Input } from '@penx/uikit/ui/input'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+import { Menu } from '@penx/uikit/ui/menu/Menu'
 import { IColumnNode } from '@/lib/model'
 import { Column } from '@penx/db/client'
 import {

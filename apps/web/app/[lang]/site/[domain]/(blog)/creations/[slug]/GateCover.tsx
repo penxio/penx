@@ -1,7 +1,7 @@
 'use client'
 
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { usePathname } from '@/lib/i18n'
 import { useRouter } from 'next/navigation'
 

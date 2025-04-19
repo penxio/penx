@@ -3,20 +3,20 @@
 import { useState } from 'react'
 import { AddNoteDialog } from '@/components/Creation/AddNoteDialog/AddNoteDialog'
 import { useAddNoteDialog } from '@/components/Creation/AddNoteDialog/useAddNoteDialog'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
+} from '@penx/uikit/ui/popover'
 import { Creation, updateCreationState } from '@/hooks/useCreation'
 import { getCreationIcon } from '@/lib/getCreationIcon'
 import { getMoldName } from '@/lib/getMoldName'
-import { api } from '@/lib/trpc'
-import { cn, formatUsername } from '@/lib/utils'
+import { api } from '@penx/trpc-client'
+import { cn, formatUsername } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 
 export function ChangeType({ creation }: { creation: Creation }) {

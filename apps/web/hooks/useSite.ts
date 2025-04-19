@@ -1,6 +1,6 @@
 import { useSession } from '@/components/session'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 import { MySite } from '@/lib/types'
 import { useQuery } from '@tanstack/react-query'
 import { useMySites } from './useMySites'

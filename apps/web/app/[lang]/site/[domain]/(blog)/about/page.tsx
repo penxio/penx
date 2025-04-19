@@ -1,5 +1,5 @@
 import { ContentRender } from '@/components/theme-ui/ContentRender'
-import { editorDefaultValue } from '@/lib/constants'
+import { editorDefaultValue } from '@penx/constants'
 import { getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
 

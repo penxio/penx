@@ -1,12 +1,12 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
-import { Skeleton } from '@penx/ui/components/skeleton'
-import { CardStyle } from '@/lib/constants'
-import { LayoutItem, Project, Site } from '@/lib/theme.types'
-import { trpc } from '@/lib/trpc'
-import { cn, getUrl } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { CardStyle } from '@penx/constants'
+import { LayoutItem, Project, Site } from '@penx/types'
+import { trpc } from '@penx/trpc-client'
+import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {

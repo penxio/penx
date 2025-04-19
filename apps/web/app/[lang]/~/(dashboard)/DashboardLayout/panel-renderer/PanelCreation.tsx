@@ -8,7 +8,7 @@ import {
 } from '@/components/Creation/PanelCreationProvider'
 import { PublishDialog } from '@/components/Creation/PublishDialog/PublishDialog'
 import { useSiteContext } from '@/components/SiteContext'
-import { BUILTIN_PAGE_SLUGS, ROOT_DOMAIN } from '@/lib/constants'
+import { BUILTIN_PAGE_SLUGS, ROOT_DOMAIN } from '@penx/constants'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import { Panel } from '@/lib/types'
 import { CreationStatus } from '@penx/db/client'

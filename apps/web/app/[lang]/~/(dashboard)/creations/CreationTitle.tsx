@@ -1,6 +1,6 @@
 'use client'
 
-import { CreationType } from '@/lib/theme.types'
+import { CreationType } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 

@@ -1,10 +1,10 @@
 'use client'
 
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { LoginButton } from '@/components/LoginButton'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
-import { api, trpc } from '@/lib/trpc'
+import { Button } from '@penx/uikit/ui/button'
+import { api, trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { ApiTokenDialog } from './ApiTokenDialog/ApiTokenDialog'
 import { useApiTokenDialog } from './ApiTokenDialog/useApiTokenDialog'

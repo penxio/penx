@@ -1,13 +1,13 @@
-import { ProjectsBlock } from '@/components/custom-plate-plugins/projects/react/ProjectsBlock'
+import { ProjectsBlock } from '@penx/uikit/editor/custom-plate-plugins/projects/react/ProjectsBlock'
 import { ContentRender } from '@/components/theme-ui/ContentRender'
 import { PageTitle } from '@/components/theme-ui/PageTitle'
 import {
   HOME_PROJECT_LIMIT,
   LATEST_POSTS_LIMIT,
   POSTS_PER_PAGE,
-} from '@/lib/constants'
+} from '@penx/constants'
 import { Link } from '@/lib/i18n'
-import { Creation, PostListStyle, Project, Site, Tag } from '@/lib/theme.types'
+import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { PostItem } from '../components/PostItem'
 

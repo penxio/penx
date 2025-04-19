@@ -18,8 +18,8 @@ import {
   getSite,
 } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AppearanceConfig } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { AppearanceConfig } from '@penx/types'
+import { cn } from '@penx/utils'
 import { AreaType, Creation, GateType } from '@penx/db/client'
 import { produce } from 'immer'
 import { Metadata } from 'next'

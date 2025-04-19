@@ -1,7 +1,7 @@
 import { NoteListWidget } from '@/components/theme-ui/NoteListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getSite } from '@/lib/fetchers'
-import { AppearanceConfig } from '@/lib/theme.types'
+import { AppearanceConfig } from '@penx/types'
 import linguiConfig from '@/lingui.config'
 import { Metadata } from 'next'
 

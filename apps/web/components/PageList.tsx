@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { usePages } from '@/hooks/usePages'
 import { Link } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Creation } from '@penx/db/client'
 import { format } from 'date-fns'
 import { Edit3Icon, Trash2 } from 'lucide-react'

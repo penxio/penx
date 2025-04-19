@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 import { v4 as uuidv4 } from 'uuid'
 
 interface PageViewOptions {

@@ -2,16 +2,16 @@
 
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@/components/editor/plate-editor'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@/components/NumberInput'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { useSpaceContext } from '@/components/SpaceContext'
-import { Badge } from '@penx/ui/components/badge'
-import { Button } from '@penx/ui/components/button'
-import { Calendar } from '@penx/ui/components/calendar'
-import { DialogHeader, DialogTitle } from '@penx/ui/components/dialog'
+import { Badge } from '@penx/uikit/ui/badge'
+import { Button } from '@penx/uikit/ui/button'
+import { Calendar } from '@penx/uikit/ui/calendar'
+import { DialogHeader, DialogTitle } from '@penx/uikit/ui/dialog'
 import {
   Form,
   FormControl,
@@ -20,19 +20,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
-import { Switch } from '@penx/ui/components/switch'
+} from '@penx/uikit/ui/popover'
+import { Switch } from '@penx/uikit/ui/switch'
 import { PublishPostFormSchema, usePublishPost } from '@/hooks/usePublishPost'
-import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@/lib/constants'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { api, trpc } from '@/lib/trpc'
-import { cn } from '@/lib/utils'
+import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@penx/constants'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { api, trpc } from '@penx/trpc-client'
+import { cn } from '@penx/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'
 import { GateType } from '@penx/db/client'

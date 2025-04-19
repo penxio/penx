@@ -1,5 +1,5 @@
 import Markdown from 'react-markdown'
-import { LayoutItem } from '@/lib/theme.types'
+import { LayoutItem } from '@penx/types'
 import remarkGfm from 'remark-gfm'
 import { ContentRender } from '../ContentRender'
 

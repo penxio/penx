@@ -5,26 +5,26 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/ui/components/popover'
+} from '@penx/uikit/ui/popover'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/ui/components/tooltip'
+} from '@penx/uikit/ui/tooltip'
 import { useCollaborators } from '@/hooks/useCollaborators'
 import { Creation, updateCreationState } from '@/hooks/useCreation'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { api, trpc } from '@/lib/trpc'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { api, trpc } from '@penx/trpc-client'
 import { AuthorWithUser } from '@/lib/types'
-import { uniqueId } from '@/lib/unique-id'
-import { formatUsername } from '@/lib/utils'
+import { uniqueId } from '@penx/unique-id'
+import { formatUsername } from '@penx/utils'
 import { Author } from '@penx/db/client'
 import { Command } from 'cmdk'
 import { Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useSiteContext } from '../SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { UserAvatar } from '../UserAvatar'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 

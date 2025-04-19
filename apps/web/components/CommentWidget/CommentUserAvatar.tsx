@@ -4,20 +4,20 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@penx/ui/components/hover-card'
+} from '@penx/uikit/ui/hover-card'
 import { UserAvatar } from '@/components/UserAvatar'
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import {
   getSiteCustomDomain,
   getSiteCustomSubdomain,
   sortDomains,
 } from '@/lib/getSiteDomain'
-import { trpc } from '@/lib/trpc'
-import { getUrl } from '@/lib/utils'
+import { trpc } from '@penx/trpc-client'
+import { getUrl } from '@penx/utils'
 import { Comment, User } from '@penx/db/client'
 import { ArrowUpRight } from 'lucide-react'
 import { LoadingDots } from '../icons/loading-dots'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 
 interface Props {
   user: User

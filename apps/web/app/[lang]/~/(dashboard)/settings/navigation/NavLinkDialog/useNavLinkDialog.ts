@@ -1,4 +1,4 @@
-import { NavLink } from '@/lib/theme.types'
+import { NavLink } from '@penx/types'
 import { atom, useAtom } from 'jotai'
 
 type State = {

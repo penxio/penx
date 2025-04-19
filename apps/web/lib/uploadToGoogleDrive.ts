@@ -1,7 +1,7 @@
 import { GOOGLE_DRIVE_FOLDER_PREFIX } from './constants'
 import { getSpaceId } from './getSpaceId'
 import { GoogleDrive } from './google-drive'
-import { api } from './trpc'
+import { api } from '@penx/trpc-client'
 
 export async function uploadToGoogleDrive(fileHash: string, file: File) {
   const token = await api.google.googleDriveToken.query()

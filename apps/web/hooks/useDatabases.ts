@@ -1,8 +1,8 @@
 import isEqual from 'react-fast-compare'
 import { useSiteContext } from '@/components/SiteContext'
 import { localDB } from '@/lib//local-db'
-import { queryClient } from '@/lib/queryClient'
-import { api } from '@/lib/trpc'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
 import { Database } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 

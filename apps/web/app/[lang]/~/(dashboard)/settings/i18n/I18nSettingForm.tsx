@@ -1,8 +1,8 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
   FormControl,
@@ -11,15 +11,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
-import { Label } from '@penx/ui/components/label'
-import { RadioGroup, RadioGroupItem } from '@penx/ui/components/radio-group'
-import { Switch } from '@penx/ui/components/switch'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
+import { Label } from '@penx/uikit/ui/label'
+import { RadioGroup, RadioGroupItem } from '@penx/uikit/ui/radio-group'
+import { Switch } from '@penx/uikit/ui/switch'
 import { updateSiteState } from '@/hooks/useSite'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { supportLanguages } from '@/lib/supportLanguages'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Site } from '@penx/db/client'
 import { toast } from 'sonner'

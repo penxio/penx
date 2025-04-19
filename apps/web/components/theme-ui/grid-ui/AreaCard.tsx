@@ -1,7 +1,7 @@
 import { Image } from '@/components/Image'
 import { Link } from '@/lib/i18n'
-import { LayoutItem, Site } from '@/lib/theme.types'
-import { getUrl } from '@/lib/utils'
+import { LayoutItem, Site } from '@penx/types'
+import { getUrl } from '@penx/utils'
 
 export function AreaCard({ item, site }: { item: LayoutItem; site: Site }) {
   const area = site.areas.find((s) => s.id === item.props?.areaId)

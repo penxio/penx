@@ -1,7 +1,7 @@
-import { ROOT_HOST, SocialType } from '@/lib/constants'
+import { ROOT_HOST, SocialType } from '@penx/constants'
 import { Link } from '@/lib/i18n'
-import { LayoutItem } from '@/lib/theme.types'
-import { cn, upperFirst } from '@/lib/utils'
+import { LayoutItem } from '@penx/types'
+import { cn, upperFirst } from '@penx/utils'
 
 export function SocialCard({ item }: { item: LayoutItem }) {
   const { url = '' } = (item.props || {}) as Record<string, string>

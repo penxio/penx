@@ -6,17 +6,17 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@penx/ui/components/card'
+} from '@penx/uikit/ui/card'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@penx/ui/components/carousel'
+} from '@penx/uikit/ui/carousel'
 import { Link } from '@/lib/i18n'
-import { Creation, Site, Tag } from '@/lib/theme.types'
-import { formatDate } from '@/lib/utils'
+import { Creation, Site, Tag } from '@penx/types'
+import { formatDate } from '@penx/utils'
 import { Node } from 'slate'
 import { PostItem } from '../components/PostItem'
 

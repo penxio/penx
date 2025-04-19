@@ -1,6 +1,5 @@
-import { appRouter } from '@/server/_app'
-import { createContext } from '@/server/context'
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
+import { appRouter, createContext } from '@penx/api'
 import cors from './cors'
 
 const handler = async (req: Request) => {
@@ -17,7 +16,7 @@ export const maxDuration = 120
 
 export { handler as GET, handler as POST }
 
-// import { appRouter } from '@/server/_app'
+// import { appRouter } from '@penx/api'
 // import { createContext } from '@/server/context'
 // import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
 // import cors from 'cors'

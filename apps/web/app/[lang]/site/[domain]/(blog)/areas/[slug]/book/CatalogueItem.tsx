@@ -9,8 +9,8 @@ import {
   CatalogueNodeType,
   ICatalogueNode,
 } from '@/lib/model'
-import { Creation } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Creation } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { useParams } from 'next/navigation'
 

@@ -1,4 +1,4 @@
-import { NETWORK, NetworkNames } from '@/lib/constants'
+import { NETWORK, NetworkNames } from '@penx/constants'
 import { Site } from '@penx/db/client'
 import { SyncService } from './SyncService'
 

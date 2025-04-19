@@ -1,8 +1,8 @@
 'use client'
 
-import { ROOT_HOST, SocialType } from '@/lib/constants'
-import { LayoutItem } from '@/lib/theme.types'
-import { upperFirst } from '@/lib/utils'
+import { ROOT_HOST, SocialType } from '@penx/constants'
+import { LayoutItem } from '@penx/types'
+import { upperFirst } from '@penx/utils'
 
 interface Props {
   layoutItem: LayoutItem

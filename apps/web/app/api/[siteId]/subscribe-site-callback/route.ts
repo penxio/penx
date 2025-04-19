@@ -1,7 +1,7 @@
 import { prisma } from '@penx/db'
 import { getServerSession, getSessionOptions } from '@/lib/session'
 import { SessionData } from '@/lib/types'
-import { getOAuthStripe } from '@/server/lib/getOAuthStripe'
+import { getOAuthStripe } from '@penx/api/lib/getOAuthStripe'
 import { BillingCycle, PlanType, StripeType } from '@penx/db/client'
 import { getIronSession, IronSession } from 'iron-session'
 import { cookies } from 'next/headers'

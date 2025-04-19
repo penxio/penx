@@ -1,10 +1,10 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { useDatabases } from '@/hooks/useDatabases'
-import { bgColorMaps } from '@/lib/color-helper'
+import { bgColorMaps } from '@penx/libs/color-helper'
 import { Link } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Database } from '@penx/db/client'
 import { format } from 'date-fns'
 import { Edit3Icon, Trash2 } from 'lucide-react'

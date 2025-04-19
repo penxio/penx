@@ -1,6 +1,6 @@
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 
 export function useSiteTags() {
   const { session } = useSession()

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { uploadFile } from '@/lib/uploadFile'
-import { cn, getUrl } from '@/lib/utils'
+import { cn, getUrl } from '@penx/utils'
 import {
   CustomCell,
   CustomRenderer,

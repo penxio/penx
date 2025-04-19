@@ -1,4 +1,4 @@
-import { toFloorFixed } from '@/lib/utils'
+import { toFloorFixed } from '@penx/utils'
 
 export type SubscriptionRaw = {
   planId: number

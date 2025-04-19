@@ -3,7 +3,7 @@
 import { usePlanListDialog } from '@/components/PlanList/usePlanListDialog'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,19 +12,19 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@penx/ui/components/dropdown-menu'
+} from '@penx/uikit/ui/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@penx/ui/components/sidebar'
+} from '@penx/uikit/ui/sidebar'
 import { appLoading } from '@/hooks/useAppLoading'
 import { useMySites } from '@/hooks/useMySites'
 import { resetPanels, updatePanels } from '@/hooks/usePanels'
 import { updateSiteState } from '@/hooks/useSite'
 import { MySite } from '@/lib/types'
-import { getUrl, sleep } from '@/lib/utils'
+import { getUrl, sleep } from '@penx/utils'
 import { store } from '@/store'
 import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'

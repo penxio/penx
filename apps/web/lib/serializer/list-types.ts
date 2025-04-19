@@ -4,7 +4,7 @@ import {
   ELEMENT_OL,
   ELEMENT_TITLE,
   ELEMENT_UL,
-} from '@/lib/constants'
+} from '@penx/constants'
 import { BaseElement } from 'slate'
 
 export interface TitleElement extends BaseElement {

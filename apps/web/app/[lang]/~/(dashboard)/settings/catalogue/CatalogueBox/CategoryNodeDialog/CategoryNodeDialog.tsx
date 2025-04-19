@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/ui/components/dialog'
+} from '@penx/uikit/ui/dialog'
 import { useCatalogue } from '../hooks/useCatalogue'
 import { CategoryNodeForm } from './CategoryNodeForm'
 import { useCategoryNodeDialog } from './useCategoryNodeDialog'

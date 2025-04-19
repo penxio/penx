@@ -1,5 +1,5 @@
 import React, { CSSProperties, useState } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { AnimateLayoutChanges, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { CatalogueItem } from './CatalogueItem'

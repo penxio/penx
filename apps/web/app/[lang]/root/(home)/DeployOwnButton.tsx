@@ -2,7 +2,7 @@
 
 import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { Link, useRouter } from '@/lib/i18n'
 import { Trans } from '@lingui/react/macro'
 

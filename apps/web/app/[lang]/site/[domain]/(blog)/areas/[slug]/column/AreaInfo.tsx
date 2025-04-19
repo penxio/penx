@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
-import { Badge } from '@penx/ui/components/badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Badge } from '@penx/uikit/ui/badge'
 import { Link } from '@/lib/i18n'
-import { AreaWithCreations } from '@/lib/theme.types'
-import { getUrl } from '@/lib/utils'
+import { AreaWithCreations } from '@penx/types'
+import { getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {

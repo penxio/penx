@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import { FileUp, Loader2 } from 'lucide-react'
 
 interface ImportTabProps {

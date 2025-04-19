@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { usePathname } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 
 // import { usePathname } from 'next/navigation'
 

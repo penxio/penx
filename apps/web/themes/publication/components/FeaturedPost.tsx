@@ -1,7 +1,7 @@
 import { PostActions } from '@/components/theme-ui/PostActions'
 import { Link } from '@/lib/i18n'
-import { Creation } from '@/lib/theme.types'
-import { cn, formatDate } from '@/lib/utils'
+import { Creation } from '@penx/types'
+import { cn, formatDate } from '@penx/utils'
 import Image from 'next/image'
 
 interface Props {

@@ -1,7 +1,7 @@
 import { Profile } from '@/components/Profile/Profile'
 import { Link } from '@/lib/i18n'
-import { Site } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { Site } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Merienda } from 'next/font/google'
 import { Nav } from './Nav'
 

@@ -10,8 +10,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@penx/ui/components/sheet'
-import { Site } from '@/lib/theme.types'
+} from '@penx/uikit/ui/sheet'
+import { Site } from '@penx/types'
 import { Menu } from 'lucide-react'
 import { Navigation } from '../Navigation'
 import { useMobileSidebarSheet } from './useMobileSidebarSheet'

@@ -5,7 +5,7 @@ import { NavUser } from '@/app/[lang]/~/(dashboard)/Sidebar/nav-user'
 import { AddCreationButton } from '@/components/AddCreationButton'
 import { ModeToggle } from '@/components/ModeToggle'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Sidebar,
   SidebarContent,
@@ -14,13 +14,13 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@penx/ui/components/sidebar'
+} from '@penx/uikit/ui/sidebar'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/ui/components/tooltip'
+} from '@penx/uikit/ui/tooltip'
 import { useRouter } from '@/lib/i18n'
 import { Trans } from '@lingui/react/macro'
 import { PaletteIcon, TagsIcon } from 'lucide-react'

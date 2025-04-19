@@ -1,4 +1,4 @@
-import { STATIC_URL } from '@/lib/constants'
+import { STATIC_URL } from '@penx/constants'
 import { localDB } from '@/lib/local-db'
 import { Asset } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'

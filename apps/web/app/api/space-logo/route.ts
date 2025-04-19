@@ -1,4 +1,4 @@
-import { IPFS_GATEWAY } from '@/lib/constants'
+import { IPFS_GATEWAY } from '@penx/constants'
 import ky from 'ky'
 import { NextResponse } from 'next/server'
 

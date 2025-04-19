@@ -1,4 +1,4 @@
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import Link from 'next/link'
 
 export default function NotFound() {

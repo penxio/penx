@@ -1,8 +1,8 @@
 'use client'
 
-import { Button } from '@penx/ui/components/button'
-import { GardenCardType } from '@/lib/constants'
-import { LayoutItem } from '@/lib/theme.types'
+import { Button } from '@penx/uikit/ui/button'
+import { GardenCardType } from '@penx/constants'
+import { LayoutItem } from '@penx/types'
 import { PenIcon } from 'lucide-react'
 import { useGardenSettingsDialog } from './GardenSettingsDialog/useGardenSettingsDialog'
 import { getDisableDragProps } from './lib/getDisableDragProps'

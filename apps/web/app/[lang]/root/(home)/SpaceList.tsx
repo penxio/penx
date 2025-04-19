@@ -6,8 +6,8 @@ import { useQueryLogoImages } from '@/hooks/useLogoImages'
 import { useSpaces } from '@/hooks/useSpaces'
 import { Link } from '@/lib/i18n'
 import { precision } from '@/lib/math'
-import { cn } from '@/lib/utils'
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { cn } from '@penx/utils'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { SpaceLogo } from './SpaceLogo'
 
 export function SpaceList() {

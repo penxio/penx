@@ -2,7 +2,7 @@
 
 import { memo } from 'react'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,12 +16,12 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@penx/ui/components/dropdown-menu'
+} from '@penx/uikit/ui/dropdown-menu'
 import { useSite } from '@/hooks/useSite'
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import { getDashboardPath } from '@/lib/getDashboardPath'
 import { usePathname, useRouter } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'
 import {

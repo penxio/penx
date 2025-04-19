@@ -1,7 +1,7 @@
 'use client'
 
 import { CSSProperties, useEffect, useMemo, useState } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { slug } from 'github-slugger'
 import { Node } from 'slate'

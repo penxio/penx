@@ -1,5 +1,5 @@
 import { PageTitle } from '@/components/theme-ui/PageTitle'
-import { Creation, Site } from '@/lib/theme.types'
+import { Creation, Site } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { PostList } from '../components/PostList'
 

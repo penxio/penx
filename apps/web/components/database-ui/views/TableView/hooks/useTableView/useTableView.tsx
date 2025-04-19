@@ -14,10 +14,10 @@ import { SingleSelectCell } from '@/components/cells/single-select-cell'
 import { SystemDateCell } from '@/components/cells/system-date-cell'
 import { useDatabaseContext } from '@/components/database-ui/DatabaseProvider'
 import { useSiteContext } from '@/components/SiteContext'
-import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@/lib/constants'
-import { queryClient } from '@/lib/queryClient'
+import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
+import { queryClient } from '@penx/query-client'
 import { mappedByKey } from '@/lib/shared'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 import { ColumnType, Option, ViewColumn } from '@/lib/types'
 import {
   DataEditorRef,

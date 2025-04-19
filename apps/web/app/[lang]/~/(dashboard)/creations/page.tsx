@@ -1,6 +1,6 @@
 'use client'
 
-import { CreationType } from '@/lib/theme.types'
+import { CreationType } from '@penx/types'
 import { useSearchParams } from 'next/navigation'
 import { Friends } from './Friends/Friends'
 import { Images } from './Images/Images'

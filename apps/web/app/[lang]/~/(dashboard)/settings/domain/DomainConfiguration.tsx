@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { getSubdomain } from '@/lib/domains'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import DomainStatus from './DomainStatus'
 import { useDomainStatus } from './use-domain-status'
 

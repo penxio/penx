@@ -1,6 +1,6 @@
 import { spaceFactoryAbi } from '@/lib/abi'
 import { addressMap } from '@/lib/address'
-import { NETWORK } from '@/lib/constants'
+import { NETWORK } from '@penx/constants'
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
 import { NextResponse } from 'next/server'
 import { Address, createPublicClient, http } from 'viem'

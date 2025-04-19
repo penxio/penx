@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 import { GoogleOauthButton } from '@/components/GoogleOauthButton'
 import { useSession } from '@/components/session'
 import { TextLogo } from '@/components/TextLogo'
-import { api } from '@/lib/trpc'
+import { api } from '@penx/trpc-client'
 import {
   AuthKitProvider,
   SignInButton as FSignInButton,

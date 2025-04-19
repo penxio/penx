@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { Link } from '@/lib/i18n'

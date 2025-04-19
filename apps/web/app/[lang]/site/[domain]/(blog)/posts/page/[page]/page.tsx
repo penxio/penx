@@ -1,8 +1,8 @@
 import { initLingui } from '@/initLingui'
-import { POSTS_PER_PAGE } from '@/lib/constants'
+import { POSTS_PER_PAGE } from '@penx/constants'
 import { getCreations, getFirstSite, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AppearanceConfig } from '@/lib/theme.types'
+import { AppearanceConfig } from '@penx/types'
 import { Metadata } from 'next'
 
 export const dynamic = 'force-static'

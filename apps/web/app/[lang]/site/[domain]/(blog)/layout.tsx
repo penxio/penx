@@ -1,7 +1,7 @@
 import { CreationListProvider } from '@/components/CreationListContext'
 import { SiteProvider } from '@/components/SiteContext'
 import { initLingui } from '@/initLingui'
-import { ROOT_DOMAIN } from '@/lib/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import {
   getCreations,
   getFriends,
@@ -11,8 +11,8 @@ import {
 } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { redirectTo404 } from '@/lib/redirectTo404'
-import { AppearanceConfig } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { AppearanceConfig } from '@penx/types'
+import { cn } from '@penx/utils'
 import linguiConfig from '@/lingui.config'
 import { Metadata } from 'next'
 import { headers } from 'next/headers'

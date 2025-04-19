@@ -1,5 +1,5 @@
 import { useSiteContext } from '@/components/SiteContext'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 import { SubscriberStatus } from '@penx/db/client'
 
 interface UseSubscribersOptions {

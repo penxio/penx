@@ -2,15 +2,15 @@
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@penx/ui/components/card'
-import { api } from '@/lib/trpc'
+} from '@penx/uikit/ui/card'
+import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 
 interface Props {}

@@ -1,6 +1,6 @@
 'use client'
 
-import { getUrl } from '@/lib/utils'
+import { getUrl } from '@penx/utils'
 import Image from 'next/image'
 import { createEditor } from 'slate'
 import { Slate, withReact } from 'slate-react'

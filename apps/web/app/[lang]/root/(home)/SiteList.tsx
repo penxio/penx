@@ -1,9 +1,9 @@
 'use client'
 
-import { Skeleton } from '@penx/ui/components/skeleton'
+import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { useHomeSites } from '@/hooks/useHomeSites'
 import { MySite } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { SiteItem } from './SiteItem'
 
 interface Props {

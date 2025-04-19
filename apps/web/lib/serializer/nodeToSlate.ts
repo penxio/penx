@@ -5,9 +5,9 @@ import {
   ELEMENT_LIC,
   ELEMENT_TITLE,
   ELEMENT_UL,
-} from '@/lib/constants'
+} from '@penx/constants'
 import { INode, Node } from '@/lib/model'
-import { uniqueId } from '@/lib/unique-id'
+import { uniqueId } from '@penx/unique-id'
 
 interface NodeToSlateOptions {
   node: INode

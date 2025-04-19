@@ -1,4 +1,4 @@
-import { NetworkNames } from '@/lib/constants'
+import { NetworkNames } from '@penx/constants'
 import { createPublicClient, http } from 'viem'
 import { base, baseSepolia } from 'viem/chains'
 

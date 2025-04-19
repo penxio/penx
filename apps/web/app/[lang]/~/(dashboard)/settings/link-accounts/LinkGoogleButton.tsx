@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   GOOGLE_CLIENT_ID,
   LINK_GOOGLE_ACCOUNT_REDIRECT_URI,
-} from '@/lib/constants'
-import { cn } from '@/lib/utils'
+} from '@penx/constants'
+import { cn } from '@penx/utils'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 

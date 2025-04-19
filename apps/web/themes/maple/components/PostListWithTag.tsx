@@ -1,4 +1,4 @@
-import { Creation, Site, Tag } from '@/lib/theme.types'
+import { Creation, Site, Tag } from '@penx/types'
 import { FeatureBox } from './FeatureBox'
 import { PostList } from './PostList'
 import { TagList } from './TagList'

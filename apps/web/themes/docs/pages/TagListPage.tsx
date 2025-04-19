@@ -1,5 +1,5 @@
 import { PageTitle } from '@/components/theme-ui/PageTitle'
-import { Tag } from '@/lib/theme.types'
+import { Tag } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { TagList } from '../components/TagList'
 

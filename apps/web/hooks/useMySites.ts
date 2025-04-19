@@ -1,5 +1,5 @@
 import { useSession } from '@/components/session'
-import { trpc } from '@/lib/trpc'
+import { trpc } from '@penx/trpc-client'
 
 export function useMySites() {
   const { data } = useSession()

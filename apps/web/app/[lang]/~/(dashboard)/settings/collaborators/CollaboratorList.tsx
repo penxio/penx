@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
+} from '@penx/uikit/ui/select'
 import {
   Table,
   TableBody,
@@ -17,11 +17,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/ui/components/table'
+} from '@penx/uikit/ui/table'
 import { useCollaborators } from '@/hooks/useCollaborators'
 import { useSite } from '@/hooks/useSite'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { api, trpc } from '@/lib/trpc'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { api, trpc } from '@penx/trpc-client'
 import {
   Account,
   Collaborator,

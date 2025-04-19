@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@penx/ui/components/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
   FormControl,
@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/ui/components/form'
-import { Input } from '@penx/ui/components/input'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { api } from '@/lib/trpc'
+} from '@penx/uikit/ui/form'
+import { Input } from '@penx/uikit/ui/input'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { api } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'

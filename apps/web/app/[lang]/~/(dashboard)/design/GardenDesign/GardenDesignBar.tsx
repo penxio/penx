@@ -1,9 +1,9 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { GardenCardType, ROOT_HOST, SocialType } from '@/lib/constants'
-import { CreationType } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+import { GardenCardType, ROOT_HOST, SocialType } from '@penx/constants'
+import { CreationType } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { produce } from 'immer'
 import {

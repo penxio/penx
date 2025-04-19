@@ -2,8 +2,8 @@
 
 import { Image } from '@/components/Image'
 import { Link } from '@/lib/i18n'
-import { getUrl } from '@/lib/utils'
-import { RouterOutputs } from '@/server/_app'
+import { getUrl } from '@penx/utils'
+import { RouterOutputs } from '@penx/api'
 
 interface Props {
   area: RouterOutputs['area']['list']['0']

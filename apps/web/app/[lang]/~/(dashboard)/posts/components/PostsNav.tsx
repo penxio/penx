@@ -1,7 +1,7 @@
 'use client'
 
 import { Link, usePathname } from '@/lib/i18n'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {}

@@ -1,30 +1,3 @@
-import { BaseProductPlugin } from '@/components/custom-plate-plugins/product'
-import { ProductElementStatic } from '@/components/custom-plate-plugins/product/react/product-element-static'
-import { BlockquoteElementStatic } from '@/components/plate-ui/blockquote-element-static'
-import { CodeBlockElement } from '@/components/plate-ui/code-block-element'
-import { CodeBlockElementStatic } from '@/components/plate-ui/code-block-element-static'
-import { CodeLeafStatic } from '@/components/plate-ui/code-leaf-static'
-import { CodeLineElement } from '@/components/plate-ui/code-line-element'
-import { CodeLineElementStatic } from '@/components/plate-ui/code-line-element-static'
-import { CodeSyntaxLeaf } from '@/components/plate-ui/code-syntax-leaf'
-import { CodeSyntaxLeafStatic } from '@/components/plate-ui/code-syntax-leaf-static'
-import { ColumnElementStatic } from '@/components/plate-ui/column-element-static'
-import { ColumnGroupElementStatic } from '@/components/plate-ui/column-group-element-static'
-import { DateElementStatic } from '@/components/plate-ui/date-element-static'
-import { EquationElementStatic } from '@/components/plate-ui/equation-element-static'
-import { HeadingElementStatic } from '@/components/plate-ui/heading-element-static'
-import { HighlightLeafStatic } from '@/components/plate-ui/highlight-leaf-static'
-import { ImageElementStatic } from '@/components/plate-ui/image-element-static'
-import { InlineEquationElementStatic } from '@/components/plate-ui/inline-equation-element-static'
-import { LinkElementStatic } from '@/components/plate-ui/link-element-static'
-import { MediaPlaceholderElement } from '@/components/plate-ui/media-placeholder-element'
-import { ParagraphElementStatic } from '@/components/plate-ui/paragraph-element-static'
-import {
-  TableCellElementStatic,
-  TableCellHeaderStaticElement,
-} from '@/components/plate-ui/table-cell-element-static'
-import { TableElementStatic } from '@/components/plate-ui/table-element-static'
-import { TableRowElementStatic } from '@/components/plate-ui/table-row-element-static'
 import { withProps } from '@udecode/cn'
 import {
   BaseBoldPlugin,
@@ -61,6 +34,33 @@ import {
   BaseTableRowPlugin,
 } from '@udecode/plate-table'
 import { PlateLeaf } from '@udecode/plate/react'
+import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
+import { ProductElementStatic } from '@penx/uikit/editor/custom-plate-plugins/product/react/product-element-static'
+import { BlockquoteElementStatic } from '@penx/uikit/plate-ui/blockquote-element-static'
+import { CodeBlockElement } from '@penx/uikit/plate-ui/code-block-element'
+import { CodeBlockElementStatic } from '@penx/uikit/plate-ui/code-block-element-static'
+import { CodeLeafStatic } from '@penx/uikit/plate-ui/code-leaf-static'
+import { CodeLineElement } from '@penx/uikit/plate-ui/code-line-element'
+import { CodeLineElementStatic } from '@penx/uikit/plate-ui/code-line-element-static'
+import { CodeSyntaxLeaf } from '@penx/uikit/plate-ui/code-syntax-leaf'
+import { CodeSyntaxLeafStatic } from '@penx/uikit/plate-ui/code-syntax-leaf-static'
+import { ColumnElementStatic } from '@penx/uikit/plate-ui/column-element-static'
+import { ColumnGroupElementStatic } from '@penx/uikit/plate-ui/column-group-element-static'
+import { DateElementStatic } from '@penx/uikit/plate-ui/date-element-static'
+import { EquationElementStatic } from '@penx/uikit/plate-ui/equation-element-static'
+import { HeadingElementStatic } from '@penx/uikit/plate-ui/heading-element-static'
+import { HighlightLeafStatic } from '@penx/uikit/plate-ui/highlight-leaf-static'
+import { ImageElementStatic } from '@penx/uikit/plate-ui/image-element-static'
+import { InlineEquationElementStatic } from '@penx/uikit/plate-ui/inline-equation-element-static'
+import { LinkElementStatic } from '@penx/uikit/plate-ui/link-element-static'
+import { MediaPlaceholderElement } from '@penx/uikit/plate-ui/media-placeholder-element'
+import { ParagraphElementStatic } from '@penx/uikit/plate-ui/paragraph-element-static'
+import {
+  TableCellElementStatic,
+  TableCellHeaderStaticElement,
+} from '@penx/uikit/plate-ui/table-cell-element-static'
+import { TableElementStatic } from '@penx/uikit/plate-ui/table-element-static'
+import { TableRowElementStatic } from '@penx/uikit/plate-ui/table-row-element-static'
 
 export const components = {
   [BaseBoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),

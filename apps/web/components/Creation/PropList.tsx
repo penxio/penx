@@ -6,9 +6,9 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/ui/components/select'
-import { Prop, PropType } from '@/lib/theme.types'
-import { cn } from '@/lib/utils'
+} from '@penx/uikit/ui/select'
+import { Prop, PropType } from '@penx/types'
+import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import {
   CheckCircleIcon,
@@ -19,7 +19,7 @@ import {
   TextIcon,
 } from 'lucide-react'
 import { FileUpload } from '../FileUpload'
-import { Input } from '@penx/ui/components/input'
+import { Input } from '@penx/uikit/ui/input'
 import { usePanelCreationContext } from './PanelCreationProvider'
 import { SingleSelectProp } from './SingleSelectProp'
 

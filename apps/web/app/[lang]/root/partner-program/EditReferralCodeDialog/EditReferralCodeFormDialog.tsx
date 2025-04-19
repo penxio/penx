@@ -1,4 +1,4 @@
-import { Button } from '@penx/ui/components/button'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
   DialogContent,
@@ -7,8 +7,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/ui/components/dialog'
-import { trpc } from '@/lib/trpc'
+} from '@penx/uikit/ui/dialog'
+import { trpc } from '@penx/trpc-client'
 import { PenSquareIcon } from 'lucide-react'
 import { EditReferralCodeForm } from './EditReferralCodeForm'
 import { useEditReferralCodeDialog } from './useEditReferralCodeDialog'

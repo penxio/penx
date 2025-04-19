@@ -1,18 +1,18 @@
 import { useAreaContext } from '@/components/AreaContext'
-import { Checkbox } from '@penx/ui/components/checkbox'
+import { Checkbox } from '@penx/uikit/ui/checkbox'
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@penx/ui/components/context-menu'
+} from '@penx/uikit/ui/context-menu'
 import { updateCreationById } from '@/hooks/useAreaCreations'
 import { addToFavorites, removeFromFavorites } from '@/hooks/useAreaItem'
 import { updateCreation } from '@/hooks/useCreation'
 import { addPanel, updateMainPanel, usePanels } from '@/hooks/usePanels'
-import { CreationType } from '@/lib/theme.types'
+import { CreationType } from '@penx/types'
 import { PanelType, SiteCreation } from '@/lib/types'
-import { uniqueId } from '@/lib/unique-id'
+import { uniqueId } from '@penx/unique-id'
 import { Trans } from '@lingui/react/macro'
 import { CreationStatus } from '@penx/db/client'
 import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'

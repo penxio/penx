@@ -3,11 +3,11 @@ import { useAreaContext } from '@/components/AreaContext'
 import {
   ContextMenuContent,
   ContextMenuItem,
-} from '@penx/ui/components/context-menu'
-import { MenuItem } from '@penx/ui/components/menu/MenuItem'
-import { Menu } from '@penx/ui/components/menu/Menu'
+} from '@penx/uikit/ui/context-menu'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+import { Menu } from '@penx/uikit/ui/menu/Menu'
 import { removeWidget } from '@/hooks/useAreaItem'
-import { WidgetType } from '@/lib/constants'
+import { WidgetType } from '@penx/constants'
 import { Widget } from '@/lib/types'
 import { Trans } from '@lingui/react/macro'
 import { PanelLeft, PencilIcon, Rows4Icon, TrashIcon } from 'lucide-react'
