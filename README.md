@@ -1,1 +1,3 @@
 # penx
+
+ionic serve
