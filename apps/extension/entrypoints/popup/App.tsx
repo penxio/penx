@@ -1,35 +1,38 @@
-import { useState } from 'react';
-import reactLogo from '@/assets/react.svg';
-import wxtLogo from '/wxt.svg';
-import './App.css';
+import { useState } from 'react'
+import reactLogo from '@/assets/react.svg'
+import { LoadingDots } from '@/components/icons/loading-dots'
+import { PopupContent } from '@/components/popup/PopupContent'
+import { Providers } from '@/components/providers'
+import { useSession } from '@/hooks/useSession'
+import { Button } from '@penx/uikit/ui/button'
+import wxtLogo from '/wxt.svg'
 
-function App() {
-  const [count, setCount] = useState(0);
+// import './style.css'
+function IndexPopupContent() {
+  const { session, isLoading } = useSession()
+  // console.log('=======session:', session, 'isLoading:', isLoading)
 
-  return (
-    <>
-      <div>
-        <a href="https://wxt.dev" target="_blank">
-          <img src={wxtLogo} className="logo" alt="WXT logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  if (isLoading) {
+    return (
+      <div className="item-center bg-background flex w-full flex-1 justify-center">
+        <LoadingDots className="bg-foreground"></LoadingDots>
       </div>
-      <h1>WXT + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the WXT and React logos to learn more
-      </p>
-    </>
-  );
+    )
+  }
+
+  if (!session) return <Login />
+
+  return <PopupContent />
 }
 
-export default App;
+function App() {
+  return (
+    <Providers>
+      <ThemeProvider className="flex min-h-80 w-80 flex-col">
+        <IndexPopupContent />
+      </ThemeProvider>
+    </Providers>
+  )
+}
+
+export default App

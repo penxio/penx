@@ -1,9 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
 @source "../../../apps/**/*.{ts,tsx}";
 @source "../../../components/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
 
-@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4";
 /* @plugin 'tailwindcss-animate'; */
@@ -154,7 +155,6 @@
   }
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -163,7 +163,6 @@
     @apply bg-background text-foreground;
   }
 }
-
 
 .shk-player {
   border: 1px solid #ddd;

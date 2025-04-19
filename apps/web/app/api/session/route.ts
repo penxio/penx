@@ -1,4 +1,3 @@
-import { NETWORK, ROOT_DOMAIN } from '@penx/constants'
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import {
@@ -32,6 +31,7 @@ import {
   validateSiweMessage,
   type SiweMessage,
 } from 'viem/siwe'
+import { NETWORK, ROOT_DOMAIN } from '@penx/constants'
 import { prisma } from '@penx/db'
 import {
   BillingCycle,
@@ -356,7 +356,13 @@ export async function GET() {
     return Response.json({})
   }
 
-  return Response.json(session)
+  return Response.json(session, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
 }
 
 // logout

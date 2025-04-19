@@ -1,6 +1,12 @@
 {
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@penx/uikit/*": ["../../packages/uikit/src/*"]
+    },
     "allowImportingTsExtensions": true,
     "jsx": "react-jsx"
   }
