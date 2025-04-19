@@ -2,7 +2,7 @@
 
 import TextareaAutosize from 'react-textarea-autosize'
 import { useSiteContext } from '@/components/SiteContext'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@penx/ui/components/checkbox'
 import {
   refetchAreaCreations,
   updateCreationById,

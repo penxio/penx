@@ -1,7 +1,7 @@
 'use client'
 
 import GridLayout from 'react-grid-layout'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { Link } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'

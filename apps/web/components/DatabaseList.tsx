@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useDatabases } from '@/hooks/useDatabases'
 import { bgColorMaps } from '@/lib/color-helper'
 import { Link } from '@/lib/i18n'

@@ -5,18 +5,14 @@ import { useAreaDialog } from '@/components/AreaDialog/useAreaDialog'
 import { ProfileAvatar } from '@/components/Profile/ProfileAvatar'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { MenuItem } from '@/components/ui/menu'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
 import { resetPanels } from '@/hooks/usePanels'
 import { useRouter } from '@/lib/i18n'
 import { cn, getUrl } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Button } from '@penx/ui/components/button'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/ui/components/popover'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
 import { useParams } from 'next/navigation'

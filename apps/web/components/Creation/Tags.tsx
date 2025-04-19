@@ -6,7 +6,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { Creation, CreationTagWithTag } from '@/hooks/useCreation'
 import { useSiteTags } from '@/hooks/useSiteTags'
 import { getColorByName, getTextColorByName } from '@/lib/color-helper'
@@ -20,8 +20,8 @@ import { Command } from 'cmdk'
 import { HashIcon, Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { LoadingDots } from '../icons/loading-dots'
-import { Badge } from '../ui/badge'
-import { Button } from '../ui/button'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 interface Props {

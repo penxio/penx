@@ -6,12 +6,12 @@ import { useAddNoteDialog } from '@/components/Creation/AddNoteDialog/useAddNote
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { Creation, updateCreationState } from '@/hooks/useCreation'
 import { getCreationIcon } from '@/lib/getCreationIcon'
 import { getMoldName } from '@/lib/getMoldName'

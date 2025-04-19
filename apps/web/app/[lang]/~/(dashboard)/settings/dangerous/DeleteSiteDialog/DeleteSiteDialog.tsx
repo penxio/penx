@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogContent,
@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { Plus } from 'lucide-react'
 import { DeleteSiteForm } from './DeleteSiteForm'
 import { useDeleteSiteDialog } from './useDeleteSiteDialog'

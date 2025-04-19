@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Form,
   FormControl,
@@ -11,8 +11,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { CatalogueNodeType } from '@/lib/model'
 import { zodResolver } from '@hookform/resolvers/zod'

@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 import { cn, getEnsAvatar, getUrl } from '@/lib/utils'
 
 function hashCode(str: string) {

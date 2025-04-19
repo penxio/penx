@@ -4,19 +4,19 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { useRouter } from '@/lib/i18n'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react/macro'
+import { Button } from '@penx/ui/components/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { extractErrorMessage } from '@/lib/extractErrorMessage'
-import { useRouter } from '@/lib/i18n'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useAuthStatus } from './useAuthStatus'

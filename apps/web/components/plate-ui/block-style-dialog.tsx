@@ -1,5 +1,5 @@
 import { memo, useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogContent,
@@ -8,11 +8,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { atom, useAtom } from 'jotai'
 import { Path, Transforms } from 'slate'
 import { useSlate, useSlateStatic } from 'slate-react'
-import { Textarea } from '../ui/textarea'
+import { Textarea } from '@penx/ui/components/textarea'
 
 type State = {
   isOpen: boolean

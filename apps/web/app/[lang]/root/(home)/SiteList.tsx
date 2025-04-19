@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import { useHomeSites } from '@/hooks/useHomeSites'
 import { MySite } from '@/lib/types'
 import { cn } from '@/lib/utils'

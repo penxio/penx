@@ -1,9 +1,9 @@
 'use client'
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
+import { Separator } from '@penx/ui/components/separator'
 import { Prop } from '@/lib/theme.types'
 import { api, trpc } from '@/lib/trpc'
 import { RouterOutputs } from '@/server/_app'

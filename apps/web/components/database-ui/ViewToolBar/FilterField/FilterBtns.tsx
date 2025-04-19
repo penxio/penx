@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { IViewNode, ViewColumn } from '@/lib/model'
 import { Filter } from '@/lib/types'
 import { Plus } from 'lucide-react'

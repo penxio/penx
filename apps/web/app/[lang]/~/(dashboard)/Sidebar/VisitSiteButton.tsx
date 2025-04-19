@@ -1,13 +1,13 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@penx/ui/components/tooltip'
 import { ROOT_DOMAIN } from '@/lib/constants'
 import { getSiteDomain } from '@/lib/getSiteDomain'
 import { Trans } from '@lingui/react/macro'

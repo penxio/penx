@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { Site } from '@/lib/theme.types'
 import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'

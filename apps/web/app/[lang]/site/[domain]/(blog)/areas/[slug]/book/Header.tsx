@@ -1,6 +1,6 @@
 import { Profile } from '@/components/Profile/Profile'
 import { MobileSidebarSheet } from '@/components/theme-ui/MobileSidebar/MobileSidebarSheet'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 import { Link } from '@/lib/i18n'
 import { AreaWithCreations, Site } from '@/lib/theme.types'
 import { cn, getUrl } from '@/lib/utils'

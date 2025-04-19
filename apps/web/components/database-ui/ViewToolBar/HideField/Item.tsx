@@ -1,7 +1,7 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
-import { Switch } from '@/components/ui/switch'
+import { Switch } from '@penx/ui/components/switch'
 import { ViewColumn } from '@/lib/types'
 import { cn } from '@/lib/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'

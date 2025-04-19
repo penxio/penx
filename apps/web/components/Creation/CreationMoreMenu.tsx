@@ -5,7 +5,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { Creation } from '@/hooks/useCreation'
 import { editorDefaultValue } from '@/lib/constants'
@@ -18,8 +18,8 @@ import { toast } from 'sonner'
 import { useDeletePageDialog } from '../DeletePageDialog/useDeleteDatabaseDialog'
 import { useCreateEditor } from '../editor/use-create-editor'
 import { useSiteContext } from '../SiteContext'
-import { Button } from '../ui/button'
-import { MenuItem } from '../ui/menu'
+import { Button } from '@penx/ui/components/button'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
 import { useDeletePostDialog } from './DeletePostDialog/useDeletePostDialog'
 import { usePublishDialog } from './PublishDialog/usePublishDialog'
 

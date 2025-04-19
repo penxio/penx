@@ -1,7 +1,7 @@
 'use client'
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { useSiteTags } from '@/hooks/useSiteTags'
 import { useSubscribers } from '@/hooks/useSubscribers'
 import { api } from '@/lib/trpc'

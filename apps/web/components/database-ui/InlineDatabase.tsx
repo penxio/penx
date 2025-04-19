@@ -1,5 +1,5 @@
 import { DATABASE_TOOLBAR_HEIGHT, WORKBENCH_NAV_HEIGHT } from '@/lib/constants'
-import { Separator } from '../ui/separator'
+import { Separator } from '@penx/ui/components/separator'
 import { DatabaseProvider } from './DatabaseProvider'
 import { TableName } from './TableName'
 import { ViewList } from './ViewNav/ViewList'

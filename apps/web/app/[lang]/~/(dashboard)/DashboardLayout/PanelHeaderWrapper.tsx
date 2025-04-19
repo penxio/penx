@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { SidebarTrigger } from '@/components/ui/sidebar'
+import { SidebarTrigger } from '@penx/ui/components/sidebar'
 
 export function PanelHeaderWrapper({
   children,

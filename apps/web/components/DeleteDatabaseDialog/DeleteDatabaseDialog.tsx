@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogClose,
@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { useDatabases } from '@/hooks/useDatabases'
 import { api } from '@/lib/trpc'
 import { toast } from 'sonner'

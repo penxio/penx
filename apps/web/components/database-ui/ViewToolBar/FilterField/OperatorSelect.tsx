@@ -4,7 +4,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { Filter, OperatorType } from '@/lib/types'
 import { Menu, MenuItem } from '@ariakit/react'
 import { ChevronDown } from 'lucide-react'

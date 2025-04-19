@@ -1,7 +1,7 @@
 'use client'
 
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogClose,
@@ -9,7 +9,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { trpc } from '@/lib/trpc'
 import { toast } from 'sonner'

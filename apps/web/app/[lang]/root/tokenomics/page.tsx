@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { addressMap } from '@/lib/address'
 import { Link } from '@/lib/i18n'
 import { cn } from '@/lib/utils'

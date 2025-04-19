@@ -5,7 +5,7 @@ import { Creation } from '@/lib/theme.types'
 import { cn, getUrl } from '@/lib/utils'
 import { Player } from 'shikwasa'
 import { useSiteContext } from '../SiteContext'
-import { Skeleton } from '../ui/skeleton'
+import { Skeleton } from '@penx/ui/components/skeleton'
 
 interface Props {
   creation: Creation

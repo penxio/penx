@@ -4,7 +4,7 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button, ButtonProps } from '@/components/ui/button'
+import { Button, ButtonProps } from '@penx/ui/components/button'
 import {
   GOOGLE_CLIENT_ID,
   GOOGLE_DRIVE_OAUTH_REDIRECT_URI,

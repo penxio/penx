@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 import { Link } from '@/lib/i18n'
 import { Friend, LayoutItem, Project, Site } from '@/lib/theme.types'
 import { getUrl } from '@/lib/utils'

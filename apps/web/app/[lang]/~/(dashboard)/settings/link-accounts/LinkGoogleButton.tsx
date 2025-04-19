@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   GOOGLE_CLIENT_ID,
   LINK_GOOGLE_ACCOUNT_REDIRECT_URI,

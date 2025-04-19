@@ -2,9 +2,9 @@
 
 import { IconGoogle } from '@/components/icons/IconGoogle'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback } from '@penx/ui/components/avatar'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
 import { useMyAccounts } from '@/hooks/useMyAccounts'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { trpc } from '@/lib/trpc'

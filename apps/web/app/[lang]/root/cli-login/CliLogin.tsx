@@ -3,7 +3,7 @@
 import React from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { trpc } from '@/lib/trpc'
 import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'

@@ -1,7 +1,7 @@
 'use client'
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { api, trpc } from '@/lib/trpc'
 import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { NumberInput } from '@/components/NumberInput'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Form,
   FormControl,
@@ -13,8 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
 import {
   Select,
   SelectContent,
@@ -23,7 +23,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@penx/ui/components/select'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { Prop, PropType } from '@/lib/theme.types'
 import { api, trpc } from '@/lib/trpc'

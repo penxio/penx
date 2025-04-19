@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
-import { Label } from '@/components/ui/label'
-import { Switch } from '@/components/ui/switch'
+import { Label } from '@penx/ui/components/label'
+import { Switch } from '@penx/ui/components/switch'
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { CreationStatus } from '@/lib/constants'
 import { Trans } from '@lingui/react/macro'
 import { PostItem } from './PostItem'

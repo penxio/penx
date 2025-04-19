@@ -11,7 +11,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { getGoogleUserInfo } from '@/lib/getGoogleUserInfo'
 import { useRouter } from '@/lib/i18n'
 import { useSearchParams } from 'next/navigation'

@@ -1,7 +1,7 @@
 'use client'
 
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { api, trpc } from '@/lib/trpc'
 import { TransferMethod } from '@penx/db/client'
 import { format } from 'date-fns'

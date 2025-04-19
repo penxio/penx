@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { PlateEditor } from '@/components/editor/plate-editor'
 import { useSiteContext } from '@/components/SiteContext'
-import { Input } from '@/components/ui/input'
+import { Input } from '@penx/ui/components/input'
 import { useSite } from '@/hooks/useSite'
 import { editorDefaultValue } from '@/lib/constants'
 import { LayoutItem } from '@/lib/theme.types'

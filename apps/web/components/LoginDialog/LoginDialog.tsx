@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { Trans } from '@lingui/react/macro'
 import { LoginDialogContent } from './LoginDialogContent'
 import { RegisterForm } from './RegisterForm'

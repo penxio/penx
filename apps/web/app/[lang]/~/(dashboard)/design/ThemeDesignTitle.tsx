@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@penx/ui/components/badge'
 import {
   Select,
   SelectContent,
@@ -11,8 +11,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+} from '@penx/ui/components/select'
+import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
 import { trpc } from '@/lib/trpc'
 import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'

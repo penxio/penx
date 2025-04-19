@@ -1,6 +1,6 @@
 import { Profile } from '@/components/Profile/Profile'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Button } from '@penx/ui/components/button'
 import { Link } from '@/lib/i18n'
 import { Site } from '@/lib/theme.types'
 import { cn, getUrl } from '@/lib/utils'

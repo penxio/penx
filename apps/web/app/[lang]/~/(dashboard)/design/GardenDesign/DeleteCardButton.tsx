@@ -1,7 +1,7 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useSite } from '@/hooks/useSite'
 import { LayoutItem } from '@/lib/theme.types'
 import { trpc } from '@/lib/trpc'

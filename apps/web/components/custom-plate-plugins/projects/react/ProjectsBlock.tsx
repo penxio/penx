@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 import { Project } from '@/lib/theme.types'
 import { cn, getUrl } from '@/lib/utils'
 import { ArrowUpRight } from 'lucide-react'

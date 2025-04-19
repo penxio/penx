@@ -1,11 +1,11 @@
 import { useAreaContext } from '@/components/AreaContext'
-import { Checkbox } from '@/components/ui/checkbox'
+import { Checkbox } from '@penx/ui/components/checkbox'
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@/components/ui/context-menu'
+} from '@penx/ui/components/context-menu'
 import { updateCreationById } from '@/hooks/useAreaCreations'
 import { addToFavorites, removeFromFavorites } from '@/hooks/useAreaItem'
 import { updateCreation } from '@/hooks/useCreation'

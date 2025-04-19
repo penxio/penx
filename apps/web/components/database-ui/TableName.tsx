@@ -1,12 +1,13 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Menu, MenuItem } from '@/components/ui/menu'
+import { Input } from '@penx/ui/components/input'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
+import { Menu } from '@penx/ui/components/menu/Menu'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Separator } from '@/components/ui/separator'
+} from '@penx/ui/components/popover'
+import { Separator } from '@penx/ui/components/separator'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { bgColorMaps, textColorMaps } from '@/lib/color-helper'
 import { cn } from '@/lib/utils'

@@ -10,7 +10,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@penx/ui/components/select'
 import { useSite } from '@/hooks/useSite'
 import { Link } from '@/lib/i18n'
 import { LayoutItem } from '@/lib/theme.types'

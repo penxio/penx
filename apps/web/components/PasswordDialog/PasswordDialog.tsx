@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { PasswordForm } from './PasswordForm'
 import { usePasswordDialog } from './usePasswordDialog'
 

@@ -42,9 +42,10 @@
         "name": "next"
       }
     ],
-    // "baseUrl": ".",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@penx/ui/*": ["../../packages/ui/src/*"]
     }
   },
   "include": [

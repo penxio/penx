@@ -3,7 +3,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import type { ImportResult } from '@/server/routers/subscriber'
 import { CheckCircle2, Loader2 } from 'lucide-react'
 

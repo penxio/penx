@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 import { MySite } from '@/lib/types'
 import { getUrl } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'

@@ -5,7 +5,7 @@ import { useFieldArray, useForm } from 'react-hook-form'
 import { PlateEditor } from '@/components/editor/plate-editor'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { NumberInput } from '@/components/NumberInput'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Form,
   FormControl,
@@ -14,8 +14,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
 import { editorDefaultValue } from '@/lib/constants'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { api, trpc } from '@/lib/trpc'

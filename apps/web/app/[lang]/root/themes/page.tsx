@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge'
+import { Badge } from '@penx/ui/components/badge'
 import { addressMap } from '@/lib/address'
 import { Globe } from 'lucide-react'
 import { ThemeList } from './ThemeList'

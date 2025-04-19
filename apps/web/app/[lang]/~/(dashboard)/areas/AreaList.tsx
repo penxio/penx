@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { Image } from '@/components/Image'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import { trpc } from '@/lib/trpc'
 import { AreaItem } from './AreaItem'
 

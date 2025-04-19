@@ -7,8 +7,8 @@ import { trpc } from '@/lib/trpc'
 import { toast } from 'sonner'
 import { LoadingDots } from './icons/loading-dots'
 import { useSubscriptionGuideDialog } from './SubscriptionGuideDialog/useSubscriptionGuideDialog'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
+import { Button } from '@penx/ui/components/button'
+import { Input } from '@penx/ui/components/input'
 
 export function UseCouponCode() {
   const [couponCode, setCouponCode] = useState('')

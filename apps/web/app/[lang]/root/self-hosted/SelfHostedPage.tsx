@@ -3,7 +3,7 @@
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { LoginButton } from '@/components/LoginButton'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { api, trpc } from '@/lib/trpc'
 import { Trans } from '@lingui/react/macro'
 import { ApiTokenDialog } from './ApiTokenDialog/ApiTokenDialog'

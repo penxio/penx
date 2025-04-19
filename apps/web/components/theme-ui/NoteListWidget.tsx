@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { ArrowUpRight } from 'lucide-react'
-import { Badge } from '../ui/badge'
+import { Badge } from '@penx/ui/components/badge'
 import { ContentRender } from './ContentRender'
 import { PageTitle } from './PageTitle'
 

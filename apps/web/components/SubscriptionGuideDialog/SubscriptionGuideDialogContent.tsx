@@ -2,7 +2,7 @@
 
 import { useRouter } from '@/lib/i18n'
 import { Check } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button } from '@penx/ui/components/button'
 import { UseCouponCode } from '../UseCouponCode'
 import { useSubscriptionGuideDialog } from './useSubscriptionGuideDialog'
 

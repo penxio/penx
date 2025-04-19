@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { Site } from '@/lib/theme.types'
 import { Trans } from '@lingui/react/macro'
 import { PencilIcon, PenToolIcon } from 'lucide-react'

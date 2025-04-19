@@ -3,8 +3,9 @@ import { useAreaContext } from '@/components/AreaContext'
 import {
   ContextMenuContent,
   ContextMenuItem,
-} from '@/components/ui/context-menu'
-import { Menu, MenuItem } from '@/components/ui/menu'
+} from '@penx/ui/components/context-menu'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
+import { Menu } from '@penx/ui/components/menu/Menu'
 import { removeWidget } from '@/hooks/useAreaItem'
 import { WidgetType } from '@/lib/constants'
 import { Widget } from '@/lib/types'

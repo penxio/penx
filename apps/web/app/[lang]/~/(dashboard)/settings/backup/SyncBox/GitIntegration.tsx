@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Input } from '@/components/ui/input'
+import { Input } from '@penx/ui/components/input'
 import { trpc } from '@/lib/trpc'
 import { useDebouncedCallback } from 'use-debounce'
 import { GithubConnectedBox } from './GitHubConnectedBox'

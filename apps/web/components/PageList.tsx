@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { usePages } from '@/hooks/usePages'
 import { Link } from '@/lib/i18n'
 import { cn } from '@/lib/utils'

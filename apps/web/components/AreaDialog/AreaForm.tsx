@@ -7,7 +7,7 @@ import { FileUpload } from '@/components/FileUpload'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { NumberInput } from '@/components/NumberInput'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Form,
   FormControl,
@@ -16,10 +16,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
+import { Textarea } from '@penx/ui/components/textarea'
+import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
 import { useAreaItem } from '@/hooks/useAreaItem'
 import { resetPanels, updatePanels } from '@/hooks/usePanels'
 import { useSite } from '@/hooks/useSite'

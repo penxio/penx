@@ -7,7 +7,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/components/ui/hover-card'
+} from '@penx/ui/components/hover-card'
 import { useMounted } from '@/hooks/use-mounted'
 import { useAreaCreations } from '@/hooks/useAreaCreations'
 import { Creation, useCreation } from '@/hooks/useCreation'

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useAddCreation } from '@/hooks/useAddCreation'
 import { CreationType } from '@/lib/theme.types'
 import { PlusIcon } from 'lucide-react'

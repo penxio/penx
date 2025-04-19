@@ -1,8 +1,8 @@
 'use client'
 
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@penx/ui/components/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@penx/ui/components/card'
 import { trpc } from '@/lib/trpc'
 import { Trans } from '@lingui/react/macro'
 import { NavigationList } from './NavigationList'

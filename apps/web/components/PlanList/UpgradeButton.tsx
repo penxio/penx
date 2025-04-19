@@ -2,7 +2,7 @@
 
 import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { usePathname, useRouter } from '@/lib/i18n'
 import { trpc } from '@/lib/trpc'
 import { PlanType } from '@penx/db/client'

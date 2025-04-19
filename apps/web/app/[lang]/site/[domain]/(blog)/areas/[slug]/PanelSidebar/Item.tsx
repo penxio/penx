@@ -3,7 +3,7 @@
 import React, { forwardRef, useState } from 'react'
 import { useAreaContext } from '@/components/AreaContext'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { toggleCollapsed } from '@/hooks/useAreaItem'
 import { WidgetType } from '@/lib/constants'
 import { getWidgetName } from '@/lib/getWidgetName'

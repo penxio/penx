@@ -6,7 +6,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@penx/ui/components/select'
 import { Prop, PropType } from '@/lib/theme.types'
 import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'
@@ -19,7 +19,7 @@ import {
   TextIcon,
 } from 'lucide-react'
 import { FileUpload } from '../FileUpload'
-import { Input } from '../ui/input'
+import { Input } from '@penx/ui/components/input'
 import { usePanelCreationContext } from './PanelCreationProvider'
 import { SingleSelectProp } from './SingleSelectProp'
 

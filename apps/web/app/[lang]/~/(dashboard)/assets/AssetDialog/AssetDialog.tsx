@@ -1,14 +1,14 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { Switch } from '@/components/ui/switch'
+} from '@penx/ui/components/dialog'
+import { Switch } from '@penx/ui/components/switch'
 import { useAssets } from '@/hooks/useAssets'
 import { useLoadAsset } from '@/hooks/useLoadAsset'
 import { placeholderBlurhash, STATIC_URL } from '@/lib/constants'

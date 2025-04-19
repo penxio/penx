@@ -1,6 +1,6 @@
 import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogContent,
@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { Trans } from '@lingui/react/macro'
 import { SendIcon } from 'lucide-react'
 import { SubmitFriendLinkForm } from './SubmitFriendLinkForm'

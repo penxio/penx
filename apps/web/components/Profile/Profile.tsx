@@ -9,8 +9,8 @@ import { Trans } from '@lingui/react/macro'
 import { LoginButton } from '../LoginButton'
 import { LoginDialog } from '../LoginDialog/LoginDialog'
 import { useLoginDialog } from '../LoginDialog/useLoginDialog'
-import { Avatar, AvatarFallback } from '../ui/avatar'
-import { Button, ButtonProps } from '../ui/button'
+import { Avatar, AvatarFallback } from '@penx/ui/components/avatar'
+import { Button, ButtonProps } from '@penx/ui/components/button'
 import { ProfilePopover } from './ProfilePopover'
 
 interface Props {

@@ -1,7 +1,7 @@
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { useSiteContext } from '@/components/SiteContext'
 import { Github } from '@/components/theme-ui/SocialIcon/icons'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { updateSiteState } from '@/hooks/useSite'
 import { queryClient } from '@/lib/queryClient'
 import { api } from '@/lib/trpc'

@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { Site } from '@/lib/theme.types'
 import { SubscribeNewsletterForm } from './SubscribeNewsletterForm'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'

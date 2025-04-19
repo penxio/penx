@@ -2,7 +2,7 @@
 
 import { DATABASE_TOOLBAR_HEIGHT, WORKBENCH_NAV_HEIGHT } from '@/lib/constants'
 import { RouterOutputs } from '@/server/_app'
-import { Separator } from '../ui/separator'
+import { Separator } from '@penx/ui/components/separator'
 import { DatabaseProvider } from './DatabaseProvider'
 import { TableName } from './TableName'
 import { AddViewBtn } from './ViewNav/AddViewBtn'

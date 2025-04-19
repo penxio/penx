@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
+} from '@penx/ui/components/dialog'
 import { useWithdrawDialog } from './useWithdrawDialog'
 import { WithdrawForm } from './WithdrawForm'
 

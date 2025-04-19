@@ -5,13 +5,13 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@penx/ui/components/tooltip'
 import { useCollaborators } from '@/hooks/useCollaborators'
 import { Creation, updateCreationState } from '@/hooks/useCreation'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
@@ -24,7 +24,7 @@ import { Command } from 'cmdk'
 import { Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useSiteContext } from '../SiteContext'
-import { Button } from '../ui/button'
+import { Button } from '@penx/ui/components/button'
 import { UserAvatar } from '../UserAvatar'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 

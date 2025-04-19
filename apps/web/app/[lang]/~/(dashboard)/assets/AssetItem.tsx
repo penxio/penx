@@ -1,6 +1,6 @@
 'use client'
 
-import { Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import { Asset } from '@/hooks/useAssets'
 import { useLoadAsset } from '@/hooks/useLoadAsset'
 import { placeholderBlurhash } from '@/lib/constants'

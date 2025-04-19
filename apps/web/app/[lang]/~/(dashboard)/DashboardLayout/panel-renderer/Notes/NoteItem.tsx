@@ -5,8 +5,8 @@ import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { Tags } from '@/components/Creation/Tags'
 import { PlateEditor } from '@/components/editor/plate-editor'
 import { useSiteContext } from '@/components/SiteContext'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
 import {
   refetchAreaCreations,
   useAreaCreations,

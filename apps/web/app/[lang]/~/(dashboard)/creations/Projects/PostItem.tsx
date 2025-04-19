@@ -5,8 +5,8 @@ import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { PodcastTips } from '@/components/theme-ui/PodcastTips'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
 import {
   refetchAreaCreations,
   useAreaCreations,

@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Form,
   FormControl,
@@ -11,11 +11,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Switch } from '@/components/ui/switch'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
+import { Label } from '@penx/ui/components/label'
+import { RadioGroup, RadioGroupItem } from '@penx/ui/components/radio-group'
+import { Switch } from '@penx/ui/components/switch'
 import { updateSiteState } from '@/hooks/useSite'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { supportLanguages } from '@/lib/supportLanguages'

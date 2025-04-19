@@ -4,8 +4,8 @@ import { useMemo } from 'react'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
 import {
   Select,
   SelectContent,
@@ -14,7 +14,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@penx/ui/components/select'
 import {
   Table,
   TableBody,
@@ -22,7 +22,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { refetchAreaCreations } from '@/hooks/useAreaCreations'
 import { CreationStatus, ROOT_DOMAIN } from '@/lib/constants'
 import { creationToFriend } from '@/lib/creationToFriend'

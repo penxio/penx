@@ -5,7 +5,7 @@ import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '@/components/ui/sidebar'
+} from '@penx/ui/components/sidebar'
 import { useCollaborators } from '@/hooks/useCollaborators'
 import { useSiteTags } from '@/hooks/useSiteTags'
 import { AppSidebar } from '../Sidebar/app-sidebar'

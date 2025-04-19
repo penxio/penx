@@ -3,7 +3,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { ColumnType } from '@/lib/types'
 import { ChevronDown, RefreshCcw } from 'lucide-react'
 import { FieldIcon } from '../../shared/FieldIcon'

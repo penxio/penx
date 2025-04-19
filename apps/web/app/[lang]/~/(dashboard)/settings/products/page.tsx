@@ -1,7 +1,7 @@
 'use client'
 
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useSite } from '@/hooks/useSite'
 import { useProductDialog } from './ProductDialog/useProductDialog'
 import { ProductList } from './ProductList'

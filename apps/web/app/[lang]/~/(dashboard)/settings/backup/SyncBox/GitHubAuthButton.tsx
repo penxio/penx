@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { Github } from '@/components/theme-ui/SocialIcon/icons'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 

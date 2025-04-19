@@ -11,18 +11,18 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
+} from '@penx/ui/components/alert-dialog'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip'
+} from '@penx/ui/components/tooltip'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { LoadingDots } from './icons/loading-dots'
-import { Button } from './ui/button'
+import { Button } from '@penx/ui/components/button'
 
 interface Props {
   title: React.ReactNode

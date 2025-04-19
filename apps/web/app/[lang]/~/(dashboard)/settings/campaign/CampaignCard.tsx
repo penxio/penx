@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Button } from '@/components/ui/button'
-import { Progress } from '@/components/ui/progress'
+import { Button } from '@penx/ui/components/button'
+import { Progress } from '@penx/ui/components/progress'
 import { getUrl } from '@/lib/utils'
 import { Campaign } from '@penx/db/client'
 import { PenIcon, Plus } from 'lucide-react'

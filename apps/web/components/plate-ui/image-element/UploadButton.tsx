@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '@penx/ui/components/button'
+import { Input } from '@penx/ui/components/input'
 import { cn } from '@/lib/utils'
 import { PenIcon, UploadCloud } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from '../popover'

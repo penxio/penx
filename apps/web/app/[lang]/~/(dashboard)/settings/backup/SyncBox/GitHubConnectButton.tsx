@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { updateSiteState } from '@/hooks/useSite'
 import { api } from '@/lib/trpc'
 import { toast } from 'sonner'

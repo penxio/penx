@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '@penx/ui/components/button'
+import { Input } from '@penx/ui/components/input'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Separator } from '@/components/ui/separator'
+} from '@penx/ui/components/popover'
+import { Separator } from '@penx/ui/components/separator'
 import { IViewNode } from '@/lib/model'
 import { MenuItem } from '@ariakit/react'
 import { View } from '@penx/db/client'

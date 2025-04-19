@@ -1,13 +1,13 @@
 'use client'
 
 import { Suspense } from 'react'
-import { Skeleton } from '@/components/ui/skeleton'
 import { UserAvatar } from '@/components/UserAvatar'
 import { useQueryLogoImages } from '@/hooks/useLogoImages'
 import { useSpaces } from '@/hooks/useSpaces'
 import { Link } from '@/lib/i18n'
 import { precision } from '@/lib/math'
 import { cn } from '@/lib/utils'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import { SpaceLogo } from './SpaceLogo'
 
 export function SpaceList() {

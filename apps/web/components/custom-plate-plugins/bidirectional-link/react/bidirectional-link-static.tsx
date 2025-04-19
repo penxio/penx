@@ -7,7 +7,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/components/ui/hover-card'
+} from '@penx/ui/components/hover-card'
 import { Link } from '@/lib/i18n'
 import { SiteCreation } from '@/lib/types'
 import { cn } from '@udecode/cn'

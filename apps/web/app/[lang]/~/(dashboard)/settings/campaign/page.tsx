@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { isAllowCampaign } from '@/lib/isAllowCampaign'
 import { trpc } from '@/lib/trpc'
 import { getUrl } from '@/lib/utils'

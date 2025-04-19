@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { toast } from 'sonner'
 
 export function AddCreationTypeButton() {

@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.tsx"
+    "./globals.css": "./src/styles/globals.css",
+    "./postcss.config": "./postcss.config.mjs",
+    "./lib/*": "./src/lib/*.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -11,11 +15,51 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.311",
+    "@iconify/tailwind4": "^1.0.4",
     "@penx/eslint-config": "workspace:*",
     "@penx/typescript-config": "workspace:*",
-    "@turbo/gen": "^2.5.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "4.0.17",
+    "@tailwindcss/typography": "^0.5.16",
     "eslint": "^9.24.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.0.4",
     "typescript": "5.8.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@penx/utils": "workspace:*",
+    "@radix-ui/react-accordion": "^1.2.3",
+    "@radix-ui/react-alert-dialog": "^1.1.6",
+    "@radix-ui/react-avatar": "^1.1.3",
+    "@radix-ui/react-checkbox": "^1.1.4",
+    "@radix-ui/react-collapsible": "^1.1.3",
+    "@radix-ui/react-context-menu": "^2.2.6",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-hover-card": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-popover": "^1.1.6",
+    "@radix-ui/react-progress": "^1.1.2",
+    "@radix-ui/react-radio-group": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.2.3",
+    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slot": "^1.1.2",
+    "@radix-ui/react-switch": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-toggle": "^1.1.2",
+    "@radix-ui/react-toggle-group": "^1.1.2",
+    "@radix-ui/react-toolbar": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.8",
+    "class-variance-authority": "0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.5.1",
+    "lucide-react": "0.474.0",
+    "react-day-picker": "8.10.1",
+    "react-hook-form": "^7.54.2",
+    "react-resizable-panels": "^2.1.7",
+    "tw-animate-css": "^1.2.4",
+    "tailwind-merge": "3.0.1"
+  }
 }

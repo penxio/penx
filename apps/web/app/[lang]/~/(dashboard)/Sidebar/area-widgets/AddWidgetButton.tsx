@@ -8,13 +8,13 @@ import LoadingCircle from '@/components/icons/loading-circle'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Separator } from '@/components/ui/separator'
+} from '@penx/ui/components/popover'
+import { Separator } from '@penx/ui/components/separator'
 import { addWidget } from '@/hooks/useAreaItem'
 import { editorDefaultValue, WidgetType } from '@/lib/constants'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'

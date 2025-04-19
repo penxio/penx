@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Badge } from '@penx/ui/components/badge'
 import { Friend } from '@/lib/theme.types'
 import { cn, getUrl } from '@/lib/utils'
 import { ArrowUpRight } from 'lucide-react'

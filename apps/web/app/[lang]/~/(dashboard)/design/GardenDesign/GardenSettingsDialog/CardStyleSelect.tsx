@@ -1,6 +1,6 @@
 'use client'
 
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { ToggleGroup, ToggleGroupItem } from '@penx/ui/components/toggle-group'
 import { CardStyle } from '@/lib/constants'
 import { Trans } from '@lingui/react/macro'
 

@@ -320,7 +320,7 @@ msgstr "复制链接"
 msgid "Coupons"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/Sidebar/AreasPopover/AreasPopover.tsx:104
+#: app/[lang]/~/(dashboard)/Sidebar/AreasPopover/AreasPopover.tsx:100
 msgid "Create area"
 msgstr ""
 
@@ -382,7 +382,7 @@ msgstr "默认"
 
 #: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:156
 #: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:186
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:59
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:60
 #: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:87
 #: components/Creation/CreationMoreMenu.tsx:105
 #: components/Creation/DeletePostDialog/DeletePostDialog.tsx:74
@@ -767,7 +767,7 @@ msgstr ""
 msgid "Once deleted, You can't undo this action."
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:37
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:38
 #: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:79
 msgid "Open in new panel"
 msgstr "在新面板打开"
@@ -974,7 +974,7 @@ msgstr "注册 PenX"
 msgid "Remove from favorites"
 msgstr "移除收藏"
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:65
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:66
 msgid "Rename"
 msgstr "重命名"
 
@@ -1037,7 +1037,7 @@ msgstr "设置"
 msgid "Shadow"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:49
+#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:50
 msgid "Show all"
 msgstr ""
 

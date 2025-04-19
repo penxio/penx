@@ -3,7 +3,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { CatalogueNode } from '@/lib/catalogue'
 import EmojiPicker, { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { File } from 'lucide-react'

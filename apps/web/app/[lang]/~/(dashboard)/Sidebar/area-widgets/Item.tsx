@@ -3,13 +3,13 @@
 import React, { forwardRef, useState } from 'react'
 import { useAreaContext } from '@/components/AreaContext'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@/components/ui/context-menu'
+} from '@penx/ui/components/context-menu'
 import { useAddCreation } from '@/hooks/useAddCreation'
 import { toggleCollapsed } from '@/hooks/useAreaItem'
 import { openWidgetPanel } from '@/hooks/usePanels'

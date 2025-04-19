@@ -2,7 +2,7 @@
 
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { Separator } from '@/components/ui/separator'
+import { Separator } from '@penx/ui/components/separator'
 import { useAccessTokens } from '@/hooks/useAccessTokens'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'

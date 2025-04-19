@@ -2,7 +2,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { bgColorMaps, textColorMaps } from '@/lib/color-helper'
 import { cn } from '@/lib/utils'
 import { PopoverClose } from '@radix-ui/react-popover'

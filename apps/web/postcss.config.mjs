@@ -1,1 +1,1 @@
-export default { plugins: { '@tailwindcss/postcss': {} } };
+export { default } from "@penx/ui/postcss.config";

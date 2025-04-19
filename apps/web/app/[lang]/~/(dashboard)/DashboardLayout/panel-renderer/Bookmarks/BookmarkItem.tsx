@@ -5,14 +5,14 @@ import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { Image } from '@/components/Image'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
+import { Calendar } from '@penx/ui/components/calendar'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import {
   refetchAreaCreations,
   useAreaCreations,

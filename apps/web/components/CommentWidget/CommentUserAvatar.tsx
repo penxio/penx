@@ -4,7 +4,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/components/ui/hover-card'
+} from '@penx/ui/components/hover-card'
 import { UserAvatar } from '@/components/UserAvatar'
 import { ROOT_DOMAIN } from '@/lib/constants'
 import {
@@ -17,7 +17,7 @@ import { getUrl } from '@/lib/utils'
 import { Comment, User } from '@penx/db/client'
 import { ArrowUpRight } from 'lucide-react'
 import { LoadingDots } from '../icons/loading-dots'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 
 interface Props {
   user: User

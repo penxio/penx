@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEvent } from 'react'
-import { Input } from '@/components/ui/input'
+import { Input } from '@penx/ui/components/input'
 import { Filter } from '@/lib/types'
 import { Column } from '@penx/db/client'
 import { FieldSelect } from './FieldSelect'

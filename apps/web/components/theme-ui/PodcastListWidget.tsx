@@ -3,7 +3,7 @@ import { Creation, Site } from '@/lib/theme.types'
 import { cn } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
-import { Badge } from '../ui/badge'
+import { Badge } from '@penx/ui/components/badge'
 import { PageTitle } from './PageTitle'
 import { PodcastTips } from './PodcastTips'
 

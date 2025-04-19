@@ -5,7 +5,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { Eye, EyeOff, HomeIcon } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { ToolbarBtn } from '../ToolbarBtn'

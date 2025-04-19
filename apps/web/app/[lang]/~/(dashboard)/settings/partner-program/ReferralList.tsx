@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { api, trpc } from '@/lib/trpc'
 import { format } from 'date-fns'
 import { toast } from 'sonner'

@@ -2,7 +2,7 @@
 
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import { ResizablePanelGroup } from '@/components/ui/resizable'
+import { ResizablePanelGroup } from '@penx/ui/components/resizable'
 import { updatePanelSizes, usePanels } from '@/hooks/usePanels'
 import { useDebouncedCallback } from 'use-debounce'
 import { PanelItem } from './PanelItem'

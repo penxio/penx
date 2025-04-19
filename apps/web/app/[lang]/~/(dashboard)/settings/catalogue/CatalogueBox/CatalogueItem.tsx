@@ -1,5 +1,6 @@
 import { CSSProperties, forwardRef, ReactNode, useState } from 'react'
-import { Menu, MenuItem } from '@/components/ui/menu'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
+import { Menu } from '@penx/ui/components/menu/Menu'
 import { CatalogueNode } from '@/lib/catalogue'
 import { cn } from '@/lib/utils'
 import { useSortable } from '@dnd-kit/sortable'

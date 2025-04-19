@@ -6,7 +6,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@/components/ui/hover-card'
+} from '@penx/ui/components/hover-card'
 import { CardStyle } from '@/lib/constants'
 import { Link } from '@/lib/i18n'
 import { Creation, LayoutItem, Site } from '@/lib/theme.types'

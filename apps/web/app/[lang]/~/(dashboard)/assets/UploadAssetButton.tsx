@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog/useSubscriptionGuideDialog'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useAssets } from '@/hooks/useAssets'
 import { calculateSHA256FromFile } from '@/lib/encryption'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'

@@ -3,17 +3,17 @@
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
+import { Input } from '@penx/ui/components/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { Skeleton } from '@/components/ui/skeleton'
+} from '@penx/ui/components/select'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import {
   Table,
   TableBody,
@@ -21,7 +21,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from '@penx/ui/components/table'
 import { useSubscribers } from '@/hooks/useSubscribers'
 import { api } from '@/lib/trpc'
 import { cn } from '@/lib/utils'

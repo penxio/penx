@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
 import { useSiteContext } from '@/components/SiteContext'
 import { PodcastTips } from '@/components/theme-ui/PodcastTips'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
+import { Calendar } from '@penx/ui/components/calendar'
 import {
   refetchAreaCreations,
   useAreaCreations,

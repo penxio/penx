@@ -2,7 +2,7 @@
 
 import { usePlanListDialog } from '@/components/PlanList/usePlanListDialog'
 import { useSession } from '@/components/session'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { PlanType } from '@penx/db/client'
 import { ZapIcon } from 'lucide-react'
 

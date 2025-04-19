@@ -2,7 +2,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { cn } from '@/lib/utils'
 import { Colorful } from '@uiw/react-color'
 

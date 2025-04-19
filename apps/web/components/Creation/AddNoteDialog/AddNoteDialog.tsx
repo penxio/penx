@@ -3,7 +3,7 @@ import { PlateEditor } from '@/components/editor/plate-editor'
 import { LoadingDots } from '@/components/icons/loading-dots'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import {
   Dialog,
   DialogContent,
@@ -12,9 +12,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@/components/ui/dialog'
-import { Label } from '@/components/ui/label'
-import { Switch } from '@/components/ui/switch'
+} from '@penx/ui/components/dialog'
+import { Label } from '@penx/ui/components/label'
+import { Switch } from '@penx/ui/components/switch'
 import {
   refetchAreaCreations,
   useAreaCreations,

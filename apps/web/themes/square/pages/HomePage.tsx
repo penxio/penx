@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { Link } from '@/lib/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@/lib/theme.types'
 import { cn } from '@/lib/utils'

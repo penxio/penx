@@ -4,8 +4,8 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Separator } from '@/components/ui/separator'
+} from '@penx/ui/components/popover'
+import { Separator } from '@penx/ui/components/separator'
 import { Sort } from '@/lib/types'
 import { SortAsc } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'

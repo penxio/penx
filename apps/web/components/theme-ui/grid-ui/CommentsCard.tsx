@@ -1,8 +1,8 @@
 'use client'
 
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Skeleton } from '@/components/ui/skeleton'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { Skeleton } from '@penx/ui/components/skeleton'
 import { CardStyle } from '@/lib/constants'
 import { LayoutItem, Project, Site } from '@/lib/theme.types'
 import { trpc } from '@/lib/trpc'

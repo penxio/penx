@@ -8,10 +8,10 @@ import { NumberInput } from '@/components/NumberInput'
 import { useSession } from '@/components/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { useSpaceContext } from '@/components/SpaceContext'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
-import { DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Badge } from '@penx/ui/components/badge'
+import { Button } from '@penx/ui/components/button'
+import { Calendar } from '@penx/ui/components/calendar'
+import { DialogHeader, DialogTitle } from '@penx/ui/components/dialog'
 import {
   Form,
   FormControl,
@@ -20,14 +20,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+} from '@penx/ui/components/form'
+import { Input } from '@penx/ui/components/input'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { Switch } from '@/components/ui/switch'
+} from '@penx/ui/components/popover'
+import { Switch } from '@penx/ui/components/switch'
 import { PublishPostFormSchema, usePublishPost } from '@/hooks/usePublishPost'
 import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@/lib/constants'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'

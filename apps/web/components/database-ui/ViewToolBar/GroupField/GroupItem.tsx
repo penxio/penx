@@ -1,6 +1,6 @@
 'use client'
 
-import { Switch } from '@/components/ui/switch'
+import { Switch } from '@penx/ui/components/switch'
 import { Group } from '@/lib/types'
 import { useDatabaseContext } from '../../DatabaseProvider'
 

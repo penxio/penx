@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
 import { isServer, ROOT_DOMAIN } from '@/lib/constants'
 import { getSiteDomain, SiteWithDomains } from '@/lib/getSiteDomain'
 import { Link } from '@/lib/i18n'

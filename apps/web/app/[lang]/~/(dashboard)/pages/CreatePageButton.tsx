@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import LoadingCircle from '@/components/icons/loading-circle'
 import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@/components/ui/button'
+import { Button } from '@penx/ui/components/button'
 import { useDatabases } from '@/hooks/useDatabases'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { useRouter } from '@/lib/i18n'

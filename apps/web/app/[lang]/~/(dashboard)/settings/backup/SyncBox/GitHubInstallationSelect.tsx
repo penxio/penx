@@ -1,13 +1,13 @@
 import { useSiteContext } from '@/components/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { MenuItem } from '@/components/ui/menu'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/ui/components/avatar'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from '@penx/ui/components/select'
 import { trpc } from '@/lib/trpc'
 import { useQuery } from '@tanstack/react-query'
 import { Plus } from 'lucide-react'

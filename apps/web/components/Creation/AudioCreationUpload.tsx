@@ -9,7 +9,7 @@ import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
 import { useSiteContext } from '../SiteContext'
-import { Button } from '../ui/button'
+import { Button } from '@penx/ui/components/button'
 
 interface Props {
   creation: Creation

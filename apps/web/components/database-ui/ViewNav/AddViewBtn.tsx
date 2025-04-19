@@ -1,11 +1,11 @@
 import React, { PropsWithChildren } from 'react'
-import { Button } from '@/components/ui/button'
-import { MenuItem } from '@/components/ui/menu'
+import { Button } from '@penx/ui/components/button'
+import { MenuItem } from '@penx/ui/components/menu/MenuItem'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
+} from '@penx/ui/components/popover'
 import { ViewType } from '@/lib/types'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { Plus } from 'lucide-react'
