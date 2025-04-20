@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm with-env next dev --turbopack --port 4000",
-    "build": "npm run lingui:extract && NODE_OPTIONS='--inspect' next build",
+    "build": "npm run lingui:extract && next build",
     "lingui": "pnpm run lingui:extract",
     "lingui:extract": "lingui extract --clean",
     "lint": "next lint",
