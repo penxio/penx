@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { useCoupons } from '@/hooks/useCoupons'
+import { useCoupons } from '@penx/hooks/useCoupons'
 import { SECONDS_PER_DAY } from '@penx/constants'
 
 export function CouponList() {

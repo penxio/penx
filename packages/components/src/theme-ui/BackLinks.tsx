@@ -1,7 +1,7 @@
 'use client'
 
 import { CSSProperties, useEffect, useState } from 'react'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { useCreationListContext } from '../CreationListContext'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Design } from './Design'
 import { useThemeName } from './hooks/useThemeName'
 

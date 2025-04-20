@@ -1,10 +1,10 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { trpc } from '@penx/trpc-client'
 import { CopyIcon, PenSquareIcon } from 'lucide-react'
 import { toast } from 'sonner'

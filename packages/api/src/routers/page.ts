@@ -6,7 +6,7 @@ import {
 } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { CreationType, Prop } from '@penx/types'
-import { Option } from '@/lib/types'
+import { Option } from '@penx/types'
 import { Creation, CreationStatus } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { slug } from 'github-slugger'

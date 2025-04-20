@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
-import { updateSiteState } from '@/hooks/useSite'
+import { updateSiteState } from '@penx/hooks/useSite'
 import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 

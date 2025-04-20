@@ -1,4 +1,4 @@
-import { Image } from '@/components/Image'
+import { Image } from '@penx/components/Image'
 import { LayoutItem, Site } from '@penx/types'
 import { getUrl } from '@penx/utils'
 

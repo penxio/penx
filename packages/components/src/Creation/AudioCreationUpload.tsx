@@ -1,18 +1,18 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { Creation } from '@penx/types'
-import { api } from '@penx/trpc-client'
-import { uploadFile } from '@/lib/uploadFile'
-import { getUrl } from '@penx/utils'
 import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
-import { useSiteContext } from '../SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { uploadFile } from '@penx/services/uploadFile'
+import { api } from '@penx/trpc-client'
+import { CreationById } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
+import { getUrl } from '@penx/utils'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
-  creation: Creation
+  creation: CreationById
 }
 
 export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
@@ -52,8 +52,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
           // src: 'https://v.typlog.com/sspai/8267989755_658478.mp3'
           src: getUrl(value),
         },
-      })
-      window.__PLAYER__ = playerRef.current
+      })(window as any).__PLAYER__ = playerRef.current
     }, [value])
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +70,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
           await api.creation.update.mutate({
             id: creation.id,
             podcast: {
-              ...creation.podcast,
+              ...(creation.podcast as any),
               duration,
               media: uri,
             },

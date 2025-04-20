@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { SiteCreation } from '@/lib/types'
+import { SiteCreation } from '@penx/types'
 import { CreationStatus } from '@prisma/client'
 
 interface Opt {

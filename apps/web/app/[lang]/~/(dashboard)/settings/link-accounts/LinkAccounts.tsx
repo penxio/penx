@@ -1,8 +1,8 @@
 'use client'
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { PasswordDialog } from '@/components/PasswordDialog/PasswordDialog'
-import { useMyAccounts } from '@/hooks/useMyAccounts'
+import { PasswordDialog } from '@penx/components/PasswordDialog/PasswordDialog'
+import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { ProviderType } from '@prisma/client'
 import { AccountList } from './AccountList'
 import { LinkGoogleButton } from './LinkGoogleButton'

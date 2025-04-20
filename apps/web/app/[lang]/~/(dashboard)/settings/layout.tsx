@@ -2,8 +2,8 @@
 
 import { ReactNode } from 'react'
 import { useSession } from '@penx/session'
-import { SiteLink } from '@/components/SiteLink'
-import { Link } from '@/lib/i18n'
+import { SiteLink } from '@penx/components/SiteLink'
+import { Link } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 import { ChevronLeft } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'

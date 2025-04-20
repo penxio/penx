@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { useQueryLogoImages } from '@/hooks/useLogoImages'
+import { useQueryLogoImages } from '@penx/hooks/useLogoImages'
 import { trpc } from '@penx/trpc-client'
-import { SpaceOnEvent } from '@/lib/types'
+import { SpaceOnEvent } from '@penx/types'
 
 interface Props {
   spaces: SpaceOnEvent[]

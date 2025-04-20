@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations } from '@penx/types'
 import { getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'

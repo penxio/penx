@@ -1,7 +1,7 @@
 'use client'
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { LoginButton } from '@/components/LoginButton'
+import { LoginButton } from '@penx/components/LoginButton'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import { api, trpc } from '@penx/trpc-client'

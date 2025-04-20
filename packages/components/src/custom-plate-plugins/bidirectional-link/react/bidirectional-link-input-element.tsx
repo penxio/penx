@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
 import {
   InlineCombobox,
   InlineComboboxContent,

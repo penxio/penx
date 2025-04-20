@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
-import { ViewType } from '@/lib/types'
+import { ViewType } from '@penx/types'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { Plus } from 'lucide-react'
 import { toast } from 'sonner'

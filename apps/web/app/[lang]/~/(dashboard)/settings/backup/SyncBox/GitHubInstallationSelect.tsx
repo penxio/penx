@@ -1,4 +1,4 @@
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import {

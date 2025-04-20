@@ -1,14 +1,14 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import { prisma } from '@penx/db'
-import { revalidateCreationTags } from '@penx/api/lib/revalidateCreation'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
+import { revalidateCreationTags } from '@penx/api/lib/revalidateCreation'
+import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
 import { findCreations } from './findCreations'
 
 export const addCreationTagInputSchema = z.object({
-  tagId: z.string(),
-  siteId: z.string(),
-  creationId: z.string(),
+  tagId: z.string().uuid(),
+  siteId: z.string().uuid(),
+  creationId: z.string().uuid(),
 })
 
 export type AddCreationTagInput = z.infer<typeof addCreationTagInputSchema>
@@ -17,7 +17,7 @@ function revalidate(siteId: string) {
   revalidateTag(`${siteId}-tags`)
 }
 
-export async function addCreationTag(input: AddCreationTagInput) {
+export async function addCreationTag(input: Required<AddCreationTagInput>) {
   const creationTag = await prisma.creationTag.create({
     data: { ...input },
     include: { tag: true, creation: true },
@@ -42,7 +42,7 @@ export async function addCreationTag(input: AddCreationTagInput) {
 
   const creation = await cacheHelper.updateCreationProps(input.creationId, {
     creationTags: creationTags,
-  })
+  } as any)
 
   if (creation) {
     let creations = await findCreations({ areaId: creation.areaId! })

@@ -1,25 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import { AddNoteDialog } from '@/components/Creation/AddNoteDialog/AddNoteDialog'
-import { useAddNoteDialog } from '@/components/Creation/AddNoteDialog/useAddNoteDialog'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/session'
-import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/ui/popover'
-import { Creation, updateCreationState } from '@/hooks/useCreation'
-import { getCreationIcon } from '@/lib/getCreationIcon'
-import { getMoldName } from '@/lib/getMoldName'
-import { api } from '@penx/trpc-client'
-import { cn, formatUsername } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
+import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { updateCreationState } from '@penx/hooks/useCreation'
+import { getCreationIcon } from '@penx/libs/getCreationIcon'
+import { getMoldName } from '@penx/libs/getMoldName'
+import { useSession } from '@penx/session'
+import { api } from '@penx/trpc-client'
+import { CreationById } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { cn, formatUsername } from '@penx/utils'
 
-export function ChangeType({ creation }: { creation: Creation }) {
+export function ChangeType({ creation }: { creation: CreationById }) {
   const site = useSiteContext()
   const [open, setOpen] = useState(false)
 

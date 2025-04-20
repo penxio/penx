@@ -1,5 +1,5 @@
 import { getSessionOptions } from '@/lib/session'
-import { SessionData } from '@/lib/types'
+import { SessionData } from '@penx/types'
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'

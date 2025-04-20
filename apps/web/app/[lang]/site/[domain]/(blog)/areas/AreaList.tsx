@@ -1,7 +1,7 @@
 'use client'
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Image } from '@/components/Image'
+import { Image } from '@penx/components/Image'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { Site } from '@penx/types'
 import { trpc } from '@penx/trpc-client'

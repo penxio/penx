@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { Balance } from '@/lib/types'
+import { Balance } from '@penx/types'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { protectedProcedure, publicProcedure, router } from '../trpc'

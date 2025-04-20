@@ -1,5 +1,5 @@
-import { ContentRender } from '@/components/theme-ui/ContentRender'
-import { Link } from '@/lib/i18n'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { Link } from '@penx/libs/i18n'
 import { Creation, Site } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
 import { format } from 'date-fns'

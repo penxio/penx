@@ -1,6 +1,6 @@
 'use client'
 
-import { Sort } from '@/lib/types'
+import { Sort } from '@penx/types'
 import { useDatabaseContext } from '../../DatabaseProvider'
 
 interface Props {

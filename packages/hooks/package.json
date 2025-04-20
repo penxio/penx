@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -15,5 +16,22 @@
     "eslint": "^9.24.0",
     "typescript": "5.8.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "@penx/trpc-client": "workspace:*",
+    "@penx/session": "workspace:*",
+    "@penx/api": "workspace:*",
+    "@penx/libs": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/model": "workspace:*",
+    "@penx/query-client": "workspace:*",
+    "@penx/contexts": "workspace:*",
+    "@penx/emitter": "workspace:*",
+    "@penx/local-db": "workspace:*",
+    "@penx/store": "workspace:*",
+    "@penx/constants": "workspace:*",
+    "@penx/utils": "workspace:*",
+    "@penx/db": "workspace:*",
+    "@penx/types": "workspace:*"
+  }
 }

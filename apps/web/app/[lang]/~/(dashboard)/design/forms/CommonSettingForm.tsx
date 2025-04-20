@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { PostListStyle } from '@penx/types'
 import { trpc } from '@penx/trpc-client'

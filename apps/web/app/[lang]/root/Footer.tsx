@@ -1,7 +1,7 @@
-import { LangSwitcher } from '@/components/LangSwitcher'
-import { ModeToggle } from '@/components/ModeToggle'
-import { SocialNav } from '@/components/SocialNav'
-import { Link } from '@/lib/i18n'
+import { LangSwitcher } from '@penx/components/LangSwitcher'
+import { ModeToggle } from '@penx/components/ModeToggle'
+import { SocialNav } from '@penx/components/SocialNav'
+import { Link } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 
 interface Props {}

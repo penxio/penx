@@ -2,10 +2,10 @@
 
 import { FormEvent, forwardRef } from 'react'
 import { Controller } from 'react-hook-form'
-import { useDatabaseContext } from '@/components/database-ui/DatabaseProvider'
+import { useDatabaseContext } from '@penx/components/database-ui/DatabaseProvider'
 import { Button } from '@penx/uikit/ui/button'
 import { Input } from '@penx/uikit/ui/input'
-import { ColumnType, Option } from '@/lib/types'
+import { ColumnType, Option } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { Column } from '@prisma/client'
 import { ChevronDown, X } from 'lucide-react'

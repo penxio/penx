@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
-import { useDatabases } from '@/hooks/useDatabases'
+import { useDatabases } from '@penx/hooks/useDatabases'
 import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 import { useDeleteDatabaseDialog } from './useDeleteDatabaseDialog'

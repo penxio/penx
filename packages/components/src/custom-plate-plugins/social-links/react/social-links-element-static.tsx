@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { useSiteContext } from '@/components/SiteContext'
-import { SocialNav } from '@/components/theme-ui/SocialNav'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { SocialNav } from '@penx/components/theme-ui/SocialNav'
 import { getBlockClassName } from '@penx/utils'
 import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'

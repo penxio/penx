@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Input } from '@penx/uikit/ui/input'
@@ -22,7 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { useSubscribers } from '@/hooks/useSubscribers'
+import { useSubscribers } from '@penx/hooks/useSubscribers'
 import { api } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
 import { SubscriberStatus } from '@prisma/client'

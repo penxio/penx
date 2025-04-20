@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { editorDefaultValue } from '@penx/constants'

@@ -1,6 +1,6 @@
 'use client'
 
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import { api } from '@penx/trpc-client'
 import { useMutation } from '@tanstack/react-query'

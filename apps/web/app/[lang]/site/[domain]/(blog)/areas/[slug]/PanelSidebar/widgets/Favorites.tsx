@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaContext } from '@/components/AreaContext'
+import { useAreaContext } from '@penx/components/AreaContext'
 import { mappedByKey } from '@/lib/shared'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'

@@ -1,7 +1,7 @@
 'use client'
 
-import { Image } from '@/components/Image'
-import { Link } from '@/lib/i18n'
+import { Image } from '@penx/components/Image'
+import { Link } from '@penx/libs/i18n'
 import { getUrl } from '@penx/utils'
 import { RouterOutputs } from '@penx/api'
 

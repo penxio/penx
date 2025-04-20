@@ -156,14 +156,14 @@ export const cacheHelper = {
     }
   },
 
-  async getNotes(areaId: string): Promise<CreationById[] | undefined> {
+  async getNotes(areaId: string): Promise<Creation[] | undefined> {
     const key = redisKeys.notes(areaId)
     try {
       const str = await redis.get(key)
       if (str) {
         const list = JSON.parse(str)
         if (Array.isArray(list)) {
-          const nodes = list as CreationById[]
+          const nodes = list as Creation[]
           return produce(nodes, (draft) => {
             for (const item of draft) {
               item.createdAt = new Date(item.createdAt)
@@ -178,7 +178,7 @@ export const cacheHelper = {
     } catch (error) {}
   },
 
-  async updateNotes(areaId: string, notes: CreationById[] | null) {
+  async updateNotes(areaId: string, notes: Creation[] | null) {
     const key = redisKeys.notes(areaId)
     if (!notes) {
       redis.del(key)
@@ -187,13 +187,13 @@ export const cacheHelper = {
     }
   },
 
-  async getCreation(creationId: string): Promise<CreationById | undefined> {
+  async getCreation(creationId: string): Promise<Creation | undefined> {
     const key = redisKeys.creation(creationId)
     try {
       const str = await redis.get(key)
       if (str) {
         const creation = JSON.parse(str)
-        const creationById = creation as CreationById
+        const creationById = creation as Creation
         return produce(creationById, (draft) => {
           draft.createdAt = new Date(draft.createdAt)
           draft.updatedAt = new Date(draft.updatedAt)
@@ -202,7 +202,7 @@ export const cacheHelper = {
     } catch (error) {}
   },
 
-  async updateCreation(creationId: string, creation: CreationById | null) {
+  async updateCreation(creationId: string, creation: Creation | null) {
     const key = redisKeys.creation(creationId)
     if (!creation) {
       redis.del(key)
@@ -214,7 +214,7 @@ export const cacheHelper = {
 
   async updateCreationProps(
     creationId: string,
-    creation: Partial<CreationById>,
+    creation: Partial<Creation>,
   ) {
     const cachedCreation = await cacheHelper.getCreation(creationId)
 

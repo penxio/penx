@@ -1,7 +1,7 @@
 'use client'
 
-import { useAreaContext } from '@/components/AreaContext'
-import { Link } from '@/lib/i18n'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { Link } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 import { Creation } from '@prisma/client'
 

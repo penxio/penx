@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { useSiteContext } from '@/components/SiteContext'
-import { useSite } from '@/hooks/useSite'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useSite } from '@penx/hooks/useSite'
 import { CardStyle } from '@penx/constants'
 import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'

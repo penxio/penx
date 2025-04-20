@@ -1,6 +1,6 @@
 import { prisma } from '@penx/db'
 import { getSessionOptions } from '@/lib/session'
-import { SessionData } from '@/lib/types'
+import { SessionData } from '@penx/types'
 import { slug } from 'github-slugger'
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'

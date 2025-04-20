@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaDialog } from '@/components/AreaDialog/useAreaDialog'
+import { useAreaDialog } from '@penx/components/AreaDialog/useAreaDialog'
 import { Button } from '@penx/uikit/ui/button'
 import { Trans } from '@lingui/react/macro'
 import { PlusIcon } from 'lucide-react'

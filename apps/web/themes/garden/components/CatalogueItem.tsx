@@ -1,12 +1,12 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,
   CatalogueNodeType,
   ICatalogueNode,
-} from '@/lib/model'
+} from '@penx/model'
 import { cn } from '@penx/utils'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { ChevronDown, ChevronRight, Plus } from 'lucide-react'

@@ -4,7 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
-import { ColumnType } from '@/lib/types'
+import { ColumnType } from '@penx/types'
 import { ChevronDown, RefreshCcw } from 'lucide-react'
 import { FieldIcon } from '../../shared/FieldIcon'
 import { useFieldTypeSelectPopover } from './hooks/useFieldTypeSelectPopover'

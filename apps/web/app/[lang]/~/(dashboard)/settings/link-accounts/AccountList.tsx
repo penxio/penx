@@ -1,11 +1,11 @@
 'use client'
 
-import { IconGoogle } from '@/components/icons/IconGoogle'
+import { IconGoogle } from '@penx/components/icons/IconGoogle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Avatar, AvatarFallback } from '@penx/uikit/ui/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
-import { useMyAccounts } from '@/hooks/useMyAccounts'
+import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { shortenAddress } from '@penx/utils'

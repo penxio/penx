@@ -9,8 +9,8 @@ import {
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
 import { Switch } from '@penx/uikit/ui/switch'
-import { useAssets } from '@/hooks/useAssets'
-import { useLoadAsset } from '@/hooks/useLoadAsset'
+import { useAssets } from '@penx/hooks/useAssets'
+import { useLoadAsset } from '@penx/hooks/useLoadAsset'
 import { placeholderBlurhash, STATIC_URL } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'

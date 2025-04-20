@@ -1,4 +1,4 @@
-import { stripe } from '@/lib/stripe'
+import { stripe } from '@penx/libs/stripe'
 import { BillingCycle, PlanType } from '@prisma/client'
 import { NextRequest, NextResponse } from 'next/server'
 import { handleEvent } from './handleEvent'

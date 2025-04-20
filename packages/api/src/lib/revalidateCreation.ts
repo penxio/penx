@@ -1,9 +1,9 @@
 import { calculateSHA256FromString } from '@penx/encryption'
-import { Creation } from '@penx/types'
+import { CreationById } from '@penx/types'
 import { revalidateTag } from 'next/cache'
 
 export function revalidateCreation(_creation: any) {
-  const creation = _creation as Creation
+  const creation = _creation as CreationById
 
   if (creation.mold?.type) {
     revalidateTag(`${creation.siteId}-${creation.mold.type.toLowerCase()}s`)

@@ -7,7 +7,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 import { format } from 'date-fns'
 import { CalendarDays } from 'lucide-react'
 

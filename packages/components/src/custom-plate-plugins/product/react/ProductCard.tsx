@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useFriendsContext } from '@/components/FriendsContext'
+import { useFriendsContext } from '@penx/components/FriendsContext'
 import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'

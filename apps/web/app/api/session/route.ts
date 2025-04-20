@@ -1,5 +1,5 @@
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
-import { getSiteDomain } from '@/lib/getSiteDomain'
+import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import {
   initUserByAddress,
   initUserByEmail,
@@ -19,7 +19,7 @@ import {
   isUseCoupon,
   isWalletLogin,
   SessionData,
-} from '@/lib/types'
+} from '@penx/types'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
 import { compareSync } from 'bcrypt-edge'
 import { getIronSession, IronSession } from 'iron-session'

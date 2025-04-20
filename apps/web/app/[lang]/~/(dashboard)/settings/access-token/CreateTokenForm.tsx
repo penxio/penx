@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/ui/card'
 import {
@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { useAccessTokens } from '@/hooks/useAccessTokens'
+import { useAccessTokens } from '@penx/hooks/useAccessTokens'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'

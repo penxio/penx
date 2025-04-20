@@ -1,4 +1,4 @@
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 
 interface Props {

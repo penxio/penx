@@ -1,4 +1,4 @@
-import { DatabaseList } from '@/components/DatabaseList'
+import { DatabaseList } from '@penx/components/DatabaseList'
 import { CreationStatus } from '@penx/constants'
 
 // export const runtime = 'edge'

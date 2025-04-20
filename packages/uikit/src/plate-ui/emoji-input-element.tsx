@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
-import { useDebounce } from '@/hooks/use-debounce'
 import { withRef } from '@udecode/cn'
 import { EmojiInlineIndexSearch, insertEmoji } from '@udecode/plate-emoji'
 import { EmojiPlugin } from '@udecode/plate-emoji/react'
 import { PlateElement, usePluginOption } from '@udecode/plate/react'
+import { useDebounce } from '../hooks/use-debounce'
 import {
   InlineCombobox,
   InlineComboboxContent,

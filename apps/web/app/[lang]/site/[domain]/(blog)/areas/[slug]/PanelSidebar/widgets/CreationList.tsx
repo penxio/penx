@@ -1,7 +1,7 @@
 'use client'
 
-import { useAreaContext } from '@/components/AreaContext'
-import { Widget } from '@/lib/types'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { Widget } from '@penx/types'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'

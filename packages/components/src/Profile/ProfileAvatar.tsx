@@ -2,7 +2,7 @@
 
 import { forwardRef, HTMLAttributes } from 'react'
 import { useSession } from '@penx/session'
-import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { ChevronDown, Copy } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn, getUrl } from '@penx/utils'

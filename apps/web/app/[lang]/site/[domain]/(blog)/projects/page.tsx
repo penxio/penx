@@ -1,11 +1,11 @@
-import { FriendsProvider } from '@/components/FriendsContext'
-import { ProjectsProvider } from '@/components/ProjectsContext'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
-import { editorDefaultValue } from '@penx/constants'
 import { getPage, getProjects, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { CreationType } from '@penx/types'
 import { Metadata } from 'next'
+import { FriendsProvider } from '@penx/components/FriendsContext'
+import { ProjectsProvider } from '@penx/components/ProjectsContext'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { editorDefaultValue } from '@penx/constants'
+import { CreationType } from '@penx/types'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

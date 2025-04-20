@@ -3,7 +3,7 @@ import {
   getDomainResponse,
   verifyDomain,
 } from '@/lib/domains'
-import { DomainVerificationStatusProps } from '@/lib/types'
+import { DomainVerificationStatusProps } from '@penx/types'
 import { NextResponse } from 'next/server'
 
 export async function GET(

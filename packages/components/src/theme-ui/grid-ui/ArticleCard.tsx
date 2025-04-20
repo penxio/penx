@@ -1,14 +1,14 @@
 'use client'
 
-import { Image } from '@/components/Image'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
+import { Image } from '@penx/components/Image'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@penx/uikit/ui/hover-card'
 import { CardStyle } from '@penx/constants'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Creation, LayoutItem, Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'

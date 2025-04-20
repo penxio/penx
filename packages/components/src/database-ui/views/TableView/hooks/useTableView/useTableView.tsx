@@ -2,23 +2,23 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import { DateCell } from '@/components/cells/date-cell'
-import { FileCell } from '@/components/cells/file-cell'
-import { ImageCell } from '@/components/cells/image-cell'
+import { DateCell } from '@penx/components/cells/date-cell'
+import { FileCell } from '@penx/components/cells/file-cell'
+import { ImageCell } from '@penx/components/cells/image-cell'
 import {
   PasswordCell,
   passwordCellRenderer,
-} from '@/components/cells/password-cell'
-import { RateCell } from '@/components/cells/rate-cell'
-import { SingleSelectCell } from '@/components/cells/single-select-cell'
-import { SystemDateCell } from '@/components/cells/system-date-cell'
-import { useDatabaseContext } from '@/components/database-ui/DatabaseProvider'
-import { useSiteContext } from '@/components/SiteContext'
+} from '@penx/components/cells/password-cell'
+import { RateCell } from '@penx/components/cells/rate-cell'
+import { SingleSelectCell } from '@penx/components/cells/single-select-cell'
+import { SystemDateCell } from '@penx/components/cells/system-date-cell'
+import { useDatabaseContext } from '@penx/components/database-ui/DatabaseProvider'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { queryClient } from '@penx/query-client'
 import { mappedByKey } from '@/lib/shared'
 import { api } from '@penx/trpc-client'
-import { ColumnType, Option, ViewColumn } from '@/lib/types'
+import { ColumnType, Option, ViewColumn } from '@penx/types'
 import {
   DataEditorRef,
   EditableGridCell,

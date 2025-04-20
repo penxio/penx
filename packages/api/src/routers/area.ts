@@ -1,11 +1,11 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import { prisma } from '@penx/db'
-import { revalidateSite } from '@/lib/revalidateSite'
-import { getInitialWidgets } from '@/lib/utils'
 import { AreaType, ChargeMode } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
+import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
+import { revalidateSite } from '@penx/libs/revalidateSite'
 import { protectedProcedure, router } from '../trpc'
 
 export const areaRouter = router({
@@ -31,7 +31,7 @@ export const areaRouter = router({
       },
     })
 
-    await cacheHelper.updateArea(area.id, area)
+    await cacheHelper.updateArea(area.id, area as any)
 
     return area
   }),

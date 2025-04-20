@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { Area } from '@/hooks/useAreaItem'
+import { Area } from '@penx/hooks/useAreaItem'
 import { RouterOutputs } from '@penx/api'
 
 export type AreaItem = RouterOutputs['area']['byId']

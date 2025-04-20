@@ -1,6 +1,6 @@
 import { REFRESH_GOOGLE_DRIVE_OAUTH_TOKEN_URL } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { GoogleInfo } from '@/lib/types'
+import { GoogleInfo } from '@penx/types'
 import ky from 'ky'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 

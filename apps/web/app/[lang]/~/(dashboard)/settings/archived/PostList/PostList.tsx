@@ -1,6 +1,6 @@
 'use client'
 
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { CreationStatus } from '@penx/constants'
 import { trpc } from '@penx/trpc-client'
 import { PostItem } from './PostItem'

@@ -1,8 +1,23 @@
 import { useState } from 'react'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Trans } from '@lingui/react/macro'
+import { GateType } from '@prisma/client'
+import { usePlateEditor } from '@udecode/plate/react'
+import { add } from 'lodash'
+import { useRouter } from 'next/navigation'
+import { Editor, Node, Transforms } from 'slate'
+import { ReactEditor, useSlate } from 'slate-react'
+import { toast } from 'sonner'
+import { editorDefaultValue } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import {
+  refetchAreaCreations,
+  useAreaCreations,
+} from '@penx/hooks/useAreaCreations'
+import { usePublishPost } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
-import { useSiteContext } from '@/components/SiteContext'
+import { api } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
@@ -15,22 +30,8 @@ import {
 } from '@penx/uikit/ui/dialog'
 import { Label } from '@penx/uikit/ui/label'
 import { Switch } from '@penx/uikit/ui/switch'
-import {
-  refetchAreaCreations,
-  useAreaCreations,
-} from '@/hooks/useAreaCreations'
-import { usePublishPost } from '@/hooks/usePublishPost'
-import { editorDefaultValue } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { GateType } from '@prisma/client'
-import { usePlateEditor } from '@udecode/plate/react'
-import { add } from 'lodash'
-import { useRouter } from 'next/navigation'
-import { Editor, Node, Transforms } from 'slate'
-import { ReactEditor, useSlate } from 'slate-react'
-import { toast } from 'sonner'
+import { usePanelCreationContext } from '../PanelCreationProvider'
 import { useAddNoteDialog } from './useAddNoteDialog'
 
 const key = 'PUBLISH_NOTE_DIRECTLY'
@@ -81,6 +82,7 @@ function Footer({
 }) {
   const site = useSiteContext()
   const { setIsOpen, mold } = useAddNoteDialog()
+  const creation = usePanelCreationContext()
   const [isLoading, setLoading] = useState(false)
   const { session } = useSession()
   const { publishPost } = usePublishPost()
@@ -95,7 +97,7 @@ function Footer({
   async function addNote() {
     setLoading(true)
     try {
-      const creation = await api.creation.create.mutate({
+      const newCreation = await api.creation.create.mutate({
         moldId: mold.id,
         type: mold.type,
         siteId: site.id,
@@ -104,8 +106,8 @@ function Footer({
         content: JSON.stringify(value),
       })
       if (publishDirectly) {
-        await publishPost({
-          slug: creation.slug,
+        await publishPost(creation, {
+          slug: newCreation.slug,
           gateType: GateType.FREE,
           collectible: false,
           delivered: false,

@@ -1,4 +1,4 @@
-import { AreaDialog } from '@/components/AreaDialog/AreaDialog'
+import { AreaDialog } from '@penx/components/AreaDialog/AreaDialog'
 import { AreaHeader } from './AreaHeader'
 import { AreaList } from './AreaList'
 

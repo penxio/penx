@@ -1,6 +1,6 @@
 'use client'
 
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { CardStyle } from '@penx/constants'

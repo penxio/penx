@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Card,
@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@penx/uikit/ui/card'
-import { Balance } from '@/lib/types'
+import { Balance } from '@penx/types'
 import { useWithdrawDialog } from './WithdrawDialog/useWithdrawDialog'
 import { WithdrawDialog } from './WithdrawDialog/WithdrawDialog'
 

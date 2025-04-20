@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import LoadingCircle from '@/components/icons/loading-circle'
-import { useSiteContext } from '@/components/SiteContext'
+import LoadingCircle from '@penx/components/icons/loading-circle'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
-import { useDatabases } from '@/hooks/useDatabases'
+import { useDatabases } from '@penx/hooks/useDatabases'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 

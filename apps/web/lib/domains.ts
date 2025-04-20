@@ -2,7 +2,7 @@ import {
   DomainConfigResponse,
   DomainResponse,
   DomainVerificationResponse,
-} from '@/lib/types'
+} from '@penx/types'
 
 export const addDomainToVercel = async (domain: string) => {
   return await fetch(

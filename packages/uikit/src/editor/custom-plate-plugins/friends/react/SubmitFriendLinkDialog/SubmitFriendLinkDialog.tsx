@@ -1,4 +1,4 @@
-// import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
+// import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
 import { Trans } from '@lingui/react/macro'
 import { SendIcon } from 'lucide-react'
 import { useSession } from '@penx/session'

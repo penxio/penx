@@ -1,18 +1,18 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
-import { useAreaContext } from '@/components/AreaContext'
-import { useMobileSidebarSheet } from '@/components/theme-ui/MobileSidebar'
-import { Link } from '@/lib/i18n'
+import { Emoji, EmojiStyle } from 'emoji-picker-react'
+import { useParams } from 'next/navigation'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { useMobileSidebarSheet } from '@penx/components/theme-ui/MobileSidebar/useMobileSidebarSheet'
+import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,
   CatalogueNodeType,
   ICatalogueNode,
-} from '@/lib/model'
+} from '@penx/model'
 import { Creation } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Emoji, EmojiStyle } from 'emoji-picker-react'
-import { useParams } from 'next/navigation'
 
 interface CatalogueItemProps {
   depth: number

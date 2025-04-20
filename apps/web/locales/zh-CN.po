@@ -19,17 +19,11 @@ msgstr ""
 
 #: app/[lang]/site/[domain]/(blog)/areas/[slug]/page.tsx:66
 #: app/[lang]/site/[domain]/(blog)/areas/[slug]/book/AboutItem.tsx:34
-#: app/[lang]/root/Nav.tsx:36
-#: components/theme-ui/NavigationItem.tsx:25
-#: components/AreaDialog/AreaForm.tsx:228
+#: app/[lang]/root/Nav.tsx:35
 #: themes/wide/components/Sidebar.tsx:68
 #: themes/garden/components/Sidebar.tsx:68
 msgid "About"
 msgstr "关于"
-
-#: components/Creation/PublishDialog/PublishForm.tsx:121
-msgid "Access control"
-msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:199
 msgid "Access token"
@@ -41,50 +35,19 @@ msgstr ""
 msgid "Add"
 msgstr "添加"
 
-#: components/Creation/CoverUpload.tsx:110
-msgid "Add cover"
-msgstr "添加封面"
-
-#: components/Creation/CoverUpload.tsx:110
-msgid "Add image"
-msgstr "添加图片"
-
 #: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagDialog.tsx:25
 #: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:25
 msgid "Add navigation"
 msgstr "添加"
 
-#: components/Creation/AddNoteDialog/AddNoteDialog.tsx:154
-msgid "Add note"
-msgstr "创建笔记"
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:115
-msgid "Add to favorites"
-msgstr "添加到喜欢"
-
 #: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeDialog.tsx:26
 msgid "Add type"
 msgstr "新增作品类型"
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:86
-msgid "Add widget"
-msgstr "添加小组件"
-
-#: components/Creation/Tags.tsx:123
-msgid "Adding tag"
-msgstr "新增标签中"
 
 #: app/[lang]/root/(home)/FeatureList.tsx:27
 msgid "AI-assistants"
 msgstr "AI-assistants"
 
-#: components/theme-ui/grid-ui/PodcastCard.tsx:29
-#: components/theme-ui/grid-ui/FriendsCard.tsx:27
-#: components/theme-ui/grid-ui/ArticleCard.tsx:39
-msgid "All"
-msgstr "全部"
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:96
 #: lib/getWidgetName.tsx:10
 msgid "All creations"
 msgstr "全部作品"
@@ -98,11 +61,6 @@ msgstr "全部文章"
 msgid "All projects"
 msgstr "全部项目"
 
-#: components/LoginDialog/RegisterForm.tsx:124
-msgid "Already have an account"
-msgstr "已有账户"
-
-#: components/theme-ui/NavigationItem.tsx:22
 #: themes/wide/components/Sidebar.tsx:64
 #: themes/garden/components/Sidebar.tsx:64
 msgid "AMA"
@@ -120,8 +78,7 @@ msgstr "统计"
 msgid "Appearance"
 msgstr "外观"
 
-#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:163
-#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:123
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:158
 msgid "Archive"
 msgstr ""
 
@@ -131,11 +88,7 @@ msgstr ""
 msgid "Archived"
 msgstr "归档"
 
-#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:52
-msgid "Are you sure delete it permanently?"
-msgstr ""
-
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:142
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:141
 msgid "Are you sure you want to delete this post?"
 msgstr ""
 
@@ -148,13 +101,8 @@ msgstr ""
 msgid "Area"
 msgstr ""
 
-#: components/database-ui/views/TableView/ColumnMenu/EditField.tsx:45
-msgid "Area name"
-msgstr ""
-
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:104
 #: app/[lang]/site/[domain]/(blog)/areas/page.tsx:52
-#: components/theme-ui/NavigationItem.tsx:19
 #: themes/wide/components/Sidebar.tsx:60
 #: themes/garden/components/Sidebar.tsx:60
 msgid "Areas"
@@ -178,16 +126,8 @@ msgstr ""
 msgid "Authorize CLI login"
 msgstr ""
 
-#: components/Creation/PublishDialog/PublishForm.tsx:257
-msgid "Authors"
-msgstr ""
-
 #: app/[lang]/~/(dashboard)/settings/partner-program/WithdrawDialog/WithdrawForm.tsx:74
 msgid "Available"
-msgstr ""
-
-#: components/theme-ui/BackLinks.tsx:29
-msgid "Backlinks"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:215
@@ -205,10 +145,6 @@ msgstr ""
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:108
 msgid "Billing & plan"
 msgstr "账单与套餐"
-
-#: components/AreaInfo.tsx:43
-msgid "Book"
-msgstr "小册子"
 
 #: lib/getMoldName.tsx:22
 msgid "Bookmark"
@@ -239,23 +175,13 @@ msgstr "构建自己的 <0>数字花园</0>"
 msgid "Builtin"
 msgstr "内置"
 
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:88
-msgid "By subscribing, you'll receive the latest posts directly in your inbox."
-msgstr ""
-
 #: app/[lang]/root/cli-login/CliLogin.tsx:49
-#: components/Creation/PublishDialog/PublishForm.tsx:270
-#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:62
 msgid "Cancel"
 msgstr "取消"
 
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/GardenSettingsContent.tsx:116
 msgid "Card style"
 msgstr ""
-
-#: components/Creation/ChangeType.tsx:39
-msgid "Change type"
-msgstr "修改类型"
 
 #: app/[lang]/site/[domain]/subscribe/page.tsx:59
 msgid "Choose a subscription plan"
@@ -273,18 +199,12 @@ msgstr ""
 msgid "Collaborators"
 msgstr "协作者"
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:105
 #: lib/getWidgetName.tsx:14
 msgid "Collection"
 msgstr ""
 
-#: components/AreaInfo.tsx:49
-msgid "Column"
-msgstr "专栏"
-
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:172
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:125
-#: components/theme-ui/PostActions/Comment/CommentSheet.tsx:35
 msgid "Comments"
 msgstr "评论"
 
@@ -304,33 +224,8 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: components/theme-ui/ContributeButton.tsx:35
-msgid "Contribute"
-msgstr "投稿"
-
-#: components/Creation/CreationMoreMenu.tsx:68
-msgid "Copy html"
-msgstr "复制 THML"
-
-#: components/Creation/CreationMoreMenu.tsx:61
-msgid "Copy link"
-msgstr "复制链接"
-
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:238
 msgid "Coupons"
-msgstr ""
-
-#: app/[lang]/~/(dashboard)/Sidebar/AreasPopover/AreasPopover.tsx:100
-msgid "Create area"
-msgstr ""
-
-#: components/AreaDialog/AreaForm.tsx:330
-#: components/AreaDialog/AreaDialog.tsx:36
-msgid "Create field"
-msgstr "创建领域"
-
-#: components/LoginDialog/LoginForm.tsx:130
-msgid "Create one"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/assets/AssetsTable/index.tsx:70
@@ -350,10 +245,6 @@ msgstr ""
 msgid "Creation types"
 msgstr "作品类型"
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AreaWidgets.tsx:23
-msgid "Creations"
-msgstr "作品"
-
 #: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:105
 msgid "Custom"
 msgstr ""
@@ -361,11 +252,6 @@ msgstr ""
 #: app/[lang]/root/(home)/FeatureList.tsx:94
 msgid "Customize your site with a variety of visually appealing themes."
 msgstr ""
-
-#: components/Profile/ProfilePopover.tsx:110
-#: components/Profile/Profile.tsx:60
-msgid "Dashboard"
-msgstr "管理后台"
 
 #: app/[lang]/root/(home)/FeatureList.tsx:76
 msgid "Data ownership"
@@ -376,16 +262,8 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: components/theme-ui/LangSwitcher.tsx:68
-msgid "Default"
-msgstr "默认"
-
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:156
-#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:186
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:60
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:87
-#: components/Creation/CreationMoreMenu.tsx:101
-#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:74
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:155
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:181
 msgid "Delete"
 msgstr "删除"
 
@@ -397,11 +275,11 @@ msgstr ""
 msgid "Delete tag"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:143
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:142
 msgid "Delete this post"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:141
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:140
 msgid "Delete this post?"
 msgstr ""
 
@@ -411,10 +289,6 @@ msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeItem.tsx:91
 msgid "Delete this property?"
-msgstr ""
-
-#: components/Creation/PublishDialog/PublishForm.tsx:163
-msgid "Deliver your newsletter"
 msgstr ""
 
 #: app/[lang]/root/self-hosted/SelfHostedPage.tsx:30
@@ -435,14 +309,6 @@ msgstr ""
 
 #: app/[lang]/root/self-hosted/SelfHostedPage.tsx:33
 msgid "Deploy your own site to Cloudflare Pages in 10 minutes."
-msgstr ""
-
-#: components/AreaDialog/AreaForm.tsx:210
-msgid "Description"
-msgstr "描述"
-
-#: app/[lang]/~/(dashboard)/Sidebar/app-sidebar.tsx:68
-msgid "Design my site"
 msgstr ""
 
 #: app/[lang]/root/(home)/page.tsx:74
@@ -469,12 +335,11 @@ msgstr "草稿"
 msgid "Easily create and send newsletters to keep your audience engaged."
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:141
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:136
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesign.tsx:38
-#: app/[lang]/~/(dashboard)/creations/Projects/PostItem.tsx:95
-#: app/[lang]/~/(dashboard)/creations/Podcasts/PostItem.tsx:91
+#: app/[lang]/~/(dashboard)/creations/Projects/PostItem.tsx:94
+#: app/[lang]/~/(dashboard)/creations/Podcasts/PostItem.tsx:90
 #: app/[lang]/~/(dashboard)/creations/Friends/PostItem.tsx:98
-#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:103
 msgid "Edit"
 msgstr "编辑"
 
@@ -482,14 +347,6 @@ msgstr "编辑"
 #: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:27
 msgid "Edit navigation"
 msgstr "编辑导航"
-
-#: components/LoginDialog/RegisterForm.tsx:80
-msgid "Email"
-msgstr "邮箱"
-
-#: components/LoginDialog/LoginDialog.tsx:56
-msgid "Email validate Link sent"
-msgstr ""
 
 #: app/[lang]/root/(home)/FeatureList.tsx:85
 msgid "Engage with your audience through integrated comment features."
@@ -503,7 +360,7 @@ msgstr ""
 msgid "Enjoy a seamless writing experience with our intuitive editor."
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:129
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:128
 msgid "Failed to Restore"
 msgstr ""
 
@@ -511,12 +368,11 @@ msgstr ""
 msgid "Failed to update public status!"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:113
 #: lib/getWidgetName.tsx:17
 msgid "Favorites"
 msgstr "收藏"
 
-#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:210
+#: app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:205
 msgid "Featured"
 msgstr ""
 
@@ -539,17 +395,11 @@ msgstr ""
 
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:111
 #: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:14
-#: components/theme-ui/NavigationItem.tsx:21
-#: components/theme-ui/grid-ui/FriendsCard.tsx:21
 #: lib/getMoldName.tsx:13
 #: themes/wide/components/Sidebar.tsx:63
 #: themes/garden/components/Sidebar.tsx:63
 msgid "Friends"
 msgstr "朋友"
-
-#: components/Creation/PublishDialog/PublishForm.tsx:124
-msgid "Gate this post, config who can read this post."
-msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:94
 msgid "General"
@@ -560,7 +410,6 @@ msgid "Grid"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:132
-#: components/theme-ui/NavigationItem.tsx:23
 #: themes/wide/components/Sidebar.tsx:66
 #: themes/garden/components/Sidebar.tsx:66
 msgid "Guestbook"
@@ -576,8 +425,6 @@ msgstr "开辟一片自留地，开始种植，慢慢成长。"
 msgid "Header"
 msgstr ""
 
-#: components/theme-ui/NavigationItem.tsx:14
-#: components/Profile/ProfilePopover.tsx:92
 #: themes/wide/components/Sidebar.tsx:53
 #: themes/garden/components/Sidebar.tsx:53
 msgid "Home"
@@ -602,10 +449,6 @@ msgstr "图片"
 msgid "Import/Export"
 msgstr "导入/导出"
 
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:104
-msgid "Introduction"
-msgstr "简介"
-
 #: themes/wide/pages/HomePage.tsx:43
 #: themes/paper/pages/HomePage.tsx:31
 #: themes/docs/pages/HomePage.tsx:23
@@ -614,12 +457,7 @@ msgstr "简介"
 msgid "Latest"
 msgstr "最新文章"
 
-#: components/theme-ui/grid-ui/CommentsCard.tsx:28
-msgid "Latest comments"
-msgstr "最新评论"
-
 #: app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:53
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:120
 msgid "Link"
 msgstr "链接"
 
@@ -631,22 +469,8 @@ msgstr "关联账号"
 msgid "Location"
 msgstr "位置"
 
-#: components/LoginDialog/RegisterForm.tsx:130
-#: components/LoginDialog/LoginForm.tsx:118
-msgid "Log in"
-msgstr "登录"
-
-#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:173
-#: components/Profile/ProfilePopover.tsx:154
-msgid "Log out"
-msgstr "注销"
-
 #: app/[lang]/root/cli-login/CliLogin.tsx:26
 msgid "Login to PenX CLI"
-msgstr ""
-
-#: components/AreaDialog/AreaForm.tsx:127
-msgid "logo"
 msgstr ""
 
 #: app/[lang]/root/(home)/FeatureList.tsx:78
@@ -654,7 +478,6 @@ msgid "Maintain full control over your content and data."
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/tags/page.tsx:13
-#: app/[lang]/~/(dashboard)/Sidebar/app-sidebar.tsx:87
 msgid "Manage tags"
 msgstr "管理标签"
 
@@ -667,7 +490,6 @@ msgid "Margin"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:132
-#: components/theme-ui/MembershipEntry/MembershipEntry.tsx:26
 #: themes/aside/components/Sidebar.tsx:80
 msgid "Membership"
 msgstr "会员"
@@ -692,8 +514,6 @@ msgstr ""
 #: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:73
 #: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:107
 #: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:77
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:88
-#: components/AreaDialog/AreaForm.tsx:177
 msgid "Name"
 msgstr ""
 
@@ -709,27 +529,9 @@ msgstr ""
 msgid "Newsletters built-in"
 msgstr ""
 
-#: components/theme-ui/Pagination.tsx:48
-#: components/theme-ui/Pagination.tsx:53
-msgid "Next"
-msgstr ""
-
-#: components/LoginDialog/LoginForm.tsx:124
-msgid "No account"
-msgstr ""
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/components/NoCreationYet.tsx:7
 #: app/[lang]/site/[domain]/(blog)/areas/[slug]/PanelSidebar/components/NoCreationYet.tsx:7
 msgid "No creation yet!"
 msgstr "暂无作品"
-
-#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Tasks/TasksList.tsx:31
-msgid "No creations yet."
-msgstr ""
-
-#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/Notes/NoteList.tsx:36
-msgid "No notes yet."
-msgstr ""
 
 #: themes/wide/pages/HomePage.tsx:47
 #: themes/paper/pages/HomePage.tsx:44
@@ -745,14 +547,12 @@ msgstr ""
 msgid "No tags found."
 msgstr "没找到任何标签"
 
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:85
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:84
 #: lib/getMoldName.tsx:18
 msgid "Note"
 msgstr "笔记"
 
 #: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:11
-#: components/theme-ui/NoteListWidget.tsx:20
-#: components/theme-ui/NavigationItem.tsx:18
 #: lib/getMoldName.tsx:8
 #: themes/wide/components/Sidebar.tsx:59
 #: themes/garden/components/Sidebar.tsx:59
@@ -762,15 +562,6 @@ msgstr "笔记"
 #: app/[lang]/root/(home)/FeatureList.tsx:56
 msgid "Offer exclusive content and benefits to loyal members."
 msgstr ""
-
-#: components/Creation/DeletePostDialog/DeletePostDialog.tsx:55
-msgid "Once deleted, You can't undo this action."
-msgstr ""
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:38
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:79
-msgid "Open in new panel"
-msgstr "在新面板打开"
 
 #: app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:58
 #: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:136
@@ -804,13 +595,9 @@ msgid "Paid members"
 msgstr "付费会员"
 
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:193
-#: app/[lang]/root/Nav.tsx:61
+#: app/[lang]/root/Nav.tsx:60
 msgid "Partner program"
 msgstr "合伙人计划"
-
-#: components/LoginDialog/RegisterForm.tsx:96
-msgid "Password"
-msgstr "密码"
 
 #: app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:133
 msgid "Path"
@@ -828,18 +615,6 @@ msgstr ""
 msgid "PenX is a tool for building a digital garden."
 msgstr "PenX 是一个构建数字花园的工具。"
 
-#: components/theme-ui/PhotoListWidget.tsx:20
-msgid "Photos"
-msgstr "照片"
-
-#: components/Creation/PublishDialog/PublishForm.tsx:226
-msgid "Pick a date"
-msgstr ""
-
-#: components/LoginDialog/LoginDialog.tsx:59
-msgid "Please check your email for the verification link."
-msgstr "请到你的邮箱里查看验证链接"
-
 #: app/[lang]/root/cli-login/CliLogin.tsx:29
 msgid "Please confirm your authorization for this login."
 msgstr "请确认此次登录的授权"
@@ -854,9 +629,6 @@ msgstr ""
 
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:97
 #: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:13
-#: components/theme-ui/PodcastListWidget.tsx:20
-#: components/theme-ui/NavigationItem.tsx:17
-#: components/theme-ui/grid-ui/PodcastCard.tsx:23
 #: lib/getMoldName.tsx:9
 #: themes/wide/components/Sidebar.tsx:58
 #: themes/garden/components/Sidebar.tsx:58
@@ -868,7 +640,6 @@ msgid "Post"
 msgstr "文章"
 
 #: app/[lang]/~/(dashboard)/posts/layout.tsx:30
-#: components/theme-ui/NavigationItem.tsx:15
 #: themes/wide/components/Sidebar.tsx:54
 #: themes/garden/components/Sidebar.tsx:54
 msgid "Posts"
@@ -878,16 +649,7 @@ msgstr "文章"
 msgid "Powerful features to build to digital garden"
 msgstr "构建数字花园的强大功能"
 
-#: components/Creation/Tags.tsx:128
-msgid "Press Enter to add a tag."
-msgstr ""
-
-#: components/theme-ui/Pagination.tsx:25
-#: components/theme-ui/Pagination.tsx:37
-msgid "Previous"
-msgstr "上一页"
-
-#: app/[lang]/root/Nav.tsx:48
+#: app/[lang]/root/Nav.tsx:47
 msgid "Pricing"
 msgstr "价格"
 
@@ -906,7 +668,6 @@ msgstr "项目"
 
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:118
 #: app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:15
-#: components/theme-ui/NavigationItem.tsx:20
 #: lib/getMoldName.tsx:14
 #: themes/wide/components/Sidebar.tsx:62
 #: themes/garden/components/Sidebar.tsx:62
@@ -923,70 +684,31 @@ msgstr ""
 msgid "Public visit"
 msgstr ""
 
-#: components/Creation/CreationMoreMenu.tsx:51
-#: components/Creation/PublishDialog/PublishForm.tsx:278
-msgid "Publish"
-msgstr "发布"
-
-#: components/Creation/AddNoteDialog/AddNoteDialog.tsx:141
-msgid "Publish directly"
-msgstr "直接发布"
-
-#: components/Creation/PublishDialog/PublishForm.tsx:89
-msgid "Publish your creation"
-msgstr ""
-
 #: app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:32
 msgid "Published"
 msgstr "已发布"
-
-#: components/theme-ui/PostMetadata.tsx:43
-msgid "Published on"
-msgstr ""
 
 #: app/[lang]/root/self-hosted/SelfHostedPage.tsx:83
 msgid "Read the deployment guide"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:121
 #: lib/getWidgetName.tsx:20
 msgid "Recently edited"
 msgstr "最近编辑"
 
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/AddWidgetButton.tsx:129
 #: lib/getWidgetName.tsx:23
 msgid "Recently opened"
 msgstr "最近访问"
 
-#: app/[lang]/~/(dashboard)/DashboardLayout/panel-renderer/PanelHome.tsx:34
-msgid "Recently visited"
-msgstr "最近访问"
-
-#: components/LoginDialog/RegisterForm.tsx:118
-msgid "Register"
-msgstr "注册"
-
-#: components/LoginDialog/LoginDialog.tsx:41
-msgid "Register to PenX"
-msgstr "注册 PenX"
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/CreationItem.tsx:113
-msgid "Remove from favorites"
-msgstr "移除收藏"
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:66
-msgid "Rename"
-msgstr "重命名"
-
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:136
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:135
 msgid "Restore"
 msgstr "恢复"
 
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:128
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:127
 msgid "Restored successfully!"
 msgstr "恢复成功"
 
-#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:127
+#: app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:126
 msgid "Restoring..."
 msgstr "恢复中..."
 
@@ -999,16 +721,8 @@ msgstr ""
 msgid "Save"
 msgstr "保存"
 
-#: app/[lang]/~/(dashboard)/Sidebar/QuickSearchTrigger.tsx:23
-msgid "Search"
-msgstr "搜索"
-
 #: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:158
 msgid "Select a location"
-msgstr ""
-
-#: components/Creation/PropList.tsx:107
-msgid "Select a property"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/creations/Friends/PostItem.tsx:151
@@ -1028,22 +742,12 @@ msgid "SEO friendly"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/layout.tsx:34
-#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:131
-#: components/Profile/ProfilePopover.tsx:127
 msgid "Settings"
 msgstr "设置"
 
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/CardStyleSelect.tsx:24
 msgid "Shadow"
 msgstr ""
-
-#: app/[lang]/~/(dashboard)/Sidebar/area-widgets/TitleContextMenu.tsx:50
-msgid "Show all"
-msgstr ""
-
-#: components/LoginButton.tsx:28
-msgid "Sign in"
-msgstr "登录"
 
 #: app/[lang]/root/self-hosted/SelfHostedPage.tsx:39
 msgid "Sign in to deploy"
@@ -1063,8 +767,6 @@ msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:123
 #: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:93
-#: components/Creation/PublishDialog/PublishForm.tsx:99
-#: components/AreaDialog/AreaForm.tsx:193
 msgid "Slug"
 msgstr ""
 
@@ -1076,57 +778,16 @@ msgstr "社交"
 msgid "Start writing"
 msgstr "开始创作"
 
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:136
-msgid "Submit"
-msgstr "提交"
-
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:35
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:48
-msgid "Submit Link"
-msgstr "提交友链"
-
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:58
-msgid "Submit successfully!"
-msgstr ""
-
-#: components/custom-plate-plugins/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:59
-msgid "Submit your link"
-msgstr ""
-
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:125
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterCard.tsx:37
-msgid "Subscribe"
-msgstr ""
-
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:85
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterCard.tsx:29
-msgid "Subscribe to"
-msgstr ""
-
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:64
-msgid "Subscribed successfully!"
-msgstr ""
-
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:178
 #: app/[lang]/~/(dashboard)/settings/subscribers/page.tsx:15
 msgid "Subscribers"
 msgstr "订阅者"
 
-#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:153
-msgid "Support"
-msgstr ""
-
-#: components/theme-ui/Toc.tsx:77
-msgid "Table of contents"
-msgstr ""
-
 #: app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:104
-#: components/Creation/Tags.tsx:81
 msgid "Tag"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/SettingNav.tsx:112
-#: components/theme-ui/NavigationItem.tsx:24
 #: themes/wide/components/Sidebar.tsx:67
 #: themes/sue/components/PostListWithTag.tsx:32
 #: themes/paper/pages/TagListPage.tsx:14
@@ -1187,10 +848,6 @@ msgstr "删除"
 msgid "Type"
 msgstr ""
 
-#: components/Creation/CreationMoreMenu.tsx:88
-msgid "Unpublish"
-msgstr "撤销发布"
-
 #: app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/CardStyleSelect.tsx:32
 msgid "Unstyled"
 msgstr ""
@@ -1199,11 +856,6 @@ msgstr ""
 msgid "Update API token"
 msgstr ""
 
-#: components/AreaDialog/AreaForm.tsx:328
-#: components/AreaDialog/AreaDialog.tsx:34
-msgid "Update field"
-msgstr "更新领域"
-
 #: app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeDialog.tsx:26
 msgid "Update type"
 msgstr ""
@@ -1211,15 +863,6 @@ msgstr ""
 #: app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:56
 #: app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:90
 msgid "Updated successfully!"
-msgstr ""
-
-#: components/Creation/PublishDialog/PublishForm.tsx:170
-#: components/Creation/PublishDialog/PublishForm.tsx:176
-msgid "Upgrade"
-msgstr ""
-
-#: app/[lang]/~/(dashboard)/Sidebar/nav-user.tsx:144
-msgid "Upgrade to Pro"
 msgstr ""
 
 #: app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:155
@@ -1231,24 +874,14 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: app/[lang]/~/(dashboard)/Sidebar/VisitSiteButton.tsx:39
-msgid "Visit my site"
-msgstr ""
-
 #: app/[lang]/~/(dashboard)/settings/payout-account/PayoutAccountDialog/PayoutAccountForm.tsx:110
 msgid "Wallet"
 msgstr ""
-
-#: components/LoginDialog/LoginDialog.tsx:29
-msgid "Welcome to PenX"
-msgstr "欢迎来到 PenX"
 
 #: themes/square/components/CreatePostButton.tsx:27
 msgid "Write"
 msgstr "创作"
 
-#: components/theme-ui/NavigationItem.tsx:16
-#: components/theme-ui/grid-ui/ArticleCard.tsx:33
 #: themes/wide/pages/BlogPage.tsx:25
 #: themes/wide/components/Sidebar.tsx:56
 #: themes/sue/pages/BlogPage.tsx:25
@@ -1265,7 +898,3 @@ msgstr "创作"
 #: themes/aside/pages/BlogPage.tsx:25
 msgid "Writings"
 msgstr "文章"
-
-#: components/theme-ui/SubscribeNewsletter/SubscribeNewsletterForm.tsx:100
-msgid "Your email"
-msgstr ""

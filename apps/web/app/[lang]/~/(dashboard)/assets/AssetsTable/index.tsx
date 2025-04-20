@@ -1,10 +1,4 @@
 import React, { JSX, useCallback, useEffect, useRef, useState } from 'react'
-import { cellRenderers } from '@/components/cells'
-import { FileCell } from '@/components/cells/file-cell'
-import { SystemDateCell } from '@/components/cells/system-date-cell'
-import { Asset } from '@/hooks/useAssets'
-import { STATIC_URL } from '@penx/constants'
-import { getDataEditorTheme } from '@/lib/getDataEditorTheme'
 import DataEditor, {
   DataEditorProps,
   DataEditorRef,
@@ -16,6 +10,12 @@ import DataEditor, {
 } from '@glideapps/glide-data-grid'
 import { Trans } from '@lingui/react/macro'
 import { useTheme } from 'next-themes'
+import { FileCell } from '@penx/components/cells/file-cell'
+import { cellRenderers } from '@penx/components/cells/index'
+import { SystemDateCell } from '@penx/components/cells/system-date-cell'
+import { STATIC_URL } from '@penx/constants'
+import { Asset } from '@penx/hooks/useAssets'
+import { getDataEditorTheme } from '@penx/utils/getDataEditorTheme'
 
 const defaultProps: Partial<DataEditorProps> = {
   smoothScrollX: true,

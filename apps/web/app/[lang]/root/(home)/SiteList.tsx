@@ -1,8 +1,8 @@
 'use client'
 
 import { Skeleton } from '@penx/uikit/ui/skeleton'
-import { useHomeSites } from '@/hooks/useHomeSites'
-import { MySite } from '@/lib/types'
+import { useHomeSites } from '@penx/hooks/useHomeSites'
+import { MySite } from '@penx/types'
 import { cn } from '@penx/utils'
 import { SiteItem } from './SiteItem'
 

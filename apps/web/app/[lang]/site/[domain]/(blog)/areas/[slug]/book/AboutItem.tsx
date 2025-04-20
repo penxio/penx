@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations, Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'

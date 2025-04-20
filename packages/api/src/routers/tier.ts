@@ -1,7 +1,7 @@
 import { cacheHelper } from '@penx/libs/cache-header'
 import { TierInterval } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { StripeInfo } from '@/lib/types'
+import { StripeInfo } from '@penx/types'
 import { ProductType } from '@prisma/client'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'

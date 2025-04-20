@@ -2,12 +2,26 @@
 
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@/components/NumberInput'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react/macro'
+import { GateType } from '@prisma/client'
+import { DialogClose } from '@radix-ui/react-dialog'
+import { format } from 'date-fns'
+import { CalendarIcon } from 'lucide-react'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { NumberInput } from '@penx/components/NumberInput'
+import { useSpaceContext } from '@penx/components/SpaceContext'
+import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import {
+  PublishPostFormSchema,
+  usePublishPost,
+} from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
-import { useSiteContext } from '@/components/SiteContext'
-import { useSpaceContext } from '@/components/SpaceContext'
+import { api, trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
@@ -22,25 +36,10 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { Switch } from '@penx/uikit/ui/switch'
-import { PublishPostFormSchema, usePublishPost } from '@/hooks/usePublishPost'
-import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@penx/constants'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { GateType } from '@prisma/client'
-import { DialogClose } from '@radix-ui/react-dialog'
-import { format } from 'date-fns'
-import { CalendarIcon } from 'lucide-react'
-import { toast } from 'sonner'
-import { z } from 'zod'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { Authors } from '../Authors'
 import { usePanelCreationContext } from '../PanelCreationProvider'
 import { usePublishDialog } from './usePublishDialog'
@@ -73,7 +72,7 @@ export function PublishForm() {
     }
 
     try {
-      await publishPost(opt)
+      await publishPost(creation, opt)
       // setPost({
       //   ...post,
       //   status: PostStatus.PUBLISHED,

@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { usePlanListDialog } from '@/components/PlanList/usePlanListDialog'
+import { usePlanListDialog } from '@penx/components/PlanList/usePlanListDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -16,9 +16,9 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { getSiteCustomDomain, SiteWithDomains } from '@/lib/getSiteDomain'
+import { getSiteCustomDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Site } from '@prisma/client'

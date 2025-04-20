@@ -2,23 +2,22 @@
 
 import { useMemo } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import { usePanelCreationContext } from '@/components/Creation'
-import { updateCreationById } from '@/hooks/useAreaCreations'
-import {
-  addCreationTag,
-  CreationTagWithTag,
-  Creation as IPost,
-  removeCreationTag,
-  updateCreation,
-} from '@/hooks/useCreation'
-import { usePostSaving } from '@/hooks/usePostSaving'
-import { editorDefaultValue } from '@penx/constants'
-import { UpdateCreationInput } from '@penx/constants'
 import { useSearchParams } from 'next/navigation'
 import { Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
+// import { usePanelCreationContext } from '@penx/components/Creation'
+import { editorDefaultValue, UpdateCreationInput } from '@penx/constants'
+import { updateCreationById } from '@penx/hooks/useAreaCreations'
+import {
+  addCreationTag,
+  CreationTagWithTag,
+  // Creation as IPost,
+  removeCreationTag,
+  updateCreation,
+} from '@penx/hooks/useCreation'
+import { usePostSaving } from '@penx/hooks/usePostSaving'
 import { trpc } from '@penx/trpc-client'
-import { CreationType } from '@penx/types'
+import { CreationById, CreationType } from '@penx/types'
 import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { Separator } from '@penx/uikit/ui/separator'
@@ -30,6 +29,7 @@ import { CoverUpload } from './CoverUpload'
 import { DeletePostDialog } from './DeletePostDialog/DeletePostDialog'
 import { ImageCreationUpload } from './ImageCreationUpload'
 import { JournalNav } from './JournalNav'
+import { usePanelCreationContext } from './PanelCreationProvider'
 import { PropList } from './PropList'
 import { Tags } from './Tags'
 
@@ -41,7 +41,7 @@ export function Creation({ index }: { index: number }) {
   const isImage = creation.type === CreationType.IMAGE
 
   const debouncedUpdate = useDebouncedCallback(
-    async (value: IPost) => {
+    async (value: CreationById) => {
       setPostSaving(true)
       try {
         await mutateAsync({
@@ -49,8 +49,8 @@ export function Creation({ index }: { index: number }) {
           title: value.title,
           content: value.content,
           description: value.description,
-          i18n: value.i18n ?? {},
-          props: value?.props ?? {},
+          // i18n: value.i18n ?? {},
+          // props: value?.props ?? {},
         })
       } catch (error) {}
       setPostSaving(false)

@@ -1,7 +1,3 @@
-import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
-import ky from 'ky'
-import { hashPassword } from '@penx/api/lib/hashPassword'
-import { prisma } from '@penx/db'
 import {
   CollaboratorRole,
   CreationStatus,
@@ -9,10 +5,14 @@ import {
   SubdomainType,
   User,
 } from '@prisma/client'
+import ky from 'ky'
+import { hashPassword } from '@penx/api/lib/hashPassword'
+import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
+import { prisma } from '@penx/db'
+import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { cacheHelper } from './cache-header'
 import { getDefaultMolds } from './getDefaultMolds'
 import { CreationType } from './theme.types'
-import { getInitialWidgets } from './utils'
 
 const SEVEN_DAYS = 60 * 60 * 24 * 7
 

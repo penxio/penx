@@ -1,31 +1,27 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from '@penx/session'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/ui/popover'
-import { Creation, CreationTagWithTag } from '@/hooks/useCreation'
-import { useSiteTags } from '@/hooks/useSiteTags'
-import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { Prop } from '@penx/types'
-import { trpc } from '@penx/trpc-client'
-import { uniqueId } from '@penx/unique-id'
-import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { Command } from 'cmdk'
 import { HashIcon, Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { LoadingDots } from '../icons/loading-dots'
+import { CreationTagWithTag } from '@penx/hooks/useCreation'
+import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
+import { useSession } from '@penx/session'
+import { trpc } from '@penx/trpc-client'
+import { CreationById, Prop } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { uniqueId } from '@penx/unique-id'
+import { cn } from '@penx/utils'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { LoadingDots } from '../icons/loading-dots'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 interface Props {
-  creation: Creation
+  creation: CreationById
   onDeleteCreationTag: (postTag: CreationTagWithTag) => void
   onAddCreationTag: (postTag: CreationTagWithTag) => void
 }
@@ -103,7 +99,7 @@ export function Tags({
                       name: search,
                     })
 
-                    onAddCreationTag(postTag)
+                    onAddCreationTag(postTag as any as CreationTagWithTag)
                     setIsOpen(false)
                     await refetch()
                     setSearch('')
@@ -151,7 +147,7 @@ export function Tags({
                           creationId: creation.id,
                           tagId: item.id,
                           tag,
-                        } as CreationTagWithTag)
+                        } as any)
 
                         setIsOpen(false)
                         setSearch('')

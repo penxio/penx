@@ -14,9 +14,9 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { getSiteSubdomain, SiteWithDomains } from '@/lib/getSiteDomain'
+import { getSiteSubdomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Site } from '@prisma/client'

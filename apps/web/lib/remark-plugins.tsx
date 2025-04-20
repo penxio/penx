@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { visit } from 'unist-util-visit'
 
 export function replaceLinks({

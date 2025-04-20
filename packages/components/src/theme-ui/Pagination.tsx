@@ -1,6 +1,6 @@
 'use client'
 
-import { Link, usePathname } from '@/lib/i18n'
+import { Link, usePathname } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 
 interface PaginationProps {

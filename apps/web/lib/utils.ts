@@ -1,6 +1,6 @@
+import { ProviderType } from '@prisma/client'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { ProviderType } from '@prisma/client'
 import { STATIC_URL, WidgetType } from './constants'
 import { AccountWithUser, Widget } from './types'
 import { uniqueId } from './unique-id'
@@ -155,22 +155,4 @@ export function isIOS(): boolean {
 
 export function isMobile(): boolean {
   return isAndroid() || isIOS()
-}
-
-export const getInitialWidgets = () => {
-  const widgets: Widget[] = [
-    {
-      id: uniqueId(),
-      type: WidgetType.ALL_CREATIONS,
-    },
-    {
-      id: uniqueId(),
-      type: WidgetType.FAVORITES,
-    },
-    {
-      id: uniqueId(),
-      type: WidgetType.RECENTLY_EDITED,
-    },
-  ]
-  return widgets
 }

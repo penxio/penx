@@ -1,9 +1,9 @@
 'use client'
 
-import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { usePages } from '@/hooks/usePages'
-import { useSite } from '@/hooks/useSite'
+import { usePages } from '@penx/hooks/usePages'
+import { useSite } from '@penx/hooks/useSite'
 import { CatalogueBox } from './CatalogueBox/CatalogueBox'
 
 export const dynamic = 'force-static'

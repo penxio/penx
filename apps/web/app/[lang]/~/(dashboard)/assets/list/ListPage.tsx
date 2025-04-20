@@ -1,6 +1,6 @@
 'use client'
 
-import { useAssets } from '@/hooks/useAssets'
+import { useAssets } from '@penx/hooks/useAssets'
 import { AssetsTable } from '../AssetsTable'
 
 export function ListPage() {

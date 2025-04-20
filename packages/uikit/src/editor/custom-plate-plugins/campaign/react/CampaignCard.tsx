@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@/components/NumberInput'
-import { useSiteContext } from '@/components/SiteContext'
+import { NumberInput } from '@penx/components/NumberInput'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { usePathname } from '@/lib/i18n'
+import { usePathname } from '@penx/libs/i18n'
 import { api, trpc } from '@penx/trpc-client'
 import { toast } from 'sonner'
 import { Campaign } from '@prisma/client'

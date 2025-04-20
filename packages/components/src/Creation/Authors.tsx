@@ -1,34 +1,30 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+import { Author } from '@prisma/client'
+import { Command } from 'cmdk'
+import { Plus, XIcon } from 'lucide-react'
+import { toast } from 'sonner'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useCollaborators } from '@penx/hooks/useCollaborators'
+import { updateCreationState } from '@penx/hooks/useCreation'
+import { api, trpc } from '@penx/trpc-client'
+import { AuthorWithUser, CreationById } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/ui/tooltip'
-import { useCollaborators } from '@/hooks/useCollaborators'
-import { Creation, updateCreationState } from '@/hooks/useCreation'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { AuthorWithUser } from '@/lib/types'
 import { uniqueId } from '@penx/unique-id'
 import { formatUsername } from '@penx/utils'
-import { Author } from '@prisma/client'
-import { Command } from 'cmdk'
-import { Plus, XIcon } from 'lucide-react'
-import { toast } from 'sonner'
-import { useSiteContext } from '../SiteContext'
-import { Button } from '@penx/uikit/ui/button'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { UserAvatar } from '../UserAvatar'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
-export function Authors({ creation }: { creation: Creation }) {
+export function Authors({ creation }: { creation: CreationById }) {
   const site = useSiteContext()
   const [search, setSearch] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -134,7 +130,8 @@ export function Authors({ creation }: { creation: Creation }) {
                               userId: item.userId,
                               siteId: site.id,
                               user: item.user,
-                            } as AuthorWithUser,
+                              // } as AuthorWithUser,
+                            } as any,
                           ],
                         })
                         setIsOpen(false)

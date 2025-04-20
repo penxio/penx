@@ -1,8 +1,8 @@
-import { NoteListWidget } from '@/components/theme-ui/NoteListWidget'
+import { NoteListWidget } from '@penx/components/theme-ui/NoteListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getSite } from '@/lib/fetchers'
 import { AppearanceConfig } from '@penx/types'
-import linguiConfig from '@/lingui.config'
+import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
 
 export const dynamic = 'force-static'

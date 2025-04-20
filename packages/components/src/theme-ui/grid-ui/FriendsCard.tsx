@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Friend, LayoutItem, Project, Site } from '@penx/types'
 import { getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'

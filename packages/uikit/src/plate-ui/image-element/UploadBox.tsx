@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { uploadFile } from '@/lib/uploadFile'
-import { cn } from '@penx/utils'
 import { PlateElementProps, usePlateEditor } from '@udecode/plate/react'
 import { Editor, insertNodes, Path, setNodes, Transforms } from 'slate'
 import { ReactEditor, useFocused, useSelected, useSlate } from 'slate-react'
 import { toast } from 'sonner'
+import { cn } from '@penx/utils'
+import { uploadFile } from '../../components/uploadFile'
 // import { FileCaptionElement, ImageElement } from '../types'
 import { UploadButton } from './UploadButton'
 

@@ -1,4 +1,4 @@
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
 import Image from 'next/image'

@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
-import { ColumnType } from '@/lib/types'
+import { ColumnType } from '@penx/types'
 import { Plus } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { FieldIcon } from '../../shared/FieldIcon'

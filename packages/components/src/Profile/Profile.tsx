@@ -1,10 +1,10 @@
 'use client'
 
 import { useSession } from '@penx/session'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { getDashboardPath } from '@/lib/getDashboardPath'
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 import { LoginButton } from '../LoginButton'
 import { LoginDialog } from '../LoginDialog/LoginDialog'

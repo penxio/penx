@@ -1,5 +1,5 @@
-import { Pagination } from '@/components/theme-ui/Pagination'
-import { PostItem } from '@/components/theme-ui/post-item-blocks'
+import { Pagination } from '@penx/components/theme-ui/Pagination'
+import { PostItem } from '@penx/components/theme-ui/post-item-blocks/PostItem'
 import { Creation, PostListStyle, Site } from '@penx/types'
 
 interface PaginationProps {

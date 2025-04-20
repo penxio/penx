@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { MySite } from '@/lib/types'
+import { MySite } from '@penx/types'
 import { getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 

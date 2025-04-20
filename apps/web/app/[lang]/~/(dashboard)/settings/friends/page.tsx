@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { FullPageDatabase } from '@/components/database-ui'
+import { FullPageDatabase } from '@penx/components/database-ui/FullPageDatabase'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { FRIEND_DATABASE_NAME } from '@penx/constants'
 import { api } from '@penx/trpc-client'
 

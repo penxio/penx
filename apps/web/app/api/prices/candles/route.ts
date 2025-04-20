@@ -1,5 +1,5 @@
 import { getCandlesData } from '@/lib/prices/candles'
-import { Candle, Period } from '@/lib/types'
+import { Candle, Period } from '@penx/types'
 import { NextResponse } from 'next/server'
 
 // Define the return type for the GET function

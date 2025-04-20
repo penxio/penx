@@ -2,9 +2,9 @@
 
 import { Dispatch, SetStateAction } from 'react'
 import { PlateEditor } from '@penx/uikit/editor/plate-editor'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Input } from '@penx/uikit/ui/input'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { editorDefaultValue } from '@penx/constants'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'

@@ -7,20 +7,20 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useCollaborators } from '@/hooks/useCollaborators'
-import { Creation, useCreation } from '@/hooks/useCreation'
-import { useSiteTags } from '@/hooks/useSiteTags'
-import { appEmitter } from '@/lib/app-emitter'
-import { UpdateCreationInput } from '@penx/constants'
-import { queryClient } from '@penx/query-client'
-import { api } from '@penx/trpc-client'
-import { Panel } from '@/lib/types'
 import { CreationTag, Tag } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import debounce from 'lodash.debounce'
+import { UpdateCreationInput } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
+import { useCollaborators } from '@penx/hooks/useCollaborators'
+import { useCreation } from '@penx/hooks/useCreation'
+import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
+import { CreationById, Panel } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 
-export const PanelCreationContext = createContext({} as Creation)
+export const PanelCreationContext = createContext({} as CreationById)
 
 interface Props {
   creationId: string

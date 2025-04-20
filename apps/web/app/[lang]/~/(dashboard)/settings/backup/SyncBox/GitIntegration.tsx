@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Input } from '@penx/uikit/ui/input'
 import { trpc } from '@penx/trpc-client'
 import { useDebouncedCallback } from 'use-debounce'

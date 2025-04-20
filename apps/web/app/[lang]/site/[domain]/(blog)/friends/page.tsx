@@ -1,8 +1,8 @@
-import { FriendsProvider } from '@/components/FriendsContext'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
-import { editorDefaultValue } from '@penx/constants'
 import { getFriends, getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
+import { FriendsProvider } from '@penx/components/FriendsContext'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { editorDefaultValue } from '@penx/constants'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -22,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { updateSiteState, useSite } from '@/hooks/useSite'
+import { updateSiteState, useSite } from '@penx/hooks/useSite'
 import { defaultNavLinks } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'

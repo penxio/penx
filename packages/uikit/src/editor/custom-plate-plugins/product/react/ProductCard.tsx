@@ -1,17 +1,18 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { getUrl } from '@penx/utils'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { toast } from 'sonner'
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { toast } from 'sonner';
+import { useSiteContext } from '@penx/contexts/SiteContext';
+import { api, trpc } from '@penx/trpc-client';
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots';
+import { Button } from '@penx/uikit/ui/button';
+import { Skeleton } from '@penx/uikit/ui/skeleton';
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group';
+import { getUrl } from '@penx/utils';
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage';
+
 
 export function ProductCard({ productId }: { productId: string }) {
   const { data, isLoading } = trpc.product.byId.useQuery(productId)

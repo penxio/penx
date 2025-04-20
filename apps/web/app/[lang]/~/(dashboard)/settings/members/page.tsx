@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { ProductList } from './MemberList'
 
 export const dynamic = 'force-static'

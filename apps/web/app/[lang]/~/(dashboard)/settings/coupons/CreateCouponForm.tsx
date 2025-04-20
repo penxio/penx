@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useCoupons } from '@/hooks/useCoupons'
+import { useCoupons } from '@penx/hooks/useCoupons'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'

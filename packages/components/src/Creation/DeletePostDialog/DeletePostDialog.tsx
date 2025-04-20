@@ -12,10 +12,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
-import { refetchAreaCreations } from '@/hooks/useAreaCreations'
-import { closePanel, resetPanels, usePanels } from '@/hooks/usePanels'
+import { refetchAreaCreations } from '@penx/hooks/useAreaCreations'
+import { closePanel, resetPanels, usePanels } from '@penx/hooks/usePanels'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { localDB } from '@/lib/local-db'
+import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'

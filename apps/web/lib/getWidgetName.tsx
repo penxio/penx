@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { WidgetType } from '@penx/constants'
-import { Widget } from '@/lib/types'
+import { Widget } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { Mold } from '@prisma/client'
 import { getMoldName } from './getMoldName'

@@ -1,20 +1,6 @@
 'use client'
 
 import React from 'react'
-import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@penx/uikit/ui/hover-card'
-import { useMounted } from '@/hooks/use-mounted'
-import { useAreaCreations } from '@/hooks/useAreaCreations'
-import { Creation, useCreation } from '@/hooks/useCreation'
-import { addPanel } from '@/hooks/usePanels'
-import { Link } from '@/lib/i18n'
-import { PanelType, SiteCreation } from '@/lib/types'
-import { uniqueId } from '@penx/unique-id'
 import { cn, withRef } from '@udecode/cn'
 import { getHandler, IS_APPLE } from '@udecode/plate'
 import {
@@ -23,6 +9,20 @@ import {
   useReadOnly,
   useSelected,
 } from '@udecode/plate/react'
+import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { useMounted } from '@penx/hooks/use-mounted'
+import { useAreaCreations } from '@penx/hooks/useAreaCreations'
+import { useCreation } from '@penx/hooks/useCreation'
+import { addPanel } from '@penx/hooks/usePanels'
+import { Link } from '@penx/libs/i18n'
+import { CreationById, PanelType, SiteCreation } from '@penx/types'
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@penx/uikit/ui/hover-card'
+import { uniqueId } from '@penx/unique-id'
 import { TBidirectionalLinkElement } from '../lib'
 
 export const BidirectionalLinkElement = withRef<
@@ -79,7 +79,7 @@ export const BidirectionalLinkElement = withRef<
   )
 })
 
-function Content({ creation }: { creation: Creation }) {
+function Content({ creation }: { creation: CreationById }) {
   return (
     <HoverCard>
       <HoverCardTrigger asChild>

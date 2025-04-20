@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import {
   Select,
@@ -18,8 +18,8 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { useCollaborators } from '@/hooks/useCollaborators'
-import { useSite } from '@/hooks/useSite'
+import { useCollaborators } from '@penx/hooks/useCollaborators'
+import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api, trpc } from '@penx/trpc-client'
 import {

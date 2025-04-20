@@ -1,6 +1,6 @@
 import { editorDefaultValue, IPFS_GATEWAY, STATIC_URL } from '@penx/constants'
 import { precision } from '@/lib/math'
-import { SpaceType } from '@/lib/types'
+import { SpaceType } from '@penx/types'
 import { Address } from 'viem'
 
 export const FEE_RATE = BigInt(1) // 1%

@@ -2,9 +2,9 @@
 
 import { JSX } from 'react'
 import { PlateEditor } from '@penx/uikit/editor/plate-editor'
-import { PodcastTips } from '@/components/theme-ui/PodcastTips'
-import { PostActions } from '@/components/theme-ui/PostActions'
-import { Link } from '@/lib/i18n'
+import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
+import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
+import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType, User } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
 import Image from 'next/image'

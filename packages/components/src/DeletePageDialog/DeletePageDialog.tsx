@@ -12,9 +12,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
-import { usePages } from '@/hooks/usePages'
+import { usePages } from '@penx/hooks/usePages'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { localDB } from '@/lib/local-db'
+import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 import { useDeletePageDialog } from './useDeleteDatabaseDialog'

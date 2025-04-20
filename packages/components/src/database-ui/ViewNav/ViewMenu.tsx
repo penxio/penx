@@ -9,7 +9,7 @@ import {
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
 import { Separator } from '@penx/uikit/ui/separator'
-import { IViewNode } from '@/lib/model'
+import { IViewNode } from '@penx/model'
 import { MenuItem } from '@ariakit/react'
 import { View } from '@prisma/client'
 import { Copy, MoreVertical, Trash2 } from 'lucide-react'

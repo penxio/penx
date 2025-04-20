@@ -1,4 +1,3 @@
-import { Address } from 'viem'
 import {
   Account,
   Area,
@@ -14,6 +13,7 @@ import {
   Tag,
   User,
 } from '@prisma/client'
+import { Address } from 'viem'
 
 export enum TierInterval {
   MONTHLY = 'MONTHLY',
@@ -288,7 +288,12 @@ export type SiteCreation = CreationInList & {
   }
 }
 
-export type CreationById = Creation & {
+export type CreationById = Omit<Creation, 'podcast'> & {
+  podcast: {
+    media: string
+    duration: number
+    [key: string]: any
+  }
   mold: Mold | null
   creationTags: Array<CreationTag & { tag: Tag }>
   authors: Array<
@@ -304,7 +309,7 @@ export type CreationById = Creation & {
 }
 
 export type AreaById = Area & {
-  creations: Creation[]
+  creations: CreationById[]
 }
 
 export type GithubInfo = {

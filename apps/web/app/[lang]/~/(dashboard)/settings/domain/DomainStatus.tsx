@@ -1,8 +1,8 @@
 'use client'
 
-import LoadingCircle from '@/components/icons/loading-circle'
 import { AlertCircle, CheckCircle2, XCircle } from 'lucide-react'
-import { useDomainStatus } from './use-domain-status'
+import LoadingCircle from '@penx/components/icons/loading-circle'
+import { useDomainStatus } from '@penx/hooks/use-domain-status'
 
 export default function DomainStatus({ domain }: { domain: string }) {
   const { status, loading } = useDomainStatus({ domain })

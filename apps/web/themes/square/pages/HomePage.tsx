@@ -1,5 +1,5 @@
 import { Button } from '@penx/uikit/ui/button'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
 import { cn } from '@penx/utils'
 import FeaturedPost from '../components/FeaturedPost'

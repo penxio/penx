@@ -4,7 +4,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { Card, CardContent } from '@penx/uikit/ui/card'
 import { Input } from '@penx/uikit/ui/input'
 import { Progress } from '@penx/uikit/ui/progress'
-import { ImportPostData, ImportTask } from '@/hooks/usePostImportTask'
+import { ImportPostData, ImportTask } from '@penx/hooks/usePostImportTask'
 import {
   AlertCircle,
   AlertTriangle,

@@ -1,6 +1,6 @@
 'use client'
 
-import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Table,

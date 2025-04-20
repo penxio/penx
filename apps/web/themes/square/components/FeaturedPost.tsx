@@ -1,6 +1,6 @@
-import { PodcastTips } from '@/components/theme-ui/PodcastTips'
+import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
 import { placeholderBlurhash } from '@penx/constants'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
 import { MessageCircleIcon } from 'lucide-react'

@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import { FullPageDatabase } from '@/components/database-ui'
+import { FullPageDatabase } from '@penx/components/database-ui/FullPageDatabase'
 
 export default function Page() {
   return (

@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { usePathname } from 'next/navigation'

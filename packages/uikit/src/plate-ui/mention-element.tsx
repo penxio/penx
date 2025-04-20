@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useMounted } from '@/hooks/use-mounted'
+import { useMounted } from '../hooks/use-mounted'
 import { cn, withRef } from '@udecode/cn'
 import { getHandler, IS_APPLE } from '@udecode/plate'
 import type { TMentionElement } from '@udecode/plate-mention'

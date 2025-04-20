@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from '@penx/uikit/ui/select'
 import { Switch } from '@penx/uikit/ui/switch'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'

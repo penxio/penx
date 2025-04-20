@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 

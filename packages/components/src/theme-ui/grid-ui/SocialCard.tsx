@@ -1,5 +1,5 @@
 import { ROOT_HOST, SocialType } from '@penx/constants'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { LayoutItem } from '@penx/types'
 import { cn, upperFirst } from '@penx/utils'
 

@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/ui/card'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { AppearanceSettingForm } from './AppearanceSettingForm'
 
 export const dynamic = 'force-static'

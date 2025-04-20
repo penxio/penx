@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 
 export function PodcastCard() {
   return (

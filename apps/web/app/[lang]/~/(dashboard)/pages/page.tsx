@@ -1,4 +1,4 @@
-import { PageList } from '@/components/PageList'
+import { PageList } from '@penx/components/PageList'
 
 // export const runtime = 'edge'
 // export const dynamic = 'force-static'

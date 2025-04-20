@@ -1,6 +1,6 @@
 import { PlateEditor } from '@penx/uikit/editor/plate-editor'
-import { PodcastTips } from '@/components/theme-ui/PodcastTips'
-import { Link } from '@/lib/i18n'
+import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
+import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType } from '@penx/types'
 import { formatDate } from '@penx/utils'
 import Image from 'next/image'

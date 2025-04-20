@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./lib/*": "./src/lib/*.ts"
+    "./lib/*": "./src/lib/*.ts",
+    "./types": "./src/types.ts"
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
@@ -23,6 +24,7 @@
     "@penx/db": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/unique-id": "workspace:*",
+    "@penx/model": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/utils": "workspace:*",

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 import { Check } from 'lucide-react'
 import { Button } from '@penx/uikit/ui/button'
 import { UseCouponCode } from '../UseCouponCode'

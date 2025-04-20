@@ -2,15 +2,15 @@
 
 import { useCallback } from 'react'
 import { isMobile } from 'react-device-detect'
-import { cellRenderers } from '@/components/cells'
-import { DATABASE_TOOLBAR_HEIGHT, SIDEBAR_WIDTH } from '@penx/constants'
-import { getDataEditorTheme } from '@/lib/getDataEditorTheme'
 import {
   DataEditor,
   DataEditorRef,
   Rectangle,
 } from '@glideapps/glide-data-grid'
 import { useTheme } from 'next-themes'
+import { DATABASE_TOOLBAR_HEIGHT, SIDEBAR_WIDTH } from '@penx/constants'
+import { getDataEditorTheme } from '@penx/utils/getDataEditorTheme'
+import { cellRenderers } from '../../../cells'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { AddColumnBtn } from './AddColumnBtn'
 import { ConfigColumnDialog } from './ConfigColumnDialog/ConfigColumnDialog'

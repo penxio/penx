@@ -1,9 +1,9 @@
-import { NoteListWidget } from '@/components/theme-ui/NoteListWidget'
-import { PodcastListWidget } from '@/components/theme-ui/PodcastListWidget'
+import { NoteListWidget } from '@penx/components/theme-ui/NoteListWidget'
+import { PodcastListWidget } from '@penx/components/theme-ui/PodcastListWidget'
 import { initLingui } from '@/initLingui'
 import { getPodcasts, getSite } from '@/lib/fetchers'
 import { AppearanceConfig } from '@penx/types'
-import linguiConfig from '@/lingui.config'
+import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
 
 export const dynamic = 'force-static'

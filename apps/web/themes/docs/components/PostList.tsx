@@ -1,4 +1,4 @@
-import { Pagination } from '@/components/theme-ui/Pagination'
+import { Pagination } from '@penx/components/theme-ui/Pagination'
 import { Creation, Site } from '@penx/types'
 import { PostItem } from './PostItem'
 

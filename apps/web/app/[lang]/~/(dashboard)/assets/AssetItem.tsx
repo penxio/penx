@@ -1,8 +1,8 @@
 'use client'
 
 import { Skeleton } from '@penx/uikit/ui/skeleton'
-import { Asset } from '@/hooks/useAssets'
-import { useLoadAsset } from '@/hooks/useLoadAsset'
+import { Asset } from '@penx/hooks/useAssets'
+import { useLoadAsset } from '@penx/hooks/useLoadAsset'
 import { placeholderBlurhash } from '@penx/constants'
 import Image from 'next/image'
 import { useAssetDialog } from './AssetDialog/useAssetDialog'

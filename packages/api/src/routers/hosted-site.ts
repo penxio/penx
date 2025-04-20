@@ -1,6 +1,6 @@
 import { decryptString, encryptString } from '@penx/encryption'
 import { prisma } from '@penx/db'
-import { DeployStatus } from '@/lib/types'
+import { DeployStatus } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { TRPCError } from '@trpc/server'
 import Cloudflare from 'cloudflare'

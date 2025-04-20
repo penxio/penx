@@ -1,6 +1,6 @@
 'use client'
 
-import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Separator } from '@penx/uikit/ui/separator'

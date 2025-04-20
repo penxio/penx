@@ -1,7 +1,7 @@
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getDefaultMolds } from '@/lib/getDefaultMolds'
 import { prisma } from '@penx/db'
-import { revalidateSite } from '@/lib/revalidateSite'
+import { revalidateSite } from '@penx/libs/revalidateSite'
 import { CreationType, Prop, PropType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { z } from 'zod'

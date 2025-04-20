@@ -1,7 +1,7 @@
-import { useSiteContext } from '@/components/SiteContext'
-import { updateSiteState } from '@/hooks/useSite'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { updateSiteState } from '@penx/hooks/useSite'
 import { CatalogueTree, CreateCatalogueNodeOptions } from '@/lib/catalogue'
-import { CatalogueNodeType, ICatalogueNode } from '@/lib/model'
+import { CatalogueNodeType, ICatalogueNode } from '@penx/model'
 import { trpc } from '@penx/trpc-client'
 import { uniqueId } from '@penx/unique-id'
 

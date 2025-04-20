@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useLayer } from 'react-laag'
-import { IRowNode } from '@/lib/model'
+import { IRowNode } from '@penx/model'
 import { Item, Rectangle } from '@glideapps/glide-data-grid'
 import { Record } from '@prisma/client'
 import { CellMenu } from '../CellMenu'

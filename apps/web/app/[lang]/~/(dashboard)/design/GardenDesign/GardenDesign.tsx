@@ -2,7 +2,7 @@
 
 import GridLayout from 'react-grid-layout'
 import { Button } from '@penx/uikit/ui/button'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { CardRender } from './CardRender'

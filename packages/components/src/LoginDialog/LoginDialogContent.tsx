@@ -1,9 +1,9 @@
 'use client'
 
 import { useCallback } from 'react'
-import { GoogleOauthButton } from '@/components/GoogleOauthButton'
+import { GoogleOauthButton } from '@penx/components/GoogleOauthButton'
 import { useSession } from '@penx/session'
-import { TextLogo } from '@/components/TextLogo'
+import { TextLogo } from '@penx/components/TextLogo'
 import { api } from '@penx/trpc-client'
 import {
   AuthKitProvider,

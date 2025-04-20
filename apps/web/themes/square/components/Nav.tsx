@@ -1,5 +1,5 @@
-import { MembershipEntry } from '@/components/theme-ui/MembershipEntry'
-import { Link } from '@/lib/i18n'
+import { MembershipEntry } from '@penx/components/theme-ui/MembershipEntry/MembershipEntry'
+import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
 

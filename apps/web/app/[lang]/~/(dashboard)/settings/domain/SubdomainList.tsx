@@ -3,7 +3,7 @@
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { ROOT_DOMAIN } from '@penx/constants'
-import { SiteWithDomains } from '@/lib/getSiteDomain'
+import { SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
 import { Domain, SubdomainType } from '@prisma/client'
 

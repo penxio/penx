@@ -1,7 +1,7 @@
-import { CreationListProvider } from '@/components/CreationListContext'
-import { FriendsProvider } from '@/components/FriendsContext'
-import { ProjectsProvider } from '@/components/ProjectsContext'
-import { GridLayoutUI } from '@/components/theme-ui/grid-ui/GridLayoutUI'
+import { CreationListProvider } from '@penx/components/CreationListContext'
+import { FriendsProvider } from '@penx/components/FriendsContext'
+import { ProjectsProvider } from '@penx/components/ProjectsContext'
+import { GridLayoutUI } from '@penx/components/theme-ui/grid-ui/GridLayoutUI'
 import { initLingui } from '@/initLingui'
 import { ROOT_DOMAIN } from '@penx/constants'
 import {
@@ -16,7 +16,7 @@ import {
 import { loadTheme } from '@/lib/loadTheme'
 import { redirectTo404 } from '@/lib/redirectTo404'
 import { AppearanceConfig, CreationType, DesignMode } from '@penx/types'
-import linguiConfig from '@/lingui.config'
+import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
 
 type Params = Promise<{ domain: string; lang: string }>

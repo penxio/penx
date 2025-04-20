@@ -1,3 +1,9 @@
+import {
+  CollaboratorRole,
+  Creation,
+  CreationStatus,
+  GateType,
+} from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { z } from 'zod'
@@ -12,12 +18,6 @@ import {
   updateCreationInputSchema,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
-import {
-  CollaboratorRole,
-  Creation,
-  CreationStatus,
-  GateType,
-} from '@prisma/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { renderSlateToHtml } from '@penx/libs/slate-to-html'
@@ -83,7 +83,7 @@ export const creationRouter = router({
       let notes = await findNotes({ moldId, areaId })
 
       await cacheHelper.updateNotes(areaId, notes)
-      return notes as CreationById[]
+      return notes as Creation[]
     }),
 
   listCreationsByMold: protectedProcedure
@@ -742,10 +742,11 @@ export const creationRouter = router({
     )
     .mutation(async ({ ctx, input }) => {
       const author = await prisma.author.create({
+        // TODO:
         data: {
           siteId: ctx.activeSiteId,
           ...input,
-        },
+        } as any,
         include: {
           user: {
             select: {
@@ -789,7 +790,7 @@ export const creationRouter = router({
       })
       await cacheHelper.updateCreationProps(input.creationId, {
         authors,
-      })
+      } as any)
       return true
     }),
 })

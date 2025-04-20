@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import { SiteLink } from '@/components/SiteLink'
+import { SiteLink } from '@penx/components/SiteLink'
 import { initLingui } from '@/initLingui'
-import linguiConfig from '@/lingui.config'
+import linguiConfig from '@penx/libs/lingui.config'
 import { Trans } from '@lingui/react/macro'
 
 export const dynamic = 'force-static'

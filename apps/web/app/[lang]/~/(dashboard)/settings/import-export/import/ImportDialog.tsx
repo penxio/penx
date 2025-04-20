@@ -7,8 +7,8 @@ import {
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@penx/uikit/ui/tabs'
-import { usePostImport } from '@/hooks/usePostImport'
-import { ImportPostData, useImportTask } from '@/hooks/usePostImportTask'
+import { usePostImport } from '@penx/hooks/usePostImport'
+import { ImportPostData, useImportTask } from '@penx/hooks/usePostImportTask'
 import { FileImportTab } from './FileImportTab'
 import { URLImportTab } from './URLImportTab'
 

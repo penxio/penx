@@ -1,7 +1,7 @@
 'use client'
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { OrderList } from './OrderList'
 
 export const dynamic = 'force-static'

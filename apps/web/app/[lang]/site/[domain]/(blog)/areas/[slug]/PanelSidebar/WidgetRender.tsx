@@ -1,7 +1,7 @@
 'use client'
 
 import { WidgetType } from '@penx/constants'
-import { Widget } from '@/lib/types'
+import { Widget } from '@penx/types'
 import { AllCreations } from './widgets/AllCreations'
 import { CreationList } from './widgets/CreationList'
 import { Favorites } from './widgets/Favorites'

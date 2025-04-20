@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { uploadFile } from '@/lib/uploadFile'
+import { uploadFile } from '@penx/services/uploadFile'
 import { cn, getUrl } from '@penx/utils'
 import {
   CustomCell,

@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
 import { mappedByKey } from '@/lib/shared'
-import { Filter } from '@/lib/types'
+import { Filter } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'
 import { Column } from '@prisma/client'
 import { Check, ChevronDown } from 'lucide-react'

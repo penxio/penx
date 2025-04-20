@@ -14,7 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@penx/uikit/ui/carousel'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Creation, Site, Tag } from '@penx/types'
 import { formatDate } from '@penx/utils'
 import { Node } from 'slate'

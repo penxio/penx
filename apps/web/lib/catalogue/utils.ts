@@ -1,4 +1,4 @@
-import { CatalogueNodeType } from '@/lib/model'
+import { CatalogueNodeType } from '@penx/model'
 import type { CatalogueNode } from './CatalogueNode'
 import { WithFlattenProps } from './types'
 

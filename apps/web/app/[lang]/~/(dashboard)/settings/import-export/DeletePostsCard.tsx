@@ -1,7 +1,7 @@
 'use client'
 
-import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { useSiteContext } from '@/components/SiteContext'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Card,

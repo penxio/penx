@@ -1,8 +1,8 @@
 'use client'
 
 import { Button } from '@penx/uikit/ui/button'
-import { usePages } from '@/hooks/usePages'
-import { Link } from '@/lib/i18n'
+import { usePages } from '@penx/hooks/usePages'
+import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { Creation } from '@prisma/client'
 import { format } from 'date-fns'

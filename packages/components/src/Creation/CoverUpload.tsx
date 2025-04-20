@@ -1,18 +1,18 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Creation } from '@/hooks/useCreation'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { uploadFile } from '@/lib/uploadFile'
-import { cn, getUrl, isIPFSCID } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
 import { ImageIcon, X } from 'lucide-react'
 import { toast } from 'sonner'
+import { uploadFile } from '@penx/services/uploadFile'
+import { api, trpc } from '@penx/trpc-client'
+import { CreationById } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { cn, getUrl, isIPFSCID } from '@penx/utils'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { Image } from '../Image'
 
 interface Props {
-  creation: Creation
+  creation: CreationById
   isCover?: boolean
   onCoverUpdated: (url: string) => Promise<void>
 }

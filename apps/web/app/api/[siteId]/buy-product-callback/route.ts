@@ -1,6 +1,6 @@
 import { cacheHelper } from '@penx/libs/cache-header'
 import { prisma } from '@penx/db'
-import { Balance } from '@/lib/types'
+import { Balance } from '@penx/types'
 import { getOAuthStripe } from '@penx/api/lib/getOAuthStripe'
 import { InvoiceType, OrderStatus, PaymentStatus } from '@prisma/client'
 import { NextRequest, NextResponse } from 'next/server'

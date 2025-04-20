@@ -2,8 +2,8 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { NumberInput } from '@/components/NumberInput'
-import { useSiteContext } from '@/components/SiteContext'
+import { NumberInput } from '@penx/components/NumberInput'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import {
   Form,
   FormControl,
@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@penx/uikit/ui/form'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'

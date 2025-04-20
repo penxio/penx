@@ -1,6 +1,6 @@
 'use client'
 
-import { GoogleOauthDialog } from '@/components/GoogleOauthDialog/GoogleOauthDialog'
+import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog/GoogleOauthDialog'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'sonner'
 import { queryClient } from '@penx/query-client'

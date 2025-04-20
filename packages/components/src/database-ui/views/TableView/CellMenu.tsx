@@ -1,5 +1,5 @@
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
-import { IRowNode } from '@/lib/model'
+import { IRowNode } from '@penx/model'
 import { Record } from '@prisma/client'
 import {
   ArrowDown,

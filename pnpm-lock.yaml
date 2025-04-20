@@ -44,6 +44,15 @@ importers:
       '@faker-js/faker':
         specifier: ^9.4.0
         version: 9.6.0
+      '@farcaster/auth-client':
+        specifier: ^0.3.0
+        version: 0.3.0(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))(viem@2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3))
+      '@farcaster/auth-kit':
+        specifier: ^0.6.0
+        version: 0.6.0(@types/react@19.1.0)(babel-plugin-macros@3.1.0)(bufferutil@4.0.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(utf-8-validate@6.0.3)(viem@2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3))
+      '@farcaster/frame-sdk':
+        specifier: ^0.0.10
+        version: 0.0.10(typescript@5.8.2)(zod@3.24.3)
       '@floating-ui/react':
         specifier: ^0.25.4
         version: 0.25.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -53,6 +62,12 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.55.0(react@19.1.0))
+      '@lingui/core':
+        specifier: 5.3.1
+        version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)
+      '@lingui/react':
+        specifier: 5.3.1
+        version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)(react@19.1.0)
       '@octokit/app':
         specifier: ^15.1.1
         version: 15.1.5
@@ -148,7 +163,7 @@ importers:
         version: 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/next':
         specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@trpc/server@11.0.0-rc.466)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@trpc/server@11.0.0-rc.466)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@trpc/react-query':
         specifier: 11.0.0-rc.466
         version: 11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -440,6 +455,24 @@ importers:
       negotiator:
         specifier: ^1.0.0
         version: 1.0.0
+      next:
+        specifier: ^15.3.0
+        version: 15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-mdx-remote:
+        specifier: ^4.4.1
+        version: 4.4.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next-themes:
+        specifier: ^0.3.0
+        version: 0.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      nextjs-cors:
+        specifier: ^2.2.0
+        version: 2.2.0(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
+      nextjs-google-analytics:
+        specifier: ^2.3.7
+        version: 2.3.7(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
+      nextjs-toploader:
+        specifier: ^1.6.12
+        version: 1.6.12(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       nodemailer:
         specifier: ^6.10.0
         version: 6.10.0
@@ -578,6 +611,9 @@ importers:
       sharp:
         specifier: ^0.34.1
         version: 0.34.1
+      shikwasa:
+        specifier: ^2.2.1
+        version: 2.2.1
       slate:
         specifier: ~0.112.0
         version: 0.112.0
@@ -617,6 +653,9 @@ importers:
       tinykeys:
         specifier: ^3.0.0
         version: 3.0.0
+      tw-animate-css:
+        specifier: ^1.2.4
+        version: 1.2.5
       unified:
         specifier: ^11.0.4
         version: 11.0.5
@@ -651,6 +690,21 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.3.1
         version: 4.4.1(prettier@3.5.3)
+      '@iconify/json':
+        specifier: ^2.2.311
+        version: 2.2.323
+      '@iconify/tailwind4':
+        specifier: ^1.0.4
+        version: 1.0.6(tailwindcss@4.1.4)
+      '@tailwindcss/forms':
+        specifier: ^0.5.10
+        version: 0.5.10(tailwindcss@4.1.4)
+      '@tailwindcss/postcss':
+        specifier: 4.0.17
+        version: 4.0.17
+      '@tailwindcss/typography':
+        specifier: ^0.5.16
+        version: 0.5.16(tailwindcss@4.1.4)
       '@types/big.js':
         specifier: ^6.2.2
         version: 6.2.2
@@ -775,15 +829,27 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../../packages/contexts
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../../packages/local-db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../../packages/model
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
+      '@penx/services':
+        specifier: workspace:*
+        version: link:../../packages/services
       '@penx/session':
         specifier: workspace:*
         version: link:../../packages/session
@@ -910,7 +976,7 @@ importers:
         version: 2.5.1
       next:
         specifier: 14.1.3
-        version: 14.1.3(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 14.1.3(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -972,30 +1038,12 @@ importers:
       reselect:
         specifier: 5.1.0
         version: 5.1.0
-      tailwindcss:
-        specifier: 3.4.1
-        version: 3.4.1(ts-node@10.9.2(@types/node@20.11.30)(typescript@5.4.2))
       typescript:
         specifier: 5.4.2
         version: 5.4.2
 
   apps/web:
     dependencies:
-      '@farcaster/auth-client':
-        specifier: ^0.3.0
-        version: 0.3.0(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))(viem@2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3))
-      '@farcaster/auth-kit':
-        specifier: ^0.6.0
-        version: 0.6.0(@types/react@19.1.0)(babel-plugin-macros@3.1.0)(bufferutil@4.0.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(utf-8-validate@6.0.3)(viem@2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3))
-      '@farcaster/frame-sdk':
-        specifier: ^0.0.10
-        version: 0.0.10(typescript@5.7.3)(zod@3.24.3)
-      '@lingui/core':
-        specifier: 5.3.1
-        version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.7.3))(babel-plugin-macros@3.1.0)
-      '@lingui/react':
-        specifier: 5.3.1
-        version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.7.3))(babel-plugin-macros@3.1.0)(react@19.1.0)
       '@penx/api':
         specifier: workspace:*
         version: link:../../packages/api
@@ -1005,18 +1053,36 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../../packages/contexts
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../../packages/emitter
       '@penx/encryption':
         specifier: workspace:*
         version: link:../../packages/encryption
+      '@penx/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../../packages/local-db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../../packages/model
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
+      '@penx/services':
+        specifier: workspace:*
+        version: link:../../packages/services
       '@penx/session':
         specifier: workspace:*
         version: link:../../packages/session
@@ -1065,24 +1131,6 @@ importers:
       next:
         specifier: ^15.3.0
         version: 15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-mdx-remote:
-        specifier: ^4.4.1
-        version: 4.4.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      next-themes:
-        specifier: ^0.3.0
-        version: 0.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      nextjs-cors:
-        specifier: ^2.2.0
-        version: 2.2.0(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
-      nextjs-google-analytics:
-        specifier: ^2.3.7
-        version: 2.3.7(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
-      nextjs-toploader:
-        specifier: ^1.6.12
-        version: 1.6.12(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      shikwasa:
-        specifier: ^2.2.1
-        version: 2.2.1
     devDependencies:
       '@iconify/json':
         specifier: ^2.2.311
@@ -1180,6 +1228,9 @@ importers:
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -1211,18 +1262,39 @@ importers:
 
   packages/components:
     dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../api
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../emitter
+      '@penx/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../local-db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
+      '@penx/services':
+        specifier: workspace:*
+        version: link:../services
       '@penx/session':
         specifier: workspace:*
         version: link:../session
@@ -1235,6 +1307,9 @@ importers:
       '@penx/types':
         specifier: workspace:*
         version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
       '@penx/unique-id':
         specifier: workspace:*
         version: link:../unique-id
@@ -1280,6 +1355,28 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
+  packages/contexts:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/db:
     dependencies:
       '@prisma/client':
@@ -1301,6 +1398,25 @@ importers:
       prisma:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.8.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/emitter:
+    dependencies:
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -1357,6 +1473,55 @@ importers:
         version: 8.30.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.2)
 
   packages/hooks:
+    dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../api
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../emitter
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../local-db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../store
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@prisma/client':
+        specifier: ^6.6.0
+        version: 6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2)
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -1379,9 +1544,15 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
       '@penx/types':
         specifier: workspace:*
         version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
       '@penx/utils':
         specifier: workspace:*
         version: link:../utils
@@ -1399,7 +1570,94 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
+  packages/local-db:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/model:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/encryption':
+        specifier: workspace:*
+        version: link:../encryption
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/query-client:
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/services:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -1503,15 +1761,12 @@ importers:
 
   packages/uikit:
     dependencies:
-      '@lingui/core':
-        specifier: 5.3.1
-        version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)
-      '@lingui/react':
-        specifier: 5.3.1
-        version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)(react@19.1.0)
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
       '@penx/db':
         specifier: workspace:*
         version: link:../db
@@ -1536,55 +1791,13 @@ importers:
       '@penx/utils':
         specifier: workspace:*
         version: link:../utils
-      class-variance-authority:
-        specifier: 0.7.1
-        version: 0.7.1
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
-      embla-carousel-react:
-        specifier: ^8.5.1
-        version: 8.5.2(react@19.1.0)
-      next:
-        specifier: ^15.3.0
-        version: 15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      react-day-picker:
-        specifier: 8.10.1
-        version: 8.10.1(date-fns@4.1.0)(react@19.1.0)
-      react-hook-form:
-        specifier: ^7.54.2
-        version: 7.55.0(react@19.1.0)
-      react-resizable-panels:
-        specifier: ^2.1.7
-        version: 2.1.7(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      tailwind-merge:
-        specifier: 3.0.1
-        version: 3.0.1
-      tw-animate-css:
-        specifier: ^1.2.4
-        version: 1.2.5
     devDependencies:
-      '@iconify/json':
-        specifier: ^2.2.311
-        version: 2.2.323
-      '@iconify/tailwind4':
-        specifier: ^1.0.4
-        version: 1.0.6(tailwindcss@4.1.4)
       '@penx/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       '@penx/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@tailwindcss/forms':
-        specifier: ^0.5.10
-        version: 0.5.10(tailwindcss@4.1.4)
-      '@tailwindcss/postcss':
-        specifier: 4.0.17
-        version: 4.0.17
-      '@tailwindcss/typography':
-        specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.1.4)
       eslint:
         specifier: ^9.24.0
         version: 9.24.0(jiti@2.4.2)
@@ -5684,9 +5897,6 @@ packages:
   arg@4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
 
-  arg@5.0.2:
-    resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
-
   argparse@1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
 
@@ -5995,10 +6205,6 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  camelcase-css@2.0.1:
-    resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
-    engines: {node: '>= 6'}
-
   camelcase@5.3.1:
     resolution: {integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==}
     engines: {node: '>=6'}
@@ -6060,10 +6266,6 @@ packages:
 
   chokidar@3.5.1:
     resolution: {integrity: sha512-9+s+Od+W0VJJzawDma/gvBNQqkTiqYTWLuZoyAsivsI4AaWTCzHG06/TMjsf1cYe9Cb97UCEhjz7HvnPk2p/tw==}
-    engines: {node: '>= 8.10.0'}
-
-  chokidar@3.6.0:
-    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
   chokidar@4.0.3:
@@ -6239,10 +6441,6 @@ packages:
   commander@2.9.0:
     resolution: {integrity: sha512-bmkUukX8wAOjHdN26xj5c4ctEV22TQ7dQYhSmuckKhToXrkUn0iIaolHdIxYYqD55nhpSPA9zPQ1yP57GdXP2A==}
     engines: {node: '>= 0.6.x'}
-
-  commander@4.1.1:
-    resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
-    engines: {node: '>= 6'}
 
   commander@8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
@@ -6643,9 +6841,6 @@ packages:
   dexie@4.0.11:
     resolution: {integrity: sha512-SOKO002EqlvBYYKQSew3iymBoN2EQ4BDw/3yprjh7kAfFzjBYkaMNa/pZvcA7HSWlcKSQb9XhPe3wKyQ0x4A8A==}
 
-  didyoumean@1.2.2:
-    resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
-
   diff-match-patch-ts@0.6.0:
     resolution: {integrity: sha512-U0uPIJ+wJqgaBoVw2MFSFpGIk7q3mJJ+/sehbxDZFv4Gx6a1GOmrsSLmxVDDrGtRL4Q9de084aa5lVpCHn+eUw==}
 
@@ -6674,9 +6869,6 @@ packages:
   direction@1.0.4:
     resolution: {integrity: sha512-GYqKi1aH7PJXxdhTeZBFrg8vUBeKXi+cNprXsC1kpJcbcVnV9wBsrOu1cQEdG0WeQwlfHiy3XvnKfIrJ2R0NzQ==}
     hasBin: true
-
-  dlv@1.1.3:
-    resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
 
   dnd-core@16.0.1:
     resolution: {integrity: sha512-HK294sl7tbw6F6IeuK16YSBUoorvHpY8RHO+9yFfaJyCDVb6n7PRcezrOEOa2SBCqiYpemh5Jx20ZcjKdFAVng==}
@@ -7549,10 +7741,6 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
-  glob@10.4.5:
-    resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
-    hasBin: true
-
   glob@11.0.1:
     resolution: {integrity: sha512-zrQDm8XPnYEKawJScsnM0QzobJxlT/kHOOlRTio8IH/GrmxRE5fjllkzdaHclIuNjUQTJYH2xHNIGfdpJkDJUw==}
     engines: {node: 20 || >=22}
@@ -8236,9 +8424,6 @@ packages:
     resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
 
-  jackspeak@3.4.3:
-    resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
-
   jackspeak@4.1.0:
     resolution: {integrity: sha512-9DDdhb5j6cpeitCbvLO7n7J4IxnbM6hoF6O1g4HQ5TfhvvKN8ywDM7668ZhMHRqVmxqhps/F6syWK2KcPxYlkw==}
     engines: {node: 20 || >=22}
@@ -8562,14 +8747,6 @@ packages:
 
   lightweight-charts@4.2.3:
     resolution: {integrity: sha512-5kS/2hY3wNYNzhnS8Gb+GAS07DX8GPF2YVDnd2NMC85gJVQ6RLU6YrXNgNJ6eg0AnWPwCnvaGtYmGky3HiLQEw==}
-
-  lilconfig@2.1.0:
-    resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
-    engines: {node: '>=10'}
-
-  lilconfig@3.1.3:
-    resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
-    engines: {node: '>=14'}
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -9416,10 +9593,6 @@ packages:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
 
-  object-hash@3.0.0:
-    resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
-    engines: {node: '>= 6'}
-
   object-inspect@1.13.4:
     resolution: {integrity: sha512-W67iLl4J2EXEGTbfeHCffrjDfitvLANg0UlX3wFUUSTx92KXRFegMHUVgSqE+wvhAbi4WqjGg9czysTV2Epbew==}
     engines: {node: '>= 0.4'}
@@ -9757,10 +9930,6 @@ packages:
     resolution: {integrity: sha512-M7BAV6Rlcy5u+m6oPhAPFgJTzAioX/6B0DxyvDlo9l8+T3nLKbrczg2WLUyzd45L8RqfUMyGPzekbMvX2Ldkwg==}
     engines: {node: '>=12'}
 
-  pify@2.3.0:
-    resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
-    engines: {node: '>=0.10.0'}
-
   pify@3.0.0:
     resolution: {integrity: sha512-C3FsVNH1udSEX48gGX1xfvwTWfsYWj5U+8/uK15BGzIGrKoUpghX8hWZwa/OFnakBiiVNmBvemTJR5mcy7iPcg==}
     engines: {node: '>=4'}
@@ -9768,10 +9937,6 @@ packages:
   pify@6.1.0:
     resolution: {integrity: sha512-KocF8ve28eFjjuBKKGvzOBGzG8ew2OqOOSxTTZhirkzH7h3BI1vyzqlR0qbfcDBve1Yzo3FVlWUAtCRrbVN8Fw==}
     engines: {node: '>=14.16'}
-
-  pirates@4.0.7:
-    resolution: {integrity: sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==}
-    engines: {node: '>= 6'}
 
   pkg-conf@2.1.0:
     resolution: {integrity: sha512-C+VUP+8jis7EsQZIhDYmS5qlNtjv2yP4SNtjXK9AP1ZcTRlnSfuumaTnRfYZnYgUUYVIKqL0fRvmUGDV2fmp6g==}
@@ -9805,30 +9970,6 @@ packages:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
     engines: {node: '>= 0.4'}
 
-  postcss-import@15.1.0:
-    resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      postcss: ^8.0.0
-
-  postcss-js@4.0.1:
-    resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
-    engines: {node: ^12 || ^14 || >= 16}
-    peerDependencies:
-      postcss: ^8.4.21
-
-  postcss-load-config@4.0.2:
-    resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
-    engines: {node: '>= 14'}
-    peerDependencies:
-      postcss: '>=8.0.9'
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      postcss:
-        optional: true
-      ts-node:
-        optional: true
-
   postcss-modules-extract-imports@3.1.0:
     resolution: {integrity: sha512-k3kNe0aNFQDAZGbin48pL2VNidTF0w4/eASDsxlyspobzU3wZQLOGj7L9gfRe0Jo9/4uud09DsjFNH7winGv8Q==}
     engines: {node: ^10 || ^12 || >= 14}
@@ -9853,18 +9994,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
-  postcss-nested@6.2.0:
-    resolution: {integrity: sha512-HQbt28KulC5AJzG+cZtj9kvKB93CFCdLvog1WFLf1D+xmMvPGlBstkpTEZfK5+AN9hfJocyBFCNiqyS48bpgzQ==}
-    engines: {node: '>=12.0'}
-    peerDependencies:
-      postcss: ^8.2.14
-
   postcss-selector-parser@6.0.10:
     resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
-    engines: {node: '>=4'}
-
-  postcss-selector-parser@6.1.2:
-    resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
 
   postcss-selector-parser@7.1.0:
@@ -10410,9 +10541,6 @@ packages:
     resolution: {integrity: sha512-FS+XFBNvn3GTAWq26joslQgWNoFu08F4kl0J4CgdNKADkdSGXQyTCnKteIAJy96Br6YbpEU1LSzV5dYtjMkMDg==}
     engines: {node: '>=0.10.0'}
 
-  read-cache@1.0.0:
-    resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
-
   readable-stream@2.3.8:
     resolution: {integrity: sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==}
 
@@ -10422,10 +10550,6 @@ packages:
 
   readdirp@3.5.0:
     resolution: {integrity: sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==}
-    engines: {node: '>=8.10.0'}
-
-  readdirp@3.6.0:
-    resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
   readdirp@4.1.2:
@@ -11096,11 +11220,6 @@ packages:
   stylis@4.3.6:
     resolution: {integrity: sha512-yQ3rwFWRfwNUY7H5vpU0wfdkNSnvnJinhF9830Swlaxl03zsOjCfmX0ugac+3LtK0lYSgwL/KXc8oYL3mG4YFQ==}
 
-  sucrase@3.35.0:
-    resolution: {integrity: sha512-8EbVDiu9iN/nESwxeSxDKe0dunta1GOlHufmSSXxMD2z2/tMZpDMpvXQGsc+ajGo8y2uYUmixaSRUc/QPoQ0GA==}
-    engines: {node: '>=16 || 14 >=14.17'}
-    hasBin: true
-
   superjson@2.2.2:
     resolution: {integrity: sha512-5JRxVqC8I8NuOUjzBbvVJAKNM8qoVuH0O77h4WInc/qC2q5IreqKxYwgkga3PfA22OayK2ikceb/B26dztPl+Q==}
     engines: {node: '>=16'}
@@ -11152,11 +11271,6 @@ packages:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
-
-  tailwindcss@3.4.1:
-    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==}
-    engines: {node: '>=14.0.0'}
-    hasBin: true
 
   tailwindcss@4.0.17:
     resolution: {integrity: sha512-OErSiGzRa6rLiOvaipsDZvLMSpsBZ4ysB4f0VKGXUrjw2jfkJRd6kjRKV2+ZmTCNvwtvgdDam5D7w6WXsdLJZw==}
@@ -11309,9 +11423,6 @@ packages:
 
   ts-easing@0.2.0:
     resolution: {integrity: sha512-Z86EW+fFFh/IFB1fqQ3/+7Zpf9t2ebOAxNI/V6Wo7r5gqiqtxmgTlQ1qbqQcjLKYeSHPTsEmvlJUDg/EuL0uHQ==}
-
-  ts-interface-checker@0.1.13:
-    resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
   ts-invariant@0.10.3:
     resolution: {integrity: sha512-uivwYcQaxAucv1CzRp2n/QdYPo4ILf9VXgH19zEIjFx2EJufV16P0JtJVpYHy89DItG6Kwj2oIUjrcK5au+4tQ==}
@@ -13099,16 +13210,16 @@ snapshots:
 
   '@faker-js/faker@9.6.0': {}
 
-  '@farcaster/auth-client@0.3.0(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))(viem@2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3))':
+  '@farcaster/auth-client@0.3.0(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))(viem@2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3))':
     dependencies:
       ethers: 6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3)
       neverthrow: 6.2.2
       siwe: 2.3.2(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))
-      viem: 2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3)
+      viem: 2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3)
 
-  '@farcaster/auth-kit@0.6.0(@types/react@19.1.0)(babel-plugin-macros@3.1.0)(bufferutil@4.0.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(utf-8-validate@6.0.3)(viem@2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3))':
+  '@farcaster/auth-kit@0.6.0(@types/react@19.1.0)(babel-plugin-macros@3.1.0)(bufferutil@4.0.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(utf-8-validate@6.0.3)(viem@2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3))':
     dependencies:
-      '@farcaster/auth-client': 0.3.0(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))(viem@2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3))
+      '@farcaster/auth-client': 0.3.0(ethers@6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3))(viem@2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3))
       '@vanilla-extract/css': 1.17.1(babel-plugin-macros@3.1.0)
       ethers: 6.13.5(bufferutil@4.0.8)(utf-8-validate@6.0.3)
       qrcode: 1.5.4
@@ -13122,19 +13233,19 @@ snapshots:
       - utf-8-validate
       - viem
 
-  '@farcaster/frame-core@0.0.9(typescript@5.7.3)':
+  '@farcaster/frame-core@0.0.9(typescript@5.8.2)':
     dependencies:
-      ox: 0.4.4(typescript@5.7.3)(zod@3.24.3)
+      ox: 0.4.4(typescript@5.8.2)(zod@3.24.3)
       zod: 3.24.3
     transitivePeerDependencies:
       - typescript
 
-  '@farcaster/frame-sdk@0.0.10(typescript@5.7.3)(zod@3.24.3)':
+  '@farcaster/frame-sdk@0.0.10(typescript@5.8.2)(zod@3.24.3)':
     dependencies:
-      '@farcaster/frame-core': 0.0.9(typescript@5.7.3)
+      '@farcaster/frame-core': 0.0.9(typescript@5.8.2)
       comlink: 4.4.2
       eventemitter3: 5.0.1
-      ox: 0.4.4(typescript@5.7.3)(zod@3.24.3)
+      ox: 0.4.4(typescript@5.8.2)(zod@3.24.3)
     transitivePeerDependencies:
       - typescript
       - zod
@@ -13754,15 +13865,6 @@ snapshots:
     dependencies:
       '@messageformat/parser': 5.1.1
       js-sha256: 0.10.1
-
-  '@lingui/react@5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.7.3))(babel-plugin-macros@3.1.0)(react@19.1.0)':
-    dependencies:
-      '@babel/runtime': 7.27.0
-      '@lingui/core': 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.7.3))(babel-plugin-macros@3.1.0)
-      react: 19.1.0
-    optionalDependencies:
-      '@lingui/babel-plugin-lingui-macro': 5.3.1(babel-plugin-macros@3.1.0)(typescript@5.7.3)
-      babel-plugin-macros: 3.1.0
 
   '@lingui/react@5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)(react@19.1.0)':
     dependencies:
@@ -15411,7 +15513,7 @@ snapshots:
     dependencies:
       '@trpc/server': 11.0.0-rc.466
 
-  '@trpc/next@11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@trpc/server@11.0.0-rc.466)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@trpc/next@11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.74.3(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@trpc/server@11.0.0-rc.466)(next@15.3.1(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@trpc/client': 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
       '@trpc/server': 11.0.0-rc.466
@@ -16943,11 +17045,6 @@ snapshots:
 
   abab@2.0.6: {}
 
-  abitype@1.0.8(typescript@5.7.3)(zod@3.24.3):
-    optionalDependencies:
-      typescript: 5.7.3
-      zod: 3.24.3
-
   abitype@1.0.8(typescript@5.8.2)(zod@3.24.3):
     optionalDependencies:
       typescript: 5.8.2
@@ -17067,8 +17164,6 @@ snapshots:
   apg-js@4.4.0: {}
 
   arg@4.1.3: {}
-
-  arg@5.0.2: {}
 
   argparse@1.0.10:
     dependencies:
@@ -17414,8 +17509,6 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  camelcase-css@2.0.1: {}
-
   camelcase@5.3.1: {}
 
   camelcase@6.3.0: {}
@@ -17485,18 +17578,6 @@ snapshots:
       is-glob: 4.0.3
       normalize-path: 3.0.0
       readdirp: 3.5.0
-    optionalDependencies:
-      fsevents: 2.3.3
-
-  chokidar@3.6.0:
-    dependencies:
-      anymatch: 3.1.3
-      braces: 3.0.3
-      glob-parent: 5.1.2
-      is-binary-path: 2.1.0
-      is-glob: 4.0.3
-      normalize-path: 3.0.0
-      readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -17675,8 +17756,6 @@ snapshots:
   commander@2.9.0:
     dependencies:
       graceful-readlink: 1.0.1
-
-  commander@4.1.1: {}
 
   commander@8.3.0: {}
 
@@ -18042,8 +18121,6 @@ snapshots:
 
   dexie@4.0.11: {}
 
-  didyoumean@1.2.2: {}
-
   diff-match-patch-ts@0.6.0: {}
 
   diff-match-patch@1.0.5: {}
@@ -18061,8 +18138,6 @@ snapshots:
       path-type: 4.0.0
 
   direction@1.0.4: {}
-
-  dlv@1.1.3: {}
 
   dnd-core@16.0.1:
     dependencies:
@@ -19302,15 +19377,6 @@ snapshots:
       minipass: 7.1.2
       path-scurry: 1.11.1
 
-  glob@10.4.5:
-    dependencies:
-      foreground-child: 3.3.1
-      jackspeak: 3.4.3
-      minimatch: 9.0.5
-      minipass: 7.1.2
-      package-json-from-dist: 1.0.1
-      path-scurry: 1.11.1
-
   glob@11.0.1:
     dependencies:
       foreground-child: 3.3.1
@@ -20060,12 +20126,6 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jackspeak@3.4.3:
-    dependencies:
-      '@isaacs/cliui': 8.0.2
-    optionalDependencies:
-      '@pkgjs/parseargs': 0.11.0
-
   jackspeak@4.1.0:
     dependencies:
       '@isaacs/cliui': 8.0.2
@@ -20452,10 +20512,6 @@ snapshots:
   lightweight-charts@4.2.3:
     dependencies:
       fancy-canvas: 2.1.0
-
-  lilconfig@2.1.0: {}
-
-  lilconfig@3.1.3: {}
 
   lines-and-columns@1.2.4: {}
 
@@ -21524,7 +21580,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  next@14.1.3(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  next@14.1.3(@babel/core@7.26.10)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@next/env': 14.1.3
       '@swc/helpers': 0.5.2
@@ -21534,7 +21590,7 @@ snapshots:
       postcss: 8.4.31
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      styled-jsx: 5.1.1(@babel/core@7.26.10)(react@19.1.0)
+      styled-jsx: 5.1.1(@babel/core@7.26.10)(babel-plugin-macros@3.1.0)(react@19.1.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.1.3
       '@next/swc-darwin-x64': 14.1.3
@@ -21657,8 +21713,6 @@ snapshots:
       tinyexec: 0.3.2
 
   object-assign@4.1.1: {}
-
-  object-hash@3.0.0: {}
 
   object-inspect@1.13.4: {}
 
@@ -21835,31 +21889,17 @@ snapshots:
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
 
-  ox@0.4.4(typescript@5.7.3)(zod@3.24.3):
+  ox@0.4.4(typescript@5.8.2)(zod@3.24.3):
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
       '@noble/curves': 1.8.1
       '@noble/hashes': 1.7.1
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
-      abitype: 1.0.8(typescript@5.7.3)(zod@3.24.3)
+      abitype: 1.0.8(typescript@5.8.2)(zod@3.24.3)
       eventemitter3: 5.0.1
     optionalDependencies:
-      typescript: 5.7.3
-    transitivePeerDependencies:
-      - zod
-
-  ox@0.6.9(typescript@5.7.3)(zod@3.24.3):
-    dependencies:
-      '@adraffy/ens-normalize': 1.11.0
-      '@noble/curves': 1.8.1
-      '@noble/hashes': 1.7.1
-      '@scure/bip32': 1.6.2
-      '@scure/bip39': 1.5.4
-      abitype: 1.0.8(typescript@5.7.3)(zod@3.24.3)
-      eventemitter3: 5.0.1
-    optionalDependencies:
-      typescript: 5.7.3
+      typescript: 5.8.2
     transitivePeerDependencies:
       - zod
 
@@ -22092,13 +22132,9 @@ snapshots:
 
   picomatch@4.0.2: {}
 
-  pify@2.3.0: {}
-
   pify@3.0.0: {}
 
   pify@6.1.0: {}
-
-  pirates@4.0.7: {}
 
   pkg-conf@2.1.0:
     dependencies:
@@ -22137,26 +22173,6 @@ snapshots:
 
   possible-typed-array-names@1.1.0: {}
 
-  postcss-import@15.1.0(postcss@8.5.3):
-    dependencies:
-      postcss: 8.5.3
-      postcss-value-parser: 4.2.0
-      read-cache: 1.0.0
-      resolve: 1.22.10
-
-  postcss-js@4.0.1(postcss@8.5.3):
-    dependencies:
-      camelcase-css: 2.0.1
-      postcss: 8.5.3
-
-  postcss-load-config@4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@20.11.30)(typescript@5.4.2)):
-    dependencies:
-      lilconfig: 3.1.3
-      yaml: 2.7.1
-    optionalDependencies:
-      postcss: 8.5.3
-      ts-node: 10.9.2(@types/node@20.11.30)(typescript@5.4.2)
-
   postcss-modules-extract-imports@3.1.0(postcss@8.5.3):
     dependencies:
       postcss: 8.5.3
@@ -22178,17 +22194,7 @@ snapshots:
       icss-utils: 5.1.0(postcss@8.5.3)
       postcss: 8.5.3
 
-  postcss-nested@6.2.0(postcss@8.5.3):
-    dependencies:
-      postcss: 8.5.3
-      postcss-selector-parser: 6.1.2
-
   postcss-selector-parser@6.0.10:
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
-
-  postcss-selector-parser@6.1.2:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
@@ -22766,10 +22772,6 @@ snapshots:
 
   react@19.1.0: {}
 
-  read-cache@1.0.0:
-    dependencies:
-      pify: 2.3.0
-
   readable-stream@2.3.8:
     dependencies:
       core-util-is: 1.0.3
@@ -22787,10 +22789,6 @@ snapshots:
       util-deprecate: 1.0.2
 
   readdirp@3.5.0:
-    dependencies:
-      picomatch: 2.3.1
-
-  readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
 
@@ -23593,12 +23591,13 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  styled-jsx@5.1.1(@babel/core@7.26.10)(react@19.1.0):
+  styled-jsx@5.1.1(@babel/core@7.26.10)(babel-plugin-macros@3.1.0)(react@19.1.0):
     dependencies:
       client-only: 0.0.1
       react: 19.1.0
     optionalDependencies:
       '@babel/core': 7.26.10
+      babel-plugin-macros: 3.1.0
 
   styled-jsx@5.1.6(@babel/core@7.26.10)(babel-plugin-macros@3.1.0)(react@19.1.0):
     dependencies:
@@ -23609,16 +23608,6 @@ snapshots:
       babel-plugin-macros: 3.1.0
 
   stylis@4.3.6: {}
-
-  sucrase@3.35.0:
-    dependencies:
-      '@jridgewell/gen-mapping': 0.3.8
-      commander: 4.1.1
-      glob: 10.4.5
-      lines-and-columns: 1.2.4
-      mz: 2.7.0
-      pirates: 4.0.7
-      ts-interface-checker: 0.1.13
 
   superjson@2.2.2:
     dependencies:
@@ -23660,33 +23649,6 @@ snapshots:
   tailwind-scrollbar-hide@2.0.0: {}
 
   tailwindcss-animate@1.0.7: {}
-
-  tailwindcss@3.4.1(ts-node@10.9.2(@types/node@20.11.30)(typescript@5.4.2)):
-    dependencies:
-      '@alloc/quick-lru': 5.2.0
-      arg: 5.0.2
-      chokidar: 3.6.0
-      didyoumean: 1.2.2
-      dlv: 1.1.3
-      fast-glob: 3.3.3
-      glob-parent: 6.0.2
-      is-glob: 4.0.3
-      jiti: 1.21.7
-      lilconfig: 2.1.0
-      micromatch: 4.0.8
-      normalize-path: 3.0.0
-      object-hash: 3.0.0
-      picocolors: 1.1.1
-      postcss: 8.5.3
-      postcss-import: 15.1.0(postcss@8.5.3)
-      postcss-js: 4.0.1(postcss@8.5.3)
-      postcss-load-config: 4.0.2(postcss@8.5.3)(ts-node@10.9.2(@types/node@20.11.30)(typescript@5.4.2))
-      postcss-nested: 6.2.0(postcss@8.5.3)
-      postcss-selector-parser: 6.1.2
-      resolve: 1.22.10
-      sucrase: 3.35.0
-    transitivePeerDependencies:
-      - ts-node
 
   tailwindcss@4.0.17: {}
 
@@ -23827,30 +23789,9 @@ snapshots:
 
   ts-easing@0.2.0: {}
 
-  ts-interface-checker@0.1.13: {}
-
   ts-invariant@0.10.3:
     dependencies:
       tslib: 2.8.1
-
-  ts-node@10.9.2(@types/node@20.11.30)(typescript@5.4.2):
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.11
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.4
-      '@types/node': 20.11.30
-      acorn: 8.14.1
-      acorn-walk: 8.3.4
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 5.4.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    optional: true
 
   ts-node@10.9.2(@types/node@22.14.0)(typescript@5.7.3):
     dependencies:
@@ -24383,23 +24324,6 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  viem@2.25.0(bufferutil@4.0.8)(typescript@5.7.3)(utf-8-validate@6.0.3)(zod@3.24.3):
-    dependencies:
-      '@noble/curves': 1.8.1
-      '@noble/hashes': 1.7.1
-      '@scure/bip32': 1.6.2
-      '@scure/bip39': 1.5.4
-      abitype: 1.0.8(typescript@5.7.3)(zod@3.24.3)
-      isows: 1.0.6(ws@8.18.1(bufferutil@4.0.8)(utf-8-validate@6.0.3))
-      ox: 0.6.9(typescript@5.7.3)(zod@3.24.3)
-      ws: 8.18.1(bufferutil@4.0.8)(utf-8-validate@6.0.3)
-    optionalDependencies:
-      typescript: 5.7.3
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - zod
-
   viem@2.25.0(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@6.0.3)(zod@3.24.3):
     dependencies:
       '@noble/curves': 1.8.1
@@ -24812,7 +24736,8 @@ snapshots:
 
   yaml@1.10.2: {}
 
-  yaml@2.7.1: {}
+  yaml@2.7.1:
+    optional: true
 
   yargs-parser@18.1.3:
     dependencies:

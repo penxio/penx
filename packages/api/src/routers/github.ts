@@ -1,6 +1,6 @@
 import { cacheHelper } from '@penx/libs/cache-header'
 import { prisma } from '@penx/db'
-import { GithubInfo } from '@/lib/types'
+import { GithubInfo } from '@penx/types'
 import { components } from '@octokit/openapi-types'
 import { Octokit } from 'octokit'
 import { z } from 'zod'

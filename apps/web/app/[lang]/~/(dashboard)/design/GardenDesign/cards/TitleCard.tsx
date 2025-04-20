@@ -1,9 +1,9 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Input } from '@penx/uikit/ui/input'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'

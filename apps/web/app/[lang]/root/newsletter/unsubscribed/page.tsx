@@ -1,6 +1,6 @@
 import { Button } from '@penx/uikit/ui/button'
 import { Card, CardContent, CardHeader } from '@penx/uikit/ui/card'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { CheckCircle2 } from 'lucide-react'
 
 type SearchParams = Promise<{ email?: string }>

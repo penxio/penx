@@ -4,8 +4,8 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { PlateEditor } from '@penx/uikit/editor/plate-editor'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@/components/NumberInput'
-import { useSpaceContext } from '@/components/SpaceContext'
+import { NumberInput } from '@penx/components/NumberInput'
+import { useSpaceContext } from '@penx/components/SpaceContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,

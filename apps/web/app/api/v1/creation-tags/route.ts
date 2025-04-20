@@ -1,5 +1,5 @@
 import { getSessionOptions } from '@/lib/session'
-import { SessionData } from '@/lib/types'
+import { SessionData } from '@penx/types'
 import {
   addCreationTag,
   AddCreationTagInput,

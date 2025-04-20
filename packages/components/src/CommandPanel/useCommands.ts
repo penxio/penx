@@ -1,4 +1,4 @@
-import { ICommandItem } from '@/lib/types'
+import { ICommandItem } from '@penx/types'
 import { atom, useAtom } from 'jotai'
 
 export const commands: ICommandItem[] = []

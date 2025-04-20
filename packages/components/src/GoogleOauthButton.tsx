@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { IconGoogle } from '@/components/icons/IconGoogle'
+import { IconGoogle } from '@penx/components/icons/IconGoogle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@penx/session'
 import { Button, ButtonProps } from '@penx/uikit/ui/button'
@@ -10,7 +10,7 @@ import {
   GOOGLE_DRIVE_OAUTH_REDIRECT_URI,
   GOOGLE_OAUTH_REDIRECT_URI,
 } from '@penx/constants'
-import { usePathname } from '@/lib/i18n'
+import { usePathname } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { useSearchParams } from 'next/navigation'
 import qs from 'query-string'

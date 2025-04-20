@@ -1,7 +1,7 @@
 'use client'
 
 import { useSession } from '@penx/session'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { Trans } from '@lingui/react/macro'
 import { usePathname } from 'next/navigation'

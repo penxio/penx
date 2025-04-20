@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
 import { Label } from '@penx/uikit/ui/label'
 import { Switch } from '@penx/uikit/ui/switch'
 import {

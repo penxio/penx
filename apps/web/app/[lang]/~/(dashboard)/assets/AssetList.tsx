@@ -1,8 +1,8 @@
 'use client'
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Asset, useAssets } from '@/hooks/useAssets'
-import { useTrashedAssets } from '@/hooks/useTrashedAssets'
+import { Asset, useAssets } from '@penx/hooks/useAssets'
+import { useTrashedAssets } from '@penx/hooks/useTrashedAssets'
 import { placeholderBlurhash } from '@penx/constants'
 import Image from 'next/image'
 import { AssetItem } from './AssetItem'

@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { Tag as TagEntity } from '@penx/types'
 import { slug } from 'github-slugger'
 

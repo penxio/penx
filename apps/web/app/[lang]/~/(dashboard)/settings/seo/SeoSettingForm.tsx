@@ -14,7 +14,7 @@ import {
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
 import { Textarea } from '@penx/uikit/ui/textarea'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'

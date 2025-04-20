@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
 import { Separator } from '@penx/uikit/ui/separator'
-import { Sort } from '@/lib/types'
+import { Sort } from '@penx/types'
 import { SortAsc } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { ToolbarBtn } from '../ToolbarBtn'

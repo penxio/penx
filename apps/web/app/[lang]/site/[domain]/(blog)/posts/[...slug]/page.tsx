@@ -1,5 +1,5 @@
-import { CreationListProvider } from '@/components/CreationListContext'
-import { EngagementTracker } from '@/components/EngagementTracker'
+import { CreationListProvider } from '@penx/components/CreationListContext'
+import { EngagementTracker } from '@penx/components/EngagementTracker'
 import { initLingui } from '@/initLingui'
 import { getCreation, getCreations, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'

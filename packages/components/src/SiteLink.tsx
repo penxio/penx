@@ -1,13 +1,13 @@
 'use client'
 
-import { useDomainStatus } from '@/app/[lang]/~/(dashboard)/settings/domain/use-domain-status'
-import { Badge } from '@penx/uikit/ui/badge'
-import { useSite } from '@/hooks/useSite'
-import { ROOT_DOMAIN } from '@penx/constants'
-import { getSiteDomain } from '@/lib/getSiteDomain'
 import { ExternalLink } from 'lucide-react'
+import { ROOT_DOMAIN } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useDomainStatus } from '@penx/hooks/use-domain-status'
+import { useSite } from '@penx/hooks/useSite'
+import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { Badge } from '@penx/uikit/ui/badge'
 import LoadingCircle from './icons/loading-circle'
-import { useSiteContext } from './SiteContext'
 
 export function SiteLink() {
   const site = useSiteContext()

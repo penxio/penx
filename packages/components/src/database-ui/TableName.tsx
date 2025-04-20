@@ -8,7 +8,7 @@ import {
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
 import { Separator } from '@penx/uikit/ui/separator'
-import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { bgColorMaps, textColorMaps } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
 import { PopoverClose } from '@radix-ui/react-popover'

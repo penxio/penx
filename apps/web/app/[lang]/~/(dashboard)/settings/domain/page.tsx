@@ -2,8 +2,8 @@
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Separator } from '@penx/uikit/ui/separator'
-import { useSite } from '@/hooks/useSite'
-import { getSiteCustomDomain } from '@/lib/getSiteDomain'
+import { useSite } from '@penx/hooks/useSite'
+import { getSiteCustomDomain } from '@penx/libs/getSiteDomain'
 import { CustomDomainForm } from './CustomDomainForm'
 import DeleteDomain from './DeleteDomain'
 import { DomainConfiguration } from './DomainConfiguration'

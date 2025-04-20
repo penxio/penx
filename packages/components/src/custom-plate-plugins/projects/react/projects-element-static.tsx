@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useProjectsContext } from '@/components/ProjectsContext'
+import { useProjectsContext } from '@penx/components/ProjectsContext'
 import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'

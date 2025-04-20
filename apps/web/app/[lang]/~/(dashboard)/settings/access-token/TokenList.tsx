@@ -1,10 +1,10 @@
 'use client'
 
-import { ConfirmDialog } from '@/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Separator } from '@penx/uikit/ui/separator'
-import { useAccessTokens } from '@/hooks/useAccessTokens'
-import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
+import { useAccessTokens } from '@penx/hooks/useAccessTokens'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { AccessToken } from '@prisma/client'

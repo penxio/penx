@@ -1,6 +1,6 @@
 import { editorDefaultValue, ELEMENT_P } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { Option } from '@/lib/types'
+import { Option } from '@penx/types'
 
 interface Input {
   siteId: string

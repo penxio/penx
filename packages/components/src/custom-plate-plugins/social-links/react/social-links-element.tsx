@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useSiteContext } from '@/components/SiteContext'
-import { SocialNav } from '@/components/theme-ui/SocialNav'
-import { Link } from '@/lib/i18n'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { SocialNav } from '@penx/components/theme-ui/SocialNav'
+import { Link } from '@penx/libs/i18n'
 import { getBlockClassName } from '@penx/utils'
 import { cn, withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'

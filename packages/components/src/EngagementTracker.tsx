@@ -1,6 +1,6 @@
 'use client'
 
-import { usePostEngagement } from '@/hooks/usePostEngagement'
+import { usePostEngagement } from '@penx/hooks/usePostEngagement'
 
 export function EngagementTracker({ creationId }: { creationId: string }) {
   usePostEngagement({

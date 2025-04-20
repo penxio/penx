@@ -1,6 +1,6 @@
 'use client'
 
-import { ColumnType } from '@/lib/types'
+import { ColumnType } from '@penx/types'
 import {
   CalendarDays,
   CheckCircle2,

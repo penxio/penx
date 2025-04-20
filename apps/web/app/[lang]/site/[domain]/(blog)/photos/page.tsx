@@ -1,8 +1,8 @@
-import { PhotoListWidget } from '@/components/theme-ui/PhotoListWidget'
+import { PhotoListWidget } from '@penx/components/theme-ui/PhotoListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getPhotos, getSite } from '@/lib/fetchers'
 import { AppearanceConfig } from '@penx/types'
-import linguiConfig from '@/lingui.config'
+import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
 
 export const dynamic = 'force-static'

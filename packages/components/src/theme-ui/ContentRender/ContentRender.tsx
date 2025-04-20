@@ -1,17 +1,17 @@
 'use client'
 
-import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
-import {
-  serverSideComponents,
-  serverSideEditor,
-} from '@penx/uikit/editor/server-side-editor'
-import { getUrl } from '@penx/utils'
+// import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
+// import {
+//   serverSideComponents,
+//   serverSideEditor,
+// } from '@penx/uikit/editor/server-side-editor'
 import {
   BaseParagraphPlugin,
   createSlateEditor,
   PlateStatic,
 } from '@udecode/plate'
 import Image from 'next/image'
+import { getUrl } from '@penx/utils'
 import { components } from './components'
 import { SlateContent } from './SlateContent'
 
@@ -46,14 +46,16 @@ export function ContentRender({ content }: Props) {
     ? content
     : JSON.parse(content)
 
-  return (
-    <PlateStatic
-      editor={serverSideEditor}
-      components={serverSideComponents}
-      // editor={editor}
-      // components={components}
-      value={value.map(({ id, ...rest }) => rest) as any}
-      className="text-base"
-    />
-  )
+  return null
+
+  // return (
+  //   <PlateStatic
+  //     editor={serverSideEditor}
+  //     components={serverSideComponents}
+  //     // editor={editor}
+  //     // components={components}
+  //     value={value.map(({ id, ...rest }) => rest) as any}
+  //     className="text-base"
+  //   />
+  // )
 }

@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.ts"
+    "./*": "./src/*.ts",
+    "./i18n": "./src/i18n.tsx",
+    "./getCreationIcon": "./src/getCreationIcon.tsx",
+    "./getMoldName": "./src/getMoldName.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -17,7 +20,9 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
+    "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
+    "@penx/model": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/types": "workspace:*"
   }

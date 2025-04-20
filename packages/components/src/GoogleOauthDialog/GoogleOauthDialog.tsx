@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { IconGoogle } from '@/components/icons/IconGoogle'
-import LoadingCircle from '@/components/icons/loading-circle'
+import { IconGoogle } from '@penx/components/icons/IconGoogle'
+import LoadingCircle from '@penx/components/icons/loading-circle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@penx/session'
 import {
@@ -13,7 +13,7 @@ import {
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
 import { getGoogleUserInfo } from '@/lib/getGoogleUserInfo'
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useGoogleOauthDialog } from './useGoogleOauthDialog'

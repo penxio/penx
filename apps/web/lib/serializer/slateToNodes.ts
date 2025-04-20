@@ -1,6 +1,6 @@
 import { getNodeByPath } from '@penx/uikit/editor/lib/getNodeByPath'
 import { ELEMENT_LI, ELEMENT_LIC } from '@penx/constants'
-import { INode, NodeType } from '@/lib/model'
+import { INode, NodeType } from '@penx/model'
 import { uniqueId } from '@penx/unique-id'
 import _ from 'lodash'
 import { createEditor, Editor, Path, Transforms } from 'slate'

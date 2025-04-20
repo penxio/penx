@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useMyAccounts } from '@/hooks/useMyAccounts'
+import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'

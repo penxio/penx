@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { getSubdomain } from '@/lib/domains'
+import { useDomainStatus } from '@penx/hooks/use-domain-status'
 import { cn } from '@penx/utils'
 import DomainStatus from './DomainStatus'
-import { useDomainStatus } from './use-domain-status'
 
 export const InlineSnippet = ({
   className,

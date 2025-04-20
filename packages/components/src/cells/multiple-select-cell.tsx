@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { getColorByName } from '@penx/libs/color-helper'
-import { Option } from '@/lib/types'
+import { Option } from '@penx/types'
 import {
   CustomCell,
   CustomRenderer,

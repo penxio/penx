@@ -7,7 +7,7 @@ import {
 } from '@penx/constants'
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
 import { redisKeys } from '@/lib/redisKeys'
-import { SpaceInfo, SpaceOnEvent, SpaceType } from '@/lib/types'
+import { SpaceInfo, SpaceOnEvent, SpaceType } from '@penx/types'
 import { gql, request } from 'graphql-request'
 import Redis from 'ioredis'
 import ky from 'ky'

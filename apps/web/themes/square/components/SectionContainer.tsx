@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { usePathname } from '@/lib/i18n'
+import { usePathname } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 
 // import { usePathname } from 'next/navigation'

@@ -1,7 +1,7 @@
 'use client'
 
 import { mappedByKey } from '@/lib/shared'
-import { ViewType } from '@/lib/types'
+import { ViewType } from '@penx/types'
 import { cn } from '@penx/utils'
 import { useDatabaseContext } from '../DatabaseProvider'
 import { ViewIcon } from './ViewIcon'

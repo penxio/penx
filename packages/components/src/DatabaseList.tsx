@@ -1,9 +1,9 @@
 'use client'
 
 import { Button } from '@penx/uikit/ui/button'
-import { useDatabases } from '@/hooks/useDatabases'
+import { useDatabases } from '@penx/hooks/useDatabases'
 import { bgColorMaps } from '@penx/libs/color-helper'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { Database } from '@prisma/client'
 import { format } from 'date-fns'

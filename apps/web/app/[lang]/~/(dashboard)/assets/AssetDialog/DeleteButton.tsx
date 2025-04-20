@@ -1,8 +1,8 @@
 'use client'
 
 import { Button } from '@penx/uikit/ui/button'
-import { useAssets } from '@/hooks/useAssets'
-import { useTrashedAssets } from '@/hooks/useTrashedAssets'
+import { useAssets } from '@penx/hooks/useAssets'
+import { useTrashedAssets } from '@penx/hooks/useTrashedAssets'
 import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react/macro'
 import { Trash2 } from 'lucide-react'

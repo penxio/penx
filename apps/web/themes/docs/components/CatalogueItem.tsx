@@ -1,13 +1,13 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
-import { useMobileSidebarSheet } from '@/components/theme-ui/MobileSidebar'
-import { Link } from '@/lib/i18n'
+import { useMobileSidebarSheet } from '@penx/components/theme-ui/MobileSidebar/useMobileSidebarSheet'
+import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,
   CatalogueNodeType,
   ICatalogueNode,
-} from '@/lib/model'
+} from '@penx/model'
 import { cn } from '@penx/utils'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 

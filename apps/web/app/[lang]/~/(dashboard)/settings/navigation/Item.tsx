@@ -1,9 +1,9 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
-import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { useSiteContext } from '@/components/SiteContext'
-import { updateSiteState, useSite } from '@/hooks/useSite'
+import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { updateSiteState, useSite } from '@penx/hooks/useSite'
 import { defaultNavLinks } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'

@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
-import { DeployStatus } from '@/lib/types'
+import { DeployStatus } from '@penx/types'
 
 interface Props {
   isLoading: boolean

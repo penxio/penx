@@ -1,25 +1,24 @@
 'use client'
 
 import { useState } from 'react'
-import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
-import { Creation } from '@/hooks/useCreation'
-import { editorDefaultValue } from '@penx/constants'
 import { Trans } from '@lingui/react/macro'
 import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
+import { editorDefaultValue } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { api } from '@penx/trpc-client'
-import { CreationType } from '@penx/types'
+import { CreationById, CreationType } from '@penx/types'
 import { useCreateEditor } from '@penx/uikit/editor/use-create-editor'
 import { Button } from '@penx/uikit/ui/button'
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { sleep } from '@penx/utils'
 import { useDeletePageDialog } from '../DeletePageDialog/useDeleteDatabaseDialog'
-import { useSiteContext } from '../SiteContext'
 import { useDeletePostDialog } from './DeletePostDialog/useDeletePostDialog'
 import { usePublishDialog } from './PublishDialog/usePublishDialog'
 
-export function CreationMoreMenu({ creation }: { creation: Creation }) {
+export function CreationMoreMenu({ creation }: { creation: CreationById }) {
   const [isOpen, setIsOpen] = useState(false)
   const site = useSiteContext()
   const publishDialog = usePublishDialog()
@@ -105,9 +104,9 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
   )
 }
 
-function CopyMarkdown({ creation }: { creation: Creation }) {
+function CopyMarkdown({ creation }: { creation: CreationById }) {
   const { copy } = useCopyToClipboard()
-  const editor = useCreateEditor({
+  const editor: any = useCreateEditor({
     value: creation.content ? JSON.parse(creation.content) : editorDefaultValue,
   })
   return (

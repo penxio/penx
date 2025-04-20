@@ -1,9 +1,9 @@
 'use client'
 
-import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 
 export function StartWritingButton() {

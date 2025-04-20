@@ -1,5 +1,5 @@
 import { DATABASE_TOOLBAR_HEIGHT, WORKBENCH_NAV_HEIGHT } from '@penx/constants'
-import { ViewType } from '@/lib/types'
+import { ViewType } from '@penx/types'
 import { useDatabaseContext } from './DatabaseProvider'
 import { GalleryView } from './views/GalleryView'
 import { TableView } from './views/TableView/TableView'

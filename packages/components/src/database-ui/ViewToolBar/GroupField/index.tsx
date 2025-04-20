@@ -6,7 +6,7 @@ import {
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
 import { Separator } from '@penx/uikit/ui/separator'
-import { Group } from '@/lib/types'
+import { Group } from '@penx/types'
 import { LayoutList } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { ToolbarBtn } from '../ToolbarBtn'

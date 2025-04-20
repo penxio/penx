@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { CommentWidget } from '@/components/CommentWidget'
+import { Trans } from '@lingui/react/macro'
+import { Creation } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { Input } from '@penx/uikit/ui/input'
 import { Label } from '@penx/uikit/ui/label'
@@ -15,8 +16,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@penx/uikit/ui/sheet'
-import { Creation } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { CommentWidget } from '../../../CommentWidget'
 import { CommentAmount } from './CommentAmount'
 
 interface Props {

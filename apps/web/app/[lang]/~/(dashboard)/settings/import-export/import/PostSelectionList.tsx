@@ -10,7 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/ui/tooltip'
-import { ImportPostData } from '@/hooks/usePostImportTask'
+import { ImportPostData } from '@penx/hooks/usePostImportTask'
 import { Calendar, FileText, Link as LinkIcon, Loader2 } from 'lucide-react'
 
 interface PostSelectionListProps {

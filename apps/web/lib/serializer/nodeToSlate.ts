@@ -6,7 +6,7 @@ import {
   ELEMENT_TITLE,
   ELEMENT_UL,
 } from '@penx/constants'
-import { INode, Node } from '@/lib/model'
+import { INode, Node } from '@penx/model'
 import { uniqueId } from '@penx/unique-id'
 
 interface NodeToSlateOptions {

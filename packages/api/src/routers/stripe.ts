@@ -1,11 +1,11 @@
-import { SubscriptionTarget } from '@penx/constants'
-import { stripe } from '@/lib/stripe'
-import { Balance, StripeInfo } from '@/lib/types'
-import { prisma } from '@penx/db'
+import { stripe } from '@penx/libs/stripe'
 import { StripeType } from '@prisma/client'
 import qs from 'query-string'
 import Stripe from 'stripe'
 import { z } from 'zod'
+import { SubscriptionTarget } from '@penx/constants'
+import { prisma } from '@penx/db'
+import { Balance, StripeInfo } from '@penx/types'
 import { getOAuthStripe } from '../lib/getOAuthStripe'
 import { protectedProcedure, router } from '../trpc'
 
@@ -185,7 +185,7 @@ export const stripeRouter = router({
 
       if (!session.url) return { success: false as const }
 
-      return { success: true, url: session.url }
+      return { success: true, url: session.url as string }
     }),
 
   buyCampaignCheckout: protectedProcedure

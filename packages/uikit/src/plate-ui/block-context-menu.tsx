@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react'
 import { AIChatPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
-import { useIsTouchDevice } from '@/hooks/use-is-touch-device'
+import { useIsTouchDevice } from '../hooks/use-is-touch-device'
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
 import { HEADING_KEYS } from '@udecode/plate-heading'
 import { IndentListPlugin } from '@udecode/plate-indent-list/react'

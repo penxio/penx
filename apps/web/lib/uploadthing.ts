@@ -6,8 +6,8 @@ import type {
   UploadFilesOptions,
 } from 'uploadthing/types'
 import { z } from 'zod'
+import { uploadFile } from '@penx/services/uploadFile'
 import type { OurFileRouter } from '../app/api/uploadthing/route'
-import { uploadFile } from './uploadFile'
 import { getUrl } from './utils'
 
 export interface UploadedFile<T = unknown> extends ClientUploadedFileData<T> {}

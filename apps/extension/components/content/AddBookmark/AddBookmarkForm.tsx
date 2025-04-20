@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@/components/icons/loading-dots'
+import { LoadingDots } from '@penx/components/icons/loading-dots'
 import { addCreation, getAreas } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { getUrl } from '@/lib/utils'

@@ -17,10 +17,10 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@penx/uikit/ui/dropdown-menu'
-import { useSite } from '@/hooks/useSite'
+import { useSite } from '@penx/hooks/useSite'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { getDashboardPath } from '@/lib/getDashboardPath'
-import { usePathname, useRouter } from '@/lib/i18n'
+import { usePathname, useRouter } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'

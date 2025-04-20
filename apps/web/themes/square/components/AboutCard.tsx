@@ -1,8 +1,8 @@
 'use client'
 
-import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import { Button } from '@penx/uikit/ui/button'
 import { Creation, Site } from '@penx/types'
 import Image from 'next/image'

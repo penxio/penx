@@ -2,7 +2,7 @@
 
 import React, { forwardRef, useState } from 'react'
 import { Switch } from '@penx/uikit/ui/switch'
-import { ViewColumn } from '@/lib/types'
+import { ViewColumn } from '@penx/types'
 import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { useDatabaseContext } from '../../DatabaseProvider'

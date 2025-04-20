@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useSession } from '@penx/session'
-import { useRouter } from '@/lib/i18n'
+import { useRouter } from '@penx/libs/i18n'
 
 export const dynamic = 'force-static'
 

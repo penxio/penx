@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Button } from '@penx/uikit/ui/button'

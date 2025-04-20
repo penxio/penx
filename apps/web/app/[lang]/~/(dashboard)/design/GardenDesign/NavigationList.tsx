@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useSiteContext } from '@/components/SiteContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { defaultNavLinks } from '@penx/constants'
 import { NavLink } from '@penx/types'
 

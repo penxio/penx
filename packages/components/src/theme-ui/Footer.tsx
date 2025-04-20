@@ -1,5 +1,5 @@
-import { ModeToggle } from '@/components/ModeToggle'
-import { Link } from '@/lib/i18n'
+import { ModeToggle } from '@penx/components/ModeToggle'
+import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
 import { ContributeButton } from './ContributeButton'

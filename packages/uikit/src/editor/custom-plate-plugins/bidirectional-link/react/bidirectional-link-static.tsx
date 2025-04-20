@@ -1,15 +1,15 @@
 'use client'
 
 import React from 'react'
-import { useCreationListContext } from '@/components/CreationListContext'
-import { ContentRender } from '@/components/theme-ui/ContentRender'
+import { useCreationListContext } from '@penx/components/CreationListContext'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@penx/uikit/ui/hover-card'
-import { Link } from '@/lib/i18n'
-import { SiteCreation } from '@/lib/types'
+import { Link } from '@penx/libs/i18n'
+import { SiteCreation } from '@penx/types'
 import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'

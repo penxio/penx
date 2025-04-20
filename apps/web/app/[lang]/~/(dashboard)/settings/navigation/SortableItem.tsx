@@ -1,5 +1,5 @@
 import { NavLink } from '@penx/types'
-import { Widget } from '@/lib/types'
+import { Widget } from '@penx/types'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Item } from './Item'

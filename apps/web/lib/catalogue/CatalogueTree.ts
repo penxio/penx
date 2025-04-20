@@ -1,4 +1,4 @@
-import { CatalogueNodeType, ICatalogueNode } from '@/lib/model'
+import { CatalogueNodeType, ICatalogueNode } from '@penx/model'
 import { CatalogueNode } from './CatalogueNode'
 import { CreateCatalogueNodeOptions, WithFlattenProps } from './types'
 import { flattenTree } from './utils'

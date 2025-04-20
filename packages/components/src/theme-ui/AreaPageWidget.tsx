@@ -1,5 +1,5 @@
-import { Image } from '@/components/Image'
-import { Link } from '@/lib/i18n'
+import { Image } from '@penx/components/Image'
+import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
 import { Area } from '@prisma/client'

@@ -1,4 +1,4 @@
-import { ContentRender } from '@/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import { getPage } from '@/lib/fetchers'
 
 export const dynamic = 'force-static'

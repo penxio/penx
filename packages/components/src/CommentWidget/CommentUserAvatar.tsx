@@ -5,13 +5,13 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from '@penx/uikit/ui/hover-card'
-import { UserAvatar } from '@/components/UserAvatar'
+import { UserAvatar } from '@penx/components/UserAvatar'
 import { ROOT_DOMAIN } from '@penx/constants'
 import {
   getSiteCustomDomain,
   getSiteCustomSubdomain,
   sortDomains,
-} from '@/lib/getSiteDomain'
+} from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
 import { getUrl } from '@penx/utils'
 import { Comment, User } from '@prisma/client'

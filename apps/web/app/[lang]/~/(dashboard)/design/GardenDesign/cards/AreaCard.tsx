@@ -1,9 +1,9 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
-import { useSiteContext } from '@/components/SiteContext'
-import { useSite } from '@/hooks/useSite'
-import { Link } from '@/lib/i18n'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useSite } from '@penx/hooks/useSite'
+import { Link } from '@penx/libs/i18n'
 import { Trans } from '@lingui/react/macro'
 import { produce } from 'immer'
 import { trpc } from '@penx/trpc-client'

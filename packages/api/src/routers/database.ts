@@ -6,7 +6,7 @@ import {
   PROJECT_DATABASE_NAME,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { ColumnType, Option, ViewColumn, ViewType } from '@/lib/types'
+import { ColumnType, Option, ViewColumn, ViewType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { TRPCError } from '@trpc/server'
 import { arrayMoveImmutable } from 'array-move'

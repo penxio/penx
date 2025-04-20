@@ -6,8 +6,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
-import { IColumnNode } from '@/lib/model'
-import { Group } from '@/lib/types'
+import { IColumnNode } from '@penx/model'
+import { Group } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'
 import { Plus } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'

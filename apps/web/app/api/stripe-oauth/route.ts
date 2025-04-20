@@ -1,6 +1,6 @@
 import { getServerSession, getSessionOptions } from '@/lib/session'
-import { stripe } from '@/lib/stripe'
-import { SessionData } from '@/lib/types'
+import { stripe } from '@penx/libs/stripe'
+import { SessionData } from '@penx/types'
 import { prisma } from '@penx/db'
 import { getIronSession, IronSession } from 'iron-session'
 import { cookies } from 'next/headers'

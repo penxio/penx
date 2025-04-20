@@ -1,27 +1,27 @@
 // import '../../globals.css'
-import "@penx/uikit/globals.css"
+import '@penx/uikit/globals.css'
 // import '@farcaster/auth-kit/styles.css'
 import 'shikwasa/dist/style.css'
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
 // import 'react-datepicker/dist/react-datepicker.css'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import '@glideapps/glide-data-grid/dist/index.css'
 import { allMessages } from '@/appRouterI18n'
-import { LinguiClientProvider } from '@/components/LinguiClientProvider'
-import { Logo } from '@/components/Logo'
-import { Profile } from '@/components/Profile/Profile'
-import { TextLogo } from '@/components/TextLogo'
-import { ThemeProvider } from '@/components/ThemeProvider'
 import { initLingui } from '@/initLingui'
-import { cn } from '@penx/utils'
-import linguiConfig from '@/lingui.config'
 // import { setI18n } from '@lingui/react/server'
 import { Metadata } from 'next'
 import { Poppins, Roboto } from 'next/font/google'
 import Head from 'next/head'
 import { headers } from 'next/headers'
-import { Providers } from '../providers'
+import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { Logo } from '@penx/components/Logo'
+import { Profile } from '@penx/components/Profile/Profile'
+import { DashboardProviders } from '@penx/components/providers/DashboardProviders'
+import { TextLogo } from '@penx/components/TextLogo'
+import { ThemeProvider } from '@penx/components/ThemeProvider'
+import linguiConfig from '@penx/libs/lingui.config'
+import { cn } from '@penx/utils'
 import { Footer } from './Footer'
 import { Nav } from './Nav'
 
@@ -83,7 +83,7 @@ export default async function RootLayout({
           initialLocale={locale}
           initialMessages={allMessages[locale]!}
         >
-          <Providers cookies={cookies}>
+          <DashboardProviders cookies={cookies}>
             <ThemeProvider
               attribute="class"
               defaultTheme="dark"
@@ -133,7 +133,7 @@ export default async function RootLayout({
             </ThemeProvider>
 
             <div id="portal" />
-          </Providers>
+          </DashboardProviders>
         </LinguiClientProvider>
       </body>
     </html>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Button } from '@penx/uikit/ui/button'
-import { Link } from '@/lib/i18n'
+import { Link } from '@penx/libs/i18n'
 import { cn, withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'
 

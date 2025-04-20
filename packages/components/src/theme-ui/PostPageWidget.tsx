@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Image } from '@/components/Image'
+import { Image } from '@penx/components/Image'
 import { Creation, CreationType, Site } from '@penx/types'
 import { cn } from '@penx/utils'
 import { BackLinks } from './BackLinks'

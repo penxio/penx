@@ -3,14 +3,14 @@
 import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
-import { useAreaContext } from '@/components/AreaContext'
-import { useSiteContext } from '@/components/SiteContext'
-import { updateSiteState } from '@/hooks/useSite'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { updateSiteState } from '@penx/hooks/useSite'
 import { defaultNavLinks } from '@penx/constants'
 import { queryClient } from '@penx/query-client'
 import { NavLink } from '@penx/types'
 import { api } from '@penx/trpc-client'
-import { Widget } from '@/lib/types'
+import { Widget } from '@penx/types'
 import {
   closestCenter,
   defaultDropAnimation,

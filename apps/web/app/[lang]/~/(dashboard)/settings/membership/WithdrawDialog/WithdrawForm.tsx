@@ -3,8 +3,8 @@
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@/components/NumberInput'
-import { useSiteContext } from '@/components/SiteContext'
+import { NumberInput } from '@penx/components/NumberInput'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -15,10 +15,10 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { updateSiteState } from '@/hooks/useSite'
+import { updateSiteState } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api } from '@penx/trpc-client'
-import { Balance } from '@/lib/types'
+import { Balance } from '@penx/types'
 import { toFloorFixed } from '@penx/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'

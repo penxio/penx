@@ -1,4 +1,4 @@
-import { ViewColumn } from '@/lib/types'
+import { ViewColumn } from '@penx/types'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Item } from './Item'

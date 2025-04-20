@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { SiteCreation } from '@/lib/types'
+import { SiteCreation } from '@penx/types'
 
 export const AreaCreationsContext = createContext([] as SiteCreation[])
 

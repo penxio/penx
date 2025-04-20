@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
 } from '@penx/uikit/ui/dialog'
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import { Menu } from '@penx/uikit/ui/menu/Menu'
-import { CatalogueNodeType } from '@/lib/model'
+import { CatalogueNodeType } from '@penx/model'
 import { CreationStatus } from '@prisma/client'
 import { useCatalogue } from '../hooks/useCatalogue'
 import { useAddPostNodeDialog } from './useAddPostNodeDialog'

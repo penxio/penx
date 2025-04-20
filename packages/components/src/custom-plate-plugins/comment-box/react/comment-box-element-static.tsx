@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import { CommentWidget } from '@/components/CommentWidget'
-import { useCreationContext } from '@/components/CreationContext'
 import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'
+import { useCreationContext } from '@penx/components/CreationContext'
+import { CommentWidget } from '../../../CommentWidget'
 
 export const CommentBoxElementStatic = ({
   children,
