@@ -178,3 +178,45 @@ h3,
 h4 {
   scroll-margin-top: var(--header-height);
 }
+
+/* loading */
+.penx-dot-loading {
+  display: inline-flex;
+  align-items: center;
+}
+
+.penx-dot-loading .spacer {
+  margin-right: 2px;
+}
+
+.penx-dot-loading span {
+  animation-name: loading-blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 1px;
+}
+
+.penx-dot-loading span:nth-of-type(2) {
+  animation-delay: 0.2s;
+}
+
+.penx-dot-loading span:nth-of-type(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loading-blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}

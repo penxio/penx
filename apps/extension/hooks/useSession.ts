@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import { BASE_URL } from '@/lib/constants'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { queryClient } from '@penx/query-client'
@@ -25,9 +26,7 @@ export const BillingCycle = {
   COUPON: 'COUPON',
 }
 
-const PUBLIC_BASE_URL = import.meta.env.PUBLIC_BASE_URL || 'https://penx.io'
-
-const sessionApiRoute = `${PUBLIC_BASE_URL}/api/session`
+const sessionApiRoute = `${BASE_URL}/api/session`
 
 const SESSION_KEY = 'SESSION'
 
@@ -48,9 +47,9 @@ export function useSession() {
   const { isPending, data: session } = useQuery({
     queryKey: ['session'],
     queryFn: async () => {
-      const localSession = await get(SESSION_KEY)
-      if (localSession) return localSession as SessionData
-      console.log('========sessionApiRoute:', sessionApiRoute)
+      // const localSession = await get(SESSION_KEY)
+      // if (localSession) return localSession as SessionData
+      // console.log('========sessionApiRoute:', sessionApiRoute)
 
       const session = await fetchJson<SessionData>(sessionApiRoute)
       if (session.isLoggedIn) {

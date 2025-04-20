@@ -1,15 +1,18 @@
 import React, { forwardRef, useEffect, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import { LoadingDots } from '@/components/icons/loading-dots'
+import { useLocalFields } from '@/hooks/useLocalFields'
+import { BACKGROUND_EVENTS } from '@/lib/constants'
+import { SUCCESS } from '@/lib/helper'
+import { cn, getUrl } from '@/lib/utils'
+import { PopoverClose, Portal } from '@radix-ui/react-popover'
+import { SendHorizontal, X } from 'lucide-react'
+import { motion, useMotionValue } from 'motion/react'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { Label } from '@penx/uikit/ui/label'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import {
   Select,
   SelectContent,
@@ -19,16 +22,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { useLocalFields } from '@/hooks/useLocalFields'
-import { BACKGROUND_EVENTS } from '@penx/constants'
-import { SUCCESS } from '@/lib/helper'
-import { cn, getUrl } from '@/lib/utils'
-import { PopoverClose, Portal } from '@radix-ui/react-popover'
-import { motion, useMotionValue } from 'framer-motion'
-import { SendHorizontal, X } from 'lucide-react'
 import { useAppType } from '../hooks/useAppType'
-import { useFields } from '../hooks/useFields'
+import { useAreas } from '../hooks/useAreas'
 import { useNote } from '../hooks/useNote'
+
+// import { BACKGROUND_EVENTS } from '@penx/constants'
+BACKGROUND_EVENTS
 
 const MotionBox = motion.div
 
@@ -44,7 +43,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
     const [loading, setLoading] = useState(false)
     const [tips, setTips] = useState('')
     const { fields = [] } = useLocalFields()
-    const [fieldId, setFieldId] = useState('')
+    const [areaId, setAreaId] = useState('')
 
     const onSubmit = async () => {
       if (!note.trim()) {
@@ -57,7 +56,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
         type: BACKGROUND_EVENTS.SUBMIT_CONTENT,
         payload: {
           content: note,
-          fieldId: fieldId,
+          areaId: areaId,
         },
       })
 
@@ -82,17 +81,17 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
     const containerX = useMotionValue(0)
     const containerY = useMotionValue(0)
 
-    const field = fields.find((field) => field.id === fieldId)
+    const field = fields.find((field) => field.id === areaId)
 
     useEffect(() => {
-      if (!fieldId) {
-        setFieldId(fields[0]?.id)
+      if (!areaId) {
+        setAreaId(fields[0]?.id)
       }
     }, [fields])
 
     return (
       <MotionBox
-        className="fixed flex min-h-72 w-96 flex-col overflow-hidden rounded-xl bg-background shadow-2xl ring-1 ring-foreground/5 dark:bg-[#151515]"
+        className="bg-background ring-foreground/5 fixed flex min-h-72 w-96 flex-col overflow-hidden rounded-xl shadow-2xl dark:bg-[#151515]"
         // minH={boxHeight}
         style={{
           zIndex: 500000,
@@ -106,6 +105,18 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
           top: 100,
         }}
       >
+        <div className="p-4">
+          <div
+            className="size-40 rounded-3xl border bg-red-100 shadow-2xl"
+            style={
+              {
+                // boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.2)',
+              }
+            }
+          >
+            GOGO!!
+          </div>
+        </div>
         <MotionBox
           className="flex h-10 cursor-move items-center justify-between px-4"
           onPan={(e, info) => {
@@ -119,7 +130,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
           </div>
 
           <div
-            className="flex h-7 w-7 cursor-pointer items-center justify-center text-foreground/40"
+            className="text-foreground/40 flex h-7 w-7 cursor-pointer items-center justify-center"
             onClick={() => destroy()}
           >
             <X size={20} />
@@ -128,7 +139,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
 
         <div className="flex flex-1 flex-col px-4 py-1">
           <TextareaAutosize
-            className="dark:placeholder-text-600 w-full resize-none border-none bg-transparent px-0 text-base placeholder:text-foreground/40 focus:outline-none focus:ring-0"
+            className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-base focus:outline-none focus:ring-0"
             placeholder="Write a note..."
             value={note}
             minRows={8}
@@ -147,12 +158,12 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
 
         <div className="flex items-center justify-between px-3 pb-2">
           <div className="flex items-center gap-1">
-            <div className="text-xs text-foreground/50">Save to</div>
+            <div className="text-foreground/50 text-xs">Save to</div>
             <Popover>
               <PopoverTrigger asChild>
                 <div
                   className={cn(
-                    'hover:bg-foreground/7 line-clamp-1 flex cursor-pointer items-center gap-1 rounded-full bg-foreground/5 px-2 py-1',
+                    'hover:bg-foreground/7 bg-foreground/5 line-clamp-1 flex cursor-pointer items-center gap-1 rounded-full px-2 py-1',
                   )}
                 >
                   {field ? (
@@ -166,7 +177,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
                       <span className="text-sm">{field?.name}</span>
                     </>
                   ) : (
-                    <span className="text-sm">Select a field</span>
+                    <span className="text-sm">Select an area</span>
                   )}
                 </div>
               </PopoverTrigger>
@@ -178,10 +189,10 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
                   <PopoverClose key={field.id}>
                     <div
                       className={cn(
-                        'flex cursor-pointer items-center gap-1 rounded px-2 py-2 hover:bg-foreground/5',
-                        fieldId === field.id && 'bg-foreground/5',
+                        'hover:bg-foreground/5 flex cursor-pointer items-center gap-1 rounded px-2 py-2',
+                        areaId === field.id && 'bg-foreground/5',
                       )}
-                      onClick={() => setFieldId(field.id)}
+                      onClick={() => setAreaId(field.id)}
                     >
                       <Avatar className="size-6">
                         <AvatarImage src={getUrl(field.logo || '')} />

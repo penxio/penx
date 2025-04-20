@@ -1,10 +1,11 @@
 import { useSession } from '@/hooks/useSession'
+import { BASE_URL } from '@/lib/constants'
 import { useQuery } from '@tanstack/react-query'
 import ky from 'ky'
 import { Tag } from '@penx/db/client'
 
 export function useSiteTags() {
-  const url = `${import.meta.env.PUBLIC_BASE_URL}/api/v1/tags`
+  const url = `${BASE_URL}/api/v1/tags`
   const { session } = useSession()
   return useQuery({
     queryKey: ['siteTags'],

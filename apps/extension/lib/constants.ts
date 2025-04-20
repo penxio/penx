@@ -1,3 +1,4 @@
+export const BASE_URL = import.meta.env.WXT_BASE_URL
 
 export enum AppType {
   CLIP_PAGE = 'CLIP_PAGE',

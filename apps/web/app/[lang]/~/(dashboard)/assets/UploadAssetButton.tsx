@@ -1,19 +1,19 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog/useSubscriptionGuideDialog'
-import { Button } from '@penx/uikit/ui/button'
 import { useAssets } from '@/hooks/useAssets'
-import { calculateSHA256FromFile } from '@/lib/encryption'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { localDB } from '@/lib/local-db'
-import { trpc } from '@penx/trpc-client'
-import { uniqueId } from '@penx/unique-id'
 import { uploadFile } from '@/lib/uploadFile'
-import { cn } from '@penx/utils'
 import { UploadCloud } from 'lucide-react'
 import { toast } from 'sonner'
+import { calculateSHA256FromFile } from '@penx/encryption'
+import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
+import { uniqueId } from '@penx/unique-id'
+import { cn } from '@penx/utils'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
   className?: string

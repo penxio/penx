@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSession } from '@/hooks/useSession'
-import { ACTIONS, AppType, BACKGROUND_EVENTS } from '@/lib/constants'
+import { ACTIONS, AppType, BACKGROUND_EVENTS, BASE_URL } from '@/lib/constants'
 import { getUrl } from '@/lib/utils'
 import {
   ArrowLeft,
@@ -15,14 +15,14 @@ import { toast } from 'sonner'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { AddBookmark } from '../content/AddBookmark/AddBookmark'
 import { useAppType } from '../content/hooks/useAppType'
-import { useFields } from '../content/hooks/useFields'
+import { useAreas } from '../content/hooks/useAreas'
 import { FeatureEntry } from './FeatureEntry'
 
 export function PopupContent() {
   const { session } = useSession()
   const { appType, setAppType } = useAppType()
 
-  useFields()
+  useAreas()
 
   const initPopup = async () => {
     await chrome.runtime.sendMessage({
@@ -83,7 +83,7 @@ export function PopupContent() {
           }}
         />
         <FeatureEntry
-          name="Clip page"
+          name="Clip page..."
           icon={Scissors}
           type={AppType.CLIP_PAGE}
           // className="text-green-600"
@@ -97,9 +97,7 @@ export function PopupContent() {
           type={AppType.WRITE}
           // className="text-blue-600"
           onClick={() => {
-            window.open(
-              `${import.meta.env.PUBLIC_BASE_URL}/~/fields/${session.activeAreaId}`,
-            )
+            window.open(`${BASE_URL}/~/areas/${session.activeAreaId}`)
             window.close()
             return
           }}

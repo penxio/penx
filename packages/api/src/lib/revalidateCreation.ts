@@ -1,4 +1,4 @@
-import { calculateSHA256FromString } from '@/lib/encryption'
+import { calculateSHA256FromString } from '@penx/encryption'
 import { Creation } from '@penx/types'
 import { revalidateTag } from 'next/cache'
 

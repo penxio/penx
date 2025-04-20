@@ -2,6 +2,12 @@
 
 import { Dispatch, SetStateAction } from 'react'
 import { useSiteContext } from '@/components/SiteContext'
+import { useSite } from '@/hooks/useSite'
+import { Link } from '@/lib/i18n'
+import { Trans } from '@lingui/react/macro'
+import { produce } from 'immer'
+import { trpc } from '@penx/trpc-client'
+import { LayoutItem } from '@penx/types'
 import {
   Select,
   SelectContent,
@@ -11,12 +17,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { useSite } from '@/hooks/useSite'
-import { Link } from '@/lib/i18n'
-import { LayoutItem } from '@penx/types'
-import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
 import { useThemeName } from '../../hooks/useThemeName'
 
 interface Props {
@@ -65,7 +65,7 @@ export function AreaCard({ layoutItem, layout, setLayout }: Props) {
         defaultValue={layoutItem?.props?.areaId || ''}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Select a area" />
+          <SelectValue placeholder="Select an area" />
         </SelectTrigger>
 
         <SelectContent>

@@ -26,7 +26,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "eslint": "^9.24.0",
     "postcss": "^8.5.1",
-    "tailwindcss": "^4.0.4",
+    "tailwindcss": "^4.1.4",
     "typescript": "5.8.2"
   },
   "dependencies": {

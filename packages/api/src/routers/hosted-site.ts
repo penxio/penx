@@ -1,4 +1,4 @@
-import { decryptString, encryptString } from '@/lib/encryption'
+import { decryptString, encryptString } from '@penx/encryption'
 import { prisma } from '@penx/db'
 import { DeployStatus } from '@/lib/types'
 import { uniqueId } from '@penx/unique-id'

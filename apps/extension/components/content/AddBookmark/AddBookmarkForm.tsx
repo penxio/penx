@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@/components/icons/loading-dots'
-import { addCreation, getFields } from '@/lib/api'
+import { addCreation, getAreas } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { getUrl } from '@/lib/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -34,24 +34,24 @@ import {
   SelectValue,
 } from '@penx/uikit/ui/select'
 import { Textarea } from '@penx/uikit/ui/textarea'
-import { useFields } from '../hooks/useFields'
+import { useAreas } from '../hooks/useAreas'
 import { Tags } from './Tags'
 
-const FIELD_ID = 'CURRENT_FIELD_ID'
+const AREA_ID = 'CURRENT_AREA_ID'
 
 const FormSchema = z.object({
   url: z.string().min(1),
   title: z.string().min(1),
   description: z.string().optional(),
   avatar: z.string().optional(),
-  fieldId: z.string(),
+  areaId: z.string(),
   tags: z.array(z.any()),
   isPublic: z.boolean().optional(),
 })
 
 export function AddBookmarkForm() {
   const [isLoading, setLoading] = useState(false)
-  const { data = [] } = useFields()
+  const { data = [] } = useAreas()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -77,9 +77,9 @@ export function AddBookmarkForm() {
         },
         type: CreationType.BOOKMARK,
         tagIds: data.tags.map((tag) => tag.id),
-        fieldId: data.fieldId,
+        areaId: data.areaId,
       })
-      await set(FIELD_ID, data.fieldId)
+      await set(AREA_ID, data.areaId)
       window.close()
     } catch (error) {
       console.log('======error:', error)
@@ -107,23 +107,23 @@ export function AddBookmarkForm() {
     initFormValues()
   }, [form])
 
-  async function initFieldId() {
+  async function initAreaId() {
     if (data.length > 0) {
-      let fieldId = await get(FIELD_ID)
+      let areaId = await get(AREA_ID)
 
-      if (!data.some((f) => f.id === fieldId)) {
+      if (!data.some((f) => f.id === areaId)) {
         const field = data.find((field) => field.isGenesis) || data[0]
-        fieldId = field.id
+        areaId = field.id
       }
 
       setTimeout(() => {
-        form.setValue('fieldId', fieldId)
+        form.setValue('areaId', areaId)
       }, 0)
     }
   }
 
   useEffect(() => {
-    initFieldId()
+    initAreaId()
   }, [form, data])
 
   return (
@@ -189,14 +189,14 @@ export function AddBookmarkForm() {
         />
         <FormField
           control={form.control}
-          name="fieldId"
+          name="areaId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Field</FormLabel>
+              <FormLabel>Area</FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a field" />
+                    <SelectValue placeholder="Select an area" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -243,7 +243,11 @@ export function AddBookmarkForm() {
         />
 
         <Button type="submit" className="w-full" disabled={isLoading}>
-          {isLoading ? <LoadingDots /> : <div>Save</div>}
+          {isLoading ? (
+            <LoadingDots className="bg-background" />
+          ) : (
+            <div>Save</div>
+          )}
         </Button>
       </form>
     </Form>

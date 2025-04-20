@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { AppType } from '@penx/constants'
+import { AppType } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import { Check, X } from 'lucide-react'
 import * as styles from '../content.module.scss'

@@ -1,14 +1,12 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import { FREE_PLAN_POST_LIMIT } from '@penx/constants'
-import { CreateCreationInput } from '@/lib/constants/schema.constants'
-import { calculateSHA256FromString } from '@/lib/encryption'
-import { CatalogueNodeJSON, CatalogueNodeType } from '@/lib/model'
-import { CreationType, Prop } from '@penx/types'
-import { uniqueId } from '@penx/unique-id'
-import { prisma } from '@penx/db'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
+import { CreateCreationInput, FREE_PLAN_POST_LIMIT } from '@penx/constants'
+import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
+import { CreationType, Prop } from '@penx/types'
+import { uniqueId } from '@penx/unique-id'
+import { calculateSHA256FromString } from '@penx/utils/calculateSHA256FromString'
 import { findCreations } from './findCreations'
 import { findNotes } from './findNotes'
 import { getCreation } from './getCreation'
@@ -93,27 +91,6 @@ export async function createCreation(
         }
 
         revalidateTag(`${siteId}-tags`)
-      }
-
-      if (data.areaId) {
-        const area = await tx.area.findUniqueOrThrow({
-          where: { id: data.areaId },
-        })
-
-        const catalogue = (area.catalogue || []) as any as CatalogueNodeJSON[]
-
-        catalogue.push({
-          id: uniqueId(),
-          type: CatalogueNodeType.POST,
-          uri: creation.id,
-        })
-
-        await tx.area.update({
-          where: {
-            id: data.areaId,
-          },
-          data: { catalogue: catalogue as any },
-        })
       }
 
       if (!data.areaId) {

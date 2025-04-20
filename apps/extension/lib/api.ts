@@ -2,6 +2,7 @@ import ky from 'ky'
 import { z } from 'zod'
 import { Area, Tag } from '@penx/db/client'
 import '@penx/types'
+import { BASE_URL } from './constants'
 
 enum CreationStatus {
   PUBLISHED = 'PUBLISHED',
@@ -10,7 +11,7 @@ enum CreationStatus {
   ARCHIVED = 'ARCHIVED',
 }
 
-const BASE_URL = `${import.meta.env.PUBLIC_BASE_URL}/api/v1`
+const API_BASE_URL = `${BASE_URL}/api/v1`
 
 export const addCreationInputSchema = z.object({
   type: z.string(),
@@ -20,7 +21,7 @@ export const addCreationInputSchema = z.object({
   image: z.string().optional(),
   status: z.nativeEnum(CreationStatus).optional(),
   userId: z.string().optional(),
-  fieldId: z.string(),
+  areaId: z.string(),
   props: z.record(z.string(), z.any()).optional(),
   tagIds: z.array(z.string()).optional(),
   isPublishDirectly: z.boolean().optional(),
@@ -29,7 +30,7 @@ export const addCreationInputSchema = z.object({
 export type AddCreationInput = z.infer<typeof addCreationInputSchema>
 
 export async function addCreation(input: AddCreationInput) {
-  const url = `${BASE_URL}/creations`
+  const url = `${API_BASE_URL}/creations`
   const res = await ky.post(url, { json: input }).json()
   return res
 }
@@ -40,7 +41,7 @@ interface CreateTagInput {
 }
 
 export async function createTag(input: CreateTagInput) {
-  const url = `${BASE_URL}/tags`
+  const url = `${API_BASE_URL}/tags`
   const res = await ky.post<Tag>(url, { json: input }).json()
   return res
 }
@@ -54,13 +55,13 @@ export const addCreationTagInputSchema = z.object({
 export type AddCreationTagInput = z.infer<typeof addCreationTagInputSchema>
 
 export async function addCreationTag(input: AddCreationTagInput) {
-  const url = `${BASE_URL}/creation-tags`
+  const url = `${API_BASE_URL}/creation-tags`
   const res = await ky.post(url, { json: input }).json()
   return res
 }
 
-export async function getFields() {
-  const url = `${BASE_URL}/areas`
+export async function getAreas() {
+  const url = `${API_BASE_URL}/areas`
   const res = await ky.get<Area[]>(url).json()
   return res
 }

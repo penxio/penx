@@ -26,6 +26,7 @@
     "@penx/constants": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/utils": "workspace:*",
+    "@penx/encryption": "workspace:*",
     "bcrypt-edge": "^0.1.0"
   },
   "peerDependencies": {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ACTIONS, BACKGROUND_EVENTS, AppType } from '@penx/constants'
+import { ACTIONS, AppType, BACKGROUND_EVENTS } from '@/lib/constants'
 import type { MsgRes } from '@/lib/helper'
 import { prepareContent } from '@/lib/prepare-content'
 import { tinykeys } from 'tinykeys'
@@ -140,11 +140,11 @@ export const ContentView = () => {
   // )
   return (
     <>
-      {/* <QuickAddEditor /> */}
+      <QuickAddEditor />
       {/* <QuickAddEditor x={clientX} y={clientY} /> */}
 
       {/* {visible && text && !type && <Thumbnail x={x} y={y} />} */}
-      {appType === AppType.NOTE && <QuickAddEditor />}
+      {/* {appType === AppType.NOTE && <QuickAddEditor />} */}
     </>
   )
 }
