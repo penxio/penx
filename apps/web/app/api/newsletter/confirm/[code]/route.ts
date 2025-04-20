@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { SubscriberStatus } from '@penx/db/client'
+import { SubscriberStatus } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
 export async function GET(

@@ -1,7 +1,7 @@
 'use client'
 
 import { usePlanListDialog } from '@/components/PlanList/usePlanListDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import {
@@ -25,7 +25,7 @@ import { resetPanels, updatePanels } from '@/hooks/usePanels'
 import { updateSiteState } from '@/hooks/useSite'
 import { MySite } from '@/lib/types'
 import { getUrl, sleep } from '@penx/utils'
-import { store } from '@/store'
+import { store } from '@penx/store'
 import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'
 import {

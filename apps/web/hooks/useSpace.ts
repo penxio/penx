@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Space } from '@/domains/Space'
 import { trpc } from '@penx/trpc-client'
-import { store } from '@/store'
+import { store } from '@penx/store'
 import { atom, useAtom } from 'jotai'
 import { useParams } from 'next/navigation'
 

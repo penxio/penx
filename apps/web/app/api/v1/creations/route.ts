@@ -1,11 +1,10 @@
-import { CreateCreationInput } from '@/lib/constants/schema.constants'
 import { getSessionOptions } from '@/lib/session'
 import { SessionData } from '@/lib/types'
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
 import { createCreation } from '@penx/api/lib/createCreation'
-import { editorDefaultValue } from '@penx/constants'
+import { CreateCreationInput, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { CreationType } from '@penx/types'
 

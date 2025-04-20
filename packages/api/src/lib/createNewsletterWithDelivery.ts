@@ -3,7 +3,7 @@ import {
   DeliveryStatus,
   NewsletterStatus,
   SubscriberStatus,
-} from '@penx/db/client'
+} from '@prisma/client'
 
 /**
  * Creates a newsletter and its associated delivery records for a post

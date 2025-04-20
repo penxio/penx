@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import {
   Popover,
   PopoverContent,

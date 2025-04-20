@@ -1,4 +1,4 @@
-import { Tag } from '@penx/db/client'
+import { Tag } from '@prisma/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

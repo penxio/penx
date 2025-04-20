@@ -1,4 +1,4 @@
-import { Mold } from '@penx/db/client'
+import { Mold } from '@prisma/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

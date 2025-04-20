@@ -6,7 +6,7 @@ import {
   SubscriberStatus,
   SystemEmailStatus,
   SystemEmailType,
-} from '@penx/db/client'
+} from '@prisma/client'
 import { ImportResult } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { protectedProcedure, router } from '../trpc'

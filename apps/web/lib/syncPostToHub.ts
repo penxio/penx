@@ -1,5 +1,5 @@
 import { NETWORK, NetworkNames } from '@penx/constants'
-import { Creation, Site } from '@penx/db/client'
+import { Creation, Site } from '@prisma/client'
 import { SyncService } from './SyncService'
 import { api } from '@penx/trpc-client'
 

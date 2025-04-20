@@ -1,5 +1,5 @@
 import { NETWORK, NetworkNames } from '@penx/constants'
-import { Site } from '@penx/db/client'
+import { Site } from '@prisma/client'
 import { SyncService } from './SyncService'
 
 export async function syncSiteToHub(site: Site) {

@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { usePlanListDialog } from '@/components/PlanList/usePlanListDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -21,7 +21,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { getSiteCustomDomain, SiteWithDomains } from '@/lib/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
+import { Site } from '@prisma/client'
 import { toast } from 'sonner'
 import { z } from 'zod'
 

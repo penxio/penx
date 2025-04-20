@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useRouter } from '@/lib/i18n'
 import { zodResolver } from '@hookform/resolvers/zod'

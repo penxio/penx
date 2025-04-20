@@ -1,4 +1,4 @@
-import { Campaign } from '@penx/db/client'
+import { Campaign } from '@prisma/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

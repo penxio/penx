@@ -1,4 +1,4 @@
-import { Domain, Site, SubdomainType, User } from '@penx/db/client'
+import { Domain, Site, SubdomainType, User } from '@prisma/client'
 
 export type SiteWithDomains = Site & { domains: Domain[] }
 

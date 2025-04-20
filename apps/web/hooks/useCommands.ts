@@ -1,4 +1,4 @@
-import { commandsAtom } from '@/store'
+import { commandsAtom } from '@penx/store'
 import { useAtom } from 'jotai'
 
 export function useCommands() {

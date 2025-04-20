@@ -3,7 +3,7 @@
 import { memo, useCallback, useEffect } from 'react'
 import { useAreaDialog } from '@/components/AreaDialog/useAreaDialog'
 import { ProfileAvatar } from '@/components/Profile/ProfileAvatar'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { resetPanels } from '@/hooks/usePanels'
 import { useRouter } from '@/lib/i18n'

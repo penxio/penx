@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { useSubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog/useSubscriptionGuideDialog'
 import { Badge } from '@penx/uikit/ui/badge'
@@ -11,7 +11,7 @@ import { Separator } from '@penx/uikit/ui/separator'
 import { UseCouponCode } from '@/components/UseCouponCode'
 import { api } from '@penx/trpc-client'
 import { toReadableTime } from '@penx/utils'
-import { BillingCycle, PlanType } from '@penx/db/client'
+import { BillingCycle, PlanType } from '@prisma/client'
 import { format } from 'date-fns'
 
 interface Props {}

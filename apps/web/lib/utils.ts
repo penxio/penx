@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { ProviderType } from '@penx/db/client'
+import { ProviderType } from '@prisma/client'
 import { STATIC_URL, WidgetType } from './constants'
 import { AccountWithUser, Widget } from './types'
 import { uniqueId } from './unique-id'

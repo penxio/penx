@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { WidgetType } from '@penx/constants'
 import { Widget } from '@/lib/types'
 import { Trans } from '@lingui/react/macro'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@prisma/client'
 import { getMoldName } from './getMoldName'
 
 export function getWidgetName(widget: Widget, molds: Mold[] = []): ReactNode {

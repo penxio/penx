@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useRouter } from '@/lib/i18n'
 
 export const dynamic = 'force-static'

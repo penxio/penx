@@ -1,6 +1,6 @@
 'use client'
 
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Link } from '@/lib/i18n'
 import { Site } from '@penx/types'
 import { Trans } from '@lingui/react/macro'

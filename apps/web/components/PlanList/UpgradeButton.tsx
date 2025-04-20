@@ -1,11 +1,11 @@
 'use client'
 
 import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import { usePathname, useRouter } from '@/lib/i18n'
 import { trpc } from '@penx/trpc-client'
-import { PlanType } from '@penx/db/client'
+import { PlanType } from '@prisma/client'
 import { LoadingDots } from '../icons/loading-dots'
 import { useBillingCycle } from './useBillingCycle'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { loadTheme } from '@/lib/loadTheme'
 import { Creation, Site } from '@penx/types'
 import { trpc } from '@penx/trpc-client'

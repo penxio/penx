@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { trpc } from '@penx/trpc-client'
 import { SpaceOnEvent } from '@/lib/types'
-import { store } from '@/store'
+import { store } from '@penx/store'
 import { atom, useAtom } from 'jotai'
 
 export const logoImagesAtom = atom<Record<string, string>>({})

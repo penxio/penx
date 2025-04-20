@@ -1,6 +1,6 @@
 'use client'
 
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSite } from '@/hooks/useSite'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { getDashboardPath } from '@/lib/getDashboardPath'

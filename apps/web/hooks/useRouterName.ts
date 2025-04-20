@@ -1,4 +1,4 @@
-import { routerAtom } from '@/store'
+import { routerAtom } from '@penx/store'
 import { useAtomValue } from 'jotai'
 
 export function useRouterName() {

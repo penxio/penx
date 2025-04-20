@@ -6,7 +6,7 @@ import { AddNoteDialog } from '@/components/Creation/AddNoteDialog/AddNoteDialog
 import { useAddNoteDialog } from '@/components/Creation/AddNoteDialog/useAddNoteDialog'
 import LoadingCircle from '@/components/icons/loading-circle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -26,7 +26,7 @@ import { api } from '@penx/trpc-client'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@prisma/client'
 import {
   Calendar,
   FilePenLine,

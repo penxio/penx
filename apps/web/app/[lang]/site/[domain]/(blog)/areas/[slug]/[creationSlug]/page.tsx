@@ -20,7 +20,7 @@ import {
 import { loadTheme } from '@/lib/loadTheme'
 import { AppearanceConfig } from '@penx/types'
 import { cn } from '@penx/utils'
-import { AreaType, Creation, GateType } from '@penx/db/client'
+import { AreaType, Creation, GateType } from '@prisma/client'
 import { produce } from 'immer'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'

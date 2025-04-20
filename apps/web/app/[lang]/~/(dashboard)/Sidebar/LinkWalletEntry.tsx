@@ -3,7 +3,7 @@
 import { IconGoogle } from '@/components/icons/IconGoogle'
 import { useMyAccounts } from '@/hooks/useMyAccounts'
 import { Link } from '@/lib/i18n'
-import { ProviderType } from '@penx/db/client'
+import { ProviderType } from '@prisma/client'
 import { ArrowRight } from 'lucide-react'
 
 export function LinkWalletEntry() {

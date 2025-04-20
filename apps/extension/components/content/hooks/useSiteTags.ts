@@ -2,7 +2,7 @@ import { useSession } from '@/hooks/useSession'
 import { BASE_URL } from '@/lib/constants'
 import { useQuery } from '@tanstack/react-query'
 import ky from 'ky'
-import { Tag } from '@penx/db/client'
+import { Tag } from '@prisma/client'
 
 export function useSiteTags() {
   const url = `${BASE_URL}/api/v1/tags`

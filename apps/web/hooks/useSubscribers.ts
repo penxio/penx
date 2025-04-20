@@ -1,6 +1,6 @@
 import { useSiteContext } from '@/components/SiteContext'
 import { trpc } from '@penx/trpc-client'
-import { SubscriberStatus } from '@penx/db/client'
+import { SubscriberStatus } from '@prisma/client'
 
 interface UseSubscribersOptions {
   search?: string

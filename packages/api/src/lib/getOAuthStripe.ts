@@ -1,6 +1,6 @@
 import { stripe } from '@/lib/stripe'
 import { prisma } from '@penx/db'
-import { Site, StripeType } from '@penx/db/client'
+import { Site, StripeType } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import Stripe from 'stripe'
 

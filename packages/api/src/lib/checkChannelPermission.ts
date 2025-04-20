@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { Channel, Creation } from '@penx/db/client'
+import { Channel, Creation } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 
 export async function checkChannelPermission(

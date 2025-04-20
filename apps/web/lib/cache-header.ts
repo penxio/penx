@@ -1,4 +1,4 @@
-import { Creation } from '@penx/db/client'
+import { Creation } from '@prisma/client'
 import { produce } from 'immer'
 import Redis from 'ioredis'
 import { redisKeys } from './redisKeys'

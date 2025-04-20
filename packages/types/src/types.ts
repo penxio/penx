@@ -13,7 +13,7 @@ import {
   Subscription,
   Tag,
   User,
-} from '@penx/db/client'
+} from '@prisma/client'
 
 export enum TierInterval {
   MONTHLY = 'MONTHLY',

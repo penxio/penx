@@ -11,7 +11,7 @@
 import { initTRPC, TRPCError } from '@trpc/server'
 import superjson from 'superjson'
 import { prisma } from '@penx/db'
-import { CollaboratorRole } from '@penx/db/client'
+import { CollaboratorRole } from '@prisma/client'
 import type { Context } from './context'
 
 const t = initTRPC.context<Context>().create({

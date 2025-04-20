@@ -12,7 +12,7 @@ import {
   Subscription,
   Tag,
   User,
-} from '@penx/db/client'
+} from '@prisma/client'
 import { Address } from 'viem'
 import { TierInterval } from '../constants'
 

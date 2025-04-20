@@ -13,7 +13,7 @@ import { useRouter } from '@/lib/i18n'
 import { api } from '@penx/trpc-client'
 import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
-import { AreaType } from '@penx/db/client'
+import { AreaType } from '@prisma/client'
 import { GlobeIcon, PencilIcon, TrashIcon } from 'lucide-react'
 import { ConfirmDialog } from './ConfirmDialog'
 

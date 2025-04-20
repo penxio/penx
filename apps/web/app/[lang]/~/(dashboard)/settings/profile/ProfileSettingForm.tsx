@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FileUpload } from '@/components/FileUpload'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import {

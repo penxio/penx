@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { SiteLink } from '@/components/SiteLink'
 import { Link } from '@/lib/i18n'
 import { Trans } from '@lingui/react/macro'

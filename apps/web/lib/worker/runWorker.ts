@@ -1,4 +1,4 @@
-import { store } from '@/store'
+import { store } from '@penx/store'
 import { WorkerEvents } from '../constants'
 
 export function runWorker() {

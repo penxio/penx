@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from '@/assets/react.svg'
 import { LoadingDots } from '@/components/icons/loading-dots'
+import { Login } from '@/components/Login'
 import { PopupContent } from '@/components/popup/PopupContent'
 import { Providers } from '@/components/providers'
 import { ThemeProvider } from '@/components/ThemeProvider'

@@ -140,11 +140,10 @@ export const ContentView = () => {
   // )
   return (
     <>
-      <QuickAddEditor />
       {/* <QuickAddEditor x={clientX} y={clientY} /> */}
 
       {/* {visible && text && !type && <Thumbnail x={x} y={y} />} */}
-      {/* {appType === AppType.NOTE && <QuickAddEditor />} */}
+      {appType === AppType.NOTE && <QuickAddEditor />}
     </>
   )
 }

@@ -10,7 +10,7 @@ import { CatalogueNodeType } from '@/lib/model'
 import { cn } from '@penx/utils'
 import { useSortable } from '@dnd-kit/sortable'
 import { Trans } from '@lingui/react/macro'
-import { Creation } from '@penx/db/client'
+import { Creation } from '@prisma/client'
 import { format } from 'date-fns'
 import {
   ChevronDown,

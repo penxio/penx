@@ -1,5 +1,5 @@
 import { useLoginDialog } from '@/components/LoginDialog/useLoginDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,

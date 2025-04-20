@@ -1,4 +1,4 @@
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Widget } from '@/lib/types'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'

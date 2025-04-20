@@ -11,7 +11,7 @@ import {
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import { Menu } from '@penx/uikit/ui/menu/Menu'
 import { CatalogueNodeType } from '@/lib/model'
-import { CreationStatus } from '@penx/db/client'
+import { CreationStatus } from '@prisma/client'
 import { useCatalogue } from '../hooks/useCatalogue'
 import { useAddPostNodeDialog } from './useAddPostNodeDialog'
 

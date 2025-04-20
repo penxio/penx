@@ -105,18 +105,6 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
           top: 100,
         }}
       >
-        <div className="p-4">
-          <div
-            className="size-40 rounded-3xl border bg-red-100 shadow-2xl"
-            style={
-              {
-                // boxShadow: '2px 2px 10px rgba(0, 0, 0, 0.2)',
-              }
-            }
-          >
-            GOGO!!
-          </div>
-        </div>
         <MotionBox
           className="flex h-10 cursor-move items-center justify-between px-4"
           onPan={(e, info) => {

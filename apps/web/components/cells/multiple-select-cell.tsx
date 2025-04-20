@@ -9,7 +9,7 @@ import {
   measureTextCached,
   Rectangle,
 } from '@glideapps/glide-data-grid'
-import { Column } from '@penx/db/client'
+import { Column } from '@prisma/client'
 import { Command } from 'cmdk'
 import { useDatabaseContext } from '../database-ui/DatabaseProvider'
 import { OptionTag } from '../OptionTag'

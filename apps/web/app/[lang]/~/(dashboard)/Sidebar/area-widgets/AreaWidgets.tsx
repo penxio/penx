@@ -1,7 +1,7 @@
 'use client'
 
 import { AddCreationButton } from '@/components/AddCreationButton'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { useAppLoading } from '@/hooks/useAppLoading'

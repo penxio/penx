@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { IconGoogle } from '@/components/icons/IconGoogle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
   GOOGLE_CLIENT_ID,

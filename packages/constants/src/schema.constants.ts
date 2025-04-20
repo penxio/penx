@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { CreationStatus } from '@penx/db/client'
+import { CreationStatus } from '@prisma/client'
 
 export const updateCreationInputSchema = z.object({
   id: z.string(),

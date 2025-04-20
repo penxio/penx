@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { Site } from '@penx/db/client'
+import { Site } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 
 export async function checkSitePermission(

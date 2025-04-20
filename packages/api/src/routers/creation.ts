@@ -17,7 +17,7 @@ import {
   Creation,
   CreationStatus,
   GateType,
-} from '@penx/db/client'
+} from '@prisma/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { renderSlateToHtml } from '@penx/libs/slate-to-html'

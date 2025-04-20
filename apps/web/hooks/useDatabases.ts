@@ -3,7 +3,7 @@ import { useSiteContext } from '@/components/SiteContext'
 import { localDB } from '@/lib//local-db'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
-import { Database } from '@penx/db/client'
+import { Database } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 
 function equal(remoteDatabases: Database[], localDatabases: any[]): boolean {

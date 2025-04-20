@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { CreationStatus } from '@penx/db/client'
+import { CreationStatus } from '@prisma/client'
 
 export async function getCreation(id: string) {
   const creation = await prisma.creation.findUniqueOrThrow({

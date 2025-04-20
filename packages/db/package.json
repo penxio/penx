@@ -29,7 +29,6 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0",
-    "prisma-extension-pagination": "^0.7.5"
+    "@prisma/client": "^6.6.0"
   }
 }

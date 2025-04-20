@@ -1,6 +1,6 @@
 'use client'
 
-import { StripeType } from '@penx/db/client'
+import { StripeType } from '@prisma/client'
 import { MembershipTiers } from './MembershipTiers'
 import { Payout } from './Payout'
 

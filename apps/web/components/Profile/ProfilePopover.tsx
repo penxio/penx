@@ -1,7 +1,7 @@
 'use client'
 
 import { memo } from 'react'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
   DropdownMenu,

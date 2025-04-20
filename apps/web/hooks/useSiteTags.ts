@@ -1,4 +1,4 @@
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { trpc } from '@penx/trpc-client'
 

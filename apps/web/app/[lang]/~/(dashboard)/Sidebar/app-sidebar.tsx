@@ -4,7 +4,7 @@ import * as React from 'react'
 import { NavUser } from '@/app/[lang]/~/(dashboard)/Sidebar/nav-user'
 import { AddCreationButton } from '@/components/AddCreationButton'
 import { ModeToggle } from '@/components/ModeToggle'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Sidebar,

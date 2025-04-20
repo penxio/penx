@@ -5,7 +5,7 @@ import { useSiteContext } from '@/components/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import { useAddCreation } from '@/hooks/useAddCreation'
 import { Widget } from '@/lib/types'
-import { Area } from '@penx/db/client'
+import { Area } from '@prisma/client'
 import { PlusIcon } from 'lucide-react'
 
 interface Props {

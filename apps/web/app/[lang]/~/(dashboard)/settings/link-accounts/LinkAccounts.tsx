@@ -3,7 +3,7 @@
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { PasswordDialog } from '@/components/PasswordDialog/PasswordDialog'
 import { useMyAccounts } from '@/hooks/useMyAccounts'
-import { ProviderType } from '@penx/db/client'
+import { ProviderType } from '@prisma/client'
 import { AccountList } from './AccountList'
 import { LinkGoogleButton } from './LinkGoogleButton'
 import { LinkPasswordButton } from './LinkPasswordButton'

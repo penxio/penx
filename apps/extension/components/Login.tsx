@@ -27,7 +27,7 @@ export function Login({
     >
       <Logo className="h-14 w-14" />
       <h1
-        className="border text-xl  font-bold shadow-2xl"
+        className="border text-xl  font-bold shadow-2xl p-3 rounded-2xl"
         style={
           {
             // boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19)',

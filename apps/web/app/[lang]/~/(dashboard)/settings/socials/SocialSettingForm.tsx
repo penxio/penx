@@ -20,7 +20,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { Socials } from '@/lib/types'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
+import { Site } from '@prisma/client'
 import { toast } from 'sonner'
 import { z } from 'zod'
 

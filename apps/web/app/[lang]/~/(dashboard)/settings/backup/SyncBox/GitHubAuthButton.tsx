@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Github } from '@/components/theme-ui/SocialIcon/icons'
 import { Button } from '@penx/uikit/ui/button'
 import { useSearchParams } from 'next/navigation'

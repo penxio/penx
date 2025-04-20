@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { BillingCycle, PlanType } from '@penx/db/client'
+import { BillingCycle, PlanType } from '@prisma/client'
 import { queryClient } from '@penx/query-client'
 import {
   GoogleLoginData,

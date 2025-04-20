@@ -4,7 +4,7 @@ import React from 'react'
 import { Button } from '@penx/uikit/ui/button'
 import { toggleCollapsed } from '@/hooks/useAreaItem'
 import { Widget } from '@/lib/types'
-import { Area } from '@penx/db/client'
+import { Area } from '@prisma/client'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 

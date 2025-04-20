@@ -1,6 +1,6 @@
 'use client'
 
-import { getSession, useSession } from '@/components/session'
+import { getSession, useSession } from '@penx/session'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import { SiteCreation } from '@/lib/types'

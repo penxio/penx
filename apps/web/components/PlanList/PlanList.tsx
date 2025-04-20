@@ -1,4 +1,4 @@
-import { PlanType } from '@penx/db/client'
+import { PlanType } from '@prisma/client'
 import { BillingCycleSelect } from './BillingCycleSelect'
 import { PlanItem } from './PlanItem'
 import { PricingSlogan } from './PricingSlogan'

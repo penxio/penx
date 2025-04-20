@@ -7,7 +7,7 @@ import { Input } from '@penx/uikit/ui/input'
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
 import { Menu } from '@penx/uikit/ui/menu/Menu'
 import { IColumnNode } from '@/lib/model'
-import { Column } from '@penx/db/client'
+import { Column } from '@prisma/client'
 import {
   ArrowDown,
   ArrowLeft,

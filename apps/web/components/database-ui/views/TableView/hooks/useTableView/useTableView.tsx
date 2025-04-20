@@ -28,7 +28,7 @@ import {
   GridColumnIcon,
   Item,
 } from '@glideapps/glide-data-grid'
-import { Column } from '@penx/db/client'
+import { Column } from '@prisma/client'
 import { format } from 'date-fns'
 import { produce } from 'immer'
 import { revalidateTag } from 'next/cache'

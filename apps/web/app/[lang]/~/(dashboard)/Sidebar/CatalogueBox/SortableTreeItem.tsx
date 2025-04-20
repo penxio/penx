@@ -1,7 +1,7 @@
 import React, { CSSProperties, useState } from 'react'
 import { AnimateLayoutChanges, useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { Creation } from '@penx/db/client'
+import { Creation } from '@prisma/client'
 import { CatalogueItem } from './CatalogueItem'
 import { FlattenedItem } from './types'
 

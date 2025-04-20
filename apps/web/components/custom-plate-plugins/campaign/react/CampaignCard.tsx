@@ -12,7 +12,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { usePathname } from '@/lib/i18n'
 import { trpc } from '@penx/trpc-client'
 import { getUrl } from '@penx/utils'
-import { Campaign } from '@penx/db/client'
+import { Campaign } from '@prisma/client'
 import Image from 'next/image'
 import { toast } from 'sonner'
 

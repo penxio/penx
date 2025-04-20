@@ -11,7 +11,7 @@ import {
   useState,
 } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useQueryDatabase } from '@/hooks/useQueryDatabase'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
@@ -29,7 +29,7 @@ import {
 } from '@/lib/types'
 import { uniqueId } from '@penx/unique-id'
 import { RouterInputs, RouterOutputs } from '@penx/api'
-import { Column, Record as Row, View } from '@penx/db/client'
+import { Column, Record as Row, View } from '@prisma/client'
 import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'
 import { useSearchParams } from 'next/navigation'

@@ -12,7 +12,7 @@ import {
 } from '@penx/uikit/ui/table'
 import { api, trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { Site } from '@penx/db/client'
+import { Site } from '@prisma/client'
 import { format } from 'date-fns'
 
 interface Props {

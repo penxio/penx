@@ -1,4 +1,4 @@
-import { Domain } from '@penx/db/client'
+import { Domain } from '@prisma/client'
 import { revalidateTag } from 'next/cache'
 import { ROOT_DOMAIN } from './constants'
 

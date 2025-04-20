@@ -8,7 +8,7 @@ import {
   ProviderType,
   SubdomainType,
   User,
-} from '@penx/db/client'
+} from '@prisma/client'
 import { cacheHelper } from './cache-header'
 import { getDefaultMolds } from './getDefaultMolds'
 import { CreationType } from './theme.types'

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { PodcastTips } from '@/components/theme-ui/PodcastTips'
 import { Badge } from '@penx/uikit/ui/badge'

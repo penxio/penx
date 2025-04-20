@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react'
 import { GoogleOauthButton } from '@/components/GoogleOauthButton'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { TextLogo } from '@/components/TextLogo'
 import { api } from '@penx/trpc-client'
 import {

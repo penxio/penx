@@ -1,6 +1,6 @@
 import { STATIC_URL } from '@penx/constants'
 import { localDB } from '@/lib/local-db'
-import { Asset } from '@penx/db/client'
+import { Asset } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 
 export function useLoadAsset(asset: Asset) {

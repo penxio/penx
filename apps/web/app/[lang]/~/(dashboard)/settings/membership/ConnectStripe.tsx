@@ -6,7 +6,7 @@ import { useSiteContext } from '@/components/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import { updateSiteState } from '@/hooks/useSite'
 import { trpc } from '@penx/trpc-client'
-import { StripeType } from '@penx/db/client'
+import { StripeType } from '@prisma/client'
 
 export function ConnectStripe() {
   const [loading, setLoading] = useState(false)

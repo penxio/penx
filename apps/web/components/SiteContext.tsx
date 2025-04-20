@@ -3,7 +3,7 @@
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
 import { STATIC_URL } from '@penx/constants'
 import { CreationType } from '@penx/types'
-import { Area, Channel, Mold, Site, Tag } from '@penx/db/client'
+import { Area, Channel, Mold, Site, Tag } from '@prisma/client'
 
 type SiteType = Site & {
   channels: Channel[]

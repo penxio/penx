@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { Link } from '@/lib/i18n'
 import { ChevronLeft } from 'lucide-react'

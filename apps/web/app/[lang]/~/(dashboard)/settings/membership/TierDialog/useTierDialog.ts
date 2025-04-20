@@ -1,4 +1,4 @@
-import { Product } from '@penx/db/client'
+import { Product } from '@prisma/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

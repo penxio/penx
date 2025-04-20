@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@penx/utils'
-import { StripeType } from '@penx/db/client'
+import { StripeType } from '@prisma/client'
 
 interface StripeTypeSelectProps {
   value: StripeType

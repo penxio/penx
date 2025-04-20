@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { AddNoteDialog } from '@/components/Creation/AddNoteDialog/AddNoteDialog'
 import { useAddNoteDialog } from '@/components/Creation/AddNoteDialog/useAddNoteDialog'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useSiteContext } from '@/components/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {

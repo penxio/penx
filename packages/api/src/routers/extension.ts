@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { Extension } from '@penx/db/client'
+import { Extension } from '@prisma/client'
 import Redis from 'ioredis'
 import { z } from 'zod'
 import { protectedProcedure, publicProcedure, router } from '../trpc'

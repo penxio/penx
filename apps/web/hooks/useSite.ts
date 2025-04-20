@@ -1,4 +1,4 @@
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import { MySite } from '@/lib/types'

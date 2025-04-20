@@ -1,14 +1,12 @@
 'use client'
 
 import { GoogleOauthDialog } from '@/components/GoogleOauthDialog/GoogleOauthDialog'
-import { LoginDialog } from '@/components/LoginDialog/LoginDialog'
-import { SessionProvider } from '@/components/session'
-import { ROOT_DOMAIN } from '@penx/constants'
-import { queryClient } from '@penx/query-client'
-import { trpc, trpcClient } from '@penx/trpc-client'
-import { StoreProvider } from '@/store'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'sonner'
+import { queryClient } from '@penx/query-client'
+import { SessionProvider } from '@penx/session'
+import { StoreProvider } from '@penx/store'
+import { trpc, trpcClient } from '@penx/trpc-client'
 
 export function Providers({
   children,

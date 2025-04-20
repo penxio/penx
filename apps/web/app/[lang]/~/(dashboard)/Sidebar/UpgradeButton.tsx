@@ -1,9 +1,9 @@
 'use client'
 
 import { usePlanListDialog } from '@/components/PlanList/usePlanListDialog'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { PlanType } from '@penx/db/client'
+import { PlanType } from '@prisma/client'
 import { ZapIcon } from 'lucide-react'
 
 interface Props {}

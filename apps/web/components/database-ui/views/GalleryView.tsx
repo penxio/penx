@@ -1,7 +1,7 @@
 import { OptionTag } from '@/components/OptionTag'
 import { mappedByKey } from '@/lib/shared'
 import { ColumnType, Option } from '@/lib/types'
-import { Record as Row } from '@penx/db/client'
+import { Record as Row } from '@prisma/client'
 import { useDatabaseContext } from '../DatabaseProvider'
 import { FieldIcon } from '../shared/FieldIcon'
 

@@ -3,7 +3,7 @@ import { useSiteContext } from '@/components/SiteContext'
 import { localDB } from '@/lib/local-db'
 import { queryClient } from '@penx/query-client'
 import { api, trpc } from '@penx/trpc-client'
-import { Creation } from '@penx/db/client'
+import { Creation } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 
 function equal(remotePages: Creation[], localPages: any[]): boolean {

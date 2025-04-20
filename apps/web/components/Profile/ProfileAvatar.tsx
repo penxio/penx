@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef, HTMLAttributes } from 'react'
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { useCopyToClipboard } from '@/hooks/useCopyToClipboard'
 import { ChevronDown, Copy } from 'lucide-react'
 import { toast } from 'sonner'

@@ -5,7 +5,7 @@ import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { UserAvatar } from '@/components/UserAvatar'
 import { trpc } from '@penx/trpc-client'
 import { getUrl } from '@penx/utils'
-import { User } from '@penx/db/client'
+import { User } from '@prisma/client'
 import { CommentInput } from './CommentInput'
 import { CommentList } from './CommentList'
 

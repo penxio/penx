@@ -8,7 +8,7 @@ import { Switch } from '@penx/uikit/ui/switch'
 import { useAreaCreations } from '@/hooks/useAreaCreations'
 import { CreationStatus } from '@penx/constants'
 import { Panel } from '@/lib/types'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@prisma/client'
 import { ArticleItem } from './ArticleItem'
 
 interface PostListProps {

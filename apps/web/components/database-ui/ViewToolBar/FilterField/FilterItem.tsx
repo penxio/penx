@@ -3,7 +3,7 @@
 import { ChangeEvent } from 'react'
 import { Input } from '@penx/uikit/ui/input'
 import { Filter } from '@/lib/types'
-import { Column } from '@penx/db/client'
+import { Column } from '@prisma/client'
 import { FieldSelect } from './FieldSelect'
 import { OperatorSelect } from './OperatorSelect'
 

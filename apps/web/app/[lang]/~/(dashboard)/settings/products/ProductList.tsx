@@ -13,7 +13,7 @@ import {
 import { useSite } from '@/hooks/useSite'
 import { api, trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { Site } from '@penx/db/client'
+import { Site } from '@prisma/client'
 import { format } from 'date-fns'
 import { produce } from 'immer'
 import { Edit3, Eye, EyeOff } from 'lucide-react'

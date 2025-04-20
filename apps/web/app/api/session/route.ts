@@ -38,7 +38,7 @@ import {
   PlanType,
   ProviderType,
   Subscription,
-} from '@penx/db/client'
+} from '@prisma/client'
 import { generateNonce } from '@penx/utils/generateNonce'
 
 // export const runtime = 'edge'

@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
-import { Creation } from '@penx/db/client'
+import { Creation } from '@prisma/client'
 import { MessageCircle } from 'lucide-react'
 
 interface Props {

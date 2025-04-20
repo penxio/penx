@@ -1,7 +1,7 @@
 import { prisma } from '@penx/db'
 import { getServerSession, getSessionOptions } from '@/lib/session'
 import { SessionData } from '@/lib/types'
-import { PlanType } from '@penx/db/client'
+import { PlanType } from '@prisma/client'
 import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import type * as trpcNext from '@trpc/server/adapters/next'
 import { getIronSession } from 'iron-session'

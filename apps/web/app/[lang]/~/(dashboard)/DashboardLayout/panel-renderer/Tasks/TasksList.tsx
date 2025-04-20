@@ -4,7 +4,7 @@ import { useSiteContext } from '@/components/SiteContext'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@/lib/types'
 import { Trans } from '@lingui/react/macro'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import { TaskItem } from './TaskItem'
 

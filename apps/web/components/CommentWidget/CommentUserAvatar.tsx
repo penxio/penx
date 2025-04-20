@@ -14,7 +14,7 @@ import {
 } from '@/lib/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
 import { getUrl } from '@penx/utils'
-import { Comment, User } from '@penx/db/client'
+import { Comment, User } from '@prisma/client'
 import { ArrowUpRight } from 'lucide-react'
 import { LoadingDots } from '../icons/loading-dots'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'

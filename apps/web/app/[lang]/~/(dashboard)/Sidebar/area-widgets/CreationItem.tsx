@@ -14,7 +14,7 @@ import { CreationType } from '@penx/types'
 import { PanelType, SiteCreation } from '@/lib/types'
 import { uniqueId } from '@penx/unique-id'
 import { Trans } from '@lingui/react/macro'
-import { CreationStatus } from '@penx/db/client'
+import { CreationStatus } from '@prisma/client'
 import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
 import { useIsAllContext } from './IsAllContext'
 

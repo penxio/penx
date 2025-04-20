@@ -1,4 +1,4 @@
-import { useSession } from '@/components/session'
+import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
 
 export function useMySites() {

@@ -1,6 +1,6 @@
 import { prisma } from '@penx/db'
 import { Balance } from '@/lib/types'
-import { PayoutType } from '@penx/db/client'
+import { PayoutType } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { protectedProcedure, publicProcedure, router } from '../trpc'

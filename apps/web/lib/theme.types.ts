@@ -1,5 +1,5 @@
 import { JSX, PropsWithChildren } from 'react'
-import { Area, Author, Mold, Product } from '@penx/db/client'
+import { Area, Author, Mold, Product } from '@prisma/client'
 
 export enum CreationType {
   NOTE = 'NOTE',

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { trpc } from '@penx/trpc-client'
-import { store } from '@/store'
+import { store } from '@penx/store'
 import { atom, useAtom } from 'jotai'
 
 export const ethPriceAtom = atom<number>(0 as number)

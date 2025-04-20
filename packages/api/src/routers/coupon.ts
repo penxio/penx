@@ -1,7 +1,7 @@
 import { isSuperAdmin } from '@/lib/isSuperAdmin'
 import { prisma } from '@penx/db'
 import { uniqueId } from '@penx/unique-id'
-import { BillingCycle, PlanType, SubscriptionStatus } from '@penx/db/client'
+import { BillingCycle, PlanType, SubscriptionStatus } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { protectedProcedure, router } from '../trpc'

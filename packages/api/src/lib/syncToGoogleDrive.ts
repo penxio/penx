@@ -5,7 +5,7 @@ import {
 import { GoogleDrive } from '@/lib/google-drive'
 import { prisma } from '@penx/db'
 import { GoogleInfo } from '@/lib/types'
-import { Creation, User } from '@penx/db/client'
+import { Creation, User } from '@prisma/client'
 import ky from 'ky'
 
 export async function syncToGoogleDrive(

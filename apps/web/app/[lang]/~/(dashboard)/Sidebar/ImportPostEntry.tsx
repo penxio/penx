@@ -5,7 +5,7 @@ import { IconGoogle } from '@/components/icons/IconGoogle'
 import { Button } from '@penx/uikit/ui/button'
 import { useMyAccounts } from '@/hooks/useMyAccounts'
 import { Link } from '@/lib/i18n'
-import { ProviderType } from '@penx/db/client'
+import { ProviderType } from '@prisma/client'
 import { ArrowRight, XIcon } from 'lucide-react'
 
 const key = 'HAVE_IMPORTED_POSTS'

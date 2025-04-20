@@ -68,6 +68,9 @@ importers:
       '@octokit/openapi-types':
         specifier: ^22.2.0
         version: 22.2.0
+      '@prisma/client':
+        specifier: ^6.6.0
+        version: 6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2)
       '@radix-ui/react-accordion':
         specifier: ^1.2.3
         version: 1.2.3(@types/react-dom@19.1.1(@types/react@19.1.0))(@types/react@19.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -458,6 +461,9 @@ importers:
       podcast:
         specifier: ^2.0.1
         version: 2.0.1
+      prisma-extension-pagination:
+        specifier: ^0.7.5
+        version: 0.7.5(@prisma/client@6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2))
       prismjs:
         specifier: ^1.29.0
         version: 1.30.0
@@ -763,6 +769,9 @@ importers:
       '@penx/api':
         specifier: workspace:*
         version: link:../../packages/api
+      '@penx/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       '@penx/constants':
         specifier: workspace:*
         version: link:../../packages/constants
@@ -778,6 +787,9 @@ importers:
       '@penx/session':
         specifier: workspace:*
         version: link:../../packages/session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../../packages/store
       '@penx/trpc-client':
         specifier: workspace:*
         version: link:../../packages/trpc-client
@@ -987,6 +999,9 @@ importers:
       '@penx/api':
         specifier: workspace:*
         version: link:../../packages/api
+      '@penx/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       '@penx/constants':
         specifier: workspace:*
         version: link:../../packages/constants
@@ -1005,6 +1020,9 @@ importers:
       '@penx/session':
         specifier: workspace:*
         version: link:../../packages/session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../../packages/store
       '@penx/trpc-client':
         specifier: workspace:*
         version: link:../../packages/trpc-client
@@ -1191,6 +1209,52 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
+  packages/components:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../store
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/constants:
     dependencies:
       '@penx/db':
@@ -1218,9 +1282,6 @@ importers:
       '@prisma/client':
         specifier: ^6.6.0
         version: 6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2)
-      prisma-extension-pagination:
-        specifier: ^0.7.5
-        version: 0.7.5(@prisma/client@6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2))
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -1358,6 +1419,28 @@ importers:
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/store:
+    dependencies:
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
       '@penx/types':
         specifier: workspace:*
         version: link:../types

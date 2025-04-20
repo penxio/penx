@@ -1,7 +1,7 @@
 import { editorDefaultValue, ELEMENT_P } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { CreationType } from '@penx/types'
-import { CreationStatus } from '@penx/db/client'
+import { CreationStatus } from '@prisma/client'
 
 const aboutContent = `[{"children":[{"text":""}],"type":"img","url":"/56e813da9280fdf3b068b9b6e3a35cc95a7211241340d014435ff0f641bf48b8","id":"16HHbLVZYS","mime":"image/jpeg","width":120,"align":"center"},{"children":[{"text":"Zio"}],"type":"h2","id":"JG2FDjWpv_","align":"center"},{"children":[{"text":"A developer, designer, husband and father"}],"type":"p","id":"8Q5qxu3H3P","align":"center","style":""},{"children":[{"text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate."}],"type":"p","id":"NCA2XUq3a2","align":"center"},{"children":[{"text":""}],"type":"social-links","id":"4CEre-OJlB"},{"children":[{"text":""}],"type":"p","id":"gIztV3DUgC"}]`
 

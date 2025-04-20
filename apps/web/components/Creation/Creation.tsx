@@ -13,7 +13,7 @@ import {
 } from '@/hooks/useCreation'
 import { usePostSaving } from '@/hooks/usePostSaving'
 import { editorDefaultValue } from '@penx/constants'
-import { UpdateCreationInput } from '@/lib/constants/schema.constants'
+import { UpdateCreationInput } from '@penx/constants'
 import { useSearchParams } from 'next/navigation'
 import { Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'

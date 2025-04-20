@@ -2,7 +2,7 @@
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Option } from '@/lib/types'
-import { Column } from '@penx/db/client'
+import { Column } from '@prisma/client'
 import { useDatabaseContext } from '../../DatabaseProvider'
 
 export type EditFieldValues = {

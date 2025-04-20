@@ -1,5 +1,5 @@
 const { v4 } = require('uuid')
-const { PrismaClient } = require('@penx/db/client')
+const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
 function uniqueId() {

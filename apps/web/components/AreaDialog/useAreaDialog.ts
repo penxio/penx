@@ -1,4 +1,4 @@
-import { Area, Product } from '@penx/db/client'
+import { Area, Product } from '@prisma/client'
 import { atom, useAtom } from 'jotai'
 
 export type AreaWithProduct = Area & {

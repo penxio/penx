@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { CollaboratorRole } from '@penx/db/client'
+import { CollaboratorRole } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 
 export async function checkCollaboratorPermission(
