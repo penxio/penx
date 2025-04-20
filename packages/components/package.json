@@ -14,19 +14,20 @@
   "devDependencies": {
     "@penx/eslint-config": "workspace:*",
     "@penx/typescript-config": "workspace:*",
+    "barrelsby": "^2.8.1",
     "eslint": "^9.24.0",
     "typescript": "5.8.2"
   },
   "dependencies": {
-    "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
+    "@penx/db": "workspace:*",
+    "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/store": "workspace:*",
-    "@penx/utils": "workspace:*",
-    "@penx/libs": "workspace:*",
-    "@penx/db": "workspace:*",
-    "@penx/unique-id": "workspace:*"
+    "@penx/trpc-client": "workspace:*",
+    "@penx/types": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/utils": "workspace:*"
   }
 }
