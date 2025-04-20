@@ -15,11 +15,12 @@ import Head from 'next/head'
 import { headers } from 'next/headers'
 import NextTopLoader from 'nextjs-toploader'
 import { DashboardLayout } from '@penx/components/DashboardLayout/DashboardLayout'
+import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog/GoogleOauthDialog'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { DashboardProviders } from '@penx/components/providers/DashboardProviders'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import linguiConfig from '@penx/libs/lingui.config'
 import { cn } from '@penx/utils'
-import { Providers } from '../../providers'
 
 const roboto = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -79,7 +80,8 @@ export default async function RootLayout({
           initialLocale={locale}
           initialMessages={allMessages[locale]!}
         >
-          <Providers cookies={cookies}>
+          <DashboardProviders cookies={cookies}>
+            <GoogleOauthDialog />
             <ThemeProvider
               attribute="class"
               defaultTheme="system"
@@ -94,11 +96,12 @@ export default async function RootLayout({
                 template='<div class="bar" role="bar"><div class="peg"></div></div>'
               />
 
+              {/* <GoogleOauthDialog */}
               <DashboardLayout>{children}</DashboardLayout>
             </ThemeProvider>
 
             <div id="portal" />
-          </Providers>
+          </DashboardProviders>
         </LinguiClientProvider>
       </body>
     </html>

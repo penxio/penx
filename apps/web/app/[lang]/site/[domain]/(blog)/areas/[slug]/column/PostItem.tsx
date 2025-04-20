@@ -1,21 +1,16 @@
 'use client'
 
 import { JSX } from 'react'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
-import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
-import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
-import { CommentSheet } from '@penx/components/theme-ui/PostActions/Comment/CommentSheet'
-import { Link } from '@penx/libs/i18n'
-import {
-  AreaWithCreations,
-  Creation,
-  CreationType,
-  User,
-} from '@penx/types'
-import { cn, formatDate, getUrl } from '@penx/utils'
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { Node } from 'slate'
+import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
+import { CommentSheet } from '@penx/components/theme-ui/PostActions/Comment/CommentSheet'
+import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { Link } from '@penx/libs/i18n'
+import { AreaWithCreations, Creation, CreationType, User } from '@penx/types'
+import { cn, formatDate, getUrl } from '@penx/utils'
 import { AuthorAvatar } from './AuthorAvatar'
 
 interface PostItemProps {

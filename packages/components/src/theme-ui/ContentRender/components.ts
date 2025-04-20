@@ -34,8 +34,8 @@ import {
   BaseTableRowPlugin,
 } from '@udecode/plate-table'
 import { PlateLeaf } from '@udecode/plate/react'
-import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
-import { ProductElementStatic } from '@penx/uikit/editor/custom-plate-plugins/product/react/product-element-static'
+import { BaseProductPlugin } from '@penx/editor/custom-plate-plugins/product'
+import { ProductElementStatic } from '@penx/editor/custom-plate-plugins/product/react/product-element-static'
 import { BlockquoteElementStatic } from '@penx/uikit/plate-ui/blockquote-element-static'
 import { CodeBlockElement } from '@penx/uikit/plate-ui/code-block-element'
 import { CodeBlockElementStatic } from '@penx/uikit/plate-ui/code-block-element-static'

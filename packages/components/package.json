@@ -30,6 +30,7 @@
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",
+    "@penx/editor": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/services": "workspace:*",
     "@penx/emitter": "workspace:*",

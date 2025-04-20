@@ -5,7 +5,7 @@ import {
   AIChatPlugin,
   useEditorChat,
   useLastAssistantMessage,
-} from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+} from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { useChat } from '@penx/uikit/editor/use-chat'
 import { isHotkey, type NodeEntry } from '@udecode/plate'
 import {

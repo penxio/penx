@@ -25,8 +25,8 @@ import {
   type CreatePlateEditorOptions,
 } from '@udecode/plate/react'
 import { ArrowUpIcon } from 'lucide-react'
-import { AIPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
-import { useCreateEditor } from '@penx/uikit/editor/use-create-editor'
+// import { AIPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
+// import { useCreateEditor } from '@penx/editor/use-create-editor'
 import { AILeaf } from './ai-leaf'
 import { Avatar, AvatarFallback, AvatarImage } from './avatar'
 import type { TDiscussion } from './block-discussion'
@@ -49,33 +49,34 @@ export const useCommentEditor = (
   options: Omit<CreatePlateEditorOptions, 'plugins'> = {},
   deps: any[] = [],
 ) => {
-  const commentEditor = useCreateEditor(
-    {
-      id: 'comment',
-      override: {
-        components: {
-          [AIPlugin.key]: AILeaf,
-          [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
-          [DatePlugin.key]: DateElement,
-          [EmojiInputPlugin.key]: EmojiInputElement,
-          [InlineEquationPlugin.key]: InlineEquationElement,
-          [ItalicPlugin.key]: withProps(PlateLeaf, { as: 'em' }),
-          [LinkPlugin.key]: LinkElement,
-          [MentionInputPlugin.key]: MentionInputElement,
-          [MentionPlugin.key]: MentionElement,
-          [StrikethroughPlugin.key]: withProps(PlateLeaf, { as: 's' }),
-          [UnderlinePlugin.key]: withProps(PlateLeaf, { as: 'u' }),
-          // [SlashInputPlugin.key]: SlashInputElement,
-        },
-      },
-      plugins: [BasicMarksPlugin],
-      value: [],
-      ...options,
-    },
-    deps,
-  )
+  // const commentEditor = useCreateEditor(
+  //   {
+  //     id: 'comment',
+  //     override: {
+  //       components: {
+  //         [AIPlugin.key]: AILeaf,
+  //         [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
+  //         [DatePlugin.key]: DateElement,
+  //         [EmojiInputPlugin.key]: EmojiInputElement,
+  //         [InlineEquationPlugin.key]: InlineEquationElement,
+  //         [ItalicPlugin.key]: withProps(PlateLeaf, { as: 'em' }),
+  //         [LinkPlugin.key]: LinkElement,
+  //         [MentionInputPlugin.key]: MentionInputElement,
+  //         [MentionPlugin.key]: MentionElement,
+  //         [StrikethroughPlugin.key]: withProps(PlateLeaf, { as: 's' }),
+  //         [UnderlinePlugin.key]: withProps(PlateLeaf, { as: 'u' }),
+  //         // [SlashInputPlugin.key]: SlashInputElement,
+  //       },
+  //     },
+  //     plugins: [BasicMarksPlugin],
+  //     value: [],
+  //     ...options,
+  //   },
+  //   deps,
+  // )
 
-  return commentEditor
+  // return commentEditor
+  return {} as any
 }
 
 export function CommentCreateForm({

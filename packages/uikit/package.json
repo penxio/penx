@@ -7,7 +7,6 @@
     "./postcss.config": "./postcss.config.mjs",
     "./lib/*": "./src/lib/*.ts",
     "./ui/*": "./src/ui/*.tsx",
-    "./editor/*": "./src/editor/*.tsx",
     "./plate-ui/*": "./src/plate-ui/*.tsx",
     "./components/*": "./src/components/*.tsx",
     "./hooks/*": "./src/hooks/*.ts"
@@ -28,6 +27,7 @@
     "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/query-client": "workspace:*",
+    "@penx/editor-transforms": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/trpc-client": "workspace:*",

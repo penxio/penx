@@ -1,4 +1,4 @@
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType } from '@penx/types'
 import { formatDate } from '@penx/utils'

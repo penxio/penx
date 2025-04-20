@@ -14,6 +14,7 @@ import { Metadata } from 'next'
 import { Poppins, Roboto } from 'next/font/google'
 import Head from 'next/head'
 import { headers } from 'next/headers'
+import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog/GoogleOauthDialog'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { Logo } from '@penx/components/Logo'
 import { Profile } from '@penx/components/Profile/Profile'
@@ -84,6 +85,7 @@ export default async function RootLayout({
           initialMessages={allMessages[locale]!}
         >
           <DashboardProviders cookies={cookies}>
+            <GoogleOauthDialog></GoogleOauthDialog>
             <ThemeProvider
               attribute="class"
               defaultTheme="dark"

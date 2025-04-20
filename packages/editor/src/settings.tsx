@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, useContext, useState, type ReactNode } from 'react'
-// import { CopilotPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+// import { CopilotPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { Button } from '@penx/uikit/plate-ui/button'
 import {
   Command,

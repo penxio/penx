@@ -1,7 +1,7 @@
 'use client'
 
 import { JSX } from 'react'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
 import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
 import { Link } from '@penx/libs/i18n'

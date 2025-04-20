@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { CopilotPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+import { CopilotPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { useElement, usePluginOption } from '@udecode/plate/react'
 
 export const GhostText = () => {

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { AIChatPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+import { AIChatPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { withRef } from '@udecode/cn'
 import { useEditorPlugin } from '@udecode/plate/react'
 import { ToolbarButton } from './toolbar'

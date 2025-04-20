@@ -1,6 +1,6 @@
 'use client'
 
-// import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
+// import { BaseProductPlugin } from '@penx/editor/custom-plate-plugins/product'
 // import {
 //   serverSideComponents,
 //   serverSideEditor,

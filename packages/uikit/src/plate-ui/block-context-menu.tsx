@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { AIChatPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+// import { AIChatPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { useIsTouchDevice } from '../hooks/use-is-touch-device'
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
 import { HEADING_KEYS } from '@udecode/plate-heading'
@@ -102,7 +102,7 @@ export function BlockContextMenu({ children }: { children: React.ReactNode }) {
             editor.getApi(BlockSelectionPlugin).blockSelection.focus()
 
             if (value === 'askAI') {
-              editor.getApi(AIChatPlugin).aiChat.show()
+              // editor.getApi(AIChatPlugin).aiChat.show()
             }
 
             setValue(null)

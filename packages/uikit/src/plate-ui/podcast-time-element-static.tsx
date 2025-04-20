@@ -3,7 +3,7 @@
 import React from 'react'
 import { cn } from '@udecode/cn'
 import { SlateElement, type SlateElementProps } from '@udecode/plate'
-import { TPodcastTimeElement } from '@penx/uikit/editor/custom-plate-plugins/podcast-time'
+import { TPodcastTimeElement } from '@penx/editor/custom-plate-plugins/podcast-time'
 import { convertTimeToSeconds } from '@penx/utils'
 
 export function PodcastTimeElementStatic({

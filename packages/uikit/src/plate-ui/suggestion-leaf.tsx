@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { suggestionPlugin } from '@penx/uikit/editor/plugins/suggestion-plugin'
+import { suggestionPlugin } from '@penx/editor-plugins/suggestion-plugin'
 import { cn } from '@udecode/cn'
 import type { TSuggestionText } from '@udecode/plate-suggestion'
 import {

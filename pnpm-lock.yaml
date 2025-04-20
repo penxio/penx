@@ -1059,6 +1059,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/editor':
+        specifier: workspace:*
+        version: link:../../packages/editor
       '@penx/emitter':
         specifier: workspace:*
         version: link:../../packages/emitter
@@ -1274,6 +1277,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/editor':
+        specifier: workspace:*
+        version: link:../editor
       '@penx/emitter':
         specifier: workspace:*
         version: link:../emitter
@@ -1398,6 +1404,147 @@ importers:
       prisma:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.8.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/editor:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/editor-plugins':
+        specifier: workspace:*
+        version: link:../editor-plugins
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/editor-plugins:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/editor-transforms:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/editor-plugins':
+        specifier: workspace:*
+        version: link:../editor-plugins
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -1770,6 +1917,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/editor-transforms':
+        specifier: workspace:*
+        version: link:../editor-transforms
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs

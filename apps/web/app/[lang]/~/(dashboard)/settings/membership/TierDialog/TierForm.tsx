@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@penx/components/NumberInput'
 import { Button } from '@penx/uikit/ui/button'

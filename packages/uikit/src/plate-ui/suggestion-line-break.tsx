@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import {
   suggestionPlugin,
   type SuggestionConfig,
-} from '@penx/uikit/editor/plugins/suggestion-plugin'
+} from '@penx/editor-plugins/suggestion-plugin'
 import { cn } from '@udecode/cn'
 import type { TSuggestionData } from '@udecode/plate-suggestion'
 import { usePluginOption, type RenderNodeWrapper } from '@udecode/plate/react'

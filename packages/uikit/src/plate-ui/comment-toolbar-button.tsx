@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { commentsPlugin } from '@penx/uikit/editor/plugins/comments-plugin'
+import { commentsPlugin } from '@penx/editor-plugins/comments-plugin'
 import { getDraftCommentKey } from '@udecode/plate-comments'
 import { useEditorPlugin } from '@udecode/plate/react'
 import { MessageSquareTextIcon } from 'lucide-react'

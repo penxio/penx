@@ -21,7 +21,7 @@ import {
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'

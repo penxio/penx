@@ -14,7 +14,7 @@ import {
   useReadOnly,
 } from '@udecode/plate/react'
 import { CornerDownLeftIcon } from 'lucide-react'
-import { usePointInput } from '@penx/uikit/editor/custom-plate-plugins/podcast-time/react'
+import { usePointInput } from '@penx/editor/custom-plate-plugins/podcast-time/react'
 import { Button } from './button'
 import { PopoverContent } from './popover'
 

@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { serverSideEditor } from '@penx/uikit/editor/server-side-editor'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { CreationStatus } from '@penx/types'
-import { api } from '@penx/trpc-client'
 import { Creation } from '@prisma/client'
 import { deserializeMd } from '@udecode/plate-markdown'
 import { toast } from 'sonner'
+// import { serverSideEditor } from '@penx/uikit/editor/server-side-editor'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { api } from '@penx/trpc-client'
+import { CreationStatus } from '@penx/types'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { ImportPostData } from './usePostImportTask'
 
 export function usePostImport() {
@@ -88,10 +88,10 @@ export function usePostImport() {
 
     // Convert from markdown if needed
     if (creation.contentFormat === 'markdown') {
-      content = await deserializeMd(serverSideEditor, creation.content)
-      if (typeof content === 'object') {
-        content = JSON.stringify(content)
-      }
+      // content = await deserializeMd(serverSideEditor, creation.content)
+      // if (typeof content === 'object') {
+      //   content = JSON.stringify(content)
+      // }
     }
 
     return {

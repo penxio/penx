@@ -10,7 +10,7 @@ import {
   useSelected,
 } from '@udecode/plate/react'
 import { PlayIcon, TimerIcon } from 'lucide-react'
-import { TPodcastTimeElement } from '@penx/uikit/editor/custom-plate-plugins/podcast-time'
+import { TPodcastTimeElement } from '@penx/editor/custom-plate-plugins/podcast-time'
 import { PodcastTimePopoverContent } from './podcast-time-popover'
 import { Popover, PopoverTrigger } from './popover'
 

@@ -7,16 +7,16 @@ import { JuicePlugin } from '@udecode/plate-juice'
 import { MarkdownPlugin } from '@udecode/plate-markdown'
 import { SlashPlugin } from '@udecode/plate-slash-command/react'
 import { TrailingBlockPlugin } from '@udecode/plate-trailing-block'
-import { BaseBidirectionalLinkPlugin } from '@penx/uikit/editor/custom-plate-plugins/bidirectional-link'
-import { BidirectionalLinkPlugin } from '@penx/uikit/editor/custom-plate-plugins/bidirectional-link/react'
-import { CampaignPlugin } from '@penx/uikit/editor/custom-plate-plugins/campaign/react'
-import { CommentBoxPlugin } from '@penx/uikit/editor/custom-plate-plugins/comment-box/react'
-import { FriendsPlugin } from '@penx/uikit/editor/custom-plate-plugins/friends/react'
-import { PodcastTimePlugin } from '@penx/uikit/editor/custom-plate-plugins/podcast-time/react'
-import { ProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product/react'
-import { ProjectsPlugin } from '@penx/uikit/editor/custom-plate-plugins/projects/react'
-import { SocialLinksPlugin } from '@penx/uikit/editor/custom-plate-plugins/social-links/react'
-import { FloatingToolbarPlugin } from '@penx/uikit/editor/plugins/floating-toolbar-plugin'
+// import { BaseBidirectionalLinkPlugin } from '@penx/editor/custom-plate-plugins/bidirectional-link'
+// import { BidirectionalLinkPlugin } from '@penx/editor/custom-plate-plugins/bidirectional-link/react'
+// import { CampaignPlugin } from '/custom-plate-plugins/campaign/react'
+// import { CommentBoxPlugin } from '@penx/editor/custom-plate-plugins/comment-box/react'
+// import { FriendsPlugin } from '@penx/editor/custom-plate-plugins/friends/react'
+// import { PodcastTimePlugin } from '@penx/editor/custom-plate-plugins/podcast-time/react'
+// import { ProductPlugin } from '@penx/editor/custom-plate-plugins/product/react'
+// import { ProjectsPlugin } from '@penx/editor/custom-plate-plugins/projects/react'
+// import { SocialLinksPlugin } from '@penx/editor/custom-plate-plugins/social-links/react'
+import { FloatingToolbarPlugin } from '@penx/editor-plugins/floating-toolbar-plugin'
 import { aiPlugins } from './ai-plugins'
 import { autoformatPlugin } from './autoformat-plugin'
 import { blockMenuPlugins } from './block-menu-plugins'
@@ -58,12 +58,12 @@ export const editorPlugins = [
   FloatingToolbarPlugin,
 
   // BaseProductPlugin,
-  ProductPlugin,
-  CommentBoxPlugin,
-  FriendsPlugin,
-  ProjectsPlugin,
-  SocialLinksPlugin,
-  CampaignPlugin,
-  PodcastTimePlugin,
-  BidirectionalLinkPlugin,
+  // ProductPlugin,
+  // CommentBoxPlugin,
+  // FriendsPlugin,
+  // ProjectsPlugin,
+  // SocialLinksPlugin,
+  // CampaignPlugin,
+  // PodcastTimePlugin,
+  // BidirectionalLinkPlugin,
 ] as any

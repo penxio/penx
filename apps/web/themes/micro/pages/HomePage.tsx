@@ -5,7 +5,7 @@ import { PostItem } from '@penx/components/theme-ui/post-item-blocks/PostItem'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
-import { ProjectsBlock } from '@penx/uikit/editor/custom-plate-plugins/projects/react/ProjectsBlock'
+import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
 
 interface Props {
   about: any

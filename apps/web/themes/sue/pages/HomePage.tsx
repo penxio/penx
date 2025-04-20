@@ -1,9 +1,9 @@
-import { ProjectsBlock } from '@penx/uikit/editor/custom-plate-plugins/projects/react/ProjectsBlock'
+import { slug } from 'github-slugger'
 import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
+import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
-import { slug } from 'github-slugger'
 import { PostItem } from '../components/PostItem'
 import { FeaturedCard } from './FeaturedCard'
 

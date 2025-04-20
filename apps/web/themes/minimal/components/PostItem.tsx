@@ -1,4 +1,4 @@
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { Image } from '@penx/components/Image'
 import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
 import { Link } from '@penx/libs/i18n'

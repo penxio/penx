@@ -4,7 +4,7 @@ import { useEffect, useMemo } from 'react'
 import {
   AIChatPlugin,
   AIPlugin,
-} from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+} from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { NodeApi, type SlateEditor } from '@udecode/plate'
 import { useIsSelecting } from '@udecode/plate-selection/react'
 import {

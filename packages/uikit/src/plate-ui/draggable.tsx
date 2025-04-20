@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useMemo } from 'react'
-import { STRUCTURAL_TYPES } from '@penx/uikit/editor/transforms'
 import { cn, withRef } from '@udecode/cn'
 import { isType } from '@udecode/plate'
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
@@ -36,6 +35,14 @@ import {
 } from '@udecode/plate/react'
 import { GripVertical } from 'lucide-react'
 import { TooltipButton } from './tooltip'
+
+export const STRUCTURAL_TYPES: string[] = [
+  ColumnPlugin.key,
+  ColumnItemPlugin.key,
+  TablePlugin.key,
+  TableRowPlugin.key,
+  TableCellPlugin.key,
+]
 
 const UNDRAGGABLE_KEYS = [
   ColumnItemPlugin.key,

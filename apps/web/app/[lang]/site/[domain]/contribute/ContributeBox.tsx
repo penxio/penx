@@ -10,7 +10,7 @@ import { CreationStatus, Product } from '@prisma/client'
 import { api, trpc } from '@penx/trpc-client'
 import { CreationType, Site } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { Button } from '@penx/uikit/ui/button'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 

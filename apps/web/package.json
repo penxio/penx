@@ -35,6 +35,7 @@
     "@penx/unique-id": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/editor": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/encryption": "workspace:*",

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { memo } from 'react'
-import { useAIChatEditor } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+import { useAIChatEditor } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { withProps } from '@udecode/cn'
 import { BaseParagraphPlugin, SlateLeaf } from '@udecode/plate'
 import {

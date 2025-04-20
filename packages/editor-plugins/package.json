@@ -1,0 +1,29 @@
+{
+  "name": "@penx/editor-plugins",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.tsx"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/eslint-config": "workspace:*",
+    "@penx/typescript-config": "workspace:*",
+    "eslint": "^9.24.0",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {
+    "@penx/types": "workspace:*",
+    "@penx/constants": "workspace:*",
+    "@penx/query-client": "workspace:*",
+    "@penx/contexts": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/trpc-client": "workspace:*",
+    "@penx/session": "workspace:*",
+    "@penx/utils": "workspace:*",
+    "@penx/libs": "workspace:*"
+  }
+}

@@ -18,8 +18,6 @@ export function DashboardProviders({
     <>
       <Toaster className="dark:hidden" richColors />
       <Toaster theme="dark" className="hidden dark:block" richColors />
-      <div>xhelo</div>
-
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
           <trpc.Provider client={trpcClient} queryClient={queryClient}>

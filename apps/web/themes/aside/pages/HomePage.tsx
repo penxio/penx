@@ -1,4 +1,4 @@
-import { ProjectsBlock } from '@penx/uikit/editor/custom-plate-plugins/projects/react/ProjectsBlock'
+import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
 import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'

@@ -1,5 +1,6 @@
 // import '../../../globals.css'
-import "@penx/uikit/globals.css"
+import { DashboardProviders } from '@penx/components/providers/DashboardProviders'
+import '@penx/uikit/globals.css'
 // import '@farcaster/auth-kit/styles.css'
 import 'shikwasa/dist/style.css'
 import 'react-grid-layout/css/styles.css'
@@ -7,16 +8,9 @@ import 'react-resizable/css/styles.css'
 // import 'react-datepicker/dist/react-datepicker.css'
 // import '@glideapps/glide-data-grid/dist/index.css'
 import { allMessages } from '@/appRouterI18n'
-import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
-import { SiteProvider } from '@penx/contexts/SiteContext'
-import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { initLingui } from '@/initLingui'
-import { ROOT_DOMAIN } from '@penx/constants'
 import { getSite } from '@/lib/fetchers'
 import { redirectTo404 } from '@/lib/redirectTo404'
-import { AppearanceConfig } from '@penx/types'
-import { cn, getUrl } from '@penx/utils'
-import linguiConfig from '@penx/libs/lingui.config'
 // import { setI18n } from '@lingui/react/server'
 import { Metadata } from 'next'
 import { Poppins, Roboto } from 'next/font/google'
@@ -24,7 +18,14 @@ import Head from 'next/head'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { GoogleAnalytics } from 'nextjs-google-analytics'
-import { Providers } from '../../providers'
+import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog/GoogleOauthDialog'
+import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { ThemeProvider } from '@penx/components/ThemeProvider'
+import { ROOT_DOMAIN } from '@penx/constants'
+import { SiteProvider } from '@penx/contexts/SiteContext'
+import linguiConfig from '@penx/libs/lingui.config'
+import { AppearanceConfig } from '@penx/types'
+import { cn, getUrl } from '@penx/utils'
 
 type Params = Promise<{ domain: string; lang: string }>
 
@@ -110,7 +111,8 @@ export default async function RootLayout({
           initialLocale={locale}
           initialMessages={allMessages[locale]!}
         >
-          <Providers cookies={cookies}>
+          <DashboardProviders cookies={cookies}>
+            <GoogleOauthDialog />
             <ThemeProvider
               attribute="class"
               defaultTheme="system"
@@ -142,7 +144,7 @@ export default async function RootLayout({
             </ThemeProvider>
 
             <div id="portal" />
-          </Providers>
+          </DashboardProviders>
         </LinguiClientProvider>
       </body>
     </html>

@@ -1,7 +1,7 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Input } from '@penx/uikit/ui/input'
 import { useSite } from '@penx/hooks/useSite'

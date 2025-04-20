@@ -42,12 +42,12 @@ import {
   TableRowPlugin,
 } from '@udecode/plate-table/react'
 import type { PlateEditor } from '@udecode/plate/react'
-// import { insertPodcastTime } from '@penx/uikit/editor/custom-plate-plugins/podcast-time'
-// import { PodcastTimePlugin } from '@penx/uikit/editor/custom-plate-plugins/podcast-time/react'
-import {
-  BaseProductPlugin,
-  insertProduct,
-} from '@penx/uikit/editor/custom-plate-plugins/product'
+// import { insertPodcastTime } from '@penx/editor/custom-plate-plugins/podcast-time'
+// import { PodcastTimePlugin } from '@penx/editor/custom-plate-plugins/podcast-time/react'
+// import {
+//   BaseProductPlugin,
+//   insertProduct,
+// } from '@penx/editor/custom-plate-plugins/product'
 
 export const STRUCTURAL_TYPES: string[] = [
   ColumnPlugin.key,
@@ -101,7 +101,7 @@ const insertBlockMap: Record<
   [TocPlugin.key]: (editor) => insertToc(editor, { select: true }),
   [VideoPlugin.key]: (editor) =>
     insertVideoPlaceholder(editor, { select: true }),
-  [BaseProductPlugin.key]: (editor) => insertProduct(editor, { select: true }),
+  // [BaseProductPlugin.key]: (editor) => insertProduct(editor, { select: true }),
 }
 
 const insertInlineMap: Record<

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { commentsPlugin } from '@penx/uikit/editor/plugins/comments-plugin'
+import { commentsPlugin } from '@penx/editor-plugins/comments-plugin'
 import { cn } from '@udecode/cn'
 import { getCommentCount, type TCommentText } from '@udecode/plate-comments'
 import {

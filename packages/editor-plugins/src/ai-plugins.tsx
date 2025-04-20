@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react'
-import {
-  AIChatPlugin,
-  AIPlugin,
-} from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
-import { AIMenu } from '@penx/uikit/plate-ui/ai-menu'
+// import {
+//   AIChatPlugin,
+//   AIPlugin,
+// } from '@penx/editor/custom-plate-plugins/plate-ai/react'
+// import { AIMenu } from '@penx/uikit/plate-ui/ai-menu'
 import { MarkdownPlugin } from '@udecode/plate-markdown'
 import { cursorOverlayPlugin } from './cursor-overlay-plugin'
 
@@ -91,26 +91,26 @@ export const PROMPT_TEMPLATES = {
 }
 
 export const aiPlugins = [
-  cursorOverlayPlugin,
-  MarkdownPlugin.configure({ options: { indentList: true } }),
-  AIPlugin,
-  AIChatPlugin.configure({
-    options: {
-      promptTemplate: ({ isBlockSelecting, isSelecting }) => {
-        return isBlockSelecting
-          ? PROMPT_TEMPLATES.userBlockSelecting
-          : isSelecting
-            ? PROMPT_TEMPLATES.userSelecting
-            : PROMPT_TEMPLATES.userDefault
-      },
-      systemTemplate: ({ isBlockSelecting, isSelecting }) => {
-        return isBlockSelecting
-          ? PROMPT_TEMPLATES.systemBlockSelecting
-          : isSelecting
-            ? PROMPT_TEMPLATES.systemSelecting
-            : PROMPT_TEMPLATES.systemDefault
-      },
-    },
-    render: { afterEditable: () => <AIMenu /> },
-  }),
+  // cursorOverlayPlugin,
+  // MarkdownPlugin.configure({ options: { indentList: true } }),
+  // AIPlugin,
+  // AIChatPlugin.configure({
+  //   options: {
+  //     promptTemplate: ({ isBlockSelecting, isSelecting }) => {
+  //       return isBlockSelecting
+  //         ? PROMPT_TEMPLATES.userBlockSelecting
+  //         : isSelecting
+  //           ? PROMPT_TEMPLATES.userSelecting
+  //           : PROMPT_TEMPLATES.userDefault
+  //     },
+  //     systemTemplate: ({ isBlockSelecting, isSelecting }) => {
+  //       return isBlockSelecting
+  //         ? PROMPT_TEMPLATES.systemBlockSelecting
+  //         : isSelecting
+  //           ? PROMPT_TEMPLATES.systemSelecting
+  //           : PROMPT_TEMPLATES.systemDefault
+  //     },
+  //   },
+  //   render: { afterEditable: () => <AIMenu /> },
+  // }),
 ] as const

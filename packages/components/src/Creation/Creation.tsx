@@ -18,7 +18,7 @@ import {
 import { usePostSaving } from '@penx/hooks/usePostSaving'
 import { trpc } from '@penx/trpc-client'
 import { CreationById, CreationType } from '@penx/types'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { Separator } from '@penx/uikit/ui/separator'
 import { AddPropButton } from './AddPropButton'

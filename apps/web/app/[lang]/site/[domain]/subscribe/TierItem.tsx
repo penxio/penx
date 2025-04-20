@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { PlateEditor } from '@penx/uikit/editor/plate-editor'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'

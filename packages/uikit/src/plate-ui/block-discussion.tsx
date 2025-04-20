@@ -4,8 +4,8 @@ import React, { useMemo } from 'react'
 import {
   commentsPlugin,
   type CommentsConfig,
-} from '@penx/uikit/editor/plugins/comments-plugin'
-import { suggestionPlugin } from '@penx/uikit/editor/plugins/suggestion-plugin'
+} from '@penx/editor-plugins/comments-plugin'
+import { suggestionPlugin } from '@penx/editor-plugins/suggestion-plugin'
 import { Button } from './button'
 import {
   Popover,

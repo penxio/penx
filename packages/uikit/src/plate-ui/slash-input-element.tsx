@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { AIChatPlugin } from '@penx/uikit/editor/custom-plate-plugins/plate-ai/react'
+import { AIChatPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import {
   insertBlock,
   insertInlineElement,
@@ -47,14 +47,14 @@ import {
   TimerIcon,
   UserRoundIcon,
 } from 'lucide-react'
-import { CampaignPlugin } from '@penx/uikit/editor/custom-plate-plugins/campaign/react'
-import { CommentBoxPlugin } from '@penx/uikit/editor/custom-plate-plugins/comment-box/react'
-import { FriendsPlugin } from '@penx/uikit/editor/custom-plate-plugins/friends/react'
-import { PodcastTimePlugin } from '@penx/uikit/editor/custom-plate-plugins/podcast-time/react'
-import { BaseProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product'
-import { ProductPlugin } from '@penx/uikit/editor/custom-plate-plugins/product/react'
-import { ProjectsPlugin } from '@penx/uikit/editor/custom-plate-plugins/projects/react'
-import { SocialLinksPlugin } from '@penx/uikit/editor/custom-plate-plugins/social-links/react'
+import { CampaignPlugin } from '@penx/editor/custom-plate-plugins/campaign/react'
+import { CommentBoxPlugin } from '@penx/editor/custom-plate-plugins/comment-box/react'
+import { FriendsPlugin } from '@penx/editor/custom-plate-plugins/friends/react'
+import { PodcastTimePlugin } from '@penx/editor/custom-plate-plugins/podcast-time/react'
+import { BaseProductPlugin } from '@penx/editor/custom-plate-plugins/product'
+import { ProductPlugin } from '@penx/editor/custom-plate-plugins/product/react'
+import { ProjectsPlugin } from '@penx/editor/custom-plate-plugins/projects/react'
+import { SocialLinksPlugin } from '@penx/editor/custom-plate-plugins/social-links/react'
 import {
   InlineCombobox,
   InlineComboboxContent,
