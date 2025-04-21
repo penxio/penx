@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Command } from 'cmdk'
 import { HashIcon, Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
@@ -11,13 +11,13 @@ import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
 import { CreationById, Prop } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 interface Props {
@@ -74,7 +74,7 @@ export function Tags({
           >
             <Plus size={16}></Plus>
             <div>
-              <Trans>Tag</Trans>
+              <Trans id="Tag"></Trans>
             </div>
           </Button>
         </PopoverTrigger>
@@ -116,12 +116,12 @@ export function Tags({
                 {adding && (
                   <>
                     <div>
-                      <Trans>Adding tag</Trans>
+                      <Trans id="Adding tag"></Trans>
                     </div>
                     <LoadingDots className="bg-foreground" />
                   </>
                 )}
-                {!adding && <Trans>Press Enter to add a tag.</Trans>}
+                {!adding && <Trans id="Press Enter to add a tag."></Trans>}
               </Command.Empty>
 
               <CommandGroup heading={''}>

@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@penx/uikit/ui/button'
-import { Link } from '@penx/libs/i18n'
+// import { Link } from '@penx/libs/i18n'
 import { cn, withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'
+import Link from 'next/link'
+import { Button } from '@penx/uikit/ui/button'
 
 export const FriendsElement = withRef<typeof PlateElement>((props, ref) => {
   const { children, className, nodeProps, ...rest } = props

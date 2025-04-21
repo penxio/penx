@@ -2,6 +2,12 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { useSearchParams } from 'next/navigation'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { api } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -14,12 +20,6 @@ import {
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { useSearchParams } from 'next/navigation'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useAuthStatus } from './useAuthStatus'
 import { useLoginDialog } from './useLoginDialog'
 
@@ -77,7 +77,7 @@ export function RegisterForm({}: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Email</Trans>
+                <Trans id="Email"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="Email" {...field} className="w-full" />
@@ -93,7 +93,7 @@ export function RegisterForm({}: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Password</Trans>
+                <Trans id="Password"></Trans>
               </FormLabel>
               <FormControl>
                 <Input
@@ -115,19 +115,19 @@ export function RegisterForm({}: Props) {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? <LoadingDots /> : <Trans>Register</Trans>}
+            {isLoading ? <LoadingDots /> : <Trans id="Register"></Trans>}
           </Button>
         </div>
       </form>
 
       <div className="mt-2 text-center text-sm">
-        <Trans>Already have an account</Trans>?{' '}
+        <Trans id="Already have an account"></Trans>?{' '}
         <a
           href="#"
           className="text-brand"
           onClick={() => setAuthStatus('login')}
         >
-          <Trans>Log in</Trans>
+          <Trans id="Log in"></Trans>
         </a>
       </div>
     </Form>

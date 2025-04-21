@@ -2,7 +2,7 @@
 
 import { useAreaContext } from '@penx/components/AreaContext'
 import { Link } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Creation } from '@prisma/client'
 
 interface CreationItemProps {

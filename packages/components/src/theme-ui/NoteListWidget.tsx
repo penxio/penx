@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import { ArrowUpRight } from 'lucide-react'
 import { ContentRender } from '@penx/content-render'
@@ -17,7 +17,7 @@ export function NoteListWidget({ site, creations, className }: Props) {
   return (
     <div className="relative mx-auto max-w-2xl">
       <PageTitle className="">
-        <Trans>Notes</Trans>
+        <Trans id="Notes"></Trans>
       </PageTitle>
 
       <div className="columns-1 gap-x-6 sm:columns-2 md:columns-2">

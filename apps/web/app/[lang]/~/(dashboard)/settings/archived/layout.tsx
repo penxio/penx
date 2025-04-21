@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { SiteLink } from '@penx/components/SiteLink'
 import { initLingui } from '@/initLingui'
 import linguiConfig from '@penx/libs/lingui.config'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 
 export const dynamic = 'force-static'
 
@@ -26,7 +26,7 @@ export default async function Layout({
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="text-3xl font-bold">
-            <Trans>Archived</Trans>
+            <Trans id="Archived"></Trans>
           </div>
         </div>
       </div>

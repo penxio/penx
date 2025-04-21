@@ -1,10 +1,10 @@
 'use client'
 
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { Trans } from '@lingui/react'
+import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { useRouter } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 export function StartWritingButton() {
   const { data } = useSession()
@@ -26,7 +26,7 @@ export function StartWritingButton() {
         }}
       >
         <div>
-          <Trans>Start writing</Trans>
+          <Trans id="Start writing"></Trans>
         </div>
         {/* <div className="absolute top-0 right-0 text-xs bg-yellow-500 px-1 py-[1px] rounded-bl-lg text-white">
           Beta now

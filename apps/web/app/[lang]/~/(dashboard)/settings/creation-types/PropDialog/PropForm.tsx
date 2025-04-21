@@ -2,6 +2,14 @@
 
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
+import { PlusIcon, XIcon } from 'lucide-react'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { api, trpc } from '@penx/trpc-client'
+import { Prop, PropType } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Button } from '@penx/uikit/ui/button'
@@ -24,16 +32,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { Prop, PropType } from '@penx/types'
-import { api, trpc } from '@penx/trpc-client'
 import { uniqueId } from '@penx/unique-id'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
-import { PlusIcon, XIcon } from 'lucide-react'
-import { toast } from 'sonner'
-import { z } from 'zod'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { ColorSelector } from './ColorSelector'
 import { usePropDialog } from './usePropDialog'
 
@@ -104,7 +104,7 @@ export function PropForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Name</Trans>
+                <Trans id="Name"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -120,7 +120,7 @@ export function PropForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Slug</Trans>
+                <Trans id="Slug"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -136,7 +136,7 @@ export function PropForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                <Trans>Type</Trans>
+                <Trans id="Type"></Trans>
               </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
@@ -146,19 +146,19 @@ export function PropForm() {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value={PropType.TEXT}>
-                    <Trans>Text</Trans>
+                    <Trans id="Text"></Trans>
                   </SelectItem>
                   <SelectItem value={PropType.IMAGE}>
-                    <Trans>Image</Trans>
+                    <Trans id="Image"></Trans>
                   </SelectItem>
                   <SelectItem value={PropType.URL}>
-                    <Trans>URL</Trans>
+                    <Trans id="URL"></Trans>
                   </SelectItem>
                   <SelectItem value={PropType.SINGLE_SELECT}>
-                    <Trans>Single select</Trans>
+                    <Trans id="Single select"></Trans>
                   </SelectItem>
                   {/* <SelectItem value={PropType.MULTIPLE_SELECT}>
-                    <Trans>Multiple select</Trans>
+                    <Trans id="Multiple select"></Trans>
                   </SelectItem> */}
                 </SelectContent>
               </Select>
@@ -176,7 +176,7 @@ export function PropForm() {
                 <FormItem className="bg-foreground/5 w-full rounded-xl p-4">
                   <div className="flex items-center justify-between">
                     <FormLabel className="font-bold">
-                      <Trans>Options</Trans>
+                      <Trans id="Options"></Trans>
                     </FormLabel>
                     <Button
                       type="button"

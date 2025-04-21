@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { slug } from 'github-slugger'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { Profile } from '@penx/components/Profile/Profile'
@@ -77,7 +77,7 @@ export const Sidebar = ({ site, tags }: Props) => {
                 'border-brand text-brand hover:bg-brand hover:text-background rounded-full border px-2 py-1 text-sm',
               )}
             >
-              <Trans>Membership</Trans>
+              <Trans id="Membership"></Trans>
             </Link>
           )}
         </div>
@@ -85,7 +85,7 @@ export const Sidebar = ({ site, tags }: Props) => {
         {!!tags.length && (
           <div className="space-y-2">
             <div className="font-semibold">
-              <Trans>Tags</Trans>
+              <Trans id="Tags"></Trans>
             </div>
             <ul className="flex flex-col gap-1">
               {tags.map((t) => {

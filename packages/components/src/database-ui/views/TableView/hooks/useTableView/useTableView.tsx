@@ -16,7 +16,7 @@ import { useDatabaseContext } from '@penx/components/database-ui/DatabaseProvide
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { queryClient } from '@penx/query-client'
-import { mappedByKey } from '@/lib/shared'
+import { mappedByKey } from '@penx/utils'
 import { api } from '@penx/trpc-client'
 import { ColumnType, Option, ViewColumn } from '@penx/types'
 import {

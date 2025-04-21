@@ -1,6 +1,6 @@
 'use client'
 
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Separator } from '@penx/uikit/ui/separator'
 import { useAccessTokens } from '@penx/hooks/useAccessTokens'

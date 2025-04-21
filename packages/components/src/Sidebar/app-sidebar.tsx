@@ -1,12 +1,12 @@
 'use client'
 
 import * as React from 'react'
-import { useRouter } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PaletteIcon, TagsIcon } from 'lucide-react'
 // import { ModeToggle } from '@penx/components/ModeToggle'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { NavUser } from '@penx/components/Sidebar/nav-user'
+// import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -31,7 +31,7 @@ import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { push } = useRouter()
+  // const { push } = useRouter()
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader className="m-0 p-0">
@@ -58,14 +58,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     size="icon"
                     className="hover:bg-foreground/8 size-8"
                     onClick={() => {
-                      push('/~/design')
+                      // push('/~/design')
                     }}
                   >
                     <PaletteIcon size={16} />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <Trans>Design my site</Trans>
+                  <Trans id="Design my site"></Trans>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -77,14 +77,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     size="icon"
                     className="hover:bg-foreground/8 size-8"
                     onClick={() => {
-                      push('/~/settings/tags')
+                      // push('/~/settings/tags')
                     }}
                   >
                     <TagsIcon size={16} />
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <Trans>Manage tags</Trans>
+                  <Trans id="Manage tags"></Trans>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

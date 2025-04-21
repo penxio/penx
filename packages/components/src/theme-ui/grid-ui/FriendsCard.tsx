@@ -1,9 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Trans } from '@lingui/react'
+import { ArrowUpRight } from 'lucide-react'
 import { Link } from '@penx/libs/i18n'
 import { Friend, LayoutItem, Project, Site } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { ArrowUpRight } from 'lucide-react'
 
 export function FriendsCard({
   item,
@@ -18,13 +18,13 @@ export function FriendsCard({
     <div className="flex h-full w-full flex-col gap-2">
       <div className="flex items-center justify-between px-4 pt-4">
         <div className="text-xl font-bold">
-          <Trans>Friends</Trans>
+          <Trans id="Friends"></Trans>
         </div>
         <Link
           href="/friends"
           className="text-brand hover:text-brand/80 dark:hover:text-brand/80"
         >
-          <Trans>All</Trans> &rarr;
+          <Trans id="All"></Trans> &rarr;
         </Link>
       </div>
       <div className="flex flex-wrap gap-2 overflow-auto px-2">

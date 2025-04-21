@@ -1,15 +1,15 @@
-import { ContentRender } from '@penx/content-render'
+import { initLingui } from '@/initLingui'
+import { getArea, getSite } from '@/lib/fetchers'
+import { Trans } from '@lingui/react'
+import { Metadata } from 'next'
 import { Footer } from '@penx/components/theme-ui/Footer'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { Toc } from '@penx/components/theme-ui/Toc'
-import { initLingui } from '@/initLingui'
 import { editorDefaultValue } from '@penx/constants'
-import { getArea, getSite } from '@/lib/fetchers'
+import { ContentRender } from '@penx/content-render'
+import linguiConfig from '@penx/libs/lingui.config'
 import { AppearanceConfig } from '@penx/types'
 import { cn } from '@penx/utils'
-import linguiConfig from '@penx/libs/lingui.config'
-import { Trans } from '@lingui/react/macro'
-import { Metadata } from 'next'
 import { AreaList } from './AreaList'
 
 export const dynamic = 'force-static'
@@ -49,7 +49,7 @@ export default async function Page(props: {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <PageTitle className="">
-        <Trans>Areas</Trans>
+        <Trans id="Areas"></Trans>
       </PageTitle>
       <AreaList site={site} />
     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
@@ -25,7 +25,7 @@ export function InstallExtensionButton() {
         }}
       >
         <div>
-          <Trans>Browser extension</Trans>
+          <Trans id="Browser extension"></Trans>
         </div>
         {/* <div className="absolute top-0 right-0 text-xs bg-yellow-500 px-1 py-[1px] rounded-bl-lg text-white">
           Beta now

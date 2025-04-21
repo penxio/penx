@@ -3,17 +3,17 @@
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { GateType } from '@prisma/client'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { useSpaceContext } from '@penx/components/SpaceContext'
 import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   PublishPostFormSchema,
   usePublishPost,
@@ -21,7 +21,7 @@ import {
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
@@ -85,7 +85,7 @@ export function PublishForm() {
     <Form {...form}>
       <DialogHeader>
         <DialogTitle>
-          <Trans>Publish your creation</Trans>
+          <Trans id="Publish your creation"></Trans>
         </DialogTitle>
       </DialogHeader>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -95,7 +95,7 @@ export function PublishForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Slug</Trans>
+                <Trans id="Slug"></Trans>
               </FormLabel>
               <FormControl>
                 <Input
@@ -117,10 +117,10 @@ export function PublishForm() {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>
-                  <Trans>Access control</Trans>
+                  <Trans id="Access control"></Trans>
                 </FormLabel>
                 <FormDescription>
-                  <Trans>Gate this post, config who can read this post.</Trans>
+                  <Trans id="Gate this post, config who can read this post."></Trans>
                 </FormDescription>
                 <FormControl>
                   <GateTypeSelect {...field} />
@@ -159,20 +159,20 @@ export function PublishForm() {
                 <FormItem className="flex w-full items-center">
                   <div className="flex items-center gap-2">
                     <FormLabel htmlFor="post-delivered">
-                      <Trans>Deliver your newsletter</Trans>
+                      <Trans id="Deliver your newsletter"></Trans>
                     </FormLabel>
                     <Badge
                       size="sm"
                       className="h-6 cursor-pointer"
                       onClick={() => setIsOpen(true)}
                     >
-                      <Trans>Upgrade</Trans>
+                      <Trans id="Upgrade"></Trans>
                     </Badge>
                   </div>
                   <FormControl>
                     {creation.delivered ? (
                       <div className="text-muted-foreground text-sm">
-                        <Trans>Upgrade</Trans>
+                        <Trans id="Upgrade"></Trans>
                         Already sent
                       </div>
                     ) : (
@@ -222,7 +222,7 @@ export function PublishForm() {
                           <span>{format(field.value, 'PPP')}</span>
                         ) : (
                           <span>
-                            <Trans>Pick a date</Trans>
+                            <Trans id="Pick a date"></Trans>
                           </span>
                         )}
                       </Button>
@@ -253,7 +253,7 @@ export function PublishForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Authors</Trans>
+                <Trans id="Authors"></Trans>
               </FormLabel>
               <FormControl>
                 <Authors creation={creation} />
@@ -266,7 +266,7 @@ export function PublishForm() {
         <div className="flex items-center justify-end gap-2">
           <DialogClose asChild>
             <Button variant="secondary">
-              <Trans>Cancel</Trans>
+              <Trans id="Cancel"></Trans>
             </Button>
           </DialogClose>
           <Button type="submit" className="w-24" disabled={isLoading}>
@@ -274,7 +274,7 @@ export function PublishForm() {
               <LoadingDots />
             ) : (
               <span>
-                <Trans>Publish</Trans>
+                <Trans id="Publish"></Trans>
               </span>
             )}
           </Button>

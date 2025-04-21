@@ -1,7 +1,7 @@
 'use client'
 
+import { Trans } from '@lingui/react'
 import { Link, usePathname } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
 
 interface PaginationProps {
   totalPages: number
@@ -22,7 +22,7 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
             className="cursor-auto disabled:opacity-50"
             disabled={!prevPage}
           >
-            <Trans>Previous</Trans>
+            <Trans id="Previous"></Trans>
           </button>
         )}
         {prevPage && (
@@ -34,7 +34,7 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
             }
             rel="prev"
           >
-            <Trans>Previous</Trans>
+            <Trans id="Previous"></Trans>
           </Link>
         )}
         <span>
@@ -45,12 +45,12 @@ export function Pagination({ totalPages, currentPage }: PaginationProps) {
             className="cursor-auto disabled:opacity-50"
             disabled={!nextPage}
           >
-            <Trans>Next</Trans>
+            <Trans id="Next"></Trans>
           </button>
         )}
         {nextPage && (
           <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            <Trans>Next</Trans>
+            <Trans id="Next"></Trans>
           </Link>
         )}
       </nav>

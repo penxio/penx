@@ -1,3 +1,14 @@
+import { Trans } from '@lingui/react'
+import {
+  CheckCircleIcon,
+  CheckIcon,
+  ImageIcon,
+  Link2Icon,
+  LinkIcon,
+  TextIcon,
+} from 'lucide-react'
+import { Prop, PropType } from '@penx/types'
+import { Input } from '@penx/uikit/ui/input'
 import {
   Select,
   SelectContent,
@@ -7,19 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { Prop, PropType } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import {
-  CheckCircleIcon,
-  CheckIcon,
-  ImageIcon,
-  Link2Icon,
-  LinkIcon,
-  TextIcon,
-} from 'lucide-react'
 import { FileUpload } from '../FileUpload'
-import { Input } from '@penx/uikit/ui/input'
 import { usePanelCreationContext } from './PanelCreationProvider'
 import { SingleSelectProp } from './SingleSelectProp'
 
@@ -104,7 +104,7 @@ export const PropList = ({ onUpdateProps }: Props) => {
                 >
                   <SelectTrigger>
                     <SelectValue
-                      placeholder={<Trans>Select a property</Trans>}
+                      placeholder={<Trans id="Select a property"></Trans>}
                     />
                   </SelectTrigger>
                   <SelectContent>

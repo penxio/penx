@@ -1,7 +1,10 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Badge } from '@penx/uikit/ui/badge'
 import {
   Select,
@@ -13,10 +16,7 @@ import {
   SelectValue,
 } from '@penx/uikit/ui/select'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
-import { trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
 import { useLoading } from './hooks/useLoading'
 import { useThemeName } from './hooks/useThemeName'
 import 'react-resizable'
@@ -149,10 +149,10 @@ export function ThemeDesignTitle({
         type="single"
       >
         <ToggleGroupItem className="" value={DesignMode.CLASSIC}>
-          <Trans>Classic</Trans>
+          <Trans id="Classic"></Trans>
         </ToggleGroupItem>
         <ToggleGroupItem className="" value={DesignMode.GRID}>
-          <Trans>Grid</Trans>
+          <Trans id="Grid"></Trans>
         </ToggleGroupItem>
       </ToggleGroup>
     </div>

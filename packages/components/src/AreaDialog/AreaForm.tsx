@@ -2,11 +2,23 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { ChargeMode } from '@prisma/client'
+import { slug } from 'github-slugger'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
+import { editorDefaultValue } from '@penx/constants'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { useAreaItem } from '@penx/hooks/useAreaItem'
+import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
+import { useSite } from '@penx/hooks/useSite'
+import { useSession } from '@penx/session'
+// import { useRouter } from '@penx/libs/i18n'
+import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
-import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -20,19 +32,7 @@ import {
 import { Input } from '@penx/uikit/ui/input'
 import { Textarea } from '@penx/uikit/ui/textarea'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
-import { useAreaItem } from '@penx/hooks/useAreaItem'
-import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
-import { useSite } from '@penx/hooks/useSite'
-import { editorDefaultValue } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useRouter } from '@penx/libs/i18n'
-import { api, trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { ChargeMode } from '@prisma/client'
-import { slug } from 'github-slugger'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useAreaDialog } from './useAreaDialog'
 
 const FormSchema = z.object({
@@ -54,7 +54,7 @@ export function AreaForm() {
   const { setIsOpen, area: field } = useAreaDialog()
   const { refetch: refetchItem } = useAreaItem()
   const { refetch: refetchSite } = useSite()
-  const { push } = useRouter()
+  // const { push } = useRouter()
 
   const isEdit = !!field
 
@@ -99,7 +99,7 @@ export function AreaForm() {
           activeAreaId: field.id,
         })
         await resetPanels()
-        push(`/~/areas/${field.id}`)
+        // push(`/~/areas/${field.id}`)
       }
 
       setIsOpen(false)
@@ -124,7 +124,7 @@ export function AreaForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                <Trans>logo</Trans>
+                <Trans id="logo"></Trans>
               </FormLabel>
               <FileUpload {...field} />
             </FormItem>
@@ -148,18 +148,18 @@ export function AreaForm() {
                   type="single"
                 >
                   <ToggleGroupItem className="" value={FieldType.COLUMN}>
-                    <Trans>Column</Trans>
+                    <Trans id="Column"></Trans>
                   </ToggleGroupItem>
 
                   <ToggleGroupItem value={FieldType.BOOK} className="">
-                    <Trans>Book</Trans>
+                    <Trans id="Book"></Trans>
                   </ToggleGroupItem>
                   <ToggleGroupItem
                     value={FieldType.SUBJECT}
                     className=""
                     disabled
                   >
-                    <Trans>Subject</Trans>
+                    <Trans id="Subject"></Trans>
                   </ToggleGroupItem>
                 </ToggleGroup>
               </FormControl>
@@ -174,7 +174,7 @@ export function AreaForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Name</Trans>
+                <Trans id="Name"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -190,7 +190,7 @@ export function AreaForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Slug</Trans>
+                <Trans id="Slug"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -207,7 +207,7 @@ export function AreaForm() {
             return (
               <FormItem className="w-full">
                 <FormLabel>
-                  <Trans>Description</Trans>
+                  <Trans id="Description"></Trans>
                 </FormLabel>
                 <FormControl>
                   <Textarea placeholder="" {...field} className="w-full" />
@@ -225,7 +225,7 @@ export function AreaForm() {
             return (
               <FormItem className="w-full">
                 <FormLabel>
-                  <Trans>About</Trans>
+                  <Trans id="About"></Trans>
                 </FormLabel>
                 <FormControl>
                   <div className="border-foreground/20  h-[250px] overflow-auto rounded-lg border">
@@ -325,9 +325,9 @@ export function AreaForm() {
             ) : (
               <span>
                 {isEdit ? (
-                  <Trans>Update field</Trans>
+                  <Trans id="Update field"></Trans>
                 ) : (
-                  <Trans>Create field</Trans>
+                  <Trans id="Create field"></Trans>
                 )}
               </span>
             )}

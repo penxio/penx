@@ -1,6 +1,8 @@
 'use client'
 
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { Trans } from '@lingui/react'
+import { format } from 'date-fns'
+import { api, trpc } from '@penx/trpc-client'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Table,
@@ -10,10 +12,8 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { api, trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { format } from 'date-fns'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 export function CommentList() {
   const {
@@ -38,19 +38,19 @@ export function CommentList() {
       <TableHeader>
         <TableRow>
           <TableHead>
-            <Trans>User</Trans>
+            <Trans id="User"></Trans>
           </TableHead>
           <TableHead>
-            <Trans>Content</Trans>
+            <Trans id="Content"></Trans>
           </TableHead>
           <TableHead>
-            <Trans>Post</Trans>
+            <Trans id="Post"></Trans>
           </TableHead>
           <TableHead>
-            <Trans>Date</Trans>
+            <Trans id="Date"></Trans>
           </TableHead>
           <TableHead>
-            <Trans>Operation</Trans>
+            <Trans id="Operation"></Trans>
           </TableHead>
         </TableRow>
       </TableHeader>

@@ -1,10 +1,10 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { useParams } from 'next/navigation'
 import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations, Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { useParams } from 'next/navigation'
 
 interface Props {
   area: AreaWithCreations
@@ -31,7 +31,7 @@ export const AboutItem = ({ area }: Props) => {
             isActive && 'text-foreground/90',
           )}
         >
-          <Trans>About</Trans>
+          <Trans id="About"></Trans>
         </div>
       </div>
     </Link>

@@ -1,5 +1,13 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { Asset } from '@prisma/client'
+import { ExternalLink, Trash2, X } from 'lucide-react'
+import { toast } from 'sonner'
+import { placeholderBlurhash, STATIC_URL } from '@penx/constants'
+import { useAssets } from '@penx/hooks/useAssets'
+import { useLoadAsset } from '@penx/hooks/useLoadAsset'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
@@ -9,15 +17,7 @@ import {
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
 import { Switch } from '@penx/uikit/ui/switch'
-import { useAssets } from '@penx/hooks/useAssets'
-import { useLoadAsset } from '@penx/hooks/useLoadAsset'
-import { placeholderBlurhash, STATIC_URL } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { Asset } from '@prisma/client'
-import { ExternalLink, Trash2, X } from 'lucide-react'
-import { toast } from 'sonner'
 import { DeleteButton } from './DeleteButton'
 import { useAssetDialog } from './useAssetDialog'
 
@@ -50,7 +50,7 @@ export function AssetDialog({}: Props) {
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
               <div className="text-sm">
-                <Trans>Public visit</Trans>
+                <Trans id="Public visit"></Trans>
               </div>
               <Switch
                 defaultChecked={!!asset.isPublic}
@@ -62,12 +62,12 @@ export function AssetDialog({}: Props) {
                     })
                     refetch()
                     toast.success(
-                      <Trans>Image public status updated successfully!</Trans>,
+                      <Trans id="Image public status updated successfully!"></Trans>,
                     )
                   } catch (error) {
                     toast.error(
                       extractErrorMessage(error) || (
-                        <Trans>Failed to update public status!</Trans>
+                        <Trans id="Failed to update public status!"></Trans>
                       ),
                     )
                   }

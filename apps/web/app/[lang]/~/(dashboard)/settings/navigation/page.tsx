@@ -1,10 +1,10 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/ui/card'
-import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
 import { NavigationList } from './NavigationList'
 import { useNavLinkDialog } from './NavLinkDialog/useNavLinkDialog'
 
@@ -18,7 +18,7 @@ export default function Page() {
       <div>
         <CardTitle className="flex items-center justify-between">
           <div>
-            <Trans>Navigation links</Trans>
+            <Trans id="Navigation links"></Trans>
           </div>
           <Button
             variant="secondary"
@@ -31,7 +31,7 @@ export default function Page() {
               })
             }}
           >
-            <Trans>Add</Trans>
+            <Trans id="Add"></Trans>
           </Button>
         </CardTitle>
       </div>

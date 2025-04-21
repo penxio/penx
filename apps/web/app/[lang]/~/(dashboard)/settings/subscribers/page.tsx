@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { AddSubscriberButton } from './AddSubscriberButton'
 import { SubscriberList } from './SubscriberList'
 
@@ -12,7 +12,7 @@ export default function Page() {
     <div className="flex flex-col gap-8 p-3 md:p-0">
       <div className="flex items-center justify-between">
         <div className="text-3xl font-bold">
-          <Trans>Subscribers</Trans>
+          <Trans id="Subscribers"></Trans>
         </div>
         <AddSubscriberButton />
       </div>

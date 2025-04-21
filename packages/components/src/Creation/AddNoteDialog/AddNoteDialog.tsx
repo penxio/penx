@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { GateType } from '@prisma/client'
 import { usePlateEditor } from '@udecode/plate/react'
 import { add } from 'lodash'
@@ -9,6 +9,7 @@ import { ReactEditor, useSlate } from 'slate-react'
 import { toast } from 'sonner'
 import { editorDefaultValue } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   refetchAreaCreations,
   useAreaCreations,
@@ -17,7 +18,6 @@ import { usePublishPost } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
@@ -140,7 +140,7 @@ function Footer({
           }}
         />
         <Label htmlFor="enable-publish" className="text-foreground/60">
-          <Trans>Publish directly</Trans>
+          <Trans id="Publish directly"></Trans>
         </Label>
       </div>
       <Button
@@ -153,7 +153,7 @@ function Footer({
         }}
       >
         <div>
-          <Trans>Add note</Trans>
+          <Trans id="Add note"></Trans>
         </div>
         {isLoading && <LoadingDots className="bg-background" />}
       </Button>

@@ -1,10 +1,10 @@
 'use client'
 
 import { memo, useCallback, useEffect } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
-import { useParams } from 'next/navigation'
+// import { useParams } from 'next/navigation'
 import { ProfileAvatar } from '@penx/components/Profile/ProfileAvatar'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { resetPanels } from '@penx/hooks/usePanels'
@@ -26,11 +26,12 @@ export const FieldsPopover = ({ className = '' }: Props) => {
   const { setIsOpen } = useAreaDialog()
   const { push } = useRouter()
   const site = useSiteContext()
-  const params = useParams() as Record<string, string>
+  // const params = useParams() as Record<string, string>
 
   if (!data) return <div></div>
 
-  const area = site.areas.find((item) => item.id === params.id)!
+  // const area = site.areas.find((item) => item.id === params.id)!
+  const area = site.areas?.[0]
 
   if (!area) return null
 
@@ -97,7 +98,7 @@ export const FieldsPopover = ({ className = '' }: Props) => {
           >
             <PlusIcon size={16} />
             <div>
-              <Trans>Create area</Trans>
+              <Trans id="Create area"></Trans>
             </div>
           </MenuItem>
         </PopoverClose>

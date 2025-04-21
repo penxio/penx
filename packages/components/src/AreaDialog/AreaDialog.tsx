@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from '@lingui/react'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
@@ -10,7 +11,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/ui/dialog'
-import { Trans } from '@lingui/react/macro'
 import { AreaForm } from './AreaForm'
 import { useAreaDialog } from './useAreaDialog'
 
@@ -31,9 +31,9 @@ export function AreaDialog() {
         <DialogHeader>
           <DialogTitle>
             {!!field ? (
-              <Trans>Update field</Trans>
+              <Trans id="Update field"></Trans>
             ) : (
-              <Trans>Create field</Trans>
+              <Trans id="Create field"></Trans>
             )}
           </DialogTitle>
         </DialogHeader>

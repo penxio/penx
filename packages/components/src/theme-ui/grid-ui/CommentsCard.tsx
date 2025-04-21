@@ -1,13 +1,13 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { CardStyle } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { trpc } from '@penx/trpc-client'
+import { LayoutItem, Project, Site } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
-import { CardStyle } from '@penx/constants'
-import { LayoutItem, Project, Site } from '@penx/types'
-import { trpc } from '@penx/trpc-client'
 import { cn, getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
 
 interface Props {
   item: LayoutItem
@@ -25,7 +25,7 @@ export function CommentsCard({ item }: Props) {
         )}
       >
         <div className="text-xl font-bold">
-          <Trans>Latest comments</Trans>
+          <Trans id="Latest comments"></Trans>
         </div>
       </div>
       <CommentList siteId={site.id} item={item} />

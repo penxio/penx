@@ -23,7 +23,7 @@ import { getDashboardPath } from '@/lib/getDashboardPath'
 import { usePathname, useRouter } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import {
   DatabaseBackup,
   FileText,
@@ -89,7 +89,7 @@ export const ProfilePopover = memo(function ProfilePopover({
             >
               <Home className="mr-2 h-4 w-4" />
               <span>
-                <Trans>Home</Trans>
+                <Trans id="Home"></Trans>
               </span>
             </DropdownMenuItem>
           )}
@@ -107,7 +107,7 @@ export const ProfilePopover = memo(function ProfilePopover({
           >
             <Gauge className="mr-2 h-4 w-4" />
             <span>
-              <Trans>Dashboard</Trans>
+              <Trans id="Dashboard"></Trans>
             </span>
           </DropdownMenuItem>
 
@@ -124,7 +124,7 @@ export const ProfilePopover = memo(function ProfilePopover({
           >
             <Settings className="mr-2 h-4 w-4" />
             <span>
-              <Trans>Settings</Trans>
+              <Trans id="Settings"></Trans>
             </span>
           </DropdownMenuItem>
 
@@ -151,7 +151,7 @@ export const ProfilePopover = memo(function ProfilePopover({
         >
           <LogOut className="mr-2 h-4 w-4" />
           <span>
-            <Trans>Log out</Trans>
+            <Trans id="Log out"></Trans>
           </span>
         </DropdownMenuItem>
       </DropdownMenuContent>

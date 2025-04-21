@@ -1,7 +1,7 @@
 'use client'
 
 import { Link } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 
 export function ArticleCard() {

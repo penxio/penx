@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import {
   Archive,
@@ -12,9 +12,9 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   refetchAreaCreations,
   useAreaCreations,
@@ -24,7 +24,6 @@ import { Link } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { CreationById, CreationType } from '@penx/types'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
@@ -32,6 +31,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { Switch } from '@penx/uikit/ui/switch'
 import { cn, getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
   status: CreationStatus
@@ -133,7 +133,7 @@ export function PostItem({ creation, status }: PostItemProps) {
           >
             <Edit3Icon size={14}></Edit3Icon>
             <div>
-              <Trans>Edit</Trans>
+              <Trans id="Edit"></Trans>
             </div>
           </Button>
         </Link>
@@ -155,7 +155,7 @@ export function PostItem({ creation, status }: PostItemProps) {
             >
               <Archive size={14}></Archive>
               <div>
-                <Trans>Archive</Trans>
+                <Trans id="Archive"></Trans>
               </div>
             </Button>
           </ConfirmDialog>
@@ -178,7 +178,7 @@ export function PostItem({ creation, status }: PostItemProps) {
             >
               <Trash2 size={14}></Trash2>
               <div>
-                <Trans>Delete</Trans>
+                <Trans id="Delete"></Trans>
               </div>
             </Button>
           </ConfirmDialog>
@@ -202,7 +202,7 @@ export function PostItem({ creation, status }: PostItemProps) {
                 }}
               />
               <div>
-                <Trans>Featured</Trans>
+                <Trans id="Featured"></Trans>
               </div>
             </div>
 

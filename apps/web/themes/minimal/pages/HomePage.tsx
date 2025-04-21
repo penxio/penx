@@ -4,7 +4,7 @@ import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PostItem } from '../components/PostItem'
 
 interface Props {
@@ -41,7 +41,7 @@ export function HomePage({ posts = [], site, projects, about }: Props) {
             )}
           </div>
           <div className="grid grid-cols-1 gap-3">
-            {!posts.length && <Trans>No posts found.</Trans>}
+            {!posts.length && <Trans id="No posts found."></Trans>}
             {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
               return <PostItem key={post.slug} creation={post} />
             })}

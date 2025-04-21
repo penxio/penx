@@ -1,10 +1,10 @@
 'use client'
 
-import { Button } from '@penx/uikit/ui/button'
-import { Site } from '@penx/types'
-import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Mail } from 'lucide-react'
+import { Site } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
+import { cn } from '@penx/utils'
 import { SubscribeNewsletterDialog } from './SubscribeNewsletterDialog'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'
 
@@ -26,7 +26,7 @@ export function SubscribeNewsletterCard({ site, className }: Props) {
         )}
       >
         <div className="text-2xl font-bold">
-          <Trans>Subscribe to</Trans> {site.name}
+          <Trans id="Subscribe to"></Trans> {site.name}
         </div>
         <Button
           className="flex w-40 items-center gap-2"
@@ -34,7 +34,7 @@ export function SubscribeNewsletterCard({ site, className }: Props) {
         >
           <Mail size={16} className="opacity-70" />
           <span>
-            <Trans>Subscribe</Trans>
+            <Trans id="Subscribe"></Trans>
           </span>
         </Button>
       </div>

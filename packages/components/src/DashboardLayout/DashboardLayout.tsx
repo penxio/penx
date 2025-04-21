@@ -1,14 +1,13 @@
 'use client'
 
 import { ReactNode, useEffect, useMemo, useState } from 'react'
-import { runWorker } from '@/lib/worker'
+// import { runWorker } from '@/lib/worker'
 import { Site } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 import { AreaContext } from '@penx/components/AreaContext'
 import { AreaDialog } from '@penx/components/AreaDialog/AreaDialog'
 import { CommandPanel } from '@penx/components/CommandPanel/CommandPanel'
-import { SubscriptionGuideDialog } from '@penx/components/SubscriptionGuideDialog/SubscriptionGuideDialog'
 import { isBrowser, isServer, SIDEBAR_WIDTH } from '@penx/constants'
 import { AreaCreationsProvider } from '@penx/contexts/AreaCreationsContext'
 import { SiteProvider } from '@penx/contexts/SiteContext'
@@ -16,7 +15,7 @@ import { useAppLoading } from '@penx/hooks/useAppLoading'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
 import { useAreaItem } from '@penx/hooks/useAreaItem'
 import { useSite } from '@penx/hooks/useSite'
-import { usePathname } from '@penx/libs/i18n'
+// import { usePathname } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { CreationType } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
@@ -26,21 +25,23 @@ import { PanelLayout } from './PanelLayout'
 import { PanelList } from './PanelList'
 import { SettingsLayout } from './SettingsLayout'
 
-let inited = false
-if (!isServer) {
-  setTimeout(() => {
-    if (inited) return
-    inited = true
-    runWorker()
-  }, 2000)
-}
+// let inited = false
+// if (!isServer) {
+//   setTimeout(() => {
+//     if (inited) return
+//     inited = true
+//     runWorker()
+//   }, 2000)
+// }
 
 export function DashboardLayout({ children }: { children: ReactNode }) {
   const { site, isLoading } = useSite()
+  console.log('======>>site:', site)
+
   const field = useAreaItem()
   const areaCreations = useAreaCreations()
-  const pathname = usePathname()!
-  const isPanel = pathname?.includes('/~/areas/')
+  // const pathname = usePathname()!
+  // const isPanel = pathname?.includes('/~/areas/')
 
   if (!site || isLoading || field.isLoading || areaCreations.isLoading) {
     return (
@@ -50,7 +51,8 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
     )
   }
 
-  const Layout = isPanel ? PanelLayout : SettingsLayout
+  // const Layout = isPanel ? PanelLayout : SettingsLayout
+  const Layout = PanelLayout
 
   if (!areaCreations.data?.length) return null
 
@@ -58,8 +60,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
     <SiteProvider site={site as any}>
       <AreaContext area={field.data!}>
         <AreaCreationsProvider creations={areaCreations.data! as any}>
-          <CommandPanel />
-          <SubscriptionGuideDialog />
+          {/* <CommandPanel /> */}
           <AreaDialog />
           <Layout>{children}</Layout>
         </AreaCreationsProvider>

@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/ui/dialog'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { NavLinkForm } from './NavLinkForm'
 import { useNavLinkDialog } from './useNavLinkDialog'
 
@@ -22,9 +22,9 @@ export function NavLinkDialog() {
         <DialogHeader>
           <DialogTitle>
             {!navLink ? (
-              <Trans>Add navigation</Trans>
+              <Trans id="Add navigation"></Trans>
             ) : (
-              <Trans>Edit navigation</Trans>
+              <Trans id="Edit navigation"></Trans>
             )}
           </DialogTitle>
         </DialogHeader>

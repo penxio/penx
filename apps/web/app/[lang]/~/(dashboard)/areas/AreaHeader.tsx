@@ -1,9 +1,9 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { PlusIcon } from 'lucide-react'
 import { useAreaDialog } from '@penx/components/AreaDialog/useAreaDialog'
 import { Button } from '@penx/uikit/ui/button'
-import { Trans } from '@lingui/react/macro'
-import { PlusIcon } from 'lucide-react'
 
 export function AreaHeader() {
   const { setIsOpen } = useAreaDialog()
@@ -11,7 +11,7 @@ export function AreaHeader() {
     <div className="flex items-center justify-between">
       <div>
         <h2 className="text-2xl font-bold">
-          <Trans>Area</Trans>
+          <Trans id="Area"></Trans>
         </h2>
       </div>
       <Button

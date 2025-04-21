@@ -2,6 +2,12 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { TransferMethod } from '@prisma/client'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -16,12 +22,6 @@ import {
 import { Input } from '@penx/uikit/ui/input'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { TransferMethod } from '@prisma/client'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { usePayoutAccountDialog } from './usePayoutAccountDialog'
 
 const FormSchema = z.object({
@@ -107,21 +107,21 @@ export function PayoutAccountForm() {
                   type="single"
                 >
                   <ToggleGroupItem className="" value={TransferMethod.WALLET}>
-                    <Trans>Wallet</Trans>
+                    <Trans id="Wallet"></Trans>
                   </ToggleGroupItem>
                   <ToggleGroupItem
                     disabled
                     className=""
                     value={TransferMethod.BLANK}
                   >
-                    <Trans>Bank</Trans>
+                    <Trans id="Bank"></Trans>
                   </ToggleGroupItem>
                   <ToggleGroupItem
                     disabled
                     className=""
                     value={TransferMethod.PAYPAL}
                   >
-                    <Trans>Paypal</Trans>
+                    <Trans id="Paypal"></Trans>
                   </ToggleGroupItem>
                 </ToggleGroup>
               </FormControl>

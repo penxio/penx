@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { usePathname } from 'next/navigation'
 import { Link } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
@@ -32,7 +32,7 @@ export function ContributeButton({ site, className }: Props) {
           }
         }}
       >
-        <Trans>Contribute</Trans>
+        <Trans id="Contribute"></Trans>
       </Link>
     </div>
   )

@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { initLingui } from '@/initLingui'
 import { getHomeSites, getSiteCount } from '@/lib/fetchers'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Metadata } from 'next'
 import { FeatureList } from './FeatureList'
 import { Screenshots } from './Screenshots'
@@ -71,7 +71,7 @@ export default async function HomePage(props: { params: any }) {
 
       <div className="space-y-10">
         <div className="text-center text-5xl font-bold">
-          <Trans>Digital gardens</Trans>
+          <Trans id="Digital gardens"></Trans>
         </div>
         <SiteList />
       </div>

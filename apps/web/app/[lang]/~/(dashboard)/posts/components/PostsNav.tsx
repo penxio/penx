@@ -1,8 +1,8 @@
 'use client'
 
+import { Trans } from '@lingui/react'
 import { Link, usePathname } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
 
 interface Props {}
 
@@ -25,15 +25,15 @@ export function PostsNav({}: Props) {
   return (
     <div className="border-foreground/10 flex gap-8 border-b">
       <Link href={Paths.drafts} className={linkClassName(Paths.drafts)}>
-        <Trans>Drafts</Trans>
+        <Trans id="Drafts"></Trans>
       </Link>
 
       <Link href={Paths.published} className={linkClassName(Paths.published)}>
-        <Trans>Published</Trans>
+        <Trans id="Published"></Trans>
       </Link>
 
       <Link href={Paths.archived} className={linkClassName(Paths.archived)}>
-        <Trans>Archived</Trans>
+        <Trans id="Archived"></Trans>
       </Link>
     </div>
   )

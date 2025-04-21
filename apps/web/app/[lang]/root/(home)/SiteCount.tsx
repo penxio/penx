@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Trans } from '@lingui/react'
 import { MySite } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
 
 interface Props {
   count: number
@@ -31,7 +31,7 @@ export function SiteCount({ count, sites }: Props) {
         <div className="space-x-1">
           <span className="font-bold">{count}</span>
           <span className="text-sm">
-            <Trans>digital gardens created</Trans>
+            <Trans id="digital gardens created"></Trans>
           </span>
         </div>
       </div>

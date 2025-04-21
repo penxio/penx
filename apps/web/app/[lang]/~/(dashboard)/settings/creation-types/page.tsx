@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { AddCreationTypeButton } from './AddCreationTypeButton'
 import { CreationTypeDialog } from './CreationTypeDialog/CreationTypeDialog'
 import { CreationTypeList } from './CreationTypeList'
@@ -15,10 +15,10 @@ export default function Page() {
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-2">
           <div className="text-xl font-bold">
-            <Trans>Creation types</Trans>
+            <Trans id="Creation types"></Trans>
           </div>
           <div className="text-foreground/50">
-            <Trans>Manage your creation types.</Trans>
+            <Trans id="Manage your creation types."></Trans>
           </div>
         </div>
         <AddCreationTypeButton />

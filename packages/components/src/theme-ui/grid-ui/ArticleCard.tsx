@@ -1,18 +1,18 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { format } from 'date-fns'
 import { Image } from '@penx/components/Image'
+import { CardStyle } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
+import { Link } from '@penx/libs/i18n'
+import { Creation, LayoutItem, Site } from '@penx/types'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@penx/uikit/ui/hover-card'
-import { CardStyle } from '@penx/constants'
-import { Link } from '@penx/libs/i18n'
-import { Creation, LayoutItem, Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { format } from 'date-fns'
 
 interface Props {
   site: Site
@@ -30,13 +30,13 @@ export function ArticleCard({ site, item, creations }: Props) {
         )}
       >
         <div className="text-xl font-bold">
-          <Trans>Writings</Trans>
+          <Trans id="Writings"></Trans>
         </div>
         <Link
           href="/posts"
           className="text-brand hover:text-brand/80 dark:hover:text-brand/80"
         >
-          <Trans>All</Trans> &rarr;
+          <Trans id="All"></Trans> &rarr;
         </Link>
       </div>
       <div

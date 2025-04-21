@@ -1,6 +1,6 @@
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { Creation, Site } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PostList } from '../components/PostList'
 
 interface Props {
@@ -22,7 +22,7 @@ export function BlogPage({
   return (
     <div className="space-y-6">
       <PageTitle className="mt-8">
-        <Trans>Writings</Trans>
+        <Trans id="Writings"></Trans>
       </PageTitle>
       <PostList
         site={site}

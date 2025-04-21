@@ -1,5 +1,5 @@
 // import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { SendIcon } from 'lucide-react'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
@@ -32,7 +32,7 @@ export function SubmitFriendLinkDialog() {
         >
           <SendIcon size={16} />
           <span>
-            <Trans>Submit Link</Trans>
+            <Trans id="Submit Link"></Trans>
           </span>
         </Button>
       </div>
@@ -45,7 +45,7 @@ export function SubmitFriendLinkDialog() {
           <Button variant="outline" className="flex gap-1">
             <SendIcon size={16} />
             <span>
-              <Trans>Submit Link</Trans>
+              <Trans id="Submit Link"></Trans>
             </span>
           </Button>
         </DialogTrigger>
@@ -56,7 +56,7 @@ export function SubmitFriendLinkDialog() {
       <DialogContent className="sm:max-w-[460px]">
         <DialogHeader>
           <DialogTitle>
-            <Trans>Submit your link</Trans>
+            <Trans id="Submit your link"></Trans>
           </DialogTitle>
         </DialogHeader>
         <SubmitFriendLinkForm />

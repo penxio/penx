@@ -1,10 +1,10 @@
 'use client'
 
 import { CSSProperties, useEffect, useMemo, useState } from 'react'
-import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { slug } from 'github-slugger'
 import { Node } from 'slate'
+import { cn } from '@penx/utils'
 
 interface Props {
   className?: string
@@ -74,7 +74,7 @@ export const Toc = ({ content, className, style = {} }: Props) => {
     >
       <div className="">
         <h2 className="text-foreground/90 mb-4 text-sm font-semibold">
-          <Trans>Table of contents</Trans>
+          <Trans id="Table of contents"></Trans>
         </h2>
 
         <div className="flex flex-col gap-2">

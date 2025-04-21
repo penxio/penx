@@ -3,14 +3,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
-import { useAreaContext } from '@penx/components/AreaContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { updateSiteState } from '@penx/hooks/useSite'
-import { defaultNavLinks } from '@penx/constants'
-import { queryClient } from '@penx/query-client'
-import { NavLink } from '@penx/types'
-import { api } from '@penx/trpc-client'
-import { Widget } from '@penx/types'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -39,7 +31,14 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { defaultNavLinks } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { updateSiteState } from '@penx/hooks/useSite'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
+import { NavLink, Widget } from '@penx/types'
 import { Item } from './Item'
 import { NavLinkDialog } from './NavLinkDialog/NavLinkDialog'
 import { SortableItem } from './SortableItem'
@@ -120,20 +119,20 @@ export const NavigationList = () => {
         <div className="text-foreground/60 flex text-sm">
           <div className="flex-1">
             <div className="pl-7">
-              <Trans>Title</Trans>
+              <Trans id="Title"></Trans>
             </div>
           </div>
           <div className="flex-1">
-            <Trans>Type</Trans>
+            <Trans id="Type"></Trans>
           </div>
           <div className="flex-1">
-            <Trans>Location</Trans>
+            <Trans id="Location"></Trans>
           </div>
           <div className="flex-1">
-            <Trans>Path</Trans>
+            <Trans id="Path"></Trans>
           </div>
           <div className="flex-1">
-            <Trans>Operation</Trans>
+            <Trans id="Operation"></Trans>
           </div>
         </div>
 

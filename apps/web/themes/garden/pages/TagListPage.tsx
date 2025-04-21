@@ -1,6 +1,6 @@
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { Tag } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { TagList } from '../components/TagList'
 
 interface Props {
@@ -11,7 +11,7 @@ export function TagListPage({ tags }: Props) {
   return (
     <div className="relative mx-auto max-w-2xl">
       <PageTitle className="">
-        <Trans>Tags</Trans>
+        <Trans id="Tags"></Trans>
       </PageTitle>
       <div className="grid gap-y-3">
         {tags.length === 0 && 'No tags found.'}

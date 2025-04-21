@@ -1,7 +1,7 @@
 'use client'
 
 import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import {
   BadgeCheck,
   Bell,
@@ -14,7 +14,7 @@ import {
   Sparkles,
   Sun,
 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useMySites } from '@penx/hooks/useMySites'
 import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
@@ -47,7 +47,7 @@ export function NavUser() {
   const { session, data, logout, update } = useSession()
   const { isMobile } = useSidebar()
   const { setIsOpen } = usePlanListDialog()
-  const { push } = useRouter()
+  // const { push } = useRouter()
   const sigInState = useSignIn({})
 
   async function selectSite(site: MySite) {
@@ -63,7 +63,7 @@ export function NavUser() {
     })
 
     resetPanels()
-    push(`/~/areas/${field.id}`)
+    // push(`/~/areas/${field.id}`)
   }
 
   return (
@@ -123,15 +123,15 @@ export function NavUser() {
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={async () => {
-              push('/~/settings')
+              // push('/~/settings')
             }}
           >
             <BadgeCheck />
-            <Trans>Settings</Trans>
+            <Trans id="Settings"></Trans>
           </DropdownMenuItem>
           {/* <DropdownMenuItem>
                 <CreditCard />
-                <Trans>Billing</Trans>
+                <Trans id="Billing"></Trans>
               </DropdownMenuItem> */}
 
           <DropdownMenuItem
@@ -140,7 +140,7 @@ export function NavUser() {
             }}
           >
             <Sparkles />
-            <Trans>Upgrade to Pro</Trans>
+            <Trans id="Upgrade to Pro"></Trans>
           </DropdownMenuItem>
 
           <DropdownMenuItem
@@ -149,7 +149,7 @@ export function NavUser() {
             }}
           >
             <MessageCircleIcon />
-            <Trans>Support</Trans>
+            <Trans id="Support"></Trans>
           </DropdownMenuItem>
 
           {/* <DropdownMenuItem>
@@ -164,12 +164,12 @@ export function NavUser() {
             try {
               await logout()
               sigInState?.signOut()
-              push('/')
+              // push('/')
             } catch (error) {}
           }}
         >
           <LogOut />
-          <Trans>Log out</Trans>
+          <Trans id="Log out"></Trans>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

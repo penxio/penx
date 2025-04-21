@@ -2,7 +2,7 @@
 
 import { useOpen } from '@penx/components/CommandPanel/hooks/useOpen'
 import { Kbd } from '@penx/components/Kbd'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Search } from 'lucide-react'
 
 interface Props {}
@@ -20,7 +20,7 @@ export const QuickSearchTrigger = ({}: Props) => {
         <div className="flex items-center gap-1">
           <Search size={18} className="text-foreground/40" />
           <span className="text-foreground/40 text-sm">
-            <Trans>Search</Trans>
+            <Trans id="Search"></Trans>
           </span>
         </div>
         {/* <div className="flex items-center gap-1">

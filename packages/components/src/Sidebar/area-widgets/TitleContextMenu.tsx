@@ -9,7 +9,7 @@ import { Menu } from '@penx/uikit/ui/menu/Menu'
 import { removeWidget } from '@penx/hooks/useAreaItem'
 import { WidgetType } from '@penx/constants'
 import { Widget } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PanelLeft, PencilIcon, Rows4Icon, TrashIcon } from 'lucide-react'
 
 interface Props {
@@ -35,7 +35,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
         >
           <PanelLeft size={16} />
           <span>
-            <Trans>Open in new panel</Trans>
+            <Trans id="Open in new panel"></Trans>
           </span>
         </ContextMenuItem>
       )}
@@ -47,7 +47,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
       >
         <Rows4Icon size={16} />
         <div>
-          <Trans>Show all</Trans>
+          <Trans id="Show all"></Trans>
         </div>
       </ContextMenuItem>
       <ContextMenuItem
@@ -57,13 +57,13 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
       >
         <TrashIcon size={16} />
         <div>
-          <Trans>Delete</Trans>
+          <Trans id="Delete"></Trans>
         </div>
       </ContextMenuItem>
       <ContextMenuItem disabled onClick={async (e) => {}}>
         <PencilIcon size={16} />
         <div>
-          <Trans>Rename</Trans>
+          <Trans id="Rename"></Trans>
         </div>
       </ContextMenuItem>
     </ContextMenuContent>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Input } from '@penx/uikit/ui/input'

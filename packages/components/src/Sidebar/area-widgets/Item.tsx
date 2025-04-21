@@ -1,8 +1,17 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
+import { DraggableSyntheticListeners } from '@dnd-kit/core'
+import { Trans } from '@lingui/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useAreaContext } from '@penx/components/AreaContext'
+import { WidgetType } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { toggleCollapsed } from '@penx/hooks/useAreaItem'
+import { openWidgetPanel } from '@penx/hooks/usePanels'
+import { getWidgetName } from '@penx/libs/getWidgetName'
+import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import {
   ContextMenu,
@@ -10,16 +19,7 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@penx/uikit/ui/context-menu'
-import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { toggleCollapsed } from '@penx/hooks/useAreaItem'
-import { openWidgetPanel } from '@penx/hooks/usePanels'
-import { WidgetType } from '@penx/constants'
-import { getWidgetName } from '@/lib/getWidgetName'
-import { Widget } from '@penx/types'
 import { cn } from '@penx/utils'
-import { DraggableSyntheticListeners } from '@dnd-kit/core'
-import { Trans } from '@lingui/react/macro'
-import { AnimatePresence, motion } from 'motion/react'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'
 import { IsAllProvider } from './IsAllContext'

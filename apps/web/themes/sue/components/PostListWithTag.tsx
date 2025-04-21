@@ -1,6 +1,6 @@
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { Creation, Site, Tag } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PostList } from './PostList'
 import { TagList } from './TagList'
 
@@ -29,7 +29,7 @@ export function PostListWithTag({
   return (
     <div className="flex flex-col">
       <PageTitle>
-        <Trans>Tags</Trans>
+        <Trans id="Tags"></Trans>
       </PageTitle>
       <TagList tags={tags} />
       <div className="mt-10">

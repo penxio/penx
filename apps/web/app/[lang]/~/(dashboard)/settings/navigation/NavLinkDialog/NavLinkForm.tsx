@@ -2,8 +2,17 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { defaultNavLinks } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { updateSiteState, useSite } from '@penx/hooks/useSite'
+import { api } from '@penx/trpc-client'
+import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -22,16 +31,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { updateSiteState, useSite } from '@penx/hooks/useSite'
-import { defaultNavLinks } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
-import { api } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans, useLingui } from '@lingui/react/macro'
-import { produce } from 'immer'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useNavLinkDialog } from './useNavLinkDialog'
 
 const FormSchema = z.object({
@@ -46,7 +46,6 @@ export function NavLinkForm() {
   const { setIsOpen, navLink, index } = useNavLinkDialog()
   const site = useSiteContext()
   const { refetch } = useSite()
-  const { t } = useLingui()
   const navLinks = (site.navLinks || defaultNavLinks) as NavLink[]
   const isEdit = !!navLink
 
@@ -87,7 +86,7 @@ export function NavLinkForm() {
       // await refetch()
       form.reset()
       setIsOpen(false)
-      toast.success(t`Updated successfully!`)
+      toast.success(<Trans id="Updated successfully!"></Trans>)
     } catch (error) {
       const msg = extractErrorMessage(error)
       toast.error(msg)
@@ -104,7 +103,7 @@ export function NavLinkForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Title</Trans>
+                <Trans id="Title"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -120,7 +119,7 @@ export function NavLinkForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                <Trans>Type</Trans>
+                <Trans id="Type"></Trans>
               </FormLabel>
               <Select
                 onValueChange={field.onChange}
@@ -129,12 +128,14 @@ export function NavLinkForm() {
               >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder={t`Select a type`} />
+                    <SelectValue
+                      placeholder={<Trans id="Select a type"></Trans>}
+                    />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   <SelectItem disabled={!isEdit} value={NavLinkType.BUILTIN}>
-                    <Trans>Builtin</Trans>
+                    <Trans id="Builtin"></Trans>
                   </SelectItem>
                   <SelectItem value={NavLinkType.PAGE}>Page</SelectItem>
                   <SelectItem value={NavLinkType.TAG}>Tag</SelectItem>
@@ -155,15 +156,17 @@ export function NavLinkForm() {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder={t`Select a location`} />
+                    <SelectValue
+                      placeholder={<Trans id="Select a location"></Trans>}
+                    />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
                   <SelectItem value={NavLinkLocation.HEADER}>
-                    <Trans>Header</Trans>
+                    <Trans id="Header"></Trans>
                   </SelectItem>
                   <SelectItem value={NavLinkLocation.FOOTER}>
-                    <Trans>Footer</Trans>
+                    <Trans id="Footer"></Trans>
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -199,7 +202,9 @@ export function NavLinkForm() {
           {isLoading ? (
             <LoadingDots />
           ) : (
-            <span>{isEdit ? <Trans>Save</Trans> : <Trans>Add</Trans>}</span>
+            <span>
+              {isEdit ? <Trans id="Save"></Trans> : <Trans id="Add"></Trans>}
+            </span>
           )}
         </Button>
       </form>

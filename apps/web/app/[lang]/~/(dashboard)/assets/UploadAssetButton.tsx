@@ -1,9 +1,9 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { useSubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog'
 import { UploadCloud } from 'lucide-react'
 import { toast } from 'sonner'
-import { useSubscriptionGuideDialog } from '@penx/components/SubscriptionGuideDialog/useSubscriptionGuideDialog'
 import { calculateSHA256FromFile } from '@penx/encryption'
 import { useAssets } from '@penx/hooks/useAssets'
 import { localDB } from '@penx/local-db'

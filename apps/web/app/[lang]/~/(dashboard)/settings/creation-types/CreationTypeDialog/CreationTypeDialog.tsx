@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/react'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Dialog,
@@ -8,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/ui/dialog'
-import { Trans } from '@lingui/react/macro'
 import { CreationTypeForm } from './CreationTypeForm'
 import { useCreationTypeDialog } from './useCreationTypeDialog'
 
@@ -23,7 +23,11 @@ export function CreationTypeDialog() {
       <DialogContent className="sm:max-w-[520px]">
         <DialogHeader>
           <DialogTitle>
-            {!!mold ? <Trans>Update type</Trans> : <Trans>Add type</Trans>}
+            {!!mold ? (
+              <Trans id="Update type"></Trans>
+            ) : (
+              <Trans id="Add type"></Trans>
+            )}
           </DialogTitle>
         </DialogHeader>
         <CreationTypeForm />

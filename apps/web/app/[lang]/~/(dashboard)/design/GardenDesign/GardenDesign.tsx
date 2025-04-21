@@ -1,10 +1,10 @@
 'use client'
 
 import GridLayout from 'react-grid-layout'
-import { Button } from '@penx/uikit/ui/button'
+import { Trans } from '@lingui/react'
 import { Link } from '@penx/libs/i18n'
+import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
 import { CardRender } from './CardRender'
 import { DeleteCardButton } from './DeleteCardButton'
 import { DeviceToggle } from './DeviceToggle'
@@ -35,7 +35,7 @@ export function GardenDesign() {
               variant="secondary"
               className="h-8 rounded-md text-sm"
             >
-              <Trans>Edit</Trans>
+              <Trans id="Edit"></Trans>
             </Button>
           </Link>
         </div>

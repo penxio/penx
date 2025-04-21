@@ -1,14 +1,14 @@
 import { ReactNode } from 'react'
+import { Trans } from '@lingui/react'
+import { slug } from 'github-slugger'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { Profile } from '@penx/components/Profile/Profile'
 import { MembershipEntry } from '@penx/components/theme-ui/MembershipEntry/MembershipEntry'
 import { SocialNav } from '@penx/components/theme-ui/SocialNav'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Link } from '@penx/libs/i18n'
 import { Site, Tag } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { cn, getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { slug } from 'github-slugger'
 
 interface Props {
   site: Site
@@ -50,22 +50,27 @@ export const Sidebar = ({ site, tags }: Props) => {
                 if (!link.visible) return null
 
                 let title = link.title as ReactNode
-                if (link.pathname === '/') title = <Trans>Home</Trans>
-                if (link.pathname === '/posts') title = <Trans>Posts</Trans>
+                if (link.pathname === '/') title = <Trans id="Home"></Trans>
+                if (link.pathname === '/posts')
+                  title = <Trans id="Posts"></Trans>
                 if (link.pathname === '/writings')
-                  title = <Trans>Writings</Trans>
+                  title = <Trans id="Writings"></Trans>
                 if (link.pathname === '/podcasts')
-                  title = <Trans>Podcasts</Trans>
-                if (link.pathname === '/notes') title = <Trans>Notes</Trans>
-                if (link.pathname === '/areas') title = <Trans>Areas</Trans>
+                  title = <Trans id="Podcasts"></Trans>
+                if (link.pathname === '/notes')
+                  title = <Trans id="Notes"></Trans>
+                if (link.pathname === '/areas')
+                  title = <Trans id="Areas"></Trans>
                 if (link.pathname === '/projects')
-                  title = <Trans>Projects</Trans>
-                if (link.pathname === '/friends') title = <Trans>Friends</Trans>
-                if (link.pathname === '/ama') title = <Trans>AMA</Trans>
+                  title = <Trans id="Projects"></Trans>
+                if (link.pathname === '/friends')
+                  title = <Trans id="Friends"></Trans>
+                if (link.pathname === '/ama') title = <Trans id="AMA"></Trans>
                 if (link.pathname === '/guestbook')
-                  title = <Trans>Guestbook</Trans>
-                if (link.pathname === '/tags') title = <Trans>Tags</Trans>
-                if (link.pathname === '/about') title = <Trans>About</Trans>
+                  title = <Trans id="Guestbook"></Trans>
+                if (link.pathname === '/tags') title = <Trans id="Tags"></Trans>
+                if (link.pathname === '/about')
+                  title = <Trans id="About"></Trans>
 
                 return (
                   <Link

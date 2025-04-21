@@ -1,13 +1,13 @@
 'use client'
 
 import React from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
-import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
+import { useSession } from '@penx/session'
+import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button } from '@penx/uikit/ui/button'
 
 export function CliLogin() {
   const searchParams = useSearchParams()
@@ -23,10 +23,10 @@ export function CliLogin() {
   return (
     <div className="bg-background flex h-screen flex-col items-center justify-center p-10">
       <div className="text-3xl font-bold">
-        <Trans>Login to PenX CLI</Trans>
+        <Trans id="Login to PenX CLI"></Trans>
       </div>
       <div className="text-foreground/500">
-        <Trans>Please confirm your authorization for this login.</Trans>
+        <Trans id="Please confirm your authorization for this login."></Trans>
       </div>
 
       <div className="mt-6 flex items-center justify-between gap-2">
@@ -46,7 +46,7 @@ export function CliLogin() {
         >
           {isCanceling && <LoadingDots></LoadingDots>}
           <div>
-            <Trans>Cancel</Trans>
+            <Trans id="Cancel"></Trans>
           </div>
         </Button>
         <Button
@@ -55,16 +55,16 @@ export function CliLogin() {
           onClick={async () => {
             try {
               await confirm({ token })
-              toast.success(<Trans>CLI login successfully</Trans>)
+              toast.success(<Trans id="CLI login successfully"></Trans>)
               location.href = '/'
             } catch (error) {
-              toast.error(<Trans>please try again~</Trans>)
+              toast.error(<Trans id="Please try again~"></Trans>)
             }
           }}
         >
           {isConfirming && <LoadingDots></LoadingDots>}
           <div>
-            <Trans>Authorize CLI login</Trans>
+            <Trans id="Authorize CLI login"></Trans>
           </div>
         </Button>
       </div>

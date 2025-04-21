@@ -3,7 +3,7 @@ import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
 import { t } from '@lingui/core/macro'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { MembershipEntry } from './MembershipEntry'
 import { NavigationItem } from './NavigationItem'
 

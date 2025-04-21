@@ -1,7 +1,7 @@
 'use client'
 
 import { CSSProperties, useEffect, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { useCreationListContext } from '@penx/contexts/CreationListContext'
 import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
@@ -26,7 +26,7 @@ export const BackLinks = ({ className, style = {} }: Props) => {
     >
       <div className="">
         <h2 className="text-foreground/90 mb-4 text-sm font-semibold">
-          <Trans>Backlinks</Trans>
+          <Trans id="Backlinks"></Trans>
         </h2>
 
         <div className="flex flex-col gap-2">

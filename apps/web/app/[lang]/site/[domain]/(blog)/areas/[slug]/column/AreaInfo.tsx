@@ -3,7 +3,7 @@ import { Badge } from '@penx/uikit/ui/badge'
 import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations } from '@penx/types'
 import { getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 
 interface Props {
   area: AreaWithCreations

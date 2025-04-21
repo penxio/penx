@@ -13,7 +13,7 @@ import { addPanel, updateMainPanel, usePanels } from '@penx/hooks/usePanels'
 import { CreationType } from '@penx/types'
 import { PanelType, SiteCreation } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { CreationStatus } from '@prisma/client'
 import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
 import { useIsAllContext } from './IsAllContext'
@@ -76,7 +76,7 @@ export function CreationItem({ creation }: CreationItemProps) {
         >
           <PanelLeft size={16} />
           <span>
-            <Trans>Open in new panel</Trans>
+            <Trans id="Open in new panel"></Trans>
           </span>
         </ContextMenuItem>
         <ToggleFavorite creation={creation} />
@@ -84,7 +84,7 @@ export function CreationItem({ creation }: CreationItemProps) {
         <ContextMenuItem disabled>
           <TrashIcon size={16} />
           <span>
-            <Trans>Delete</Trans>
+            <Trans id="Delete"></Trans>
           </span>
         </ContextMenuItem>
       </ContextMenuContent>
@@ -110,9 +110,9 @@ function ToggleFavorite({ creation: post }: CreationItemProps) {
 
       <span>
         {isFavor ? (
-          <Trans>Remove from favorites</Trans>
+          <Trans id="Remove from favorites"></Trans>
         ) : (
-          <Trans>Add to favorites</Trans>
+          <Trans id="Add to favorites"></Trans>
         )}
       </span>
     </ContextMenuItem>

@@ -8,7 +8,7 @@ import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { editorDefaultValue } from '@penx/constants'
 import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { StripeType } from '@prisma/client'
 import { Edit, Plus } from 'lucide-react'
 import { TierDialog } from './TierDialog/TierDialog'
@@ -40,7 +40,7 @@ export function MembershipTiers({ type }: Props) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="text-2xl font-bold">
-            <Trans>Tiers</Trans>
+            <Trans id="Tiers"></Trans>
           </div>
           <Badge>
             {site.stripeType === StripeType.OWN ? 'Own stripe' : 'PenX stripe'}

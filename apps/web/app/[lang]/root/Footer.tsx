@@ -2,7 +2,8 @@ import { LangSwitcher } from '@penx/components/LangSwitcher'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { SocialNav } from '@penx/components/SocialNav'
 import { Link } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+
+// import { Trans } from '@lingui/react'
 
 interface Props {}
 
@@ -22,7 +23,7 @@ export function Footer({}: Props) {
               className="flex items-center gap-1"
             >
               <span>
-                <Trans>About</Trans>
+                <Trans id="About"></Trans>
               </span>
             </a>
           </div> */}
@@ -34,7 +35,7 @@ export function Footer({}: Props) {
               className="flex items-center gap-1"
             >
               <span>
-                <Trans>Docs</Trans>
+                <Trans id="Docs"></Trans>
               </span>
             </a>
           </div> */}
@@ -46,7 +47,7 @@ export function Footer({}: Props) {
               className="flex items-center gap-1"
             >
               <span>
-                <Trans>Blog</Trans>
+                <Trans id="Blog"></Trans>
               </span>
             </a>
           </div> */}

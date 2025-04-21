@@ -2,7 +2,6 @@
 
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { useUploadFile } from '@/lib/uploadthing'
 import { cn } from '@udecode/cn'
 import type { TPlaceholderElement } from '@udecode/plate-media'
 import {
@@ -22,6 +21,7 @@ import {
 } from '@udecode/plate/react'
 import { AudioLines, FileUp, Film, ImageIcon } from 'lucide-react'
 import { useFilePicker } from 'use-file-picker'
+import { useUploadFile } from '@penx/services/uploadthing'
 import { Spinner } from './spinner'
 
 const CONTENT: Record<

@@ -2,8 +2,15 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
+import { useDebouncedCallback } from 'use-debounce'
+import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useSite } from '@penx/hooks/useSite'
+import { trpc } from '@penx/trpc-client'
+import { NumberInput } from '@penx/uikit/components/NumberInput'
 import {
   Form,
   FormControl,
@@ -12,13 +19,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@penx/uikit/ui/form'
-import { useSite } from '@penx/hooks/useSite'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
-import { useDebouncedCallback } from 'use-debounce'
-import { z } from 'zod'
 import { useThemeName } from '../hooks/useThemeName'
 import { ColorPicker } from './components/ColorPicker'
 import { useDesignContext } from './hooks/DesignContext'
@@ -98,7 +98,7 @@ export function DesignSettings() {
             <FormItem className="flex w-full items-center justify-between">
               <FormLabel className="">
                 <div className="">
-                  <Trans>Site background</Trans>
+                  <Trans id="Site background"></Trans>
                 </div>
               </FormLabel>
               <FormControl>
@@ -115,7 +115,7 @@ export function DesignSettings() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Container width</Trans>
+                <Trans id="Container width"></Trans>
               </FormLabel>
               <FormControl>
                 <NumberInput
@@ -137,7 +137,7 @@ export function DesignSettings() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Row height</Trans>
+                <Trans id="Row height"></Trans>
               </FormLabel>
               <FormControl>
                 <NumberInput
@@ -159,7 +159,7 @@ export function DesignSettings() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Margin</Trans>
+                <Trans id="Margin"></Trans>
               </FormLabel>
               <FormControl>
                 <NumberInput

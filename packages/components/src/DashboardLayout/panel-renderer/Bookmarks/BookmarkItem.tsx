@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import {
   Archive,
@@ -14,7 +14,7 @@ import {
   Trash2,
 } from 'lucide-react'
 import { toast } from 'sonner'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { Image } from '@penx/components/Image'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'

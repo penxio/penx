@@ -1,8 +1,8 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useMutation, useQuery } from '@tanstack/react-query'
 import { BillingCycle, PlanType } from '@prisma/client'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { queryClient } from '@penx/query-client'
 import {
   GoogleLoginData,
@@ -12,7 +12,9 @@ import {
   UpdateSessionData,
 } from '@penx/types'
 
-const sessionApiRoute = '/api/session'
+// @ts-ignore
+const HOST = import.meta.env?.WXT_BASE_URL ?? ''
+const sessionApiRoute = `${HOST}/api/session`
 const queryKey = ['session']
 
 async function fetchJson<JSON = unknown>(

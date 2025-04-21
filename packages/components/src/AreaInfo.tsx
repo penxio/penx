@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { AreaType } from '@prisma/client'
 import { GlobeIcon, PencilIcon, TrashIcon } from 'lucide-react'
 import { useAreaContext } from '@penx/components/AreaContext'
@@ -8,14 +8,14 @@ import { ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { useRouter } from '@penx/libs/i18n'
+// import { useRouter } from '@penx/libs/i18n'
 import { api } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { cn, getUrl } from '@penx/utils'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useAreaDialog } from './AreaDialog/useAreaDialog'
-import { ConfirmDialog } from './ConfirmDialog'
 
 interface Props {
   className?: string
@@ -24,7 +24,7 @@ interface Props {
 export function AreaInfo({ className }: Props) {
   const field = useAreaContext()
   const { setState } = useAreaDialog()
-  const { push } = useRouter()
+  // const { push } = useRouter()
   const site = useSiteContext()
   const { isSubdomain, domain } = getSiteDomain(site as any)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
@@ -40,13 +40,13 @@ export function AreaInfo({ className }: Props) {
             <h2 className="text-xl font-bold">{field.name}</h2>
             {field.type === AreaType.BOOK && (
               <Badge>
-                <Trans>Book</Trans>
+                <Trans id="Book"></Trans>
               </Badge>
             )}
 
             {field.type === AreaType.COLUMN && (
               <Badge>
-                <Trans>Column</Trans>
+                <Trans id="Column"></Trans>
               </Badge>
             )}
             <a
@@ -84,7 +84,7 @@ export function AreaInfo({ className }: Props) {
               id: field.id,
             })
             const nextField = site.areas.find((f) => field.isGenesis)
-            push(`/~/areas/${nextField?.id}`)
+            // push(`/~/areas/${nextField?.id}`)
             updateSiteState({
               areas: site.areas.filter((f) => f.id !== field.id),
             })

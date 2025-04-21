@@ -17,7 +17,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api, trpc } from '@penx/trpc-client'
 import { toFloorFixed } from '@penx/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useWithdrawDialog } from './useWithdrawDialog'
@@ -67,11 +67,11 @@ export function WithdrawForm() {
             <FormItem className="w-full">
               <div className="flex items-center justify-between">
                 <FormLabel>
-                  <Trans>Amount</Trans>
+                  <Trans id="Amount"></Trans>
                 </FormLabel>
                 {balance && (
                   <div>
-                    <Trans>Available</Trans>: $
+                    <Trans id="Available"></Trans>: $
                     {toFloorFixed(balance.withdrawable / 100, 2)}
                   </div>
                 )}
@@ -103,7 +103,7 @@ export function WithdrawForm() {
             <LoadingDots />
           ) : (
             <span>
-              <Trans>Confirm</Trans>
+              <Trans id="Confirm"></Trans>
             </span>
           )}
         </Button>

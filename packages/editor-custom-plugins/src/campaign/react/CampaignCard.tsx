@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { Campaign } from '@prisma/client'
 import { toast } from 'sonner'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { usePathname } from '@penx/libs/i18n'
+// import { usePathname } from '@penx/libs/i18n'
 import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
@@ -54,7 +54,7 @@ export function CampaignCardContent({ campaign }: { campaign: Campaign }) {
   const [amount, setAmount] = useState('')
   const percent = (100 * campaign.currentAmount) / campaign.goal
   const checkout = trpc.stripe.buyCampaignCheckout.useMutation()
-  const pathname = usePathname()
+  // const pathname = usePathname()
   const site = useSiteContext()
 
   useEffect(() => {
@@ -137,7 +137,8 @@ export function CampaignCardContent({ campaign }: { campaign: Campaign }) {
                   campaignId: campaign.id,
                   siteId: site.id,
                   host: window.location.host,
-                  pathname: pathname!,
+                  // pathname: pathname!,
+                  pathname: '',
                   amount: Number(amount),
                 })
                 console.log('=======res:', res.success)

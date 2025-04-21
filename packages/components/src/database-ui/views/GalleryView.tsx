@@ -1,5 +1,5 @@
 import { OptionTag } from '@penx/components/OptionTag'
-import { mappedByKey } from '@/lib/shared'
+import { mappedByKey } from '@penx/utils'
 import { ColumnType, Option } from '@penx/types'
 import { Record as Row } from '@prisma/client'
 import { useDatabaseContext } from '../DatabaseProvider'

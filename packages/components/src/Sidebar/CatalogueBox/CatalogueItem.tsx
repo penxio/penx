@@ -9,7 +9,7 @@ import { Link } from '@penx/libs/i18n'
 import { CatalogueNodeType } from '@penx/model'
 import { cn } from '@penx/utils'
 import { useSortable } from '@dnd-kit/sortable'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Creation } from '@prisma/client'
 import { format } from 'date-fns'
 import {

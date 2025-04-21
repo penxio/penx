@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { ArrowUpRight, ExternalLink, Flame } from 'lucide-react'
 import { toast } from 'sonner'
 import { Link } from '@penx/libs/i18n'
@@ -32,19 +32,19 @@ export const Nav = () => {
     //   to: '/sponsor',
     // },
     {
-      text: <Trans>About</Trans>,
+      text: <Trans id="About"></Trans>,
       to: '/about',
     },
     // {
-    //   text: <Trans>Themes</Trans>,
+    //   text: <Trans id="Themes"></Trans>,
     //   to: '/themes',
     // },
     // {
-    //   text: <Trans>Hosted</Trans>,
+    //   text: <Trans id="Hosted"></Trans>,
     //   to: '/self-hosted',
     // },
     {
-      text: <Trans>Pricing</Trans>,
+      text: <Trans id="Pricing"></Trans>,
       to: '/pricing',
     },
     // {
@@ -57,7 +57,7 @@ export const Nav = () => {
     //   to: 'https://github.com/penx-labs/penx-desktop/releases',
     // },
     {
-      text: <Trans>Partner program</Trans>,
+      text: <Trans id="Partner program"></Trans>,
       to: '/partner-program',
     },
   ]

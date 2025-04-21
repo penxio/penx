@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'

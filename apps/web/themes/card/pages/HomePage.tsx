@@ -1,9 +1,9 @@
-import { ProjectsBlock } from '@penx/editor-custom-plugins'
-import { ContentRender } from '@penx/content-render'
+import { Trans } from '@lingui/react'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
+import { ContentRender } from '@penx/content-render'
+import { ProjectsBlock } from '@penx/editor-custom-plugins'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
 import { PostItem } from '../components/PostItem'
 
 interface Props {
@@ -28,7 +28,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
       <div className="">
         <div className="flex items-center justify-between pb-6 pt-6">
           <h1 className="text-foreground text-xl font-medium leading-none tracking-tight sm:text-3xl">
-            <Trans>Latest</Trans>
+            <Trans id="Latest"></Trans>
           </h1>
 
           {posts.length > LATEST_POSTS_LIMIT && (
@@ -36,13 +36,13 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
               href="/posts"
               className="text-brand hover:text-brand/80 dark:hover:text-brand/80"
             >
-              <Trans>All posts</Trans> &rarr;
+              <Trans id="All posts"></Trans> &rarr;
             </Link>
           )}
         </div>
 
         <div className="grid grid-cols-3 gap-x-6 gap-y-10">
-          {!posts.length && <Trans>No posts found.</Trans>}
+          {!posts.length && <Trans id="No posts found."></Trans>}
           {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
             return <PostItem key={post.slug} creation={post} />
           })}
@@ -53,7 +53,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
         <div>
           <div className="flex items-center justify-between pb-6 pt-6">
             <h1 className="text-foreground text-xl font-medium leading-none tracking-tight sm:text-3xl">
-              <Trans>Projects</Trans>
+              <Trans id="Projects"></Trans>
             </h1>
 
             {projects.length > HOME_PROJECT_LIMIT && (
@@ -61,7 +61,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
                 href="/projects"
                 className="text-brand hover:text-brand/80 dark:hover:text-brand/80"
               >
-                <Trans>All projects</Trans> &rarr;
+                <Trans id="All projects"></Trans> &rarr;
               </Link>
             )}
           </div>

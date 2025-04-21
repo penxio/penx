@@ -1,4 +1,4 @@
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Github } from '@penx/components/theme-ui/SocialIcon/icons'
 import { Button } from '@penx/uikit/ui/button'

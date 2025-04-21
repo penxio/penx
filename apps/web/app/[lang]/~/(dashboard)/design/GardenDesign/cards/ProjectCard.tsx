@@ -1,7 +1,13 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useSite } from '@penx/hooks/useSite'
+import { Link } from '@penx/libs/i18n'
+import { trpc } from '@penx/trpc-client'
+import { LayoutItem } from '@penx/types'
 import {
   Select,
   SelectContent,
@@ -11,12 +17,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/ui/select'
-import { useSite } from '@penx/hooks/useSite'
-import { Link } from '@penx/libs/i18n'
-import { LayoutItem } from '@penx/types'
-import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
 import { useThemeName } from '../../hooks/useThemeName'
 
 interface Props {
@@ -38,7 +38,7 @@ export function ProjectCard({ layoutItem, layout, setLayout }: Props) {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-2">
       <div className="text-2xl font-bold">
-        <Trans>Project</Trans>
+        <Trans id="Project"></Trans>
       </div>
 
       <Select

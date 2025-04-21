@@ -1,10 +1,10 @@
-import { Profile } from '@penx/components/Profile/Profile'
 import { initLingui } from '@/initLingui'
 import { getSite, getTiers } from '@/lib/fetchers'
-import { AppearanceConfig } from '@penx/types'
-import linguiConfig from '@penx/libs/lingui.config'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import Image from 'next/image'
+import { Profile } from '@penx/components/Profile/Profile'
+import linguiConfig from '@penx/libs/lingui.config'
+import { AppearanceConfig } from '@penx/types'
 import { GoBackButton } from './GoBackButton'
 import { TierList } from './TierList'
 
@@ -56,7 +56,7 @@ export default async function HomePage(props: {
 
       <div className="flex flex-col items-center gap-10 space-x-2 pt-8">
         <div className="text-center text-4xl font-bold">
-          <Trans>Choose a subscription plan</Trans>
+          <Trans id="Choose a subscription plan"></Trans>
         </div>
 
         <TierList tiers={tiers} site={site} />

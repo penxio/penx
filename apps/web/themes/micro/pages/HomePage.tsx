@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { ContentRender } from '@penx/content-render'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { PostItem } from '@penx/components/theme-ui/post-item-blocks/PostItem'
@@ -43,7 +43,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
             )}
           </div>
           <div className="grid grid-cols-1 gap-6">
-            {!posts.length && <Trans>No posts found.</Trans>}
+            {!posts.length && <Trans id="No posts found."></Trans>}
             {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
               return (
                 <PostItem

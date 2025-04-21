@@ -7,7 +7,7 @@ import { useAreaCreations } from '@penx/hooks/useAreaCreations'
 import { updateMainPanel } from '@penx/hooks/usePanels'
 import { Panel, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { ClockIcon } from 'lucide-react'
 
 interface Props {
@@ -31,7 +31,7 @@ export function PanelHome(props: Props) {
           <div className="flex items-center gap-1">
             <ClockIcon size={12} />
             <span className="text-foreground/50 text-sm font-medium">
-              <Trans>Recently visited</Trans>
+              <Trans id="Recently visited"></Trans>
             </span>
           </div>
 

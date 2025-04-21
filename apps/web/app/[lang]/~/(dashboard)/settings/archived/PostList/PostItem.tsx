@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import {
   Archive,
@@ -14,7 +14,7 @@ import {
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { RouterOutputs } from '@penx/api'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
@@ -81,7 +81,7 @@ export function PostItem({ creation }: PostItemProps) {
     if (creation.type === CreationType.NOTE) {
       return (
         <Badge variant="secondary" size="sm" className="h-6 text-xs">
-          <Trans>Note</Trans>
+          <Trans id="Note"></Trans>
         </Badge>
       )
     }
@@ -123,23 +123,23 @@ export function PostItem({ creation }: PostItemProps) {
                 await refetch()
               },
               {
-                loading: <Trans>Restoring...</Trans>,
-                success: <Trans>Restored successfully!</Trans>,
-                error: <Trans>Failed to Restore</Trans>,
+                loading: <Trans id="Restoring..."></Trans>,
+                success: <Trans id="Restored successfully!"></Trans>,
+                error: <Trans id="Failed to Restore"></Trans>,
               },
             )
           }}
         >
           <RedoIcon size={14}></RedoIcon>
           <div>
-            <Trans>Restore</Trans>
+            <Trans id="Restore"></Trans>
           </div>
         </Button>
 
         <ConfirmDialog
-          title={<Trans>Delete this post?</Trans>}
-          content={<Trans>Are you sure you want to delete this post?</Trans>}
-          tooltipContent={<Trans>Delete this post</Trans>}
+          title={<Trans id="Delete this post?"></Trans>}
+          content={<Trans id="Are you sure you want to delete this post?"></Trans>}
+          tooltipContent={<Trans id="Delete this post"></Trans>}
           onConfirm={async () => {
             await api.creation.delete.mutate(creation.id)
             await refetch()
@@ -152,7 +152,7 @@ export function PostItem({ creation }: PostItemProps) {
           >
             <Trash2 size={14}></Trash2>
             <div>
-              <Trans>Delete</Trans>
+              <Trans id="Delete"></Trans>
             </div>
           </Button>
         </ConfirmDialog>

@@ -3,13 +3,13 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { api, trpc } from '@penx/trpc-client'
 import { FileUpload } from '@penx/uikit/components/FileUpload'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -55,7 +55,7 @@ export function SubmitFriendLinkForm() {
         data,
       })
       setIsOpen(false)
-      toast.success(<Trans>Submit successfully!</Trans>)
+      toast.success(<Trans id="Submit successfully!"></Trans>)
     } catch (error) {
       console.log('=========error:', error)
       const msg = extractErrorMessage(error)
@@ -85,7 +85,7 @@ export function SubmitFriendLinkForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Name</Trans>
+                <Trans id="Name"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -101,7 +101,7 @@ export function SubmitFriendLinkForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Introduction</Trans>
+                <Trans id="Introduction"></Trans>
               </FormLabel>
               <FormControl>
                 <Textarea placeholder="" {...field} className="w-full" />
@@ -117,7 +117,7 @@ export function SubmitFriendLinkForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Link</Trans>
+                <Trans id="Link"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -133,7 +133,7 @@ export function SubmitFriendLinkForm() {
               <LoadingDots />
             ) : (
               <span>
-                <Trans>Submit</Trans>
+                <Trans id="Submit"></Trans>
               </span>
             )}
           </Button>

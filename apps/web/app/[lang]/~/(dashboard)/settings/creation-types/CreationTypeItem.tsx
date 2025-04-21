@@ -1,14 +1,14 @@
 'use client'
 
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { Trans } from '@lingui/react'
+import { PenLineIcon, PlusIcon, Trash2 } from 'lucide-react'
+import { RouterOutputs } from '@penx/api'
+import { api, trpc } from '@penx/trpc-client'
+import { Prop } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Separator } from '@penx/uikit/ui/separator'
-import { Prop } from '@penx/types'
-import { api, trpc } from '@penx/trpc-client'
-import { RouterOutputs } from '@penx/api'
-import { Trans } from '@lingui/react/macro'
-import { PenLineIcon, PlusIcon, Trash2 } from 'lucide-react'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useCreationTypeDialog } from './CreationTypeDialog/useCreationTypeDialog'
 import { usePropDialog } from './PropDialog/usePropDialog'
 
@@ -88,11 +88,11 @@ export function CreationTypeItem({ mold }: Props) {
               </Button>
 
               <ConfirmDialog
-                title={<Trans>Delete this property?</Trans>}
+                title={<Trans id="Delete this property?"></Trans>}
                 content={
-                  <Trans>Are you sure you want to delete this property?</Trans>
+                  <Trans id="Are you sure you want to delete this property?"></Trans>
                 }
-                tooltipContent={<Trans>Delete this Property</Trans>}
+                tooltipContent={<Trans id="Delete this Property"></Trans>}
                 onConfirm={async () => {
                   console.log(
                     '=====>>>>:',

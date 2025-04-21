@@ -2,8 +2,14 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans, useLingui } from '@lingui/react'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { api } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -15,13 +21,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useSiteTags } from '@penx/hooks/useSiteTags'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans, useLingui } from '@lingui/react/macro'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useTagDialog } from './useTagDialog'
 
 const FormSchema = z.object({
@@ -32,7 +32,6 @@ export function TagForm() {
   const { refetch } = useSiteTags()
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen, tag, index } = useTagDialog()
-  const { t } = useLingui()
   const isEdit = !!tag
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -53,7 +52,7 @@ export function TagForm() {
       await refetch()
       form.reset()
       setIsOpen(false)
-      toast.success(t`Updated successfully!`)
+      toast.success(<Trans id="Updated successfully!"></Trans>)
     } catch (error) {
       const msg = extractErrorMessage(error)
       toast.error(msg)
@@ -70,7 +69,7 @@ export function TagForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Name</Trans>
+                <Trans id="Name"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -88,7 +87,9 @@ export function TagForm() {
           {isLoading ? (
             <LoadingDots />
           ) : (
-            <span>{isEdit ? <Trans>Save</Trans> : <Trans>Add</Trans>}</span>
+            <span>
+              {isEdit ? <Trans id="Save"></Trans> : <Trans id="Add"></Trans>}
+            </span>
           )}
         </Button>
       </form>

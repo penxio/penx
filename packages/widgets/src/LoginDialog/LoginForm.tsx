@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/session'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useRouter } from '@penx/libs/i18n'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { useRouter } from '@penx/libs/i18n'
+import { useSession } from '@penx/session'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -17,8 +18,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { toast } from 'sonner'
-import { z } from 'zod'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAuthStatus } from './useAuthStatus'
 import { useLoginDialog } from './useLoginDialog'
 
@@ -115,19 +115,19 @@ export function LoginForm({}: Props) {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? <LoadingDots /> : <Trans>Log in</Trans>}
+            {isLoading ? <LoadingDots /> : <Trans id="Log in"></Trans>}
           </Button>
         </div>
       </form>
 
       <div className="text-center text-sm">
-        <Trans>No account</Trans>?{' '}
+        <Trans id="No account"></Trans>?{' '}
         <a
           href="#"
           className="text-brand"
           onClick={() => setAuthStatus('register')}
         >
-          <Trans>Create one</Trans>
+          <Trans id="Create one"></Trans>
         </a>
       </div>
     </Form>

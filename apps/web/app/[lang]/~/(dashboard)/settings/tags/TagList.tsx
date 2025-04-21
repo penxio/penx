@@ -1,6 +1,13 @@
 'use client'
 
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { Trans } from '@lingui/react'
+import { Site } from '@prisma/client'
+import { format } from 'date-fns'
+import { Edit3Icon } from 'lucide-react'
+import { toast } from 'sonner'
+import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { useSubscribers } from '@penx/hooks/useSubscribers'
+import { api } from '@penx/trpc-client'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import {
   Table,
@@ -10,14 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { useSiteTags } from '@penx/hooks/useSiteTags'
-import { useSubscribers } from '@penx/hooks/useSubscribers'
-import { api } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { Site } from '@prisma/client'
-import { format } from 'date-fns'
-import { Edit3Icon } from 'lucide-react'
-import { toast } from 'sonner'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { TagDialog } from './TagDialog/TagDialog'
 import { useTagDialog } from './TagDialog/useTagDialog'
 
@@ -46,16 +46,16 @@ export function TagList({}: Props) {
         <TableHeader>
           <TableRow>
             <TableHead>
-              <Trans>Name</Trans>
+              <Trans id="Name"></Trans>
             </TableHead>
             <TableHead>
-              <Trans>Creation counts</Trans>
+              <Trans id="Creation counts"></Trans>
             </TableHead>
             <TableHead>
-              <Trans>Created date</Trans>
+              <Trans id="Created date"></Trans>
             </TableHead>
             <TableHead>
-              <Trans>Operation</Trans>
+              <Trans id="Operation"></Trans>
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -69,7 +69,7 @@ export function TagList({}: Props) {
                 <ConfirmDialog
                   title={`Delete tag: ${item.name}`}
                   content="All tags in post will be deleted, are you sure you want to delete this tag?"
-                  tooltipContent={<Trans>Delete tag</Trans>}
+                  tooltipContent={<Trans id="Delete tag"></Trans>}
                   onConfirm={async () => {
                     await api.tag.deleteTag.mutate({
                       tagId: item.id,

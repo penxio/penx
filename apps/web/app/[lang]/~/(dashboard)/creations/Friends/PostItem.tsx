@@ -1,9 +1,19 @@
 'use client'
 
 import { useMemo } from 'react'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
-import { useSession } from '@penx/session'
+import { creationToFriend } from '@/lib/creationToFriend'
+import { Trans } from '@lingui/react'
+import { format } from 'date-fns'
+import { Archive, ArrowUpRight, Edit3Icon } from 'lucide-react'
+import { toast } from 'sonner'
+import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { refetchAreaCreations } from '@penx/hooks/useAreaCreations'
+import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { Link } from '@penx/libs/i18n'
+import { useSession } from '@penx/session'
+import { api } from '@penx/trpc-client'
+import { CreationType, Option, Prop, SiteCreation } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -23,20 +33,9 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { refetchAreaCreations } from '@penx/hooks/useAreaCreations'
-import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
-import { creationToFriend } from '@/lib/creationToFriend'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { Link } from '@penx/libs/i18n'
-import { CreationType, Option, Prop } from '@penx/types'
-import { api } from '@penx/trpc-client'
-import { SiteCreation } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { format } from 'date-fns'
-import { Archive, ArrowUpRight, Edit3Icon } from 'lucide-react'
-import { toast } from 'sonner'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
   creation: SiteCreation
@@ -95,7 +94,7 @@ export function PostItem({ creation }: PostItemProps) {
           >
             <Edit3Icon size={14}></Edit3Icon>
             <div>
-              <Trans>Edit</Trans>
+              <Trans id="Edit"></Trans>
             </div>
           </Button>
         </Link>
@@ -148,7 +147,7 @@ export function PostItem({ creation }: PostItemProps) {
             }}
           >
             <SelectTrigger>
-              <SelectValue placeholder={<Trans>Select a status</Trans>} />
+              <SelectValue placeholder={<Trans id="Select a status"></Trans>} />
             </SelectTrigger>
             <SelectContent>
               {options?.map((option, i) => (

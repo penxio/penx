@@ -3,7 +3,7 @@
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Mold } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import { TaskItem } from './TaskItem'
@@ -28,7 +28,7 @@ export function TasksList({ mold }: PostListProps) {
   if (!creations.length) {
     return (
       <div className="text-foreground/60">
-        <Trans>No creations yet.</Trans>
+        <Trans id="No creations yet."></Trans>
       </div>
     )
   }

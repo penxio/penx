@@ -1,12 +1,12 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { useSession } from '@penx/session'
-import { SiteLink } from '@penx/components/SiteLink'
-import { Link } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { ChevronLeft } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
+import { SiteLink } from '@penx/components/SiteLink'
+import { Link } from '@penx/libs/i18n'
+import { useSession } from '@penx/session'
 import { SettingNav } from './SettingNav'
 
 export const dynamic = 'force-static'
@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <ChevronLeft size={20} />
           </Link>
           <div className="text-xl font-bold">
-            <Trans>Settings</Trans>
+            <Trans id="Settings"></Trans>
           </div>
         </div>
         <div className="hidden sm:block">

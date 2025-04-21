@@ -1,7 +1,7 @@
 import { useAreaContext } from '@penx/components/AreaContext'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
-import { mappedByKey } from '@/lib/shared'
+import { mappedByKey } from '@penx/utils'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'

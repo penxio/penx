@@ -1,6 +1,10 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { ExternalLink, GlobeIcon, LinkIcon } from 'lucide-react'
+import { ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Tooltip,
@@ -8,10 +12,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/ui/tooltip'
-import { ROOT_DOMAIN } from '@penx/constants'
-import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { Trans } from '@lingui/react/macro'
-import { ExternalLink, GlobeIcon, LinkIcon } from 'lucide-react'
 
 interface Props {}
 
@@ -36,7 +36,7 @@ export function VisitSiteButton({}: Props) {
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <Trans>Visit my site</Trans>
+          <Trans id="Visit my site"></Trans>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

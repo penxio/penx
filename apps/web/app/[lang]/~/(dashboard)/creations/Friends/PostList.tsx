@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans } from '@lingui/react'
+import { CreationStatus } from '@penx/constants'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { Label } from '@penx/uikit/ui/label'
 import { Switch } from '@penx/uikit/ui/switch'
@@ -12,8 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/ui/table'
-import { CreationStatus } from '@penx/constants'
-import { Trans } from '@lingui/react/macro'
 import { PostItem } from './PostItem'
 
 interface PostListProps {}
@@ -40,23 +40,25 @@ export function PostList({}: PostListProps) {
             setPublished(checked)
           }}
         />
-        <Label htmlFor="only-published">Only published</Label>
+        <Label htmlFor="only-published">
+          <Trans id="Only published"></Trans>
+        </Label>
       </div>
 
       <Table>
         <TableHeader>
           <TableRow>
             <TableHead>
-              <Trans>User</Trans>
+              <Trans id="User"></Trans>
             </TableHead>
             <TableHead>
-              <Trans>Link</Trans>
+              <Trans id="Link"></Trans>
             </TableHead>
             <TableHead>
-              <Trans>Date</Trans>
+              <Trans id="Date"></Trans>
             </TableHead>
             <TableHead>
-              <Trans>Operation</Trans>
+              <Trans id="Operation"></Trans>
             </TableHead>
           </TableRow>
         </TableHeader>

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateSiteState, useSite } from '@penx/hooks/useSite'
 import { defaultNavLinks } from '@penx/constants'
@@ -10,7 +10,7 @@ import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
 import { api } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'
 import { ArrowDown, ArrowUp, Edit3, Eye, EyeOff } from 'lucide-react'
@@ -99,14 +99,14 @@ export const Item = forwardRef<HTMLDivElement, Props>(
         </div>
 
         <div className="flex-1">
-          {item.type === NavLinkType.PAGE && <Trans>Header</Trans>}
-          {item.type === NavLinkType.BUILTIN && <Trans>Builtin</Trans>}
-          {item.type === NavLinkType.TAG && <Trans>Tag</Trans>}
-          {item.type === NavLinkType.CUSTOM && <Trans>Custom</Trans>}
+          {item.type === NavLinkType.PAGE && <Trans id="Header"></Trans>}
+          {item.type === NavLinkType.BUILTIN && <Trans id="Builtin"></Trans>}
+          {item.type === NavLinkType.TAG && <Trans id="Tag"></Trans>}
+          {item.type === NavLinkType.CUSTOM && <Trans id="Custom"></Trans>}
         </div>
         <div className="flex-1">
-          {item.location === NavLinkLocation.HEADER && <Trans>Header</Trans>}
-          {item.location === NavLinkLocation.FOOTER && <Trans>Footer</Trans>}
+          {item.location === NavLinkLocation.HEADER && <Trans id="Header"></Trans>}
+          {item.location === NavLinkLocation.FOOTER && <Trans id="Footer"></Trans>}
         </div>
         <div className="flex-1">{item.pathname}</div>
         <div className="flex flex-1 items-center gap-1">

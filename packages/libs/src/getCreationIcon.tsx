@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Mold } from '@prisma/client'
 import {
   AudioLinesIcon,

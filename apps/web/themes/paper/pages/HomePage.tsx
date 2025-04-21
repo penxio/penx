@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { ContentRender } from '@penx/content-render'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { ProjectsBlock } from '@penx/editor-custom-plugins'
@@ -28,7 +28,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
       <div className="">
         <div className="flex items-center justify-between pb-6 pt-6">
           <h1 className="text-foreground text-xl font-medium leading-none tracking-tight sm:text-3xl">
-            <Trans>Latest</Trans>
+            <Trans id="Latest"></Trans>
           </h1>
 
           {posts.length > LATEST_POSTS_LIMIT && (
@@ -41,7 +41,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
           )}
         </div>
         <div className="grid grid-cols-1 gap-3">
-          {!posts.length && <Trans>No posts found.</Trans>}
+          {!posts.length && <Trans id="No posts found."></Trans>}
           {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
             return <PostItem key={post.slug} creation={post} />
           })}

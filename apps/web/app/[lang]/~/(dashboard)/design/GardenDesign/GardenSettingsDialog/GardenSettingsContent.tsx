@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
+import { CardStyle } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useSite } from '@penx/hooks/useSite'
-import { CardStyle } from '@penx/constants'
 import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
 import { useThemeName } from '../../hooks/useThemeName'
 import { useDesignContext } from '../hooks/DesignContext'
 import { CardStyleSelect } from './CardStyleSelect'
@@ -113,7 +113,7 @@ export function GardenSettingsContent({}: Props) {
 
       <div>
         <div className="text-sm font-semibold">
-          <Trans>Card style</Trans>
+          <Trans id="Card style"></Trans>
         </div>
         <CardStyleSelect
           value={cardStyle}

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateCreationState } from '@penx/hooks/useCreation'
@@ -32,7 +32,7 @@ export function ChangeType({ creation }: { creation: CreationById }) {
       </PopoverTrigger>
       <PopoverContent align="start" className="w-48 p-2">
         <div className="mb-1 pl-2 text-sm font-semibold">
-          <Trans>Change type</Trans>
+          <Trans id="Change type"></Trans>
         </div>
         {site.molds.map((mold) => {
           const name = getMoldName(mold)

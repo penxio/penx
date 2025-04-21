@@ -1,10 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { GardenCardType, ROOT_HOST, SocialType } from '@penx/constants'
-import { CreationType } from '@penx/types'
-import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import {
   BookOpenTextIcon,
@@ -17,6 +14,9 @@ import {
   PodcastIcon,
   TextIcon,
 } from 'lucide-react'
+import { GardenCardType, ROOT_HOST, SocialType } from '@penx/constants'
+import { CreationType } from '@penx/types'
+import { cn } from '@penx/utils'
 import { BarToggle } from './BarToggle'
 import { DesignSettings } from './DesignSettings'
 import { BarType, useDesignContext } from './hooks/DesignContext'
@@ -68,25 +68,25 @@ export function GardenDesignBar() {
           <div className="grid grid-cols-3 gap-2">
             <Item name="Title" type={GardenCardType.TITLE} {...props}>
               <span className="text-sm font-bold">
-                <Trans>Title</Trans>
+                <Trans id="Title"></Trans>
               </span>
             </Item>
             <Item
-              name={<Trans>Text</Trans>}
+              name={<Trans id="Text"></Trans>}
               type={GardenCardType.TEXT}
               {...props}
             >
               <TextIcon />
             </Item>
             <Item
-              name={<Trans>Image</Trans>}
+              name={<Trans id="Image"></Trans>}
               type={CreationType.IMAGE}
               {...props}
             >
               <ImageIcon />
             </Item>
             <Item
-              name={<Trans>Articles</Trans>}
+              name={<Trans id="Articles"></Trans>}
               type={CreationType.ARTICLE}
               {...props}
               className=""
@@ -94,42 +94,42 @@ export function GardenDesignBar() {
               <FileTextIcon />
             </Item>
             <Item
-              name={<Trans>Podcasts</Trans>}
+              name={<Trans id="Podcasts"></Trans>}
               type={CreationType.AUDIO}
               {...props}
             >
               <PodcastIcon />
             </Item>
             <Item
-              name={<Trans>Areas</Trans>}
+              name={<Trans id="Areas"></Trans>}
               type={GardenCardType.AREA}
               {...props}
             >
               <BookOpenTextIcon />
             </Item>
             <Item
-              name={<Trans>Friends</Trans>}
+              name={<Trans id="Friends"></Trans>}
               type={GardenCardType.FRIENDS}
               {...props}
             >
               <HandshakeIcon />
             </Item>
             <Item
-              name={<Trans>Projects</Trans>}
+              name={<Trans id="Projects"></Trans>}
               type={CreationType.PROJECT}
               {...props}
             >
               <KanbanIcon />
             </Item>
             <Item
-              name={<Trans>Comments</Trans>}
+              name={<Trans id="Comments"></Trans>}
               type={GardenCardType.COMMENTS}
               {...props}
             >
               <MessageCircleMoreIcon />
             </Item>
             <Item
-              name={<Trans>Guestbook</Trans>}
+              name={<Trans id="Guestbook"></Trans>}
               type={GardenCardType.GUESTBOOK}
               {...props}
             >

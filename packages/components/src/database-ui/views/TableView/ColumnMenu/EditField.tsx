@@ -2,13 +2,13 @@
 
 import { FormEvent, forwardRef } from 'react'
 import { Controller } from 'react-hook-form'
-import { useDatabaseContext } from '@penx/components/database-ui/DatabaseProvider'
-import { Button } from '@penx/uikit/ui/button'
-import { Input } from '@penx/uikit/ui/input'
-import { ColumnType, Option } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Column } from '@prisma/client'
 import { ChevronDown, X } from 'lucide-react'
+import { useDatabaseContext } from '@penx/components/database-ui/DatabaseProvider'
+import { ColumnType, Option } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
+import { Input } from '@penx/uikit/ui/input'
 import { FieldSelectPopover } from '../FieldSelectPopover'
 import { useEditColumnForm } from '../useEditColumnForm'
 
@@ -42,7 +42,7 @@ export function EditField({ column, onSave, onCancel, close }: EditFieldProps) {
       />
 
       <div className="text-foreground/50 -mb-1 text-xs">
-        <Trans>Area name</Trans>
+        <Trans id="Area name"></Trans>
       </div>
       <Controller
         name="name"

@@ -1,6 +1,6 @@
 import { Creation, Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import { ArrowUpRight } from 'lucide-react'
 import { Badge } from '@penx/uikit/ui/badge'
@@ -17,7 +17,7 @@ export function PhotoListWidget({ site, creations, className }: Props) {
   return (
     <div className="relative mx-auto max-w-2xl">
       <PageTitle className="">
-        <Trans>Photos</Trans>
+        <Trans id="Photos"></Trans>
       </PageTitle>
 
       <div className="columns-1 gap-x-6 sm:columns-2 md:columns-2">

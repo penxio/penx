@@ -1,10 +1,10 @@
 'use client'
 
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { Trans } from '@lingui/react'
+import { Link, useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { Link, useRouter } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 export function DeployOwnButton() {
   const { data } = useSession()
@@ -18,10 +18,10 @@ export function DeployOwnButton() {
     >
       <Link href="/self-hosted" className="overflow-hidden">
         <div>
-          <Trans>Deploy my own</Trans>
+          <Trans id="Deploy my own"></Trans>
         </div>
         {/* <div className="absolute top-0 right-0 text-xs bg-emerald-500 px-1 py-[] rounded-bl-lg text-white">
-        <Trans>Recommend</Trans>
+        <Trans id="Recommend"></Trans>
           
         </div> */}
       </Link>

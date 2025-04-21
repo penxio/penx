@@ -6,6 +6,7 @@ import 'react-resizable/css/styles.css'
 // import 'react-datepicker/dist/react-datepicker.css'
 import '@glideapps/glide-data-grid/dist/index.css'
 import { allMessages } from '@/appRouterI18n'
+import { SubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog'
 import { initLingui } from '@/initLingui'
 // import { setI18n } from '@lingui/react/server'
 import { Metadata } from 'next'
@@ -95,8 +96,10 @@ export default async function RootLayout({
                 template='<div class="bar" role="bar"><div class="peg"></div></div>'
               />
 
-              {/* <GoogleOauthDialog */}
-              <DashboardLayout>{children}</DashboardLayout>
+              <DashboardLayout>
+                <SubscriptionGuideDialog />
+                {children}
+              </DashboardLayout>
             </ThemeProvider>
 
             <div id="portal" />

@@ -9,7 +9,7 @@ import {
   useProfile,
   useSignIn,
 } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useSession } from '@penx/session'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Creation } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { Input } from '@penx/uikit/ui/input'
@@ -32,7 +32,7 @@ export function CommentSheet({ creation }: Props) {
         <SheetContent className="flex flex-col gap-6 overflow-y-auto">
           <SheetHeader>
             <SheetTitle>
-              <Trans>Comments</Trans>
+              <Trans id="Comments"></Trans>
             </SheetTitle>
           </SheetHeader>
           <div className="px-4">

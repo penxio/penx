@@ -2,7 +2,7 @@
 
 import { Button } from '@penx/uikit/ui/button'
 import { Site } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PencilIcon, PenToolIcon } from 'lucide-react'
 
 interface Props {
@@ -24,7 +24,7 @@ export const CreatePostButton = ({ className }: Props) => {
       {/* <PenToolIcon size={16} className="text-foreground/80" /> */}
       <span className="icon-[iconamoon--edit-light] size-5"></span>
       {/* <PencilIcon size={16} className="text-foreground/80" /> */}
-      <Trans>Write</Trans>
+      <Trans id="Write"></Trans>
     </Button>
   )
 }

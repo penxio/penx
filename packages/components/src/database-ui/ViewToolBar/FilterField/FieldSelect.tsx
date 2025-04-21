@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/ui/popover'
-import { mappedByKey } from '@/lib/shared'
+import { mappedByKey } from '@penx/utils'
 import { Filter } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'
 import { Column } from '@prisma/client'

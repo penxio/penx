@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { CircleIcon, UserCircle, UserCircle2 } from 'lucide-react'
 import { Button, ButtonProps } from '@penx/uikit/ui/button'
 import { useAuthStatus } from '@penx/widgets/LoginDialog/useAuthStatus'
@@ -25,7 +25,7 @@ export function LoginButton({ appearance = 'button', ...rest }: Props) {
       {appearance === 'icon' ? (
         <UserCircle size={24} className="text-foreground/80" />
       ) : (
-        <Trans>Sign in</Trans>
+        <Trans id="Sign in"></Trans>
       )}
     </Button>
   )

@@ -8,7 +8,7 @@ import DataEditor, {
   Item,
   type GridColumn,
 } from '@glideapps/glide-data-grid'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { useTheme } from 'next-themes'
 import { FileCell } from '@penx/components/cells/file-cell'
 import { cellRenderers } from '@penx/components/cells/index'
@@ -42,32 +42,32 @@ export function AssetsTable({ assets }: AssetsTableProps) {
 
   const initialColumns = [
     {
-      title: <Trans>Asset</Trans>,
+      title: <Trans id="Asset"></Trans>,
       id: 'asset',
       hasMenu: false,
     },
     {
-      title: <Trans>Filename</Trans>,
+      title: <Trans id="Filename"></Trans>,
       id: 'name',
       hasMenu: false,
     },
     {
-      title: <Trans>Type</Trans>,
+      title: <Trans id="Type"></Trans>,
       id: 'contentType',
       hasMenu: false,
     },
     {
-      title: <Trans>Public</Trans>,
+      title: <Trans id="Public"></Trans>,
       id: 'isPublic',
       hasMenu: false,
     },
     {
-      title: <Trans>Size</Trans>,
+      title: <Trans id="Size"></Trans>,
       id: 'size',
       hasMenu: false,
     },
     {
-      title: <Trans>Created At</Trans>,
+      title: <Trans id="Created At"></Trans>,
       id: 'createdAt',
       hasMenu: false,
     },

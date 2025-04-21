@@ -1,8 +1,8 @@
 'use client'
 
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+import { Trans } from '@lingui/react'
 import { CardStyle } from '@penx/constants'
-import { Trans } from '@lingui/react/macro'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
 
 interface Props {
   value: CardStyle
@@ -21,15 +21,15 @@ export function CardStyleSelect({ value, onChange }: Props) {
       type="single"
     >
       <ToggleGroupItem value={CardStyle.SHADOW} className="">
-        <Trans>Shadow</Trans>
+        <Trans id="Shadow"></Trans>
       </ToggleGroupItem>
 
       <ToggleGroupItem value={CardStyle.BORDERED} className="">
-        <Trans>Bordered</Trans>
+        <Trans id="Bordered"></Trans>
       </ToggleGroupItem>
 
       <ToggleGroupItem value={CardStyle.UNSTYLED} className="">
-        <Trans>Unstyled</Trans>
+        <Trans id="Unstyled"></Trans>
       </ToggleGroupItem>
     </ToggleGroup>
   )

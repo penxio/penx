@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Mold } from '@prisma/client'
 import {
   Calendar,
@@ -13,16 +13,15 @@ import {
 import { toast } from 'sonner'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
-import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { addWidget } from '@penx/hooks/useAreaItem'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { getMoldName } from '@penx/libs/getMoldName'
-import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
+import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
@@ -40,7 +39,6 @@ interface Props {
 export function AddWidgetButton({ className }: Props) {
   const site = useSiteContext()
 
-  const { push } = useRouter()
   const { session } = useSession()
   const [isLoading, setLoading] = useState(false)
   const [type, setType] = useState<CreationType>('' as any)
@@ -79,7 +77,7 @@ export function AddWidgetButton({ className }: Props) {
             className="bg-foreground/8 hover:bg-foreground/10"
             onClick={() => setOpen(true)}
           >
-            <Trans>Add widget</Trans>
+            <Trans id="Add widget"></Trans>
           </Button>
         </PopoverTrigger>
         <PopoverContent align="start" className="w-48 p-2">
@@ -89,7 +87,7 @@ export function AddWidgetButton({ className }: Props) {
                 return (
                   <>
                     <Rows4Icon size={16} />
-                    <Trans>All creations</Trans>
+                    <Trans id="All creations"></Trans>
                   </>
                 )
               }
@@ -98,7 +96,7 @@ export function AddWidgetButton({ className }: Props) {
                 return (
                   <>
                     <GroupIcon size={16} />
-                    <Trans>Collection</Trans>
+                    <Trans id="Collection"></Trans>
                   </>
                 )
               }
@@ -106,7 +104,7 @@ export function AddWidgetButton({ className }: Props) {
                 return (
                   <>
                     <StarIcon size={16} />
-                    <Trans>Favorites</Trans>
+                    <Trans id="Favorites"></Trans>
                   </>
                 )
               }
@@ -114,7 +112,7 @@ export function AddWidgetButton({ className }: Props) {
                 return (
                   <>
                     <FilePenLine size={16} />
-                    <Trans>Recently edited</Trans>
+                    <Trans id="Recently edited"></Trans>
                   </>
                 )
               }
@@ -122,7 +120,7 @@ export function AddWidgetButton({ className }: Props) {
                 return (
                   <>
                     <Calendar size={16} />
-                    <Trans>Recently opened</Trans>
+                    <Trans id="Recently opened"></Trans>
                   </>
                 )
               }

@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { ImageIcon, X } from 'lucide-react'
 import { toast } from 'sonner'
 import { uploadFile } from '@penx/services/uploadFile'
@@ -107,7 +107,11 @@ export const CoverUpload = forwardRef<HTMLDivElement, Props>(
           <div className="z-1 absolute left-0 top-0 flex h-full w-full cursor-pointer items-center gap-1 text-xs">
             <ImageIcon size={14} />
             <div>
-              {isCover ? <Trans>Add cover</Trans> : <Trans>Add image</Trans>}
+              {isCover ? (
+                <Trans id="Add cover"></Trans>
+              ) : (
+                <Trans id="Add image"></Trans>
+              )}
             </div>
           </div>
 

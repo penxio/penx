@@ -1,9 +1,9 @@
+import { Trans } from '@lingui/react'
+import { format } from 'date-fns'
 import { Link } from '@penx/libs/i18n'
 import { Creation, Site } from '@penx/types'
-import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
-import { format } from 'date-fns'
 import { Badge } from '@penx/uikit/ui/badge'
+import { cn } from '@penx/utils'
 import { PageTitle } from './PageTitle'
 import { PodcastTips } from './PodcastTips'
 
@@ -17,7 +17,7 @@ export function PodcastListWidget({ site, creations, className }: Props) {
   return (
     <div className="relative mx-auto max-w-2xl">
       <PageTitle className="">
-        <Trans>Podcasts</Trans>
+        <Trans id="Podcasts"></Trans>
       </PageTitle>
 
       <div className="grid columns-1 gap-4">

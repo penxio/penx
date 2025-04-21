@@ -1,9 +1,9 @@
 'use client'
 
+import { Trans, useLingui } from '@lingui/react'
+import { usePathname } from 'next/navigation'
 import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
-import { Trans, useLingui } from '@lingui/react/macro'
-import { usePathname } from 'next/navigation'
 
 interface Props {
   className?: string
@@ -23,7 +23,7 @@ export function MembershipEntry({ className }: Props) {
         className,
       )}
     >
-      {isCN ? '成为会员' : <Trans>Membership</Trans>}
+      {isCN ? '成为会员' : <Trans id="Membership"></Trans>}
     </Link>
   )
 }

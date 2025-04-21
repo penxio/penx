@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from '@lingui/react'
 import {
   Dialog,
   DialogContent,
@@ -7,7 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
-import { Trans } from '@lingui/react/macro'
 import { LoginDialogContent } from './LoginDialogContent'
 import { RegisterForm } from './RegisterForm'
 import { useAuthStatus } from './useAuthStatus'
@@ -26,7 +26,7 @@ export function LoginDialog({}: Props) {
           <>
             <DialogHeader>
               <DialogTitle className="mb-4 text-center text-2xl">
-                <Trans>Welcome to PenX</Trans>
+                <Trans id="Welcome to PenX"></Trans>
               </DialogTitle>
               <DialogDescription className="hidden"></DialogDescription>
             </DialogHeader>
@@ -38,7 +38,7 @@ export function LoginDialog({}: Props) {
           <div className="h-[290px]">
             <DialogHeader>
               <DialogTitle className="mb-6 text-center text-2xl">
-                <Trans>Register to PenX</Trans>
+                <Trans id="Register to PenX"></Trans>
               </DialogTitle>
             </DialogHeader>
             <RegisterForm />
@@ -53,12 +53,14 @@ export function LoginDialog({}: Props) {
             </DialogHeader>
             <div className="item-center flex flex-1 flex-col justify-center gap-4 text-center">
               <h1 className="text-2xl font-semibold">
-                <Trans>Email validate Link sent</Trans>
+                <Trans id="Email validate Link sent"></Trans>
               </h1>
               <p className="text-green-500">
-                <Trans>
+                <Trans
+                  id="
                   Please check your email for the verification link.
-                </Trans>
+                "
+                ></Trans>
               </p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import {
   Archive,
@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
@@ -91,7 +91,7 @@ export function PostItem({ creation }: PostItemProps) {
           >
             <Edit3Icon size={14}></Edit3Icon>
             <div>
-              <Trans>Edit</Trans>
+              <Trans id="Edit"></Trans>
             </div>
           </Button>
         </Link>

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { Link } from '@penx/libs/i18n'
 import { NavLink } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 
 interface Props {
   link: NavLink
@@ -11,18 +11,18 @@ interface Props {
 
 export function NavigationItem({ link, className }: Props) {
   let title = link.title as ReactNode
-  if (link.pathname === '/') title = <Trans>Home</Trans>
-  if (link.pathname === '/posts') title = <Trans>Posts</Trans>
-  if (link.pathname === '/writings') title = <Trans>Writings</Trans>
-  if (link.pathname === '/podcasts') title = <Trans>Podcasts</Trans>
-  if (link.pathname === '/notes') title = <Trans>Notes</Trans>
-  if (link.pathname === '/areas') title = <Trans>Areas</Trans>
-  if (link.pathname === '/projects') title = <Trans>Projects</Trans>
-  if (link.pathname === '/friends') title = <Trans>Friends</Trans>
-  if (link.pathname === '/ama') title = <Trans>AMA</Trans>
-  if (link.pathname === '/guestbook') title = <Trans>Guestbook</Trans>
-  if (link.pathname === '/tags') title = <Trans>Tags</Trans>
-  if (link.pathname === '/about') title = <Trans>About</Trans>
+  if (link.pathname === '/') title = <Trans id="Home"></Trans>
+  if (link.pathname === '/posts') title = <Trans id="Posts"></Trans>
+  if (link.pathname === '/writings') title = <Trans id="Writings"></Trans>
+  if (link.pathname === '/podcasts') title = <Trans id="Podcasts"></Trans>
+  if (link.pathname === '/notes') title = <Trans id="Notes"></Trans>
+  if (link.pathname === '/areas') title = <Trans id="Areas"></Trans>
+  if (link.pathname === '/projects') title = <Trans id="Projects"></Trans>
+  if (link.pathname === '/friends') title = <Trans id="Friends"></Trans>
+  if (link.pathname === '/ama') title = <Trans id="AMA"></Trans>
+  if (link.pathname === '/guestbook') title = <Trans id="Guestbook"></Trans>
+  if (link.pathname === '/tags') title = <Trans id="Tags"></Trans>
+  if (link.pathname === '/about') title = <Trans id="About"></Trans>
 
   return (
     <Link

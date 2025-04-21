@@ -1,8 +1,8 @@
-import { ContentRender } from '@penx/content-render'
+import { Trans } from '@lingui/react'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { LATEST_POSTS_LIMIT } from '@penx/constants'
+import { ContentRender } from '@penx/content-render'
 import { Creation, Site } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
 import { PostItem } from '../components/PostItem'
 
 interface Props {
@@ -20,11 +20,11 @@ export function HomePage({ posts = [], site, about }: Props) {
       <div className="">
         <div className="flex items-center justify-between pb-6 pt-6">
           <h1 className="text-foreground text-xl font-medium leading-none tracking-tight sm:text-3xl">
-            <Trans>Latest</Trans>
+            <Trans id="Latest"></Trans>
           </h1>
         </div>
         <div className="grid grid-cols-1 gap-3">
-          {!posts.length && <Trans>No posts found.</Trans>}
+          {!posts.length && <Trans id="No posts found."></Trans>}
           {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
             return <PostItem key={post.slug} creation={post} />
           })}
@@ -35,7 +35,7 @@ export function HomePage({ posts = [], site, about }: Props) {
         <div className="mt-10">
           <div className="flex items-center justify-between pb-6 pt-6">
             <h1 className="text-foreground text-xl font-medium leading-none tracking-tight sm:text-3xl">
-              <Trans>Most Popular</Trans>
+              <Trans id="Most Popular"></Trans>
             </h1>
           </div>
           <div className="grid grid-cols-1 gap-3">

@@ -6,7 +6,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { useAppLoading } from '@penx/hooks/useAppLoading'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { PlusIcon } from 'lucide-react'
 import { AddWidgetButton } from './AddWidgetButton'
 import { WidgetList } from './WidgetList'
@@ -20,7 +20,7 @@ export function AreaWidgets({}: Props) {
     <>
       <div className="mb-1 flex items-center justify-between px-2">
         <div className="text-foreground/50 text-xs">
-          <Trans>Creations</Trans>
+          <Trans id="Creations"></Trans>
         </div>
         <AddCreationButton></AddCreationButton>
       </div>

@@ -2,7 +2,7 @@
 
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { getWidgetName } from '@/lib/getWidgetName'
+import { getWidgetName } from '@penx/libs/getWidgetName'
 import { CreationType } from '@penx/types'
 import { Panel, PanelType, Widget } from '@penx/types'
 import { Mold } from '@prisma/client'

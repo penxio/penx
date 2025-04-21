@@ -211,3 +211,16 @@ export function upperFirst(str: string): string {
 export function getRandomInt(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+/**
+ * @example
+ * const old = [{id: 1, someKey: "foo"}, {id: 2, someKey: "bar"}]
+ * to
+ * const new = {1: {id: 1, someKey: "foo"}, 2:{id: 2, someKey: "bar"}  }
+ * @param items
+ */
+export function mappedByKey<T>(items: T[] = [], key = 'id') {
+  return items.reduce<Record<string, T>>((result, i: any) => {
+    return { ...result, [i[key]]: i }
+  }, {})
+}

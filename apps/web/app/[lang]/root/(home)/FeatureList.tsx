@@ -1,5 +1,4 @@
-import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import {
   BotIcon,
   BugIcon,
@@ -11,6 +10,7 @@ import {
   UserIcon,
   ZapIcon,
 } from 'lucide-react'
+import { cn } from '@penx/utils'
 
 type FeatureItem = {
   icon?: any
@@ -24,76 +24,100 @@ export function FeatureList() {
   const features: FeatureItem[] = [
     {
       icon: <BotIcon size={24} />,
-      title: <Trans>AI-assistants</Trans>,
+      title: <Trans id="AI-assistants" message="AI-assistants"></Trans>,
       description: (
-        <Trans>
-          Enhance your content creation with AI-powered tools and suggestions.
-        </Trans>
+        <Trans
+          id="Enhance your content creation with AI-powered tools and suggestions."
+          message="Enhance your content creation with AI-powered tools and suggestions."
+        ></Trans>
       ),
     },
     {
       icon: <UserIcon size={24} />,
-      title: <Trans>Build for super individual</Trans>,
+      title: (
+        <Trans
+          id="Build for super individual"
+          message="Build for super individual"
+        ></Trans>
+      ),
       description: (
-        <Trans>
-          Tailored for individual creators to express themselves freely.
-        </Trans>
+        <Trans
+          id="Tailored for individual creators to express themselves freely."
+          message="Tailored for individual creators to express themselves freely."
+        ></Trans>
       ),
     },
     {
       icon: <MailIcon size={24} />,
-      title: <Trans>Newsletters built-in</Trans>,
+      title: (
+        <Trans id="Newsletters built-in" message="Newsletters built-in"></Trans>
+      ),
       description: (
-        <Trans>
-          Easily create and send newsletters to keep your audience engaged.
-        </Trans>
+        <Trans
+          id="Easily create and send newsletters to keep your audience engaged."
+          message=""
+        ></Trans>
       ),
     },
     {
       icon: <ZapIcon size={24} />,
-      title: <Trans>Memberships built-in</Trans>,
+      title: (
+        <Trans id="Memberships built-in" message="Memberships built-in"></Trans>
+      ),
       description: (
-        <Trans>Offer exclusive content and benefits to loyal members.</Trans>
+        <Trans
+          id="Offer exclusive content and benefits to loyal members."
+          message="Offer exclusive content and benefits to loyal members."
+        ></Trans>
       ),
     },
     {
       icon: <BugIcon size={24} />,
-      title: <Trans>SEO friendly</Trans>,
+      title: <Trans id="SEO friendly" message="SEO friendly"></Trans>,
       description: (
-        <Trans>Optimize your content for search engines with ease.</Trans>
+        <Trans
+          id="Optimize your content for search engines with ease."
+          message="Optimize your content for search engines with ease."
+        ></Trans>
       ),
     },
     {
       icon: <PencilIcon size={24} />,
-      title: <Trans>Modern editor</Trans>,
+      title: <Trans id="Modern editor" message="Modern editor"></Trans>,
       description: (
-        <Trans>
-          Enjoy a seamless writing experience with our intuitive editor.
-        </Trans>
+        <Trans
+          id="Enjoy a seamless writing experience with our intuitive editor."
+          message="Enjoy a seamless writing experience with our intuitive editor."
+        ></Trans>
       ),
     },
     {
-      title: <Trans>Data ownership</Trans>,
+      title: <Trans id="Data ownership" message="Data ownership"></Trans>,
       description: (
-        <Trans>Maintain full control over your content and data.</Trans>
+        <Trans
+          id="Maintain full control over your content and data."
+          message="Maintain full control over your content and data."
+        ></Trans>
       ),
     },
     {
       icon: <MessageCircleMore size={24} />,
-      title: <Trans>Comments built-in</Trans>,
+      title: <Trans id="Comments built-in" message="Comments built-in"></Trans>,
       description: (
-        <Trans>
-          Engage with your audience through integrated comment features.
-        </Trans>
+        <Trans
+          id="Engage with your audience through integrated comment features."
+          message="Engage with your audience through integrated comment features."
+        ></Trans>
       ),
     },
     {
       icon: <PaletteIcon size={24} />,
-      title: <Trans>Beautiful themes</Trans>,
+      title: <Trans id="Beautiful themes" message="Beautiful themes"></Trans>,
       description: (
-        <Trans>
-          Customize your site with a variety of visually appealing themes.
-        </Trans>
+        <Trans
+          id="Customize your site with a variety of visually appealing themes."
+          message="Customize your site with a variety of visually appealing themes."
+        ></Trans>
       ),
     },
   ]
@@ -102,10 +126,13 @@ export function FeatureList() {
     <div className="mt-10 space-y-10">
       <div className="space-y-4 text-center">
         <div className="text-5xl font-bold">
-          <Trans>Features</Trans>
+          <Trans id="Features" message="Features"></Trans>
         </div>
         <div className="text-foreground/60 text-xl">
-          <Trans>Powerful features to build to digital garden</Trans>
+          <Trans
+            id="Powerful features to build to digital garden"
+            message="Powerful features to build to digital garden"
+          ></Trans>
         </div>
       </div>
       <div className="bg-transparent">

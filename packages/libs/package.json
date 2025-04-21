@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.ts",
+    "./*": [
+      "./src/*.ts",
+      "./src/*.tsx"
+    ],
+    "./getWidgetName": "./src/getWidgetName.tsx",
     "./i18n": "./src/i18n.tsx",
-    "./getCreationIcon": "./src/getCreationIcon.tsx",
-    "./getMoldName": "./src/getMoldName.tsx"
+    "./getMoldName": "./src/getMoldName.tsx",
+    "./getCreationIcon": "./src/getCreationIcon.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import {
   Archive,
@@ -13,7 +13,6 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
-import { ConfirmDialog } from '@penx/components/ConfirmDialog'
 import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
@@ -30,6 +29,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
 import { cn, getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
   creation: CreationById
@@ -87,7 +87,7 @@ export function PostItem({ creation }: PostItemProps) {
           >
             <Edit3Icon size={14}></Edit3Icon>
             <div>
-              <Trans>Edit</Trans>
+              <Trans id="Edit"></Trans>
             </div>
           </Button>
         </Link>

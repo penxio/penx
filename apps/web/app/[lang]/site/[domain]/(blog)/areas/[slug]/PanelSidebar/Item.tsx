@@ -6,11 +6,11 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import { toggleCollapsed } from '@penx/hooks/useAreaItem'
 import { WidgetType } from '@penx/constants'
-import { getWidgetName } from '@/lib/getWidgetName'
+import { getWidgetName } from '@penx/libs/getWidgetName'
 import { Widget } from '@penx/types'
 import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import {
   ChevronRightIcon,

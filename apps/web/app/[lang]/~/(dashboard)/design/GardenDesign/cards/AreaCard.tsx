@@ -1,11 +1,11 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
+import { Trans } from '@lingui/react'
+import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useSite } from '@penx/hooks/useSite'
 import { Link } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
-import { produce } from 'immer'
 import { trpc } from '@penx/trpc-client'
 import { LayoutItem } from '@penx/types'
 import {
@@ -35,7 +35,7 @@ export function AreaCard({ layoutItem, layout, setLayout }: Props) {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-3 px-2">
       <div className="text-2xl font-bold">
-        <Trans>Area</Trans>
+        <Trans id="Area"></Trans>
       </div>
 
       <Select

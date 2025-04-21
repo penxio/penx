@@ -1,6 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans } from '@lingui/react'
+import { toast } from 'sonner'
+import { refetchAreaCreations } from '@penx/hooks/useAreaCreations'
+import { closePanel, resetPanels, usePanels } from '@penx/hooks/usePanels'
+import { localDB } from '@penx/local-db'
+import { api } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -12,13 +18,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/ui/dialog'
-import { refetchAreaCreations } from '@penx/hooks/useAreaCreations'
-import { closePanel, resetPanels, usePanels } from '@penx/hooks/usePanels'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { localDB } from '@penx/local-db'
-import { api } from '@penx/trpc-client'
-import { Trans } from '@lingui/react/macro'
-import { toast } from 'sonner'
 import { useDeletePostDialog } from './useDeletePostDialog'
 
 interface Props {}
@@ -49,17 +49,17 @@ export function DeletePostDialog({}: Props) {
       <DialogContent closable={false} className="">
         <DialogHeader className="">
           <DialogTitle className="">
-            <Trans>Are you sure delete it permanently?</Trans>
+            <Trans id="Are you sure delete it permanently?"></Trans>
           </DialogTitle>
           <DialogDescription>
-            <Trans>Once deleted, You can't undo this action.</Trans>
+            <Trans id="Once deleted, You can't undo this action."></Trans>
           </DialogDescription>
         </DialogHeader>
 
         <DialogFooter className="flex flex-row gap-2">
           <DialogClose asChild>
             <Button className="w-20" variant="outline">
-              <Trans>Cancel</Trans>
+              <Trans id="Cancel"></Trans>
             </Button>
           </DialogClose>
           <Button
@@ -71,7 +71,7 @@ export function DeletePostDialog({}: Props) {
             {loading ? (
               <LoadingDots className="bg-background" />
             ) : (
-              <Trans>Delete</Trans>
+              <Trans id="Delete"></Trans>
             )}
           </Button>
         </DialogFooter>

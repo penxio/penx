@@ -1,16 +1,16 @@
-import { ContentRender } from '@penx/content-render'
+import { initLingui } from '@/initLingui'
+import { getArea, getSite } from '@/lib/fetchers'
+import { Trans } from '@lingui/react'
+import { AreaType } from '@prisma/client'
+import { Metadata } from 'next'
 import { Footer } from '@penx/components/theme-ui/Footer'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { Toc } from '@penx/components/theme-ui/Toc'
-import { initLingui } from '@/initLingui'
 import { editorDefaultValue } from '@penx/constants'
-import { getArea, getSite } from '@/lib/fetchers'
+import { ContentRender } from '@penx/content-render'
+import linguiConfig from '@penx/libs/lingui.config'
 import { AppearanceConfig } from '@penx/types'
 import { cn } from '@penx/utils'
-import linguiConfig from '@penx/libs/lingui.config'
-import { Trans } from '@lingui/react/macro'
-import { AreaType } from '@prisma/client'
-import { Metadata } from 'next'
 import { Header } from './book/Header'
 import { Sidebar } from './book/Sidebar'
 import { AreaInfo } from './column/AreaInfo'
@@ -63,7 +63,7 @@ export default async function Page(props: {
           <header className="space-y-4 pb-4">
             <div className="mb-4">
               <PageTitle className="mb-2 mt-4">
-                <Trans>About</Trans>
+                <Trans id="About"></Trans>
               </PageTitle>
             </div>
           </header>

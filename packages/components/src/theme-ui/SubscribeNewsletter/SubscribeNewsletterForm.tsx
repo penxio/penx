@@ -2,9 +2,14 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { useSession } from '@penx/session'
+import { api } from '@penx/trpc-client'
+import { Site } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -17,12 +22,7 @@ import {
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { Site } from '@penx/types'
-import { api } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { toast } from 'sonner'
-import { z } from 'zod'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'
 
 const FormSchema = z.object({
@@ -61,7 +61,7 @@ export function SubscribeNewsletterForm({ site }: Props) {
         source: 'user',
       })
 
-      toast.success(<Trans>Subscribed successfully!</Trans>)
+      toast.success(<Trans id="Subscribed successfully!"></Trans>)
       setIsOpen(false)
     } catch (error) {
       console.log('========error:', error)
@@ -82,13 +82,10 @@ export function SubscribeNewsletterForm({ site }: Props) {
           </Avatar>
 
           <div className="mt-6 text-2xl font-semibold">
-            <Trans>Subscribe to</Trans> {site.name}
+            <Trans id="Subscribe to"></Trans> {site.name}
           </div>
           <div className="text-foreground/60 w-8/12 text-center">
-            <Trans>
-              By subscribing, you'll receive the latest posts directly in your
-              inbox.
-            </Trans>
+            <Trans id="By subscribing, you'll receive the latest posts directly in your inbox."></Trans>
           </div>
         </div>
         <FormField
@@ -97,7 +94,7 @@ export function SubscribeNewsletterForm({ site }: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Your email</Trans>
+                <Trans id="Your email"></Trans>
               </FormLabel>
               <FormControl>
                 <Input
@@ -122,7 +119,7 @@ export function SubscribeNewsletterForm({ site }: Props) {
               <LoadingDots />
             ) : (
               <p>
-                <Trans>Subscribe</Trans>
+                <Trans id="Subscribe"></Trans>
               </p>
             )}
           </Button>

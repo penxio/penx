@@ -2,7 +2,13 @@
 
 import { useMemo, useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { editorDefaultValue } from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
+import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Button } from '@penx/uikit/ui/button'
@@ -16,13 +22,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { editorDefaultValue } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useCreationTypeDialog } from './useCreationTypeDialog'
 
 const FormSchema = z.object({
@@ -74,7 +74,7 @@ export function CreationTypeForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Name</Trans>
+                <Trans id="Name"></Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -90,7 +90,7 @@ export function CreationTypeForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans>Slug</Trans>
+                <Trans id="Slug"></Trans>
               </FormLabel>
               <FormControl>
                 <Input disabled placeholder="" {...field} className="w-full" />

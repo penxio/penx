@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react/macro'
+import { Trans } from '@lingui/react'
 import { Creation, Site } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Separator } from '@penx/uikit/ui/separator'
@@ -40,7 +40,7 @@ export function PostMetadata({ site, creation, className }: Props) {
           </div>
           <dl className="text-foreground/50 flex items-center gap-2 text-sm">
             <dt className="sr-only">
-              <Trans>Published on</Trans>
+              <Trans id="Published on"></Trans>
             </dt>
             <dd className="">
               <time>{formatDate(creation.updatedAt)}</time>
