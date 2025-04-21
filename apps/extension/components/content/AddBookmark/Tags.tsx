@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/hooks/useSession'
+import { useSession } from '@/hooks/useSession'
 import { addCreationTag, createTag } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { Command } from 'cmdk'

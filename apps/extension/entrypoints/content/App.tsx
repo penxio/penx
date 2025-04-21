@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { ContentView } from '@penx/components/content/ContentView'
-import { Providers } from '@penx/components/providers'
-import { ThemeProvider } from '@penx/components/ThemeProvider'
+import { ContentView } from '@/components/content/ContentView'
+import { Providers } from '@/components/providers'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 export default () => {
   return (
     <Providers>
-      <ThemeProvider className="">
+      <ThemeProvider>
         <ContentView />
       </ThemeProvider>
     </Providers>

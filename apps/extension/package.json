@@ -16,6 +16,12 @@
   },
   "dependencies": {
     "@mozilla/readability": "^0.6.0",
+
+    "@penx/emitter": "workspace:*",
+    "@penx/hooks": "workspace:*",
+    "@penx/widgets": "workspace:*",
+    "@penx/editor-plugins": "workspace:*",
+    "@penx/encryption": "workspace:*",
     "@penx/api": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/components": "workspace:*",

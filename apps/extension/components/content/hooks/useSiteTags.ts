@@ -1,4 +1,4 @@
-import { useSession } from '@penx/hooks/useSession'
+import { useSession } from '@/hooks/useSession'
 import { BASE_URL } from '@/lib/constants'
 import { useQuery } from '@tanstack/react-query'
 import ky from 'ky'
