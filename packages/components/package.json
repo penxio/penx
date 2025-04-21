@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./tailwind.css": "./src/styles/tailwind.css",
     ".": "./src/index.ts",
     "./*": "./src/*.tsx",
     "./providers/*": "./src/providers/*.tsx",
@@ -18,8 +19,7 @@
   "devDependencies": {
     "@penx/eslint-config": "workspace:*",
     "@penx/typescript-config": "workspace:*",
-    "barrelsby": "^2.8.1",
-    "eslint": "^9.24.0",
+    "eslint": "^9.25.0",
     "typescript": "5.8.2"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "@penx/session": "workspace:*",
     "@penx/content-render": "workspace:*",
     "@penx/editor": "workspace:*",
+    "@penx/editor-plugins": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/services": "workspace:*",

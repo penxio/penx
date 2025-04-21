@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./globals.css": "./src/styles/globals.css",
+    "./tailwind.css": "./src/styles/tailwind.css",
     "./postcss.config": "./postcss.config.mjs",
     "./lib/*": "./src/lib/*.ts",
     "./ui/*": "./src/ui/*.tsx",

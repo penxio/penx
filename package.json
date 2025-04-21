@@ -6,6 +6,7 @@
     "build:web": "turbo run build -F web...",
     "dev": "turbo run dev",
     "dev:web": "turbo run dev -F web...",
+    "clean": "git clean -xdf node_modules",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
@@ -263,6 +264,7 @@
     "@types/react-dom": "^19.0.3",
     "@types/prismjs": "^1.26.3",
     "@types/lodash": "^4.17.13",
+    "tailwindcss": "^4.1.4",
     "@types/lodash.debounce": "^4.0.9",
     "prettier": "^3.5.3",
     "turbo": "^2.5.0",

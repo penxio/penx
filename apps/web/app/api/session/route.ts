@@ -268,7 +268,7 @@ export async function POST(req: NextRequest) {
       const match = compareSync(json.password, account.accessToken || '')
       if (!match) throw new Error('INVALID_PASSWORD')
 
-      await updateSession(session, account)
+      await updateSession(session, account as any)
       await registerSiteUser(hostname, account.userId)
       return Response.json(session)
     } catch (error: any) {

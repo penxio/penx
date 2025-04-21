@@ -1,4 +1,4 @@
-@import '@penx/uikit/globals.css';
+@import '@penx/uikit/tailwind.css';
 
 :root,
 :host {

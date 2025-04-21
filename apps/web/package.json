@@ -38,6 +38,7 @@
     "@penx/widgets": "workspace:*",
     "@penx/content-render": "workspace:*",
     "@penx/editor": "workspace:*",
+    "@penx/editor-plugins": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/libs": "workspace:*",

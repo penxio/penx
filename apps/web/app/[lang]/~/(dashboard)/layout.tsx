@@ -1,5 +1,4 @@
-// import '@/globals.css'
-import '@penx/uikit/globals.css'
+import '@/globals.css'
 // import '@farcaster/auth-kit/styles.css'
 import 'shikwasa/dist/style.css'
 import 'react-grid-layout/css/styles.css'
