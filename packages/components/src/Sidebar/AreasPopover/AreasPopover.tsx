@@ -49,7 +49,7 @@ export const FieldsPopover = ({ className = '' }: Props) => {
                 <span className="truncate font-semibold">{area?.name}</span>
               </div>
             </div>
-            <ChevronsUpDown className="size-3" />
+            <ChevronsUpDown className="size-3 text-red-400" />
           </div>
           <Button
             variant="ghost"

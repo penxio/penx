@@ -13,7 +13,7 @@ import {
 import { toast } from 'sonner'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
-import LoadingCircle from '@penx/components/icons/loading-circle'
+import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { addWidget } from '@penx/hooks/useAreaItem'

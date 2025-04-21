@@ -1,26 +1,26 @@
 'use client'
 
 import { ReactNode, useEffect, useMemo, useState } from 'react'
-import { AreaContext } from '@penx/components/AreaContext'
-import { AreaCreationsProvider } from '@penx/components/AreaCreationsContext'
-import { AreaDialog } from '@penx/components/AreaDialog/AreaDialog'
-import { CommandPanel } from '@penx/components/CommandPanel/CommandPanel'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/session'
-import { SiteProvider } from '@penx/contexts/SiteContext'
-import { SubscriptionGuideDialog } from '@penx/components/SubscriptionGuideDialog/SubscriptionGuideDialog'
-import { useAppLoading } from '@penx/hooks/useAppLoading'
-import { useAreaCreations } from '@penx/hooks/useAreaCreations'
-import { useAreaItem } from '@penx/hooks/useAreaItem'
-import { useSite } from '@penx/hooks/useSite'
-import { isBrowser, isServer, SIDEBAR_WIDTH } from '@penx/constants'
-import { usePathname } from '@penx/libs/i18n'
-import { CreationType } from '@penx/types'
-import { cn } from '@penx/utils'
 import { runWorker } from '@/lib/worker'
 import { Site } from '@prisma/client'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
+import { AreaContext } from '@penx/components/AreaContext'
+import { AreaDialog } from '@penx/components/AreaDialog/AreaDialog'
+import { CommandPanel } from '@penx/components/CommandPanel/CommandPanel'
+import { SubscriptionGuideDialog } from '@penx/components/SubscriptionGuideDialog/SubscriptionGuideDialog'
+import { isBrowser, isServer, SIDEBAR_WIDTH } from '@penx/constants'
+import { AreaCreationsProvider } from '@penx/contexts/AreaCreationsContext'
+import { SiteProvider } from '@penx/contexts/SiteContext'
+import { useAppLoading } from '@penx/hooks/useAppLoading'
+import { useAreaCreations } from '@penx/hooks/useAreaCreations'
+import { useAreaItem } from '@penx/hooks/useAreaItem'
+import { useSite } from '@penx/hooks/useSite'
+import { usePathname } from '@penx/libs/i18n'
+import { useSession } from '@penx/session'
+import { CreationType } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { cn } from '@penx/utils'
 import { AppSidebar } from '../Sidebar/app-sidebar'
 import { PanelLayout } from './PanelLayout'
 import { PanelList } from './PanelList'
@@ -57,7 +57,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
   return (
     <SiteProvider site={site as any}>
       <AreaContext area={field.data!}>
-        <AreaCreationsProvider creations={areaCreations.data!}>
+        <AreaCreationsProvider creations={areaCreations.data! as any}>
           <CommandPanel />
           <SubscriptionGuideDialog />
           <AreaDialog />

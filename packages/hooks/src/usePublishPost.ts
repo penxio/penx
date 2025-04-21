@@ -10,7 +10,7 @@ import { revalidateMetadata } from '@penx/libs/revalidateTag'
 import { syncPostToHub } from '../../services/src/syncPostToHub'
 import { api } from '@penx/trpc-client'
 import { CreationById } from '@penx/types'
-// import { editorPlugins } from '@penx/editor-plugins/editor-plugins'
+// import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 export const PublishPostFormSchema = z.object({

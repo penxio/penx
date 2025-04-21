@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import { LoadingDots } from '@penx/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useLocalFields } from '@penx/hooks/useLocalFields'
 import { BACKGROUND_EVENTS } from '@/lib/constants'
 import { SUCCESS } from '@/lib/helper'

@@ -2,7 +2,7 @@
 
 import { Image } from '@penx/components/Image'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
 import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'

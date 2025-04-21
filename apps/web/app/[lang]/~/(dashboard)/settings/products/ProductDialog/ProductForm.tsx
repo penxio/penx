@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { FileUpload } from '@penx/components/FileUpload'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/components/NumberInput'
+import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/ui/button'
 import {

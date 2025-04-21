@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSession } from '@penx/hooks/useSession'
 import { addCreationTag, createTag } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { IconGoogle } from '@penx/components/icons/IconGoogle'
+import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
 import { Button } from '@penx/uikit/ui/button'
 import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { Link } from '@penx/libs/i18n'

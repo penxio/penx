@@ -1,13 +1,3 @@
-import { CreationProvider } from '@penx/components/CreationContext'
-import { FriendsProvider } from '@penx/components/FriendsContext'
-import { ProjectsProvider } from '@penx/components/ProjectsContext'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
-import { Footer } from '@penx/components/theme-ui/Footer'
-import { PageTitle } from '@penx/components/theme-ui/PageTitle'
-import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
-import { PostMetadata } from '@penx/components/theme-ui/PostMetadata'
-import { PostSubtitle } from '@penx/components/theme-ui/PostSubtitle'
-import { Toc } from '@penx/components/theme-ui/Toc'
 import { initLingui } from '@/initLingui'
 import {
   getArea,
@@ -18,13 +8,23 @@ import {
   getSite,
 } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AppearanceConfig } from '@penx/types'
-import { cn } from '@penx/utils'
 import { AreaType, Creation, GateType } from '@prisma/client'
 import { produce } from 'immer'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import readingTime from 'reading-time'
+import { FriendsProvider } from '@penx/contexts/FriendsContext'
+import { ProjectsProvider } from '@penx/contexts/ProjectsContext'
+import { Footer } from '@penx/components/theme-ui/Footer'
+import { PageTitle } from '@penx/components/theme-ui/PageTitle'
+import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
+import { PostMetadata } from '@penx/components/theme-ui/PostMetadata'
+import { PostSubtitle } from '@penx/components/theme-ui/PostSubtitle'
+import { Toc } from '@penx/components/theme-ui/Toc'
+import { ContentRender } from '@penx/content-render'
+import { CreationProvider } from '@penx/contexts/CreationContext'
+import { AppearanceConfig } from '@penx/types'
+import { cn } from '@penx/utils'
 
 type Params = Promise<{
   domain: string

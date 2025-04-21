@@ -18,14 +18,8 @@
   "dependencies": {
     "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
-    "@penx/uikit": "workspace:*",
-    "@penx/query-client": "workspace:*",
-    "@penx/contexts": "workspace:*",
-    "@penx/editor-plugins": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
-    "@penx/utils": "workspace:*",
-    "@penx/libs": "workspace:*"
+    "@penx/utils": "workspace:*"
   }
 }

@@ -1,18 +1,18 @@
 'use client'
 
-import { IconGoogle } from '@penx/components/icons/IconGoogle'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Avatar, AvatarFallback } from '@penx/uikit/ui/avatar'
-import { Badge } from '@penx/uikit/ui/badge'
-import { Button } from '@penx/uikit/ui/button'
-import { useMyAccounts } from '@penx/hooks/useMyAccounts'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { shortenAddress } from '@penx/utils'
 import { Account, ProviderType } from '@prisma/client'
 import { AvatarImage } from '@radix-ui/react-avatar'
 import { KeyIcon } from 'lucide-react'
 import { toast } from 'sonner'
+import { useMyAccounts } from '@penx/hooks/useMyAccounts'
+import { trpc } from '@penx/trpc-client'
+import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Avatar, AvatarFallback } from '@penx/uikit/ui/avatar'
+import { Badge } from '@penx/uikit/ui/badge'
+import { Button } from '@penx/uikit/ui/button'
+import { shortenAddress } from '@penx/utils'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 function AccountItem({ account }: { account: Account }) {
   const { refetch } = useMyAccounts()

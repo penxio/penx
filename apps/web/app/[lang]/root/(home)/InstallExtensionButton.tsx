@@ -1,10 +1,10 @@
 'use client'
 
-import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
+import { Trans } from '@lingui/react/macro'
+import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { useRouter } from '@penx/libs/i18n'
-import { Trans } from '@lingui/react/macro'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 export function InstallExtensionButton() {
   const { data } = useSession()

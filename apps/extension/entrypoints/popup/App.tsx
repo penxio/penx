@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import reactLogo from '@/assets/react.svg'
-import { LoadingDots } from '@penx/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Login } from '@penx/components/Login'
 import { PopupContent } from '@penx/components/popup/PopupContent'
 import { Providers } from '@penx/components/providers'

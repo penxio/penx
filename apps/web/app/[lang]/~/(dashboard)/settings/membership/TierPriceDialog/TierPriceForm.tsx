@@ -2,10 +2,15 @@
 
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@penx/editor/plate-editor'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/components/NumberInput'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { useSpaceContext } from '@penx/components/SpaceContext'
+import { editorDefaultValue } from '@penx/constants'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { api, trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -17,12 +22,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { editorDefaultValue } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useTierPriceDialog } from './useTierPriceDialog'
 
 const FormSchema = z.object({

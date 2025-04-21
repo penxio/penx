@@ -2,9 +2,9 @@
 
 import { Trans } from '@lingui/react/macro'
 import { CircleIcon, UserCircle, UserCircle2 } from 'lucide-react'
-import { useAuthStatus } from './LoginDialog/useAuthStatus'
-import { useLoginDialog } from './LoginDialog/useLoginDialog'
 import { Button, ButtonProps } from '@penx/uikit/ui/button'
+import { useAuthStatus } from '@penx/widgets/LoginDialog/useAuthStatus'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 interface Props extends ButtonProps {
   appearance?: 'button' | 'icon'

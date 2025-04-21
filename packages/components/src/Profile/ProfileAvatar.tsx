@@ -1,12 +1,12 @@
 'use client'
 
 import { forwardRef, HTMLAttributes } from 'react'
-import { useSession } from '@penx/session'
-import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { ChevronDown, Copy } from 'lucide-react'
 import { toast } from 'sonner'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
+import { useSession } from '@penx/session'
 import { cn, getUrl } from '@penx/utils'
-import { UserAvatar } from '../UserAvatar'
+import { UserAvatar } from '@penx/widgets/UserAvatar'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   className?: string

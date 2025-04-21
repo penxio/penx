@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { CreationStatus } from '@penx/constants'
 import { PostItem } from './PostItem'

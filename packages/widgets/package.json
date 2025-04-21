@@ -1,0 +1,34 @@
+{
+  "name": "@penx/widgets",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.tsx"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/eslint-config": "workspace:*",
+    "@penx/typescript-config": "workspace:*",
+    "eslint": "^9.24.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^4.1.4",
+    "typescript": "5.8.2"
+  },
+  "dependencies": {
+    "@penx/types": "workspace:*",
+    "@penx/constants": "workspace:*",
+    "@penx/query-client": "workspace:*",
+    "@penx/editor-transforms": "workspace:*",
+    "@penx/contexts": "workspace:*",
+    "@penx/uikit": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/trpc-client": "workspace:*",
+    "@penx/session": "workspace:*",
+    "@penx/utils": "workspace:*",
+    "@penx/libs": "workspace:*",
+    "@penx/db": "workspace:*"
+  }
+}

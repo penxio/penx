@@ -1,6 +1,6 @@
 'use client'
 
-import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import { Link, useRouter } from '@penx/libs/i18n'

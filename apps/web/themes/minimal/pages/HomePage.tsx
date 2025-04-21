@@ -1,5 +1,5 @@
-import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ProjectsBlock } from '@penx/editor-custom-plugins'
+import { ContentRender } from '@penx/content-render'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'

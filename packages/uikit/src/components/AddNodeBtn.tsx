@@ -1,9 +1,10 @@
 import { PlusIcon } from 'lucide-react'
 import { Path, Transforms } from 'slate'
-import { insertEmptyParagraph } from '../editor/lib/insertEmptyParagraph'
-import { useCreateEditor } from '../editor/use-create-editor'
-import { findNodePath } from '../lib/findNodePath'
-import { selectEditor } from '../lib/selectEditor'
+// import { insertEmptyParagraph } from '../editor/lib/insertEmptyParagraph'
+// import { useCreateEditor } from '../editor/use-create-editor'
+import { findNodePath } from '@penx/utils/findNodePath'
+import { insertEmptyParagraph } from '@penx/utils/insertEmptyParagraph'
+import { selectEditor } from '@penx/utils/selectEditor'
 
 interface Props {
   // editor: ReturnType<typeof useCreateEditor>

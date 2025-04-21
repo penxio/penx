@@ -1,5 +1,5 @@
-import { CreationProvider } from '@penx/components/CreationContext'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { CreationProvider } from '@penx/contexts/CreationContext'
+import { ContentRender } from '@penx/content-render'
 import { editorDefaultValue } from '@penx/constants'
 import { getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'

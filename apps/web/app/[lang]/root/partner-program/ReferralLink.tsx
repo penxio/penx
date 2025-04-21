@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useLoginDialog } from '@penx/components/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'

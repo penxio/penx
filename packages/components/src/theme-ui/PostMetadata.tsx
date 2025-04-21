@@ -1,9 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Creation, Site } from '@penx/types'
-import { cn, formatDate, formatUsername, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react/macro'
+import { Creation, Site } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Separator } from '@penx/uikit/ui/separator'
-import { UserAvatar } from '../UserAvatar'
+import { cn, formatDate, formatUsername, getUrl } from '@penx/utils'
+import { UserAvatar } from '@penx/widgets/UserAvatar'
 import { LangSwitcher } from './LangSwitcher'
 import { CommentSheet } from './PostActions/Comment/CommentSheet'
 

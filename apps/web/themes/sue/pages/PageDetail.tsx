@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 
 interface LayoutProps {
   page: any

@@ -1,6 +1,9 @@
 'use client'
 
 import * as React from 'react'
+import { Trash2 } from 'lucide-react'
+import { toast } from 'sonner'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,6 +15,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@penx/uikit/ui/alert-dialog'
+import { Button } from '@penx/uikit/ui/button'
 import {
   Tooltip,
   TooltipContent,
@@ -19,10 +23,6 @@ import {
   TooltipTrigger,
 } from '@penx/uikit/ui/tooltip'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { Trash2 } from 'lucide-react'
-import { toast } from 'sonner'
-import { LoadingDots } from './icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
 
 interface Props {
   title: React.ReactNode

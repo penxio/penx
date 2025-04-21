@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import {
   Dialog,
   DialogContent,

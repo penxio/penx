@@ -16,7 +16,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@penx/uikit/ui/sheet'
-import { CommentWidget } from '../../../CommentWidget'
+import { CommentWidget } from '@penx/widgets/CommentWidget/CommentWidget'
 import { CommentAmount } from './CommentAmount'
 
 interface Props {

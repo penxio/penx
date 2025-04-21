@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
 import { getTextColorByName } from '@penx/libs/color-helper'

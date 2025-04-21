@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/components/NumberInput'
+import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,

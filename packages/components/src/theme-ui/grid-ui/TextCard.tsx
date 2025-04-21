@@ -1,7 +1,7 @@
 import Markdown from 'react-markdown'
-import { LayoutItem } from '@penx/types'
 import remarkGfm from 'remark-gfm'
-import { ContentRender } from '../ContentRender'
+import { ContentRender } from '@penx/content-render'
+import { LayoutItem } from '@penx/types'
 
 export function TextCard({ item }: { item: LayoutItem }) {
   if (!item.props?.text) return null

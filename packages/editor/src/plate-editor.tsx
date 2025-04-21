@@ -7,19 +7,17 @@ import isEqual from 'react-fast-compare'
 import { Plate } from '@udecode/plate/react'
 import { VariantProps } from 'class-variance-authority'
 import { Transforms } from 'slate'
-// import { SettingsDialog } from '@penx/uikit/editor/settings'
 import {
   PlateEditorType,
   useCreateEditor,
 } from '@penx/editor/use-create-editor'
+import { AddNodeBtn } from '@penx/uikit/components/AddNodeBtn'
 import {
   Editor,
   EditorContainer,
   editorVariants,
-} from '@penx/uikit/plate-ui/editor'
+} from '@penx/editor-plugins/plate-ui/editor'
 import { cn } from '@penx/utils'
-
-import { AddNodeBtn } from '@penx/uikit/components/AddNodeBtn'
 
 // import { AddNodeBtn } from '../AddNodeBtn'
 

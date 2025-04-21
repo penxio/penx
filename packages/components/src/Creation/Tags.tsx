@@ -17,7 +17,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { LoadingDots } from '../icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 interface Props {

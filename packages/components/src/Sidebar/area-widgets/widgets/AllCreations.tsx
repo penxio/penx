@@ -1,4 +1,4 @@
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { NumberInput } from '@penx/components/NumberInput'
+import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import {
   Form,

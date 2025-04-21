@@ -1,4 +1,4 @@
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { Link } from '@penx/libs/i18n'
 import { Creation, Site } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'

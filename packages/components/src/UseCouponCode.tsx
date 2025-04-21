@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { useSession } from '@penx/session'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
 import { toast } from 'sonner'
-import { LoadingDots } from './icons/loading-dots'
-import { useSubscriptionGuideDialog } from './SubscriptionGuideDialog/useSubscriptionGuideDialog'
+import { useSession } from '@penx/session'
+import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { Input } from '@penx/uikit/ui/input'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { useSubscriptionGuideDialog } from './SubscriptionGuideDialog/useSubscriptionGuideDialog'
 
 export function UseCouponCode() {
   const [couponCode, setCouponCode] = useState('')

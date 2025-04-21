@@ -1,7 +1,7 @@
 'use client'
 
 import { useAreaContext } from '@penx/components/AreaContext'
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { AreaInfo } from '@penx/components/AreaInfo'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
 import { updateMainPanel } from '@penx/hooks/usePanels'

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { editorDefaultValue } from '@penx/constants'

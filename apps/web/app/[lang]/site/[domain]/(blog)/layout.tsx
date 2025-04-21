@@ -1,4 +1,4 @@
-import { CreationListProvider } from '@penx/components/CreationListContext'
+import { CreationListProvider } from '@penx/contexts/CreationListContext'
 import { SiteProvider } from '@penx/contexts/SiteContext'
 import { initLingui } from '@/initLingui'
 import { ROOT_DOMAIN } from '@penx/constants'

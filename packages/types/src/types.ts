@@ -308,8 +308,10 @@ export type CreationById = Omit<Creation, 'podcast'> & {
   >
 }
 
-export type AreaById = Area & {
+export type AreaById = Omit<Area, 'widgets' | 'favorites'> & {
   creations: CreationById[]
+  widgets: Widget[]
+  favorites: string[]
 }
 
 export type GithubInfo = {

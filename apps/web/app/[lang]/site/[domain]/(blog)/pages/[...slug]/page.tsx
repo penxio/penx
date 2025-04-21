@@ -1,4 +1,4 @@
-import { CreationProvider } from '@penx/components/CreationContext'
+import { CreationProvider } from '@penx/contexts/CreationContext'
 import { PageDefaultUI } from '@penx/components/theme-ui/PageDefaultUI'
 import { getPage, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'

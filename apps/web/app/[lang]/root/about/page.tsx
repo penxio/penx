@@ -1,13 +1,13 @@
 // export const runtime = 'edge'
 
 import { getPage } from '@/lib/fetchers'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 
 export const dynamic = 'force-static'
 
 export default async function HomePage() {
   const page = await getPage(
-    process.env.NEXT_PUBLIC_SITE_ID!,
+    process.env.NEXT_PUBLIC_SITE_IDNEXT_PUBLIC_SITE_ID!,
     process.env.NEXT_PUBLIC_ABOUT_PAGE_SLUG!,
   )
 

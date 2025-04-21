@@ -1,6 +1,7 @@
-import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import Image from 'next/image'
+import { ContentRender } from '@penx/content-render'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
+import { ProjectsBlock } from '@penx/editor-custom-plugins'
 import { Link } from '@penx/libs/i18n'
 import {
   Creation,
@@ -10,7 +11,6 @@ import {
   Tag as TagEntity,
 } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
-import Image from 'next/image'
 import { FeatureBox } from '../components/FeatureBox'
 import { PostItem } from '../components/PostItem'
 import Tag from '../components/Tag'

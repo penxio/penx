@@ -1,9 +1,9 @@
 import { getPage, getProjects, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { Metadata } from 'next'
-import { FriendsProvider } from '@penx/components/FriendsContext'
-import { ProjectsProvider } from '@penx/components/ProjectsContext'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { FriendsProvider } from '@penx/contexts/FriendsContext'
+import { ProjectsProvider } from '@penx/contexts/ProjectsContext'
+import { ContentRender } from '@penx/content-render'
 import { editorDefaultValue } from '@penx/constants'
 import { CreationType } from '@penx/types'
 

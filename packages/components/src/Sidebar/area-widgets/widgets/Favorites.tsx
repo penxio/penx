@@ -1,5 +1,5 @@
 import { useAreaContext } from '@penx/components/AreaContext'
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useAreaCreations } from '@penx/hooks/useAreaCreations'
 import { mappedByKey } from '@/lib/shared'
 import { NoCreationYet } from '../components/NoCreationYet'

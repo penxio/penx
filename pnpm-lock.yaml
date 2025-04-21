@@ -829,12 +829,21 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@penx/content-render':
+        specifier: workspace:*
+        version: link:../../packages/content-render
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/editor':
+        specifier: workspace:*
+        version: link:../../packages/editor
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../../packages/editor-custom-plugins
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1053,6 +1062,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../../packages/constants
+      '@penx/content-render':
+        specifier: workspace:*
+        version: link:../../packages/content-render
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
@@ -1062,6 +1074,9 @@ importers:
       '@penx/editor':
         specifier: workspace:*
         version: link:../../packages/editor
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../../packages/editor-custom-plugins
       '@penx/emitter':
         specifier: workspace:*
         version: link:../../packages/emitter
@@ -1107,6 +1122,9 @@ importers:
       '@penx/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@penx/widgets':
+        specifier: workspace:*
+        version: link:../../packages/widgets
       '@prisma/nextjs-monorepo-workaround-plugin':
         specifier: ^6.6.0
         version: 6.6.0
@@ -1271,6 +1289,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/content-render':
+        specifier: workspace:*
+        version: link:../content-render
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
@@ -1280,6 +1301,9 @@ importers:
       '@penx/editor':
         specifier: workspace:*
         version: link:../editor
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../editor-custom-plugins
       '@penx/emitter':
         specifier: workspace:*
         version: link:../emitter
@@ -1322,6 +1346,9 @@ importers:
       '@penx/utils':
         specifier: workspace:*
         version: link:../utils
+      '@penx/widgets':
+        specifier: workspace:*
+        version: link:../widgets
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -1347,6 +1374,52 @@ importers:
       '@penx/types':
         specifier: workspace:*
         version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/content-render:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../editor-custom-plugins
+      '@penx/editor-plugins':
+        specifier: workspace:*
+        version: link:../editor-plugins
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -1413,9 +1486,15 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/content-render':
+        specifier: workspace:*
+        version: link:../content-render
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../editor-custom-plugins
       '@penx/editor-plugins':
         specifier: workspace:*
         version: link:../editor-plugins
@@ -1457,6 +1536,49 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
+  packages/editor-custom-plugins:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@penx/widgets':
+        specifier: workspace:*
+        version: link:../widgets
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
   packages/editor-plugins:
     dependencies:
       '@penx/constants':
@@ -1465,6 +1587,12 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../editor-custom-plugins
+      '@penx/editor-transforms':
+        specifier: workspace:*
+        version: link:../editor-transforms
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -1480,6 +1608,9 @@ importers:
       '@penx/types':
         specifier: workspace:*
         version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
       '@penx/unique-id':
         specifier: workspace:*
         version: link:../unique-id
@@ -1505,30 +1636,12 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
-      '@penx/contexts':
-        specifier: workspace:*
-        version: link:../contexts
-      '@penx/editor-plugins':
-        specifier: workspace:*
-        version: link:../editor-plugins
-      '@penx/libs':
-        specifier: workspace:*
-        version: link:../libs
-      '@penx/query-client':
-        specifier: workspace:*
-        version: link:../query-client
       '@penx/session':
         specifier: workspace:*
         version: link:../session
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
-      '@penx/uikit':
-        specifier: workspace:*
-        version: link:../uikit
       '@penx/unique-id':
         specifier: workspace:*
         version: link:../unique-id
@@ -1978,6 +2091,9 @@ importers:
 
   packages/utils:
     dependencies:
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1994,6 +2110,64 @@ importers:
       eslint:
         specifier: ^9.24.0
         version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/widgets:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
+      '@penx/editor-transforms':
+        specifier: workspace:*
+        version: link:../editor-transforms
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.24.0(jiti@2.4.2)
+      postcss:
+        specifier: ^8.5.1
+        version: 8.5.3
+      tailwindcss:
+        specifier: ^4.1.4
+        version: 4.1.4
       typescript:
         specifier: 5.8.2
         version: 5.8.2

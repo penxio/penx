@@ -1,7 +1,7 @@
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
-import { editorDefaultValue } from '@penx/constants'
 import { getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
+import { editorDefaultValue } from '@penx/constants'
+import { ContentRender } from '@penx/content-render'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

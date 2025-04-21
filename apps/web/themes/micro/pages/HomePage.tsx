@@ -1,11 +1,11 @@
 import { Trans } from '@lingui/react/macro'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { PostItem } from '@penx/components/theme-ui/post-item-blocks/PostItem'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
-import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
+import { ProjectsBlock } from '@penx/editor-custom-plugins'
 
 interface Props {
   about: any

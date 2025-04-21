@@ -1,18 +1,10 @@
-import { useSession } from '@penx/session'
-import { Widget } from '@penx/types'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
 import { RouterOutputs } from '@penx/api'
 import { queryClient } from '@penx/query-client'
+import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
-
-export type Area = Omit<
-  RouterOutputs['area']['byId'],
-  'widgets' | 'favorites'
-> & {
-  widgets: Widget[]
-  favorites: string[]
-}
+import { AreaById, Widget } from '@penx/types'
 
 export function useAreaItem() {
   // const params = useParams() as { id: string }
@@ -26,7 +18,7 @@ export function useAreaItem() {
   })
 
   return {
-    data: data as Area,
+    data: data as any as AreaById,
     ...rest,
   }
 }
@@ -36,7 +28,7 @@ function getQueryKey(areaId: string) {
 }
 
 function getArea(areaId: string) {
-  return queryClient.getQueryData(getQueryKey(areaId)) as Area
+  return queryClient.getQueryData(getQueryKey(areaId)) as AreaById
 }
 
 export async function addWidget(areaId: string, widget: Widget) {
@@ -114,7 +106,7 @@ export async function removeFromFavorites(areaId: string, creationId: string) {
   })
 }
 
-export async function updateAreaState(areaId: string, data: Partial<Area>) {
+export async function updateAreaState(areaId: string, data: Partial<AreaById>) {
   const area = getArea(areaId)
   queryClient.setQueryData(getQueryKey(areaId), {
     ...area,

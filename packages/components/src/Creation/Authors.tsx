@@ -21,7 +21,7 @@ import {
 import { uniqueId } from '@penx/unique-id'
 import { formatUsername } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { UserAvatar } from '../UserAvatar'
+import { UserAvatar } from '@penx/widgets/UserAvatar'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 export function Authors({ creation }: { creation: CreationById }) {

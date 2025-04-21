@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/components/AreaCreationsContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { usePages } from '@penx/hooks/usePages'
 import { useSite } from '@penx/hooks/useSite'

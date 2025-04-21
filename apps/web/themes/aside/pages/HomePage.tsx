@@ -1,10 +1,10 @@
-import { ProjectsBlock } from '@penx/editor/custom-plate-plugins/projects/react/ProjectsBlock'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { Trans } from '@lingui/react/macro'
+import { ContentRender } from '@penx/content-render'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
+import { ProjectsBlock } from '@penx/editor-custom-plugins/projects/react/ProjectsBlock'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
-import { Trans } from '@lingui/react/macro'
 import { PostItem } from '../components/PostItem'
 
 interface Props {

@@ -1,7 +1,7 @@
 import { getFriends, getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
-import { FriendsProvider } from '@penx/components/FriendsContext'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { FriendsProvider } from '@penx/contexts/FriendsContext'
+import { ContentRender } from '@penx/content-render'
 import { editorDefaultValue } from '@penx/constants'
 
 export const dynamic = 'force-static'

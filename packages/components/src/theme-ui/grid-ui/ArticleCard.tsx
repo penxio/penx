@@ -1,7 +1,7 @@
 'use client'
 
 import { Image } from '@penx/components/Image'
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import {
   HoverCard,
   HoverCardContent,

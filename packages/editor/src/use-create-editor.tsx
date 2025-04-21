@@ -1,6 +1,5 @@
 'use client'
 
-// import { AIPlugin } from '@penx/editor/custom-plate-plugins/plate-ai/react'
 import { withProps } from '@udecode/cn'
 import type { Value } from '@udecode/plate'
 import {
@@ -54,70 +53,70 @@ import {
   usePlateEditor,
   type CreatePlateEditorOptions,
 } from '@udecode/plate/react'
-import { copilotPlugins } from '@penx/editor-plugins/copilot-plugins'
-import { editorPlugins } from '@penx/editor-plugins/editor-plugins'
-import { FixedToolbarPlugin } from '@penx/editor-plugins/fixed-toolbar-plugin'
-import { FloatingToolbarPlugin } from '@penx/editor-plugins/floating-toolbar-plugin'
-import { AILeaf } from '@penx/uikit/plate-ui/ai-leaf'
-import { BlockquoteElement } from '@penx/uikit/plate-ui/blockquote-element'
-import { CodeBlockElement } from '@penx/uikit/plate-ui/code-block-element'
-import { CodeLeaf } from '@penx/uikit/plate-ui/code-leaf'
-import { CodeLineElement } from '@penx/uikit/plate-ui/code-line-element'
-import { CodeSyntaxLeaf } from '@penx/uikit/plate-ui/code-syntax-leaf'
-import { ColumnElement } from '@penx/uikit/plate-ui/column-element'
-import { ColumnGroupElement } from '@penx/uikit/plate-ui/column-group-element'
-import { CommentLeaf } from '@penx/uikit/plate-ui/comment-leaf'
-import { DateElement } from '@penx/uikit/plate-ui/date-element'
-import { EmojiInputElement } from '@penx/uikit/plate-ui/emoji-input-element'
-import { EquationElement } from '@penx/uikit/plate-ui/equation-element'
-import { ExcalidrawElement } from '@penx/uikit/plate-ui/excalidraw-element'
-import { HeadingElement } from '@penx/uikit/plate-ui/heading-element'
-import { HighlightLeaf } from '@penx/uikit/plate-ui/highlight-leaf'
-import { HrElement } from '@penx/uikit/plate-ui/hr-element'
-import { ImageElement } from '@penx/uikit/plate-ui/image-element/image-element'
-import { InlineEquationElement } from '@penx/uikit/plate-ui/inline-equation-element'
-import { KbdLeaf } from '@penx/uikit/plate-ui/kbd-leaf'
-import { LinkElement } from '@penx/uikit/plate-ui/link-element'
-import { MediaAudioElement } from '@penx/uikit/plate-ui/media-audio-element'
-import { MediaEmbedElement } from '@penx/uikit/plate-ui/media-embed-element'
-import { MediaFileElement } from '@penx/uikit/plate-ui/media-file-element'
-import { MediaPlaceholderElement } from '@penx/uikit/plate-ui/media-placeholder-element'
-import { MediaVideoElement } from '@penx/uikit/plate-ui/media-video-element'
-import { MentionElement } from '@penx/uikit/plate-ui/mention-element'
-import { MentionInputElement } from '@penx/uikit/plate-ui/mention-input-element'
-import { ParagraphElement } from '@penx/uikit/plate-ui/paragraph-element'
-import { withPlaceholders } from '@penx/uikit/plate-ui/placeholder'
-import { SlashInputElement } from '@penx/uikit/plate-ui/slash-input-element'
-import { SuggestionLeaf } from '@penx/uikit/plate-ui/suggestion-leaf'
+import {
+  AIPlugin,
+  BidirectionalLinkElement,
+  BidirectionalLinkInputElement,
+  BidirectionalLinkInputPlugin,
+  BidirectionalLinkPlugin,
+  CampaignElement,
+  CampaignPlugin,
+  CommentBoxElement,
+  CommentBoxPlugin,
+  FriendsElement,
+  FriendsPlugin,
+  PodcastTimeElement,
+  PodcastTimePlugin,
+  ProductElement,
+  ProductPlugin,
+  ProjectsElement,
+  ProjectsPlugin,
+  SocialLinksElement,
+  SocialLinksPlugin,
+} from '@penx/editor-custom-plugins'
+import { copilotPlugins } from '@penx/editor-plugins/plugins/copilot-plugins'
+import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
+import { FixedToolbarPlugin } from '@penx/editor-plugins/plugins/fixed-toolbar-plugin'
+import { FloatingToolbarPlugin } from '@penx/editor-plugins/plugins/floating-toolbar-plugin'
+import { AILeaf } from '@penx/editor-plugins/plate-ui/ai-leaf'
+import { BlockquoteElement } from '@penx/editor-plugins/plate-ui/blockquote-element'
+import { CodeBlockElement } from '@penx/editor-plugins/plate-ui/code-block-element'
+import { CodeLeaf } from '@penx/editor-plugins/plate-ui/code-leaf'
+import { CodeLineElement } from '@penx/editor-plugins/plate-ui/code-line-element'
+import { CodeSyntaxLeaf } from '@penx/editor-plugins/plate-ui/code-syntax-leaf'
+import { ColumnElement } from '@penx/editor-plugins/plate-ui/column-element'
+import { ColumnGroupElement } from '@penx/editor-plugins/plate-ui/column-group-element'
+import { CommentLeaf } from '@penx/editor-plugins/plate-ui/comment-leaf'
+import { DateElement } from '@penx/editor-plugins/plate-ui/date-element'
+import { EmojiInputElement } from '@penx/editor-plugins/plate-ui/emoji-input-element'
+import { EquationElement } from '@penx/editor-plugins/plate-ui/equation-element'
+import { ExcalidrawElement } from '@penx/editor-plugins/plate-ui/excalidraw-element'
+import { HeadingElement } from '@penx/editor-plugins/plate-ui/heading-element'
+import { HighlightLeaf } from '@penx/editor-plugins/plate-ui/highlight-leaf'
+import { HrElement } from '@penx/editor-plugins/plate-ui/hr-element'
+import { ImageElement } from '@penx/editor-plugins/plate-ui/image-element/image-element'
+import { InlineEquationElement } from '@penx/editor-plugins/plate-ui/inline-equation-element'
+import { KbdLeaf } from '@penx/editor-plugins/plate-ui/kbd-leaf'
+import { LinkElement } from '@penx/editor-plugins/plate-ui/link-element'
+import { MediaAudioElement } from '@penx/editor-plugins/plate-ui/media-audio-element'
+import { MediaEmbedElement } from '@penx/editor-plugins/plate-ui/media-embed-element'
+import { MediaFileElement } from '@penx/editor-plugins/plate-ui/media-file-element'
+import { MediaPlaceholderElement } from '@penx/editor-plugins/plate-ui/media-placeholder-element'
+import { MediaVideoElement } from '@penx/editor-plugins/plate-ui/media-video-element'
+import { MentionElement } from '@penx/editor-plugins/plate-ui/mention-element'
+import { MentionInputElement } from '@penx/editor-plugins/plate-ui/mention-input-element'
+import { ParagraphElement } from '@penx/editor-plugins/plate-ui/paragraph-element'
+import { withPlaceholders } from '@penx/editor-plugins/plate-ui/placeholder'
+import { SlashInputElement } from '@penx/editor-plugins/plate-ui/slash-input-element'
+import { SuggestionLeaf } from '@penx/editor-plugins/plate-ui/suggestion-leaf'
 import {
   TableCellElement,
   TableCellHeaderElement,
-} from '@penx/uikit/plate-ui/table-cell-element'
-import { TableElement } from '@penx/uikit/plate-ui/table-element'
-import { TableRowElement } from '@penx/uikit/plate-ui/table-row-element'
-import { TocElement } from '@penx/uikit/plate-ui/toc-element'
-import { ToggleElement } from '@penx/uikit/plate-ui/toggle-element'
-
-// import {
-//   BidirectionalLinkInputPlugin,
-//   BidirectionalLinkPlugin,
-// } from '@penx/editor/custom-plate-plugins/bidirectional-link/react'
-// import { BidirectionalLinkElement } from '@penx/editor/custom-plate-plugins/bidirectional-link/react/bidirectional-link-element'
-// import { BidirectionalLinkInputElement } from '@penx/editor/custom-plate-plugins/bidirectional-link/react/bidirectional-link-input-element'
-// import { CampaignPlugin } from '@penx/editor/custom-plate-plugins/campaign/react'
-// import { CampaignElement } from '@penx/editor/custom-plate-plugins/campaign/react/campaign-element'
-// import { CommentBoxPlugin } from '@penx/editor/custom-plate-plugins/comment-box/react'
-// import { CommentBoxElement } from '@penx/editor/custom-plate-plugins/comment-box/react/comment-box-element'
-// import { FriendsPlugin } from '@penx/editor/custom-plate-plugins/friends/react'
-// import { FriendsElement } from '@penx/editor/custom-plate-plugins/friends/react/friends-element'
-// import { PodcastTimePlugin } from '@penx/editor/custom-plate-plugins/podcast-time/react'
-// import { ProductPlugin } from '@penx/editor/custom-plate-plugins/product/react'
-// import { ProductElement } from '@penx/editor/custom-plate-plugins/product/react/product-element'
-// import { ProjectsPlugin } from '@penx/editor/custom-plate-plugins/projects/react'
-// import { ProjectsElement } from '@penx/editor/custom-plate-plugins/projects/react/projects-element'
-// import { SocialLinksPlugin } from '@penx/editor/custom-plate-plugins/social-links/react'
-// import { SocialLinksElement } from '@penx/editor/custom-plate-plugins/social-links/react/social-links-element'
-// import { PodcastTimeElement } from '../plate-ui/podcast-time-element'
+} from '@penx/editor-plugins/plate-ui/table-cell-element'
+import { TableElement } from '@penx/editor-plugins/plate-ui/table-element'
+import { TableRowElement } from '@penx/editor-plugins/plate-ui/table-row-element'
+import { TocElement } from '@penx/editor-plugins/plate-ui/toc-element'
+import { ToggleElement } from '@penx/editor-plugins/plate-ui/toggle-element'
 
 export const viewComponents = {
   [AudioPlugin.key]: MediaAudioElement,
@@ -163,22 +162,22 @@ export const viewComponents = {
   [TogglePlugin.key]: ToggleElement,
   [UnderlinePlugin.key]: withProps(PlateLeaf, { as: 'u' }),
   [VideoPlugin.key]: MediaVideoElement,
-  // [BidirectionalLinkPlugin.key]: BidirectionalLinkElement,
-  // [ProductPlugin.key]: ProductElement,
-  // [CommentBoxPlugin.key]: CommentBoxElement,
-  // [FriendsPlugin.key]: FriendsElement,
-  // [ProjectsPlugin.key]: ProjectsElement,
-  // [SocialLinksPlugin.key]: SocialLinksElement,
-  // [CampaignPlugin.key]: CampaignElement,
-  // [PodcastTimePlugin.key]: PodcastTimeElement,
+  [BidirectionalLinkPlugin.key]: BidirectionalLinkElement,
+  [ProductPlugin.key]: ProductElement,
+  [CommentBoxPlugin.key]: CommentBoxElement,
+  [FriendsPlugin.key]: FriendsElement,
+  [ProjectsPlugin.key]: ProjectsElement,
+  [SocialLinksPlugin.key]: SocialLinksElement,
+  [CampaignPlugin.key]: CampaignElement,
+  [PodcastTimePlugin.key]: PodcastTimeElement,
 }
 
 export const editorComponents = {
   ...viewComponents,
-  // [AIPlugin.key]: AILeaf,
+  [AIPlugin.key]: AILeaf,
   [EmojiInputPlugin.key]: EmojiInputElement,
   [MentionInputPlugin.key]: MentionInputElement,
-  // [BidirectionalLinkInputPlugin.key]: BidirectionalLinkInputElement,
+  [BidirectionalLinkInputPlugin.key]: BidirectionalLinkInputElement,
   [SlashInputPlugin.key]: SlashInputElement,
 }
 

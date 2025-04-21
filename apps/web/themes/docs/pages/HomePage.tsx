@@ -1,4 +1,4 @@
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Creation, Site } from '@penx/types'

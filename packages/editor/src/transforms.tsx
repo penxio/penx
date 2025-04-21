@@ -42,12 +42,12 @@ import {
   TableRowPlugin,
 } from '@udecode/plate-table/react'
 import type { PlateEditor } from '@udecode/plate/react'
-// import { insertPodcastTime } from '@penx/editor/custom-plate-plugins/podcast-time'
-// import { PodcastTimePlugin } from '@penx/editor/custom-plate-plugins/podcast-time/react'
+// import { insertPodcastTime } from '@penx/editor-custom-plugins'
+// import { PodcastTimePlugin } from '@penx/editor-custom-plugins'
 // import {
 //   BaseProductPlugin,
 //   insertProduct,
-// } from '@penx/editor/custom-plate-plugins/product'
+// } from '@penx/editor-custom-plugins'
 
 export const STRUCTURAL_TYPES: string[] = [
   ColumnPlugin.key,

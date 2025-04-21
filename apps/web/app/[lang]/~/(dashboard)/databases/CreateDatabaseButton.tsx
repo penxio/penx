@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import LoadingCircle from '@penx/components/icons/loading-circle'
+import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useSubscriptionGuideDialog } from '@penx/components/SubscriptionGuideDialog/useSubscriptionGuideDialog'
 import { Button } from '@penx/uikit/ui/button'

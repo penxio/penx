@@ -4,7 +4,7 @@ import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { ArrowUpRight } from 'lucide-react'
 import { Badge } from '@penx/uikit/ui/badge'
-import { ContentRender } from './ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { PageTitle } from './PageTitle'
 
 interface Props {

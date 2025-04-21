@@ -4,7 +4,7 @@ import { Link } from '@penx/libs/i18n'
 import { Editor, Path } from 'slate'
 import { FieldIcon } from '../database-ui/shared/FieldIcon'
 // import { TTagElement } from '../editor/plugins/tag-plugin/lib/types'
-import { LoadingDots } from '../icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 
 // import { FieldIcon } from '../shared/FieldIcon'

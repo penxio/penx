@@ -1,4 +1,4 @@
-import { ContentRender } from './ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 
 interface Props {
   content: any

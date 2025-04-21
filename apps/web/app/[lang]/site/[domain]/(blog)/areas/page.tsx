@@ -1,4 +1,4 @@
-import { ContentRender } from '@penx/components/theme-ui/ContentRender/ContentRender'
+import { ContentRender } from '@penx/content-render'
 import { Footer } from '@penx/components/theme-ui/Footer'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'
 import { Toc } from '@penx/components/theme-ui/Toc'

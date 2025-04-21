@@ -1,4 +1,4 @@
-import { CreationListProvider } from '@penx/components/CreationListContext'
+import { CreationListProvider } from '@penx/contexts/CreationListContext'
 import { EngagementTracker } from '@penx/components/EngagementTracker'
 import { initLingui } from '@/initLingui'
 import { getCreation, getCreations, getSite } from '@/lib/fetchers'
