@@ -21,6 +21,7 @@ import { DashboardProviders } from '@penx/components/providers/DashboardProvider
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import linguiConfig from '@penx/libs/lingui.config'
 import { cn } from '@penx/utils'
+import { WatchAppEvent } from './WatchAppEvent'
 
 const roboto = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -96,6 +97,7 @@ export default async function RootLayout({
                 template='<div class="bar" role="bar"><div class="peg"></div></div>'
               />
 
+              <WatchAppEvent />
               <DashboardLayout>
                 <SubscriptionGuideDialog />
                 {children}

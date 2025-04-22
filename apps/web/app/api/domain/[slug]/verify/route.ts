@@ -1,10 +1,10 @@
+import { NextResponse } from 'next/server'
 import {
   getConfigResponse,
   getDomainResponse,
   verifyDomain,
-} from '@/lib/domains'
+} from '@penx/libs/domains'
 import { DomainVerificationStatusProps } from '@penx/types'
-import { NextResponse } from 'next/server'
 
 export async function GET(
   _req: Request,

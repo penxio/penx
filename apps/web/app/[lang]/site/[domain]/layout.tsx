@@ -19,6 +19,7 @@ import { redirect } from 'next/navigation'
 import { GoogleAnalytics } from 'nextjs-google-analytics'
 import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog/GoogleOauthDialog'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { RootProviders } from '@penx/components/providers/RootProviders'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { SiteProvider } from '@penx/contexts/SiteContext'
@@ -110,7 +111,7 @@ export default async function RootLayout({
           initialLocale={locale}
           initialMessages={allMessages[locale]!}
         >
-          <DashboardProviders cookies={cookies}>
+          <RootProviders cookies={cookies}>
             <GoogleOauthDialog />
             <ThemeProvider
               attribute="class"
@@ -143,7 +144,7 @@ export default async function RootLayout({
             </ThemeProvider>
 
             <div id="portal" />
-          </DashboardProviders>
+          </RootProviders>
         </LinguiClientProvider>
       </body>
     </html>

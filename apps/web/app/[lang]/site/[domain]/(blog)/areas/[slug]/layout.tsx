@@ -1,18 +1,19 @@
-import { initLingui } from '@/initLingui'
-import { getArea, getSite, getTags } from '@/lib/fetchers'
-import { redirectTo404 } from '@/lib/redirectTo404'
-import { Metadata } from 'next'
-import { AreaContext } from '@penx/components/AreaContext'
-import { Footer } from '@penx/components/theme-ui/Footer'
-import { SiteProvider } from '@penx/contexts/SiteContext'
-import linguiConfig from '@penx/libs/lingui.config'
-import { AppearanceConfig } from '@penx/types'
-import { cn } from '@penx/utils'
-import { Header as BookHeader } from './book/Header'
-import { Sidebar } from './book/Sidebar'
-import { AreaInfo } from './column/AreaInfo'
-import { Header as ColumnHeader } from './column/Header'
-import { PanelSidebar } from './PanelSidebar/PanelSidebar'
+import { initLingui } from '@/initLingui';
+import { getArea, getSite, getTags } from '@/lib/fetchers';
+import { redirectTo404 } from '@/lib/redirectTo404';
+import { Metadata } from 'next';
+import { AreaProvider } from '@penx/components/AreaContext';
+import { Footer } from '@penx/components/theme-ui/Footer';
+import { SiteProvider } from '@penx/contexts/SiteContext';
+import linguiConfig from '@penx/libs/lingui.config';
+import { AppearanceConfig } from '@penx/types';
+import { cn } from '@penx/utils';
+import { Header as BookHeader } from './book/Header';
+import { Sidebar } from './book/Sidebar';
+import { AreaInfo } from './column/AreaInfo';
+import { Header as ColumnHeader } from './column/Header';
+import { PanelSidebar } from './PanelSidebar/PanelSidebar';
+
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24
@@ -59,7 +60,7 @@ export default async function RootLayout(props: {
       }
     >
       <SiteProvider site={site as any}>
-        <AreaContext area={field as any}>
+        <AreaProvider area={field as any}>
           <div>
             {/* <BookHeader site={site} field={field as any} /> */}
             <main className="relative mx-auto flex w-full max-w-7xl flex-1 gap-x-16 px-4 xl:px-0">
@@ -77,7 +78,7 @@ export default async function RootLayout(props: {
               <div className="flex-1">{props.children}</div>
             </main>
           </div>
-        </AreaContext>
+        </AreaProvider>
       </SiteProvider>
     </div>
   )

@@ -11,11 +11,12 @@ import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
 import { editorDefaultValue } from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import { useAreaItem } from '@penx/hooks/useAreaItem'
+import { updateArea, useArea } from '@penx/hooks/useArea'
+import { addArea } from '@penx/hooks/useAreas'
 import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
 import { useSite } from '@penx/hooks/useSite'
-import { useSession } from '@penx/session'
-// import { useRouter } from '@penx/libs/i18n'
+import { useRouter } from '@penx/libs/i18n'
+import { updateSession, useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
@@ -44,30 +45,30 @@ const FormSchema = z.object({
   slug: z.string().min(1, { message: 'Slug is required' }),
   description: z.string(),
   about: z.string().optional(),
-  chargeMode: z.nativeEnum(ChargeMode).optional(),
+  chargeMode: z.string().optional(),
   // price: z.string().optional(),
 })
 
 export function AreaForm() {
   const { update } = useSession()
   const [isLoading, setLoading] = useState(false)
-  const { setIsOpen, area: field } = useAreaDialog()
-  const { refetch: refetchItem } = useAreaItem()
+  const { setIsOpen, area } = useAreaDialog()
+  const { refetch: refetchItem } = useArea()
   const { refetch: refetchSite } = useSite()
-  // const { push } = useRouter()
+  const { push } = useRouter()
 
-  const isEdit = !!field
+  const isEdit = !!area
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       // type: field?.type || FieldType.SUBJECT,
-      logo: field?.logo || '',
-      name: field?.name || '',
-      slug: field?.slug || '',
-      description: field?.description || '',
-      about: field?.about || '',
-      chargeMode: field?.chargeMode || ChargeMode.PAID_MONTHLY,
+      logo: area?.logo || '',
+      name: area?.name || '',
+      slug: area?.slug || '',
+      description: area?.description || '',
+      about: area?.about || '',
+      chargeMode: area?.chargeMode || ChargeMode.PAID_MONTHLY,
     },
   })
 
@@ -84,22 +85,20 @@ export function AreaForm() {
       setLoading(true)
 
       if (isEdit) {
-        await api.area.updateArea.mutate({
-          id: field.id,
+        await updateArea({
+          id: area.id,
           ...data,
         })
-        await refetchSite()
-        await refetchItem()
       } else {
-        const field = await api.area.createArea.mutate(data)
-        await refetchSite()
-
+        const area = await addArea(data)
         await update({
           type: 'update-props',
-          activeAreaId: field.id,
+          activeAreaId: area.id,
+        })
+        updateSession({
+          activeAreaId: area.id,
         })
         await resetPanels()
-        // push(`/~/areas/${field.id}`)
       }
 
       setIsOpen(false)
@@ -325,9 +324,9 @@ export function AreaForm() {
             ) : (
               <span>
                 {isEdit ? (
-                  <Trans id="Update field"></Trans>
+                  <Trans id="Update area"></Trans>
                 ) : (
-                  <Trans id="Create field"></Trans>
+                  <Trans id="Create area"></Trans>
                 )}
               </span>
             )}

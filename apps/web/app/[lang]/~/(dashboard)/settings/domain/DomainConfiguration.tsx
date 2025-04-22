@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { getSubdomain } from '@/lib/domains'
 import { useDomainStatus } from '@penx/hooks/use-domain-status'
+import { getSubdomain } from '@penx/libs/domains'
 import { cn } from '@penx/utils'
 import DomainStatus from './DomainStatus'
 

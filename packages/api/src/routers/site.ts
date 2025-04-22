@@ -1,14 +1,17 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import { defaultBenefits, isProd, TierInterval } from '@penx/constants'
-import { addDomainToVercel, removeDomainFromVercelProject } from '@/lib/domains'
-import { prisma } from '@penx/db'
-import { revalidateSite } from '@penx/libs/revalidateSite'
-import { stripe } from '@penx/libs/stripe'
-import { MySite, StripeInfo } from '@penx/types'
 import { ProductType, StripeType, SubdomainType } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
+import { defaultBenefits, isProd, TierInterval } from '@penx/constants'
+import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
+import {
+  addDomainToVercel,
+  removeDomainFromVercelProject,
+} from '@penx/libs/domains'
+import { revalidateSite } from '@penx/libs/revalidateSite'
+import { stripe } from '@penx/libs/stripe'
+import { MySite, StripeInfo } from '@penx/types'
 import { reservedDomains } from '../lib/constants'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
@@ -137,7 +140,6 @@ export const siteRouter = router({
       })
 
       // await cacheHelper.updateCachedSite(site.id, site)
-
       return site
     }),
 
@@ -149,11 +151,11 @@ export const siteRouter = router({
       })
     }),
 
-  mySite: protectedProcedure.query(async ({ input, ctx }) => {
-    const site = await prisma.site.findFirstOrThrow({
-      where: { userId: ctx.token.uid },
-      include: { domains: true },
+  mySite: protectedProcedure.query(async ({ ctx, input }) => {
+    const site = await prisma.site.findUniqueOrThrow({
+      where: { id: ctx.token.activeSiteId },
     })
+
     return site
   }),
 
@@ -334,6 +336,12 @@ export const siteRouter = router({
 
       return site
     }),
+
+  listSiteDomains: protectedProcedure.query(async ({ ctx }) => {
+    return prisma.domain.findMany({
+      where: { siteId: ctx.token.activeSiteId },
+    })
+  }),
 
   addSubdomain: protectedProcedure
     .input(

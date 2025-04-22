@@ -3,21 +3,26 @@
 import { ReactNode, useEffect, useMemo, useState } from 'react'
 // import { runWorker } from '@/lib/worker'
 import { Site } from '@prisma/client'
-import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
-import { AreaContext } from '@penx/components/AreaContext'
+import { AreaProvider } from '@penx/components/AreaContext'
 import { AreaDialog } from '@penx/components/AreaDialog/AreaDialog'
 import { CommandPanel } from '@penx/components/CommandPanel/CommandPanel'
 import { isBrowser, isServer, SIDEBAR_WIDTH } from '@penx/constants'
 import { AreaCreationsProvider } from '@penx/contexts/AreaCreationsContext'
+import { CreationTagsProvider } from '@penx/contexts/CreationTagsContext'
+import { MoldsProvider } from '@penx/contexts/MoldsContext'
 import { SiteProvider } from '@penx/contexts/SiteContext'
-import { useAppLoading } from '@penx/hooks/useAppLoading'
-import { useAreaCreations } from '@penx/hooks/useAreaCreations'
-import { useAreaItem } from '@penx/hooks/useAreaItem'
+import { TagsProvider } from '@penx/contexts/TagsContext'
+import { useArea } from '@penx/hooks/useArea'
+import { useCreations } from '@penx/hooks/useCreations'
+import { useCreationTags } from '@penx/hooks/useCreationTags'
+import { useDomains } from '@penx/hooks/useDomains'
+import { useMolds } from '@penx/hooks/useMolds'
+import { useMySite } from '@penx/hooks/useMySite'
 import { useSite } from '@penx/hooks/useSite'
-// import { usePathname } from '@penx/libs/i18n'
+import { useTags } from '@penx/hooks/useTags'
+import { usePathname } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { CreationType } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { cn } from '@penx/utils'
 import { AppSidebar } from '../Sidebar/app-sidebar'
@@ -35,15 +40,25 @@ import { SettingsLayout } from './SettingsLayout'
 // }
 
 export function DashboardLayout({ children }: { children: ReactNode }) {
-  const { site, isLoading } = useSite()
-  console.log('======>>site:', site)
+  const siteQuery = useMySite()
+  const moldsQuery = useMolds()
+  const tagsQuery = useTags()
+  const creationTagsQuery = useCreationTags()
+  const areaQuery = useArea()
+  const areaCreationsQuery = useCreations()
+  const pathname = usePathname()!
+  const isSettings = pathname.includes('/~/settings')
+  const domainsQuery = useDomains()
 
-  const field = useAreaItem()
-  const areaCreations = useAreaCreations()
-  // const pathname = usePathname()!
-  // const isPanel = pathname?.includes('/~/areas/')
-
-  if (!site || isLoading || field.isLoading || areaCreations.isLoading) {
+  if (
+    siteQuery.isLoading ||
+    domainsQuery.isLoading ||
+    areaQuery.isLoading ||
+    areaCreationsQuery.isLoading ||
+    tagsQuery.isLoading ||
+    moldsQuery.isLoading ||
+    creationTagsQuery.isLoading
+  ) {
     return (
       <div className="flex h-screen items-center justify-center">
         <LoadingDots className="bg-foreground/60"></LoadingDots>
@@ -51,20 +66,29 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
     )
   }
 
-  // const Layout = isPanel ? PanelLayout : SettingsLayout
-  const Layout = PanelLayout
+  const Layout = isSettings ? SettingsLayout : PanelLayout
+  // const Layout = PanelLayout
 
-  if (!areaCreations.data?.length) return null
+  // if (!areaCreations.data?.length) return null
+  // if (!session) return null
 
   return (
-    <SiteProvider site={site as any}>
-      <AreaContext area={field.data!}>
-        <AreaCreationsProvider creations={areaCreations.data! as any}>
-          {/* <CommandPanel /> */}
-          <AreaDialog />
-          <Layout>{children}</Layout>
-        </AreaCreationsProvider>
-      </AreaContext>
+    <SiteProvider site={siteQuery.data as any}>
+      <MoldsProvider molds={moldsQuery.data!}>
+        <TagsProvider tags={tagsQuery.data!}>
+          <CreationTagsProvider creationTags={creationTagsQuery.data!}>
+            <AreaProvider area={areaQuery.data!}>
+              <AreaCreationsProvider
+                creations={(areaCreationsQuery.data! as any) || []}
+              >
+                {/* <CommandPanel /> */}
+                <AreaDialog />
+                <Layout>{children}</Layout>
+              </AreaCreationsProvider>
+            </AreaProvider>
+          </CreationTagsProvider>
+        </TagsProvider>
+      </MoldsProvider>
     </SiteProvider>
   )
 }

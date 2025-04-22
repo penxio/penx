@@ -1,11 +1,8 @@
 'use client'
 
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { getWidgetName } from '@penx/libs/getWidgetName'
-import { CreationType } from '@penx/types'
-import { Panel, PanelType, Widget } from '@penx/types'
-import { Mold } from '@prisma/client'
+import { CreationType, Panel, PanelType, Widget } from '@penx/types'
 import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
 import { ArticleList } from './Articles/ArticleList'
@@ -19,7 +16,7 @@ interface Props {
 }
 
 export function PanelWidget({ panel, index }: Props) {
-  const { molds } = useSiteContext()
+  const molds = useMoldsContext()
   const widget = panel.widget as Widget
   const mold = molds.find((m) => m.id === widget.moldId)
   return (

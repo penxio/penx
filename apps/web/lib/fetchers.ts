@@ -1,11 +1,11 @@
+import { ProductType } from '@prisma/client'
 import { gql, request } from 'graphql-request'
 import { produce } from 'immer'
 import ky from 'ky'
 import { unstable_cache } from 'next/cache'
 import { getDatabaseData } from '@penx/api/lib/getDatabaseData'
-import { initAboutPage, initPages } from '@penx/api/lib/initPages'
+import { initPages } from '@penx/api/lib/initPages'
 import { prisma } from '@penx/db'
-import { ProductType } from '@prisma/client'
 import { calculateSHA256FromString } from '@penx/encryption'
 import {
   Creation,
@@ -438,14 +438,6 @@ export async function getPage(siteId = '', slug = '') {
         } catch (error) {}
       }
 
-      if (!page && slug === 'about') {
-        const site = await prisma.site.findUniqueOrThrow({
-          where: { id: siteId },
-        })
-        const page = await initAboutPage(siteId, site.userId)
-        return page!
-      }
-
       return page
     },
     [`${siteId}-page-${slug}`],
@@ -463,7 +455,7 @@ export async function getFriends(site: Site) {
     async () => {
       const creations = await findManyCreations(site, mold!.id)
       return creations.map((item) => {
-        return creationToFriend(item)
+        return creationToFriend(item, item.mold)
       })
     },
     [`${siteId}-friends`],

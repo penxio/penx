@@ -99,7 +99,7 @@ model Site {
   collaborators          Collaborator[]
   channels               Channel[]
   messages               Message[]
-  creation               Creation[]
+  creations              Creation[]
   domains                Domain[]
   tags                   Tag[]
   creationTags           CreationTag[]

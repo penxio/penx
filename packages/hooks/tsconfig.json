@@ -1,6 +1,8 @@
 {
   "extends": "@penx/typescript-config/react-library.json",
   "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
     "outDir": "dist"
   },
   "include": ["src"],

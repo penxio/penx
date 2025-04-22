@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/session'
+import { ChevronLeft } from 'lucide-react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Link } from '@penx/libs/i18n'
-import { ChevronLeft } from 'lucide-react'
+import { useSession } from '@penx/session'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { CommonSettingForm } from './forms/CommonSettingForm'
 import { HomeSettingForm } from './forms/HomeSettingForm'
 import { GardenDesign } from './GardenDesign/GardenDesign'
@@ -31,7 +31,7 @@ export function Design() {
   return (
     <div className="h-full flex-1 space-y-3">
       <Link
-        href={`/~/areas/${session?.activeAreaId}`}
+        href={`/~`}
         className="text-foreground bg-accent fixed left-2 top-2 z-50 inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xl"
       >
         <ChevronLeft size={20} />

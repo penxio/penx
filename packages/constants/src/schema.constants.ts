@@ -1,5 +1,5 @@
+import { AreaType, ChargeMode, CreationStatus } from '@prisma/client'
 import { z } from 'zod'
-import { CreationStatus } from '@prisma/client'
 
 export const updateCreationInputSchema = z.object({
   id: z.string(),
@@ -36,3 +36,38 @@ export const createCreationInputSchema = z.object({
 })
 
 export type CreateCreationInput = z.infer<typeof createCreationInputSchema>
+
+export const updateAreaInputSchema = z.object({
+  id: z.string(),
+  type: z.nativeEnum(AreaType).optional(),
+  logo: z.string().min(1, { message: 'Please upload your avatar' }).optional(),
+  name: z
+    .string()
+    .min(1, {
+      message: 'Name must be at least 1 characters.',
+    })
+    .optional(),
+  slug: z.string().min(1, { message: 'Slug is required' }).optional(),
+  description: z.string().optional(),
+  about: z.string().optional(),
+  chargeMode: z.any().optional(),
+  catalogue: z.any().optional(),
+  widgets: z.any().optional(),
+  favorites: z.any().optional(),
+})
+
+export type UpdateAreaInput = z.infer<typeof updateAreaInputSchema>
+
+export const createAreaInputSchema = z.object({
+  id: z.string().uuid(),
+  logo: z.string().min(1, { message: 'Please upload your avatar' }),
+  name: z.string().min(1, {
+    message: 'Name must be at least 1 characters.',
+  }),
+  slug: z.string().min(1, { message: 'Slug is required' }),
+  description: z.string(),
+  about: z.string().optional(),
+  chargeMode: z.nativeEnum(ChargeMode).optional(),
+})
+
+export type CreateAreaInput = z.infer<typeof createAreaInputSchema>

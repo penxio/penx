@@ -1,17 +1,19 @@
+import { CommentStatus } from '@prisma/client'
 import { CreateCreationInput, editorDefaultValue } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { addCreation } from '@penx/hooks/useAreaCreations'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { addPanel } from '@penx/hooks/usePanels'
+import { ICreation } from '@penx/model/ICreation'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
-import { CreationType, PanelType, SiteCreation } from '@penx/types'
+import { CreationStatus, CreationType, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { addCreation } from './useCreations'
 
 export function useAddCreation() {
   const { session } = useSession()
-  const { molds } = useSiteContext()
+  const molds = useMoldsContext()
   const { data: collaborators = [] } = useCollaborators()
   return async (type: string) => {
     const mold = molds.find((mold) => mold.type === type)!
@@ -26,38 +28,44 @@ export function useAddCreation() {
       description: '',
       image: '',
       content: JSON.stringify(editorDefaultValue),
-      areaId: session?.activeAreaId!,
-      moldId: mold.id,
       type: mold.type,
+      moldId: mold.id,
+      areaId: session?.activeAreaId!,
     }
 
-    const newPost = {
+    const newCreation = {
       ...createPostInput,
+      siteId: mold.siteId,
       icon: '',
       props: [],
-      type: CreationType.NOTE,
+      podcast: {},
+      i18n: {},
+      userId: session?.uid!,
+      gateType: GateType.FREE,
+      status: CreationStatus.DRAFT,
+      commentStatus: CommentStatus.OPEN,
+      featured: false,
+      collectible: false,
+      isJournal: false,
+      isPopular: false,
+      isPage: false,
+      checked: false,
+      delivered: false,
+      commentCount: 0,
+      cid: '',
       openedAt: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      userId: session?.uid!,
-      mold: mold,
-      authors: [
-        {
-          id,
-          siteId: session?.siteId!,
-          userId: session?.uid!,
-          user: user,
-        },
-      ],
-      creationTags: [],
-    } as any as SiteCreation
-    addCreation(newPost)
-    updateCreationState(newPost)
+    } as ICreation
+
+    addCreation(newCreation)
+
+    updateCreationState(newCreation)
 
     addPanel({
       id: uniqueId(),
       type: PanelType.CREATION,
-      creation: newPost,
+      creationId: newCreation.id,
     })
 
     // TODO: need to retry

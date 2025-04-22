@@ -19,6 +19,6 @@
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/encryption": "workspace:*",
-    "@penx/types": "workspace:*"
+    "@penx/unique-id": "workspace:*"
   }
 }

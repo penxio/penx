@@ -8,9 +8,16 @@ import { UpdateCreationInput } from '@penx/constants'
 // import { CreationTag, Tag } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { getRandomColorName } from '@penx/libs/color-helper'
+import { localDB } from '@penx/local-db'
+import { ICreation } from '@penx/model/ICreation'
+import { ICreationTag } from '@penx/model/ICreationTag'
+import { ITag } from '@penx/model/ITag'
 import { queryClient } from '@penx/query-client'
 import { api, trpc } from '@penx/trpc-client'
-import { CreationById } from '@penx/types'
+import { uniqueId } from '@penx/unique-id'
+import { refetchCreationTags } from './useCreationTags'
+import { refetchTags } from './useTags'
 
 export type CreationTagWithTag = CreationTag & { tag: Tag }
 
@@ -18,132 +25,111 @@ function getQueryKey(creationId: string) {
   return ['creations', creationId]
 }
 
-function getCacheKey(creationId: string) {
-  return `CREATION_${creationId}`
-}
-
-async function getCachedCreation(creationId: string) {
-  const key = getCacheKey(creationId)
-  const creation = await get(key)
-  return creation as CreationById
-}
-
-async function setCachedCreation(creationId: string, creation: CreationById) {
-  const key = getCacheKey(creationId)
-  set(key, creation)
-}
-
-export async function setCachedCreationProps(
-  creationId: string,
-  data: Partial<CreationById>,
-) {
-  const creation = await getCachedCreation(creationId)
-  setCachedCreation(creationId, {
-    ...creation,
-    ...data,
-    updatedAt: new Date(),
-  })
-}
-
 export function useCreation(creationId: string) {
-  const { data, refetch, ...rest } = useQuery({
+  const { data, ...rest } = useQuery({
     queryKey: getQueryKey(creationId),
-    queryFn: async (c) => {
-      const cached = await getCachedCreation(creationId)
-      if (typeof cached === 'object' && cached) {
-        const passedTIme = Date.now() - cached.updatedAt.valueOf()
-        const tenMinutes = 1000 * 60 * 1
-        if (passedTIme > tenMinutes) {
-          setTimeout(async () => {
-            const creation = (await api.creation.byId.query(
-              creationId,
-            )) as any as CreationById
-
-            const equal = isEqual(
-              {
-                content: cached.content,
-                title: cached.title,
-                description: cached.description,
-              },
-              {
-                content: creation.content,
-                title: creation.title,
-                description: creation.description,
-              },
-            )
-
-            if (!equal) {
-              appEmitter.emit('CREATION_UPDATED', creation)
-              queryClient.setQueryData(getQueryKey(creationId), creation)
-              await setCachedCreation(creationId, creation)
-            }
-          }, 0)
-        }
-        return cached
-      }
-
-      const creationSate = getCreation(creationId)
-      const creation = (await api.creation.byId.query(
-        creationId,
-      )) as any as CreationById
-
-      await setCachedCreation(creationId, creation)
+    queryFn: async () => {
+      const creation = await localDB.creation.get(creationId)
       return creation
     },
-    // staleTime: 1000 * 60,
   })
   return { data, ...rest }
 }
 
 export function getCreation(creationId: string) {
-  return queryClient.getQueryData(getQueryKey(creationId)) as CreationById
+  return queryClient.getQueryData(getQueryKey(creationId)) as ICreation
 }
 
-export function addCreationTag(creationTag: CreationTagWithTag) {
-  const creation = getCreation(creationTag.creationId)
-  const newCreation = {
-    ...creation,
-    creationTags: [...creation.creationTags, creationTag as any],
+export async function createTag(creation: ICreation, tagName: string) {
+  const tag = await localDB.tag
+    .where({
+      siteId: creation.siteId,
+      name: tagName,
+    })
+    .first()
+
+  let newTag: ITag
+
+  if (!tag) {
+    const tagId = uniqueId()
+    newTag = {
+      id: tagId,
+      name: tagName,
+      color: getRandomColorName(),
+      creationCount: 0,
+      hidden: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      userId: creation.userId,
+      siteId: creation.siteId,
+    }
+    await localDB.tag.add(newTag)
+
+    const id = uniqueId()
+    const newCreationTag: ICreationTag = {
+      id,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      creationId: creation.id,
+      tagId: newTag.id,
+      siteId: creation.siteId,
+    }
+    await localDB.creationTag.add(newCreationTag)
+
+    refetchTags()
+    refetchCreationTags()
+
+    await api.tag.createAndAddTag.mutate({
+      tag: newTag,
+      creationTag: newCreationTag,
+    })
   }
-  queryClient.setQueryData(getQueryKey(creation.id), newCreation)
 }
 
-export function removeCreationTag(postTag: CreationTagWithTag) {
+export async function addCreationTag(creation: ICreation, tag: ITag) {
+  const newCreationTag: ICreationTag = {
+    id: uniqueId(),
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    creationId: creation.id,
+    tagId: tag.id,
+    siteId: creation.siteId,
+  }
+  await localDB.creationTag.add(newCreationTag)
+
+  await refetchCreationTags()
+  api.tag.add.mutate({
+    id: newCreationTag.id,
+    siteId: creation.siteId,
+    creationId: creation.id,
+    tagId: tag.id,
+  })
+}
+
+export async function deleteCreationTag(postTag: ICreationTag) {
   const creation = getCreation(postTag.creationId)
-  const newTags = creation.creationTags.filter((tag) => tag.id !== postTag.id)
-  const newCreation = {
-    ...creation,
-    creationTags: newTags,
-  }
-  queryClient.setQueryData(getQueryKey(creation.id), newCreation)
+  await localDB.creationTag.delete(postTag.id)
+  await refetchCreationTags()
+  api.tag.deleteCreationTag.mutate(postTag.id)
 }
 
 export async function updateCreationState(
-  props: Partial<CreationById> & { id: string },
+  props: Partial<ICreation> & { id: string },
 ) {
   const newCreation = {
     ...getCreation(props.id),
     ...props,
   }
   queryClient.setQueryData(getQueryKey(props.id), newCreation)
-  await setCachedCreationProps(props.id, {
-    ...props,
-  })
 }
 
-async function saveCreationToServer(props: UpdateCreationInput) {
-  await setCachedCreationProps(props.id, {
-    ...props,
-  })
-  const newCreation = (await api.creation.update.mutate(
-    props,
-  )) as any as CreationById
-  if (newCreation) {
-    await setCachedCreation(newCreation.id, newCreation)
-  }
+async function persistCreation(props: UpdateCreationInput) {
+  const { id, ...data } = props
+  await localDB.creation.update(id, data)
+  await api.creation.update.mutate(props)
 }
 
-const debouncedSaveCreation = debounce(saveCreationToServer, 250, {
+const debouncedSaveCreation = debounce(persistCreation, 250, {
   maxWait: 1000,
 })
 

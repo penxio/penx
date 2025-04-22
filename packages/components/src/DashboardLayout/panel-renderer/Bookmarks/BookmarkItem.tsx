@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import {
   Archive,
@@ -14,20 +13,19 @@ import {
   Trash2,
 } from 'lucide-react'
 import { toast } from 'sonner'
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { Image } from '@penx/components/Image'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import {
-  refetchAreaCreations,
-  useAreaCreations,
-} from '@penx/hooks/useAreaCreations'
+import { useCreationMold } from '@penx/hooks/useCreationMold'
+import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
+import { useDomains } from '@penx/hooks/useDomains'
 import { updateMainPanel } from '@penx/hooks/usePanels'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
+import { ICreation } from '@penx/model/ICreation'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
-import { CreationById, Panel, PanelType, Prop } from '@penx/types'
+import { Panel, PanelType, Prop } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
@@ -35,28 +33,31 @@ import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { uniqueId } from '@penx/unique-id'
 import { cn, getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
-interface PostItemProps {
-  creation: CreationById
+interface Props {
+  creation: ICreation
   panel: Panel
   index: number
 }
 
-export function BookmarkItem({ creation }: PostItemProps) {
+export function BookmarkItem({ creation }: Props) {
   const isPublished = creation.status === CreationStatus.PUBLISHED
   const site = useSiteContext()
-  const { isSubdomain, domain } = getSiteDomain(site as any, false)
+  const { data = [] } = useDomains()
+  const { isSubdomain, domain } = getSiteDomain(data, false)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
 
   const postUrl = `${location.protocol}//${host}/creations/${creation.slug}`
 
+  const mold = useCreationMold(creation)
   const url = useMemo(() => {
-    const modeProps = creation.mold?.props as Prop[]
+    const modeProps = mold?.props as Prop[]
     const prop = modeProps.find((p) => p.slug === 'url')!
     if (!prop?.id) return ''
     const props: any = creation.props
     return props?.[prop.id] || ''
-  }, [creation])
+  }, [creation, mold])
 
   return (
     <div className={cn('flex flex-col gap-2 py-1')}>
@@ -101,7 +102,7 @@ export function BookmarkItem({ creation }: PostItemProps) {
                 updateMainPanel({
                   id: uniqueId(),
                   type: PanelType.CREATION,
-                  creation: creation as any,
+                  creationId: creation.id,
                 })
               }}
             >
@@ -114,7 +115,7 @@ export function BookmarkItem({ creation }: PostItemProps) {
               tooltipContent="Archive this post"
               onConfirm={async () => {
                 await api.creation.archive.mutate(creation.id)
-                await refetchAreaCreations()
+                await refetchCreations()
               }}
             >
               <Button

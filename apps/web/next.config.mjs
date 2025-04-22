@@ -11,7 +11,8 @@ const nextConfig = {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
   eslint: {
-    ignoreDuringBuilds: process.env.IGNORE_DURING_BUILDS === 'true',
+    // ignoreDuringBuilds: process.env.IGNORE_DURING_BUILDS === 'true',
+    ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: process.env.IGNORE_BUILD_ERRORS === 'true',

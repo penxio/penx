@@ -1,15 +1,16 @@
 'use client'
 
 import React from 'react'
-import { Button } from '@penx/uikit/ui/button'
-import { toggleCollapsed } from '@penx/hooks/useAreaItem'
-import { Widget } from '@penx/types'
 import { Area } from '@prisma/client'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
+import { toggleCollapsed } from '@penx/hooks/useArea'
+import { IArea } from '@penx/model/IArea'
+import { Widget } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
 
 interface Props {
-  area: Area
+  area: IArea
   widget: Widget
 }
 

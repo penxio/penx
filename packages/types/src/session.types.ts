@@ -29,6 +29,11 @@ export interface SessionData {
     isSubdomain: boolean
   }
   message: string
+  isFree: boolean
+  isBeliever: boolean
+  isSubscription: boolean
+  isPro: boolean
+  isBasic: boolean
 }
 
 export type GoogleLoginInfo = {

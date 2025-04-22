@@ -1,5 +1,4 @@
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
-import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import {
   initUserByAddress,
   initUserByEmail,
@@ -7,6 +6,26 @@ import {
   initUserByGoogleInfo,
 } from '@/lib/initUser'
 import { getServerSession, getSessionOptions } from '@/lib/session'
+import { createAppClient, viemConnector } from '@farcaster/auth-client'
+import {
+  BillingCycle,
+  PlanType,
+  ProviderType,
+  Subscription,
+} from '@prisma/client'
+import { compareSync } from 'bcrypt-edge'
+import { getIronSession, IronSession } from 'iron-session'
+import jwt from 'jsonwebtoken'
+import { cookies } from 'next/headers'
+import { NextRequest } from 'next/server'
+import {
+  parseSiweMessage,
+  validateSiweMessage,
+  type SiweMessage,
+} from 'viem/siwe'
+import { NETWORK, ROOT_DOMAIN } from '@penx/constants'
+import { prisma } from '@penx/db'
+import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import {
   AccountWithUser,
   isCancelSubscription,
@@ -20,25 +39,6 @@ import {
   isWalletLogin,
   SessionData,
 } from '@penx/types'
-import { createAppClient, viemConnector } from '@farcaster/auth-client'
-import { compareSync } from 'bcrypt-edge'
-import { getIronSession, IronSession } from 'iron-session'
-import jwt from 'jsonwebtoken'
-import { cookies } from 'next/headers'
-import { NextRequest } from 'next/server'
-import {
-  parseSiweMessage,
-  validateSiweMessage,
-  type SiweMessage,
-} from 'viem/siwe'
-import { NETWORK, ROOT_DOMAIN } from '@penx/constants'
-import { prisma } from '@penx/db'
-import {
-  BillingCycle,
-  PlanType,
-  ProviderType,
-  Subscription,
-} from '@prisma/client'
 import { generateNonce } from '@penx/utils/generateNonce'
 
 // export const runtime = 'edge'
@@ -57,7 +57,6 @@ async function updateSession(
   session.name = account.user.name as string
   session.picture = account.user.image as string
   session.image = account.user.image as string
-  session.domain = getSiteDomain(site)
   session.siteId = site.id
   session.activeSiteId = site.id
   session.activeAreaId = site.areas[0]?.id || ''

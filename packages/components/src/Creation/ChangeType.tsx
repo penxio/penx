@@ -3,21 +3,22 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { updateCreationState } from '@penx/hooks/useCreation'
+import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { getMoldName } from '@penx/libs/getMoldName'
-import { useSession } from '@penx/session'
+import { ICreation } from '@penx/model/ICreation'
 import { api } from '@penx/trpc-client'
-import { CreationById } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
-import { cn, formatUsername } from '@penx/utils'
+import { cn } from '@penx/utils'
 
-export function ChangeType({ creation }: { creation: CreationById }) {
-  const site = useSiteContext()
+export function ChangeType({ creation }: { creation: ICreation }) {
+  const molds = useMoldsContext()
   const [open, setOpen] = useState(false)
+  const mold = molds.find((m) => m.id === creation.moldId)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -27,14 +28,14 @@ export function ChangeType({ creation }: { creation: CreationById }) {
           variant="ghost"
           className="text-foreground/60 -ml-2 h-7 gap-1 rounded-full px-2 text-xs"
         >
-          {getMoldName(creation.mold!)}
+          {getMoldName(mold!)}
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-48 p-2">
         <div className="mb-1 pl-2 text-sm font-semibold">
           <Trans id="Change type"></Trans>
         </div>
-        {site.molds.map((mold) => {
+        {molds.map((mold) => {
           const name = getMoldName(mold)
           return (
             <Item
@@ -42,13 +43,7 @@ export function ChangeType({ creation }: { creation: CreationById }) {
               className="flex gap-2"
               onClick={async () => {
                 setOpen(false)
-                updateCreationState({
-                  id: creation.id,
-                  type: mold.type,
-                  moldId: mold.id,
-                  mold: mold,
-                })
-                await api.creation.update.mutate({
+                updateCreation({
                   id: creation.id,
                   type: mold.type,
                   moldId: mold.id,

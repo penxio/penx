@@ -7,15 +7,16 @@ import { z } from 'zod'
 // import { usePublishDialog } from '@penx/components/Creation/PublishDialog/usePublishDialog'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { revalidateMetadata } from '@penx/libs/revalidateTag'
-import { syncPostToHub } from '../../services/src/syncPostToHub'
+import { ICreation } from '@penx/model/ICreation'
 import { api } from '@penx/trpc-client'
 import { CreationById } from '@penx/types'
 // import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { syncPostToHub } from '../../services/src/syncPostToHub'
 
 export const PublishPostFormSchema = z.object({
   slug: z.string().min(1, { message: 'Slug is required' }),
-  gateType: z.nativeEnum(GateType),
+  gateType: z.any(),
   collectible: z.boolean(),
   delivered: z.boolean(),
   publishedAt: z.date().optional(),
@@ -31,7 +32,7 @@ export function usePublishPost() {
 
   return {
     isLoading,
-    publishPost: async (creation: CreationById, opt: PublishPostOptions) => {
+    publishPost: async (creation: ICreation, opt: PublishPostOptions) => {
       const { gateType, collectible, delivered, slug } = opt
       setLoading(true)
 

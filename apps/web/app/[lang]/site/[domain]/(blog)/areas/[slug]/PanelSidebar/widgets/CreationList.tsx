@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaContext } from '@penx/components/AreaContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { Widget } from '@penx/types'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
@@ -11,9 +11,9 @@ interface Props {
 }
 export function CreationList({ widget }: Props) {
   const isAll = useIsAllContext()
-  const field = useAreaContext()
+  const data = useAreaCreationsContext()
 
-  let creations = field.creations
+  let creations = [...data]
     .filter((post) => post.moldId === widget.moldId)
     .sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf())
 

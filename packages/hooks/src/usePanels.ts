@@ -1,10 +1,10 @@
 import isEqual from 'react-fast-compare'
-import { queryClient } from '@penx/query-client'
-import { Panel, PanelType, Widget } from '@penx/types'
-import { uniqueId } from '@penx/unique-id'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
+import { queryClient } from '@penx/query-client'
+import { Panel, PanelType, Widget } from '@penx/types'
+import { uniqueId } from '@penx/unique-id'
 
 const idbKey = 'PANELS'
 const queryKey = ['panels']
@@ -29,7 +29,7 @@ export function usePanels() {
   })
   const isCreationInPanels = (creationId: string) => {
     return panels.some(
-      (p) => p.type === PanelType.CREATION && p?.creation?.id === creationId,
+      (p) => p.type === PanelType.CREATION && p?.creationId === creationId,
     )
   }
   return { panels, ...rest, isCreationInPanels }
@@ -76,11 +76,14 @@ export async function openPanel(index: number, panel: Panel) {
   await savePanels(newPanels)
 }
 
-export async function addPanel(panel: Panel) {
+export async function addPanel(panel: Partial<Panel>) {
   const panels = getPanels()
   const newPanels = produce(panels, (draft) => {
     if (panels.length === 1) panel.size = 100
-    draft.push(panel)
+    draft.push({
+      id: uniqueId(),
+      ...panel,
+    } as Panel)
   })
   await savePanels(newPanels)
 }

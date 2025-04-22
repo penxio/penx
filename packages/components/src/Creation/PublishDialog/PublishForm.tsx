@@ -247,7 +247,7 @@ export function PublishForm() {
           }}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="gateType"
           render={({ field }) => (
@@ -261,7 +261,7 @@ export function PublishForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <div className="flex items-center justify-end gap-2">
           <DialogClose asChild>

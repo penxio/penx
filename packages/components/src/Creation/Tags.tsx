@@ -5,12 +5,18 @@ import { Trans } from '@lingui/react'
 import { Command } from 'cmdk'
 import { HashIcon, Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { CreationTagWithTag } from '@penx/hooks/useCreation'
-import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { useCreationTagsContext } from '@penx/contexts/CreationTagsContext'
+import { useTagsContext } from '@penx/contexts/TagsContext'
+import {
+  addCreationTag,
+  createTag,
+  CreationTagWithTag,
+  deleteCreationTag,
+} from '@penx/hooks/useCreation'
 import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
+import { ICreation } from '@penx/model/ICreation'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
-import { CreationById, Prop } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
@@ -21,48 +27,46 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 interface Props {
-  creation: CreationById
-  onDeleteCreationTag: (postTag: CreationTagWithTag) => void
-  onAddCreationTag: (postTag: CreationTagWithTag) => void
+  creation: ICreation
 }
 
-export function Tags({
-  creation,
-  onDeleteCreationTag,
-  onAddCreationTag,
-}: Props) {
+export function Tags({ creation }: Props) {
   const [search, setSearch] = useState('')
   const [adding, setAdding] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const { data: tags = [], refetch } = useSiteTags()
-  const { mutateAsync } = trpc.tag.create.useMutation()
-  const { mutateAsync: deleteCreationTag } =
-    trpc.tag.deleteCreationTag.useMutation()
-  const { mutateAsync: addTag } = trpc.tag.add.useMutation()
+  const tags = useTagsContext()
+  const { queryByCreation } = useCreationTagsContext()
+  const creationTags = queryByCreation(creation.id)
 
   return (
     <div className="flex items-center gap-1">
-      {creation.creationTags.map((item) => (
-        <div
-          key={item.id}
-          className={cn(
-            'group relative flex cursor-pointer items-center gap-0.5 rounded-full text-sm',
-            getTextColorByName(item.tag.color),
-          )}
-          onClick={async () => {
-            try {
-              onDeleteCreationTag(item)
-              await deleteCreationTag(item.id)
-            } catch (error) {
-              toast.error(extractErrorMessage(error))
-            }
-          }}
-        >
-          <HashIcon size={12} className="inline-flex group-hover:hidden" />
-          <XIcon size={12} className="hidden group-hover:inline-flex" />
-          <div>{item.tag.name}</div>
-        </div>
-      ))}
+      {creationTags.map((item) => {
+        const tag = tags.find((t) => t.id === item.tagId)!
+        if (!tag) return null
+        return (
+          <div
+            key={item.id}
+            className={cn(
+              'group relative flex items-center gap-0.5 rounded-full text-sm',
+              getTextColorByName(tag.color),
+            )}
+          >
+            <HashIcon size={12} className="inline-flex group-hover:hidden" />
+            <XIcon
+              size={12}
+              className="hidden cursor-pointer group-hover:inline-flex"
+              onClick={async () => {
+                try {
+                  await deleteCreationTag(item)
+                } catch (error) {
+                  toast.error(extractErrorMessage(error))
+                }
+              }}
+            />
+            <div>{tag.name}</div>
+          </div>
+        )
+      })}
 
       <Popover open={isOpen} onOpenChange={setIsOpen} modal>
         <PopoverTrigger asChild className="gap-0">
@@ -72,10 +76,11 @@ export function Tags({
             className="text-foreground/60 h-7 gap-1 rounded-full px-2 text-xs"
             onClick={() => setIsOpen(true)}
           >
-            <Plus size={16}></Plus>
-            <div>
+            <HashIcon size={14} className="inline-flex group-hover:hidden" />
+            {/* <Plus size={16}></Plus> */}
+            {/* <div>
               <Trans id="Tag"></Trans>
-            </div>
+            </div> */}
           </Button>
         </PopoverTrigger>
         <PopoverContent align="start" side="bottom" className="w-48 p-0">
@@ -93,15 +98,11 @@ export function Tags({
                   try {
                     if (!search.trim()) return
                     setAdding(true)
-                    const { tag, creationTag: postTag } = await mutateAsync({
-                      siteId: creation.siteId,
-                      creationId: creation.id,
-                      name: search,
-                    })
 
-                    onAddCreationTag(postTag as any as CreationTagWithTag)
+                    createTag(creation, search)
+
                     setIsOpen(false)
-                    await refetch()
+                    // await refetch()
                     setSearch('')
                     setAdding(false)
                   } catch (error) {
@@ -129,8 +130,8 @@ export function Tags({
                   <CommandItem
                     key={item.id}
                     onSelect={async () => {
-                      const some = creation.creationTags.some(
-                        (postTag) => postTag.tag.id === item.id,
+                      const some = creationTags.some(
+                        (postTag) => postTag.tagId === item.id,
                       )
                       if (some) {
                         setIsOpen(false)
@@ -138,26 +139,12 @@ export function Tags({
                         return
                       }
                       try {
-                        const id = uniqueId()
                         const tag = tags.find((tag) => tag.id === item.id)!
 
-                        onAddCreationTag({
-                          id,
-                          siteId: creation.siteId,
-                          creationId: creation.id,
-                          tagId: item.id,
-                          tag,
-                        } as any)
+                        addCreationTag(creation, tag)
 
                         setIsOpen(false)
                         setSearch('')
-
-                        await addTag({
-                          id,
-                          siteId: creation.siteId,
-                          creationId: creation.id,
-                          tagId: item.id,
-                        })
                       } catch (error) {
                         toast.error(extractErrorMessage(error))
                       }

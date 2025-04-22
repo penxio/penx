@@ -1,14 +1,6 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
-import { useAreaContext } from '@penx/components/AreaContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
-import { toggleCollapsed } from '@penx/hooks/useAreaItem'
-import { WidgetType } from '@penx/constants'
-import { getWidgetName } from '@penx/libs/getWidgetName'
-import { Widget } from '@penx/types'
-import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react'
 import { produce } from 'immer'
@@ -19,6 +11,15 @@ import {
   XIcon,
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { WidgetType } from '@penx/constants'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { toggleCollapsed } from '@penx/hooks/useArea'
+import { getWidgetName } from '@penx/libs/getWidgetName'
+import { Widget } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
+import { cn } from '@penx/utils'
 import { IsAllProvider } from './IsAllContext'
 import { WidgetRender } from './WidgetRender'
 
@@ -35,9 +36,9 @@ interface Props {
 
 export const Item = forwardRef<HTMLDivElement, Props>(
   function Item(props, ref) {
-    const { molds } = useSiteContext()
+    const molds = useMoldsContext()
     const [visible, setVisible] = useState(false)
-    const field = useAreaContext()
+    const area = useAreaContext()
     const [widget, setWidget] = useState(props.widget)
 
     if (!widget) return null

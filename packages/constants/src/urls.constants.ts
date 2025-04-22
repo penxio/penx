@@ -62,3 +62,5 @@ export const DAILY_CLAIM_CAP_URL =
   NETWORK === NetworkNames.BASE
     ? 'https://penx.io/api/daily-claim-cap'
     : 'https://sepolia.penx.io/api/daily-claim-cap'
+
+export const SHAPE_URL = 'http://43.154.135.183:4000/v1/shape'

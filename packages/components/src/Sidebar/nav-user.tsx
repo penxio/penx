@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 // import { useRouter } from 'next/navigation'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { appEmitter } from '@penx/emitter'
 import { useMySites } from '@penx/hooks/useMySites'
 import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
 import { updateSiteState } from '@penx/hooks/useSite'
@@ -47,7 +48,6 @@ export function NavUser() {
   const { session, data, logout, update } = useSession()
   const { isMobile } = useSidebar()
   const { setIsOpen } = usePlanListDialog()
-  // const { push } = useRouter()
   const sigInState = useSignIn({})
 
   async function selectSite(site: MySite) {
@@ -63,7 +63,6 @@ export function NavUser() {
     })
 
     resetPanels()
-    // push(`/~/areas/${field.id}`)
   }
 
   return (
@@ -105,7 +104,7 @@ export function NavUser() {
               key={site.id}
               className="flex cursor-pointer items-center gap-2"
               onClick={() => {
-                selectSite(site)
+                selectSite(site as any)
               }}
             >
               <Avatar className="h-6 w-6">
@@ -123,7 +122,7 @@ export function NavUser() {
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={async () => {
-              // push('/~/settings')
+              appEmitter.emit('ROUTE_TO_SETTINGS')
             }}
           >
             <BadgeCheck />
@@ -164,7 +163,7 @@ export function NavUser() {
             try {
               await logout()
               sigInState?.signOut()
-              // push('/')
+              appEmitter.emit('ON_LOGOUT_SUCCESS')
             } catch (error) {}
           }}
         >

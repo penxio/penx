@@ -3,16 +3,16 @@ import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { ICreation } from '@penx/model/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
-import { CreationById } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
-  creation: CreationById
+  creation: ICreation
 }
 
 export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
@@ -41,10 +41,10 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
         preload: 'metadata',
         audio: {
           title: creation.title,
-          artist:
-            creation?.authors[0]?.user?.displayName ||
-            creation?.authors[0]?.user?.name ||
-            '',
+          // artist:
+          //   creation?.authors[0]?.user?.displayName ||
+          //   creation?.authors[0]?.user?.name ||
+          //   '',
           cover: creation.image
             ? getUrl(creation.image || '')
             : getUrl(site.logo || site.image || ''),

@@ -16,7 +16,7 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
-    "@penx/db": "workspace:*",
+    "@penx/local-db": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/query-client": "workspace:*"
   }

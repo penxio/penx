@@ -17,7 +17,7 @@ import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog/GoogleOaut
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { Logo } from '@penx/components/Logo'
 import { Profile } from '@penx/components/Profile/Profile'
-import { DashboardProviders } from '@penx/components/providers/DashboardProviders'
+import { RootProviders } from '@penx/components/providers/RootProviders'
 import { TextLogo } from '@penx/components/TextLogo'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import linguiConfig from '@penx/libs/lingui.config'
@@ -83,7 +83,7 @@ export default async function RootLayout({
           initialLocale={locale}
           initialMessages={allMessages[locale]!}
         >
-          <DashboardProviders cookies={cookies}>
+          <RootProviders cookies={cookies}>
             <GoogleOauthDialog></GoogleOauthDialog>
             <ThemeProvider
               attribute="class"
@@ -134,7 +134,7 @@ export default async function RootLayout({
             </ThemeProvider>
 
             <div id="portal" />
-          </DashboardProviders>
+          </RootProviders>
         </LinguiClientProvider>
       </body>
     </html>

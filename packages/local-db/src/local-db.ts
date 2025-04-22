@@ -1,27 +1,40 @@
 import Dexie, { Table } from 'dexie'
+import { IArea } from '@penx/model/IArea'
 import { IAsset } from '@penx/model/IAsset'
-import { IBlock } from '@penx/model/IBlock'
+import { ICreation } from '@penx/model/ICreation'
+import { ICreationTag } from '@penx/model/ICreationTag'
 import { IDatabase } from '@penx/model/IDatabase'
 import { IFile } from '@penx/model/IFile'
-import { IPage } from '@penx/model/IPage'
+import { IMold } from '@penx/model/IMold'
+import { ISite } from '@penx/model/ISite'
+import { ITag } from '@penx/model/ITag'
 import { uniqueId } from '@penx/unique-id'
 
 class LocalDB extends Dexie {
   file!: Table<IFile, string>
   asset!: Table<IAsset, string>
-  block!: Table<IBlock, string>
-  page!: Table<IPage, string>
   database!: Table<IDatabase, string>
+  creation!: Table<ICreation, string>
+  site!: Table<ISite, string>
+  area!: Table<IArea, string>
+  mold!: Table<IMold, string>
+  tag!: Table<ITag, string>
+  creationTag!: Table<ICreationTag, string>
 
   constructor() {
     super('penx-local')
-    this.version(6).stores({
+    this.version(10).stores({
       // Primary key and indexed props
       file: 'id, hash',
       asset: 'id, siteId, url, isPublic, isTrashed',
-      page: 'id, siteId, userId, parentId, isJournal',
       database: 'id, siteId, userId, parentId',
-      block: 'id, siteId, userId, parentId, pageId, type',
+      site: 'id, userId',
+      area: 'id, userId, siteId',
+      mold: 'id, userId, siteId',
+      tag: 'id, siteId, userId, [siteId+name]',
+      creation:
+        'id, siteId, userId, areaId, moldId, type, status, [siteId+areaId]',
+      creationTag: 'id, creationId, siteId, tagId',
     })
   }
 

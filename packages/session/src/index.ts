@@ -1,2 +1,2 @@
-export { getSession } from './useGetSession'
+export * from './session'
 export * from './SessionContext'

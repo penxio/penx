@@ -2,15 +2,15 @@ import { forwardRef, useRef, useState } from 'react'
 import { ImageIcon, X } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
+import { ICreation } from '@penx/model/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
-import { CreationById } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
-  creation: CreationById
+  creation: ICreation
   onFileChange: (file: File) => void
   onUploaded: (url: string) => Promise<void>
 }

@@ -1,11 +1,12 @@
 'use client'
 
 import { useMemo } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { isServer, ROOT_DOMAIN } from '@penx/constants'
+import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
 import { MySite } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { cn, getUrl } from '@penx/utils'
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 }
 
 export function SiteItem({ site }: Props) {
-  const { domain, isSubdomain } = getSiteDomain(site)
+  const { domain, isSubdomain } = getSiteDomain(site.domains)
   const link = useMemo(() => {
     if (isServer) return ''
     return isSubdomain

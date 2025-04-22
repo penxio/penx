@@ -1,5 +1,5 @@
 import { arrayMove } from '@dnd-kit/sortable'
-import { Node, WithFlattenedProps } from '../model'
+import { Node, WithFlattenedProps } from '@penx/model'
 
 export type UniqueIdentifier = string
 

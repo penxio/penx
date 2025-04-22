@@ -52,8 +52,8 @@ function Content({ user }: Props) {
     )
   }
 
-  const customDomain = getSiteCustomDomain(data?.sites[0]!)
-  const customSubdomain = getSiteCustomSubdomain(data?.sites[0]!)
+  const customDomain = getSiteCustomDomain(data?.sites?.[0]?.domains||[])
+  const customSubdomain = getSiteCustomSubdomain(data?.sites?.[0]?.domains||[])
 
   return (
     <div className="flex items-center space-x-4">

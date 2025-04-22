@@ -13,20 +13,18 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import {
-  refetchAreaCreations,
-  useAreaCreations,
-} from '@penx/hooks/useAreaCreations'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
+import { useDomains } from '@penx/hooks/useDomains'
 import { updateMainPanel } from '@penx/hooks/usePanels'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
+import { ICreation } from '@penx/model/ICreation'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
-import { CreationById, CreationType, PanelType } from '@penx/types'
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { CreationType, PanelType } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
@@ -34,15 +32,17 @@ import { Switch } from '@penx/uikit/ui/switch'
 import { uniqueId } from '@penx/unique-id'
 import { cn, getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
-  creation: CreationById
+  creation: ICreation
 }
 
 export function ArticleItem({ creation }: PostItemProps) {
   const isPublished = creation.status === CreationStatus.PUBLISHED
   const site = useSiteContext()
-  const { isSubdomain, domain } = getSiteDomain(site as any, false)
+  const { data = [] } = useDomains()
+  const { isSubdomain, domain } = getSiteDomain(data, false)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
   const postUrl = `${location.protocol}//${host}/creations/${creation.slug}`
 
@@ -59,7 +59,7 @@ export function ArticleItem({ creation }: PostItemProps) {
             updateMainPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
-              creation: creation as any,
+              creationId: creation.id,
             })
           }}
         >
@@ -71,13 +71,13 @@ export function ArticleItem({ creation }: PostItemProps) {
           )}
         </div>
       </div>
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         {creation.creationTags?.map((item) => (
           <Badge key={item.id} variant="outline">
             {item.tag.name}
           </Badge>
         ))}
-      </div>
+      </div> */}
       <div className="flex flex-wrap items-center gap-2">
         {creation.status !== CreationStatus.PUBLISHED && (
           <div className="text-foreground/50 text-sm">
@@ -92,7 +92,7 @@ export function ArticleItem({ creation }: PostItemProps) {
             updateMainPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
-              creation: creation as any,
+              creationId: creation.id,
             })
           }}
         >
@@ -108,7 +108,7 @@ export function ArticleItem({ creation }: PostItemProps) {
           tooltipContent="Archive this post"
           onConfirm={async () => {
             await api.creation.archive.mutate(creation.id)
-            await refetchAreaCreations()
+            await refetchCreations()
           }}
         >
           <Button

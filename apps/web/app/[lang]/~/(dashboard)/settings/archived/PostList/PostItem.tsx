@@ -14,19 +14,20 @@ import {
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { RouterOutputs } from '@penx/api'
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
 import { api, trpc } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import { Badge } from '@penx/uikit/ui/badge'
 import { Button } from '@penx/uikit/ui/button'
 import { Calendar } from '@penx/uikit/ui/calendar'
 import { cn, getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
   creation: RouterOutputs['creation']['archivedCreations']['0']
@@ -36,7 +37,8 @@ export function PostItem({ creation }: PostItemProps) {
   const { refetch } = trpc.creation.archivedCreations.useQuery()
   const isPublished = creation.status === CreationStatus.PUBLISHED
   const site = useSiteContext()
-  const { isSubdomain, domain } = getSiteDomain(site as any, false)
+  const { data = [] } = useDomains()
+  const { isSubdomain, domain } = getSiteDomain(data, false)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
 
   function getContent() {
@@ -138,7 +140,9 @@ export function PostItem({ creation }: PostItemProps) {
 
         <ConfirmDialog
           title={<Trans id="Delete this post?"></Trans>}
-          content={<Trans id="Are you sure you want to delete this post?"></Trans>}
+          content={
+            <Trans id="Are you sure you want to delete this post?"></Trans>
+          }
           tooltipContent={<Trans id="Delete this post"></Trans>}
           onConfirm={async () => {
             await api.creation.delete.mutate(creation.id)

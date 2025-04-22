@@ -6,6 +6,7 @@ import { queryClient } from '@penx/query-client'
 import { SessionProvider } from '@penx/session'
 import { StoreProvider } from '@penx/store'
 import { trpc, trpcClient } from '@penx/trpc-client'
+import { SyncProvider } from './SyncProvider'
 
 export function DashboardProviders({
   children,
@@ -18,11 +19,14 @@ export function DashboardProviders({
     <>
       <Toaster className="dark:hidden" richColors />
       <Toaster theme="dark" className="hidden dark:block" richColors />
+
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
-          <trpc.Provider client={trpcClient} queryClient={queryClient}>
-            <StoreProvider>{children}</StoreProvider>
-          </trpc.Provider>
+          <SyncProvider>
+            <trpc.Provider client={trpcClient} queryClient={queryClient}>
+              <StoreProvider>{children}</StoreProvider>
+            </trpc.Provider>
+          </SyncProvider>
         </SessionProvider>
       </QueryClientProvider>
     </>

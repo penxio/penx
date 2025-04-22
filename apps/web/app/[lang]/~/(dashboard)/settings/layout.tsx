@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               // from
               //   ? decodeURIComponent(from)
               //   : `/~/areas/${session?.activeAreaId}`
-              `/~/areas/${session?.activeAreaId}`
+              `/~`
             }
             className="text-foreground bg-accent inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xl"
           >

@@ -1,9 +1,9 @@
 'use client'
 
-import { useOpen } from '@penx/components/CommandPanel/hooks/useOpen'
-import { Kbd } from '@penx/components/Kbd'
 import { Trans } from '@lingui/react'
 import { Search } from 'lucide-react'
+import { useOpen } from '@penx/components/CommandPanel/hooks/useOpen'
+import { Kbd } from '@penx/components/Kbd'
 
 interface Props {}
 

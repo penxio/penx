@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'
-import { useCreationListContext } from '@penx/contexts/CreationListContext'
+import { useCreationsContext } from '@penx/contexts/CreationsContext'
 import { Link } from '@penx/libs/i18n'
 import { SiteCreation } from '@penx/types'
 import {
@@ -23,7 +23,7 @@ export function BidirectionalLinkElementStatic({
   prefix?: string
 }) {
   const element = props.element as any
-  const { creations: posts } = useCreationListContext()
+  const { creations: posts } = useCreationsContext()
   const creation = posts.find((p) => p.id === element.creationId)!
 
   return (

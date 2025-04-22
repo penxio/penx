@@ -1,5 +1,5 @@
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
-import { useAreaCreations } from '@penx/hooks/useAreaCreations'
+import { useCreations } from '@penx/hooks/useCreations'
 import { Widget } from '@penx/types'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'

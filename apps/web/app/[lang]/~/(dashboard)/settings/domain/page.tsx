@@ -1,9 +1,10 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Separator } from '@penx/uikit/ui/separator'
+import { useDomains } from '@penx/hooks/useDomains'
 import { useSite } from '@penx/hooks/useSite'
 import { getSiteCustomDomain } from '@penx/libs/getSiteDomain'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Separator } from '@penx/uikit/ui/separator'
 import { CustomDomainForm } from './CustomDomainForm'
 import DeleteDomain from './DeleteDomain'
 import { DomainConfiguration } from './DomainConfiguration'
@@ -14,6 +15,7 @@ export const dynamic = 'force-static'
 
 export default function Page() {
   const { isLoading, site, error } = useSite()
+  const { data } = useDomains()
 
   if (isLoading) {
     return (
@@ -23,7 +25,7 @@ export default function Page() {
     )
   }
 
-  const customDomain = getSiteCustomDomain(site)
+  const customDomain = getSiteCustomDomain(data)
   return (
     <div className="space-y-8">
       <SubdomainDomainForm site={site!} />

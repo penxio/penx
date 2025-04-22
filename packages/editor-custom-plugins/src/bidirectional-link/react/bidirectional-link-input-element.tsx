@@ -58,7 +58,7 @@ function Content({ editor, element }: any) {
             <InlineComboboxItem
               key={item.id}
               value={item.id}
-              onClick={() => onSelectItem(editor, item, search)}
+              onClick={() => onSelectItem(editor, item as any, search)}
             >
               {item.title}
             </InlineComboboxItem>

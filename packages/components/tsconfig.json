@@ -1,10 +1,14 @@
 {
   "extends": "@penx/typescript-config/react-library.json",
   "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "declarationMap": false,
     "declaration": false,
+    "strict": true,
+    "strictNullChecks": true,
     "outDir": "dist"
   },
-  "include": ["src"],
+  "include": ["."],
   "exclude": ["node_modules", "dist"]
 }

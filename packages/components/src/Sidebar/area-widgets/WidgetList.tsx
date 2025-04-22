@@ -3,11 +3,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
-import { useAreaContext } from '@penx/components/AreaContext'
-import { updateAreaState } from '@penx/hooks/useAreaItem'
-import { queryClient } from '@penx/query-client'
-import { api } from '@penx/trpc-client'
-import { Widget } from '@penx/types'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -35,6 +30,11 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
+import { useAreaContext } from '@penx/components/AreaContext'
+import { updateArea, updateAreaState } from '@penx/hooks/useArea'
+import { queryClient } from '@penx/query-client'
+import { api } from '@penx/trpc-client'
+import { Widget } from '@penx/types'
 import { Item } from './Item'
 import { SortableItem } from './SortableItem'
 
@@ -85,12 +85,8 @@ export const WidgetList = () => {
 
       const newWidgets = arrayMove(widgets, oldIndex, newIndex)
 
-      updateAreaState(area.id!, {
-        widgets: newWidgets,
-      })
-
-      await api.area.updateArea.mutate({
-        id: area.id,
+      updateArea({
+        id: area.id!,
         widgets: newWidgets,
       })
     }

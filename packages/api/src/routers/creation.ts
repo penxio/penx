@@ -48,6 +48,19 @@ export const creationRouter = router({
       return siteCreations as SiteCreation[]
     }),
 
+  listSiteCreations: protectedProcedure
+    .input(
+      z.object({
+        siteId: z.string(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const { siteId } = input
+      return prisma.creation.findMany({
+        where: { siteId },
+      })
+    }),
+
   listCreationsBySite: protectedProcedure
     .input(
       z.object({
@@ -329,7 +342,7 @@ export const creationRouter = router({
           where: { id: input.siteId },
           include: { domains: true },
         })
-        const domain = getSiteDomain(site) || site.domains[0]
+        const domain = getSiteDomain(site.domains) || site.domains[0]
 
         await createNewsletterWithDelivery({
           siteId: input.siteId,

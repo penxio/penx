@@ -1,20 +1,22 @@
 'use client'
 
 import React from 'react'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
-import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { Widget } from '@penx/types'
 import { Area } from '@prisma/client'
 import { PlusIcon } from 'lucide-react'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { IArea } from '@penx/model/IArea'
+import { Widget } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
 
 interface Props {
-  area: Area
+  area: IArea
   widget: Widget
 }
 
 export function AddCreationButton({ area, widget }: Props) {
-  const { molds } = useSiteContext()
+  const molds = useMoldsContext()
   const addCreation = useAddCreation()
   return (
     <Button

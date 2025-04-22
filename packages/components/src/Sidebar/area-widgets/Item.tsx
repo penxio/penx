@@ -6,9 +6,10 @@ import { Trans } from '@lingui/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { WidgetType } from '@penx/constants'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { toggleCollapsed } from '@penx/hooks/useAreaItem'
+import { toggleCollapsed } from '@penx/hooks/useArea'
 import { openWidgetPanel } from '@penx/hooks/usePanels'
 import { getWidgetName } from '@penx/libs/getWidgetName'
 import { Widget } from '@penx/types'
@@ -62,8 +63,8 @@ export const Item = forwardRef<HTMLDivElement, Props>(
       ...rest
     } = props
 
-    const { molds } = useSiteContext()
-    const field = useAreaContext()
+    const molds = useMoldsContext()
+    const area = useAreaContext()
     const [visible, setVisible] = useState(false)
 
     if (!widget) return null
@@ -102,10 +103,10 @@ export const Item = forwardRef<HTMLDivElement, Props>(
                 <div className="select-none text-sm font-semibold">{name}</div>
                 <div className="flex items-center gap-0.5 opacity-0 group-hover/widget:opacity-100">
                   {widget.type === WidgetType.MOLD && (
-                    <AddCreationButton area={field} widget={widget} />
+                    <AddCreationButton area={area} widget={widget} />
                   )}
 
-                  <ToggleButton area={field} widget={widget} />
+                  <ToggleButton area={area} widget={widget} />
                 </div>
               </div>
             </ContextMenuTrigger>

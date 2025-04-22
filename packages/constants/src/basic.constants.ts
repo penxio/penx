@@ -22,6 +22,8 @@ export const SECONDS_PER_DAY = BigInt(24 * 60 * 60) // 1 days
 
 export const SITE_MODE = 'SITE_MODE'
 
+export const ACTIVE_SITE = 'ACTIVE_SITE'
+
 export enum TradeType {
   BUY = 'BUY',
   SELL = 'SELL',

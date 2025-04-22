@@ -8,8 +8,8 @@ import { toast } from 'sonner'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
+import { ICreation } from '@penx/model/ICreation'
 import { api, trpc } from '@penx/trpc-client'
-import { AuthorWithUser, CreationById } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import {
@@ -24,7 +24,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { UserAvatar } from '@penx/widgets/UserAvatar'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
-export function Authors({ creation }: { creation: CreationById }) {
+export function Authors({ creation }: { creation: ICreation }) {
   const site = useSiteContext()
   const [search, setSearch] = useState('')
   const [isOpen, setIsOpen] = useState(false)
@@ -32,9 +32,10 @@ export function Authors({ creation }: { creation: CreationById }) {
   const { mutateAsync: deleteAuthor, isPending } =
     trpc.creation.deleteAuthor.useMutation()
 
+  const authors: any[] = []
   return (
     <div className="flex items-center gap-2">
-      {creation.authors.map((item) => (
+      {authors.map((item) => (
         <TooltipProvider key={item.id}>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -52,9 +53,9 @@ export function Authors({ creation }: { creation: CreationById }) {
                       try {
                         updateCreationState({
                           id: creation.id,
-                          authors: creation.authors.filter(
-                            (author) => author.id !== item.id,
-                          ),
+                          // authors: creation.authors.filter(
+                          //   (author) => author.id !== item.id,
+                          // ),
                         })
                         await deleteAuthor({
                           creationId: creation.id,
@@ -109,7 +110,7 @@ export function Authors({ creation }: { creation: CreationById }) {
                   <CommandItem
                     key={item.id}
                     onSelect={async () => {
-                      const some = creation.authors.some(
+                      const some = authors.some(
                         (author) => author.userId === item.userId,
                       )
 
@@ -122,17 +123,17 @@ export function Authors({ creation }: { creation: CreationById }) {
                         const authorId = uniqueId()
                         updateCreationState({
                           id: creation.id,
-                          authors: [
-                            ...creation.authors,
-                            {
-                              id: authorId,
-                              creationId: creation.id,
-                              userId: item.userId,
-                              siteId: site.id,
-                              user: item.user,
-                              // } as AuthorWithUser,
-                            } as any,
-                          ],
+                          // authors: [
+                          //   ...creation.authors,
+                          //   {
+                          //     id: authorId,
+                          //     creationId: creation.id,
+                          //     userId: item.userId,
+                          //     siteId: site.id,
+                          //     user: item.user,
+                          //     // } as AuthorWithUser,
+                          //   } as any,
+                          // ],
                         })
                         setIsOpen(false)
                         setSearch('')

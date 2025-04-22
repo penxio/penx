@@ -14,13 +14,15 @@ import { UpdateCreationInput } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { useCreation } from '@penx/hooks/useCreation'
+import { useCreationTags } from '@penx/hooks/useCreationTags'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
+import { ICreation } from '@penx/model/ICreation'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
-import { CreationById, Panel } from '@penx/types'
+import { Panel } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 
-export const PanelCreationContext = createContext({} as CreationById)
+export const PanelCreationContext = createContext({} as ICreation)
 
 interface Props {
   creationId: string
@@ -38,6 +40,7 @@ export const PanelCreationProvider = ({
   children,
 }: PropsWithChildren<Props>) => {
   const { data, isLoading } = useCreation(creationId)
+  const creationTagsQuery = useCreationTags()
   const [updating, setUpdating] = useState(false)
 
   useEffect(() => {
@@ -49,7 +52,7 @@ export const PanelCreationProvider = ({
     })
   }, [])
 
-  if (isLoading || panel.isLoading || updating) {
+  if (isLoading || panel.isLoading || updating || creationTagsQuery.isLoading) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
         <LoadingDots className="bg-foreground/60" />

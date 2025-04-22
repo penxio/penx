@@ -1,16 +1,15 @@
-import { CreationListProvider } from '@penx/contexts/CreationListContext'
 import { initLingui } from '@/initLingui'
 import { getCreation, getCreations, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AppearanceConfig, Creation } from '@penx/types'
-import { SiteCreation } from '@penx/types'
-import { getUrl } from '@penx/utils'
 import { GateType } from '@prisma/client'
 import { produce } from 'immer'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import readingTime from 'reading-time'
 import { createEditor, Editor, Element, Transforms } from 'slate'
+import { CreationsProvider } from '@penx/contexts/CreationsContext'
+import { AppearanceConfig, Creation, SiteCreation } from '@penx/types'
+import { getUrl } from '@penx/utils'
 import { PaidContent } from './PaidContent'
 
 type Params = Promise<{ domain: string; slug: string[]; lang: string }>
@@ -134,7 +133,7 @@ export default async function Page(props: { params: Params }) {
   /** No gated */
   if (creation?.gateType == GateType.FREE) {
     return (
-      <CreationListProvider
+      <CreationsProvider
         creations={creations as any}
         backLinkCreations={backLinkCreations as any}
       >
@@ -149,12 +148,12 @@ export default async function Page(props: { params: Params }) {
           next={next}
           prev={prev}
         />
-      </CreationListProvider>
+      </CreationsProvider>
     )
   }
 
   return (
-    <CreationListProvider
+    <CreationsProvider
       creations={creations as any}
       backLinkCreations={backLinkCreations as any}
     >
@@ -165,6 +164,6 @@ export default async function Page(props: { params: Params }) {
         next={next}
         prev={prev}
       />
-    </CreationListProvider>
+    </CreationsProvider>
   )
 }

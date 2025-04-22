@@ -49,7 +49,7 @@ export function Profile({
               size="sm"
               onClick={() => {
                 if (location.host === ROOT_DOMAIN) {
-                  const path = `/~/areas/${data.activeAreaId}`
+                  const path = `/~`
                   push(path)
                   return
                 }

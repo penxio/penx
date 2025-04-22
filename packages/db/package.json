@@ -13,7 +13,8 @@
     "build": "npm run db:generate",
     "db:generate": "pnpm with-env prisma generate",
     "db:push": "pnpm with-env prisma db push --skip-generate",
-    "db:migrate": "pnpm with-env prisma migrate dev --create-only --name init",
+    "db:reset": "pnpm with-env prisma migrate reset --schema=./prisma/schema-local.prisma",
+    "db:migrate": "pnpm with-env prisma migrate dev --schema=./prisma/schema-local.prisma --create-only",
     "seed": "npx prisma db seed",
     "with-env": "dotenv -e ../../.env --"
   },

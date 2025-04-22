@@ -2,7 +2,7 @@
 
 import { CSSProperties, useEffect, useState } from 'react'
 import { Trans } from '@lingui/react'
-import { useCreationListContext } from '@penx/contexts/CreationListContext'
+import { useCreationsContext } from '@penx/contexts/CreationsContext'
 import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const BackLinks = ({ className, style = {} }: Props) => {
-  const { backLinkCreations: backLinkPosts = [] } = useCreationListContext()
+  const { backLinkCreations: backLinkPosts = [] } = useCreationsContext()
   if (!backLinkPosts.length) return null
   return (
     <div

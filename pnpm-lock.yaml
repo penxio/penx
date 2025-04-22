@@ -38,6 +38,9 @@ importers:
       '@dnd-kit/utilities':
         specifier: ^3.2.2
         version: 3.2.2(react@19.1.0)
+      '@electric-sql/client':
+        specifier: ^1.0.3
+        version: 1.0.3
       '@emoji-mart/data':
         specifier: 1.2.1
         version: 1.2.1
@@ -653,6 +656,9 @@ importers:
       tailwind-scrollbar-hide:
         specifier: ^2.0.0
         version: 2.0.0(tailwindcss@4.1.4)
+      tailwindcss:
+        specifier: ^4.1.4
+        version: 4.1.4
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.4)
@@ -789,9 +795,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.5.7
         version: 0.5.14(@ianvs/prettier-plugin-sort-imports@4.4.1(prettier@3.5.3))(prettier@3.5.3)
-      tailwindcss:
-        specifier: ^4.1.4
-        version: 4.1.4
       turbo:
         specifier: ^2.5.0
         version: 2.5.0
@@ -1499,6 +1502,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../model
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -1929,9 +1935,9 @@ importers:
       '@penx/encryption':
         specifier: workspace:*
         version: link:../encryption
-      '@penx/types':
+      '@penx/unique-id':
         specifier: workspace:*
-        version: link:../types
+        version: link:../unique-id
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -1997,9 +2003,9 @@ importers:
 
   packages/session:
     dependencies:
-      '@penx/db':
+      '@penx/local-db':
         specifier: workspace:*
-        version: link:../db
+        version: link:../local-db
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
@@ -2124,6 +2130,9 @@ importers:
       '@penx/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      '@tailwindcss/postcss':
+        specifier: 4.0.17
+        version: 4.0.17
       eslint:
         specifier: ^9.24.0
         version: 9.24.0(jiti@2.4.2)
@@ -2653,6 +2662,9 @@ packages:
     resolution: {integrity: sha512-zhBhg0c1MHMMo+grOc/6wC2/3UETLroruwrYNZ89uDtXl6EOcP5alFP+vW3NToKDA2o0hRh22KNqq4aixA7xXg==}
     peerDependencies:
       effect: ^3.10.3
+
+  '@electric-sql/client@1.0.3':
+    resolution: {integrity: sha512-Z1yxiV9RZB+EPbwPeL7FrutwJD0Ep3mmOzZagQYrWEnWfLm8rmx7IarlCsMTl8W4SBydSaRq0wDRspnWCoCg9Q==}
 
   '@emnapi/core@1.4.0':
     resolution: {integrity: sha512-H+N/FqT07NmLmt6OFFtDfwe8PNygprzBikrEMyQfgqSmT0vzE515Pz7R8izwB9q/zsH/MA64AKoul3sA6/CzVg==}
@@ -13454,6 +13466,10 @@ snapshots:
       effect: 3.10.3
       find-my-way-ts: 0.1.5
       multipasta: 0.2.5
+
+  '@electric-sql/client@1.0.3':
+    optionalDependencies:
+      '@rollup/rollup-darwin-arm64': 4.40.0
 
   '@emnapi/core@1.4.0':
     dependencies:

@@ -1,11 +1,11 @@
-import { prisma } from '@penx/db'
 import { getServerSession, getSessionOptions } from '@/lib/session'
-import { SessionData } from '@penx/types'
 import { PlanType } from '@prisma/client'
 import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import type * as trpcNext from '@trpc/server/adapters/next'
 import { getIronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
+import { prisma } from '@penx/db'
+import { SessionData } from '@penx/types'
 
 interface CreateContextOptions {
   // session: Session | null
@@ -23,6 +23,7 @@ type Token = {
   jti: string
   accessToken: string
   activeSiteId: string
+  siteId: string
   sassBelieverPeriodEnd: string | null
   planType: PlanType
   isFree: boolean

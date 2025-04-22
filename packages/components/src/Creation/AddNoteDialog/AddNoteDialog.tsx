@@ -11,9 +11,9 @@ import { editorDefaultValue } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import {
-  refetchAreaCreations,
-  useAreaCreations,
-} from '@penx/hooks/useAreaCreations'
+  refetchCreations,
+  useCreations,
+} from '@penx/hooks/useCreations'
 import { usePublishPost } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
@@ -113,7 +113,7 @@ function Footer({
           delivered: false,
         })
       }
-      await refetchAreaCreations()
+      await refetchCreations()
       setIsOpen(false)
 
       setValue(editorDefaultValue)

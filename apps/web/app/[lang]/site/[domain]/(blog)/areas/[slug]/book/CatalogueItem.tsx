@@ -26,7 +26,7 @@ export const CatalogueItem = forwardRef<HTMLDivElement, CatalogueItemProps>(
     { item, name, creation, depth }: CatalogueItemProps,
     ref,
   ) {
-    const field = useAreaContext()
+    const area = useAreaContext()
     const { setIsOpen } = useMobileSidebarSheet()
     const isCategory = item.type === CatalogueNodeType.CATEGORY
     const params = useParams() as Record<string, string>
@@ -34,7 +34,7 @@ export const CatalogueItem = forwardRef<HTMLDivElement, CatalogueItemProps>(
     const isActive = creationSlug === creation?.slug
 
     const href = useMemo(() => {
-      return `/areas/${field.slug}/${creation?.slug}`
+      return `/areas/${area.slug}/${creation?.slug}`
     }, [item])
 
     const linkProps: Record<string, string> = {}

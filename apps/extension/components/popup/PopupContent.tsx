@@ -97,7 +97,7 @@ export function PopupContent() {
           type={AppType.WRITE}
           // className="text-blue-600"
           onClick={() => {
-            window.open(`${BASE_URL}/~/areas/${session.activeAreaId}`)
+            window.open(`${BASE_URL}/~`)
             window.close()
             return
           }}

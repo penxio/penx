@@ -1,13 +1,9 @@
-import { Area, Product } from '@prisma/client'
 import { atom, useAtom } from 'jotai'
-
-export type AreaWithProduct = Area & {
-  product?: Product
-}
+import { IArea } from '@penx/model/IArea'
 
 type State = {
   isOpen: boolean
-  area: AreaWithProduct
+  area: IArea
 }
 
 const dialogAtom = atom<State>({

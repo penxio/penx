@@ -1,6 +1,21 @@
 'use client'
 
 import { memo } from 'react'
+import { getDashboardPath } from '@/lib/getDashboardPath'
+import { useSignIn } from '@farcaster/auth-kit'
+import { Trans } from '@lingui/react'
+import {
+  DatabaseBackup,
+  FileText,
+  Gauge,
+  Home,
+  KeySquare,
+  LogOut,
+  Settings,
+} from 'lucide-react'
+import { ROOT_DOMAIN } from '@penx/constants'
+import { useSite } from '@penx/hooks/useSite'
+import { usePathname, useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -17,22 +32,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@penx/uikit/ui/dropdown-menu'
-import { useSite } from '@penx/hooks/useSite'
-import { ROOT_DOMAIN } from '@penx/constants'
-import { getDashboardPath } from '@/lib/getDashboardPath'
-import { usePathname, useRouter } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
-import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react'
-import {
-  DatabaseBackup,
-  FileText,
-  Gauge,
-  Home,
-  KeySquare,
-  LogOut,
-  Settings,
-} from 'lucide-react'
 import { ProfileAvatar } from './ProfileAvatar'
 
 interface Props {
@@ -98,7 +98,7 @@ export const ProfilePopover = memo(function ProfilePopover({
             className="cursor-pointer"
             onClick={() => {
               if (location.host === ROOT_DOMAIN) {
-                const path = `/~/areas/${data.activeAreaId}`
+                const path = `/~`
                 push(path)
                 return
               }

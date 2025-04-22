@@ -1,14 +1,14 @@
 'use client'
 
-import { useAreaContext } from '@penx/components/AreaContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'
 
 export function AllCreations() {
   const isAll = useIsAllContext()
-  const field = useAreaContext()
-  const creations = isAll ? field.creations : field.creations.slice(0, 5)
+  const data = useAreaCreationsContext()
+  const creations = isAll ? data : data.slice(0, 5)
   if (!creations.length) return <NoCreationYet />
 
   return (

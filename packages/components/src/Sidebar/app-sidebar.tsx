@@ -3,11 +3,11 @@
 import * as React from 'react'
 import { Trans } from '@lingui/react'
 import { PaletteIcon, TagsIcon } from 'lucide-react'
-// import { ModeToggle } from '@penx/components/ModeToggle'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { NavUser } from '@penx/components/Sidebar/nav-user'
-// import { useRouter } from '@penx/libs/i18n'
+import { addPanel } from '@penx/hooks/usePanels'
 import { useSession } from '@penx/session'
+import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Sidebar,
@@ -31,7 +31,6 @@ import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  // const { push } = useRouter()
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader className="m-0 p-0">
@@ -77,7 +76,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     size="icon"
                     className="hover:bg-foreground/8 size-8"
                     onClick={() => {
-                      // push('/~/settings/tags')
+                      addPanel({
+                        type: PanelType.MANAGE_TAGS,
+                      })
                     }}
                   >
                     <TagsIcon size={16} />

@@ -31,9 +31,9 @@ export function AreaDialog() {
         <DialogHeader>
           <DialogTitle>
             {!!field ? (
-              <Trans id="Update field"></Trans>
+              <Trans id="Update area"></Trans>
             ) : (
-              <Trans id="Create field"></Trans>
+              <Trans id="Create area"></Trans>
             )}
           </DialogTitle>
         </DialogHeader>

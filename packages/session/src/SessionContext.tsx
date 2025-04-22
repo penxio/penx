@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { useGetSession } from './useGetSession'
+import { useGetSession } from './session'
 
 type SessionType = ReturnType<typeof useGetSession>
 

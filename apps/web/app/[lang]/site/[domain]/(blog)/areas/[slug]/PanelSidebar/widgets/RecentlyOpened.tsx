@@ -1,15 +1,15 @@
 'use client'
 
-import { useAreaContext } from '@penx/components/AreaContext'
+import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'
 
 export function RecentlyOpened() {
   const isAll = useIsAllContext()
-  const field = useAreaContext()
+  const data = useAreaCreationsContext()
 
-  const creations = field.creations
+  const creations = [...data]
     .sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf())
     .slice(0, isAll ? 50 : 5)
 

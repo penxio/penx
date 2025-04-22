@@ -1,4 +1,14 @@
+import { Trans } from '@lingui/react'
+import { CreationStatus } from '@prisma/client'
+import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
 import { useAreaContext } from '@penx/components/AreaContext'
+import { addToFavorites, removeFromFavorites } from '@penx/hooks/useArea'
+import { updateCreation } from '@penx/hooks/useCreation'
+import { useCreationMold } from '@penx/hooks/useCreationMold'
+import { updateCreationById } from '@penx/hooks/useCreations'
+import { addPanel, updateMainPanel, usePanels } from '@penx/hooks/usePanels'
+import { ICreation } from '@penx/model/ICreation'
+import { CreationType, PanelType, SiteCreation } from '@penx/types'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import {
   ContextMenu,
@@ -6,25 +16,17 @@ import {
   ContextMenuItem,
   ContextMenuTrigger,
 } from '@penx/uikit/ui/context-menu'
-import { updateCreationById } from '@penx/hooks/useAreaCreations'
-import { addToFavorites, removeFromFavorites } from '@penx/hooks/useAreaItem'
-import { updateCreation } from '@penx/hooks/useCreation'
-import { addPanel, updateMainPanel, usePanels } from '@penx/hooks/usePanels'
-import { CreationType } from '@penx/types'
-import { PanelType, SiteCreation } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
-import { Trans } from '@lingui/react'
-import { CreationStatus } from '@prisma/client'
-import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
 import { useIsAllContext } from './IsAllContext'
 
 interface CreationItemProps {
-  creation: SiteCreation
+  creation: ICreation
 }
 
 export function CreationItem({ creation }: CreationItemProps) {
   const { isCreationInPanels } = usePanels()
   const isAll = useIsAllContext()
+  const mold = useCreationMold(creation)
 
   return (
     <ContextMenu>
@@ -36,11 +38,11 @@ export function CreationItem({ creation }: CreationItemProps) {
             updateMainPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
-              creation: creation,
+              creationId: creation.id,
             })
           }}
         >
-          {creation.mold?.type === CreationType.TASK && (
+          {mold?.type === CreationType.TASK && (
             <Checkbox
               onClick={(e) => e.stopPropagation()}
               checked={creation.checked}
@@ -70,7 +72,7 @@ export function CreationItem({ creation }: CreationItemProps) {
             addPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
-              creation: creation,
+              creationId: creation.id,
             })
           }}
         >

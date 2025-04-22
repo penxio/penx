@@ -14,8 +14,9 @@ import { toast } from 'sonner'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { addWidget } from '@penx/hooks/useAreaItem'
+import { addWidget } from '@penx/hooks/useArea'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { getMoldName } from '@penx/libs/getMoldName'
 import { useSession } from '@penx/session'
@@ -44,11 +45,12 @@ export function AddWidgetButton({ className }: Props) {
   const [type, setType] = useState<CreationType>('' as any)
   const [open, setOpen] = useState(false)
   const addNoteDialog = useAddNoteDialog()
-  const field = useAreaContext()
+  const area = useAreaContext()
+  const molds = useMoldsContext()
 
   async function addMoldWidget(mold: Mold) {
     setOpen(false)
-    await addWidget(session?.activeAreaId!, {
+    await addWidget(session?.activeAreaId, {
       id: uniqueId(),
       type: WidgetType.MOLD,
       moldId: mold.id,
@@ -58,7 +60,7 @@ export function AddWidgetButton({ className }: Props) {
 
   async function addBuiltinWidget(type: string) {
     setOpen(false)
-    await addWidget(session?.activeAreaId!, {
+    await addWidget(session?.activeAreaId, {
       id: uniqueId(),
       collapsed: false,
       type,
@@ -140,7 +142,7 @@ export function AddWidgetButton({ className }: Props) {
             )
           })}
 
-          {site.molds.map((item) => {
+          {molds.map((item) => {
             const name = getMoldName(item)
             return (
               <Item

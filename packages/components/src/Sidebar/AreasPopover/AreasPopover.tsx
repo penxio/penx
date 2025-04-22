@@ -7,9 +7,9 @@ import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
 // import { useParams } from 'next/navigation'
 import { ProfileAvatar } from '@penx/components/Profile/ProfileAvatar'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useAreas } from '@penx/hooks/useAreas'
 import { resetPanels } from '@penx/hooks/usePanels'
-import { useRouter } from '@penx/libs/i18n'
-import { useSession } from '@penx/session'
+import { updateSession, useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
@@ -22,16 +22,11 @@ interface Props {
 }
 
 export const FieldsPopover = ({ className = '' }: Props) => {
-  const { data, logout, update } = useSession()
+  const { session, logout, update } = useSession()
   const { setIsOpen } = useAreaDialog()
-  const { push } = useRouter()
-  const site = useSiteContext()
-  // const params = useParams() as Record<string, string>
+  const { data: areas = [] } = useAreas()
 
-  if (!data) return <div></div>
-
-  // const area = site.areas.find((item) => item.id === params.id)!
-  const area = site.areas?.[0]
+  const area = areas.find((item) => item.id === session.activeAreaId)!
 
   if (!area) return null
 
@@ -67,7 +62,7 @@ export const FieldsPopover = ({ className = '' }: Props) => {
         </div>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-56 p-1">
-        {site.areas.map((item) => (
+        {areas.map((item) => (
           <PopoverClose key={item.id} asChild>
             <MenuItem
               className="flex cursor-pointer items-center gap-2"
@@ -76,8 +71,10 @@ export const FieldsPopover = ({ className = '' }: Props) => {
                   type: 'update-props',
                   activeAreaId: item.id,
                 })
+                await updateSession({
+                  activeAreaId: item.id,
+                })
                 resetPanels()
-                push(`/~/areas/${item.id}`)
               }}
             >
               <Avatar className="h-6 w-6">

@@ -1,12 +1,12 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import { getRandomColorName } from '@penx/libs/color-helper'
-import { prisma } from '@penx/db'
-import { revalidateCreationTags } from '@penx/api/lib/revalidateCreation'
 import { Tag } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { slug } from 'github-slugger'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
+import { revalidateCreationTags } from '@penx/api/lib/revalidateCreation'
+import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
+import { getRandomColorName } from '@penx/libs/color-helper'
 import { addCreationTag } from '../lib/addCreationTag'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
@@ -28,6 +28,19 @@ export const tagRouter = router({
     )
     .query(async ({ input }) => {
       const tags = await prisma.tag.findMany({
+        where: { siteId: input.siteId },
+      })
+      return tags
+    }),
+
+  listSiteCreationTags: publicProcedure
+    .input(
+      z.object({
+        siteId: z.string(),
+      }),
+    )
+    .query(async ({ input }) => {
+      const tags = await prisma.creationTag.findMany({
         where: { siteId: input.siteId },
       })
       return tags
@@ -194,5 +207,31 @@ export const tagRouter = router({
       revalidate(tag.siteId)
       revalidateCreationTags(tag.siteId, [{ tag: tag }])
       return tag
+    }),
+
+  createAndAddTag: protectedProcedure
+    .input(
+      z.object({
+        tag: z.any(),
+        creationTag: z.any(),
+      }),
+    )
+    .mutation(async ({ input }) => {
+      return prisma.$transaction(
+        async (tx) => {
+          await tx.tag.create({
+            data: input.tag,
+          })
+
+          await tx.creationTag.create({
+            data: input.creationTag,
+          })
+          return true
+        },
+        {
+          maxWait: 5000, // default: 2000
+          timeout: 10000, // default: 5000
+        },
+      )
     }),
 })

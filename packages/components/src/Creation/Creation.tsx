@@ -7,18 +7,21 @@ import { Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
 // import { usePanelCreationContext } from '@penx/components/Creation'
 import { editorDefaultValue, UpdateCreationInput } from '@penx/constants'
-import { updateCreationById } from '@penx/hooks/useAreaCreations'
+import { useMoldsContext } from '@penx/contexts/MoldsContext'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   addCreationTag,
   CreationTagWithTag,
   // Creation as IPost,
-  removeCreationTag,
+  deleteCreationTag,
   updateCreation,
 } from '@penx/hooks/useCreation'
+import { updateCreationById } from '@penx/hooks/useCreations'
+import { useMolds } from '@penx/hooks/useMolds'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
+import { ICreation } from '@penx/model/ICreation'
 import { trpc } from '@penx/trpc-client'
-import { CreationById, CreationType } from '@penx/types'
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { CreationType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { Separator } from '@penx/uikit/ui/separator'
 import { AddPropButton } from './AddPropButton'
@@ -26,7 +29,7 @@ import { AudioCreationUpload } from './AudioCreationUpload'
 import { Authors } from './Authors'
 import { ChangeType } from './ChangeType'
 import { CoverUpload } from './CoverUpload'
-import { DeletePostDialog } from './DeletePostDialog/DeletePostDialog'
+import { DeleteCreationDialog } from './DeleteCreationDialog/DeleteCreationDialog'
 import { ImageCreationUpload } from './ImageCreationUpload'
 import { JournalNav } from './JournalNav'
 import { usePanelCreationContext } from './PanelCreationProvider'
@@ -37,11 +40,11 @@ export function Creation({ index }: { index: number }) {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
-
   const isImage = creation.type === CreationType.IMAGE
+  const molds = useMoldsContext()
 
   const debouncedUpdate = useDebouncedCallback(
-    async (value: CreationById) => {
+    async (value: ICreation) => {
       setPostSaving(true)
       try {
         await mutateAsync({
@@ -52,41 +55,45 @@ export function Creation({ index }: { index: number }) {
           // i18n: value.i18n ?? {},
           // props: value?.props ?? {},
         })
-      } catch (error) {}
+      } catch (error) {
+        //
+      }
       setPostSaving(false)
     },
     // delay in ms
     200,
   )
 
+  const mold = molds.find((m) => m.id === creation.moldId)
+
   const showTitle = useMemo(() => {
     if (
-      creation.mold?.type === CreationType.ARTICLE ||
-      creation.mold?.type === CreationType.PAGE ||
-      creation.mold?.type === CreationType.BOOKMARK ||
-      creation.mold?.type === CreationType.FRIEND ||
-      creation.mold?.type === CreationType.PROJECT ||
-      creation.mold?.type === CreationType.IMAGE ||
-      creation.mold?.type === CreationType.TASK ||
-      creation.mold?.type === CreationType.AUDIO
+      mold?.type === CreationType.ARTICLE ||
+      mold?.type === CreationType.PAGE ||
+      mold?.type === CreationType.BOOKMARK ||
+      mold?.type === CreationType.FRIEND ||
+      mold?.type === CreationType.PROJECT ||
+      mold?.type === CreationType.IMAGE ||
+      mold?.type === CreationType.TASK ||
+      mold?.type === CreationType.AUDIO
     ) {
       return true
     }
     return false
-  }, [creation])
+  }, [mold])
 
   const isCover = useMemo(() => {
-    if (creation.mold?.type === CreationType.BOOKMARK) {
+    if (mold?.type === CreationType.BOOKMARK) {
       return false
     }
     return true
-  }, [creation])
+  }, [mold])
 
   // console.log('=========>>>>>>post:', post)
 
   return (
     <>
-      <DeletePostDialog />
+      <DeleteCreationDialog />
       <div className="h-full w-full">
         <div className="relative z-0 min-h-[500px] px-8 py-12">
           <div className="w-full px-16 sm:px-[max(10px,calc(50%-350px))]">
@@ -106,7 +113,7 @@ export function Creation({ index }: { index: number }) {
                     />
                   )}
                   <div className="flex items-center gap-2">
-                    {creation.mold?.type === CreationType.TASK && (
+                    {mold?.type === CreationType.TASK && (
                       <Checkbox
                         className="bg-foreground/10 size-6 border-none"
                         checked={creation.checked}
@@ -164,27 +171,19 @@ export function Creation({ index }: { index: number }) {
                 <ChangeType creation={creation} />
                 <Separator orientation="vertical" className="h-3" />
                 <div className="flex items-center gap-2">
-                  <Tags
-                    creation={creation}
-                    onDeleteCreationTag={(postTag: CreationTagWithTag) => {
-                      removeCreationTag(postTag)
-                    }}
-                    onAddCreationTag={(postTag: CreationTagWithTag) => {
-                      addCreationTag(postTag)
-                    }}
-                  />
+                  <Tags creation={creation} />
                   {/* <PostLocales /> */}
                 </div>
               </div>
             </div>
 
             <PropList
-              onUpdateProps={(newPost) => {
-                debouncedUpdate(newPost)
+              onUpdateProps={(newCreation) => {
+                debouncedUpdate(newCreation)
               }}
             />
 
-            {creation?.mold?.type === CreationType.AUDIO && (
+            {mold?.type === CreationType.AUDIO && (
               <div className="mt-6">
                 <AudioCreationUpload creation={creation as any} />
               </div>

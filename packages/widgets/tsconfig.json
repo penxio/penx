@@ -1,6 +1,8 @@
 {
   "extends": "@penx/typescript-config/react-library.json",
   "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
       "@penx/uikit/*": ["./src/*"]

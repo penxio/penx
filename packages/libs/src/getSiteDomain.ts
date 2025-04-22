@@ -2,12 +2,7 @@ import { Domain, Site, SubdomainType, User } from '@prisma/client'
 
 export type SiteWithDomains = Site & { domains: Domain[] }
 
-export type UserWithDomains = User & {
-  sites: SiteWithDomains[]
-}
-
-export function getSiteDomain(site: SiteWithDomains, isCustomDomain = true) {
-  const domains = site.domains
+export function getSiteDomain(domains: Domain[], isCustomDomain = true) {
   const customDomain = domains.find((d) => !d.isSubdomain)
   const sortedDomains = sortDomains(domains.filter((f) => f.isSubdomain))
   const subdomain = sortedDomains.find((d) => d.isSubdomain)
@@ -26,16 +21,14 @@ export function getSiteDomain(site: SiteWithDomains, isCustomDomain = true) {
   }
 }
 
-export function getSiteSubdomain(site: SiteWithDomains) {
-  const domains = site.domains
+export function getSiteSubdomain(domains: Domain[]) {
   const item = domains.find(
     (d) => d.isSubdomain && d.subdomainType === SubdomainType.Custom,
   )
   return item?.domain || ''
 }
 
-export function getSiteCustomDomain(site: SiteWithDomains) {
-  const domains = site.domains
+export function getSiteCustomDomain(domains: Domain[]) {
   const item = domains.find((d) => !d.isSubdomain)
   return item?.domain || ''
 }
@@ -66,11 +59,11 @@ export function sortDomains(domains: Domain[]): Domain[] {
   })
 }
 
-export function getSiteCustomSubdomain(site: SiteWithDomains) {
-  const customSubdomain = site.domains.find(
+export function getSiteCustomSubdomain(domains: Domain[]) {
+  const customSubdomain = domains.find(
     (d) => d.isSubdomain && d.subdomainType === SubdomainType.Custom,
   )
   if (customSubdomain) return customSubdomain
 
-  return site.domains.find((d) => d.isSubdomain)
+  return domains.find((d) => d.isSubdomain)
 }

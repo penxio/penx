@@ -2,6 +2,15 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Site } from '@prisma/client'
+import { slug } from 'github-slugger'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { useDomains } from '@penx/hooks/useDomains'
+import { useSite } from '@penx/hooks/useSite'
+import { getSiteSubdomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
+import { trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -14,15 +23,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { getSiteSubdomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@prisma/client'
-import { slug } from 'github-slugger'
-import { toast } from 'sonner'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   domain: z.string().min(2, {
@@ -41,7 +42,8 @@ export function SubdomainDomainForm({ site }: Props) {
     siteId: site.id,
   })
 
-  const subdomain = getSiteSubdomain(site)
+  const { data } = useDomains()
+  const subdomain = getSiteSubdomain(data)
   const form = useForm<z.infer<typeof FormSchema>>({
     defaultValues: {
       domain: subdomain,

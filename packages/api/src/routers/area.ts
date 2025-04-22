@@ -2,6 +2,7 @@ import { AreaType, ChargeMode } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
+import { createAreaInputSchema, updateAreaInputSchema } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
@@ -9,6 +10,21 @@ import { revalidateSite } from '@penx/libs/revalidateSite'
 import { protectedProcedure, router } from '../trpc'
 
 export const areaRouter = router({
+  listSiteAreas: protectedProcedure
+    .input(
+      z.object({
+        siteId: z.string(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      const areas = await prisma.area.findMany({
+        where: {
+          siteId: input.siteId,
+        },
+      })
+      return areas
+    }),
+
   list: protectedProcedure.query(async ({ ctx, input }) => {
     const areas = await prisma.area.findMany({
       where: {
@@ -37,18 +53,7 @@ export const areaRouter = router({
   }),
 
   createArea: protectedProcedure
-    .input(
-      z.object({
-        logo: z.string().min(1, { message: 'Please upload your avatar' }),
-        name: z.string().min(1, {
-          message: 'Name must be at least 1 characters.',
-        }),
-        slug: z.string().min(1, { message: 'Slug is required' }),
-        description: z.string(),
-        about: z.string().optional(),
-        chargeMode: z.nativeEnum(ChargeMode).optional(),
-      }),
-    )
+    .input(createAreaInputSchema)
     .mutation(async ({ ctx, input }) => {
       const area = await prisma.area.create({
         data: {
@@ -81,29 +86,7 @@ export const areaRouter = router({
     }),
 
   updateArea: protectedProcedure
-    .input(
-      z.object({
-        id: z.string(),
-        type: z.nativeEnum(AreaType).optional(),
-        logo: z
-          .string()
-          .min(1, { message: 'Please upload your avatar' })
-          .optional(),
-        name: z
-          .string()
-          .min(1, {
-            message: 'Name must be at least 1 characters.',
-          })
-          .optional(),
-        slug: z.string().min(1, { message: 'Slug is required' }).optional(),
-        description: z.string().optional(),
-        about: z.string().optional(),
-        chargeMode: z.nativeEnum(ChargeMode).optional(),
-        catalogue: z.any().optional(),
-        widgets: z.any().optional(),
-        favorites: z.any().optional(),
-      }),
-    )
+    .input(updateAreaInputSchema)
     .mutation(async ({ ctx, input }) => {
       const { id, ...rest } = input
       const area = await prisma.area.update({

@@ -1,7 +1,4 @@
-import { CreationListProvider } from '@penx/contexts/CreationListContext'
-import { SiteProvider } from '@penx/contexts/SiteContext'
 import { initLingui } from '@/initLingui'
-import { ROOT_DOMAIN } from '@penx/constants'
 import {
   getCreations,
   getFriends,
@@ -11,12 +8,15 @@ import {
 } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { redirectTo404 } from '@/lib/redirectTo404'
-import { AppearanceConfig } from '@penx/types'
-import { cn } from '@penx/utils'
-import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { ROOT_DOMAIN } from '@penx/constants'
+import { CreationsProvider } from '@penx/contexts/CreationsContext'
+import { SiteProvider } from '@penx/contexts/SiteContext'
+import linguiConfig from '@penx/libs/lingui.config'
+import { AppearanceConfig } from '@penx/types'
+import { cn } from '@penx/utils'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24
@@ -72,12 +72,12 @@ export default async function RootLayout({
     >
       <SiteLayout site={site} tags={tags}>
         <SiteProvider site={site as any}>
-          <CreationListProvider
+          <CreationsProvider
             creations={creations as any}
             backLinkCreations={[]}
           >
             {children}
-          </CreationListProvider>
+          </CreationsProvider>
         </SiteProvider>
       </SiteLayout>
     </div>

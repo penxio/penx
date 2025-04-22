@@ -350,6 +350,7 @@ export enum PanelType {
   HOME = 'HOME',
   CREATION = 'CREATION',
   WIDGET = 'WIDGET',
+  MANAGE_TAGS = 'MANAGE_TAGS',
 }
 
 export type Panel = {
@@ -357,9 +358,9 @@ export type Panel = {
   type: PanelType
   isLoading?: boolean
   size?: number
-  creation?: SiteCreation
+  creationId?: string
   widget?: Widget
-  [key: string]: any
+  // [key: string]: any
 }
 
 export interface ImportResult {

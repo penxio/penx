@@ -2,9 +2,17 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Site } from '@prisma/client'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { usePlanListDialog } from '@penx/components/PlanList/usePlanListDialog'
+import { useDomains } from '@penx/hooks/useDomains'
+import { useSite } from '@penx/hooks/useSite'
+import { getSiteCustomDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { useSession } from '@penx/session'
+import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import {
   Form,
@@ -16,14 +24,7 @@ import {
   FormMessage,
 } from '@penx/uikit/ui/form'
 import { Input } from '@penx/uikit/ui/input'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { getSiteCustomDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@prisma/client'
-import { toast } from 'sonner'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   domain: z
@@ -43,7 +44,8 @@ export function CustomDomainForm({ site }: Props) {
   const { refetch } = useSite()
   const { isPending, mutateAsync } = trpc.site.customDomain.useMutation()
   const { setIsOpen } = usePlanListDialog()
-  const customDomain = getSiteCustomDomain(site)
+  const { data } = useDomains()
+  const customDomain = getSiteCustomDomain(data)
 
   const form = useForm<z.infer<typeof FormSchema>>({
     defaultValues: {

@@ -1,13 +1,44 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import { getDefaultMolds } from '@/lib/getDefaultMolds'
+import { z } from 'zod'
 import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
+import { getDefaultMolds } from '@penx/libs/getDefaultMolds'
 import { revalidateSite } from '@penx/libs/revalidateSite'
 import { CreationType, Prop, PropType } from '@penx/types'
-import { uniqueId } from '@penx/unique-id'
-import { z } from 'zod'
 import { protectedProcedure, router } from '../trpc'
 
 export const moldRouter = router({
+  listBySite: protectedProcedure.query(async ({ ctx, input }) => {
+    let list = await prisma.mold.findMany({
+      where: {
+        siteId: ctx.activeSiteId,
+      },
+      orderBy: {
+        id: 'desc',
+      },
+    })
+
+    const sortKeys = [
+      CreationType.ARTICLE,
+      CreationType.NOTE,
+      CreationType.AUDIO,
+      CreationType.IMAGE,
+      CreationType.BOOKMARK,
+      CreationType.FRIEND,
+      CreationType.PROJECT,
+    ]
+
+    return list.sort((a, b) => {
+      const indexA = sortKeys.indexOf(a.type as any)
+      const indexB = sortKeys.indexOf(b.type as any)
+      if (indexA !== -1 && indexB !== -1) {
+        return indexA - indexB
+      }
+      if (indexA === -1) return 1
+      if (indexB === -1) return -1
+      return 0
+    })
+  }),
+
   list: protectedProcedure.query(async ({ ctx, input }) => {
     let list = await prisma.mold.findMany({
       where: {

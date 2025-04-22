@@ -1,12 +1,12 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { SiteCreation } from '@penx/types'
+import { ICreation } from '@penx/model/ICreation'
 
-export const AreaCreationsContext = createContext([] as SiteCreation[])
+export const AreaCreationsContext = createContext([] as ICreation[])
 
 interface Props {
-  creations: SiteCreation[]
+  creations: ICreation[]
 }
 
 export const AreaCreationsProvider = ({
@@ -14,7 +14,7 @@ export const AreaCreationsProvider = ({
   children,
 }: PropsWithChildren<Props>) => {
   return (
-    <AreaCreationsContext.Provider value={[...creations]}>
+    <AreaCreationsContext.Provider value={creations}>
       {children}
     </AreaCreationsContext.Provider>
   )

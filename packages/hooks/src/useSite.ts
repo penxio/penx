@@ -1,8 +1,8 @@
-import { useSession } from '@penx/session'
+import { useQuery } from '@tanstack/react-query'
 import { queryClient } from '@penx/query-client'
+import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { MySite } from '@penx/types'
-import { useQuery } from '@tanstack/react-query'
 import { useMySites } from './useMySites'
 
 const queryKey = ['current_site']

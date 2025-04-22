@@ -1,4 +1,10 @@
-import { STATIC_URL } from '@penx/constants'
+import { get } from 'idb-keyval'
+import {
+  ACTIVE_SITE,
+  IPFS_GATEWAY,
+  IPFS_UPLOAD_URL,
+  STATIC_URL,
+} from '@penx/constants'
 import { api } from '@penx/trpc-client'
 import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 
@@ -19,7 +25,7 @@ export async function uploadFile(file: File, opt = {} as UploadOptions) {
   const { isPublic = true, saveToDB = true } = opt
   const fileHash = await calculateSHA256FromFile(file)
   let data: UploadReturn = {}
-  const site = (window as any).__SITE__
+  const site = await get(ACTIVE_SITE)
 
   let filename = fileHash
 
