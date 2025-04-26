@@ -21,36 +21,10 @@ import { useAreaContext } from '../AreaContext'
 import { AppSidebar } from '../Sidebar/app-sidebar'
 import { PanelList } from './PanelList'
 
-const SHAPE_URL = 'http://43.154.135.183:4000/v1/shape'
-
-async function init() {
-  const creationStream = new ShapeStream({
-    url: SHAPE_URL,
-    params: {
-      table: `creation`,
-      // where: `"siteId" = '${session.siteId}'`,
-    },
-  })
-
-  console.log('nextTick............')
-
-  const creationShape = new Shape(creationStream)
-  // const creationRows = await creationShape.rows
-  // console.log('=======r:', creationRows)
-
-  creationStream.subscribe((res) => {
-    // creationShape.subscribe((res) => {
-    // rows is an array of the latest value of each row in a shape.
-    console.log('res=========>>>>>>>>sub:', res)
-  })
-}
-
 export function PanelLayout({ children }: { children: ReactNode }) {
   useSiteTags()
   useCollaborators()
-  const site = useSiteContext()
   const { session } = useSession()
-  const area = useAreaContext()
   if (!session) return null
 
   return (

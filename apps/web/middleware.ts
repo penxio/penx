@@ -112,7 +112,7 @@ export default async function middleware(req: NextRequest) {
       }
       return NextResponse.rewrite(new URL(`/${locale}${path}`, req.url))
     } else {
-      if (token?.userId) {
+      if (token?.userId && pathname === '/') {
         return NextResponse.redirect(new URL(`/${locale}/~`, req.url))
       } else {
         return NextResponse.rewrite(new URL(`/${locale}/root${path}`, req.url))

@@ -1,20 +1,17 @@
-'use client'
+'use client';
 
-import { PropsWithChildren, useEffect, useState } from 'react'
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { useSession } from '@penx/session'
-import { Button, ButtonProps } from '@penx/uikit/ui/button'
-import {
-  GOOGLE_CLIENT_ID,
-  GOOGLE_DRIVE_OAUTH_REDIRECT_URI,
-  GOOGLE_OAUTH_REDIRECT_URI,
-} from '@penx/constants'
-import { usePathname } from '@penx/libs/i18n'
-import { cn } from '@penx/utils'
-import { useSearchParams } from 'next/navigation'
-import qs from 'query-string'
-import { toast } from 'sonner'
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import qs from 'query-string';
+import { toast } from 'sonner';
+import { GOOGLE_CLIENT_ID, GOOGLE_DRIVE_OAUTH_REDIRECT_URI, GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants';
+import { usePathname } from '@penx/libs/i18n';
+import { useSession } from '@penx/session';
+import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle';
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots';
+import { Button, ButtonProps } from '@penx/uikit/ui/button';
+import { cn } from '@penx/utils';
+
 
 interface Props extends ButtonProps {
   className?: string

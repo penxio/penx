@@ -63,4 +63,4 @@ export const DAILY_CLAIM_CAP_URL =
     ? 'https://penx.io/api/daily-claim-cap'
     : 'https://sepolia.penx.io/api/daily-claim-cap'
 
-export const SHAPE_URL = 'http://43.154.135.183:4000/v1/shape'
+export const SHAPE_URL = 'http://43.154.135.183:5001/v1/shape'

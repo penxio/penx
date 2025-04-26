@@ -804,12 +804,90 @@ importers:
 
   apps/desktop:
     dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../../packages/api
+      '@penx/components':
+        specifier: workspace:*
+        version: link:../../packages/components
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@penx/content-render':
+        specifier: workspace:*
+        version: link:../../packages/content-render
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../../packages/contexts
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@penx/editor':
+        specifier: workspace:*
+        version: link:../../packages/editor
+      '@penx/editor-custom-plugins':
+        specifier: workspace:*
+        version: link:../../packages/editor-custom-plugins
+      '@penx/editor-plugins':
+        specifier: workspace:*
+        version: link:../../packages/editor-plugins
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../../packages/emitter
+      '@penx/encryption':
+        specifier: workspace:*
+        version: link:../../packages/encryption
+      '@penx/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../../packages/local-db
+      '@penx/model':
+        specifier: workspace:*
+        version: link:../../packages/model
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../../packages/query-client
+      '@penx/services':
+        specifier: workspace:*
+        version: link:../../packages/services
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../../packages/session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../../packages/store
+      '@penx/trpc-client':
+        specifier: workspace:*
+        version: link:../../packages/trpc-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../../packages/uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../../packages/unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@penx/widgets':
+        specifier: workspace:*
+        version: link:../../packages/widgets
       '@tauri-apps/api':
         specifier: ^2
         version: 2.5.0
       '@tauri-apps/plugin-opener':
         specifier: ^2
         version: 2.2.6
+      '@tauri-apps/plugin-shell':
+        specifier: ^2.2.0
+        version: 2.2.1
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -820,6 +898,9 @@ importers:
       '@lingui/vite-plugin':
         specifier: ^5.3.1
         version: 5.3.1(typescript@5.6.3)(vite@6.3.2(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.1))
+      '@tailwindcss/vite':
+        specifier: ^4.1.4
+        version: 4.1.4(vite@6.3.2(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.1))
       '@tauri-apps/cli':
         specifier: ^2
         version: 2.5.0
@@ -928,9 +1009,6 @@ importers:
       '@plasmohq/storage':
         specifier: ^1.15.0
         version: 1.15.0(react@19.1.0)
-      '@tailwindcss/vite':
-        specifier: ^4.1.4
-        version: 4.1.4(vite@6.3.2(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.1))
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.4.0(vite@6.3.2(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.1))
@@ -992,6 +1070,9 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@4.1.4)
+      '@tailwindcss/vite':
+        specifier: ^4.1.4
+        version: 4.1.4(vite@6.3.2(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(tsx@4.19.3)(yaml@2.7.1))
       '@types/addressparser':
         specifier: ^1.0.3
         version: 1.0.3
@@ -5033,6 +5114,9 @@ packages:
 
   '@tauri-apps/plugin-opener@2.2.6':
     resolution: {integrity: sha512-bSdkuP71ZQRepPOn8BOEdBKYJQvl6+jb160QtJX/i2H9BF6ZySY/kYljh76N2Ne5fJMQRge7rlKoStYQY5Jq1w==}
+
+  '@tauri-apps/plugin-shell@2.2.1':
+    resolution: {integrity: sha512-G1GFYyWe/KlCsymuLiNImUgC8zGY0tI0Y3p8JgBCWduR5IEXlIJS+JuG1qtveitwYXlfJrsExt3enhv5l2/yhA==}
 
   '@tootallnate/once@2.0.0':
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -16263,6 +16347,10 @@ snapshots:
       '@tauri-apps/cli-win32-x64-msvc': 2.5.0
 
   '@tauri-apps/plugin-opener@2.2.6':
+    dependencies:
+      '@tauri-apps/api': 2.5.0
+
+  '@tauri-apps/plugin-shell@2.2.1':
     dependencies:
       '@tauri-apps/api': 2.5.0
 

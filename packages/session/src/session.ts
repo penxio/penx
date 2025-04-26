@@ -50,7 +50,7 @@ export function useGetSession() {
 
       const localSession = await get<SessionData>(SESSION)
 
-      if (!remoteSession?.isLoggedIn) return remoteSession as SessionData
+      if (!remoteSession?.isLoggedIn) return null as SessionData
       const areas = await localDB.area
         .where({ siteId: remoteSession.siteId })
         .toArray()
