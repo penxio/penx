@@ -55,7 +55,7 @@ export function Tags({ value: tags, onChange: setTags }: Props) {
           <Button
             size="xs"
             variant="outline"
-            className="text-foreground/500 h-7 gap-1 rounded-full px-2 text-xs"
+            className="text-foreground/50 h-7 gap-1 rounded-full px-2 text-xs"
             onClick={() => setIsOpen(true)}
           >
             <Plus size={16}></Plus>

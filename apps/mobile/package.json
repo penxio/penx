@@ -49,7 +49,6 @@
     "postcss": "8.4.35",
     "prettier": "3.2.5",
     "pullstate": "1.25",
-    "reselect": "5.1.0",
-    "typescript": "5.4.2"
+    "reselect": "5.1.0"
   }
 }

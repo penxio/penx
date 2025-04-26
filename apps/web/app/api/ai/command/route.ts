@@ -1,4 +1,4 @@
-import { getServerSession } from '@/lib/session'
+import { getServerSession } from '@penx/libs/session'
 import { anthropic, createAnthropic } from '@ai-sdk/anthropic'
 import { createDeepSeek, deepseek } from '@ai-sdk/deepseek'
 import { createGoogleGenerativeAI } from '@ai-sdk/google'

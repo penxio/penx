@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { getSessionOptions } from '@/lib/session'
+import { getSessionOptions } from '@penx/libs/session'
 import { SessionData } from '@penx/types'
 import { slug } from 'github-slugger'
 import { getIronSession } from 'iron-session'

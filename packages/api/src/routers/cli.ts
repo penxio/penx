@@ -1,4 +1,4 @@
-import { CliLoginStatus } from '@penx/constants'
+import { LoginStatus } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { TRPCError } from '@trpc/server'
 import Redis from 'ioredis'
@@ -17,7 +17,7 @@ export const cliRouter = router({
       const value = await redis.get(`cli-login:${input}`)
       const { userId, status } = JSON.parse(value!)
 
-      if (!userId || status !== CliLoginStatus.CONFIRMED) {
+      if (!userId || status !== LoginStatus.CONFIRMED) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'Please confirm login in web',
@@ -41,7 +41,7 @@ export const cliRouter = router({
     .query(async ({ ctx, input }) => {
       const value = await redis.get(getKey(input.token))
 
-      if (!value) return { status: CliLoginStatus.INIT }
+      if (!value) return { status: LoginStatus.INIT }
 
       return { status: JSON.parse(value).status }
     }),
@@ -53,7 +53,7 @@ export const cliRouter = router({
         `cli-login:${input.token}`,
         JSON.stringify({
           userId: ctx.token.uid,
-          status: CliLoginStatus.CONFIRMED,
+          status: LoginStatus.CONFIRMED,
         }),
       )
       return true
@@ -66,7 +66,7 @@ export const cliRouter = router({
         `cli-login:${input.token}`,
         JSON.stringify({
           userId: ctx.token.uid,
-          status: CliLoginStatus.CANCELED,
+          status: LoginStatus.CANCELED,
         }),
       )
       return true

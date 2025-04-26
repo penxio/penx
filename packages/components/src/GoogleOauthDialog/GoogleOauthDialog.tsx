@@ -2,12 +2,13 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import qs from 'query-string'
 import { toast } from 'sonner'
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
-import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { getGoogleUserInfo } from '@penx/libs/getGoogleUserInfo'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
+import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
+import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import {
   Dialog,
@@ -28,7 +29,9 @@ export function GoogleOauthDialog() {
   const loginWithGoogle = useCallback(
     async function () {
       const accessToken = searchParams?.get('access_token')!
-      const ref = searchParams?.get('ref') as string
+      const qsData = searchParams?.get('qs') as string
+      const qsObject = JSON.parse(decodeURIComponent(qsData))
+
       try {
         const info = await getGoogleUserInfo(accessToken)
 
@@ -38,20 +41,14 @@ export function GoogleOauthDialog() {
           openid: info.sub,
           picture: info.picture,
           name: info.name,
-          ref: ref,
+          ref: qsObject?.ref || '',
         })
 
-        push('/~')
+        // push('/~')
+        location.href = `${location.origin}/${location.pathname}?${qs.stringify(qsObject)}`
       } catch (error) {
         toast.error('Failed to sign in with Google. Please try again.')
       }
-
-      console.log(
-        '=====`${location.origin}/${location.pathname}`:',
-        `${location.origin}/${location.pathname}`,
-      )
-
-      location.href = `${location.origin}/${location.pathname}`
     },
     [searchParams, login],
   )

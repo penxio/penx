@@ -4,13 +4,16 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:app": "pnpm tauri dev",
     "dev:android": "pnpm tauri android dev",
     "dev:ios": "pnpm tauri ios dev",
-    "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "vite:dev": "vite",
+    "vite:build": "tsc && vite build",
+    "vite:preview": "vite preview",
+    "tauri": "tauri",
+    "dev": "pnpm tauri dev",
+    "build": "pnpm tauri build",
+    "build:verbose": "tauri build --verbose"
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
@@ -51,7 +54,6 @@
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
-    "typescript": "~5.6.2",
     "vite": "^6.0.3"
   }
 }

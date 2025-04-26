@@ -4,7 +4,8 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+    "./*": "./src/*.ts",
+    "./client": "./generated/prisma/client/*.ts"
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
@@ -22,14 +23,11 @@
     "seed": "node prisma/seed.js"
   },
   "devDependencies": {
-    "@penx/eslint-config": "workspace:*",
     "@penx/typescript-config": "workspace:*",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^9.24.0",
-    "prisma": "^6.6.0",
-    "typescript": "5.8.2"
+    "prisma": "^6.6.0"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0"
+    "@prisma/client": "6.6.0"
   }
 }

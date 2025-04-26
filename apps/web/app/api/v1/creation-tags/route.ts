@@ -1,4 +1,4 @@
-import { getSessionOptions } from '@/lib/session'
+import { getSessionOptions } from '@penx/libs/session'
 import { SessionData } from '@penx/types'
 import {
   addCreationTag,

@@ -5,6 +5,20 @@
   "windows": ["main"],
   "permissions": [
     "core:default",
-    "opener:default"
+    "opener:default",
+    {
+      "identifier": "http:default",
+      "allow": [
+        {
+          "url": "https://*"
+        },
+        {
+          "url": "https://*"
+        },
+        {
+          "url": "http://localhost:4000"
+        }
+      ]
+    }
   ]
 }

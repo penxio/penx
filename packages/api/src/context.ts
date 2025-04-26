@@ -1,10 +1,10 @@
-import { getServerSession, getSessionOptions } from '@/lib/session'
 import { PlanType } from '@prisma/client'
 import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import type * as trpcNext from '@trpc/server/adapters/next'
 import { getIronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
 import { prisma } from '@penx/db'
+import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import { SessionData } from '@penx/types'
 
 interface CreateContextOptions {
@@ -69,7 +69,6 @@ export async function createContext(opts: FetchCreateContextFnOptions) {
 
   const nextAuthSecret = await getAuthSecret()
   let token = await getServerSession()
-
   let authorization = req.headers.get('authorization')
 
   if (!token?.uid && authorization) {

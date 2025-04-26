@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
-// @ts-expect-error process is a nodejs global
+// @ts-ignores
 const host = process.env.TAURI_DEV_HOST
 
 // https://vitejs.dev/config/
@@ -32,6 +32,7 @@ export default defineConfig(async () => ({
       ignored: ['**/src-tauri/**'],
     },
   },
+  envPrefix: ['VITE_', 'TAURI_'],
   define: {
     'process.env': {},
   },

@@ -39,7 +39,7 @@ export const PodcastTimeElement = withRef<typeof PlateElement>(
           className="bg-background border-foreground/10 absolute -right-2 -top-3 z-20 inline-flex cursor-pointer rounded-full border p-0.5 shadow transition-all hover:scale-110"
           onClick={(e) => {
             const href = e.currentTarget.getAttribute('href') || ''
-            const player = window.__PLAYER__
+            const player = (window as any).__PLAYER__
             player.seek(convertTimeToSeconds(href?.replace('#t=', '')))
             if (player.audio.paused) {
               player.play()

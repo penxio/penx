@@ -1,4 +1,4 @@
-import { precision } from '@/lib/math'
+import { precision } from '@penx/math'
 import { createPublicClient, http } from 'viem'
 import { arbitrum } from 'viem/chains'
 

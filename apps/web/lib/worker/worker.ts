@@ -1,4 +1,4 @@
-import { WorkerEvents } from '../constants'
+import { WorkerEvents } from '@penx/constants'
 import { pollingBackupToGoogle } from './pollingBackupToGoogle'
 import { pollingCloudSync } from './pollingCloudSync'
 

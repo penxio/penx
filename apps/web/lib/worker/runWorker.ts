@@ -1,5 +1,5 @@
 import { store } from '@penx/store'
-import { WorkerEvents } from '../constants'
+import { WorkerEvents } from '@penx/constants'
 
 export function runWorker() {
   // console.log('init web worker...')

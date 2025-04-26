@@ -26,7 +26,7 @@ export const selectEditor = (
   { at, edge, focus }: SelectEditorOptions,
 ) => {
   if (focus) {
-    ReactEditor.focus(editor)
+    ReactEditor.focus(editor as any)
   }
 
   let location = at as Location

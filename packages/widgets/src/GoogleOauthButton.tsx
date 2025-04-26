@@ -1,17 +1,20 @@
-'use client';
+'use client'
 
-import { PropsWithChildren, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import qs from 'query-string';
-import { toast } from 'sonner';
-import { GOOGLE_CLIENT_ID, GOOGLE_DRIVE_OAUTH_REDIRECT_URI, GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants';
-import { usePathname } from '@penx/libs/i18n';
-import { useSession } from '@penx/session';
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle';
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots';
-import { Button, ButtonProps } from '@penx/uikit/ui/button';
-import { cn } from '@penx/utils';
-
+import { PropsWithChildren, useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import qs from 'query-string'
+import { toast } from 'sonner'
+import {
+  GOOGLE_CLIENT_ID,
+  GOOGLE_DRIVE_OAUTH_REDIRECT_URI,
+  GOOGLE_OAUTH_REDIRECT_URI,
+} from '@penx/constants'
+import { usePathname } from '@penx/libs/i18n'
+import { useSession } from '@penx/session'
+import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { Button, ButtonProps } from '@penx/uikit/ui/button'
+import { cn } from '@penx/utils'
 
 interface Props extends ButtonProps {
   className?: string
@@ -27,6 +30,7 @@ export function GoogleOauthButton({
   const searchParams = useSearchParams()
   const error = searchParams?.get('error')
   const pathname = usePathname()!
+  const token = searchParams
 
   useEffect(() => {
     const errorMessage = Array.isArray(error) ? error.pop() : error
@@ -41,9 +45,8 @@ export function GoogleOauthButton({
       onClick={() => {
         setLoading(true)
         const redirectUri = GOOGLE_OAUTH_REDIRECT_URI
-
-        const parsed = qs.parse(location.search)
-        const state = `${location.protocol}//${location.host}__${pathname}__${parsed.ref || ''}`
+        const parsed = qs.parse(location.search) || {}
+        const state = `${location.protocol}//${location.host}__${pathname}__${encodeURIComponent(JSON.stringify(parsed))}`
 
         const scope = 'openid email profile'
         const googleAuthUrl =

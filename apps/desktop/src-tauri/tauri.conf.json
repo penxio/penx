@@ -1,12 +1,12 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "PenX",
-  "version": "0.1.0",
-  "identifier": "com.penx.app",
+  "version": "0.0.1",
+  "identifier": "com.penxio.app",
   "build": {
-    "beforeDevCommand": "pnpm dev",
+    "beforeDevCommand": "pnpm vite:dev",
     "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "pnpm build",
+    "beforeBuildCommand": "pnpm vite:build",
     "frontendDist": "../dist"
   },
   "app": {

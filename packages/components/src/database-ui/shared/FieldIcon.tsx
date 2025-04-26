@@ -44,7 +44,7 @@ export const FieldIcon = ({
 
   if (Icon)
     return (
-      <div className="text-foreground/500 inline-flex">
+      <div className="text-foreground/50 inline-flex">
         <Icon size={size} />
       </div>
     )

@@ -1,4 +1,4 @@
-import { NETWORK, NetworkNames } from './constants'
+import { NETWORK, NetworkNames } from '@penx/constants'
 
 const baseSepoliaAddress = {
   SpaceFactory: '0x2728B1E9cEf2d2278EB7C951a553D0E5a6aE45d0',

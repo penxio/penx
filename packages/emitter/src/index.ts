@@ -7,6 +7,7 @@ export type AppEvent = {
   CREATION_UPDATED: any
   ON_LOGOUT_SUCCESS: undefined
   ROUTE_TO_SETTINGS: undefined
+  DESKTOP_LOGIN_SUCCESS: any
 }
 
 export const appEmitter = mitt<AppEvent>()

@@ -6,7 +6,24 @@ export const isProd = process.env.NODE_ENV === 'production'
 export const isNavigator = typeof navigator !== 'undefined'
 
 export const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN!
-export const ROOT_HOST = process.env.NEXT_PUBLIC_ROOT_HOST!
+
+export const ROOT_HOST =
+  process.env.NEXT_ROOT_HOST ||
+  // @ts-ignores
+  import.meta.env?.VITE_ROOT_HOST ||
+  // @ts-ignores
+  import.meta?.env?.WXT_ROOT_HOST ||
+  ''
+
+export const PLATFORM =
+  process.env.NEXT_PUBLIC_PLATFORM ||
+  // @ts-ignores
+  import.meta?.env?.VITE_PLATFORM ||
+  // @ts-ignores
+  import.meta?.env?.WXT_PLATFORM
+
+export const isDesktop = PLATFORM === 'DESKTOP'
+export const isWeb = PLATFORM === 'WEB'
 
 export const GOOGLE_CLIENT_ID =
   '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com'
@@ -82,7 +99,7 @@ export const editorDefaultValue = [
   },
 ]
 
-export enum CliLoginStatus {
+export enum LoginStatus {
   CANCELED = 'CANCELED',
   CONFIRMED = 'CONFIRMED',
   INIT = 'INIT',
@@ -373,3 +390,40 @@ export enum WidgetType {
   FAVORITES = 'FAVORITES',
   MOLD = 'MOLD',
 }
+
+export const reservedDomains = [
+  'admin',
+  'api',
+  'graphql',
+  'cdn',
+  'next',
+  'docs',
+  'help',
+  'blog',
+  'creator-fi',
+  'help',
+  'news',
+  'status',
+  'support',
+  'app',
+  'community',
+  'profile',
+  'settings',
+  'articles',
+  'images',
+  'videos',
+  'podcasts',
+  'about',
+  'info',
+  'shop',
+  'store',
+  'www',
+  'stats',
+  'umami',
+  'test',
+  'dev',
+  'develop',
+  'prod',
+  'production',
+  'sepolia',
+]

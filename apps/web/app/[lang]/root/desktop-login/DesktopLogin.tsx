@@ -12,17 +12,23 @@ import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 export function DesktopLogin() {
   const { setIsOpen } = useLoginDialog()
-  const { session } = useSession()
-  console.log('====session:', session)
+  const { session, isLoading } = useSession()
   const searchParams = useSearchParams()
   const token = searchParams?.get('token') as string
   const { data } = useSession()
 
   const { isPending: isCanceling, mutateAsync: cancel } =
-    trpc.cli.cancelLogin.useMutation()
-
+    trpc.desktop.cancelLogin.useMutation()
   const { isPending: isConfirming, mutateAsync: confirm } =
-    trpc.cli.confirmLogin.useMutation()
+    trpc.desktop.confirmLogin.useMutation()
+
+  if (isLoading) {
+    return (
+      <div className="bg-background flex h-screen flex-col items-center justify-center p-10">
+        <LoadingDots className="bg-foreground" />
+      </div>
+    )
+  }
 
   if (!session) {
     return (
@@ -45,9 +51,9 @@ export function DesktopLogin() {
   return (
     <div className="bg-background flex h-screen flex-col items-center justify-center p-10">
       <div className="text-3xl font-bold">
-        <Trans id="Login to PenX CLI"></Trans>
+        <Trans id="Login to PenX desktop"></Trans>
       </div>
-      <div className="text-foreground/500">
+      <div className="text-foreground/50">
         <Trans id="Please confirm your authorization for this login."></Trans>
       </div>
 
@@ -76,7 +82,7 @@ export function DesktopLogin() {
           onClick={async () => {
             try {
               await confirm({ token })
-              toast.success(<Trans id="CLI login successfully"></Trans>)
+              toast.success(<Trans id="Desktop login successfully"></Trans>)
               location.href = '/'
             } catch (error) {
               toast.error(<Trans id="Please try again~"></Trans>)
@@ -85,7 +91,7 @@ export function DesktopLogin() {
         >
           {isConfirming && <LoadingDots></LoadingDots>}
           <div>
-            <Trans id="Authorize CLI login"></Trans>
+            <Trans id="Authorize desktop login"></Trans>
           </div>
         </Button>
       </div>

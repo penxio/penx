@@ -1,42 +1,39 @@
-import { useState } from 'react'
-import { invoke } from '@tauri-apps/api/core'
-import { openUrl } from '@tauri-apps/plugin-opener'
-import { open } from '@tauri-apps/plugin-shell'
-import { nanoid } from 'nanoid'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { DashboardLayout } from '@penx/components/DashboardLayout/DashboardLayout'
+import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { DashboardProviders } from '@penx/components/providers/DashboardProviders'
+import { SyncProvider } from '@penx/components/providers/SyncProvider'
+import { LoginStatus } from '@penx/constants'
+import { queryClient } from '@penx/query-client'
+import { StoreProvider } from '@penx/store'
+import { api, trpc, trpcClient } from '@penx/trpc-client'
+import { SessionData } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
-import reactLogo from './assets/react.svg'
+import { sleep } from '@penx/utils'
+import { AuthProvider } from './AuthProvider'
 import './style.css'
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState('')
-  const [name, setName] = useState('')
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke('greet', { name }))
-  }
-
+  const locale = 'en'
   return (
-    <main className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <h1 className="text-3xl font-bold">Welcome to PenX</h1>
-        <p className="text-foreground/50 text-lg">
-          Log in or create an account for creating
-        </p>
-        <Button
-          size="lg"
-          className=""
-          onClick={() => {
-            console.log('hello........')
-            const host =
-              import.meta.env.VITE_BASE_URL || 'http://localhost:4000'
-            openUrl(`${host}/desktop-login?token=${nanoid()}`)
-          }}
-        >
-          Log in with browser
-        </Button>
-      </div>
-    </main>
+    <LinguiClientProvider initialLocale={locale} initialMessages={{}}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <SyncProvider>
+            <trpc.Provider client={trpcClient} queryClient={queryClient}>
+              <StoreProvider>
+                <DashboardLayout>
+                  <main className="flex h-screen items-center justify-center">
+                    <div>App...</div>
+                  </main>
+                </DashboardLayout>
+              </StoreProvider>
+            </trpc.Provider>
+          </SyncProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </LinguiClientProvider>
   )
 }
 

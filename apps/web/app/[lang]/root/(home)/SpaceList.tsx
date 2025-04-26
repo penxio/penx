@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense } from 'react'
-import { precision } from '@/lib/math'
+import { precision } from '@penx/math'
 import { useQueryLogoImages } from '@penx/hooks/useLogoImages'
 import { useSpaces } from '@penx/hooks/useSpaces'
 import { Link } from '@penx/libs/i18n'

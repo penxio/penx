@@ -164,6 +164,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.74.3
         version: 5.74.3(react@19.1.0)
+      '@tauri-apps/plugin-http':
+        specifier: ^2.2.0
+        version: 2.4.3
       '@trpc/client':
         specifier: 11.0.0-rc.466
         version: 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
@@ -1242,6 +1245,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../../packages/local-db
+      '@penx/math':
+        specifier: workspace:*
+        version: link:../../packages/math
       '@penx/model':
         specifier: workspace:*
         version: link:../../packages/model
@@ -1393,6 +1399,9 @@ importers:
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
+      '@penx/math':
+        specifier: workspace:*
+        version: link:../math
       '@penx/model':
         specifier: workspace:*
         version: link:../model
@@ -1442,6 +1451,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../domain
       '@penx/editor':
         specifier: workspace:*
         version: link:../editor
@@ -1606,7 +1618,7 @@ importers:
   packages/db:
     dependencies:
       '@prisma/client':
-        specifier: ^6.6.0
+        specifier: 6.6.0
         version: 6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2)
     devDependencies:
       '@penx/eslint-config':
@@ -1624,6 +1636,31 @@ importers:
       prisma:
         specifier: ^6.6.0
         version: 6.6.0(typescript@5.8.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/domain:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/math':
+        specifier: workspace:*
+        version: link:../math
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.25.0(jiti@2.4.2)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -1929,9 +1966,6 @@ importers:
       '@penx/utils':
         specifier: workspace:*
         version: link:../utils
-      '@prisma/client':
-        specifier: ^6.6.0
-        version: 6.6.0(prisma@6.6.0(typescript@5.8.2))(typescript@5.8.2)
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -2004,6 +2038,25 @@ importers:
       eslint:
         specifier: ^9.24.0
         version: 9.24.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
+
+  packages/math:
+    dependencies:
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.24.0
+        version: 9.25.0(jiti@2.4.2)
       typescript:
         specifier: 5.8.2
         version: 5.8.2
@@ -2084,6 +2137,9 @@ importers:
 
   packages/session:
     dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
@@ -2134,6 +2190,9 @@ importers:
       '@penx/api':
         specifier: workspace:*
         version: link:../api
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
     devDependencies:
       '@penx/eslint-config':
         specifier: workspace:*
@@ -5111,6 +5170,9 @@ packages:
     resolution: {integrity: sha512-rAtHqG0Gh/IWLjN2zTf3nZqYqbo81oMbqop56rGTjrlWk9pTTAjkqOjSL9XQLIMZ3RbeVjveCqqCA0s8RnLdMg==}
     engines: {node: '>= 10'}
     hasBin: true
+
+  '@tauri-apps/plugin-http@2.4.3':
+    resolution: {integrity: sha512-Us8X+FikzpaZRNr4kH4HLwyXascHbM42p6LxAqRTQnHPrrqp1usaH4vxWAZalPvTbHJ3gBEMJPHusFJgtjGJjA==}
 
   '@tauri-apps/plugin-opener@2.2.6':
     resolution: {integrity: sha512-bSdkuP71ZQRepPOn8BOEdBKYJQvl6+jb160QtJX/i2H9BF6ZySY/kYljh76N2Ne5fJMQRge7rlKoStYQY5Jq1w==}
@@ -16345,6 +16407,10 @@ snapshots:
       '@tauri-apps/cli-win32-arm64-msvc': 2.5.0
       '@tauri-apps/cli-win32-ia32-msvc': 2.5.0
       '@tauri-apps/cli-win32-x64-msvc': 2.5.0
+
+  '@tauri-apps/plugin-http@2.4.3':
+    dependencies:
+      '@tauri-apps/api': 2.5.0
 
   '@tauri-apps/plugin-opener@2.2.6':
     dependencies:

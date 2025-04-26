@@ -9,9 +9,9 @@ import ky from 'ky'
 import { hashPassword } from '@penx/api/lib/hashPassword'
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
+import { cacheHelper } from '@penx/libs/cache-header'
 import { getDefaultMolds } from '@penx/libs/getDefaultMolds'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
-import { cacheHelper } from './cache-header'
 import { CreationType } from './theme.types'
 
 const SEVEN_DAYS = 60 * 60 * 24 * 7

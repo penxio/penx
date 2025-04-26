@@ -1,4 +1,4 @@
-import { WorkerEvents } from './constants'
+import { WorkerEvents } from '@penx/constants'
 import { api } from '@penx/trpc-client'
 
 export async function sync(isWorker = false) {}

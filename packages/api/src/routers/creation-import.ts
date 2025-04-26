@@ -1,4 +1,4 @@
-import { redisKeys } from '@/lib/redisKeys'
+import { redisKeys } from '@penx/constants'
 import { TRPCError } from '@trpc/server'
 import Redis from 'ioredis'
 import { v4 as uuidv4 } from 'uuid'

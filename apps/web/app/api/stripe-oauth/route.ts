@@ -1,4 +1,4 @@
-import { getServerSession, getSessionOptions } from '@/lib/session'
+import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import { stripe } from '@penx/libs/stripe'
 import { SessionData } from '@penx/types'
 import { prisma } from '@penx/db'

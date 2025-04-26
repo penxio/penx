@@ -1,11 +1,10 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
-import { Space } from '@/domains/Space'
-import { Site } from '@penx/types'
-import { SpaceType } from '@penx/types'
+import { Space } from '@penx/domain/Space'
+import { Site, SpaceType } from '@penx/types'
 
-export const SpaceContext = createContext({} as Space)
+export const SpaceContext = createContext<Space>({} as Space)
 
 interface Props {
   space: SpaceType
@@ -18,7 +17,7 @@ export const SpaceProvider = ({
   children,
 }: PropsWithChildren<Props>) => {
   useEffect(() => {
-    window.__SITE__ = site as any
+    ;(window as any).__SITE__ = site as any
   }, [site])
   return (
     <SpaceContext.Provider value={new Space(space)}>

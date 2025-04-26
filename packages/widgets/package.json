@@ -15,8 +15,7 @@
     "@penx/typescript-config": "workspace:*",
     "eslint": "^9.24.0",
     "postcss": "^8.5.1",
-    "tailwindcss": "^4.1.4",
-    "typescript": "5.8.2"
+    "tailwindcss": "^4.1.4"
   },
   "dependencies": {
     "@penx/types": "workspace:*",

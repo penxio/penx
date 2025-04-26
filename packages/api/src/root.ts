@@ -2,7 +2,6 @@
  * This file contains the root router of your tRPC-backend
  */
 import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
-import { createCallerFactory, publicProcedure, router } from './trpc'
 import { accessTokenRouter } from './routers/access-token'
 import { affiliateRouter } from './routers/affiliate'
 import { areaRouter } from './routers/area'
@@ -18,6 +17,7 @@ import { creationEngagementRouter } from './routers/creation-engagement'
 import { creationImportRouter } from './routers/creation-import'
 import { databaseRouter } from './routers/database'
 import { deliveryRouter } from './routers/delivery'
+import { desktopRouter } from './routers/desktop'
 import { extensionRouter } from './routers/extension'
 import { githubRouter } from './routers/github'
 import { googleRouter } from './routers/google'
@@ -36,17 +36,18 @@ import { productRouter } from './routers/product'
 import { referralRouter } from './routers/referral'
 import { rewardsRouter } from './routers/rewards'
 import { siteRouter } from './routers/site'
-import { spaceRouter } from './routers/space'
 import { stripeRouter } from './routers/stripe'
 import { subscriberRouter } from './routers/subscriber'
 import { tagRouter } from './routers/tag'
 import { themeRouter } from './routers/theme'
 import { tierRouter } from './routers/tier'
 import { userRouter } from './routers/user'
+import { createCallerFactory, publicProcedure, router } from './trpc'
 
 export const appRouter = router({
   healthCheck: publicProcedure.query(() => 'yay!'),
   cli: cliRouter,
+  desktop: desktopRouter,
   site: siteRouter,
   hostedSite: hostedSiteRouter,
   user: userRouter,
@@ -56,7 +57,6 @@ export const appRouter = router({
   accessToken: accessTokenRouter,
   comment: commentRouter,
   message: messageRouter,
-  space: spaceRouter,
   collaborator: collaboratorRouter,
   rewards: rewardsRouter,
   theme: themeRouter,

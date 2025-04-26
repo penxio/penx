@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { redisKeys } from '@/lib/redisKeys'
+import { redisKeys } from '@penx/constants'
 import { TRPCError } from '@trpc/server'
 import Redis from 'ioredis'
 import { z } from 'zod'

@@ -1,5 +1,5 @@
 import { get } from 'idb-keyval'
-import { SITE_MODE } from '../constants'
+import { SITE_MODE } from '@penx/constants'
 import { getLocalSession } from '../local-session'
 import { sync } from '../sync'
 import { sleep } from '../utils'

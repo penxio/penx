@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren } from 'react'
-import { isSuperAdmin } from '@/lib/isSuperAdmin'
+import { isSuperAdmin } from '@penx/libs/isSuperAdmin'
 import { Trans } from '@lingui/react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Link, usePathname } from '@penx/libs/i18n'

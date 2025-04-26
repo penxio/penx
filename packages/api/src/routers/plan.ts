@@ -1,4 +1,4 @@
-import { isSuperAdmin } from '@/lib/isSuperAdmin'
+import { isSuperAdmin } from '@penx/libs/isSuperAdmin'
 import { prisma } from '@penx/db'
 import { uniqueId } from '@penx/unique-id'
 import { SubscriptionStatus } from '@prisma/client'

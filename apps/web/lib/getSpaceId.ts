@@ -1,6 +1,6 @@
 'use client'
 
-import { isServer } from './constants'
+import { isServer } from '@penx/constants'
 
 export function getSpaceId() {
   if (isServer) return ''

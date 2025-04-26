@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { trpc } from '@penx/trpc-client'
-import { getUrl } from '@penx/utils'
 import { User } from '@prisma/client'
+import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { getUrl } from '@penx/utils'
 import { CommentInput } from './CommentInput'
 import { CommentList } from './CommentList'
 

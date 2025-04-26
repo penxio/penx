@@ -33,6 +33,7 @@
     "@penx/query-client": "workspace:*",
     "@penx/services": "workspace:*",
     "@penx/session": "workspace:*",
+    "@penx/math": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/trpc-client": "workspace:*",
     "@penx/types": "workspace:*",
@@ -74,7 +75,6 @@
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.1.4",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.1",
-    "typescript": "5.7.3"
+    "tsx": "^4.19.1"
   }
 }

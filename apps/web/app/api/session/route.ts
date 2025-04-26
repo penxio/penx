@@ -5,7 +5,7 @@ import {
   initUserByFarcasterInfo,
   initUserByGoogleInfo,
 } from '@/lib/initUser'
-import { getServerSession, getSessionOptions } from '@/lib/session'
+import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
 import {
   BillingCycle,

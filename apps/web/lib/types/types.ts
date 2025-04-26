@@ -14,7 +14,7 @@ import {
   User,
 } from '@prisma/client'
 import { Address } from 'viem'
-import { TierInterval } from '../constants'
+import { TierInterval } from '@penx/constants'
 
 export type App = {
   id: string

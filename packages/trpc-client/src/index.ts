@@ -1,17 +1,31 @@
 'use client'
 
+import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { createTRPCClient, httpBatchLink } from '@trpc/client'
 import { createTRPCReact } from '@trpc/react-query'
 import { get } from 'idb-keyval'
 import superjson from 'superjson'
 import { type AppRouter } from '@penx/api'
-
-// @ts-ignore
-const HOST = import.meta.env?.WXT_BASE_URL ?? ''
+import { isDesktop, ROOT_HOST } from '@penx/constants'
 
 const link = httpBatchLink({
-  url: `${HOST}/api/trpc`,
+  url: `${ROOT_HOST}/api/trpc`,
+  fetch: isDesktop ? tauriFetch : fetch,
+  // fetch: tauriFetch,
   transformer: superjson,
+  async headers() {
+    if (isDesktop) {
+      const session = await get('SESSION')
+      if (session?.accessToken) {
+        return {
+          Authorization: session.accessToken,
+        }
+      }
+    }
+    return {
+      // Authorization: config.token,
+    }
+  },
 })
 
 export const api = createTRPCClient<AppRouter>({

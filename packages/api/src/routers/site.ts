@@ -2,7 +2,12 @@ import { ProductType, StripeType, SubdomainType } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
-import { defaultBenefits, isProd, TierInterval } from '@penx/constants'
+import {
+  defaultBenefits,
+  isProd,
+  reservedDomains,
+  TierInterval,
+} from '@penx/constants'
 import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'
 import {
@@ -12,7 +17,6 @@ import {
 import { revalidateSite } from '@penx/libs/revalidateSite'
 import { stripe } from '@penx/libs/stripe'
 import { MySite, StripeInfo } from '@penx/types'
-import { reservedDomains } from '../lib/constants'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const siteRouter = router({
@@ -152,6 +156,8 @@ export const siteRouter = router({
     }),
 
   mySite: protectedProcedure.query(async ({ ctx, input }) => {
+    console.log('--------input:', input)
+
     const site = await prisma.site.findUniqueOrThrow({
       where: { id: ctx.token.activeSiteId },
     })

@@ -1,6 +1,6 @@
 import { cacheHelper } from '@penx/libs/cache-header'
 import { prisma } from '@penx/db'
-import { redisKeys } from '@/lib/redisKeys'
+import { redisKeys } from '@penx/constants'
 import { StripeInfo } from '@penx/types'
 import { ProductType } from '@prisma/client'
 import { TRPCError } from '@trpc/server'

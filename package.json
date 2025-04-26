@@ -119,6 +119,7 @@
     "@udecode/plate-trailing-block": "44.0.0",
     "@uiw/react-color": "^2.4.5",
     "@uploadthing/react": "7.1.0",
+    "@tauri-apps/plugin-http": "^2.2.0",
     "ai": "^4.1.24",
     "array-move": "^4.0.0",
     "axios": "^1.7.9",

@@ -18,15 +18,14 @@
   "directory": "./src",
   "devDependencies": {
     "@penx/eslint-config": "workspace:*",
-    "@penx/typescript-config": "workspace:*",
-    "eslint": "^9.25.0",
-    "typescript": "5.8.2"
+    "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/api": "workspace:*",
     "@penx/model": "workspace:*",
+    "@penx/domain": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",

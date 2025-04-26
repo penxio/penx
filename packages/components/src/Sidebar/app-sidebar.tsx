@@ -25,7 +25,7 @@ import {
   TooltipTrigger,
 } from '@penx/uikit/ui/tooltip'
 import { AreaWidgets } from './area-widgets'
-import { FieldsPopover } from './AreasPopover/AreasPopover'
+import { AreasPopover } from './AreasPopover/AreasPopover'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
@@ -36,7 +36,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader className="m-0 p-0">
         <SidebarMenu className="">
           <SidebarMenuItem className="">
-            <FieldsPopover />
+            <AreasPopover />
           </SidebarMenuItem>
         </SidebarMenu>
         {/* <QuickSearchTrigger /> */}

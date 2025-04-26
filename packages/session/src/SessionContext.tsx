@@ -1,14 +1,14 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { useGetSession } from './session'
+import { useQuerySession } from './session'
 
-type SessionType = ReturnType<typeof useGetSession>
+type SessionType = ReturnType<typeof useQuerySession>
 
 export const SessionContext = createContext({} as SessionType)
 
 export const SessionProvider = ({ children }: PropsWithChildren) => {
-  const sessionRes = useGetSession()
+  const sessionRes = useQuerySession()
 
   return (
     <SessionContext.Provider value={sessionRes}>

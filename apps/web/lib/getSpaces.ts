@@ -1,5 +1,5 @@
 import { request } from 'graphql-request'
-import { SUBGRAPH_URL } from './constants'
+import { SUBGRAPH_URL } from '@penx/constants'
 import { spacesQuery } from './gql'
 import { SpaceType } from './types'
 

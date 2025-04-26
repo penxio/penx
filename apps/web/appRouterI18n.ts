@@ -1,6 +1,6 @@
 import 'server-only'
 import { I18n, Messages, setupI18n } from '@lingui/core'
-import { isProd } from './lib/constants'
+import { isProd } from '@penx/constants'
 import linguiConfig from './lingui.config'
 
 const { locales } = linguiConfig

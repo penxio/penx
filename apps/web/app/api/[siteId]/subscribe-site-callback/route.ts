@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { getServerSession, getSessionOptions } from '@/lib/session'
+import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import { SessionData } from '@penx/types'
 import { getOAuthStripe } from '@penx/api/lib/getOAuthStripe'
 import { BillingCycle, PlanType, StripeType } from '@prisma/client'

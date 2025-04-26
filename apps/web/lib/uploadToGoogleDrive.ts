@@ -1,4 +1,4 @@
-import { GOOGLE_DRIVE_FOLDER_PREFIX } from './constants'
+import { GOOGLE_DRIVE_FOLDER_PREFIX } from '@penx/constants'
 import { getSpaceId } from './getSpaceId'
 import { GoogleDrive } from './google-drive'
 import { api } from '@penx/trpc-client'

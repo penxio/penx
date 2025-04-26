@@ -21,7 +21,7 @@ interface Props {
   className?: string
 }
 
-export const FieldsPopover = ({ className = '' }: Props) => {
+export const AreasPopover = ({ className = '' }: Props) => {
   const { session, logout, update } = useSession()
   const { setIsOpen } = useAreaDialog()
   const { data: areas = [] } = useAreas()

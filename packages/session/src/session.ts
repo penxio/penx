@@ -3,7 +3,9 @@
 import { useMemo } from 'react'
 import { BillingCycle, PlanType } from '@prisma/client'
 import { useMutation, useQuery } from '@tanstack/react-query'
+import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
+import { isDesktop, isWeb, PLATFORM, ROOT_HOST } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import {
@@ -14,9 +16,10 @@ import {
   UpdateSessionData,
 } from '@penx/types'
 
+const fetchClient = isDesktop ? tauriFetch : fetch
+
 // @ts-ignore
-const HOST = import.meta.env?.WXT_BASE_URL ?? ''
-const sessionApiRoute = `${HOST}/api/session`
+const sessionApiRoute = `${ROOT_HOST}/api/session`
 
 const SESSION = 'SESSION'
 
@@ -26,7 +29,7 @@ async function fetchJson<JSON = unknown>(
   input: RequestInfo,
   init?: RequestInit,
 ): Promise<JSON> {
-  return fetch(input, {
+  return fetchClient(input, {
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
@@ -36,21 +39,29 @@ async function fetchJson<JSON = unknown>(
 }
 
 export async function getSession() {
-  const session = queryClient.getQueryData(queryKey) as SessionData
-  if (session) return session
+  // const session = queryClient.getQueryData(queryKey) as SessionData
+  // if (session) return session
   const localSession = await get(SESSION)
   return localSession as SessionData
 }
 
-export function useGetSession() {
-  const { isPending, data: session } = useQuery({
+export function useQuerySession() {
+  const {
+    isPending,
+    data: session,
+    refetch,
+  } = useQuery({
     queryKey,
     queryFn: async () => {
+      const localSession = await get<SessionData>(SESSION)
+      console.log('======isDesktop:', isDesktop, 'localSession:', localSession)
+
+      if (isDesktop) return localSession || null
       const remoteSession = await fetchJson<SessionData>(sessionApiRoute)
 
-      const localSession = await get<SessionData>(SESSION)
+      console.log('===remoteSession:', remoteSession)
 
-      if (!remoteSession?.isLoggedIn) return null as SessionData
+      if (!remoteSession?.isLoggedIn) return null as any as SessionData
       const areas = await localDB.area
         .where({ siteId: remoteSession.siteId })
         .toArray()
@@ -68,7 +79,7 @@ export function useGetSession() {
 
       return newSession as SessionData
     },
-    staleTime: 5 * 60 * 1000,
+    // staleTime: 5 * 60 * 1000,
   })
 
   async function login(data: LoginData & { host?: string }) {
@@ -100,6 +111,7 @@ export function useGetSession() {
   }, [isPending, session]) as 'loading' | 'unauthenticated' | 'authenticated'
 
   async function update(data: UpdateSessionData) {
+    if (isDesktop) return
     const res = await fetchJson<SessionData>(sessionApiRoute, {
       body: JSON.stringify(data),
       method: 'PATCH',
@@ -153,6 +165,7 @@ export function useGetSession() {
     login,
     status,
     update,
+    refetch,
     isLoading: isPending,
     subscriptions: [] as any,
   }
@@ -161,6 +174,7 @@ export function useGetSession() {
 export async function updateSession(data: Partial<SessionData>) {
   const session = await getSession()
   const newSession = { ...session, ...data }
+  console.log('=======newSession:', newSession)
   queryClient.setQueryData(queryKey, newSession)
   await set(SESSION, newSession)
 }

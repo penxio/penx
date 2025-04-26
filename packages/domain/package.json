@@ -1,0 +1,21 @@
+{
+  "name": "@penx/domain",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@penx/math": "workspace:*",
+    "@penx/constants": "workspace:*",
+    "@penx/types": "workspace:*"
+  }
+}

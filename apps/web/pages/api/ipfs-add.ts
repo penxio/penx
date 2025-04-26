@@ -1,4 +1,4 @@
-import { redisKeys } from '@/lib/redisKeys'
+import { redisKeys } from '@penx/constants'
 import Redis from 'ioredis'
 import { create } from 'kubo-rpc-client'
 import { NextApiRequest, NextApiResponse, PageConfig } from 'next'

@@ -25,7 +25,7 @@ export function CliLogin() {
       <div className="text-3xl font-bold">
         <Trans id="Login to PenX CLI"></Trans>
       </div>
-      <div className="text-foreground/500">
+      <div className="text-foreground/50">
         <Trans id="Please confirm your authorization for this login."></Trans>
       </div>
 
