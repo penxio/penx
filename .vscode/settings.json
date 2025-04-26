@@ -1,7 +1,5 @@
 {
-  "editor.quickSuggestions": {
-    "strings": true
-  },
+  "rust-analyzer.linkedProjects": ["./apps/desktop/src-tauri/Cargo.toml"],
   "eslint.workingDirectories": [
     {
       "mode": "auto"

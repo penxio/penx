@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "penx-desktop",
+  "productName": "PenX",
   "version": "0.1.0",
-  "identifier": "com.penx-desktop.app",
+  "identifier": "com.penx.app",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:1420",
@@ -12,9 +12,9 @@
   "app": {
     "windows": [
       {
-        "title": "penx-desktop",
-        "width": 800,
-        "height": 600
+        "title": "PenX",
+        "width": 1120,
+        "height": 800
       }
     ],
     "security": {
