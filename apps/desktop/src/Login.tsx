@@ -61,8 +61,8 @@ export function Login() {
           Log in or create an account for creating
         </p>
         <Button
-          size="lg"
-          className=""
+          size="xl"
+          className="w-48"
           disabled={loading}
           onClick={() => {
             login()

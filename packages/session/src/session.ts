@@ -101,6 +101,7 @@ export function useQuerySession() {
     })
 
     queryClient.setQueryData(queryKey, res)
+    await set(SESSION, undefined)
   }
 
   const status = useMemo(() => {

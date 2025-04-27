@@ -56,7 +56,7 @@ struct HelloResponse {
 // the payload type must implement `Serialize` and `Clone`.
 
 #[get("/")]
-async fn index(app_state: web::Data<AppState>) -> impl Responder {
+async fn index(app: web::Data<AppHandle>) -> impl Responder {
     // let data = &app_state.app_name;
     // HttpResponse::Ok().body(format!("Hello, World! {}", data))
 
@@ -66,8 +66,24 @@ async fn index(app_state: web::Data<AppState>) -> impl Responder {
     HttpResponse::Ok().json(response)
 }
 
+#[get("/open-window")]
+async fn open_window(app: web::Data<AppHandle>) -> impl Responder {
+    // let data = &app_state.app_name;
+    // HttpResponse::Ok().body(format!("Hello, World! {}", data))
+
+    let window = app.get_webview_window("main").unwrap();
+
+    window.show();
+    window.set_focus();
+
+    let response = HelloResponse {
+        hello: "world".to_string(),
+    };
+    HttpResponse::Ok().json(response)
+}
+
 #[post("/api/login")]
-async fn open_window(input: web::Json<LoginInput>, app: web::Data<AppHandle>) -> HttpResponse {
+async fn login(input: web::Json<LoginInput>, app: web::Data<AppHandle>) -> HttpResponse {
     let info = LoginInfo {
         user: input.user.to_string(),
         mnemonic: input.mnemonic.to_string(),
@@ -131,11 +147,6 @@ async fn extension_js(path: web::Path<(String)>) -> impl Responder {
         .body(js_str)
 }
 
-#[get("/get-data")]
-async fn get_data(app: web::Data<AppHandle>) -> impl Responder {
-    HttpResponse::Ok().body("Open window!")
-}
-
 #[actix_web::main]
 pub async fn start_server(
     app: AppHandle,
@@ -168,10 +179,10 @@ pub async fn start_server(
             .wrap(cors)
             .service(index)
             .service(open_window)
+            .service(login)
             .service(upsert_extension)
             .service(extension)
             .service(extension_js)
-            .service(get_data)
     })
     .bind(("127.0.0.1", 14158))?
     .run()

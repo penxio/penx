@@ -82,6 +82,7 @@ export function DesktopLogin() {
           onClick={async () => {
             try {
               await confirm({ token })
+              fetch('http://localhost:14158/open-window')
               toast.success(<Trans id="Desktop login successfully"></Trans>)
               location.href = '/'
             } catch (error) {
