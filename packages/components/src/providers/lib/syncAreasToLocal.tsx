@@ -52,10 +52,9 @@ export function syncAreasToLocal(siteId: string) {
         const session = await getSession()
 
         await localDB.area.where({ siteId }).delete()
-        await localDB.area.bulkAdd(rows as any)
+        await localDB.area.bulkPut(rows as any)
 
         const areas = await localDB.area.where({ siteId }).toArray()
-        await localDB.area.bulkPut(rows as any)
         console.log('area updated....')
 
         const area = areas.find((a) => a.id === session.activeAreaId)

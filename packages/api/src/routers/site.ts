@@ -156,8 +156,6 @@ export const siteRouter = router({
     }),
 
   mySite: protectedProcedure.query(async ({ ctx, input }) => {
-    console.log('--------input:', input)
-
     const site = await prisma.site.findUniqueOrThrow({
       where: { id: ctx.token.activeSiteId },
     })

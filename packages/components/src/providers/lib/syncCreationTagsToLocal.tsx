@@ -44,13 +44,12 @@ export function syncCreationTagsToLocal(siteId: string) {
         console.log('start sync creation tag')
         // const session = await getSession()
         await localDB.creationTag.where({ siteId }).delete()
-        await localDB.creationTag.bulkAdd(rows as any)
+        await localDB.creationTag.bulkPut(rows as any)
 
         const creationTags = await localDB.creationTag
           .where({ siteId })
           .toArray()
 
-        await localDB.creationTag.bulkPut(rows as any)
         console.log('creation updated....')
 
         queryClient.setQueryData(['creation-tags'], creationTags)
