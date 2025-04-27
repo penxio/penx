@@ -1,4 +1,4 @@
-import { div, times } from '../math'
+import { div, times } from '@penx/math'
 import { Candle, Period, Trade } from '../types'
 import { getCompleteTrades } from './getTrades'
 

@@ -1,6 +1,8 @@
-// export const GOOGLE_OAUTH_REDIRECT_URI = 'https://www.penx.io/api/google-oauth'
-export const GOOGLE_OAUTH_REDIRECT_URI =
-  'http://localhost:4000/api/google-oauth'
+import { isWeb } from './basic.constants'
+
+export const GOOGLE_OAUTH_REDIRECT_URI = 'https://www.penx.io/api/google-oauth'
+// export const GOOGLE_OAUTH_REDIRECT_URI =
+//   'http://localhost:4000/api/google-oauth'
 
 export const LINK_GOOGLE_ACCOUNT_REDIRECT_URI =
   'https://www.penx.io/api/link-google-account-oauth'
@@ -63,4 +65,6 @@ export const DAILY_CLAIM_CAP_URL =
     ? 'https://penx.io/api/daily-claim-cap'
     : 'https://sepolia.penx.io/api/daily-claim-cap'
 
-export const SHAPE_URL = 'http://43.154.135.183:5001/v1/shape'
+export const SHAPE_URL = isWeb
+  ? '/api/shap-proxy'
+  : 'https://penx.io/api/shap-proxy'
