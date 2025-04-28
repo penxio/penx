@@ -9,6 +9,8 @@ import { isRowsEqual } from './isRowsEqual'
 
 export function syncAreasToLocal(siteId: string) {
   //
+  console.log('=======SHAPE_URL:', SHAPE_URL)
+
   const stream = new ShapeStream({
     url: SHAPE_URL,
     params: {

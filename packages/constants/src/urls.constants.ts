@@ -1,4 +1,4 @@
-import { ROOT_HOST } from './basic.constants'
+import { isProd, isWeb, ROOT_HOST } from './basic.constants'
 
 export const GOOGLE_OAUTH_REDIRECT_URI = 'https://www.penx.io/api/google-oauth'
 // export const GOOGLE_OAUTH_REDIRECT_URI =
@@ -31,4 +31,9 @@ export enum NetworkNames {
   BASE = 'BASE',
 }
 
-export const SHAPE_URL = `${ROOT_HOST}/api/shape-proxy`
+export const SHAPE_URL =
+  !isProd && isWeb
+    ? `${ROOT_HOST}/api/shape-proxy`
+    : `https://sync.penx.io/api/shape-proxy`
+
+// export const SHAPE_URL = `https://sync.penx.io/api/shape-proxy`
