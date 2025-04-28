@@ -1,8 +1,8 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -11,7 +11,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
+} from '@penx/uikit/form'
 import {
   Select,
   SelectContent,
@@ -20,7 +20,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { supportLanguages } from '@/lib/supportLanguages'

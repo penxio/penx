@@ -7,8 +7,8 @@ import { deleteCreation, refetchCreations } from '@penx/hooks/useCreations'
 import { closePanel, resetPanels, usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogClose,
@@ -17,7 +17,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useDeleteCreationDialog } from './useDeleteCreationDialog'
 

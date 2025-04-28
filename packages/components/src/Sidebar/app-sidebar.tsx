@@ -10,7 +10,7 @@ import { appEmitter } from '@penx/emitter'
 import { addPanel } from '@penx/hooks/usePanels'
 import { useSession } from '@penx/session'
 import { PanelType } from '@penx/types'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Sidebar,
   SidebarContent,
@@ -19,13 +19,13 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@penx/uikit/ui/sidebar'
+} from '@penx/uikit/sidebar'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 import { AreaWidgets } from './area-widgets'
 import { AreasPopover } from './AreasPopover/AreasPopover'
 import { ImportPostEntry } from './ImportPostEntry'

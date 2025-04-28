@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { trpc } from '@penx/trpc-client'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'

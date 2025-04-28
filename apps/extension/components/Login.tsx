@@ -1,15 +1,15 @@
 import { BASE_URL } from '@/lib/constants'
 import { cn } from '@/lib/utils'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@penx/uikit/ui/card'
-import { Input } from '@penx/uikit/ui/input'
-import { Label } from '@penx/uikit/ui/label'
+} from '@penx/uikit/card'
+import { Input } from '@penx/uikit/input'
+import { Label } from '@penx/uikit/label'
 import { IconGoogle } from './icons/IconGoogle'
 import { Logo } from './Logo'
 

@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
-import { Badge } from '@penx/uikit/ui/badge'
-import { Button } from '@penx/uikit/ui/button'
-import { Card, CardContent } from '@penx/uikit/ui/card'
-import { Checkbox } from '@penx/uikit/ui/checkbox'
-import { ScrollArea } from '@penx/uikit/ui/scroll-area'
+import { Badge } from '@penx/uikit/badge'
+import { Button } from '@penx/uikit/button'
+import { Card, CardContent } from '@penx/uikit/card'
+import { Checkbox } from '@penx/uikit/checkbox'
+import { ScrollArea } from '@penx/uikit/scroll-area'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 import { ImportPostData } from '@penx/hooks/usePostImportTask'
 import { Calendar, FileText, Link as LinkIcon, Loader2 } from 'lucide-react'
 

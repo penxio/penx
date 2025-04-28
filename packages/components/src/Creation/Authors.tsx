@@ -10,14 +10,14 @@ import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { ICreation } from '@penx/model/ICreation'
 import { api, trpc } from '@penx/trpc-client'
-import { Button } from '@penx/uikit/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { Button } from '@penx/uikit/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 import { uniqueId } from '@penx/unique-id'
 import { formatUsername } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'

@@ -10,7 +10,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@penx/uikit/ui/sheet'
+} from '@penx/uikit/sheet'
 import { Site } from '@penx/types'
 import { Menu } from 'lucide-react'
 import { Navigation } from '../Navigation'

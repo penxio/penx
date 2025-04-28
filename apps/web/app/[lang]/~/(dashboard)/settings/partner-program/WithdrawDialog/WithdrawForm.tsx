@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
+} from '@penx/uikit/form'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api, trpc } from '@penx/trpc-client'
 import { toFloorFixed } from '@penx/utils'

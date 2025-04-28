@@ -1,7 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { AreaForm } from './AreaForm'
 import { useAreaDialog } from './useAreaDialog'
 

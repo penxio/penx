@@ -2,9 +2,9 @@
 
 import { Trans } from '@lingui/react'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/ui/card'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/card'
 import { NavigationList } from './NavigationList'
 import { useNavLinkDialog } from './NavLinkDialog/useNavLinkDialog'
 

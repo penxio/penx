@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { closePanel, usePanels } from '@penx/hooks/usePanels'
 import { Panel } from '@penx/types'
 import { XIcon } from 'lucide-react'

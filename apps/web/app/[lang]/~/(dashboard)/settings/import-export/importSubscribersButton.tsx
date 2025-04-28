@@ -4,13 +4,13 @@ import { HelpCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import { api, trpc } from '@penx/trpc-client'
 import { ImportResult } from '@penx/types'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { ImportSubscribersDialog } from './ImportSubscribersDialog'

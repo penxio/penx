@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react'
 import { Mail } from 'lucide-react'
 import { Site } from '@penx/types'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 import { SubscribeNewsletterDialog } from './SubscribeNewsletterDialog'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'

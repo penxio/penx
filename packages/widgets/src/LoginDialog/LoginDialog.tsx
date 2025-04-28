@@ -7,7 +7,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { LoginDialogContent } from './LoginDialogContent'
 import { RegisterForm } from './RegisterForm'
 import { useAuthStatus } from './useAuthStatus'

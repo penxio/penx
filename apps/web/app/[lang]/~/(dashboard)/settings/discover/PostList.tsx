@@ -1,7 +1,7 @@
 'use client'
 
-import { Badge } from '@penx/uikit/ui/badge'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Badge } from '@penx/uikit/badge'
+import { Skeleton } from '@penx/uikit/skeleton'
 import {
   Table,
   TableBody,
@@ -9,7 +9,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/uikit/ui/table'
+} from '@penx/uikit/table'
 import { trpc } from '@penx/trpc-client'
 import { format } from 'date-fns'
 

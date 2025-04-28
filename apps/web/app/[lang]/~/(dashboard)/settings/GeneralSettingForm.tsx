@@ -2,9 +2,9 @@
 
 import { useForm } from 'react-hook-form'
 import { FileUpload } from '@penx/components/FileUpload'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -13,9 +13,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
-import { Textarea } from '@penx/uikit/ui/textarea'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
+import { Textarea } from '@penx/uikit/textarea'
 import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'

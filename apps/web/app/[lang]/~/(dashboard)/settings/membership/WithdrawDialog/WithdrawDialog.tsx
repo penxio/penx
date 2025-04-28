@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { useWithdrawDialog } from './useWithdrawDialog'
 import { WithdrawForm } from './WithdrawForm'
 

@@ -6,9 +6,9 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
-import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
-import { Menu } from '@penx/uikit/ui/menu/Menu'
+} from '@penx/uikit/dialog'
+import { MenuItem } from '@penx/uikit/menu'
+import { Menu } from '@penx/uikit/menu'
 import { usePages } from '@penx/hooks/usePages'
 import { CatalogueNodeType } from '@penx/model'
 import { CreationStatus } from '@penx/db/client'

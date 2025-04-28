@@ -7,9 +7,9 @@ import { useDomainStatus } from '@penx/hooks/use-domain-status'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useSite } from '@penx/hooks/useSite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Badge } from '@penx/uikit/ui/badge'
+import LoadingCircle from '@penx/uikit/loading-circle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Badge } from '@penx/uikit/badge'
 
 export function SiteLink() {
   const site = useSiteContext()

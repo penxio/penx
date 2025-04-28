@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'

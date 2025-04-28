@@ -11,7 +11,7 @@ import {
   PlateEditorType,
   useCreateEditor,
 } from '@penx/editor/use-create-editor'
-import { AddNodeBtn } from '@penx/uikit/components/AddNodeBtn'
+import { AddNodeBtn } from '@penx/uikit/AddNodeBtn'
 import {
   Editor,
   EditorContainer,

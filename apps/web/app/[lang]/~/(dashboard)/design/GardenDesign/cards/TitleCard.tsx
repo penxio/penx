@@ -2,7 +2,7 @@
 
 import { Dispatch, SetStateAction } from 'react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Input } from '@penx/uikit/ui/input'
+import { Input } from '@penx/uikit/input'
 import { useSite } from '@penx/hooks/useSite'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'

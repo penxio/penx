@@ -10,7 +10,7 @@ import {
 } from '@udecode/plate/react'
 import { PlayIcon, TimerIcon } from 'lucide-react'
 import { TPodcastTimeElement } from '@penx/editor-custom-plugins'
-import { Popover, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { Popover, PopoverTrigger } from '@penx/uikit/popover'
 import { convertTimeToSeconds } from '@penx/utils'
 import { PodcastTimePopoverContent } from './podcast-time-popover'
 

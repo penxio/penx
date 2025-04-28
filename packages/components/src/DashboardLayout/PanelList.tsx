@@ -7,7 +7,7 @@ import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useCreationsContext } from '@penx/contexts/CreationsContext'
 import { updatePanelSizes, usePanels } from '@penx/hooks/usePanels'
 import { PanelType } from '@penx/types'
-import { ResizablePanelGroup } from '@penx/uikit/ui/resizable'
+import { ResizablePanelGroup } from '@penx/uikit/resizable'
 import { PanelItem } from './PanelItem'
 
 export function PanelList() {

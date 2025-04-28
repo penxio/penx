@@ -12,8 +12,8 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateSiteState, useSite } from '@penx/hooks/useSite'
 import { api } from '@penx/trpc-client'
 import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -22,15 +22,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useNavLinkDialog } from './useNavLinkDialog'
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
 import { Comment, User } from '@penx/db/client'

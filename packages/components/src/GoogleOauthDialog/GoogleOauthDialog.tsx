@@ -7,16 +7,16 @@ import { toast } from 'sonner'
 import { getGoogleUserInfo } from '@penx/libs/getGoogleUserInfo'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
-import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import LoadingCircle from '@penx/uikit/loading-circle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { useGoogleOauthDialog } from './useGoogleOauthDialog'
 
 export function GoogleOauthDialog() {

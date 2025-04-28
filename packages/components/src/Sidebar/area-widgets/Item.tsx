@@ -13,13 +13,13 @@ import { toggleCollapsed } from '@penx/hooks/useArea'
 import { openWidgetPanel } from '@penx/hooks/usePanels'
 import { getWidgetName } from '@penx/libs/getWidgetName'
 import { Widget } from '@penx/types'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@penx/uikit/ui/context-menu'
+} from '@penx/uikit/context-menu'
 import { cn } from '@penx/utils'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'

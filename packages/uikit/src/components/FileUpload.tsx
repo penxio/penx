@@ -2,7 +2,7 @@ import { forwardRef, useRef, useState } from 'react'
 import { CloudUploadIcon, Edit3 } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { cn, getUrl } from '@penx/utils'
 import { uploadFile } from './uploadFile'
 

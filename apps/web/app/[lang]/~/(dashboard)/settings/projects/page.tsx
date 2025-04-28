@@ -5,7 +5,7 @@ import { FullPageDatabase } from '@penx/components/database-ui/FullPageDatabase'
 import { PROJECT_DATABASE_NAME } from '@penx/constants'
 import { useSite } from '@penx/hooks/useSite'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 
 export const dynamic = 'force-static'
 

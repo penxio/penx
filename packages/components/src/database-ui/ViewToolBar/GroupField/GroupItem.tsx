@@ -1,6 +1,6 @@
 'use client'
 
-import { Switch } from '@penx/uikit/ui/switch'
+import { Switch } from '@penx/uikit/switch'
 import { Group } from '@penx/types'
 import { useDatabaseContext } from '../../DatabaseProvider'
 

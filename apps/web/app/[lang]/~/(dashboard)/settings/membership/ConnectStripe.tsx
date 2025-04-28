@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { trpc } from '@penx/trpc-client'
 import { StripeType } from '@penx/db/client'

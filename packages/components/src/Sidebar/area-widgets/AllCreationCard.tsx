@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ReactNode } from 'react'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { Widget } from '@penx/types'
 import { XIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'

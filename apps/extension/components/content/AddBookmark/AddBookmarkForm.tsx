@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { addCreation, getAreas } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { getUrl } from '@/lib/utils'
@@ -12,9 +12,9 @@ import { get, set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { CreationType } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Button } from '@penx/uikit/ui/button'
-import { Checkbox } from '@penx/uikit/ui/checkbox'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Button } from '@penx/uikit/button'
+import { Checkbox } from '@penx/uikit/checkbox'
 import {
   Form,
   FormControl,
@@ -22,8 +22,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
 import {
   Select,
   SelectContent,
@@ -32,8 +32,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
-import { Textarea } from '@penx/uikit/ui/textarea'
+} from '@penx/uikit/select'
+import { Textarea } from '@penx/uikit/textarea'
 import { useAreas } from '../hooks/useAreas'
 import { Tags } from './Tags'
 

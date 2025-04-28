@@ -5,7 +5,7 @@ import { toast } from 'sonner'
 import { ICreation } from '@penx/model/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 

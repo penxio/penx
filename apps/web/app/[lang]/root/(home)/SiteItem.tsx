@@ -6,7 +6,7 @@ import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
 import { MySite } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
 
 interface Props {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { trpc } from '@penx/trpc-client'
 import { useWithdrawDialog } from './WithdrawDialog/useWithdrawDialog'
 import { WithdrawDialog } from './WithdrawDialog/WithdrawDialog'

@@ -11,9 +11,9 @@ import {
 } from '@penx/constants'
 import { usePathname } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button, ButtonProps } from '@penx/uikit/ui/button'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button, ButtonProps } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 
 interface Props extends ButtonProps {

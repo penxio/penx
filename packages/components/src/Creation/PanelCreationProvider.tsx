@@ -20,7 +20,7 @@ import { ICreation } from '@penx/model/ICreation'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 
 export const PanelCreationContext = createContext({} as ICreation)
 

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogContent,
@@ -9,8 +9,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/uikit/ui/dialog'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/dialog'
+import { Input } from '@penx/uikit/input'
 import { useSite } from '@penx/hooks/useSite'
 import { SocialType } from '@penx/constants'
 import { LayoutItem } from '@penx/types'

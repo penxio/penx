@@ -3,9 +3,9 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { Creation } from '@penx/types'
-import { Button } from '@penx/uikit/ui/button'
-import { Input } from '@penx/uikit/ui/input'
-import { Label } from '@penx/uikit/ui/label'
+import { Button } from '@penx/uikit/button'
+import { Input } from '@penx/uikit/input'
+import { Label } from '@penx/uikit/label'
 import {
   Sheet,
   SheetClose,
@@ -15,7 +15,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@penx/uikit/ui/sheet'
+} from '@penx/uikit/sheet'
 import { CommentWidget } from '@penx/widgets/CommentWidget/CommentWidget'
 import { CommentAmount } from './CommentAmount'
 

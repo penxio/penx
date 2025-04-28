@@ -2,16 +2,16 @@
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
 import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'

@@ -3,10 +3,10 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { FileUpload } from '@penx/components/FileUpload'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
-import { Badge } from '@penx/uikit/ui/badge'
-import { Button } from '@penx/uikit/ui/button'
+import { Badge } from '@penx/uikit/badge'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -15,9 +15,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
-import { Textarea } from '@penx/uikit/ui/textarea'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
+import { Textarea } from '@penx/uikit/textarea'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api, trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'

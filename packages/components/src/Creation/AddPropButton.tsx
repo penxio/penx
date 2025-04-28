@@ -7,10 +7,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@penx/uikit/ui/dropdown-menu'
+} from '@penx/uikit/dropdown-menu'
 import { Plus } from 'lucide-react'
 import { toast } from 'sonner'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 
 export function AddPropButton() {
   return (

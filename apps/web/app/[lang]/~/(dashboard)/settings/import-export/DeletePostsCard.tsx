@@ -2,14 +2,14 @@
 
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@penx/uikit/ui/card'
+} from '@penx/uikit/card'
 import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
 

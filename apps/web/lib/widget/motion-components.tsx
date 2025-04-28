@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Button, ButtonProps } from '@penx/uikit/ui/button'
+import { Button, ButtonProps } from '@penx/uikit/button'
 import { HTMLMotionProps, motion } from 'motion/react'
 
 export const MotionButton: (

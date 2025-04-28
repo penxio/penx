@@ -1,4 +1,4 @@
-import { Checkbox } from '@penx/uikit/ui/checkbox'
+import { Checkbox } from '@penx/uikit/checkbox'
 import {
   ELEMENT_A,
   ELEMENT_CODE_BLOCK,

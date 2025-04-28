@@ -8,9 +8,9 @@ import { Widget } from '@penx/types'
 import {
   ContextMenuContent,
   ContextMenuItem,
-} from '@penx/uikit/ui/context-menu'
-import { Menu } from '@penx/uikit/ui/menu/Menu'
-import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+} from '@penx/uikit/context-menu'
+import { Menu } from '@penx/uikit/menu'
+import { MenuItem } from '@penx/uikit/menu'
 
 interface Props {
   widget: Widget

@@ -17,7 +17,7 @@ import { ROOT_DOMAIN } from '@penx/constants'
 import { useSite } from '@penx/hooks/useSite'
 import { usePathname, useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,7 +31,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@penx/uikit/ui/dropdown-menu'
+} from '@penx/uikit/dropdown-menu'
 import { cn } from '@penx/utils'
 import { ProfileAvatar } from './ProfileAvatar'
 

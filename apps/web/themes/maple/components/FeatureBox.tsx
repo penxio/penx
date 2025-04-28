@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'
 import { cn, formatDate, getUrl } from '@penx/utils'

@@ -5,8 +5,8 @@ import { CardStyle } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { trpc } from '@penx/trpc-client'
 import { LayoutItem, Project, Site } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Skeleton } from '@penx/uikit/skeleton'
 import { cn, getUrl } from '@penx/utils'
 
 interface Props {

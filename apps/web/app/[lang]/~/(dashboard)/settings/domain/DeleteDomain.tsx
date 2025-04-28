@@ -1,7 +1,7 @@
 'use client'
 
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { useSite } from '@penx/hooks/useSite'
 import { api } from '@penx/trpc-client'
 

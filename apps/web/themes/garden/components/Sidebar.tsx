@@ -7,7 +7,7 @@ import { MembershipEntry } from '@penx/components/theme-ui/MembershipEntry/Membe
 import { SocialNav } from '@penx/components/theme-ui/SocialNav'
 import { Link } from '@penx/libs/i18n'
 import { Site, Tag } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
 
 interface Props {

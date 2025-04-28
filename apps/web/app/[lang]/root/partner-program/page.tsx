@@ -1,5 +1,5 @@
 import { Globe } from 'lucide-react'
-import { Badge } from '@penx/uikit/ui/badge'
+import { Badge } from '@penx/uikit/badge'
 import { PartnerProgram } from './PartnerProgram'
 
 // export const runtime = 'edge'

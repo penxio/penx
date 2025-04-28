@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { Prop, PropType } from '@penx/types'
-import { Input } from '@penx/uikit/ui/input'
+import { Input } from '@penx/uikit/input'
 import {
   Select,
   SelectContent,
@@ -18,7 +18,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { cn } from '@penx/utils'
 import { FileUpload } from '../FileUpload'
 import { usePanelCreationContext } from './PanelCreationProvider'

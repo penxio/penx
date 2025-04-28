@@ -23,7 +23,7 @@ import { updateSiteState } from '@penx/hooks/useSite'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { MySite } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -32,13 +32,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@penx/uikit/ui/dropdown-menu'
+} from '@penx/uikit/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from '@penx/uikit/ui/sidebar'
+} from '@penx/uikit/sidebar'
 import { getUrl, sleep } from '@penx/utils'
 import { usePlanListDialog } from '../PlanList/usePlanListDialog'
 

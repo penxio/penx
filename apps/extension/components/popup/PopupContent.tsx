@@ -12,7 +12,7 @@ import {
   Volume2,
 } from 'lucide-react'
 import { toast } from 'sonner'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { AddBookmark } from '../content/AddBookmark/AddBookmark'
 import { useAppType } from '../content/hooks/useAppType'
 import { useAreas } from '../content/hooks/useAreas'

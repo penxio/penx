@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Badge } from '@penx/uikit/ui/badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Badge } from '@penx/uikit/badge'
 import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations } from '@penx/types'
 import { getUrl } from '@penx/utils'

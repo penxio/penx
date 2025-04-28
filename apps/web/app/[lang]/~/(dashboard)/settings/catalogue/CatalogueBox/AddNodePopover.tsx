@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
-import { Menu } from '@penx/uikit/ui/menu/Menu'
+import { MenuItem } from '@penx/uikit/menu'
+import { Menu } from '@penx/uikit/menu'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+} from '@penx/uikit/popover'
 import { Plus } from 'lucide-react'
 import { useAddPageNodeDialog } from './AddPageNodeDialog/useAddPageNodeDialog'
 import { useAddPostNodeDialog } from './AddPostNodeDialog/useAddPostNodeDialog'

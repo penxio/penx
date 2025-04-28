@@ -1,4 +1,4 @@
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogContent,
@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { TierPriceForm } from './TierPriceForm'
 import { useTierPriceDialog } from './useTierPriceDialog'
 

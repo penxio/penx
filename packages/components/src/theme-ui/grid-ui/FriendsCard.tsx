@@ -2,7 +2,7 @@ import { Trans } from '@lingui/react'
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from '@penx/libs/i18n'
 import { Friend, LayoutItem, Project, Site } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { getUrl } from '@penx/utils'
 
 export function FriendsCard({

@@ -1,6 +1,6 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSite } from '@penx/hooks/useSite'
 import { trpc } from '@penx/trpc-client'
 import { I18nSettingForm } from './I18nSettingForm'

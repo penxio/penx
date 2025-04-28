@@ -1,6 +1,6 @@
 'use client'
 
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { Link } from '@penx/libs/i18n'
 import { ProviderType } from '@penx/db/client'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Button } from '@penx/uikit/ui/button'
-import { Dialog, DialogTrigger } from '@penx/uikit/ui/dialog'
+import { Button } from '@penx/uikit/button'
+import { Dialog, DialogTrigger } from '@penx/uikit/dialog'
 import { cn } from '@penx/utils'
 import { ImportDialog } from './import/ImportDialog'
 

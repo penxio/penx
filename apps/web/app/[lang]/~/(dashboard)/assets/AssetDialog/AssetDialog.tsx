@@ -8,15 +8,15 @@ import { placeholderBlurhash, STATIC_URL } from '@penx/constants'
 import { useAssets } from '@penx/hooks/useAssets'
 import { useLoadAsset } from '@penx/hooks/useLoadAsset'
 import { trpc } from '@penx/trpc-client'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
-import { Switch } from '@penx/uikit/ui/switch'
+} from '@penx/uikit/dialog'
+import { Switch } from '@penx/uikit/switch'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { DeleteButton } from './DeleteButton'
 import { useAssetDialog } from './useAssetDialog'

@@ -1,7 +1,7 @@
 'use client'
 
 import { Panel, PanelType } from '@penx/types'
-import { ResizableHandle, ResizablePanel } from '@penx/uikit/ui/resizable'
+import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
 import { ClosePanelButton } from './ClosePanelButton'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
 import { PanelCreation } from './panel-renderer/PanelCreation'

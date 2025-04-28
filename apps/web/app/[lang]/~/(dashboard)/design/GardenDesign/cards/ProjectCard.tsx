@@ -16,7 +16,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { useThemeName } from '../../hooks/useThemeName'
 
 interface Props {

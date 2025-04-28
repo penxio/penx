@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import { api, trpc } from '@penx/trpc-client'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Skeleton } from '@penx/uikit/skeleton'
 import {
   Table,
   TableBody,
@@ -11,7 +11,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/uikit/ui/table'
+} from '@penx/uikit/table'
 import { cn } from '@penx/utils'
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 

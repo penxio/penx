@@ -10,9 +10,9 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { api, trpc } from '@penx/trpc-client'
 import { Prop, PropType } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -21,8 +21,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
 import {
   Select,
   SelectContent,
@@ -31,7 +31,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { uniqueId } from '@penx/unique-id'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { ColorSelector } from './ColorSelector'

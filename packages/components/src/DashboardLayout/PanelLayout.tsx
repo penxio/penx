@@ -10,12 +10,12 @@ import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '@penx/uikit/ui/sidebar'
+} from '@penx/uikit/sidebar'
 import { uniqueId } from '@penx/unique-id'
 import { useAreaContext } from '../AreaContext'
 import { AppSidebar } from '../Sidebar/app-sidebar'

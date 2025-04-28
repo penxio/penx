@@ -18,9 +18,9 @@ import { useSite } from '@penx/hooks/useSite'
 import { useRouter } from '@penx/libs/i18n'
 import { updateSession, useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -29,10 +29,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
-import { Textarea } from '@penx/uikit/ui/textarea'
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
+import { Textarea } from '@penx/uikit/textarea'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAreaDialog } from './useAreaDialog'
 

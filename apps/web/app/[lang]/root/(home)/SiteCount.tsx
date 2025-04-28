@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/react'
 import { MySite } from '@penx/types'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { getUrl } from '@penx/utils'
 
 interface Props {

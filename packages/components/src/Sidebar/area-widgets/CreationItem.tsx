@@ -9,13 +9,13 @@ import { updateCreationById } from '@penx/hooks/useCreations'
 import { addPanel, updateMainPanel, usePanels } from '@penx/hooks/usePanels'
 import { ICreation } from '@penx/model/ICreation'
 import { CreationType, PanelType, SiteCreation } from '@penx/types'
-import { Checkbox } from '@penx/uikit/ui/checkbox'
+import { Checkbox } from '@penx/uikit/checkbox'
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
-} from '@penx/uikit/ui/context-menu'
+} from '@penx/uikit/context-menu'
 import { uniqueId } from '@penx/unique-id'
 import { useIsAllContext } from './IsAllContext'
 

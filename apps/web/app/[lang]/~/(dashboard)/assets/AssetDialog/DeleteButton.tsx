@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { useAssets } from '@penx/hooks/useAssets'
 import { useTrashedAssets } from '@penx/hooks/useTrashedAssets'
 import { trpc } from '@penx/trpc-client'

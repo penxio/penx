@@ -1,8 +1,8 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { isAllowCampaign } from '@/lib/isAllowCampaign'
 import { trpc } from '@penx/trpc-client'
 import { getUrl } from '@penx/utils'

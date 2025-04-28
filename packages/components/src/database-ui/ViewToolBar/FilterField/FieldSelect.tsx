@@ -4,7 +4,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+} from '@penx/uikit/popover'
 import { mappedByKey } from '@penx/utils'
 import { Filter } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'

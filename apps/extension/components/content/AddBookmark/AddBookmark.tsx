@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowLeft, BookmarkPlusIcon } from 'lucide-react'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { useAppType } from '../hooks/useAppType'
 import { AddBookmarkForm } from './AddBookmarkForm'
 

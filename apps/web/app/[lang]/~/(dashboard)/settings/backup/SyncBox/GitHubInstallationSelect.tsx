@@ -1,16 +1,16 @@
+import { useQuery } from '@tanstack/react-query'
+import { Plus } from 'lucide-react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+import { trpc } from '@penx/trpc-client'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { MenuItem } from '@penx/uikit/menu'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
-import { trpc } from '@penx/trpc-client'
-import { useQuery } from '@tanstack/react-query'
-import { Plus } from 'lucide-react'
+} from '@penx/uikit/select'
 
 interface Props {
   token: string

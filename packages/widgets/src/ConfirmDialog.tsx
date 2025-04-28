@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -14,14 +14,14 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@penx/uikit/ui/alert-dialog'
-import { Button } from '@penx/uikit/ui/button'
+} from '@penx/uikit/alert-dialog'
+import { Button } from '@penx/uikit/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {

@@ -10,7 +10,7 @@ import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useSite } from '@penx/hooks/useSite'
 import { trpc } from '@penx/trpc-client'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
+import { NumberInput } from '@penx/uikit/NumberInput'
 import {
   Form,
   FormControl,
@@ -18,7 +18,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
+} from '@penx/uikit/form'
 import { useThemeName } from '../hooks/useThemeName'
 import { ColorPicker } from './components/ColorPicker'
 import { useDesignContext } from './hooks/DesignContext'

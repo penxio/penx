@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogClose,
@@ -11,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { usePages } from '@penx/hooks/usePages'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { localDB } from '@penx/local-db'

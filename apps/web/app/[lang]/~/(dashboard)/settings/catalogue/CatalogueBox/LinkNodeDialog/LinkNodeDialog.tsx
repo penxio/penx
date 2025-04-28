@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { LinkNodeForm } from './LinkNodeForm'
 import { useLinkNodeDialog } from './useLinkNodeDialog'
 

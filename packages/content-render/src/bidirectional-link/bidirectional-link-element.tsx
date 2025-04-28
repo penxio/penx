@@ -13,12 +13,12 @@ import {
 // import { useCreation } from '@penx/hooks/useCreation'
 // import { addPanel } from '@penx/hooks/usePanels'
 import { CreationById, PanelType, SiteCreation } from '@penx/types'
-import { useMounted } from '@penx/uikit/hooks/use-mounted'
+import { useMounted } from '@penx/uikit/use-mounted'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@penx/uikit/ui/hover-card'
+} from '@penx/uikit/hover-card'
 import { uniqueId } from '@penx/unique-id'
 // import { useMounted } from '../hooks/use-mounted'
 import { TBidirectionalLinkElement } from '../lib'

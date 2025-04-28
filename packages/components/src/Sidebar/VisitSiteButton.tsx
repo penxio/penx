@@ -6,13 +6,13 @@ import { ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 
 interface Props {}
 

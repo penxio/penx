@@ -6,8 +6,8 @@ import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 
 export function CliLogin() {
   const searchParams = useSearchParams()

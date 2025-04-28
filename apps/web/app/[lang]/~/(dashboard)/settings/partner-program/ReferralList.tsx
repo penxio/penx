@@ -1,6 +1,6 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Table,
   TableBody,
@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/uikit/ui/table'
+} from '@penx/uikit/table'
 import { api, trpc } from '@penx/trpc-client'
 import { format } from 'date-fns'
 import { toast } from 'sonner'

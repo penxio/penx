@@ -10,9 +10,9 @@ import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { getMoldName } from '@penx/libs/getMoldName'
 import { ICreation } from '@penx/model/ICreation'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
 
 export function ChangeType({ creation }: { creation: ICreation }) {

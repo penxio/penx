@@ -1,5 +1,5 @@
 import { forwardRef, useRef, useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { uploadFile } from '@penx/services/uploadFile'
 import { cn, getUrl } from '@penx/utils'
 import { CloudUploadIcon, Edit3 } from 'lucide-react'

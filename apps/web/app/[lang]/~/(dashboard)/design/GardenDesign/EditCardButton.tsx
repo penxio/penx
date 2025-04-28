@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { GardenCardType } from '@penx/constants'
 import { LayoutItem } from '@penx/types'
 import { PenIcon } from 'lucide-react'

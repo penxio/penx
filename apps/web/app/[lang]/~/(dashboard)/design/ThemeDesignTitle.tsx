@@ -4,8 +4,8 @@ import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Badge } from '@penx/uikit/ui/badge'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Badge } from '@penx/uikit/badge'
 import {
   Select,
   SelectContent,
@@ -14,8 +14,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+} from '@penx/uikit/select'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { cn } from '@penx/utils'
 import { useLoading } from './hooks/useLoading'
 import { useThemeName } from './hooks/useThemeName'

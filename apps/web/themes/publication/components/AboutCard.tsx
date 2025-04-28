@@ -3,7 +3,7 @@
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
 import { ContentRender } from '@penx/content-render'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { Creation, Site } from '@penx/types'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'

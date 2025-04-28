@@ -10,8 +10,8 @@ import { PlateEditor } from '@penx/editor/plate-editor'
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
 import { CreationType, Site } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {

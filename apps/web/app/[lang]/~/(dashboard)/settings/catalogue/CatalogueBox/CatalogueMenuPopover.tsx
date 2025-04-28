@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from 'react'
-import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
-import { Menu } from '@penx/uikit/ui/menu/Menu'
+import { MenuItem } from '@penx/uikit/menu'
+import { Menu } from '@penx/uikit/menu'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+} from '@penx/uikit/popover'
 import { CatalogueNodeType, ICatalogueNode } from '@penx/model'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { MoreHorizontal, Trash2, User } from 'lucide-react'

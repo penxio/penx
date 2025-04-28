@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { PasswordForm } from './PasswordForm'
 import { usePasswordDialog } from './usePasswordDialog'
 

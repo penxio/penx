@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Input, InputProps } from '@penx/uikit/ui/input'
+import { Input, InputProps } from '@penx/uikit/input'
 import { matchNumber } from '@penx/utils'
 
 export interface NumberInputProps

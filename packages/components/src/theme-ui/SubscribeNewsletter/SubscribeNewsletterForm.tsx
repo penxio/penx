@@ -9,9 +9,9 @@ import { z } from 'zod'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { Site } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -19,8 +19,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'

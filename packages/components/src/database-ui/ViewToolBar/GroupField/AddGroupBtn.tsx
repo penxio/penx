@@ -1,11 +1,11 @@
 'use client'
 
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@penx/uikit/ui/popover'
+} from '@penx/uikit/popover'
 import { IColumnNode } from '@penx/model'
 import { Group } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'

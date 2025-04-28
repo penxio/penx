@@ -3,7 +3,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { AddSubscriberForm } from './AddSubscriberForm'
 import { useAddSubscriberDialog } from './useAddSubscriberDialog'
 

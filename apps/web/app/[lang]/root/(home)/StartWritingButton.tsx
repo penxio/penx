@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 export function StartWritingButton() {

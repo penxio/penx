@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Alert, AlertDescription, AlertTitle } from '@penx/uikit/ui/alert'
-import { Button } from '@penx/uikit/ui/button'
-import { Card, CardContent } from '@penx/uikit/ui/card'
-import { Input } from '@penx/uikit/ui/input'
-import { Progress } from '@penx/uikit/ui/progress'
+import { Alert, AlertDescription, AlertTitle } from '@penx/uikit/alert'
+import { Button } from '@penx/uikit/button'
+import { Card, CardContent } from '@penx/uikit/card'
+import { Input } from '@penx/uikit/input'
+import { Progress } from '@penx/uikit/progress'
 import { ImportPostData, ImportTask } from '@penx/hooks/usePostImportTask'
 import {
   AlertCircle,

@@ -9,7 +9,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { usePathname } from '@penx/libs/i18n'
 import { langMap } from '@/lib/supportLanguages'
 import { Site } from '@penx/types'

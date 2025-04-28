@@ -6,7 +6,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '@penx/uikit/ui/dialog'
+} from '@penx/uikit/dialog'
 import { SubscriptionGuideDialogContent } from './SubscriptionGuideDialogContent'
 import { useSubscriptionGuideDialog } from './useSubscriptionGuideDialog'
 

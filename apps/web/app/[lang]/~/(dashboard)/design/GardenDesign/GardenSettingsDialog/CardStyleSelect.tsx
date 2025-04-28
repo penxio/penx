@@ -2,7 +2,7 @@
 
 import { Trans } from '@lingui/react'
 import { CardStyle } from '@penx/constants'
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 
 interface Props {
   value: CardStyle

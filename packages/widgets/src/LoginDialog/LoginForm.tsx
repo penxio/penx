@@ -8,16 +8,16 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAuthStatus } from './useAuthStatus'
 import { useLoginDialog } from './useLoginDialog'

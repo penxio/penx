@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm with-env next dev --turbopack --port 4000",
-    "build": "next build",
+    "build": "pnpm with-env next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix && prettier --write . --log-level warn",
     "preview": "next build && next start",

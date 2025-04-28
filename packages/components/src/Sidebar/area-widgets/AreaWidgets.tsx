@@ -2,8 +2,8 @@
 
 import { AddCreationButton } from '@penx/components/AddCreationButton'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Button } from '@penx/uikit/button'
+import { Skeleton } from '@penx/uikit/skeleton'
 import { useAppLoading } from '@penx/hooks/useAppLoading'
 import { useCreations } from '@penx/hooks/useCreations'
 import { Trans } from '@lingui/react'

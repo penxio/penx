@@ -7,7 +7,7 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Link, usePathname } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Features } from '@penx/types'
-import { Separator } from '@penx/uikit/ui/separator'
+import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
 
 interface Props {}

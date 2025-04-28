@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
 import { Player } from 'shikwasa'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Creation } from '@penx/types'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Skeleton } from '@penx/uikit/skeleton'
 import { cn, getUrl } from '@penx/utils'
 
 interface Props {

@@ -17,8 +17,8 @@ import {
 import { usePublishPost } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Dialog,
   DialogContent,
@@ -27,9 +27,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@penx/uikit/ui/dialog'
-import { Label } from '@penx/uikit/ui/label'
-import { Switch } from '@penx/uikit/ui/switch'
+} from '@penx/uikit/dialog'
+import { Label } from '@penx/uikit/label'
+import { Switch } from '@penx/uikit/switch'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { usePanelCreationContext } from '../PanelCreationProvider'
 import { useAddNoteDialog } from './useAddNoteDialog'

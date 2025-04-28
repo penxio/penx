@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { ArrowUpRight } from 'lucide-react'
 import { ContentRender } from '@penx/content-render'
 import { Creation, Site } from '@penx/types'
-import { Badge } from '@penx/uikit/ui/badge'
+import { Badge } from '@penx/uikit/badge'
 import { cn } from '@penx/utils'
 import { PageTitle } from './PageTitle'
 

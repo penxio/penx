@@ -2,7 +2,7 @@
 
 import { Trans } from '@lingui/react'
 import { CircleIcon, UserCircle, UserCircle2 } from 'lucide-react'
-import { Button, ButtonProps } from '@penx/uikit/ui/button'
+import { Button, ButtonProps } from '@penx/uikit/button'
 import { useAuthStatus } from '@penx/widgets/LoginDialog/useAuthStatus'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 

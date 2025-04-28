@@ -11,7 +11,7 @@ import { useSubscribers } from '@penx/hooks/useSubscribers'
 import { deleteTag, useTags } from '@penx/hooks/useTags'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Skeleton } from '@penx/uikit/skeleton'
 import {
   Table,
   TableBody,
@@ -19,7 +19,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@penx/uikit/ui/table'
+} from '@penx/uikit/table'
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { ClosePanelButton } from '../../ClosePanelButton'
 import { PanelHeaderWrapper } from '../../PanelHeaderWrapper'

@@ -8,8 +8,8 @@ import { TransferMethod } from '@penx/db/client'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -18,9 +18,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { usePayoutAccountDialog } from './usePayoutAccountDialog'
 

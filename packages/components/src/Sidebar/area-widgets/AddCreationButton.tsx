@@ -8,7 +8,7 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { IArea } from '@penx/model/IArea'
 import { Widget } from '@penx/types'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 
 interface Props {
   area: IArea

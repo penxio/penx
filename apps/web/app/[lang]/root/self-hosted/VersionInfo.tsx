@@ -1,12 +1,12 @@
 'use client'
 
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Skeleton } from '@penx/uikit/skeleton'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@penx/uikit/ui/tooltip'
+} from '@penx/uikit/tooltip'
 import { compareVersions } from '@/lib/compareVersions'
 import { trpc } from '@penx/trpc-client'
 import { HostedSite } from '@penx/db/client'

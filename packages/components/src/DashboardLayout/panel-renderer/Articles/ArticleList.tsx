@@ -7,8 +7,8 @@ import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useCreations } from '@penx/hooks/useCreations'
 import { Panel } from '@penx/types'
-import { Label } from '@penx/uikit/ui/label'
-import { Switch } from '@penx/uikit/ui/switch'
+import { Label } from '@penx/uikit/label'
+import { Switch } from '@penx/uikit/switch'
 import { ArticleItem } from './ArticleItem'
 
 interface PostListProps {

@@ -19,12 +19,12 @@ import {
 } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
-import { Badge } from '@penx/uikit/ui/badge'
-import { Button } from '@penx/uikit/ui/button'
-import { Calendar } from '@penx/uikit/ui/calendar'
-import { DialogHeader, DialogTitle } from '@penx/uikit/ui/dialog'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
+import { Badge } from '@penx/uikit/badge'
+import { Button } from '@penx/uikit/button'
+import { Calendar } from '@penx/uikit/calendar'
+import { DialogHeader, DialogTitle } from '@penx/uikit/dialog'
 import {
   Form,
   FormControl,
@@ -33,10 +33,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
-import { Switch } from '@penx/uikit/ui/switch'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { Switch } from '@penx/uikit/switch'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { Authors } from '../Authors'

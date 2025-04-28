@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import {
   GOOGLE_CLIENT_ID,
   LINK_GOOGLE_ACCOUNT_REDIRECT_URI,

@@ -1,8 +1,8 @@
 'use client'
 
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Separator } from '@penx/uikit/ui/separator'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Separator } from '@penx/uikit/separator'
 import { useAccessTokens } from '@penx/hooks/useAccessTokens'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'

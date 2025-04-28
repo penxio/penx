@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Skeleton } from '@penx/uikit/skeleton'
 
 interface Props {
   isLoading: boolean

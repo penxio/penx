@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { IconGoogle } from '@penx/uikit/components/icons/IconGoogle'
-import { Button } from '@penx/uikit/ui/button'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import { Button } from '@penx/uikit/button'
 import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { Link } from '@penx/libs/i18n'
 import { ProviderType } from '@penx/db/client'

@@ -5,7 +5,7 @@ import React from 'react'
 import { cn, withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'
 import Link from 'next/link'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 
 export const FriendsElement = withRef<typeof PlateElement>((props, ref) => {
   const { children, className, nodeProps, ...rest } = props

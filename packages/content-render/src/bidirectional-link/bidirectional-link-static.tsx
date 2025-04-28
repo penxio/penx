@@ -11,7 +11,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@penx/uikit/ui/hover-card'
+} from '@penx/uikit/hover-card'
 import { ContentRender } from '../ContentRender'
 
 export function BidirectionalLinkElementStatic({

@@ -3,7 +3,7 @@
 import GridLayout from 'react-grid-layout'
 import { Trans } from '@lingui/react'
 import { Link } from '@penx/libs/i18n'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 import { CardRender } from './CardRender'
 import { DeleteCardButton } from './DeleteCardButton'

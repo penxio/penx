@@ -10,7 +10,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
 import { useQueryDatabase } from '@penx/hooks/useQueryDatabase'
 import { getRandomColorName } from '@penx/libs/color-helper'

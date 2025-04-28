@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation';
 import { toast } from 'sonner';
 import { useSiteContext } from '@penx/contexts/SiteContext';
 import { api, trpc } from '@penx/trpc-client';
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots';
-import { Button } from '@penx/uikit/ui/button';
-import { Skeleton } from '@penx/uikit/ui/skeleton';
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group';
+import { LoadingDots } from '@penx/uikit/loading-dots';
+import { Button } from '@penx/uikit/button';
+import { Skeleton } from '@penx/uikit/skeleton';
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group';
 import { getUrl } from '@penx/utils';
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage';
 

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { User } from '@penx/db/client'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { getUrl } from '@penx/utils'
 import { CommentInput } from './CommentInput'
 import { CommentList } from './CommentList'

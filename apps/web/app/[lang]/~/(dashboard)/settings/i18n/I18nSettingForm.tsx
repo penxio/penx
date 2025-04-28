@@ -1,8 +1,8 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
@@ -11,11 +11,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@penx/uikit/ui/form'
-import { Input } from '@penx/uikit/ui/input'
-import { Label } from '@penx/uikit/ui/label'
-import { RadioGroup, RadioGroupItem } from '@penx/uikit/ui/radio-group'
-import { Switch } from '@penx/uikit/ui/switch'
+} from '@penx/uikit/form'
+import { Input } from '@penx/uikit/input'
+import { Label } from '@penx/uikit/label'
+import { RadioGroup, RadioGroupItem } from '@penx/uikit/radio-group'
+import { Switch } from '@penx/uikit/switch'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { supportLanguages } from '@/lib/supportLanguages'

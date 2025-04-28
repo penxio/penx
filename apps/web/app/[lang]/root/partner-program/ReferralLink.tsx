@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/ui/button'
+import { Button } from '@penx/uikit/button'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { trpc } from '@penx/trpc-client'
 import { CopyIcon, PenSquareIcon } from 'lucide-react'

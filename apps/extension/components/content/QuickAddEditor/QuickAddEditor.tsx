@@ -7,12 +7,12 @@ import { cn, getUrl } from '@/lib/utils'
 import { PopoverClose, Portal } from '@radix-ui/react-popover'
 import { SendHorizontal, X } from 'lucide-react'
 import { motion, useMotionValue } from 'motion/react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
-import { Button } from '@penx/uikit/ui/button'
-import { Checkbox } from '@penx/uikit/ui/checkbox'
-import { Label } from '@penx/uikit/ui/label'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Button } from '@penx/uikit/button'
+import { Checkbox } from '@penx/uikit/checkbox'
+import { Label } from '@penx/uikit/label'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import {
   Select,
   SelectContent,
@@ -21,7 +21,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from '@penx/uikit/ui/select'
+} from '@penx/uikit/select'
 import { useAppType } from '../hooks/useAppType'
 import { useAreas } from '../hooks/useAreas'
 import { useNote } from '../hooks/useNote'

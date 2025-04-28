@@ -1,8 +1,8 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Image } from '@penx/components/Image'
-import { Skeleton } from '@penx/uikit/ui/skeleton'
+import { Skeleton } from '@penx/uikit/skeleton'
 import { Site } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
 import { AreaItem } from './AreaItem'

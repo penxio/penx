@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Button } from '@penx/uikit/ui/button'
-import { Progress } from '@penx/uikit/ui/progress'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Button } from '@penx/uikit/button'
+import { Progress } from '@penx/uikit/progress'
 import { getUrl } from '@penx/utils'
 import { Campaign } from '@penx/db/client'
 import { PenIcon, Plus } from 'lucide-react'

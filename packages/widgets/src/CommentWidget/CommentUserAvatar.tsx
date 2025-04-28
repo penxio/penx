@@ -9,13 +9,13 @@ import {
   sortDomains,
 } from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from '@penx/uikit/ui/hover-card'
+} from '@penx/uikit/hover-card'
 import { getUrl } from '@penx/utils'
 import { UserAvatar } from '../UserAvatar'
 
