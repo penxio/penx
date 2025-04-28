@@ -1,6 +1,7 @@
 {
   "extends": "@penx/typescript-config/internal-package.json",
   "compilerOptions": {
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "outDir": "dist"
   },
   "include": ["src"],

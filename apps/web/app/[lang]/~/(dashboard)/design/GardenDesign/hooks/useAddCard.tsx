@@ -51,9 +51,9 @@ export function useAddCard() {
     }
 
     const maxY_mobile = layout?.length
-      ? Math.max(...layout.map((i) => i.y[0]))
+      ? Math.max(...layout.map((i) => i.y[0]!))
       : 0
-    const maxY_PC = layout.length ? Math.max(...layout.map((i) => i.y[1])) : 0
+    const maxY_PC = layout.length ? Math.max(...layout.map((i) => i.y[1]!)) : 0
     const maxY = isMobile ? maxY_mobile : maxY_PC
     console.log('===maxY:', maxY)
 

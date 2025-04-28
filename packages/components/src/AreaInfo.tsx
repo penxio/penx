@@ -26,7 +26,6 @@ interface Props {
 export function AreaInfo({ className }: Props) {
   const area = useAreaContext()
   const { setState } = useAreaDialog()
-
   if (!area) return null
 
   return (

@@ -266,6 +266,7 @@ export async function PATCH(request: NextRequest) {
 
   if (isUpdateProps(json)) {
     for (const key of Object.keys(json)) {
+      // @ts-ignore
       session[key] = json[key]
     }
   }

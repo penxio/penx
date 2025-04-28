@@ -1,3 +1,5 @@
+import { Widget } from '@penx/types'
+
 export interface IArea {
   id: string
   slug: string
@@ -7,7 +9,7 @@ export interface IArea {
   logo?: string
   cover?: string
   catalogue: any
-  widgets: any
+  widgets: Widget[]
   chargeMode: string
   type: string
   props: any

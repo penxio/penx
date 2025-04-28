@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
+// @ts-ignore
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
 import { useSiteContext } from '@penx/contexts/SiteContext'

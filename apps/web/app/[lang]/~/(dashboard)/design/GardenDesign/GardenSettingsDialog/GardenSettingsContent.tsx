@@ -42,14 +42,14 @@ export function GardenSettingsContent({}: Props) {
     [2, 2],
   ]
 
-  const sizes = [...mobileSizes, ...pcSizes]
+  const sizes: number[][] = [...mobileSizes, ...pcSizes]
 
   async function onSelectLayout(w: number, h: number) {
     const newLayout = produce(layout, (draft) => {
       for (const item of draft) {
         if (item.i === layoutItem.i) {
-          item.w = isMobile ? [w, item.w[1]] : [item.w[0], w]
-          item.h = isMobile ? [h, item.h[1]] : [item.h[0], h]
+          item.w = isMobile ? [w, item.w[1]!] : [item.w[0]!, w]
+          item.h = isMobile ? [h, item.h[1]!] : [item.h[0]!, h]
         }
       }
     })
@@ -100,12 +100,12 @@ export function GardenSettingsContent({}: Props) {
             className="bg-foreground/6 cursor-pointer rounded-md p-1"
             style={{ width: `${size * 9}px`, height: `${size * 9}px` }}
             onClick={() => {
-              onSelectLayout(w, h)
+              onSelectLayout(w!, h!)
             }}
           >
             <div
               className="shadow-xs bg-background cursor-pointer rounded"
-              style={{ width: `${size * w}px`, height: `${size * h}px` }}
+              style={{ width: `${size * w!}px`, height: `${size * h!}px` }}
             />
           </div>
         ))}

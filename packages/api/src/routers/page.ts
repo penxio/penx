@@ -1,20 +1,16 @@
-import { cacheHelper } from '@penx/libs/cache-header'
-import {
-  editorDefaultValue,
-  FREE_PLAN_PAGE_LIMIT,
-  FRIEND_DATABASE_NAME,
-} from '@penx/constants'
-import { prisma } from '@penx/db'
-import { CreationType, Prop } from '@penx/types'
-import { Option } from '@penx/types'
-import { Creation, CreationStatus } from '@prisma/client'
-import { TRPCError } from '@trpc/server'
-import { slug } from 'github-slugger'
-import { revalidateTag } from 'next/cache'
-import { z } from 'zod'
-import { createPage } from '../lib/createPage'
-import { initPages } from '../lib/initPages'
-import { protectedProcedure, publicProcedure, router } from '../trpc'
+import { Creation, CreationStatus } from '@prisma/client';
+import { TRPCError } from '@trpc/server';
+import { slug } from 'github-slugger';
+import { revalidateTag } from 'next/cache';
+import { z } from 'zod';
+import { editorDefaultValue, FREE_PLAN_PAGE_LIMIT, FRIEND_DATABASE_NAME } from '@penx/constants';
+import { prisma } from '@penx/db';
+import { cacheHelper } from '@penx/libs/cache-header';
+import { CreationType, Option, Prop } from '@penx/types';
+import { createPage } from '../lib/createPage';
+import { initPages } from '../lib/initPages';
+import { protectedProcedure, publicProcedure, router } from '../trpc';
+
 
 export const pageRouter = router({
   list: protectedProcedure
@@ -189,6 +185,7 @@ export const pageRouter = router({
 
       const props = (mold.props as Prop[]).reduce(
         (acc, prop) => {
+          // @ts-ignore
           let value = input.data[prop.slug]
           if (prop.slug === 'status') value = 'pending'
           return {

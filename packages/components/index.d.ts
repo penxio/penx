@@ -1,5 +1,7 @@
 import { Site } from '@prisma/client'
 
+declare module 'shikwasa'
+
 declare global {
   interface Window {
     __SITE__: Site

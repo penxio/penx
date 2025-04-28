@@ -47,6 +47,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   )
     return null
 
+  // @ts-ignore
   let SocialSvg = components[kind]
 
   let iconJsx: any = null

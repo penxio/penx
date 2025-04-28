@@ -1898,6 +1898,9 @@ importers:
       '@penx/encryption':
         specifier: workspace:*
         version: link:../encryption
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
       '@penx/unique-id':
         specifier: workspace:*
         version: link:../unique-id

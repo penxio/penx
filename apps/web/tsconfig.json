@@ -1,8 +1,10 @@
 {
   "extends": "@penx/typescript-config/base.json",
   "compilerOptions": {
-    "strictNullChecks": false,
-    "lib": ["ES2022", "dom", "dom.iterable"],
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "lib": ["ESNext", "dom", "dom.iterable"],
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {

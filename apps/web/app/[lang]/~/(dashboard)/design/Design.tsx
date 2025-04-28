@@ -18,7 +18,8 @@ export function Design() {
   const { session } = useSession()
   const { isLoading } = useLoading()
   const { themeName } = useThemeName()
-  const { themeConfig } = useSiteContext()
+  const site = useSiteContext()
+  const themeConfig: any = site.themeConfig
   const currentDesignMode =
     themeConfig?.[themeName]?.common?.designMode || themeName === 'garden'
       ? DesignMode.GRID

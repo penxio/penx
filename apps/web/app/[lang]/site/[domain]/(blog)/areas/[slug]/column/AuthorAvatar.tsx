@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { Creation } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/ui/avatar'
 import { cn } from '@penx/utils'
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const AuthorAvatar = ({ creation, className }: Props) => {
-  const user = creation.authors[0].user
+  const user = creation.authors[0]!.user
   if (user.image) {
     return (
       <Avatar className={cn('h-6 w-6', className)}>
