@@ -35,3 +35,5 @@ export const SHAPE_URL =
   !isProd && isWeb
     ? `https://sync-dev.penx.io/api/shape-proxy`
     : `https://sync.penx.io/api/shape-proxy`
+
+// export const SHAPE_URL = `https://sync-dev.penx.io/api/shape-proxy`

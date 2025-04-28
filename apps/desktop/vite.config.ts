@@ -7,11 +7,11 @@ import { defineConfig } from 'vite'
 // @ts-ignores
 const host = process.env.TAURI_DEV_HOST
 
-console.log(
-  '>>>>>>>>>>>>>>>--dirName',
-  __dirname,
-  path.resolve(__dirname, '../../node_modules/.prisma/client'),
-)
+// console.log(
+//   '>>>>>>>>>>>>>>>--dirName',
+//   __dirname,
+//   path.resolve(__dirname, '../../node_modules/.prisma/client'),
+// )
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
