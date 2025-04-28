@@ -36,7 +36,7 @@ export const Header = ({ site }: Props) => {
         </div>
         <div className="item-center flex gap-2">
           <div className="flex items-center">
-            <SocialNav site={site} />
+            {/* <SocialNav site={site} /> */}
           </div>
           <Profile></Profile>
         </div>

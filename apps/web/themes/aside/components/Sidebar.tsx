@@ -4,7 +4,7 @@ import { MembershipEntry } from '@penx/components/MembershipEntry'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { NavigationItem } from '@penx/components/NavigationItem'
 import { Profile } from '@penx/components/Profile'
-import { SocialNav } from '@penx/components/SocialNav'
+// import { SocialNav } from '@penx/components/SocialNav'
 import { Link } from '@penx/libs/i18n'
 import { NavLink, Site, Tag } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
@@ -50,7 +50,7 @@ export const Sidebar = ({ site, tags }: Props) => {
           </div>
         )}
 
-        <SocialNav className="" site={site} size={4} />
+        {/* <SocialNav className="" site={site} size={4} /> */}
         <div className="flex flex-col gap-3">
           {links.map((link) => {
             if (link.pathname === '/creator-fi' && !site.spaceId) {

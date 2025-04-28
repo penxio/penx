@@ -22,7 +22,7 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'
 
 const FormSchema = z.object({

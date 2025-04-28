@@ -1,14 +1,14 @@
 import { ReactNode } from 'react'
-import { ModeToggle } from '@penx/components/ModeToggle'
-import { Profile } from '@penx/components/Profile'
-import { MembershipEntry } from '@penx/components/MembershipEntry'
-import { SocialNav } from '@penx/components/SocialNav'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
-import { Link } from '@penx/libs/i18n'
-import { Site, Tag } from '@penx/types'
-import { cn, getUrl } from '@penx/utils'
 import { Trans } from '@lingui/react'
 import { slug } from 'github-slugger'
+import { MembershipEntry } from '@penx/components/MembershipEntry'
+import { ModeToggle } from '@penx/components/ModeToggle'
+import { Profile } from '@penx/components/Profile'
+import { SocialNav } from '@penx/components/SocialNav'
+import { Link } from '@penx/libs/i18n'
+import { Site, Tag } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { cn, getUrl } from '@penx/utils'
 
 interface Props {
   site: Site
@@ -51,21 +51,26 @@ export const Sidebar = ({ site, tags }: Props) => {
 
                 let title = link.title as ReactNode
                 if (link.pathname === '/') title = <Trans id="Home"></Trans>
-                if (link.pathname === '/posts') title = <Trans id="Posts"></Trans>
+                if (link.pathname === '/posts')
+                  title = <Trans id="Posts"></Trans>
                 if (link.pathname === '/writings')
                   title = <Trans id="Writings"></Trans>
                 if (link.pathname === '/podcasts')
                   title = <Trans id="Podcasts"></Trans>
-                if (link.pathname === '/notes') title = <Trans id="Notes"></Trans>
-                if (link.pathname === '/areas') title = <Trans id="Areas"></Trans>
+                if (link.pathname === '/notes')
+                  title = <Trans id="Notes"></Trans>
+                if (link.pathname === '/areas')
+                  title = <Trans id="Areas"></Trans>
                 if (link.pathname === '/projects')
                   title = <Trans id="Projects"></Trans>
-                if (link.pathname === '/friends') title = <Trans id="Friends"></Trans>
+                if (link.pathname === '/friends')
+                  title = <Trans id="Friends"></Trans>
                 if (link.pathname === '/ama') title = <Trans id="AMA"></Trans>
                 if (link.pathname === '/guestbook')
                   title = <Trans id="Guestbook"></Trans>
                 if (link.pathname === '/tags') title = <Trans id="Tags"></Trans>
-                if (link.pathname === '/about') title = <Trans id="About"></Trans>
+                if (link.pathname === '/about')
+                  title = <Trans id="About"></Trans>
 
                 return (
                   <Link
@@ -119,7 +124,7 @@ export const Sidebar = ({ site, tags }: Props) => {
             </div>
           )}
           <div className="flex items-center justify-between">
-            <SocialNav className="" site={site} size={4} />
+            {/* <SocialNav className="" site={site} size={4} /> */}
             <ModeToggle
               variant="outline"
               className="fixed right-3 top-3 h-7 w-7"

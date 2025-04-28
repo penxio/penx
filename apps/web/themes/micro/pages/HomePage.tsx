@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/react'
 import { ContentRender } from '@penx/content-render'
 import { PageTitle } from '@penx/components/PageTitle'
-import { PostItem } from '@penx/componentspost-item-blocks/PostItem'
+// import { PostItem } from '@penx/component/PostItem'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
@@ -44,7 +44,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
           </div>
           <div className="grid grid-cols-1 gap-6">
             {!posts.length && <Trans id="No posts found."></Trans>}
-            {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
+            {/* {posts.slice(0, LATEST_POSTS_LIMIT).map((post) => {
               return (
                 <PostItem
                   key={post.id}
@@ -52,7 +52,7 @@ export function HomePage({ about, posts = [], projects, tags, site }: Props) {
                   postListStyle={postListStyle}
                 />
               )
-            })}
+            })} */}
           </div>
         </section>
       )}

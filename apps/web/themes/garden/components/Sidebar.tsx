@@ -3,7 +3,7 @@ import { Trans } from '@lingui/react'
 import { slug } from 'github-slugger'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { Profile } from '@penx/components/Profile'
-import { MembershipEntry } from '@penx/componentsMembershipEntry/MembershipEntry'
+import { MembershipEntry } from '@penx/components/MembershipEntry'
 import { SocialNav } from '@penx/components/SocialNav'
 import { Link } from '@penx/libs/i18n'
 import { Site, Tag } from '@penx/types'
@@ -124,7 +124,7 @@ export const Sidebar = ({ site, tags }: Props) => {
             </div>
           )}
           <div className="flex items-center justify-between">
-            <SocialNav className="" site={site} size={4} />
+            {/* <SocialNav className="" site={site} size={4} /> */}
             <ModeToggle
               variant="outline"
               className="fixed right-3 top-3 h-7 w-7"

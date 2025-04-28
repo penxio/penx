@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 import { useSession } from '@penx/session'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/button'

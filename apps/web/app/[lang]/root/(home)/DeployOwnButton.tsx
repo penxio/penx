@@ -4,7 +4,7 @@ import { Trans } from '@lingui/react'
 import { Link, useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 
 export function DeployOwnButton() {
   const { data } = useSession()

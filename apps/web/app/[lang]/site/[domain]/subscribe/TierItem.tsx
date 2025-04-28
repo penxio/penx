@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { Card } from '@penx/uikit/card'

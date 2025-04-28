@@ -8,7 +8,7 @@ import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 
 export function DesktopLogin() {
   const { setIsOpen } = useLoginDialog()

@@ -1,5 +1,5 @@
 import { Pagination } from '@penx/components/Pagination'
-import { PostItem } from '@penx/componentspost-item-blocks/PostItem'
+// import { PostItem } from '@penx/components/PostItem'
 import { Creation, PostListStyle, Site } from '@penx/types'
 
 interface PaginationProps {
@@ -27,7 +27,7 @@ export function PostList({
   return (
     <div className="">
       <div className="grid grid-cols-1 gap-6">
-        {displayPosts.map((post) => {
+        {/* {displayPosts.map((post) => {
           return (
             <PostItem
               key={post.slug}
@@ -35,7 +35,7 @@ export function PostList({
               postListStyle={postListStyle}
             />
           )
-        })}
+        })} */}
       </div>
       {pagination && pagination.totalPages > 1 && (
         <Pagination

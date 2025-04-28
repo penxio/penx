@@ -5,7 +5,7 @@ import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'
 import { useCreationContext } from '@penx/contexts/CreationContext'
-import { CommentWidget } from '@penx/widgets/CommentWidget/CommentWidget'
+import { CommentWidget } from '@penx/widgets/CommentWidget'
 
 export const CommentBoxElementStatic = ({
   children,

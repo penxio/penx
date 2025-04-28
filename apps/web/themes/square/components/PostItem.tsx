@@ -3,7 +3,7 @@
 import { JSX } from 'react'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { PodcastTips } from '@penx/components/PodcastTips'
-import { PostActions } from '@penx/componentsPostActions/PostActions'
+import { PostActions } from '@penx/components/PostActions'
 import { placeholderBlurhash } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType, User } from '@penx/types'

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { Link } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Site } from '@penx/types'
-import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 
 interface Props {
   site: Site

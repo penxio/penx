@@ -4,9 +4,18 @@
   "private": true,
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
-    "./*": "./src/*.tsx"
+    "./ConfirmDialog": "./src/ConfirmDialog.tsx",
+    "./GoogleOauthButton": "./src/GoogleOauthButton.tsx",
+    "./UserAvatar": "./src/UserAvatar.tsx",
+    "./CommentWidget": "./src/CommentWidget/index.ts",
+    "./LoginDialog": "./src/LoginDialog/LoginDialog.tsx",
+    "./LoginForm": "./src/LoginDialog/LoginForm.tsx",
+    "./RegisterForm": "./src/LoginDialog/RegisterForm.tsx",
+    "./useAuthStatus": "./src/LoginDialog/useAuthStatus.tsx",
+    "./useLoginDialog": "./src/LoginDialog/useLoginDialog.tsx"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
