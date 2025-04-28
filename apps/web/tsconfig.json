@@ -1,68 +1,20 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@penx/typescript-config/base.json",
   "compilerOptions": {
-    "strict": false,
-    "strictNullChecks": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": false,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": false,
-    "noPropertyAccessFromIndexSignature": false,
-    "noUncheckedIndexedAccess": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "isolatedModules": true,
-    "allowJs": true,
-    "checkJs": false,
-
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "target": "es2022",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-    "allowImportingTsExtensions": false,
-    "resolveJsonModule": true,
-    "noEmit": true,
-    "incremental": true,
-    "declaration": false,
-    "declarationMap": false,
-    "sourceMap": true,
-    "pretty": true,
-    "preserveWatchOutput": true,
-
+    "strictNullChecks": false,
+    "lib": ["ES2022", "dom", "dom.iterable"],
     "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-      "@penx/uikit/*": ["../../packages/uikit/src/*"]
-    }
+    "module": "esnext"
   },
-  "include": [
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.cts",
-    "**/*.ctsx",
-    "**/*.mts",
-    "**/*.mtsx",
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.cjs",
-    "**/*.cjsx",
-    "**/*.mjs",
-    "**/*.mjsx"
-  ],
-  "exclude": ["node_modules", "dist"]
+  "include": [".", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

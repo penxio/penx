@@ -1,5 +1,5 @@
 {
-  "extends": "@penx/typescript-config/react-library.json",
+  "extends": "@penx/typescript-config/internal-package.json",
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,

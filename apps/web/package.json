@@ -50,6 +50,7 @@
     "next": "^15.3.0"
   },
   "devDependencies": {
+    "@penx/typescript-config": "workspace:*",
     "@iconify/json": "^2.2.311",
     "@iconify/tailwind4": "^1.0.4",
     "@lingui/cli": "5.3.1",
