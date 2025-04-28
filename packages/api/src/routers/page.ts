@@ -1,4 +1,4 @@
-import { Creation, CreationStatus } from '@prisma/client';
+import { Creation, CreationStatus } from '@penx/db/client';
 import { TRPCError } from '@trpc/server';
 import { slug } from 'github-slugger';
 import { revalidateTag } from 'next/cache';

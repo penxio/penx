@@ -1,7 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Site } from '@prisma/client'
+import { Site } from '@penx/db/client'
 import { format } from 'date-fns'
 import { Edit3Icon } from 'lucide-react'
 import { toast } from 'sonner'

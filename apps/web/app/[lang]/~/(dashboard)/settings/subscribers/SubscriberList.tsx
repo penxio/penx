@@ -25,7 +25,7 @@ import {
 import { useSubscribers } from '@penx/hooks/useSubscribers'
 import { api } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { SubscriberStatus } from '@prisma/client'
+import { SubscriberStatus } from '@penx/db/client'
 import { format } from 'date-fns'
 import { RefreshCw, Search, X } from 'lucide-react'
 import { AddSubscriberDialog } from './AddSubscriberDialog/AddSubscriberDialog'

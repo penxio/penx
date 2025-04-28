@@ -1,6 +1,6 @@
 import { useSession } from '@/hooks/useSession'
 import { BASE_URL } from '@/lib/constants'
-import { Tag } from '@prisma/client'
+import { Tag } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import ky from 'ky'
 

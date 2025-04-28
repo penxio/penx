@@ -1,4 +1,4 @@
-import { Tag } from '@prisma/client'
+import { Tag } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { slug } from 'github-slugger'
 import { revalidateTag } from 'next/cache'

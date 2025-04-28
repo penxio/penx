@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client'
 import { pagination } from 'prisma-extension-pagination'
+import { PrismaClient } from '../generated/prisma/client'
 
 const client = new PrismaClient()
 const extendedPrisma = client.$extends(pagination())

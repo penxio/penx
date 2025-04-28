@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Campaign } from '@prisma/client'
+import { Campaign } from '@penx/db/client'
 import { toast } from 'sonner'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 // import { usePathname } from '@penx/libs/i18n'

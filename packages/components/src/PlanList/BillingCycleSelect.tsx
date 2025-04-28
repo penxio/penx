@@ -1,7 +1,7 @@
 'use client'
 
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/ui/toggle-group'
-import { BillingCycle } from '@prisma/client'
+import { BillingCycle } from '@penx/db/client'
 import { Badge } from '@penx/uikit/ui/badge'
 import { useBillingCycle } from './useBillingCycle'
 

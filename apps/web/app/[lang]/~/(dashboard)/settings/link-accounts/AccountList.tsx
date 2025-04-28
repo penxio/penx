@@ -1,6 +1,6 @@
 'use client'
 
-import { Account, ProviderType } from '@prisma/client'
+import { Account, ProviderType } from '@penx/db/client'
 import { AvatarImage } from '@radix-ui/react-avatar'
 import { KeyIcon } from 'lucide-react'
 import { toast } from 'sonner'

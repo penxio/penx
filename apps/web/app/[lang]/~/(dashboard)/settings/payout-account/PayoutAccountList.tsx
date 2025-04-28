@@ -11,7 +11,7 @@ import {
   TableRow,
 } from '@penx/uikit/ui/table'
 import { api, trpc } from '@penx/trpc-client'
-import { TransferMethod } from '@prisma/client'
+import { TransferMethod } from '@penx/db/client'
 import { format } from 'date-fns'
 import { Edit3, Eye, EyeOff } from 'lucide-react'
 import { toast } from 'sonner'

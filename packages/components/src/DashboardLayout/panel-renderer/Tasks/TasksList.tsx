@@ -1,7 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Mold } from '@prisma/client'
+import { Mold } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { api } from '@penx/trpc-client'

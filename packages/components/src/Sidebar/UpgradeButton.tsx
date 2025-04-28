@@ -3,7 +3,7 @@
 import { usePlanListDialog } from '@penx/components/PlanList/usePlanListDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
-import { PlanType } from '@prisma/client'
+import { PlanType } from '@penx/db/client'
 import { ZapIcon } from 'lucide-react'
 
 interface Props {}

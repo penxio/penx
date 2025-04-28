@@ -1,4 +1,4 @@
-import { CommentStatus } from '@prisma/client'
+import { CommentStatus } from '@penx/db/client'
 import { CreateCreationInput, editorDefaultValue } from '@penx/constants'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useCollaborators } from '@penx/hooks/useCollaborators'

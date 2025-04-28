@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { Theme } from '@prisma/client'
+import { Theme } from '@penx/db/client'
 import Redis from 'ioredis'
 import { z } from 'zod'
 import { getTokenByInstallationId } from '../lib/getTokenByInstallationId'

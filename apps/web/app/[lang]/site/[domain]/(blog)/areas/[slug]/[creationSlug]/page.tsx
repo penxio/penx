@@ -8,7 +8,7 @@ import {
   getSite,
 } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AreaType, Creation, GateType } from '@prisma/client'
+import { AreaType, Creation, GateType } from '@penx/db/client'
 import { produce } from 'immer'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'

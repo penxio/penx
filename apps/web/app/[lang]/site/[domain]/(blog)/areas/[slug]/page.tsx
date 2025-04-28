@@ -1,7 +1,7 @@
 import { initLingui } from '@/initLingui'
 import { getArea, getSite } from '@/lib/fetchers'
 import { Trans } from '@lingui/react'
-import { AreaType } from '@prisma/client'
+import { AreaType } from '@penx/db/client'
 import { Metadata } from 'next'
 import { Footer } from '@penx/components/theme-ui/Footer'
 import { PageTitle } from '@penx/components/theme-ui/PageTitle'

@@ -29,7 +29,7 @@ import {
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { RouterInputs, RouterOutputs } from '@penx/api'
-import { Column, Record as Row, View } from '@prisma/client'
+import { Column, Record as Row, View } from '@penx/db/client'
 import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'
 import { useSearchParams } from 'next/navigation'

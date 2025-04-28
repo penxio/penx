@@ -1,6 +1,6 @@
 'use client'
 
-import { Mold } from '@prisma/client'
+import { Mold } from '@penx/db/client'
 import { useNotes } from '@penx/hooks/useNotes'
 import { Panel } from '@penx/types'
 import { NoteItem } from './NoteItem'

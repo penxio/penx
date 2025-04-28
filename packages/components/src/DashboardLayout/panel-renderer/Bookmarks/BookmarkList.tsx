@@ -1,6 +1,6 @@
 'use client'
 
-import { Mold } from '@prisma/client'
+import { Mold } from '@penx/db/client'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useTagsContext } from '@penx/contexts/TagsContext'

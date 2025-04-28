@@ -5,7 +5,10 @@
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*.ts",
-    "./client": "./generated/prisma/client/*.ts"
+    "./client": {
+      "types": "./generated/prisma/client/index.d.ts",
+      "default": "./src/client.ts"
+    }
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",

@@ -1,4 +1,4 @@
-import { BillingCycle, PlanType } from '@prisma/client'
+import { BillingCycle, PlanType } from '@penx/db/client'
 import { getIronSession, IronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import qs from 'query-string'

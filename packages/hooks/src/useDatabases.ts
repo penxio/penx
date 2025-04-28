@@ -1,5 +1,5 @@
 import isEqual from 'react-fast-compare'
-import { Database } from '@prisma/client'
+import { Database } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { localDB } from '@penx/local-db'

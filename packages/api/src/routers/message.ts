@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { Message } from '@prisma/client'
+import { Message } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'

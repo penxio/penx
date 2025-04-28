@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react'
-import { Mold } from '@prisma/client'
+import { Mold } from '@penx/db/client'
 
 export function getMoldName(mold: Mold): ReactNode {
   let name: ReactNode = mold.name

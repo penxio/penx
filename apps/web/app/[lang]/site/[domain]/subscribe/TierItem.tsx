@@ -12,7 +12,7 @@ import { Site } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
 import { StripeInfo } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Product } from '@prisma/client'
+import { Product } from '@penx/db/client'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 

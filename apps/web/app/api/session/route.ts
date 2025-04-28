@@ -11,7 +11,7 @@ import {
   PlanType,
   ProviderType,
   Subscription,
-} from '@prisma/client'
+} from '@penx/db/client'
 import { compareSync } from 'bcrypt-edge'
 import { getIronSession, IronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'

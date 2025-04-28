@@ -1,4 +1,4 @@
-import { AreaType } from '@prisma/client'
+import { AreaType } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { getActiveSite } from '@penx/libs/getActiveSite'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { User } from '@prisma/client'
+import { User } from '@penx/db/client'
 import { trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { getUrl } from '@penx/utils'

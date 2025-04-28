@@ -3,7 +3,7 @@
 import { FormEvent, forwardRef } from 'react'
 import { Controller } from 'react-hook-form'
 import { Trans } from '@lingui/react'
-import { Column } from '@prisma/client'
+import { Column } from '@penx/db/client'
 import { ChevronDown, X } from 'lucide-react'
 import { useDatabaseContext } from '@penx/components/database-ui/DatabaseProvider'
 import { ColumnType, Option } from '@penx/types'

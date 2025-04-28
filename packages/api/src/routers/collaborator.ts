@@ -4,7 +4,7 @@ import {
   TEAM_PLAN_COLLABORATOR_LIMIT,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { CollaboratorRole, PlanType, ProviderType } from '@prisma/client'
+import { CollaboratorRole, PlanType, ProviderType } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
 import { protectedProcedure, publicProcedure, router } from '../trpc'

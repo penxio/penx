@@ -1,4 +1,4 @@
-import { Site } from '@prisma/client'
+import { Site } from '@penx/db/client'
 import { NetworkNames } from '@penx/constants'
 import { SyncService } from './SyncService'
 

@@ -1,6 +1,6 @@
 import ky from 'ky'
 import { z } from 'zod'
-import { Area, Tag } from '@prisma/client'
+import { Area, Tag } from '@penx/db/client'
 import '@penx/types'
 import { BASE_URL } from './constants'
 

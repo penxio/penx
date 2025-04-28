@@ -1,4 +1,4 @@
-import { AreaType, ChargeMode, CreationStatus } from '@prisma/client'
+import { AreaType, ChargeMode, CreationStatus } from '@penx/db/client'
 import { z } from 'zod'
 
 export const updateCreationInputSchema = z.object({

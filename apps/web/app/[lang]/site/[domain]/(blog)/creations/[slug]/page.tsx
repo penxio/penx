@@ -1,7 +1,7 @@
 import { initLingui } from '@/initLingui'
 import { getCreation, getCreations, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { GateType } from '@prisma/client'
+import { GateType } from '@penx/db/client'
 import { produce } from 'immer'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'

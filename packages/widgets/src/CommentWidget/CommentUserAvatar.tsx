@@ -1,6 +1,6 @@
 'use client'
 
-import { Comment, User } from '@prisma/client'
+import { Comment, User } from '@penx/db/client'
 import { ArrowUpRight } from 'lucide-react'
 import { ROOT_DOMAIN } from '@penx/constants'
 import {

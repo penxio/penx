@@ -1,5 +1,5 @@
 import isEqual from 'react-fast-compare'
-import { CreationTag, Tag } from '@prisma/client'
+import { CreationTag, Tag } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import debounce from 'lodash.debounce'

@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { DeliveryStatus } from '@prisma/client'
+import { DeliveryStatus } from '@penx/db/client'
 import { z } from 'zod'
 import { protectedProcedure, router } from '../trpc'
 

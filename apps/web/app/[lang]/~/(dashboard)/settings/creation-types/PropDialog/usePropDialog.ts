@@ -1,5 +1,5 @@
 import { Prop } from '@penx/types'
-import { Mold } from '@prisma/client'
+import { Mold } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

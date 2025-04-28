@@ -1,4 +1,4 @@
-import { AreaType, ChargeMode } from '@prisma/client'
+import { AreaType, ChargeMode } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'

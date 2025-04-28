@@ -1,5 +1,5 @@
 import { LayoutItem } from '@penx/types'
-import { Product } from '@prisma/client'
+import { Product } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

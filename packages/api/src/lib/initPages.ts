@@ -1,4 +1,4 @@
-import { CreationStatus } from '@prisma/client'
+import { CreationStatus } from '@penx/db/client'
 import { editorDefaultValue, ELEMENT_P } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { CreationType } from '@penx/types'

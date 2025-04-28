@@ -1,11 +1,11 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { AreaType } from '@prisma/client'
 import { GlobeIcon, PencilIcon, TrashIcon } from 'lucide-react'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { AreaType } from '@penx/db/client'
 import { deleteArea } from '@penx/hooks/useAreas'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'

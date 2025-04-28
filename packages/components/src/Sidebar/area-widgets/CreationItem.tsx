@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/react'
-import { CreationStatus } from '@prisma/client'
+import { CreationStatus } from '@penx/db/client'
 import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { addToFavorites, removeFromFavorites } from '@penx/hooks/useArea'

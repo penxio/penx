@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { CreationTag, Tag } from '@prisma/client'
+import { CreationTag, Tag } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import debounce from 'lodash.debounce'
 import { UpdateCreationInput } from '@penx/constants'

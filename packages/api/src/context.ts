@@ -1,4 +1,4 @@
-import { PlanType } from '@prisma/client'
+import { PlanType } from '@penx/db/client'
 import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import type * as trpcNext from '@trpc/server/adapters/next'
 import { getIronSession } from 'iron-session'

@@ -1,4 +1,4 @@
-import { ProviderType } from '@prisma/client'
+import { ProviderType } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import jwt from 'jsonwebtoken'
 import { customAlphabet } from 'nanoid'

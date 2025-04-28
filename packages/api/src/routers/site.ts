@@ -1,4 +1,4 @@
-import { ProductType, StripeType, SubdomainType } from '@prisma/client'
+import { ProductType, StripeType, SubdomainType } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'

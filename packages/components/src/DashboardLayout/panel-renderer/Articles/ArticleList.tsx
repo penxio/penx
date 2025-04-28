@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mold } from '@prisma/client'
+import { Mold } from '@penx/db/client'
 import { CreationStatus } from '@penx/constants'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'

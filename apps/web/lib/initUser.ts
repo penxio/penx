@@ -4,7 +4,7 @@ import {
   ProviderType,
   SubdomainType,
   User,
-} from '@prisma/client'
+} from '@penx/db/client'
 import ky from 'ky'
 import { hashPassword } from '@penx/api/lib/hashPassword'
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'

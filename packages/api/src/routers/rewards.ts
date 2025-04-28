@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { ContributionType, Platform } from '@prisma/client'
+import { ContributionType, Platform } from '@penx/db/client'
 import { z } from 'zod'
 import { protectedProcedure, router } from '../trpc'
 

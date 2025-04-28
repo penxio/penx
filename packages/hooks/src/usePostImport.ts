@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Creation } from '@prisma/client'
+import { Creation } from '@penx/db/client'
 import { deserializeMd } from '@udecode/plate-markdown'
 import { toast } from 'sonner'
 // import { serverSideEditor } from '@penx/content-render/server-side-editor'

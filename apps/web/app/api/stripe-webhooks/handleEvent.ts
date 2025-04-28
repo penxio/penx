@@ -3,7 +3,7 @@ import { SubscriptionTarget } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { stripe } from '@penx/libs/stripe'
 import { Balance } from '@penx/types'
-import { BillingCycle, InvoiceType, StripeType } from '@prisma/client'
+import { BillingCycle, InvoiceType, StripeType } from '@penx/db/client'
 import type { Stripe } from 'stripe'
 
 export async function handleEvent(event: Stripe.Event) {

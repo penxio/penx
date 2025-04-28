@@ -2,7 +2,7 @@
 
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Product } from '@prisma/client'
+import { Product } from '@penx/db/client'
 import { TierItem } from './TierItem'
 
 interface Props {

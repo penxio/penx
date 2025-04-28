@@ -1,4 +1,4 @@
-import { ProviderType } from '@prisma/client'
+import { ProviderType } from '@penx/db/client'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { uniqueId } from '@penx/unique-id'

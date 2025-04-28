@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { BillingCycle, PlanType } from '@prisma/client'
+import { BillingCycle, PlanType } from '@penx/db/client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'

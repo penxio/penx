@@ -1,4 +1,4 @@
-import { Site } from '@prisma/client'
+import { Site } from '@penx/db/client'
 
 declare module 'shikwasa'
 

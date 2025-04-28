@@ -1,6 +1,6 @@
 import { prisma } from '@penx/db'
 import { SiteCreation } from '@penx/types'
-import { CreationStatus } from '@prisma/client'
+import { CreationStatus } from '@penx/db/client'
 
 interface Opt {
   siteId?: string

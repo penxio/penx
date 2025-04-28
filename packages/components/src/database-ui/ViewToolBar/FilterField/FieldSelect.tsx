@@ -8,7 +8,7 @@ import {
 import { mappedByKey } from '@penx/utils'
 import { Filter } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'
-import { Column } from '@prisma/client'
+import { Column } from '@penx/db/client'
 import { Check, ChevronDown } from 'lucide-react'
 import { FieldIcon } from '../../shared/FieldIcon'
 

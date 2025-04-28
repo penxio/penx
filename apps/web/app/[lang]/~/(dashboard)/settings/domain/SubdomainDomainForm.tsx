@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@prisma/client'
+import { Site } from '@penx/db/client'
 import { slug } from 'github-slugger'
 import { toast } from 'sonner'
 import { z } from 'zod'

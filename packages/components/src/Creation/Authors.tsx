@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Author } from '@prisma/client'
+import { Author } from '@penx/db/client'
 import { Command } from 'cmdk'
 import { Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'

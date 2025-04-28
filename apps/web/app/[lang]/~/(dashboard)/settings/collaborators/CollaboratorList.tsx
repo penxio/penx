@@ -28,7 +28,7 @@ import {
   CollaboratorRole,
   ProviderType,
   User,
-} from '@prisma/client'
+} from '@penx/db/client'
 import { toast } from 'sonner'
 import { isAddress } from 'viem'
 

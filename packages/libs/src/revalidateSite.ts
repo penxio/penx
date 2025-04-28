@@ -1,4 +1,4 @@
-import { Domain } from '@prisma/client'
+import { Domain } from '@penx/db/client'
 import { revalidateTag } from 'next/cache'
 
 export function revalidateSite(domains: Domain[]) {

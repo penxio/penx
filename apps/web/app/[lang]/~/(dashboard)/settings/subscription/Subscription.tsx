@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { UseCouponCode } from '@/components/UseCouponCode'
-import { BillingCycle, PlanType } from '@prisma/client'
+import { BillingCycle, PlanType } from '@penx/db/client'
 import { format } from 'date-fns'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useSession } from '@penx/session'

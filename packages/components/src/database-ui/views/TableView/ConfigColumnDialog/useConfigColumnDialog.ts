@@ -1,6 +1,6 @@
 'use client'
 
-import { Column } from '@prisma/client'
+import { Column } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

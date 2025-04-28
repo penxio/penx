@@ -1,4 +1,4 @@
-import { StripeType } from '@prisma/client'
+import { StripeType } from '@penx/db/client'
 import qs from 'query-string'
 import Stripe from 'stripe'
 import { z } from 'zod'

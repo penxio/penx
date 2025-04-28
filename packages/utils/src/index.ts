@@ -6,10 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export async function fetcher<JSON = any>(
-  input: RequestInfo,
+  input: string,
   init?: RequestInit,
 ): Promise<JSON> {
-  const response = await fetch(input, { ...init, cache: 'no-store' })
+  const response = await fetch(input, { ...init, cache: 'no-store' } as any)
 
   return response.json()
 }

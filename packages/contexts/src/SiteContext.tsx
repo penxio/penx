@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
-import { Area, Channel, Mold, Site, Tag } from '@prisma/client'
+import { Area, Channel, Mold, Site, Tag } from '@penx/db/client'
 import { STATIC_URL } from '@penx/constants'
 import { CreationType } from '@penx/types'
 

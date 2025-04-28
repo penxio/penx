@@ -1,4 +1,4 @@
-import { ProductType } from '@prisma/client'
+import { ProductType } from '@penx/db/client'
 import { gql, request } from 'graphql-request'
 import { produce } from 'immer'
 import ky from 'ky'

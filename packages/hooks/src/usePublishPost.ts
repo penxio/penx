@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GateType } from '@prisma/client'
+import { GateType } from '@penx/db/client'
 import { createPlateEditor } from '@udecode/plate/react'
 import { toast } from 'sonner'
 import { Address } from 'viem'

@@ -5,7 +5,7 @@ import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import { usePathname, useRouter } from '@penx/libs/i18n'
 import { trpc } from '@penx/trpc-client'
-import { PlanType } from '@prisma/client'
+import { PlanType } from '@penx/db/client'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { useBillingCycle } from './useBillingCycle'
 

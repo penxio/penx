@@ -11,7 +11,7 @@ import {
 import { Separator } from '@penx/uikit/ui/separator'
 import { IViewNode } from '@penx/model'
 import { MenuItem } from '@ariakit/react'
-import { View } from '@prisma/client'
+import { View } from '@penx/db/client'
 import { Copy, MoreVertical, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { useDatabaseContext } from '../DatabaseProvider'

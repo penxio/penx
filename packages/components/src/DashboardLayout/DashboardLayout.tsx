@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useMemo, useState } from 'react'
 // import { runWorker } from '@/lib/worker'
-import { Site } from '@prisma/client'
+import { Site } from '@penx/db/client'
 import { useSearchParams } from 'next/navigation'
 import { AreaProvider } from '@penx/components/AreaContext'
 import { AreaDialog } from '@penx/components/AreaDialog/AreaDialog'

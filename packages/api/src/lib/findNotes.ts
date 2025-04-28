@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { CreationStatus } from '@prisma/client'
+import { CreationStatus } from '@penx/db/client'
 
 interface Opt {
   moldId: string

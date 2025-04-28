@@ -9,7 +9,7 @@ import {
 } from '@penx/uikit/ui/tooltip'
 import { compareVersions } from '@/lib/compareVersions'
 import { trpc } from '@penx/trpc-client'
-import { HostedSite } from '@prisma/client'
+import { HostedSite } from '@penx/db/client'
 import { ArrowUp } from 'lucide-react'
 
 export function VersionInfo({ site }: { site: HostedSite }) {

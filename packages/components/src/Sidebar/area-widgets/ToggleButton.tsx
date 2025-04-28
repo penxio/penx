@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Area } from '@prisma/client'
+import { Area } from '@penx/db/client'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { toggleCollapsed } from '@penx/hooks/useArea'

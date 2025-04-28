@@ -1,7 +1,7 @@
 import { produce } from 'immer'
 import Redis from 'ioredis'
 import { redisKeys } from '@penx/constants'
-import { Creation } from '@prisma/client'
+import { Creation } from '@penx/db/client'
 import { AreaById, CreationById, MySite, SiteCreation } from '@penx/types'
 
 const redis = new Redis(process.env.REDIS_URL!)

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Area } from '@prisma/client'
+import { Area } from '@penx/db/client'
 import { PlusIcon } from 'lucide-react'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'

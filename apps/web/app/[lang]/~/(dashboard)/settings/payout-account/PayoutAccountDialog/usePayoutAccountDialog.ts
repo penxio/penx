@@ -1,4 +1,4 @@
-import { PayoutAccount, Product } from '@prisma/client'
+import { PayoutAccount, Product } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
 
 type State = {

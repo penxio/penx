@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { CreationStatus } from '@prisma/client'
+import { CreationStatus } from '@penx/db/client'
 
 export function findPublishedCreations(siteId: string) {
   return prisma.creation.findMany({

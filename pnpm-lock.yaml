@@ -1945,6 +1945,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db

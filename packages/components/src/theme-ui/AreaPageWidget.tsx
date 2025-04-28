@@ -2,7 +2,7 @@ import { Image } from '@penx/components/Image'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { Area } from '@prisma/client'
+import { Area } from '@penx/db/client'
 
 interface Props {
   site: Site

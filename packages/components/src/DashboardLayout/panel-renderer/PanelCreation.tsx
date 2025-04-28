@@ -1,6 +1,6 @@
 'use client'
 
-import { CreationStatus } from '@prisma/client'
+import { CreationStatus } from '@penx/db/client'
 import { Creation } from '@penx/components/Creation/Creation'
 import { CreationMoreMenu } from '@penx/components/Creation/CreationMoreMenu'
 import {

@@ -1,5 +1,5 @@
 import { prisma } from '@penx/db'
-import { ProviderType } from '@prisma/client'
+import { ProviderType } from '@penx/db/client'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {

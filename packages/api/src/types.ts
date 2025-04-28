@@ -1,4 +1,4 @@
-import { Author, Creation, CreationTag, Mold, User } from '@prisma/client'
+import { Author, Creation, CreationTag, Mold, User } from '@penx/db/client'
 
 export type CreationById = Creation & {
   creationTags: CreationTag[]

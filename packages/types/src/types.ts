@@ -12,7 +12,7 @@ import {
   Subscription,
   Tag,
   User,
-} from '@prisma/client'
+} from '@penx/db/client'
 import { Address } from 'viem'
 
 export enum TierInterval {

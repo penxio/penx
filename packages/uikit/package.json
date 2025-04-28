@@ -12,6 +12,7 @@
     "./hooks/*": "./src/hooks/*.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLayer } from 'react-laag'
 import { Rectangle } from '@glideapps/glide-data-grid'
-import { Column } from '@prisma/client'
+import { Column } from '@penx/db/client'
 import { ColumnMenu } from '../ColumnMenu/ColumnMenu'
 import { useFieldTypeSelectPopover } from './useFieldTypeSelectPopover'
 

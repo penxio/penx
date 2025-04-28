@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { CreationStatus, Product } from '@prisma/client'
+import { CreationStatus, Product } from '@penx/db/client'
 import { TextareaAutosize } from '@udecode/plate-caption/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'

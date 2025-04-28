@@ -3,7 +3,7 @@ import {
   Creation,
   CreationStatus,
   GateType,
-} from '@prisma/client'
+} from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { z } from 'zod'

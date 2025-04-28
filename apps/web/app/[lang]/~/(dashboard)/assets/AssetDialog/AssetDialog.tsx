@@ -1,7 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Asset } from '@prisma/client'
+import { Asset } from '@penx/db/client'
 import { ExternalLink, Trash2, X } from 'lucide-react'
 import { toast } from 'sonner'
 import { placeholderBlurhash, STATIC_URL } from '@penx/constants'

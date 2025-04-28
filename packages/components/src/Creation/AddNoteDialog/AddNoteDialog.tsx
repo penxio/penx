@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
-import { GateType } from '@prisma/client'
+import { GateType } from '@penx/db/client'
 import { usePlateEditor } from '@udecode/plate/react'
 import { add } from 'lodash'
 import { useRouter } from 'next/navigation'
