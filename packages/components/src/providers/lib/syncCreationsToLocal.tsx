@@ -22,6 +22,8 @@ export async function syncCreationsToLocal(siteId: string) {
   const { last_lsn, ...metadata } = await getElectricSyncState('creation')
   // console.log('========syncState:', metadata, 'last_lsn:', last_lsn)
 
+  console.log('===========SHAPE_URL:', SHAPE_URL)
+
   const stream = new ShapeStream({
     url: SHAPE_URL,
     params: {

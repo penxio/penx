@@ -1,4 +1,4 @@
-import { isWeb } from './basic.constants'
+import { ROOT_HOST } from './basic.constants'
 
 export const GOOGLE_OAUTH_REDIRECT_URI = 'https://www.penx.io/api/google-oauth'
 // export const GOOGLE_OAUTH_REDIRECT_URI =
@@ -65,6 +65,4 @@ export const DAILY_CLAIM_CAP_URL =
     ? 'https://penx.io/api/daily-claim-cap'
     : 'https://sepolia.penx.io/api/daily-claim-cap'
 
-export const SHAPE_URL = isWeb
-  ? '/api/shap-proxy'
-  : 'https://penx.io/api/shap-proxy'
+export const SHAPE_URL = `${ROOT_HOST}/api/shape-proxy`
