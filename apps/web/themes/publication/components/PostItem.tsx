@@ -2,8 +2,8 @@
 
 import { JSX } from 'react'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
-import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
+import { PodcastTips } from '@penx/components/PodcastTips'
+import { PostActions } from '@penx/componentsPostActions/PostActions'
 import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType, User } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'

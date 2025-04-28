@@ -1,4 +1,4 @@
-import { PlanList } from '@penx/components/PlanList/PlanList'
+import { PlanList } from '@penx/components/PlanList'
 
 // export const runtime = 'edge'
 

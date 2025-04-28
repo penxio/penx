@@ -1,5 +1,5 @@
-import { Profile } from '@penx/components/Profile/Profile'
-import { MobileSidebarSheet } from '@penx/components/theme-ui/MobileSidebar/MobileSidebarSheet'
+import { Profile } from '@penx/components/Profile'
+import { MobileSidebarSheet } from '@penx/components/MobileSidebarSheet'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations, Site } from '@penx/types'

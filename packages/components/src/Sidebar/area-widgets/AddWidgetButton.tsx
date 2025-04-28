@@ -12,7 +12,7 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAreaContext } from '@penx/components/AreaContext'
-import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
+import { AddNoteDialog } from '@penx/components/AddNoteDialog'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'

@@ -1,4 +1,4 @@
-import { Profile } from '@penx/components/Profile/Profile'
+import { Profile } from '@penx/components/Profile'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'

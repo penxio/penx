@@ -1,4 +1,4 @@
-import { PageTitle } from '@penx/components/theme-ui/PageTitle'
+import { PageTitle } from '@penx/components/PageTitle'
 import { Tag } from '@penx/types'
 import { TagList } from '../components/TagList'
 

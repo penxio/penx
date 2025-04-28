@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
-import { AddNoteDialog } from '@penx/components/Creation/AddNoteDialog/AddNoteDialog'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'

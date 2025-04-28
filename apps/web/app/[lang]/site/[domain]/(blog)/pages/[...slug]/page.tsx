@@ -1,5 +1,5 @@
 import { CreationProvider } from '@penx/contexts/CreationContext'
-import { PageDefaultUI } from '@penx/components/theme-ui/PageDefaultUI'
+import { PageDefaultUI } from '@penx/components/PageDefaultUI'
 import { getPage, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { Metadata } from 'next'

@@ -1,6 +1,6 @@
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Github } from '@penx/components/theme-ui/SocialIcon/icons'
+import { Github } from '@penx/components/SocialIcon'
 import { Button } from '@penx/uikit/button'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { queryClient } from '@penx/query-client'

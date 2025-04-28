@@ -3,7 +3,7 @@ import { getArea, getSite, getTags } from '@/lib/fetchers';
 import { redirectTo404 } from '@/lib/redirectTo404';
 import { Metadata } from 'next';
 import { AreaProvider } from '@penx/components/AreaContext';
-import { Footer } from '@penx/components/theme-ui/Footer';
+import { Footer } from '@penx/components/Footer';
 import { SiteProvider } from '@penx/contexts/SiteContext';
 import linguiConfig from '@penx/libs/lingui.config';
 import { AppearanceConfig } from '@penx/types';

@@ -11,7 +11,7 @@ import {
   CheckIcon,
   Edit3Icon,
 } from 'lucide-react'
-import { Tags } from '@penx/components/Creation/Tags'
+import { Tags } from '@penx/components/Tags'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { PlateEditor } from '@penx/editor/plate-editor'

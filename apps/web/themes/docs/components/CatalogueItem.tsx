@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
-import { useMobileSidebarSheet } from '@penx/components/theme-ui/MobileSidebar/useMobileSidebarSheet'
+import { useMobileSidebarSheet } from '@penx/components/useMobileSidebarSheet'
 import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,

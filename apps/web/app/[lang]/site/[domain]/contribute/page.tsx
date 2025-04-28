@@ -1,4 +1,4 @@
-import { Profile } from '@penx/components/Profile/Profile'
+import { Profile } from '@penx/components/Profile'
 import { getSite, getTiers } from '@/lib/fetchers'
 import Image from 'next/image'
 import { ContributeBox } from './ContributeBox'

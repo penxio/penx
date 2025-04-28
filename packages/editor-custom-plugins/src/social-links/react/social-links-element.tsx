@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { cn, withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-// import { SocialNav } from '@penx/components/theme-ui/SocialNav'
+// import { SocialNav } from '@penx/components/SocialNav'
 import { Link } from '@penx/libs/i18n'
 import { getBlockClassName } from '@penx/utils'
 

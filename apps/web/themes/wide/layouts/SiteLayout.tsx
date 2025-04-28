@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Footer } from '@penx/components/theme-ui/Footer'
+import { Footer } from '@penx/components/Footer'
 import { Site, Tag } from '@penx/types'
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'

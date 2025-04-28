@@ -3,8 +3,8 @@ import { gql, request } from 'graphql-request'
 import { produce } from 'immer'
 import ky from 'ky'
 import { unstable_cache } from 'next/cache'
-import { getDatabaseData } from '@penx/api/lib/getDatabaseData'
-import { initPages } from '@penx/api/lib/initPages'
+import { getDatabaseData } from '@penx/api/getDatabaseData'
+import { initPages } from '@penx/api/initPages'
 import {
   CreationStatus,
   defaultLayouts,

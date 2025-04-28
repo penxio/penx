@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import { Image } from '@penx/components/Image'
-import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
+import { PodcastTips } from '@penx/components/PodcastTips'
 import { ContentRender } from '@penx/content-render'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Link } from '@penx/libs/i18n'

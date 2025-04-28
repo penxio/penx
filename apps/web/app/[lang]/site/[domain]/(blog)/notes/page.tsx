@@ -1,4 +1,4 @@
-import { NoteListWidget } from '@penx/components/theme-ui/NoteListWidget'
+import { NoteListWidget } from '@penx/components/NoteListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getSite } from '@/lib/fetchers'
 import { AppearanceConfig } from '@penx/types'

@@ -1,4 +1,4 @@
-import { GridLayoutUI } from '@penx/components/theme-ui/grid-ui/GridLayoutUI'
+import { GridLayoutUI } from '@penx/components/GridLayoutUI'
 import {
   Creation,
   CreationType,

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { FullPageDatabase } from '@penx/components/database-ui/FullPageDatabase'
+import { FullPageDatabase } from '@penx/components/database-ui'
 import { PROJECT_DATABASE_NAME } from '@penx/constants'
 import { useSite } from '@penx/hooks/useSite'
 import { api, trpc } from '@penx/trpc-client'

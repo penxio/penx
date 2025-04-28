@@ -1,11 +1,11 @@
 'use client'
 
 import { GlobeIcon } from 'lucide-react'
-import { usePanelCreationContext } from '@penx/components/Creation/PanelCreationProvider'
 import { BUILTIN_PAGE_SLUGS, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { usePanelCreationContext } from '../../Creation'
 
 export function CreationLink() {
   const creation = usePanelCreationContext()

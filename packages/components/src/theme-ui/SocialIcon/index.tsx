@@ -39,7 +39,7 @@ type SocialIconProps = {
   size?: number
 }
 
-const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
+export const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   if (
     !href ||
     (kind === 'mail' &&
@@ -116,3 +116,5 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
 }
 
 export default SocialIcon
+
+export * from './icons'

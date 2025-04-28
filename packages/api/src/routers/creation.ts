@@ -7,11 +7,11 @@ import {
 import { TRPCError } from '@trpc/server'
 import { revalidatePath, revalidateTag } from 'next/cache'
 import { z } from 'zod'
-import { getPostEmailTpl } from '@penx/api/lib/getPostEmailTpl'
+import { getPostEmailTpl } from '@penx/api/getPostEmailTpl'
 import {
   revalidateCreation,
   revalidateCreationTags,
-} from '@penx/api/lib/revalidateCreation'
+} from '@penx/api/revalidateCreation'
 import {
   BUILTIN_PAGE_SLUGS,
   createCreationInputSchema,

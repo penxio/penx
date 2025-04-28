@@ -1,4 +1,4 @@
-import { PodcastTips } from '@penx/components/theme-ui/PodcastTips'
+import { PodcastTips } from '@penx/components/PodcastTips'
 import { placeholderBlurhash } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'

@@ -1,4 +1,4 @@
-import { PostActions } from '@penx/components/theme-ui/PostActions/PostActions'
+import { PostActions } from '@penx/componentsPostActions/PostActions'
 import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'

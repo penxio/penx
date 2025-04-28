@@ -5,7 +5,7 @@ import { cn } from '@udecode/cn'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-// import { SocialNav } from '@penx/components/theme-ui/SocialNav'
+// import { SocialNav } from '@penx/components/SocialNav'
 import { getBlockClassName } from '@penx/utils'
 
 export const SocialLinksElementStatic = ({

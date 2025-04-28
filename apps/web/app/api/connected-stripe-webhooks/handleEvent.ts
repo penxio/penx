@@ -1,6 +1,6 @@
 import { cacheHelper } from '@penx/libs/cache-header'
 import { prisma } from '@penx/db'
-import { getOAuthStripe } from '@penx/api/lib/getOAuthStripe'
+import { getOAuthStripe } from '@penx/api/getOAuthStripe'
 import { BillingCycle, InvoiceType } from '@penx/db/client'
 import type { Stripe } from 'stripe'
 

@@ -4,7 +4,7 @@ import { forwardRef, useMemo } from 'react'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { useParams } from 'next/navigation'
 import { useAreaContext } from '@penx/components/AreaContext'
-import { useMobileSidebarSheet } from '@penx/components/theme-ui/MobileSidebar/useMobileSidebarSheet'
+import { useMobileSidebarSheet } from '@penx/components/useMobileSidebarSheet'
 import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,

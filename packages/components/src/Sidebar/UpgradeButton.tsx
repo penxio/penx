@@ -1,6 +1,6 @@
 'use client'
 
-import { usePlanListDialog } from '@penx/components/PlanList/usePlanListDialog'
+import { usePlanListDialog } from '@penx/components/usePlanListDialog'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { PlanType } from '@penx/db/client'

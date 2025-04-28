@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/react'
-import { PageTitle } from '@penx/components/theme-ui/PageTitle'
+import { PageTitle } from '@penx/components/PageTitle'
 import { LATEST_POSTS_LIMIT } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { Creation, Site } from '@penx/types'

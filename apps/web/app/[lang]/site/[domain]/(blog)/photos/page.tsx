@@ -1,4 +1,4 @@
-import { PhotoListWidget } from '@penx/components/theme-ui/PhotoListWidget'
+import { PhotoListWidget } from '@penx/components/PhotoListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getPhotos, getSite } from '@/lib/fetchers'
 import { AppearanceConfig } from '@penx/types'

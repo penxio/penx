@@ -1,5 +1,5 @@
-import { NoteListWidget } from '@penx/components/theme-ui/NoteListWidget'
-import { PodcastListWidget } from '@penx/components/theme-ui/PodcastListWidget'
+import { NoteListWidget } from '@penx/components/NoteListWidget'
+import { PodcastListWidget } from '@penx/components/PodcastListWidget'
 import { initLingui } from '@/initLingui'
 import { getPodcasts, getSite } from '@/lib/fetchers'
 import { AppearanceConfig } from '@penx/types'

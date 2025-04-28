@@ -1,6 +1,6 @@
 import { ProjectsBlock } from '@penx/editor-custom-plugins'
 import { ContentRender } from '@penx/content-render'
-import { PageTitle } from '@penx/components/theme-ui/PageTitle'
+import { PageTitle } from '@penx/components/PageTitle'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site } from '@penx/types'

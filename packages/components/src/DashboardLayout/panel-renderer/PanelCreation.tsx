@@ -1,13 +1,13 @@
 'use client'
 
 import { CreationStatus } from '@penx/db/client'
-import { Creation } from '@penx/components/Creation/Creation'
-import { CreationMoreMenu } from '@penx/components/Creation/CreationMoreMenu'
+import { Creation } from '@penx/components/Creation'
+import { CreationMoreMenu } from '@penx/components/CreationMoreMenu'
 import {
   PanelCreationProvider,
   usePanelCreationContext,
-} from '@penx/components/Creation/PanelCreationProvider'
-import { PublishDialog } from '@penx/components/Creation/PublishDialog/PublishDialog'
+} from '@penx/components/PanelCreationProvider'
+import { PublishDialog } from '@penx/components/PublishDialog'
 import { BUILTIN_PAGE_SLUGS, ROOT_DOMAIN } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'

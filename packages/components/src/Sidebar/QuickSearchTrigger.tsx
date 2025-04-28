@@ -2,8 +2,8 @@
 
 import { Trans } from '@lingui/react'
 import { Search } from 'lucide-react'
-import { useOpen } from '@penx/components/CommandPanel/hooks/useOpen'
 import { Kbd } from '@penx/components/Kbd'
+import { useOpen } from '../CommandPanel/hooks/useOpen'
 
 interface Props {}
 

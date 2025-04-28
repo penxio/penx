@@ -1,4 +1,4 @@
-import { MembershipEntry } from '@penx/components/theme-ui/MembershipEntry/MembershipEntry'
+import { MembershipEntry } from '@penx/componentsMembershipEntry/MembershipEntry'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'

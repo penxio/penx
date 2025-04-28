@@ -59,7 +59,6 @@
     "./useTrashedAssets": "./src/useTrashedAssets.ts"
   },
   "scripts": {
-    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

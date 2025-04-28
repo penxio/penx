@@ -1,4 +1,4 @@
-import { Profile } from '@penx/components/Profile/Profile'
+import { Profile } from '@penx/components/Profile'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { Link } from '@penx/libs/i18n'

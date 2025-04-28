@@ -1,4 +1,4 @@
-import { PageTitle } from '@penx/components/theme-ui/PageTitle'
+import { PageTitle } from '@penx/components/PageTitle'
 import { Creation, Site } from '@penx/types'
 import { Trans } from '@lingui/react'
 import { PostList } from '../components/PostList'

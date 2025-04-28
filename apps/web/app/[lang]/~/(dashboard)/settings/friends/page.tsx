@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { FullPageDatabase } from '@penx/components/database-ui/FullPageDatabase'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSite } from '@penx/hooks/useSite'
+import { FullPageDatabase } from '@penx/components/database-ui'
 import { FRIEND_DATABASE_NAME } from '@penx/constants'
+import { useSite } from '@penx/hooks/useSite'
 import { api } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 
 export const dynamic = 'force-static'
 

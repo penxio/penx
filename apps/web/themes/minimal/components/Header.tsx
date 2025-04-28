@@ -1,6 +1,6 @@
-import { Profile } from '@penx/components/Profile/Profile'
-import { MobileSidebarSheet } from '@penx/components/theme-ui/MobileSidebar/MobileSidebarSheet'
-import { Navigation } from '@penx/components/theme-ui/Navigation'
+import { Profile } from '@penx/components/Profile'
+import { MobileSidebarSheet } from '@penx/components/MobileSidebarSheet'
+import { Navigation } from '@penx/components/Navigation'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
 
