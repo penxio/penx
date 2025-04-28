@@ -61,7 +61,6 @@
     "./menu": "./src/ui/menu/index.tsx"
   },
   "scripts": {
-    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

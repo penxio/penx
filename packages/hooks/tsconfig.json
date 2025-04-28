@@ -1,6 +1,8 @@
 {
   "extends": "@penx/typescript-config/internal-package.json",
   "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
     "strict": true,
     "strictNullChecks": true,
     "outDir": "dist"

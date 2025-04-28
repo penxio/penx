@@ -1,13 +1,14 @@
-import { useMemo } from 'react'
-import { usePaletteDrawer } from '@penx/hooks'
+import { useMemo } from 'react';
 import { useDatabases } from '@penx/hooks/useDatabases'
-import { bgColorMaps } from '@penx/libs/color-helper'
-import { useRouter } from '@penx/libs/i18n'
-import { cn } from '@penx/utils'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { CommandGroup, CommandItem } from './command-components'
-import { useOpen } from './hooks/useOpen'
-import { useSearch } from './hooks/useSearch'
+import { usePaletteDrawer } from '@penx/hooks/usePaletteDrawer'
+import { bgColorMaps } from '@penx/libs/color-helper';
+import { useRouter } from '@penx/libs/i18n';
+import { LoadingDots } from '@penx/uikit/loading-dots';
+import { cn } from '@penx/utils';
+import { CommandGroup, CommandItem } from './command-components';
+import { useOpen } from './hooks/useOpen';
+import { useSearch } from './hooks/useSearch';
+
 
 interface Props {
   heading?: string
