@@ -56,6 +56,7 @@ export function Login() {
   return (
     <main className="flex h-screen items-center justify-center">
       <div className="flex flex-col items-center gap-4">
+        <img className="size-20" src="https://penx.io/logo.png" alt="" />
         <h1 className="text-3xl font-bold">Welcome to PenX</h1>
         <p className="text-foreground/50 text-lg">
           Log in or create an account for creating
