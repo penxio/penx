@@ -23,11 +23,7 @@ function App() {
           <SyncProvider>
             <trpc.Provider client={trpcClient} queryClient={queryClient}>
               <StoreProvider>
-                <DashboardLayout>
-                  <main className="flex h-screen items-center justify-center">
-                    <div>App...</div>
-                  </main>
-                </DashboardLayout>
+                <DashboardLayout></DashboardLayout>
               </StoreProvider>
             </trpc.Provider>
           </SyncProvider>

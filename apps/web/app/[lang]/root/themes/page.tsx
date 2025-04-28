@@ -1,6 +1,5 @@
-import { Badge } from '@penx/uikit/ui/badge'
-import { addressMap } from '@/lib/address'
 import { Globe } from 'lucide-react'
+import { Badge } from '@penx/uikit/ui/badge'
 import { ThemeList } from './ThemeList'
 import { ThemeSlogan } from './ThemeSlogan'
 

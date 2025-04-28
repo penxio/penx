@@ -8,7 +8,7 @@ export const isNavigator = typeof navigator !== 'undefined'
 export const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN!
 
 export const ROOT_HOST =
-  process.env.NEXT_ROOT_HOST ||
+  process.env.NEXT_PUBLIC_ROOT_HOST ||
   // @ts-ignores
   import.meta.env?.VITE_ROOT_HOST ||
   // @ts-ignores
@@ -28,9 +28,6 @@ export const isWeb = PLATFORM === 'WEB'
 export const GOOGLE_CLIENT_ID =
   '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com'
 
-export const PROJECT_ID =
-  process.env.NEXT_PUBLIC_PROJECT_ID || '3d31c4aa12acd88d0b8cad38b0a5686a'
-
 export const GOOGLE_DRIVE_FOLDER_PREFIX = `penx-`
 export const GOOGLE_DRIVE_FOLDER = 'penx'
 
@@ -41,23 +38,10 @@ export const SITE_MODE = 'SITE_MODE'
 
 export const ACTIVE_SITE = 'ACTIVE_SITE'
 
-export enum TradeType {
-  BUY = 'BUY',
-  SELL = 'SELL',
-}
-
 export enum SubscriptionType {
   SUBSCRIBE = 'SUBSCRIBE',
   UNSUBSCRIBE = 'UNSUBSCRIBE',
 }
-
-export enum TradeSource {
-  MEMBER = 'MEMBER',
-  SPONSOR = 'SPONSOR',
-  HOLDER = 'HOLDER',
-}
-
-export const SELECTED_SPACE = 'SELECTED_SPACE'
 
 export enum CreationStatus {
   PUBLISHED = 'PUBLISHED',

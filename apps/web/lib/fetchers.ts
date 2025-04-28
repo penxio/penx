@@ -13,9 +13,7 @@ import {
   FRIEND_DATABASE_NAME,
   isProd,
   PROJECT_DATABASE_NAME,
-  RESPACE_BASE_URI,
   ROOT_DOMAIN,
-  SUBGRAPH_URL,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { calculateSHA256FromString } from '@penx/encryption'
@@ -31,9 +29,8 @@ import {
   Prop,
   Site,
 } from '@penx/types'
+import { uniqueId } from '@penx/unique-id'
 import { creationToFriend } from './creationToFriend'
-import { SpaceType } from './types'
-import { uniqueId } from './unique-id'
 import { getUrl } from './utils'
 
 const REVALIDATE_TIME = process.env.REVALIDATE_TIME
@@ -102,8 +99,6 @@ export async function getSite(params: any) {
 
       return {
         ...site,
-        // spaceId: site.spaceId || process.env.NEXT_PUBLIC_SPACE_ID,
-        spaceId: process.env.NEXT_PUBLIC_SPACE_ID || site.spaceId,
         logo: getUrl(site.logo || ''),
         image: getUrl(site.image || ''),
         about: getAbout(),
@@ -357,53 +352,6 @@ export async function getTagWithCreation(siteId: string, name: string) {
     {
       revalidate: REVALIDATE_TIME,
       tags: [key],
-    },
-  )()
-}
-
-export async function getSpace(spaceId: string) {
-  return await unstable_cache(
-    async () => {
-      const response = await ky
-        .get(RESPACE_BASE_URI + `/api/get-space?address=${spaceId}`)
-        .json<SpaceType>()
-
-      return response
-    },
-    [`space-${spaceId}`],
-    {
-      // revalidate: isProd ? 3600 : 10,
-      revalidate: 60,
-      tags: [`space-${spaceId}`],
-    },
-  )()
-}
-
-const spaceIdsQuery = gql`
-  {
-    spaces(first: 1000) {
-      id
-    }
-  }
-`
-
-export async function getSpaceIds() {
-  return await unstable_cache(
-    async () => {
-      try {
-        const { spaces = [] } = await request<{ spaces: SpaceType[] }>({
-          url: SUBGRAPH_URL,
-          document: spaceIdsQuery,
-        })
-        return spaces
-      } catch (error) {
-        return []
-      }
-    },
-    ['space-ids'],
-    {
-      revalidate: 60 * 60 * 24 * 365,
-      tags: ['space-ids'],
     },
   )()
 }

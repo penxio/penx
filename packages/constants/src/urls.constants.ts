@@ -31,38 +31,4 @@ export enum NetworkNames {
   BASE = 'BASE',
 }
 
-export const NETWORK =
-  (process.env.NEXT_PUBLIC_NETWORK as NetworkNames) || NetworkNames.BASE
-
-export const RESPACE_BASE_URI =
-  NETWORK === NetworkNames.BASE
-    ? 'https://www.respace.one'
-    : // : 'http://localhost:5000'
-      'https://sepolia.respace.one'
-
-export const RESPACE_SUBGRAPH_URL =
-  NETWORK === NetworkNames.BASE
-    ? 'https://subgraph.satsuma-prod.com/0116b02fe157/zios-team--730474/respace/api'
-    : 'https://api.studio.thegraph.com/query/88544/respace-base-sepolia/version/latest'
-
-export const PENX_SUBGRAPH_URL =
-  NETWORK === NetworkNames.BASE
-    ? 'https://subgraph.satsuma-prod.com/1428c3664ef6/forsigners-team--172328/penx/api'
-    : 'https://api.studio.thegraph.com/query/88544/creation-sepolia/version/latest'
-
-export const SUBGRAPH_URL =
-  NETWORK === NetworkNames.BASE
-    ? 'https://subgraph.satsuma-prod.com/0116b02fe157/zios-team--730474/respace/api'
-    : 'https://api.studio.thegraph.com/query/88544/respace-base-sepolia/version/latest'
-
-export const ALLOCATION_CAP_URL =
-  NETWORK === NetworkNames.BASE
-    ? 'https://penx.io/api/allocation-cap'
-    : 'https://sepolia.penx.io/api/allocation-cap'
-
-export const DAILY_CLAIM_CAP_URL =
-  NETWORK === NetworkNames.BASE
-    ? 'https://penx.io/api/daily-claim-cap'
-    : 'https://sepolia.penx.io/api/daily-claim-cap'
-
 export const SHAPE_URL = `${ROOT_HOST}/api/shape-proxy`

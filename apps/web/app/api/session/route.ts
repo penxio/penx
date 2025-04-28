@@ -5,7 +5,6 @@ import {
   initUserByFarcasterInfo,
   initUserByGoogleInfo,
 } from '@/lib/initUser'
-import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
 import {
   BillingCycle,
@@ -23,9 +22,10 @@ import {
   validateSiweMessage,
   type SiweMessage,
 } from 'viem/siwe'
-import { NETWORK, ROOT_DOMAIN } from '@penx/constants'
+import { ROOT_DOMAIN } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import {
   AccountWithUser,
   isCancelSubscription,
@@ -137,45 +137,6 @@ export async function POST(req: NextRequest) {
     await updateSession(session, account)
     await registerSiteUser(hostname, account.userId)
     return Response.json(session)
-  }
-
-  if (isWalletLogin(json)) {
-    try {
-      const siweMessage = parseSiweMessage(json?.message) as SiweMessage
-
-      if (
-        !validateSiweMessage({
-          address: siweMessage?.address,
-          message: siweMessage,
-        })
-      ) {
-        session.isLoggedIn = false
-        await session.save()
-        return Response.json(session)
-      }
-
-      const publicClient = getBasePublicClient(NETWORK)
-
-      const valid = await publicClient.verifyMessage({
-        address: siweMessage?.address,
-        message: json?.message,
-        signature: json?.signature as any,
-      })
-
-      if (!valid) {
-        session.isLoggedIn = false
-        await session.save()
-        return Response.json(session)
-      }
-
-      const address = siweMessage.address.toLowerCase()
-      const account = await initUserByAddress(address)
-      await updateSession(session, account)
-      await registerSiteUser(hostname, account.userId)
-      return Response.json(session)
-    } catch (e) {
-      console.log('wallet auth error======:', e)
-    }
   }
 
   if (isRegisterByEmail(json)) {

@@ -1,7 +1,7 @@
 import { ICreation } from '@penx/model/ICreation'
 import { IMold } from '@penx/model/IMold'
 import { Creation, Friend, Prop } from './theme.types'
-import { SiteCreation } from './types'
+import { SiteCreation } from '@penx/types'
 
 export function creationToFriend(
   creation: ICreation | Creation | SiteCreation,

@@ -1,3 +1,4 @@
+import { ProviderType } from '@prisma/client'
 import { TRPCError } from '@trpc/server'
 import jwt from 'jsonwebtoken'
 import { customAlphabet } from 'nanoid'
@@ -5,10 +6,9 @@ import { createPublicClient, http } from 'viem'
 import { base, baseSepolia } from 'viem/chains'
 import { z } from 'zod'
 import { sendEmail } from '@penx/api/lib/aws-ses-client'
-import { isProd, NETWORK, NetworkNames, ROOT_DOMAIN } from '@penx/constants'
+import { isProd, NetworkNames, ROOT_DOMAIN } from '@penx/constants'
 // import { prisma } from '@penx/db'
 import { prisma } from '@penx/db'
-import { ProviderType } from '@prisma/client'
 import { generateNonce } from '../lib/generateNonce'
 import { getEthPrice } from '../lib/getEthPrice'
 import { getMe } from '../lib/getMe'
@@ -260,53 +260,6 @@ export const userRouter = router({
         text: content.replace(/<[^>]*>/g, ''),
       })
       return true
-    }),
-
-  linkWallet: publicProcedure
-    .input(
-      z.object({
-        signature: z.string(),
-        message: z.string(),
-        address: z.string(),
-      }),
-    )
-    .mutation(async ({ ctx, input }) => {
-      const publicClient = createPublicClient({
-        chain: NETWORK === NetworkNames.BASE_SEPOLIA ? baseSepolia : base,
-        transport: http(),
-      })
-
-      const valid = await publicClient.verifyMessage({
-        address: input.address as any,
-        message: input.message,
-        signature: input.signature as any,
-      })
-
-      if (!valid) {
-        throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'Invalid signature',
-        })
-      }
-
-      const account = await prisma.account.findFirst({
-        where: { providerAccountId: input.address },
-      })
-
-      if (account) {
-        throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'This address already linked',
-        })
-      }
-
-      await prisma.account.create({
-        data: {
-          userId: ctx.token.uid,
-          providerType: ProviderType.WALLET,
-          providerAccountId: input.address,
-        },
-      })
     }),
 
   linkPassword: publicProcedure

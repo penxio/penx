@@ -2,7 +2,7 @@ import { getIronSession } from 'iron-session'
 import Negotiator from 'negotiator'
 import { NextRequest, NextResponse } from 'next/server'
 import { getSessionOptions } from '@penx/libs/session'
-import { SessionData } from './lib/types'
+import { SessionData } from '@penx/types'
 import linguiConfig from './lingui.config'
 
 const locales = linguiConfig.locales as string[]

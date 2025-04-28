@@ -1,5 +1,3 @@
-import { SiteInSession } from './types'
-
 interface Features {
   journal: boolean
   gallery: boolean

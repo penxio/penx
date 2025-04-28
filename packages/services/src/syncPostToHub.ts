@@ -1,5 +1,5 @@
 import { Creation, Site } from '@prisma/client'
-import { NETWORK, NetworkNames } from '@penx/constants'
+import { NetworkNames } from '@penx/constants'
 import { SyncService } from './SyncService'
 
 // import { api } from '@penx/trpc-client'
@@ -9,7 +9,6 @@ export async function syncPostToHub(
   creation: Creation,
   markdown = '',
 ) {
-  // if (NETWORK !== NetworkNames.BASE) return
   // const token = await api.github.getGitHubToken.query({
   //   installationId: site.installationId!,
   // })
