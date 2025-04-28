@@ -33,8 +33,14 @@ export async function syncCreationsToLocal(siteId: string) {
     ...metadata,
   })
 
+  const shape = new Shape(stream)
+
+  shape.subscribe(async ({ rows }) => {
+    console.log('>>>>>>>>==creation row:', rows)
+  })
+
   stream.subscribe(async (messages) => {
-    // console.log('=======>>>>>>messages:', messages)
+    console.log('=======>>>>>>messages:', messages)
 
     const { changes, lsn } = handleMessages(messages)
 
