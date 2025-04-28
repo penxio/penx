@@ -37,3 +37,4 @@ export const SHAPE_URL =
     : `https://sync.penx.io/api/shape-proxy`
 
 // export const SHAPE_URL = `https://sync-dev.penx.io/api/shape-proxy`
+// export const SHAPE_URL = `https://sync.penx.io/api/shape-proxy`

@@ -44,7 +44,7 @@ export async function syncCreationsToLocal(siteId: string) {
 
     const { changes, lsn } = handleMessages(messages)
 
-    // console.log('========changes:', changes, 'lsn:', lsn)
+    console.log('========changes:', changes, 'lsn:', lsn)
     if (!changes.length) return
     const state = await getElectricSyncState('creation')
 
@@ -61,8 +61,8 @@ export async function syncCreationsToLocal(siteId: string) {
 
     try {
       let updated = false
+      const creations = await localDB.creation.where({ siteId }).toArray()
       await localDB.transaction('rw', localDB.creation, async () => {
-        const creations = await localDB.creation.where({ siteId }).toArray()
         for (const message of changes) {
           const value = message.value as any
           const operation = message.headers.operation
@@ -72,12 +72,11 @@ export async function syncCreationsToLocal(siteId: string) {
             updated = true // TODO:
           }
           if (operation === 'update') {
-            // console.log('update:', message)
             const creation = creations.find((c) => c.id === value.id)
-            if (!creation) continue
             const changed = Object.keys(value)
               .filter((k) => k !== 'updatedAt')
               .some((key) => {
+                if (!creation) return true
                 // console.log('=====value[key]:', value[key], creation[key])
                 return !isEqual(value[key], (creation as any)[key])
               })
