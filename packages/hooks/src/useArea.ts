@@ -16,10 +16,17 @@ export function useArea() {
   const { data, ...rest } = useQuery({
     queryKey: getQueryKey(session?.activeAreaId),
     queryFn: async () => {
+      const areas = await localDB.area
+        .where({
+          siteId: session.siteId,
+        })
+        .toArray()
       const area = await localDB.area.get(session?.activeAreaId)
-      return area
+      const genesisArea = areas.find((a) => a.isGenesis)
+
+      return area || genesisArea || areas[0]
     },
-    enabled: !!session?.activeAreaId,
+    enabled: !!session,
   })
 
   return {

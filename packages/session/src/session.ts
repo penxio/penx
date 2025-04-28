@@ -54,12 +54,12 @@ export function useQuerySession() {
     queryKey,
     queryFn: async () => {
       const localSession = await get<SessionData>(SESSION)
-      console.log('======isDesktop:', isDesktop, 'localSession:', localSession)
+      // console.log('======isDesktop:', isDesktop, 'localSession:', localSession)
 
       if (isDesktop) return localSession || null
       const remoteSession = await fetchJson<SessionData>(sessionApiRoute)
 
-      console.log('===remoteSession:', remoteSession)
+      // console.log('===remoteSession:', remoteSession)
 
       if (!remoteSession?.isLoggedIn) return null as any as SessionData
       const areas = await localDB.area
@@ -72,7 +72,7 @@ export function useQuerySession() {
       const newSession = {
         ...localSession,
         ...remoteSession,
-        activeAreaId: area?.id,
+        activeAreaId: remoteSession.activeAreaId || area?.id,
       } as SessionData
 
       await set(SESSION, newSession)

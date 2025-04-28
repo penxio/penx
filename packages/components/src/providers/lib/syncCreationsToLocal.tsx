@@ -34,12 +34,11 @@ export async function syncCreationsToLocal(siteId: string) {
   })
 
   stream.subscribe(async (messages) => {
-    console.log('=======>>>>>>messages:', messages)
-    // return
+    // console.log('=======>>>>>>messages:', messages)
 
     const { changes, lsn } = handleMessages(messages)
 
-    console.log('========changes:', changes, 'lsn:', lsn)
+    // console.log('========changes:', changes, 'lsn:', lsn)
     if (!changes.length) return
     const state = await getElectricSyncState('creation')
 
@@ -73,8 +72,8 @@ export async function syncCreationsToLocal(siteId: string) {
             const changed = Object.keys(value)
               .filter((k) => k !== 'updatedAt')
               .some((key) => {
-                console.log('=====value[key]:', value[key], creation[key])
-                return !isEqual(value[key], creation[key])
+                // console.log('=====value[key]:', value[key], creation[key])
+                return !isEqual(value[key], (creation as any)[key])
               })
 
             if (changed) {

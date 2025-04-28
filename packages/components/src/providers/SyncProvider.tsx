@@ -51,6 +51,8 @@ export function SyncProvider({ children }: { children: React.ReactNode }) {
         await localDB.creationTag.bulkPut(remoteCreationTags as any)
       }
 
+      console.log('sync end!!!!!!!!!!!!!!!!!!!!!!')
+
       syncTagsToLocal(session.siteId)
       syncAreasToLocal(session.siteId)
       syncCreationTagsToLocal(session.siteId)
@@ -61,7 +63,7 @@ export function SyncProvider({ children }: { children: React.ReactNode }) {
     enabled: !!session,
   })
 
-  if (isLoading) {
+  if (isLoading || !session) {
     return (
       <div className="flex h-screen items-center justify-center">
         <LoadingDots className="bg-foreground/60"></LoadingDots>

@@ -48,6 +48,8 @@ async function updateSession(
   account: AccountWithUser,
 ) {
   const site = account.user.sites[0]
+  const area = site.areas.find((a) => a.isGenesis) || site.areas[0]
+
   session.isLoggedIn = true
   session.message = ''
   session.uid = account.userId
@@ -59,7 +61,7 @@ async function updateSession(
   session.image = account.user.image as string
   session.siteId = site.id
   session.activeSiteId = site.id
-  session.activeAreaId = site.areas[0]?.id || ''
+  session.activeAreaId = area.id
   session.planType = site.sassPlanType
   session.subscriptionStatus = site.sassSubscriptionStatus || ''
   session.currentPeriodEnd = site?.sassCurrentPeriodEnd as any as string

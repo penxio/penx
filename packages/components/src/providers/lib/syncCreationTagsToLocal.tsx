@@ -24,7 +24,7 @@ export function syncCreationTagsToLocal(siteId: string) {
   // })
 
   shape.subscribe(async ({ rows }) => {
-    console.log('creation tag rows=======:', rows)
+    // console.log('creation tag rows=======:', rows)
 
     const creationTags = await localDB.creationTag.where({ siteId }).toArray()
 
@@ -35,7 +35,7 @@ export function syncCreationTagsToLocal(siteId: string) {
       'tagId',
       'siteId',
     ])
-    console.log('-=========>>isEqual:', isEqual)
+    // console.log('-=========>>isEqual:', isEqual)
 
     if (isEqual) return
 

@@ -26,6 +26,9 @@ interface Props {
 export function AreaInfo({ className }: Props) {
   const area = useAreaContext()
   const { setState } = useAreaDialog()
+
+  if (!area) return null
+
   return (
     <div className={cn('flex justify-between', className)}>
       <div className="flex items-center gap-2">

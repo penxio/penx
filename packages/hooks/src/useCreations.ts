@@ -76,9 +76,11 @@ export async function deleteCreation(creation: ICreation) {
 export async function refetchCreations() {
   const session = await getSession()
   const areaId = session?.activeAreaId
-  const creations = await localDB.creation
-    .where({ siteId: session.siteId, areaId: session.activeAreaId })
-    .toArray()
+  if (session.siteId && session.activeAreaId) {
+    const creations = await localDB.creation
+      .where({ siteId: session.siteId, areaId: session.activeAreaId })
+      .toArray()
 
-  queryClient.setQueryData(getQueryKey(areaId), creations)
+    queryClient.setQueryData(getQueryKey(areaId), creations)
+  }
 }

@@ -39,17 +39,18 @@ import { SettingsLayout } from './SettingsLayout'
 //   }, 2000)
 // }
 
-export function DashboardLayout({ children }: { children: ReactNode }) {
+export function DashboardLayout({ children }: { children?: ReactNode }) {
   const siteQuery = useMySite()
   const moldsQuery = useMolds()
   const tagsQuery = useTags()
   const creationTagsQuery = useCreationTags()
   const areaQuery = useArea()
   const areaCreationsQuery = useCreations()
+  const domainsQuery = useDomains()
+
   const pathname = usePathname()!
   const isSettings = pathname.includes('/~/settings')
   const isDesign = pathname.includes('/~/design')
-  const domainsQuery = useDomains()
 
   if (
     siteQuery.isLoading ||
