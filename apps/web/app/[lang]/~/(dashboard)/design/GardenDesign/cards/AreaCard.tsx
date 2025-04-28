@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useAreas } from '@penx/hooks/useAreas'
 import { useSite } from '@penx/hooks/useSite'
 import { Link } from '@penx/libs/i18n'
 import { trpc } from '@penx/trpc-client'
@@ -28,7 +29,7 @@ interface Props {
 export function AreaCard({ layoutItem, layout, setLayout }: Props) {
   const { refetch } = useSite()
   const site = useSiteContext()
-  const { areas } = site
+  const { data: areas = [] } = useAreas()
   const { themeName } = useThemeName()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const themeConfig = (site.themeConfig || {}) as Record<string, any>

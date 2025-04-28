@@ -48,6 +48,7 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
   const areaCreationsQuery = useCreations()
   const pathname = usePathname()!
   const isSettings = pathname.includes('/~/settings')
+  const isDesign = pathname.includes('/~/design')
   const domainsQuery = useDomains()
 
   if (
@@ -83,7 +84,8 @@ export function DashboardLayout({ children }: { children: ReactNode }) {
               >
                 {/* <CommandPanel /> */}
                 <AreaDialog />
-                <Layout>{children}</Layout>
+                {isDesign && children}
+                {!isDesign && <Layout>{children}</Layout>}
               </AreaCreationsProvider>
             </AreaProvider>
           </CreationTagsProvider>

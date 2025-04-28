@@ -13,7 +13,7 @@ export default function Page() {
   const { themeName, setThemeName } = useThemeName()
 
   useEffect(() => {
-    setThemeName(site.themeName || 'sue')
+    setThemeName(site.themeName || 'garden')
   }, [])
 
   if (!themeName) return null

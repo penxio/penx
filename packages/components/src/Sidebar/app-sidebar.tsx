@@ -5,6 +5,8 @@ import { Trans } from '@lingui/react'
 import { PaletteIcon, TagsIcon } from 'lucide-react'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { NavUser } from '@penx/components/Sidebar/nav-user'
+import { isWeb, ROOT_HOST } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { addPanel } from '@penx/hooks/usePanels'
 import { useSession } from '@penx/session'
 import { PanelType } from '@penx/types'
@@ -57,7 +59,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     size="icon"
                     className="hover:bg-foreground/8 size-8"
                     onClick={() => {
-                      // push('/~/design')
+                      // console.log('======isWeb:', isWeb)
+                      if (isWeb) {
+                        appEmitter.emit('ROUTE_TO_DESIGN')
+                      } else {
+                        window.open(`${ROOT_HOST}/~/design`)
+                      }
                     }}
                   >
                     <PaletteIcon size={16} />

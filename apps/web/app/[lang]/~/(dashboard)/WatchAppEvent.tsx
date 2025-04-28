@@ -14,6 +14,10 @@ export function WatchAppEvent() {
     appEmitter.on('ROUTE_TO_SETTINGS', () => {
       push('/~/settings')
     })
+
+    appEmitter.on('ROUTE_TO_DESIGN', () => {
+      push('/~/design')
+    })
   }, [push])
   return null
 }
