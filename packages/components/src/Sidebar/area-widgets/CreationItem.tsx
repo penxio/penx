@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/react'
-import { CreationStatus } from '@penx/db/client'
 import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
 import { useAreaContext } from '@penx/components/AreaContext'
+import { CreationStatus } from '@penx/db/client'
 import { addToFavorites, removeFromFavorites } from '@penx/hooks/useArea'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { useCreationMold } from '@penx/hooks/useCreationMold'

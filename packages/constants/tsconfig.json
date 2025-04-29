@@ -1,6 +1,7 @@
 {
   "extends": "@penx/typescript-config/base.json",
   "compilerOptions": {
+    "lib": ["DOM"],
     "outDir": "dist"
   },
   "include": ["src"],

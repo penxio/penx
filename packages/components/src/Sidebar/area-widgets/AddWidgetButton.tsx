@@ -2,8 +2,8 @@
 
 import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react'
-import { Mold } from '@penx/db/client'
 import {
+  BotMessageSquareIcon,
   Calendar,
   FilePenLine,
   GroupIcon,
@@ -11,25 +11,27 @@ import {
   StarIcon,
 } from 'lucide-react'
 import { toast } from 'sonner'
-import { useAreaContext } from '@penx/components/AreaContext'
 import { AddNoteDialog } from '@penx/components/AddNoteDialog'
+import { useAreaContext } from '@penx/components/AreaContext'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { Mold } from '@penx/db/client'
 import { addWidget } from '@penx/hooks/useArea'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
-import { getMoldName } from '@penx/libs/getMoldName'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
+import { Button } from '@penx/uikit/button'
 import LoadingCircle from '@penx/uikit/loading-circle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { Separator } from '@penx/uikit/separator'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { MoldName } from '@penx/widgets/MoldName'
+import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { useAddNoteDialog } from '../../Creation/AddNoteDialog/useAddNoteDialog'
 
 interface Props {
@@ -82,13 +84,18 @@ export function AddWidgetButton({ className }: Props) {
             <Trans id="Add widget"></Trans>
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="start" className="w-48 p-2">
+        <PopoverContent align="start" className="w-48 p-0">
           {Object.values(WidgetType).map((item) => {
+            // if (
+            //   item === WidgetType.COLLECTION ||
+            //   item === WidgetType.RECENTLY_OPENED
+            // ) {
+            //   return null
+            // }
             const getName = () => {
               if (item === WidgetType.ALL_CREATIONS) {
                 return (
                   <>
-                    <Rows4Icon size={16} />
                     <Trans id="All creations"></Trans>
                   </>
                 )
@@ -97,15 +104,14 @@ export function AddWidgetButton({ className }: Props) {
               if (item === WidgetType.COLLECTION) {
                 return (
                   <>
-                    <GroupIcon size={16} />
                     <Trans id="Collection"></Trans>
                   </>
                 )
               }
+
               if (item === WidgetType.FAVORITES) {
                 return (
                   <>
-                    <StarIcon size={16} />
                     <Trans id="Favorites"></Trans>
                   </>
                 )
@@ -113,15 +119,20 @@ export function AddWidgetButton({ className }: Props) {
               if (item === WidgetType.RECENTLY_EDITED) {
                 return (
                   <>
-                    <FilePenLine size={16} />
                     <Trans id="Recently edited"></Trans>
+                  </>
+                )
+              }
+              if (item === WidgetType.AI_CHAT) {
+                return (
+                  <>
+                    <Trans id="AI chat"></Trans>
                   </>
                 )
               }
               if (item === WidgetType.RECENTLY_OPENED) {
                 return (
                   <>
-                    <Calendar size={16} />
                     <Trans id="Recently opened"></Trans>
                   </>
                 )
@@ -137,13 +148,15 @@ export function AddWidgetButton({ className }: Props) {
                   await addBuiltinWidget(item)
                 }}
               >
+                <WidgetIcon type={item} molds={molds} />
                 {getName()}
               </Item>
             )
           })}
 
+          <Separator className="my-1"></Separator>
+
           {molds.map((item) => {
-            const name = getMoldName(item)
             return (
               <Item
                 key={item.id}
@@ -153,7 +166,9 @@ export function AddWidgetButton({ className }: Props) {
                 }}
               >
                 {getCreationIcon(item.type)}
-                <span>{name}</span>
+                <span>
+                  <MoldName mold={item} />
+                </span>
               </Item>
             )
           })}
@@ -181,7 +196,7 @@ function Item({
   return (
     <div
       className={cn(
-        'hover:bg-accent flex h-9 cursor-pointer items-center gap-2 rounded px-2 py-2 text-sm',
+        'hover:bg-accent mx-2 flex h-9 cursor-pointer items-center gap-2 rounded px-2 py-2 text-sm',
         disabled && 'cursor-not-allowed opacity-40 hover:bg-none',
         className,
       )}

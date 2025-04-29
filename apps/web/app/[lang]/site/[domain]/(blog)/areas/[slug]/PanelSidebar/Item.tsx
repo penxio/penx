@@ -12,14 +12,13 @@ import {
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useAreaContext } from '@penx/components/AreaContext'
-import { WidgetType } from '@penx/constants'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { toggleCollapsed } from '@penx/hooks/useArea'
-import { getWidgetName } from '@penx/libs/getWidgetName'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
+import { WidgetName } from '@penx/widgets/WidgetName'
 import { IsAllProvider } from './IsAllContext'
 import { WidgetRender } from './WidgetRender'
 
@@ -43,8 +42,6 @@ export const Item = forwardRef<HTMLDivElement, Props>(
 
     if (!widget) return null
 
-    const name = getWidgetName(widget, molds)
-
     return (
       <>
         <AnimatePresence initial={false}>
@@ -56,7 +53,9 @@ export const Item = forwardRef<HTMLDivElement, Props>(
               className="bg-background border-foreground/10 fixed left-[8px] top-[10vh] z-50 flex h-[80vh] w-[240px] flex-col rounded-xl border shadow-xl"
             >
               <div className="flex items-center justify-between gap-1 px-3 py-2">
-                <div className="select-none text-sm font-semibold">{name}</div>
+                <div className="select-none text-sm font-semibold">
+                  <WidgetName widget={widget} molds={molds} />
+                </div>
                 <Button
                   variant="ghost"
                   size="icon"
@@ -118,7 +117,7 @@ export const Item = forwardRef<HTMLDivElement, Props>(
             </motion.div>
 
             <div className="inline-flex h-full select-none items-center text-sm font-semibold leading-none">
-              {name}
+              <WidgetName widget={widget} molds={molds} />
             </div>
             <div className="ml-auto">
               <Button

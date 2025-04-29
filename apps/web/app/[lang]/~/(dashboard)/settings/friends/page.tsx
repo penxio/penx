@@ -13,7 +13,6 @@ export default function Page() {
   const { isLoading, site, error } = useSite()
   const ref = useRef<HTMLDivElement>(null)
   const [width, setWith] = useState(0)
-
   useEffect(() => {
     if (!ref.current) return
     setWith(ref.current!.getBoundingClientRect().width)

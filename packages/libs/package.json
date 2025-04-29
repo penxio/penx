@@ -1,15 +1,13 @@
 {
   "name": "@penx/libs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "module": "index.ts",
   "main": "index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
-    "./getWidgetName": "./src/getWidgetName.tsx",
     "./i18n": "./src/i18n.tsx",
-    "./getMoldName": "./src/getMoldName.tsx",
     "./getCreationIcon": "./src/getCreationIcon.tsx",
     "./*": "./src/*.ts"
   },

@@ -3,16 +3,15 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
-import { getMoldName } from '@penx/libs/getMoldName'
 import { ICreation } from '@penx/model/ICreation'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
+import { MoldName } from '@penx/widgets/MoldName'
 
 export function ChangeType({ creation }: { creation: ICreation }) {
   const molds = useMoldsContext()
@@ -27,7 +26,7 @@ export function ChangeType({ creation }: { creation: ICreation }) {
           variant="ghost"
           className="text-foreground/60 -ml-2 h-7 gap-1 rounded-full px-2 text-xs"
         >
-          {getMoldName(mold!)}
+          <MoldName mold={mold!} />
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-48 p-2">
@@ -35,7 +34,6 @@ export function ChangeType({ creation }: { creation: ICreation }) {
           <Trans id="Change type"></Trans>
         </div>
         {molds.map((mold) => {
-          const name = getMoldName(mold)
           return (
             <Item
               key={mold.id}
@@ -50,7 +48,9 @@ export function ChangeType({ creation }: { creation: ICreation }) {
               }}
             >
               {getCreationIcon(mold.type)}
-              <span>{name}</span>
+              <span>
+                <MoldName mold={mold!} />
+              </span>
             </Item>
           )
         })}

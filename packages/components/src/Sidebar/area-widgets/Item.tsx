@@ -1,6 +1,7 @@
 'use client'
 
-import React, { forwardRef, useState } from 'react'
+import React, { forwardRef, memo, useState } from 'react'
+import isEqual from 'react-fast-compare'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react'
 import { AnimatePresence, motion } from 'motion/react'
@@ -11,7 +12,6 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { toggleCollapsed } from '@penx/hooks/useArea'
 import { openWidgetPanel } from '@penx/hooks/usePanels'
-import { getWidgetName } from '@penx/libs/getWidgetName'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import {
@@ -21,6 +21,8 @@ import {
   ContextMenuTrigger,
 } from '@penx/uikit/context-menu'
 import { cn } from '@penx/utils'
+import { WidgetIcon } from '@penx/widgets/WidgetIcon'
+import { WidgetName } from '@penx/widgets/WidgetName'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'
 import { IsAllProvider } from './IsAllContext'
@@ -49,8 +51,8 @@ interface Props {
   widget: Widget
 }
 
-export const Item = forwardRef<HTMLDivElement, Props>(
-  function Item(props, ref) {
+export const Item = memo(
+  forwardRef<HTMLDivElement, Props>(function Item(props, ref) {
     const {
       widget,
       index,
@@ -69,12 +71,10 @@ export const Item = forwardRef<HTMLDivElement, Props>(
 
     if (!widget) return null
 
-    const name = getWidgetName(widget, molds)
-
     return (
       <>
         <AllCreationCard
-          name={name}
+          name={<WidgetName widget={widget} molds={molds} />}
           visible={visible}
           setVisible={setVisible}
           widget={widget}
@@ -100,7 +100,12 @@ export const Item = forwardRef<HTMLDivElement, Props>(
                   setVisible(!visible)
                 }}
               >
-                <div className="select-none text-sm font-semibold">{name}</div>
+                <div className="flex items-center gap-1">
+                  <WidgetIcon type={widget.type} molds={molds} />
+                  <div className="select-none text-sm font-semibold">
+                    <WidgetName widget={widget} molds={molds} />
+                  </div>
+                </div>
                 <div className="flex items-center gap-0.5 opacity-0 group-hover/widget:opacity-100">
                   {widget.type === WidgetType.MOLD && (
                     <AddCreationButton area={area} widget={widget} />
@@ -134,6 +139,24 @@ export const Item = forwardRef<HTMLDivElement, Props>(
           </AnimatePresence>
         </div>
       </>
+    )
+  }),
+  (prev, next) => {
+    return isEqual(
+      {
+        id: prev.id,
+        index: prev.index,
+        widgets: prev.widget,
+        isDragging: prev.isDragging,
+        isSorting: prev.isSorting,
+      },
+      {
+        id: next.id,
+        index: next.index,
+        widgets: next.widget,
+        isDragging: next.isDragging,
+        isSorting: next.isSorting,
+      },
     )
   },
 )

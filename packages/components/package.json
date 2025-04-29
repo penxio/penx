@@ -8,6 +8,7 @@
   "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
+    "./*": "./src/*.ts",
     "./AddCreationButton": "./src/AddCreationButton.tsx",
     "./AreaContext": "./src/AreaContext.tsx",
     "./AreaInfo": "./src/AreaInfo.tsx",

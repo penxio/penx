@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Area } from '@penx/db/client'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
+import { Area } from '@penx/db/client'
 import { toggleCollapsed } from '@penx/hooks/useArea'
 import { IArea } from '@penx/model/IArea'
 import { Widget } from '@penx/types'
@@ -22,9 +22,9 @@ export function ToggleButton({ area, widget }: Props) {
       className="inline-flex size-6 items-center justify-center rounded-md p-0"
       onClick={(e) => e.stopPropagation()}
       onPointerDown={async (e) => {
+        await toggleCollapsed(area.id, widget.id)
         e.stopPropagation()
         e.preventDefault()
-        await toggleCollapsed(area.id, widget.id)
       }}
     >
       <motion.div

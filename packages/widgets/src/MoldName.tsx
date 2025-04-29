@@ -2,7 +2,11 @@ import { ReactNode } from 'react'
 import { Trans } from '@lingui/react'
 import { Mold } from '@penx/db/client'
 
-export function getMoldName(mold: Mold): ReactNode {
+interface Props {
+  mold: Mold
+}
+
+export function MoldName({ mold }: Props) {
   let name: ReactNode = mold.name
   if (name === 'Articles') name = <Trans id="Articles"></Trans>
   if (name === 'Notes') name = <Trans id="Notes"></Trans>

@@ -1,8 +1,8 @@
 'use client'
 
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { getWidgetName } from '@penx/libs/getWidgetName'
 import { CreationType, Panel, PanelType, Widget } from '@penx/types'
+import { WidgetName } from '@penx/widgets/WidgetName'
 import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
 import { ArticleList } from './Articles/ArticleList'
@@ -22,7 +22,9 @@ export function PanelWidget({ panel, index }: Props) {
   return (
     <>
       <PanelHeaderWrapper index={index}>
-        <div>{getWidgetName(widget, molds)}</div>
+        <div>
+          <WidgetName widget={widget} molds={molds} />
+        </div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>
       <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8">
