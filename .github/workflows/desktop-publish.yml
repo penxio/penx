@@ -85,7 +85,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
       - name: Build Packages
-        run: npx turbo run build --filter=desktop...
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+        run: pnpm build:desktop
       - name: Get App Version
         if: matrix.settings.platform == 'windows-latest'
         id: appversion

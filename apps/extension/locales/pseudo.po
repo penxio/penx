@@ -14,22 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:55
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:89
-msgid "Updated successfully!"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:132
-msgid "Select a type"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:160
-msgid "Select a location"
-msgstr ""
-
-#. js-lingui-explicit-id
 #: apps/web/themes/wide/pages/HomePage.tsx:43
 #: apps/web/themes/paper/pages/HomePage.tsx:31
 #: apps/web/themes/docs/pages/HomePage.tsx:23
@@ -51,7 +35,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/themes/wide/pages/BlogPage.tsx:25
-#: apps/web/themes/wide/components/Sidebar.tsx:56
+#: apps/web/themes/wide/components/Sidebar.tsx:57
 #: apps/web/themes/sue/pages/BlogPage.tsx:25
 #: apps/web/themes/square/pages/BlogPage.tsx:25
 #: apps/web/themes/publication/pages/BlogPage.tsx:25
@@ -78,18 +62,16 @@ msgid "Home"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:54
+#: apps/web/themes/wide/components/Sidebar.tsx:55
 #: apps/web/themes/garden/components/Sidebar.tsx:55
-#: apps/web/app/[lang]/~/(dashboard)/posts/layout.tsx:30
 #: packages/components/src/theme-ui/NavigationItem.tsx:15
 msgid "Posts"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:58
+#: apps/web/themes/wide/components/Sidebar.tsx:59
 #: apps/web/themes/garden/components/Sidebar.tsx:59
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:97
-#: apps/web/app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:13
 #: packages/libs/src/getMoldName.tsx:9
 #: packages/components/src/theme-ui/PodcastListWidget.tsx:20
 #: packages/components/src/theme-ui/NavigationItem.tsx:17
@@ -98,9 +80,8 @@ msgid "Podcasts"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:59
+#: apps/web/themes/wide/components/Sidebar.tsx:61
 #: apps/web/themes/garden/components/Sidebar.tsx:61
-#: apps/web/app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:11
 #: packages/libs/src/getMoldName.tsx:8
 #: packages/components/src/theme-ui/NoteListWidget.tsx:20
 #: packages/components/src/theme-ui/NavigationItem.tsx:18
@@ -108,7 +89,7 @@ msgid "Notes"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:60
+#: apps/web/themes/wide/components/Sidebar.tsx:63
 #: apps/web/themes/garden/components/Sidebar.tsx:63
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:104
 #: apps/web/app/[lang]/site/[domain]/(blog)/areas/page.tsx:52
@@ -117,22 +98,20 @@ msgid "Areas"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:62
+#: apps/web/themes/wide/components/Sidebar.tsx:65
 #: apps/web/themes/garden/components/Sidebar.tsx:65
 #: apps/web/themes/card/pages/HomePage.tsx:56
 #: apps/web/themes/aside/pages/HomePage.tsx:54
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:118
-#: apps/web/app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:15
 #: packages/libs/src/getMoldName.tsx:14
 #: packages/components/src/theme-ui/NavigationItem.tsx:20
 msgid "Projects"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:63
+#: apps/web/themes/wide/components/Sidebar.tsx:67
 #: apps/web/themes/garden/components/Sidebar.tsx:67
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:111
-#: apps/web/app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:14
 #: packages/libs/src/getMoldName.tsx:13
 #: packages/components/src/theme-ui/NavigationItem.tsx:21
 #: packages/components/src/theme-ui/grid-ui/FriendsCard.tsx:21
@@ -140,14 +119,14 @@ msgid "Friends"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:64
+#: apps/web/themes/wide/components/Sidebar.tsx:68
 #: apps/web/themes/garden/components/Sidebar.tsx:68
 #: packages/components/src/theme-ui/NavigationItem.tsx:22
 msgid "AMA"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:66
+#: apps/web/themes/wide/components/Sidebar.tsx:70
 #: apps/web/themes/garden/components/Sidebar.tsx:70
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:132
 #: packages/components/src/theme-ui/NavigationItem.tsx:23
@@ -155,7 +134,7 @@ msgid "Guestbook"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:67
+#: apps/web/themes/wide/components/Sidebar.tsx:71
 #: apps/web/themes/sue/components/PostListWithTag.tsx:32
 #: apps/web/themes/paper/pages/TagListPage.tsx:14
 #: apps/web/themes/paper/components/PostListWithTag.tsx:32
@@ -176,13 +155,13 @@ msgid "Tags"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/themes/wide/components/Sidebar.tsx:68
+#: apps/web/themes/wide/components/Sidebar.tsx:73
 #: apps/web/themes/garden/components/Sidebar.tsx:73
 #: apps/web/app/[lang]/site/[domain]/(blog)/areas/[slug]/page.tsx:66
 #: apps/web/app/[lang]/site/[domain]/(blog)/areas/[slug]/book/AboutItem.tsx:34
 #: apps/web/app/[lang]/root/Nav.tsx:35
 #: packages/components/src/theme-ui/NavigationItem.tsx:25
-#: packages/components/src/AreaDialog/AreaForm.tsx:228
+#: packages/components/src/AreaDialog/AreaForm.tsx:227
 msgid "About"
 msgstr ""
 
@@ -221,7 +200,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/layout.tsx:34
-#: packages/components/src/Sidebar/nav-user.tsx:130
+#: packages/components/src/Sidebar/nav-user.tsx:129
 #: packages/components/src/Profile/ProfilePopover.tsx:127
 msgid "Settings"
 msgstr ""
@@ -339,7 +318,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/SettingNav.tsx:225
 #: apps/web/app/[lang]/~/(dashboard)/settings/archived/layout.tsx:29
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:36
 msgid "Archived"
 msgstr ""
 
@@ -351,70 +329,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/SettingNav.tsx:238
 msgid "Coupons"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/page.tsx:13
-#: packages/components/src/Sidebar/app-sidebar.tsx:87
-msgid "Manage tags"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:49
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:72
-#: apps/web/app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:107
-#: apps/web/app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:77
-#: packages/editor-custom-plugins/src/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:88
-#: packages/components/src/AreaDialog/AreaForm.tsx:177
-msgid "Name"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:52
-msgid "Creation counts"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:55
-msgid "Created date"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:58
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:135
-#: apps/web/app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:53
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:61
-msgid "Operation"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagList.tsx:72
-msgid "Delete tag"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:91
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:206
-msgid "Save"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagForm.tsx:91
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/page.tsx:34
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:206
-msgid "Add"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagDialog.tsx:25
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:25
-msgid "Add navigation"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/tags/TagDialog/TagDialog.tsx:27
-#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:27
-msgid "Edit navigation"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -453,6 +367,13 @@ msgid "Navigation links"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/page.tsx:34
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:206
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:93
+msgid "Add"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:122
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:106
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:71
@@ -478,6 +399,13 @@ msgid "Path"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavigationList.tsx:135
+#: apps/web/app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:53
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:61
+msgid "Operation"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:102
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:108
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:166
@@ -492,7 +420,6 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:104
-#: packages/components/src/Creation/Tags.tsx:77
 msgid "Tag"
 msgstr ""
 
@@ -505,6 +432,40 @@ msgstr ""
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/Item.tsx:109
 #: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:169
 msgid "Footer"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:89
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:57
+msgid "Updated successfully!"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:132
+msgid "Select a type"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:160
+msgid "Select a location"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkForm.tsx:206
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:93
+msgid "Save"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:25
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:25
+msgid "Add navigation"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/navigation/NavLinkDialog/NavLinkDialog.tsx:27
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:27
+msgid "Edit navigation"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -533,10 +494,20 @@ msgid "Delete this Property"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:107
+#: apps/web/app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:77
+#: packages/editor-custom-plugins/src/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:88
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:52
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:74
+#: packages/components/src/AreaDialog/AreaForm.tsx:176
+msgid "Name"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/creation-types/PropDialog/PropForm.tsx:123
 #: apps/web/app/[lang]/~/(dashboard)/settings/creation-types/CreationTypeDialog/CreationTypeForm.tsx:93
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:98
-#: packages/components/src/AreaDialog/AreaForm.tsx:193
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:97
+#: packages/components/src/AreaDialog/AreaForm.tsx:192
 msgid "Slug"
 msgstr ""
 
@@ -580,7 +551,6 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:41
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:52
 msgid "User"
 msgstr ""
 
@@ -596,90 +566,57 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/settings/comments/CommentList.tsx:50
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:58
 msgid "Date"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:84
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:86
 #: packages/libs/src/getMoldName.tsx:17
 msgid "Note"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:126
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:128
 msgid "Restoring..."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:127
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:129
 msgid "Restored successfully!"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:128
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:130
 msgid "Failed to Restore"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:135
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:137
 msgid "Restore"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:140
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:142
 msgid "Delete this post?"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:141
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:144
 msgid "Are you sure you want to delete this post?"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:142
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:146
 msgid "Delete this post"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:155
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:181
+#: apps/web/app/[lang]/~/(dashboard)/settings/archived/PostList/PostItem.tsx:159
 #: packages/components/src/Sidebar/area-widgets/TitleContextMenu.tsx:60
-#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:87
-#: packages/components/src/Creation/CreationMoreMenu.tsx:100
-#: packages/components/src/Creation/DeletePostDialog/DeletePostDialog.tsx:74
+#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:89
+#: packages/components/src/Creation/CreationMoreMenu.tsx:106
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:72
 msgid "Delete"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:28
-msgid "Drafts"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostsNav.tsx:32
-msgid "Published"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:136
-#: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesign.tsx:38
-#: apps/web/app/[lang]/~/(dashboard)/creations/Projects/PostItem.tsx:94
-#: apps/web/app/[lang]/~/(dashboard)/creations/Podcasts/PostItem.tsx:90
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostItem.tsx:97
-#: packages/components/src/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:101
-msgid "Edit"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:158
-#: packages/components/src/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:121
-msgid "Archive"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/posts/components/PostItem.tsx:205
-msgid "Featured"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -694,9 +631,14 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesignBar.tsx:89
-#: apps/web/app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:10
 #: packages/libs/src/getMoldName.tsx:7
 msgid "Articles"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenDesign.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:101
+msgid "Edit"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -726,8 +668,7 @@ msgid "Project"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/cards/AreaCard.tsx:38
-#: apps/web/app/[lang]/~/(dashboard)/areas/AreaHeader.tsx:14
+#: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/cards/AreaCard.tsx:39
 msgid "Area"
 msgstr ""
 
@@ -749,28 +690,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/~/(dashboard)/design/GardenDesign/GardenSettingsDialog/CardStyleSelect.tsx:32
 msgid "Unstyled"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/creations/CreationTitle.tsx:12
-#: packages/libs/src/getMoldName.tsx:11
-msgid "Images"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:44
-msgid "Only published"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostList.tsx:55
-#: packages/editor-custom-plugins/src/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:120
-msgid "Link"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/~/(dashboard)/creations/Friends/PostItem.tsx:150
-msgid "Select a status"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -885,30 +804,54 @@ msgid "Deploy new site"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:26
-msgid "Login to PenX CLI"
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:44
+#: packages/components/src/LoginButton.tsx:28
+msgid "Sign in"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:54
+msgid "Login to PenX desktop"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:57
 #: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:29
 msgid "Please confirm your authorization for this login."
 msgstr ""
 
 #. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:77
 #: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:49
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:269
-#: packages/components/src/Creation/DeletePostDialog/DeletePostDialog.tsx:62
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:268
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:60
 msgid "Cancel"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:86
+msgid "Desktop login successfully"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:89
+#: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:61
+msgid "Please try again~"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/desktop-login/DesktopLogin.tsx:95
+msgid "Authorize desktop login"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:26
+msgid "Login to PenX CLI"
 msgstr ""
 
 #. js-lingui-explicit-id
 #: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:58
 msgid "CLI login successfully"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: apps/web/app/[lang]/root/cli-login/CliLogin.tsx:61
-msgid "Please try again~"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -1036,6 +979,11 @@ msgid "Tasks"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: packages/libs/src/getMoldName.tsx:11
+msgid "Images"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: packages/libs/src/getMoldName.tsx:12
 msgid "Bookmarks"
 msgstr ""
@@ -1086,6 +1034,11 @@ msgid "Introduction"
 msgstr ""
 
 #. js-lingui-explicit-id
+#: packages/editor-custom-plugins/src/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:120
+msgid "Link"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: packages/editor-custom-plugins/src/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkForm.tsx:136
 msgid "Submit"
 msgstr ""
@@ -1099,11 +1052,6 @@ msgstr ""
 #. js-lingui-explicit-id
 #: packages/editor-custom-plugins/src/friends/react/SubmitFriendLinkDialog/SubmitFriendLinkDialog.tsx:59
 msgid "Submit your link"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: packages/components/src/LoginButton.tsx:28
-msgid "Sign in"
 msgstr ""
 
 #. js-lingui-explicit-id
@@ -1203,28 +1151,34 @@ msgid "Area name"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/nav-user.tsx:143
+#: packages/components/src/Sidebar/nav-user.tsx:142
 msgid "Upgrade to Pro"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/nav-user.tsx:152
+#: packages/components/src/Sidebar/nav-user.tsx:151
 msgid "Support"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/nav-user.tsx:172
+#: packages/components/src/Sidebar/nav-user.tsx:171
 #: packages/components/src/Profile/ProfilePopover.tsx:154
 msgid "Log out"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/app-sidebar.tsx:68
+#: packages/components/src/Sidebar/app-sidebar.tsx:74
 msgid "Design my site"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/VisitSiteButton.tsx:39
+#: packages/components/src/Sidebar/app-sidebar.tsx:95
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:42
+msgid "Manage tags"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: packages/components/src/Sidebar/VisitSiteButton.tsx:41
 msgid "Visit my site"
 msgstr ""
 
@@ -1235,7 +1189,7 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: packages/components/src/Sidebar/area-widgets/TitleContextMenu.tsx:38
-#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:79
+#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:81
 msgid "Open in new panel"
 msgstr ""
 
@@ -1250,12 +1204,12 @@ msgid "Rename"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:113
+#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:115
 msgid "Remove from favorites"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:115
+#: packages/components/src/Sidebar/area-widgets/CreationItem.tsx:117
 msgid "Add to favorites"
 msgstr ""
 
@@ -1265,37 +1219,39 @@ msgid "Creations"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:80
+#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:82
 msgid "Add widget"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:90
+#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:92
 msgid "All creations"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:99
+#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:101
 msgid "Collection"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:107
+#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:109
 msgid "Favorites"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:115
+#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:117
 msgid "Recently edited"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:123
+#: packages/components/src/Sidebar/area-widgets/AddWidgetButton.tsx:125
 msgid "Recently opened"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Sidebar/AreasPopover/AreasPopover.tsx:101
+#: packages/components/src/Sidebar/AreasPopover/AreasPopover.tsx:98
+#: packages/components/src/AreaDialog/AreaForm.tsx:329
+#: packages/components/src/AreaDialog/AreaDialog.tsx:36
 msgid "Create area"
 msgstr ""
 
@@ -1306,7 +1262,7 @@ msgid "Dashboard"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/PanelHome.tsx:34
+#: packages/components/src/DashboardLayout/panel-renderer/PanelHome.tsx:39
 msgid "Recently visited"
 msgstr ""
 
@@ -1316,43 +1272,58 @@ msgid "No creations yet."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/Notes/NoteList.tsx:36
-msgid "No notes yet."
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:55
+msgid "Creation counts"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/Tags.tsx:119
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:58
+msgid "Created date"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:75
+msgid "Delete tag"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: packages/components/src/DashboardLayout/panel-renderer/Articles/ArticleItem.tsx:121
+msgid "Archive"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: packages/components/src/Creation/Tags.tsx:120
 msgid "Adding tag"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/Tags.tsx:124
+#: packages/components/src/Creation/Tags.tsx:125
 msgid "Press Enter to add a tag."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PropList.tsx:107
+#: packages/components/src/Creation/PropList.tsx:109
 msgid "Select a property"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/CreationMoreMenu.tsx:50
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:277
+#: packages/components/src/Creation/CreationMoreMenu.tsx:53
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:276
 msgid "Publish"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/CreationMoreMenu.tsx:60
+#: packages/components/src/Creation/CreationMoreMenu.tsx:64
 msgid "Copy link"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/CreationMoreMenu.tsx:67
+#: packages/components/src/Creation/CreationMoreMenu.tsx:71
 msgid "Copy html"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/CreationMoreMenu.tsx:87
+#: packages/components/src/Creation/CreationMoreMenu.tsx:92
 msgid "Unpublish"
 msgstr ""
 
@@ -1372,48 +1343,43 @@ msgid "Change type"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:88
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:87
 msgid "Publish your creation"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:120
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:119
 msgid "Access control"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:123
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:122
 msgid "Gate this post, config who can read this post."
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:162
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:161
 msgid "Deliver your newsletter"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:169
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:175
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:168
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:174
 msgid "Upgrade"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:225
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:224
 msgid "Pick a date"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:256
-msgid "Authors"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/DeletePostDialog/DeletePostDialog.tsx:52
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:50
 msgid "Are you sure delete it permanently?"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/Creation/DeletePostDialog/DeletePostDialog.tsx:55
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:53
 msgid "Once deleted, You can't undo this action."
 msgstr ""
 
@@ -1428,25 +1394,19 @@ msgid "Add note"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:127
+#: packages/components/src/AreaDialog/AreaForm.tsx:126
 msgid "logo"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:210
+#: packages/components/src/AreaDialog/AreaForm.tsx:209
 msgid "Description"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:328
+#: packages/components/src/AreaDialog/AreaForm.tsx:327
 #: packages/components/src/AreaDialog/AreaDialog.tsx:34
-msgid "Update field"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:330
-#: packages/components/src/AreaDialog/AreaDialog.tsx:36
-msgid "Create field"
+msgid "Update area"
 msgstr ""
 
 #. js-lingui-explicit-id

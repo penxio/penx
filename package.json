@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo run build",
     "build:web": "npm run lingui && turbo run build -F web...",
+    "build:desktop": "npm run lingui && turbo run build -F desktop...",
     "dev": "turbo run dev",
     "dev:web": "turbo run dev -F web...",
     "lingui": "lingui extract --clean",
