@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-// import { AIChatPlugin } from '@penx/editor-custom-plugins'
+// import { AIChatPlugin } from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/AIChatPlugin'
 import { useIsTouchDevice } from '../hooks/use-is-touch-device'
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
 import { HEADING_KEYS } from '@udecode/plate-heading'

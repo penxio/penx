@@ -4,13 +4,28 @@
   "private": true,
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
-    "./*": "./src/*.ts",
     "./getWidgetName": "./src/getWidgetName.tsx",
     "./i18n": "./src/i18n.tsx",
     "./getMoldName": "./src/getMoldName.tsx",
-    "./getCreationIcon": "./src/getCreationIcon.tsx"
+    "./getCreationIcon": "./src/getCreationIcon.tsx",
+    "./cache-header": "./src/cache-header.ts",
+    "./color-helper": "./src/color-helper.ts",
+    "./domains": "./src/domains.ts",
+    "./getActiveSite": "./src/getActiveSite.ts",
+    "./getDefaultMolds": "./src/getDefaultMolds.ts",
+    "./getGoogleUserInfo": "./src/getGoogleUserInfo.ts",
+    "./getInitialWidgets": "./src/getInitialWidgets.ts",
+    "./getSiteDomain": "./src/getSiteDomain.ts",
+    "./isSuperAdmin": "./src/isSuperAdmin.ts",
+    "./lingui.config": "./src/lingui.config.ts",
+    "./revalidateSite": "./src/revalidateSite.ts",
+    "./revalidateTag": "./src/revalidateTag.ts",
+    "./session": "./src/session.ts",
+    "./slate-to-html": "./src/slate-to-html.ts",
+    "./stripe": "./src/stripe.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

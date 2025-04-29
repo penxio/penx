@@ -3,10 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./src/index.ts",
-    "./*": "./src/*.tsx"
+    "./AreaCreationsContext": "./src/AreaCreationsContext.tsx",
+    "./CreationContext": "./src/CreationContext.tsx",
+    "./CreationTagsContext": "./src/CreationTagsContext.tsx",
+    "./CreationsContext": "./src/CreationsContext.tsx",
+    "./FriendsContext": "./src/FriendsContext.tsx",
+    "./MoldsContext": "./src/MoldsContext.tsx",
+    "./ProjectsContext": "./src/ProjectsContext.tsx",
+    "./SiteContext": "./src/SiteContext.tsx",
+    "./TagsContext": "./src/TagsContext.tsx"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

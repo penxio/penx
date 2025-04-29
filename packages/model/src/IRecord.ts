@@ -1,3 +1,3 @@
-export interface IField {
+export interface IRecord {
   id: string
 }

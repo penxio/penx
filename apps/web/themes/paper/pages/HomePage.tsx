@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/react'
 import { ContentRender } from '@penx/content-render'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
-import { ProjectsBlock } from '@penx/editor-custom-plugins'
+import { ProjectsBlock } from '@penx/editor-custom-plugins/projects/react/ProjectsBlock'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
 import { PostItem } from '../components/PostItem'

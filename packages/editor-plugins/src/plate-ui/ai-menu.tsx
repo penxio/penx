@@ -14,9 +14,13 @@ import {
 import { Loader2Icon } from 'lucide-react'
 import {
   AIChatPlugin,
+} from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/AIChatPlugin'
+import {
   useEditorChat,
+} from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/hooks/useEditorChat'
+import {
   useLastAssistantMessage,
-} from '@penx/editor-custom-plugins'
+} from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/utils/getLastAssistantMessage'
 import { useChat } from '../hooks/use-chat'
 import { AIChatEditor } from './ai-chat-editor'
 import { AIMenuItems } from './ai-menu-items'

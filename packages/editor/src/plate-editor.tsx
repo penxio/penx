@@ -8,15 +8,15 @@ import { Plate } from '@udecode/plate/react'
 import { VariantProps } from 'class-variance-authority'
 import { Transforms } from 'slate'
 import {
+  Editor,
+  EditorContainer,
+  EditorVariantProps,
+} from '@penx/editor-plugins/plate-ui/editor'
+import {
   PlateEditorType,
   useCreateEditor,
 } from '@penx/editor/use-create-editor'
 import { AddNodeBtn } from '@penx/uikit/AddNodeBtn'
-import {
-  Editor,
-  EditorContainer,
-  editorVariants,
-} from '@penx/editor-plugins/plate-ui/editor'
 import { cn } from '@penx/utils'
 
 // import { AddNodeBtn } from '../AddNodeBtn'
@@ -50,7 +50,7 @@ export function PlateEditor({
   variant = 'none',
   children,
   editorProps = {},
-}: Props & VariantProps<typeof editorVariants>) {
+}: Props & EditorVariantProps) {
   const valueRef = useRef(value)
   const editor = useCreateEditor({
     value: valueRef.current,

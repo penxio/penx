@@ -42,15 +42,14 @@ import {
   TimerIcon,
   UserRoundIcon,
 } from 'lucide-react'
-import { CampaignPlugin } from '@penx/editor-custom-plugins'
-import { CommentBoxPlugin } from '@penx/editor-custom-plugins'
-import { FriendsPlugin } from '@penx/editor-custom-plugins'
-import { AIChatPlugin } from '@penx/editor-custom-plugins'
-import { PodcastTimePlugin } from '@penx/editor-custom-plugins'
-import { BaseProductPlugin } from '@penx/editor-custom-plugins'
-import { ProductPlugin } from '@penx/editor-custom-plugins'
-import { ProjectsPlugin } from '@penx/editor-custom-plugins'
-import { SocialLinksPlugin } from '@penx/editor-custom-plugins'
+import { CampaignPlugin } from '@penx/editor-custom-plugins/campaign/react/CampaignPlugin'
+import { CommentBoxPlugin } from '@penx/editor-custom-plugins/comment-box/react/CommentBoxPlugin'
+import { FriendsPlugin } from '@penx/editor-custom-plugins/friends/react/FriendsPlugin'
+import { AIChatPlugin } from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/AIChatPlugin'
+import { PodcastTimePlugin } from '@penx/editor-custom-plugins/podcast-time/react/PodcastTimePlugin'
+import { ProductPlugin } from '@penx/editor-custom-plugins/product/react/ProductPlugin'
+import { ProjectsPlugin } from '@penx/editor-custom-plugins/projects/react/ProjectsPlugin'
+import { SocialLinksPlugin } from '@penx/editor-custom-plugins/social-links/react/SocialLinksPlugin'
 import { insertBlock, insertInlineElement } from '@penx/editor-transforms'
 import {
   InlineCombobox,

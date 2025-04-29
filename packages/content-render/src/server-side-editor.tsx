@@ -170,7 +170,7 @@ export const serverSideComponents = {
   [BaseSocialLinksPlugin.key]: SocialLinksElementStatic,
   [BaseCampaignPlugin.key]: CampaignElementStatic,
   [BasePodcastTimePlugin.key]: PodcastTimeElementStatic,
-}
+} as any
 
 export const serverSideEditor = createSlateEditor({
   plugins: [
@@ -267,4 +267,4 @@ export const serverSideEditor = createSlateEditor({
     BasePodcastTimePlugin,
     BaseBidirectionalLinkPlugin,
   ],
-})
+}) as any

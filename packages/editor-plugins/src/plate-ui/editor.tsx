@@ -62,7 +62,7 @@ export const EditorContainer = ({
 
 EditorContainer.displayName = 'EditorContainer'
 
-export const editorVariants = cva(
+const editorVariants = cva(
   cn(
     'group/editor',
     'relative w-full cursor-text select-text overflow-x-hidden whitespace-pre-wrap break-words',
@@ -98,6 +98,8 @@ export const editorVariants = cva(
     },
   },
 )
+
+export type EditorVariantProps = VariantProps<typeof editorVariants>
 
 export type EditorProps = PlateContentProps &
   VariantProps<typeof editorVariants>

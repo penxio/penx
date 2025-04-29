@@ -14,9 +14,9 @@ import {
   useReadOnly,
 } from '@udecode/plate/react'
 import { CornerDownLeftIcon } from 'lucide-react'
-import { usePointInput } from '@penx/editor-custom-plugins'
 import { Button } from '@penx/uikit/button'
 import { PopoverContent } from '@penx/uikit/popover'
+import { usePointInput } from './hooks'
 
 const PodcastTimeInput = createPrimitiveComponent(TextareaAutosize)({
   propsHook: usePointInput,

@@ -4,9 +4,13 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+    "./Creation": "./src/Creation.ts",
+    "./EthBalance": "./src/EthBalance.ts",
+    "./Plan": "./src/Plan.ts",
+    "./Subscription": "./src/Subscription.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

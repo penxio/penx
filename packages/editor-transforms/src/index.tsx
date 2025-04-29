@@ -43,7 +43,7 @@ import {
 } from '@udecode/plate-table/react'
 import type { PlateEditor } from '@udecode/plate/react'
 // import { insertPodcastTime } from '@penx/editor-custom-plugins'
-// import { PodcastTimePlugin } from '@penx/editor-custom-plugins'
+// import { PodcastTimePlugin } from '@penx/editor-custom-plugins/podcast-time/react/PodcastTimePlugin'
 // import {
 //   BaseProductPlugin,
 //   insertProduct,

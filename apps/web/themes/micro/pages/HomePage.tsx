@@ -5,7 +5,7 @@ import { PageTitle } from '@penx/components/PageTitle'
 import { HOME_PROJECT_LIMIT, LATEST_POSTS_LIMIT } from '@penx/constants'
 import { Link } from '@penx/libs/i18n'
 import { Creation, PostListStyle, Project, Site, Tag } from '@penx/types'
-import { ProjectsBlock } from '@penx/editor-custom-plugins'
+import { ProjectsBlock } from '@penx/editor-custom-plugins/projects/react/ProjectsBlock'
 
 interface Props {
   about: any

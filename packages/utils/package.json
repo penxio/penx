@@ -4,9 +4,18 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.ts"
+    "./calculateSHA256FromFile": "./src/calculateSHA256FromFile.ts",
+    "./extractErrorMessage": "./src/extractErrorMessage.ts",
+    "./findNodePath": "./src/findNodePath.ts",
+    "./generateNonce": "./src/generateNonce.ts",
+    "./getDataEditorTheme": "./src/getDataEditorTheme.ts",
+    "./getEmptyElement": "./src/getEmptyElement.ts",
+    "./getNodeByPath": "./src/getNodeByPath.ts",
+    "./insertEmptyParagraph": "./src/insertEmptyParagraph.ts",
+    "./selectEditor": "./src/selectEditor.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

@@ -3,9 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./*": "./src/*.ts"
+    ".": "./src/index.ts",
+    "./SyncService": "./src/SyncService.ts",
+    "./sync": "./src/sync.ts",
+    "./syncPostToHub": "./src/syncPostToHub.ts",
+    "./syncSiteToHub": "./src/syncSiteToHub.ts",
+    "./uploadFile": "./src/uploadFile.ts",
+    "./uploadthing": "./src/uploadthing.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

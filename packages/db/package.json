@@ -4,7 +4,6 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.ts",
     "./client": {
       "types": "./generated/prisma/client/index.d.ts",
       "default": "./src/client.ts"

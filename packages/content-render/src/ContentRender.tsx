@@ -6,10 +6,8 @@ import {
   PlateStatic,
 } from '@udecode/plate'
 import Image from 'next/image'
-import {
-  BaseBidirectionalLinkPlugin,
-  BaseProductPlugin,
-} from '@penx/editor-custom-plugins'
+import { BaseBidirectionalLinkPlugin } from '@penx/editor-custom-plugins/bidirectional-link/lib/BaseBidirectionalLinkPlugin'
+import { BaseProductPlugin } from '@penx/editor-custom-plugins/product/lib/BaseProductPlugin'
 import { getUrl } from '@penx/utils'
 import { BidirectionalLinkElementStatic } from './bidirectional-link/bidirectional-link-static'
 import { components } from './components'
@@ -52,7 +50,7 @@ export function ContentRender({ content }: Props) {
       editor={serverSideEditor}
       components={{
         ...serverSideComponents,
-        // [BaseBidirectionalLinkPlugin.key]: BidirectionalLinkElementStatic,
+        [BaseBidirectionalLinkPlugin.key]: BidirectionalLinkElementStatic,
       }}
       // editor={editor}
       // components={components}

@@ -163,7 +163,7 @@ export function SettingsDialog() {
         id={label}
         className="pr-10"
         value={tempKeys[service]}
-        onChange={(e) =>
+        onChange={(e:any) =>
           setTempKeys((prev) => ({ ...prev, [service]: e.target.value }))
         }
         placeholder=""

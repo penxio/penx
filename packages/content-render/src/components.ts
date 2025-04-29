@@ -34,8 +34,8 @@ import {
   BaseTableRowPlugin,
 } from '@udecode/plate-table'
 import { PlateLeaf } from '@udecode/plate/react'
-import { BaseProductPlugin } from '@penx/editor-custom-plugins'
-import { ProductElementStatic } from '@penx/editor-custom-plugins'
+import { BaseProductPlugin } from '@penx/editor-custom-plugins/product/lib/BaseProductPlugin'
+import { ProductElementStatic } from '@penx/editor-custom-plugins/product/react/product-element-static'
 import { BlockquoteElementStatic } from '@penx/editor-plugins/plate-ui/blockquote-element-static'
 import { CodeBlockElement } from '@penx/editor-plugins/plate-ui/code-block-element'
 import { CodeBlockElementStatic } from '@penx/editor-plugins/plate-ui/code-block-element-static'
@@ -96,4 +96,4 @@ export const components = {
   [BaseTablePlugin.key]: TableElementStatic,
   [BaseTableRowPlugin.key]: TableRowElementStatic,
   [BaseProductPlugin.key]: ProductElementStatic,
-}
+} as any

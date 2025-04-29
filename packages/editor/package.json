@@ -4,10 +4,16 @@
   "private": true,
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
-    "./*": "./src/*.tsx",
-    "./lib/*": "./src/lib/*.ts"
+    "./plate-editor": "./src/plate-editor.tsx",
+    "./plate-types": "./src/plate-types.ts",
+    "./transforms": "./src/transforms.tsx",
+    "./use-create-editor": "./src/use-create-editor.tsx",
+    "./getEmptyElement": "./src/lib/getEmptyElement.ts",
+    "./getNodeByPath": "./src/lib/getNodeByPath.ts",
+    "./insertEmptyParagraph": "./src/lib/insertEmptyParagraph.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
