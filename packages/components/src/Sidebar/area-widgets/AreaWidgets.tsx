@@ -1,21 +1,19 @@
 'use client'
 
+import { Trans } from '@lingui/react'
+import { PlusIcon } from 'lucide-react'
 import { AddCreationButton } from '@penx/components/AddCreationButton'
+import { useAppLoading } from '@penx/hooks/useAppLoading'
+import { useCreations } from '@penx/hooks/useCreations'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { Skeleton } from '@penx/uikit/skeleton'
-import { useAppLoading } from '@penx/hooks/useAppLoading'
-import { useCreations } from '@penx/hooks/useCreations'
-import { Trans } from '@lingui/react'
-import { PlusIcon } from 'lucide-react'
 import { AddWidgetButton } from './AddWidgetButton'
 import { WidgetList } from './WidgetList'
 
 interface Props {}
 
 export function AreaWidgets({}: Props) {
-  const { session } = useSession()
-
   return (
     <>
       <div className="mb-1 flex items-center justify-between px-2">

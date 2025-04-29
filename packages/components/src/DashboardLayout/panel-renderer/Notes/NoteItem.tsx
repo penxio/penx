@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { Tags } from '@penx/components/Tags'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
+import { ContentRender } from '@penx/content-render'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { CreationTagWithTag } from '@penx/hooks/useCreation'
@@ -64,15 +65,18 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
         )}
       </div>
 
-      <PlateEditor
-        value={content}
-        readonly={readonly}
-        variant="note"
-        className={cn('w-auto px-3 py-1')}
-        onChange={(v) => {
-          setContent(v)
-        }}
-      />
+      {readonly && <ContentRender className="px-3 text-sm" content={content} />}
+      {!readonly && (
+        <PlateEditor
+          value={content}
+          readonly={readonly}
+          variant="note"
+          className={cn('w-auto px-3 py-1')}
+          onChange={(v) => {
+            setContent(v)
+          }}
+        />
+      )}
       {/* <div className="flex-col gap-2 px-4 pb-2"></div> */}
 
       <div className="flex items-center gap-2 px-3 pb-1">

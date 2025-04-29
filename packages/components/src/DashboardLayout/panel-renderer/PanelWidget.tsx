@@ -25,7 +25,7 @@ export function PanelWidget({ panel, index }: Props) {
         <div>{getWidgetName(widget, molds)}</div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>
-      <div className="flex-1 overflow-auto px-4 pt-8">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8">
         {mold?.type === CreationType.NOTE && (
           <NoteList panel={panel} index={index} mold={mold} />
         )}

@@ -78,12 +78,13 @@ export async function openPanel(index: number, panel: Panel) {
 
 export async function addPanel(panel: Partial<Panel>) {
   const panels = getPanels()
+  const newPanel = { id: uniqueId(), ...panel } as Panel
   const newPanels = produce(panels, (draft) => {
-    if (panels.length === 1) panel.size = 100
-    draft.push({
-      id: uniqueId(),
-      ...panel,
-    } as Panel)
+    draft.push(newPanel)
+    const size = 100 / draft.length
+    for (const item of draft) {
+      item.size = size
+    }
   })
   await savePanels(newPanels)
 }
@@ -91,10 +92,15 @@ export async function addPanel(panel: Partial<Panel>) {
 export async function openWidgetPanel(widget: Widget) {
   const panels = getPanels()
   const newPanels = produce(panels, (draft) => {
+    const size = 100 / (draft.length + 1)
+    for (const item of draft) {
+      item.size = size
+    }
     draft.unshift({
       id: uniqueId(),
       type: PanelType.WIDGET,
       widget,
+      size: size,
     })
   })
   await savePanels(newPanels)

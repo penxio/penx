@@ -8,7 +8,7 @@ import {
 import Image from 'next/image'
 import { BaseBidirectionalLinkPlugin } from '@penx/editor-custom-plugins/bidirectional-link/lib/BaseBidirectionalLinkPlugin'
 import { BaseProductPlugin } from '@penx/editor-custom-plugins/product/lib/BaseProductPlugin'
-import { getUrl } from '@penx/utils'
+import { cn, getUrl } from '@penx/utils'
 import { BidirectionalLinkElementStatic } from './bidirectional-link/bidirectional-link-static'
 import { components } from './components'
 import { serverSideComponents, serverSideEditor } from './server-side-editor'
@@ -22,9 +22,10 @@ interface Element {
 
 interface Props {
   content: any
+  className?: string
 }
 
-export function ContentRender({ content }: Props) {
+export function ContentRender({ content, className }: Props) {
   if (typeof content === 'string' && content.startsWith('/')) {
     return (
       <div>
@@ -55,7 +56,7 @@ export function ContentRender({ content }: Props) {
       // editor={editor}
       // components={components}
       value={value.map(({ id, ...rest }) => rest) as any}
-      className="text-base"
+      className={cn('break-all text-base', className)}
     />
   )
 }

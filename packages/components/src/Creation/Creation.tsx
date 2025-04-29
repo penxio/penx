@@ -211,7 +211,7 @@ export function Creation({ index }: { index: number }) {
             <div className="mt-4 w-full" data-registry="plate">
               <PlateEditor
                 variant="post"
-                className="dark:caret-brand w-full"
+                className="dark:caret-brand w-full break-all"
                 dndProvider={false}
                 value={
                   creation.content
