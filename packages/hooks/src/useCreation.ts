@@ -1,10 +1,10 @@
 import isEqual from 'react-fast-compare'
-import { CreationTag, Tag } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import debounce from 'lodash.debounce'
 import { RouterOutputs } from '@penx/api'
 import { UpdateCreationInput } from '@penx/constants'
+import { CreationTag, Tag } from '@penx/db/client'
 // import { CreationTag, Tag } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
@@ -125,8 +125,7 @@ export async function updateCreationState(
 
 async function persistCreation(props: UpdateCreationInput) {
   const { id, ...data } = props
-  await localDB.creation.update(id, data)
-  await api.creation.update.mutate(props)
+  await localDB.updateCreation(id, data)
 }
 
 const debouncedSaveCreation = debounce(persistCreation, 250, {

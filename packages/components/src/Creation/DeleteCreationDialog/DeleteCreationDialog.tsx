@@ -7,7 +7,6 @@ import { deleteCreation, refetchCreations } from '@penx/hooks/useCreations'
 import { closePanel, resetPanels, usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -18,6 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useDeleteCreationDialog } from './useDeleteCreationDialog'
 
@@ -28,7 +28,7 @@ export function DeleteCreationDialog({}: Props) {
   const [loading, setLoading] = useState(false)
   const { panels } = usePanels()
 
-  async function deletePost() {
+  async function remove() {
     setLoading(true)
     try {
       deleteCreation(creation)
@@ -64,7 +64,7 @@ export function DeleteCreationDialog({}: Props) {
             className="w-20"
             disabled={loading}
             variant="destructive"
-            onClick={deletePost}
+            onClick={remove}
           >
             {loading ? (
               <LoadingDots className="bg-background" />

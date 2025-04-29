@@ -17,9 +17,10 @@
     "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
-    "@penx/model": "workspace:*",
     "@penx/constants": "workspace:*",
+    "@penx/model": "workspace:*",
+    "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/types": "workspace:*"
+    "dexie-observable": "4.0.1-beta.13"
   }
 }

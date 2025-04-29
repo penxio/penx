@@ -1890,6 +1890,9 @@ importers:
       '@penx/unique-id':
         specifier: workspace:*
         version: link:../unique-id
+      dexie-observable:
+        specifier: 4.0.1-beta.13
+        version: 4.0.1-beta.13(dexie@4.0.11)
     devDependencies:
       '@penx/typescript-config':
         specifier: workspace:*
@@ -7144,6 +7147,11 @@ packages:
 
   devtools-protocol@0.0.1232444:
     resolution: {integrity: sha512-pM27vqEfxSxRkTMnF+XCmxSEb6duO5R+t8A9DEEJgy4Wz2RVanje2mmj99B6A3zv2r/qGfYlOvYznUhuokizmg==}
+
+  dexie-observable@4.0.1-beta.13:
+    resolution: {integrity: sha512-axmgPk7yjoPwj+0DdQIE5s1MBXi+6XcIFIjBKdQAmSGpsLQSth/LHvMOQ3q3Wj6pwIE5hqIxg2GL75sVqQbhEw==}
+    peerDependencies:
+      dexie: ^3.0.2 || ^4.0.1-alpha.5
 
   dexie@4.0.11:
     resolution: {integrity: sha512-SOKO002EqlvBYYKQSew3iymBoN2EQ4BDw/3yprjh7kAfFzjBYkaMNa/pZvcA7HSWlcKSQb9XhPe3wKyQ0x4A8A==}
@@ -18376,6 +18384,10 @@ snapshots:
       dequal: 2.0.3
 
   devtools-protocol@0.0.1232444: {}
+
+  dexie-observable@4.0.1-beta.13(dexie@4.0.11):
+    dependencies:
+      dexie: 4.0.11
 
   dexie@4.0.11: {}
 

@@ -1,6 +1,6 @@
-import { CommentStatus } from '@penx/db/client'
 import { CreateCreationInput, editorDefaultValue } from '@penx/constants'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
+import { CommentStatus } from '@penx/db/client'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { addPanel } from '@penx/hooks/usePanels'
@@ -67,8 +67,5 @@ export function useAddCreation() {
       type: PanelType.CREATION,
       creationId: newCreation.id,
     })
-
-    // TODO: need to retry
-    await api.creation.create.mutate(createPostInput)
   }
 }

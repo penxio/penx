@@ -7,7 +7,6 @@ import { localDB } from '@penx/local-db'
 import { ICreation } from '@penx/model/ICreation'
 import { queryClient } from '@penx/query-client'
 import { getSession, useSession } from '@penx/session'
-import { api } from '@penx/trpc-client'
 
 function getQueryKey(areaId: string) {
   return ['area', 'creations', areaId]
@@ -38,7 +37,7 @@ export async function addCreation(creation: ICreation) {
     creation,
     ...getCreations(creation.areaId!),
   ])
-  await localDB.creation.add(creation)
+  await localDB.addCreation(creation)
 }
 
 export function updateCreationById(
@@ -63,14 +62,12 @@ export async function deleteCreation(creation: ICreation) {
   const session = await getSession()
   const areaId = session.activeAreaId!
 
-  await localDB.creation.delete(creation.id)
+  await localDB.deleteCreation(creation.id)
   const creations = await localDB.creation
     .where({ siteId: creation.siteId })
     .toArray()
 
   queryClient.setQueryData(getQueryKey(areaId), creations)
-
-  await api.creation.delete.mutate(creation.id)
 }
 
 export async function refetchCreations() {
