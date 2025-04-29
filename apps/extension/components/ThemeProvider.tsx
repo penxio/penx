@@ -4,7 +4,7 @@ import React, {
   useState,
   type PropsWithChildren,
 } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 
 interface Props {
   className?: string

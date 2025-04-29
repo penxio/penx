@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react'
 import { AppType } from '@/lib/constants'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Check, X } from 'lucide-react'
 import * as styles from '../content.module.scss'
 import { useForceUpdate } from '../hooks'

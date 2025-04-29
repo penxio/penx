@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 import { AppType } from '@penx/constants'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import * as styles from '../content.module.scss'
 import { useForceUpdate } from '../hooks'
 import { transformDOM } from './common/transform-dom'

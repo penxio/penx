@@ -51,7 +51,7 @@ interface Props {
   widget: Widget
 }
 
-export const Item = memo(
+export const WidgetItem = memo(
   forwardRef<HTMLDivElement, Props>(function Item(props, ref) {
     const {
       widget,
@@ -97,6 +97,10 @@ export const Item = memo(
                 {...attributes}
                 {...listeners}
                 onClick={() => {
+                  if (widget.type === WidgetType.AI_CHAT) {
+                    openWidgetPanel(widget)
+                    return
+                  }
                   setVisible(!visible)
                 }}
               >

@@ -35,7 +35,7 @@ import { updateArea, updateAreaState } from '@penx/hooks/useArea'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import { Widget } from '@penx/types'
-import { Item } from './Item'
+import { WidgetItem } from './WidgetItem'
 import { SortableItem } from './SortableItem'
 
 const measuring: MeasuringConfiguration = {
@@ -127,7 +127,7 @@ export const WidgetList = () => {
         {createPortal(
           <DragOverlay>
             {activeId && activeItem && (
-              <Item dragOverlay widget={activeItem} id={activeId} />
+              <WidgetItem dragOverlay widget={activeItem} id={activeId} />
             )}
           </DragOverlay>,
           document.body,

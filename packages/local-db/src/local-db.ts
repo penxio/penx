@@ -1,4 +1,5 @@
 import Dexie, { Table } from 'dexie'
+import { IChat, IDocument, IMessage, ISuggestion } from '@penx/model'
 import { IArea } from '@penx/model/IArea'
 import { IAsset } from '@penx/model/IAsset'
 import { ICreation } from '@penx/model/ICreation'
@@ -20,10 +21,14 @@ class LocalDB extends Dexie {
   mold!: Table<IMold, string>
   tag!: Table<ITag, string>
   creationTag!: Table<ICreationTag, string>
+  chat!: Table<IChat, string>
+  message!: Table<IMessage, string>
+  suggestion!: Table<ISuggestion, string>
+  document!: Table<IDocument, string>
 
   constructor() {
     super('penx-local')
-    this.version(10).stores({
+    this.version(11).stores({
       // Primary key and indexed props
       file: 'id, hash',
       asset: 'id, siteId, url, isPublic, isTrashed',
@@ -35,6 +40,10 @@ class LocalDB extends Dexie {
       creation:
         'id, siteId, userId, areaId, moldId, type, status, [siteId+areaId]',
       creationTag: 'id, creationId, siteId, tagId',
+      chat: 'id, siteId',
+      message: 'id, siteId',
+      document: 'id, siteId',
+      suggestion: 'id, siteId',
     })
   }
 

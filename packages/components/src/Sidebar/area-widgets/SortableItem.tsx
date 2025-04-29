@@ -1,7 +1,7 @@
 import { Widget } from '@penx/types'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
-import { Item } from './Item'
+import { WidgetItem } from './WidgetItem'
 
 interface Props {
   id: string
@@ -27,7 +27,7 @@ export function SortableItem(props: Props) {
   }
 
   return (
-    <Item
+    <WidgetItem
       ref={setNodeRef}
       id={id}
       index={index}
@@ -37,6 +37,6 @@ export function SortableItem(props: Props) {
       style={style}
       attributes={attributes}
       listeners={listeners}
-    ></Item>
+    ></WidgetItem>
   )
 }

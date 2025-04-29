@@ -1,6 +1,6 @@
 import { type ComponentType } from 'react'
 import { AppType } from '@penx/constants'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { type LucideProps } from 'lucide-react'
 
 interface FeatureEntryProps {

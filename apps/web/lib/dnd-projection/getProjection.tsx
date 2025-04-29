@@ -1,9 +1,13 @@
 import { arrayMove } from '@dnd-kit/sortable'
-import { Node, WithFlattenedProps } from '@penx/model'
 
 export type UniqueIdentifier = string
+export type WithFlattenedProps<T> = T & {
+  parentId: string | null // parent node id
+  depth: number
+  index: number
+}
 
-type FlattenedItem = WithFlattenedProps<Node>
+type FlattenedItem = WithFlattenedProps<any>
 // type FlattenedItem = any
 
 function getDragDepth(offset: number, indentationWidth: number) {

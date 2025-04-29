@@ -2,6 +2,7 @@ import isEqual from 'react-fast-compare'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
+import { WidgetType } from '@penx/constants'
 import { queryClient } from '@penx/query-client'
 import { Panel, PanelType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -96,12 +97,21 @@ export async function openWidgetPanel(widget: Widget) {
     for (const item of draft) {
       item.size = size
     }
-    draft.unshift({
-      id: uniqueId(),
-      type: PanelType.WIDGET,
-      widget,
-      size: size,
-    })
+    if (widget.type === WidgetType.AI_CHAT) {
+      draft.push({
+        id: uniqueId(),
+        type: PanelType.WIDGET,
+        widget,
+        size: size,
+      })
+    } else {
+      draft.unshift({
+        id: uniqueId(),
+        type: PanelType.WIDGET,
+        widget,
+        size: size,
+      })
+    }
   })
   await savePanels(newPanels)
 }

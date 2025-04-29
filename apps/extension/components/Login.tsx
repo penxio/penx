@@ -1,5 +1,5 @@
 import { BASE_URL } from '@/lib/constants'
-import { cn } from '@/lib/utils'
+import { cn } from '@penx/utils'
 import { Button } from '@penx/uikit/button'
 import {
   Card,

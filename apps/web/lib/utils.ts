@@ -1,7 +1,10 @@
-import { ProviderType } from '@penx/db/client'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { ProviderType } from '@penx/db/client'
 import { uniqueId } from '@penx/unique-id'
+
+export const isProductionEnvironment = process.env.NODE_ENV === 'production'
+export const isDevelopmentEnvironment = process.env.NODE_ENV === 'development'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
