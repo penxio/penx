@@ -7,8 +7,8 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { ICreation } from '@penx/model/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
@@ -53,7 +53,9 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
           // src: 'https://v.typlog.com/sspai/8267989755_658478.mp3'
           src: getUrl(value),
         },
-      })(window as any).__PLAYER__ = playerRef.current
+      })
+      // @ts-ignore
+      window.__PLAYER__ = playerRef.current
     }, [value])
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
