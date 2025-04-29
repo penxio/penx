@@ -2,6 +2,10 @@
   "name": "@penx/uikit",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
     "./postcss.config": "./postcss.config.mjs",
@@ -17,7 +21,10 @@
     "./use-debounce": "./src/hooks/use-debounce.ts",
     "./use-is-touch-device": "./src/hooks/use-is-touch-device.ts",
     "./use-mobile": "./src/hooks/use-mobile.ts",
-    "./use-mounted": "./src/hooks/use-mounted.ts",
+    "./use-mounted": {
+      "types": "./src/hooks/use-mounted.ts",
+      "default": "./src/hooks/use-mounted.ts"
+    },
     "./use-window-size": "./src/hooks/use-window-size.ts",
     "./findNodePath": "./src/lib/findNodePath.ts",
     "./selectEditor": "./src/lib/selectEditor.ts",
@@ -61,6 +68,7 @@
     "./menu": "./src/ui/menu/index.tsx"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },

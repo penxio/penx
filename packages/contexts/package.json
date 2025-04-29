@@ -2,6 +2,10 @@
   "name": "@penx/contexts",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
   "exports": {
     "./AreaCreationsContext": "./src/AreaCreationsContext.tsx",
     "./CreationContext": "./src/CreationContext.tsx",
@@ -24,6 +28,7 @@
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/model": "workspace:*",
+    "@penx/db": "workspace:*",
     "@penx/types": "workspace:*"
   }
 }

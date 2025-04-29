@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import { withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { cn } from '@penx/utils'
+import { getBidirectionalLinkOnSelectItem } from '../lib'
 import {
   InlineCombobox,
   InlineComboboxContent,
@@ -11,9 +13,7 @@ import {
   InlineComboboxGroup,
   InlineComboboxInput,
   InlineComboboxItem,
-} from '@penx/editor-plugins/plate-ui/inline-combobox'
-import { cn } from '@penx/utils'
-import { getBidirectionalLinkOnSelectItem } from '../lib'
+} from './inline-combobox'
 
 const onSelectItem = getBidirectionalLinkOnSelectItem()
 

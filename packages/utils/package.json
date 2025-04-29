@@ -2,6 +2,10 @@
   "name": "@penx/utils",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
     "./calculateSHA256FromFile": "./src/calculateSHA256FromFile.ts",

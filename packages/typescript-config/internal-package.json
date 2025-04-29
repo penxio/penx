@@ -9,5 +9,6 @@
     // "emitDeclarationOnly": true,
     "noEmit": false,
     "outDir": "${configDir}/dist"
-  }
+  },
+  "include": ["${configDir}/src"]
 }

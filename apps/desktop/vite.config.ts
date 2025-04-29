@@ -1,8 +1,10 @@
 import path from 'path'
+import { fileURLToPath } from 'url'
 import { lingui } from '@lingui/vite-plugin'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 // @ts-ignores
 const host = process.env.TAURI_DEV_HOST
@@ -13,9 +15,21 @@ const host = process.env.TAURI_DEV_HOST
 //   path.resolve(__dirname, '../../node_modules/.prisma/client'),
 // )
 
+console.log(
+  '=======>>>>>:',
+  fileURLToPath(new URL('../../packages/db/src', import.meta.url)),
+)
+
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [react(), lingui(), tailwindcss()],
+  plugins: [
+    react(),
+    lingui(),
+    tailwindcss(),
+    tsconfigPaths({
+      loose: true,
+    }),
+  ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
@@ -45,9 +59,8 @@ export default defineConfig(async () => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '.prisma/client': path.resolve(
-        __dirname,
-        '../../node_modules/.prisma/client',
+      '@penx/db': fileURLToPath(
+        new URL('../../packages/db/src', import.meta.url),
       ),
     },
   },

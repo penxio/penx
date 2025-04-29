@@ -2,6 +2,10 @@
   "name": "@penx/content-render",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
     ".": "./src/index.tsx"
@@ -15,6 +19,7 @@
   },
   "dependencies": {
     "@penx/types": "workspace:*",
+    "@penx/db": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",

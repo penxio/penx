@@ -35,7 +35,10 @@
     "sourceMap": true,
     "pretty": true,
     "preserveWatchOutput": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "@penx/*": ["../../packages/*/src"] 
+    }
   },
   "exclude": ["node_modules", "dist"]
 }

@@ -70,4 +70,4 @@ export const editorPlugins = [
   CampaignPlugin,
   PodcastTimePlugin,
   BidirectionalLinkPlugin,
-]
+] as any

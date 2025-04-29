@@ -2,6 +2,10 @@
   "name": "@penx/editor-plugins",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
     "./settings": "./src/settings.tsx",

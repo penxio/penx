@@ -2,6 +2,10 @@
   "name": "@penx/hooks",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
   "exports": {
     "./use-debounce": "./src/use-debounce.ts",
     "./use-domain-status": "./src/use-domain-status.ts",

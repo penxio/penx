@@ -16,8 +16,6 @@
     "build:verbose": "tauri build --verbose"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2",
     "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
@@ -43,17 +41,20 @@
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/widgets": "workspace:*",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-shell": "^2.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@lingui/vite-plugin": "^5.3.1",
-    "@tauri-apps/cli": "^2",
     "@tailwindcss/vite": "^4.1.4",
+    "@tauri-apps/cli": "^2",
     "@types/react": "^19.0.7",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }
