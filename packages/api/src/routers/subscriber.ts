@@ -1,6 +1,6 @@
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
-import { createSubscriptionConfirmEmail } from '@penx/api/getPostEmailTpl'
+import { createSubscriptionConfirmEmail } from '@penx/api/lib/getPostEmailTpl'
 import { prisma } from '@penx/db'
 import {
   SubscriberStatus,

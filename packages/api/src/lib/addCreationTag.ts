@@ -1,6 +1,6 @@
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
-import { revalidateCreationTags } from '@penx/api/revalidateCreation'
+import { revalidateCreationTags } from '@penx/api/lib/revalidateCreation'
 import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { findCreations } from './findCreations'

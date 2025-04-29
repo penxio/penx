@@ -1,13 +1,13 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useLoginDialog } from '@penx/widgets/useLoginDialog'
-import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/button'
-import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
-import { trpc } from '@penx/trpc-client'
 import { CopyIcon, PenSquareIcon } from 'lucide-react'
 import { toast } from 'sonner'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
+import { useSession } from '@penx/session'
+import { trpc } from '@penx/trpc-client'
+import { Button } from '@penx/uikit/button'
+import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 import { EditReferralCodeForm } from './EditReferralCodeDialog/EditReferralCodeForm'
 import { EditReferralCodeFormDialog } from './EditReferralCodeDialog/EditReferralCodeFormDialog'
 

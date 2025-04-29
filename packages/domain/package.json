@@ -7,11 +7,7 @@
   "main": "index.ts",
   "types": "./src/index.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./Creation": "./src/Creation.ts",
-    "./EthBalance": "./src/EthBalance.ts",
-    "./Plan": "./src/Plan.ts",
-    "./Subscription": "./src/Subscription.ts"
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "brl": "barrelsby --delete -d ./src",

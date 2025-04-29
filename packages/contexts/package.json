@@ -7,15 +7,7 @@
   "main": "index.ts",
   "types": "./src/index.ts",
   "exports": {
-    "./AreaCreationsContext": "./src/AreaCreationsContext.tsx",
-    "./CreationContext": "./src/CreationContext.tsx",
-    "./CreationTagsContext": "./src/CreationTagsContext.tsx",
-    "./CreationsContext": "./src/CreationsContext.tsx",
-    "./FriendsContext": "./src/FriendsContext.tsx",
-    "./MoldsContext": "./src/MoldsContext.tsx",
-    "./ProjectsContext": "./src/ProjectsContext.tsx",
-    "./SiteContext": "./src/SiteContext.tsx",
-    "./TagsContext": "./src/TagsContext.tsx"
+    "./*": "./src/*.tsx"
   },
   "scripts": {
     "brl": "barrelsby --delete -d ./src",

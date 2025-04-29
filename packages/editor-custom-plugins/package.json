@@ -9,6 +9,7 @@
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
     ".": "./src/index.ts",
+    "./*": "./src/*.tsx",
     "./friends/react/FriendsBlock": "./src/friends/react/FriendsBlock.tsx",
     "./friends/react/FriendsPlugin": "./src/friends/react/FriendsPlugin.tsx",
     "./friends/react/friends-element-static": "./src/friends/react/friends-element-static.tsx",

@@ -8,10 +8,7 @@
   "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
-    "./plate-editor": "./src/plate-editor.tsx",
-    "./plate-types": "./src/plate-types.ts",
-    "./transforms": "./src/transforms.tsx",
-    "./use-create-editor": "./src/use-create-editor.tsx",
+    "./*": "./src/*.tsx",
     "./getEmptyElement": "./src/lib/getEmptyElement.ts",
     "./getNodeByPath": "./src/lib/getNodeByPath.ts",
     "./insertEmptyParagraph": "./src/lib/insertEmptyParagraph.ts"

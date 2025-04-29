@@ -6,7 +6,7 @@ import {
   User,
 } from '@penx/db/client'
 import ky from 'ky'
-import { hashPassword } from '@penx/api/hashPassword'
+import { hashPassword } from '@penx/api/lib/hashPassword'
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'

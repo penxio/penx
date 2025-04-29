@@ -8,24 +8,7 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./IArea": "./src/IArea.ts",
-    "./IAsset": "./src/IAsset.ts",
-    "./ICatalogueNode": "./src/ICatalogueNode.ts",
-    "./ICreation": "./src/ICreation.ts",
-    "./ICreationTag": "./src/ICreationTag.ts",
-    "./IDatabase": "./src/IDatabase.ts",
-    "./IDomain": "./src/IDomain.ts",
-    "./IField": "./src/IField.ts",
-    "./IFile": "./src/IFile.ts",
-    "./IMold": "./src/IMold.ts",
-    "./INode": "./src/INode.ts",
-    "./IPost": "./src/IPost.ts",
-    "./IRecord": "./src/IRecord.ts",
-    "./ISite": "./src/ISite.ts",
-    "./ITag": "./src/ITag.ts",
-    "./IView": "./src/IView.ts",
-    "./Manifest": "./src/Manifest.ts",
-    "./Node": "./src/Node.ts"
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "brl": "barrelsby --delete -d ./src",

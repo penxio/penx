@@ -8,6 +8,7 @@
   "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
+    "./*": "./src/*.tsx",
     "./ConfirmDialog": "./src/ConfirmDialog.tsx",
     "./GoogleOauthButton": "./src/GoogleOauthButton.tsx",
     "./UserAvatar": "./src/UserAvatar.tsx",

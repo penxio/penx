@@ -8,15 +8,7 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./calculateSHA256FromFile": "./src/calculateSHA256FromFile.ts",
-    "./extractErrorMessage": "./src/extractErrorMessage.ts",
-    "./findNodePath": "./src/findNodePath.ts",
-    "./generateNonce": "./src/generateNonce.ts",
-    "./getDataEditorTheme": "./src/getDataEditorTheme.ts",
-    "./getEmptyElement": "./src/getEmptyElement.ts",
-    "./getNodeByPath": "./src/getNodeByPath.ts",
-    "./insertEmptyParagraph": "./src/insertEmptyParagraph.ts",
-    "./selectEditor": "./src/selectEditor.ts"
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "brl": "barrelsby --delete -d ./src",

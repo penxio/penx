@@ -9,6 +9,11 @@
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
     "./postcss.config": "./postcss.config.mjs",
+    "./lib/*": "./src/lib/*.ts",
+    "./ui/*": "./src/ui/*.tsx",
+    "./plate-ui/*": "./src/plate-ui/*.tsx",
+    "./components/*": "./src/components/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts",
     "./AddNodeBtn": "./src/components/AddNodeBtn.tsx",
     "./FileUpload": "./src/components/FileUpload.tsx",
     "./Image": "./src/components/Image.tsx",
