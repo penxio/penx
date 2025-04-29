@@ -86,6 +86,7 @@ async function sync(
 
           if (changed) {
             await localDB.creation.update(value.id, value)
+            
             updated = true
           }
         }
