@@ -36,9 +36,7 @@
     "pretty": true,
     "preserveWatchOutput": true,
     "jsx": "preserve",
-    "paths": {
-      "@penx/*": ["../../packages/*/src"] 
-    }
+    "paths": {}
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "src-tauri/target"]
 }
