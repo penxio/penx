@@ -5,20 +5,19 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useDebouncedCallback } from 'use-debounce'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useCreationsContext } from '@penx/contexts/CreationsContext'
-import { updatePanelSizes, usePanels } from '@penx/hooks/usePanels'
+import { usePanels } from '@penx/hooks/usePanels'
+import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { ResizablePanelGroup } from '@penx/uikit/resizable'
 import { PanelItem } from './PanelItem'
 
 export function PanelList() {
   const creations = useAreaCreationsContext()
-  const { panels, isLoading } = usePanels()
+  const { panels } = usePanels()
 
   const debouncedUpdateSizes = useDebouncedCallback(async (sizes: number[]) => {
-    await updatePanelSizes(sizes)
+    await store.panels.updatePanelSizes(sizes)
   }, 200)
-
-  if (isLoading) return null
 
   return (
     <DndProvider backend={HTML5Backend}>

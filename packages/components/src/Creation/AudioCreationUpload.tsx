@@ -3,7 +3,7 @@ import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 // @ts-ignore
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useMySite } from '@penx/hooks/useMySite'
 import { ICreation } from '@penx/model-type/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
@@ -22,7 +22,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
     const inputRef = useRef<HTMLInputElement>(null)
     const [loading, setLoading] = useState(false)
     const playerRef = useRef<any>(null)
-    const site = useSiteContext()
+    const { site } = useMySite()
 
     // TODO: hack
     const [mounted, setMounted] = useState(true)

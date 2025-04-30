@@ -7,7 +7,6 @@ import { Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
 // import { usePanelCreationContext } from '@penx/components/Creation'
 import { editorDefaultValue, UpdateCreationInput } from '@penx/constants'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   addCreationTag,
@@ -41,7 +40,7 @@ export function Creation({ index }: { index: number }) {
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
   const isImage = creation.type === CreationType.IMAGE
-  const molds = useMoldsContext()
+  const { molds } = useMolds()
 
   const debouncedUpdate = useDebouncedCallback(
     async (value: ICreation) => {

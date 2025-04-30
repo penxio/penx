@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Author } from '@penx/db/client'
 import { Command } from 'cmdk'
 import { Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { Author } from '@penx/db/client'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
+import { useMySite } from '@penx/hooks/useMySite'
 import { ICreation } from '@penx/model-type/ICreation'
 import { api, trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
@@ -25,7 +25,6 @@ import { UserAvatar } from '@penx/widgets/UserAvatar'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 export function Authors({ creation }: { creation: ICreation }) {
-  const site = useSiteContext()
   const [search, setSearch] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const { data: collaborators = [] } = useCollaborators()

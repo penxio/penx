@@ -5,21 +5,21 @@ import { Trans } from '@lingui/react'
 import { Command } from 'cmdk'
 import { HashIcon, Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useCreationTagsContext } from '@penx/contexts/CreationTagsContext'
-import { useTagsContext } from '@penx/contexts/TagsContext'
 import {
   addCreationTag,
   createTag,
   CreationTagWithTag,
   deleteCreationTag,
 } from '@penx/hooks/useCreation'
+import { useCreationTags } from '@penx/hooks/useCreationTags'
+import { useTags } from '@penx/hooks/useTags'
 import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
 import { ICreation } from '@penx/model-type/ICreation'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
@@ -34,8 +34,8 @@ export function Tags({ creation }: Props) {
   const [search, setSearch] = useState('')
   const [adding, setAdding] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const tags = useTagsContext()
-  const { queryByCreation } = useCreationTagsContext()
+  const { tags } = useTags()
+  const { queryByCreation } = useCreationTags()
   const creationTags = queryByCreation(creation.id)
 
   return (

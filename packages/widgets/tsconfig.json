@@ -2,11 +2,7 @@
   "extends": "@penx/typescript-config/internal-package.json",
   "compilerOptions": {
     "strict": true,
-    "strictNullChecks": true,
-    "baseUrl": ".",
-    "paths": {
-      "@penx/uikit/*": ["./src/*"]
-    }
+    "strictNullChecks": true
   },
   "include": ["."],
   "exclude": ["node_modules", "dist"]

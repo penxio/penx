@@ -14,15 +14,15 @@ import {
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
 import { useDomains } from '@penx/hooks/useDomains'
-import { updateMainPanel } from '@penx/hooks/usePanels'
+import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
 import { ICreation } from '@penx/model-type/ICreation'
 import { useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { CreationType, PanelType } from '@penx/types'
 import { Badge } from '@penx/uikit/badge'
@@ -40,7 +40,7 @@ interface PostItemProps {
 
 export function ArticleItem({ creation }: PostItemProps) {
   const isPublished = creation.status === CreationStatus.PUBLISHED
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { data = [] } = useDomains()
   const { isSubdomain, domain } = getSiteDomain(data, false)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
@@ -56,7 +56,7 @@ export function ArticleItem({ creation }: PostItemProps) {
               window.open(postUrl)
               return
             }
-            updateMainPanel({
+            store.panels.updateMainPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
               creationId: creation.id,
@@ -89,7 +89,7 @@ export function ArticleItem({ creation }: PostItemProps) {
           variant="ghost"
           className="h-7 gap-1 rounded-full text-xs opacity-50"
           onClick={() => {
-            updateMainPanel({
+            store.panels.updateMainPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
               creationId: creation.id,

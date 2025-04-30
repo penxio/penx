@@ -6,10 +6,9 @@ import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
 // import { useParams } from 'next/navigation'
 import { ProfileAvatar } from '@penx/components/ProfileAvatar'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useAreas } from '@penx/hooks/useAreas'
-import { resetPanels } from '@penx/hooks/usePanels'
 import { updateSession, useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
@@ -51,10 +50,10 @@ export const AreasPopover = ({ className = '' }: Props) => {
             variant="ghost"
             className="hover:bg-foreground/7 text-foreground/80 hidden size-7 rounded-md group-hover/area:flex"
             size="icon"
-            onClick={(e) => {
+            onClick={async (e) => {
               e.stopPropagation()
               e.preventDefault()
-              resetPanels()
+              await store.panels.resetPanels()
             }}
           >
             <HomeIcon size={18} className="text-foreground/60" />
@@ -74,7 +73,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
                 await updateSession({
                   activeAreaId: item.id,
                 })
-                resetPanels()
+                await store.panels.resetPanels()
               }}
             >
               <Avatar className="h-6 w-6">

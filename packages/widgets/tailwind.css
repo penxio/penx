@@ -218,3 +218,38 @@ h4 {
     opacity: 0.2;
   }
 }
+
+.logo-loader {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+}
+.logo-loader::after,
+.logo-loader::before {
+  content: '';
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: animloader 2s linear infinite;
+}
+.logo-loader::after {
+  animation-delay: 1s;
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    background: #aaa;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+    background: #fff;
+  }
+}

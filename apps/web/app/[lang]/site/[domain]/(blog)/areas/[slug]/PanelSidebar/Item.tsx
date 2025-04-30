@@ -12,9 +12,9 @@ import {
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useAreaContext } from '@penx/components/AreaContext'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { toggleCollapsed } from '@penx/hooks/useArea'
+import { useMolds } from '@penx/hooks/useMolds'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
@@ -35,7 +35,7 @@ interface Props {
 
 export const Item = forwardRef<HTMLDivElement, Props>(
   function Item(props, ref) {
-    const molds = useMoldsContext()
+    const { molds } = useMolds()
     const [visible, setVisible] = useState(false)
     const area = useAreaContext()
     const [widget, setWidget] = useState(props.widget)

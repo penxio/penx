@@ -6,8 +6,9 @@ import { addToFavorites, removeFromFavorites } from '@penx/hooks/useArea'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { useCreationMold } from '@penx/hooks/useCreationMold'
 import { updateCreationById } from '@penx/hooks/useCreations'
-import { addPanel, updateMainPanel, usePanels } from '@penx/hooks/usePanels'
+import { usePanels } from '@penx/hooks/usePanels'
 import { ICreation } from '@penx/model-type/ICreation'
+import { store } from '@penx/store'
 import { CreationType, PanelType, SiteCreation } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import {
@@ -35,7 +36,7 @@ export function CreationItem({ creation }: CreationItemProps) {
           key={creation.id}
           className="hover:bg-foreground/5 group flex h-7 cursor-pointer items-center gap-2 rounded py-1 pl-2 pr-1 transition-all"
           onClick={() => {
-            updateMainPanel({
+            store.panels.updateMainPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
               creationId: creation.id,
@@ -69,7 +70,7 @@ export function CreationItem({ creation }: CreationItemProps) {
       <ContextMenuContent>
         <ContextMenuItem
           onClick={() => {
-            addPanel({
+            store.panels.addPanel({
               id: uniqueId(),
               type: PanelType.CREATION,
               creationId: creation.id,

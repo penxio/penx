@@ -9,21 +9,6 @@ import { JotaiNexus } from './JotaiNexus'
 import { store } from './store'
 
 export function StoreProvider(props: PropsWithChildren) {
-  // const { status, data: session } = useSession()
-  // const pathname = usePathname()
-
-  // useEffect(() => {
-  //   if (session) {
-  //     window.__USER_ID__ = session.userId
-  //   } else {
-  //     window.__USER_ID__ = undefined as any
-  //   }
-  // }, [session])
-
-  // useEffect(() => {
-  //   setLocalSession(session as any)
-  // }, [session])
-
   return (
     <Provider store={store}>
       <JotaiNexus />

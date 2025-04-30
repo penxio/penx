@@ -18,7 +18,7 @@ import equal from 'fast-deep-equal'
 import { CogIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
-import { addPanel } from '@penx/hooks/usePanels'
+import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
@@ -253,7 +253,7 @@ function PureMultimodalInput({
           className="hover:bg-foreground/10 size-7 rounded-md"
           type="button"
           onClick={() => {
-            addPanel({
+            store.panels.addPanel({
               type: PanelType.AI_PROVIDERS,
             })
           }}

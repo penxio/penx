@@ -26,7 +26,6 @@ import { RateCell } from '@penx/components/rate-cell'
 import { SingleSelectCell } from '@penx/components/single-select-cell'
 import { SystemDateCell } from '@penx/components/system-date-cell'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Column } from '@penx/db/client'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
@@ -69,7 +68,6 @@ function getCols(columns: Column[], viewColumns: ViewColumn[]) {
 }
 
 export function useTableView() {
-  const site = useSiteContext()
   const {
     database,
     filterResult: { filterRows = [], cellNodesMapList = [] },

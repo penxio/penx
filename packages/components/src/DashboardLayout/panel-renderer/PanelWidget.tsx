@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { WidgetType } from '@penx/constants'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
+import { useMolds } from '@penx/hooks/useMolds'
 import { CreationType, Panel, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { ClosePanelButton } from '../ClosePanelButton'
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function PanelWidget({ panel, index }: Props) {
-  const molds = useMoldsContext()
+  const { molds } = useMolds()
   const widget = panel.widget as Widget
   const mold = molds.find((m) => m.id === widget.moldId)
 

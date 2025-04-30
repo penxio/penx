@@ -10,13 +10,18 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSession } from '@penx/session'
+import { arrayMoveImmutable } from 'array-move'
+import { produce } from 'immer'
+import { useSearchParams } from 'next/navigation'
+import { RouterInputs, RouterOutputs } from '@penx/api'
+import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
+import { Column, Record as Row, View } from '@penx/db/client'
+import { useMySite } from '@penx/hooks/useMySite'
 import { useQueryDatabase } from '@penx/hooks/useQueryDatabase'
 import { getRandomColorName } from '@penx/libs/color-helper'
-import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { IFilterResult, IOptionNode } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
+import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import {
   ColumnType,
@@ -27,13 +32,8 @@ import {
   ViewColumn,
   ViewType,
 } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { uniqueId } from '@penx/unique-id'
-import { RouterInputs, RouterOutputs } from '@penx/api'
-import { Column, Record as Row, View } from '@penx/db/client'
-import { arrayMoveImmutable } from 'array-move'
-import { produce } from 'immer'
-import { useSearchParams } from 'next/navigation'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 
 type DatabaseView = Omit<View, 'viewColumns'> & {
   viewColumns: ViewColumn[]
@@ -169,7 +169,7 @@ function DatabaseContent({
 }: PropsWithChildren<DatabaseContentProps>) {
   const params = useSearchParams()
   const databaseId = params?.get('id')!
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { data } = useSession()
   const userId = data?.userId || ''
 

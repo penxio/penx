@@ -1,9 +1,10 @@
 'use client'
 
-import { Button } from '@penx/uikit/button'
-import { closePanel, usePanels } from '@penx/hooks/usePanels'
-import { Panel } from '@penx/types'
 import { XIcon } from 'lucide-react'
+import { usePanels } from '@penx/hooks/usePanels'
+import { store } from '@penx/store'
+import { Panel } from '@penx/types'
+import { Button } from '@penx/uikit/button'
 
 export function ClosePanelButton({ panel }: { panel: Panel }) {
   const { panels } = usePanels()
@@ -14,7 +15,7 @@ export function ClosePanelButton({ panel }: { panel: Panel }) {
       variant="ghost"
       size="icon"
       className="size-6 rounded-md p-1 "
-      onClick={() => closePanel(panel.id)}
+      onClick={() => store.panels.closePanel(panel.id)}
     >
       <XIcon size={14} />
     </Button>

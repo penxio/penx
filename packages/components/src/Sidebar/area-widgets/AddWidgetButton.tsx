@@ -14,8 +14,7 @@ import { toast } from 'sonner'
 import { AddNoteDialog } from '@penx/components/AddNoteDialog'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useMolds } from '@penx/hooks/useMolds'
 import { Mold } from '@penx/db/client'
 import { addWidget } from '@penx/hooks/useArea'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
@@ -40,15 +39,13 @@ interface Props {
 }
 
 export function AddWidgetButton({ className }: Props) {
-  const site = useSiteContext()
-
   const { session } = useSession()
   const [isLoading, setLoading] = useState(false)
   const [type, setType] = useState<CreationType>('' as any)
   const [open, setOpen] = useState(false)
   const addNoteDialog = useAddNoteDialog()
   const area = useAreaContext()
-  const molds = useMoldsContext()
+  const { molds } = useMolds()
 
   async function addMoldWidget(mold: Mold) {
     setOpen(false)

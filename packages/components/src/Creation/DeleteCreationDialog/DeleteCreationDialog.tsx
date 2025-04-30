@@ -4,10 +4,10 @@ import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { toast } from 'sonner'
 import { deleteCreation, refetchCreations } from '@penx/hooks/useCreations'
-import { closePanel, resetPanels, usePanels } from '@penx/hooks/usePanels'
+import { usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -18,6 +18,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useDeleteCreationDialog } from './useDeleteCreationDialog'
 
@@ -35,7 +36,7 @@ export function DeleteCreationDialog({}: Props) {
       toast.success('Deleted successfully')
       setIsOpen(false)
       const panel = panels.find((p) => p.creationId === creation.id)
-      closePanel(panel?.id!)
+      store.panels.closePanel(panel?.id!)
     } catch (error) {
       toast.error(extractErrorMessage(error) || 'Failed to delete')
     }

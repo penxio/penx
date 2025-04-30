@@ -1,9 +1,8 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Mold } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { Mold } from '@penx/db/client'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
 import { TaskItem } from './TaskItem'
@@ -15,7 +14,6 @@ interface PostListProps {
 }
 
 export function TasksList({ mold }: PostListProps) {
-  const { id } = useSiteContext()
   const { data: creations = [], isLoading } = useQuery({
     queryKey: ['creations', mold.id],
     queryFn: async () => {

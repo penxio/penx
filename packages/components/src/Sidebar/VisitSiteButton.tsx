@@ -3,7 +3,6 @@
 import { Trans } from '@lingui/react'
 import { ExternalLink, GlobeIcon, LinkIcon } from 'lucide-react'
 import { ROOT_DOMAIN } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Button } from '@penx/uikit/button'
@@ -17,7 +16,6 @@ import {
 interface Props {}
 
 export function VisitSiteButton({}: Props) {
-  const site = useSiteContext()
   const { data = [] } = useDomains()
   const { domain, isSubdomain } = getSiteDomain(data)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain

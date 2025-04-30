@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 // @ts-ignore
 import { Player } from 'shikwasa'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useMySite } from '@penx/hooks/useMySite'
 import { Creation } from '@penx/types'
 import { Skeleton } from '@penx/uikit/skeleton'
 import { cn, getUrl } from '@penx/utils'
@@ -15,7 +15,7 @@ interface Props {
 
 export function PodcastPlayer({ creation, className }: Props) {
   const playerRef = useRef<any>(null)
-  const site = useSiteContext()
+  const { site } = useMySite()
 
   useEffect(() => {
     playerRef.current = new Player({

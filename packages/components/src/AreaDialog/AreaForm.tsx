@@ -4,22 +4,20 @@ import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react'
-import { ChargeMode } from '@penx/db/client'
 import { slug } from 'github-slugger'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
 import { editorDefaultValue } from '@penx/constants'
+import { ChargeMode } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { updateArea, useArea } from '@penx/hooks/useArea'
 import { addArea } from '@penx/hooks/useAreas'
-import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
 import { useSite } from '@penx/hooks/useSite'
 import { useRouter } from '@penx/libs/i18n'
 import { updateSession, useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { NumberInput } from '@penx/uikit/NumberInput'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -31,6 +29,8 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
 import { Textarea } from '@penx/uikit/textarea'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
@@ -98,7 +98,7 @@ export function AreaForm() {
         updateSession({
           activeAreaId: area.id,
         })
-        await resetPanels()
+        await store.panels.resetPanels()
       }
 
       setIsOpen(false)

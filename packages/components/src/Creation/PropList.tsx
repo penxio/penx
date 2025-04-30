@@ -7,7 +7,7 @@ import {
   LinkIcon,
   TextIcon,
 } from 'lucide-react'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
+import { useMolds } from '@penx/hooks/useMolds'
 import { Prop, PropType } from '@penx/types'
 import { Input } from '@penx/uikit/input'
 import {
@@ -30,7 +30,7 @@ interface Props {
 
 export const PropList = ({ onUpdateProps }: Props) => {
   const creation = usePanelCreationContext()
-  const molds = useMoldsContext()
+  const { molds } = useMolds()
   const mold = molds.find((m) => m.id === creation.moldId)
   if (!Array.isArray(mold?.props)) return null
   const props = mold?.props as Prop[]

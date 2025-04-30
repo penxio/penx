@@ -2,14 +2,14 @@
 
 import { GlobeIcon } from 'lucide-react'
 import { BUILTIN_PAGE_SLUGS, ROOT_DOMAIN } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDomains } from '@penx/hooks/useDomains'
+import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { usePanelCreationContext } from '../../Creation'
 
 export function CreationLink() {
   const creation = usePanelCreationContext()
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { data = [] } = useDomains()
   const { isSubdomain, domain } = getSiteDomain(data)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain

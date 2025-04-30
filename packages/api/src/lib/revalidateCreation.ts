@@ -1,6 +1,6 @@
+import { revalidateTag } from 'next/cache'
 import { calculateSHA256FromString } from '@penx/encryption'
 import { CreationById } from '@penx/types'
-import { revalidateTag } from 'next/cache'
 
 export function revalidateCreation(_creation: any) {
   const creation = _creation as CreationById

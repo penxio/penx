@@ -2,17 +2,17 @@
 
 import { ExternalLink } from 'lucide-react'
 import { ROOT_DOMAIN } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDomainStatus } from '@penx/hooks/use-domain-status'
 import { useDomains } from '@penx/hooks/useDomains'
+import { useMySite } from '@penx/hooks/useMySite'
 import { useSite } from '@penx/hooks/useSite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { Badge } from '@penx/uikit/badge'
 import LoadingCircle from '@penx/uikit/loading-circle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { Badge } from '@penx/uikit/badge'
 
 export function SiteLink() {
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { data = [] } = useDomains()
   const { isSubdomain, domain, subdomain } = getSiteDomain(data)
   const link = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain

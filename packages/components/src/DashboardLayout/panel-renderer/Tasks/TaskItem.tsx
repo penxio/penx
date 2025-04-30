@@ -1,7 +1,6 @@
 'use client'
 
 import TextareaAutosize from 'react-textarea-autosize'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateCreation } from '@penx/hooks/useCreation'
 import {
   refetchCreations,
@@ -17,7 +16,6 @@ interface PostItemProps {
 }
 
 export function TaskItem({ creation: creation }: PostItemProps) {
-  const site = useSiteContext()
   return (
     <div className={cn('flex break-inside-avoid flex-col rounded-2xl')}>
       <div className="flex items-center gap-2">

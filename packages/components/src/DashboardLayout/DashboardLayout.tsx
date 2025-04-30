@@ -7,10 +7,7 @@ import { AreaDialog } from '@penx/components/AreaDialog'
 import { CommandPanel } from '@penx/components/CommandPanel'
 import { isBrowser, isServer, SIDEBAR_WIDTH } from '@penx/constants'
 import { AreaCreationsProvider } from '@penx/contexts/AreaCreationsContext'
-import { CreationTagsProvider } from '@penx/contexts/CreationTagsContext'
-import { MoldsProvider } from '@penx/contexts/MoldsContext'
 import { SiteProvider } from '@penx/contexts/SiteContext'
-import { TagsProvider } from '@penx/contexts/TagsContext'
 // import { runWorker } from '@/lib/worker'
 import { Site } from '@penx/db/client'
 import { useArea } from '@penx/hooks/useArea'
@@ -40,10 +37,6 @@ import { SettingsLayout } from './SettingsLayout'
 // }
 
 export function DashboardLayout({ children }: { children?: ReactNode }) {
-  const siteQuery = useMySite()
-  const moldsQuery = useMolds()
-  const tagsQuery = useTags()
-  const creationTagsQuery = useCreationTags()
   const areaQuery = useArea()
   const areaCreationsQuery = useCreations()
   const domainsQuery = useDomains()
@@ -53,13 +46,9 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
   const isDesign = pathname.includes('/~/design')
 
   if (
-    siteQuery.isLoading ||
     domainsQuery.isLoading ||
     areaQuery.isLoading ||
-    areaCreationsQuery.isLoading ||
-    tagsQuery.isLoading ||
-    moldsQuery.isLoading ||
-    creationTagsQuery.isLoading
+    areaCreationsQuery.isLoading
   ) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -75,23 +64,15 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
   // if (!session) return null
 
   return (
-    <SiteProvider site={siteQuery.data as any}>
-      <MoldsProvider molds={moldsQuery.data!}>
-        <TagsProvider tags={tagsQuery.data!}>
-          <CreationTagsProvider creationTags={creationTagsQuery.data!}>
-            <AreaProvider area={areaQuery.data!}>
-              <AreaCreationsProvider
-                creations={(areaCreationsQuery.data! as any) || []}
-              >
-                {/* <CommandPanel /> */}
-                <AreaDialog />
-                {isDesign && children}
-                {!isDesign && <Layout>{children}</Layout>}
-              </AreaCreationsProvider>
-            </AreaProvider>
-          </CreationTagsProvider>
-        </TagsProvider>
-      </MoldsProvider>
-    </SiteProvider>
+    <AreaProvider area={areaQuery.data!}>
+      <AreaCreationsProvider
+        creations={(areaCreationsQuery.data! as any) || []}
+      >
+        {/* <CommandPanel /> */}
+        <AreaDialog />
+        {isDesign && children}
+        {!isDesign && <Layout>{children}</Layout>}
+      </AreaCreationsProvider>
+    </AreaProvider>
   )
 }

@@ -6,12 +6,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans, useLingui } from '@lingui/react'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
-import { refetchTags } from '@penx/hooks/useTags'
 import { localDB } from '@penx/local-db'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -23,6 +21,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useTagDialog } from './useTagDialog'
 
@@ -47,7 +46,7 @@ export function TagForm() {
       setLoading(true)
 
       await localDB.tag.update(tag.id, data)
-      await refetchTags()
+      await store.tags.refetchTags()
       form.reset()
       setIsOpen(false)
       await api.tag.updateTag.mutate({

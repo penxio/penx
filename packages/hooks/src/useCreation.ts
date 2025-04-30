@@ -1,10 +1,10 @@
 import isEqual from 'react-fast-compare'
-import { CreationTag, Tag } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import debounce from 'lodash.debounce'
 import { RouterOutputs } from '@penx/api'
 import { UpdateCreationInput } from '@penx/constants'
+import { CreationTag, Tag } from '@penx/db/client'
 // import { CreationTag, Tag } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
@@ -14,10 +14,9 @@ import { ICreation } from '@penx/model-type/ICreation'
 import { ICreationTag } from '@penx/model-type/ICreationTag'
 import { ITag } from '@penx/model-type/ITag'
 import { queryClient } from '@penx/query-client'
+import { store } from '@penx/store'
 import { api, trpc } from '@penx/trpc-client'
 import { uniqueId } from '@penx/unique-id'
-import { refetchCreationTags } from './useCreationTags'
-import { refetchTags } from './useTags'
 
 export type CreationTagWithTag = CreationTag & { tag: Tag }
 
@@ -76,8 +75,8 @@ export async function createTag(creation: ICreation, tagName: string) {
     }
     await localDB.creationTag.add(newCreationTag)
 
-    refetchTags()
-    refetchCreationTags()
+    store.tags.refetchTags()
+    store.creationTags.refetchCreationTags()
 
     await api.tag.createAndAddTag.mutate({
       tag: newTag,
@@ -97,7 +96,8 @@ export async function addCreationTag(creation: ICreation, tag: ITag) {
   }
   await localDB.creationTag.add(newCreationTag)
 
-  await refetchCreationTags()
+  await store.creationTags.refetchCreationTags()
+
   api.tag.add.mutate({
     id: newCreationTag.id,
     siteId: creation.siteId,
@@ -109,7 +109,7 @@ export async function addCreationTag(creation: ICreation, tag: ITag) {
 export async function deleteCreationTag(postTag: ICreationTag) {
   const creation = getCreation(postTag.creationId)
   await localDB.creationTag.delete(postTag.id)
-  await refetchCreationTags()
+  await store.creationTags.refetchCreationTags()
   api.tag.deleteCreationTag.mutate(postTag.id)
 }
 

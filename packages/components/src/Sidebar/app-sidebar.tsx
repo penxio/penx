@@ -6,8 +6,8 @@ import { PaletteIcon, TagsIcon } from 'lucide-react'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { isWeb, ROOT_HOST } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
-import { addPanel } from '@penx/hooks/usePanels'
 import { useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import {
@@ -83,7 +83,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     size="icon"
                     className="hover:bg-foreground/8 size-8"
                     onClick={() => {
-                      addPanel({
+                      store.panels.addPanel({
                         type: PanelType.MANAGE_TAGS,
                       })
                     }}

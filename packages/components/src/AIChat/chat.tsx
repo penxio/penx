@@ -6,12 +6,12 @@ import type { Attachment, UIMessage } from 'ai'
 import { useSearchParams } from 'next/navigation'
 import useSWR, { useSWRConfig } from 'swr'
 import { unstable_serialize } from 'swr/infinite'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
-import { addPanel } from '@penx/hooks/usePanels'
+import { useMySite } from '@penx/hooks/useMySite'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { PanelType, SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { Artifact } from './artifact'
@@ -41,7 +41,7 @@ export function Chat({
   isReadonly: boolean
   session: SessionData
 }) {
-  const site = useSiteContext()
+  const { site } = useMySite()
   const provider = site.aiProviders?.find((p) => p.enabled)
 
   const {
@@ -94,7 +94,7 @@ export function Chat({
         description: error.message,
       })
       if (error.message === 'Please provide an API key') {
-        addPanel({
+        store.panels.addPanel({
           type: PanelType.AI_PROVIDERS,
         })
 

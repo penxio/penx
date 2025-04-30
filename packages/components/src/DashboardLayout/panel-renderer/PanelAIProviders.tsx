@@ -3,10 +3,9 @@
 import { PropsWithChildren } from 'react'
 import { Trans } from '@lingui/react'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { updateAIProvider } from '@penx/hooks/useMySite'
-import { updateMainPanel } from '@penx/hooks/usePanels'
+import { useMySite } from '@penx/hooks/useMySite'
 import { AIProviderType } from '@penx/model-type'
+import { store } from '@penx/store'
 import { Panel, PanelType } from '@penx/types'
 import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/card'
 import { Input } from '@penx/uikit/input'
@@ -22,7 +21,7 @@ interface Props {
 
 export function PanelAIProviders({ panel, index }: Props) {
   const data = useAreaCreationsContext()
-  const site = useSiteContext()
+  const { site } = useMySite()
   const providers = site.aiProviders || []
 
   return (
@@ -81,7 +80,7 @@ export function PanelAIProviders({ panel, index }: Props) {
                       <Switch
                         checked={!!provider?.enabled}
                         onCheckedChange={(v) => {
-                          updateAIProvider({
+                          store.site.updateAIProvider({
                             type: type as AIProviderType,
                             enabled: v,
                           })
@@ -97,7 +96,7 @@ export function PanelAIProviders({ panel, index }: Props) {
                       placeholder="API key"
                       defaultValue={provider?.apiKey || ''}
                       onChange={(e) => {
-                        updateAIProvider({
+                        store.site.updateAIProvider({
                           type: type as AIProviderType,
                           apiKey: e.target.value,
                         })

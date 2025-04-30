@@ -7,8 +7,8 @@ import { Trans } from '@lingui/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { WidgetType } from '@penx/constants'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { openWidgetPanel } from '@penx/hooks/usePanels'
+import { useMolds } from '@penx/hooks/useMolds'
+import { store } from '@penx/store'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import {
@@ -62,7 +62,7 @@ export const WidgetItem = memo(
       ...rest
     } = props
 
-    const molds = useMoldsContext()
+    const { molds } = useMolds()
     const area = useAreaContext()
     const [visible, setVisible] = useState(false)
 
@@ -95,7 +95,7 @@ export const WidgetItem = memo(
                 {...listeners}
                 onClick={() => {
                   if (widget.type === WidgetType.AI_CHAT) {
-                    openWidgetPanel(widget)
+                    store.panels.openWidgetPanel(widget)
                     return
                   }
                   setVisible(!visible)
@@ -120,7 +120,7 @@ export const WidgetItem = memo(
               widget={widget}
               onShowAll={() => setVisible(!visible)}
               onOpenInPanel={() => {
-                openWidgetPanel(widget)
+                store.panels.openWidgetPanel(widget)
               }}
             />
           </ContextMenu>

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
-import { GateType } from '@penx/db/client'
 import { usePlateEditor } from '@udecode/plate/react'
 import { add } from 'lodash'
 import { useRouter } from 'next/navigation'
@@ -8,16 +7,13 @@ import { Editor, Node, Transforms } from 'slate'
 import { ReactEditor, useSlate } from 'slate-react'
 import { toast } from 'sonner'
 import { editorDefaultValue } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { GateType } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import {
-  refetchCreations,
-  useCreations,
-} from '@penx/hooks/useCreations'
+import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
+import { useMySite } from '@penx/hooks/useMySite'
 import { usePublishPost } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -29,6 +25,7 @@ import {
   DialogTrigger,
 } from '@penx/uikit/dialog'
 import { Label } from '@penx/uikit/label'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Switch } from '@penx/uikit/switch'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { usePanelCreationContext } from '../PanelCreationProvider'
@@ -80,7 +77,7 @@ function Footer({
   value: any[]
   setValue: (v: any) => void
 }) {
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { setIsOpen, mold } = useAddNoteDialog()
   const creation = usePanelCreationContext()
   const [isLoading, setLoading] = useState(false)

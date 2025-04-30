@@ -3,8 +3,8 @@
 import { GlobeIcon } from 'lucide-react'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { ROOT_DOMAIN } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDomains } from '@penx/hooks/useDomains'
+import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 
 export function AreaLink({ className }: Props) {
   const area = useAreaContext()
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { data = [] } = useDomains()
   const { isSubdomain, domain } = getSiteDomain(data as any)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain

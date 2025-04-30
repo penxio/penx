@@ -4,14 +4,13 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react'
-import { GateType } from '@penx/db/client'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { GateType } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   PublishPostFormSchema,
@@ -19,8 +18,6 @@ import {
 } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { NumberInput } from '@penx/uikit/NumberInput'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import { Calendar } from '@penx/uikit/calendar'
@@ -35,6 +32,8 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { Switch } from '@penx/uikit/switch'
 import { cn } from '@penx/utils'
@@ -46,7 +45,6 @@ import { usePublishDialog } from './usePublishDialog'
 export function PublishForm() {
   const { setIsOpen } = usePublishDialog()
   const creation = usePanelCreationContext()
-  const { spaceId, ...site } = useSiteContext()
   const { data: session } = useSession()
   const { isLoading, publishPost } = usePublishPost()
   const [open, setOpen] = useState(false)

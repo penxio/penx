@@ -14,11 +14,11 @@ import {
 import { Tags } from '@penx/components/Tags'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { CreationTagWithTag } from '@penx/hooks/useCreation'
 import { refetchCreations } from '@penx/hooks/useCreations'
 import { useDomains } from '@penx/hooks/useDomains'
+import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { localDB } from '@penx/local-db'
 import { ICreation } from '@penx/model-type/ICreation'
@@ -35,7 +35,6 @@ interface PostItemProps {
 export function NoteItem({ creation: _creation }: PostItemProps) {
   const [creation, setCreation] = useState(_creation)
   const isPublished = creation.status === CreationStatus.PUBLISHED
-  const site = useSiteContext()
   const { data = [] } = useDomains()
   const { isSubdomain, domain } = getSiteDomain(data)
   const [readonly, setReadonly] = useState(true)

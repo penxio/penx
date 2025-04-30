@@ -1,14 +1,14 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Site } from '@penx/db/client'
 import { format } from 'date-fns'
 import { Edit3Icon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useTagsContext } from '@penx/contexts/TagsContext'
+import { Site } from '@penx/db/client'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
 import { useSubscribers } from '@penx/hooks/useSubscribers'
-import { deleteTag, useTags } from '@penx/hooks/useTags'
+import { useTags } from '@penx/hooks/useTags'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
 import { Skeleton } from '@penx/uikit/skeleton'
@@ -32,7 +32,7 @@ interface Props {
 }
 
 export function ManageTags({ panel, index }: Props) {
-  const tags = useTagsContext()
+  const { tags } = useTags()
   const { setState } = useTagDialog()
 
   return (
@@ -74,7 +74,7 @@ export function ManageTags({ panel, index }: Props) {
                     content="All tags in post will be deleted, are you sure you want to delete this tag?"
                     tooltipContent={<Trans id="Delete tag"></Trans>}
                     onConfirm={async () => {
-                      await deleteTag(item)
+                      await store.tags.deleteTag(item)
                       toast.success('Tag deleted successfully!')
                     }}
                   />

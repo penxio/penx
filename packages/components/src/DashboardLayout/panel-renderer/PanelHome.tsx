@@ -4,7 +4,7 @@ import { Trans } from '@lingui/react'
 import { ClockIcon } from 'lucide-react'
 import { AreaInfo } from '@penx/components/AreaInfo'
 import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
-import { updateMainPanel } from '@penx/hooks/usePanels'
+import { store } from '@penx/store'
 import { Panel, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { ClosePanelButton } from '../ClosePanelButton'
@@ -46,7 +46,7 @@ export function PanelHome({ panel, index }: Props) {
                   <div
                     className="hover:text-brand text-foreground/80 cursor-pointer"
                     onClick={() => {
-                      updateMainPanel({
+                      store.panels.updateMainPanel({
                         id: uniqueId(),
                         type: PanelType.CREATION,
                         creationId: item.id,

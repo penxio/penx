@@ -1,10 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Area } from '@penx/db/client'
 import { PlusIcon } from 'lucide-react'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useMolds } from '@penx/hooks/useMolds'
+import { Area } from '@penx/db/client'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { IArea } from '@penx/model-type/IArea'
 import { Widget } from '@penx/types'
@@ -16,7 +15,7 @@ interface Props {
 }
 
 export function AddCreationButton({ area, widget }: Props) {
-  const molds = useMoldsContext()
+  const { molds } = useMolds()
   const addCreation = useAddCreation()
   return (
     <Button

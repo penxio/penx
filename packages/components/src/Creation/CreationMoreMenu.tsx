@@ -5,9 +5,9 @@ import { Trans } from '@lingui/react'
 import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
 import { editorDefaultValue } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useCreateEditor } from '@penx/editor/use-create-editor'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
+import { useMySite } from '@penx/hooks/useMySite'
 import { ICreation } from '@penx/model-type/ICreation'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
@@ -20,7 +20,7 @@ import { usePublishDialog } from './PublishDialog/usePublishDialog'
 
 export function CreationMoreMenu({ creation }: { creation: ICreation }) {
   const [isOpen, setIsOpen] = useState(false)
-  const site = useSiteContext()
+  const { site } = useMySite()
   const publishDialog = usePublishDialog()
   const deletePostDialog = useDeleteCreationDialog()
   const { locales = [] } = (site.config || {}) as {

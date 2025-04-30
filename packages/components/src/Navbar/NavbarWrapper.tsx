@@ -1,12 +1,12 @@
 'use client'
 
 import React, { HTMLAttributes, PropsWithChildren, useMemo } from 'react'
-import { useSession } from '@penx/session'
-import { Link, usePathname } from '@penx/libs/i18n'
-import { cn } from '@penx/utils'
 import { Merienda } from 'next/font/google'
+import { useMySite } from '@penx/hooks/useMySite'
+import { Link, usePathname } from '@penx/libs/i18n'
+import { useSession } from '@penx/session'
+import { cn } from '@penx/utils'
 import { ProfilePopover } from '../Profile/ProfilePopover'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 
 const merienda = Merienda({
   weight: ['400', '500', '600', '700'],
@@ -22,7 +22,7 @@ export function NavbarWrapper({
   const pathname = usePathname()!
   const { data: session } = useSession()
   const isPost = pathname.startsWith(`/~/post/`)
-  const site = useSiteContext()
+  const { site } = useMySite()
 
   const topRightJSX = useMemo(() => {
     if (isPost) return null

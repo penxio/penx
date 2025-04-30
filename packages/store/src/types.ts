@@ -12,15 +12,3 @@ export type IRouterStore = {
   name: RouteName
   params: Record<string, any>
 }
-
-export type SettingsRouterStore = {
-  name: RouteName
-  params: Record<string, any>
-}
-
-export type Command = {
-  id: string
-  name: string
-  pluginId?: string
-  handler: () => void
-}

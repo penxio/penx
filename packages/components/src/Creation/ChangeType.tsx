@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
-import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'
+import { useMolds } from '@penx/hooks/useMolds'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { ICreation } from '@penx/model-type/ICreation'
 import { api } from '@penx/trpc-client'
@@ -14,7 +14,7 @@ import { cn } from '@penx/utils'
 import { MoldName } from '@penx/widgets/MoldName'
 
 export function ChangeType({ creation }: { creation: ICreation }) {
-  const molds = useMoldsContext()
+  const { molds } = useMolds()
   const [open, setOpen] = useState(false)
   const mold = molds.find((m) => m.id === creation.moldId)
 

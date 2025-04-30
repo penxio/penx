@@ -15,10 +15,9 @@ import {
   Sun,
 } from 'lucide-react'
 // import { useRouter } from 'next/navigation'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { appEmitter } from '@penx/emitter'
+import { useMySite } from '@penx/hooks/useMySite'
 import { useMySites } from '@penx/hooks/useMySites'
-import { resetPanels, updatePanels } from '@penx/hooks/usePanels'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
@@ -43,7 +42,7 @@ import { getUrl, sleep } from '@penx/utils'
 import { usePlanListDialog } from '../PlanList/usePlanListDialog'
 
 export function NavUser() {
-  const site = useSiteContext()
+  const { site } = useMySite()
   const { data: sites = [], error } = useMySites()
   const { session, data, logout, update } = useSession()
   const { isMobile } = useSidebar()
@@ -62,7 +61,7 @@ export function NavUser() {
       activeAreaId: field.id,
     })
 
-    resetPanels()
+    await store.panels.resetPanels()
   }
 
   return (
