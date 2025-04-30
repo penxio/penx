@@ -7,12 +7,12 @@ import cx from 'classnames'
 import equal from 'fast-deep-equal'
 import { AnimatePresence, motion } from 'motion/react'
 import { Button } from '@penx/uikit/button'
-import { Tooltip, TooltipContent, TooltipTrigger } from '@penx/uikit/tooltip'
 import { cn } from '@penx/utils'
 import { DocumentToolCall, DocumentToolResult } from './document'
 import { DocumentPreview } from './document-preview'
 import { PencilEditIcon, SparklesIcon } from './icons'
 import { Markdown } from './markdown'
+import { MessageActions } from './message-actions'
 import { MessageEditor } from './message-editor'
 import { MessageReasoning } from './message-reasoning'
 import { PreviewAttachment } from './preview-attachment'
@@ -94,7 +94,7 @@ const PurePreviewMessage = ({
                 if (mode === 'view') {
                   return (
                     <div key={key} className="flex flex-row items-start gap-2">
-                      {message.role === 'user' && !isReadonly && (
+                      {/* {message.role === 'user' && !isReadonly && (
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Button
@@ -110,7 +110,7 @@ const PurePreviewMessage = ({
                           </TooltipTrigger>
                           <TooltipContent>Edit message</TooltipContent>
                         </Tooltip>
-                      )}
+                      )} */}
 
                       <div
                         data-testid="message-content"
@@ -209,6 +209,14 @@ const PurePreviewMessage = ({
                 }
               }
             })}
+            {!isReadonly && (
+              <MessageActions
+                key={`action-${message.id}`}
+                chatId={chatId}
+                message={message}
+                isLoading={isLoading}
+              />
+            )}
           </div>
         </div>
       </motion.div>

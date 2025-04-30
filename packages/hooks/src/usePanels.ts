@@ -79,6 +79,12 @@ export async function openPanel(index: number, panel: Panel) {
 
 export async function addPanel(panel: Partial<Panel>) {
   const panels = getPanels()
+  const hasAIProviderPanel = panels.some(
+    (p) => p.type === PanelType.AI_PROVIDERS,
+  )
+
+  if (hasAIProviderPanel && panel.type === PanelType.AI_PROVIDERS) return
+
   const newPanel = { id: uniqueId(), ...panel } as Panel
   const newPanels = produce(panels, (draft) => {
     draft.push(newPanel)

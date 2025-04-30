@@ -39,10 +39,10 @@ export function PanelAIProviders({ panel, index }: Props) {
             return (
               <Card key={type}>
                 <CardHeader className="">
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="text-foreground flex items-center gap-2">
                     {type === AIProviderType.ANTHROPIC && (
                       <>
-                        <span className="icon-[logos--anthropic-icon] size-4"></span>
+                        <span className="icon-[ri--anthropic-fill] size-4"></span>
                         <span>Anthropic</span>
                       </>
                     )}
@@ -60,7 +60,7 @@ export function PanelAIProviders({ panel, index }: Props) {
                     )}
                     {type === AIProviderType.OPENAI && (
                       <>
-                        <span className="icon-[logos--openai-icon] size-4"></span>
+                        <span className="icon-[ri--openai-fill] size-4 "></span>
                         <span>OpenAI</span>
                       </>
                     )}

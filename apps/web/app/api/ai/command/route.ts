@@ -1,24 +1,17 @@
-import { getServerSession } from '@penx/libs/session'
 import { anthropic, createAnthropic } from '@ai-sdk/anthropic'
 import { createDeepSeek, deepseek } from '@ai-sdk/deepseek'
 import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { createOpenAI } from '@ai-sdk/openai'
 import { createPerplexity, perplexity } from '@ai-sdk/perplexity'
-import { PlanType } from '@penx/db/client'
 import { convertToCoreMessages, streamText } from 'ai'
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-
-enum AIProvider {
-  OpenAI = 'OpenAI',
-  DeepSeek = 'DeepSeek',
-  Perplexity = 'Perplexity',
-  Google = 'Google',
-  Anthropic = 'Anthropic',
-}
+import { PlanType } from '@penx/db/client'
+import { getServerSession } from '@penx/libs/session'
+import { AIProviderType } from '@penx/model'
 
 type Input = {
-  provider: AIProvider
+  provider: AIProviderType
   apiKey: string
   messages: any
   model: string
@@ -51,7 +44,7 @@ export async function POST(req: NextRequest) {
     throw new Error('This AI-assistant is for Pro users only.')
   }
 
-  if (input.provider === AIProvider.Google) {
+  if (input.provider === AIProviderType.GOOGLE_AI) {
     console.log('google.....')
     const google = createGoogleGenerativeAI({
       apiKey: input.apiKey || process.env.GOOGLE_AI_API_KEY,
@@ -59,14 +52,14 @@ export async function POST(req: NextRequest) {
     return generate(input, google('gemini-1.5-flash'))
   }
 
-  if (input.provider === AIProvider.DeepSeek) {
+  if (input.provider === AIProviderType.DEEPSEEK) {
     const deepseek = createDeepSeek({
       apiKey: input.apiKey || process.env.DEEPSEEK_API_KEY,
     })
     return generate(input, deepseek('deepseek-chat'))
   }
 
-  if (input.provider === AIProvider.Anthropic) {
+  if (input.provider === AIProviderType.ANTHROPIC) {
     console.log('claud...')
     const anthropic = createAnthropic({
       apiKey: input.apiKey || process.env.ANTHROPIC_API_KEY,
@@ -75,14 +68,14 @@ export async function POST(req: NextRequest) {
     return generate(input, anthropic('claude-3-haiku-20240307'))
   }
 
-  if (input.provider === AIProvider.OpenAI) {
+  if (input.provider === AIProviderType.OPENAI) {
     const openai = createOpenAI({
       apiKey: input.apiKey || process.env.OPENAI_API_KEY,
     })
     return generate(input, openai('gpt-4o-mini'))
   }
 
-  if (input.provider === AIProvider.Perplexity) {
+  if (input.provider === AIProviderType.PERPLEXITY) {
     console.log('pp...:', process.env.PERPLEXITY_API_KEY)
     const perplexity = createPerplexity({
       apiKey: input.apiKey || process.env.PERPLEXITY_API_KEY,
@@ -98,19 +91,19 @@ export async function POST(req: NextRequest) {
 
 async function generate(input: Input, llm: any) {
   const {
-    provider = AIProvider.OpenAI,
+    provider = AIProviderType.OPENAI,
     apiKey: key,
     messages,
     model = 'gpt-4o-mini',
     system,
   } = input
 
-  // if (!apiKey) {
-  //   return NextResponse.json(
-  //     { error: 'Missing OpenAI API key.' },
-  //     { status: 401 },
-  //   )
-  // }
+  if (!key) {
+    return NextResponse.json(
+      { error: 'Missing OpenAI API key.' },
+      { status: 401 },
+    )
+  }
 
   try {
     const result = streamText({

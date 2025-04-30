@@ -6,10 +6,13 @@ import type { Attachment, UIMessage } from 'ai'
 import { useSearchParams } from 'next/navigation'
 import useSWR, { useSWRConfig } from 'swr'
 import { unstable_serialize } from 'swr/infinite'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
+import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
+import { addPanel } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
-import { SessionData } from '@penx/types'
+import { PanelType, SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { Artifact } from './artifact'
 import { Messages } from './messages'
@@ -38,6 +41,9 @@ export function Chat({
   isReadonly: boolean
   session: SessionData
 }) {
+  const site = useSiteContext()
+  const provider = site.aiProviders?.find((p) => p.enabled)
+
   const {
     messages,
     setMessages,
@@ -57,8 +63,9 @@ export function Chat({
     experimental_prepareRequestBody: (body) => ({
       id,
       message: body.messages.at(-1),
-      selectedChatModel: 'hello',
-      provider: process.env.NEXT_PUBLIC_API_PROVIDER! || 'openai',
+      selectedChatModel: '',
+      provider: provider?.type,
+      apiKey: provider?.apiKey,
     }),
     onFinish: async (message, options) => {
       await localDB.message.add({
@@ -79,11 +86,23 @@ export function Chat({
         createdAt: new Date(),
       })
     },
-    onError: (error) => {
+    onError: async (error) => {
+      console.log('=====error:', error)
+
       toast({
         type: 'error',
         description: error.message,
       })
+      if (error.message === 'Please provide an API key') {
+        addPanel({
+          type: PanelType.AI_PROVIDERS,
+        })
+
+        const messages = await queryMessages(session.siteId)
+        setTimeout(() => {
+          setMessages(messages)
+        }, 2000)
+      }
     },
   })
 

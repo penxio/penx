@@ -27,13 +27,10 @@ export function PanelWidget({ panel, index }: Props) {
   const [columns, setColumns] = useState(3)
 
   useEffect(() => {
-    console.log('===ref.current:', ref.current)
-
     if (!ref.current) return
     function updateWidth() {
       if (!ref.current) return
       const newWidth = ref.current.getBoundingClientRect().width
-      console.log('===newWidth:', newWidth)
 
       if (newWidth < 500) {
         setColumns(1)
