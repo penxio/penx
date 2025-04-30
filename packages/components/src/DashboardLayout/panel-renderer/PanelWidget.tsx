@@ -1,19 +1,16 @@
 'use client'
 
-import { useQuery } from '@tanstack/react-query'
+import { useEffect, useRef, useState } from 'react'
 import { WidgetType } from '@penx/constants'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { localDB } from '@penx/local-db'
-import { useSession } from '@penx/session'
-import { CreationType, Panel, PanelType, Widget } from '@penx/types'
-import { uniqueId } from '@penx/unique-id'
+import { CreationType, Panel, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
-import { Chat } from '../../AIChat/chat'
 import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
 import { ArticleList } from './Articles/ArticleList'
 import { BookmarkList } from './Bookmarks/BookmarkList'
 import { NoteList } from './Notes/NoteList'
+import { PanelChat } from './PanelChat'
 import { TasksList } from './Tasks/TasksList'
 
 interface Props {
@@ -25,24 +22,36 @@ export function PanelWidget({ panel, index }: Props) {
   const molds = useMoldsContext()
   const widget = panel.widget as Widget
   const mold = molds.find((m) => m.id === widget.moldId)
-  const { session } = useSession()
-  const { isLoading, data = [] } = useQuery({
-    queryKey: ['messages'],
-    queryFn: async () => {
-      const list = await localDB.message
-        .where({ siteId: session.siteId })
-        .toArray()
-      return list.sort((a, b) => {
-        if (b.createdAt.getTime() > a.createdAt.getTime()) return -1
-        if (a.createdAt.getTime() < b.createdAt.getTime()) return 1
-        return b.role.localeCompare(a.role)
-      })
-    },
-  })
 
-  if (isLoading) return null
+  const ref = useRef<HTMLDivElement>(null)
+  const [columns, setColumns] = useState(3)
 
-  const messages = data.map((m) => ({ ...m, content: m.parts[0].text }))
+  useEffect(() => {
+    console.log('===ref.current:', ref.current)
+
+    if (!ref.current) return
+    function updateWidth() {
+      if (!ref.current) return
+      const newWidth = ref.current.getBoundingClientRect().width
+      console.log('===newWidth:', newWidth)
+
+      if (newWidth < 500) {
+        setColumns(1)
+      } else if (newWidth < 900) {
+        setColumns(2)
+      } else if (newWidth < 1300) {
+        setColumns(3)
+      } else {
+        setColumns(4)
+      }
+    }
+
+    updateWidth()
+
+    const resizeObserver = new ResizeObserver(updateWidth)
+    resizeObserver.observe(ref.current)
+    return () => resizeObserver.disconnect()
+  }, [])
 
   return (
     <>
@@ -52,22 +61,21 @@ export function PanelWidget({ panel, index }: Props) {
         </div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>
-      <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8">
+      <div
+        ref={ref}
+        className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8"
+      >
         {widget.type === WidgetType.AI_CHAT && (
-          <Chat
-            id={uniqueId()}
-            // panel={panel}
-            // index={index}
-            initialMessages={messages}
-            session={session}
-            selectedChatModel={''}
-            selectedVisibilityType="private"
-            isReadonly={false}
-          />
+          <PanelChat panel={panel} index={index} />
         )}
 
         {mold?.type === CreationType.NOTE && (
-          <NoteList panel={panel} index={index} mold={mold} />
+          <NoteList
+            panel={panel}
+            index={index}
+            mold={mold}
+            columnCount={columns}
+          />
         )}
 
         {mold?.type === CreationType.TASK && (

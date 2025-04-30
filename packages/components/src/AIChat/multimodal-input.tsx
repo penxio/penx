@@ -15,8 +15,11 @@ import type { UseChatHelpers } from '@ai-sdk/react'
 import type { Attachment, UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
+import { CogIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
+import { addPanel } from '@penx/hooks/usePanels'
+import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
@@ -242,9 +245,22 @@ function PureMultimodalInput({
         }}
       />
 
-      {/* <div className="absolute bottom-0 flex w-fit flex-row justify-start p-2">
+      <div className="absolute bottom-0 flex w-fit flex-row justify-start gap-0.5 p-2">
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
-      </div> */}
+        <Button
+          size="icon"
+          variant="ghost"
+          className="hover:bg-foreground/10 size-7 rounded-md"
+          type="button"
+          onClick={() => {
+            addPanel({
+              type: PanelType.AI_PROVIDERS,
+            })
+          }}
+        >
+          <CogIcon size={16} />
+        </Button>
+      </div>
 
       <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
         {status === 'submitted' ? (
@@ -284,8 +300,9 @@ function PureAttachmentsButton({
       data-testid="attachments-button"
       className="h-fit rounded-md rounded-bl-lg p-[7px] hover:bg-zinc-200 dark:border-zinc-700 hover:dark:bg-zinc-900"
       onClick={(event) => {
-        event.preventDefault()
-        fileInputRef.current?.click()
+        toast.info('Coming soon!')
+        // event.preventDefault()
+        // fileInputRef.current?.click()
       }}
       disabled={status !== 'ready'}
       variant="ghost"

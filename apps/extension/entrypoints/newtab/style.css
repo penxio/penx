@@ -6,6 +6,9 @@
 @import '@penx/editor-custom-plugins/tailwind.css';
 @import '@penx/editor-plugins/tailwind.css';
 
+@plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4";
+
 :root,
 :host {
   /* --font-sans: var(--font-inter), system-ui;

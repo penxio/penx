@@ -4,6 +4,7 @@ import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
 import { ClosePanelButton } from './ClosePanelButton'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
+import { PanelAIProviders } from './panel-renderer/PanelAIProviders'
 import { PanelCreation } from './panel-renderer/PanelCreation'
 import { PanelHome } from './panel-renderer/PanelHome'
 import { PanelWidget } from './panel-renderer/PanelWidget'
@@ -36,6 +37,10 @@ export function PanelItem({
 
         {panel.type === PanelType.HOME && (
           <PanelHome index={index} panel={panel} />
+        )}
+
+        {panel.type === PanelType.AI_PROVIDERS && (
+          <PanelAIProviders index={index} panel={panel} />
         )}
 
         {panel.type === PanelType.MANAGE_TAGS && (

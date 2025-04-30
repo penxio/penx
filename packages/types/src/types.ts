@@ -1,3 +1,4 @@
+import { Address } from 'viem'
 import {
   Account,
   Area,
@@ -13,7 +14,6 @@ import {
   Tag,
   User,
 } from '@penx/db/client'
-import { Address } from 'viem'
 
 export enum TierInterval {
   MONTHLY = 'MONTHLY',
@@ -253,6 +253,7 @@ export enum PanelType {
   CREATION = 'CREATION',
   WIDGET = 'WIDGET',
   MANAGE_TAGS = 'MANAGE_TAGS',
+  AI_PROVIDERS = 'AI_PROVIDERS',
 }
 
 export type Panel = {

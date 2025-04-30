@@ -7,6 +7,9 @@
 @import '@penx/editor-custom-plugins/tailwind.css';
 @import '@penx/editor-plugins/tailwind.css';
 
+@plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4";
+
 @custom-variant dark (&:is(.dark *));
 
 :root {

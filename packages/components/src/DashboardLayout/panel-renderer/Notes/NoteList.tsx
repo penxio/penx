@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { Mold } from '@penx/db/client'
 import { useNotes } from '@penx/hooks/useNotes'
 import { Panel } from '@penx/types'
@@ -10,38 +10,22 @@ interface PostListProps {
   mold: Mold
   panel: Panel
   index: number
+  columnCount: number
 }
 
-export function NoteList({ mold }: PostListProps) {
+export function NoteList({ mold, columnCount }: PostListProps) {
   const notes = useNotes()
-  const ref = useRef<HTMLDivElement>(null)
-  const [columns, setColumns] = useState(3)
 
-  useEffect(() => {
-    if (!ref.current) return
-    function updateWidth() {
-      if (!ref.current) return
-      const newWidth = ref.current.getBoundingClientRect().width
-      if (newWidth < 500) {
-        setColumns(1)
-      } else if (newWidth < 900) {
-        setColumns(2)
-      } else if (newWidth < 1300) {
-        setColumns(3)
-      } else {
-        setColumns(4)
-      }
-    }
+  const { isLoading, isFetching } = useQuery({
+    queryKey: ['notes', 'loading'],
+    queryFn: async () => 0,
+  })
 
-    updateWidth()
-
-    const resizeObserver = new ResizeObserver(updateWidth)
-    resizeObserver.observe(ref.current)
-    return () => resizeObserver.disconnect()
-  }, [])
+  // TODO: need to use virtual
+  if (isLoading || isFetching) return <div></div>
 
   return (
-    <div ref={ref} className="flex-1 gap-x-2" style={{ columnCount: columns }}>
+    <div className="flex-1 gap-x-2" style={{ columnCount }}>
       {notes.map((note) => {
         return <NoteItem key={note.id} creation={note} />
       })}
