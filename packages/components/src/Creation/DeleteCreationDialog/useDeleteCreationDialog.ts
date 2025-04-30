@@ -1,7 +1,7 @@
 'use client'
 
 import { atom, useAtom } from 'jotai'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 
 type State = {
   isOpen: boolean

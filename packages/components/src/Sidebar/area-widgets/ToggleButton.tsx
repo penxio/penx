@@ -5,7 +5,7 @@ import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Area } from '@penx/db/client'
 import { toggleCollapsed } from '@penx/hooks/useArea'
-import { IArea } from '@penx/model/IArea'
+import { IArea } from '@penx/model-type/IArea'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 

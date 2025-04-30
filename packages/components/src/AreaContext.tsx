@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { IArea } from '@penx/model/IArea'
+import { IArea } from '@penx/model-type/IArea'
 
 export const areaContext = createContext({} as IArea)
 

@@ -1,4 +1,4 @@
-import { INode } from '@penx/model'
+import { INode } from '@penx/model-type'
 import { atom, useAtom } from 'jotai'
 
 interface BulletDrawerState {

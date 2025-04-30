@@ -10,7 +10,7 @@ import {
   CatalogueNodeJSON,
   CatalogueNodeType,
   ICatalogueNode,
-} from '@penx/model'
+} from '@penx/model-type'
 import { Creation } from '@penx/types'
 import { cn } from '@penx/utils'
 

@@ -8,7 +8,7 @@ import {
   updateCreationById,
   useCreations,
 } from '@penx/hooks/useCreations'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { cn } from '@penx/utils'
 

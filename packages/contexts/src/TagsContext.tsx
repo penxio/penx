@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { ITag } from '@penx/model/ITag'
+import { ITag } from '@penx/model-type/ITag'
 
 export const TagContext = createContext([] as ITag[])
 

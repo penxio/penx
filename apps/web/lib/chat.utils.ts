@@ -1,7 +1,7 @@
 import type { CoreAssistantMessage, CoreToolMessage, UIMessage } from 'ai'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { IDocument } from '@penx/model'
+import { IDocument } from '@penx/model-type'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

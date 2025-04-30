@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react'
 import { useAreaContext } from '@penx/components/AreaContext'
 import { Link } from '@penx/libs/i18n'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 
 interface CreationItemProps {
   creation: ICreation

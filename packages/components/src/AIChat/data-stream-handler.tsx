@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import { useChat } from '@ai-sdk/react'
 import { initialArtifactData, useArtifact } from '@penx/hooks/use-artifact'
-import { ISuggestion } from '@penx/model'
+import { ISuggestion } from '@penx/model-type'
 import { artifactDefinitions, ArtifactKind } from './artifact'
 
 export type DataStreamDelta = {

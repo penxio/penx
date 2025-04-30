@@ -1,4 +1,4 @@
-import { ICatalogueNode } from '@penx/model'
+import { ICatalogueNode } from '@penx/model-type'
 
 export type WithFlattenProps<T> = T & {
   parentId: string | null

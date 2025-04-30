@@ -23,7 +23,7 @@
     "@penx/constants": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
-    "@penx/model": "workspace:*",
+    "@penx/model-type": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/types": "workspace:*"
   }

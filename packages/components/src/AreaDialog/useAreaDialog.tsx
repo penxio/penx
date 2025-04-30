@@ -1,5 +1,5 @@
 import { atom, useAtom } from 'jotai'
-import { IArea } from '@penx/model/IArea'
+import { IArea } from '@penx/model-type/IArea'
 
 type State = {
   isOpen: boolean

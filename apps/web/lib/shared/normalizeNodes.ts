@@ -1,4 +1,4 @@
-import { INode } from '@penx/model'
+import { INode } from '@penx/model-type'
 
 export const normalizeNodes = (nodes: INode[]) => {
   const nodeMap = new Map<string, INode>()

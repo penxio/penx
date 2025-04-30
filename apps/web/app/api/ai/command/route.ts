@@ -8,7 +8,7 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 import { PlanType } from '@penx/db/client'
 import { getServerSession } from '@penx/libs/session'
-import { AIProviderType } from '@penx/model'
+import { AIProviderType } from '@penx/model-type'
 
 type Input = {
   provider: AIProviderType

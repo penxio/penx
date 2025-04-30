@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@penx/uikit/popover'
-import { CatalogueNodeType, ICatalogueNode } from '@penx/model'
+import { CatalogueNodeType, ICatalogueNode } from '@penx/model-type'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { MoreHorizontal, Trash2, User } from 'lucide-react'
 import { useAddPageNodeDialog } from './AddPageNodeDialog/useAddPageNodeDialog'

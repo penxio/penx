@@ -3,7 +3,7 @@ import { set } from 'idb-keyval'
 import { produce } from 'immer'
 import { ACTIVE_SITE } from '@penx/constants'
 import { localDB } from '@penx/local-db'
-import { AIProvider, ISite } from '@penx/model'
+import { AIProvider, ISite } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 

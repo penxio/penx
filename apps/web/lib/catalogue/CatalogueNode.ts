@@ -2,7 +2,7 @@ import {
   CatalogueNodeJSON,
   CatalogueNodeType,
   ICatalogueNode,
-} from '@penx/model'
+} from '@penx/model-type'
 import { CreateCatalogueNodeOptions } from './types'
 
 export class CatalogueNode {

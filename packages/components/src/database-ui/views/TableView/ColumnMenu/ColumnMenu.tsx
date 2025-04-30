@@ -13,7 +13,7 @@ import {
 } from 'lucide-react'
 import { useDatabaseContext } from '@penx/components/database-ui'
 import { Column } from '@penx/db/client'
-import { IColumnNode } from '@penx/model'
+import { IColumnNode } from '@penx/model-type'
 import { Input } from '@penx/uikit/input'
 import { Menu, MenuItem } from '@penx/uikit/menu'
 import { useDeleteColumnDialog } from '../DeleteColumnDialog/useDeleteColumnDialog'

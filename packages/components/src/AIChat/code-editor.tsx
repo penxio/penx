@@ -6,7 +6,7 @@ import { EditorState, Transaction } from '@codemirror/state'
 import { oneDark } from '@codemirror/theme-one-dark'
 import { EditorView } from '@codemirror/view'
 import { basicSetup } from 'codemirror'
-import { ISuggestion } from '@penx/model'
+import { ISuggestion } from '@penx/model-type'
 
 type EditorProps = {
   content: string

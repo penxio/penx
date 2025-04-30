@@ -14,7 +14,7 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { CatalogueNodeType } from '@penx/model'
+import { CatalogueNodeType } from '@penx/model-type'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import { z } from 'zod'

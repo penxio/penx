@@ -1,6 +1,6 @@
 import { get } from 'idb-keyval'
 import { ACTIVE_SITE } from '@penx/constants'
-import { ISite } from '@penx/model/ISite'
+import { ISite } from '@penx/model-type/ISite'
 
 export async function getActiveSite() {
   const site = (await get(ACTIVE_SITE)) as ISite

@@ -14,7 +14,7 @@ import {
   deleteCreationTag,
 } from '@penx/hooks/useCreation'
 import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/loading-dots'

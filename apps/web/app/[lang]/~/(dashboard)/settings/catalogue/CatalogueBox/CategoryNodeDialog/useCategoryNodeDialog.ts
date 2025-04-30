@@ -1,6 +1,6 @@
 'use client'
 
-import { ICatalogueNode } from '@penx/model'
+import { ICatalogueNode } from '@penx/model-type'
 import { atom, useAtom } from 'jotai'
 
 type State = {

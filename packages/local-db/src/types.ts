@@ -1,4 +1,4 @@
-import { IColumnNode } from '@penx/model'
+import { IColumnNode } from '@penx/model-type'
 
 export type ColumnSchema = Partial<IColumnNode['props']>
 

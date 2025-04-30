@@ -22,7 +22,7 @@
     "@penx/api": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/model": "workspace:*",
+    "@penx/model-type": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/emitter": "workspace:*",

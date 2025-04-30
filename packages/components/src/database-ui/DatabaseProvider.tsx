@@ -15,7 +15,7 @@ import { useSession } from '@penx/session'
 import { useQueryDatabase } from '@penx/hooks/useQueryDatabase'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
-import { IFilterResult, IOptionNode } from '@penx/model'
+import { IFilterResult, IOptionNode } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import {

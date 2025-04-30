@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { IMold } from '@penx/model/IMold'
+import { IMold } from '@penx/model-type/IMold'
 import { CreationType } from '@penx/types'
 
 export const MoldsContext = createContext([] as IMold[])

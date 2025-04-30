@@ -1,5 +1,5 @@
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 
 export function useCreationMold(creation: ICreation) {
   const molds = useMoldsContext()

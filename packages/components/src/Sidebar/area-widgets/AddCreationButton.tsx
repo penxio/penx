@@ -6,7 +6,7 @@ import { PlusIcon } from 'lucide-react'
 import { useMoldsContext } from '@penx/contexts/MoldsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { IArea } from '@penx/model/IArea'
+import { IArea } from '@penx/model-type/IArea'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 

@@ -15,7 +15,7 @@ import {
 } from 'ai'
 import { NextResponse } from 'next/server'
 import { isProd } from '@penx/constants'
-import { AIProviderType, IMessage } from '@penx/model'
+import { AIProviderType, IMessage } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 import { RequestHints, systemPrompt } from './prompts'
 

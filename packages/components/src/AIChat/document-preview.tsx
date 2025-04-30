@@ -11,7 +11,7 @@ import {
 import equal from 'fast-deep-equal'
 import useSWR from 'swr'
 import { useArtifact } from '@penx/hooks/use-artifact'
-import { IDocument } from '@penx/model'
+import { IDocument } from '@penx/model-type'
 import { cn, fetcher } from '@penx/utils'
 import { ArtifactKind, UIArtifact } from './artifact'
 import { CodeEditor } from './code-editor'

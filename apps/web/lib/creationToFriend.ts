@@ -1,5 +1,5 @@
-import { ICreation } from '@penx/model/ICreation'
-import { IMold } from '@penx/model/IMold'
+import { ICreation } from '@penx/model-type/ICreation'
+import { IMold } from '@penx/model-type/IMold'
 import { Creation, Friend, Prop } from './theme.types'
 import { SiteCreation } from '@penx/types'
 

@@ -7,7 +7,7 @@ import { updateCreation } from '@penx/hooks/useCreation'
 import { useCreationMold } from '@penx/hooks/useCreationMold'
 import { updateCreationById } from '@penx/hooks/useCreations'
 import { addPanel, updateMainPanel, usePanels } from '@penx/hooks/usePanels'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 import { CreationType, PanelType, SiteCreation } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import {

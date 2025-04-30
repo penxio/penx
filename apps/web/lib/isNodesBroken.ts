@@ -1,4 +1,4 @@
-import { INode, NodeType } from '@penx/model'
+import { INode, NodeType } from '@penx/model-type'
 
 export function isNodesBroken(nodes: INode[]) {
   const set = new Set([

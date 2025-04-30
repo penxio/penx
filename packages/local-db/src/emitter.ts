@@ -1,4 +1,4 @@
-import { INode } from '@penx/model'
+import { INode } from '@penx/model-type'
 import mitt from 'mitt'
 
 export type DBEvents = {

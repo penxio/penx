@@ -10,7 +10,7 @@ import {
 } from '@penx/uikit/dialog'
 import { MenuItem } from '@penx/uikit/menu'
 import { Menu } from '@penx/uikit/menu'
-import { CatalogueNodeType } from '@penx/model'
+import { CatalogueNodeType } from '@penx/model-type'
 import { CreationStatus } from '@penx/db/client'
 import { useCatalogue } from '../hooks/useCatalogue'
 import { useAddPostNodeDialog } from './useAddPostNodeDialog'

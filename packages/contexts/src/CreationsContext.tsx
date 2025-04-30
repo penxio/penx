@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { ICreation } from '@penx/model/ICreation'
+import { ICreation } from '@penx/model-type/ICreation'
 
 interface Props {
   creations: ICreation[]

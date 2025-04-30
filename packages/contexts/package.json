@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
-    "@penx/model": "workspace:*",
+    "@penx/model-type": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/types": "workspace:*"
   }

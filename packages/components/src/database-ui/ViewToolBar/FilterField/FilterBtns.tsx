@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@penx/uikit/button'
-import { IViewNode, ViewColumn } from '@penx/model'
+import { IViewNode, ViewColumn } from '@penx/model-type'
 import { Filter } from '@penx/types'
 import { Plus } from 'lucide-react'
 import { useDatabaseContext } from '../../DatabaseProvider'

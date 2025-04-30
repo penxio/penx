@@ -3,7 +3,7 @@
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
 import { STATIC_URL } from '@penx/constants'
 import { Area, Channel, Mold, Site, Tag } from '@penx/db/client'
-import { ISite } from '@penx/model'
+import { ISite } from '@penx/model-type'
 
 type SiteType = ISite & {
   channels: Channel[]

@@ -1,6 +1,6 @@
 import { ComponentType, Dispatch, ReactNode, SetStateAction } from 'react'
 import { UseChatHelpers } from '@ai-sdk/react'
-import { ISuggestion } from '@penx/model'
+import { ISuggestion } from '@penx/model-type'
 import { UIArtifact } from './artifact'
 import { DataStreamDelta } from './data-stream-handler'
 

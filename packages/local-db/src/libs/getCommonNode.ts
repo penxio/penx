@@ -1,5 +1,5 @@
 import { ELEMENT_P } from '@penx/constants'
-import { INode, NodeType } from '@penx/model'
+import { INode, NodeType } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
 type Input = {

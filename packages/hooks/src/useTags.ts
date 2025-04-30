@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getActiveSite } from '@penx/libs/getActiveSite'
 import { localDB } from '@penx/local-db'
-import { ITag } from '@penx/model/ITag'
+import { ITag } from '@penx/model-type/ITag'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'

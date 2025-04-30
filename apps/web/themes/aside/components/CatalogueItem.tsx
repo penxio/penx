@@ -6,7 +6,7 @@ import {
   CatalogueNodeJSON,
   CatalogueNodeType,
   ICatalogueNode,
-} from '@penx/model'
+} from '@penx/model-type'
 import { cn } from '@penx/utils'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 

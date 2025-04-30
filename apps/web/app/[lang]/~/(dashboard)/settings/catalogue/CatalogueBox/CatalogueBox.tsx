@@ -4,7 +4,7 @@ import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { CatalogueTree } from '@/lib/catalogue'
 import { getProjection } from '@/lib/dnd-projection'
-import { ICatalogueNode, INode } from '@penx/model'
+import { ICatalogueNode, INode } from '@penx/model-type'
 import {
   closestCenter,
   defaultDropAnimation,
