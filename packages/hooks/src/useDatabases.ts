@@ -1,9 +1,10 @@
 import isEqual from 'react-fast-compare'
-import { Database } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { Database } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
+import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 
 function equal(remoteDatabases: Database[], localDatabases: any[]): boolean {
@@ -18,13 +19,13 @@ function equal(remoteDatabases: Database[], localDatabases: any[]): boolean {
 }
 
 export function useDatabases() {
-  const site = useSiteContext()
+  const { session } = useSession()
+  const siteId = session?.siteId!
   return useQuery({
+    enabled: !!siteId,
     queryKey: ['databases'],
     queryFn: async () => {
-      const databases = await localDB.database
-        .where({ siteId: site.id })
-        .toArray()
+      const databases = await localDB.database.where({ siteId }).toArray()
       const localDatabases = databases.sort((a, b) => {
         const updatedAtDiff = b.updatedAt.getTime() - a.updatedAt.getTime()
         if (updatedAtDiff === 0) {
@@ -36,7 +37,7 @@ export function useDatabases() {
 
       setTimeout(async () => {
         const remoteDatabases = await api.database.list.query({
-          siteId: site.id,
+          siteId,
         })
         const isEqual = equal(remoteDatabases, localDatabases)
 

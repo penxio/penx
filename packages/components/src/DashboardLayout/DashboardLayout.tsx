@@ -43,7 +43,8 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
 
   const pathname = usePathname()!
   const isSettings = pathname.includes('/~/settings')
-  const isDesign = pathname.includes('/~/design')
+  const isDesign =
+    pathname.includes('/~/design') || pathname.includes('/~/database')
 
   if (
     domainsQuery.isLoading ||
