@@ -2,7 +2,7 @@
 
 import { PropsWithChildren } from 'react'
 import { Trans } from '@lingui/react'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import { useMySite } from '@penx/hooks/useMySite'
 import { AIProviderType } from '@penx/model-type'
 import { store } from '@penx/store'
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export function PanelAIProviders({ panel, index }: Props) {
-  const data = useAreaCreationsContext()
+  const { creations: data } = useCreations()
   const { site } = useMySite()
   const providers = site.aiProviders || []
 

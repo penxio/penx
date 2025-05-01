@@ -5,6 +5,7 @@ import { SHAPE_URL } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import { getSession } from '@penx/session'
+import { store } from '@penx/store'
 import { isRowsEqual } from './isRowsEqual'
 
 export function syncAreasToLocal(siteId: string) {
@@ -59,12 +60,13 @@ export function syncAreasToLocal(siteId: string) {
         const areas = await localDB.area.where({ siteId }).toArray()
         console.log('area updated....')
 
-        const area = areas.find((a) => a.id === session.activeAreaId)
+        const { activeAreaId } = store.visit.get()
+        const area = areas.find((a) => a.id === activeAreaId)
 
-        queryClient.setQueryData(['areas'], areas)
+        store.areas.set(areas)
 
         if (area) {
-          queryClient.setQueryData(['areas', session.activeAreaId], area)
+          store.area.set(area)
         }
       })
       .then(() => {

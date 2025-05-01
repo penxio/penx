@@ -1,9 +1,14 @@
 import { Atom, WritableAtom } from 'jotai'
-import { MoldsStore } from './stores/moldsStore'
+import { AppStore } from './stores/AppStore'
+import { AreasStore } from './stores/AreasStore'
+import { AreaStore } from './stores/AreaStore'
+import { CreationsStore } from './stores/CreationsStore'
+import { CreationTagsStore } from './stores/CreationTagsStore'
+import { MoldsStore } from './stores/MoldsStore'
 import { PanelsStore } from './stores/PanelsStore'
-import { RouterStore } from './stores/RouterStore'
 import { SiteStore } from './stores/SiteStore'
-import { TagsStore } from './stores/tagsStore'
+import { TagsStore } from './stores/TagsStore'
+import { VisitStore } from './stores/VisitStore'
 
 export type StoreType = {
   get: <Value>(atom: Atom<Value>) => Value
@@ -12,9 +17,14 @@ export type StoreType = {
     ...args: Args
   ) => Result
 
-  router: RouterStore
+  app: AppStore
+  visit: VisitStore
   site: SiteStore
   panels: PanelsStore
   molds: MoldsStore
   tags: TagsStore
+  creationTags: CreationTagsStore
+  area: AreaStore
+  areas: AreasStore
+  creations: CreationsStore
 }

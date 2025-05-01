@@ -4,8 +4,8 @@ import React from 'react'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Area } from '@penx/db/client'
-import { toggleCollapsed } from '@penx/hooks/useArea'
 import { IArea } from '@penx/model-type/IArea'
+import { store } from '@penx/store'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 
@@ -22,7 +22,7 @@ export function ToggleButton({ area, widget }: Props) {
       className="inline-flex size-6 items-center justify-center rounded-md p-0"
       onClick={(e) => e.stopPropagation()}
       onPointerDown={async (e) => {
-        await toggleCollapsed(area.id, widget.id)
+        await store.area.toggleCollapsed(widget.id)
         e.stopPropagation()
         e.preventDefault()
       }}

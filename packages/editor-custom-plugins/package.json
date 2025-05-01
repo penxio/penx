@@ -115,6 +115,7 @@
     "@penx/unique-id": "workspace:*",
     "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
+    "@penx/hooks": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/libs": "workspace:*"
   }

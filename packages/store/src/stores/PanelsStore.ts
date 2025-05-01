@@ -22,8 +22,11 @@ export class PanelsStore {
     this.store.set(panelsAtom, state)
   }
 
-  setPanels(panels: Panel[]) {
-    this.set(panels)
+  async savePanels(newPanels: Panel[]) {
+    const site = this.store.site.get()
+    const key = `${PANELS}_${site.id}`
+    this.set(newPanels)
+    await set(key, newPanels)
   }
 
   async addPanel(panel: Partial<Panel>) {
@@ -64,7 +67,7 @@ export class PanelsStore {
         draft[index] = panel
         draft[index].isLoading = true
       })
-      this.setPanels(panels)
+      await this.savePanels(panels)
     }
 
     setTimeout(async () => {
@@ -139,10 +142,5 @@ export class PanelsStore {
     })
 
     await this.savePanels(newPanels)
-  }
-
-  private async savePanels(newPanels: Panel[]) {
-    this.setPanels(newPanels)
-    await set(PANELS, newPanels)
   }
 }

@@ -21,13 +21,9 @@ export class CreationTagsStore {
     this.store.set(creationTagsAtom, state)
   }
 
-  setCreationTags(state: ICreationTag[]) {
-    this.set(state)
-  }
-
   async refetchCreationTags() {
     const siteId = this.store.site.get().id
     const list = await localDB.creationTag.where({ siteId }).toArray()
-    this.setCreationTags(list)
+    this.set(list)
   }
 }

@@ -1,11 +1,9 @@
 import { Trans } from '@lingui/react'
 import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
-import { useAreaContext } from '@penx/components/AreaContext'
 import { CreationStatus } from '@penx/db/client'
-import { addToFavorites, removeFromFavorites } from '@penx/hooks/useArea'
+import { useArea } from '@penx/hooks/useArea'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { useCreationMold } from '@penx/hooks/useCreationMold'
-import { updateCreationById } from '@penx/hooks/useCreations'
 import { usePanels } from '@penx/hooks/usePanels'
 import { ICreation } from '@penx/model-type/ICreation'
 import { store } from '@penx/store'
@@ -52,7 +50,7 @@ export function CreationItem({ creation }: CreationItemProps) {
                   id: creation.id,
                   checked: v as any,
                 })
-                updateCreationById(creation.areaId!, creation.id, {
+                store.creations.updateCreationById(creation.id, {
                   checked: v as any,
                 })
                 //
@@ -95,16 +93,16 @@ export function CreationItem({ creation }: CreationItemProps) {
   )
 }
 
-function ToggleFavorite({ creation: post }: CreationItemProps) {
-  const field = useAreaContext()
-  const isFavor = field.favorites?.includes(post.id)
+function ToggleFavorite({ creation }: CreationItemProps) {
+  const { area } = useArea()
+  const isFavor = area.favorites?.includes(creation.id)
   return (
     <ContextMenuItem
       onClick={async () => {
         if (isFavor) {
-          await removeFromFavorites(field.id, post.id)
+          await store.area.removeFromFavorites(creation.id)
         } else {
-          await addToFavorites(field.id, post.id)
+          await store.area.addToFavorites(creation.id)
         }
       }}
     >

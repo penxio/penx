@@ -15,7 +15,6 @@ import Image from 'next/image'
 import { toast } from 'sonner'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
@@ -108,7 +107,7 @@ export function ArticleItem({ creation }: PostItemProps) {
           tooltipContent="Archive this post"
           onConfirm={async () => {
             await api.creation.archive.mutate(creation.id)
-            await refetchCreations()
+            await store.creations.refetchCreations()
           }}
         >
           <Button

@@ -5,7 +5,7 @@ import { localDB } from '@penx/local-db'
 import { IMold } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
-export const moldsAtom = atom<IMold[]>(null as unknown as IMold[])
+export const moldsAtom = atom<IMold[]>([])
 
 export class MoldsStore {
   constructor(private store: StoreType) {}
@@ -16,9 +16,5 @@ export class MoldsStore {
 
   set(state: IMold[]) {
     this.store.set(moldsAtom, state)
-  }
-
-  setMolds(molds: IMold[]) {
-    this.set(molds)
   }
 }

@@ -52,13 +52,10 @@ export function NavUser() {
   async function selectSite(site: MySite) {
     updateSiteState(site)
 
-    const field = site.areas.find((field) => field.isGenesis) || site.areas[0]
-
     // window.__SITE_ID__ = site.id
     update({
       type: 'update-props',
       activeSiteId: site.id,
-      activeAreaId: field.id,
     })
 
     await store.panels.resetPanels()

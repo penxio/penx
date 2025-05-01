@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { withRef } from '@udecode/cn'
 import { PlateElement } from '@udecode/plate/react'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import { cn } from '@penx/utils'
 import { getBidirectionalLinkOnSelectItem } from '../lib'
 import {
@@ -37,7 +37,7 @@ export const BidirectionalLinkInputElement = withRef<typeof PlateElement>(
 
 function Content({ editor, element }: any) {
   const [search, setSearch] = useState('')
-  const creations = useAreaCreationsContext()
+  const { creations } = useCreations()
 
   return (
     <InlineCombobox

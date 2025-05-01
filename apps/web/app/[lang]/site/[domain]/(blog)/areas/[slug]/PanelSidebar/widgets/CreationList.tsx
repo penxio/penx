@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import { Widget } from '@penx/types'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
@@ -11,7 +11,7 @@ interface Props {
 }
 export function CreationList({ widget }: Props) {
   const isAll = useIsAllContext()
-  const data = useAreaCreationsContext()
+  const { creations: data } = useCreations()
 
   let creations = [...data]
     .filter((post) => post.moldId === widget.moldId)

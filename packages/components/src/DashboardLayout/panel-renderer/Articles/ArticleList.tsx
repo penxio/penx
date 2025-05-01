@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { CreationStatus } from '@penx/constants'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { Mold } from '@penx/db/client'
 import { useCreations } from '@penx/hooks/useCreations'
 import { Panel } from '@penx/types'
@@ -17,7 +16,7 @@ interface PostListProps {
 }
 
 export function ArticleList(props: PostListProps) {
-  const data = useAreaCreationsContext()
+  const { creations: data } = useCreations()
   const creations = data.filter((item) => item.moldId === props.mold.id)
 
   return (

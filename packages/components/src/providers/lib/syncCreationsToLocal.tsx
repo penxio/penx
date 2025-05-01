@@ -12,9 +12,9 @@ import {
   ShapeStreamOptions,
 } from '@electric-sql/client'
 import { SHAPE_URL } from '@penx/constants'
-import { refetchCreations } from '@penx/hooks/useCreations'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
+import { store } from '@penx/store'
 import { AsyncQueue } from './AsyncQueue'
 import { isRowsEqual } from './isRowsEqual'
 import { getElectricSyncState, setElectricSyncState } from './syncState'
@@ -86,7 +86,7 @@ async function sync(
 
           if (changed) {
             await localDB.creation.update(value.id, value)
-            
+
             updated = true
           }
         }
@@ -107,7 +107,7 @@ async function sync(
     })
 
     if (updated) {
-      await refetchCreations()
+      await store.creations.refetchCreations()
     }
   } catch (error) {
     console.error(error)

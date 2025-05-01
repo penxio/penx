@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react'
 import { ClockIcon } from 'lucide-react'
 import { AreaInfo } from '@penx/components/AreaInfo'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import { store } from '@penx/store'
 import { Panel, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function PanelHome({ panel, index }: Props) {
-  const data = useAreaCreationsContext()
+  const { creations: data } = useCreations()
 
   const creations = [...data]
     .sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf())

@@ -6,7 +6,7 @@ import { ITag } from '@penx/model-type'
 import { api } from '@penx/trpc-client'
 import { StoreType } from '../store-types'
 
-export const tagsAtom = atom<ITag[]>(null as unknown as ITag[])
+export const tagsAtom = atom<ITag[]>([])
 
 export class TagsStore {
   constructor(private store: StoreType) {}
@@ -19,14 +19,10 @@ export class TagsStore {
     this.store.set(tagsAtom, state)
   }
 
-  setTags(tags: ITag[]) {
-    this.set(tags)
-  }
-
   async refetchTags() {
     const site = this.store.site.get()
     const tags = await localDB.tag.where({ siteId: site.id }).toArray()
-    this.setTags(tags)
+    this.set(tags)
   }
 
   async deleteTag(tag: ITag) {

@@ -32,7 +32,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { Trans } from '@lingui/react'
-import { useAreaContext } from '@penx/components/AreaContext'
+import { useArea } from '@penx/hooks/useArea'
 import { defaultNavLinks } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { updateSiteState } from '@penx/hooks/useSite'

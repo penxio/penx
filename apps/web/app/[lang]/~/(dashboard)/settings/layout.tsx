@@ -20,12 +20,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className="border-foreground/10 bg-background sticky top-0 z-20 flex h-[48px] flex-col gap-2 border-b px-4 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-1">
           <Link
-            href={
-              // from
-              //   ? decodeURIComponent(from)
-              //   : `/~/areas/${session?.activeAreaId}`
-              `/~`
-            }
+            href={`/~`}
             className="text-foreground bg-accent inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-xl"
           >
             <ChevronLeft size={20} />

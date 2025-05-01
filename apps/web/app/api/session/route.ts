@@ -6,12 +6,6 @@ import {
   initUserByGoogleInfo,
 } from '@/lib/initUser'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
-import {
-  BillingCycle,
-  PlanType,
-  ProviderType,
-  Subscription,
-} from '@penx/db/client'
 import { compareSync } from 'bcrypt-edge'
 import { getIronSession, IronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
@@ -24,6 +18,12 @@ import {
 } from 'viem/siwe'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { prisma } from '@penx/db'
+import {
+  BillingCycle,
+  PlanType,
+  ProviderType,
+  Subscription,
+} from '@penx/db/client'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import {
@@ -61,7 +61,6 @@ async function updateSession(
   session.image = account.user.image as string
   session.siteId = site.id
   session.activeSiteId = site.id
-  session.activeAreaId = area.id
   session.planType = site.sassPlanType
   session.subscriptionStatus = site.sassSubscriptionStatus || ''
   session.currentPeriodEnd = site?.sassCurrentPeriodEnd as any as string

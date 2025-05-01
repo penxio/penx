@@ -15,10 +15,10 @@ import {
   deleteCreationTag,
   updateCreation,
 } from '@penx/hooks/useCreation'
-import { updateCreationById } from '@penx/hooks/useCreations'
 import { useMolds } from '@penx/hooks/useMolds'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
 import { ICreation } from '@penx/model-type/ICreation'
+import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -133,7 +133,7 @@ export function Creation({ index }: { index: number }) {
                       onChange={(e) => {
                         const title = e.target.value
                         updateCreation({ id: creation.id, title })
-                        updateCreationById(creation.areaId!, creation.id, {
+                        store.creations.updateCreationById(creation.id, {
                           title,
                         })
                       }}
@@ -194,11 +194,11 @@ export function Creation({ index }: { index: number }) {
                 onFileChange={(file) => {
                   const title = file.name
                   updateCreation({ id: creation.id, title })
-                  updateCreationById(creation.areaId!, creation.id, { title })
+                  store.creations.updateCreationById(creation.id, { title })
                 }}
                 onUploaded={async (url) => {
                   updateCreation({ id: creation.id, image: url })
-                  updateCreationById(creation.areaId!, creation.id, {
+                  store.creations.updateCreationById(creation.id, {
                     image: url,
                   })
                 }}
@@ -231,7 +231,7 @@ export function Creation({ index }: { index: number }) {
                       .join(', ')
                       .slice(0, 20)
                     input.title = title
-                    updateCreationById(creation.areaId!, creation.id, { title })
+                    store.creations.updateCreationById(creation.id, { title })
                   }
 
                   updateCreation(input)

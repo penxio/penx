@@ -1,11 +1,11 @@
 'use client'
 
 import { useMemo } from 'react'
-import { BillingCycle, PlanType } from '@penx/db/client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
 import { isDesktop, isWeb, PLATFORM, ROOT_HOST } from '@penx/constants'
+import { BillingCycle, PlanType } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import {
@@ -66,13 +66,9 @@ export function useQuerySession() {
         .where({ siteId: remoteSession.siteId })
         .toArray()
 
-      const area =
-        areas.find((a) => a.id === localSession?.activeAreaId) || areas?.[0]
-
       const newSession = {
         ...localSession,
         ...remoteSession,
-        activeAreaId: remoteSession.activeAreaId || area?.id,
       } as SessionData
 
       await set(SESSION, newSession)

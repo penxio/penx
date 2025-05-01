@@ -3,7 +3,7 @@
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useDebouncedCallback } from 'use-debounce'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import { useCreationsContext } from '@penx/contexts/CreationsContext'
 import { usePanels } from '@penx/hooks/usePanels'
 import { store } from '@penx/store'
@@ -12,7 +12,7 @@ import { ResizablePanelGroup } from '@penx/uikit/resizable'
 import { PanelItem } from './PanelItem'
 
 export function PanelList() {
-  const creations = useAreaCreationsContext()
+  const { creations } = useCreations()
   const { panels } = usePanels()
 
   const debouncedUpdateSizes = useDebouncedCallback(async (sizes: number[]) => {

@@ -49,7 +49,6 @@ export const desktopRouter = router({
       session.image = user.image as string
       session.siteId = site.id
       session.activeSiteId = site.id
-      session.activeAreaId = site.areas[0]?.id || ''
       session.planType = site.sassPlanType
       session.subscriptionStatus = site.sassSubscriptionStatus || ''
       session.currentPeriodEnd = site?.sassCurrentPeriodEnd as any as string
@@ -62,7 +61,6 @@ export const desktopRouter = router({
           sub: user.id,
           siteId: site.id,
           activeSiteId: site.id,
-          activeAreaId: site.areas[0]?.id || '',
           planType: site.sassPlanType,
         },
         process.env.NEXTAUTH_SECRET!,

@@ -2,12 +2,15 @@
 
 import { atom, createStore } from 'jotai'
 import { AppStore } from './stores/AppStore'
-import { CreationTagsStore } from './stores/creationTagsStore'
-import { MoldsStore } from './stores/moldsStore'
+import { AreasStore } from './stores/AreasStore'
+import { AreaStore } from './stores/AreaStore'
+import { CreationsStore } from './stores/CreationsStore'
+import { CreationTagsStore } from './stores/CreationTagsStore'
+import { MoldsStore } from './stores/MoldsStore'
 import { PanelsStore } from './stores/PanelsStore'
-import { RouterStore } from './stores/RouterStore'
 import { SiteStore } from './stores/SiteStore'
-import { TagsStore } from './stores/tagsStore'
+import { TagsStore } from './stores/TagsStore'
+import { VisitStore } from './stores/VisitStore'
 
 const baseStore = createStore()
 
@@ -15,12 +18,12 @@ export const store = Object.assign(baseStore, {
   get: baseStore.get,
   set: baseStore.set,
 
-  get app() {
+  get app(): AppStore {
     return new AppStore(this)
   },
 
-  get router(): RouterStore {
-    return new RouterStore(this)
+  get visit(): VisitStore {
+    return new VisitStore(this)
   },
 
   get site(): SiteStore {
@@ -29,6 +32,18 @@ export const store = Object.assign(baseStore, {
 
   get panels(): PanelsStore {
     return new PanelsStore(this)
+  },
+
+  get area(): AreaStore {
+    return new AreaStore(this)
+  },
+
+  get areas(): AreasStore {
+    return new AreasStore(this)
+  },
+
+  get creations(): CreationsStore {
+    return new CreationsStore(this)
   },
 
   get molds(): MoldsStore {

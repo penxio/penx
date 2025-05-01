@@ -1,7 +1,7 @@
 'use client'
 
-import { useAreaContext } from '@penx/components/AreaContext'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useArea } from '@penx/hooks/useArea'
+import { useCreations } from '@penx/hooks/useCreations'
 import { mappedByKey } from '@penx/utils'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
@@ -9,8 +9,8 @@ import { useIsAllContext } from '../IsAllContext'
 
 export function Favorites() {
   const isAll = useIsAllContext()
-  const area = useAreaContext()
-  const data = useAreaCreationsContext()
+  const { area } = useArea()
+  const { creations: data } = useCreations()
 
   const favorites = area.favorites || []
   const creationsMap = mappedByKey(data, 'id')

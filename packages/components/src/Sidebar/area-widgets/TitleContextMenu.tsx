@@ -1,16 +1,12 @@
 import { FC, PropsWithChildren } from 'react'
 import { Trans } from '@lingui/react'
 import { PanelLeft, PencilIcon, Rows4Icon, TrashIcon } from 'lucide-react'
-import { useAreaContext } from '@penx/components/AreaContext'
 import { WidgetType } from '@penx/constants'
-import { removeWidget } from '@penx/hooks/useArea'
+import { useArea } from '@penx/hooks/useArea'
+import { store } from '@penx/store'
 import { Widget } from '@penx/types'
-import {
-  ContextMenuContent,
-  ContextMenuItem,
-} from '@penx/uikit/context-menu'
-import { Menu } from '@penx/uikit/menu'
-import { MenuItem } from '@penx/uikit/menu'
+import { ContextMenuContent, ContextMenuItem } from '@penx/uikit/context-menu'
+import { Menu, MenuItem } from '@penx/uikit/menu'
 
 interface Props {
   widget: Widget
@@ -23,7 +19,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
   onShowAll,
   onOpenInPanel,
 }) => {
-  const area = useAreaContext()
+  const { area } = useArea()
 
   return (
     <ContextMenuContent>
@@ -52,7 +48,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
       </ContextMenuItem>
       <ContextMenuItem
         onClick={async (e) => {
-          await removeWidget(area.id, widget.id)
+          await store.area.removeWidget(widget.id)
         }}
       >
         <TrashIcon size={16} />

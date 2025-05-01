@@ -16,7 +16,6 @@ import { toast } from 'sonner'
 import { Image } from '@penx/components/Image'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { useCreationMold } from '@penx/hooks/useCreationMold'
-import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
 import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
@@ -113,7 +112,7 @@ export function BookmarkItem({ creation }: Props) {
               tooltipContent="Archive this post"
               onConfirm={async () => {
                 await api.creation.archive.mutate(creation.id)
-                await refetchCreations()
+                await store.creations.refetchCreations()
               }}
             >
               <Button

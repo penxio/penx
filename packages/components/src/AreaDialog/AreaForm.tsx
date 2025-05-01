@@ -11,8 +11,7 @@ import { FileUpload } from '@penx/components/FileUpload'
 import { editorDefaultValue } from '@penx/constants'
 import { ChargeMode } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import { updateArea, useArea } from '@penx/hooks/useArea'
-import { addArea } from '@penx/hooks/useAreas'
+import { useArea } from '@penx/hooks/useArea'
 import { useSite } from '@penx/hooks/useSite'
 import { useRouter } from '@penx/libs/i18n'
 import { updateSession, useSession } from '@penx/session'
@@ -53,7 +52,6 @@ export function AreaForm() {
   const { update } = useSession()
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen, area } = useAreaDialog()
-  const { refetch: refetchItem } = useArea()
   const { refetch: refetchSite } = useSite()
   const { push } = useRouter()
 
@@ -85,19 +83,12 @@ export function AreaForm() {
       setLoading(true)
 
       if (isEdit) {
-        await updateArea({
+        await store.area.updateArea({
           id: area.id,
           ...data,
         })
       } else {
-        const area = await addArea(data)
-        await update({
-          type: 'update-props',
-          activeAreaId: area.id,
-        })
-        updateSession({
-          activeAreaId: area.id,
-        })
+        const area = await store.areas.addArea(data)
         await store.panels.resetPanels()
       }
 

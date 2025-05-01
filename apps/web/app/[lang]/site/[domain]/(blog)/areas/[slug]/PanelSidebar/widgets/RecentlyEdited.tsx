@@ -1,13 +1,13 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import { NoCreationYet } from '../components/NoCreationYet'
 import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'
 
 export function RecentlyEdited() {
   const isAll = useIsAllContext()
-  const data = useAreaCreationsContext()
+  const { creations: data } = useCreations()
 
   const creations = [...data]
     .sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf())

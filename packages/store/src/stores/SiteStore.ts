@@ -1,4 +1,4 @@
-import { set } from 'idb-keyval'
+import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { ACTIVE_SITE } from '@penx/constants'
@@ -19,11 +19,12 @@ export class SiteStore {
     this.store.set(siteAtom, state)
   }
 
-  setSite(site: ISite) {
-    this.set(site)
+  async fetch() {
+    const site = await get(ACTIVE_SITE)
+    return site as ISite
   }
 
-  async saveSite(site: ISite) {
+  async save(site: ISite) {
     await set(ACTIVE_SITE, site)
   }
 
@@ -45,8 +46,8 @@ export class SiteStore {
       }
     })
 
-    this.setSite(newSite)
-    await this.saveSite(newSite)
+    this.set(newSite)
+    await this.save(newSite)
 
     await localDB.site.update(newSite.id, {
       aiProviders: newSite.aiProviders,

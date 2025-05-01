@@ -1,11 +1,8 @@
 import { Dispatch, SetStateAction, useMemo } from 'react'
 import { File } from 'lucide-react'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
 import { useCreations } from '@penx/hooks/useCreations'
-import { usePages } from '@penx/hooks/usePages'
 import { usePaletteDrawer } from '@penx/hooks/usePaletteDrawer'
 import { useRouter } from '@penx/libs/i18n'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { CommandGroup, CommandItem } from './command-components'
 import { useOpen } from './hooks/useOpen'
 import { useSearch } from './hooks/useSearch'
@@ -17,7 +14,7 @@ interface Props {
 
 export function SearchPageList({ heading = '', isRecent = false }: Props) {
   const { close } = useOpen()
-  const creations = useAreaCreationsContext()
+  const { creations } = useCreations()
   const pages = isRecent ? creations.slice(0, 20) : creations
   const { search, setSearch } = useSearch()
   const q = search.replace(/^@(\s+)?/, '') || ''

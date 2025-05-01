@@ -1,7 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { useAreaContext } from '@penx/components/AreaContext'
+import { useArea } from '@penx/hooks/useArea'
 import { Link } from '@penx/libs/i18n'
 import { ICreation } from '@penx/model-type/ICreation'
 
@@ -10,7 +10,7 @@ interface CreationItemProps {
 }
 
 export function CreationItem({ creation }: CreationItemProps) {
-  const area = useAreaContext()
+  const { area } = useArea()
   return (
     <Link
       href={`/areas/${area.slug}/${creation.slug}`}

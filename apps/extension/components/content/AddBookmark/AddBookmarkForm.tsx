@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { addCreation, getAreas } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
 import { getUrl } from '@/lib/utils'
@@ -11,6 +10,7 @@ import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { useAreas } from '@penx/hooks/useAreas'
 import { CreationType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Select,
   SelectContent,
@@ -34,7 +35,6 @@ import {
   SelectValue,
 } from '@penx/uikit/select'
 import { Textarea } from '@penx/uikit/textarea'
-import { useAreas } from '../hooks/useAreas'
 import { Tags } from './Tags'
 
 const AREA_ID = 'CURRENT_AREA_ID'
@@ -51,7 +51,7 @@ const FormSchema = z.object({
 
 export function AddBookmarkForm() {
   const [isLoading, setLoading] = useState(false)
-  const { data = [] } = useAreas()
+  const { areas } = useAreas()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -108,11 +108,11 @@ export function AddBookmarkForm() {
   }, [form])
 
   async function initAreaId() {
-    if (data.length > 0) {
+    if (areas.length > 0) {
       let areaId = await get(AREA_ID)
 
-      if (!data.some((f) => f.id === areaId)) {
-        const field = data.find((field) => field.isGenesis) || data[0]
+      if (!areas.some((f) => f.id === areaId)) {
+        const field = areas.find((field) => field.isGenesis) || areas[0]
         areaId = field.id
       }
 
@@ -124,7 +124,7 @@ export function AddBookmarkForm() {
 
   useEffect(() => {
     initAreaId()
-  }, [form, data])
+  }, [form, areas])
 
   return (
     <Form {...form}>
@@ -200,7 +200,7 @@ export function AddBookmarkForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {data.map((field) => (
+                  {areas.map((field) => (
                     <SelectItem key={field.id} value={field.id}>
                       <div className="flex items-center gap-1">
                         <Avatar className="size-6">

@@ -16,7 +16,6 @@ import {
   SidebarTrigger,
 } from '@penx/uikit/sidebar'
 import { uniqueId } from '@penx/unique-id'
-import { useAreaContext } from '../AreaContext'
 import { AppSidebar } from '../Sidebar/app-sidebar'
 import { PanelList } from './PanelList'
 

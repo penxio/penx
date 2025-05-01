@@ -1,6 +1,6 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
+import { useCreations } from '@penx/hooks/useCreations'
 import {
   Dialog,
   DialogContent,
@@ -20,7 +20,7 @@ interface Props {}
 export function AddPostNodeDialog({}: Props) {
   const { isOpen, setIsOpen, parentId } = useAddPostNodeDialog()
   const { addNode } = useCatalogue()
-  const creations = useAreaCreationsContext()
+  const { creations } = useCreations()
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>

@@ -1,11 +1,10 @@
 'use client'
 
-import { memo, useCallback, useEffect } from 'react'
 import { Trans } from '@lingui/react'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
-// import { useParams } from 'next/navigation'
 import { ProfileAvatar } from '@penx/components/ProfileAvatar'
+import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'
 import { updateSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
@@ -21,11 +20,9 @@ interface Props {
 }
 
 export const AreasPopover = ({ className = '' }: Props) => {
-  const { session, logout, update } = useSession()
   const { setIsOpen } = useAreaDialog()
-  const { data: areas = [] } = useAreas()
-
-  const area = areas.find((item) => item.id === session.activeAreaId)!
+  const { areas = [] } = useAreas()
+  const { area } = useArea()
 
   if (!area) return null
 
@@ -66,14 +63,10 @@ export const AreasPopover = ({ className = '' }: Props) => {
             <MenuItem
               className="flex cursor-pointer items-center gap-2"
               onClick={async () => {
-                update({
-                  type: 'update-props',
-                  activeAreaId: item.id,
-                })
-                await updateSession({
-                  activeAreaId: item.id,
-                })
-                await store.panels.resetPanels()
+                store.area.set(item)
+                store.creations.refetchCreations(item.id)
+                store.visit.setAndSave({ activeAreaId: item.id })
+                store.panels.resetPanels()
               }}
             >
               <Avatar className="h-6 w-6">

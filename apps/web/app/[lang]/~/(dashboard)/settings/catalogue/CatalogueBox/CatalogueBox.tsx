@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { CatalogueTree } from '@/lib/catalogue'
 import { getProjection } from '@/lib/dnd-projection'
-import { ICatalogueNode, INode } from '@penx/model-type'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -30,6 +27,9 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useCreations } from '@penx/hooks/useCreations'
+import { ICatalogueNode, INode } from '@penx/model-type'
 import { AddPageNodeDialog } from './AddPageNodeDialog/AddPageNodeDialog'
 import { AddPostNodeDialog } from './AddPostNodeDialog/AddPostNodeDialog'
 import { CatalogueBoxHeader } from './CatalogueBoxHeader'
@@ -86,7 +86,8 @@ export const CatalogueBox = () => {
   const tree = CatalogueTree.fromJSON(
     Array.isArray(site.catalogue) ? site.catalogue : [],
   )
-  const creations = useAreaCreationsContext()
+  const { creations } = useCreations()
+
   const { setNodes } = useCatalogue()
 
   // console.log('>>>>>>>>>>>site:', site, posts)

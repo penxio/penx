@@ -5,7 +5,7 @@ import isEqual from 'react-fast-compare'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useAreaContext } from '@penx/components/AreaContext'
+import { useArea } from '@penx/hooks/useArea'
 import { WidgetType } from '@penx/constants'
 import { useMolds } from '@penx/hooks/useMolds'
 import { store } from '@penx/store'
@@ -63,7 +63,7 @@ export const WidgetItem = memo(
     } = props
 
     const { molds } = useMolds()
-    const area = useAreaContext()
+    const { area } = useArea()
     const [visible, setVisible] = useState(false)
 
     if (!widget) return null

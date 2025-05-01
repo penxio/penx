@@ -30,13 +30,13 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
-import { useAreaContext } from '@penx/components/AreaContext'
-import { updateArea, updateAreaState } from '@penx/hooks/useArea'
+import { useArea } from '@penx/hooks/useArea'
 import { queryClient } from '@penx/query-client'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Widget } from '@penx/types'
-import { WidgetItem } from './WidgetItem'
 import { SortableItem } from './SortableItem'
+import { WidgetItem } from './WidgetItem'
 
 const measuring: MeasuringConfiguration = {
   droppable: {
@@ -45,7 +45,7 @@ const measuring: MeasuringConfiguration = {
 }
 
 export const WidgetList = () => {
-  const area = useAreaContext()
+  const { area } = useArea()
   const widgets = (area?.widgets || []) as Widget[]
   const [activeId, setActiveId] = useState<string | null>(null)
 
@@ -85,7 +85,7 @@ export const WidgetList = () => {
 
       const newWidgets = arrayMove(widgets, oldIndex, newIndex)
 
-      updateArea({
+      store.area.updateArea({
         id: area.id!,
         widgets: newWidgets,
       })

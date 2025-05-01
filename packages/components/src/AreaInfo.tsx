@@ -2,13 +2,12 @@
 
 import { Trans } from '@lingui/react'
 import { GlobeIcon, PencilIcon, TrashIcon } from 'lucide-react'
-import { useAreaContext } from '@penx/components/AreaContext'
-import { ROOT_DOMAIN } from '@penx/constants'
 import { AreaType } from '@penx/db/client'
-import { deleteArea } from '@penx/hooks/useAreas'
+import { useArea } from '@penx/hooks/useArea'
 import { updateSiteState } from '@penx/hooks/useSite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { updateSession } from '@penx/session'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/badge'
@@ -23,7 +22,7 @@ interface Props {
 }
 
 export function AreaInfo({ className }: Props) {
-  const area = useAreaContext()
+  const { area } = useArea()
   const { setState } = useAreaDialog()
   if (!area) return null
 
@@ -73,11 +72,11 @@ export function AreaInfo({ className }: Props) {
           content="Are you sure you want to delete this area?"
           tooltipContent="Delete this area"
           onConfirm={async () => {
-            const areas = await deleteArea(area)
-            const nextArea = areas.find((a) => a.isGenesis)
-            updateSession({
-              activeAreaId: nextArea?.id,
-            })
+            const areas = await store.areas.deleteArea(area)
+            const nextArea = areas.find((a) => a.isGenesis)!
+            store.area.set(nextArea)
+            store.visit.setAndSave({ activeAreaId: nextArea.id })
+            store.creations.refetchCreations(nextArea.id)
           }}
         >
           <Button

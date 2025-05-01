@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { toast } from 'sonner'
-import { deleteCreation, refetchCreations } from '@penx/hooks/useCreations'
 import { usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
@@ -32,7 +31,7 @@ export function DeleteCreationDialog({}: Props) {
   async function deletePost() {
     setLoading(true)
     try {
-      deleteCreation(creation)
+      store.creations.deleteCreation(creation)
       toast.success('Deleted successfully')
       setIsOpen(false)
       const panel = panels.find((p) => p.creationId === creation.id)

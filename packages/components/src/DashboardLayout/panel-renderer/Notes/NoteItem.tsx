@@ -16,12 +16,12 @@ import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { CreationTagWithTag } from '@penx/hooks/useCreation'
-import { refetchCreations } from '@penx/hooks/useCreations'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { localDB } from '@penx/local-db'
 import { ICreation } from '@penx/model-type/ICreation'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
@@ -88,7 +88,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
             tooltipContent="Archive this post"
             onConfirm={async () => {
               await api.creation.archive.mutate(creation.id)
-              await refetchCreations()
+              await store.creations.refetchCreations()
             }}
           >
             <Button
@@ -121,7 +121,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
                 await localDB.creation.update(creation.id, {
                   content: JSON.stringify(content),
                 })
-                await refetchCreations()
+                await store.creations.refetchCreations()
                 await api.creation.update.mutate({
                   id: creation.id,
                   content: JSON.stringify(content),

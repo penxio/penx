@@ -29,7 +29,7 @@ interface Props {
 export function AreaCard({ layoutItem, layout, setLayout }: Props) {
   const { refetch } = useSite()
   const site = useSiteContext()
-  const { data: areas = [] } = useAreas()
+  const { areas = [] } = useAreas()
   const { themeName } = useThemeName()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const themeConfig = (site.themeConfig || {}) as Record<string, any>

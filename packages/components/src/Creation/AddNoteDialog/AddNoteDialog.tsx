@@ -9,10 +9,11 @@ import { toast } from 'sonner'
 import { editorDefaultValue } from '@penx/constants'
 import { GateType } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import { refetchCreations, useCreations } from '@penx/hooks/useCreations'
+import { useCreations } from '@penx/hooks/useCreations'
 import { useMySite } from '@penx/hooks/useMySite'
 import { usePublishPost } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
@@ -88,6 +89,7 @@ function Footer({
   )
   const { push } = useRouter()
   const editor = usePlateEditor()
+  const area = store.area.get()
 
   const title = value.map((node) => Node.string(node)).join(', ')
 
@@ -98,7 +100,7 @@ function Footer({
         moldId: mold.id,
         type: mold.type,
         siteId: site.id,
-        areaId: session?.activeAreaId!,
+        areaId: area.id,
         title: title,
         content: JSON.stringify(value),
       })
@@ -110,7 +112,7 @@ function Footer({
           delivered: false,
         })
       }
-      await refetchCreations()
+      await store.creations.refetchCreations()
       setIsOpen(false)
 
       setValue(editorDefaultValue)

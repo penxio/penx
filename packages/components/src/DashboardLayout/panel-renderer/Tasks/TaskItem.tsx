@@ -2,12 +2,9 @@
 
 import TextareaAutosize from 'react-textarea-autosize'
 import { updateCreation } from '@penx/hooks/useCreation'
-import {
-  refetchCreations,
-  updateCreationById,
-  useCreations,
-} from '@penx/hooks/useCreations'
+import { useCreations } from '@penx/hooks/useCreations'
 import { ICreation } from '@penx/model-type/ICreation'
+import { store } from '@penx/store'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { cn } from '@penx/utils'
 
@@ -38,7 +35,9 @@ export function TaskItem({ creation: creation }: PostItemProps) {
           onChange={(e) => {
             const title = e.target.value
             updateCreation({ id: creation.id, title })
-            updateCreationById(creation.areaId!, creation.id, { title })
+            store.creations.updateCreationById(creation.id, {
+              title,
+            })
           }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {

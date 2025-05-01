@@ -1,10 +1,9 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
-import { useTags } from '@penx/hooks/useTags'
 import { Mold } from '@penx/db/client'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useMySite } from '@penx/hooks/useMySite'
+import { useTags } from '@penx/hooks/useTags'
 import { getTextColorByName } from '@penx/libs/color-helper'
 import { Panel } from '@penx/types'
 import { cn } from '@penx/utils'
@@ -17,7 +16,7 @@ interface Props {
 }
 
 export function BookmarkList(props: Props) {
-  const data = useAreaCreationsContext()
+  const { creations: data } = useCreations()
   const { tags } = useTags()
   const creations = data.filter((item) => item.moldId === props.mold.id)
 

@@ -12,13 +12,13 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { AddNoteDialog } from '@penx/components/AddNoteDialog'
-import { useAreaContext } from '@penx/components/AreaContext'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
-import { useMolds } from '@penx/hooks/useMolds'
 import { Mold } from '@penx/db/client'
-import { addWidget } from '@penx/hooks/useArea'
+import { useArea } from '@penx/hooks/useArea'
+import { useMolds } from '@penx/hooks/useMolds'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { useSession } from '@penx/session'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -44,12 +44,12 @@ export function AddWidgetButton({ className }: Props) {
   const [type, setType] = useState<CreationType>('' as any)
   const [open, setOpen] = useState(false)
   const addNoteDialog = useAddNoteDialog()
-  const area = useAreaContext()
+  const { area } = useArea()
   const { molds } = useMolds()
 
   async function addMoldWidget(mold: Mold) {
     setOpen(false)
-    await addWidget(session?.activeAreaId, {
+    await store.area.addWidget({
       id: uniqueId(),
       type: WidgetType.MOLD,
       moldId: mold.id,
@@ -59,7 +59,7 @@ export function AddWidgetButton({ className }: Props) {
 
   async function addBuiltinWidget(type: string) {
     setOpen(false)
-    await addWidget(session?.activeAreaId, {
+    await store.area.addWidget({
       id: uniqueId(),
       collapsed: false,
       type,

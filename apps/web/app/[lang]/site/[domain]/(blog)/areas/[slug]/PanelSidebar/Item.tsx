@@ -11,9 +11,8 @@ import {
   XIcon,
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useAreaContext } from '@penx/components/AreaContext'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { toggleCollapsed } from '@penx/hooks/useArea'
+import { useArea } from '@penx/hooks/useArea'
 import { useMolds } from '@penx/hooks/useMolds'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -37,7 +36,7 @@ export const Item = forwardRef<HTMLDivElement, Props>(
   function Item(props, ref) {
     const { molds } = useMolds()
     const [visible, setVisible] = useState(false)
-    const area = useAreaContext()
+    const { area } = useArea()
     const [widget, setWidget] = useState(props.widget)
 
     if (!widget) return null

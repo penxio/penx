@@ -17,7 +17,6 @@ export interface SessionData {
   role: string
   siteId: string
   activeSiteId: string
-  activeAreaId: string
   planType: string
   currentPeriodEnd: string
   billingCycle: string
@@ -109,7 +108,6 @@ export type UpdateSessionData =
 export type UpdateProps = {
   type: 'update-props'
   activeSiteId?: string
-  activeAreaId?: string
   [key: string]: any
 }
 

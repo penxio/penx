@@ -1,15 +1,14 @@
 'use client'
 
-import { useAreaCreationsContext } from '@penx/contexts/AreaCreationsContext'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { useCreations } from '@penx/hooks/useCreations'
 import { usePages } from '@penx/hooks/usePages'
 import { useSite } from '@penx/hooks/useSite'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { CatalogueBox } from './CatalogueBox/CatalogueBox'
 
 export const dynamic = 'force-static'
 
 export default function Page() {
-  const creations = useAreaCreationsContext()
   const pages = usePages()
 
   if (pages.isLoading) {

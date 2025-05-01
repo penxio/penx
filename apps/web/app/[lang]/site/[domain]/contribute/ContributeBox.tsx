@@ -1,17 +1,17 @@
 'use client'
 
 import { useState } from 'react'
-import { CreationStatus, Product } from '@penx/db/client'
 import { TextareaAutosize } from '@udecode/plate-caption/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { editorDefaultValue } from '@penx/constants'
+import { CreationStatus, Product } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
 import { CreationType, Site } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
@@ -46,7 +46,7 @@ export function ContributeBox({ site }: Props) {
         description,
         moldId: mold?.id!,
         type: mold?.type!,
-        areaId: session?.activeAreaId!,
+        areaId: '', //TODO:
         content,
         status: CreationStatus.CONTRIBUTED,
         userId: session?.userId || '',

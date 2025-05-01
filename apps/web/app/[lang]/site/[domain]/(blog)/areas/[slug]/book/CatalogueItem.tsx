@@ -3,8 +3,8 @@
 import { forwardRef, useMemo } from 'react'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { useParams } from 'next/navigation'
-import { useAreaContext } from '@penx/components/AreaContext'
 import { useMobileSidebarSheet } from '@penx/components/useMobileSidebarSheet'
+import { useArea } from '@penx/hooks/useArea'
 import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,
@@ -26,7 +26,7 @@ export const CatalogueItem = forwardRef<HTMLDivElement, CatalogueItemProps>(
     { item, name, creation, depth }: CatalogueItemProps,
     ref,
   ) {
-    const area = useAreaContext()
+    const { area } = useArea()
     const { setIsOpen } = useMobileSidebarSheet()
     const isCategory = item.type === CatalogueNodeType.CATEGORY
     const params = useParams() as Record<string, string>
