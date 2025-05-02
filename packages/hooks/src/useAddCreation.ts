@@ -13,10 +13,8 @@ import { uniqueId } from '@penx/unique-id'
 export function useAddCreation() {
   const { session } = useSession()
   const { molds } = useMolds()
-  const { data: collaborators = [] } = useCollaborators()
   return async (type: string) => {
     const mold = molds.find((mold) => mold.type === type)!
-    const { user } = collaborators.find((c) => c.userId === session?.uid)!
 
     const area = store.area.get()
 

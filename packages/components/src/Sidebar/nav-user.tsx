@@ -23,6 +23,7 @@ import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { MySite } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Button } from '@penx/uikit/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,27 +40,38 @@ import {
   useSidebar,
 } from '@penx/uikit/sidebar'
 import { getUrl, sleep } from '@penx/utils'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { usePlanListDialog } from '../PlanList/usePlanListDialog'
 
 export function NavUser() {
   const { site } = useMySite()
-  const { data: sites = [], error } = useMySites()
+  // const { data: sites = [], error } = useMySites()
   const { session, data, logout, update } = useSession()
   const { isMobile } = useSidebar()
   const { setIsOpen } = usePlanListDialog()
   const sigInState = useSignIn({})
+  const loginDialog = useLoginDialog()
 
-  async function selectSite(site: MySite) {
-    updateSiteState(site)
+  // async function selectSite(site: MySite) {
+  //   updateSiteState(site)
 
-    // window.__SITE_ID__ = site.id
-    update({
-      type: 'update-props',
-      activeSiteId: site.id,
-    })
+  //   // window.__SITE_ID__ = site.id
+  //   update({
+  //     type: 'update-props',
+  //     activeSiteId: site.id,
+  //   })
 
-    await store.panels.resetPanels()
-  }
+  //   await store.panels.resetPanels()
+  // }
+
+  if (!session)
+    return (
+      <div>
+        <Button size="sm" onClick={() => loginDialog.setIsOpen(true)}>
+          Log in
+        </Button>
+      </div>
+    )
 
   return (
     <DropdownMenu>
@@ -93,7 +105,7 @@ export function NavUser() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
 
-        <DropdownMenuGroup>
+        {/* <DropdownMenuGroup>
           <DropdownMenuLabel>Sites</DropdownMenuLabel>
           {sites.map((site) => (
             <DropdownMenuItem
@@ -113,7 +125,7 @@ export function NavUser() {
               </div>
             </DropdownMenuItem>
           ))}
-        </DropdownMenuGroup>
+        </DropdownMenuGroup> */}
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem

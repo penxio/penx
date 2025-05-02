@@ -114,7 +114,6 @@
     "./database-ui": "./src/database-ui/index.ts",
     "./DashboardProviders": "./src/providers/DashboardProviders.tsx",
     "./RootProviders": "./src/providers/RootProviders.tsx",
-    "./SyncProvider": "./src/providers/SyncProvider.tsx",
     "./AreaPageWidget": "./src/theme-ui/AreaPageWidget.tsx",
     "./BackLinks": "./src/theme-ui/BackLinks.tsx",
     "./ContributeButton": "./src/theme-ui/ContributeButton.tsx",

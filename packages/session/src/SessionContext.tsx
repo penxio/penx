@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { useQuerySession } from './session'
+import { useQuerySession } from './useQuerySession'
 
 type SessionType = ReturnType<typeof useQuerySession>
 

@@ -1,21 +1,47 @@
 import { get, set } from 'idb-keyval'
 import { localDB } from '@penx/local-db'
+import { ISite } from '@penx/model-type'
 import { store } from '@penx/store'
-import { Panel, PanelType, Widget } from '@penx/types'
+import { api } from '@penx/trpc-client'
+import { Panel, PanelType, SessionData, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { initLocalSite } from './lib/initLocalSite'
+import { isRowsEqual } from './lib/isRowsEqual'
+import { syncAreasToLocal } from './lib/syncAreasToLocal'
+import { syncCreationsToLocal } from './lib/syncCreationsToLocal'
+import { syncCreationTagsToLocal } from './lib/syncCreationTagsToLocal'
+import { syncTagsToLocal } from './lib/syncTagsToLocal'
 
 const PANELS = 'PANELS'
 
 export class AppService {
   inited = false
 
-  async init() {
+  async init(session: SessionData) {
+    console.log('========session:', session)
+
     store.app.setAppLoading(true)
 
     // TODO: handle site empty
-    const site = (await localDB.site.toCollection().first())!
-    const siteId = site.id
+    let site = (await localDB.site.toCollection().first())!
+    const siteId = site?.id
 
+    if (!site && navigator.onLine && session) {
+      const [remoteSite] = await this.syncInitialData(siteId)
+      site = remoteSite as ISite
+    }
+
+    if (navigator.onLine && session) {
+      syncTagsToLocal(session.siteId)
+      syncAreasToLocal(session.siteId)
+      syncCreationTagsToLocal(session.siteId)
+      await syncCreationsToLocal(session.siteId)
+    }
+
+    if (!site) {
+      await initLocalSite()
+      return
+    }
     await store.site.save(site)
 
     const panels = await this.getPanels(site.id)
@@ -48,6 +74,29 @@ export class AppService {
     store.panels.set(panels)
     store.app.setAppLoading(false)
     this.inited = true
+  }
+
+  private async syncInitialData(siteId: string) {
+    const [
+      remoteSite,
+      remoteAreas,
+      remoteMolds,
+      remoteTags,
+      remoteCreationTags,
+    ] = await Promise.all([
+      api.site.mySite.query(),
+      api.area.listSiteAreas.query({ siteId }),
+      api.mold.listBySite.query(),
+      api.tag.listSiteTags.query({ siteId }),
+      api.tag.listSiteCreationTags.query({ siteId }),
+    ])
+
+    await localDB.site.put(remoteSite as any)
+    await localDB.area.bulkPut(remoteAreas as any)
+    await localDB.mold.bulkPut(remoteMolds as any)
+    await localDB.tag.bulkPut(remoteTags as any)
+    await localDB.creationTag.bulkPut(remoteCreationTags as any)
+    return [remoteSite]
   }
 
   private async getPanels(siteId: string) {

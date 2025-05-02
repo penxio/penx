@@ -107,9 +107,9 @@ export default async function middleware(req: NextRequest) {
     }
 
     if (isDashboard) {
-      if (!token?.userId) {
-        return NextResponse.redirect(new URL('/', req.url))
-      }
+      // if (!token?.userId) {
+      //   return NextResponse.redirect(new URL('/', req.url))
+      // }
       return NextResponse.rewrite(new URL(`/${locale}${path}`, req.url))
     } else {
       if (token?.userId && pathname === '/') {

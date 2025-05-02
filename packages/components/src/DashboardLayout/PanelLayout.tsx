@@ -5,7 +5,6 @@ import { nextTick } from 'process'
 import { Shape, ShapeStream } from '@electric-sql/client'
 import { useQuery } from '@tanstack/react-query'
 import { editorDefaultValue } from '@penx/constants'
-import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useSiteTags } from '@penx/hooks/useSiteTags'
 import { useSession } from '@penx/session'
@@ -20,11 +19,7 @@ import { AppSidebar } from '../Sidebar/app-sidebar'
 import { PanelList } from './PanelList'
 
 export function PanelLayout({ children }: { children: ReactNode }) {
-  useSiteTags()
-  useCollaborators()
-  const { session } = useSession()
-  if (!session) return null
-
+  // useSiteTags()
   return (
     <SidebarProvider className="">
       <AppSidebar />

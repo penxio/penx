@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { Trans } from '@lingui/react'
-import { PaletteIcon, TagsIcon } from 'lucide-react'
+import { GlobeIcon, PaletteIcon, TagsIcon } from 'lucide-react'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { isWeb, ROOT_HOST } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
@@ -25,6 +25,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { AreaWidgets } from './area-widgets'
 import { AreasPopover } from './AreasPopover/AreasPopover'
 import { ImportPostEntry } from './ImportPostEntry'
@@ -33,6 +34,8 @@ import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { session } = useSession()
+  const { setIsOpen } = useLoginDialog()
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader className="m-0 p-0">
@@ -50,7 +53,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarFooter className="py-0">
         <div className="flex items-center justify-between">
           <div>
-            <VisitSiteButton />
+            {session && <VisitSiteButton />}
+
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -59,6 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     size="icon"
                     className="hover:bg-foreground/8 size-8"
                     onClick={() => {
+                      if (!session) return setIsOpen(true)
                       // console.log('======isWeb:', isWeb)
                       if (isWeb) {
                         appEmitter.emit('ROUTE_TO_DESIGN')

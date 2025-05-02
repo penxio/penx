@@ -38,7 +38,6 @@ export function Profile({
 
   return (
     <>
-      <LoginDialog />
       {!authenticated && (
         <LoginButton {...buttonProps} appearance={appearance} />
       )}

@@ -15,12 +15,13 @@ import Head from 'next/head'
 import { headers } from 'next/headers'
 import NextTopLoader from 'nextjs-toploader'
 import { DashboardLayout } from '@penx/components/DashboardLayout'
+import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
-import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import linguiConfig from '@penx/libs/lingui.config'
 import { cn } from '@penx/utils'
+import { LoginDialog } from '@penx/widgets/LoginDialog/LoginDialog'
 import { WatchAppEvent } from './WatchAppEvent'
 
 const roboto = Poppins({
@@ -83,6 +84,7 @@ export default async function RootLayout({
         >
           <DashboardProviders cookies={cookies}>
             <GoogleOauthDialog />
+            <LoginDialog />
             <ThemeProvider
               attribute="class"
               defaultTheme="system"

@@ -1,2 +1,2 @@
-export * from './session'
+export * from './useQuerySession'
 export * from './SessionContext'
