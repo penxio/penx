@@ -66,8 +66,5 @@ export function useAddCreation() {
       type: PanelType.CREATION,
       creationId: newCreation.id,
     })
-
-    // TODO: need to retry
-    await api.creation.create.mutate(createPostInput)
   }
 }

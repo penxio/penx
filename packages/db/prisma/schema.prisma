@@ -556,7 +556,7 @@ model Creation {
   archivedAt      DateTime?
   openedAt        DateTime                 @default(now())
   createdAt       DateTime                 @default(now())
-  updatedAt       DateTime                 @updatedAt
+  updatedAt       DateTime                 @default(now())
   user            User                     @relation(fields: [userId], references: [id])
   userId          String                   @db.Uuid
   site            Site                     @relation(fields: [siteId], references: [id])

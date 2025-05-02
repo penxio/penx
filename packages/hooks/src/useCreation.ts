@@ -125,8 +125,7 @@ export async function updateCreationState(
 
 async function persistCreation(props: UpdateCreationInput) {
   const { id, ...data } = props
-  await localDB.creation.update(id, data)
-  await api.creation.update.mutate(props)
+  await localDB.updateCreation(id, data)
 }
 
 const debouncedSaveCreation = debounce(persistCreation, 250, {

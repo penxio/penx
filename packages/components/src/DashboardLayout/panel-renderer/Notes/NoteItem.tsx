@@ -118,7 +118,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
               className="size-7 gap-1 rounded-full text-xs opacity-50"
               onClick={async () => {
                 setReadonly(true)
-                await localDB.creation.update(creation.id, {
+                await localDB.updateCreation(creation.id, {
                   content: JSON.stringify(content),
                 })
                 await store.creations.refetchCreations()

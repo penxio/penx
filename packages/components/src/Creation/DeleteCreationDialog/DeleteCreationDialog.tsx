@@ -28,7 +28,7 @@ export function DeleteCreationDialog({}: Props) {
   const [loading, setLoading] = useState(false)
   const { panels } = usePanels()
 
-  async function deletePost() {
+  async function remove() {
     setLoading(true)
     try {
       store.creations.deleteCreation(creation)
@@ -64,7 +64,7 @@ export function DeleteCreationDialog({}: Props) {
             className="w-20"
             disabled={loading}
             variant="destructive"
-            onClick={deletePost}
+            onClick={remove}
           >
             {loading ? (
               <LoadingDots className="bg-background" />
