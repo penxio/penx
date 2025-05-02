@@ -22,7 +22,7 @@ export class CreationsStore {
   async addCreation(creation: ICreation) {
     const creations = this.get()
     this.set([...creations, creation])
-    await localDB.creation.add(creation)
+    await localDB.addCreation(creation)
   }
 
   async updateCreationById(creationId: string, data: Partial<ICreation>) {
@@ -40,18 +40,18 @@ export class CreationsStore {
 
   async deleteCreation(creation: ICreation) {
     const area = this.store.area.get()
-    await localDB.creation.delete(creation.id)
+    await localDB.deleteCreation(creation.id)
 
     const newCreations = await localDB.creation
       .where({ areaId: area.id })
       .toArray()
 
     this.set(newCreations)
-    await api.creation.delete.mutate(creation.id)
   }
 
   async refetchCreations(areaId?: string) {
     const area = this.store.area.get()
+    console.log('=====areaId:', areaId, 'area:', area)
     const newCreations = await localDB.creation
       .where({ areaId: areaId || area.id })
       .toArray()

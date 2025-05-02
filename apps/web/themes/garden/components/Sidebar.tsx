@@ -1,9 +1,9 @@
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react'
 import { slug } from 'github-slugger'
+import { MembershipEntry } from '@penx/components/MembershipEntry'
 import { ModeToggle } from '@penx/components/ModeToggle'
 import { Profile } from '@penx/components/Profile'
-import { MembershipEntry } from '@penx/components/MembershipEntry'
 import { SocialNav } from '@penx/components/SocialNav'
 import { Link } from '@penx/libs/i18n'
 import { Site, Tag } from '@penx/types'
@@ -43,10 +43,6 @@ export const Sidebar = ({ site, tags }: Props) => {
           <div className="-mt-40 space-y-8">
             <div className="flex flex-col space-y-3">
               {links.map((link) => {
-                if (link.pathname === '/creator-fi' && !site.spaceId) {
-                  return null
-                }
-
                 if (!link.visible) return null
 
                 let title = link.title as ReactNode

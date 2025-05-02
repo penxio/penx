@@ -2,6 +2,7 @@ import { forwardRef, useRef, useState } from 'react'
 import { ImageIcon, X } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
+import { updateCreation } from '@penx/hooks/useCreation'
 import { ICreation } from '@penx/model-type/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
@@ -46,7 +47,7 @@ export const ImageCreationUpload = forwardRef<HTMLDivElement, Props>(
 
     async function removeImage() {
       setValue('')
-      await api.creation.update.mutate({
+      updateCreation({
         id: creation.id,
         content: '',
       })

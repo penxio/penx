@@ -3,6 +3,7 @@ import { useAtomValue } from 'jotai'
 import { useSession } from '@penx/session'
 import { appLoadingAtom, store } from '@penx/store'
 import { LogoSpinner } from '@penx/widgets/LogoSpinner'
+import { runWorker } from '@penx/worker'
 import { AppService } from './AppService'
 
 export const appContext = createContext({} as { app: AppService })
@@ -17,6 +18,7 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     if (isLoading) return
     if (!appRef.current.inited) {
       appRef.current.init(session)
+      runWorker()
     }
   }, [isLoading, session])
 

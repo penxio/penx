@@ -1,10 +1,10 @@
-import { Tag } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { slug } from 'github-slugger'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 import { revalidateCreationTags } from '@penx/api/lib/revalidateCreation'
 import { prisma } from '@penx/db'
+import { Tag } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { addCreationTag } from '../lib/addCreationTag'
@@ -70,6 +70,7 @@ export const tagRouter = router({
                 name: tagName,
                 userId: ctx.token.uid,
                 color: getRandomColorName(),
+                updatedAt: new Date(),
               },
             })
             newTag = tag
@@ -93,6 +94,7 @@ export const tagRouter = router({
               siteId: input.siteId,
               creationId: input.creationId,
               tagId: tag.id,
+              updatedAt: new Date(),
             },
             include: { tag: true },
           })

@@ -1,4 +1,3 @@
-import { ProductType, StripeType, SubdomainType } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
@@ -9,6 +8,7 @@ import {
   TierInterval,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
+import { ProductType, StripeType, SubdomainType } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import {
   addDomainToVercel,
@@ -201,7 +201,6 @@ export const siteRouter = router({
         themeName: z.string().optional(),
         themeConfig: z.record(z.any()).optional(),
         config: z.record(z.any()).optional(),
-        spaceId: z.string().optional(),
         navLinks: z
           .array(
             z.object({
@@ -346,6 +345,73 @@ export const siteRouter = router({
       where: { siteId: ctx.token.activeSiteId },
     })
   }),
+
+  syncInitialSite: protectedProcedure
+    .input(
+      z.object({
+        site: z.any(),
+        molds: z.array(z.any()),
+        areas: z.array(z.any()),
+        creations: z.array(z.any()),
+        tags: z.array(z.any()),
+        creationTags: z.array(z.any()),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.token.uid
+      if (input.site.userId !== userId) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Cannot sync initial site with another user.',
+        })
+      }
+
+      return prisma.$transaction(
+        async (tx) => {
+          const promises = [
+            tx.site.create({
+              data: {
+                ...input.site,
+                isRemote: true,
+              },
+            }),
+            tx.area.createMany({
+              data: input.areas,
+            }),
+            tx.mold.createMany({
+              data: input.molds,
+            }),
+          ]
+          if (input.creations.length) {
+            promises.push(
+              tx.creation.createMany({
+                data: input.creations,
+              }),
+            )
+          }
+          if (input.tags.length) {
+            promises.push(
+              tx.tag.createMany({
+                data: input.tags,
+              }),
+            )
+          }
+          if (input.creationTags.length) {
+            promises.push(
+              tx.creationTag.createMany({
+                data: input.creationTags,
+              }),
+            )
+          }
+          await Promise.all(promises)
+          return true
+        },
+        {
+          maxWait: 5000, // default: 2000
+          timeout: 10000, // default: 5000
+        },
+      )
+    }),
 
   addSubdomain: protectedProcedure
     .input(
@@ -587,8 +653,8 @@ export const siteRouter = router({
           await cacheHelper.updateHomeSites(null)
         },
         {
-          maxWait: 5000, // default: 2000
-          timeout: 10000, // default: 5000
+          maxWait: 10000, // default: 2000
+          timeout: 20000, // default: 5000
         },
       )
     }),
@@ -599,50 +665,52 @@ export const siteRouter = router({
       async (tx) => {
         const site = await tx.site.findFirst({ where: { userId } })
 
-        if (site?.userId !== ctx.token.uid) {
-          throw new TRPCError({
-            code: 'UNAUTHORIZED',
-            message: 'No permission to delete site',
-          })
-        }
+        // if (site?.userId !== ctx.token.uid) {
+        //   throw new TRPCError({
+        //     code: 'UNAUTHORIZED',
+        //     message: 'No permission to delete site',
+        //   })
+        // }
 
         const siteId = site?.id
+        if (siteId) {
+          await tx.message.deleteMany({ where: { siteId } })
+          await tx.channel.deleteMany({ where: { siteId } })
+          await tx.author.deleteMany({ where: { siteId } })
+          await tx.comment.deleteMany({ where: { siteId } })
+          await tx.creationTag.deleteMany({ where: { siteId } })
+          await tx.tag.deleteMany({ where: { siteId } })
+          await tx.collaborator.deleteMany({ where: { siteId } })
+          await tx.domain.deleteMany({ where: { siteId } })
+          await tx.accessToken.deleteMany({ where: { siteId } })
+          await tx.assetLabel.deleteMany({ where: { siteId } })
+          await tx.label.deleteMany({ where: { siteId } })
+          await tx.assetAlbum.deleteMany({ where: { siteId } })
+          await tx.album.deleteMany({ where: { siteId } })
 
-        await tx.message.deleteMany({ where: { siteId } })
-        await tx.channel.deleteMany({ where: { siteId } })
-        await tx.author.deleteMany({ where: { siteId } })
-        await tx.comment.deleteMany({ where: { siteId } })
-        await tx.creationTag.deleteMany({ where: { siteId } })
-        await tx.tag.deleteMany({ where: { siteId } })
-        await tx.collaborator.deleteMany({ where: { siteId } })
-        await tx.domain.deleteMany({ where: { siteId } })
-        await tx.accessToken.deleteMany({ where: { siteId } })
-        await tx.assetLabel.deleteMany({ where: { siteId } })
-        await tx.label.deleteMany({ where: { siteId } })
-        await tx.assetAlbum.deleteMany({ where: { siteId } })
-        await tx.album.deleteMany({ where: { siteId } })
+          await tx.asset.deleteMany({ where: { siteId } })
+          await tx.record.deleteMany({ where: { siteId } })
+          await tx.column.deleteMany({ where: { siteId } })
+          await tx.view.deleteMany({ where: { siteId } })
+          await tx.database.deleteMany({ where: { siteId } })
+          await tx.subscriber.deleteMany({ where: { siteId } })
+          await tx.delivery.deleteMany({ where: { siteId } })
+          await tx.newsletter.deleteMany({ where: { siteId } })
+          await tx.invoice.deleteMany({ where: { siteId } })
+          await tx.order.deleteMany({ where: { siteId } })
+          await tx.subscription.deleteMany({ where: { siteId } })
+          await tx.product.deleteMany({ where: { siteId } })
+          await tx.pledge.deleteMany({ where: { siteId } })
+          await tx.campaign.deleteMany({ where: { siteId } })
+          await tx.creation.deleteMany({ where: { siteId } })
+          await tx.area.deleteMany({ where: { siteId } })
+          await tx.subscription.deleteMany({ where: { siteId } })
+          await tx.payout.deleteMany({ where: { siteId } })
+          await tx.mold.deleteMany({ where: { siteId } })
+          await tx.siteUser.deleteMany({ where: { siteId } })
+          await tx.site.delete({ where: { id: siteId } })
+        }
 
-        await tx.asset.deleteMany({ where: { siteId } })
-        await tx.record.deleteMany({ where: { siteId } })
-        await tx.column.deleteMany({ where: { siteId } })
-        await tx.view.deleteMany({ where: { siteId } })
-        await tx.database.deleteMany({ where: { siteId } })
-        await tx.subscriber.deleteMany({ where: { siteId } })
-        await tx.delivery.deleteMany({ where: { siteId } })
-        await tx.newsletter.deleteMany({ where: { siteId } })
-        await tx.invoice.deleteMany({ where: { siteId } })
-        await tx.order.deleteMany({ where: { siteId } })
-        await tx.subscription.deleteMany({ where: { siteId } })
-        await tx.product.deleteMany({ where: { siteId } })
-        await tx.pledge.deleteMany({ where: { siteId } })
-        await tx.campaign.deleteMany({ where: { siteId } })
-        await tx.creation.deleteMany({ where: { siteId } })
-        await tx.area.deleteMany({ where: { siteId } })
-        await tx.subscription.deleteMany({ where: { siteId } })
-        await tx.payout.deleteMany({ where: { siteId } })
-        await tx.mold.deleteMany({ where: { siteId } })
-        await tx.siteUser.deleteMany({ where: { siteId } })
-        await tx.site.delete({ where: { id: siteId } })
         await tx.hostedSite.deleteMany({ where: { userId } })
         await tx.referral.deleteMany({ where: { userId } })
         await tx.account.deleteMany({ where: { userId } })

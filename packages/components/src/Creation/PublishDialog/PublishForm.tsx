@@ -126,27 +126,6 @@ export function PublishForm() {
               </FormItem>
             )}
           />
-          {/* 
-            <FormField
-              control={form.control}
-              name="collectible"
-              render={({ field }) => (
-                <FormItem className="w-full flex items-center">
-                  <FormLabel htmlFor="post-collectible">collectible</FormLabel>
-                  <FormControl>
-                    <Switch
-                      id="post-collectible"
-                      checked={field.value}
-                      disabled={!spaceId}
-                      onCheckedChange={(value) => {
-                        field.onChange(value)
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
 
           <FormField
             control={form.control}

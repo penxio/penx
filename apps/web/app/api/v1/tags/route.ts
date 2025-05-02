@@ -1,10 +1,10 @@
-import { prisma } from '@penx/db'
-import { getSessionOptions } from '@penx/libs/session'
-import { SessionData } from '@penx/types'
 import { slug } from 'github-slugger'
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
+import { prisma } from '@penx/db'
+import { getSessionOptions } from '@penx/libs/session'
+import { SessionData } from '@penx/types'
 
 interface AddTagInput {
   siteId: string
@@ -36,6 +36,7 @@ export async function POST(req: NextRequest) {
       siteId: input.siteId,
       name: tagName,
       userId: session.userId,
+      updatedAt: new Date(),
     },
   })
 

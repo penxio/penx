@@ -22,27 +22,9 @@ export function LoginDialogContent() {
   const { setIsOpen } = useLoginDialog()
   const { login, logout } = useSession()
   const searchParams = useSearchParams()
-  const showWalletLogin = searchParams?.get('wallet') === 'true'
-
-  const handleSuccess = useCallback(
-    async (res: StatusAPIResponse) => {
-      // alert('Signed in successfully')
-      await login({
-        type: 'penx-farcaster',
-        message: res.message!,
-        signature: res.signature!,
-        name: res.username!,
-        pfp: res.pfpUrl!,
-      })
-
-      toast.success('Signed in successfully')
-      setIsOpen(false)
-    },
-    [setIsOpen, login],
-  )
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 pb-5">
       <div className="space-y-1">
         {/* <div className="text-foreground/40">Web2 login</div> */}
         <GoogleOauthButton
@@ -51,22 +33,8 @@ export function LoginDialogContent() {
           className="border-foreground w-full"
         />
       </div>
-      {/* <Separator /> */}
-
-      {/* <SignInButton
-        // onStatusResponse={(res) => {
-        //   alert(JSON.stringify(res))
-        // }}
-        nonce={api.user.getNonce.query}
-        onSuccess={handleSuccess}
-        onError={(error) => {
-          // alert('Failed to sign in' + JSON.stringify(error))
-          toast.error('Failed to sign in')
-        }}
-        onSignOut={() => logout()}
-      /> */}
-      <div className="text-foreground/40 text-center">or</div>
-      <LoginForm />
+      {/* <div className="text-foreground/40 text-center">or</div>
+      <LoginForm /> */}
     </div>
   )
 }

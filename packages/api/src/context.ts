@@ -1,9 +1,9 @@
-import { PlanType } from '@penx/db/client'
 import { FetchCreateContextFnOptions } from '@trpc/server/adapters/fetch'
 import type * as trpcNext from '@trpc/server/adapters/next'
 import { getIronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
 import { prisma } from '@penx/db'
+import { PlanType } from '@penx/db/client'
 import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import { SessionData } from '@penx/types'
 
@@ -29,22 +29,6 @@ type Token = {
   isFree: boolean
 }
 
-let secret = ''
-
-async function getAuthSecret() {
-  let nextAuthSecret = process.env.NEXTAUTH_SECRET
-  if (nextAuthSecret) return nextAuthSecret
-  if (secret) return secret
-
-  const site = await prisma.site.findFirst({
-    select: {
-      authSecret: true,
-    },
-  })
-  secret = site?.authSecret || ''
-  return site?.authSecret || ''
-}
-
 /**
  * Inner function for `createContext` where we create the context.
  * This is useful for testing when we don't want to mock Next.js' request/response
@@ -67,7 +51,7 @@ export async function createContext(opts: FetchCreateContextFnOptions) {
   // for API-response caching see https://trpc.io/docs/v11/caching
   const { req } = opts
 
-  const nextAuthSecret = await getAuthSecret()
+  const nextAuthSecret = process.env.NEXTAUTH_SECRET!
   let token = await getServerSession()
   let authorization = req.headers.get('authorization')
 

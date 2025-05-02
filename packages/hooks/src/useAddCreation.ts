@@ -1,28 +1,27 @@
-import { CreateCreationInput, editorDefaultValue } from '@penx/constants'
+import { AddCreationInput, editorDefaultValue } from '@penx/constants'
 import { CommentStatus } from '@penx/db/client'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { useMolds } from '@penx/hooks/useMolds'
 import { ICreation } from '@penx/model-type/ICreation'
-import { useSession } from '@penx/session'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
-import { CreationStatus, CreationType, GateType, PanelType } from '@penx/types'
+import { CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { useMySite } from './useMySite'
 
 export function useAddCreation() {
-  const { session } = useSession()
   const { molds } = useMolds()
+  const { site } = useMySite()
+
   return async (type: string) => {
     const mold = molds.find((mold) => mold.type === type)!
-
     const area = store.area.get()
 
     const id = uniqueId()
-    const createPostInput: CreateCreationInput = {
+    const addCreationInput: AddCreationInput = {
       id,
       slug: uniqueId(),
-      siteId: session?.siteId!,
+      siteId: site.id,
       title: '',
       description: '',
       image: '',
@@ -33,13 +32,13 @@ export function useAddCreation() {
     }
 
     const newCreation = {
-      ...createPostInput,
+      ...addCreationInput,
       siteId: mold.siteId,
       icon: '',
       props: [],
       podcast: {},
       i18n: {},
-      userId: session?.uid!,
+      userId: site.userId,
       gateType: GateType.FREE,
       status: CreationStatus.DRAFT,
       commentStatus: CommentStatus.OPEN,
@@ -47,7 +46,6 @@ export function useAddCreation() {
       collectible: false,
       isJournal: false,
       isPopular: false,
-      isPage: false,
       checked: false,
       delivered: false,
       commentCount: 0,

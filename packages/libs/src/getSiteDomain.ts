@@ -37,7 +37,6 @@ export function sortDomains(domains: Domain[]): Domain[] {
   const sortKeys = [
     SubdomainType.Custom,
     SubdomainType.EnsName,
-    SubdomainType.FarcasterName,
     SubdomainType.Address,
     SubdomainType.UserId,
   ]

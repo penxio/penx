@@ -14,7 +14,6 @@ import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { sleep } from '@penx/utils'
-import { useDeletePageDialog } from '../DeletePageDialog/useDeleteDatabaseDialog'
 import { useDeleteCreationDialog } from './DeleteCreationDialog/useDeleteCreationDialog'
 import { usePublishDialog } from './PublishDialog/usePublishDialog'
 

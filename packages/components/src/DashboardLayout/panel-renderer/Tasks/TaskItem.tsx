@@ -35,9 +35,6 @@ export function TaskItem({ creation: creation }: PostItemProps) {
           onChange={(e) => {
             const title = e.target.value
             updateCreation({ id: creation.id, title })
-            store.creations.updateCreationById(creation.id, {
-              title,
-            })
           }}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {

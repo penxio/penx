@@ -1,9 +1,7 @@
-import { ProductType } from '@penx/db/client'
 import { gql, request } from 'graphql-request'
 import { produce } from 'immer'
 import ky from 'ky'
 import { unstable_cache } from 'next/cache'
-import { getDatabaseData } from '@penx/api/lib/getDatabaseData'
 import { initPages } from '@penx/api/lib/initPages'
 import {
   CreationStatus,
@@ -16,6 +14,7 @@ import {
   ROOT_DOMAIN,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
+import { ProductType } from '@penx/db/client'
 import { calculateSHA256FromString } from '@penx/encryption'
 import { cacheHelper } from '@penx/libs/cache-header'
 import {
@@ -513,7 +512,6 @@ async function findManyCreations(site: Site, moldId: string) {
     },
     where: {
       siteId: site.id,
-      // isPage: false,
       moldId,
       areaId: area?.id,
       status: CreationStatus.PUBLISHED,

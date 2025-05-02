@@ -139,11 +139,11 @@ export function PostItem({ creation }: PostItemProps) {
         </Button>
 
         <ConfirmDialog
-          title={<Trans id="Delete this post?"></Trans>}
+          title={<Trans id="Delete this creation?"></Trans>}
           content={
-            <Trans id="Are you sure you want to delete this post?"></Trans>
+            <Trans id="Are you sure you want to delete this creation?"></Trans>
           }
-          tooltipContent={<Trans id="Delete this post"></Trans>}
+          tooltipContent={<Trans id="Delete this creation"></Trans>}
           onConfirm={async () => {
             await api.creation.delete.mutate(creation.id)
             await refetch()

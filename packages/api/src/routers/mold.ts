@@ -103,6 +103,7 @@ export const moldRouter = router({
           siteId: ctx.activeSiteId,
           userId: ctx.token.uid,
           props: [],
+          updatedAt: new Date(),
         },
       })
       return true

@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
-import { CreateCreationInput, FREE_PLAN_POST_LIMIT } from '@penx/constants'
+import { AddCreationInput, FREE_PLAN_POST_LIMIT } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { calculateSHA256FromString } from '@penx/encryption'
 import { cacheHelper } from '@penx/libs/cache-header'
@@ -14,7 +14,7 @@ export async function createCreation(
   siteId: string,
   userId: string,
   isFree: boolean,
-  input: CreateCreationInput,
+  input: AddCreationInput,
 ) {
   const {
     tagIds = [],
@@ -61,6 +61,7 @@ export async function createCreation(
           i18n: {},
           ...data,
           props,
+          updatedAt: new Date(),
           authors: {
             create: [
               {
@@ -75,6 +76,7 @@ export async function createCreation(
       if (tagIds.length) {
         const res = await tx.creationTag.createMany({
           data: tagIds.map((tagId) => ({
+            updatedAt: new Date(),
             siteId,
             creationId: creation.id,
             tagId,

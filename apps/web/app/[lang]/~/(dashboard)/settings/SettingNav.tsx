@@ -161,10 +161,6 @@ export function SettingNav({}: Props) {
         <Link href={Paths.socials} className={linkClassName(Paths.socials)}>
           <Trans id="Socials"></Trans>
         </Link>
-
-        {/* <Link href={Paths.catalogue} className={linkClassName(Paths.catalogue)}>
-          <Trans id="Catalogue"></Trans>
-        </Link> */}
       </Section>
 
       <Section title="Site - data">

@@ -50,10 +50,6 @@ export function CreationItem({ creation }: CreationItemProps) {
                   id: creation.id,
                   checked: v as any,
                 })
-                store.creations.updateCreationById(creation.id, {
-                  checked: v as any,
-                })
-                //
               }}
             />
           )}

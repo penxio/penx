@@ -7,8 +7,8 @@ import {
   revalidateCreationTags,
 } from '@penx/api/lib/revalidateCreation'
 import {
+  addCreationInputSchema,
   BUILTIN_PAGE_SLUGS,
-  createCreationInputSchema,
   updateCreationInputSchema,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
@@ -175,7 +175,6 @@ export const creationRouter = router({
         siteId: {
           notIn: ['cc79cefe-0cf8-4cd7-9970-66740024b618'],
         },
-        isPage: false,
         status: CreationStatus.PUBLISHED,
       },
       include: {
@@ -251,7 +250,7 @@ export const creationRouter = router({
   }),
 
   create: protectedProcedure
-    .input(createCreationInputSchema)
+    .input(addCreationInputSchema)
     .mutation(async ({ ctx, input }) => {
       return createCreation(ctx.activeSiteId, ctx.token.uid, ctx.isFree, input)
     }),
@@ -538,6 +537,7 @@ export const creationRouter = router({
                 userId: ctx.token.uid,
                 title: p.title,
                 content: p.content,
+                updatedAt: new Date(),
                 status: Reflect.has(input, 'creationStatus')
                   ? input.creationStatus
                   : p.status,

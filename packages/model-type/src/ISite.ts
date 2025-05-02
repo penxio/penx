@@ -19,28 +19,25 @@ export interface ISite {
   name: string
   description: string
   about: string
-  spaceId: string
   logo: string
   font: string
   image: string
   podcastCover: string
   email: string
-  stripeType: string
-  sassSubscriptionId: string
-  sassSubscriptionStatus: string
-  sassBillingCycle: string
-  sassPlanType: string
-  sassCustomerId: string
-  sassProductId: string
-  sassCurrentPeriodEnd: Date
-  sassBelieverPeriodEnd: Date
-  stripeOAuthToken: any
-  authSecret: string
+  stripeType?: string
+  sassSubscriptionId?: string
+  sassSubscriptionStatus?: string
+  sassBillingCycle?: string
+  sassPlanType?: string
+  sassCustomerId?: string
+  sassProductId?: string
+  sassCurrentPeriodEnd?: Date
+  sassBelieverPeriodEnd?: Date
+  stripeOAuthToken?: any
   socials: any
   analytics: any
   config: any
   navLinks: any
-  catalogue: any
   newsletterConfig: any
   notificationConfig: any
   aiProviders: AIProvider[]
@@ -50,6 +47,7 @@ export interface ISite {
   themeName: string
   themeConfig: any
   memberCount: number
+  isRemote: boolean
   creationCount: number
   createdAt: Date
   updatedAt: Date

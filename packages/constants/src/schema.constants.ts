@@ -1,5 +1,5 @@
-import { AreaType, ChargeMode, CreationStatus } from '@penx/db/client'
 import { z } from 'zod'
+import { AreaType, ChargeMode, CreationStatus } from '@penx/db/client'
 
 export const updateCreationInputSchema = z.object({
   id: z.string(),
@@ -17,7 +17,7 @@ export const updateCreationInputSchema = z.object({
 
 export type UpdateCreationInput = z.infer<typeof updateCreationInputSchema>
 
-export const createCreationInputSchema = z.object({
+export const addCreationInputSchema = z.object({
   id: z.string().optional(),
   slug: z.string().optional(),
   siteId: z.string(),
@@ -35,7 +35,7 @@ export const createCreationInputSchema = z.object({
   isPublishDirectly: z.boolean().optional(),
 })
 
-export type CreateCreationInput = z.infer<typeof createCreationInputSchema>
+export type AddCreationInput = z.infer<typeof addCreationInputSchema>
 
 export const updateAreaInputSchema = z.object({
   id: z.string(),

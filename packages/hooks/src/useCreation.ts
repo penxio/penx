@@ -139,5 +139,6 @@ export async function updateCreation(props: UpdateCreationInput) {
   }
 
   queryClient.setQueryData(getQueryKey(props.id), newCreation)
+  store.creations.updateCreationById(props.id, newCreation)
   await debouncedSaveCreation(props)
 }

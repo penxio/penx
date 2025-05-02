@@ -19,7 +19,7 @@ function revalidate(siteId: string) {
 
 export async function addCreationTag(input: Required<AddCreationTagInput>) {
   const creationTag = await prisma.creationTag.create({
-    data: { ...input },
+    data: { ...input, updatedAt: new Date() },
     include: { tag: true, creation: true },
   })
 

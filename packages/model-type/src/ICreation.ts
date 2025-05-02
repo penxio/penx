@@ -21,7 +21,6 @@ export interface ICreation {
   checked: boolean
   isPopular: boolean
   isJournal: boolean
-  isPage: boolean
   date: string
   publishedAt: Date
   archivedAt: Date

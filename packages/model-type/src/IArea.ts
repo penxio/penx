@@ -8,11 +8,10 @@ export interface IArea {
   about: string
   logo?: string
   cover?: string
-  catalogue: any
   widgets: Widget[]
   chargeMode: string
   type: string
-  props: any
+  props?: any
   favorites: string[]
   isGenesis: boolean
   deletedAt?: Date

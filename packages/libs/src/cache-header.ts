@@ -2,7 +2,7 @@ import { produce } from 'immer'
 import Redis from 'ioredis'
 import { redisKeys } from '@penx/constants'
 import { Creation } from '@penx/db/client'
-import { AreaById, CreationById, MySite, SiteCreation } from '@penx/types'
+import { AreaById, MySite, SiteCreation } from '@penx/types'
 
 const redis = new Redis(process.env.REDIS_URL!)
 
@@ -212,10 +212,7 @@ export const cacheHelper = {
     }
   },
 
-  async updateCreationProps(
-    creationId: string,
-    creation: Partial<Creation>,
-  ) {
+  async updateCreationProps(creationId: string, creation: Partial<Creation>) {
     const cachedCreation = await cacheHelper.getCreation(creationId)
 
     if (cachedCreation) {

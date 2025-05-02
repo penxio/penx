@@ -7,7 +7,6 @@ export type SubscriptionInSession = {
 export interface SessionData {
   isLoggedIn: boolean
   uid: string
-  address: string
   email: string
   name: string
   picture: string
@@ -41,6 +40,7 @@ export type GoogleLoginInfo = {
   picture: string
   name: string
   ref: string
+  userId: string
 }
 
 export type LoginData =
@@ -48,7 +48,6 @@ export type LoginData =
   | WalletLoginData
   | PasswordLoginData
   | RegisterByEmailData
-  | FarcasterLoginData
 
 export type GoogleLoginData = GoogleLoginInfo & {
   type: 'penx-google'
@@ -71,14 +70,6 @@ export type RegisterByEmailData = {
   validateToken: string
 }
 
-export type FarcasterLoginData = {
-  type: 'penx-farcaster'
-  message: string
-  signature: string
-  name: string
-  pfp: string
-}
-
 export function isGoogleLogin(value: any): value is GoogleLoginData {
   return typeof value === 'object' && value?.type === 'penx-google'
 }
@@ -93,10 +84,6 @@ export function isPasswordLogin(value: any): value is PasswordLoginData {
 
 export function isRegisterByEmail(value: any): value is RegisterByEmailData {
   return typeof value === 'object' && value?.type === 'register-by-email'
-}
-
-export function isFarcasterLogin(value: any): value is FarcasterLoginData {
-  return typeof value === 'object' && value?.type === 'penx-farcaster'
 }
 
 export type UpdateSessionData =

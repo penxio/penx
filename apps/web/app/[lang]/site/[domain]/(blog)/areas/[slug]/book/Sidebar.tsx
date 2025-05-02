@@ -63,7 +63,8 @@ interface Props {
 
 export const Sidebar = ({ site, area, className, height }: Props) => {
   const tree = CatalogueTree.fromJSON(
-    Array.isArray(area.catalogue) ? area.catalogue : [],
+    // Array.isArray(area.catalogue) ? area.catalogue : [],
+    Array.isArray([]) ? [] : [],
   )
 
   const flattenItems = () => {

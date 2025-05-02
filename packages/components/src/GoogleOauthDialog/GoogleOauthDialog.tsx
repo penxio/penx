@@ -7,9 +7,6 @@ import { toast } from 'sonner'
 import { getGoogleUserInfo } from '@penx/libs/getGoogleUserInfo'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { IconGoogle } from '@penx/uikit/IconGoogle'
-import LoadingCircle from '@penx/uikit/loading-circle'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Dialog,
   DialogContent,
@@ -17,6 +14,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import LoadingCircle from '@penx/uikit/loading-circle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useGoogleOauthDialog } from './useGoogleOauthDialog'
 
 export function GoogleOauthDialog() {
@@ -29,6 +29,7 @@ export function GoogleOauthDialog() {
   const loginWithGoogle = useCallback(
     async function () {
       const accessToken = searchParams?.get('access_token')!
+      const userId = searchParams?.get('userId')!
       const qsData = searchParams?.get('qs') as string
       const qsObject = JSON.parse(decodeURIComponent(qsData))
 
@@ -41,6 +42,7 @@ export function GoogleOauthDialog() {
           openid: info.sub,
           picture: info.picture,
           name: info.name,
+          userId: userId,
           ref: qsObject?.ref || '',
         })
 

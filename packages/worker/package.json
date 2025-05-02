@@ -1,5 +1,5 @@
 {
-  "name": "@penx/local-db",
+  "name": "@penx/worker",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,10 +17,12 @@
     "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
+    "@penx/trpc-client": "workspace:*",
     "@penx/constants": "workspace:*",
-    "@penx/query-client": "workspace:*",
-    "@penx/model-type": "workspace:*",
+    "@penx/store": "workspace:*",
     "@penx/types": "workspace:*",
-    "@penx/unique-id": "workspace:*"
+    "@penx/local-db": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/utils": "workspace:*"
   }
 }

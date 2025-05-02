@@ -165,12 +165,12 @@ export const protectedProcedure = t.procedure.use(
         CollaboratorRole.WRITE,
       ] as CollaboratorRole[]
 
-      if (!collaborator || !roles.includes(collaborator.role)) {
-        throw new TRPCError({
-          code: 'UNAUTHORIZED',
-          message: 'No permission to access this resource',
-        })
-      }
+      // if (!collaborator || !roles.includes(collaborator.role)) {
+      //   throw new TRPCError({
+      //     code: 'UNAUTHORIZED',
+      //     message: 'No permission to access this resource',
+      //   })
+      // }
     }
 
     return next({

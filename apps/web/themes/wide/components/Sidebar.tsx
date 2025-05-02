@@ -43,10 +43,6 @@ export const Sidebar = ({ site, tags }: Props) => {
           <div className="-mt-40 space-y-8">
             <div className="flex flex-col space-y-3">
               {links.map((link) => {
-                if (link.pathname === '/creator-fi' && !site.spaceId) {
-                  return null
-                }
-
                 if (!link.visible) return null
 
                 let title = link.title as ReactNode

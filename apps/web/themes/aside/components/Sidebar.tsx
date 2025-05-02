@@ -53,10 +53,6 @@ export const Sidebar = ({ site, tags }: Props) => {
         {/* <SocialNav className="" site={site} size={4} /> */}
         <div className="flex flex-col gap-3">
           {links.map((link) => {
-            if (link.pathname === '/creator-fi' && !site.spaceId) {
-              return null
-            }
-
             if (!link.visible) return null
 
             return (
@@ -68,18 +64,6 @@ export const Sidebar = ({ site, tags }: Props) => {
               </div>
             )
           })}
-
-          {site.spaceId && (
-            <Link
-              href="/membership"
-              className={cn(
-                'hover:text-brand text-foreground/90 font-medium',
-                'border-brand text-brand hover:bg-brand hover:text-background rounded-full border px-2 py-1 text-sm',
-              )}
-            >
-              <Trans id="Membership"></Trans>
-            </Link>
-          )}
         </div>
 
         {!!tags.length && (

@@ -1,11 +1,13 @@
 import { WorkerEvents } from '@penx/constants'
 import { pollingBackupToGoogle } from './pollingBackupToGoogle'
 import { pollingCloudSync } from './pollingCloudSync'
+import { pollingSyncToRemote } from './pollingSyncToRemote'
 
 self.addEventListener('message', async (event) => {
   if (event.data === WorkerEvents.START_POLLING) {
     console.log('===========start polling......')
-    pollingBackupToGoogle()
-    pollingCloudSync()
+    // pollingBackupToGoogle()
+    // pollingCloudSync()
+    pollingSyncToRemote()
   }
 })

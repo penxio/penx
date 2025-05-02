@@ -1,21 +1,11 @@
-import { getSessionOptions } from '@penx/libs/session'
-import { SessionData } from '@penx/types'
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
 import { createCreation } from '@penx/api/lib/createCreation'
-import { CreateCreationInput, editorDefaultValue } from '@penx/constants'
+import { AddCreationInput, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { CreationType } from '@penx/types'
-
-interface AddCreationInput {
-  type: string
-  title: string
-  description: string
-  content: string
-  areaId: string
-  published: boolean
-}
+import { getSessionOptions } from '@penx/libs/session'
+import { CreationType, SessionData } from '@penx/types'
 
 export async function POST(req: NextRequest) {
   const json = (await req.json()) as AddCreationInput
@@ -56,7 +46,7 @@ export async function POST(req: NextRequest) {
     siteId,
     moldId: mold.id,
     content: getContent(),
-  } as CreateCreationInput)
+  } as AddCreationInput)
 
   // console.log('=========value:', value)
   return Response.json(creation)

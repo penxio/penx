@@ -166,7 +166,15 @@ export function useQuerySession() {
 }
 
 export async function updateSession(data: Partial<SessionData>) {
-  const session = await getSession()
+  const res = await fetchJson<SessionData>(sessionApiRoute, {
+    body: JSON.stringify({
+      type: 'update-props',
+      ...data,
+    }),
+    method: 'PATCH',
+  })
+
+  const session = queryClient.getQueryData(queryKey) || (await getSession())
   const newSession = { ...session, ...data }
   console.log('=======newSession:', newSession)
   queryClient.setQueryData(queryKey, newSession)

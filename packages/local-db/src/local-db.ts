@@ -1,8 +1,15 @@
 import Dexie, { Table } from 'dexie'
-import { IChat, IDocument, IMessage, ISuggestion } from '@penx/model-type'
+import { get, set } from 'idb-keyval'
+import {
+  IChat,
+  IDocument,
+  IMessage,
+  ISuggestion,
+  OperatorType,
+} from '@penx/model-type'
 import { IArea } from '@penx/model-type/IArea'
 import { IAsset } from '@penx/model-type/IAsset'
-import { IChange } from '@penx/model-type/IChange'
+import { IChange, OperationType } from '@penx/model-type/IChange'
 import { ICreation } from '@penx/model-type/ICreation'
 import { ICreationTag } from '@penx/model-type/ICreationTag'
 import { IDatabase } from '@penx/model-type/IDatabase'
@@ -10,6 +17,8 @@ import { IFile } from '@penx/model-type/IFile'
 import { IMold } from '@penx/model-type/IMold'
 import { ISite } from '@penx/model-type/ISite'
 import { ITag } from '@penx/model-type/ITag'
+import { queryClient } from '@penx/query-client'
+import { SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
 class LocalDB extends Dexie {
@@ -22,11 +31,15 @@ class LocalDB extends Dexie {
   mold!: Table<IMold, string>
   tag!: Table<ITag, string>
   creationTag!: Table<ICreationTag, string>
-  change!: Table<IChange, string>
+  change!: Table<IChange, number>
+  chat!: Table<IChat, string>
+  message!: Table<IMessage, string>
+  document!: Table<IDocument, string>
+  suggestion!: Table<ISuggestion, string>
 
   constructor() {
     super('penx-local')
-    this.version(13).stores({
+    this.version(17).stores({
       // Primary key and indexed props
       file: 'id, hash',
       asset: 'id, siteId, url, isPublic, isTrashed',
@@ -42,18 +55,26 @@ class LocalDB extends Dexie {
       message: 'id, siteId',
       document: 'id, siteId',
       suggestion: 'id, siteId',
-      change: 'id, table, siteId',
+      change: '++id, table, siteId, [siteId+synced]',
     })
   }
 
   async addFile(hash: string, file: File) {
-    try {
-      return this.file.add({
-        id: uniqueId(),
-        hash,
-        file,
-      })
-    } catch (error) {}
+    return this.file.add({
+      id: uniqueId(),
+      hash,
+      file,
+    })
+  }
+
+  addSite = async (data: Partial<ISite>) => {
+    const id = await this.site.add({
+      id: uniqueId(),
+      ...data,
+    } as ISite)
+
+    const site = await this.site.get(id)
+    return site!
   }
 
   getCreation = <T = ICreation>(id: string) => {
@@ -68,16 +89,12 @@ class LocalDB extends Dexie {
 
     const creation = (await this.creation.get(id))!
 
-    await this.change.add({
-      id: uniqueId(),
-      operation: 'CREATE',
+    await this.addChange({
+      operation: OperationType.CREATE,
       table: 'creation',
-      siteId: creation.siteId,
-      key: creation.id,
       data: creation,
-      synced: false,
-      createdAt: new Date(),
     })
+
     return creation
   }
 
@@ -89,15 +106,10 @@ class LocalDB extends Dexie {
 
     const creation = (await this.creation.get(id))!
 
-    await this.change.add({
-      id: uniqueId(),
-      operation: 'CREATE',
+    await this.addChange({
+      operation: OperationType.CREATE,
       table: 'creation',
-      siteId: creation.siteId,
-      key: creation.id,
       data: creation,
-      synced: false,
-      createdAt: new Date(),
     })
     return creation
   }
@@ -116,32 +128,50 @@ class LocalDB extends Dexie {
 
     const creation = (await this.creation.get(id))!
 
-    await this.change.add({
-      id: uniqueId(),
-      operation: 'UPDATE',
+    await this.addChange({
+      operation: OperationType.UPDATE,
       table: 'creation',
-      siteId: creation.siteId,
-      key: creation.id,
-      data: newData,
-      synced: false,
-      createdAt: new Date(),
+      data: {
+        id,
+        ...newData,
+      },
     })
     return creation
   }
 
   deleteCreation = async (id: string) => {
     const creation = (await this.creation.get(id))!
-    await this.change.add({
-      id: uniqueId(),
-      operation: 'DELETE',
+    await this.addChange({
+      operation: OperationType.DELETE,
       table: 'creation',
-      siteId: creation.siteId,
-      key: creation.id,
       data: { id: creation.id },
-      synced: false,
-      createdAt: new Date(),
     })
     return this.creation.delete(id)
+  }
+
+  private async addChange(
+    data: Omit<IChange, 'id' | 'key' | 'synced' | 'createdAt' | 'siteId'>,
+  ) {
+    const session = await this.getSession()
+    if (session) {
+      await this.change.add({
+        // id: uniqueId(),
+        siteId: session.siteId,
+        synced: 0,
+        createdAt: new Date(),
+        key: data.data.id,
+        ...data,
+      } as IChange)
+    }
+  }
+
+  private async getSession() {
+    const session = queryClient.getQueryData(['SESSION']) as SessionData
+    console.log('store sesion:', session)
+
+    if (session) return session
+    const localSession = await get('SESSION')
+    return localSession as SessionData
   }
 }
 

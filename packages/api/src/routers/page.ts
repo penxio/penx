@@ -1,166 +1,19 @@
-import { Creation, CreationStatus } from '@penx/db/client';
-import { TRPCError } from '@trpc/server';
-import { slug } from 'github-slugger';
-import { revalidateTag } from 'next/cache';
-import { z } from 'zod';
-import { editorDefaultValue, FREE_PLAN_PAGE_LIMIT, FRIEND_DATABASE_NAME } from '@penx/constants';
-import { prisma } from '@penx/db';
-import { cacheHelper } from '@penx/libs/cache-header';
-import { CreationType, Option, Prop } from '@penx/types';
-import { createPage } from '../lib/createPage';
-import { initPages } from '../lib/initPages';
-import { protectedProcedure, publicProcedure, router } from '../trpc';
-
+import { TRPCError } from '@trpc/server'
+import { slug } from 'github-slugger'
+import { revalidateTag } from 'next/cache'
+import { z } from 'zod'
+import {
+  editorDefaultValue,
+  FREE_PLAN_PAGE_LIMIT,
+  FRIEND_DATABASE_NAME,
+} from '@penx/constants'
+import { prisma } from '@penx/db'
+import { Creation, CreationStatus } from '@penx/db/client'
+import { cacheHelper } from '@penx/libs/cache-header'
+import { CreationType, Option, Prop } from '@penx/types'
+import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const pageRouter = router({
-  list: protectedProcedure
-    .input(
-      z.object({
-        siteId: z.string(),
-      }),
-    )
-    .query(async ({ ctx, input }) => {
-      let pages = await prisma.creation.findMany({
-        where: {
-          siteId: input.siteId,
-          isJournal: false,
-          isPage: true,
-        },
-        orderBy: { createdAt: 'desc' },
-      })
-
-      const hasBuiltin = pages.some((p) => p.slug === 'friends')
-
-      if (!hasBuiltin) {
-        await initPages(input.siteId, ctx.token.uid)
-        pages = await prisma.creation.findMany({
-          where: {
-            siteId: input.siteId,
-            isJournal: false,
-            isPage: true,
-          },
-          orderBy: { createdAt: 'desc' },
-        })
-      }
-
-      return pages
-    }),
-
-  getPage: protectedProcedure
-    .input(
-      z.object({
-        siteId: z.string(),
-        pageId: z.string().optional(),
-        date: z.string().optional(),
-      }),
-    )
-    .query(async ({ ctx, input }) => {
-      const { pageId = '', date = '' } = input
-      if (!pageId && !date) {
-        throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'Either pageId or date is required.',
-        })
-      }
-
-      if (pageId) {
-        return prisma.creation.findUniqueOrThrow({
-          where: { id: pageId },
-          include: {
-            creationTags: { include: { tag: true } },
-            mold: true,
-            authors: {
-              include: {
-                user: {
-                  select: {
-                    name: true,
-                    image: true,
-                    displayName: true,
-                    ensName: true,
-                  },
-                },
-              },
-            },
-          },
-        })
-      } else {
-        const page = await prisma.creation.findFirst({
-          where: { siteId: input.siteId, date },
-          include: {
-            creationTags: { include: { tag: true } },
-            authors: {
-              include: {
-                user: {
-                  select: {
-                    name: true,
-                    image: true,
-                    displayName: true,
-                    ensName: true,
-                  },
-                },
-              },
-            },
-          },
-        })
-
-        if (page) return page
-
-        const { id } = await createPage({
-          userId: ctx.token.uid,
-          siteId: input.siteId,
-          date,
-          title: '',
-          isJournal: true,
-        })
-
-        return prisma.creation.findUniqueOrThrow({
-          where: { id },
-          include: {
-            creationTags: { include: { tag: true } },
-            authors: {
-              include: {
-                user: {
-                  select: {
-                    name: true,
-                    image: true,
-                    displayName: true,
-                    ensName: true,
-                  },
-                },
-              },
-            },
-          },
-        })
-      }
-    }),
-
-  create: protectedProcedure
-    .input(
-      z.object({
-        siteId: z.string(),
-        title: z.string().optional(),
-      }),
-    )
-    .mutation(async ({ ctx, input }) => {
-      const count = await prisma.creation.count({
-        where: { siteId: input.siteId, isPage: true },
-      })
-
-      if (ctx.isFree && count >= FREE_PLAN_PAGE_LIMIT) {
-        throw new TRPCError({
-          code: 'BAD_REQUEST',
-          message: 'You have reached the free plan page limit.',
-        })
-      }
-
-      const page = await createPage({
-        userId: ctx.token.uid,
-        siteId: input.siteId,
-        title: '',
-      })
-      return page
-    }),
-
   submitFriendLink: protectedProcedure
     .input(
       z.object({
@@ -209,6 +62,7 @@ export const pageRouter = router({
           publishedAt: new Date(),
           content: JSON.stringify(editorDefaultValue),
           i18n: {},
+          updatedAt: new Date(),
           authors: {
             create: [
               {

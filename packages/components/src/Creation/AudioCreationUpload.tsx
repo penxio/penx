@@ -3,6 +3,7 @@ import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 // @ts-ignore
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
+import { updateCreation } from '@penx/hooks/useCreation'
 import { useMySite } from '@penx/hooks/useMySite'
 import { ICreation } from '@penx/model-type/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
@@ -70,7 +71,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
         try {
           const data = await uploadFile(file)
           const uri = data.url || data.cid || ''
-          await api.creation.update.mutate({
+          updateCreation({
             id: creation.id,
             podcast: {
               ...(creation.podcast as any),
@@ -92,7 +93,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
     async function removeAudio() {
       setValue('')
       playerRef.current = null
-      await api.creation.update.mutate({
+      updateCreation({
         id: creation.id,
         podcast: {},
       })

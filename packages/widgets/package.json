@@ -7,7 +7,7 @@
   "main": "index.ts",
   "types": "./src/index.ts",
   "exports": {
-    "./tailwind.css": "./src/tailwind.css",
+    "./tailwind.css": "./src/style/tailwind.css",
     "./*": "./src/*.tsx",
     "./ConfirmDialog": "./src/ConfirmDialog.tsx",
     "./GoogleOauthButton": "./src/GoogleOauthButton.tsx",
@@ -32,6 +32,7 @@
   "dependencies": {
     "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
+    "@penx/local-db": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/editor-transforms": "workspace:*",
     "@penx/contexts": "workspace:*",

@@ -122,10 +122,6 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
                   content: JSON.stringify(content),
                 })
                 await store.creations.refetchCreations()
-                await api.creation.update.mutate({
-                  id: creation.id,
-                  content: JSON.stringify(content),
-                })
               }}
             >
               <CheckIcon size={14}></CheckIcon>

@@ -1,9 +1,9 @@
 import { ReactNode } from 'react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
-import { t } from '@lingui/core/macro'
-import { Trans } from '@lingui/react'
 import { MembershipEntry } from './MembershipEntry'
 import { NavigationItem } from './NavigationItem'
 
@@ -30,28 +30,12 @@ export function Navigation({ site, className }: Props) {
       )}
     >
       {links.map((link) => {
-        if (link.pathname === '/creator-fi' && !site.spaceId) {
-          return null
-        }
-
         if (!link.visible) return null
 
         return <NavigationItem key={link.pathname} link={link} />
       })}
 
       {site.products.length > 0 && <MembershipEntry />}
-
-      {/* {site.spaceId && (
-        <Link
-          href="/membership"
-          className={cn(
-            'font-medium hover:text-brand text-foreground/90',
-            'border border-brand text-brand rounded-full px-2 py-1 hover:bg-brand hover:text-background text-sm',
-          )}
-        >
-          Membership
-        </Link>
-      )} */}
     </div>
   )
 }

@@ -23,18 +23,6 @@ export const Nav = ({ site }: Props) => {
           </Link>
         )
       })}
-
-      {site.spaceId && (
-        <Link
-          href="/membership"
-          className={cn(
-            'hover:text-brand text-foreground/90 font-medium',
-            'border-brand text-brand hover:bg-brand hover:text-background rounded-full border px-2 py-1 text-sm',
-          )}
-        >
-          Membership
-        </Link>
-      )}
     </div>
   )
 }

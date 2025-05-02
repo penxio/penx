@@ -156,7 +156,6 @@ export enum SubdomainType {
   None = 'None',
   Custom = 'Custom',
   EnsName = 'EnsName',
-  FarcasterName = 'FarcasterName',
   Address = 'Address',
   UserId = 'UserId',
 }

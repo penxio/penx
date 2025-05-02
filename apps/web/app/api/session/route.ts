@@ -1,21 +1,11 @@
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
-import {
-  initUserByAddress,
-  initUserByEmail,
-  initUserByFarcasterInfo,
-  initUserByGoogleInfo,
-} from '@/lib/initUser'
+import { initUserByEmail, initUserByGoogleInfo } from '@/lib/initUser'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
 import { compareSync } from 'bcrypt-edge'
 import { getIronSession, IronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
-import {
-  parseSiweMessage,
-  validateSiweMessage,
-  type SiweMessage,
-} from 'viem/siwe'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { prisma } from '@penx/db'
 import {
@@ -29,14 +19,12 @@ import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import {
   AccountWithUser,
   isCancelSubscription,
-  isFarcasterLogin,
   isGoogleLogin,
   isPasswordLogin,
   isRegisterByEmail,
   isUpdateProfile,
   isUpdateProps,
   isUseCoupon,
-  isWalletLogin,
   SessionData,
 } from '@penx/types'
 import { generateNonce } from '@penx/utils/generateNonce'
@@ -47,8 +35,7 @@ async function updateSession(
   session: IronSession<SessionData>,
   account: AccountWithUser,
 ) {
-  const site = account.user.sites[0]
-  const area = site.areas.find((a) => a.isGenesis) || site.areas[0]
+  const site = account.user?.sites?.[0]
 
   session.isLoggedIn = true
   session.message = ''
@@ -59,10 +46,10 @@ async function updateSession(
   session.name = account.user.name as string
   session.picture = account.user.image as string
   session.image = account.user.image as string
-  session.siteId = site.id
-  session.activeSiteId = site.id
-  session.planType = site.sassPlanType
-  session.subscriptionStatus = site.sassSubscriptionStatus || ''
+  session.siteId = site?.id
+  session.activeSiteId = site?.id
+  session.planType = site?.sassPlanType
+  session.subscriptionStatus = site?.sassSubscriptionStatus || ''
   session.currentPeriodEnd = site?.sassCurrentPeriodEnd as any as string
   session.believerPeriodEnd = site?.sassBelieverPeriodEnd as any as string
   session.billingCycle = site?.sassBillingCycle as any as string
@@ -70,7 +57,6 @@ async function updateSession(
   session.accessToken = jwt.sign(
     {
       userId: session.uid,
-      address: session.address,
     },
     process.env.NEXTAUTH_SECRET!,
     {
@@ -130,13 +116,18 @@ export async function POST(req: NextRequest) {
   const json = await req.json()
   const hostname = json?.host || ''
 
-  // console.log('=======json:', json)
+  console.log('=======json:', json)
 
   if (isGoogleLogin(json)) {
     const ref = json?.ref || ''
-    const account = await initUserByGoogleInfo(json, ref)
+    const userId = json?.userId || ''
+    const account = await initUserByGoogleInfo(json, ref, userId)
     await updateSession(session, account)
-    await registerSiteUser(hostname, account.userId)
+    try {
+      await registerSiteUser(hostname, account.userId)
+    } catch (error) {
+      console.error('register siteUser error:', error)
+    }
     return Response.json(session)
   }
 
@@ -151,42 +142,6 @@ export async function POST(req: NextRequest) {
       const password = decoded.password
       const ref = decoded.ref || ''
       const account = await initUserByEmail(email, password, ref)
-      await updateSession(session, account)
-      await registerSiteUser(hostname, account.userId)
-      return Response.json(session)
-    } catch (error) {
-      session.isLoggedIn = false
-      await session.save()
-      return Response.json(session)
-    }
-  }
-
-  if (isFarcasterLogin(json)) {
-    try {
-      const appClient = createAppClient({
-        ethereum: viemConnector(),
-      })
-
-      const verifyResponse = await appClient.verifySignInMessage({
-        message: json.message as string,
-        signature: json.signature as `0x${string}`,
-        domain: ROOT_DOMAIN,
-        nonce: generateNonce(),
-      })
-      const { success, fid } = verifyResponse
-
-      if (!success) {
-        session.isLoggedIn = false
-        await session.save()
-        return Response.json(session)
-      }
-
-      const account = await initUserByFarcasterInfo({
-        fid: fid.toString(),
-        name: json.name,
-        image: json.pfp,
-      })
-
       await updateSession(session, account)
       await registerSiteUser(hostname, account.userId)
       return Response.json(session)

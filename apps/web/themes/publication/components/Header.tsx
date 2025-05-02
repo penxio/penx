@@ -1,8 +1,8 @@
+import { Merienda } from 'next/font/google'
 import { Profile } from '@penx/components/Profile'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Merienda } from 'next/font/google'
 import { Nav } from './Nav'
 
 const merienda = Merienda({
@@ -41,9 +41,6 @@ export const Header = ({ site }: Props) => {
         <div className="flex flex-1 items-center justify-end gap-4">
           <div className="no-scrollbar hidden items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6">
             {headerNavLinksRight.map((link) => {
-              if (link.href === '/creator-fi' && !site.spaceId) {
-                return null
-              }
               return (
                 <Link
                   key={link.title}

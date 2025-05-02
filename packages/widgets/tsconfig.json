@@ -1,6 +1,7 @@
 {
   "extends": "@penx/typescript-config/internal-package.json",
   "compilerOptions": {
+    "lib": ["DOM"],
     "strict": true,
     "strictNullChecks": true
   },

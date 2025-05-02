@@ -38,6 +38,7 @@ import { rewardsRouter } from './routers/rewards'
 import { siteRouter } from './routers/site'
 import { stripeRouter } from './routers/stripe'
 import { subscriberRouter } from './routers/subscriber'
+import { syncRouter } from './routers/sync'
 import { tagRouter } from './routers/tag'
 import { themeRouter } from './routers/theme'
 import { tierRouter } from './routers/tier'
@@ -86,6 +87,7 @@ export const appRouter = router({
   member: memberRouter,
   mold: moldRouter,
   creationEngagement: creationEngagementRouter,
+  sync: syncRouter,
 })
 
 export const createCaller = createCallerFactory(appRouter)

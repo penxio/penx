@@ -1,6 +1,7 @@
 import { get, set } from 'idb-keyval'
 import { localDB } from '@penx/local-db'
 import { ISite } from '@penx/model-type'
+import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Panel, PanelType, SessionData, Widget } from '@penx/types'
@@ -21,27 +22,82 @@ export class AppService {
     console.log('========session:', session)
 
     store.app.setAppLoading(true)
+    // store.app.setAppLoading(false)
+    // return
 
-    // TODO: handle site empty
-    let site = (await localDB.site.toCollection().first())!
-    const siteId = site?.id
+    const site = await this.getInitialSite(session)
 
-    if (!site && navigator.onLine && session) {
-      const [remoteSite] = await this.syncInitialData(siteId)
-      site = remoteSite as ISite
+    await this.initStore(site)
+    this.inited = true
+  }
+
+  private async getInitialSite(session: SessionData): Promise<ISite> {
+    if (!session) {
+      const site = (await localDB.site.toCollection().first())!
+      if (site) return site
+      return initLocalSite()
     }
 
-    if (navigator.onLine && session) {
-      syncTagsToLocal(session.siteId)
-      syncAreasToLocal(session.siteId)
-      syncCreationTagsToLocal(session.siteId)
-      await syncCreationsToLocal(session.siteId)
+    if (!navigator.onLine) {
+      if (!session.siteId) {
+        const site = (await localDB.site.toCollection().first())!
+        if (site) return site
+        return initLocalSite()
+      }
+
+      const site = (await localDB.site
+        .where({ siteId: session.siteId })
+        .first())!
+
+      if (site) return site
+      return initLocalSite()
     }
+
+    if (session.siteId) {
+      const [remoteSite] = await this.syncInitialData(session.siteId)
+      this.syncDataToLocal(remoteSite.id)
+      return remoteSite as ISite
+    }
+
+    const site = await localDB.site.where({ userId: session.userId }).first()
+    console.log('======site:', site)
 
     if (!site) {
-      await initLocalSite()
-      return
+      // TODO: init local site
+      throw new Error('No siteId in session')
     }
+
+    const areas = await localDB.area.where({ siteId: site.id }).toArray()
+    const molds = await localDB.mold.where({ siteId: site.id }).toArray()
+    const tags = await localDB.tag.where({ siteId: site.id }).toArray()
+    const creations = await localDB.creation
+      .where({ siteId: site.id })
+      .toArray()
+    const creationTags = await localDB.creationTag
+      .where({ siteId: site.id })
+      .toArray()
+
+    await api.site.syncInitialSite.mutate({
+      site,
+      areas,
+      molds,
+      tags,
+      creations,
+      creationTags,
+    })
+
+    await localDB.site.update(site.id, { isRemote: true })
+
+    await updateSession({
+      activeSiteId: site.id,
+      siteId: site.id,
+    })
+    this.syncDataToLocal(site.id)
+    return site
+  }
+
+  private async initStore(site: ISite) {
+    const siteId = site.id
     await store.site.save(site)
 
     const panels = await this.getPanels(site.id)
@@ -73,7 +129,13 @@ export class AppService {
     store.creationTags.set(creationTags)
     store.panels.set(panels)
     store.app.setAppLoading(false)
-    this.inited = true
+  }
+
+  private async syncDataToLocal(siteId: string) {
+    syncTagsToLocal(siteId)
+    syncAreasToLocal(siteId)
+    syncCreationTagsToLocal(siteId)
+    await syncCreationsToLocal(siteId)
   }
 
   private async syncInitialData(siteId: string) {

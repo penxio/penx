@@ -1,6 +1,7 @@
 'use client'
 
 import { PropsWithChildren, useEffect, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 import qs from 'query-string'
 import { toast } from 'sonner'
@@ -10,10 +11,11 @@ import {
   GOOGLE_OAUTH_REDIRECT_URI,
 } from '@penx/constants'
 import { usePathname } from '@penx/libs/i18n'
+import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
+import { Button, ButtonProps } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { Button, ButtonProps } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 
 interface Props extends ButtonProps {
@@ -31,6 +33,12 @@ export function GoogleOauthButton({
   const error = searchParams?.get('error')
   const pathname = usePathname()!
   const token = searchParams
+  const { data } = useQuery({
+    queryKey: ['first-site'],
+    queryFn: () => {
+      return localDB.site.toCollection().first()
+    },
+  })
 
   useEffect(() => {
     const errorMessage = Array.isArray(error) ? error.pop() : error
@@ -46,7 +54,7 @@ export function GoogleOauthButton({
         setLoading(true)
         const redirectUri = GOOGLE_OAUTH_REDIRECT_URI
         const parsed = qs.parse(location.search) || {}
-        const state = `${location.protocol}//${location.host}__${pathname}__${encodeURIComponent(JSON.stringify(parsed))}`
+        const state = `${location.protocol}//${location.host}__${pathname}__uid${data?.userId || ''}__${encodeURIComponent(JSON.stringify(parsed))}`
 
         const scope = 'openid email profile'
         const googleAuthUrl =

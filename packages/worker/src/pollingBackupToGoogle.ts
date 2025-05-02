@@ -1,5 +1,5 @@
 import { HTTPError } from 'ky'
-import { sleep } from '../utils'
+import { sleep } from '@penx/utils'
 
 const GOOGLE_DRIVE_FOLDER_NAME = 'penx-'
 

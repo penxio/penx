@@ -10,7 +10,8 @@ export async function GET(req: NextRequest) {
 
   const code = url.searchParams.get('code')
   const state = url.searchParams.get('state') || ''
-  const [host, pathname = '', qsData] = state.split('__')
+  const [host, pathname = '', uid, qsData] = state.split('__')
+  const userId = uid.replace(/^uid/, '')
 
   const redirectUri = `${process.env.NEXTAUTH_URL}/api/google-oauth`
 
@@ -22,6 +23,6 @@ export async function GET(req: NextRequest) {
   const { tokens } = await auth.getToken(code)
 
   return NextResponse.redirect(
-    `${host}${pathname}?auth_type=google&access_token=${tokens.access_token}&refresh_token=${tokens.refresh_token}&expiry_date=${tokens.expiry_date}&qs=${qsData}`,
+    `${host}${pathname}?auth_type=google&access_token=${tokens.access_token}&refresh_token=${tokens.refresh_token}&expiry_date=${tokens.expiry_date}&userId=${userId}&qs=${qsData}`,
   )
 }

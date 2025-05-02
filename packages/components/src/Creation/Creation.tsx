@@ -11,7 +11,6 @@ import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   addCreationTag,
   CreationTagWithTag,
-  // Creation as IPost,
   deleteCreationTag,
   updateCreation,
 } from '@penx/hooks/useCreation'
@@ -133,9 +132,6 @@ export function Creation({ index }: { index: number }) {
                       onChange={(e) => {
                         const title = e.target.value
                         updateCreation({ id: creation.id, title })
-                        store.creations.updateCreationById(creation.id, {
-                          title,
-                        })
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
@@ -194,13 +190,9 @@ export function Creation({ index }: { index: number }) {
                 onFileChange={(file) => {
                   const title = file.name
                   updateCreation({ id: creation.id, title })
-                  store.creations.updateCreationById(creation.id, { title })
                 }}
                 onUploaded={async (url) => {
                   updateCreation({ id: creation.id, image: url })
-                  store.creations.updateCreationById(creation.id, {
-                    image: url,
-                  })
                 }}
               />
             )}
@@ -231,7 +223,6 @@ export function Creation({ index }: { index: number }) {
                       .join(', ')
                       .slice(0, 20)
                     input.title = title
-                    store.creations.updateCreationById(creation.id, { title })
                   }
 
                   updateCreation(input)

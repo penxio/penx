@@ -96,7 +96,6 @@ export type Site = {
   description: string
   about: any
   logo: string | null
-  spaceId: string | null
   font: string
   image: string | null
   socials: Socials

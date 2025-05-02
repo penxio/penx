@@ -1,10 +1,10 @@
-import { Profile } from '@penx/components/Profile'
+import { Merienda } from 'next/font/google'
 import { MobileSidebarSheet } from '@penx/components/MobileSidebarSheet'
 import { Navigation } from '@penx/components/Navigation'
+import { Profile } from '@penx/components/Profile'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Merienda } from 'next/font/google'
 
 const merienda = Merienda({
   weight: ['400', '500', '600', '700'],
@@ -30,9 +30,6 @@ export const Header = ({ site }: Props) => {
       <div className="flex w-80 items-center justify-end gap-4">
         <div className="flex items-center space-x-4 sm:space-x-6">
           {headerNavLinksRight.map((link) => {
-            if (link.href === '/creator-fi' && !site.spaceId) {
-              return null
-            }
             return (
               <Link
                 key={link.title}

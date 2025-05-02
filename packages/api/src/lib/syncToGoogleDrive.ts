@@ -1,12 +1,12 @@
+import { GoogleDrive } from '@/lib/google-drive'
+import ky from 'ky'
 import {
   GOOGLE_DRIVE_FOLDER_PREFIX,
   REFRESH_GOOGLE_DRIVE_OAUTH_TOKEN_URL,
 } from '@penx/constants'
-import { GoogleDrive } from '@/lib/google-drive'
 import { prisma } from '@penx/db'
-import { GoogleInfo } from '@penx/types'
 import { Creation, User } from '@penx/db/client'
-import ky from 'ky'
+import { GoogleInfo } from '@penx/types'
 
 export async function syncToGoogleDrive(
   userId: string,
@@ -16,13 +16,13 @@ export async function syncToGoogleDrive(
     prisma.site.findFirst(),
     prisma.user.findUnique({ where: { id: userId } }),
   ])
-  if (!user || !site?.spaceId) return
+  if (!user) return
   const token = await getAccessToken(user)
   if (!token) return
   const drive = new GoogleDrive(token)
 
   const baseFolderId = await drive.getOrCreateFolder(
-    GOOGLE_DRIVE_FOLDER_PREFIX + site.spaceId + '-raws',
+    GOOGLE_DRIVE_FOLDER_PREFIX + site.id + '-raws',
   )
   const fileName = `creation-${creation.id}.json`
 

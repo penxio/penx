@@ -25,7 +25,7 @@ export type PublishPostOptions = z.infer<typeof PublishPostFormSchema>
 
 export function usePublishPost() {
   const site = useSiteContext()
-  const { spaceId, id } = site
+  const { id } = site
   // const { setIsOpen } = usePublishDialog()
   const [isLoading, setLoading] = useState(false)
 

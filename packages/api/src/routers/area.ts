@@ -1,9 +1,9 @@
-import { AreaType, ChargeMode } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 import { createAreaInputSchema, updateAreaInputSchema } from '@penx/constants'
 import { prisma } from '@penx/db'
+import { AreaType, ChargeMode } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { revalidateSite } from '@penx/libs/revalidateSite'
@@ -55,13 +55,16 @@ export const areaRouter = router({
   createArea: protectedProcedure
     .input(createAreaInputSchema)
     .mutation(async ({ ctx, input }) => {
+      const molds = await prisma.mold.findMany({
+        where: { siteId: ctx.activeSiteId },
+      })
       const area = await prisma.area.create({
         data: {
           siteId: ctx.activeSiteId,
           userId: ctx.token.uid,
           favorites: [],
-          catalogue: [],
-          widgets: getInitialWidgets(),
+          widgets: getInitialWidgets(molds),
+          updatedAt: new Date(),
           ...input,
         },
       })

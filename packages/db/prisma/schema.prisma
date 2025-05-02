@@ -7,7 +7,6 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-  // output   = "../../../node_modules/.prisma/client"
   // output   = "../generated"
   output   = "../generated/prisma/client"
 }
@@ -62,7 +61,6 @@ model Site {
   name                   String         @default("") @db.VarChar(100)
   description            String         @default("") @db.VarChar(500)
   about                  String         @default("") @db.Text
-  spaceId                String?        @db.VarChar(50)
   logo                   String?        @default("") @db.VarChar(2183)
   font                   String         @default("font-cal") @db.VarChar(50)
   image                  String?        @default("") @db.VarChar(2183)
@@ -78,12 +76,10 @@ model Site {
   sassCurrentPeriodEnd   DateTime?
   sassBelieverPeriodEnd  DateTime?
   stripeOAuthToken       Json?
-  authSecret             String?        @unique @db.VarChar(255)
   socials                Json?
   analytics              Json?
   config                 Json?
   navLinks               Json?
-  catalogue              Json?
   newsletterConfig       Json?
   notificationConfig     Json?
   aiProviders            Json?
@@ -94,8 +90,9 @@ model Site {
   themeConfig            Json?
   memberCount            Int            @default(0) @db.Integer
   creationCount          Int            @default(0) @db.Integer
+  isRemote               Boolean        @default(false)
   createdAt              DateTime       @default(now())
-  updatedAt              DateTime       @updatedAt
+  updatedAt              DateTime
   user                   User           @relation(fields: [userId], references: [id])
   userId                 String         @db.Uuid
   collaborators          Collaborator[]
@@ -263,7 +260,6 @@ model Area {
   about       String     @default("") @db.Text
   logo        String?    @default("") @db.VarChar(2183)
   cover       String?    @default("") @db.VarChar(2183)
-  catalogue   Json?
   widgets     Json?
   chargeMode  ChargeMode @default(NONE)
   type        AreaType   @default(SUBJECT)
@@ -272,7 +268,7 @@ model Area {
   isGenesis   Boolean    @default(false)
   deletedAt   DateTime?
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  updatedAt   DateTime
   user        User       @relation(fields: [userId], references: [id])
   userId      String     @db.Uuid
   site        Site       @relation(fields: [siteId], references: [id])
@@ -496,7 +492,7 @@ model Mold {
   props       Json?
   content     String     @default("") @db.Text
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  updatedAt   DateTime
   user        User       @relation(fields: [userId], references: [id])
   userId      String     @db.Uuid
   site        Site       @relation(fields: [siteId], references: [id])
@@ -550,13 +546,12 @@ model Creation {
   checked         Boolean                  @default(false)
   isPopular       Boolean                  @default(false)
   isJournal       Boolean                  @default(false)
-  isPage          Boolean                  @default(false)
   date            String                   @default("") @db.VarChar(20)
   publishedAt     DateTime?
   archivedAt      DateTime?
   openedAt        DateTime                 @default(now())
   createdAt       DateTime                 @default(now())
-  updatedAt       DateTime                 @default(now())
+  updatedAt       DateTime
   user            User                     @relation(fields: [userId], references: [id])
   userId          String                   @db.Uuid
   site            Site                     @relation(fields: [siteId], references: [id])
@@ -573,9 +568,8 @@ model Creation {
 
   @@unique([siteId, slug])
   @@index([siteId])
-  @@index([siteId, isPage])
-  @@index([siteId, isPage, areaId])
-  @@index([siteId, isPage, areaId, status])
+  @@index([siteId, areaId])
+  @@index([siteId, areaId, status])
   @@index([siteId, status])
   @@index([siteId, type])
   @@index([areaId])
@@ -630,7 +624,7 @@ model Tag {
   creationCount Int      @default(0) @db.Integer
   hidden        Boolean  @default(false)
   createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  updatedAt     DateTime
 
   User         User?         @relation(fields: [userId], references: [id])
   userId       String?       @db.Uuid
@@ -646,7 +640,7 @@ model Tag {
 model CreationTag {
   id         String   @id @default(uuid()) @db.Uuid
   createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  updatedAt  DateTime
   creation   Creation @relation(fields: [creationId], references: [id])
   creationId String   @db.Uuid
   tag        Tag      @relation(fields: [tagId], references: [id])
@@ -755,7 +749,6 @@ enum SubdomainType {
   None
   Custom
   EnsName
-  FarcasterName
   Address
   UserId
 }
