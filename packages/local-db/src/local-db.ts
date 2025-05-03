@@ -1,12 +1,7 @@
 import Dexie, { Table } from 'dexie'
 import { get, set } from 'idb-keyval'
-import {
-  IChat,
-  IDocument,
-  IMessage,
-  ISuggestion,
-  OperatorType,
-} from '@penx/model-type'
+import { ACTIVE_SITE } from '@penx/constants'
+import { IChat, IDocument, IMessage, ISuggestion } from '@penx/model-type'
 import { IArea } from '@penx/model-type/IArea'
 import { IAsset } from '@penx/model-type/IAsset'
 import { IChange, OperationType } from '@penx/model-type/IChange'
@@ -77,11 +72,11 @@ class LocalDB extends Dexie {
     return site!
   }
 
-  getCreation = <T = ICreation>(id: string) => {
-    return this.creation.get(id) as any as Promise<T>
+  getCreation = (id: string) => {
+    return this.creation.get(id) as any as Promise<ICreation>
   }
 
-  addCreation = async <T extends ICreation>(data: Partial<T>) => {
+  addCreation = async (data: Partial<ICreation>) => {
     const id = await this.creation.add({
       id: uniqueId(),
       ...data,
@@ -98,7 +93,7 @@ class LocalDB extends Dexie {
     return creation
   }
 
-  putCreation = async <T extends ICreation>(data: Partial<T>) => {
+  putCreation = async (data: Partial<ICreation>) => {
     const id = await this.creation.put({
       id: uniqueId(),
       ...data,
@@ -114,10 +109,7 @@ class LocalDB extends Dexie {
     return creation
   }
 
-  updateCreation = async <T extends ICreation>(
-    id: string,
-    data: Partial<T>,
-  ) => {
+  updateCreation = async (id: string, data: Partial<ICreation>) => {
     const newData: any = data || {}
     if (!Reflect.has(data, 'updatedAt')) {
       newData.updatedAt = new Date()
@@ -140,38 +132,184 @@ class LocalDB extends Dexie {
   }
 
   deleteCreation = async (id: string) => {
-    const creation = (await this.creation.get(id))!
     await this.addChange({
       operation: OperationType.DELETE,
       table: 'creation',
-      data: { id: creation.id },
+      data: { id },
     })
     return this.creation.delete(id)
+  }
+
+  updateArea = async (id: string, data: Partial<IArea>) => {
+    const newData: any = data || {}
+    if (!Reflect.has(data, 'updatedAt')) {
+      newData.updatedAt = new Date()
+    }
+
+    await this.area.update(id, newData)
+
+    await this.addChange({
+      operation: OperationType.UPDATE,
+      table: 'area',
+      data: {
+        id,
+        ...newData,
+      },
+    })
+  }
+
+  addMold = async (data: Partial<IMold>) => {
+    const id = await this.mold.add({
+      id: uniqueId(),
+      ...data,
+    } as IMold)
+
+    const mold = (await this.mold.get(id))!
+
+    await this.addChange({
+      operation: OperationType.CREATE,
+      table: 'mold',
+      data: mold,
+    })
+  }
+
+  updateMold = async (id: string, data: Partial<IMold>) => {
+    const newData: any = data || {}
+    if (!Reflect.has(data, 'updatedAt')) {
+      newData.updatedAt = new Date()
+    }
+
+    await this.mold.update(id, newData)
+
+    await this.addChange({
+      operation: OperationType.UPDATE,
+      table: 'mold',
+      data: {
+        id,
+        ...newData,
+      },
+    })
+  }
+
+  deleteMold = async (id: string) => {
+    await this.addChange({
+      operation: OperationType.DELETE,
+      table: 'mold',
+      data: { id },
+    })
+    return this.mold.delete(id)
+  }
+
+  addTag = async (data: Partial<ITag>) => {
+    const id = await this.tag.add({
+      id: uniqueId(),
+      ...data,
+    } as ITag)
+
+    const tag = (await this.tag.get(id))!
+
+    await this.addChange({
+      operation: OperationType.CREATE,
+      table: 'tag',
+      data: tag,
+    })
+  }
+
+  updateTag = async (id: string, data: Partial<ITag>) => {
+    const newData: any = data || {}
+    if (!Reflect.has(data, 'updatedAt')) {
+      newData.updatedAt = new Date()
+    }
+
+    await this.tag.update(id, newData)
+
+    await this.addChange({
+      operation: OperationType.UPDATE,
+      table: 'tag',
+      data: {
+        id,
+        ...newData,
+      },
+    })
+  }
+
+  deleteTag = async (id: string) => {
+    await this.addChange({
+      operation: OperationType.DELETE,
+      table: 'tag',
+      data: { id },
+    })
+    return this.tag.delete(id)
+  }
+
+  addCreationTag = async (data: Partial<ICreationTag>) => {
+    const id = await this.creationTag.add({
+      id: uniqueId(),
+      ...data,
+    } as ICreationTag)
+
+    const creationTag = (await this.creationTag.get(id))!
+
+    await this.addChange({
+      operation: OperationType.CREATE,
+      table: 'creationTag',
+      data: creationTag,
+    })
+
+    const count = await this.creationTag
+      .where({ tagId: creationTag.tagId })
+      .count()
+
+    await this.updateTag(creationTag.tagId, { creationCount: count })
+  }
+
+  updateCreationTag = async (id: string, data: Partial<ICreationTag>) => {
+    const newData: any = data || {}
+    if (!Reflect.has(data, 'updatedAt')) {
+      newData.updatedAt = new Date()
+    }
+
+    await this.creationTag.update(id, newData)
+
+    await this.addChange({
+      operation: OperationType.UPDATE,
+      table: 'creationTag',
+      data: {
+        id,
+        ...newData,
+      },
+    })
+  }
+
+  deleteCreationTag = async (id: string) => {
+    const creationTag = (await this.creationTag.get(id))!
+    const tagId = creationTag.tagId
+    await this.addChange({
+      operation: OperationType.DELETE,
+      table: 'creationTag',
+      data: { id },
+    })
+
+    this.creationTag.delete(id)
+
+    const count = await this.creationTag.where({ tagId }).count()
+
+    await this.updateTag(tagId, { creationCount: count })
   }
 
   private async addChange(
     data: Omit<IChange, 'id' | 'key' | 'synced' | 'createdAt' | 'siteId'>,
   ) {
-    const session = await this.getSession()
-    if (session) {
+    const site = (await get(ACTIVE_SITE)) as ISite
+    if (site.isRemote) {
       await this.change.add({
-        // id: uniqueId(),
-        siteId: session.siteId,
+        siteId: site.id,
         synced: 0,
         createdAt: new Date(),
         key: data.data.id,
         ...data,
       } as IChange)
     }
-  }
-
-  private async getSession() {
-    const session = queryClient.getQueryData(['SESSION']) as SessionData
-    console.log('store sesion:', session)
-
-    if (session) return session
-    const localSession = await get('SESSION')
-    return localSession as SessionData
   }
 }
 

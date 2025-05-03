@@ -1,10 +1,9 @@
-import { produce } from 'immer'
+import { get, set } from 'idb-keyval'
 import { atom } from 'jotai'
-import { WidgetType } from '@penx/constants'
+import { ACTIVE_SITE, WidgetType } from '@penx/constants'
 import { AreaType } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
-import { IArea } from '@penx/model-type'
-import { api } from '@penx/trpc-client'
+import { IArea, IChange, ISite, OperationType } from '@penx/model-type'
 import { Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
@@ -67,16 +66,50 @@ export class AreasStore {
 
     await localDB.area.add(area)
     this.refetchAreas()
-    api.area.createArea.mutate({ id, ...input })
     return area
   }
 
   async deleteArea(area: IArea) {
-    await localDB.area.delete(area.id)
+    await localDB.transaction(
+      'rw',
+      localDB.area,
+      localDB.creation,
+      localDB.creationTag,
+      localDB.change,
+      async () => {
+        if (area.isGenesis) {
+          throw new Error('Cannot delete genesis area')
+        }
+
+        const creations = await localDB.creation
+          .where({ areaId: area.id })
+          .toArray()
+        const creationIds = creations.map((c) => c.id)
+
+        await localDB.creationTag
+          .where('creationId')
+          .anyOf(creationIds)
+          .delete()
+
+        await localDB.creation.where({ areaId: area.id }).delete()
+
+        await localDB.area.delete(area.id)
+
+        const site = (await get(ACTIVE_SITE)) as ISite
+        if (site.isRemote) {
+          await localDB.change.add({
+            operation: OperationType.DELETE,
+            table: 'area',
+            siteId: site.id,
+            synced: 0,
+            createdAt: new Date(),
+            key: area.id,
+            data: { id: area.id },
+          } as IChange)
+        }
+      },
+    )
     const areas = await this.refetchAreas()
-    api.area.deleteArea.mutate({
-      id: area.id,
-    })
     return areas
   }
 }

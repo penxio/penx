@@ -7,7 +7,17 @@ export enum OperationType {
 export interface IChange {
   id: number
   operation: OperationType
-  table: string
+  table:
+    | 'site'
+    | 'creation'
+    | 'creationTag'
+    | 'area'
+    | 'mold'
+    | 'tag'
+    | 'chat'
+    | 'message'
+    | 'document'
+    | 'suggestion'
   siteId: string
   key: string
   data: any

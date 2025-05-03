@@ -32,16 +32,17 @@ import { LoadingDots } from '@penx/uikit/loading-dots'
 import { NumberInput } from '@penx/uikit/NumberInput'
 import { Textarea } from '@penx/uikit/textarea'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
+import { uniqueId } from '@penx/unique-id'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAreaDialog } from './useAreaDialog'
 
 const FormSchema = z.object({
   // type: z.nativeEnum(FieldType),
-  logo: z.string().min(1, { message: 'Please upload your avatar' }),
+  logo: z.string().optional(),
   name: z.string().min(1, {
     message: 'Name must be at least 1 characters.',
   }),
-  slug: z.string().min(1, { message: 'Slug is required' }),
+  slug: z.string().optional(),
   description: z.string(),
   about: z.string().optional(),
   chargeMode: z.string().optional(),
@@ -49,11 +50,8 @@ const FormSchema = z.object({
 })
 
 export function AreaForm() {
-  const { update } = useSession()
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen, area } = useAreaDialog()
-  const { refetch: refetchSite } = useSite()
-  const { push } = useRouter()
 
   const isEdit = !!area
 
@@ -69,11 +67,13 @@ export function AreaForm() {
       chargeMode: area?.chargeMode || ChargeMode.PAID_MONTHLY,
     },
   })
+  console.log('======form:', form.formState.errors)
 
   const chargeMode = form.watch('chargeMode')
   const slugValue = form.watch('slug')
 
   useEffect(() => {
+    if (!slugValue) return
     if (slugValue === slug(slugValue)) return
     form.setValue('slug', slug(slugValue))
   }, [slugValue, form])
@@ -88,7 +88,14 @@ export function AreaForm() {
           ...data,
         })
       } else {
-        const area = await store.areas.addArea(data)
+        const area = await store.areas.addArea({
+          ...data,
+          slug: uniqueId(),
+        })
+
+        store.area.set(area)
+        store.creations.refetchCreations(area.id)
+        store.visit.setAndSave({ activeAreaId: area.id })
         await store.panels.resetPanels()
       }
 
@@ -108,18 +115,21 @@ export function AreaForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="logo"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                <Trans id="logo"></Trans>
-              </FormLabel>
-              <FileUpload {...field} />
-            </FormItem>
-          )}
-        />
+        {isEdit && (
+          <FormField
+            control={form.control}
+            name="logo"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  <Trans id="logo"></Trans>
+                </FormLabel>
+                <FileUpload {...field} />
+              </FormItem>
+            )}
+          />
+        )}
+
         {/* <FormField
           control={form.control}
           name="type"
@@ -174,21 +184,23 @@ export function AreaForm() {
           )}
         />
 
-        <FormField
-          control={form.control}
-          name="slug"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>
-                <Trans id="Slug"></Trans>
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="" {...field} className="w-full" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        {isEdit && (
+          <FormField
+            control={form.control}
+            name="slug"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>
+                  <Trans id="Slug"></Trans>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="" {...field} className="w-full" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
 
         <FormField
           control={form.control}
@@ -208,37 +220,39 @@ export function AreaForm() {
           }}
         />
 
-        <FormField
-          control={form.control}
-          name="about"
-          render={({ field }) => {
-            return (
-              <FormItem className="w-full">
-                <FormLabel>
-                  <Trans id="About"></Trans>
-                </FormLabel>
-                <FormControl>
-                  <div className="border-foreground/20  h-[250px] overflow-auto rounded-lg border">
-                    <PlateEditor
-                      variant="default"
-                      className="min-h-[240px]"
-                      value={
-                        field.value
-                          ? JSON.parse(field.value)
-                          : editorDefaultValue
-                      }
-                      onChange={(v) => {
-                        // console.log('value:',v, JSON.stringify(v));
-                        field.onChange(JSON.stringify(v))
-                      }}
-                    />
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )
-          }}
-        />
+        {isEdit && (
+          <FormField
+            control={form.control}
+            name="about"
+            render={({ field }) => {
+              return (
+                <FormItem className="w-full">
+                  <FormLabel>
+                    <Trans id="About"></Trans>
+                  </FormLabel>
+                  <FormControl>
+                    <div className="border-foreground/20  h-[250px] overflow-auto rounded-lg border">
+                      <PlateEditor
+                        variant="default"
+                        className="min-h-[240px]"
+                        value={
+                          field.value
+                            ? JSON.parse(field.value)
+                            : editorDefaultValue
+                        }
+                        onChange={(v) => {
+                          // console.log('value:',v, JSON.stringify(v));
+                          field.onChange(JSON.stringify(v))
+                        }}
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )
+            }}
+          />
+        )}
 
         {/* <FormField
           control={form.control}

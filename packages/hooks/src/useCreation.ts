@@ -41,10 +41,7 @@ export function getCreation(creationId: string) {
 
 export async function createTag(creation: ICreation, tagName: string) {
   const tag = await localDB.tag
-    .where({
-      siteId: creation.siteId,
-      name: tagName,
-    })
+    .where({ siteId: creation.siteId, name: tagName })
     .first()
 
   let newTag: ITag
@@ -62,7 +59,7 @@ export async function createTag(creation: ICreation, tagName: string) {
       userId: creation.userId,
       siteId: creation.siteId,
     }
-    await localDB.tag.add(newTag)
+    await localDB.addTag(newTag)
 
     const id = uniqueId()
     const newCreationTag: ICreationTag = {
@@ -73,15 +70,10 @@ export async function createTag(creation: ICreation, tagName: string) {
       tagId: newTag.id,
       siteId: creation.siteId,
     }
-    await localDB.creationTag.add(newCreationTag)
+    await localDB.addCreationTag(newCreationTag)
 
     store.tags.refetchTags()
     store.creationTags.refetchCreationTags()
-
-    await api.tag.createAndAddTag.mutate({
-      tag: newTag,
-      creationTag: newCreationTag,
-    })
   }
 }
 
@@ -94,23 +86,16 @@ export async function addCreationTag(creation: ICreation, tag: ITag) {
     tagId: tag.id,
     siteId: creation.siteId,
   }
-  await localDB.creationTag.add(newCreationTag)
+  await localDB.addCreationTag(newCreationTag)
 
   await store.creationTags.refetchCreationTags()
-
-  api.tag.add.mutate({
-    id: newCreationTag.id,
-    siteId: creation.siteId,
-    creationId: creation.id,
-    tagId: tag.id,
-  })
+  await store.tags.refetchTags()
 }
 
 export async function deleteCreationTag(postTag: ICreationTag) {
-  const creation = getCreation(postTag.creationId)
-  await localDB.creationTag.delete(postTag.id)
+  await localDB.deleteCreationTag(postTag.id)
   await store.creationTags.refetchCreationTags()
-  api.tag.deleteCreationTag.mutate(postTag.id)
+  await store.tags.refetchTags()
 }
 
 export async function updateCreationState(

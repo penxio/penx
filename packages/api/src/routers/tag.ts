@@ -210,30 +210,4 @@ export const tagRouter = router({
       revalidateCreationTags(tag.siteId, [{ tag: tag }])
       return tag
     }),
-
-  createAndAddTag: protectedProcedure
-    .input(
-      z.object({
-        tag: z.any(),
-        creationTag: z.any(),
-      }),
-    )
-    .mutation(async ({ input }) => {
-      return prisma.$transaction(
-        async (tx) => {
-          await tx.tag.create({
-            data: input.tag,
-          })
-
-          await tx.creationTag.create({
-            data: input.creationTag,
-          })
-          return true
-        },
-        {
-          maxWait: 5000, // default: 2000
-          timeout: 10000, // default: 5000
-        },
-      )
-    }),
 })

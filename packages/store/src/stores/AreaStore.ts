@@ -24,7 +24,6 @@ export class AreaStore {
   async persistArea(input: UpdateAreaInput) {
     const { id, ...data } = input
     await localDB.area.update(id, data)
-    api.area.updateArea.mutate(input)
   }
 
   async addWidget(widget: Widget) {
@@ -106,7 +105,6 @@ export class AreaStore {
 
   async updateArea(input: UpdateAreaInput) {
     const area = this.get()
-    const { id } = input
 
     this.set({
       ...area,

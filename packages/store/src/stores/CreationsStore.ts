@@ -51,7 +51,6 @@ export class CreationsStore {
 
   async refetchCreations(areaId?: string) {
     const area = this.store.area.get()
-    console.log('=====areaId:', areaId, 'area:', area)
     const newCreations = await localDB.creation
       .where({ areaId: areaId || area.id })
       .toArray()
