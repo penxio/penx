@@ -1,7 +1,13 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { supportLanguages } from '@/lib/supportLanguages'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { Site } from '@penx/db/client'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -12,6 +18,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@penx/uikit/form'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Select,
   SelectContent,
@@ -21,14 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/select'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { supportLanguages } from '@/lib/supportLanguages'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
-import { toast } from 'sonner'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   // themeName: z.string().optional(),
@@ -42,7 +42,7 @@ interface Props {
 }
 
 export function AppearanceSettingForm({ site }: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const { appearance } = (site.config || {}) as {
     appearance: z.infer<typeof FormSchema>

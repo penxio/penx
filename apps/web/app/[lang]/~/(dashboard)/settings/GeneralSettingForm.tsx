@@ -1,9 +1,13 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { Site } from '@penx/db/client'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -15,14 +19,9 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Textarea } from '@penx/uikit/textarea'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
-import { toast } from 'sonner'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   logo: z.string(),
@@ -36,8 +35,8 @@ const FormSchema = z.object({
 interface Props {}
 
 export function GeneralSettingForm({}: Props) {
-  const { refetch } = useSite()
-  const site = useSiteContext()
+  const { refetch } = useQuerySite()
+  const { site } = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
 
   const form = useForm<z.infer<typeof FormSchema>>({

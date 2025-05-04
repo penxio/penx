@@ -2,11 +2,16 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { produce } from 'immer'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { NumberInput } from '@penx/uikit/NumberInput'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { api, trpc } from '@penx/trpc-client'
+import { NavLink, NavLinkType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -18,16 +23,10 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
 import { Textarea } from '@penx/uikit/textarea'
-import { useSite } from '@penx/hooks/useSite'
-import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { NavLink, NavLinkType } from '@penx/types'
-import { api, trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { produce } from 'immer'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useProductDialog } from './useProductDialog'
 
 const FormSchema = z.object({

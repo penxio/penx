@@ -1,7 +1,7 @@
 'use client'
 
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import {
   Card,
@@ -16,7 +16,7 @@ import { toast } from 'sonner'
 interface Props {}
 
 export function DeletePostsCard({}: Props) {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   return (
     <Card>
       <CardHeader>

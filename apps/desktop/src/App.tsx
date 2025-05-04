@@ -12,6 +12,7 @@ import { LoadingDots } from '@penx/uikit/loading-dots'
 import { sleep } from '@penx/utils'
 import { AuthProvider } from './AuthProvider'
 import './style.css'
+import { AppProvider } from '@penx/components/AppProvider'
 
 function App() {
   const locale = 'en'
@@ -21,7 +22,9 @@ function App() {
         <AuthProvider>
           <trpc.Provider client={trpcClient} queryClient={queryClient}>
             <StoreProvider>
-              <DashboardLayout></DashboardLayout>
+              <AppProvider>
+                <DashboardLayout></DashboardLayout>
+              </AppProvider>
             </StoreProvider>
           </trpc.Provider>
         </AuthProvider>

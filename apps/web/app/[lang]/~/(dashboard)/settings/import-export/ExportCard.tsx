@@ -1,6 +1,6 @@
 'use client'
 
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import { api } from '@penx/trpc-client'
 import { useMutation } from '@tanstack/react-query'
@@ -22,7 +22,7 @@ function downloadFile(data: any, fileName: string) {
 }
 
 function ExportSubscribers() {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const { isPending, mutateAsync: exportPosts } = useMutation({
     mutationKey: ['export-subscribers'],
     mutationFn: async () => {
@@ -47,7 +47,7 @@ function ExportSubscribers() {
 }
 
 function ExportPosts() {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const { isPending, mutateAsync: exportPosts } = useMutation({
     mutationKey: ['export-posts'],
     mutationFn: async () => {

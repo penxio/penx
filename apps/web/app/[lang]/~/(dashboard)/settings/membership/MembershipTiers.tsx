@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { ContentRender } from '@penx/content-render'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
@@ -22,7 +22,7 @@ interface Props {
 
 export function MembershipTiers({ type }: Props) {
   const [loading, setLoading] = useState(false)
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const tierDialog = useTierDialog()
   const priceDialog = useTierPriceDialog()
   const {

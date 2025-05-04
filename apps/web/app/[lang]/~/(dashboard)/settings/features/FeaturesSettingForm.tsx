@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from '@penx/uikit/select'
 import { Switch } from '@penx/uikit/switch'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -44,7 +44,7 @@ interface Props {
 }
 
 export function FeaturesSettingForm({ site }: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.enableFeatures.useMutation()
   const { features } = (site.config || {}) as {
     features: z.infer<typeof FormSchema>

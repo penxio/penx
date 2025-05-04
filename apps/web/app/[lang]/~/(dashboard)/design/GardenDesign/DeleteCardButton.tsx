@@ -2,7 +2,7 @@
 
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Button } from '@penx/uikit/button'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'
@@ -13,7 +13,7 @@ import { getDisableDragProps } from './lib/getDisableDragProps'
 
 export function DeleteCardButton({ item }: { item: LayoutItem }) {
   const { layout, setLayout } = useDesignContext()
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const themeConfig = (site.themeConfig || {}) as Record<string, any>

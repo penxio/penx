@@ -8,7 +8,12 @@ import {
   TierInterval,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
-import { ProductType, StripeType, SubdomainType } from '@penx/db/client'
+import {
+  CollaboratorRole,
+  ProductType,
+  StripeType,
+  SubdomainType,
+} from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import {
   addDomainToVercel,
@@ -373,6 +378,26 @@ export const siteRouter = router({
               data: {
                 ...input.site,
                 isRemote: true,
+                collaborators: {
+                  create: {
+                    userId,
+                    role: CollaboratorRole.OWNER,
+                  },
+                },
+                domains: {
+                  create: [
+                    {
+                      domain: userId,
+                      subdomainType: SubdomainType.UserId,
+                    },
+                  ],
+                },
+                channels: {
+                  create: {
+                    name: 'general',
+                    type: 'TEXT',
+                  },
+                },
               },
             }),
             tx.area.createMany({

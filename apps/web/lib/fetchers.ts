@@ -134,8 +134,11 @@ export async function getFirstSite() {
 }
 
 export async function getCreations(site: Site) {
+  console.log('=============site:', site)
+
   const siteId = site.id
-  const mold = site.molds.find((i) => i.type === CreationType.ARTICLE)!
+  const mold = site.molds.find((i) => i.type === CreationType.PAGE)!
+
   const creations = await unstable_cache(
     async () => {
       let creations = await findManyCreations(site, mold.id)

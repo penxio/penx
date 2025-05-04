@@ -5,7 +5,7 @@ import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import { CardStyle } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
 import { useThemeName } from '../../hooks/useThemeName'
 import { useDesignContext } from '../hooks/DesignContext'
@@ -15,7 +15,7 @@ import { useGardenSettingsDialog } from './useGardenSettingsDialog'
 interface Props {}
 
 export function GardenSettingsContent({}: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const { layoutItem } = useGardenSettingsDialog()
   const { isMobile, layout, setLayout } = useDesignContext()
   const site = useSiteContext()

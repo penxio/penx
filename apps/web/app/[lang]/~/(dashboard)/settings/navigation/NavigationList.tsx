@@ -32,10 +32,9 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { Trans } from '@lingui/react'
-import { useArea } from '@penx/hooks/useArea'
 import { defaultNavLinks } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { updateSiteState } from '@penx/hooks/useSite'
+import { useArea } from '@penx/hooks/useArea'
+import { updateSiteState, useQuerySite } from '@penx/hooks/useQuerySite'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import { NavLink, Widget } from '@penx/types'
@@ -50,7 +49,7 @@ const measuring: MeasuringConfiguration = {
 }
 
 export const NavigationList = () => {
-  const site = useSiteContext()
+  const { site } = useQuerySite()
   let navLinks = (site.navLinks || defaultNavLinks) as NavLink[]
   const [activeId, setActiveId] = useState<string | null>(null)
 

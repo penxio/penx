@@ -32,6 +32,7 @@
     "./SocialNav": "./src/SocialNav.tsx",
     "./TextLogo": "./src/TextLogo.tsx",
     "./ThemeProvider": "./src/ThemeProvider.tsx",
+    "./AppProvider": "./src/AppProvider/AppProvider.tsx",
     "./blur-image": "./src/blur-image.tsx",
     "./placeholder-card": "./src/placeholder-card.tsx",
     "./AreaDialog": "./src/AreaDialog/AreaDialog.tsx",

@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -14,7 +14,6 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -30,8 +29,8 @@ const FormSchema = z.object({
 interface Props {}
 
 export function AnalyticsSettingForm({}: Props) {
-  const { refetch } = useSite()
-  const site = useSiteContext()
+  const { refetch } = useQuerySite()
+  const {site} = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const analytics = (site.analytics || {}) as z.infer<typeof FormSchema>
 

@@ -2,15 +2,15 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
-import { updateSiteState } from '@penx/hooks/useSite'
+import { updateSiteState } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
 import { StripeType } from '@penx/db/client'
 
 export function ConnectStripe() {
   const [loading, setLoading] = useState(false)
-  const site = useSiteContext()
+  const {site} = useQuerySite()
 
   const { isPending, mutateAsync } = trpc.site.selectStripeType.useMutation()
 

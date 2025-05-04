@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { UseCouponCode } from '@/components/UseCouponCode'
 import { BillingCycle, PlanType } from '@penx/db/client'
 import { format } from 'date-fns'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
@@ -16,7 +16,7 @@ import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 interface Props {}
 
 export function Subscription({}: Props) {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const { data: session, update } = useSession()
   const time = useMemo(() => {
     if (!session?.believerPeriodEnd) return null

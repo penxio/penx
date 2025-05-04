@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Input } from '@penx/uikit/input'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { editorDefaultValue } from '@penx/constants'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export function TextCard({ layoutItem, layout, setLayout }: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()

@@ -8,7 +8,7 @@ import { produce } from 'immer'
 import { useDebouncedCallback } from 'use-debounce'
 import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
 import { NumberInput } from '@penx/uikit/NumberInput'
 import {
@@ -31,7 +31,7 @@ const FormSchema = z.object({
 })
 
 export function DesignSettings() {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const { config, setConfig } = useDesignContext()
   const { themeName } = useThemeName()
   const site = useSiteContext()

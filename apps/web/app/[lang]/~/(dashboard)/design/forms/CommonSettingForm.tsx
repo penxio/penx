@@ -1,8 +1,14 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { produce } from 'immer'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
+import { PostListStyle } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -15,6 +21,7 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { Label } from '@penx/uikit/label'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Select,
   SelectContent,
@@ -24,14 +31,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/select'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { PostListStyle } from '@penx/types'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { produce } from 'immer'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useThemeName } from '../hooks/useThemeName'
 
 const FormSchema = z.object({
@@ -42,7 +42,7 @@ const FormSchema = z.object({
 interface Props {}
 
 export function CommonSettingForm({}: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const { themeName } = useThemeName()

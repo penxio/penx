@@ -7,9 +7,8 @@ import { useMySites } from './useMySites'
 
 const queryKey = ['current_site']
 
-export function useSite() {
+export function useQuerySite() {
   const { data: session } = useSession()
-  const { data: sites = [] } = useMySites()
 
   const {
     data,
@@ -19,11 +18,9 @@ export function useSite() {
   } = useQuery({
     queryKey,
     queryFn: async () => {
-      const site = sites.find((s) => s.id === session?.activeSiteId)
-      const currentSite = site || sites[0]
-      return currentSite
+      return api.site.byId.query({ id: session?.activeSiteId })
     },
-    enabled: !!session?.activeSiteId && sites.length > 0,
+    enabled: !!session?.activeSiteId,
   })
 
   async function refetch() {

@@ -8,7 +8,7 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { usePlanListDialog } from '@penx/components/usePlanListDialog'
 import { useDomains } from '@penx/hooks/useDomains'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { getSiteCustomDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
@@ -41,7 +41,7 @@ interface Props {
 
 export function CustomDomainForm({ site }: Props) {
   const { session } = useSession()
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.customDomain.useMutation()
   const { setIsOpen } = usePlanListDialog()
   const { data } = useDomains()

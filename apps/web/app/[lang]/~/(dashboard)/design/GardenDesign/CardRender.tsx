@@ -1,7 +1,7 @@
 'use client'
 
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { GardenCardType, SocialType } from '@penx/constants'
 import { CreationType, LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'

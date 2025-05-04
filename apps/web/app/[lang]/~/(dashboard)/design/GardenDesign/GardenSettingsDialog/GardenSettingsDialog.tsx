@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from '@penx/uikit/dialog'
 import { Input } from '@penx/uikit/input'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { SocialType } from '@penx/constants'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
@@ -28,7 +28,7 @@ export function GardenSettingsDialog({}: Props) {
   const { isMobile, layout, setLayout } = useDesignContext()
   const { isOpen, setIsOpen, layoutItem } = useGardenSettingsDialog()
 
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()

@@ -1,8 +1,13 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { Site } from '@penx/db/client'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
+import { Socials } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Card } from '@penx/uikit/card'
 import {
@@ -15,14 +20,8 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
-import { useSite } from '@penx/hooks/useSite'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { Socials } from '@penx/types'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
-import { toast } from 'sonner'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   farcaster: z.string().optional(),
@@ -45,8 +44,8 @@ const FormSchema = z.object({
 interface Props {}
 
 export function SocialSettingForm({}: Props) {
-  const { refetch } = useSite()
-  const site = useSiteContext()
+  const { refetch } = useQuerySite()
+  const { site } = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
 
   const social = (site.socials || {}) as z.infer<typeof FormSchema>

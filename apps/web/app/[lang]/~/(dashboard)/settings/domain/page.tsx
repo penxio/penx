@@ -1,7 +1,7 @@
 'use client'
 
 import { useDomains } from '@penx/hooks/useDomains'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { getSiteCustomDomain } from '@penx/libs/getSiteDomain'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Separator } from '@penx/uikit/separator'
@@ -14,7 +14,7 @@ import { SubdomainList } from './SubdomainList'
 export const dynamic = 'force-static'
 
 export default function Page() {
-  const { isLoading, site, error } = useSite()
+  const { isLoading, site, error } = useQuerySite()
   const { data } = useDomains()
 
   if (isLoading) {

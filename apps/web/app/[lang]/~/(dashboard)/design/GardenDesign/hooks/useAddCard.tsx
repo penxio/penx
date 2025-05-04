@@ -1,7 +1,7 @@
 import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { GardenCardType, SocialType } from '@penx/constants'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -10,7 +10,7 @@ import { useDesignContext } from './DesignContext'
 
 export function useAddCard() {
   const { isMobile, layout, setLayout } = useDesignContext()
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const themeConfig = (site.themeConfig || {}) as Record<string, any>

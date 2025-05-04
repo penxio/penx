@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { NumberInput } from '@penx/uikit/NumberInput'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
-import { updateSiteState } from '@penx/hooks/useSite'
+import { updateSiteState } from '@penx/hooks/useQuerySite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { api } from '@penx/trpc-client'
 import { Balance } from '@penx/types'
@@ -32,7 +32,7 @@ const FormSchema = z.object({
 export function WithdrawForm() {
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen } = useWithdrawDialog()
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const balance = useMemo(() => {
     if (!site.balance) {
       return {

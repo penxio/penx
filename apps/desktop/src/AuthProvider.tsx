@@ -15,8 +15,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     })
   }, [])
 
-  if (res.isLoading) return <LoadingDots />
-  if (!res.session) return <Login />
+  // if (res.isLoading) return <LoadingDots />
+  // if (!res.session) return <Login />
   return (
     <SessionContext.Provider value={res}>{children}</SessionContext.Provider>
   )

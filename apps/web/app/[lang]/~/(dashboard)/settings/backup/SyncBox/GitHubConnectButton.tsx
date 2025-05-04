@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Button } from '@penx/uikit/button'
-import { updateSiteState } from '@penx/hooks/useSite'
-import { api } from '@penx/trpc-client'
 import { toast } from 'sonner'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { updateSiteState } from '@penx/hooks/useQuerySite'
+import { api } from '@penx/trpc-client'
+import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 
 interface Props {
   installationId: number

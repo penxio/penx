@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { PayoutAccountDialog } from './PayoutAccountDialog/PayoutAccountDialog'
 import { usePayoutAccountDialog } from './PayoutAccountDialog/usePayoutAccountDialog'
 import { PayoutAccountList } from './PayoutAccountList'

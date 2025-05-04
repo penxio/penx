@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
-import { updateSiteState } from '@penx/hooks/useSite'
+import { updateSiteState } from '@penx/hooks/useQuerySite'
 import { queryClient } from '@penx/query-client'
 import { trpc } from '@penx/trpc-client'
 import { StripeType } from '@penx/db/client'
@@ -15,7 +15,7 @@ import { PlatformStrip } from './PlatformStrip'
 import { StripeTypeSelect } from './StripeTypeSelect'
 
 export function Membership() {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
 
   if (site.stripeType === StripeType.NONE) {
     return <MembershipSetup />
@@ -28,7 +28,7 @@ export function Membership() {
 }
 
 function MembershipSetup() {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const [value, setValue] = useState<StripeType>(StripeType.NONE)
   const { isPending, mutateAsync } = trpc.site.selectStripeType.useMutation()
   return (

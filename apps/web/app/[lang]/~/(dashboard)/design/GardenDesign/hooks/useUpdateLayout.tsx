@@ -1,7 +1,7 @@
 import isEqual from 'react-fast-compare'
 import { Layout } from 'react-grid-layout'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'
 import { toast } from 'sonner'
@@ -10,7 +10,7 @@ import { useDesignContext } from './DesignContext'
 
 export function useUpdateLayout() {
   const { isMobile, layout, setLayout } = useDesignContext()
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const themeConfig = (site.themeConfig || {}) as Record<string, any>

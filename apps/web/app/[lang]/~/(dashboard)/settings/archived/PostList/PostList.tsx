@@ -1,6 +1,6 @@
 'use client'
 
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { CreationStatus } from '@penx/constants'
 import { trpc } from '@penx/trpc-client'
 import { PostItem } from './PostItem'

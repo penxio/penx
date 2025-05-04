@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/table'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { api, trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
 import { Site } from '@penx/db/client'

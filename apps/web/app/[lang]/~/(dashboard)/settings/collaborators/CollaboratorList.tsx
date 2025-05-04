@@ -1,8 +1,18 @@
 import { useState } from 'react'
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { toast } from 'sonner'
+import { isAddress } from 'viem'
+import {
+  Account,
+  Collaborator,
+  CollaboratorRole,
+  ProviderType,
+  User,
+} from '@penx/db/client'
+import { useCollaborators } from '@penx/hooks/useCollaborators'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { api, trpc } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Select,
   SelectContent,
@@ -18,24 +28,13 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/table'
-import { useCollaborators } from '@penx/hooks/useCollaborators'
-import { useSite } from '@penx/hooks/useSite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import {
-  Account,
-  Collaborator,
-  CollaboratorRole,
-  ProviderType,
-  User,
-} from '@penx/db/client'
-import { toast } from 'sonner'
-import { isAddress } from 'viem'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface Props {}
 
 export default function CollaboratorList({}: Props) {
-  const site = useSiteContext()
+  const { site } = useQuerySite()
   const { isLoading, data: collaborators = [], refetch } = useCollaborators()
 
   console.log('======collaborators:', collaborators)
@@ -113,7 +112,7 @@ interface SelectRoleProps {
   collaborator: Collaborator
 }
 function SelectRole({ collaborator }: SelectRoleProps) {
-  const { site } = useSite()
+  const { site } = useQuerySite()
   const [role, setRole] = useState(collaborator.role)
   const { refetch } = useCollaborators()
 

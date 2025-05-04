@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Link } from '@penx/libs/i18n'
 import { trpc } from '@penx/trpc-client'
 import { LayoutItem } from '@penx/types'
@@ -26,7 +26,7 @@ interface Props {
 }
 
 export function ProjectCard({ layoutItem, layout, setLayout }: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()

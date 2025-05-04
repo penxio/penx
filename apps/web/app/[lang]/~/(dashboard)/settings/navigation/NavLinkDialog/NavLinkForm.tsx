@@ -8,11 +8,9 @@ import { produce } from 'immer'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { defaultNavLinks } from '@penx/constants'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { updateSiteState, useSite } from '@penx/hooks/useSite'
+import { updateSiteState, useQuerySite } from '@penx/hooks/useQuerySite'
 import { api } from '@penx/trpc-client'
 import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -24,6 +22,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Select,
   SelectContent,
@@ -44,8 +43,8 @@ const FormSchema = z.object({
 export function NavLinkForm() {
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen, navLink, index } = useNavLinkDialog()
-  const site = useSiteContext()
-  const { refetch } = useSite()
+  const { site } = useQuerySite()
+  const { refetch } = useQuerySite()
   const navLinks = (site.navLinks || defaultNavLinks) as NavLink[]
   const isEdit = !!navLink
 

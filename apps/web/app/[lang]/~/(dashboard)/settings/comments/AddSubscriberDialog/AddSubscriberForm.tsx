@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -29,7 +29,7 @@ const FormSchema = z.object({
 export function AddSubscriberForm() {
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen } = useAddSubscriberDialog()
-  const site = useSiteContext()
+  const {site} = useQuerySite()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),

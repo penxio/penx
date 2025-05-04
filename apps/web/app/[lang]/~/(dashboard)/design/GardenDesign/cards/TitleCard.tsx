@@ -3,7 +3,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { Input } from '@penx/uikit/input'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { LayoutItem } from '@penx/types'
 import { trpc } from '@penx/trpc-client'
 import { produce } from 'immer'
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export function TitleCard({ layoutItem, layout, setLayout }: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { themeName } = useThemeName()
   const { mutateAsync } = trpc.site.updateSite.useMutation()

@@ -3,14 +3,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { FullPageDatabase } from '@penx/components/database-ui'
 import { FRIEND_DATABASE_NAME } from '@penx/constants'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { api } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 
 export const dynamic = 'force-static'
 
 export default function Page() {
-  const { isLoading, site, error } = useSite()
+  const { isLoading, site, error } = useQuerySite()
   const ref = useRef<HTMLDivElement>(null)
   const [width, setWith] = useState(0)
   useEffect(() => {

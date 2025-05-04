@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { Plus } from 'lucide-react'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { MenuItem } from '@penx/uikit/menu'
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function GithubInstallationSelect({ token, value, onChange }: Props) {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const { data: installations, isLoading: isLoadInstallations } =
     trpc.github.appInstallations.useQuery({
       token,

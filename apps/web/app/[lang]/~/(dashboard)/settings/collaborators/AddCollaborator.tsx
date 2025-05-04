@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import { Input } from '@penx/uikit/input'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
@@ -10,7 +10,7 @@ import { toast } from 'sonner'
 
 export default function AddCollaborator() {
   const [q, setQ] = useState('')
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const { refetch } = useCollaborators()
   const { mutateAsync, isPending } =
     trpc.collaborator.addCollaborator.useMutation()

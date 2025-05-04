@@ -14,7 +14,7 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { Textarea } from '@penx/uikit/textarea'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -32,7 +32,7 @@ interface Props {
 }
 
 export function SeoSettingForm({ site }: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const { seo } = (site.config || {}) as {
     seo: z.infer<typeof FormSchema>

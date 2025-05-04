@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/card'
 import {
@@ -38,7 +38,7 @@ const FormSchema = z.object({
 
 export function CreateTokenForm() {
   const { refetch } = useAccessTokens()
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const { mutateAsync, isPending } = trpc.accessToken.create.useMutation()
 
   const now = new Date()

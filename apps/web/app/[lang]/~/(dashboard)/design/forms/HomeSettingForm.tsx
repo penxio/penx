@@ -19,7 +19,7 @@ import { Input } from '@penx/uikit/input'
 import { Label } from '@penx/uikit/label'
 import { Switch } from '@penx/uikit/switch'
 import { Textarea } from '@penx/uikit/textarea'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { trpc } from '@penx/trpc-client'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -40,7 +40,7 @@ const FormSchema = z.object({
 interface Props {}
 
 export function HomeSettingForm({}: Props) {
-  const { refetch } = useSite()
+  const { refetch } = useQuerySite()
   const site = useSiteContext()
   const { isPending, mutateAsync } = trpc.site.updateSite.useMutation()
   const { themeName } = useThemeName()

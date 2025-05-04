@@ -2,7 +2,7 @@
 
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
-import { useSite } from '@penx/hooks/useSite'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { useProductDialog } from './ProductDialog/useProductDialog'
 import { ProductList } from './ProductList'
 import { ProductPriceDialog } from './ProductPriceDialog/ProductPriceDialog'
@@ -10,7 +10,7 @@ import { ProductPriceDialog } from './ProductPriceDialog/ProductPriceDialog'
 export const dynamic = 'force-static'
 
 export default function Page() {
-  const { isLoading, site, error } = useSite()
+  const { isLoading, site, error } = useQuerySite()
   const { setState } = useProductDialog()
 
   if (isLoading) {

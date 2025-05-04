@@ -1,20 +1,19 @@
 'use client'
 
 import React, { forwardRef, useState } from 'react'
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { updateSiteState, useSite } from '@penx/hooks/useSite'
-import { defaultNavLinks } from '@penx/constants'
-import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
-import { api } from '@penx/trpc-client'
-import { cn } from '@penx/utils'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react'
 import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'
 import { ArrowDown, ArrowUp, Edit3, Eye, EyeOff } from 'lucide-react'
 import { toast } from 'sonner'
+import { defaultNavLinks } from '@penx/constants'
+import { updateSiteState, useQuerySite } from '@penx/hooks/useQuerySite'
+import { api } from '@penx/trpc-client'
+import { NavLink, NavLinkLocation, NavLinkType } from '@penx/types'
+import { cn } from '@penx/utils'
+import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useNavLinkDialog } from './NavLinkDialog/useNavLinkDialog'
 
 interface Props {
@@ -52,7 +51,7 @@ export const Item = forwardRef<HTMLDivElement, Props>(
       ...rest
     } = props
     const { setState } = useNavLinkDialog()
-    const site = useSiteContext()
+    const { site } = useQuerySite()
     let navLinks = (site.navLinks || defaultNavLinks) as NavLink[]
 
     const [visible, setVisible] = useState(item.visible)
@@ -105,8 +104,12 @@ export const Item = forwardRef<HTMLDivElement, Props>(
           {item.type === NavLinkType.CUSTOM && <Trans id="Custom"></Trans>}
         </div>
         <div className="flex-1">
-          {item.location === NavLinkLocation.HEADER && <Trans id="Header"></Trans>}
-          {item.location === NavLinkLocation.FOOTER && <Trans id="Footer"></Trans>}
+          {item.location === NavLinkLocation.HEADER && (
+            <Trans id="Header"></Trans>
+          )}
+          {item.location === NavLinkLocation.FOOTER && (
+            <Trans id="Footer"></Trans>
+          )}
         </div>
         <div className="flex-1">{item.pathname}</div>
         <div className="flex flex-1 items-center gap-1">

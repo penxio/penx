@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
-import { useSiteContext } from '@penx/contexts/SiteContext'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { Button } from '@penx/uikit/button'
 import {
   Card,
@@ -17,7 +17,7 @@ import { WithdrawDialog } from './WithdrawDialog/WithdrawDialog'
 interface Props {}
 
 export function Payout({}: Props) {
-  const site = useSiteContext()
+  const {site} = useQuerySite()
   const withdrawDialog = useWithdrawDialog()
   const limit = Number(process.env.NEXT_PUBLIC_MIN_WITHDRAWAL_LIMIT)
 
