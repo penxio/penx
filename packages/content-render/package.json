@@ -23,6 +23,7 @@
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/libs": "workspace:*",
     "@penx/editor-plugins": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",
     "@penx/unique-id": "workspace:*",

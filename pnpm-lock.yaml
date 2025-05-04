@@ -1606,6 +1606,9 @@ importers:
       '@penx/editor-plugins':
         specifier: workspace:*
         version: link:../editor-plugins
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
       '@penx/session':
         specifier: workspace:*
         version: link:../session

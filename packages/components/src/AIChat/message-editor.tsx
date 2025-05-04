@@ -74,7 +74,7 @@ export function MessageEditor({
             //   id: message.id,
             // })
 
-            // @ts-expect-error todo: support UIMessage in setMessages
+            // @ts-ignore
             setMessages((messages) => {
               const index = messages.findIndex((m) => m.id === message.id)
 

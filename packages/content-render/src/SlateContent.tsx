@@ -1,4 +1,6 @@
-import { Checkbox } from '@penx/uikit/checkbox'
+import { slug } from 'github-slugger'
+import { Node } from 'slate'
+import { Editable } from 'slate-react'
 import {
   ELEMENT_A,
   ELEMENT_CODE_BLOCK,
@@ -19,10 +21,8 @@ import {
   ELEMENT_TODO,
   ELEMENT_UL,
 } from '@penx/constants'
+import { Checkbox } from '@penx/uikit/checkbox'
 import { cn, getUrl } from '@penx/utils'
-import { slug } from 'github-slugger'
-import { Node } from 'slate'
-import { Editable } from 'slate-react'
 import { Leaf } from './Leaf'
 
 export function SlateContent() {
@@ -35,10 +35,13 @@ export function SlateContent() {
         const text = Node.string(element)
         const id = slug(text)
 
+        // @ts-ignore
         switch (element.type) {
           case ELEMENT_P:
+            // @ts-ignore
             if (element.listStyleType == 'disc') {
               // console.log('=====element:', element)
+              // @ts-ignore
               const { indent = 1 } = element
               return (
                 <ul
