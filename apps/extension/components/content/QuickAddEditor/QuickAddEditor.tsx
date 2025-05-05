@@ -1,17 +1,17 @@
 import React, { forwardRef, useEffect, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import { useLocalFields } from '@/hooks/useLocalFields'
+import { useLocalAreas } from '@/hooks/useLocalAreas'
 import { BACKGROUND_EVENTS } from '@/lib/constants'
 import { SUCCESS } from '@/lib/helper'
 import { cn, getUrl } from '@/lib/utils'
 import { PopoverClose, Portal } from '@radix-ui/react-popover'
 import { SendHorizontal, X } from 'lucide-react'
 import { motion, useMotionValue } from 'motion/react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Label } from '@penx/uikit/label'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import {
   Select,
@@ -23,7 +23,6 @@ import {
   SelectValue,
 } from '@penx/uikit/select'
 import { useAppType } from '../hooks/useAppType'
-import { useAreas } from '../hooks/useAreas'
 import { useNote } from '../hooks/useNote'
 
 // import { BACKGROUND_EVENTS } from '@penx/constants'
@@ -42,7 +41,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
     const { note, setNote } = useNote()
     const [loading, setLoading] = useState(false)
     const [tips, setTips] = useState('')
-    const { fields = [] } = useLocalFields()
+    const { data: areas = [] } = useLocalAreas()
     const [areaId, setAreaId] = useState('')
 
     const onSubmit = async () => {
@@ -52,11 +51,13 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
       }
       setLoading(true)
 
+      const area = areas.find((field) => field.id === areaId)!
+
       const data = await chrome.runtime.sendMessage({
         type: BACKGROUND_EVENTS.SUBMIT_CONTENT,
         payload: {
           content: note,
-          areaId: areaId,
+          area: area,
         },
       })
 
@@ -81,13 +82,14 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
     const containerX = useMotionValue(0)
     const containerY = useMotionValue(0)
 
-    const field = fields.find((field) => field.id === areaId)
+    const area = areas.find((field) => field.id === areaId)
 
     useEffect(() => {
+      if (!areas?.length) return
       if (!areaId) {
-        setAreaId(fields[0]?.id)
+        setAreaId(areas[0]?.id)
       }
-    }, [fields])
+    }, [areas])
 
     return (
       <MotionBox
@@ -127,9 +129,12 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
 
         <div className="flex flex-1 flex-col px-4 py-1">
           <TextareaAutosize
-            className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-base focus:outline-none focus:ring-0"
+            className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-base focus:outline-0 focus:ring-0"
             placeholder="Write a note..."
             value={note}
+            style={{
+              boxShadow: 'none',
+            }}
             minRows={8}
             autoFocus
             onChange={(e) => {
@@ -154,15 +159,15 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
                     'hover:bg-foreground/7 bg-foreground/5 line-clamp-1 flex cursor-pointer items-center gap-1 rounded-full px-2 py-1',
                   )}
                 >
-                  {field ? (
+                  {area ? (
                     <>
-                      <Avatar className="size-5">
-                        <AvatarImage src={getUrl(field?.logo || '')} />
+                      {/* <Avatar className="size-5">
+                        <AvatarImage src={getUrl(area?.logo || '')} />
                         <AvatarFallback>
-                          {field?.name.slice(0, 1)}
+                          {area?.name.slice(0, 1)}
                         </AvatarFallback>
-                      </Avatar>
-                      <span className="text-sm">{field?.name}</span>
+                      </Avatar> */}
+                      <span className="text-sm">{area?.name}</span>
                     </>
                   ) : (
                     <span className="text-sm">Select an area</span>
@@ -170,10 +175,12 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
                 </div>
               </PopoverTrigger>
               <PopoverContent
+                side="top"
+                align="center"
                 isPortal={false}
                 className="flex w-48 flex-col gap-1 p-1"
               >
-                {fields.map((field) => (
+                {areas.map((field) => (
                   <PopoverClose key={field.id}>
                     <div
                       className={cn(

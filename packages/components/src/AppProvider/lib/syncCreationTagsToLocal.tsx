@@ -26,18 +26,18 @@ export function syncCreationTagsToLocal(siteId: string) {
   shape.subscribe(async ({ rows }) => {
     // console.log('creation tag rows=======:', rows)
 
-    const creationTags = await localDB.creationTag.where({ siteId }).toArray()
+    // const creationTags = await localDB.creationTag.where({ siteId }).toArray()
 
-    const isEqual = isRowsEqual(rows, creationTags, [
-      'id',
-      'creationId',
-      'siteId',
-      'tagId',
-      'siteId',
-    ])
-    // console.log('-=========>>isEqual:', isEqual)
+    // const isEqual = isRowsEqual(rows, creationTags, [
+    //   'id',
+    //   'creationId',
+    //   'siteId',
+    //   'tagId',
+    //   'siteId',
+    // ])
+    // // console.log('-=========>>isEqual:', isEqual)
 
-    if (isEqual) return
+    // if (isEqual) return
 
     const tx = localDB
       .transaction('rw', localDB.creationTag, async () => {

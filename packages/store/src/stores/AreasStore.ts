@@ -64,7 +64,7 @@ export class AreasStore {
       siteId: site.id,
     } as IArea
 
-    await localDB.area.add(area)
+    await localDB.addArea(area)
     this.refetchAreas()
     return area
   }

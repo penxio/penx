@@ -22,7 +22,7 @@ export function isRowsEqual(
     .map((data) => {
       return columns.map((column) => data[column])
     })
-  // console.log('=====remote:', remote, 'local:', local)
+  console.log('=====remote:', remote, 'local:', local)
 
   return isEqual(remote, local)
 }

@@ -140,6 +140,21 @@ class LocalDB extends Dexie {
     return this.creation.delete(id)
   }
 
+  addArea = async (data: Partial<IArea>) => {
+    const id = await this.area.add({
+      id: uniqueId(),
+      ...data,
+    } as IArea)
+
+    const area = (await this.area.get(id))!
+
+    await this.addChange({
+      operation: OperationType.CREATE,
+      table: 'area',
+      data: area,
+    })
+  }
+
   updateArea = async (id: string, data: Partial<IArea>) => {
     const newData: any = data || {}
     if (!Reflect.has(data, 'updatedAt')) {

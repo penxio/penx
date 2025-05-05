@@ -42,6 +42,5 @@ export const BACKGROUND_EVENTS = {
   SCREEN_SHOT: 'background/screen-shot',
   SUBMIT_CONTENT: 'background/submit-content',
   INIT_POPUP: 'background/init_popup',
-
-  ADD_NODES_TO_TODAY: 'background/add_nodes_to_today',
+  QUERY_AREAS: 'QUERY_AREAS',
 }

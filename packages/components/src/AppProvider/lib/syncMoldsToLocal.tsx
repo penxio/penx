@@ -21,19 +21,19 @@ export function syncMoldsToLocal(siteId: string) {
   shape.subscribe(async ({ rows }) => {
     const molds = await localDB.mold.where({ siteId }).toArray()
 
-    const isEqual = isRowsEqual(rows, molds, [
-      'id',
-      'name',
-      'description',
-      'type',
-      'props',
-      'content',
-      'siteId',
-      'userId',
-    ])
-    // console.log('-=========>>isEqual:', isEqual)
+    // const isEqual = isRowsEqual(rows, molds, [
+    //   'id',
+    //   'name',
+    //   'description',
+    //   'type',
+    //   'props',
+    //   'content',
+    //   'siteId',
+    //   'userId',
+    // ])
+    // // console.log('-=========>>isEqual:', isEqual)
 
-    if (isEqual) return
+    // if (isEqual) return
 
     const tx = localDB
       .transaction('rw', localDB.mold, async () => {

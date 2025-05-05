@@ -4,8 +4,8 @@ import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
+
 // import { allMessages } from './appRouterI18n'
-import wxtLogo from '/wxt.svg'
 
 function App() {
   const [count, setCount] = useState(0)

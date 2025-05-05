@@ -27,32 +27,31 @@ export function syncAreasToLocal(siteId: string) {
   // })
 
   shape.subscribe(async ({ rows }) => {
-    // console.log('area rows=======:', rows)
+    console.log('area rows=======:', rows)
 
-    const areas = await localDB.area.where({ siteId }).toArray()
+    // const areas = await localDB.area.where({ siteId }).toArray()
 
-    const isEqual = isRowsEqual(rows, areas, [
-      'id',
-      'slug',
-      'name',
-      'description',
-      'about',
-      'logo',
-      'cover',
-      'widgets',
-      'type',
-      'favorites',
-      'userId',
-      'siteId',
-    ])
+    // const isEqual = isRowsEqual(rows, areas, [
+    //   'id',
+    //   'slug',
+    //   'name',
+    //   'description',
+    //   'about',
+    //   'logo',
+    //   'cover',
+    //   'widgets',
+    //   'type',
+    //   'favorites',
+    //   'userId',
+    //   'siteId',
+    // ])
     // console.log('-=========>>isEqual:', isEqual)
 
-    if (isEqual) return
+    // if (isEqual) return
 
     const tx = localDB
       .transaction('rw', localDB.area, async () => {
         console.log('start sync area')
-        const session = await getSession()
 
         await localDB.area.where({ siteId }).delete()
         await localDB.area.bulkPut(rows as any)

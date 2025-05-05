@@ -8,6 +8,7 @@ import { Login } from './Login'
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const res = useQuerySession()
+
   useEffect(() => {
     appEmitter.on('DESKTOP_LOGIN_SUCCESS', async (session) => {
       await set('SESSION', session)

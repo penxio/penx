@@ -1,8 +1,8 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "extension",
+  "description": "Build your own Digital Garden",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.8",
   "type": "module",
   "scripts": {
     "dev": "wxt",

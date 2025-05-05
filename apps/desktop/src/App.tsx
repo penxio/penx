@@ -16,19 +16,12 @@ import { AppProvider } from '@penx/components/AppProvider'
 
 function App() {
   const locale = 'en'
+
   return (
     <LinguiClientProvider initialLocale={locale} initialMessages={{}}>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <trpc.Provider client={trpcClient} queryClient={queryClient}>
-            <StoreProvider>
-              <AppProvider>
-                <DashboardLayout></DashboardLayout>
-              </AppProvider>
-            </StoreProvider>
-          </trpc.Provider>
-        </AuthProvider>
-      </QueryClientProvider>
+      <DashboardProviders>
+        <DashboardLayout></DashboardLayout>
+      </DashboardProviders>
     </LinguiClientProvider>
   )
 }

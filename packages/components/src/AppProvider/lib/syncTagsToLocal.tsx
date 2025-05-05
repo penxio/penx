@@ -26,18 +26,18 @@ export function syncTagsToLocal(siteId: string) {
   tagShape.subscribe(async ({ rows }) => {
     const tags = await localDB.tag.where({ siteId }).toArray()
 
-    const isEqual = isRowsEqual(rows, tags, [
-      'id',
-      'name',
-      'color',
-      'creationCount',
-      'hidden',
-      'siteId',
-      'userId',
-    ])
-    // console.log('-=========>>isEqual:', isEqual)
+    // const isEqual = isRowsEqual(rows, tags, [
+    //   'id',
+    //   'name',
+    //   'color',
+    //   'creationCount',
+    //   'hidden',
+    //   'siteId',
+    //   'userId',
+    // ])
+    // // console.log('-=========>>isEqual:', isEqual)
 
-    if (isEqual) return
+    // if (isEqual) return
 
     const tx = localDB
       .transaction('rw', localDB.tag, async () => {

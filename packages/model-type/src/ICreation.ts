@@ -21,9 +21,9 @@ export interface ICreation {
   checked: boolean
   isPopular: boolean
   isJournal: boolean
-  date: string
-  publishedAt: Date
-  archivedAt: Date
+  date?: string
+  publishedAt?: Date
+  archivedAt?: Date
   openedAt: Date
   createdAt: Date
   updatedAt: Date

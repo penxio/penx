@@ -35,7 +35,7 @@ export function useAddCreation() {
       ...addCreationInput,
       siteId: mold.siteId,
       icon: '',
-      props: [],
+      props: {},
       podcast: {},
       i18n: {},
       userId: site.userId,

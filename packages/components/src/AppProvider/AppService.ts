@@ -33,7 +33,8 @@ export class AppService {
 
   private async getInitialSite(session: SessionData): Promise<ISite> {
     if (!session) {
-      const site = (await localDB.site.toCollection().first())!
+      const sites = await localDB.site.toArray()
+      const site = sites.find((s) => s.isRemote) || sites?.[0]
       if (site) return site
       return initLocalSite()
     }
@@ -58,6 +59,7 @@ export class AppService {
         .where({ userId: session.userId })
         .toArray()
       const site = sites.find((s) => s.isRemote)
+
       if (site) {
         this.syncDataToLocal(site.id)
         return site

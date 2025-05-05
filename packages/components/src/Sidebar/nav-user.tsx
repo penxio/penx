@@ -2,6 +2,7 @@
 
 import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react'
+import { openUrl } from '@tauri-apps/plugin-opener'
 import {
   BadgeCheck,
   Bell,
@@ -14,6 +15,14 @@ import {
   Sparkles,
   Sun,
 } from 'lucide-react'
+import { nanoid } from 'nanoid'
+import {
+  isDesktop,
+  isExtension,
+  isWeb,
+  LoginStatus,
+  ROOT_HOST,
+} from '@penx/constants'
 // import { useRouter } from 'next/navigation'
 import { appEmitter } from '@penx/emitter'
 import { useMySite } from '@penx/hooks/useMySite'
@@ -21,6 +30,7 @@ import { useMySites } from '@penx/hooks/useMySites'
 import { updateSiteState } from '@penx/hooks/useQuerySite'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
+import { api } from '@penx/trpc-client'
 import { MySite } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
@@ -52,6 +62,52 @@ export function NavUser() {
   const sigInState = useSignIn({})
   const loginDialog = useLoginDialog()
 
+  async function desktopLogin() {
+    const authToken = nanoid()
+    console.log('hello........')
+    openUrl(`${ROOT_HOST}/desktop-login?token=${authToken}`)
+
+    while (true) {
+      try {
+        const { status } = await api.desktop.getLoginStatus.query({
+          token: authToken,
+        })
+
+        // console.log('=======status:', status)
+
+        if (status === LoginStatus.CONFIRMED) {
+          break
+        }
+
+        if (status === LoginStatus.CANCELED) {
+          return
+          // break
+        }
+
+        await sleep(1000)
+      } catch (error) {
+        console.log('error:', error)
+        // toost
+        return
+      }
+    }
+
+    const session = await api.desktop.loginByToken.mutate(authToken)
+    console.log('===desktop=session:', session)
+
+    appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
+  }
+
+  async function login() {
+    if (isDesktop) {
+      await desktopLogin()
+      console.log('Login with Google', 'isDesktop:', isDesktop)
+      return
+    }
+
+    loginDialog.setIsOpen(true)
+  }
+
   // async function selectSite(site: MySite) {
   //   updateSiteState(site)
 
@@ -67,7 +123,7 @@ export function NavUser() {
   if (!session)
     return (
       <div>
-        <Button size="sm" onClick={() => loginDialog.setIsOpen(true)}>
+        <Button size="sm" onClick={login}>
           Log in
         </Button>
       </div>
@@ -130,6 +186,14 @@ export function NavUser() {
         <DropdownMenuGroup>
           <DropdownMenuItem
             onClick={async () => {
+              if (isExtension) {
+                window.open(`${ROOT_HOST}/~/settings`)
+                return
+              }
+              if (isDesktop) {
+                console.log('is desktop....')
+                return
+              }
               appEmitter.emit('ROUTE_TO_SETTINGS')
             }}
           >
@@ -142,7 +206,11 @@ export function NavUser() {
               </DropdownMenuItem> */}
 
           <DropdownMenuItem
-            onClick={() => {
+            onClick={async () => {
+              if (isExtension) {
+                window.open(`${ROOT_HOST}/~/settings/subscription`)
+                return
+              }
               setIsOpen(true)
             }}
           >

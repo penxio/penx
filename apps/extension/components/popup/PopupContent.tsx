@@ -44,10 +44,12 @@ export function PopupContent() {
       <div className="flex-1">
         <div className="flex items-center justify-between gap-2">
           <div className="text-base font-bold">PenX</div>
-          <Avatar className="h-7 w-7">
-            <AvatarImage src={getUrl(session.image || '')} />
-            <AvatarFallback>{session.name.slice(0, 1)}</AvatarFallback>
-          </Avatar>
+          {session && (
+            <Avatar className="h-7 w-7">
+              <AvatarImage src={getUrl(session.image || '')} />
+              <AvatarFallback>{session.name.slice(0, 1)}</AvatarFallback>
+            </Avatar>
+          )}
         </div>
       </div>
 

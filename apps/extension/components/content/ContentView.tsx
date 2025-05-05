@@ -4,6 +4,7 @@ import type { MsgRes } from '@/lib/helper'
 import { prepareContent } from '@/lib/prepare-content'
 import { tinykeys } from 'tinykeys'
 import TurndownService from 'turndown'
+import { useAreas } from '@penx/hooks/useAreas'
 // import { prepareContent } from '~/common/prepare-content'
 
 import { useAppType } from './hooks/useAppType'
@@ -60,6 +61,7 @@ export const ContentView = () => {
   const { text } = useText()
   const { appType, setAppType } = useAppType()
   const { setNote } = useNote()
+  const { areas } = useAreas()
 
   useEffect(() => {
     chrome.runtime.onMessage.addListener(

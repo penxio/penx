@@ -7,12 +7,12 @@ export const isNavigator = typeof navigator !== 'undefined'
 
 export const ROOT_DOMAIN = process.env.NEXT_PUBLIC_ROOT_DOMAIN!
 
-export const ROOT_HOST =
+export const ROOT_HOST: string =
   process.env.NEXT_PUBLIC_ROOT_HOST ||
   // @ts-ignores
   import.meta.env?.VITE_ROOT_HOST ||
   // @ts-ignores
-  import.meta?.env?.WXT_ROOT_HOST ||
+  import.meta.env?.WXT_ROOT_HOST ||
   ''
 
 export const PLATFORM =
@@ -24,6 +24,7 @@ export const PLATFORM =
 
 export const isDesktop = PLATFORM === 'DESKTOP'
 export const isWeb = PLATFORM === 'WEB'
+export const isExtension = PLATFORM === 'EXTENSION'
 
 export const GOOGLE_CLIENT_ID =
   '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com'

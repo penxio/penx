@@ -23,7 +23,7 @@ export class AreaStore {
 
   async persistArea(input: UpdateAreaInput) {
     const { id, ...data } = input
-    await localDB.area.update(id, data)
+    await localDB.updateArea(id, data)
   }
 
   async addWidget(widget: Widget) {

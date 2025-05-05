@@ -10,8 +10,13 @@ import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { editorDefaultValue } from '@penx/constants'
+import { CommentStatus } from '@penx/db/client'
 import { useAreas } from '@penx/hooks/useAreas'
-import { CreationType } from '@penx/types'
+import { localDB } from '@penx/local-db'
+import { ICreation, ISite } from '@penx/model-type'
+import { siteAtom, store } from '@penx/store'
+import { CreationStatus, CreationType, GateType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -35,6 +40,7 @@ import {
   SelectValue,
 } from '@penx/uikit/select'
 import { Textarea } from '@penx/uikit/textarea'
+import { uniqueId } from '@penx/unique-id'
 import { Tags } from './Tags'
 
 const AREA_ID = 'CURRENT_AREA_ID'
@@ -53,6 +59,8 @@ export function AddBookmarkForm() {
   const [isLoading, setLoading] = useState(false)
   const { areas } = useAreas()
 
+  console.log('==========areas:', areas)
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -66,19 +74,58 @@ export function AddBookmarkForm() {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log('site=======:', store.site.get(), store.molds.get())
+    const site = store.site.get()
+    const molds = store.molds.get()
+    const mold = molds.find((mold) => mold.type === CreationType.BOOKMARK)!
+
     try {
       setLoading(true)
-      await addCreation({
-        title: data.title,
+      const creation: ICreation = {
+        id: uniqueId(),
+        slug: uniqueId(),
+        moldId: mold.id,
+        title: data.title || '',
         description: data.description,
+        content: JSON.stringify(editorDefaultValue),
         image: data.avatar,
         props: {
           url: data.url,
         },
         type: CreationType.BOOKMARK,
-        tagIds: data.tags.map((tag) => tag.id),
         areaId: data.areaId,
-      })
+        siteId: mold.siteId,
+        icon: '',
+        podcast: {},
+        i18n: {},
+        userId: site.userId,
+        gateType: GateType.FREE,
+        status: CreationStatus.DRAFT,
+        commentStatus: CommentStatus.OPEN,
+        featured: false,
+        collectible: false,
+        isJournal: false,
+        isPopular: false,
+        checked: false,
+        delivered: false,
+        commentCount: 0,
+        cid: '',
+        openedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }
+      await localDB.addCreation(creation)
+      // await addCreation({
+      //   title: data.title,
+      //   description: data.description,
+      //   image: data.avatar,
+      //   props: {
+      //     url: data.url,
+      //   },
+      //   type: CreationType.BOOKMARK,
+      //   tagIds: data.tags.map((tag) => tag.id),
+      //   areaId: data.areaId,
+      // })
       await set(AREA_ID, data.areaId)
       window.close()
     } catch (error) {
@@ -160,7 +207,7 @@ export function AddBookmarkForm() {
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="description"
           render={({ field }) => (
@@ -172,9 +219,9 @@ export function AddBookmarkForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="tags"
           render={({ field }) => (
@@ -186,7 +233,7 @@ export function AddBookmarkForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
         <FormField
           control={form.control}
           name="areaId"
@@ -220,7 +267,7 @@ export function AddBookmarkForm() {
           )}
         />
 
-        <FormField
+        {/* <FormField
           control={form.control}
           name="isPublic"
           render={({ field }) => (
@@ -240,7 +287,7 @@ export function AddBookmarkForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
         <Button type="submit" className="w-full" disabled={isLoading}>
           {isLoading ? (

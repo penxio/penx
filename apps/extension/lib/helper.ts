@@ -35,7 +35,7 @@ export const storageDocKey = 'PENX-DOC'
 export const selectedSpaceKey = 'SELECTED-SPACE'
 export const spacesKey = 'SPACES'
 
-export const FIELDS_KEY = 'FIELDS'
+export const AREAS_KEY = 'AREAS'
 
 export const SUCCESS = 'SUCCESS'
 export const FAIL = 'FAIL'

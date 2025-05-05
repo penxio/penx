@@ -1,18 +1,18 @@
+import { xai } from '@ai-sdk/xai'
 import {
   customProvider,
   extractReasoningMiddleware,
   wrapLanguageModel,
-} from 'ai';
-import { xai } from '@ai-sdk/xai';
-import { isTestEnvironment } from '../constants';
+} from 'ai'
+import { isProd } from '@penx/constants'
 import {
   artifactModel,
   chatModel,
   reasoningModel,
   titleModel,
-} from './models.test';
+} from './models.test'
 
-export const myProvider = isTestEnvironment
+export const myProvider = !isProd
   ? customProvider({
       languageModels: {
         'chat-model': chatModel,
@@ -34,4 +34,4 @@ export const myProvider = isTestEnvironment
       imageModels: {
         'small-model': xai.image('grok-2-image'),
       },
-    });
+    })

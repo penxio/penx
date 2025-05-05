@@ -5,7 +5,7 @@ import { SessionData } from '@penx/types'
 import { sleep } from '@penx/utils'
 
 export async function pollingSyncToRemote() {
-  let pollingInterval = 10 * 1000
+  let pollingInterval = 3 * 1000
 
   // console.log('=======pollingInterval:', pollingInterval)
 

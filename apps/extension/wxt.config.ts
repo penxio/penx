@@ -17,6 +17,8 @@ export default defineConfig({
     }
   },
   manifest: {
+    name: 'PenX',
+    description: 'Build your own Digital Garden',
     host_permissions: ['<all_urls>'],
   },
 })
