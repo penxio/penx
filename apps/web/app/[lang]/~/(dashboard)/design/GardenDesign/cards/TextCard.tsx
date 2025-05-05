@@ -1,16 +1,16 @@
 'use client'
 
 import { Dispatch, SetStateAction } from 'react'
-import { PlateEditor } from '@penx/editor/plate-editor'
-import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Input } from '@penx/uikit/input'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
-import { editorDefaultValue } from '@penx/constants'
-import { LayoutItem } from '@penx/types'
-import { trpc } from '@penx/trpc-client'
 import { TextareaAutosize } from '@udecode/plate-caption/react'
 import { produce } from 'immer'
 import { useDebouncedCallback } from 'use-debounce'
+import { editorDefaultValue } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
+import { LayoutItem } from '@penx/types'
+import { Input } from '@penx/uikit/input'
 import { useThemeName } from '../../hooks/useThemeName'
 
 interface Props {
@@ -47,6 +47,8 @@ export function TextCard({ layoutItem, layout, setLayout }: Props) {
       }
     })
 
+    console.log('=======newLayout:', JSON.stringify(newLayout))
+
     setLayout(newLayout)
 
     const newThemeConfig = produce(themeConfig, (draft) => {
@@ -64,6 +66,7 @@ export function TextCard({ layoutItem, layout, setLayout }: Props) {
     <div className="flex h-full w-full p-2">
       <PlateEditor
         value={value}
+        className="bg-foreground/4 min-h-20 w-full"
         editorProps={{
           onMouseDown: (e: any) => {
             e.stopPropagation()

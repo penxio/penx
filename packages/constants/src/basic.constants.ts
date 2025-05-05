@@ -147,7 +147,7 @@ export const defaultNavLinks: NavLink[] = [
     pathname: '/friends',
     type: NavLinkType.BUILTIN,
     location: NavLinkLocation.HEADER,
-    visible: true,
+    visible: false,
   },
   {
     title: 'Tags',
@@ -161,7 +161,7 @@ export const defaultNavLinks: NavLink[] = [
     pathname: '/guestbook',
     type: NavLinkType.BUILTIN,
     location: NavLinkLocation.HEADER,
-    visible: true,
+    visible: false,
   },
   {
     title: 'AMA',
@@ -175,7 +175,7 @@ export const defaultNavLinks: NavLink[] = [
     pathname: '/about',
     location: NavLinkLocation.HEADER,
     type: NavLinkType.BUILTIN,
-    visible: true,
+    visible: false,
   },
 ]
 
@@ -316,22 +316,6 @@ export const defaultLayouts = [
     props: { title: 'Digital garden' },
   },
   {
-    h: [4, 4],
-    i: '09ba821f-0c70-4473-a87a-c4ec7496b373',
-    w: [4, 4],
-    x: [0, 0],
-    y: [3, 1],
-    type: 'ARTICLE',
-  },
-  {
-    h: [2, 2],
-    i: '6357be3f-6968-40df-a9e9-cedb921c56cc',
-    w: [4, 4],
-    x: [0, 4],
-    y: [1, 1],
-    type: 'AUDIO',
-  },
-  {
     h: [1, 1],
     i: '98a8d964-f43c-4300-a5cd-c80266786705',
     w: [2, 2],
@@ -348,14 +332,6 @@ export const defaultLayouts = [
     type: 'INSTAGRAM',
   },
   {
-    h: [2, 2],
-    i: 'a11b6de6-7577-4255-a66f-419bc1c46eab',
-    w: [4, 4],
-    x: [0, 4],
-    y: [7, 3],
-    type: 'COMMENTS',
-  },
-  {
     h: [1, 1],
     i: 'ee07553d-8060-4bdf-9e5e-9fe7709c8037',
     w: [4, 8],
@@ -363,6 +339,23 @@ export const defaultLayouts = [
     y: [6, 5],
     type: 'TITLE',
     props: { title: 'Contact', subtitle: '' },
+  },
+  {
+    i: '5bf6f117-32f2-4ac3-957d-d32258b29572',
+    x: [0, 0],
+    y: [8, 1],
+    w: [2, 8],
+    h: [2, 4],
+    type: 'TEXT',
+    props: {
+      text: [
+        {
+          children: [{ text: 'This is my digital garden.' }],
+          id: 'Yc2MFkWFzw',
+          type: 'p',
+        },
+      ],
+    },
   },
 ]
 

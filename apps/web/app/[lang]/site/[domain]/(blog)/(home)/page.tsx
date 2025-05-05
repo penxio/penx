@@ -57,6 +57,8 @@ export default async function HomePage(props: {
 
   initLingui(locale)
 
+  console.log('======site:', site)
+
   const [creations, podcasts, tags, friends, projects, about] =
     await Promise.all([
       getCreations(site),

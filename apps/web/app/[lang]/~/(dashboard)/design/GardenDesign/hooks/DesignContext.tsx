@@ -8,8 +8,8 @@ import {
   useContext,
   useState,
 } from 'react'
-import { useSiteContext } from '@penx/contexts/SiteContext'
 import { defaultLayouts } from '@penx/constants'
+import { useSiteContext } from '@penx/contexts/SiteContext'
 import { LayoutItem } from '@penx/types'
 import { useThemeName } from '../../hooks/useThemeName'
 

@@ -85,21 +85,21 @@ export function GardenDesignBar() {
             >
               <ImageIcon />
             </Item>
-            <Item
+            {/* <Item
               name={<Trans id="Articles"></Trans>}
               type={CreationType.ARTICLE}
               {...props}
               className=""
             >
               <FileTextIcon />
-            </Item>
-            <Item
+            </Item> */}
+            {/* <Item
               name={<Trans id="Podcasts"></Trans>}
               type={CreationType.AUDIO}
               {...props}
             >
               <PodcastIcon />
-            </Item>
+            </Item> */}
             <Item
               name={<Trans id="Areas"></Trans>}
               type={GardenCardType.AREA}
@@ -107,34 +107,34 @@ export function GardenDesignBar() {
             >
               <BookOpenTextIcon />
             </Item>
-            <Item
+            {/* <Item
               name={<Trans id="Friends"></Trans>}
               type={GardenCardType.FRIENDS}
               {...props}
             >
               <HandshakeIcon />
-            </Item>
-            <Item
+            </Item> */}
+            {/* <Item
               name={<Trans id="Projects"></Trans>}
               type={CreationType.PROJECT}
               {...props}
             >
               <KanbanIcon />
-            </Item>
-            <Item
+            </Item> */}
+            {/* <Item
               name={<Trans id="Comments"></Trans>}
               type={GardenCardType.COMMENTS}
               {...props}
             >
               <MessageCircleMoreIcon />
-            </Item>
-            <Item
+            </Item> */}
+            {/* <Item
               name={<Trans id="Guestbook"></Trans>}
               type={GardenCardType.GUESTBOOK}
               {...props}
             >
               <NotebookTextIcon />
-            </Item>
+            </Item> */}
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             {socials.map((social) => (

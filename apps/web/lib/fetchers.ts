@@ -154,9 +154,10 @@ export async function getCreations(site: Site) {
   return creations
 }
 
-export async function getPodcasts(site: Site) {
+export async function getPodcasts(site: Site): Promise<Creation[]> {
   const siteId = site.id
   const mold = site.molds.find((i) => i.type === CreationType.AUDIO)!
+  if (!mold) return []
   const creations = await unstable_cache(
     async () => {
       let creations = await findManyCreations(site, mold.id)
@@ -190,9 +191,10 @@ export async function getNotes(site: Site) {
   return creations
 }
 
-export async function getPhotos(site: Site) {
+export async function getPhotos(site: Site): Promise<Creation[]> {
   const siteId = site.id
   const mold = site.molds.find((i) => i.type === CreationType.IMAGE)!
+  if (!mold) return []
   const creations = await unstable_cache(
     async () => {
       let creations = await findManyCreations(site, mold.id)
@@ -401,6 +403,7 @@ export async function getPage(siteId = '', slug = '') {
 export async function getFriends(site: Site) {
   const siteId = site.id
   const mold = site.molds.find((mold) => mold.type === CreationType.FRIEND)
+  if (!mold) return []
   return await unstable_cache(
     async () => {
       const creations = await findManyCreations(site, mold!.id)
@@ -419,6 +422,7 @@ export async function getFriends(site: Site) {
 export async function getProjects(site: Site) {
   const siteId = site.id
   const mold = site.molds.find((mold) => mold.type === CreationType.PROJECT)
+  if (!mold) return []
   return await unstable_cache(
     async () => {
       const creations = await findManyCreations(site, mold!.id)

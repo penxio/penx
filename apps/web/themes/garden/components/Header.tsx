@@ -1,8 +1,9 @@
-import { Profile } from '@penx/components/Profile'
 import { MobileSidebarSheet } from '@penx/components/MobileSidebarSheet'
 import { Navigation } from '@penx/components/Navigation'
+import { Profile } from '@penx/components/Profile'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn } from '@penx/utils'
 
 interface Props {
@@ -16,7 +17,7 @@ export const Header = ({ site }: Props) => {
         'bg-background/60 sticky top-0 z-40 flex h-12 items-center justify-between px-4 py-4',
       )}
     >
-      <MobileSidebarSheet
+      {/* <MobileSidebarSheet
         site={site}
         logo={
           <Link
@@ -26,18 +27,25 @@ export const Header = ({ site }: Props) => {
             {site.name}
           </Link>
         }
-      />
+      /> */}
+
+      <div className="item-center flex w-auto gap-2 md:w-40">
+        <Avatar className="size-8">
+          <AvatarImage src={site.logo || ''} />
+          <AvatarFallback>{site?.name.slice(0, 1)}</AvatarFallback>
+        </Avatar>
+      </div>
 
       <Link
         href="/"
-        className="hidden w-auto cursor-pointer text-xl font-bold md:inline-flex md:w-60"
+        className="w-auto cursor-pointer text-lg font-bold md:inline-flex md:w-60"
       >
         {site.name}
       </Link>
 
-      <Navigation site={site} />
+      {/* <Navigation site={site} /> */}
 
-      <div className="item-center flex w-40 justify-end gap-2 md:w-60">
+      <div className="item-center flex w-auto justify-end gap-2 md:w-40">
         <Profile></Profile>
       </div>
     </header>
