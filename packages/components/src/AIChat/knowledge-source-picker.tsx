@@ -83,7 +83,7 @@ export const KnowledgeSourcePicker = ({
   return (
     <div className={cn('relative px-2', className)}>
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-        <Tooltip content={getSelectedAreaName()}>
+        <Tooltip>
           <TooltipTrigger asChild>
             <DropdownMenuTrigger asChild>
               <Button
@@ -98,6 +98,7 @@ export const KnowledgeSourcePicker = ({
               </Button>
             </DropdownMenuTrigger>
           </TooltipTrigger>
+          <TooltipContent>{getSelectedAreaName()}</TooltipContent>
         </Tooltip>
 
         <DropdownMenuContent

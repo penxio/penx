@@ -13,6 +13,7 @@ import { sleep } from '@penx/utils'
 import { AuthProvider } from './AuthProvider'
 import './style.css'
 import { AppProvider } from '@penx/components/AppProvider'
+import { Updater } from './Updater'
 
 function App() {
   const locale = 'en'
@@ -21,6 +22,7 @@ function App() {
     <LinguiClientProvider initialLocale={locale} initialMessages={{}}>
       <DashboardProviders>
         <DashboardLayout></DashboardLayout>
+        <Updater />
       </DashboardProviders>
     </LinguiClientProvider>
   )

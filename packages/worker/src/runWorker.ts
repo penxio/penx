@@ -1,5 +1,9 @@
 import { WorkerEvents } from '@penx/constants'
 import { store } from '@penx/store'
+// @ts-ignore
+// import MyWorker from './worker.ts?worker'
+
+// const worker = new MyWorker()
 
 export function runWorker() {
   console.log('init web worker...')

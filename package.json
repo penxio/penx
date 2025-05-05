@@ -75,6 +75,8 @@
     "@tanstack/react-query": "^5.74.3",
     "@tauri-apps/plugin-http": "^2.2.0",
     "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-process": "^2.2.1",
+    "@tauri-apps/plugin-updater": "^2.7.1",
     "@trpc/client": "11.0.0-rc.466",
     "@trpc/next": "11.0.0-rc.466",
     "@trpc/react-query": "11.0.0-rc.466",
@@ -130,6 +132,7 @@
     "@uiw/react-color": "^2.4.5",
     "@uploadthing/react": "7.1.0",
     "@vercel/functions": "^2.0.0",
+    "add": "^2.0.6",
     "ai": "^4.1.24",
     "array-move": "^4.0.0",
     "axios": "^1.7.9",
@@ -260,6 +263,7 @@
     "tailwindcss-animate": "^1.0.7",
     "tinykeys": "^3.0.0",
     "tw-animate-css": "^1.2.4",
+    "underscore": "^1.13.6",
     "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0",
     "uploadthing": "7.2.0",
@@ -270,7 +274,6 @@
     "vaul": "^0.9.0",
     "viem": "^2.21.34",
     "xml": "^1.0.1",
-    "underscore": "^1.13.6",
     "zod": "^3.24.3"
   },
   "devDependencies": {

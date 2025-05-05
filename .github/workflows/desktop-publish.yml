@@ -6,6 +6,7 @@ on:
     #   - "v*"
     branches:
       - desktop
+      - develop
   workflow_dispatch:
 
 jobs:
@@ -53,9 +54,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
+          version: 9.2.0
           node-version: lts/*
           cache: "pnpm" # Set this to npm, yarn or pnpm.
           cache-dependency-path: ./pnpm-lock.yaml
+      # - uses: pnpm/action-setup@v4
+      #   with:
+      #     version: 9.2.0
+      - name: Check pnpm version
+        run: pnpm -v
       - name: Install protoc and openssl for windows
         if: matrix.settings.platform == 'windows-latest'
         run: |
@@ -82,12 +89,32 @@ jobs:
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
+      - name: Print key info for debugging
+        run: |
+          echo "Private key length: ${#TAURI_SIGNING_PRIVATE_KEY}"
+          echo "Private key starts with: ${TAURI_SIGNING_PRIVATE_KEY:0:10}..."
+          echo "Password length: ${#TAURI_SIGNING_PRIVATE_KEY_PASSWORD}"
+          echo "Private key starts with: ${TAURI_SIGNING_PRIVATE_KEY_PASSWORD:0:8}..."
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
       - name: Install Dependencies
         run: pnpm install
+
       - name: Build Packages
         env:
           NODE_OPTIONS: --max-old-space-size=4096
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         run: pnpm build:desktop
+
       - name: Get App Version
         if: matrix.settings.platform == 'windows-latest'
         id: appversion
@@ -105,11 +132,13 @@ jobs:
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+
         with:
           tagName: PenX-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
           releaseName: "PenX v__VERSION__"
           releaseBody: "See the assets to download this version and install."
           releaseDraft: true
+          includeUpdaterJson: true
           prerelease: false
           args: ${{ matrix.settings.args }} ${{ contains(steps.appversion.outputs.version, 'beta') && matrix.settings.platform == 'windows-latest' && '-b nsis' || '' }}
           projectPath: "./apps/desktop"
