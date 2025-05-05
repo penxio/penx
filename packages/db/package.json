@@ -25,9 +25,6 @@
     "seed": "npx prisma db seed",
     "with-env": "dotenv -e ../../.env --"
   },
-  "prisma": {
-    "seed": "node prisma/seed.js"
-  },
   "devDependencies": {
     "@penx/typescript-config": "workspace:*",
     "dotenv-cli": "^7.3.0",

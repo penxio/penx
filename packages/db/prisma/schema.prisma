@@ -90,7 +90,7 @@ model Site {
   themeConfig            Json?
   memberCount            Int            @default(0) @db.Integer
   creationCount          Int            @default(0) @db.Integer
-  isRemote               Boolean        @default(false)
+  isRemote               Boolean        @default(true)
   createdAt              DateTime       @default(now())
   updatedAt              DateTime
   user                   User           @relation(fields: [userId], references: [id])

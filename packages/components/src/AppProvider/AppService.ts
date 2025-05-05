@@ -54,13 +54,18 @@ export class AppService {
     }
 
     if (session.siteId) {
+      const sites = await localDB.site
+        .where({ userId: session.userId })
+        .toArray()
+      const site = sites.find((s) => s.isRemote)
+      if (site) return site
+
       const [remoteSite] = await this.syncInitialData(session.siteId)
       this.syncDataToLocal(remoteSite.id)
       return remoteSite as ISite
     }
 
     const site = await localDB.site.where({ userId: session.userId }).first()
-    console.log('======site:', site)
 
     if (!site) {
       // TODO: init local site

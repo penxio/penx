@@ -1,7 +1,7 @@
 import { PropsWithChildren, useState } from 'react'
 import { DashboardLayout } from '@penx/components/DashboardLayout'
-import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
+import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 // import { allMessages } from './appRouterI18n'
@@ -21,6 +21,7 @@ function App() {
         <DashboardLayout>
           <div></div>
         </DashboardLayout>
+        <div id="portal" />
       </DashboardProviders>
     </LinguiClientProvider>
   )
