@@ -58,7 +58,10 @@ export class AppService {
         .where({ userId: session.userId })
         .toArray()
       const site = sites.find((s) => s.isRemote)
-      if (site) return site
+      if (site) {
+        this.syncDataToLocal(site.id)
+        return site
+      }
 
       const [remoteSite] = await this.syncInitialData(session.siteId)
       this.syncDataToLocal(remoteSite.id)

@@ -22,9 +22,9 @@ import { TextLogo } from '@penx/components/TextLogo'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import linguiConfig from '@penx/libs/lingui.config'
 import { cn } from '@penx/utils'
+import { LoginDialog } from '@penx/widgets/LoginDialog/LoginDialog'
 import { Footer } from './Footer'
 import { Nav } from './Nav'
-import { LoginDialog } from '@penx/widgets/LoginDialog/LoginDialog'
 
 const roboto = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -85,11 +85,11 @@ export default async function RootLayout({
           initialMessages={allMessages[locale]!}
         >
           <RootProviders cookies={cookies}>
-            <GoogleOauthDialog/>
-            <LoginDialog/>
+            <GoogleOauthDialog />
+            <LoginDialog />
             <ThemeProvider
               attribute="class"
-              defaultTheme="dark"
+              defaultTheme="system"
               enableSystem
               disableTransitionOnChange
             >
