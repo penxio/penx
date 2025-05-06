@@ -11,6 +11,7 @@ export async function pollingSyncToRemote() {
 
   while (true) {
     console.log('sync to remote')
+
     await sync()
     await sleep(pollingInterval)
   }
@@ -18,6 +19,8 @@ export async function pollingSyncToRemote() {
 
 async function sync() {
   const session = (await get('SESSION')) as SessionData
+  console.log('=======session polling:', session)
+
   if (!session || !session?.siteId) return
 
   const site = await localDB.site.where({ id: session.siteId }).first()
@@ -27,6 +30,7 @@ async function sync() {
   const changes = await localDB.change
     .where({ siteId: session.siteId, synced: 0 })
     .sortBy('id')
+  console.log('=======changes:', changes)
 
   for (const change of changes) {
     if (change.synced) continue
