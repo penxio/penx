@@ -66,6 +66,7 @@ export function Chat({
       selectedChatModel: '',
       provider: provider?.type,
       apiKey: provider?.apiKey,
+      baseURL: provider?.baseURL,
     }),
     onFinish: async (message, options) => {
       await localDB.message.add({

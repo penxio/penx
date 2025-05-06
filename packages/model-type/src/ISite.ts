@@ -11,6 +11,7 @@ export type AIProvider = {
   type: AIProviderType
   enabled: boolean
   apiKey?: string
+  baseURL?: string
   [key: string]: any
 }
 

@@ -27,6 +27,7 @@ type Input = {
   system: any
   provider: string
   apiKey: string
+  baseURL: string
   message: {
     id: string
     createdAt: string
@@ -41,7 +42,6 @@ export async function POST(request: Request) {
 
   try {
     const { id, message, selectedChatModel, system } = input
-    console.log('====input:', input)
 
     if (!input.apiKey) {
       throw new Error('Please provide an API key')
@@ -68,7 +68,6 @@ export async function POST(request: Request) {
     }
 
     if (input.provider === AIProviderType.GOOGLE_AI) {
-      console.log('google.....')
       const google = createGoogleGenerativeAI({
         apiKey: input.apiKey || process.env.GOOGLE_AI_API_KEY,
       })
@@ -83,7 +82,6 @@ export async function POST(request: Request) {
     }
 
     if (input.provider === AIProviderType.ANTHROPIC) {
-      console.log('claud...')
       const anthropic = createAnthropic({
         apiKey: input.apiKey,
       })
@@ -94,6 +92,7 @@ export async function POST(request: Request) {
     if (input.provider === AIProviderType.OPENAI) {
       const openai = createOpenAI({
         apiKey: input.apiKey,
+        baseURL: input.baseURL,
       })
       return generate(input, openai('gpt-4o-mini'))
     }
