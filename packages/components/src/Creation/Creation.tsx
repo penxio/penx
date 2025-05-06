@@ -49,7 +49,7 @@ export function Creation({ index }: { index: number }) {
           id: value.id,
           title: value.title,
           content: value.content,
-          description: value.description,
+          // description: value.description,
           // i18n: value.i18n ?? {},
           // props: value?.props ?? {},
         })
@@ -142,7 +142,7 @@ export function Creation({ index }: { index: number }) {
                   </div>
                 </div>
 
-                <TextareaAutosize
+                {/* <TextareaAutosize
                   className="dark:placeholder-text-600 w-full resize-none border-none bg-transparent px-0 placeholder:text-stone-400 focus:outline-none focus:ring-0"
                   placeholder="Description"
                   defaultValue={creation.description}
@@ -157,7 +157,7 @@ export function Creation({ index }: { index: number }) {
                       e.preventDefault()
                     }
                   }}
-                />
+                /> */}
               </div>
             )}
 

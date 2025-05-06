@@ -1,5 +1,12 @@
 import { Trans } from '@lingui/react'
-import { PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react'
+import {
+  BookmarkIcon,
+  FileTextIcon,
+  PanelLeft,
+  StarIcon,
+  StarOffIcon,
+  TrashIcon,
+} from 'lucide-react'
 import { CreationStatus } from '@penx/db/client'
 import { useArea } from '@penx/hooks/useArea'
 import { updateCreation } from '@penx/hooks/useCreation'
@@ -41,6 +48,14 @@ export function CreationItem({ creation }: CreationItemProps) {
             })
           }}
         >
+          {[CreationType.PAGE, CreationType.NOTE].includes(
+            mold?.type as CreationType,
+          ) && <FileTextIcon size={16} className="text-foreground/60" />}
+
+          {[CreationType.BOOKMARK].includes(mold?.type as CreationType) && (
+            <BookmarkIcon size={16} className="text-foreground/60" />
+          )}
+
           {mold?.type === CreationType.TASK && (
             <Checkbox
               onClick={(e) => e.stopPropagation()}

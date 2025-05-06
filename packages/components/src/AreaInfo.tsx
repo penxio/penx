@@ -79,12 +79,8 @@ export function AreaInfo({ className }: Props) {
             store.creations.refetchCreations(nextArea.id)
           }}
         >
-          <Button
-            variant="destructive"
-            size="icon"
-            className="size-9 opacity-70"
-          >
-            <TrashIcon size={20} className="" />
+          <Button variant="destructive" size="icon" className="size-9">
+            <TrashIcon size={18} className="" />
           </Button>
         </ConfirmDialog>
       </div>

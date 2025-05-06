@@ -82,74 +82,81 @@ export function AddWidgetButton({ className }: Props) {
           </Button>
         </PopoverTrigger>
         <PopoverContent align="start" className="w-48 p-0">
-          {Object.values(WidgetType).map((item) => {
-            // if (
-            //   item === WidgetType.COLLECTION ||
-            //   item === WidgetType.RECENTLY_OPENED
-            // ) {
-            //   return null
-            // }
-            const getName = () => {
-              if (item === WidgetType.ALL_CREATIONS) {
-                return (
-                  <>
-                    <Trans id="All creations"></Trans>
-                  </>
-                )
-              }
-
-              if (item === WidgetType.COLLECTION) {
-                return (
-                  <>
-                    <Trans id="Collection"></Trans>
-                  </>
-                )
-              }
-
-              if (item === WidgetType.FAVORITES) {
-                return (
-                  <>
-                    <Trans id="Favorites"></Trans>
-                  </>
-                )
-              }
-              if (item === WidgetType.RECENTLY_EDITED) {
-                return (
-                  <>
-                    <Trans id="Recently edited"></Trans>
-                  </>
-                )
-              }
-              if (item === WidgetType.AI_CHAT) {
-                return (
-                  <>
-                    <Trans id="AI chat"></Trans>
-                  </>
-                )
-              }
-              if (item === WidgetType.RECENTLY_OPENED) {
-                return (
-                  <>
-                    <Trans id="Recently opened"></Trans>
-                  </>
-                )
-              }
-              return null
-            }
-            if (item === WidgetType.MOLD) return null
-            return (
-              <Item
-                key={item}
-                className="flex gap-2"
-                onClick={async () => {
-                  await addBuiltinWidget(item)
-                }}
-              >
-                <WidgetIcon type={item} molds={molds} />
-                {getName()}
-              </Item>
+          {Object.values(WidgetType)
+            .filter(
+              (i) =>
+                ![WidgetType.RECENTLY_OPENED, WidgetType.COLLECTION].includes(
+                  i,
+                ),
             )
-          })}
+            .map((item) => {
+              // if (
+              //   item === WidgetType.COLLECTION ||
+              //   item === WidgetType.RECENTLY_OPENED
+              // ) {
+              //   return null
+              // }
+              const getName = () => {
+                if (item === WidgetType.ALL_CREATIONS) {
+                  return (
+                    <>
+                      <Trans id="All creations"></Trans>
+                    </>
+                  )
+                }
+
+                if (item === WidgetType.COLLECTION) {
+                  return (
+                    <>
+                      <Trans id="Collection"></Trans>
+                    </>
+                  )
+                }
+
+                if (item === WidgetType.FAVORITES) {
+                  return (
+                    <>
+                      <Trans id="Favorites"></Trans>
+                    </>
+                  )
+                }
+                if (item === WidgetType.RECENTLY_EDITED) {
+                  return (
+                    <>
+                      <Trans id="Recently edited"></Trans>
+                    </>
+                  )
+                }
+                if (item === WidgetType.AI_CHAT) {
+                  return (
+                    <>
+                      <Trans id="AI chat"></Trans>
+                    </>
+                  )
+                }
+                if (item === WidgetType.RECENTLY_OPENED) {
+                  return (
+                    <>
+                      <Trans id="Recently opened"></Trans>
+                    </>
+                  )
+                }
+                return null
+              }
+              if (item === WidgetType.MOLD) return null
+              return (
+                <Item
+                  key={item}
+                  className="flex gap-2"
+                  onClick={async () => {
+                    await addBuiltinWidget(item)
+                  }}
+                >
+                  <WidgetIcon type={item} molds={molds} />
+                  {getName()}
+                </Item>
+              )
+            })}
 
           <Separator className="my-1"></Separator>
 

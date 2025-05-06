@@ -2,6 +2,7 @@
 
 import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
+import { cn } from '@penx/utils'
 import { ClosePanelButton } from './ClosePanelButton'
 import { LocalBackup } from './panel-renderer/LocalBackup/LocalBackup'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
@@ -26,7 +27,10 @@ export function PanelItem({
     <>
       <ResizablePanel
         {...sizes}
-        className="bg-background flex flex-col rounded-md shadow-sm dark:bg-[#181818]"
+        className={cn(
+          'bg-background flex flex-col rounded-md shadow-sm dark:bg-[#181818]',
+          // panel.type === PanelType.HOME && 'bg-transparent',
+        )}
         minSize={20}
         style={{
           height: 'calc(100vh - 16px)',
