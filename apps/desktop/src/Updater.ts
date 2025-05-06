@@ -14,10 +14,31 @@ async function checkUpdateAndInstall({ beta }: { beta?: boolean } = {}) {
       { title: 'PenX', kind: 'info' },
     )
 
+    console.log('=======confirmation:', confirmation)
+
     if (confirmation) {
-      await update.downloadAndInstall()
+      let downloaded = 0
+      let contentLength = 0
+      await update.downloadAndInstall((event) => {
+        switch (event.event) {
+          case 'Started':
+            contentLength = event.data.contentLength!
+            console.log(`started downloading ${event.data.contentLength} bytes`)
+            break
+          case 'Progress':
+            downloaded += event.data.chunkLength
+            console.log(`downloaded ${downloaded} from ${contentLength}`)
+            break
+          case 'Finished':
+            console.log('download finished')
+            break
+        }
+      })
+
+      console.log('update installed')
+
       console.log('=========downloadAndInstall successfully')
-      await relaunch()
+      // await relaunch()
     }
   } else {
     // toast.info('You are on the latest version')
