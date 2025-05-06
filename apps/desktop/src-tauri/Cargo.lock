@@ -3056,7 +3056,7 @@ checksum = "df94ce210e5bc13cb6651479fa48d14f601d9858cfe0467f43ae157023b938d3"
 
 [[package]]
 name = "penx-desktop"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
  "actix-cors",
  "actix-web",
