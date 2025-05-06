@@ -16,6 +16,9 @@ pub fn run() {
         .plugin(tauri_plugin_http::init())
         .invoke_handler(tauri::generate_handler![greet])
         .setup(|mut app| {
+
+            app.handle().plugin(tauri_plugin_updater::Builder::new().build())?;
+
             let handle = app.handle();
             let conn = Connection::open_in_memory();
 

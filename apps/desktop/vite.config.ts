@@ -39,6 +39,12 @@ export default defineConfig(async () => ({
       ignored: ['**/src-tauri/**'],
     },
   },
+  build: {
+    target: 'esnext',
+  },
+  worker: {
+    format: 'es',
+  } as any,
   envPrefix: ['VITE_', 'TAURI_'],
   define: {
     'process.env': {},
