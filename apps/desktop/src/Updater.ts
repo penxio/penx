@@ -6,7 +6,7 @@ import { toast } from 'sonner'
 
 async function checkUpdateAndInstall({ beta }: { beta?: boolean } = {}) {
   const update = await check()
-  console.log('========update12356:', update)
+  console.log('========update123567:', update)
 
   if (update) {
     const confirmation = await confirm(
