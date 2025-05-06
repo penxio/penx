@@ -6,7 +6,23 @@
   "permissions": [
     "core:default",
     "opener:default",
+    "dialog:allow-ask",
+    "dialog:allow-confirm",
     "updater:default",
+    "updater:allow-check",
+    "dialog:default",
+    "fs:allow-app-write",
+    "fs:allow-app-write-recursive",
+    "fs:allow-document-write",
+    "fs:allow-document-write-recursive",
+    "fs:allow-write",
+    "fs:allow-read",
+    "fs:allow-read-dir",
+    "fs:allow-app-meta",
+    "fs:allow-app-meta-recursive",
+    "fs:allow-app-read",
+    "fs:allow-app-read-recursive",
+    "http:allow-fetch",
     {
       "identifier": "http:default",
       "allow": [

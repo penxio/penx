@@ -66,6 +66,9 @@ export const FILE_DATABASE_NAME = '__FILE__'
 export const PROJECT_DATABASE_NAME = '__PENX_PROJECT__'
 export const FRIEND_DATABASE_NAME = '__PENX_FRIEND__'
 
+export const LOCAL_AUTO_BACKUP_DIR = 'LOCAL_AUTO_BACKUP_DIR'
+export const LOCAL_BACKUP_INTERVAL = 'LOCAL_BACKUP_INTERVAL'
+
 export enum EditorMode {
   OUTLINER = 'OUTLINER',
   BLOCK = 'BLOCK',

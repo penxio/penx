@@ -2,9 +2,14 @@
 
 import * as React from 'react'
 import { Trans } from '@lingui/react'
-import { GlobeIcon, PaletteIcon, TagsIcon } from 'lucide-react'
+import {
+  DatabaseBackupIcon,
+  GlobeIcon,
+  PaletteIcon,
+  TagsIcon,
+} from 'lucide-react'
 import { ModeToggle } from '@penx/components/ModeToggle'
-import { isWeb, ROOT_HOST } from '@penx/constants'
+import { isDesktop, isWeb, ROOT_HOST } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
@@ -101,6 +106,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
+
+            {isDesktop && (
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="hover:bg-foreground/8 size-8"
+                      onClick={() => {
+                        store.panels.addPanel({
+                          type: PanelType.LOCAL_BACKUP,
+                        })
+                      }}
+                    >
+                      <DatabaseBackupIcon size={16} />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <Trans id="Local backup"></Trans>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            )}
             <ModeToggle className="hover:bg-foreground/8" />
           </div>
           <NavUser />

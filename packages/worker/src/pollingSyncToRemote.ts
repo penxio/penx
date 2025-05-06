@@ -12,7 +12,11 @@ export async function pollingSyncToRemote() {
   while (true) {
     console.log('sync to remote')
 
-    await sync()
+    try {
+      await sync()
+    } catch (error) {
+      console.log('======error:', error)
+    }
     await sleep(pollingInterval)
   }
 }

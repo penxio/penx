@@ -3,6 +3,7 @@
 import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
 import { ClosePanelButton } from './ClosePanelButton'
+import { LocalBackup } from './panel-renderer/LocalBackup/LocalBackup'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
 import { PanelAIProviders } from './panel-renderer/PanelAIProviders'
 import { PanelCreation } from './panel-renderer/PanelCreation'
@@ -45,6 +46,10 @@ export function PanelItem({
 
         {panel.type === PanelType.MANAGE_TAGS && (
           <ManageTags index={index} panel={panel} />
+        )}
+
+        {panel.type === PanelType.LOCAL_BACKUP && (
+          <LocalBackup index={index} panel={panel} />
         )}
 
         {panel.type === PanelType.WIDGET && (

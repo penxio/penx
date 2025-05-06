@@ -90,34 +90,19 @@ export function PanelAIProviders({ panel, index }: Props) {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-3">
-                    <Field>
-                      <Label>API key</Label>
-                      <Input
-                        placeholder="API key"
-                        defaultValue={provider?.apiKey || ''}
-                        onChange={(e) => {
-                          store.site.updateAIProvider({
-                            type: type as AIProviderType,
-                            apiKey: e.target.value,
-                          })
-                        }}
-                      />
-                    </Field>
-                    <Field>
-                      <Label>Base URL</Label>
-                      <Input
-                        placeholder={'Base URL'}
-                        defaultValue={provider?.baseURL || ''}
-                        onChange={(e) => {
-                          store.site.updateAIProvider({
-                            type: type as AIProviderType,
-                            baseURL: e.target.value,
-                          })
-                        }}
-                      />
-                    </Field>
-                  </div>
+                  <Field>
+                    <Label>API key</Label>
+                    <Input
+                      placeholder="API key"
+                      defaultValue={provider?.apiKey || ''}
+                      onChange={(e) => {
+                        store.site.updateAIProvider({
+                          type: type as AIProviderType,
+                          apiKey: e.target.value,
+                        })
+                      }}
+                    />
+                  </Field>
                 </CardContent>
               </Card>
             )

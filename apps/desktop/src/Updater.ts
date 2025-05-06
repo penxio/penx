@@ -1,22 +1,25 @@
 import { useEffect, useRef } from 'react'
+import { ask, confirm } from '@tauri-apps/plugin-dialog'
 import { relaunch } from '@tauri-apps/plugin-process'
 import { check } from '@tauri-apps/plugin-updater'
 import { toast } from 'sonner'
 
 async function checkUpdateAndInstall({ beta }: { beta?: boolean } = {}) {
   const update = await check()
-  console.log('========update123:', update)
+  console.log('========update12356:', update)
 
   if (update) {
-    const confirmUpdate = confirm(
+    const confirmation = await confirm(
       `A new version ${update.version} is available. Do you want to install and relaunch?`,
+      { title: 'PenX', kind: 'info' },
     )
-    if (confirmUpdate) {
+
+    if (confirmation) {
       await update.downloadAndInstall()
       await relaunch()
     }
   } else {
-    toast.info('You are on the latest version')
+    // toast.info('You are on the latest version')
   }
 }
 
