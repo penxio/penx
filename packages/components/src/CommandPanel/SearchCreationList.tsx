@@ -2,7 +2,8 @@ import { Dispatch, SetStateAction, useMemo } from 'react'
 import { File } from 'lucide-react'
 import { useCreations } from '@penx/hooks/useCreations'
 import { usePaletteDrawer } from '@penx/hooks/usePaletteDrawer'
-import { useRouter } from '@penx/libs/i18n'
+import { store } from '@penx/store'
+import { PanelType } from '@penx/types'
 import { CommandGroup, CommandItem } from './command-components'
 import { useOpen } from './hooks/useOpen'
 import { useSearch } from './hooks/useSearch'
@@ -12,14 +13,13 @@ interface Props {
   isRecent?: boolean
 }
 
-export function SearchPageList({ heading = '', isRecent = false }: Props) {
+export function SearchCreationList({ heading = '', isRecent = false }: Props) {
   const { close } = useOpen()
   const { creations } = useCreations()
   const pages = isRecent ? creations.slice(0, 20) : creations
   const { search, setSearch } = useSearch()
   const q = search.replace(/^@(\s+)?/, '') || ''
   const paletteDrawer = usePaletteDrawer()
-  const { push } = useRouter()
 
   const filteredItems = useMemo(() => {
     if (!q) return pages
@@ -51,7 +51,11 @@ export function SearchPageList({ heading = '', isRecent = false }: Props) {
                 paletteDrawer?.close()
                 close()
                 setSearch('')
-                push(`/~/page?id=${item.id}`)
+
+                store.panels.updateMainPanel({
+                  type: PanelType.CREATION,
+                  creationId: item.id,
+                })
               }}
             >
               <File size={16} />

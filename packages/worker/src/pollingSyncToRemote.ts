@@ -46,9 +46,9 @@ async function sync() {
       //   .then((response) => response.json())
       //   .then((json) => console.log(json))
 
-      fetch(`${ROOT_HOST}/api/v1/sync`)
-        .then((response) => response.json())
-        .then((json) => console.log(json))
+      // fetch(`${ROOT_HOST}/api/v1/sync`)
+      //   .then((response) => response.json())
+      //   .then((json) => console.log(json))
 
       // await api.sync.push.mutate(data)
 

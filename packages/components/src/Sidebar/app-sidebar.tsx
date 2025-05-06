@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <AreasPopover />
           </SidebarMenuItem>
         </SidebarMenu>
-        {/* <QuickSearchTrigger /> */}
+        <QuickSearchTrigger />
       </SidebarHeader>
       <SidebarContent className="-mx-2">
         <AreaWidgets />

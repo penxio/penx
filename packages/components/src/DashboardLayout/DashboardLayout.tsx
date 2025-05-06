@@ -50,7 +50,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
 
   return (
     <>
-      {/* <CommandPanel /> */}
+      <CommandPanel />
       <AreaDialog />
       {isDesign && children}
       {!isDesign && <Layout>{children}</Layout>}

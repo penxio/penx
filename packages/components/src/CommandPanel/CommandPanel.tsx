@@ -6,7 +6,7 @@ import { CommonList } from './CommonList'
 import { useOpen } from './hooks/useOpen'
 import { useSearch } from './hooks/useSearch'
 import { SearchDatabaseList } from './SearchDatabaseList'
-import { SearchPageList } from './SearchPageList'
+import { SearchCreationList } from './SearchCreationList'
 
 interface CommandPanelProps {
   isMobile?: boolean
@@ -44,7 +44,7 @@ export function CommandPanel({ isMobile = false }: CommandPanelProps) {
     }
 
     if (isPage) {
-      return <SearchPageList />
+      return <SearchCreationList />
     }
 
     return <CommonList />

@@ -12,7 +12,7 @@ export const QuickSearchTrigger = ({}: Props) => {
   return (
     <div className="flex-1">
       <div
-        className="hover:bg-foreground/5 bg-foreground/10 flex cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors"
+        className="bg-background shadow-xs flex cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-all hover:shadow-md"
         onClick={() => {
           setOpen(true)
         }}
@@ -23,10 +23,10 @@ export const QuickSearchTrigger = ({}: Props) => {
             <Trans id="Search"></Trans>
           </span>
         </div>
-        {/* <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1">
           <Kbd className="bg-foreground/10">⌘</Kbd>
           <Kbd className="bg-foreground/10">k</Kbd>
-        </div> */}
+        </div>
       </div>
     </div>
   )

@@ -56,7 +56,7 @@ export class PanelsStore {
     await this.savePanels(newPanels)
   }
 
-  async updateMainPanel(panel: Panel) {
+  async updateMainPanel(panel: Partial<Panel>) {
     let panels = this.get()
 
     let index = panels.findIndex((p) => p.type !== PanelType.WIDGET)
@@ -64,7 +64,10 @@ export class PanelsStore {
 
     if (panel.type === PanelType.CREATION) {
       panels = produce(panels, (draft) => {
-        draft[index] = panel
+        draft[index] = {
+          id: uniqueId(),
+          ...panel,
+        } as Panel
         draft[index].isLoading = true
       })
       await this.savePanels(panels)
@@ -72,7 +75,10 @@ export class PanelsStore {
 
     setTimeout(async () => {
       const newPanels = produce(panels, (draft) => {
-        draft[index] = panel
+        draft[index] = {
+          id: uniqueId(),
+          ...panel,
+        } as Panel
         draft[index].isLoading = false
       })
 
