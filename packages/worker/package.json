@@ -21,6 +21,7 @@
     "@penx/constants": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/types": "workspace:*",
+    "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*"

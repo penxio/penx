@@ -11,6 +11,7 @@
     "updater:default",
     "updater:allow-check",
     "dialog:default",
+    "process:allow-restart",
     "fs:allow-app-write",
     "fs:allow-app-write-recursive",
     "fs:allow-document-write",

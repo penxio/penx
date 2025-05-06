@@ -2269,6 +2269,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db

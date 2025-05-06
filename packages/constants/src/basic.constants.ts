@@ -53,6 +53,7 @@ export enum CreationStatus {
 
 export enum WorkerEvents {
   START_POLLING,
+  START_LOCAL_BACKUP,
 
   START_PULL,
   PULL_SUCCEEDED,

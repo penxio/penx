@@ -16,6 +16,7 @@ async function checkUpdateAndInstall({ beta }: { beta?: boolean } = {}) {
 
     if (confirmation) {
       await update.downloadAndInstall()
+      console.log('=========downloadAndInstall successfully')
       await relaunch()
     }
   } else {

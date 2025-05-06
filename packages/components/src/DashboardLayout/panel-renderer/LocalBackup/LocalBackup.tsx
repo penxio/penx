@@ -30,8 +30,6 @@ export const LocalBackup = ({ panel, index }: Props) => {
     },
   })
 
-  console.log('path dat=========>>>>data:', data, 'error:', error)
-
   return (
     <>
       <PanelHeaderWrapper index={index}>

@@ -11,12 +11,9 @@ export async function getOrInitLocalBackupDir() {
   const dirName = 'penx-auto-backup'
 
   let path = await get(LOCAL_AUTO_BACKUP_DIR)
-  console.log('=========11111111111:', path)
 
   if (!path || !(await exists(dirName, { baseDir }))) {
     const documentDirPath = await documentDir()
-
-    console.log('=======documentDirPath:', documentDirPath)
 
     if (!(await exists(dirName, { baseDir }))) {
       await mkdir(dirName, { baseDir: BaseDirectory.Document })
@@ -26,8 +23,6 @@ export async function getOrInitLocalBackupDir() {
 
     set(LOCAL_AUTO_BACKUP_DIR, path)
   }
-
-  console.log('=========path xxx:', path)
 
   return path
 }

@@ -1,5 +1,6 @@
 import { WorkerEvents } from '@penx/constants'
 import { store } from '@penx/store'
+
 // @ts-ignore
 // import MyWorker from './worker.ts?worker'
 
