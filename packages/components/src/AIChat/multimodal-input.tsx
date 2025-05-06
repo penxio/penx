@@ -23,6 +23,7 @@ import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
+import { KnowledgeSourcePicker } from './knowledge-source-picker'
 import { PreviewAttachment } from './preview-attachment'
 import { SuggestedActions } from './suggested-actions'
 
@@ -192,7 +193,6 @@ function PureMultimodalInput({
         onChange={handleFileChange}
         tabIndex={-1}
       />
-
       {(attachments.length > 0 || uploadQueue.length > 0) && (
         <div
           data-testid="attachments-preview"
@@ -215,7 +215,6 @@ function PureMultimodalInput({
           ))}
         </div>
       )}
-
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
@@ -244,7 +243,6 @@ function PureMultimodalInput({
           }
         }}
       />
-
       <div className="absolute bottom-0 flex w-fit flex-row justify-start gap-0.5 p-2">
         <AttachmentsButton fileInputRef={fileInputRef} status={status} />
         <Button
@@ -261,17 +259,19 @@ function PureMultimodalInput({
           <CogIcon size={16} />
         </Button>
       </div>
-
       <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
-        {status === 'submitted' ? (
-          <StopButton stop={stop} setMessages={setMessages} />
-        ) : (
-          <SendButton
-            input={input}
-            submitForm={submitForm}
-            uploadQueue={uploadQueue}
-          />
-        )}
+        <KnowledgeSourcePicker />
+        <div>
+          {status === 'submitted' ? (
+            <StopButton stop={stop} setMessages={setMessages} />
+          ) : (
+            <SendButton
+              input={input}
+              submitForm={submitForm}
+              uploadQueue={uploadQueue}
+            />
+          )}
+        </div>
       </div>
     </div>
   )
