@@ -84,11 +84,11 @@ async function sync(
               return !isEqual(value[key], (creation as any)[key])
             })
 
-          if (changed) {
-            await localDB.creation.update(value.id, value)
+          // if (changed) {
+          //   updated = true
+          // }
 
-            updated = true
-          }
+          await localDB.creation.update(value.id, value)
         }
         if (operation === 'delete') {
           // console.log('message delete:', message)
@@ -106,9 +106,9 @@ async function sync(
       last_lsn: lsn,
     })
 
-    if (updated) {
-      await store.creations.refetchCreations()
-    }
+    // if (updated) {
+    // }
+    await store.creations.refetchCreations()
   } catch (error) {
     console.error(error)
   }
