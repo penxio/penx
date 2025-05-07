@@ -5,7 +5,7 @@ import { Address } from 'viem'
 import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { GateType } from '@penx/db/client'
-import { revalidateMetadata } from '@penx/libs/revalidateTag'
+// import { revalidateMetadata } from '@penx/libs/revalidateTag'
 import { ICreation } from '@penx/model-type/ICreation'
 import { api } from '@penx/trpc-client'
 import { CreationById } from '@penx/types'
@@ -45,7 +45,7 @@ export function usePublishPost() {
         })
 
         setLoading(false)
-        revalidateMetadata(`posts`)
+        // revalidateMetadata(`posts`)
         // revalidateMetadata(`posts-${post.slug}`)
         toast.success('published successfully!')
 

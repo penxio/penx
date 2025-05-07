@@ -1,6 +1,6 @@
 {
   "name": "mobile",
-  "version": "5.0.0",
+  "version": "0.0.1",
   "private": true,
   "engines": {
     "node": ">=18.17"
@@ -17,7 +17,9 @@
     "presync": "npm run build",
     "sync": "npx cap sync",
     "android": "npx cap run android",
-    "ios": "npx cap run ios"
+    "ios": "npx cap run ios",
+    "android:open": "npx cap open android",
+    "ios:open": "npx cap run ios"
   },
   "dependencies": {
     "@penx/api": "workspace:*",

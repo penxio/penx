@@ -1,5 +1,5 @@
 {
-  "appId": "com.penxio.app",
+  "appId": "com.penx.penxio",
   "appName": "PenX",
   "bundledWebRuntime": false,
   "npmClient": "pnpm",
