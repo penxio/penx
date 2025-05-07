@@ -1,8 +1,8 @@
 {
-	"appId": "com.example.app",
-	"appName": "nextjs-tailwind-capacitor",
+	"appId": "com.penxio.app",
+	"appName": "PenX",
 	"bundledWebRuntime": false,
-	"npmClient": "npm",
+	"npmClient": "pnpm",
 	"webDir": "out",
 	"plugins": {
 		"SplashScreen": {
