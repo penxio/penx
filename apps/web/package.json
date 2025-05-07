@@ -61,7 +61,6 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/cors": "^2.8.17",
     "@typescript-eslint/parser": "^8.23.0",
-    "@vanilla-extract/next-plugin": "^2.4.10",
     "autoprefixer": "^10.4.20",
     "css-loader": "^7.1.2",
     "dotenv-cli": "^7.3.0",

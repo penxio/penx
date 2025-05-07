@@ -313,6 +313,7 @@
     "@types/turndown": "^5.0.5",
     "@types/underscore": "^1.13.0",
     "@types/xml": "^1.0.11",
+    "@vanilla-extract/next-plugin": "^2.4.10",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "eslint-plugin-perfectionist": "4.8.0",
