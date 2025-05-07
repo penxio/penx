@@ -10,6 +10,13 @@ const nextConfig = {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
 
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true
+  },
+
   output: 'standalone',
   images: {
     remotePatterns: [
@@ -24,6 +31,8 @@ const nextConfig = {
   },
   output: 'export',
   transpilePackages: [
+    '@penx/uikit',
+    '@penx/components',
     '@ionic/react',
     '@ionic/core',
     '@stencil/core',

@@ -135,7 +135,8 @@
     "@uiw/react-color": "^2.4.5",
     "@uploadthing/react": "7.1.0",
     "@vercel/functions": "^2.0.0",
-    "add": "^2.0.6",
+    "@ionic/react": "8.5.5",
+    "@ionic/react-router": "8.5.5",
     "ai": "^4.1.24",
     "array-move": "^4.0.0",
     "axios": "^1.7.9",
@@ -274,7 +275,7 @@
     "use-file-picker": "^2.1.2",
     "usehooks-ts": "^3.1.1",
     "uuid": "^11.0.2",
-    "vaul": "^0.9.0",
+    "vaul": "^1.1.2",
     "viem": "^2.21.34",
     "xml": "^1.0.1",
     "zod": "^3.24.3"

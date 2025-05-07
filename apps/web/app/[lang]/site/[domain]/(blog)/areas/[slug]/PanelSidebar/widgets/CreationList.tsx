@@ -10,7 +10,7 @@ interface Props {
   widget: Widget
 }
 export function CreationList({ widget }: Props) {
-  const isAll = useIsAllContext()
+  const { isAll } = useIsAllContext()
   const { creations: data } = useCreations()
 
   let creations = [...data]

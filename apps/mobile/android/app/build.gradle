@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.penxio.app"
+    namespace "com.penx.penxio"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.penxio.app"
+        applicationId "com.penx.penxio"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

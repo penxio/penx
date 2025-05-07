@@ -6,7 +6,11 @@ import { useSearchParams } from 'next/navigation'
 import { Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
 // import { usePanelCreationContext } from '@penx/components/Creation'
-import { editorDefaultValue, UpdateCreationInput } from '@penx/constants'
+import {
+  editorDefaultValue,
+  isMobileApp,
+  UpdateCreationInput,
+} from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   addCreationTag,
@@ -22,6 +26,7 @@ import { trpc } from '@penx/trpc-client'
 import { CreationType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Separator } from '@penx/uikit/separator'
+import { cn } from '@penx/utils'
 import { AddPropButton } from './AddPropButton'
 import { AudioCreationUpload } from './AudioCreationUpload'
 import { Authors } from './Authors'
@@ -34,7 +39,7 @@ import { usePanelCreationContext } from './PanelCreationProvider'
 import { PropList } from './PropList'
 import { Tags } from './Tags'
 
-export function Creation({ index }: { index: number }) {
+export function Creation() {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
@@ -93,12 +98,21 @@ export function Creation({ index }: { index: number }) {
     <>
       <DeleteCreationDialog />
       <div className="h-full w-full">
-        <div className="relative z-0 min-h-[500px] px-8 py-12">
-          <div className="w-full px-16 sm:px-[max(10px,calc(50%-350px))]">
+        <div
+          className={cn(
+            'relative z-0 min-h-[500px] px-0 py-12 md:px-8',
+            isMobileApp && 'pt-2',
+          )}
+        >
+          <div
+            className={cn(
+              'w-full px-0 sm:px-[max(10px,calc(50%-350px))] md:px-16',
+            )}
+          >
             {showTitle && (
               <div className="mb-5 flex flex-col space-y-3">
                 <div className="relative">
-                  {!isImage && (
+                  {!isImage && !isMobileApp && (
                     <CoverUpload
                       creation={creation}
                       isCover={isCover}
@@ -128,7 +142,7 @@ export function Creation({ index }: { index: number }) {
                       className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-4xl font-bold focus:outline-none focus:ring-0"
                       placeholder="Title"
                       defaultValue={creation.title || ''}
-                      autoFocus
+                      autoFocus={!isMobileApp}
                       onChange={(e) => {
                         const title = e.target.value
                         updateCreation({ id: creation.id, title })

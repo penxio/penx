@@ -11,12 +11,5 @@ const App = dynamic(() => import('../components/AppShell'), {
 });
 
 export default function Page() {
-  return (
-    <ClientOnly>
-      <div>
-        <div className="text-red-400">Home</div>
-      </div>
-      <App />
-    </ClientOnly>
-  );
+  return <App />;
 }

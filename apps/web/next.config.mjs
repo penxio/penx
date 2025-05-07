@@ -56,6 +56,11 @@ const nextConfig = {
 
   output: 'standalone',
   transpilePackages: [
+    '@ionic/react',
+    '@ionic/core',
+    '@stencil/core',
+    'ionicons',
+    'octokit',
     'octokit',
     '@octokit/oauth-app',
     '@octokit/openapi-types',

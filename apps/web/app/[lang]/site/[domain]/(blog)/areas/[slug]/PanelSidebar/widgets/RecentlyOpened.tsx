@@ -6,7 +6,7 @@ import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'
 
 export function RecentlyOpened() {
-  const isAll = useIsAllContext()
+  const { isAll } = useIsAllContext()
   const { creations: data } = useCreations()
 
   const creations = [...data]

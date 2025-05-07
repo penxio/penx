@@ -7,6 +7,7 @@ import isEqual from 'react-fast-compare'
 import { Plate } from '@udecode/plate/react'
 import { VariantProps } from 'class-variance-authority'
 import { Transforms } from 'slate'
+import { isMobileApp } from '@penx/constants'
 import {
   Editor,
   EditorContainer,
@@ -18,8 +19,6 @@ import {
 } from '@penx/editor/use-create-editor'
 import { AddNodeBtn } from '@penx/uikit/AddNodeBtn'
 import { cn } from '@penx/utils'
-
-// import { AddNodeBtn } from '../AddNodeBtn'
 
 interface Props {
   readonly?: boolean
@@ -84,7 +83,11 @@ export function PlateEditor({
           {...editorProps}
         />
         {showAddButton && (
-          <div className="size-full px-16 pt-4 text-base sm:px-[max(10px,calc(50%-350px))]">
+          <div
+            className={cn(
+              'size-full px-0 pt-4 text-base sm:px-[max(10px,calc(50%-350px))] md:px-16',
+            )}
+          >
             <AddNodeBtn editor={editor} />
           </div>
         )}

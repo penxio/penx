@@ -61,7 +61,7 @@ export function ContributeBox({ site }: Props) {
   }
   return (
     <div className="">
-      <div className="w-full px-16 sm:px-[max(10px,calc(50%-350px))]">
+      <div className="w-full px-0 sm:px-[max(10px,calc(50%-350px))] md:px-16">
         <TextareaAutosize
           className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-4xl font-bold focus:outline-none focus:ring-0"
           placeholder="Title"

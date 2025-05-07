@@ -8,7 +8,7 @@ import { CreationItem } from '../CreationItem'
 import { useIsAllContext } from '../IsAllContext'
 
 export function Favorites() {
-  const isAll = useIsAllContext()
+  const { isAll } = useIsAllContext()
   const { area } = useArea()
   const { creations: data } = useCreations()
 

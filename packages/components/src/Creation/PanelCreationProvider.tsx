@@ -24,7 +24,6 @@ export const PanelCreationContext = createContext({} as ICreation)
 
 interface Props {
   creationId: string
-  panel: Panel
 }
 
 export function usePanelCreationContext() {
@@ -34,7 +33,6 @@ export function usePanelCreationContext() {
 
 export const PanelCreationProvider = ({
   creationId,
-  panel,
   children,
 }: PropsWithChildren<Props>) => {
   const { data, isLoading } = useCreation(creationId)
@@ -49,7 +47,7 @@ export const PanelCreationProvider = ({
     })
   }, [])
 
-  if (isLoading || panel.isLoading || updating) {
+  if (isLoading || updating) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
         <LoadingDots className="bg-foreground/60" />

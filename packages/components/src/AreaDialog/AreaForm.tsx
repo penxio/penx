@@ -8,7 +8,7 @@ import { slug } from 'github-slugger'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { editorDefaultValue } from '@penx/constants'
+import { editorDefaultValue, isMobileApp } from '@penx/constants'
 import { ChargeMode } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useArea } from '@penx/hooks/useArea'
@@ -33,6 +33,7 @@ import { NumberInput } from '@penx/uikit/NumberInput'
 import { Textarea } from '@penx/uikit/textarea'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { uniqueId } from '@penx/unique-id'
+import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAreaDialog } from './useAreaDialog'
 
@@ -202,23 +203,25 @@ export function AreaForm() {
           />
         )}
 
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => {
-            return (
-              <FormItem className="w-full">
-                <FormLabel>
-                  <Trans id="Description"></Trans>
-                </FormLabel>
-                <FormControl>
-                  <Textarea placeholder="" {...field} className="w-full" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )
-          }}
-        />
+        {isEdit && (
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => {
+              return (
+                <FormItem className="w-full">
+                  <FormLabel>
+                    <Trans id="Description"></Trans>
+                  </FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="" {...field} className="w-full" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )
+            }}
+          />
+        )}
 
         {isEdit && (
           <FormField
@@ -318,7 +321,7 @@ export function AreaForm() {
           />
         )} */}
 
-        <div>
+        <div className={cn(isMobileApp && 'flex justify-center')}>
           <Button
             type="submit"
             className="w-32"

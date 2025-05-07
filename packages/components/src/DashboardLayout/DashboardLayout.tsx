@@ -5,7 +5,7 @@ import { set } from 'idb-keyval'
 import { useSearchParams } from 'next/navigation'
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { CommandPanel } from '@penx/components/CommandPanel'
-import { isBrowser, isServer, SIDEBAR_WIDTH } from '@penx/constants'
+import { isBrowser, isMobileApp, isServer, SIDEBAR_WIDTH } from '@penx/constants'
 // import { runWorker } from '@/lib/worker'
 import { Site } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
@@ -35,6 +35,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
     pathname.includes('/~/design') || pathname.includes('/~/database')
 
   const Layout = isSettings ? SettingsLayout : PanelLayout
+
   // const Layout = PanelLayout
 
   // if (!areaCreations.data?.length) return null

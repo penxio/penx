@@ -4,7 +4,13 @@ import { useMemo } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
-import { isDesktop, isWeb, PLATFORM, ROOT_HOST } from '@penx/constants'
+import {
+  isDesktop,
+  isMobileApp,
+  isWeb,
+  PLATFORM,
+  ROOT_HOST,
+} from '@penx/constants'
 import { BillingCycle, PlanType } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
@@ -56,7 +62,9 @@ export function useQuerySession() {
       const localSession = await get<SessionData>(SESSION)
       // console.log('======isDesktop:', isDesktop, 'localSession:', localSession)
 
-      if (isDesktop || !navigator.onLine) return localSession || null
+      if (isDesktop || isMobileApp || !navigator.onLine) {
+        return localSession || null
+      }
       const remoteSession = await fetchJson<SessionData>(sessionApiRoute)
 
       // console.log('===remoteSession:', remoteSession)

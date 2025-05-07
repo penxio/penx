@@ -23,6 +23,7 @@ export const PLATFORM =
   import.meta?.env?.WXT_PLATFORM
 
 export const isDesktop = PLATFORM === 'DESKTOP'
+export const isMobileApp = PLATFORM === 'MOBILE'
 export const isWeb = PLATFORM === 'WEB'
 export const isExtension = PLATFORM === 'EXTENSION'
 
@@ -371,6 +372,7 @@ export enum WidgetType {
   AI_CHAT = 'AI_CHAT',
   COLLECTION = 'COLLECTION',
   FAVORITES = 'FAVORITES',
+  QUICK_INPUT = 'QUICK_INPUT',
   MOLD = 'MOLD',
 }
 

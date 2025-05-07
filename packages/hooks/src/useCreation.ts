@@ -113,7 +113,7 @@ async function persistCreation(props: UpdateCreationInput) {
   await localDB.updateCreation(id, data)
 }
 
-const debouncedSaveCreation = debounce(persistCreation, 250, {
+const debouncedSaveCreation = debounce(persistCreation, 100, {
   maxWait: 1000,
 })
 

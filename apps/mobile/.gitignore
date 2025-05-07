@@ -33,3 +33,5 @@ tsconfig.tsbuildinfo
 
 # vercel
 .vercel
+
+/release

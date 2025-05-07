@@ -8,6 +8,7 @@ export type AppEvent = {
   ON_LOGOUT_SUCCESS: undefined
   ROUTE_TO_SETTINGS: undefined
   ROUTE_TO_DESIGN: undefined
+  ROUTE_TO_CREATION: any
   DESKTOP_LOGIN_SUCCESS: any
 }
 

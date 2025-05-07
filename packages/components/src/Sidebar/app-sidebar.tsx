@@ -31,8 +31,8 @@ import {
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
-import { AreaWidgets } from './area-widgets'
-import { AreasPopover } from './AreasPopover/AreasPopover'
+import { AreaWidgets } from '../area-widgets'
+import { AreasPopover } from '../AreasPopover/AreasPopover'
 import { ImportPostEntry } from './ImportPostEntry'
 import { NavUser } from './nav-user'
 import { QuickSearchTrigger } from './QuickSearchTrigger'

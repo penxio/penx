@@ -1,5 +1,13 @@
 [
 	{
+		"pkg": "@capacitor-community/safe-area",
+		"classpath": "com.getcapacitor.community.safearea.SafeAreaPlugin"
+	},
+	{
+		"pkg": "@capacitor/keyboard",
+		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
+	},
+	{
 		"pkg": "@capacitor/status-bar",
 		"classpath": "com.capacitorjs.plugins.statusbar.StatusBarPlugin"
 	}

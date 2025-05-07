@@ -1,9 +1,10 @@
 'use client'
 
-import { Button } from '@penx/uikit/button'
+import { PlusIcon } from 'lucide-react'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { CreationType } from '@penx/types'
-import { PlusIcon } from 'lucide-react'
+import { Button } from '@penx/uikit/button'
+import { cn } from '@penx/utils'
 
 interface Props {
   className?: string
@@ -15,7 +16,7 @@ export function AddCreationButton({ className }: Props) {
     <Button
       variant="ghost"
       size="icon"
-      className="hover:bg-foreground/10 size-8"
+      className={cn('hover:bg-foreground/10 size-8', className)}
       onClick={() => {
         addCreation(CreationType.PAGE)
       }}

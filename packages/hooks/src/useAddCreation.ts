@@ -1,5 +1,6 @@
-import { AddCreationInput, editorDefaultValue } from '@penx/constants'
+import { AddCreationInput, editorDefaultValue, isMobileApp } from '@penx/constants'
 import { CommentStatus } from '@penx/db/client'
+import { appEmitter } from '@penx/emitter'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { useMolds } from '@penx/hooks/useMolds'
@@ -59,10 +60,15 @@ export function useAddCreation() {
 
     updateCreationState(newCreation)
 
-    store.panels.addPanel({
-      id: uniqueId(),
-      type: PanelType.CREATION,
-      creationId: newCreation.id,
-    })
+    if (isMobileApp) {
+      appEmitter.emit('ROUTE_TO_CREATION', newCreation)
+    } else {
+      store.panels.addPanel({
+        id: uniqueId(),
+        type: PanelType.CREATION,
+        creationId: newCreation.id,
+      })
+    }
+    return newCreation
   }
 }

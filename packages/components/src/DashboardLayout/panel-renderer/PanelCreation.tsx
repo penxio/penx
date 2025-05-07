@@ -22,10 +22,7 @@ interface Props {
 
 export function PanelCreation(props: Props) {
   return (
-    <PanelCreationProvider
-      panel={props.panel}
-      creationId={props.panel?.creationId!}
-    >
+    <PanelCreationProvider creationId={props.panel?.creationId!}>
       <Content {...props}></Content>
     </PanelCreationProvider>
   )
@@ -46,7 +43,7 @@ export function Content({ panel, index }: Props) {
         </div>
       </PanelHeaderWrapper>
       <div className="flex-1 overflow-y-auto overflow-x-hidden p-3">
-        <Creation index={index} />
+        <Creation />
       </div>
     </>
   )

@@ -7,13 +7,25 @@
 @import '@penx/editor-custom-plugins/tailwind.css';
 @import '@penx/editor-plugins/tailwind.css';
 
-
 @plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4";
 
 @custom-variant dark (&:is(.dark *));
 
+.home-bg {
+  /* --ion-background-color: #f0f0f0; */
+  /* --ion-background-color-rgb: 240, 240, 240; */
+}
+
+.custom-header {
+  /* padding-top: var(--ion-safe-area-top); */
+  /* padding-top: var(--safe-area-inset-top); */
+  padding-top: calc(var(--safe-area-inset-top) + 1rem);
+}
+
 :root {
+  --ion-padding: 12px;
+
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(240 10% 3.9%);
   --popover: hsl(0 0% 100%);

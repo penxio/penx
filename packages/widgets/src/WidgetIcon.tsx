@@ -3,6 +3,7 @@ import {
   CalendarIcon,
   FilePenLine,
   GroupIcon,
+  PencilLineIcon,
   Rows4Icon,
   StarIcon,
 } from 'lucide-react'
@@ -35,6 +36,10 @@ export function WidgetIcon({ type, molds }: Props) {
 
   if (type === WidgetType.AI_CHAT) {
     return <BotMessageSquareIcon size={16} />
+  }
+
+  if (type === WidgetType.QUICK_INPUT) {
+    return <PencilLineIcon size={16} />
   }
   return null
 }
