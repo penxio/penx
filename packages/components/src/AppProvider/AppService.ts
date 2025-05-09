@@ -107,12 +107,16 @@ export class AppService {
   }
 
   private async initStore(site: ISite) {
+    console.log('=====site:', site)
+
     const siteId = site.id
     await store.site.save(site)
 
     const panels = await this.getPanels(site.id)
 
     const areas = await localDB.area.where({ siteId }).toArray()
+
+    console.log('=====areas:', areas)
 
     const localVisit = await store.visit.fetch()
 

@@ -18,16 +18,6 @@ type NavItem = {
 export const Nav = () => {
   const navData: NavItem[] = [
     // {
-    //   text: 'Marketplace',
-    //   to: '/marketplace',
-    // },
-
-    // {
-    //   text: 'Tokenomics',
-    //   to: '/tokenomics',
-    // },
-
-    // {
     //   text: 'Sponsor',
     //   to: '/sponsor',
     // },
@@ -35,22 +25,10 @@ export const Nav = () => {
       text: <Trans id="About"></Trans>,
       to: '/about',
     },
-    // {
-    //   text: <Trans id="Themes"></Trans>,
-    //   to: '/themes',
-    // },
-    // {
-    //   text: <Trans id="Hosted"></Trans>,
-    //   to: '/self-hosted',
-    // },
     {
       text: <Trans id="Pricing"></Trans>,
       to: '/pricing',
     },
-    // {
-    //   text: 'Rewards',
-    //   to: '/rewards',
-    // },
     // {
     //   text: 'Download',
     //   isExternal: true,

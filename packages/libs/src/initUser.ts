@@ -1,5 +1,4 @@
 import ky from 'ky'
-import { hashPassword } from '@penx/api/lib/hashPassword'
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
 import {
@@ -11,7 +10,7 @@ import {
 } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { uniqueId } from '@penx/unique-id'
-import { CreationType } from './theme.types'
+import { hashPassword } from './hashPassword'
 
 const SEVEN_DAYS = 60 * 60 * 24 * 7
 
@@ -75,8 +74,6 @@ export async function initUserByGoogleInfo(
 
       if (account) return account
 
-      console.log('======userId:', userId)
-
       let newUser = await tx.user.create({
         data: {
           id: userId,
@@ -111,8 +108,6 @@ export async function initUserByGoogleInfo(
         }
       }
 
-      await cacheHelper.updateHomeSites(null)
-
       return tx.account.findUniqueOrThrow({
         where: { providerAccountId: info.openid },
         ...includeAccount,
@@ -129,6 +124,7 @@ export async function initUserByEmail(
   email: string,
   password: string,
   ref: string,
+  userId: string,
 ) {
   return prisma.$transaction(
     async (tx) => {
@@ -143,6 +139,7 @@ export async function initUserByEmail(
 
       let newUser = await tx.user.create({
         data: {
+          id: userId ? userId : undefined,
           name: name,
           displayName: name,
           email: email,
@@ -173,25 +170,58 @@ export async function initUserByEmail(
         }
       }
 
-      const site = await tx.site.create({
+      return tx.account.findUniqueOrThrow({
+        where: { providerAccountId: email },
+        ...includeAccount,
+      })
+    },
+    {
+      maxWait: 5000, // default: 2000
+      timeout: 10000, // default: 5000
+    },
+  )
+}
+
+export async function initUserByEmailLoginCode(email: string, userId?: string) {
+  return prisma.$transaction(
+    async (tx) => {
+      const account = await tx.account.findFirst({
+        where: {
+          OR: [
+            {
+              providerType: ProviderType.EMAIL,
+              providerAccountId: email,
+            },
+            {
+              providerType: ProviderType.GOOGLE,
+              email,
+            },
+          ],
+        },
+        ...includeAccount,
+      })
+
+      if (account) return account
+
+      const [name] = email.split('@')
+
+      let newUser = await tx.user.create({
         data: {
+          id: userId ? userId : undefined,
           name: name,
-          description: 'My personal site',
-          logo: 'https://penx.io/logo.png',
-          updatedAt: new Date(),
-          domains: {
+          displayName: name,
+          email: email,
+          accounts: {
             create: [
               {
-                domain: newUser.id,
-                subdomainType: SubdomainType.UserId,
+                providerType: ProviderType.EMAIL,
+                providerAccountId: email,
+                email: email,
               },
             ],
           },
-          ...getSiteInfo(newUser),
         },
       })
-
-      await cacheHelper.updateHomeSites(null)
 
       return tx.account.findUniqueOrThrow({
         where: { providerAccountId: email },

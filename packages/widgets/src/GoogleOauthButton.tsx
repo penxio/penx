@@ -33,12 +33,6 @@ export function GoogleOauthButton({
   const error = searchParams?.get('error')
   const pathname = usePathname()!
   const token = searchParams
-  const { data } = useQuery({
-    queryKey: ['first-site'],
-    queryFn: () => {
-      return localDB.site.toCollection().first()
-    },
-  })
 
   useEffect(() => {
     const errorMessage = Array.isArray(error) ? error.pop() : error
@@ -50,11 +44,14 @@ export function GoogleOauthButton({
       className={cn('w-24 gap-2 rounded-lg text-sm', className)}
       variant="secondary"
       disabled={loading}
-      onClick={() => {
+      onClick={async () => {
         setLoading(true)
+        const sites = await localDB.site.toArray()
+        const site = sites.find((s) => !s.isRemote)
+
         const redirectUri = GOOGLE_OAUTH_REDIRECT_URI
         const parsed = qs.parse(location.search) || {}
-        const state = `${location.protocol}//${location.host}__${pathname}__uid${data?.userId || ''}__${encodeURIComponent(JSON.stringify(parsed))}`
+        const state = `${location.protocol}//${location.host}__${pathname}__uid${site?.userId || ''}__${encodeURIComponent(JSON.stringify(parsed))}`
 
         const scope = 'openid email profile'
         const googleAuthUrl =

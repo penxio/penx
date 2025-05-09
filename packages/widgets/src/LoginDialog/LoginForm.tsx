@@ -8,7 +8,6 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -18,6 +17,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAuthStatus } from './useAuthStatus'
 import { useLoginDialog } from './useLoginDialog'
@@ -59,8 +59,12 @@ export function LoginForm({}: Props) {
       })
 
       console.log('=====result:', result)
-      push('/~')
-      setIsOpen(false)
+      if (!result.isLoggedIn) {
+        toast.error(result.message)
+      } else {
+        location.reload()
+        setIsOpen(false)
+      }
     } catch (error) {
       console.log('========error:', error)
       const msg = extractErrorMessage(error)

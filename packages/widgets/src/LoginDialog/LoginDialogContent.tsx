@@ -33,8 +33,8 @@ export function LoginDialogContent() {
           className="border-foreground w-full"
         />
       </div>
-      {/* <div className="text-foreground/40 text-center">or</div>
-      <LoginForm /> */}
+      <div className="text-foreground/40 text-center">or</div>
+      <LoginForm />
     </div>
   )
 }
