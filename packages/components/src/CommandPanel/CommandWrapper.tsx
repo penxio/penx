@@ -22,13 +22,8 @@ export const CommandWrapper = ({
   if (isMobile) {
     return (
       <Command
-        style={
-          {
-            // height: 'fit-content',
-          }
-        }
         loop
-        className="command-panel bg-background left-[50%] w-full"
+        className="command-panel bg-background left-[50%] flex w-full flex-1 flex-col"
         onValueChange={(value) => {
           console.log(value)
         }}

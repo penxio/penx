@@ -1,7 +1,6 @@
 'use client'
 
 import React, { forwardRef, memo, ReactNode, useEffect, useState } from 'react'
-import isEqual from 'react-fast-compare'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react'
 import { AnimatePresence, motion } from 'motion/react'
@@ -12,19 +11,14 @@ import { useMolds } from '@penx/hooks/useMolds'
 import { store } from '@penx/store'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from '@penx/uikit/context-menu'
+import { ContextMenu, ContextMenuTrigger } from '@penx/uikit/context-menu'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
 import { cn } from '@penx/utils'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'
-import { IsAllContext, IsAllProvider } from './IsAllContext'
+import { IsAllProvider } from './IsAllContext'
 import { QuickInput } from './QuickInput'
 import { TitleContextMenu } from './TitleContextMenu'
 import { ToggleButton } from './ToggleButton'
@@ -197,7 +191,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           <Drawer.Root open={visible} onOpenChange={setVisible}>
             <Drawer.Portal>
               <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-              <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[0vh] min-h-[90vh] flex-col rounded-t-[10px] bg-gray-100 px-0 pb-0 outline-none">
+              <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] bg-background px-0 pb-0 outline-none">
                 <div
                   aria-hidden
                   className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300"
@@ -209,7 +203,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                 <div className="mb-2 flex items-center justify-center font-bold">
                   <WidgetName widget={widget} molds={molds} />
                 </div>
-                <div className="flex-1 overflow-auto px-4 pb-6">
+                <div className="">
                   <IsAllProvider isAll setVisible={setVisible}>
                     <WidgetRender widget={widget} />
                   </IsAllProvider>

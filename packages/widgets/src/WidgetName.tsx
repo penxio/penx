@@ -1,12 +1,4 @@
 import { Trans } from '@lingui/react'
-import {
-  BotMessageSquareIcon,
-  CalendarIcon,
-  FilePenLine,
-  GroupIcon,
-  Rows4Icon,
-  StarIcon,
-} from 'lucide-react'
 import { WidgetType } from '@penx/constants'
 import { Mold } from '@penx/db/client'
 import { Widget } from '@penx/types'
@@ -37,6 +29,9 @@ export function WidgetName({ widget, molds }: Props) {
   }
   if (widget.type === WidgetType.RECENTLY_OPENED) {
     return <Trans id="Recently opened"></Trans>
+  }
+  if (widget.type === WidgetType.QUICK_INPUT) {
+    return <Trans id="Quick input"></Trans>
   }
   const mold = molds.find((m) => m.id === widget.moldId)
   if (mold) return <MoldName mold={mold!} />

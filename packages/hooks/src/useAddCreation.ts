@@ -1,4 +1,8 @@
-import { AddCreationInput, editorDefaultValue, isMobileApp } from '@penx/constants'
+import {
+  AddCreationInput,
+  editorDefaultValue,
+  isMobileApp,
+} from '@penx/constants'
 import { CommentStatus } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
 import { useCollaborators } from '@penx/hooks/useCollaborators'
@@ -14,7 +18,7 @@ export function useAddCreation() {
   const { molds } = useMolds()
   const { site } = useMySite()
 
-  return async (type: string) => {
+  return async (type: string, content?: string) => {
     const mold = molds.find((mold) => mold.type === type)!
     const area = store.area.get()
 
@@ -26,7 +30,7 @@ export function useAddCreation() {
       title: '',
       description: '',
       image: '',
-      content: JSON.stringify(editorDefaultValue),
+      content: content || JSON.stringify(editorDefaultValue),
       type: mold.type,
       moldId: mold.id,
       areaId: area.id,
@@ -60,7 +64,7 @@ export function useAddCreation() {
 
     updateCreationState(newCreation)
 
-    if (isMobileApp) {
+    if (isMobileApp && !content) {
       appEmitter.emit('ROUTE_TO_CREATION', newCreation)
     } else {
       store.panels.addPanel({

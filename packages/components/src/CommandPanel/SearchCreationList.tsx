@@ -16,19 +16,19 @@ interface Props {
 export function SearchCreationList({ heading = '', isRecent = false }: Props) {
   const { close } = useOpen()
   const { creations } = useCreations()
-  const pages = isRecent ? creations.slice(0, 20) : creations
+  const recentCreations = isRecent ? creations.slice(0, 20) : creations
   const { search, setSearch } = useSearch()
   const q = search.replace(/^@(\s+)?/, '') || ''
   const paletteDrawer = usePaletteDrawer()
 
   const filteredItems = useMemo(() => {
-    if (!q) return pages
-    const items = pages.filter(({ title = '' }) => {
+    if (!q) return recentCreations
+    const items = recentCreations.filter(({ title = '' }) => {
       return title?.toLowerCase().includes(q.toLowerCase())
     })
 
     return items
-  }, [pages, q])
+  }, [recentCreations, q])
 
   if (!filteredItems.length) {
     return (

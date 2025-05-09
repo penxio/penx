@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Command } from 'cmdk'
+import { cn } from '@penx/utils'
 import { CommandList } from './CommandList'
 import { CommandWrapper } from './CommandWrapper'
 import { CommonList } from './CommonList'
 import { useOpen } from './hooks/useOpen'
 import { useSearch } from './hooks/useSearch'
-import { SearchDatabaseList } from './SearchDatabaseList'
 import { SearchCreationList } from './SearchCreationList'
+import { SearchDatabaseList } from './SearchDatabaseList'
 
 interface CommandPanelProps {
   isMobile?: boolean
@@ -75,7 +76,10 @@ export function CommandPanel({ isMobile = false }: CommandPanelProps) {
       />
 
       <Command.List
-        className="max-h-[400px] overflow-auto"
+        className={cn(
+          !isMobile && 'max-h-[400px] overflow-auto',
+          isMobile && 'flex-1 overflow-auto',
+        )}
         style={{
           transition: '100ms ease',
           transitionProperty: 'height',

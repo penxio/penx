@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { AreasPopover } from '@/components/AreasPopover'
 import {
   IonButton,
@@ -26,6 +26,7 @@ import { creationIdAtom } from '@penx/hooks/useCreationId'
 import { store } from '@penx/store'
 import { CreationType } from '@penx/types'
 import { MobileHome } from '../MobileHome'
+import { SearchButton } from '../MobileSearch/SearchButton'
 
 export function PageHome() {
   const addCreation = useAddCreation()
@@ -33,7 +34,6 @@ export function PageHome() {
 
   return (
     <>
-      {/* <CommandPanel /> */}
       <AreaDialog />
       <IonHeader
         style={{
@@ -51,16 +51,7 @@ export function PageHome() {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonButtons slot="end">
-            <IonButton
-              color="black"
-              onClick={() => {
-                console.log('search')
-              }}
-            >
-              <IonIcon color="black" icon={searchOutline} />
-            </IonButton>
-          </IonButtons>
+          <SearchButton />
         </IonToolbar>
       </IonHeader>
 
@@ -86,7 +77,6 @@ export function PageHome() {
           <IonFabButton
             className=""
             color="dark"
-            // style={{ '--background': '#ff5722' }}
             onClick={async () => {
               const creation = await addCreation(CreationType.PAGE)
               store.set(creationIdAtom, creation.id)

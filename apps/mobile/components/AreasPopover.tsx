@@ -5,7 +5,6 @@ import { Trans } from '@lingui/react'
 import { DialogTitle } from '@radix-ui/react-dialog'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
 import { Drawer } from 'vaul'
-import { ProfileAvatar } from '@penx/components/ProfileAvatar'
 import { useAreaDialog } from '@penx/components/useAreaDialog'
 import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'
@@ -30,7 +29,7 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
 
   if (!area) return null
   return (
-    <>
+    <div className="flex justify-start">
       <div
         className="inline-flex cursor-pointer items-center gap-1"
         onClick={() => {
@@ -55,7 +54,7 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
       <Drawer.Root open={visible} onOpenChange={setVisible}>
         <Drawer.Portal>
           <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-fit min-h-[50vh] flex-col rounded-t-[10px] bg-gray-100 px-4 pb-6 outline-none">
+          <Drawer.Content className="bg-background fixed bottom-0 left-0 right-0 mt-24 flex h-fit min-h-[50vh] flex-col rounded-t-[10px] px-4 pb-6 outline-none">
             <div
               aria-hidden
               className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300"
@@ -101,6 +100,6 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>
-    </>
+    </div>
   )
 }

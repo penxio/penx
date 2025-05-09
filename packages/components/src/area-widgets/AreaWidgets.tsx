@@ -1,16 +1,11 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { PlusIcon } from 'lucide-react'
 import { AddCreationButton } from '@penx/components/AddCreationButton'
 import { isMobileApp } from '@penx/constants'
-import { useAppLoading } from '@penx/hooks/useAppLoading'
-import { useCreations } from '@penx/hooks/useCreations'
-import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/button'
-import { Skeleton } from '@penx/uikit/skeleton'
 import { AddWidgetButton } from './AddWidgetButton'
-import { EditWidgetButton } from './EditWidgetButton'
+import { EditWidgetButton } from './EditWidget/EditWidgetButton'
+import { MobileWidgetList } from './MobileWidgetList'
 import { WidgetList } from './WidgetList'
 
 interface Props {}
@@ -27,7 +22,9 @@ export function AreaWidgets({}: Props) {
         </div>
       )}
       <div className="space-y-2">
-        <WidgetList />
+        {isMobileApp && <MobileWidgetList />}
+        {!isMobileApp && <WidgetList />}
+
         {isMobileApp && (
           <div className="flex w-full justify-center">
             <EditWidgetButton />

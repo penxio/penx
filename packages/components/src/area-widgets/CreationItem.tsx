@@ -7,6 +7,7 @@ import {
   StarOffIcon,
   TrashIcon,
 } from 'lucide-react'
+import { Node } from 'slate'
 import { isMobileApp } from '@penx/constants'
 import { CreationStatus } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
@@ -37,6 +38,16 @@ export function CreationItem({ creation }: CreationItemProps) {
   const { isCreationInPanels } = usePanels()
   const { isAll, setVisible } = useIsAllContext()
   const mold = useCreationMold(creation)
+
+  const getTitleFromContent = () => {
+    try {
+      const json: any[] = JSON.parse(creation.content)
+      const title = json.map((item) => Node.string(item)).join(', ')
+      return title.slice(0, 30)
+    } catch (error) {
+      return ''
+    }
+  }
 
   return (
     <ContextMenu>
@@ -84,7 +95,7 @@ export function CreationItem({ creation }: CreationItemProps) {
               isMobileApp && 'text-base',
             )}
           >
-            {creation.title || 'Untitled'}
+            {creation.title || getTitleFromContent() || 'Untitled'}
           </div>
           {isAll && creation.status === CreationStatus.PUBLISHED && (
             <div className="size-1 rounded-full bg-green-500 text-xs opacity-50"></div>

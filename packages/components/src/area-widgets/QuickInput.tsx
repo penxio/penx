@@ -18,6 +18,7 @@ import equal from 'fast-deep-equal'
 import { CogIcon, ExpandIcon, SendHorizonalIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
+import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -30,6 +31,7 @@ export function QuickInput({}: {}) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
+  const addCreation = useAddCreation()
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -51,62 +53,22 @@ export function QuickInput({}: {}) {
     }
   }
 
-  const [localStorageInput, setLocalStorageInput] = useLocalStorage('input', '')
-
-  useEffect(() => {
-    if (textareaRef.current) {
-      const domValue = textareaRef.current.value
-      // Prefer DOM value over localStorage to handle hydration
-      const finalValue = domValue || localStorageInput || ''
-      setInput(finalValue)
-      // adjustHeight()
-    }
-    // Only run once after hydration
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    setLocalStorageInput(input)
-  }, [input, setLocalStorageInput])
-
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    console.log('====event.target.value:', event.target.value)
+
     setInput(event.target.value)
     adjustHeight()
   }
 
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const [uploadQueue, setUploadQueue] = useState<Array<string>>([])
-
   const submitForm = useCallback(() => {
-    //
-  }, [])
-
-  const uploadFile = async (file: File) => {
-    const formData = new FormData()
-    formData.append('file', file)
-
-    try {
-      const response = await fetch('/api/files/upload', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        const { url, pathname, contentType } = data
-
-        return {
-          url,
-          name: pathname,
-          contentType: contentType,
-        }
-      }
-      const { error } = await response.json()
-      toast.error(error)
-    } catch (error) {
-      toast.error('Failed to upload file, please try again!')
-    }
-  }
+    const content = input.split('\n')
+    const slateValue = content.map((line) => ({
+      type: 'p',
+      children: [{ text: line }],
+    }))
+    addCreation('NOTE', JSON.stringify(slateValue))
+    setInput('')
+  }, [input])
 
   return (
     <div
@@ -130,7 +92,6 @@ export function QuickInput({}: {}) {
           'bg-background max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-xl pb-8 !text-base shadow-md focus-visible:ring-0',
         )}
         // rows={2}
-        autoFocus
         onKeyDown={(event) => {
           if (
             event.key === 'Enter' &&
@@ -147,9 +108,9 @@ export function QuickInput({}: {}) {
           }
         }}
       />
-      <div className="text-foreground/60 absolute bottom-0.5 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
+      <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
         <Checkbox />
-        <Button
+        {/* <Button
           size="icon"
           variant="ghost"
           className="hover:bg-foreground/10 size-7 rounded-md"
@@ -161,7 +122,7 @@ export function QuickInput({}: {}) {
           }}
         >
           <ExpandIcon size={15} />
-        </Button>
+        </Button> */}
       </div>
       <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
         <div>
