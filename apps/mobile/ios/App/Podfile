@@ -14,6 +14,7 @@ def capacitor_pods
   pod 'CapacitorCommunitySafeArea', :path => '../../../../node_modules/.pnpm/@capacitor-community+safe-area@7.0.0-alpha.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/safe-area'
   pod 'CapacitorKeyboard', :path => '../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard'
   pod 'CapacitorStatusBar', :path => '../../../../node_modules/.pnpm/@capacitor+status-bar@5.0.7_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar'
+  pod 'CapgoCapacitorSocialLogin', :path => '../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login'
 end
 
 target 'App' do

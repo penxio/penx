@@ -28,5 +28,14 @@
     "moduleResolution": "Bundler",
     "noEmit": true
   },
-  "exclude": ["node_modules", "build", "dist", ".next", ".expo", "**/*.js"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "out",
+    ".next",
+    ".expo",
+    "**/*.js",
+    ".turbo"
+  ]
 }

@@ -135,8 +135,8 @@
     "@uiw/react-color": "^2.4.5",
     "@uploadthing/react": "7.1.0",
     "@vercel/functions": "^2.0.0",
-    "@ionic/react": "8.5.5",
-    "@ionic/react-router": "8.5.5",
+    "@ionic/react": "^8.5.7",
+    "@ionic/react-router": "^8.5.7",
     "ai": "^4.1.24",
     "array-move": "^4.0.0",
     "axios": "^1.7.9",
@@ -323,7 +323,7 @@
     "prettier-plugin-packagejson": "^2.5.8",
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^4.1.4",
-    "turbo": "^2.5.0",
+    "turbo": "^2.5.3",
     "typescript": "5.8.2"
   },
   "peerDependencies": {
