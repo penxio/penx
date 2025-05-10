@@ -29,7 +29,7 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
 
   if (!area) return null
   return (
-    <div className="flex justify-start">
+    <div className="flex justify-center">
       <div
         className="inline-flex cursor-pointer items-center gap-1"
         onClick={() => {
@@ -37,18 +37,22 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
         }}
       >
         <div className="flex items-center gap-1">
-          <Avatar className="h-6 w-6">
-            <AvatarImage src={getUrl(area?.logo || '')} alt="" />
+          {/* <Avatar className="h-5 w-5 rounded-md">
+            <AvatarImage
+              className="rounded-md"
+              src={getUrl(area?.logo || '')}
+              alt=""
+            />
             <AvatarFallback
-              className={cn(generateGradient(area.name))}
+              className={cn('rounded-md', generateGradient(area.name))}
             ></AvatarFallback>
-          </Avatar>
+          </Avatar> */}
 
           <div className="grid flex-1 text-left text-base leading-tight">
-            <span className="truncate font-semibold">{area?.name}</span>
+            <span className="truncate text-lg font-bold">{area?.name}</span>
           </div>
         </div>
-        <ChevronsUpDown className="size-3" />
+        {/* <ChevronsUpDown className="size-3" /> */}
       </div>
 
       <Drawer.Root open={visible} onOpenChange={setVisible}>

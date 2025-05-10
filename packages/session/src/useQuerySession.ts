@@ -36,10 +36,10 @@ async function fetchJson<JSON = unknown>(
   init?: RequestInit,
 ): Promise<JSON> {
   return fetchClient(input, {
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-    },
+    // headers: {
+    //   accept: 'application/json',
+    //   'content-type': 'application/json',
+    // },
     ...init,
   }).then((res) => res.json())
 }

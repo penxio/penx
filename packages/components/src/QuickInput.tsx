@@ -15,7 +15,7 @@ import type { UseChatHelpers } from '@ai-sdk/react'
 import type { Attachment, UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
-import { CogIcon, ExpandIcon, SendHorizonalIcon } from 'lucide-react'
+import { CogIcon, ExpandIcon, SendHorizonalIcon, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
@@ -25,9 +25,8 @@ import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
-import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
 
-export function QuickInput({}: {}) {
+export function QuickInput({ onCancel }: { onCancel?: () => void }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
@@ -124,10 +123,21 @@ export function QuickInput({}: {}) {
           <ExpandIcon size={15} />
         </Button> */}
       </div>
-      <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
-        <div>
-          <SendButton input={input} submitForm={submitForm} />
-        </div>
+      <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end gap-1 p-2">
+        <Button
+          variant="secondary"
+          size="sm"
+          className="h-7"
+          onClick={(event) => {
+            setInput('')
+            resetHeight()
+            onCancel && onCancel()
+          }}
+        >
+          <XIcon size={16} />
+        </Button>
+
+        <SendButton input={input} submitForm={submitForm} />
       </div>
     </div>
   )

@@ -14,10 +14,10 @@ export function SearchButton() {
       <Button
         size="icon"
         variant="ghost"
-        className="size-7 rounded-full"
+        className="size-9 rounded-full"
         onClick={() => setVisible(true)}
       >
-        <SearchIcon size={20} />
+        <SearchIcon size={24} />
       </Button>
 
       <Drawer.Root open={visible} onOpenChange={setVisible}>

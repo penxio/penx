@@ -16,10 +16,10 @@ import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
 import { cn } from '@penx/utils'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
+import { QuickInput } from '../QuickInput'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'
 import { IsAllProvider } from './IsAllContext'
-import { QuickInput } from './QuickInput'
 import { TitleContextMenu } from './TitleContextMenu'
 import { ToggleButton } from './ToggleButton'
 import { WidgetRender } from './WidgetRender'
@@ -116,8 +116,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
         }}
       >
         <div className="flex items-center gap-1">
-          <WidgetIcon type={widget.type} molds={molds} />
-          <div className="select-none text-sm font-semibold">
+          {/* <WidgetIcon type={widget.type} molds={molds} /> */}
+          <div className="text-foreground select-none text-base font-semibold">
             <WidgetName widget={widget} molds={molds} />
           </div>
         </div>
@@ -141,10 +141,11 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
         <div
           ref={ref}
           className={cn(
-            'shadow-2xs group/widget relative flex flex-col rounded-md bg-white dark:bg-[#181818]',
+            'group/widget relative flex flex-col',
             isDragging && 'bg-foreground/6 opacity-50',
             isDragging && 'z-[1000000]',
             dragOverlay && 'shadow',
+            !isMobileApp && 'shadow-2xs rounded-md bg-white dark:bg-[#181818]',
           )}
           {...rest}
         >
@@ -191,7 +192,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           <Drawer.Root open={visible} onOpenChange={setVisible}>
             <Drawer.Portal>
               <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-              <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] bg-background px-0 pb-0 outline-none">
+              <Drawer.Content className="bg-background fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none">
                 <div
                   aria-hidden
                   className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300"

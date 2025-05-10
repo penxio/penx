@@ -6,7 +6,7 @@ import { localDB } from '@penx/local-db'
 import { ISite } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
-export async function initLocalSite() {
+export async function initLocalSite(uid?: string) {
   return await localDB.transaction(
     'rw',
     localDB.site,
@@ -14,7 +14,7 @@ export async function initLocalSite() {
     localDB.area,
     async () => {
       const siteId = uniqueId()
-      const userId = uniqueId()
+      const userId = uid || uniqueId()
       await localDB.addSite({
         id: siteId,
         name: 'My Penx Site',

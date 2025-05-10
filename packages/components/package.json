@@ -8,7 +8,8 @@
   "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
-    "./*": "./src/*.ts",
+    "./*": "./src/*.tsx",
+    "./QuickInput": "./src/QuickInput.tsx",
     "./AddCreationButton": "./src/AddCreationButton.tsx",
     "./AreaContext": "./src/AreaContext.tsx",
     "./AreasPopover": "./src/AreasPopover/AreasPopover.tsx",

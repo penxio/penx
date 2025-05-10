@@ -70,11 +70,10 @@ export class AppService {
       return remoteSite as ISite
     }
 
-    const site = await localDB.site.where({ userId: session.userId }).first()
+    let site = (await localDB.site.where({ userId: session.userId }).first())!
 
     if (!site) {
-      // TODO: init local site
-      throw new Error('No siteId in session')
+      site = await initLocalSite(session.userId)
     }
 
     const areas = await localDB.area.where({ siteId: site.id }).toArray()

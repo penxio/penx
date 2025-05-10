@@ -71,7 +71,7 @@ export function PageDetail({ id }: PageDetailProps) {
       <IonContent class="ion-padding">
         <MobileCreation creationId={id} />
       </IonContent>
-      {/* <CreationInputToolbar /> */}
+      <CreationInputToolbar />
     </>
   )
 }
