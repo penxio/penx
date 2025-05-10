@@ -12,12 +12,12 @@ import { useCreations } from '@penx/hooks/useCreations'
 import { getGoogleUserInfo } from '@penx/libs/getGoogleUserInfo'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
+import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { MobileGoogleLoginInfo } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Input } from '@penx/uikit/input'
-import { useSession } from '@penx/session'
 
 interface Props {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
@@ -27,7 +27,7 @@ export function LoginDrawerContent({ setVisible }: Props) {
   const [json, setJson] = useState({})
   const [error, setError] = useState({})
   const [session, setSession] = useState({})
-  async function login() {
+  async function onLogin() {
     const res = (await SocialLogin.login({
       provider: 'google',
       options: {
@@ -44,25 +44,24 @@ export function LoginDrawerContent({ setVisible }: Props) {
       .then((response) => response.json())
       .then((json) => console.log(json))
 
+    const sites = await localDB.site.toArray()
+    const site = sites.find((s) => !s.isRemote)
+
+    const session = await login({
+      type: 'penx-google',
+      accessToken: res.result.accessToken.token as string,
+      userId: site?.userId!,
+      ref: '',
+    })
+
+    console.log('======session:', session)
+
+    setSession(session)
+    await set('SESSION', session)
+    queryClient.setQueryData(['SESSION'], session)
+    setVisible(false)
+
     try {
-      const sites = await localDB.site.toArray()
-      const site = sites.find((s) => !s.isRemote)
-
-      const {} = await login({
-        
-        
-        
-      })
-      const session = await api.auth.loginWithGoogleToken.mutate({
-        openid: res.result.accessToken.userId,
-        token: res.result.accessToken.token as string,
-        userId: site?.userId,
-      })
-
-      setSession(session)
-      await set('SESSION', session)
-      queryClient.setQueryData(['SESSION'], session)
-      setVisible(false)
     } catch (error) {
       console.log('=========error:', error)
 
@@ -73,7 +72,7 @@ export function LoginDrawerContent({ setVisible }: Props) {
   return (
     <div>
       <div className="">
-        <Button onClick={login}>Login</Button>
+        <Button onClick={onLogin}>Login</Button>
         <pre>{JSON.stringify(json, null, 2)}</pre>
         session:
         <pre>{JSON.stringify(session, null, 2)}</pre>

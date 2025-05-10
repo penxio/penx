@@ -31,6 +31,12 @@ import { generateNonce } from '@penx/utils/generateNonce'
 
 // export const runtime = 'edge'
 
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
+
 async function updateSession(
   session: IronSession<SessionData>,
   account: AccountWithUser,
@@ -126,7 +132,7 @@ export async function POST(req: NextRequest) {
     } catch (error) {
       console.error('register siteUser error:', error)
     }
-    return Response.json(session)
+    return Response.json(session, { headers })
   }
 
   if (isRegisterByEmail(json)) {
@@ -143,11 +149,11 @@ export async function POST(req: NextRequest) {
       const account = await initUserByEmail(email, password, ref, userId)
       await updateSession(session, account)
       await registerSiteUser(hostname, account.userId)
-      return Response.json(session)
+      return Response.json(session, { headers })
     } catch (error) {
       session.isLoggedIn = false
       await session.save()
-      return Response.json(session)
+      return Response.json(session, { headers })
     }
   }
 
@@ -185,7 +191,7 @@ export async function POST(req: NextRequest) {
 
       await updateSession(session, account as any)
       await registerSiteUser(hostname, account.userId)
-      return Response.json(session)
+      return Response.json(session, { headers })
     } catch (error: any) {
       console.log('error.mess==:', error.message)
 
@@ -199,13 +205,14 @@ export async function POST(req: NextRequest) {
 
       session.isLoggedIn = false
       await session.save()
-      return Response.json(session)
+      return Response.json(session, { headers })
     }
   }
 
   session.isLoggedIn = false
   await session.save()
-  return Response.json(session)
+
+  return Response.json(session, { headers })
 }
 
 export async function PATCH(request: NextRequest) {
@@ -261,7 +268,7 @@ export async function PATCH(request: NextRequest) {
 
   await session.save()
 
-  return Response.json(session)
+  return Response.json(session, { headers })
 }
 
 // read session
@@ -269,16 +276,10 @@ export async function GET() {
   const session = await getServerSession()
 
   if (session?.isLoggedIn !== true) {
-    return Response.json({})
+    return Response.json({}, { headers })
   }
 
-  return Response.json(session, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    },
-  })
+  return Response.json(session, { headers })
 }
 
 // logout
@@ -290,5 +291,5 @@ export async function DELETE() {
   )
 
   session.destroy()
-  return Response.json({ isLoggedIn: false })
+  return Response.json({ isLoggedIn: false }, { headers })
 }
