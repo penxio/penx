@@ -28,40 +28,40 @@ export function LoginDrawerContent({ setVisible }: Props) {
   const [error, setError] = useState({})
   const [session, setSession] = useState({})
   async function onLogin() {
-    const res = (await SocialLogin.login({
-      provider: 'google',
-      options: {
-        scopes: ['email', 'openid', 'profile'],
-      },
-    })) as any as MobileGoogleLoginInfo
-    // alert(JSON.stringify(res))
-    // handle the response. popoutStore is specific to my app
-    console.log('======res:', res)
-
-    setJson(res.result)
-
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then((response) => response.json())
-      .then((json) => console.log(json))
-
-    const sites = await localDB.site.toArray()
-    const site = sites.find((s) => !s.isRemote)
-
-    const session = await login({
-      type: 'penx-google',
-      accessToken: res.result.accessToken.token as string,
-      userId: site?.userId!,
-      ref: '',
-    })
-
-    console.log('======session:', session)
-
-    setSession(session)
-    await set('SESSION', session)
-    queryClient.setQueryData(['SESSION'], session)
-    setVisible(false)
+    const todo = await fetch(
+      'https://jsonplaceholder.typicode.com/todos/1',
+    ).then((response) => response.json())
+    console.log('todo.........>>>>:', todo)
 
     try {
+      const res = (await SocialLogin.login({
+        provider: 'google',
+        options: {
+          scopes: ['email', 'openid', 'profile'],
+        },
+      })) as any as MobileGoogleLoginInfo
+      // alert(JSON.stringify(res))
+      // handle the response. popoutStore is specific to my app
+      console.log('======res:', res)
+
+      setJson(res.result)
+
+      const sites = await localDB.site.toArray()
+      const site = sites.find((s) => !s.isRemote)
+
+      const session = await login({
+        type: 'penx-google',
+        accessToken: res.result.accessToken.token as string,
+        userId: site?.userId!,
+        ref: '',
+      })
+
+      console.log('======session:', session)
+
+      setSession(session)
+      await set('SESSION', session)
+      queryClient.setQueryData(['SESSION'], session)
+      setVisible(false)
     } catch (error) {
       console.log('=========error:', error)
 
