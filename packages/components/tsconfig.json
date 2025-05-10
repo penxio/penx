@@ -10,6 +10,6 @@
     "strictNullChecks": true,
     "outDir": "dist"
   },
-  "include": ["."],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

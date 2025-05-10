@@ -1,13 +1,14 @@
 'use client'
 
 import React, { useRef, useState } from 'react'
-import { SearchIcon } from 'lucide-react'
+import { SocialLogin } from '@capgo/capacitor-social-login'
+import { UserRoundIcon } from 'lucide-react'
 import { Drawer } from 'vaul'
 import { Button } from '@penx/uikit/button'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
-import { SearchPanel } from './SearchPanel'
+import { LoginDrawerContent } from './LoginDrawerContent'
 
-export function SearchButton() {
+export function LoginButton() {
   const [visible, setVisible] = useState(false)
   return (
     <>
@@ -17,7 +18,7 @@ export function SearchButton() {
         className="size-7 rounded-full"
         onClick={() => setVisible(true)}
       >
-        <SearchIcon size={20} />
+        <UserRoundIcon size={20} />
       </Button>
 
       <Drawer.Root open={visible} onOpenChange={setVisible}>
@@ -32,7 +33,7 @@ export function SearchButton() {
             <DialogTitle className="hidden">
               <DialogDescription />
             </DialogTitle>
-            <SearchPanel setVisible={setVisible} />
+            <LoginDrawerContent setVisible={setVisible} />
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>

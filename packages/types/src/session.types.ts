@@ -131,3 +131,21 @@ export function isCancelSubscription(
 ): value is CancelSubscriptionData {
   return typeof value === 'object' && value?.type === 'cancel-subscription'
 }
+
+export type MobileGoogleLoginInfo = {
+  provider: 'google'
+  result: {
+    idToken: string
+    accessToken: {
+      userId: string
+      refreshToken: string
+      token: string
+    }
+    profile: {
+      email: string
+      familyName: string
+      imageUrl: string
+      name: string
+    }
+  }
+}

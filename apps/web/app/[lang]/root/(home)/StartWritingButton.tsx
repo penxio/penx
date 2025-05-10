@@ -19,6 +19,18 @@ export function StartWritingButton() {
         // variant="outline-solid"
         // variant="brand"
         onClick={async () => {
+          // const session = await api.user.loginWithEmailLoginCode.mutate({
+          //   code: '961726',
+          // })
+          // console.log('========session:', session)
+
+          // return
+          const code = await api.user.sendEmailLoginCode.mutate({
+            email: 'forsigner@gmail.com',
+            userId: '1212',
+          })
+          console.log('=======>>>>>>>>>>>>>:data', code)
+          return
           if (data) {
             push('/~')
           } else {

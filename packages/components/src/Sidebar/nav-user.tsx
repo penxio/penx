@@ -64,7 +64,6 @@ export function NavUser() {
 
   async function desktopLogin() {
     const authToken = nanoid()
-    console.log('hello........')
     openUrl(`${ROOT_HOST}/desktop-login?token=${authToken}`)
 
     while (true) {
