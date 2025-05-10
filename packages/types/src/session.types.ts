@@ -35,10 +35,11 @@ export interface SessionData {
 }
 
 export type GoogleLoginInfo = {
-  email: string
-  openid: string
-  picture: string
-  name: string
+  accessToken: string
+  // email: string
+  // openid: string
+  // picture: string
+  // name: string
   ref: string
   userId: string
 }

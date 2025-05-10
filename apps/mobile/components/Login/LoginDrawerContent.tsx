@@ -17,12 +17,16 @@ import { api } from '@penx/trpc-client'
 import { MobileGoogleLoginInfo } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Input } from '@penx/uikit/input'
+import { useSession } from '@penx/session'
 
 interface Props {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 export function LoginDrawerContent({ setVisible }: Props) {
+  const { login } = useSession()
   const [json, setJson] = useState({})
+  const [error, setError] = useState({})
+  const [session, setSession] = useState({})
   async function login() {
     const res = (await SocialLogin.login({
       provider: 'google',
@@ -32,27 +36,50 @@ export function LoginDrawerContent({ setVisible }: Props) {
     })) as any as MobileGoogleLoginInfo
     // alert(JSON.stringify(res))
     // handle the response. popoutStore is specific to my app
+    console.log('======res:', res)
 
     setJson(res.result)
 
-    const sites = await localDB.site.toArray()
-    const site = sites.find((s) => !s.isRemote)
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then((response) => response.json())
+      .then((json) => console.log(json))
 
-    const session = await api.auth.loginWithGoogleToken.mutate({
-      openid: res.result.accessToken.userId,
-      token: res.result.accessToken.token as string,
-      userId: site?.userId,
-    })
+    try {
+      const sites = await localDB.site.toArray()
+      const site = sites.find((s) => !s.isRemote)
 
-    await set('SESSION', session)
-    queryClient.setQueryData(['SESSION'], session)
-    location.reload()
+      const {} = await login({
+        
+        
+        
+      })
+      const session = await api.auth.loginWithGoogleToken.mutate({
+        openid: res.result.accessToken.userId,
+        token: res.result.accessToken.token as string,
+        userId: site?.userId,
+      })
+
+      setSession(session)
+      await set('SESSION', session)
+      queryClient.setQueryData(['SESSION'], session)
+      setVisible(false)
+    } catch (error) {
+      console.log('=========error:', error)
+
+      setError(Object.values(error))
+      //
+    }
   }
   return (
     <div>
       <div className="">
         <Button onClick={login}>Login</Button>
         <pre>{JSON.stringify(json, null, 2)}</pre>
+        session:
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+        error:
+        <pre>{JSON.stringify(error, null, 2)}</pre>
+        <div>{process.env.NEXT_PUBLIC_ROOT_HOST}</div>
       </div>
     </div>
   )

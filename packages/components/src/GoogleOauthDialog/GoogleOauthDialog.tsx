@@ -34,14 +34,14 @@ export function GoogleOauthDialog() {
       const qsObject = JSON.parse(decodeURIComponent(qsData))
 
       try {
-        const info = await getGoogleUserInfo(accessToken)
 
         const result = await login({
           type: 'penx-google',
-          email: info.email,
-          openid: info.sub,
-          picture: info.picture,
-          name: info.name,
+          accessToken: accessToken,
+          // email: info.email,
+          // openid: info.sub,
+          // picture: info.picture,
+          // name: info.name,
           userId: userId,
           ref: qsObject?.ref || '',
         })

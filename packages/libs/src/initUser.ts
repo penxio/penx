@@ -10,6 +10,7 @@ import {
 } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { uniqueId } from '@penx/unique-id'
+import { getGoogleUserInfo } from './getGoogleUserInfo'
 import { hashPassword } from './hashPassword'
 
 const SEVEN_DAYS = 60 * 60 * 24 * 7
@@ -61,14 +62,17 @@ type GoogleLoginInfo = {
 }
 
 export async function initUserByGoogleInfo(
-  info: GoogleLoginInfo,
+  accessToken: string,
   ref: string,
   userId?: string,
 ) {
   return prisma.$transaction(
     async (tx) => {
+      const info = await getGoogleUserInfo(accessToken)
+      console.log('=======info:', info)
+
       const account = await tx.account.findUnique({
-        where: { providerAccountId: info.openid },
+        where: { providerAccountId: info.sub },
         ...includeAccount,
       })
 
@@ -85,7 +89,7 @@ export async function initUserByGoogleInfo(
             create: [
               {
                 providerType: ProviderType.GOOGLE,
-                providerAccountId: info.openid,
+                providerAccountId: info.sub,
                 providerInfo: info,
                 email: info.email,
               },
@@ -109,7 +113,7 @@ export async function initUserByGoogleInfo(
       }
 
       return tx.account.findUniqueOrThrow({
-        where: { providerAccountId: info.openid },
+        where: { providerAccountId: info.sub },
         ...includeAccount,
       })
     },

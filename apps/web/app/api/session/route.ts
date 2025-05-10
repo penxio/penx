@@ -116,12 +116,10 @@ export async function POST(req: NextRequest) {
   const json = await req.json()
   const hostname = json?.host || ''
 
-  console.log('=======json:', json)
-
   if (isGoogleLogin(json)) {
     const ref = json?.ref || ''
     const userId = json?.userId || ''
-    const account = await initUserByGoogleInfo(json, ref, userId)
+    const account = await initUserByGoogleInfo(json.accessToken, ref, userId)
     await updateSession(session, account)
     try {
       await registerSiteUser(hostname, account.userId)

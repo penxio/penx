@@ -4,12 +4,24 @@ import React, { useRef, useState } from 'react'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import { UserRoundIcon } from 'lucide-react'
 import { Drawer } from 'vaul'
+import { useSession } from '@penx/session'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
+import { getUrl } from '@penx/utils'
 import { LoginDrawerContent } from './LoginDrawerContent'
 
 export function LoginButton() {
+  const { isLoading, session } = useSession()
   const [visible, setVisible] = useState(false)
+  if (session) {
+    return (
+      <Avatar className="size-7">
+        <AvatarImage src={getUrl(session?.image)} />
+        <AvatarFallback>{session?.name}</AvatarFallback>
+      </Avatar>
+    )
+  }
   return (
     <>
       <Button
@@ -33,6 +45,7 @@ export function LoginButton() {
             <DialogTitle className="hidden">
               <DialogDescription />
             </DialogTitle>
+            {session && <div>{JSON.stringify(session, null, 2)}</div>}
             <LoginDrawerContent setVisible={setVisible} />
           </Drawer.Content>
         </Drawer.Portal>

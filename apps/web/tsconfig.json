@@ -17,6 +17,6 @@
     ],
     "module": "esnext"
   },
-  "include": [".", ".next/types/**/*.ts"],
+  "include": ["./**/*.ts", "./**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
