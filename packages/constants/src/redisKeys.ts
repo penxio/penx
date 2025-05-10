@@ -50,4 +50,8 @@ export const redisKeys = {
   postEngagement(creationId: string) {
     return `post:pv:${creationId}`
   },
+
+  emailLoginCode(code: string) {
+    return `login-code:${code}`
+  },
 }

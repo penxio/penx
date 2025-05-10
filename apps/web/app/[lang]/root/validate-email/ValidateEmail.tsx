@@ -13,6 +13,7 @@ export function ValidateEmail() {
   const { data, login } = useSession()
   const inited = useRef(false)
 
+
   const loginWithEmail = useCallback(
     async function () {
       const token = searchParams?.get('token') as string

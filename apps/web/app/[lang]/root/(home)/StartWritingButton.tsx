@@ -3,6 +3,7 @@
 import { Trans } from '@lingui/react'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
+import { api, trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 
@@ -17,7 +18,7 @@ export function StartWritingButton() {
         className="relative h-14 w-52 overflow-hidden text-base"
         // variant="outline-solid"
         // variant="brand"
-        onClick={() => {
+        onClick={async () => {
           if (data) {
             push('/~')
           } else {

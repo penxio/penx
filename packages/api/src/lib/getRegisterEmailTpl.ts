@@ -32,7 +32,7 @@ export function getRegisterEmailTpl(link: string): string {
                   </p>
 
                   <p style="font-size:16px;line-height:26px;margin:16px 0">
-                    <a href="${link}" style="color:#FF6363;text-decoration-line:none" target="_blank">👉
+                    <a href="${link}" style="color:#FF6363;text-decoration-line:none" target="_blank">
                       Verify email
                     </a>
                   </p>

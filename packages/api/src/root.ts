@@ -6,6 +6,7 @@ import { accessTokenRouter } from './routers/access-token'
 import { affiliateRouter } from './routers/affiliate'
 import { areaRouter } from './routers/area'
 import { assetRouter } from './routers/asset'
+import { authRouter } from './routers/auth'
 import { billingRouter } from './routers/billing'
 import { campaignRouter } from './routers/campaign'
 import { cliRouter } from './routers/cli'
@@ -49,6 +50,7 @@ export const appRouter = router({
   healthCheck: publicProcedure.query(() => 'yay!'),
   cli: cliRouter,
   desktop: desktopRouter,
+  auth: authRouter,
   site: siteRouter,
   hostedSite: hostedSiteRouter,
   user: userRouter,

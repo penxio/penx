@@ -7,8 +7,8 @@ import { Trans } from '@lingui/react'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -19,6 +19,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAuthStatus } from './useAuthStatus'
 import { useLoginDialog } from './useLoginDialog'
@@ -48,13 +49,17 @@ export function RegisterForm({}: Props) {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
+      const sites = await localDB.site.toArray()
+      const site = sites.find((s) => !s.isRemote)
+
       const ref = searchParams?.get('ref') as string
       setLoading(true)
-      await api.user.registerByEmail.mutate({
+      await api.auth.registerByEmail.mutate({
         ...data,
         ref: ref || '',
+        userId: site?.userId,
       })
-      // setIsOpen(false)
+
       setAuthStatus('register-email-sent')
       toast.success(
         'Registration request sent. Please check your email for the verification link.',

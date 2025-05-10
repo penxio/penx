@@ -8,7 +8,6 @@ import { MobileAddCreationButton } from './MobileAddCreationButton'
 export function MobileHome() {
   return (
     <div className="">
-
       {/* <QuickSearchTrigger /> */}
       <AreaWidgets />
       {/* <div className="fixed bottom-3 left-0 flex w-full items-center justify-center">

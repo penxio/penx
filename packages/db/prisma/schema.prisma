@@ -65,7 +65,7 @@ model Site {
   font                   String         @default("font-cal") @db.VarChar(50)
   image                  String?        @default("") @db.VarChar(2183)
   podcastCover           String?        @default("") @db.VarChar(2183)
-  email                  String?        @unique @db.VarChar(255)
+  email                  String?        @db.VarChar(255)
   stripeType             StripeType     @default(NONE)
   sassSubscriptionId     String?        @unique @db.VarChar(50)
   sassSubscriptionStatus String?        @db.VarChar(50)

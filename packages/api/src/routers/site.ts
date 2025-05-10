@@ -371,6 +371,8 @@ export const siteRouter = router({
         })
       }
 
+      console.log('site=========>>>>:', input)
+
       return prisma.$transaction(
         async (tx) => {
           const promises = [

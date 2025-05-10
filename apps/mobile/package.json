@@ -28,6 +28,7 @@
     "@capacitor/ios": "7.2.0",
     "@capacitor/keyboard": "7.0.1",
     "@capacitor/status-bar": "5.0.7",
+    "@capgo/capacitor-social-login": "7.5.9",
     "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",

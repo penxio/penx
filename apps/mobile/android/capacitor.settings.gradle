@@ -10,3 +10,6 @@ project(':capacitor-keyboard').projectDir = new File('../../../node_modules/.pnp
 
 include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../../../node_modules/.pnpm/@capacitor+status-bar@5.0.7_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar/android')
+
+include ':capgo-capacitor-social-login'
+project(':capgo-capacitor-social-login').projectDir = new File('../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login/android')

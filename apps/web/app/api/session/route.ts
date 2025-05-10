@@ -1,5 +1,4 @@
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
-import { initUserByEmail, initUserByGoogleInfo } from '@/lib/initUser'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
 import { compareSync } from 'bcrypt-edge'
 import { getIronSession, IronSession } from 'iron-session'
@@ -15,6 +14,7 @@ import {
   Subscription,
 } from '@penx/db/client'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
+import { initUserByEmail, initUserByGoogleInfo } from '@penx/libs/initUser'
 import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import {
   AccountWithUser,
@@ -141,7 +141,8 @@ export async function POST(req: NextRequest) {
       const email = decoded.email
       const password = decoded.password
       const ref = decoded.ref || ''
-      const account = await initUserByEmail(email, password, ref)
+      const userId = decoded.userId || ''
+      const account = await initUserByEmail(email, password, ref, userId)
       await updateSession(session, account)
       await registerSiteUser(hostname, account.userId)
       return Response.json(session)

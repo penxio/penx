@@ -4,12 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Redirect, Route } from 'react-router-dom'
-import Home from '@/components/pages/Feed'
-import ListDetail from '@/components/pages/ListDetail'
-import Lists from '@/components/pages/Lists'
-import Notifications from '@/components/pages/Notifications'
 import { PageHome } from '@/components/pages/PageHome'
-import Settings from '@/components/pages/Settings'
 import { StatusBar, Style } from '@capacitor/status-bar'
 import {
   IonApp,
@@ -34,7 +29,6 @@ import { appEmitter } from '@penx/emitter'
 import { ICreation } from '@penx/model-type'
 import { MobileHome } from './MobileHome'
 import { PageDetail } from './pages/PageDetail'
-import Tabs from './pages/Tabs'
 
 setupIonicReact({})
 
