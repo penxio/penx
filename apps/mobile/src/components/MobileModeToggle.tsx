@@ -25,8 +25,28 @@ interface Props {
     | 'farcaster'
     | 'outline-solid'
 }
-export function ModeToggle({ className, variant = 'ghost' }: Props) {
-  const { setTheme } = useTheme()
+export function MobileModeToggle({ className, variant = 'ghost' }: Props) {
+  const setTheme = (theme: 'light' | 'dark' | 'system') => {
+    const html = document.documentElement
+    if (theme === 'light') {
+      html.classList.remove('dark')
+      html.classList.remove('ion-palette-dark')
+    } else if (theme === 'dark') {
+      html.classList.add('dark')
+      html.classList.add('ion-palette-dark')
+    } else {
+      const prefersDarkScheme = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      )
+      if (prefersDarkScheme.matches) {
+        html.classList.add('dark')
+        html.classList.add('ion-palette-dark')
+      } else {
+        html.classList.remove('dark')
+        html.classList.remove('ion-palette-dark')
+      }
+    }
+  }
 
   return (
     <DropdownMenu>
@@ -41,7 +61,7 @@ export function ModeToggle({ className, variant = 'ghost' }: Props) {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center">
+      <DropdownMenuContent align="start">
         <DropdownMenuItem onClick={() => setTheme('light')}>
           Light
         </DropdownMenuItem>

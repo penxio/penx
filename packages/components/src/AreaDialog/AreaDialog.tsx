@@ -23,7 +23,7 @@ export function AreaDialog() {
         <DialogDescription></DialogDescription>
       </DialogHeader>
       <DialogContent
-        className="sm:max-w-[600px]"
+        className="text-foreground sm:max-w-[600px]"
         onInteractOutside={(e) => {
           e.preventDefault()
         }}

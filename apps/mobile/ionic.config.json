@@ -1,0 +1,7 @@
+{
+  "name": "PenX",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

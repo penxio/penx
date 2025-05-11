@@ -1,18 +1,11 @@
 {
 	"appId": "com.penx.penxio",
 	"appName": "PenX",
-	"webDir": "out",
-	"plugins": {
-		"SplashScreen": {
-			"launchShowDuration": 0
-		},
-		"Keyboard": {
-			"resize": "body",
-			"resizeOnFullScreen": true
-		}
-	},
+	"webDir": "dist",
 	"packageClassList": [
 		"SafeAreaPlugin",
+		"AppPlugin",
+		"HapticsPlugin",
 		"KeyboardPlugin",
 		"StatusBarPlugin",
 		"SocialLoginPlugin"

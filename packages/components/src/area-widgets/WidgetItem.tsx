@@ -192,7 +192,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           <Drawer.Root open={visible} onOpenChange={setVisible}>
             <Drawer.Portal>
               <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-              <Drawer.Content className="bg-background fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none">
+              <Drawer.Content className="bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none">
                 <div
                   aria-hidden
                   className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300"

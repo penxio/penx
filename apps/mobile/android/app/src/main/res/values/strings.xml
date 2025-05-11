@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="app_name">PenX</string>
-    <string name="title_activity_main">PenX</string>
+    <string name="title_activity_main">penx</string>
     <string name="package_name">com.penx.penxio</string>
     <string name="custom_url_scheme">com.penx.penxio</string>
 </resources>

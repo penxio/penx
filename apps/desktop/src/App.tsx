@@ -10,10 +10,10 @@ import { SessionData } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { sleep } from '@penx/utils'
-import { AuthProvider } from './AuthProvider'
-import './style.css'
 import { AppProvider } from '@penx/components/AppProvider'
 import { Updater } from './Updater'
+
+import './style.css'
 
 function App() {
   const locale = 'en'

@@ -119,7 +119,7 @@ export const WidgetList = () => {
   const activeItem = activeId ? widgets.find(({ id }) => id === activeId) : null
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="text-foreground flex flex-col gap-2">
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}

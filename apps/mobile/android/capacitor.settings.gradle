@@ -5,6 +5,12 @@ project(':capacitor-android').projectDir = new File('../../../node_modules/.pnpm
 include ':capacitor-community-safe-area'
 project(':capacitor-community-safe-area').projectDir = new File('../../../node_modules/.pnpm/@capacitor-community+safe-area@7.0.0-alpha.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/safe-area/android')
 
+include ':capacitor-app'
+project(':capacitor-app').projectDir = new File('../../../node_modules/.pnpm/@capacitor+app@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/app/android')
+
+include ':capacitor-haptics'
+project(':capacitor-haptics').projectDir = new File('../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics/android')
+
 include ':capacitor-keyboard'
 project(':capacitor-keyboard').projectDir = new File('../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard/android')
 
@@ -13,6 +19,3 @@ project(':capacitor-status-bar').projectDir = new File('../../../node_modules/.p
 
 include ':capgo-capacitor-social-login'
 project(':capgo-capacitor-social-login').projectDir = new File('../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login/android')
-
-include ':capacitor-plugin-safe-area'
-project(':capacitor-plugin-safe-area').projectDir = new File('../../../node_modules/.pnpm/capacitor-plugin-safe-area@4.0.0_@capacitor+core@7.2.0/node_modules/capacitor-plugin-safe-area/android')

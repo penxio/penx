@@ -62,7 +62,6 @@ export function CreationItem({ creation }: CreationItemProps) {
               setVisible?.(false)
               return
             }
-            console.log('>>>>>>>GOGO>>>>>>>>')
 
             store.panels.updateMainPanel({
               id: uniqueId(),

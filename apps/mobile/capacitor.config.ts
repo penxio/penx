@@ -1,21 +1,9 @@
-/// <reference types="@capacitor/keyboard" />
-import { CapacitorConfig } from '@capacitor/cli'
-import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard'
+import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.penx.penxio',
   appName: 'PenX',
-  webDir: 'out',
-  plugins: {
-    SplashScreen: {
-      launchShowDuration: 0,
-    },
-    Keyboard: {
-      resize: KeyboardResize.Body,
-      // style: KeyboardStyle.Dark,
-      resizeOnFullScreen: true,
-    },
-  },
-}
+  webDir: 'dist'
+};
 
-export default config
+export default config;

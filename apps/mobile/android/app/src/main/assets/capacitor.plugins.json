@@ -4,6 +4,14 @@
 		"classpath": "com.getcapacitor.community.safearea.SafeAreaPlugin"
 	},
 	{
+		"pkg": "@capacitor/app",
+		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
+	},
+	{
+		"pkg": "@capacitor/haptics",
+		"classpath": "com.capacitorjs.plugins.haptics.HapticsPlugin"
+	},
+	{
 		"pkg": "@capacitor/keyboard",
 		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
 	},
@@ -14,9 +22,5 @@
 	{
 		"pkg": "@capgo/capacitor-social-login",
 		"classpath": "ee.forgr.capacitor.social.login.SocialLoginPlugin"
-	},
-	{
-		"pkg": "capacitor-plugin-safe-area",
-		"classpath": "com.capacitor.safearea.SafeAreaPlugin"
 	}
 ]

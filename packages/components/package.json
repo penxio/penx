@@ -10,6 +10,7 @@
     "./tailwind.css": "./src/styles/tailwind.css",
     "./*": "./src/*.tsx",
     "./QuickInput": "./src/QuickInput.tsx",
+    "./ProfileButton": "./src/ProfileButton.tsx",
     "./AddCreationButton": "./src/AddCreationButton.tsx",
     "./AreaContext": "./src/AreaContext.tsx",
     "./AreasPopover": "./src/AreasPopover/AreasPopover.tsx",

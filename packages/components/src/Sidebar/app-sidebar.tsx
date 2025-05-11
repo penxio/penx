@@ -31,10 +31,10 @@ import {
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { ProfileButton } from '../ProfileButton'
 import { AreaWidgets } from '../area-widgets'
 import { AreasPopover } from '../AreasPopover/AreasPopover'
 import { ImportPostEntry } from './ImportPostEntry'
-import { NavUser } from './nav-user'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
 
@@ -132,7 +132,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             )}
             <ModeToggle className="hover:bg-foreground/8" />
           </div>
-          <NavUser />
+          <ProfileButton />
         </div>
       </SidebarFooter>
     </Sidebar>
