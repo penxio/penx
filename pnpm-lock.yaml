@@ -213,17 +213,17 @@ importers:
         specifier: ^2.7.1
         version: 2.7.1
       '@trpc/client':
-        specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
+        specifier: 11.1.2
+        version: 11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2)
       '@trpc/next':
-        specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@trpc/server@11.0.0-rc.466)(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 11.1.2
+        version: 11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/react-query@11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)
       '@trpc/react-query':
-        specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 11.1.2
+        version: 11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)
       '@trpc/server':
-        specifier: 11.0.0-rc.466
-        version: 11.0.0-rc.466
+        specifier: 11.1.2
+        version: 11.1.2(typescript@5.8.2)
       '@udecode/cmdk':
         specifier: ^0.2.0
         version: 0.2.1(@types/react-dom@19.1.3(@types/react@19.1.3))(@types/react@19.1.3)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1254,8 +1254,8 @@ importers:
         specifier: 7.0.1
         version: 7.0.1(@capacitor/core@7.2.0)
       '@capacitor/status-bar':
-        specifier: 5.0.7
-        version: 5.0.7(@capacitor/core@7.2.0)
+        specifier: 7.0.1
+        version: 7.0.1(@capacitor/core@7.2.0)
       '@capgo/capacitor-social-login':
         specifier: 7.5.9
         version: 7.5.9(@capacitor/core@7.2.0)
@@ -1337,6 +1337,9 @@ importers:
       '@penx/widgets':
         specifier: workspace:*
         version: link:../../packages/widgets
+      capacitor-plugin-safe-area:
+        specifier: 4.0.0
+        version: 4.0.0(@capacitor/core@7.2.0)
       next:
         specifier: ^15.3.0
         version: 15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2801,10 +2804,10 @@ packages:
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
 
-  '@capacitor/status-bar@5.0.7':
-    resolution: {integrity: sha512-KblB3gV2LDMEjx3fQoNBAzxb+Tr+2mv68SfFLLDCMiMUD3Eile2TAWRWd1yxy496pDFTOs2BJtup8++iuuuJ/w==}
+  '@capacitor/status-bar@7.0.1':
+    resolution: {integrity: sha512-iDv3mXYo9CdxYRVwt3/pRyuk25p7Sn4GfaS/zMZyVIqTzsvKLCIIH3GdKK+ta+nsNcAVpCw/t5jFEBt1D18ctA==}
     peerDependencies:
-      '@capacitor/core': ^5.0.0
+      '@capacitor/core': '>=7.0.0'
 
   '@capgo/capacitor-social-login@7.5.9':
     resolution: {integrity: sha512-rrTYHQfKByvnka1isSuodcSjNEFl8cLYSIZHMViC7gf/4+eeD+9G3zmEe+JYzqn9w77KRFtNfOcD3NEarQj1ZA==}
@@ -5250,38 +5253,43 @@ packages:
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
-  '@trpc/client@11.0.0-rc.466':
-    resolution: {integrity: sha512-8nEYgDPvTrXzn00FgLEOU/BHtH89LVQ0JTiW2efa4wW2XIrj3Nv/QKCRkNXV6yu7VSefwU+p2PulUL6TjNlzAg==}
+  '@trpc/client@11.1.2':
+    resolution: {integrity: sha512-RpifJOAv+ql9gF3oafa3dLCF01AzWu2DzejvehAPG2IlwHxopKoYXaImJ8zPwRkZokuWiKz5v65HjElmi8TlrQ==}
     peerDependencies:
-      '@trpc/server': 11.0.0-rc.466+1e8344ea7
+      '@trpc/server': 11.1.2
+      typescript: '>=5.7.2'
 
-  '@trpc/next@11.0.0-rc.466':
-    resolution: {integrity: sha512-kB6bpi81ABUzD2xy6I4+ELbPLqTXqweCouw2jnVkYH1yGUJqKYur/M8pWG1qA5fh1dReOt1zouaTyAq4QqzRUw==}
+  '@trpc/next@11.1.2':
+    resolution: {integrity: sha512-dtk8p/al4p5BU4Otol8ufM3sjuJT/1do0wR912OjetRLwG0Y41FTwhUeXcfLpUMjWUWy+dnCwG8aH/sDvLO5RQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.49.2
-      '@trpc/client': 11.0.0-rc.466+1e8344ea7
-      '@trpc/react-query': 11.0.0-rc.466+1e8344ea7
-      '@trpc/server': 11.0.0-rc.466+1e8344ea7
+      '@tanstack/react-query': ^5.59.15
+      '@trpc/client': 11.1.2
+      '@trpc/react-query': 11.1.2
+      '@trpc/server': 11.1.2
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
+      typescript: '>=5.7.2'
     peerDependenciesMeta:
       '@tanstack/react-query':
         optional: true
       '@trpc/react-query':
         optional: true
 
-  '@trpc/react-query@11.0.0-rc.466':
-    resolution: {integrity: sha512-nt0hcskUrr1+kj8kRRhucB6h+VuK55By7ZR1oxaIGdbPygwfXoi2n4+s3t7kjZsJzugKDWtDnwJGfGFaUIP62A==}
+  '@trpc/react-query@11.1.2':
+    resolution: {integrity: sha512-Ws3oIaj0qqbVIUyfYd9uFBwqk7eRqsxaLhLKN7grskoBo8wkh/CUADcN6ZD+GGogC3Dsg9S4WhgU1jVgfc/ahg==}
     peerDependencies:
-      '@tanstack/react-query': ^5.49.2
-      '@trpc/client': 11.0.0-rc.466+1e8344ea7
-      '@trpc/server': 11.0.0-rc.466+1e8344ea7
+      '@tanstack/react-query': ^5.67.1
+      '@trpc/client': 11.1.2
+      '@trpc/server': 11.1.2
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
+      typescript: '>=5.7.2'
 
-  '@trpc/server@11.0.0-rc.466':
-    resolution: {integrity: sha512-/40QZXyZCc3HvgJbQ2+IqCGm4m+fJs7q7gMp6nLiuPB3FIJJeV0r+w1M/NGcG5avbCJ3A5Qy45s4N1glcMv1ug==}
+  '@trpc/server@11.1.2':
+    resolution: {integrity: sha512-Oi9zWHG0ZDkbDo4sYkduoV7q4sIe6UwjrRLC91vNMYQK+PVgpbTCmK1laRwewAGu0zaayqcGDosANjceOIC3GA==}
+    peerDependencies:
+      typescript: '>=5.7.2'
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -6883,6 +6891,11 @@ packages:
 
   canvas-hypertxt@1.0.3:
     resolution: {integrity: sha512-+VsMpRr64jYgKq2IeFUNel3vCZH/IzS+iXSHxmUV3IUH5dXlC9xHz4AwtPZisDxZ5MWcuK0V+TXgPKFPiZnxzg==}
+
+  capacitor-plugin-safe-area@4.0.0:
+    resolution: {integrity: sha512-5VHT4wG2TlwHtyy3zKrAjKwgJQgC3KeMfRW1bc8abTETLYNLxb85zvfpA0QFE59BxbtYHD57GvXKJuUPgEHl3g==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
 
   cborg@4.2.10:
     resolution: {integrity: sha512-ZVA0xrVn8uBfDJYgfKKZzB/93z/Uiz7YtRdBPsZi/gyHNyqFdHMLHURVEk9dejOHepaX0zhcMyNva2/vF972SA==}
@@ -13712,7 +13725,7 @@ snapshots:
     dependencies:
       '@capacitor/core': 7.2.0
 
-  '@capacitor/status-bar@5.0.7(@capacitor/core@7.2.0)':
+  '@capacitor/status-bar@7.0.1(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
 
@@ -16395,30 +16408,35 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
-  '@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466)':
+  '@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2)':
     dependencies:
-      '@trpc/server': 11.0.0-rc.466
+      '@trpc/server': 11.1.2(typescript@5.8.2)
+      typescript: 5.8.2
 
-  '@trpc/next@11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@trpc/server@11.0.0-rc.466)(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@trpc/next@11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/react-query@11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)':
     dependencies:
-      '@trpc/client': 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
-      '@trpc/server': 11.0.0-rc.466
+      '@trpc/client': 11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2)
+      '@trpc/server': 11.1.2(typescript@5.8.2)
       next: 15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
+      typescript: 5.8.2
     optionalDependencies:
       '@tanstack/react-query': 5.75.7(react@19.1.0)
-      '@trpc/react-query': 11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@trpc/react-query': 11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)
 
-  '@trpc/react-query@11.0.0-rc.466(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.0.0-rc.466(@trpc/server@11.0.0-rc.466))(@trpc/server@11.0.0-rc.466)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@trpc/react-query@11.1.2(@tanstack/react-query@5.75.7(react@19.1.0))(@trpc/client@11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2))(@trpc/server@11.1.2(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2)':
     dependencies:
       '@tanstack/react-query': 5.75.7(react@19.1.0)
-      '@trpc/client': 11.0.0-rc.466(@trpc/server@11.0.0-rc.466)
-      '@trpc/server': 11.0.0-rc.466
+      '@trpc/client': 11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2)
+      '@trpc/server': 11.1.2(typescript@5.8.2)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
+      typescript: 5.8.2
 
-  '@trpc/server@11.0.0-rc.466': {}
+  '@trpc/server@11.1.2(typescript@5.8.2)':
+    dependencies:
+      typescript: 5.8.2
 
   '@tsconfig/node10@1.0.11': {}
 
@@ -18265,6 +18283,10 @@ snapshots:
   caniuse-lite@1.0.30001717: {}
 
   canvas-hypertxt@1.0.3: {}
+
+  capacitor-plugin-safe-area@4.0.0(@capacitor/core@7.2.0):
+    dependencies:
+      '@capacitor/core': 7.2.0
 
   cborg@4.2.10: {}
 

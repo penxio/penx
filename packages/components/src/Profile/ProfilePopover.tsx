@@ -1,7 +1,6 @@
 'use client'
 
 import { memo } from 'react'
-import { getDashboardPath } from '@/lib/getDashboardPath'
 import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react'
 import {

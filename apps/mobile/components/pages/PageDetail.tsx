@@ -34,14 +34,20 @@ interface PageDetailProps {
 }
 
 export function PageDetail({ id }: PageDetailProps) {
+
   return (
     <>
       <IonHeader
         style={{
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
         }}
       >
-        <IonToolbar>
+        <IonToolbar
+          style={{
+            '--background': 'white',
+            // '--border-width': 0,
+          }}
+        >
           <IonButtons slot="start">
             <IonBackButton text="" color="dark"></IonBackButton>
           </IonButtons>
@@ -59,7 +65,6 @@ export function PageDetail({ id }: PageDetailProps) {
             <IonButton
               color="dark"
               onClick={() => {
-                //
                 console.log('more.........')
               }}
             >

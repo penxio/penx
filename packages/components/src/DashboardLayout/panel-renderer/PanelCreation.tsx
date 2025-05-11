@@ -22,7 +22,10 @@ interface Props {
 
 export function PanelCreation(props: Props) {
   return (
-    <PanelCreationProvider creationId={props.panel?.creationId!}>
+    <PanelCreationProvider
+      creationId={props.panel?.creationId!}
+      panel={props.panel}
+    >
       <Content {...props}></Content>
     </PanelCreationProvider>
   )

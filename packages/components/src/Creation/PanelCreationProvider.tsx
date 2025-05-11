@@ -23,6 +23,7 @@ import { LoadingDots } from '@penx/uikit/loading-dots'
 export const PanelCreationContext = createContext({} as ICreation)
 
 interface Props {
+  panel?: Panel
   creationId: string
 }
 
@@ -32,6 +33,7 @@ export function usePanelCreationContext() {
 }
 
 export const PanelCreationProvider = ({
+  panel,
   creationId,
   children,
 }: PropsWithChildren<Props>) => {
@@ -47,7 +49,7 @@ export const PanelCreationProvider = ({
     })
   }, [])
 
-  if (isLoading || updating) {
+  if (isLoading || panel?.isLoading || updating) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
         <LoadingDots className="bg-foreground/60" />

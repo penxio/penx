@@ -32,16 +32,24 @@ import { PageDetail } from './pages/PageDetail'
 
 setupIonicReact({})
 
-if (isBrowser) {
-  window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', async (status) => {
-      try {
-        await StatusBar.setStyle({
-          style: status.matches ? Style.Dark : Style.Light,
-        })
-      } catch {}
+StatusBar.setOverlaysWebView({ overlay: false })
+// StatusBar.setBackgroundColor()
+
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+await StatusBar.setStyle({
+  style: prefersDarkScheme.matches ? Style.Dark : Style.Light,
+})
+
+prefersDarkScheme.addEventListener('change', async (status) => {
+  try {
+    await StatusBar.setStyle({
+      style: status.matches ? Style.Dark : Style.Light,
     })
+  } catch {}
+})
+
+if (isBrowser) {
 }
 
 export const AppShell = () => {
@@ -73,42 +81,6 @@ export const AppShell = () => {
       </IonPage>
     </IonApp>
   )
-  // return (
-  //   <IonApp className="">
-  //     <IonPage className="">
-  //       <IonHeader>
-  //         <IonToolbar>
-  //           <IonTitle>Feed</IonTitle>
-  //           <IonButtons slot="start">
-  //             <IonMenuButton />
-  //           </IonButtons>
-  //           <IonButtons slot="end">
-  //             <IonButton onClick={() => setShowNotifications(true)}>
-  //               <IonIcon icon={notificationsOutline} />
-  //             </IonButton>
-  //           </IonButtons>
-  //         </IonToolbar>
-  //       </IonHeader>
-  //       <IonContent className="" fullscreen>
-  //         <div className="bg-foreground/6 min-h-screen flex-1 px-3 pb-16">
-  //           <IonNav ref={nav} root={() => <PageHome />}></IonNav>
-  //         </div>
-  //       </IonContent>
-  //     </IonPage>
-  //   </IonApp>
-  // )
-
-  // return (
-  //   <IonApp className="">
-  //     <IonReactRouter>
-  //       <IonRouterOutlet>
-  //         <Route path="" render={() => <Redirect to="/feed" />} exact={true} />
-  //         <Route path="/feed" render={() => <Home />} exact={true} />
-  //         <Route path="/detail" render={() => <ListDetail />} />
-  //       </IonRouterOutlet>
-  //     </IonReactRouter>
-  //   </IonApp>
-  // )
 }
 
 export default AppShell

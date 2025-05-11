@@ -13,6 +13,7 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
     implementation project(':capgo-capacitor-social-login')
+    implementation project(':capacitor-plugin-safe-area')
 
 }
 

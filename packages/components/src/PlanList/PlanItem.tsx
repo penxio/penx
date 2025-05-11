@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@penx/utils'
-import { PlanType } from '@penx/db/client'
 import { Check, XIcon } from 'lucide-react'
+import { PlanType } from '@penx/db/client'
+import { cn } from '@penx/utils'
 import { UpgradeButton } from './UpgradeButton'
 import { useBillingCycle } from './useBillingCycle'
 

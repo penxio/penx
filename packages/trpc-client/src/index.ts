@@ -6,7 +6,7 @@ import { createTRPCReact } from '@trpc/react-query'
 import { get } from 'idb-keyval'
 import superjson from 'superjson'
 import { type AppRouter } from '@penx/api'
-import { isDesktop, ROOT_HOST } from '@penx/constants'
+import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 
 const link = httpBatchLink({
   url: `${ROOT_HOST}/api/trpc`,
@@ -14,9 +14,9 @@ const link = httpBatchLink({
   // fetch: tauriFetch,
   transformer: superjson,
   async headers() {
-    if (isDesktop) {
+    if (isDesktop || isMobileApp) {
       const session = await get('SESSION')
-      console.log('========session:', session)
+      console.log('========session>>>>>:', session.accessToken)
 
       if (session?.accessToken) {
         return {

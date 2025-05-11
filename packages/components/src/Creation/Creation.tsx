@@ -106,7 +106,7 @@ export function Creation() {
         >
           <div
             className={cn(
-              'w-full px-0 sm:px-[max(10px,calc(50%-350px))] md:px-16',
+              'w-full px-0 sm:px-[max(10px,calc(50%-350px))]',
             )}
           >
             {showTitle && (

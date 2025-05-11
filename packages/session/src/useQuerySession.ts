@@ -97,11 +97,15 @@ export function useQuerySession() {
   }
 
   async function logout() {
-    const res = await fetchJson<SessionData>(sessionApiRoute, {
-      method: 'DELETE',
-    })
+    if (isMobileApp || isDesktop) {
+      queryClient.setQueryData(queryKey, {})
+    } else {
+      const res = await fetchJson<SessionData>(sessionApiRoute, {
+        method: 'DELETE',
+      })
 
-    queryClient.setQueryData(queryKey, res)
+      queryClient.setQueryData(queryKey, res)
+    }
     await set(SESSION, undefined)
   }
 

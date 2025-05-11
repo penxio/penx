@@ -14,5 +14,9 @@
 	{
 		"pkg": "@capgo/capacitor-social-login",
 		"classpath": "ee.forgr.capacitor.social.login.SocialLoginPlugin"
+	},
+	{
+		"pkg": "capacitor-plugin-safe-area",
+		"classpath": "com.capacitor.safearea.SafeAreaPlugin"
 	}
 ]

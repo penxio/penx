@@ -11,7 +11,7 @@ import { generateGradient } from '@penx/utils/generateGradient'
 import { LoginDrawerContent } from './LoginDrawerContent'
 
 export function ProfileButton() {
-  const { session } = useSession()
+  const { session, logout } = useSession()
   const [visible, setVisible] = useState(false)
   if (!session) return
 
@@ -30,13 +30,13 @@ export function ProfileButton() {
           <Drawer.Content className="bg-background fixed bottom-0 left-0 right-0 flex max-h-[95vh] min-h-[95vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none">
             <div
               aria-hidden
-              className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300"
+              className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full"
             />
 
             <DialogTitle className="hidden">
               <DialogDescription />
             </DialogTitle>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-1 flex-col items-center">
               <div className="flex flex-1 flex-col items-center">
                 <Avatar className="size-12" onClick={() => setVisible(true)}>
                   <AvatarImage src={getUrl(session?.image)} />
@@ -49,11 +49,14 @@ export function ProfileButton() {
                   {session.email}
                 </div>
               </div>
-              <div>
+              <div className="pb-6">
                 <Button
                   variant="ghost"
-                  className="mt-4"
-                  onClick={() => setVisible(false)}
+                  className="mt-4 text-red-500"
+                  onClick={() => {
+                    setVisible(false)
+                    logout()
+                  }}
                 >
                   Logout
                 </Button>

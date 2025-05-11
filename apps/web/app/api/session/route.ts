@@ -33,7 +33,7 @@ import { generateNonce } from '@penx/utils/generateNonce'
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Methods': 'GET,POST,DELETE,PATCH,OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 }
 
@@ -62,7 +62,9 @@ async function updateSession(
 
   session.accessToken = jwt.sign(
     {
+      siteId: site?.id,
       userId: session.uid,
+      activeSiteId: site?.id,
     },
     process.env.NEXTAUTH_SECRET!,
     {

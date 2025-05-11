@@ -85,7 +85,7 @@ export function PlateEditor({
         {showAddButton && (
           <div
             className={cn(
-              'size-full px-0 pt-4 text-base sm:px-[max(10px,calc(50%-350px))] md:px-16',
+              'size-full px-0 pt-4 text-base sm:px-[max(10px,calc(50%-350px))]',
             )}
           >
             <AddNodeBtn editor={editor} />
