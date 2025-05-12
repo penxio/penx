@@ -1,23 +1,16 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
+import { Capacitor } from '@capacitor/core'
 import { SocialLogin } from '@capgo/capacitor-social-login'
-import { useQuery } from '@tanstack/react-query'
 import { set } from 'idb-keyval'
-import { toast } from 'sonner'
-import { ROOT_HOST } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
-import { useCreations } from '@penx/hooks/useCreations'
-import { getGoogleUserInfo } from '@penx/libs/getGoogleUserInfo'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
-import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { MobileGoogleLoginInfo } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
-import { Input } from '@penx/uikit/input'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { LoginForm } from './LoginForm'
 
@@ -32,11 +25,7 @@ export function LoginDrawerContent({ setVisible }: Props) {
   const [loading, setLoading] = useState(false)
 
   async function onLogin() {
-    const todo = await fetch(
-      'https://jsonplaceholder.typicode.com/todos/1',
-    ).then((response) => response.json())
-    console.log('todo.........>>>>:', todo)
-
+    setLoading(true)
     try {
       const res = (await SocialLogin.login({
         provider: 'google',
@@ -48,7 +37,7 @@ export function LoginDrawerContent({ setVisible }: Props) {
       // handle the response. popoutStore is specific to my app
       console.log('======res:', res)
 
-      setJson(res.result)
+      setJson(res)
 
       const sites = await localDB.site.toArray()
       const site = sites.find((s) => !s.isRemote)
@@ -65,6 +54,7 @@ export function LoginDrawerContent({ setVisible }: Props) {
       setSession(session)
       await set('SESSION', session)
       queryClient.setQueryData(['SESSION'], session)
+      appEmitter.emit('APP_LOGIN_SUCCESS', session)
       setVisible(false)
     } catch (error) {
       console.log('=========error:', error)
@@ -72,11 +62,13 @@ export function LoginDrawerContent({ setVisible }: Props) {
       setError(Object.values(error))
       //
     }
+
+    setLoading(false)
   }
   return (
-    <div className="px-3">
+    <div className="-mt-10 flex h-full flex-1 flex-col justify-center px-6">
       <div className="">
-        <Button onClick={onLogin} className="w-full" variant="secondary">
+        <Button onClick={onLogin} className="w-full gap-2" variant="secondary">
           {loading && <LoadingDots className="bg-foreground" />}
           {!loading && (
             <>
@@ -85,7 +77,7 @@ export function LoginDrawerContent({ setVisible }: Props) {
             </>
           )}
         </Button>
-        <div className="text-foreground/40 my-2 text-center">or</div>
+        <div className="text-foreground/40 my-4 text-center">or</div>
         <LoginForm setVisible={setVisible} />
         <div>
           <pre>{JSON.stringify(json, null, 2)}</pre>

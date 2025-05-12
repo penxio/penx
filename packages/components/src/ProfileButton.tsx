@@ -150,7 +150,7 @@ export function ProfileButton({ loginButton }: Props) {
             </div>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+        {/* <DropdownMenuSeparator /> */}
 
         {/* <DropdownMenuGroup>
           <DropdownMenuLabel>Sites</DropdownMenuLabel>

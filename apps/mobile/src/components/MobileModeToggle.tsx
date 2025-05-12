@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { StatusBar, Style } from '@capacitor/status-bar'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Button } from '@penx/uikit/button'
@@ -26,24 +27,39 @@ interface Props {
     | 'outline-solid'
 }
 export function MobileModeToggle({ className, variant = 'ghost' }: Props) {
+  async function setLight() {
+    const html = document.documentElement
+    html.classList.remove('dark')
+    html.classList.remove('ion-palette-dark')
+
+    await StatusBar.setStyle({
+      style: Style.Light,
+    })
+  }
+
+  async function setDark() {
+    const html = document.documentElement
+    html.classList.add('dark')
+    html.classList.add('ion-palette-dark')
+    await StatusBar.setStyle({
+      style: Style.Dark,
+    })
+  }
+
   const setTheme = (theme: 'light' | 'dark' | 'system') => {
     const html = document.documentElement
     if (theme === 'light') {
-      html.classList.remove('dark')
-      html.classList.remove('ion-palette-dark')
+      setLight()
     } else if (theme === 'dark') {
-      html.classList.add('dark')
-      html.classList.add('ion-palette-dark')
+      setDark()
     } else {
       const prefersDarkScheme = window.matchMedia(
         '(prefers-color-scheme: dark)',
       )
       if (prefersDarkScheme.matches) {
-        html.classList.add('dark')
-        html.classList.add('ion-palette-dark')
+        setDark()
       } else {
-        html.classList.remove('dark')
-        html.classList.remove('ion-palette-dark')
+        setLight()
       }
     }
   }

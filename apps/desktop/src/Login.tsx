@@ -4,8 +4,8 @@ import { openUrl } from '@tauri-apps/plugin-opener'
 import { nanoid } from 'nanoid'
 import { api } from '@penx/trpc-client'
 import { SessionData } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import './style.css'
 import { LoginStatus } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
@@ -48,7 +48,6 @@ export function Login() {
     }
 
     const session = await api.desktop.loginByToken.mutate(authToken)
-    console.log('===desktop=session:', session)
 
     appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
   }

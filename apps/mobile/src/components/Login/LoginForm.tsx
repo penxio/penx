@@ -7,6 +7,7 @@ import { Trans } from '@lingui/react'
 import { set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { appEmitter } from '@penx/emitter'
 import { useRouter } from '@penx/libs/i18n'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
@@ -66,6 +67,7 @@ export function LoginForm({ setVisible }: Props) {
         setVisible(false)
         await set('SESSION', session)
         queryClient.setQueryData(['SESSION'], session)
+        appEmitter.emit('APP_LOGIN_SUCCESS', session)
       }
     } catch (error) {
       console.log('========error:', error)

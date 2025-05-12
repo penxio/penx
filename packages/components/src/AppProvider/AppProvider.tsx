@@ -1,10 +1,16 @@
 import { createContext, FC, PropsWithChildren, useEffect, useRef } from 'react'
 import { useAtomValue } from 'jotai'
+import { isBrowser, isServer } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { useSession } from '@penx/session'
 import { appLoadingAtom, store } from '@penx/store'
 import { LogoSpinner } from '@penx/widgets/LogoSpinner'
 import { runWorker } from '@penx/worker'
 import { AppService } from './AppService'
+
+if (!isServer) {
+  runWorker()
+}
 
 export const appContext = createContext({} as { app: AppService })
 
@@ -18,9 +24,14 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     if (isLoading) return
     if (!appRef.current.inited) {
       appRef.current.init(session)
-      runWorker()
     }
   }, [isLoading, session])
+
+  useEffect(() => {
+    appEmitter.on('APP_LOGIN_SUCCESS', (session) => {
+      appRef.current.init(session)
+    })
+  }, [])
 
   if (loading) {
     return (

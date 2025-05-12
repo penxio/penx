@@ -61,6 +61,7 @@ const Page: React.FC = () => {
       google: {
         iOSClientId:
           '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
+          webClientId: '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com'
       },
     })
   }, [])
@@ -69,10 +70,7 @@ const Page: React.FC = () => {
     <IonPage className="">
       <AreaDialog />
       <IonHeader
-        className={cn(
-          'bg-background',
-          "platform === 'android' ? 'safe-area' : ''",
-        )}
+        className={cn(platform === 'android' ? 'safe-area' : '')}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
         }}

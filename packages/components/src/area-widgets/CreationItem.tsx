@@ -92,7 +92,7 @@ export function CreationItem({ creation }: CreationItemProps) {
           )}
           <div
             className={cn(
-              'line-clamp-1 flex-1 text-sm',
+              'text-foreground/80 line-clamp-1 flex-1 text-sm',
               isMobileApp && 'text-base',
             )}
           >

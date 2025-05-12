@@ -26,7 +26,7 @@ export function SearchButton() {
           <Drawer.Content className="bg-background fixed bottom-0 left-0 right-0 flex max-h-[95vh] min-h-[95vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none text-foreground">
             <div
               aria-hidden
-              className="mx-auto mb-4 mt-2 h-1.5 w-12 flex-shrink-0 rounded-full bg-gray-300"
+              className="mx-auto mb-4 mt-2 h-1 w-10 flex-shrink-0 rounded-full bg-foreground/30"
             />
 
             <DialogTitle className="hidden">

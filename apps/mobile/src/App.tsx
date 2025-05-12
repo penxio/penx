@@ -1,7 +1,6 @@
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Redirect, Route } from 'react-router-dom'
-import { useSidebar } from '@/hooks/useSidebar'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
@@ -80,7 +79,6 @@ init()
 setupIonicReact()
 
 const App: React.FC = () => {
-  const { status } = useSidebar()
   return (
     <IonApp>
       <LinguiClientProvider initialLocale={'en'} initialMessages={{}}>

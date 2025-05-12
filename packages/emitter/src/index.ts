@@ -10,6 +10,7 @@ export type AppEvent = {
   ROUTE_TO_DESIGN: undefined
   ROUTE_TO_CREATION: any
   DESKTOP_LOGIN_SUCCESS: any
+  APP_LOGIN_SUCCESS: any
 }
 
 export const appEmitter = mitt<AppEvent>()
