@@ -963,6 +963,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
       '@penx/editor':
         specifier: workspace:*
         version: link:../../packages/editor
@@ -1081,6 +1084,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
       '@penx/editor':
         specifier: workspace:*
         version: link:../../packages/editor
@@ -1292,6 +1298,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
       '@penx/editor':
         specifier: workspace:*
         version: link:../../packages/editor
@@ -1477,202 +1486,6 @@ importers:
         specifier: ^0.34.6
         version: 0.34.6(jsdom@22.1.0(bufferutil@4.0.8)(utf-8-validate@6.0.3))(lightningcss@1.29.2)(terser@5.39.0)
 
-  apps/mobile-bak:
-    dependencies:
-      '@capacitor-community/safe-area':
-        specifier: 7.0.0-alpha.1
-        version: 7.0.0-alpha.1(@capacitor/core@7.2.0)
-      '@capacitor/android':
-        specifier: 7.2.0
-        version: 7.2.0(@capacitor/core@7.2.0)
-      '@capacitor/core':
-        specifier: 7.2.0
-        version: 7.2.0
-      '@capacitor/ios':
-        specifier: 7.2.0
-        version: 7.2.0(@capacitor/core@7.2.0)
-      '@capacitor/keyboard':
-        specifier: 7.0.1
-        version: 7.0.1(@capacitor/core@7.2.0)
-      '@capacitor/status-bar':
-        specifier: 7.0.1
-        version: 7.0.1(@capacitor/core@7.2.0)
-      '@capgo/capacitor-social-login':
-        specifier: 7.5.9
-        version: 7.5.9(@capacitor/core@7.2.0)
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../../packages/api
-      '@penx/components':
-        specifier: workspace:*
-        version: link:../../packages/components
-      '@penx/constants':
-        specifier: workspace:*
-        version: link:../../packages/constants
-      '@penx/content-render':
-        specifier: workspace:*
-        version: link:../../packages/content-render
-      '@penx/contexts':
-        specifier: workspace:*
-        version: link:../../packages/contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../../packages/db
-      '@penx/editor':
-        specifier: workspace:*
-        version: link:../../packages/editor
-      '@penx/editor-custom-plugins':
-        specifier: workspace:*
-        version: link:../../packages/editor-custom-plugins
-      '@penx/editor-plugins':
-        specifier: workspace:*
-        version: link:../../packages/editor-plugins
-      '@penx/emitter':
-        specifier: workspace:*
-        version: link:../../packages/emitter
-      '@penx/encryption':
-        specifier: workspace:*
-        version: link:../../packages/encryption
-      '@penx/hooks':
-        specifier: workspace:*
-        version: link:../../packages/hooks
-      '@penx/libs':
-        specifier: workspace:*
-        version: link:../../packages/libs
-      '@penx/local-db':
-        specifier: workspace:*
-        version: link:../../packages/local-db
-      '@penx/math':
-        specifier: workspace:*
-        version: link:../../packages/math
-      '@penx/model-type':
-        specifier: workspace:*
-        version: link:../../packages/model-type
-      '@penx/query-client':
-        specifier: workspace:*
-        version: link:../../packages/query-client
-      '@penx/services':
-        specifier: workspace:*
-        version: link:../../packages/services
-      '@penx/session':
-        specifier: workspace:*
-        version: link:../../packages/session
-      '@penx/store':
-        specifier: workspace:*
-        version: link:../../packages/store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../../packages/trpc-client
-      '@penx/types':
-        specifier: workspace:*
-        version: link:../../packages/types
-      '@penx/uikit':
-        specifier: workspace:*
-        version: link:../../packages/uikit
-      '@penx/unique-id':
-        specifier: workspace:*
-        version: link:../../packages/unique-id
-      '@penx/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
-      '@penx/widgets':
-        specifier: workspace:*
-        version: link:../../packages/widgets
-      capacitor-plugin-safe-area:
-        specifier: 4.0.0
-        version: 4.0.0(@capacitor/core@7.2.0)
-      next:
-        specifier: ^15.3.0
-        version: 15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
-      react-router:
-        specifier: 5.3.4
-        version: 5.3.4(react@19.0.0)
-      react-router-dom:
-        specifier: 5.3.4
-        version: 5.3.4(react@19.0.0)
-      react-virtuoso:
-        specifier: 4.7.1
-        version: 4.7.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-    devDependencies:
-      '@capacitor/cli':
-        specifier: 7.2.0
-        version: 7.2.0
-      '@iconify/json':
-        specifier: ^2.2.311
-        version: 2.2.336
-      '@iconify/tailwind4':
-        specifier: ^1.0.4
-        version: 1.0.6(tailwindcss@4.1.6)
-      '@lingui/cli':
-        specifier: 5.3.1
-        version: 5.3.1(typescript@5.8.2)
-      '@lingui/loader':
-        specifier: 5.3.1
-        version: 5.3.1(typescript@5.8.2)(webpack@5.99.8)
-      '@lingui/swc-plugin':
-        specifier: 5.5.2
-        version: 5.5.2(@lingui/core@5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(@swc/core@1.11.24)(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
-      '@penx/typescript-config':
-        specifier: workspace:*
-        version: link:../../packages/typescript-config
-      '@tailwindcss/forms':
-        specifier: ^0.5.10
-        version: 0.5.10(tailwindcss@4.1.6)
-      '@tailwindcss/postcss':
-        specifier: 4.0.17
-        version: 4.0.17
-      '@tailwindcss/typography':
-        specifier: ^0.5.16
-        version: 0.5.16(tailwindcss@4.1.6)
-      '@types/jest':
-        specifier: 29.5.12
-        version: 29.5.12
-      '@types/node':
-        specifier: 20.11.30
-        version: 20.11.30
-      '@types/react':
-        specifier: ^19.0.7
-        version: 19.0.10
-      '@types/react-dom':
-        specifier: ^19.0.3
-        version: 19.0.4(@types/react@19.0.10)
-      '@types/react-router':
-        specifier: 5.1.20
-        version: 5.1.20
-      '@types/react-router-dom':
-        specifier: 5.3.3
-        version: 5.3.3
-      autoprefixer:
-        specifier: 10.4.18
-        version: 10.4.18(postcss@8.5.3)
-      css-loader:
-        specifier: ^7.1.2
-        version: 7.1.2(webpack@5.99.8)
-      ionicons:
-        specifier: 7.2.2
-        version: 7.2.2
-      postcss:
-        specifier: ^8.5.1
-        version: 8.5.3
-      pullstate:
-        specifier: '1.25'
-        version: 1.25.0(react@19.0.0)
-      reselect:
-        specifier: 5.1.0
-        version: 5.1.0
-      style-loader:
-        specifier: ^4.0.0
-        version: 4.0.0(webpack@5.99.8)
-      tailwindcss:
-        specifier: ^4.1.4
-        version: 4.1.6
-
   apps/web:
     dependencies:
       '@penx/api':
@@ -1693,6 +1506,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../../packages/db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
       '@penx/editor':
         specifier: workspace:*
         version: link:../../packages/editor
@@ -2060,9 +1876,15 @@ importers:
       '@penx/math':
         specifier: workspace:*
         version: link:../math
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
       '@penx/types':
         specifier: workspace:*
         version: link:../types
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@penx/typescript-config':
         specifier: workspace:*
@@ -2085,6 +1907,9 @@ importers:
       '@penx/editor-plugins':
         specifier: workspace:*
         version: link:../editor-plugins
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../emitter
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2227,6 +2052,9 @@ importers:
 
   packages/emitter:
     dependencies:
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2288,6 +2116,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../domain
       '@penx/emitter':
         specifier: workspace:*
         version: link:../emitter
@@ -2463,6 +2294,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
@@ -2587,6 +2421,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../domain
       '@penx/editor-transforms':
         specifier: workspace:*
         version: link:../editor-transforms
@@ -2596,6 +2433,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
@@ -7832,11 +7672,6 @@ packages:
   canvas-hypertxt@1.0.3:
     resolution: {integrity: sha512-+VsMpRr64jYgKq2IeFUNel3vCZH/IzS+iXSHxmUV3IUH5dXlC9xHz4AwtPZisDxZ5MWcuK0V+TXgPKFPiZnxzg==}
 
-  capacitor-plugin-safe-area@4.0.0:
-    resolution: {integrity: sha512-5VHT4wG2TlwHtyy3zKrAjKwgJQgC3KeMfRW1bc8abTETLYNLxb85zvfpA0QFE59BxbtYHD57GvXKJuUPgEHl3g==}
-    peerDependencies:
-      '@capacitor/core': '>=7.0.0'
-
   caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
 
@@ -9843,9 +9678,6 @@ packages:
   internmap@2.0.3:
     resolution: {integrity: sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==}
     engines: {node: '>=12'}
-
-  ionicons@7.2.2:
-    resolution: {integrity: sha512-I3iYIfc9Q9FRifWyFSwTAvbEABWlWY32i0sAVDDPGYnaIZVugkLCZFbEcrphW6ixVPg8tt1oLwalo/JJwbEqnA==}
 
   ionicons@7.4.0:
     resolution: {integrity: sha512-ZK94MMqgzMCPPMhmk8Ouu6goyVHFIlw/ACP6oe3FrikcI0N7CX0xcwVaEbUc0G/v3W0shI93vo+9ve/KpvcNhQ==}
@@ -20500,10 +20332,6 @@ snapshots:
 
   canvas-hypertxt@1.0.3: {}
 
-  capacitor-plugin-safe-area@4.0.0(@capacitor/core@7.2.0):
-    dependencies:
-      '@capacitor/core': 7.2.0
-
   caseless@0.12.0: {}
 
   cborg@4.2.10: {}
@@ -22776,10 +22604,6 @@ snapshots:
       side-channel: 1.1.0
 
   internmap@2.0.3: {}
-
-  ionicons@7.2.2:
-    dependencies:
-      '@stencil/core': 4.31.0
 
   ionicons@7.4.0:
     dependencies:

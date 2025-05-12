@@ -27,6 +27,7 @@
     "@penx/uikit": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/contexts": "workspace:*",
+    "@penx/emitter": "workspace:*",
     "@penx/editor-plugins": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",
     "@penx/content-render": "workspace:*",

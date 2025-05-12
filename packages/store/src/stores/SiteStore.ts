@@ -3,10 +3,10 @@ import { produce } from 'immer'
 import { atom } from 'jotai'
 import { ACTIVE_SITE } from '@penx/constants'
 import { localDB } from '@penx/local-db'
-import { AIProvider, ISite } from '@penx/model-type'
+import { AIProvider, ISiteNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
-export const siteAtom = atom<ISite>(null as unknown as ISite)
+export const siteAtom = atom<ISiteNode>(null as unknown as ISiteNode)
 
 export class SiteStore {
   constructor(private store: StoreType) {}
@@ -15,32 +15,37 @@ export class SiteStore {
     return this.store.get(siteAtom)
   }
 
-  set(state: ISite) {
+  set(state: ISiteNode) {
     this.store.set(siteAtom, state)
   }
 
   async fetch() {
     const site = await get(ACTIVE_SITE)
-    return site as ISite
+    return site as ISiteNode
   }
 
-  async save(site: ISite) {
+  async save(site: ISiteNode) {
     await set(ACTIVE_SITE, site)
   }
 
   async updateAIProvider(data: Partial<AIProvider>) {
     const site = this.get()
     const newSite = produce(site, (draft) => {
-      if (!draft.aiProviders?.length) draft.aiProviders = []
-      const index = draft.aiProviders.findIndex((p) => p.type === data.type)
+      if (!draft.props.aiProviders?.length) draft.props.aiProviders = []
+      const index = draft.props.aiProviders.findIndex(
+        (p) => p.type === data.type,
+      )
       if (index === -1) {
-        draft.aiProviders.push(data as AIProvider)
+        draft.props.aiProviders.push(data as AIProvider)
       } else {
-        draft.aiProviders[index] = { ...draft.aiProviders[index], ...data }
+        draft.props.aiProviders[index] = {
+          ...draft.props.aiProviders[index],
+          ...data,
+        }
       }
 
       if (Reflect.has(data, 'enabled') && data.enabled) {
-        for (const item of draft.aiProviders) {
+        for (const item of draft.props.aiProviders) {
           item.enabled = item.type === data.type
         }
       }
@@ -49,8 +54,11 @@ export class SiteStore {
     this.set(newSite)
     await this.save(newSite)
 
-    await localDB.site.update(newSite.id, {
-      aiProviders: newSite.aiProviders,
+    await localDB.updateSite(newSite.id, {
+      props: {
+        ...site.props,
+        aiProviders: newSite.props.aiProviders,
+      },
     })
   }
 }

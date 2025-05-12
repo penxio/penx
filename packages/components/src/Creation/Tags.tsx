@@ -5,16 +5,15 @@ import { Trans } from '@lingui/react'
 import { Command } from 'cmdk'
 import { HashIcon, Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
+import { Creation } from '@penx/domain'
 import {
   addCreationTag,
   createTag,
-  CreationTagWithTag,
   deleteCreationTag,
 } from '@penx/hooks/useCreation'
 import { useCreationTags } from '@penx/hooks/useCreationTags'
 import { useTags } from '@penx/hooks/useTags'
 import { getColorByName, getTextColorByName } from '@penx/libs/color-helper'
-import { ICreation } from '@penx/model-type/ICreation'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
@@ -27,7 +26,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { CommandGroup, CommandInput, CommandItem } from './command-components'
 
 interface Props {
-  creation: ICreation
+  creation: Creation
 }
 
 export function Tags({ creation }: Props) {
@@ -57,7 +56,7 @@ export function Tags({ creation }: Props) {
               className="hidden cursor-pointer group-hover:inline-flex"
               onClick={async () => {
                 try {
-                  await deleteCreationTag(item)
+                  await deleteCreationTag(item.raw)
                 } catch (error) {
                   toast.error(extractErrorMessage(error))
                 }

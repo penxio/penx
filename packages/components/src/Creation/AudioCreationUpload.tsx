@@ -3,9 +3,9 @@ import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 // @ts-ignore
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
+import { Creation } from '@penx/domain'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { useMySite } from '@penx/hooks/useMySite'
-import { ICreation } from '@penx/model-type/ICreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
@@ -14,7 +14,7 @@ import { getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
-  creation: ICreation
+  creation: Creation
 }
 
 export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(

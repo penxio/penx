@@ -15,7 +15,7 @@ import {
 import { cog, ellipsisHorizontal } from 'ionicons/icons'
 import { PlusIcon, XIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
-import { ICreation } from '@penx/model-type'
+import { ICreationNode } from '@penx/model-type'
 
 const platform = Capacitor.getPlatform()
 
@@ -26,7 +26,7 @@ export const PageCreation: React.FC = () => {
   useEffect(() => {
     // if (initRef.current) return
     // initRef.current = true
-    function handle(creation: ICreation) {
+    function handle(creation: ICreationNode) {
       console.log('handle route to creation: ', creation.id)
       setCreationId(creation.id)
       modal.current?.present()

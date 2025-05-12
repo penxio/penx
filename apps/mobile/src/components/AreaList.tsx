@@ -59,7 +59,7 @@ export const AreaList: React.FC = () => {
             <MenuItem
               className="flex cursor-pointer items-center gap-2 py-2"
               onClick={async () => {
-                store.area.set(item)
+                store.area.set(item.raw)
                 store.creations.refetchCreations(item.id)
                 store.visit.setAndSave({ activeAreaId: item.id })
                 // store.panels.resetPanels()

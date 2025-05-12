@@ -11,7 +11,7 @@ export async function pollingSyncToRemote() {
   // console.log('=======pollingInterval:', pollingInterval)
 
   while (true) {
-    console.log('sync to remote...........isDesktop:', isDesktop)
+    // console.log('sync to remote...........isDesktop:', isDesktop)
     await sync()
     await sleep(pollingInterval)
   }
@@ -22,7 +22,7 @@ async function sync() {
 
   if (!session || !session?.siteId) return
 
-  const site = await localDB.site.where({ id: session.siteId }).first()
+  const site = await localDB.getSite(session.siteId)
 
   if (!site) return
 
@@ -35,23 +35,12 @@ async function sync() {
 
     const data = {
       operation: change.operation,
-      table: change.table,
       siteId: change.siteId,
       key: change.key,
       data: change.data,
     }
 
     try {
-      // fetch('https://jsonplaceholder.typicode.com/todos/1')
-      //   .then((response) => response.json())
-      //   .then((json) => console.log(json))
-
-      // fetch(`${ROOT_HOST}/api/v1/sync`)
-      //   .then((response) => response.json())
-      //   .then((json) => console.log(json))
-
-      // await api.sync.push.mutate(data)
-
       let headers: Record<string, string> = {}
 
       if (isDesktop) {

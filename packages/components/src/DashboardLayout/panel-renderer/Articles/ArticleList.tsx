@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { CreationStatus } from '@penx/constants'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { Panel } from '@penx/types'
 import { Label } from '@penx/uikit/label'

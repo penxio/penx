@@ -408,7 +408,7 @@ export async function getFriends(site: Site) {
     async () => {
       const creations = await findManyCreations(site, mold!.id)
       return creations.map((item) => {
-        return creationToFriend(item, item.mold)
+        return creationToFriend(item, item.mold as any)
       })
     },
     [`${siteId}-friends`],

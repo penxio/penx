@@ -15,7 +15,7 @@ import { AreaForm } from './AreaForm'
 import { useAreaDialog } from './useAreaDialog'
 
 export function AreaDialog() {
-  const { isOpen, setIsOpen, area: field } = useAreaDialog()
+  const { isOpen, setIsOpen, area } = useAreaDialog()
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
@@ -30,7 +30,7 @@ export function AreaDialog() {
       >
         <DialogHeader>
           <DialogTitle>
-            {!!field ? (
+            {!!area ? (
               <Trans id="Update area"></Trans>
             ) : (
               <Trans id="Create area"></Trans>

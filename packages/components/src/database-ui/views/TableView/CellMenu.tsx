@@ -1,6 +1,3 @@
-import { MenuItem } from '@penx/uikit/menu'
-import { IRowNode } from '@penx/model-type'
-import { Record } from '@penx/db/client'
 import {
   ArrowDown,
   ArrowLeft,
@@ -10,6 +7,8 @@ import {
   Trash,
   Trash2,
 } from 'lucide-react'
+import { Record } from '@penx/db/client'
+import { MenuItem } from '@penx/uikit/menu'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { EditField } from './ColumnMenu/EditField'
 

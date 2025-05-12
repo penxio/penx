@@ -1,13 +1,12 @@
-import { ICreation } from '@penx/model-type/ICreation'
-import { IMold } from '@penx/model-type/IMold'
-import { Creation, Friend, Prop } from './theme.types'
+import { IMoldNode } from '@penx/model-type'
 import { SiteCreation } from '@penx/types'
+import { Creation, Friend, Prop } from './theme.types'
 
 export function creationToFriend(
-  creation: ICreation | Creation | SiteCreation,
-  mold: IMold,
+  creation: Creation | SiteCreation,
+  mold: IMoldNode,
 ): Friend {
-  const props = (mold?.props || []) as Prop[]
+  const props = (mold?.props.props || []) as Prop[]
   const output = props.reduce(
     (acc, prop) => {
       return { ...acc, [prop.slug]: creation.props?.[prop.id] }

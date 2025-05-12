@@ -1,13 +1,11 @@
-import { set } from 'idb-keyval'
-import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
-import { ICreationTag } from '@penx/model-type'
+import { ICreationTagNode } from '@penx/model-type'
 import { api } from '@penx/trpc-client'
 import { StoreType } from '../store-types'
 
-export const creationTagsAtom = atom<ICreationTag[]>(
-  null as unknown as ICreationTag[],
+export const creationTagsAtom = atom<ICreationTagNode[]>(
+  null as unknown as ICreationTagNode[],
 )
 
 export class CreationTagsStore {
@@ -17,13 +15,13 @@ export class CreationTagsStore {
     return this.store.get(creationTagsAtom)
   }
 
-  set(state: ICreationTag[]) {
+  set(state: ICreationTagNode[]) {
     this.store.set(creationTagsAtom, state)
   }
 
   async refetchCreationTags() {
     const siteId = this.store.site.get().id
-    const list = await localDB.creationTag.where({ siteId }).toArray()
+    const list = await localDB.listCreationTags(siteId)
     this.set(list)
   }
 }

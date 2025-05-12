@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { BookOpen, Check, ChevronDown, Database, Search, X } from 'lucide-react'
+import { Area } from '@penx/domain'
+import { useMySite } from '@penx/hooks/useMySite'
 import { localDB } from '@penx/local-db'
-import { IArea } from '@penx/model-type/IArea'
 import { Button } from '@penx/uikit/button'
 import {
   DropdownMenu,
@@ -26,21 +27,23 @@ export const KnowledgeSourcePicker = ({
   onSourceChange,
   className,
 }: KnowledgeSourcePickerProps) => {
-  const [areas, setAreas] = useState<IArea[]>([])
+  const { site } = useMySite()
+  const [areas, setAreas] = useState<Area[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedArea, setSelectedArea] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
-  const [filteredAreas, setFilteredAreas] = useState<IArea[]>([])
+  const [filteredAreas, setFilteredAreas] = useState<Area[]>([])
 
   // Fetch areas from localDB
   useEffect(() => {
     const fetchAreas = async () => {
       try {
         setLoading(true)
-        const areasData = await localDB.area.toArray()
-        setAreas(areasData)
-        setFilteredAreas(areasData)
+        const areasData = await localDB.listAreas(site.id)
+        const areas = areasData.map((i) => new Area(i))
+        setAreas(areas)
+        setFilteredAreas(areas)
       } catch (error) {
         console.error('Error fetching areas:', error)
       } finally {

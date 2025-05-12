@@ -1,15 +1,14 @@
 'use client'
 
-import { Button } from '@penx/uikit/button'
-import { IViewNode, ViewColumn } from '@penx/model-type'
-import { Filter } from '@penx/types'
 import { Plus } from 'lucide-react'
+import { Filter } from '@penx/types'
+import { Button } from '@penx/uikit/button'
 import { useDatabaseContext } from '../../DatabaseProvider'
 
 interface IFilterBtns {
   filters: Filter[]
-  viewColumns: ViewColumn[]
-  currentView: IViewNode
+  viewColumns: any[]
+  currentView: any
   addFilter: () => void
 }
 

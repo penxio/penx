@@ -1,5 +1,5 @@
-import { Tag } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { Tag } from '@penx/domain'
 
 type State = {
   isOpen: boolean

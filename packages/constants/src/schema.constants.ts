@@ -39,7 +39,7 @@ export type AddCreationInput = z.infer<typeof addCreationInputSchema>
 
 export const updateAreaInputSchema = z.object({
   id: z.string(),
-  type: z.nativeEnum(AreaType).optional(),
+  type: z.string().optional(),
   logo: z.string().min(1, { message: 'Please upload your avatar' }).optional(),
   name: z
     .string()
@@ -59,15 +59,15 @@ export const updateAreaInputSchema = z.object({
 export type UpdateAreaInput = z.infer<typeof updateAreaInputSchema>
 
 export const createAreaInputSchema = z.object({
-  id: z.string().uuid(),
-  logo: z.string().min(1, { message: 'Please upload your avatar' }),
+  logo: z.string().optional(),
   name: z.string().min(1, {
     message: 'Name must be at least 1 characters.',
   }),
-  slug: z.string().min(1, { message: 'Slug is required' }),
-  description: z.string(),
+  slug: z.string().optional(),
+  description: z.string().optional(),
   about: z.string().optional(),
-  chargeMode: z.nativeEnum(ChargeMode).optional(),
+  chargeMode: z.string().optional(),
+  // price: z.string().optional(),
 })
 
 export type CreateAreaInput = z.infer<typeof createAreaInputSchema>

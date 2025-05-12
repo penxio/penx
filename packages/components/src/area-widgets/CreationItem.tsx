@@ -10,13 +10,14 @@ import {
 import { Node } from 'slate'
 import { isMobileApp } from '@penx/constants'
 import { CreationStatus } from '@penx/db/client'
+import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
 import { useCreationMold } from '@penx/hooks/useCreationMold'
 import { usePanels } from '@penx/hooks/usePanels'
-import { ICreation } from '@penx/model-type/ICreation'
+import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { CreationType, PanelType, SiteCreation } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -31,7 +32,7 @@ import { cn } from '@penx/utils'
 import { useIsAllContext } from './IsAllContext'
 
 interface CreationItemProps {
-  creation: ICreation
+  creation: Creation
 }
 
 export function CreationItem({ creation }: CreationItemProps) {

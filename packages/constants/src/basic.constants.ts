@@ -372,7 +372,6 @@ export enum WidgetType {
   AI_CHAT = 'AI_CHAT',
   COLLECTION = 'COLLECTION',
   FAVORITES = 'FAVORITES',
-  QUICK_INPUT = 'QUICK_INPUT',
   MOLD = 'MOLD',
 }
 

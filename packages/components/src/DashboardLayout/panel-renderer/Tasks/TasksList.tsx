@@ -2,7 +2,7 @@
 
 import { Trans } from '@lingui/react'
 import { useQuery } from '@tanstack/react-query'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
 import { TaskItem } from './TaskItem'

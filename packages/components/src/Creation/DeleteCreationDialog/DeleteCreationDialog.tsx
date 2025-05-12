@@ -31,7 +31,7 @@ export function DeleteCreationDialog({}: Props) {
   async function remove() {
     setLoading(true)
     try {
-      store.creations.deleteCreation(creation)
+      store.creations.deleteCreation(creation.raw)
       toast.success('Deleted successfully')
       setIsOpen(false)
       const panel = panels.find((p) => p.creationId === creation.id)

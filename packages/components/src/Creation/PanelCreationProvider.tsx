@@ -7,20 +7,16 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import debounce from 'lodash.debounce'
-import { UpdateCreationInput } from '@penx/constants'
-import { CreationTag, Tag } from '@penx/db/client'
+import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
-import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { useCreation } from '@penx/hooks/useCreation'
-import { ICreation } from '@penx/model-type/ICreation'
+import { ICreationNode } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 
-export const PanelCreationContext = createContext({} as ICreation)
+export const PanelCreationContext = createContext({} as Creation)
 
 interface Props {
   panel?: Panel
@@ -37,16 +33,38 @@ export const PanelCreationProvider = ({
   creationId,
   children,
 }: PropsWithChildren<Props>) => {
-  const { data, isLoading } = useCreation(creationId)
+  const { data, isLoading, refetch } = useCreation(creationId)
   const [updating, setUpdating] = useState(false)
 
   useEffect(() => {
-    appEmitter.on('CREATION_UPDATED', (creation) => {
+    const handle = (creation: ICreationNode) => {
       setUpdating(true)
       setTimeout(() => {
         setUpdating(false)
       }, 1)
-    })
+    }
+    appEmitter.on('CREATION_UPDATED', handle)
+    return () => {
+      appEmitter.off('CREATION_UPDATED', handle)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handle = (creation: ICreationNode) => {
+      if (panel?.creationId === creation.id) {
+        // queryClient.setQueryData(['creations', creation.id], creation)
+
+        setUpdating(true)
+        setTimeout(async () => {
+          await refetch()
+          setUpdating(false)
+        }, 1)
+      }
+    }
+    appEmitter.on('PANEL_CREATION_UPDATED', handle)
+    return () => {
+      appEmitter.off('PANEL_CREATION_UPDATED', handle)
+    }
   }, [])
 
   if (isLoading || panel?.isLoading || updating) {
@@ -58,7 +76,7 @@ export const PanelCreationProvider = ({
   }
 
   return (
-    <PanelCreationContext.Provider value={data!}>
+    <PanelCreationContext.Provider value={new Creation(data!)}>
       {children}
     </PanelCreationContext.Provider>
   )

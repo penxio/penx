@@ -30,16 +30,16 @@ export const BackLinks = ({ className, style = {} }: Props) => {
         </h2>
 
         <div className="flex flex-col gap-2">
-          {backLinkPosts.map((post) => {
+          {backLinkPosts.map((creation) => {
             return (
               <Link
-                key={post.id}
-                href={`/creations/${post.slug}`}
+                key={creation.id}
+                href={`/creations/${creation.slug}`}
                 className={cn(
                   'text-foreground/40 hover:text-foreground cursor-pointer text-sm transition-all',
                 )}
               >
-                {post.title}
+                {creation.title}
               </Link>
             )
           })}

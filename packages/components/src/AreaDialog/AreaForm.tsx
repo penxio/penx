@@ -8,7 +8,11 @@ import { slug } from 'github-slugger'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { editorDefaultValue, isMobileApp } from '@penx/constants'
+import {
+  createAreaInputSchema,
+  editorDefaultValue,
+  isMobileApp,
+} from '@penx/constants'
 import { ChargeMode } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useArea } from '@penx/hooks/useArea'
@@ -37,27 +41,14 @@ import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useAreaDialog } from './useAreaDialog'
 
-const FormSchema = z.object({
-  // type: z.nativeEnum(FieldType),
-  logo: z.string().optional(),
-  name: z.string().min(1, {
-    message: 'Name must be at least 1 characters.',
-  }),
-  slug: z.string().optional(),
-  description: z.string(),
-  about: z.string().optional(),
-  chargeMode: z.string().optional(),
-  // price: z.string().optional(),
-})
-
 export function AreaForm() {
   const [isLoading, setLoading] = useState(false)
   const { setIsOpen, area } = useAreaDialog()
 
   const isEdit = !!area
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<z.infer<typeof createAreaInputSchema>>({
+    resolver: zodResolver(createAreaInputSchema),
     defaultValues: {
       // type: field?.type || FieldType.SUBJECT,
       logo: area?.logo || '',
@@ -79,7 +70,7 @@ export function AreaForm() {
     form.setValue('slug', slug(slugValue))
   }, [slugValue, form])
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof createAreaInputSchema>) {
     try {
       setLoading(true)
 
@@ -89,10 +80,7 @@ export function AreaForm() {
           ...data,
         })
       } else {
-        const area = await store.areas.addArea({
-          ...data,
-          slug: uniqueId(),
-        })
+        const area = await store.areas.addArea(data)
 
         store.area.set(area)
         store.creations.refetchCreations(area.id)
@@ -324,7 +312,7 @@ export function AreaForm() {
         <div className={cn(isMobileApp && 'flex justify-center')}>
           <Button
             type="submit"
-            className="w-32"
+            className="w-full md:w-32"
             disabled={isLoading || !form.formState.isValid}
           >
             {isLoading ? (

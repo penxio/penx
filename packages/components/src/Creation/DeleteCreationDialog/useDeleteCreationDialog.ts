@@ -1,11 +1,11 @@
 'use client'
 
 import { atom, useAtom } from 'jotai'
-import { ICreation } from '@penx/model-type/ICreation'
+import { Creation } from '@penx/domain'
 
 type State = {
   isOpen: boolean
-  creation: ICreation
+  creation: Creation
 }
 
 const dialogAtom = atom<State>({

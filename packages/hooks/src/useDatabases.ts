@@ -25,29 +25,10 @@ export function useDatabases() {
     enabled: !!siteId,
     queryKey: ['databases'],
     queryFn: async () => {
-      const databases = await localDB.database.where({ siteId }).toArray()
-      const localDatabases = databases.sort((a, b) => {
-        const updatedAtDiff = b.updatedAt.getTime() - a.updatedAt.getTime()
-        if (updatedAtDiff === 0) {
-          return b.createdAt.getTime() - a.createdAt.getTime()
-        }
-
-        return updatedAtDiff
+      const remoteDatabases = await api.database.list.query({
+        siteId,
       })
-
-      setTimeout(async () => {
-        const remoteDatabases = await api.database.list.query({
-          siteId,
-        })
-        const isEqual = equal(remoteDatabases, localDatabases)
-
-        if (isEqual) return
-        await localDB.database.clear()
-        await localDB.database.bulkAdd(remoteDatabases as any)
-        queryClient.setQueriesData({ queryKey: ['databases'] }, remoteDatabases)
-      }, 0)
-
-      return localDatabases as any as Database[]
+      return remoteDatabases
     },
   })
 }

@@ -49,8 +49,8 @@ export function RegisterForm({}: Props) {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      const sites = await localDB.site.toArray()
-      const site = sites.find((s) => !s.isRemote)
+      const sites = await localDB.listAllSites()
+      const site = sites.find((s) => !s.props.isRemote)
 
       const ref = searchParams?.get('ref') as string
       setLoading(true)

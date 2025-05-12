@@ -1,13 +1,10 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import isEqual from 'react-fast-compare'
 import { Plate } from '@udecode/plate/react'
-import { VariantProps } from 'class-variance-authority'
-import { Transforms } from 'slate'
-import { isMobileApp } from '@penx/constants'
 import {
   Editor,
   EditorContainer,
@@ -17,8 +14,11 @@ import {
   PlateEditorType,
   useCreateEditor,
 } from '@penx/editor/use-create-editor'
+import { appEmitter } from '@penx/emitter'
+import { Panel } from '@penx/types'
 import { AddNodeBtn } from '@penx/uikit/AddNodeBtn'
 import { cn } from '@penx/utils'
+import { focusFirstEmptyParagraphOrEnd } from './lib/focusFirstEmptyParagraphOrEnd'
 
 interface Props {
   readonly?: boolean
@@ -33,6 +33,7 @@ interface Props {
   onInit?: (editor: PlateEditorType) => void
   onChange?: (value: any) => void
   editorProps?: any
+  ref?: any
 }
 
 export function PlateEditor({
@@ -49,6 +50,7 @@ export function PlateEditor({
   variant = 'none',
   children,
   editorProps = {},
+  ref,
 }: Props & EditorVariantProps) {
   const valueRef = useRef(value)
   const editor = useCreateEditor({
@@ -56,6 +58,8 @@ export function PlateEditor({
     placeholder,
     showFixedToolbar,
   })
+
+  useImperativeHandle(ref, () => editor)
 
   useEffect(() => {
     onInit?.(editor)
@@ -67,6 +71,16 @@ export function PlateEditor({
     // editor.tf.setValue(value)
     // valueRef.current = value
   }, [value])
+
+  useEffect(() => {
+    const handleFocus = () => {
+      focusFirstEmptyParagraphOrEnd(editor as any)
+    }
+    appEmitter.on('FOCUS_EDITOR', handleFocus)
+    return () => {
+      appEmitter.off('FOCUS_EDITOR', handleFocus)
+    }
+  }, [])
 
   const innerJSX = (
     <Plate

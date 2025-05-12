@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 import { useNotes } from '@penx/hooks/useNotes'
 import { Panel } from '@penx/types'
 import { NoteItem } from './NoteItem'

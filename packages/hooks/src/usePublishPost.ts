@@ -5,8 +5,9 @@ import { Address } from 'viem'
 import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { GateType } from '@penx/db/client'
+import { Creation } from '@penx/domain'
+import { ICreationNode } from '@penx/model-type'
 // import { revalidateMetadata } from '@penx/libs/revalidateTag'
-import { ICreation } from '@penx/model-type/ICreation'
 import { api } from '@penx/trpc-client'
 import { CreationById } from '@penx/types'
 // import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
@@ -31,7 +32,7 @@ export function usePublishPost() {
 
   return {
     isLoading,
-    publishPost: async (creation: ICreation, opt: PublishPostOptions) => {
+    publishPost: async (creation: Creation, opt: PublishPostOptions) => {
       const { gateType, collectible, delivered, slug } = opt
       setLoading(true)
 

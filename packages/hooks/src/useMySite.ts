@@ -1,7 +1,11 @@
 import { useAtomValue } from 'jotai'
+import { Site } from '@penx/domain'
 import { siteAtom } from '@penx/store'
 
 export function useMySite() {
-  const site = useAtomValue(siteAtom)
-  return { site }
+  const raw = useAtomValue(siteAtom)
+  return {
+    raw,
+    site: new Site(raw),
+  }
 }

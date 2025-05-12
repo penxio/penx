@@ -1,12 +1,9 @@
 import { TRPCError } from '@trpc/server'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
-import { createAreaInputSchema, updateAreaInputSchema } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { AreaType, ChargeMode } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
-import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
-import { revalidateSite } from '@penx/libs/revalidateSite'
 import { protectedProcedure, router } from '../trpc'
 
 export const areaRouter = router({
@@ -51,74 +48,6 @@ export const areaRouter = router({
 
     return area
   }),
-
-  createArea: protectedProcedure
-    .input(createAreaInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      const molds = await prisma.mold.findMany({
-        where: { siteId: ctx.activeSiteId },
-      })
-      const area = await prisma.area.create({
-        data: {
-          siteId: ctx.activeSiteId,
-          userId: ctx.token.uid,
-          favorites: [],
-          widgets: getInitialWidgets(molds),
-          updatedAt: new Date(),
-          ...input,
-        },
-      })
-
-      const site = await prisma.site.findUniqueOrThrow({
-        where: { id: ctx.activeSiteId },
-        include: { domains: true },
-      })
-
-      const collaborators = await prisma.collaborator.findMany({
-        where: { siteId: ctx.activeSiteId },
-      })
-      for (const item of collaborators) {
-        await cacheHelper.updateMySites(item.userId, null)
-      }
-
-      revalidateSite(site.domains)
-
-      await cacheHelper.updateArea(area.id, null)
-
-      return area
-    }),
-
-  updateArea: protectedProcedure
-    .input(updateAreaInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      const { id, ...rest } = input
-      const area = await prisma.area.update({
-        where: { id },
-        data: {
-          ...rest,
-        },
-      })
-
-      await cacheHelper.updateArea(area.id, null)
-
-      revalidateTag(`${area.siteId}-area-${area.slug}`)
-
-      const site = await prisma.site.findUniqueOrThrow({
-        where: { id: ctx.activeSiteId },
-        include: { domains: true },
-      })
-
-      const collaborators = await prisma.collaborator.findMany({
-        where: { siteId: ctx.activeSiteId },
-      })
-
-      for (const item of collaborators) {
-        await cacheHelper.updateMySites(item.userId, null)
-      }
-
-      revalidateSite(site.domains)
-      return area
-    }),
 
   deleteArea: protectedProcedure
     .input(

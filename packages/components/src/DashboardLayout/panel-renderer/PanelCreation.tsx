@@ -46,7 +46,7 @@ export function Content({ panel, index }: Props) {
         </div>
       </PanelHeaderWrapper>
       <div className="flex-1 overflow-y-auto overflow-x-hidden p-3">
-        <Creation />
+        <Creation panel={panel} />
       </div>
     </>
   )

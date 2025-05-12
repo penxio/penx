@@ -1,11 +1,12 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { ICreation } from '@penx/model-type/ICreation'
+import { Creation } from '@penx/db/client'
+import { ICreationNode } from '@penx/model-type'
 
 interface Props {
-  creations: ICreation[]
-  backLinkCreations: ICreation[]
+  creations: Creation[]
+  backLinkCreations: Creation[]
 }
 
 export const CreationsContext = createContext({} as Props)

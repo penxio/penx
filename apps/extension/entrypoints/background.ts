@@ -13,7 +13,7 @@ import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
 import { CommentStatus } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
-import { IArea, ICreation } from '@penx/model-type'
+import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import {
   CreationStatus,
   CreationType,
@@ -71,7 +71,7 @@ export default defineBackground(() => {
         case BACKGROUND_EVENTS.SUBMIT_CONTENT: {
           console.log('========request.payload:', message.payload)
           const content = message.payload.content as string
-          const area = message.payload.area as IArea
+          const area = message.payload.area as IAreaNode
           addNote(content, area).then(() => {
             sendResponse({ msg: 'ok', code: SUCCESS })
           })
@@ -104,46 +104,49 @@ export default defineBackground(() => {
 async function queryAreas() {
   const session = await get('SESSION')
   if (session?.siteId) {
-    return localDB.area.where({ siteId: session.siteId }).toArray()
+    return localDB.listAreas(session.siteId)
   }
-  const sites = await localDB.site.toArray()
-  const site = sites.find((site) => site.isRemote) || sites[0]
-  return localDB.area.where({ siteId: site.id }).toArray()
+  const sites = await localDB.listAllSites()
+  const site = sites.find((site) => site.props.isRemote) || sites[0]
+  return localDB.listAreas(site.id)
 }
 
-async function addNote(content: string, area: IArea) {
-  const site = await localDB.site.get(area.siteId)
-  const molds = await localDB.mold.where({ siteId: area.siteId }).toArray()
-  const mold = molds.find((mold) => mold.type === CreationType.NOTE)!
+async function addNote(content: string, area: IAreaNode) {
+  const site = await localDB.getSite(area.siteId)
+  const molds = await localDB.listMolds(area.siteId)
+  const mold = molds.find((mold) => mold.props.type === CreationType.NOTE)!
 
-  const creation: ICreation = {
+  const creation: ICreationNode = {
     id: uniqueId(),
-    slug: uniqueId(),
-    moldId: mold.id,
-    title: content.slice(0, 20),
-    description: '',
-    content: noteToContent(content),
-    image: '',
-    props: {},
-    type: CreationType.NOTE,
-    areaId: area.id,
-    siteId: mold.siteId,
-    icon: '',
-    podcast: {},
-    i18n: {},
+    type: NodeType.CREATION,
+    props: {
+      slug: uniqueId(),
+      moldId: mold.id,
+      title: content.slice(0, 20),
+      description: '',
+      content: noteToContent(content),
+      image: '',
+      props: {},
+      type: CreationType.NOTE,
+      areaId: area.id,
+      icon: '',
+      podcast: {},
+      i18n: {},
+      gateType: GateType.FREE,
+      status: CreationStatus.DRAFT,
+      commentStatus: CommentStatus.OPEN,
+      featured: false,
+      collectible: false,
+      isJournal: false,
+      isPopular: false,
+      checked: false,
+      delivered: false,
+      commentCount: 0,
+      cid: '',
+      openedAt: new Date(),
+    },
     userId: site.userId,
-    gateType: GateType.FREE,
-    status: CreationStatus.DRAFT,
-    commentStatus: CommentStatus.OPEN,
-    featured: false,
-    collectible: false,
-    isJournal: false,
-    isPopular: false,
-    checked: false,
-    delivered: false,
-    commentCount: 0,
-    cid: '',
-    openedAt: new Date(),
+    siteId: mold.siteId,
     createdAt: new Date(),
     updatedAt: new Date(),
   }

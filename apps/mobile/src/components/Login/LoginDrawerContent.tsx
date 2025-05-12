@@ -39,8 +39,8 @@ export function LoginDrawerContent({ setVisible }: Props) {
 
       setJson(res)
 
-      const sites = await localDB.site.toArray()
-      const site = sites.find((s) => !s.isRemote)
+      const sites = await localDB.listAllSites()
+      const site = sites.find((s) => !s.props.isRemote)
 
       const session = await login({
         type: 'penx-google',

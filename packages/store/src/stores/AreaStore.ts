@@ -1,14 +1,13 @@
-import { set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { UpdateAreaInput } from '@penx/constants'
 import { localDB } from '@penx/local-db'
-import { IArea } from '@penx/model-type'
+import { IAreaNode } from '@penx/model-type'
 import { api } from '@penx/trpc-client'
 import { Widget } from '@penx/types'
 import { StoreType } from '../store-types'
 
-export const areaAtom = atom<IArea>(null as unknown as IArea)
+export const areaAtom = atom<IAreaNode>(null as unknown as IAreaNode)
 
 export class AreaStore {
   constructor(private store: StoreType) {}
@@ -17,41 +16,41 @@ export class AreaStore {
     return this.store.get(areaAtom)
   }
 
-  set(state: IArea) {
+  set(state: IAreaNode) {
     this.store.set(areaAtom, state)
   }
 
   async persistArea(input: UpdateAreaInput) {
     const { id, ...data } = input
-    await localDB.updateArea(id, data)
+    await localDB.updateAreaProps(id, data)
   }
 
   async addWidget(widget: Widget) {
     const area = this.get()
 
     const newArea = produce(area, (draft) => {
-      draft.widgets.push(widget)
+      draft.props.widgets.push(widget)
     })
 
     this.set(newArea)
 
     await this.persistArea({
       id: area.id,
-      widgets: newArea.widgets,
+      widgets: newArea.props.widgets,
     })
   }
 
   async removeWidget(widgetId: string) {
     const area = this.get()
     const newArea = produce(area, (draft) => {
-      draft.widgets = draft.widgets.filter((w) => w.id !== widgetId)
+      draft.props.widgets = draft.props.widgets.filter((w) => w.id !== widgetId)
     })
 
     this.set(newArea)
 
     await this.persistArea({
       id: area.id,
-      widgets: newArea.widgets,
+      widgets: newArea.props.widgets,
     })
   }
 
@@ -59,7 +58,7 @@ export class AreaStore {
     const area = this.get()
 
     const newArea = produce(area, (draft) => {
-      for (const widget of draft.widgets) {
+      for (const widget of draft.props.widgets) {
         if (widgetId === widget.id) {
           widget.collapsed = !widget.collapsed
         }
@@ -70,45 +69,51 @@ export class AreaStore {
 
     await this.persistArea({
       id: area.id,
-      widgets: newArea.widgets,
+      widgets: newArea.props.widgets,
     })
   }
 
   async addToFavorites(creationId: string) {
     const area = this.get()
     const newArea = produce(area, (draft) => {
-      if (!Array.isArray(draft.favorites)) draft.favorites = []
-      draft.favorites.push(creationId)
+      if (!Array.isArray(draft.props.favorites)) draft.props.favorites = []
+      draft.props.favorites.push(creationId)
     })
 
     this.set(newArea)
 
     await this.persistArea({
       id: area.id,
-      widgets: newArea.widgets,
+      widgets: newArea.props.widgets,
     })
   }
 
   async removeFromFavorites(creationId: string) {
     const area = this.get()
     const newArea = produce(area, (draft) => {
-      draft.favorites = draft.favorites.filter((i) => i !== creationId)
+      draft.props.favorites = draft.props.favorites.filter(
+        (i) => i !== creationId,
+      )
     })
 
     this.set(newArea)
 
     await this.persistArea({
       id: area.id,
-      widgets: newArea.widgets,
+      widgets: newArea.props.widgets,
     })
   }
 
   async updateArea(input: UpdateAreaInput) {
+    const { id, ...data } = input
     const area = this.get()
 
     this.set({
       ...area,
-      ...input,
+      props: {
+        ...area.props,
+        ...data,
+      },
     })
     await this.persistArea(input)
     await this.store.areas.refetchAreas()

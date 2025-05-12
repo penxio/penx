@@ -4,7 +4,6 @@ import React from 'react'
 import { Creation } from '@penx/components/Creation'
 import { PanelCreationProvider } from '@penx/components/PanelCreationProvider'
 import { PublishDialog } from '@penx/components/PublishDialog'
-import { ICreation } from '@penx/model-type'
 
 interface Props {
   // creation: ICreation;

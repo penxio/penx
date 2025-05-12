@@ -14,13 +14,12 @@ import {
 import { Tags } from '@penx/components/Tags'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
+import { Creation } from '@penx/domain'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import { CreationTagWithTag } from '@penx/hooks/useCreation'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { localDB } from '@penx/local-db'
-import { ICreation } from '@penx/model-type/ICreation'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
@@ -29,7 +28,7 @@ import { cn, getUrl } from '@penx/utils'
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
-  creation: ICreation
+  creation: Creation
 }
 
 export function NoteItem({ creation: _creation }: PostItemProps) {
@@ -118,7 +117,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
               className="size-7 gap-1 rounded-full text-xs opacity-50"
               onClick={async () => {
                 setReadonly(true)
-                await localDB.updateCreation(creation.id, {
+                await localDB.updateCreationProps(creation.id, {
                   content: JSON.stringify(content),
                 })
                 await store.creations.refetchCreations()

@@ -1,12 +1,9 @@
-import { set } from 'idb-keyval'
-import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
-import { ITag } from '@penx/model-type'
-import { api } from '@penx/trpc-client'
+import { ITagNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
-export const tagsAtom = atom<ITag[]>([])
+export const tagsAtom = atom<ITagNode[]>([])
 
 export class TagsStore {
   constructor(private store: StoreType) {}
@@ -15,22 +12,25 @@ export class TagsStore {
     return this.store.get(tagsAtom)
   }
 
-  set(state: ITag[]) {
+  set(state: ITagNode[]) {
     this.store.set(tagsAtom, state)
   }
 
   async refetchTags() {
     const site = this.store.site.get()
-    const tags = await localDB.tag.where({ siteId: site.id }).toArray()
+    const tags = await localDB.listTags(site.id)
     this.set(tags)
   }
 
-  async deleteTag(tag: ITag) {
-    await localDB.creationTag.where({ tagId: tag.id }).delete()
-    await localDB.tag.delete(tag.id)
+  async deleteTag(tag: ITagNode) {
+    const creationTags = await localDB.listCreationTags(tag.siteId)
+
+    const ids = creationTags
+      .filter((ct) => ct.props.tagId === tag.id)
+      .map((ct) => ct.id)
+
+    await localDB.node.where('id').anyOf(ids).delete()
+    await localDB.node.delete(tag.id)
     await this.refetchTags()
-    api.tag.deleteTag.mutate({
-      tagId: tag.id,
-    })
   }
 }

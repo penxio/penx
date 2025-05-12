@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 
 interface Props {
   mold: Mold

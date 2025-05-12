@@ -8,7 +8,7 @@ import {
   StarIcon,
 } from 'lucide-react'
 import { WidgetType } from '@penx/constants'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 
 interface Props {
   type: string
@@ -36,10 +36,6 @@ export function WidgetIcon({ type, molds }: Props) {
 
   if (type === WidgetType.AI_CHAT) {
     return <BotMessageSquareIcon size={16} />
-  }
-
-  if (type === WidgetType.QUICK_INPUT) {
-    return <PencilLineIcon size={16} />
   }
   return null
 }

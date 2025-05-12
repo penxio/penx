@@ -33,6 +33,8 @@
     "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/model-type": "workspace:*",
+    "@penx/domain": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/editor-transforms": "workspace:*",
     "@penx/contexts": "workspace:*",

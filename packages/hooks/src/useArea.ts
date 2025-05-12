@@ -1,7 +1,11 @@
 import { useAtomValue } from 'jotai'
-import { areaAtom, moldsAtom } from '@penx/store'
+import { Area } from '@penx/domain'
+import { areaAtom } from '@penx/store'
 
 export function useArea() {
-  const area = useAtomValue(areaAtom)
-  return { area }
+  const raw = useAtomValue(areaAtom)
+  return {
+    raw,
+    area: new Area(raw),
+  }
 }

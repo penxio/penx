@@ -21,6 +21,7 @@
     "@penx/content-render": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/db": "workspace:*",
+    "@penx/domain": "workspace:*",
     "@penx/editor": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",
     "@penx/editor-plugins": "workspace:*",

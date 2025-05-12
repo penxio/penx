@@ -127,6 +127,7 @@ model Site {
   siteUsers              SiteUser[]
   areas                  Area[]
   molds                  Mold[]
+  Node                   Node[]
 
   @@index([userId])
   @@map("site")
@@ -183,6 +184,7 @@ model User {
   payoutAccounts    PayoutAccount[]
   invoices          Invoice[]
   molds             Mold[]
+  Node              Node[]
 
   @@index([id])
   @@map("user")
@@ -250,6 +252,26 @@ enum AreaType {
   SUBJECT
   COLUMN
   BOOK
+}
+
+model Node {
+  id        String   @id @default(uuid()) @db.Uuid
+  type      String
+  props     Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  areaId String? @db.Uuid
+  user   User    @relation(fields: [userId], references: [id])
+  userId String  @db.Uuid
+  site   Site    @relation(fields: [siteId], references: [id])
+  siteId String  @db.Uuid
+
+  @@index([siteId])
+  @@index([areaId])
+  @@index([siteId, areaId])
+  @@index([siteId, type])
+  @@map("node")
 }
 
 model Area {

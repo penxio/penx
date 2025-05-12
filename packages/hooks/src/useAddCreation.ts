@@ -5,10 +5,9 @@ import {
 } from '@penx/constants'
 import { CommentStatus } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
-import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { useMolds } from '@penx/hooks/useMolds'
-import { ICreation } from '@penx/model-type/ICreation'
+import { ICreationNode, NodeType } from '@penx/model-type'
 import { store } from '@penx/store'
 import { CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -19,12 +18,13 @@ export function useAddCreation() {
   const { site } = useMySite()
 
   return async (type: string, content?: string) => {
-    const mold = molds.find((mold) => mold.type === type)!
+    const mold = molds.find((mold) => mold.type === type)
     const area = store.area.get()
+
+    if (!mold) throw new Error('Invalid mold type')
 
     const id = uniqueId()
     const addCreationInput: AddCreationInput = {
-      id,
       slug: uniqueId(),
       siteId: site.id,
       title: '',
@@ -36,29 +36,34 @@ export function useAddCreation() {
       areaId: area.id,
     }
 
-    const newCreation = {
-      ...addCreationInput,
+    const newCreation: ICreationNode = {
+      id,
+      type: NodeType.CREATION,
+      props: {
+        icon: '',
+        props: {},
+        podcast: {},
+        i18n: {},
+        gateType: GateType.FREE,
+        status: CreationStatus.DRAFT,
+        commentStatus: CommentStatus.OPEN,
+        featured: false,
+        collectible: false,
+        isJournal: false,
+        isPopular: false,
+        checked: false,
+        delivered: false,
+        commentCount: 0,
+        cid: '',
+        openedAt: new Date(),
+        ...addCreationInput,
+      } as ICreationNode['props'],
+      areaId: area.id,
       siteId: mold.siteId,
-      icon: '',
-      props: {},
-      podcast: {},
-      i18n: {},
       userId: site.userId,
-      gateType: GateType.FREE,
-      status: CreationStatus.DRAFT,
-      commentStatus: CommentStatus.OPEN,
-      featured: false,
-      collectible: false,
-      isJournal: false,
-      isPopular: false,
-      checked: false,
-      delivered: false,
-      commentCount: 0,
-      cid: '',
-      openedAt: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
-    } as ICreation
+    }
 
     store.creations.addCreation(newCreation)
 

@@ -46,8 +46,8 @@ export function GoogleOauthButton({
       disabled={loading}
       onClick={async () => {
         setLoading(true)
-        const sites = await localDB.site.toArray()
-        const site = sites.find((s) => !s.isRemote)
+        const sites = await localDB.listAllSites()
+        const site = sites.find((s) => !s.props.isRemote)
 
         const redirectUri = GOOGLE_OAUTH_REDIRECT_URI
         const parsed = qs.parse(location.search) || {}

@@ -5,10 +5,10 @@ import { Trans } from '@lingui/react'
 import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
 import { editorDefaultValue } from '@penx/constants'
+import { Creation } from '@penx/domain'
 import { useCreateEditor } from '@penx/editor/use-create-editor'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { useMySite } from '@penx/hooks/useMySite'
-import { ICreation } from '@penx/model-type/ICreation'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
@@ -17,7 +17,7 @@ import { sleep } from '@penx/utils'
 import { useDeleteCreationDialog } from './DeleteCreationDialog/useDeleteCreationDialog'
 import { usePublishDialog } from './PublishDialog/usePublishDialog'
 
-export function CreationMoreMenu({ creation }: { creation: ICreation }) {
+export function CreationMoreMenu({ creation }: { creation: Creation }) {
   const [isOpen, setIsOpen] = useState(false)
   const { site } = useMySite()
   const publishDialog = usePublishDialog()
@@ -109,7 +109,7 @@ export function CreationMoreMenu({ creation }: { creation: ICreation }) {
   )
 }
 
-function CopyMarkdown({ creation }: { creation: ICreation }) {
+function CopyMarkdown({ creation }: { creation: Creation }) {
   const { copy } = useCopyToClipboard()
   const editor: any = useCreateEditor({
     value: creation.content ? JSON.parse(creation.content) : editorDefaultValue,

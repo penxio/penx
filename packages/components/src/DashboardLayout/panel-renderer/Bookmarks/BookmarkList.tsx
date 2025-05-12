@@ -1,6 +1,6 @@
 'use client'
 
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useMySite } from '@penx/hooks/useMySite'
 import { useTags } from '@penx/hooks/useTags'

@@ -3,10 +3,8 @@
 import { Trans } from '@lingui/react'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
-import { ProfileAvatar } from '@penx/components/ProfileAvatar'
 import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'
-import { updateSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
@@ -33,14 +31,19 @@ export const AreasPopover = ({ className = '' }: Props) => {
         <div className="hover:bg-foreground/5 group/area flex h-10 w-full cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors">
           <div className="flex flex-1 cursor-pointer items-center gap-1">
             <div className="flex items-center gap-1">
-              <Avatar className="h-6 w-6">
-                <AvatarImage src={getUrl(area?.logo || '')} alt="" />
+              <Avatar className="size-5 rounded-md">
+                <AvatarImage src={area.logo} alt="" />
                 <AvatarFallback
-                  className={cn(generateGradient(area.name))}
-                ></AvatarFallback>
+                  className={cn(
+                    'rounded-md text-xs text-white',
+                    generateGradient(area.name),
+                  )}
+                >
+                  {area.name.slice(0, 1)}
+                </AvatarFallback>
               </Avatar>
 
-              <div className="grid flex-1 text-left text-sm leading-tight">
+              <div className="grid flex-1 text-left text-base leading-tight">
                 <span className="truncate font-semibold">{area?.name}</span>
               </div>
             </div>
@@ -66,17 +69,22 @@ export const AreasPopover = ({ className = '' }: Props) => {
             <MenuItem
               className="flex cursor-pointer items-center gap-2"
               onClick={async () => {
-                store.area.set(item)
+                store.area.set(item.raw)
                 store.creations.refetchCreations(item.id)
                 store.visit.setAndSave({ activeAreaId: item.id })
                 store.panels.resetPanels()
               }}
             >
-              <Avatar className="h-6 w-6">
+              <Avatar className="size-6 rounded-md">
                 <AvatarImage src={getUrl(item.logo!)} alt="" />
                 <AvatarFallback
-                  className={cn(generateGradient(item.name))}
-                ></AvatarFallback>
+                  className={cn(
+                    'rounded-md text-white',
+                    generateGradient(item.name),
+                  )}
+                >
+                  {item.name.slice(0, 1)}
+                </AvatarFallback>
               </Avatar>
               <div>{item.name}</div>
             </MenuItem>

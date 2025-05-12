@@ -45,7 +45,7 @@ export function TagForm() {
     try {
       setLoading(true)
 
-      await localDB.tag.update(tag.id, data)
+      await localDB.updateTagProps(tag.id, data)
       await store.tags.refetchTags()
       form.reset()
       setIsOpen(false)

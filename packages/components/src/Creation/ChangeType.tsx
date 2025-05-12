@@ -2,10 +2,10 @@
 
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
+import { Creation } from '@penx/domain'
 import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'
 import { useMolds } from '@penx/hooks/useMolds'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
-import { ICreation } from '@penx/model-type/ICreation'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -13,7 +13,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
 import { MoldName } from '@penx/widgets/MoldName'
 
-export function ChangeType({ creation }: { creation: ICreation }) {
+export function ChangeType({ creation }: { creation: Creation }) {
   const { molds } = useMolds()
   const [open, setOpen] = useState(false)
   const mold = molds.find((m) => m.id === creation.moldId)

@@ -1,4 +1,3 @@
-import { slug } from 'github-slugger'
 import { getIronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
@@ -25,10 +24,9 @@ export async function GET(req: Request) {
 
 interface SyncInput {
   operation: string
-  table: string
   siteId: string
   key: string
-  data: string
+  data: any
 }
 
 export async function POST(req: NextRequest) {
@@ -62,37 +60,40 @@ export async function POST(req: NextRequest) {
   }
 
   if (input.operation === OperationType.CREATE) {
-    await (prisma as any)[input.table].create({
+    console.log('creqate========:', input.data)
+
+    await prisma.node.create({
       data: input.data,
     })
   } else if (input.operation === OperationType.UPDATE) {
-    await (prisma as any)[input.table].update({
+    console.log('update========:', input.data)
+    await prisma.node.update({
       where: { id: input.key },
       data: input.data,
     })
   } else if (input.operation === OperationType.DELETE) {
-    if (input.table === 'area') {
-      await prisma.$transaction(
-        async (tx) => {
-          const creations = await tx.creation.findMany({
-            where: { areaId: input.key },
-          })
-          await tx.creationTag.deleteMany({
-            where: {
-              creationId: { in: creations.map((c) => c.id) },
-            },
-          })
-          await tx.creation.deleteMany({ where: { areaId: input.key } })
-          await tx.area.delete({ where: { id: input.key } })
-        },
-        {
-          maxWait: 10000, // default: 2000
-          timeout: 20000, // default: 5000
-        },
-      )
-    }
+    // if (input.table === 'area') {
+    //   await prisma.$transaction(
+    //     async (tx) => {
+    //       const creations = await tx.creation.findMany({
+    //         where: { areaId: input.key },
+    //       })
+    //       await tx.creationTag.deleteMany({
+    //         where: {
+    //           creationId: { in: creations.map((c) => c.id) },
+    //         },
+    //       })
+    //       await tx.creation.deleteMany({ where: { areaId: input.key } })
+    //       await tx.area.delete({ where: { id: input.key } })
+    //     },
+    //     {
+    //       maxWait: 10000, // default: 2000
+    //       timeout: 20000, // default: 5000
+    //     },
+    //   )
+    // }
 
-    await (prisma as any)[input.table].delete({
+    await prisma.node.delete({
       where: { id: input.key },
     })
     return Response.json(

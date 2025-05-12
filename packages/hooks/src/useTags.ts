@@ -1,7 +1,11 @@
 import { useAtomValue } from 'jotai'
+import { Tag } from '@penx/domain'
 import { tagsAtom } from '@penx/store'
 
 export function useTags() {
-  const tags = useAtomValue(tagsAtom)
-  return { tags }
+  const raw = useAtomValue(tagsAtom)
+  return {
+    raw,
+    tags: raw.map((t) => new Tag(t)),
+  }
 }

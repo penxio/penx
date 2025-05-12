@@ -32,11 +32,7 @@ import {
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { QuickInput } from '@penx/components/QuickInput'
 import { appEmitter } from '@penx/emitter'
-import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useArea } from '@penx/hooks/useArea'
-import { ICreation } from '@penx/model-type'
-import { store } from '@penx/store'
-import { CreationType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
@@ -61,7 +57,8 @@ const Page: React.FC = () => {
       google: {
         iOSClientId:
           '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
-          webClientId: '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com'
+        webClientId:
+          '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
       },
     })
   }, [])

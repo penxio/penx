@@ -1,22 +1,39 @@
 import { editorDefaultValue } from '@penx/constants'
-import { IMold } from '@penx/model-type'
+import { IMoldNode, NodeType } from '@penx/model-type'
 import { CreationType, Prop, PropType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
-export function getDefaultMolds(input: { siteId: string; userId: string }) {
-  return [
-    {
-      id: uniqueId(),
-      name: 'Page',
-      description: '',
-      type: CreationType.PAGE,
-      props: [],
-      content: JSON.stringify(editorDefaultValue),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      ...input,
-    },
+type Input = {
+  siteId: string
+  userId: string
+}
 
+function getMoldNode(
+  type: string,
+  name: string,
+  input: Input,
+  props: Prop[] = [],
+) {
+  return {
+    id: uniqueId(),
+    type: NodeType.MOLD,
+    props: {
+      name,
+      pluralName: `${name}s`,
+      description: '',
+      type,
+      props,
+      content: JSON.stringify(editorDefaultValue),
+    },
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    ...input,
+  } as IMoldNode
+}
+
+export function getDefaultMolds(input: Input): IMoldNode[] {
+  return [
+    getMoldNode(CreationType.PAGE, 'Page', input),
     // {
     //   id: uniqueId(),
     //   name: 'Articles',
@@ -28,17 +45,8 @@ export function getDefaultMolds(input: { siteId: string; userId: string }) {
     //   updatedAt: new Date(),
     //   ...input,
     // },
-    {
-      id: uniqueId(),
-      name: 'Note',
-      description: '',
-      type: CreationType.NOTE,
-      props: [],
-      content: JSON.stringify(editorDefaultValue),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      ...input,
-    },
+
+    getMoldNode(CreationType.NOTE, 'Note', input),
     // {
     //   id: uniqueId(),
     //   name: 'Images',
@@ -62,30 +70,11 @@ export function getDefaultMolds(input: { siteId: string; userId: string }) {
     //   ...input,
     // },
 
-    {
-      id: uniqueId(),
-      name: 'Task',
-      description: '',
-      type: CreationType.TASK,
-      content: JSON.stringify(editorDefaultValue),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      ...input,
-    },
+    getMoldNode(CreationType.TASK, 'Task', input),
 
-    {
-      id: uniqueId(),
-      name: 'Bookmark',
-      description: '',
-      type: CreationType.BOOKMARK,
-      props: [
-        { id: uniqueId(), name: 'URL', slug: 'url', type: PropType.URL },
-      ] as Prop[],
-      content: JSON.stringify(editorDefaultValue),
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      ...input,
-    },
+    getMoldNode(CreationType.BOOKMARK, 'Bookmark', input, [
+      { id: uniqueId(), name: 'URL', slug: 'url', type: PropType.URL },
+    ]),
     // {
     //   id: uniqueId(),
     //   name: 'Friends',
@@ -132,5 +121,5 @@ export function getDefaultMolds(input: { siteId: string; userId: string }) {
     //   updatedAt: new Date(),
     //   ...input,
     // },
-  ] as IMold[]
+  ] as IMoldNode[]
 }

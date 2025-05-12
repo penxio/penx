@@ -1,9 +1,9 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import { useSearchParams } from 'next/navigation'
-import { Node } from 'slate'
+import { Editor, Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
 // import { usePanelCreationContext } from '@penx/components/Creation'
 import {
@@ -11,19 +11,15 @@ import {
   isMobileApp,
   UpdateCreationInput,
 } from '@penx/constants'
+import { Creation as CreationDomain } from '@penx/domain'
 import { PlateEditor } from '@penx/editor/plate-editor'
-import {
-  addCreationTag,
-  CreationTagWithTag,
-  deleteCreationTag,
-  updateCreation,
-} from '@penx/hooks/useCreation'
+import { appEmitter } from '@penx/emitter'
+import { updateCreation } from '@penx/hooks/useCreation'
 import { useMolds } from '@penx/hooks/useMolds'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
-import { ICreation } from '@penx/model-type/ICreation'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
-import { CreationType } from '@penx/types'
+import { CreationType, Panel } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
@@ -39,15 +35,24 @@ import { usePanelCreationContext } from './PanelCreationProvider'
 import { PropList } from './PropList'
 import { Tags } from './Tags'
 
-export function Creation() {
+interface Props {
+  panel?: Panel
+}
+
+export function Creation({ panel }: Props) {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
   const isImage = creation.type === CreationType.IMAGE
   const { molds } = useMolds()
+  const editorRef = useRef<Editor>(null)
+
+  useEffect(() => {
+    // console.log('=======>>>>>>editorRef:', editorRef.current)
+  }, [])
 
   const debouncedUpdate = useDebouncedCallback(
-    async (value: ICreation) => {
+    async (value: CreationDomain) => {
       setPostSaving(true)
       try {
         await mutateAsync({
@@ -92,25 +97,28 @@ export function Creation() {
     return true
   }, [mold])
 
+  useEffect(() => {
+    //
+    if (mold?.type === CreationType.NOTE) {
+      appEmitter.emit('FOCUS_EDITOR')
+    }
+  }, [mold])
+
   // console.log('=========>>>>>>post:', post)
 
   return (
     <>
       <DeleteCreationDialog />
-      <div className="h-full w-full">
+      <div className="flex h-full w-full flex-col">
         <div
           className={cn(
-            'relative z-0 min-h-[500px] px-0 py-12 md:px-8',
-            isMobileApp && 'pt-2',
+            'relative z-0 flex min-h-[500px] flex-1 flex-col px-0 md:px-8',
+            isMobileApp && 'pt-0',
           )}
         >
-          <div
-            className={cn(
-              'w-full px-0 sm:px-[max(10px,calc(50%-350px))]',
-            )}
-          >
+          <div className={cn('w-full px-0 sm:px-[max(10px,calc(50%-350px))]')}>
             {showTitle && (
-              <div className="mb-5 flex flex-col space-y-3">
+              <div className="mb-2 flex flex-col space-y-3 md:mb-5">
                 <div className="relative">
                   {!isImage && !isMobileApp && (
                     <CoverUpload
@@ -139,16 +147,18 @@ export function Creation() {
                     )}
 
                     <TextareaAutosize
-                      className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-4xl font-bold focus:outline-none focus:ring-0"
+                      className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
                       placeholder="Title"
                       defaultValue={creation.title || ''}
-                      autoFocus={!isMobileApp}
+                      // autoFocus={!isMobileApp}
+                      autoFocus
                       onChange={(e) => {
                         const title = e.target.value
                         updateCreation({ id: creation.id, title })
                       }}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') {
+                          appEmitter.emit('FOCUS_EDITOR')
                           e.preventDefault()
                         }
                       }}
@@ -176,9 +186,9 @@ export function Creation() {
             )}
 
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1">
                 <ChangeType creation={creation} />
-                <Separator orientation="vertical" className="h-3" />
+                <div className="text-lg">•</div>
                 <div className="flex items-center gap-2">
                   <Tags creation={creation} />
                   {/* <PostLocales /> */}
@@ -215,9 +225,11 @@ export function Creation() {
           {!isImage && (
             <div className="mt-4 w-full" data-registry="plate">
               <PlateEditor
+                ref={editorRef}
                 variant="post"
                 className="dark:caret-brand w-full break-all"
                 dndProvider={false}
+                panel={panel}
                 value={
                   creation.content
                     ? JSON.parse(creation.content)
@@ -244,6 +256,13 @@ export function Creation() {
               />
             </div>
           )}
+
+          <div
+            className="flex-1"
+            onClick={() => {
+              appEmitter.emit('FOCUS_EDITOR')
+            }}
+          ></div>
         </div>
       </div>
     </>

@@ -21,6 +21,7 @@
     "@penx/trpc-client": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/constants": "workspace:*",
+    "@penx/libs": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/types": "workspace:*"

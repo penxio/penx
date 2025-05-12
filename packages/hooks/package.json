@@ -20,6 +20,7 @@
     "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/api": "workspace:*",
+    "@penx/domain": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/model-type": "workspace:*",

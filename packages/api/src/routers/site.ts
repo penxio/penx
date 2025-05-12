@@ -1,4 +1,5 @@
 import { TRPCError } from '@trpc/server'
+import { produce } from 'immer'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 import {
@@ -21,6 +22,7 @@ import {
 } from '@penx/libs/domains'
 import { revalidateSite } from '@penx/libs/revalidateSite'
 import { stripe } from '@penx/libs/stripe'
+import { INode, ISiteNode, NodeType } from '@penx/model-type'
 import { MySite, StripeInfo } from '@penx/types'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
@@ -351,86 +353,84 @@ export const siteRouter = router({
     })
   }),
 
-  syncInitialSite: protectedProcedure
+  syncInitialNodes: protectedProcedure
     .input(
       z.object({
-        site: z.any(),
-        molds: z.array(z.any()),
-        areas: z.array(z.any()),
-        creations: z.array(z.any()),
-        tags: z.array(z.any()),
-        creationTags: z.array(z.any()),
+        nodes: z.any(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.token.uid
-      if (input.site.userId !== userId) {
+
+      const nodes = input.nodes as INode[]
+      const site = nodes.find((n) => n.type === NodeType.SITE) as ISiteNode
+
+      if (site.userId !== userId) {
         throw new TRPCError({
           code: 'BAD_REQUEST',
           message: 'Cannot sync initial site with another user.',
         })
       }
 
-      console.log('site=========>>>>:', input)
-
       return prisma.$transaction(
         async (tx) => {
-          const promises = [
-            tx.site.create({
-              data: {
-                ...input.site,
-                isRemote: true,
-                collaborators: {
-                  create: {
-                    userId,
-                    role: CollaboratorRole.OWNER,
-                  },
-                },
-                domains: {
-                  create: [
-                    {
-                      domain: userId,
-                      subdomainType: SubdomainType.UserId,
-                    },
-                  ],
-                },
-                channels: {
-                  create: {
-                    name: 'general',
-                    type: 'TEXT',
-                  },
-                },
+          const { props, type, siteId, ...data } = site
+          const siteData: any = {
+            ...data,
+            ...props,
+            isRemote: true,
+            collaborators: {
+              create: {
+                userId,
+                role: CollaboratorRole.OWNER,
               },
-            }),
-            tx.area.createMany({
-              data: input.areas,
-            }),
-            tx.mold.createMany({
-              data: input.molds,
-            }),
-          ]
-          if (input.creations.length) {
-            promises.push(
-              tx.creation.createMany({
-                data: input.creations,
-              }),
-            )
+            },
+            domains: {
+              create: [
+                {
+                  domain: userId,
+                  subdomainType: SubdomainType.UserId,
+                },
+              ],
+            },
+            channels: {
+              create: {
+                name: 'general',
+                type: 'TEXT',
+              },
+            },
           }
-          if (input.tags.length) {
-            promises.push(
-              tx.tag.createMany({
-                data: input.tags,
-              }),
-            )
-          }
-          if (input.creationTags.length) {
-            promises.push(
-              tx.creationTag.createMany({
-                data: input.creationTags,
-              }),
-            )
-          }
-          await Promise.all(promises)
+
+          const formattedNodes = produce(nodes, (draft) => {
+            for (const item of draft) {
+              if (item.type === NodeType.SITE) {
+                item.props.isRemote = true
+                break
+              }
+            }
+          })
+
+          console.log('========xxxxxxxx>>>>>11111111')
+
+          const newSite = await tx.site.create({
+            data: siteData,
+          })
+
+          console.log(
+            '3333333========',
+            newSite,
+            nodes.map((n) => ({
+              userId: n.userId,
+              siteId: n.siteId,
+              type: n.type,
+            })),
+          )
+
+          await tx.node.createMany({
+            data: formattedNodes,
+          })
+          console.log('========4444444444444')
+
           return true
         },
         {
@@ -734,6 +734,7 @@ export const siteRouter = router({
           await tx.subscription.deleteMany({ where: { siteId } })
           await tx.payout.deleteMany({ where: { siteId } })
           await tx.mold.deleteMany({ where: { siteId } })
+          await tx.node.deleteMany({ where: { siteId } })
           await tx.siteUser.deleteMany({ where: { siteId } })
           await tx.site.delete({ where: { id: siteId } })
         }

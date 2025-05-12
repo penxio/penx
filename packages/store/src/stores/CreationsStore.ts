@@ -2,11 +2,11 @@ import { set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
-import { ICreation } from '@penx/model-type'
+import { ICreationNode } from '@penx/model-type'
 import { api } from '@penx/trpc-client'
 import { StoreType } from '../store-types'
 
-export const creationsAtom = atom<ICreation[]>([])
+export const creationsAtom = atom<ICreationNode[]>([])
 
 export class CreationsStore {
   constructor(private store: StoreType) {}
@@ -15,18 +15,19 @@ export class CreationsStore {
     return this.store.get(creationsAtom)
   }
 
-  set(state: ICreation[]) {
+  set(state: ICreationNode[]) {
     this.store.set(creationsAtom, state)
   }
 
-  async addCreation(creation: ICreation) {
+  async addCreation(creation: ICreationNode) {
     const creations = this.get()
     this.set([...creations, creation])
     await localDB.addCreation(creation)
   }
 
-  async updateCreationById(creationId: string, data: Partial<ICreation>) {
+  async updateCreationById(creationId: string, data: Partial<ICreationNode>) {
     const creations = this.get()
+
     const newCreations = produce(creations, (draft) => {
       const index = draft.findIndex((p) => p.id === creationId)
       draft[index] = {
@@ -38,23 +39,14 @@ export class CreationsStore {
     this.set(newCreations)
   }
 
-  async deleteCreation(creation: ICreation) {
-    const area = this.store.area.get()
+  async deleteCreation(creation: ICreationNode) {
     await localDB.deleteCreation(creation.id)
-
-    const newCreations = await localDB.creation
-      .where({ areaId: area.id })
-      .toArray()
-
-    this.set(newCreations)
+    this.refetchCreations()
   }
 
   async refetchCreations(areaId?: string) {
     const area = this.store.area.get()
-    const newCreations = await localDB.creation
-      .where({ areaId: areaId || area.id })
-      .toArray()
-
+    const newCreations = await localDB.listCreationsByArea(area.id)
     this.set(newCreations)
   }
 }

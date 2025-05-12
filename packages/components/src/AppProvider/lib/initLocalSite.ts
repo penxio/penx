@@ -3,20 +3,18 @@ import { AreaType, ChargeMode } from '@penx/db/client'
 import { getDefaultMolds } from '@penx/libs/getDefaultMolds'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
-import { ISite } from '@penx/model-type'
+import { IMoldNode, ISiteNode, NodeType } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
 export async function initLocalSite(uid?: string) {
-  return await localDB.transaction(
-    'rw',
-    localDB.site,
-    localDB.mold,
-    localDB.area,
-    async () => {
-      const siteId = uniqueId()
-      const userId = uid || uniqueId()
-      await localDB.addSite({
-        id: siteId,
+  return await localDB.transaction('rw', localDB.node, async () => {
+    const siteId = uniqueId()
+    const userId = uid || uniqueId()
+    await localDB.node.add({
+      id: siteId,
+      type: NodeType.SITE,
+      siteId: siteId,
+      props: {
         name: 'My Penx Site',
         description: '',
         about: JSON.stringify(editorDefaultValue),
@@ -42,22 +40,27 @@ export async function initLocalSite(uid?: string) {
         memberCount: 0,
         creationCount: 0,
         isRemote: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      userId,
+    } as ISiteNode)
+
+    await localDB.node.bulkPut(
+      getDefaultMolds({
+        siteId,
         userId,
-      } as ISite)
+      }),
+    )
 
-      await localDB.mold.bulkPut(
-        getDefaultMolds({
-          siteId,
-          userId,
-        }),
-      )
+    const molds = (await localDB.node
+      .where({ type: NodeType.MOLD, siteId })
+      .toArray()) as unknown as IMoldNode[]
 
-      const molds = await localDB.mold.where({ siteId }).toArray()
-
-      await localDB.area.put({
-        id: uniqueId(),
+    await localDB.node.add({
+      id: uniqueId(),
+      type: NodeType.AREA,
+      props: {
         slug: 'first-area',
         name: 'First area',
         description: 'An area for sharing thoughts, stories, and insights.',
@@ -65,18 +68,17 @@ export async function initLocalSite(uid?: string) {
         logo: '',
         chargeMode: ChargeMode.FREE,
         widgets: getInitialWidgets(molds),
-        type: AreaType.SUBJECT,
         isGenesis: true,
         favorites: [],
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        siteId,
-        userId,
-      })
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      siteId,
+      userId,
+    })
 
-      const site = await localDB.site.get(siteId)
-      console.log('init local site!!!')
-      return site!
-    },
-  )
+    const site = await localDB.node.get(siteId)
+    console.log('init local site!!!')
+    return site as ISiteNode
+  })
 }

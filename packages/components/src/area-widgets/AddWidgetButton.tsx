@@ -13,7 +13,7 @@ import {
 import { toast } from 'sonner'
 import { AddNoteDialog } from '@penx/components/AddNoteDialog'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
-import { Mold } from '@penx/db/client'
+import { Mold } from '@penx/domain'
 import { useArea } from '@penx/hooks/useArea'
 import { useMolds } from '@penx/hooks/useMolds'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
@@ -137,13 +137,6 @@ export function AddWidgetButton({ className }: Props) {
                   return (
                     <>
                       <Trans id="Recently opened"></Trans>
-                    </>
-                  )
-                }
-                if (item === WidgetType.QUICK_INPUT) {
-                  return (
-                    <>
-                      <Trans id="Quick input"></Trans>
                     </>
                   )
                 }

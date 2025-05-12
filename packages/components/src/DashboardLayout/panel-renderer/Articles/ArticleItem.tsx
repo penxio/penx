@@ -14,12 +14,12 @@ import {
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
+import { Creation } from '@penx/domain'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
-import { ICreation } from '@penx/model-type/ICreation'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
@@ -34,7 +34,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface PostItemProps {
-  creation: ICreation
+  creation: Creation
 }
 
 export function ArticleItem({ creation }: PostItemProps) {

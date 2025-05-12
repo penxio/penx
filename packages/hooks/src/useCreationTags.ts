@@ -1,9 +1,11 @@
 import { useAtomValue } from 'jotai'
+import { CreationTag } from '@penx/domain'
 import { creationTagsAtom } from '@penx/store'
 
 export function useCreationTags() {
-  const creationTags = useAtomValue(creationTagsAtom)
+  const raw = useAtomValue(creationTagsAtom)
 
+  const creationTags = raw.map((i) => new CreationTag(i))
   return {
     creationTags,
     queryByCreation(creationId: string) {

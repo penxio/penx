@@ -19,7 +19,6 @@ import { Column, Record as Row, View } from '@penx/db/client'
 import { useMySite } from '@penx/hooks/useMySite'
 import { useQueryDatabase } from '@penx/hooks/useQueryDatabase'
 import { getRandomColorName } from '@penx/libs/color-helper'
-import { IFilterResult, IOptionNode } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
@@ -529,7 +528,7 @@ function DatabaseContent({
     })
   }, [currentView, database])
 
-  const generateFilter = (databaseId: string): IFilterResult => {
+  const generateFilter = (databaseId: string) => {
     //
     return {} as any
   }

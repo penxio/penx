@@ -4,15 +4,14 @@ import React from 'react'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
-import { Area } from '@penx/db/client'
-import { IArea } from '@penx/model-type/IArea'
+import { Area, Creation } from '@penx/domain'
 import { store } from '@penx/store'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 
 interface Props {
-  area: IArea
+  area: Area
   widget: Widget
 }
 

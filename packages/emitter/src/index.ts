@@ -1,4 +1,5 @@
 import mitt from 'mitt'
+import { ICreationNode } from '@penx/model-type'
 import { Site } from '@penx/types'
 
 export type AppEvent = {
@@ -11,6 +12,8 @@ export type AppEvent = {
   ROUTE_TO_CREATION: any
   DESKTOP_LOGIN_SUCCESS: any
   APP_LOGIN_SUCCESS: any
+  FOCUS_EDITOR: undefined
+  PANEL_CREATION_UPDATED: ICreationNode
 }
 
 export const appEmitter = mitt<AppEvent>()

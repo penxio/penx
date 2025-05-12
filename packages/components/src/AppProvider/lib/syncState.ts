@@ -21,14 +21,11 @@ export interface ElectricSyncState {
   last_lsn: Lsn
 }
 
-export async function getElectricSyncState(table: 'creation' | 'tag') {
-  const state = await get(`electric-sync-state-${table}`)
+export async function getElectricSyncState() {
+  const state = await get(`electric-sync-state`)
   return (state || {}) as ElectricSyncState
 }
 
-export async function setElectricSyncState(
-  table: 'creation' | 'tag',
-  state: ElectricSyncState,
-) {
-  await set(`electric-sync-state-${table}`, state)
+export async function setElectricSyncState(state: ElectricSyncState) {
+  await set(`electric-sync-state`, state)
 }

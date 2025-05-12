@@ -16,7 +16,7 @@ export function AddCreationButton({ className }: Props) {
     <Button
       variant="ghost"
       size="icon"
-      className={cn('hover:bg-foreground/10 size-8', className)}
+      className={cn('hover:bg-foreground/10 size-8 rounded-full', className)}
       onClick={() => {
         addCreation(CreationType.PAGE)
       }}

@@ -1,9 +1,9 @@
 import { atom, useAtom } from 'jotai'
-import { IArea } from '@penx/model-type/IArea'
+import { Area } from '@penx/domain'
 
 type State = {
   isOpen: boolean
-  area: IArea
+  area: Area
 }
 
 const dialogAtom = atom<State>({

@@ -79,43 +79,36 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
 
     if (!widget) return null
 
-    if (widget.type === WidgetType.QUICK_INPUT) {
-      return (
-        <div
-          ref={ref}
-          className="flex"
-          {...rest}
-          {...attributes}
-          {...listeners}
-        >
-          <QuickInput />
-        </div>
-      )
-    }
-
     const titleJSX = (
       <div
         className={cn(
-          'relative flex h-10 cursor-pointer select-none items-center justify-between pl-3 pr-2',
+          'relative flex h-10 cursor-pointer select-none items-center justify-between pr-2',
           isMobileApp && 'h-11',
         )}
         {...attributes}
         {...listeners}
-        onClick={() => {
-          if (isMobileApp) {
-            setVisible(true)
-            return
-          }
-
-          if (widget.type === WidgetType.AI_CHAT) {
-            store.panels.openWidgetPanel(widget)
-            return
-          }
-
-          setVisible(!visible)
-        }}
       >
-        <div className="flex items-center gap-1">
+        <div
+          className="flex h-full flex-1 items-center gap-1 pl-3"
+          onClick={(e) => e.stopPropagation()}
+          onPointerDown={() => {
+            console.log('hello.....')
+
+            if (isMobileApp) {
+              setVisible(true)
+              return
+            }
+
+            if (widget.type === WidgetType.AI_CHAT) {
+              store.panels.openWidgetPanel(widget)
+              return
+            }
+
+            console.log('=======!visible:', !visible)
+
+            setVisible(!visible)
+          }}
+        >
           {/* <WidgetIcon type={widget.type} molds={molds} /> */}
           <div className="text-foreground select-none text-base font-semibold">
             <WidgetName widget={widget} molds={molds} />
@@ -195,7 +188,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
               <Drawer.Content className="bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none">
                 <div
                   aria-hidden
-                  className="mx-auto mb-4 mt-2 h-1 w-10 flex-shrink-0 rounded-full bg-foreground/30"
+                  className="bg-foreground/30 mx-auto mb-4 mt-2 h-1 w-10 flex-shrink-0 rounded-full"
                 />
 
                 <DialogTitle className="hidden">

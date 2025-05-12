@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare'
 import { Trans } from '@lingui/react'
 import { ImageIcon, X } from 'lucide-react'
 import { toast } from 'sonner'
-import { ICreation } from '@penx/model-type/ICreation'
+import { Creation } from '@penx/domain'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api, trpc } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -12,7 +12,7 @@ import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { Image } from '../Image'
 
 interface Props {
-  creation: ICreation
+  creation: Creation
   isCover?: boolean
   onCoverUpdated: (url: string) => Promise<void>
 }

@@ -1,12 +1,12 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { IArea } from '@penx/model-type/IArea'
+import { Area } from '@penx/db/client'
 
-export const areaContext = createContext({} as IArea)
+export const areaContext = createContext({} as Area)
 
 interface Props {
-  area: IArea
+  area: Area
 }
 
 export const AreaProvider = ({ area, children }: PropsWithChildren<Props>) => {

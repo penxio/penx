@@ -1,15 +1,15 @@
 'use client'
 
 import TextareaAutosize from 'react-textarea-autosize'
+import { Creation } from '@penx/domain'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { useCreations } from '@penx/hooks/useCreations'
-import { ICreation } from '@penx/model-type/ICreation'
 import { store } from '@penx/store'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { cn } from '@penx/utils'
 
 interface PostItemProps {
-  creation: ICreation
+  creation: Creation
 }
 
 export function TaskItem({ creation: creation }: PostItemProps) {

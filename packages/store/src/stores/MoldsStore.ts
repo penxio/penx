@@ -1,11 +1,9 @@
-import { set } from 'idb-keyval'
-import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
-import { IMold } from '@penx/model-type'
+import { IMoldNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
-export const moldsAtom = atom<IMold[]>([])
+export const moldsAtom = atom<IMoldNode[]>([])
 
 export class MoldsStore {
   constructor(private store: StoreType) {}
@@ -14,7 +12,14 @@ export class MoldsStore {
     return this.store.get(moldsAtom)
   }
 
-  set(state: IMold[]) {
+  set(state: IMoldNode[]) {
     this.store.set(moldsAtom, state)
+  }
+
+  async refetchMolds() {
+    const site = this.store.site.get()
+    const molds = await localDB.listMolds(site.id)
+    this.set(molds)
+    return molds
   }
 }

@@ -22,9 +22,9 @@ interface Props {
 }
 
 export function AreaInfo({ className }: Props) {
-  const { area } = useArea()
+  const { area, raw } = useArea()
   const { setState } = useAreaDialog()
-  if (!area) return null
+  if (!raw) return null
 
   return (
     <div className={cn('flex justify-between', className)}>
@@ -36,17 +36,7 @@ export function AreaInfo({ className }: Props) {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-xl font-bold">{area.name}</h2>
-            {area.type === AreaType.BOOK && (
-              <Badge>
-                <Trans id="Book"></Trans>
-              </Badge>
-            )}
 
-            {area.type === AreaType.COLUMN && (
-              <Badge>
-                <Trans id="Column"></Trans>
-              </Badge>
-            )}
             {/* <AreaLink></AreaLink> */}
           </div>
           <div className="text-foreground/60">{area.description}</div>
@@ -72,8 +62,8 @@ export function AreaInfo({ className }: Props) {
           content="Are you sure you want to delete this area?"
           tooltipContent="Delete this area"
           onConfirm={async () => {
-            const areas = await store.areas.deleteArea(area)
-            const nextArea = areas.find((a) => a.isGenesis)!
+            const areas = await store.areas.deleteArea(area.raw)
+            const nextArea = areas.find((a) => a.props.isGenesis)!
             store.area.set(nextArea)
             store.visit.setAndSave({ activeAreaId: nextArea.id })
             store.creations.refetchCreations(nextArea.id)

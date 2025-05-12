@@ -1,6 +1,17 @@
 import { get, set } from 'idb-keyval'
+import { Node } from '@penx/domain'
 import { localDB } from '@penx/local-db'
-import { ISite } from '@penx/model-type'
+import {
+  IAreaNode,
+  ICreationNode,
+  isAreaNode,
+  isCreationNode,
+  isCreationTagNode,
+  ISiteNode,
+  isMoldNode,
+  isTagNode,
+  NodeType,
+} from '@penx/model-type'
 import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
@@ -8,10 +19,7 @@ import { Panel, PanelType, SessionData, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { initLocalSite } from './lib/initLocalSite'
 import { isRowsEqual } from './lib/isRowsEqual'
-import { syncAreasToLocal } from './lib/syncAreasToLocal'
-import { syncCreationsToLocal } from './lib/syncCreationsToLocal'
-import { syncCreationTagsToLocal } from './lib/syncCreationTagsToLocal'
-import { syncTagsToLocal } from './lib/syncTagsToLocal'
+import { syncNodesToLocal } from './lib/syncNodesToLocal'
 
 const PANELS = 'PANELS'
 
@@ -19,7 +27,7 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
-    console.log('========session:', session)
+    // console.log('========session:', session)
 
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
@@ -31,105 +39,89 @@ export class AppService {
     this.inited = true
   }
 
-  private async getInitialSite(session: SessionData): Promise<ISite> {
+  private async getInitialSite(session: SessionData): Promise<ISiteNode> {
     if (!session) {
-      const sites = await localDB.site.toArray()
-      const site = sites.find((s) => s.isRemote) || sites?.[0]
+      const sites = await localDB.listAllSites()
+      const site = sites.find((s) => s.props.isRemote) || sites?.[0]
       if (site) return site
       return initLocalSite()
     }
 
     if (!navigator.onLine) {
       if (!session.siteId) {
-        const site = (await localDB.site.toCollection().first())!
-        if (site) return site
+        const sites = await localDB.listAllSites()
+        if (sites) return sites[0]
         return initLocalSite()
       }
 
-      const site = (await localDB.site
-        .where({ siteId: session.siteId })
-        .first())!
-
+      const site = await localDB.getSite(session.siteId)
       if (site) return site
       return initLocalSite()
     }
 
     if (session.siteId) {
-      const sites = await localDB.site
-        .where({ userId: session.userId })
-        .toArray()
-      const site = sites.find((s) => s.isRemote)
+      const sites = await localDB.listAllSiteByUserId(session.userId)
+      const site = sites.find((s) => s.props.isRemote)
 
       if (site) {
-        this.syncDataToLocal(site.id)
+        await syncNodesToLocal(site.id)
         return site
       }
 
-      const [remoteSite] = await this.syncInitialData(session.siteId)
-      this.syncDataToLocal(remoteSite.id)
-      return remoteSite as ISite
+      const remoteSite = await syncNodesToLocal(session.siteId)
+      return remoteSite
     }
 
-    let site = (await localDB.site.where({ userId: session.userId }).first())!
+    let site = await localDB.getSiteByUserId(session.userId)
 
     if (!site) {
       site = await initLocalSite(session.userId)
     }
 
-    const areas = await localDB.area.where({ siteId: site.id }).toArray()
-    const molds = await localDB.mold.where({ siteId: site.id }).toArray()
-    const tags = await localDB.tag.where({ siteId: site.id }).toArray()
-    const creations = await localDB.creation
-      .where({ siteId: site.id })
-      .toArray()
-    const creationTags = await localDB.creationTag
-      .where({ siteId: site.id })
-      .toArray()
+    const nodes = await localDB.listNodes(site.id)
 
-    await api.site.syncInitialSite.mutate({
-      site,
-      areas,
-      molds,
-      tags,
-      creations,
-      creationTags,
+    await api.site.syncInitialNodes.mutate({ nodes })
+
+    await localDB.updateSite(site.id, {
+      props: {
+        ...site.props,
+        isRemote: true,
+      },
     })
-
-    await localDB.site.update(site.id, { isRemote: true })
 
     await updateSession({
       activeSiteId: site.id,
       siteId: site.id,
     })
-    this.syncDataToLocal(site.id)
+    await syncNodesToLocal(site.id)
     return site
   }
 
-  private async initStore(site: ISite) {
+  private async initStore(site: ISiteNode) {
     const siteId = site.id
     await store.site.save(site)
 
     const panels = await this.getPanels(site.id)
-
-    const areas = await localDB.area.where({ siteId }).toArray()
+    const nodes = await localDB.listNodes(site.id)
+    const areas = nodes.filter((n) => isAreaNode(n))
 
     const localVisit = await store.visit.fetch()
 
     const area =
-      areas.find((a) => a.id === localVisit.activeAreaId || a.isGenesis) ||
-      areas[0]
+      areas.find(
+        (a) => a.id === localVisit.activeAreaId || a.props.isGenesis,
+      ) || areas[0]
 
     const visit = await store.visit.save({ activeAreaId: area.id })
-
-    const molds = await localDB.mold.where({ siteId }).toArray()
-    const tags = await localDB.tag.where({ siteId }).toArray()
-    const creationTags = await localDB.creationTag.where({ siteId }).toArray()
-    const creations = await localDB.creation
-      .where({ areaId: area.id })
-      .toArray()
+    const molds = nodes.filter((n) => isMoldNode(n))
+    const tags = nodes.filter((n) => isTagNode(n))
+    const creationTags = nodes.filter((n) => isCreationTagNode(n))
+    const creations = nodes.filter(
+      (n) => isCreationNode(n) && n.areaId === area.id,
+    )
 
     store.site.set(site)
-    store.creations.set(creations)
+    store.creations.set(creations as ICreationNode[])
     store.visit.set(visit)
     store.area.set(area)
     store.areas.set(areas)
@@ -138,36 +130,6 @@ export class AppService {
     store.creationTags.set(creationTags)
     store.panels.set(panels)
     store.app.setAppLoading(false)
-  }
-
-  private async syncDataToLocal(siteId: string) {
-    syncTagsToLocal(siteId)
-    syncAreasToLocal(siteId)
-    syncCreationTagsToLocal(siteId)
-    await syncCreationsToLocal(siteId)
-  }
-
-  private async syncInitialData(siteId: string) {
-    const [
-      remoteSite,
-      remoteAreas,
-      remoteMolds,
-      remoteTags,
-      remoteCreationTags,
-    ] = await Promise.all([
-      api.site.mySite.query(),
-      api.area.listSiteAreas.query({ siteId }),
-      api.mold.listBySite.query(),
-      api.tag.listSiteTags.query({ siteId }),
-      api.tag.listSiteCreationTags.query({ siteId }),
-    ])
-
-    await localDB.site.put(remoteSite as any)
-    await localDB.area.bulkPut(remoteAreas as any)
-    await localDB.mold.bulkPut(remoteMolds as any)
-    await localDB.tag.bulkPut(remoteTags as any)
-    await localDB.creationTag.bulkPut(remoteCreationTags as any)
-    return [remoteSite]
   }
 
   private async getPanels(siteId: string) {

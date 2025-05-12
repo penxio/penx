@@ -4,9 +4,6 @@ import { Trans } from '@lingui/react'
 import { format } from 'date-fns'
 import { Edit3Icon } from 'lucide-react'
 import { toast } from 'sonner'
-import { Site } from '@penx/db/client'
-import { useSiteTags } from '@penx/hooks/useSiteTags'
-import { useSubscribers } from '@penx/hooks/useSubscribers'
 import { useTags } from '@penx/hooks/useTags'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
@@ -74,7 +71,7 @@ export function ManageTags({ panel, index }: Props) {
                     content="All tags in post will be deleted, are you sure you want to delete this tag?"
                     tooltipContent={<Trans id="Delete tag"></Trans>}
                     onConfirm={async () => {
-                      await store.tags.deleteTag(item)
+                      await store.tags.deleteTag(item.raw)
                       toast.success('Tag deleted successfully!')
                     }}
                   />

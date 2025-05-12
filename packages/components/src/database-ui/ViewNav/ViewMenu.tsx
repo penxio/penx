@@ -9,7 +9,6 @@ import {
   PopoverTrigger,
 } from '@penx/uikit/popover'
 import { Separator } from '@penx/uikit/separator'
-import { IViewNode } from '@penx/model-type'
 import { MenuItem } from '@ariakit/react'
 import { View } from '@penx/db/client'
 import { Copy, MoreVertical, Trash2 } from 'lucide-react'

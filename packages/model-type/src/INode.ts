@@ -1,295 +1,204 @@
-export enum NodeType {
-  ROOT = 'ROOT',
+export enum AIProviderType {
+  PERPLEXITY = 'PERPLEXITY',
+  DEEPSEEK = 'DEEPSEEK',
+  OPENAI = 'OPENAI',
+  ANTHROPIC = 'ANTHROPIC',
+  GOOGLE_AI = 'GOOGLE_AI',
+  XAI = 'XAI',
+}
 
+export type AIProvider = {
+  type: AIProviderType
+  enabled: boolean
+  apiKey?: string
+  baseURL?: string
+  [key: string]: any
+}
+export type Widget = {
+  id: string
+  type: string
+  collapsed?: boolean
+  moldId?: string
+  creationType?: string
+
+  [key: string]: any
+}
+
+export enum NodeType {
+  SITE = 'SITE',
+  AREA = 'AREA',
+  MOLD = 'MOLD',
+  TAG = 'TAG',
+  CREATION_TAG = 'CREATION_TAG',
   INBOX = 'INBOX',
   TRASH = 'TRASH',
   FAVORITE = 'FAVORITE',
   DAILY = 'DAILY',
-
-  DAILY_ROOT = 'DAILY_ROOT',
-
-  OBJECT = 'OBJECT',
-
-  // Database
-  DATABASE_ROOT = 'DATABASE_ROOT',
-
-  COMMON = 'COMMON',
-
-  LIST = 'LIST',
-  LIST_ITEM = 'LIST_ITEM',
-
-  DATABASE = 'DATABASE',
-  CELL = 'CELL',
-  ROW = 'ROW',
-  COLUMN = 'COLUMN',
-  VIEW = 'VIEW',
-  FILTER = 'FILTER',
-  OPTION = 'OPTION',
+  CREATION = 'CREATION',
 }
 
 export interface INode {
   id: string
 
-  userId: string
-
-  parentId?: string
-
-  databaseId?: string
-
   type: NodeType
 
-  element: any | any[]
-
-  // for dynamic data
   props: {
-    name?: string
-    date?: string // 2024-01-01
-    viewType?: ViewType
     [key: string]: any
   }
 
-  /**
-   * for editor
-   */
-  collapsed: boolean
-
-  /**
-   * for tree view
-   */
-  folded: boolean
-
-  children: string[]
-
-  date: string
-
   createdAt: Date
-
   updatedAt: Date
+
+  areaId?: string
+  userId: string
+  siteId: string
 }
 
-export enum ColumnType {
-  TEXT = 'TEXT',
-  NUMBER = 'NUMBER',
-  PASSWORD = 'PASSWORD',
-  BOOLEAN = 'BOOLEAN',
-  MARKDOWN = 'MARKDOWN',
-  URL = 'URL',
-  IMAGE = 'IMAGE',
-  RATE = 'RATE',
-
-  FILE = 'FILE',
-
-  TODO_SOURCE = 'TODO_SOURCE',
-
-  NODE_ID = 'NODE_ID',
-
-  SINGLE_SELECT = 'SINGLE_SELECT',
-
-  MULTIPLE_SELECT = 'MULTIPLE_SELECT',
-  DATE = 'DATE',
-  CREATED_AT = 'CREATED_AT',
-  UPDATED_AT = 'UPDATED_AT',
-}
-
-export interface IRootNode extends INode {
-  type: NodeType.ROOT
+export interface ISiteNode extends INode {
+  type: NodeType.SITE
   props: {
-    catalogue: any
-  }
-}
-
-export interface IDailyRootNode extends INode {
-  type: NodeType.DAILY_ROOT
-}
-
-export enum ObjectType {
-  ARTICLE = 'ARTICLE',
-  NOTE = 'NOTE',
-  IMAGE = 'IMAGE',
-  VIDEO = 'VIDEO',
-  AUDIO = 'AUDIO',
-}
-
-export interface IObjectNode extends INode {
-  type: NodeType.OBJECT
-  props: {
-    objectType?: ObjectType
-    color?: string
-    imageUrl?: string
-    coverUrl?: string
-    gateType?: any
-    collectible?: boolean
-  }
-}
-
-export interface IDatabaseRootNode extends INode {
-  type: NodeType.DATABASE_ROOT
-}
-
-export interface IFilterResult {
-  cellNodesMapList: Record<string, ICellNode>[]
-  filterRows: IRowNode[]
-}
-
-export interface IDatabaseNode extends INode {
-  type: NodeType.DATABASE
-  props: {
-    name: string // database name, same with tag name
-    color: string
-    activeViewId: string
-    viewIds: string[]
-    commandAlias?: string
-    hotkey?: string
-  }
-}
-
-export interface IColumnNode extends INode {
-  parentId: string // should be database id
-  type: NodeType.COLUMN
-  props: {
-    displayName: string
-    fieldName: string
+    name: string
     description: string
-    columnType: ColumnType
-    isPrimary: boolean
+    about: string
+    logo: string
+    font: string
+    image: string
+    podcastCover: string
+    email: string
+    stripeType?: string
+    sassSubscriptionId?: string
+    sassSubscriptionStatus?: string
+    sassBillingCycle?: string
+    sassPlanType?: string
+    sassCustomerId?: string
+    sassProductId?: string
+    sassCurrentPeriodEnd?: Date
+    sassBelieverPeriodEnd?: Date
+    stripeOAuthToken?: any
+    socials: any
+    analytics: any
     config: any
-    optionIds?: string[]
+    navLinks: any
+    newsletterConfig: any
+    notificationConfig: any
+    aiProviders: AIProvider[]
+    repo: string
+    installationId: number
+    balance: any
+    themeName: string
+    themeConfig: any
+    memberCount: number
+    isRemote: boolean
+    creationCount: number
   }
 }
 
-export interface IRowNode extends INode {
-  parentId: string // should be database id
-  type: NodeType.ROW
+export interface IAreaNode extends INode {
+  type: NodeType.AREA
   props: {
-    sort: number
+    slug: string
+    name: string
+    description: string
+    about: string
+    logo?: string
+    cover?: string
+    widgets: Widget[]
+    chargeMode: string
+    // type: string
+    favorites: string[]
+    isGenesis: boolean
+    deletedAt?: Date
+    productId?: string
   }
 }
 
-export interface ICellNodeProps<T = any> {
-  columnId: string
-  rowId: string
-  ref: string // ref to a node id
-
-  /**
-   *
-    | string
-    | number
-    | string[]
-    | number[]
-    | {
-        isTodoSource?: boolean
-
-        sourceId?: string // todo source id
-
-        fileHash?: string // file hash
-
-        googleDriveFileId?: string // google drive file id
-
-      }
-   * 
-   */
-  data: any
+export function isAreaNode(n: any): n is IAreaNode {
+  return n.type === NodeType.AREA
 }
 
-export interface ICellNode extends INode {
-  parentId: string // should be database id
-  type: NodeType.CELL
-  props: ICellNodeProps
-}
-
-export function isCellNode(node: any): node is ICellNode {
-  return node?.type === NodeType.CELL
-}
-
-export enum ViewType {
-  TABLE = 'TABLE',
-  LIST = 'LIST',
-  CALENDAR = 'CALENDAR',
-  GALLERY = 'GALLERY',
-  KANBAN = 'KANBAN',
-}
-
-export interface ViewColumn {
-  columnId: string
-  width: number
-  visible: boolean
-}
-
-export interface Sort {
-  columnId: string
-  isAscending: boolean
-}
-
-export interface Group {
-  columnId: string
-  isAscending: boolean
-  showEmptyGroup: boolean
-}
-
-export enum ConjunctionType {
-  OR = 'OR',
-  AND = 'AND',
-}
-
-export enum OperatorType {
-  IS_EMPTY = 'IS_EMPTY',
-  IS_NOT_EMPTY = 'IS_NOT_EMPTY',
-  CONTAINS = 'CONTAINS',
-  DOES_NOT_CONTAIN = 'DOES_NOT_CONTAIN',
-
-  IS = 'IS',
-  IS_NOT = 'IS_NOT',
-
-  EQUAL = 'EQUAL', // =
-  NOT_EQUAL = 'NOT_EQUAL', //!=
-  LESS_THAN = 'LESS_THAN', // <
-  MORE_THAN = 'MORE_THAN', // >
-
-  LESS_THAN_OR_EQUAL = 'LESS_THAN_OR_EQUAL', // <=
-  MORE_THAN_OR_EQUAL = 'MORE_THAN_OR_EQUAL', // >=
-
-  FILENAME = 'FILENAME',
-  FILETYPE = 'FILETYPE',
-}
-
-export interface Filter {
-  columnId: string // column id
-  conjunction: ConjunctionType
-  operator: OperatorType
-  value: any
-}
-
-export interface IViewNode extends INode {
-  parentId: string // should be database id
-  type: NodeType.VIEW
-  children: string[]
+export interface IMoldNode extends INode {
+  type: NodeType.MOLD
   props: {
     name: string
-    viewType: ViewType
-    viewColumns: ViewColumn[]
-    sorts: Sort[]
-    groups: Group[]
-    filters: Filter[]
-    kanbanColumnId: string // columnId for kanban
-    kanbanOptionIds: string[] // for kanban sorts
+    pluralName: string
+    description: string
+    type: string
+    props: any[]
+    content: string
   }
 }
 
-export interface IFilterNode extends INode {
-  parentId: string // should be database id
-  type: NodeType.FILTER
-  props: {
-    columnId: string
-    viewId: string
-  }
+export function isMoldNode(n: any): n is IMoldNode {
+  return n.type === NodeType.MOLD
 }
 
-export interface IOptionNode extends INode {
-  parentId: string // should be database id
-  type: NodeType.OPTION
+export interface ITagNode extends INode {
+  type: NodeType.TAG
   props: {
-    columnId: string
     name: string
     color: string
+    creationCount: number
+    hidden: boolean
   }
 }
+
+export function isTagNode(n: any): n is ITagNode {
+  return n.type === NodeType.TAG
+}
+
+export interface ICreationTagNode extends INode {
+  type: NodeType.CREATION_TAG
+  props: {
+    creationId: string
+    tagId: string
+  }
+}
+
+export function isCreationTagNode(n: any): n is ICreationTagNode {
+  return n.type === NodeType.CREATION_TAG
+}
+
+export interface ICreationNode extends INode {
+  type: NodeType.CREATION
+  props: {
+    slug: string
+    title: string
+    description: string
+    icon: string
+    image: string
+    content: string
+    podcast: any
+    i18n: any
+    props: any
+    cid: string
+    type: string
+    gateType: string
+    status: string
+    commentStatus: string
+    commentCount: number
+    featured: boolean
+    collectible: boolean
+    delivered: boolean
+    checked: boolean
+    isPopular: boolean
+    isJournal: boolean
+    date?: string
+    publishedAt?: Date
+    archivedAt?: Date
+    openedAt: Date
+    areaId: string
+    moldId: string
+  }
+}
+
+export function isCreationNode(n: any): n is ICreationNode {
+  return n.type === NodeType.CREATION
+}
+
+export interface IColumnNode extends INode {}
+export interface IRowNode extends INode {}
+export interface IViewNode extends INode {}
+
+export interface IFilterNode extends INode {}
+
+export interface IOptionNode extends INode {}

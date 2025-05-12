@@ -61,7 +61,7 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
           <Drawer.Content className="bg-background fixed bottom-0 left-0 right-0 mt-24 flex h-fit min-h-[50vh] flex-col rounded-t-[10px] px-4 pb-6 outline-none">
             <div
               aria-hidden
-              className="mx-auto mb-4 mt-2 h-1 w-10 flex-shrink-0 rounded-full bg-foreground/30"
+              className="bg-foreground/30 mx-auto mb-4 mt-2 h-1 w-10 flex-shrink-0 rounded-full"
             />
 
             <DialogTitle className="hidden"></DialogTitle>
@@ -72,7 +72,7 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
                   key={item.id}
                   className="flex cursor-pointer items-center gap-2 py-3"
                   onClick={async () => {
-                    store.area.set(item)
+                    store.area.set(item.raw)
                     store.creations.refetchCreations(item.id)
                     store.visit.setAndSave({ activeAreaId: item.id })
                     // store.panels.resetPanels()

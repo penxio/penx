@@ -1,0 +1,33 @@
+import { ICreationTagNode } from '@penx/model-type'
+
+export class CreationTag {
+  constructor(public raw: ICreationTagNode) {}
+
+  get id(): string {
+    return this.raw?.id || ''
+  }
+
+  get siteId(): string {
+    return this.raw.siteId
+  }
+
+  get userId(): string {
+    return this.raw.siteId
+  }
+
+  get tagId(): string {
+    return this.raw.props.tagId
+  }
+
+  get creationId(): string {
+    return this.raw.props.creationId
+  }
+
+  get createdAt() {
+    return this.raw.createdAt
+  }
+
+  get updatedAt() {
+    return this.raw.updatedAt
+  }
+}

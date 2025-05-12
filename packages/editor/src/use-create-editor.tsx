@@ -53,6 +53,7 @@ import {
   usePlateEditor,
   type CreatePlateEditorOptions,
 } from '@udecode/plate/react'
+import { isMobileApp } from '@penx/constants'
 import {
   AIPlugin,
   BidirectionalLinkElement,
@@ -74,10 +75,6 @@ import {
   SocialLinksElement,
   SocialLinksPlugin,
 } from '@penx/editor-custom-plugins'
-import { copilotPlugins } from '@penx/editor-plugins/plugins/copilot-plugins'
-import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
-import { FixedToolbarPlugin } from '@penx/editor-plugins/plugins/fixed-toolbar-plugin'
-import { FloatingToolbarPlugin } from '@penx/editor-plugins/plugins/floating-toolbar-plugin'
 import { AILeaf } from '@penx/editor-plugins/plate-ui/ai-leaf'
 import { BlockquoteElement } from '@penx/editor-plugins/plate-ui/blockquote-element'
 import { CodeBlockElement } from '@penx/editor-plugins/plate-ui/code-block-element'
@@ -117,6 +114,10 @@ import { TableElement } from '@penx/editor-plugins/plate-ui/table-element'
 import { TableRowElement } from '@penx/editor-plugins/plate-ui/table-row-element'
 import { TocElement } from '@penx/editor-plugins/plate-ui/toc-element'
 import { ToggleElement } from '@penx/editor-plugins/plate-ui/toggle-element'
+import { copilotPlugins } from '@penx/editor-plugins/plugins/copilot-plugins'
+import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
+import { FixedToolbarPlugin } from '@penx/editor-plugins/plugins/fixed-toolbar-plugin'
+import { FloatingToolbarPlugin } from '@penx/editor-plugins/plugins/floating-toolbar-plugin'
 
 export const viewComponents = {
   [AudioPlugin.key]: MediaAudioElement,
@@ -211,7 +212,9 @@ export const useCreateEditor = (
         components: {
           ...(readOnly
             ? viewComponents
-            : withPlaceholders(editorComponents, placeholder)),
+            : isMobileApp
+              ? editorComponents
+              : withPlaceholders(editorComponents, placeholder)),
           ...components,
         },
         ...override,

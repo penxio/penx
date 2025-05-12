@@ -3,16 +3,15 @@
 import React from 'react'
 import { PlusIcon } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
-import { Area } from '@penx/db/client'
+import { Area } from '@penx/domain'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useMolds } from '@penx/hooks/useMolds'
-import { IArea } from '@penx/model-type/IArea'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 
 interface Props {
-  area: IArea
+  area: Area
   widget: Widget
 }
 

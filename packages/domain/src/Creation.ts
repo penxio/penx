@@ -1,77 +1,82 @@
-import { precision } from '@penx/math'
-import { Address } from 'viem'
+import { ICreationNode } from '@penx/model-type'
+import { getUrl } from '@penx/utils'
 
-export type CreationRaw = {
-  id: bigint
-  creator: Address
-  appId: bigint
-  uri: string
-  farmer: number
-  curve: {
-    basePrice: bigint
-    inflectionPoint: number
-    inflectionPrice: bigint
-    linearPriceSlope: bigint
-  }
-  balance: bigint
-  volume: bigint
-}
 export class Creation {
-  constructor(
-    public raw: CreationRaw,
-    public supply: bigint,
-  ) {}
+  props: ICreationNode['props']
 
-  get id() {
-    return this.raw.id
+  constructor(public raw: ICreationNode) {
+    this.props = this.raw?.props || {}
   }
 
-  get idDecimal() {
-    return Number(this.id)
+  get id(): string {
+    return this.raw?.id || ''
   }
 
-  get idString() {
-    return String(this.id)
+  get siteId(): string {
+    return this.raw.siteId
   }
 
-  get appId() {
-    return this.raw.appId
+  get userId(): string {
+    return this.raw.siteId
   }
 
-  get appIdDecimal() {
-    return Number(this.appId)
+  get slug(): string {
+    return this.raw.props.slug
   }
 
-  get creator() {
-    return this.raw.creator
+  get gateType(): string {
+    return this.raw.props.gateType
   }
 
-  get volume() {
-    return this.raw.volume
+  get collectible() {
+    return this.raw.props.collectible
   }
 
-  get tvl() {
-    return this.raw.balance
+  get delivered() {
+    return this.raw.props.delivered
   }
 
-  get tvlFormatted() {
-    return precision.toDecimal(this.tvl).toFixed(5)
+  get moldId(): string {
+    return this.raw.props.moldId
   }
 
-  get curve() {
-    return this.raw.curve
+  get type(): string {
+    return this.props?.type || ''
   }
 
-  get curveNumberFormat() {
-    return {
-      basePrice: Number(this.curve.basePrice),
-      inflectionPoint: Number(this.curve.inflectionPoint),
-      inflectionPrice: Number(this.curve.inflectionPrice),
-      linearPriceSlope: Number(this.curve.linearPriceSlope),
-    }
+  get title(): string {
+    return this.props.title || ''
   }
 
-  get supplyDecimal() {
-    return Number(this.supply)
+  get status() {
+    return this.props.status
+  }
+
+  get image() {
+    return this.props.image ? getUrl(this.props.image) : ''
+  }
+
+  get checked() {
+    return this.props.checked
+  }
+
+  get content() {
+    return this.props.content
+  }
+
+  get podcast() {
+    return this.props.podcast
+  }
+
+  get publishedAt() {
+    return this.props.publishedAt
+  }
+
+  get createdAt() {
+    return this.raw.createdAt
+  }
+
+  get updatedAt() {
+    return this.raw.updatedAt
   }
 }

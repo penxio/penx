@@ -1,18 +1,14 @@
 import { WidgetType } from '@penx/constants'
-import { IMold } from '@penx/model-type'
+import { IMoldNode } from '@penx/model-type'
 import { CreationType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
-export const getInitialWidgets = (molds: IMold[]) => {
-  const pageMold = molds.find((mold) => mold.type === CreationType.PAGE)!
-  const noteMold = molds.find((mold) => mold.type === CreationType.NOTE)!
+export const getInitialWidgets = (molds: IMoldNode[]) => {
+  const pageMold = molds.find((mold) => mold.props.type === CreationType.PAGE)!
+  const noteMold = molds.find((mold) => mold.props.type === CreationType.NOTE)!
+  const taskMold = molds.find((mold) => mold.props.type === CreationType.TASK)!
 
   const widgets: Widget[] = [
-    {
-      id: uniqueId(),
-      collapsed: true,
-      type: WidgetType.AI_CHAT,
-    },
     {
       id: uniqueId(),
       collapsed: true,
@@ -25,8 +21,9 @@ export const getInitialWidgets = (molds: IMold[]) => {
     },
     {
       id: uniqueId(),
+      type: WidgetType.MOLD,
       collapsed: true,
-      type: WidgetType.RECENTLY_EDITED,
+      moldId: pageMold.id,
     },
     {
       id: uniqueId(),
@@ -38,7 +35,7 @@ export const getInitialWidgets = (molds: IMold[]) => {
       id: uniqueId(),
       type: WidgetType.MOLD,
       collapsed: true,
-      moldId: noteMold.id,
+      moldId: taskMold.id,
     },
   ]
   return widgets
