@@ -42,7 +42,6 @@ export async function GET(req: NextRequest) {
       refreshToken: refresh_token,
       accessToken: access_token,
       expiresAt: new Date(expiry_date).valueOf(),
-      email: email,
       providerInfo: {
         name,
         picture,

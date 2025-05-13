@@ -11,7 +11,7 @@ export async function pollingSyncToRemote() {
   // console.log('=======pollingInterval:', pollingInterval)
 
   while (true) {
-    // console.log('sync to remote...........isDesktop:', isDesktop)
+    console.log('sync to remote...........isDesktop:', isDesktop)
     await sync()
     await sleep(pollingInterval)
   }

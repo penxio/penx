@@ -229,7 +229,6 @@ export function Creation({ panel }: Props) {
                 variant="post"
                 className="dark:caret-brand w-full break-all"
                 dndProvider={false}
-                panel={panel}
                 value={
                   creation.content
                     ? JSON.parse(creation.content)

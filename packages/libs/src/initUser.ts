@@ -15,18 +15,20 @@ import { hashPassword } from './hashPassword'
 
 const SEVEN_DAYS = 60 * 60 * 24 * 7
 
-const includeAccount = {
+const includeUser = {
   include: {
-    user: {
+    sites: {
       include: {
-        sites: {
-          include: {
-            areas: true,
-            domains: true,
-          },
-        },
+        areas: true,
+        domains: true,
       },
     },
+  },
+} as const
+
+const includeAccount = {
+  include: {
+    user: includeUser,
   },
 } as const
 
@@ -54,14 +56,7 @@ const getSiteInfo = (newUser: User) => {
   return siteInfo
 }
 
-type GoogleLoginInfo = {
-  email: string
-  openid: string
-  picture: string
-  name: string
-}
-
-export async function initUserByGoogleInfo(
+export async function initUserByGoogleToken(
   accessToken: string,
   ref: string,
   userId?: string,
@@ -69,14 +64,19 @@ export async function initUserByGoogleInfo(
   return prisma.$transaction(
     async (tx) => {
       const info = await getGoogleUserInfo(accessToken)
-      console.log('=======info:', info)
-
       const account = await tx.account.findUnique({
         where: { providerAccountId: info.sub },
         ...includeAccount,
       })
 
-      if (account) return account
+      if (account) return account.user
+
+      const user = tx.user.findUniqueOrThrow({
+        where: { email: info.email },
+        ...includeUser,
+      })
+
+      if (user) return user
 
       let newUser = await tx.user.create({
         data: {
@@ -91,7 +91,6 @@ export async function initUserByGoogleInfo(
                 providerType: ProviderType.GOOGLE,
                 providerAccountId: info.sub,
                 providerInfo: info,
-                email: info.email,
               },
             ],
           },
@@ -112,9 +111,9 @@ export async function initUserByGoogleInfo(
         }
       }
 
-      return tx.account.findUniqueOrThrow({
-        where: { providerAccountId: info.sub },
-        ...includeAccount,
+      return tx.user.findUniqueOrThrow({
+        where: { id: newUser.id },
+        ...includeUser,
       })
     },
     {
@@ -132,12 +131,12 @@ export async function initUserByEmail(
 ) {
   return prisma.$transaction(
     async (tx) => {
-      const account = await tx.account.findUnique({
-        where: { providerAccountId: email },
-        ...includeAccount,
+      const user = await tx.user.findUnique({
+        where: { email },
+        ...includeUser,
       })
 
-      if (account) return account
+      if (user) return user
 
       const [name] = email.split('@')
 
@@ -147,16 +146,7 @@ export async function initUserByEmail(
           name: name,
           displayName: name,
           email: email,
-          accounts: {
-            create: [
-              {
-                providerType: ProviderType.EMAIL,
-                providerAccountId: email,
-                email: email,
-                accessToken: await hashPassword(password),
-              },
-            ],
-          },
+          password: await hashPassword(password),
         },
       })
 
@@ -174,9 +164,9 @@ export async function initUserByEmail(
         }
       }
 
-      return tx.account.findUniqueOrThrow({
-        where: { providerAccountId: email },
-        ...includeAccount,
+      return tx.user.findUniqueOrThrow({
+        where: { email },
+        ...includeUser,
       })
     },
     {
@@ -189,23 +179,12 @@ export async function initUserByEmail(
 export async function initUserByEmailLoginCode(email: string, userId?: string) {
   return prisma.$transaction(
     async (tx) => {
-      const account = await tx.account.findFirst({
-        where: {
-          OR: [
-            {
-              providerType: ProviderType.EMAIL,
-              providerAccountId: email,
-            },
-            {
-              providerType: ProviderType.GOOGLE,
-              email,
-            },
-          ],
-        },
-        ...includeAccount,
+      const user = await tx.user.findUnique({
+        where: { email },
+        ...includeUser,
       })
 
-      if (account) return account
+      if (user) return user
 
       const [name] = email.split('@')
 
@@ -215,21 +194,12 @@ export async function initUserByEmailLoginCode(email: string, userId?: string) {
           name: name,
           displayName: name,
           email: email,
-          accounts: {
-            create: [
-              {
-                providerType: ProviderType.EMAIL,
-                providerAccountId: email,
-                email: email,
-              },
-            ],
-          },
         },
       })
 
-      return tx.account.findUniqueOrThrow({
-        where: { providerAccountId: email },
-        ...includeAccount,
+      return tx.user.findUniqueOrThrow({
+        where: { email },
+        ...includeUser,
       })
     },
     {

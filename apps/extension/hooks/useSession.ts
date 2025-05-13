@@ -70,6 +70,8 @@ export function useSession() {
     })
 
     queryClient.setQueriesData({ queryKey: ['session'] }, res)
+
+    await set('SESSION', res)
     return res
   }
 

@@ -9,7 +9,6 @@ import { Creation } from '@penx/domain'
 import { useCreateEditor } from '@penx/editor/use-create-editor'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { useMySite } from '@penx/hooks/useMySite'
-import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -42,7 +41,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
       </PopoverTrigger>
 
       <PopoverContent align="end" side="bottom" className="w-48 p-2">
-        {!creation.publishedAt && (
+        {/* {!creation.publishedAt && (
           <MenuItem
             onClick={() => {
               publishDialog.setIsOpen(true)
@@ -51,17 +50,17 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
           >
             <Trans id="Publish"></Trans>
           </MenuItem>
-        )}
+        )} */}
 
         <CopyMarkdown creation={creation} />
 
-        <MenuItem
+        {/* <MenuItem
           onClick={() => {
             toast.info('Coming soon...')
           }}
         >
           <Trans id="Copy link"></Trans>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
           onClick={() => {
             toast.info('Coming soon...')
@@ -70,7 +69,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
           <Trans id="Copy html"></Trans>
         </MenuItem>
 
-        {creation.publishedAt && (
+        {/* {creation.publishedAt && (
           <MenuItem
             onClick={() => {
               toast.promise(
@@ -90,7 +89,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
           >
             <Trans id="Unpublish"></Trans>
           </MenuItem>
-        )}
+        )} */}
 
         <MenuItem
           className="text-red-500"

@@ -1,16 +1,16 @@
 'use client'
 
-import { Account, ProviderType } from '@penx/db/client'
 import { AvatarImage } from '@radix-ui/react-avatar'
 import { KeyIcon } from 'lucide-react'
 import { toast } from 'sonner'
+import { Account, ProviderType } from '@penx/db/client'
 import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { trpc } from '@penx/trpc-client'
-import { IconGoogle } from '@penx/uikit/IconGoogle'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Avatar, AvatarFallback } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { shortenAddress } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
@@ -71,26 +71,6 @@ function AccountItem({ account }: { account: Account }) {
             <AvatarFallback>{info?.name?.slice(0, 1)}</AvatarFallback>
           </Avatar>
           <div className="">{shortenAddress(account.providerAccountId)}</div>
-        </div>
-        {removeButton}
-      </div>
-    )
-  }
-  if (account.providerType === ProviderType.PASSWORD) {
-    return (
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Badge variant="secondary" className="gap-1">
-            <KeyIcon size={14} />
-            <span>Password</span>
-          </Badge>
-          <Avatar className="h-6 w-6">
-            <AvatarImage src={info?.picture} />
-            <AvatarFallback>
-              {account.providerAccountId?.slice(0, 1)}
-            </AvatarFallback>
-          </Avatar>
-          <div className="">{account.providerAccountId}/---</div>
         </div>
         {removeButton}
       </div>

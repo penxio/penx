@@ -206,14 +206,14 @@ export const userRouter = router({
         })
       }
 
-      await prisma.account.create({
-        data: {
-          userId: ctx.token.uid,
-          providerType: ProviderType.PASSWORD,
-          providerAccountId: input.username,
-          accessToken: await hashPassword(input.password),
-        },
-      })
+      // await prisma.account.create({
+      //   data: {
+      //     userId: ctx.token.uid,
+      //     providerType: ProviderType.PASSWORD,
+      //     providerAccountId: input.username,
+      //     accessToken: await hashPassword(input.password),
+      //   },
+      // })
     }),
 
   disconnectAccount: publicProcedure

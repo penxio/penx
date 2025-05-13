@@ -1,12 +1,12 @@
-import { cacheHelper } from '@penx/libs/cache-header'
+import { TRPCError } from '@trpc/server'
+import { z } from 'zod'
 import {
   PRO_PLAN_COLLABORATOR_LIMIT,
   TEAM_PLAN_COLLABORATOR_LIMIT,
 } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { CollaboratorRole, PlanType, ProviderType } from '@penx/db/client'
-import { TRPCError } from '@trpc/server'
-import { z } from 'zod'
+import { cacheHelper } from '@penx/libs/cache-header'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const collaboratorRouter = router({
@@ -55,10 +55,11 @@ export const collaboratorRouter = router({
 
       const user = await prisma.user.findFirst({
         where: {
+          email: input.q,
           accounts: {
             some: {
               OR: [
-                { email: input.q },
+                // { email: input.q },
                 { providerAccountId: input.q.toLowerCase() },
               ],
             },

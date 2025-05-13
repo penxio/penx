@@ -127,6 +127,10 @@ export type SiteInSession = Site & {
   areas: Area[]
 }
 
+export type UserWithSites = User & {
+  sites: SiteInSession[]
+}
+
 export type AccountWithUser = Account & {
   user: User & {
     sites: SiteInSession[]

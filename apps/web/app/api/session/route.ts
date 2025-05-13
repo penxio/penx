@@ -14,7 +14,7 @@ import {
   Subscription,
 } from '@penx/db/client'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { initUserByEmail, initUserByGoogleInfo } from '@penx/libs/initUser'
+import { initUserByEmail, initUserByGoogleToken } from '@penx/libs/initUser'
 import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import {
   AccountWithUser,
@@ -26,6 +26,7 @@ import {
   isUpdateProps,
   isUseCoupon,
   SessionData,
+  UserWithSites,
 } from '@penx/types'
 import { generateNonce } from '@penx/utils/generateNonce'
 
@@ -39,19 +40,21 @@ const headers = {
 
 async function updateSession(
   session: IronSession<SessionData>,
-  account: AccountWithUser,
+  user: UserWithSites,
 ) {
-  const site = account.user?.sites?.[0]
+  const site = user?.sites?.[0]
+
+  console.log('======user>>>>>:', user)
 
   session.isLoggedIn = true
   session.message = ''
-  session.uid = account.userId
-  session.userId = account.userId
-  session.email = account.user.email || ''
-  session.ensName = account.user?.ensName as string
-  session.name = account.user.name as string
-  session.picture = account.user.image as string
-  session.image = account.user.image as string
+  session.uid = user.id
+  session.userId = user.id
+  session.email = user.email || ''
+  session.ensName = user?.ensName as string
+  session.name = user.name as string
+  session.picture = user.image as string
+  session.image = user.image as string
   session.siteId = site?.id
   session.activeSiteId = site?.id
   session.planType = site?.sassPlanType
@@ -127,10 +130,10 @@ export async function POST(req: NextRequest) {
   if (isGoogleLogin(json)) {
     const ref = json?.ref || ''
     const userId = json?.userId || ''
-    const account = await initUserByGoogleInfo(json.accessToken, ref, userId)
-    await updateSession(session, account)
+    const user = await initUserByGoogleToken(json.accessToken, ref, userId)
+    await updateSession(session, user)
     try {
-      await registerSiteUser(hostname, account.userId)
+      await registerSiteUser(hostname, user.id)
     } catch (error) {
       console.error('register siteUser error:', error)
     }
@@ -148,9 +151,9 @@ export async function POST(req: NextRequest) {
       const password = decoded.password
       const ref = decoded.ref || ''
       const userId = decoded.userId || ''
-      const account = await initUserByEmail(email, password, ref, userId)
-      await updateSession(session, account)
-      await registerSiteUser(hostname, account.userId)
+      const user = await initUserByEmail(email, password, ref, userId)
+      await updateSession(session, user)
+      await registerSiteUser(hostname, user.id)
       return Response.json(session, { headers })
     } catch (error) {
       session.isLoggedIn = false
@@ -161,38 +164,25 @@ export async function POST(req: NextRequest) {
 
   if (isPasswordLogin(json)) {
     try {
-      const account = await prisma.account.findFirst({
+      const user = await prisma.user.findFirst({
         where: {
-          OR: [
-            {
-              providerType: ProviderType.PASSWORD,
-              providerAccountId: json.username,
-            },
-            {
-              providerType: ProviderType.EMAIL,
-              providerAccountId: json.username,
-            },
-          ],
+          OR: [{ email: json.username }, { name: json.username }],
         },
         include: {
-          user: {
-            include: {
-              subscriptions: true,
-              sites: { include: { domains: true } },
-            },
-          },
+          subscriptions: true,
+          sites: { include: { domains: true } },
         },
       })
 
-      if (!account) {
+      if (!user) {
         throw new Error('INVALID_USERNAME')
       }
 
-      const match = compareSync(json.password, account.accessToken || '')
+      const match = compareSync(json.password, user.password || '')
       if (!match) throw new Error('INVALID_PASSWORD')
 
-      await updateSession(session, account as any)
-      await registerSiteUser(hostname, account.userId)
+      await updateSession(session, user as any)
+      await registerSiteUser(hostname, user.id)
       return Response.json(session, { headers })
     } catch (error: any) {
       console.log('error.mess==:', error.message)

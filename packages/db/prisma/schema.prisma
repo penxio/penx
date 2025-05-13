@@ -139,6 +139,7 @@ model User {
   displayName       String?         @db.VarChar(255)
   ensName           String?         @db.VarChar(255)
   email             String?         @unique @db.VarChar(255)
+  password          String?         @db.VarChar(255)
   emailVerified     DateTime?
   referralCode      String?         @unique @db.VarChar(50)
   commissionBalance Json?
@@ -195,8 +196,6 @@ enum ProviderType {
   GITHUB
   WALLET
   FARCASTER
-  PASSWORD
-  EMAIL
 }
 
 model Account {
@@ -204,7 +203,6 @@ model Account {
   providerType      ProviderType
   providerAccountId String       @unique @default("") @db.VarChar(255)
   providerInfo      Json?
-  email             String?      @db.VarChar(255)
   refreshToken      String?      @db.VarChar(255)
   accessToken       String?      @db.VarChar(255)
   expiresAt         Int?

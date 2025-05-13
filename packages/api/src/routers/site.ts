@@ -410,26 +410,13 @@ export const siteRouter = router({
             }
           })
 
-          console.log('========xxxxxxxx>>>>>11111111')
-
           const newSite = await tx.site.create({
             data: siteData,
           })
 
-          console.log(
-            '3333333========',
-            newSite,
-            nodes.map((n) => ({
-              userId: n.userId,
-              siteId: n.siteId,
-              type: n.type,
-            })),
-          )
-
           await tx.node.createMany({
             data: formattedNodes,
           })
-          console.log('========4444444444444')
 
           return true
         },

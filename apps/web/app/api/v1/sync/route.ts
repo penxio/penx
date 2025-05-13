@@ -60,13 +60,10 @@ export async function POST(req: NextRequest) {
   }
 
   if (input.operation === OperationType.CREATE) {
-    console.log('creqate========:', input.data)
-
     await prisma.node.create({
       data: input.data,
     })
   } else if (input.operation === OperationType.UPDATE) {
-    console.log('update========:', input.data)
     await prisma.node.update({
       where: { id: input.key },
       data: input.data,
