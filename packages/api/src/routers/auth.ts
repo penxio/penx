@@ -74,28 +74,37 @@ export const authRouter = router({
         })
       }
 
-      const token = jwt.sign(
-        {
-          ...input,
-          ref: input.ref || '',
-        },
-        process.env.NEXTAUTH_SECRET!,
-        {
-          expiresIn: '30d',
-        },
-      )
+      const alphabet = '0123456789'
+      const nanoid = customAlphabet(alphabet, 6)
+      let code: string
 
-      const prefix = isProd ? 'https://' : 'http://'
-      const content = getRegisterEmailTpl(
-        `${prefix}${ROOT_DOMAIN}/validate-email?token=${token}`,
-      )
+      const expireSeconds = 60 * 100
+      while (true) {
+        code = nanoid()
+
+        const setResult = await redis.set(
+          redisKeys.emailRegisterCode(code),
+          JSON.stringify(input),
+          'EX',
+          expireSeconds,
+          'NX',
+        )
+
+        if (setResult === 'OK') {
+          break
+        }
+      }
+
+      const content = getLoginCodeEmailTpl(code, true)
+
       const result = await sendEmail({
         from: 'PenX<no-reply@penx.io>',
         to: [input.email],
-        subject: 'Verify your email address',
+        subject: `Register to PenX, Code: ${code}`,
         html: content,
         text: content.replace(/<[^>]*>/g, ''),
       })
+
       return true
     }),
 
@@ -111,7 +120,7 @@ export const authRouter = router({
       const nanoid = customAlphabet(alphabet, 6)
       let code: string
 
-      const expireSeconds = 60 * 100
+      const expireSeconds = 60 * 10
       while (true) {
         code = nanoid()
 

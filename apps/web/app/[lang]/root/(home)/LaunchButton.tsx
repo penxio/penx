@@ -25,7 +25,7 @@ export function LaunchButton({
       variant="outline-solid"
       size="lg"
       className={cn(
-        'relative  flex h-14 w-52 items-center gap-2 text-base',
+        'relative flex h-14 w-full items-center gap-2 text-base md:w-52',
         className,
       )}
       // variant="outline-solid"

@@ -37,7 +37,8 @@ import {
   DropdownMenuTrigger,
 } from '@penx/uikit/dropdown-menu'
 import { useIsMobile } from '@penx/uikit/use-mobile'
-import { getUrl, sleep } from '@penx/utils'
+import { cn, getUrl, sleep } from '@penx/utils'
+import { generateGradient } from '@penx/utils/generateGradient'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { usePlanListDialog } from './PlanList/usePlanListDialog'
 
@@ -124,9 +125,14 @@ export function ProfileButton({ loginButton }: Props) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="h-7 w-7 cursor-pointer rounded-lg">
-          <AvatarImage src={getUrl(site.logo || '')} alt={session?.name} />
-          <AvatarFallback className="rounded-lg">
-            {site?.name?.slice(0, 1)}
+          <AvatarImage src={getUrl(session.image || '')} alt={session?.name} />
+          <AvatarFallback
+            className={cn(
+              'rounded-lg text-white',
+              generateGradient(session.name),
+            )}
+          >
+            {session?.name?.slice(0, 1)}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -140,7 +146,12 @@ export function ProfileButton({ loginButton }: Props) {
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <Avatar className="h-8 w-8 rounded-lg">
               <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-              <AvatarFallback className="rounded-lg">
+              <AvatarFallback
+                className={cn(
+                  'rounded-lg text-white',
+                  generateGradient(session.name),
+                )}
+              >
                 {session?.name.slice(0, 1)}
               </AvatarFallback>
             </Avatar>

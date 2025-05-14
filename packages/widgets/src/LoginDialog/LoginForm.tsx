@@ -129,7 +129,7 @@ export function LoginForm({}: Props) {
         <a
           href="#"
           className="text-brand"
-          onClick={() => setAuthStatus('register')}
+          onClick={() => setAuthStatus({ type: 'register' })}
         >
           <Trans id="Create one"></Trans>
         </a>

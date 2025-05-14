@@ -31,9 +31,9 @@ import {
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
-import { ProfileButton } from '../ProfileButton'
 import { AreaWidgets } from '../area-widgets'
 import { AreasPopover } from '../AreasPopover/AreasPopover'
+import { ProfileButton } from '../ProfileButton'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'

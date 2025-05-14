@@ -90,7 +90,7 @@ export function FeatureList() {
   ]
 
   return (
-    <div className="mx-auto mt-10 max-w-3xl space-y-10">
+    <div className="mx-auto mt-10 w-full max-w-3xl space-y-10">
       {/* <div className="space-y-4 text-center">
         <div className="text-5xl font-bold">
           <Trans id="Features" message="Features"></Trans>

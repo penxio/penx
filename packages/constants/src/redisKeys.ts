@@ -54,4 +54,8 @@ export const redisKeys = {
   emailLoginCode(code: string) {
     return `login-code:${code}`
   },
+
+  emailRegisterCode(code: string) {
+    return `register-code:${code}`
+  },
 }

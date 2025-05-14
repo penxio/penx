@@ -64,8 +64,8 @@ export const WidgetList = () => {
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        delay: isMobileApp ? 500 : 10,
-        tolerance: 5,
+        delay: isMobileApp ? 500 : 200,
+        tolerance: 10,
       },
     }),
     useSensor(KeyboardSensor, {
@@ -73,7 +73,7 @@ export const WidgetList = () => {
     }),
     useSensor(TouchSensor, {
       activationConstraint: {
-        delay: isMobileApp ? 500 : 10,
+        delay: isMobileApp ? 500 : 200,
         tolerance: 5,
       },
     }),

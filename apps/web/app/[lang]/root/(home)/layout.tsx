@@ -35,15 +35,15 @@ export default async function HomePage({
         <Slogan></Slogan>
       </div>
       <div className="flex flex-col items-center justify-center gap-3">
-        <div className="flex items-center justify-center gap-3">
-          <Link href="/~" target="_blank">
+        <div className="flex w-full flex-col items-center justify-center gap-3 md:flex-row">
+          <Link href="/~" target="_blank" className='w-full'>
             <LaunchButton platform="desktop">
               <span className="icon-[solar--global-outline] text-brand size-5"></span>
               <span>Web App</span>
             </LaunchButton>
           </Link>
 
-          <Link href="https://github.com/penxio/penx/releases" target="_blank">
+          <Link href="https://github.com/penxio/penx/releases" target="_blank" className='w-full'>
             <LaunchButton>
               <span className="icon-[uil--desktop] size-5 text-sky-500"></span>
               <span>Desktop App</span>
@@ -51,7 +51,7 @@ export default async function HomePage({
           </Link>
         </div>
 
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex w-full flex-col items-center justify-center gap-3 md:flex-row">
           <LaunchButton className="">
             <span className="icon-[ic--baseline-apple] size-6"></span>
             <span>iPhone</span>

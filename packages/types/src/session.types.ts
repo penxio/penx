@@ -49,6 +49,7 @@ export type LoginData =
   | WalletLoginData
   | PasswordLoginData
   | RegisterByEmailData
+  | RegisterByCodeData
 
 export type GoogleLoginData = GoogleLoginInfo & {
   type: 'penx-google'
@@ -71,6 +72,11 @@ export type RegisterByEmailData = {
   validateToken: string
 }
 
+export type RegisterByCodeData = {
+  type: 'register-by-code'
+  code: string
+}
+
 export function isGoogleLogin(value: any): value is GoogleLoginData {
   return typeof value === 'object' && value?.type === 'penx-google'
 }
@@ -85,6 +91,17 @@ export function isPasswordLogin(value: any): value is PasswordLoginData {
 
 export function isRegisterByEmail(value: any): value is RegisterByEmailData {
   return typeof value === 'object' && value?.type === 'register-by-email'
+}
+
+export type RegisterByCodePayload = {
+  email: string
+  ref: string
+  userId: string
+  password: string
+}
+
+export function isRegisterByCode(value: any): value is RegisterByCodeData {
+  return typeof value === 'object' && value?.type === 'register-by-code'
 }
 
 export type UpdateSessionData =

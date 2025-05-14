@@ -1,11 +1,12 @@
 import { getBasePublicClient } from '@/lib/getBasePublicClient'
 import { createAppClient, viemConnector } from '@farcaster/auth-client'
 import { compareSync } from 'bcrypt-edge'
+import Redis from 'ioredis'
 import { getIronSession, IronSession } from 'iron-session'
 import jwt from 'jsonwebtoken'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
-import { ROOT_DOMAIN } from '@penx/constants'
+import { redisKeys, ROOT_DOMAIN } from '@penx/constants'
 import { prisma } from '@penx/db'
 import {
   BillingCycle,
@@ -21,16 +22,20 @@ import {
   isCancelSubscription,
   isGoogleLogin,
   isPasswordLogin,
+  isRegisterByCode,
   isRegisterByEmail,
   isUpdateProfile,
   isUpdateProps,
   isUseCoupon,
+  RegisterByCodePayload,
   SessionData,
   UserWithSites,
 } from '@penx/types'
 import { generateNonce } from '@penx/utils/generateNonce'
 
 // export const runtime = 'edge'
+
+const redis = new Redis(process.env.REDIS_URL!)
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -154,6 +159,32 @@ export async function POST(req: NextRequest) {
       const user = await initUserByEmail(email, password, ref, userId)
       await updateSession(session, user)
       await registerSiteUser(hostname, user.id)
+      return Response.json(session, { headers })
+    } catch (error) {
+      session.isLoggedIn = false
+      await session.save()
+      return Response.json(session, { headers })
+    }
+  }
+
+  if (isRegisterByCode(json)) {
+    try {
+      const data = await redis.get(redisKeys.emailRegisterCode(json.code))
+      if (data) {
+        const payload: RegisterByCodePayload = JSON.parse(data)
+
+        const email = payload.email
+        const password = payload.password
+        const ref = payload.ref || ''
+        const userId = payload.userId || ''
+        const user = await initUserByEmail(email, password, ref, userId)
+        await updateSession(session, user)
+        await registerSiteUser(hostname, user.id)
+      } else {
+        session.isLoggedIn = false
+        session.message = 'Invalid code'
+      }
+
       return Response.json(session, { headers })
     } catch (error) {
       session.isLoggedIn = false

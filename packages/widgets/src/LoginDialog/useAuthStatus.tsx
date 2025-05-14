@@ -2,9 +2,14 @@
 
 import { atom, useAtom } from 'jotai'
 
-const authStatusAtom = atom<'login' | 'register' | 'register-email-sent'>(
-  'login',
-)
+type State = {
+  type: 'login' | 'register' | 'register-email-sent'
+  data?: Record<string, any>
+}
+const authStatusAtom = atom<State>({
+  type: 'login',
+  data: {},
+} as State)
 
 export function useAuthStatus() {
   const [authStatus, setAuthStatus] = useAtom(authStatusAtom)

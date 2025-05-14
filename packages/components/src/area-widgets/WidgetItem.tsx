@@ -84,15 +84,12 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           'relative flex h-10 cursor-pointer select-none items-center justify-between pr-2',
           isMobileApp && 'h-11',
         )}
-        {...attributes}
-        {...listeners}
       >
         <div
           className="flex h-full flex-1 items-center gap-1 pl-3"
-          onClick={(e) => e.stopPropagation()}
-          onPointerDown={() => {
-            console.log('hello.....')
-
+          {...attributes}
+          {...listeners}
+          onClick={(e) => {
             if (isMobileApp) {
               setVisible(true)
               return
@@ -102,8 +99,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
               store.panels.openWidgetPanel(widget)
               return
             }
-
-            console.log('=======!visible:', !visible)
 
             setVisible(!visible)
           }}

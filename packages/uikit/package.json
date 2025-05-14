@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
+    "./*": "./src/*.tsx",
     "./postcss.config": "./postcss.config.mjs",
     "./AddNodeBtn": "./src/components/AddNodeBtn.tsx",
     "./FileUpload": "./src/components/FileUpload.tsx",
@@ -72,16 +73,17 @@
     "tailwindcss": "^4.1.4"
   },
   "dependencies": {
-    "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
-    "@penx/query-client": "workspace:*",
-    "@penx/editor-transforms": "workspace:*",
     "@penx/contexts": "workspace:*",
-    "@penx/unique-id": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
-    "@penx/session": "workspace:*",
-    "@penx/utils": "workspace:*",
+    "@penx/db": "workspace:*",
+    "@penx/editor-transforms": "workspace:*",
     "@penx/libs": "workspace:*",
-    "@penx/db": "workspace:*"
+    "@penx/query-client": "workspace:*",
+    "@penx/session": "workspace:*",
+    "@penx/trpc-client": "workspace:*",
+    "@penx/types": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/utils": "workspace:*",
+    "input-otp": "^1.4.2"
   }
 }

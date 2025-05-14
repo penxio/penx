@@ -19,7 +19,7 @@ export function LoginButton({ appearance = 'button', ...rest }: Props) {
       {...rest}
       onClick={() => {
         setIsOpen(true)
-        setAuthStatus('login')
+        setAuthStatus({ type: 'login' })
       }}
     >
       {appearance === 'icon' ? (
