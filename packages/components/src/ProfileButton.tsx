@@ -14,6 +14,7 @@ import {
   Sun,
 } from 'lucide-react'
 import { nanoid } from 'nanoid'
+import { toast } from 'sonner'
 import {
   isDesktop,
   isExtension,
@@ -79,7 +80,7 @@ export function ProfileButton({ loginButton }: Props) {
         await sleep(1000)
       } catch (error) {
         console.log('error:', error)
-        // toost
+        toast.error('please try again')
         return
       }
     }

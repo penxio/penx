@@ -16,8 +16,7 @@ const link = httpBatchLink({
   async headers() {
     if (isDesktop || isMobileApp) {
       const session = await get('SESSION')
-      console.log('========session>>>>>:', session.accessToken)
-
+      console.log('========session>>>>>:', session)
       if (session?.accessToken) {
         return {
           Authorization: session.accessToken,

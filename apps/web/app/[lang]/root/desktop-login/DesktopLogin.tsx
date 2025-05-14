@@ -6,8 +6,8 @@ import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 
 export function DesktopLogin() {
@@ -30,26 +30,26 @@ export function DesktopLogin() {
     )
   }
 
-  if (!session) {
-    return (
-      <div className="bg-background flex h-screen flex-col items-center justify-center p-10">
-        <div className="mt-6 flex items-center justify-between gap-2">
-          <Button
-            size="lg"
-            className="w-32"
-            onClick={async () => {
-              setIsOpen(true)
-            }}
-          >
-            <Trans id="Sign in"></Trans>
-          </Button>
-        </div>
-      </div>
-    )
-  }
+  // if (!session) {
+  //   return (
+  //     <div className="bg-background flex h-screen flex-col items-center justify-center p-10">
+  //       <div className="mt-6 flex items-center justify-between gap-2">
+  //         <Button
+  //           size="lg"
+  //           className="w-32"
+  //           onClick={async () => {
+  //             setIsOpen(true)
+  //           }}
+  //         >
+  //           <Trans id="Sign in"></Trans>
+  //         </Button>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   return (
-    <div className="bg-background flex h-screen flex-col items-center justify-center p-10">
+    <div className="flex h-screen flex-col items-center justify-center p-10">
       <div className="text-3xl font-bold">
         <Trans id="Login to PenX desktop"></Trans>
       </div>
@@ -80,6 +80,10 @@ export function DesktopLogin() {
         <Button
           disabled={isConfirming}
           onClick={async () => {
+            if (!data) {
+              setIsOpen(true)
+              return
+            }
             try {
               await confirm({ token })
               fetch('http://localhost:14158/open-window')
@@ -91,9 +95,15 @@ export function DesktopLogin() {
           }}
         >
           {isConfirming && <LoadingDots></LoadingDots>}
-          <div>
-            <Trans id="Authorize desktop login"></Trans>
-          </div>
+          {session ? (
+            <div>
+              <Trans id="Authorize desktop login"></Trans>
+            </div>
+          ) : (
+            <div>
+              <Trans id="Login"></Trans>
+            </div>
+          )}
         </Button>
       </div>
     </div>

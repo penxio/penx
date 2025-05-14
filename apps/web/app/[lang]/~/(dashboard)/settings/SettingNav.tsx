@@ -131,9 +131,9 @@ export function SettingNav({}: Props) {
           <Trans id="Domain"></Trans>
         </Link>
 
-        <Link href={Paths.backup} className={linkClassName(Paths.backup)}>
+        {/* <Link href={Paths.backup} className={linkClassName(Paths.backup)}>
           <Trans id="Backup"></Trans>
-        </Link>
+        </Link> */}
 
         {/* <Link
           href={Paths.creationTypes}
