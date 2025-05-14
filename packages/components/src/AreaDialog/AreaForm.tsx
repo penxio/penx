@@ -59,7 +59,6 @@ export function AreaForm() {
       chargeMode: area?.chargeMode || ChargeMode.PAID_MONTHLY,
     },
   })
-  console.log('======form:', form.formState.errors)
 
   const chargeMode = form.watch('chargeMode')
   const slugValue = form.watch('slug')

@@ -18,7 +18,6 @@ import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { QuickInput } from '../QuickInput'
 import { AddCreationButton } from './AddCreationButton'
-import { AllCreationCard } from './AllCreationCard'
 import { IsAllProvider } from './IsAllContext'
 import { TitleContextMenu } from './TitleContextMenu'
 import { ToggleButton } from './ToggleButton'
@@ -142,7 +141,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           )}
           {...rest}
         >
-          {dragLine}
           {!isMobileApp && (
             <ContextMenu>
               <ContextMenuTrigger>{titleJSX}</ContextMenuTrigger>
@@ -173,14 +171,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           </AnimatePresence>
         </div>
 
-        {!isMobileApp && (
-          <AllCreationCard
-            name={<WidgetName widget={widget} molds={molds} />}
-            visible={visible}
-            setVisible={setVisible}
-            widget={widget}
-          />
-        )}
         {isMobileApp && (
           <Drawer.Root open={visible} onOpenChange={setVisible}>
             <Drawer.Portal>
