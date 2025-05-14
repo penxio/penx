@@ -18,7 +18,8 @@ export function SettingNav({}: Props) {
   const { site } = useQuerySite()
 
   const Paths = {
-    profile: '/~/settings/profile',
+    profile: '/~/settings',
+    password: '/~/settings/password',
     payoutAccount: '/~/settings/payout-account',
     general: '/~/settings',
     linkAccounts: '/~/settings/link-accounts',
@@ -68,9 +69,20 @@ export function SettingNav({}: Props) {
         height: 'calc(100vh - 48px)',
       }}
     >
-      <Section title="Account">
+      <Section title="">
         <Link href={Paths.profile} className={linkClassName(Paths.profile)}>
           <Trans id="Profile"></Trans>
+        </Link>
+
+        <Link href={Paths.password} className={linkClassName(Paths.password)}>
+          <Trans id="Password"></Trans>
+        </Link>
+
+        <Link
+          href={Paths.subscription}
+          className={linkClassName(Paths.subscription)}
+        >
+          <Trans id="Billing & plan"></Trans>
         </Link>
         {/* <Link
           href={Paths.payoutAccount}
@@ -86,9 +98,9 @@ export function SettingNav({}: Props) {
         </Link> */}
       </Section>
 
-      <Separator className="w-3/4" />
+      <Separator className="hidden w-3/4" />
 
-      <Section title="Site">
+      <Section title="Site" className="hidden">
         <Link href={Paths.general} className={linkClassName(Paths.general)}>
           <Trans id="General"></Trans>
         </Link>

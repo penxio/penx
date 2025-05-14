@@ -8,6 +8,7 @@ import { isProd, redisKeys, ROOT_DOMAIN } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { ProviderType } from '@penx/db/client'
 import { getGoogleUserInfo } from '@penx/libs/getGoogleUserInfo'
+import { hashPassword } from '@penx/libs/hashPassword'
 import {
   initUserByEmailLoginCode,
   initUserByGoogleToken,
@@ -148,5 +149,30 @@ export const authRouter = router({
       })
 
       return code
+    }),
+
+  updatePassword: protectedProcedure
+    .input(
+      z.object({
+        password: z.string().min(6),
+        confirmPassword: z.string().min(6),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (input.password !== input.confirmPassword) {
+        throw new TRPCError({
+          code: 'BAD_REQUEST',
+          message: 'Invalid password',
+        })
+      }
+
+      await prisma.user.update({
+        where: { id: ctx.token.uid },
+        data: {
+          password: await hashPassword(input.password),
+        },
+      })
+
+      return true
     }),
 })

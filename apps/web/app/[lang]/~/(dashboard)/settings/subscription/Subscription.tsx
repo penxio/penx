@@ -69,6 +69,7 @@ export function Subscription({}: Props) {
               // } else {
               //   openConnectModal?.()
               // }
+              
             }}
           >
             {!session?.isFree && session?.subscriptionStatus !== 'canceled'
