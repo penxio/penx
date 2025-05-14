@@ -653,6 +653,9 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
+      react-error-boundary:
+        specifier: ^6.0.0
+        version: 6.0.0(react@19.0.0)
       react-fast-compare:
         specifier: ^3.2.2
         version: 3.2.2
@@ -12113,6 +12116,11 @@ packages:
   react-easy-swipe@0.0.21:
     resolution: {integrity: sha512-OeR2jAxdoqUMHIn/nS9fgreI5hSpgGoL5ezdal4+oO7YSSgJR8ga+PkYGJrSrJ9MKlPcQjMQXnketrD7WNmNsg==}
     engines: {node: '>= 6'}
+
+  react-error-boundary@6.0.0:
+    resolution: {integrity: sha512-gdlJjD7NWr0IfkPlaREN2d9uUZUlksrfOx7SX62VRerwXbMY6ftGCIZua1VG1aXFNOimhISsTq+Owp725b9SiA==}
+    peerDependencies:
+      react: '>=16.13.1'
 
   react-fast-compare@3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
@@ -25544,6 +25552,11 @@ snapshots:
   react-easy-swipe@0.0.21:
     dependencies:
       prop-types: 15.8.1
+
+  react-error-boundary@6.0.0(react@19.0.0):
+    dependencies:
+      '@babel/runtime': 7.27.1
+      react: 19.0.0
 
   react-fast-compare@3.2.2: {}
 
