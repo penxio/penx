@@ -137,17 +137,17 @@ async function sync(
 
     const hasCreations = changeNodes.some((c) => c.type === NodeType.CREATION)
     if (hasCreations) {
-      await store.creations.refetchCreations()
+      // await store.creations.refetchCreations()
     }
 
     const hasAreas = changeNodes.some((c) => c.type === NodeType.AREA)
     if (hasAreas) {
-      await store.areas.refetchAreas()
+      // await store.areas.refetchAreas()
     }
 
     const hasMolds = changeNodes.some((c) => c.type === NodeType.MOLD)
     if (hasMolds) {
-      await store.molds.refetchMolds()
+      // await store.molds.refetchMolds()
     }
 
     // TODO:

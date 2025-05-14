@@ -17,7 +17,7 @@ export function TaskItem({ creation: creation }: PostItemProps) {
   return (
     <div
       className={cn(
-        'hover:text-brand text-foreground flex cursor-pointer break-inside-avoid flex-col rounded-md py-1 text-lg transition-all hover:font-bold',
+        'hover:text-brand text-foreground flex cursor-pointer break-inside-avoid flex-col rounded-md py-1 text-base transition-all hover:font-bold',
       )}
       onClick={() => {
         store.panels.updateMainPanel({

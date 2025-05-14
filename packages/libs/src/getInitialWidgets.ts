@@ -29,7 +29,7 @@ export const getInitialWidgets = (molds: IMoldNode[]) => {
       id: uniqueId(),
       type: WidgetType.MOLD,
       collapsed: true,
-      moldId: pageMold.id,
+      moldId: noteMold.id,
     },
     {
       id: uniqueId(),

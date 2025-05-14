@@ -7,8 +7,8 @@ import { CreationType, Panel, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
-import { ArticleList } from './Articles/ArticleList'
 import { BookmarkList } from './Bookmarks/BookmarkList'
+import { CreationList } from './CreationList/CreationList'
 import { NoteList } from './Notes/NoteList'
 import { PanelChat } from './PanelChat'
 import { TasksList } from './Tasks/TasksList'
@@ -21,7 +21,7 @@ interface Props {
 export function PanelWidget({ panel, index }: Props) {
   const { molds } = useMolds()
   const widget = panel.widget as Widget
-  const mold = molds.find((m) => m.id === widget.moldId)
+  const mold = molds.find((m) => m.id === widget.moldId)!
 
   const ref = useRef<HTMLDivElement>(null)
   const [columns, setColumns] = useState(3)
@@ -50,44 +50,37 @@ export function PanelWidget({ panel, index }: Props) {
     return () => resizeObserver.disconnect()
   }, [])
 
-  return (
-    <>
-      <PanelHeaderWrapper index={index}>
-        <div>
-          <WidgetName widget={widget} molds={molds} />
-        </div>
-        <ClosePanelButton panel={panel} />
-      </PanelHeaderWrapper>
+  if (mold?.type === CreationType.NOTE) {
+    return (
+      <div
+        ref={ref}
+        className="flex-1 overflow-x-hidden pt-8"
+      >
+        <NoteList
+          panel={panel}
+          index={index}
+          mold={mold}
+          columnCount={columns}
+        />
+      </div>
+    )
+  }
 
-      {mold?.type === CreationType.NOTE && (
-        <div
-          ref={ref}
-          className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8"
-        >
-          <NoteList
-            panel={panel}
-            index={index}
-            mold={mold}
-            columnCount={columns}
-          />
-        </div>
-      )}
-
-      {widget.type === WidgetType.AI_CHAT && (
+  if (widget.type === WidgetType.AI_CHAT) {
+    return (
+      <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8">
         <PanelChat panel={panel} index={index} />
-      )}
+      </div>
+    )
+  }
 
-      {mold?.type === CreationType.TASK && (
-        <TasksList panel={panel} index={index} mold={mold} />
-      )}
+  if (mold?.type === CreationType.TASK) {
+    return <TasksList panel={panel} index={index} mold={mold} />
+  }
 
-      {mold?.type === CreationType.BOOKMARK && (
-        <BookmarkList panel={panel} index={index} mold={mold} />
-      )}
+  if (mold?.type === CreationType.BOOKMARK) {
+    return <BookmarkList panel={panel} index={index} mold={mold} />
+  }
 
-      {mold?.type === CreationType.ARTICLE && (
-        <ArticleList panel={panel} index={index} mold={mold} />
-      )}
-    </>
-  )
+  return <CreationList panel={panel} index={index} mold={mold} />
 }

@@ -10,6 +10,7 @@ import { PanelAIProviders } from './panel-renderer/PanelAIProviders'
 import { PanelCreation } from './panel-renderer/PanelCreation'
 import { PanelHome } from './panel-renderer/PanelHome'
 import { PanelWidget } from './panel-renderer/PanelWidget'
+import { PanelWidgetHeader } from './panel-renderer/PanelWidgetHeader'
 
 export function PanelItem({
   panel,
@@ -34,6 +35,7 @@ export function PanelItem({
         minSize={20}
         style={{
           height: 'calc(100vh - 16px)',
+          width: panel.type === PanelType.WIDGET ? 100 : 'auto',
         }}
       >
         {panel.type === PanelType.CREATION && (
@@ -57,7 +59,10 @@ export function PanelItem({
         )}
 
         {panel.type === PanelType.WIDGET && (
-          <PanelWidget index={index} panel={panel} />
+          <>
+            <PanelWidgetHeader index={index} panel={panel} />
+            <PanelWidget index={index} panel={panel} />
+          </>
         )}
       </ResizablePanel>
       {!isLast && <ResizableHandle className="bg-transparent px-0.5" />}

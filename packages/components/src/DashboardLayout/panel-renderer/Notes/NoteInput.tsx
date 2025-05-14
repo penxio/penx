@@ -11,7 +11,7 @@ import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
 
-export function TaskInput() {
+export function NoteInput() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
@@ -43,10 +43,14 @@ export function TaskInput() {
   }
 
   const submitForm = useCallback(() => {
-    const title = input.split('\n').join(',')
+    const content = input.split('\n')
+    const slateValue = content.map((line) => ({
+      type: 'p',
+      children: [{ text: line }],
+    }))
     addCreation({
-      type: CreationType.TASK,
-      title,
+      type: CreationType.NOTE,
+      content: JSON.stringify(slateValue),
       isAddPanel: false,
     })
     setInput('')

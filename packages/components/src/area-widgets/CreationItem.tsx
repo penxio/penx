@@ -33,9 +33,10 @@ import { useIsAllContext } from './IsAllContext'
 
 interface CreationItemProps {
   creation: Creation
+  className?: string
 }
 
-export function CreationItem({ creation }: CreationItemProps) {
+export function CreationItem({ creation, className }: CreationItemProps) {
   const { isCreationInPanels } = usePanels()
   const { isAll, setVisible } = useIsAllContext()
   const mold = useCreationMold(creation)
@@ -55,7 +56,10 @@ export function CreationItem({ creation }: CreationItemProps) {
       <ContextMenuTrigger>
         <div
           key={creation.id}
-          className="hover:bg-foreground/5 group flex h-7 cursor-pointer items-center gap-2 rounded py-1 pl-2 pr-1 transition-all"
+          className={cn(
+            'hover:bg-foreground/5 group flex h-7 cursor-pointer items-center gap-2 rounded pl-2 pr-1 transition-all',
+            className
+          )}
           onClick={() => {
             if (isMobileApp) {
               appEmitter.emit('ROUTE_TO_CREATION', creation)
