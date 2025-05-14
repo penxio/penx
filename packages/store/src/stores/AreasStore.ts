@@ -65,7 +65,7 @@ export class AreasStore {
   async deleteArea(area: IAreaNode) {
     await localDB.transaction('rw', localDB.node, localDB.change, async () => {
       if (area.props.isGenesis) {
-        throw new Error('Cannot delete genesis area')
+        throw new Error('Cannot delete last area')
       }
 
       const creations = await localDB.listCreationsByArea(area.id)

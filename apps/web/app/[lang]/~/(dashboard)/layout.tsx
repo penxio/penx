@@ -103,6 +103,7 @@ export default async function RootLayout({
               <DashboardLayout>
                 <SubscriptionGuideDialog />
                 {children}
+
               </DashboardLayout>
             </ThemeProvider>
 

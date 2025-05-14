@@ -45,9 +45,7 @@ export function Content({ panel, index }: Props) {
           <ClosePanelButton panel={panel} />
         </div>
       </PanelHeaderWrapper>
-      <div className="flex-1 overflow-y-auto overflow-x-hidden p-3">
-        <Creation panel={panel} />
-      </div>
+      <Creation panel={panel} className='' />
     </>
   )
 }

@@ -58,7 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarFooter className="py-0">
         <div className="flex items-center justify-between">
           <div>
-            {session && <VisitSiteButton />}
+            {/* {session && <VisitSiteButton />} */}
 
             <TooltipProvider>
               <Tooltip>
@@ -107,7 +107,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </Tooltip>
             </TooltipProvider>
 
-            {isDesktop && (
+            {/* {isDesktop && (
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -129,7 +129,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-            )}
+            )} */}
             <ModeToggle className="hover:bg-foreground/8" />
           </div>
           <ProfileButton />

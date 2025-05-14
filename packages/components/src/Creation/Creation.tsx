@@ -37,9 +37,10 @@ import { Tags } from './Tags'
 
 interface Props {
   panel?: Panel
+  className?: string
 }
 
-export function Creation({ panel }: Props) {
+export function Creation({ panel, className }: Props) {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
@@ -109,64 +110,70 @@ export function Creation({ panel }: Props) {
   return (
     <>
       <DeleteCreationDialog />
-      <div className="flex h-full w-full flex-col">
-        <div
-          className={cn(
-            'relative z-0 flex min-h-[500px] flex-1 flex-col px-0 md:px-8',
-            isMobileApp && 'pt-0',
-          )}
-        >
-          <div className={cn('w-full px-0 sm:px-[max(10px,calc(50%-350px))]')}>
-            {showTitle && (
-              <div className="mb-2 flex flex-col space-y-3 md:mb-5">
-                <div className="relative">
-                  {!isImage && !isMobileApp && (
-                    <CoverUpload
-                      creation={creation}
-                      isCover={isCover}
-                      onCoverUpdated={async (uri) => {
+
+      <div
+        className={cn(
+          'creation-container relative z-0 min-h-[100vh] flex-1 flex-col overflow-y-auto overflow-x-hidden px-0 pb-40 md:px-8',
+          isMobileApp && 'pt-0',
+          className,
+        )}
+        onClick={(e: any) => {
+          if (e.target?.className?.includes('creation-container')) {
+            appEmitter.emit('FOCUS_EDITOR')
+          }
+        }}
+      >
+        <div className={cn('w-full px-0 sm:px-[max(10px,calc(50%-350px))]')}>
+          {showTitle && (
+            <div className="mb-2 flex flex-col space-y-3 md:mb-5">
+              <div className="relative">
+                {!isImage && !isMobileApp && (
+                  <CoverUpload
+                    creation={creation}
+                    isCover={isCover}
+                    onCoverUpdated={async (uri) => {
+                      updateCreation({
+                        id: creation.id,
+                        image: uri,
+                      })
+                    }}
+                  />
+                )}
+                <div className="flex items-center gap-2">
+                  {mold?.type === CreationType.TASK && (
+                    <Checkbox
+                      className="bg-foreground/10 size-6 border-none"
+                      checked={creation.checked}
+                      onCheckedChange={(v) => {
                         updateCreation({
                           id: creation.id,
-                          image: uri,
+                          checked: v as any,
                         })
                       }}
                     />
                   )}
-                  <div className="flex items-center gap-2">
-                    {mold?.type === CreationType.TASK && (
-                      <Checkbox
-                        className="bg-foreground/10 size-6 border-none"
-                        checked={creation.checked}
-                        onCheckedChange={(v) => {
-                          updateCreation({
-                            id: creation.id,
-                            checked: v as any,
-                          })
-                        }}
-                      />
-                    )}
 
-                    <TextareaAutosize
-                      className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
-                      placeholder="Title"
-                      defaultValue={creation.title || ''}
-                      // autoFocus={!isMobileApp}
-                      autoFocus
-                      onChange={(e) => {
-                        const title = e.target.value
-                        updateCreation({ id: creation.id, title })
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          appEmitter.emit('FOCUS_EDITOR')
-                          e.preventDefault()
-                        }
-                      }}
-                    />
-                  </div>
+                  <TextareaAutosize
+                    className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
+                    placeholder="Title"
+                    defaultValue={creation.title || ''}
+                    // autoFocus={!isMobileApp}
+                    autoFocus
+                    onChange={(e) => {
+                      const title = e.target.value
+                      updateCreation({ id: creation.id, title })
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        appEmitter.emit('FOCUS_EDITOR')
+                        e.preventDefault()
+                      }
+                    }}
+                  />
                 </div>
+              </div>
 
-                {/* <TextareaAutosize
+              {/* <TextareaAutosize
                   className="dark:placeholder-text-600 w-full resize-none border-none bg-transparent px-0 placeholder:text-stone-400 focus:outline-none focus:ring-0"
                   placeholder="Description"
                   defaultValue={creation.description}
@@ -182,87 +189,79 @@ export function Creation({ panel }: Props) {
                     }
                   }}
                 /> */}
-              </div>
-            )}
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1">
-                <ChangeType creation={creation} />
-                <div className="text-lg">•</div>
-                <div className="flex items-center gap-2">
-                  <Tags creation={creation} />
-                  {/* <PostLocales /> */}
-                </div>
-              </div>
-            </div>
-
-            <PropList
-              onUpdateProps={(newCreation) => {
-                debouncedUpdate(newCreation)
-              }}
-            />
-
-            {mold?.type === CreationType.AUDIO && (
-              <div className="mt-6">
-                <AudioCreationUpload creation={creation as any} />
-              </div>
-            )}
-
-            {isImage && (
-              <ImageCreationUpload
-                creation={creation}
-                onFileChange={(file) => {
-                  const title = file.name
-                  updateCreation({ id: creation.id, title })
-                }}
-                onUploaded={async (url) => {
-                  updateCreation({ id: creation.id, image: url })
-                }}
-              />
-            )}
-          </div>
-
-          {!isImage && (
-            <div className="mt-4 w-full" data-registry="plate">
-              <PlateEditor
-                ref={editorRef}
-                variant="post"
-                className="dark:caret-brand w-full break-all"
-                dndProvider={false}
-                value={
-                  creation.content
-                    ? JSON.parse(creation.content)
-                    : editorDefaultValue
-                }
-                showAddButton
-                showFixedToolbar={false}
-                onChange={(v: any[]) => {
-                  const input: UpdateCreationInput = {
-                    id: creation.id,
-                    content: JSON.stringify(v),
-                  }
-
-                  if (creation.type === CreationType.NOTE) {
-                    const title = v
-                      .map((n) => Node.string(n))
-                      .join(', ')
-                      .slice(0, 20)
-                    input.title = title
-                  }
-
-                  updateCreation(input)
-                }}
-              />
             </div>
           )}
 
-          <div
-            className="flex-1"
-            onClick={() => {
-              appEmitter.emit('FOCUS_EDITOR')
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1">
+              <ChangeType creation={creation} />
+              <div className="text-lg">•</div>
+              <div className="flex items-center gap-2">
+                <Tags creation={creation} />
+                {/* <PostLocales /> */}
+              </div>
+            </div>
+          </div>
+
+          <PropList
+            onUpdateProps={(newCreation) => {
+              debouncedUpdate(newCreation)
             }}
-          ></div>
+          />
+
+          {mold?.type === CreationType.AUDIO && (
+            <div className="mt-6">
+              <AudioCreationUpload creation={creation as any} />
+            </div>
+          )}
+
+          {isImage && (
+            <ImageCreationUpload
+              creation={creation}
+              onFileChange={(file) => {
+                const title = file.name
+                updateCreation({ id: creation.id, title })
+              }}
+              onUploaded={async (url) => {
+                updateCreation({ id: creation.id, image: url })
+              }}
+            />
+          )}
         </div>
+
+        {!isImage && (
+          <div className="mt-4 w-full" data-registry="plate">
+            <PlateEditor
+              ref={editorRef}
+              variant="post"
+              className="h-auto w-full overflow-hidden break-all"
+              dndProvider={false}
+              value={
+                creation.content
+                  ? JSON.parse(creation.content)
+                  : editorDefaultValue
+              }
+              showAddButton
+              showFixedToolbar={false}
+              onChange={(v: any[]) => {
+                const input: UpdateCreationInput = {
+                  id: creation.id,
+                  content: JSON.stringify(v),
+                }
+
+                if (creation.type === CreationType.NOTE) {
+                  const title = v
+                    .map((n) => Node.string(n))
+                    .join(', ')
+                    .slice(0, 20)
+                  input.title = title
+                }
+
+                updateCreation(input)
+              }}
+            />
+          </div>
+        )}
       </div>
     </>
   )

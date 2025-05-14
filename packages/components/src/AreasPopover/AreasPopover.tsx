@@ -2,17 +2,17 @@
 
 import { Trans } from '@lingui/react'
 import { PopoverClose } from '@radix-ui/react-popover'
-import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
+import { ChevronsUpDown, PlusIcon } from 'lucide-react'
 import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'
 import { store } from '@penx/store'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
-import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { useAreaDialog } from '../AreaDialog/useAreaDialog'
+import { AreaMenu } from './AreaMenu'
 
 interface Props {
   className?: string
@@ -28,7 +28,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="hover:bg-foreground/5 group/area flex h-10 w-full cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors">
+        <div className="hover:bg-foreground/8 bg-foreground/5 group/area flex h-10 w-full cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors">
           <div className="flex flex-1 cursor-pointer items-center gap-1">
             <div className="flex items-center gap-1">
               <Avatar className="size-5 rounded-md">
@@ -49,18 +49,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
             </div>
             <ChevronsUpDown className="size-3" />
           </div>
-          <Button
-            variant="ghost"
-            className="hover:bg-foreground/7 text-foreground/80 hidden size-7 rounded-md group-hover/area:flex"
-            size="icon"
-            onClick={async (e) => {
-              e.stopPropagation()
-              e.preventDefault()
-              await store.panels.resetPanels()
-            }}
-          >
-            <HomeIcon size={18} className="text-foreground/60" />
-          </Button>
+          <AreaMenu />
         </div>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-56 p-1">

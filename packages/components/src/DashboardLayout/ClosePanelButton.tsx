@@ -9,7 +9,7 @@ import { Button } from '@penx/uikit/button'
 export function ClosePanelButton({ panel }: { panel: Panel }) {
   const { panels } = usePanels()
 
-  if (panels.length <= 1) return null
+  // if (panels.length <= 1) return null
   return (
     <Button
       variant="ghost"
