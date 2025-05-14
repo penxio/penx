@@ -22,7 +22,7 @@ export function MobileAddCreationButton({ className }: Props) {
       size="icon"
       className={cn('size-12 shadow-xl', className)}
       onClick={async () => {
-        const creation = await addCreation(CreationType.PAGE)
+        const creation = await addCreation({ type: CreationType.PAGE })
         store.set(creationIdAtom, creation.id)
       }}
     >

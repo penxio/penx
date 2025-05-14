@@ -13,12 +13,20 @@ import { CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { useMySite } from './useMySite'
 
+export type Input = {
+  type: string
+  isAddPanel?: boolean
+  content?: string
+  title?: string
+}
+
 export function useAddCreation() {
   const { molds } = useMolds()
   const { site } = useMySite()
 
-  return async (type: string, content?: string) => {
-    const mold = molds.find((mold) => mold.type === type)
+  return async (input: Input) => {
+    const { isAddPanel = true } = input
+    const mold = molds.find((mold) => mold.type === input.type)
     const area = store.area.get()
 
     if (!mold) throw new Error('Invalid mold type')
@@ -27,10 +35,10 @@ export function useAddCreation() {
     const addCreationInput: AddCreationInput = {
       slug: uniqueId(),
       siteId: site.id,
-      title: '',
+      title: input.title || '',
       description: '',
       image: '',
-      content: content || JSON.stringify(editorDefaultValue),
+      content: input.content || JSON.stringify(editorDefaultValue),
       type: mold.type,
       moldId: mold.id,
       areaId: area.id,
@@ -69,14 +77,16 @@ export function useAddCreation() {
 
     updateCreationState(newCreation)
 
-    if (isMobileApp && !content) {
+    if (isMobileApp && !input.content) {
       appEmitter.emit('ROUTE_TO_CREATION', newCreation)
     } else {
-      store.panels.addPanel({
-        id: uniqueId(),
-        type: PanelType.CREATION,
-        creationId: newCreation.id,
-      })
+      if (isAddPanel) {
+        store.panels.addPanel({
+          id: uniqueId(),
+          type: PanelType.CREATION,
+          creationId: newCreation.id,
+        })
+      }
     }
     return newCreation
   }

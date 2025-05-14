@@ -58,35 +58,36 @@ export function PanelWidget({ panel, index }: Props) {
         </div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>
-      <div
-        ref={ref}
-        className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8"
-      >
-        {widget.type === WidgetType.AI_CHAT && (
-          <PanelChat panel={panel} index={index} />
-        )}
 
-        {mold?.type === CreationType.NOTE && (
+      {mold?.type === CreationType.NOTE && (
+        <div
+          ref={ref}
+          className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8"
+        >
           <NoteList
             panel={panel}
             index={index}
             mold={mold}
             columnCount={columns}
           />
-        )}
+        </div>
+      )}
 
-        {mold?.type === CreationType.TASK && (
-          <TasksList panel={panel} index={index} mold={mold} />
-        )}
+      {widget.type === WidgetType.AI_CHAT && (
+        <PanelChat panel={panel} index={index} />
+      )}
 
-        {mold?.type === CreationType.BOOKMARK && (
-          <BookmarkList panel={panel} index={index} mold={mold} />
-        )}
+      {mold?.type === CreationType.TASK && (
+        <TasksList panel={panel} index={index} mold={mold} />
+      )}
 
-        {mold?.type === CreationType.ARTICLE && (
-          <ArticleList panel={panel} index={index} mold={mold} />
-        )}
-      </div>
+      {mold?.type === CreationType.BOOKMARK && (
+        <BookmarkList panel={panel} index={index} mold={mold} />
+      )}
+
+      {mold?.type === CreationType.ARTICLE && (
+        <ArticleList panel={panel} index={index} mold={mold} />
+      )}
     </>
   )
 }

@@ -31,7 +31,7 @@ export function AddCreationButton({ area, widget }: Props) {
         e.stopPropagation()
         e.preventDefault()
         const mold = molds.find((mold) => mold.id === widget.moldId)!
-        addCreation(mold.type)
+        addCreation({ type: mold.type })
       }}
     >
       <PlusIcon

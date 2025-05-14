@@ -2,9 +2,9 @@
 
 import React from 'react'
 import { PlusIcon } from 'lucide-react'
-import { useMolds } from '@penx/hooks/useMolds'
 import { Area } from '@penx/db/client'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { useMolds } from '@penx/hooks/useMolds'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 
@@ -25,7 +25,7 @@ export function AddChatButton({ widget }: Props) {
         e.stopPropagation()
         e.preventDefault()
         const mold = molds.find((mold) => mold.id === widget.moldId)!
-        addCreation(mold.type)
+        addCreation({ type: mold.type })
       }}
     >
       <PlusIcon className="text-muted-foreground pointer-events-none size-4 transition-transform duration-200" />

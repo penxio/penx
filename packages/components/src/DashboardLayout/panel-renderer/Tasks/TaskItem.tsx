@@ -5,6 +5,7 @@ import { Creation } from '@penx/domain'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { useCreations } from '@penx/hooks/useCreations'
 import { store } from '@penx/store'
+import { PanelType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { cn } from '@penx/utils'
 
@@ -14,11 +15,22 @@ interface PostItemProps {
 
 export function TaskItem({ creation: creation }: PostItemProps) {
   return (
-    <div className={cn('flex break-inside-avoid flex-col rounded-2xl')}>
+    <div
+      className={cn(
+        'hover:text-brand text-foreground flex cursor-pointer break-inside-avoid flex-col rounded-md py-1 text-lg transition-all hover:font-bold',
+      )}
+      onClick={() => {
+        store.panels.updateMainPanel({
+          type: PanelType.CREATION,
+          creationId: creation.id,
+        })
+      }}
+    >
       <div className="flex items-center gap-2">
         <Checkbox
           className="size-5"
           checked={creation.checked}
+          onClick={(e) => e.stopPropagation()}
           onCheckedChange={(v) => {
             updateCreation({
               id: creation.id,
@@ -27,21 +39,11 @@ export function TaskItem({ creation: creation }: PostItemProps) {
           }}
         />
 
-        <TextareaAutosize
-          className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-xl font-bold focus:outline-none focus:ring-0"
-          placeholder="Title"
-          defaultValue={creation.title || ''}
-          autoFocus
-          onChange={(e) => {
-            const title = e.target.value
-            updateCreation({ id: creation.id, title })
-          }}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault()
-            }
-          }}
-        />
+        <div
+          className={cn(creation.checked && 'text-foreground/60 line-through')}
+        >
+          {creation.title || ''}
+        </div>
       </div>
     </div>
   )

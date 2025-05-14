@@ -60,7 +60,7 @@ export class PanelsStore {
     let panels = this.get()
 
     let index = panels.findIndex((p) => p.type !== PanelType.WIDGET)
-    if (index < 0) index = 0
+    if (index < 0) index = panels.length - 1
 
     if (panel.type === PanelType.CREATION) {
       panels = produce(panels, (draft) => {

@@ -6,7 +6,6 @@ on:
     #   - "v*"
     branches:
       - desktop
-      - develop
       - release
   workflow_dispatch:
 

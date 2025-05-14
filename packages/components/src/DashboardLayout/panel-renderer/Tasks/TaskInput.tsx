@@ -17,16 +17,13 @@ import cx from 'classnames'
 import equal from 'fast-deep-equal'
 import { CogIcon, ExpandIcon, SendHorizonalIcon, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { store } from '@penx/store'
-import { CreationType, PanelType } from '@penx/types'
+import { CreationType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
-import { Checkbox } from '@penx/uikit/checkbox'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
 
-export function QuickInput({ onCancel }: { onCancel?: () => void }) {
+export function TaskInput() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
@@ -53,21 +50,16 @@ export function QuickInput({ onCancel }: { onCancel?: () => void }) {
   }
 
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log('====event.target.value:', event.target.value)
-
     setInput(event.target.value)
     adjustHeight()
   }
 
   const submitForm = useCallback(() => {
-    const content = input.split('\n')
-    const slateValue = content.map((line) => ({
-      type: 'p',
-      children: [{ text: line }],
-    }))
+    const title = input.split('\n').join(',')
     addCreation({
-      type: CreationType.NOTE,
-      content: JSON.stringify(slateValue),
+      type: CreationType.TASK,
+      title,
+      isAddPanel: false,
     })
     setInput('')
   }, [input])
@@ -101,45 +93,12 @@ export function QuickInput({ onCancel }: { onCancel?: () => void }) {
             !event.nativeEvent.isComposing
           ) {
             event.preventDefault()
-
-            if (status !== 'ready') {
-              toast.error('Please wait for the model to finish its response!')
-            } else {
-              submitForm()
-            }
+            submitForm()
           }
         }}
       />
-      <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
-        <Checkbox />
-        {/* <Button
-          size="icon"
-          variant="ghost"
-          className="hover:bg-foreground/10 size-7 rounded-md"
-          type="button"
-          onClick={() => {
-            store.panels.addPanel({
-              type: PanelType.AI_PROVIDERS,
-            })
-          }}
-        >
-          <ExpandIcon size={15} />
-        </Button> */}
-      </div>
+      <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2"></div>
       <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end gap-1 p-2">
-        <Button
-          variant="secondary"
-          size="sm"
-          className="h-7"
-          onClick={(event) => {
-            setInput('')
-            resetHeight()
-            onCancel && onCancel()
-          }}
-        >
-          <XIcon size={16} />
-        </Button>
-
         <SendButton input={input} submitForm={submitForm} />
       </div>
     </div>

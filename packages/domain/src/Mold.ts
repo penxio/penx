@@ -28,10 +28,10 @@ export class Mold {
   }
 
   get createdAt() {
-    return this.raw.createdAt
+    return new Date(this.raw.createdAt)
   }
 
   get updatedAt() {
-    return this.raw.updatedAt
+    return new Date(this.raw.updatedAt)
   }
 }

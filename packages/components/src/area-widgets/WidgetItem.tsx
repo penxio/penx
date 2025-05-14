@@ -95,11 +95,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
               return
             }
 
-            if (widget.type === WidgetType.AI_CHAT) {
-              store.panels.openWidgetPanel(widget)
-              return
-            }
-
+            store.panels.openWidgetPanel(widget)
             setVisible(!visible)
           }}
         >
@@ -132,7 +128,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             isDragging && 'bg-foreground/6 opacity-50',
             isDragging && 'z-[1000000]',
             dragOverlay && 'shadow',
-            !isMobileApp && 'shadow-2xs rounded-md bg-white dark:bg-[#181818]',
+            !isMobileApp &&
+              'shadow-2xs dark:bg-foreground/8 rounded-md bg-white',
           )}
           {...rest}
         >

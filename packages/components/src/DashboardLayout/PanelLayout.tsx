@@ -22,13 +22,13 @@ export function PanelLayout({ children }: { children: ReactNode }) {
   // useSiteTags()
   return (
     <SidebarProvider className="">
-      <AppSidebar className="z-2" />
+      <AppSidebar className="z-3" />
       <SidebarInset className="z-2 relative">
         <PanelList />
       </SidebarInset>
 
       <div
-        className="z-1 fixed left-[10%] top-[0px] h-[80vh] w-[100vw] opacity-30 dark:opacity-80"
+        className="z-1 fixed left-[10%] top-[0px] h-[80vh] w-[100vw] opacity-30 dark:opacity-0"
         style={{
           filter: 'blur(150px) saturate(150%)',
           transform: 'translateZ(0)',
