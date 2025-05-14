@@ -11,13 +11,15 @@ export async function pollingSyncToRemote() {
   // console.log('=======pollingInterval:', pollingInterval)
 
   while (true) {
-    console.log('sync to remote...........isDesktop:', isDesktop)
+    // console.log('sync to remote...........isDesktop:', isDesktop)
     await sync()
     await sleep(pollingInterval)
   }
 }
 
 async function sync() {
+  console.log('sync to remote.......')
+
   const session = (await get('SESSION')) as SessionData
 
   if (!session || !session?.siteId) return
@@ -54,7 +56,7 @@ async function sync() {
         method: 'POST',
         headers,
         body: JSON.stringify(data),
-      })
+      }).then((r) => r.json())
       // await localDB.change.update(change.id, { synced: 1 })
       await localDB.change.delete(change.id)
     } catch (error) {

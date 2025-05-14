@@ -415,7 +415,7 @@ export const siteRouter = router({
           })
 
           await tx.node.createMany({
-            data: formattedNodes,
+            data: formattedNodes as any,
           })
 
           return true

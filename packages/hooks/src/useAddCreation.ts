@@ -66,11 +66,11 @@ export function useAddCreation() {
         openedAt: new Date(),
         ...addCreationInput,
       } as ICreationNode['props'],
+      createdAt: new Date(),
+      updatedAt: new Date(),
       areaId: area.id,
       siteId: mold.siteId,
       userId: site.userId,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     }
 
     store.creations.addCreation(newCreation)

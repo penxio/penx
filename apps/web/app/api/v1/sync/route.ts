@@ -64,10 +64,19 @@ export async function POST(req: NextRequest) {
       data: input.data,
     })
   } else if (input.operation === OperationType.UPDATE) {
-    await prisma.node.update({
-      where: { id: input.key },
-      data: input.data,
-    })
+    const { updatedAt, ...props } = input.data
+    const node = await prisma.node.findUnique({ where: { id: input.key } })
+    if (node) {
+      const updatedProps = {
+        ...(node.props as any),
+        ...props,
+      }
+      if (updatedAt) updatedProps.updatedAt = new Date(updatedAt)
+      await prisma.node.update({
+        where: { id: input.key },
+        data: { props: updatedProps },
+      })
+    }
   } else if (input.operation === OperationType.DELETE) {
     // if (input.table === 'area') {
     //   await prisma.$transaction(

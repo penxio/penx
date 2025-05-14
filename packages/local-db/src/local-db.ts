@@ -18,7 +18,6 @@ import {
 import { IAsset } from '@penx/model-type/IAsset'
 import { IChange, OperationType } from '@penx/model-type/IChange'
 import { IFile } from '@penx/model-type/IFile'
-import { ISite } from '@penx/model-type/ISite'
 import { uniqueId } from '@penx/unique-id'
 
 class LocalDB extends Dexie {
@@ -65,44 +64,27 @@ class LocalDB extends Dexie {
   addNode = async <T extends INode>(data: Partial<T>): Promise<T> => {
     const newNodeId = await this.node.add({
       id: uniqueId(),
-      createdAt: new Date(),
-      updatedAt: new Date(),
       ...data,
     } as T)
-    const node = (await this.node.get(newNodeId)) as any as Promise<T>
-
-    await this.addChange({
-      operation: OperationType.CREATE,
-      data: node,
-    })
+    const node = (await this.node.get(newNodeId)) as any as T
+    await this.addChange(node.id, OperationType.CREATE, node)
     return node
   }
 
-  updateNode = async <T extends INode>(id: string, data: Partial<T>) => {
+  updateNodeProps = async <T extends any>(id: string, input: Partial<T>) => {
+    const node = await this.getNode(id)
+    const updatedAt = new Date()
     await this.node.update(id, {
-      ...data,
-    })
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...data,
+      updatedAt,
+      props: {
+        ...node.props,
+        ...input,
       },
     })
-  }
 
-  updateNodeProps = async <T extends any>(id: string, data: Partial<T>) => {
-    await this.node.update(id, {
-      props: data,
-    })
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        props: data,
-      },
+    await this.addChange(id, OperationType.UPDATE, {
+      updatedAt,
+      ...input,
     })
   }
 
@@ -141,21 +123,8 @@ class LocalDB extends Dexie {
     return site as T
   }
 
-  updateSite = async (id: string, data: Partial<ISiteNode>) => {
-    const newData: any = data || {}
-    if (!Reflect.has(data, 'updatedAt')) {
-      newData.updatedAt = new Date()
-    }
-
-    await this.updateNode(id, newData)
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...newData,
-      },
-    })
+  updateSiteProps = async (id: string, props: Partial<ISiteNode['props']>) => {
+    await this.updateNodeProps(id, props)
   }
 
   listAreas = (siteId: string) => {
@@ -230,46 +199,15 @@ class LocalDB extends Dexie {
     return this.node.get(newNodeId) as any as Promise<T>
   }
 
-  updateCreation = async (id: string, data: Partial<ICreationNode>) => {
-    const newData: any = {
-      updatedAt: new Date(),
-      ...data,
-    }
-
-    await this.updateNode(id, newData)
-
-    const creation = (await this.node.get(id))!
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...newData,
-      },
-    })
-    return creation as ICreationNode
-  }
-
   updateCreationProps = async (
     id: string,
     props: Partial<ICreationNode['props']>,
   ) => {
-    const creation = await this.getCreation(id)
-    const newData: any = {
-      updatedAt: new Date(),
-      props: {
-        ...creation.props,
-        ...props,
-      },
-    }
-    return this.updateCreation(id, newData)
+    return this.updateNodeProps(id, props)
   }
 
   deleteCreation = async (id: string) => {
-    await this.addChange({
-      operation: OperationType.DELETE,
-      data: { id },
-    })
+    await this.addChange(id, OperationType.DELETE)
     return this.node.delete(id)
   }
 
@@ -279,39 +217,11 @@ class LocalDB extends Dexie {
       ...data,
     } as IAreaNode)
 
-    await this.addChange({
-      operation: OperationType.CREATE,
-      data: area,
-    })
-  }
-
-  updateArea = async (id: string, data: Partial<IAreaNode>) => {
-    const newData: any = data || {}
-    if (!Reflect.has(data, 'updatedAt')) {
-      newData.updatedAt = new Date()
-    }
-
-    await this.updateNode(id, newData)
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...newData,
-      },
-    })
+    await this.addChange(area.id, OperationType.CREATE, area)
   }
 
   updateAreaProps = async (id: string, props: Partial<IAreaNode['props']>) => {
-    const area = (await this.node.get(id)) as IAreaNode
-    const newData: any = {
-      updatedAt: new Date(),
-      props: {
-        ...area.props,
-        ...props,
-      },
-    }
-    return this.updateArea(id, newData)
+    return await this.updateNodeProps(id, props)
   }
 
   addMold = async (data: Partial<IMoldNode>) => {
@@ -320,35 +230,16 @@ class LocalDB extends Dexie {
       ...data,
     } as IMoldNode)
 
-    await this.addChange({
-      operation: OperationType.CREATE,
-      data: mold,
-    })
+    await this.addChange(mold.id, OperationType.CREATE, mold)
   }
 
-  updateMold = async (id: string, data: Partial<IMoldNode>) => {
-    const newData: any = data || {}
-    if (!Reflect.has(data, 'updatedAt')) {
-      newData.updatedAt = new Date()
-    }
-
-    await this.updateNode(id, newData)
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...newData,
-      },
-    })
+  updateMoldProps = async (id: string, props: Partial<IMoldNode['props']>) => {
+    await this.updateNodeProps(id, props)
   }
 
   deleteMold = async (id: string) => {
-    await this.addChange({
-      operation: OperationType.DELETE,
-      data: { id },
-    })
-    return this.node.delete(id)
+    await this.addChange(id, OperationType.DELETE)
+    await this.node.delete(id)
   }
 
   addTag = async (data: Partial<ITagNode>) => {
@@ -357,46 +248,15 @@ class LocalDB extends Dexie {
       ...data,
     } as ITagNode)
 
-    await this.addChange({
-      operation: OperationType.CREATE,
-      data: tag,
-    })
-  }
-
-  updateTag = async (id: string, data: Partial<ITagNode>) => {
-    const newData: any = data || {}
-    if (!Reflect.has(data, 'updatedAt')) {
-      newData.updatedAt = new Date()
-    }
-
-    await this.node.update(id, newData)
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...newData,
-      },
-    })
+    await this.addChange(tag.id, OperationType.CREATE, tag)
   }
 
   updateTagProps = async (id: string, props: Partial<ITagNode['props']>) => {
-    const node = (await this.node.get(id)) as ITagNode
-    const newData: any = {
-      updatedAt: new Date(),
-      props: {
-        ...node.props,
-        ...props,
-      },
-    }
-    return this.updateTag(id, newData)
+    return this.updateNodeProps(id, props)
   }
 
   deleteTag = async (id: string) => {
-    await this.addChange({
-      operation: OperationType.DELETE,
-      data: { id },
-    })
+    await this.addChange(id, OperationType.DELETE)
     return this.node.delete(id)
   }
 
@@ -406,10 +266,7 @@ class LocalDB extends Dexie {
       ...data,
     } as ICreationTagNode)
 
-    await this.addChange({
-      operation: OperationType.CREATE,
-      data: creationTag,
-    })
+    await this.addChange(creationTag.id, OperationType.CREATE, creationTag)
 
     const creationTags = (await this.node
       .where({ type: NodeType.CREATION_TAG })
@@ -419,72 +276,50 @@ class LocalDB extends Dexie {
       (i) => i.props.tagId === creationTag.props.tagId,
     ).length
 
-    const tag = (await this.node.get(creationTag.props.tagId))! as ITagNode
-    await this.updateTag(creationTag.props.tagId, {
-      props: {
-        ...tag.props,
-        creationCount: count,
-      },
+    await this.updateTagProps(creationTag.props.tagId, {
+      creationCount: count,
     })
   }
 
-  updateCreationTag = async (id: string, data: Partial<ICreationTagNode>) => {
-    const newData: any = data || {}
-    if (!Reflect.has(data, 'updatedAt')) {
-      newData.updatedAt = new Date()
-    }
-
-    await this.updateNode(id, newData)
-
-    await this.addChange({
-      operation: OperationType.UPDATE,
-      data: {
-        id,
-        ...newData,
-      },
-    })
+  updateCreationTagProps = async (
+    id: string,
+    props: Partial<ICreationTagNode['props']>,
+  ) => {
+    await this.updateNodeProps(id, props)
   }
 
   deleteCreationTag = async (id: string) => {
     const creationTag = (await this.node.get(id))!
     const tagId = creationTag.props.tagId
-
-    await this.addChange({
-      operation: OperationType.DELETE,
-      data: { id },
-    })
-
-    this.node.delete(id)
+    await this.addChange(id, OperationType.DELETE)
+    await this.node.delete(id)
 
     const creationTags = (await this.node
       .where({ type: NodeType.CREATION_TAG })
       .toArray()) as ICreationTagNode[]
 
     const count = creationTags.filter((i) => i.props.tagId === tagId).length
-
-    const tag = (await this.node.get(creationTag.props.tagId))! as ITagNode
-    await this.updateTag(creationTag.props.tagId, {
-      props: {
-        ...tag.props,
-        creationCount: count,
-      },
+    await this.updateTagProps(creationTag.props.tagId, {
+      creationCount: count,
     })
   }
 
   private async addChange(
-    data: Omit<IChange, 'id' | 'key' | 'synced' | 'createdAt' | 'siteId'>,
+    id: string,
+    op: OperationType,
+    data = {} as Record<string, any>,
   ) {
-    console.log('=====data:', data)
-
     const site = (await get(ACTIVE_SITE)) as ISiteNode
     if (site?.props.isRemote) {
-      await this.change.add({
+      const change = {
+        operation: op,
         siteId: site.id,
         synced: 0,
         createdAt: new Date(),
-        key: data.data.id,
-        ...data,
-      } as IChange)
+        key: id,
+        data,
+      } as IChange
+      await this.change.add(change)
     }
   }
 }

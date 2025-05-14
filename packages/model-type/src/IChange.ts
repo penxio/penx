@@ -9,7 +9,7 @@ export interface IChange {
   operation: OperationType
   siteId: string
   key: string
-  data: any
+  data?: any
   synced: number // 0 - not synced, 1 - synced
   createdAt: Date
 }

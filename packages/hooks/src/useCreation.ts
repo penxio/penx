@@ -125,9 +125,7 @@ const debouncedSaveCreation = debounce(persistCreation, 300, {
 
 export async function updateCreation(input: UpdateCreationInput) {
   const { id, ...props } = input
-
   const creation = getCreation(input.id) || (await localDB.getNode(id))
-  console.log('=======input:', input, 'creation:', creation)
   const newCreation: ICreationNode = {
     ...creation,
     props: { ...creation.props, ...props },

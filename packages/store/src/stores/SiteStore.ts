@@ -54,11 +54,9 @@ export class SiteStore {
     this.set(newSite)
     await this.save(newSite)
 
-    await localDB.updateSite(newSite.id, {
-      props: {
-        ...site.props,
-        aiProviders: newSite.props.aiProviders,
-      },
+    await localDB.updateSiteProps(newSite.id, {
+      ...site.props,
+      aiProviders: newSite.props.aiProviders,
     })
   }
 }

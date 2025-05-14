@@ -82,12 +82,7 @@ export class AppService {
 
     await api.site.syncInitialNodes.mutate({ nodes })
 
-    await localDB.updateSite(site.id, {
-      props: {
-        ...site.props,
-        isRemote: true,
-      },
-    })
+    await localDB.updateSiteProps(site.id, { isRemote: true })
 
     await updateSession({
       activeSiteId: site.id,

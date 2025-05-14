@@ -57,7 +57,7 @@ export function NoteInput({ className, onSubmit }: Props) {
       content: JSON.stringify(slateValue),
       isAddPanel: false,
     })
-    onSubmit()
+    onSubmit?.()
     setInput('')
   }, [input])
 
