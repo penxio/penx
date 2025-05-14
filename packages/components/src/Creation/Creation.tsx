@@ -118,7 +118,7 @@ export function Creation({ panel, className }: Props) {
           className,
         )}
         onClick={(e: any) => {
-          if (e.target?.className?.includes('creation-container')) {
+          if (e.target?.className?.includes?.('creation-container')) {
             appEmitter.emit('FOCUS_EDITOR')
           }
         }}

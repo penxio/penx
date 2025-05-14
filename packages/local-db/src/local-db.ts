@@ -132,13 +132,12 @@ class LocalDB extends Dexie {
   }
 
   addSite = async <T extends ISiteNode>(data: Partial<T>) => {
-    const id = await this.addNode({
+    const site = await this.addNode({
       id: uniqueId(),
       type: NodeType.SITE,
       ...data,
     } as ISiteNode)
 
-    const site = await this.node.get(id)
     return site as T
   }
 
@@ -275,12 +274,10 @@ class LocalDB extends Dexie {
   }
 
   addArea = async (data: Partial<IAreaNode>) => {
-    const id = await this.addNode({
+    const area = await this.addNode({
       id: uniqueId(),
       ...data,
     } as IAreaNode)
-
-    const area = (await this.node.get(id))!
 
     await this.addChange({
       operation: OperationType.CREATE,
@@ -318,12 +315,10 @@ class LocalDB extends Dexie {
   }
 
   addMold = async (data: Partial<IMoldNode>) => {
-    const id = await this.addNode({
+    const mold = await this.addNode({
       id: uniqueId(),
       ...data,
     } as IMoldNode)
-
-    const mold = (await this.node.get(id))!
 
     await this.addChange({
       operation: OperationType.CREATE,
@@ -357,12 +352,10 @@ class LocalDB extends Dexie {
   }
 
   addTag = async (data: Partial<ITagNode>) => {
-    const id = await this.addNode({
+    const tag = await this.addNode({
       id: uniqueId(),
       ...data,
     } as ITagNode)
-
-    const tag = (await this.node.get(id))!
 
     await this.addChange({
       operation: OperationType.CREATE,
@@ -408,12 +401,10 @@ class LocalDB extends Dexie {
   }
 
   addCreationTag = async (data: Partial<ICreationTagNode>) => {
-    const id = await this.addNode({
+    const creationTag = await this.addNode({
       id: uniqueId(),
       ...data,
     } as ICreationTagNode)
-
-    const creationTag = (await this.node.get(id))! as ICreationTagNode
 
     await this.addChange({
       operation: OperationType.CREATE,
@@ -483,6 +474,8 @@ class LocalDB extends Dexie {
   private async addChange(
     data: Omit<IChange, 'id' | 'key' | 'synced' | 'createdAt' | 'siteId'>,
   ) {
+    console.log('=====data:', data)
+
     const site = (await get(ACTIVE_SITE)) as ISiteNode
     if (site?.props.isRemote) {
       await this.change.add({
