@@ -13,10 +13,14 @@
   "scripts": {
     "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "jest"
   },
   "devDependencies": {
-    "@penx/typescript-config": "workspace:*"
+    "@penx/typescript-config": "workspace:*",
+    "@types/jest": "29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.2"
   },
   "dependencies": {
     "@penx/unique-id": "workspace:*",
