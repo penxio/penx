@@ -26,7 +26,7 @@ export function SocialNav({ className }: Props) {
       >
         <span className="icon-[mdi--github] hover:text-foreground/60 text-foreground/80  h-7 w-7"></span>
       </a>
-      <a href="https://x.com/0xzio_eth" target="_blank" className="inline-flex">
+      <a href="https://x.com/zio_penx" target="_blank" className="inline-flex">
         <span className="icon-[prime--twitter] hover:text-foreground/60 text-foreground/80 h-5 w-5"></span>
       </a>
     </div>

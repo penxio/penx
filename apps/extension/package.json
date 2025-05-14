@@ -1,6 +1,6 @@
 {
   "name": "extension",
-  "description": "Build your own Digital Garden",
+  "description": "A structured note-taking App for creators",
   "private": true,
   "version": "0.0.8",
   "type": "module",

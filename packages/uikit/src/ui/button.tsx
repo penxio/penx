@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { cn } from '@penx/utils'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@penx/utils'
 
 const buttonVariants = cva(
   'ring-offset-background focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center whitespace-nowrap rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -20,7 +20,7 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         farcaster: 'bg-purple-500 text-white hover:bg-purple-500/90',
         'outline-solid':
-          'border-foreground hover:bg-foreground hover:text-background border',
+          'border-foreground hover:bg-foreground hover:text-background dark:border-foreground/40 border ',
       },
       size: {
         default: 'h-10 px-4 py-3',

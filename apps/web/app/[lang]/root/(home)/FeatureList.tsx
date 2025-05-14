@@ -2,11 +2,16 @@ import { Trans } from '@lingui/react'
 import {
   BotIcon,
   BugIcon,
+  GithubIcon,
+  KeyIcon,
+  LocationEditIcon,
   MailIcon,
   MessageCircleMore,
   PaletteIcon,
   PencilIcon,
+  RefreshCcwIcon,
   RocketIcon,
+  TabletSmartphoneIcon,
   UserIcon,
   ZapIcon,
 } from 'lucide-react'
@@ -23,8 +28,8 @@ type FeatureItem = {
 export function FeatureList() {
   const features: FeatureItem[] = [
     {
-      icon: <BotIcon size={24} />,
-      title: <Trans id="AI-assistants" message="AI-assistants"></Trans>,
+      icon: <LocationEditIcon size={24} />,
+      title: <Trans id="Local-First"></Trans>,
       description: (
         <Trans
           id="Enhance your content creation with AI-powered tools and suggestions."
@@ -33,13 +38,8 @@ export function FeatureList() {
       ),
     },
     {
-      icon: <UserIcon size={24} />,
-      title: (
-        <Trans
-          id="Build for super individual"
-          message="Build for super individual"
-        ></Trans>
-      ),
+      icon: <KeyIcon size={24} />,
+      title: <Trans id="Privacy-First"></Trans>,
       description: (
         <Trans
           id="Tailored for individual creators to express themselves freely."
@@ -48,10 +48,8 @@ export function FeatureList() {
       ),
     },
     {
-      icon: <MailIcon size={24} />,
-      title: (
-        <Trans id="Newsletters built-in" message="Newsletters built-in"></Trans>
-      ),
+      icon: <GithubIcon size={24} />,
+      title: <Trans id="Open Source"></Trans>,
       description: (
         <Trans
           id="Easily create and send newsletters to keep your audience engaged."
@@ -60,10 +58,8 @@ export function FeatureList() {
       ),
     },
     {
-      icon: <ZapIcon size={24} />,
-      title: (
-        <Trans id="Memberships built-in" message="Memberships built-in"></Trans>
-      ),
+      icon: <TabletSmartphoneIcon size={24} />,
+      title: <Trans id="Cross platform"></Trans>,
       description: (
         <Trans
           id="Offer exclusive content and benefits to loyal members."
@@ -72,8 +68,8 @@ export function FeatureList() {
       ),
     },
     {
-      icon: <BugIcon size={24} />,
-      title: <Trans id="SEO friendly" message="SEO friendly"></Trans>,
+      icon: <RefreshCcwIcon size={24} />,
+      title: <Trans id="Realtime sync"></Trans>,
       description: (
         <Trans
           id="Optimize your content for search engines with ease."
@@ -83,7 +79,7 @@ export function FeatureList() {
     },
     {
       icon: <PencilIcon size={24} />,
-      title: <Trans id="Modern editor" message="Modern editor"></Trans>,
+      title: <Trans id="Creator friendly"></Trans>,
       description: (
         <Trans
           id="Enjoy a seamless writing experience with our intuitive editor."
@@ -91,40 +87,11 @@ export function FeatureList() {
         ></Trans>
       ),
     },
-    {
-      title: <Trans id="Data ownership" message="Data ownership"></Trans>,
-      description: (
-        <Trans
-          id="Maintain full control over your content and data."
-          message="Maintain full control over your content and data."
-        ></Trans>
-      ),
-    },
-    {
-      icon: <MessageCircleMore size={24} />,
-      title: <Trans id="Comments built-in" message="Comments built-in"></Trans>,
-      description: (
-        <Trans
-          id="Engage with your audience through integrated comment features."
-          message="Engage with your audience through integrated comment features."
-        ></Trans>
-      ),
-    },
-    {
-      icon: <PaletteIcon size={24} />,
-      title: <Trans id="Beautiful themes" message="Beautiful themes"></Trans>,
-      description: (
-        <Trans
-          id="Customize your site with a variety of visually appealing themes."
-          message="Customize your site with a variety of visually appealing themes."
-        ></Trans>
-      ),
-    },
   ]
 
   return (
-    <div className="mt-10 space-y-10">
-      <div className="space-y-4 text-center">
+    <div className="mx-auto mt-10 max-w-3xl space-y-10">
+      {/* <div className="space-y-4 text-center">
         <div className="text-5xl font-bold">
           <Trans id="Features" message="Features"></Trans>
         </div>
@@ -134,23 +101,23 @@ export function FeatureList() {
             message="Powerful features to build to digital garden"
           ></Trans>
         </div>
-      </div>
+      </div> */}
       <div className="bg-transparent">
         <div className="border-foreground/10 grid grid-cols-1 overflow-hidden border-l border-t sm:grid-cols-2 xl:grid-cols-3">
           {features.map((feature, index) => (
             <div
               key={index}
               className={cn(
-                'border-foreground/10 bg-background/30 group space-y-2 border-b border-r p-8 transition-all',
+                'border-foreground/10 bg-background/5 group space-y-2 border-b border-r p-8 transition-all',
               )}
             >
               {feature.icon ?? <RocketIcon size={24} />}
-              <div className="text-lg font-bold transition-all group-hover:scale-105">
+              <div className="text-lg font-semibold transition-all group-hover:scale-105">
                 {feature.title}
               </div>
-              <div className="text-foreground/50 text-base  transition-all group-hover:scale-105">
+              {/* <div className="text-foreground/50 text-base  transition-all group-hover:scale-105">
                 {feature.description}
-              </div>
+              </div> */}
             </div>
           ))}
         </div>

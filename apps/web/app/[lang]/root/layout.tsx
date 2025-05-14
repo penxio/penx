@@ -32,10 +32,10 @@ const roboto = Poppins({
   display: 'swap',
 })
 
-const title = 'PenX - build your own Digital Garden'
+const title = 'PenX - A structured note-taking App for creators'
 
 const description =
-  'PenX is a tool for building a digital garden. Having your own garden, start planting, and watch it grow.'
+  'An elegant App designed to help you capture, organize, and store your thoughts, tasks, ideas, and information.'
 
 const image = 'https://penx.io/opengraph-image'
 
@@ -94,7 +94,7 @@ export default async function RootLayout({
               disableTransitionOnChange
             >
               <div className="container mx-auto flex min-h-screen flex-col gap-4 px-2 2xl:max-w-[1120px]">
-                <div className="relative z-10 flex h-14 justify-between py-3">
+                <div className="relative z-10 flex h-14 justify-center py-3">
                   <div className="flex items-center gap-8">
                     <Link href="/" className="flex cursor-pointer items-center">
                       {/* <Logo className="size-5" /> */}
@@ -102,11 +102,11 @@ export default async function RootLayout({
                     </Link>
                   </div>
 
-                  <Nav />
+                  {/* <Nav /> */}
 
-                  <div className="flex items-center gap-2">
+                  {/* <div className="flex items-center gap-2">
                     <Profile />
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="relative flex flex-1 flex-col">

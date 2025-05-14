@@ -17,25 +17,19 @@ const poppins = Poppins({
 export function Slogan() {
   return (
     <div className="space-y-3 text-center">
-      <div className="text-foreground space-y-2 text-5xl font-bold leading-none md:text-6xl md:leading-tight">
-        <div className="flex justify-center gap-3 text-center">
-          <span>
-            <Trans id="Build your own" />
-          </span>
-          <span className='text-brand'>
-            <Trans id="Digital Garden"></Trans>
-          </span>
+      <div className="text-foreground space-y-2 text-4xl font-bold leading-none md:leading-tight">
+        <div className="mx-auto flex justify-center gap-3">
+          A structure note-taking App for creators
         </div>
       </div>
 
-      <div className="text-foreground/80 mx-auto max-w-lg text-xl">
-        <Trans id="PenX is a tool for building a digital garden."></Trans>
-        <br />
-        <Trans id="Having your own garden, start planting, and watch it grow."></Trans>
+      <div className="text-foreground/80 text-xl font-semibold">
+        Everyone is a creator.
       </div>
 
-      <div className="text-foreground/90 mx-auto max-w-lg text-2xl font-bold">
-        <Trans id="The Best Tool for Learning in Public"></Trans>
+      <div className="text-foreground/60 mx-auto max-w-lg text-lg">
+        <Trans id="PenX is an elegant note-taking app designed for creators to effortlessly capture, organize, and manage their ideas, tasks, and inspiration all in one place."></Trans>
+        <br />
       </div>
     </div>
   )
