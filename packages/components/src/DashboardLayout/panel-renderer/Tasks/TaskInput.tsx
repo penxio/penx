@@ -11,7 +11,12 @@ import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
 
-export function TaskInput() {
+interface Props {
+  className?: string
+  onSubmit?: () => void
+}
+
+export function TaskInput({ className, onSubmit }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
@@ -49,6 +54,7 @@ export function TaskInput() {
       title,
       isAddPanel: false,
     })
+    onSubmit?.()
     setInput('')
   }, [input])
 
@@ -57,6 +63,7 @@ export function TaskInput() {
       className={cn(
         'bg-linear-to-r relative flex w-full flex-col gap-4 rounded-xl from-indigo-500 via-purple-500 to-pink-500 p-0.5',
         focused && 'shadow-2xl',
+        className,
       )}
     >
       <Textarea

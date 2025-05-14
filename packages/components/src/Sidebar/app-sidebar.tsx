@@ -43,7 +43,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { setIsOpen } = useLoginDialog()
   return (
     <Sidebar variant="inset" {...props}>
-      <SidebarHeader className="m-0 p-0">
+      <SidebarHeader className="m-0 p-0 pb-1">
         <SidebarMenu className="">
           <SidebarMenuItem className="">
             <AreasPopover />

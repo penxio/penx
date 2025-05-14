@@ -11,7 +11,11 @@ import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
 
-export function NoteInput() {
+interface Props {
+  className?: string
+  onSubmit?: () => void
+}
+export function NoteInput({ className, onSubmit }: Props) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
@@ -53,6 +57,7 @@ export function NoteInput() {
       content: JSON.stringify(slateValue),
       isAddPanel: false,
     })
+    onSubmit()
     setInput('')
   }, [input])
 
@@ -61,6 +66,7 @@ export function NoteInput() {
       className={cn(
         'bg-linear-to-r relative flex w-full flex-col gap-4 rounded-xl from-indigo-500 via-purple-500 to-pink-500 p-0.5',
         focused && 'shadow-2xl',
+        className,
       )}
     >
       <Textarea
@@ -85,7 +91,7 @@ export function NoteInput() {
             !event.nativeEvent.isComposing
           ) {
             event.preventDefault()
-            submitForm()
+            submitForm?.()
           }
         }}
       />
