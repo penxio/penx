@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router'
-import { LoginButton } from '@/components/Login/LoginButton'
-import { MobileCreation } from '@/components/MobileCreation'
 import { MobileHome } from '@/components/MobileHome'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
+import { MobileTask } from '@/components/MobileTask/MobileTask'
+import { useHomeTab } from '@/hooks/useHomeTab'
 import { Capacitor } from '@capacitor/core'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import { OverlayEventDetail } from '@ionic/core'
@@ -15,6 +14,7 @@ import {
   IonHeader,
   IonIcon,
   IonMenuButton,
+  IonMenuToggle,
   IonModal,
   IonPage,
   IonTitle,
@@ -46,6 +46,7 @@ const Page: React.FC = () => {
   const [scrolled, setScrolled] = useState(false)
   const { area } = useArea()
   const y = useMotionValue(0)
+  const { isHome, setType } = useHomeTab()
 
   const handleScroll = (event: CustomEvent) => {
     const scrollTop = event.detail.scrollTop
@@ -67,7 +68,7 @@ const Page: React.FC = () => {
     <IonPage className="">
       <AreaDialog />
       <IonHeader
-        className={cn(platform === 'android' ? 'safe-area' : '')}
+        className={cn('px-3', platform === 'android' ? 'safe-area' : '')}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
         }}
@@ -83,11 +84,16 @@ const Page: React.FC = () => {
           }}
         >
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonMenuToggle>
+              <span className="icon-[heroicons-outline--menu-alt-2] size-6"></span>
+            </IonMenuToggle>
           </IonButtons>
-          <IonTitle>{area?.name}</IonTitle>
 
-          <IonButtons slot="end" className="pr-2">
+          <IonTitle slot="center" className="mx-1">
+            {area?.name}
+          </IonTitle>
+
+          <IonButtons slot="end" className="">
             <SearchButton />
           </IonButtons>
         </IonToolbar>
@@ -135,26 +141,58 @@ const Page: React.FC = () => {
           </motion.div>
 
           <div className="">
-            <MobileHome />
+            {isHome && <MobileHome />}
+            {!isHome && <MobileTask />}
           </div>
         </div>
+
         <IonFab
           slot="fixed"
           vertical="bottom"
-          className="flex w-full justify-center pb-5"
+          className="flex w-full justify-center pb-2"
         >
-          <Button
-            size="icon"
-            variant="ghost"
-            className="border-foreground/4 size-13 text-foreground flex items-center gap-2 rounded-full border bg-white px-2 shadow-md dark:bg-neutral-800"
-            onClick={async () => {
-              setOpen(true)
-              // const creation = await addCreation(CreationType.PAGE)
-              // store.set(creationIdAtom, creation.id)
-            }}
-          >
-            <PlusIcon size={26} />
-          </Button>
+          <div className="border-foreground/4 bg-background flex h-12 items-center gap-3 rounded-full border px-3 shadow-md">
+            <Button
+              size="icon"
+              variant="ghost"
+              className={cn('size-7 rounded-full')}
+              onClick={async () => {
+                setType('HOME')
+              }}
+            >
+              {!isHome && <span className="icon-[mage--home-2] size-6"></span>}
+              {isHome && (
+                <span className="icon-[mage--home-2-fill] size-6"></span>
+              )}
+            </Button>
+            {/* <Separator orientation="vertical" className="h-4" /> */}
+            <Button
+              size="icon"
+              variant="ghost"
+              className="text-background size-8 rounded-full bg-sky-500"
+              onClick={async () => {
+                setOpen(true)
+              }}
+            >
+              <PlusIcon size={20} />
+            </Button>
+            {/* <Separator orientation="vertical" className="bg-foreground/50 h-4" /> */}
+            <Button
+              size="icon"
+              variant="ghost"
+              className={cn('size-7 rounded-full')}
+              onClick={async () => {
+                setType('TASK')
+              }}
+            >
+              {isHome && (
+                <span className="icon-[fluent--checkbox-checked-20-regular] size-6"></span>
+              )}
+              {!isHome && (
+                <span className="icon-[fluent--checkbox-checked-20-filled] size-6"></span>
+              )}
+            </Button>
+          </div>
         </IonFab>
 
         <PageCreation />

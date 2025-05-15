@@ -77,10 +77,10 @@ export function useAddCreation() {
 
     updateCreationState(newCreation)
 
-    if (isMobileApp && !input.content) {
-      appEmitter.emit('ROUTE_TO_CREATION', newCreation)
-    } else {
-      if (isAddPanel) {
+    if (isAddPanel) {
+      if (isMobileApp && !input.content) {
+        appEmitter.emit('ROUTE_TO_CREATION', newCreation)
+      } else {
         store.panels.addPanel({
           id: uniqueId(),
           type: PanelType.CREATION,
