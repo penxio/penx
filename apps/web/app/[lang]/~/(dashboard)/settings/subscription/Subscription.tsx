@@ -2,8 +2,9 @@
 
 import { useMemo } from 'react'
 import { UseCouponCode } from '@/components/UseCouponCode'
-import { BillingCycle, PlanType } from '@penx/db/client'
 import { format } from 'date-fns'
+import { usePlanListDialog } from '@penx/components/PlanList/usePlanListDialog'
+import { BillingCycle, PlanType } from '@penx/db/client'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
@@ -16,7 +17,8 @@ import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 interface Props {}
 
 export function Subscription({}: Props) {
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
+  const planDialog = usePlanListDialog()
   const { data: session, update } = useSession()
   const time = useMemo(() => {
     if (!session?.believerPeriodEnd) return null
@@ -47,7 +49,7 @@ export function Subscription({}: Props) {
         </div>
 
         <div className="text-foreground/60">
-          Subscribe to Penx to support us in building the best product.
+          Subscribe to PenX to support us in building the best product.
         </div>
 
         {session?.isBeliever && (
@@ -64,12 +66,7 @@ export function Subscription({}: Props) {
           <Button
             size="lg"
             onClick={() => {
-              // if (isConnected) {
-              //   subscriptionDialog.setIsOpen(true)
-              // } else {
-              //   openConnectModal?.()
-              // }
-              
+              planDialog.setIsOpen(true)
             }}
           >
             {!session?.isFree && session?.subscriptionStatus !== 'canceled'

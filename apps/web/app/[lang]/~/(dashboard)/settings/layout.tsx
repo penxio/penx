@@ -39,11 +39,11 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Trans id="Settings"></Trans>
           </div>
         </div>
-        <div className="hidden sm:block">
+        {/* <div className="hidden sm:block">
           <SiteLink />
-        </div>
+        </div> */}
       </div>
-      <div className="flex flex-1 flex-col gap-6 md:flex-row">
+      <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 md:flex-row">
         <SettingNav />
         <div
           className="flex-1 overflow-auto px-4 pt-8"

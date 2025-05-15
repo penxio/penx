@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.penx.penxio',
+  appId: 'io.penx.app',
   appName: 'PenX',
   webDir: 'dist'
 };

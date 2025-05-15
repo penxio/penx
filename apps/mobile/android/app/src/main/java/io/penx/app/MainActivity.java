@@ -1,4 +1,4 @@
-package com.penx.penxio;
+package io.penx.app;
 
 import com.getcapacitor.BridgeActivity;
 import ee.forgr.capacitor.social.login.GoogleProvider;

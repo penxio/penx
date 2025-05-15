@@ -5,7 +5,12 @@ import { set } from 'idb-keyval'
 import { useSearchParams } from 'next/navigation'
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { CommandPanel } from '@penx/components/CommandPanel'
-import { isBrowser, isMobileApp, isServer, SIDEBAR_WIDTH } from '@penx/constants'
+import {
+  isBrowser,
+  isMobileApp,
+  isServer,
+  SIDEBAR_WIDTH,
+} from '@penx/constants'
 // import { runWorker } from '@/lib/worker'
 import { Site } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
@@ -14,6 +19,7 @@ import { usePathname } from '@penx/libs/i18n'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { cn } from '@penx/utils'
+import { PlanListDialog } from '../PlanList/PlanListDialog'
 import { PanelLayout } from './PanelLayout'
 import { SettingsLayout } from './SettingsLayout'
 
@@ -53,6 +59,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
     <>
       <CommandPanel />
       <AreaDialog />
+      <PlanListDialog />
       {isDesign && children}
       {!isDesign && <Layout>{children}</Layout>}
     </>
