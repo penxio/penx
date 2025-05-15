@@ -101,12 +101,7 @@ export function QuickInput({ onCancel }: { onCancel?: () => void }) {
             !event.nativeEvent.isComposing
           ) {
             event.preventDefault()
-
-            if (status !== 'ready') {
-              toast.error('Please wait for the model to finish its response!')
-            } else {
-              submitForm()
-            }
+            submitForm()
           }
         }}
       />

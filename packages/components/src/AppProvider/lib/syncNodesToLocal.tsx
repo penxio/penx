@@ -137,7 +137,7 @@ async function sync(
 
     const hasCreations = changeNodes.some((c) => c.type === NodeType.CREATION)
     if (hasCreations) {
-      // await store.creations.refetchCreations()
+      await store.creations.refetchCreations()
     }
 
     const hasAreas = changeNodes.some((c) => c.type === NodeType.AREA)

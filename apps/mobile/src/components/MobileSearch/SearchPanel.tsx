@@ -28,6 +28,7 @@ export function SearchPanel({ setVisible }: Props) {
     <div className="flex flex-1 flex-col gap-2 overflow-hidden">
       <div className="px-4">
         <Input
+          variant="filled"
           className="w-full"
           placeholder="Search"
           value={search}

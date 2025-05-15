@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { CreationMenu } from '@/components/CreationMenu'
 import { MobileCreation } from '@/components/MobileCreation'
 import { Capacitor } from '@capacitor/core'
 import { OverlayEventDetail } from '@ionic/core'
@@ -7,13 +8,10 @@ import {
   IonButtons,
   IonContent,
   IonHeader,
-  IonIcon,
   IonModal,
-  IonTitle,
   IonToolbar,
 } from '@ionic/react'
-import { cog, ellipsisHorizontal } from 'ionicons/icons'
-import { PlusIcon, XIcon } from 'lucide-react'
+import { XIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
 import { ICreationNode } from '@penx/model-type'
 
@@ -74,14 +72,12 @@ export const PageCreation: React.FC = () => {
           </IonButtons>
           {/* <IonTitle>Welcome</IonTitle> */}
           <IonButtons slot="end">
-            <IonButton
-              color="dark"
-              onClick={() => {
-                console.log('more.........')
+            <CreationMenu
+              creationId={creationId}
+              afterDelete={() => {
+                modal.current?.dismiss()
               }}
-            >
-              <IonIcon icon={ellipsisHorizontal} />
-            </IonButton>
+            />
           </IonButtons>
         </IonToolbar>
       </IonHeader>

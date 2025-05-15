@@ -21,7 +21,7 @@ import {
   IonToolbar,
 } from '@ionic/react'
 import { cog, ellipsisHorizontal } from 'ionicons/icons'
-import { PlusIcon, XIcon } from 'lucide-react'
+import { LayersIcon, PlusIcon, XIcon } from 'lucide-react'
 import {
   animate,
   AnimatePresence,
@@ -29,6 +29,7 @@ import {
   PanInfo,
   useMotionValue,
 } from 'motion/react'
+import { EditWidgetButton } from '@penx/components/area-widgets/EditWidget/EditWidgetButton'
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { QuickInput } from '@penx/components/QuickInput'
 import { appEmitter } from '@penx/emitter'
@@ -95,6 +96,7 @@ const Page: React.FC = () => {
 
           <IonButtons slot="end" className="">
             <SearchButton />
+            <EditWidgetButton />
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -149,47 +151,49 @@ const Page: React.FC = () => {
         <IonFab
           slot="fixed"
           vertical="bottom"
-          className="flex w-full justify-center pb-2"
+          className="flex w-full justify-center pb-6"
         >
-          <div className="border-foreground/4 bg-background flex h-12 items-center gap-3 rounded-full border px-3 shadow-md">
+          <div className="border-foreground/4 bg-background flex h-14 items-center gap-3 rounded-full border px-3 shadow-md">
             <Button
               size="icon"
               variant="ghost"
-              className={cn('size-7 rounded-full')}
+              className={cn('size-8 rounded-full')}
               onClick={async () => {
                 setType('HOME')
               }}
             >
-              {!isHome && <span className="icon-[mage--home-2] size-6"></span>}
+              {!isHome && (
+                <span className="icon-[fluent--home-20-regular] size-7"></span>
+              )}
               {isHome && (
-                <span className="icon-[mage--home-2-fill] size-6"></span>
+                <span className="icon-[fluent--home-20-filled] size-7"></span>
               )}
             </Button>
             {/* <Separator orientation="vertical" className="h-4" /> */}
             <Button
               size="icon"
               variant="ghost"
-              className="text-background size-8 rounded-full bg-sky-500"
+              className="text-background bg-foreground size-9 rounded-full"
               onClick={async () => {
                 setOpen(true)
               }}
             >
-              <PlusIcon size={20} />
+              <PlusIcon size={24} />
             </Button>
             {/* <Separator orientation="vertical" className="bg-foreground/50 h-4" /> */}
             <Button
               size="icon"
               variant="ghost"
-              className={cn('size-7 rounded-full')}
+              className={cn('size-8 rounded-full')}
               onClick={async () => {
                 setType('TASK')
               }}
             >
               {isHome && (
-                <span className="icon-[fluent--checkbox-checked-20-regular] size-6"></span>
+                <span className="icon-[fluent--checkbox-checked-20-regular] size-7"></span>
               )}
               {!isHome && (
-                <span className="icon-[fluent--checkbox-checked-20-filled] size-6"></span>
+                <span className="icon-[fluent--checkbox-checked-20-filled] size-7"></span>
               )}
             </Button>
           </div>

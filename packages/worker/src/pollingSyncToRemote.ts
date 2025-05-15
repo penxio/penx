@@ -1,5 +1,5 @@
 import { get, set } from 'idb-keyval'
-import { isDesktop, ROOT_HOST } from '@penx/constants'
+import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
 import { SessionData } from '@penx/types'
@@ -45,7 +45,7 @@ async function sync() {
     try {
       let headers: Record<string, string> = {}
 
-      if (isDesktop) {
+      if (isDesktop || isMobileApp) {
         const session = await get('SESSION')
         if (session?.accessToken) {
           headers.Authorization = session.accessToken
