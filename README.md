@@ -7,7 +7,7 @@
 
 <h1 style="border-bottom: none">
     <b>PenX</b><br />
-    A structure note-taking App for creators.
+    A structured note-taking App for creators.
     <br>
 </h1>
 

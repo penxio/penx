@@ -19,7 +19,7 @@ export function Slogan() {
     <div className="space-y-3 text-center">
       <div className="text-foreground space-y-2 text-4xl font-bold leading-none md:leading-tight">
         <div className="mx-auto flex justify-center gap-3">
-          A structure note-taking App for creators
+          A structured note-taking App for creators
         </div>
       </div>
 

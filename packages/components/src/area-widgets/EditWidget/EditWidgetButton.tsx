@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { Capacitor } from '@capacitor/core'
+import { isAndroid, isIOS } from 'react-device-detect'
 import { Trans } from '@lingui/react'
 import { LayersIcon } from 'lucide-react'
 import { Drawer } from 'vaul'
@@ -20,8 +20,6 @@ interface Props {
   children?: React.ReactNode
 }
 
-const platform = Capacitor.getPlatform()
-
 export function EditWidgetButton({ className }: Props) {
   const [visible, setVisible] = useState(false)
   return (
@@ -39,7 +37,7 @@ export function EditWidgetButton({ className }: Props) {
           <Drawer.Content
             className={cn(
               'bg-background text-foreground fixed bottom-0 left-0 right-0 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none',
-              platform === 'ios' && 'max-h-[80vh] min-h-[80vh]',
+              isIOS && 'max-h-[80vh] min-h-[80vh]',
             )}
           >
             <div
