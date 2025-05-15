@@ -10,6 +10,7 @@ import {
 } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { uniqueId } from '@penx/unique-id'
+import { decodeAppleToken } from './decodeAppleToken'
 import { getGoogleUserInfo } from './getGoogleUserInfo'
 import { hashPassword } from './hashPassword'
 
@@ -70,7 +71,6 @@ export async function initUserByGoogleToken(
         ...includeAccount,
       })
 
-
       if (account) return account.user
 
       const user = await tx.user.findUnique({
@@ -87,6 +87,77 @@ export async function initUserByGoogleToken(
           displayName: info.name,
           email: info.email,
           image: info.picture,
+          accounts: {
+            create: [
+              {
+                providerType: ProviderType.GOOGLE,
+                providerAccountId: info.sub,
+                providerInfo: info,
+              },
+            ],
+          },
+        },
+      })
+
+      if (ref) {
+        const inviter = await tx.user.findUnique({
+          where: { referralCode: ref },
+        })
+        if (inviter) {
+          await tx.referral.create({
+            data: {
+              inviterId: inviter.id,
+              userId: newUser.id,
+            },
+          })
+        }
+      }
+
+      return tx.user.findUniqueOrThrow({
+        where: { id: newUser.id },
+        ...includeUser,
+      })
+    },
+    {
+      maxWait: 5000, // default: 2000
+      timeout: 10000, // default: 5000
+    },
+  )
+}
+
+export async function initUserByAppleToken(
+  accessToken: string,
+  username: string,
+  ref: string,
+  userId?: string,
+) {
+  return prisma.$transaction(
+    async (tx) => {
+      const info = await decodeAppleToken(accessToken)
+      const email = info.email || ''
+
+      const account = await tx.account.findUnique({
+        where: { providerAccountId: info.sub },
+        ...includeAccount,
+      })
+
+      if (account) return account.user
+
+      const user = await tx.user.findUnique({
+        where: { email },
+        ...includeUser,
+      })
+
+      if (user) return user!
+
+      const name = username || email.split('@')[0]
+
+      let newUser = await tx.user.create({
+        data: {
+          id: userId ? userId : undefined,
+          name: name,
+          displayName: name,
+          email: email,
           accounts: {
             create: [
               {

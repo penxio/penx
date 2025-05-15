@@ -57,5 +57,3 @@ pnpm dev
 ```
 
 ## ⚖️ License
-
-

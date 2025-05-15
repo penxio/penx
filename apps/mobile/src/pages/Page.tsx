@@ -56,6 +56,7 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     SocialLogin.initialize({
+      apple: {},
       google: {
         iOSClientId:
           '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
@@ -153,7 +154,7 @@ const Page: React.FC = () => {
           vertical="bottom"
           className="flex w-full justify-center pb-6"
         >
-          <div className="border-foreground/4 bg-background flex h-14 items-center gap-3 rounded-full border px-3 shadow-md">
+          <div className="border-foreground/4 bg-background flex h-14 items-center gap-3 rounded-full border px-3 shadow-md dark:bg-neutral-900">
             <Button
               size="icon"
               variant="ghost"

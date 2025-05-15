@@ -18,7 +18,13 @@
 .dark .toolbar,
 .ion-palette-dark .toolbar {
   /* --background: hsl(240 10% 3.9%); */
-  --background: #121212;
+  --background: dark;
+}
+
+.dark .drawer-menu,
+.ion-palette-dark .drawer-menu {
+  /* --background: hsl(240 10% 3.9%); */
+  --background: #111;
 }
 
 :root,

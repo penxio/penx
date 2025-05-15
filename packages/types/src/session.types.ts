@@ -36,16 +36,20 @@ export interface SessionData {
 
 export type GoogleLoginInfo = {
   accessToken: string
-  // email: string
-  // openid: string
-  // picture: string
-  // name: string
   ref: string
   userId: string
 }
 
+export type AppleLoginInfo = {
+  accessToken: string
+  username?: string
+  ref?: string
+  userId?: string
+}
+
 export type LoginData =
   | GoogleLoginData
+  | AppleLoginInfo
   | WalletLoginData
   | PasswordLoginData
   | RegisterByEmailData
@@ -53,6 +57,10 @@ export type LoginData =
 
 export type GoogleLoginData = GoogleLoginInfo & {
   type: 'penx-google'
+}
+
+export type AppleLoginData = AppleLoginInfo & {
+  type: 'penx-apple'
 }
 
 export type WalletLoginData = {
@@ -79,6 +87,10 @@ export type RegisterByCodeData = {
 
 export function isGoogleLogin(value: any): value is GoogleLoginData {
   return typeof value === 'object' && value?.type === 'penx-google'
+}
+
+export function isAppleLogin(value: any): value is AppleLoginData {
+  return typeof value === 'object' && value?.type === 'penx-apple'
 }
 
 export function isWalletLogin(value: any): value is WalletLoginData {
@@ -164,6 +176,22 @@ export type MobileGoogleLoginInfo = {
       familyName: string
       imageUrl: string
       name: string
+    }
+  }
+}
+
+export type MobileAppleLoginInfo = {
+  provider: 'google'
+  result: {
+    idToken: string
+    accessToken: {
+      token: string
+    }
+    profile: {
+      email: string
+      givenName: string
+      familyName: string
+      user: string
     }
   }
 }

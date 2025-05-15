@@ -58,9 +58,22 @@ async function init() {
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
   if (['ios', 'android'].includes(platform)) {
-    await StatusBar.setStyle({
-      style: prefersDarkScheme.matches ? Style.Dark : Style.Light,
-    })
+    if (prefersDarkScheme.matches) {
+      const html = document.documentElement
+      html.classList.add('dark')
+      html.classList.add('ion-palette-dark')
+      await StatusBar.setStyle({
+        style: Style.Dark,
+      })
+    } else {
+      const html = document.documentElement
+      html.classList.remove('dark')
+      html.classList.remove('ion-palette-dark')
+
+      await StatusBar.setStyle({
+        style: Style.Light,
+      })
+    }
 
     prefersDarkScheme.addEventListener('change', async (status) => {
       try {

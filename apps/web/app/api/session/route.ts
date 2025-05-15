@@ -14,11 +14,17 @@ import {
   ProviderType,
   Subscription,
 } from '@penx/db/client'
+import { decodeAppleToken } from '@penx/libs/decodeAppleToken'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { initUserByEmail, initUserByGoogleToken } from '@penx/libs/initUser'
+import {
+  initUserByAppleToken,
+  initUserByEmail,
+  initUserByGoogleToken,
+} from '@penx/libs/initUser'
 import { getServerSession, getSessionOptions } from '@penx/libs/session'
 import {
   AccountWithUser,
+  isAppleLogin,
   isCancelSubscription,
   isGoogleLogin,
   isPasswordLogin,
@@ -134,6 +140,25 @@ export async function POST(req: NextRequest) {
     const ref = json?.ref || ''
     const userId = json?.userId || ''
     const user = await initUserByGoogleToken(json.accessToken, ref, userId)
+    await updateSession(session, user)
+    try {
+      await registerSiteUser(hostname, user.id)
+    } catch (error) {
+      console.error('register siteUser error:', error)
+    }
+    return Response.json(session, { headers })
+  }
+
+  if (isAppleLogin(json)) {
+    const ref = json?.ref || ''
+    const userId = json?.userId || ''
+    const username = json?.username || ''
+    const user = await initUserByAppleToken(
+      json.accessToken,
+      username,
+      ref,
+      userId,
+    )
     await updateSession(session, user)
     try {
       await registerSiteUser(hostname, user.id)
