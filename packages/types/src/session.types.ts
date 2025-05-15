@@ -49,7 +49,7 @@ export type AppleLoginInfo = {
 
 export type LoginData =
   | GoogleLoginData
-  | AppleLoginInfo
+  | AppleLoginData
   | WalletLoginData
   | PasswordLoginData
   | RegisterByEmailData

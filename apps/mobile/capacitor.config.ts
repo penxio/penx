@@ -1,9 +1,16 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
   appId: 'io.penx.app',
   appName: 'PenX',
-  webDir: 'dist'
-};
+  webDir: 'dist',
 
-export default config;
+  plugins: {
+    Keyboard: {
+      resize: 'none',
+      // resize: 'ionic',
+    },
+  },
+}
+
+export default config

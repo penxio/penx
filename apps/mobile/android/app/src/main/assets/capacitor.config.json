@@ -1,5 +1,10 @@
 {
 	"appId": "io.penx.app",
 	"appName": "PenX",
-	"webDir": "dist"
+	"webDir": "dist",
+	"plugins": {
+		"Keyboard": {
+			"resize": "none"
+		}
+	}
 }

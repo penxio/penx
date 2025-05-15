@@ -9,7 +9,7 @@ import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
-import { MobileGoogleLoginInfo } from '@penx/types'
+import { MobileAppleLoginInfo, MobileGoogleLoginInfo } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -34,7 +34,7 @@ export function AppleLoginButton({ setVisible }: Props) {
         options: {
           scopes: ['email', 'name'],
         },
-      })) as any as MobileGoogleLoginInfo
+      })) as any as MobileAppleLoginInfo
       // alert(JSON.stringify(res))
       // handle the response. popoutStore is specific to my app
       console.log('======res:', res)
@@ -45,8 +45,9 @@ export function AppleLoginButton({ setVisible }: Props) {
       const site = sites.find((s) => !s.props.isRemote)
 
       const session = await login({
-        type: 'penx-google',
+        type: 'penx-apple',
         accessToken: res.result.accessToken.token as string,
+        username: res.result.profile?.givenName || '',
         userId: site?.userId!,
         ref: '',
       })

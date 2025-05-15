@@ -49,8 +49,6 @@ export function GoogleLoginButton({ setVisible }: Props) {
         ref: '',
       })
 
-      console.log('======session:', session)
-
       setSession(session)
       await set('SESSION', session)
       queryClient.setQueryData(['SESSION'], session)
