@@ -64,19 +64,21 @@ export async function initUserByGoogleToken(
   return prisma.$transaction(
     async (tx) => {
       const info = await getGoogleUserInfo(accessToken)
+
       const account = await tx.account.findUnique({
         where: { providerAccountId: info.sub },
         ...includeAccount,
       })
 
+
       if (account) return account.user
 
-      const user = tx.user.findUniqueOrThrow({
+      const user = await tx.user.findUnique({
         where: { email: info.email },
         ...includeUser,
       })
 
-      if (user) return user
+      if (user) return user!
 
       let newUser = await tx.user.create({
         data: {

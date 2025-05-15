@@ -71,14 +71,9 @@ export function useQuerySession() {
 
       if (!remoteSession?.isLoggedIn) return null as any as SessionData
 
-      const newSession = {
-        ...localSession,
-        ...remoteSession,
-      } as SessionData
+      await set(SESSION, remoteSession)
 
-      await set(SESSION, newSession)
-
-      return newSession as SessionData
+      return remoteSession as SessionData
     },
     // staleTime: 5 * 60 * 1000,
   })

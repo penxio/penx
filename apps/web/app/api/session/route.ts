@@ -49,8 +49,6 @@ async function updateSession(
 ) {
   const site = user?.sites?.[0]
 
-  console.log('======user>>>>>:', user)
-
   session.isLoggedIn = true
   session.message = ''
   session.uid = user.id
