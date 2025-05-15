@@ -80,15 +80,21 @@ export class AppService {
 
     const nodes = await localDB.listNodes(site.id)
 
-    await api.site.syncInitialNodes.mutate({ nodes })
+    const { existed, siteId } = await api.site.syncInitialNodes.mutate({
+      nodes,
+    })
 
-    await localDB.updateSiteProps(site.id, { isRemote: true })
+    if (existed) {
+      site = await syncNodesToLocal(siteId)
+    } else {
+      await localDB.updateSiteProps(site.id, { isRemote: true })
+      await syncNodesToLocal(site.id)
+    }
 
     await updateSession({
       activeSiteId: site.id,
       siteId: site.id,
     })
-    await syncNodesToLocal(site.id)
     return site
   }
 

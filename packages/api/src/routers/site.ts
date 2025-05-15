@@ -375,6 +375,17 @@ export const siteRouter = router({
       return prisma.$transaction(
         async (tx) => {
           const { props, type, siteId, ...data } = site
+          const existedSite = await tx.site.findFirst({
+            where: { userId },
+          })
+          if (existedSite) {
+            return {
+              ok: true,
+              existed: true,
+              siteId: existedSite.id,
+            }
+          }
+
           const siteData: any = {
             ...data,
             ...props,
@@ -418,7 +429,11 @@ export const siteRouter = router({
             data: formattedNodes as any,
           })
 
-          return true
+          return {
+            ok: true,
+            existed: false,
+            siteId,
+          }
         },
         {
           maxWait: 5000, // default: 2000
