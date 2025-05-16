@@ -24,7 +24,10 @@ const platform = Capacitor.getPlatform()
 export function LoginContent({}: Props) {
   return (
     <div className="flex h-full flex-1 flex-col justify-center px-6">
-      <div className="space-y-2">
+      <div className="-mt-20 space-y-2">
+        <div className="mb-10 text-center text-2xl font-bold">
+          Welcome to PenX
+        </div>
         <GoogleLoginButton />
         {platform === 'ios' && <AppleLoginButton />}
 

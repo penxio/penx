@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react'
+import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import {
   Dialog,
   DialogContent,
@@ -11,7 +12,6 @@ import {
 import { LoginDialogContent } from './LoginDialogContent'
 import { PinCodeForm } from './PinCodeForm'
 import { RegisterForm } from './RegisterForm'
-import { useAuthStatus } from './useAuthStatus'
 import { useLoginDialog } from './useLoginDialog'
 
 interface Props {}

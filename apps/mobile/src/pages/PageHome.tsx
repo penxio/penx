@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
-import { LoginContent } from '@/components/Login/LoginContent'
 import { MobileHome } from '@/components/MobileHome'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
 import { MobileTask } from '@/components/MobileTask/MobileTask'
+import { LoginContent } from '@/components/Profile/LoginContent'
+import { ProfileContent } from '@/components/Profile/ProfileContent'
 import { useHomeTab } from '@/hooks/useHomeTab'
 import { Capacitor } from '@capacitor/core'
 import { SplashScreen } from '@capacitor/splash-screen'
@@ -40,6 +41,7 @@ import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useCreationId } from '@penx/hooks/useCreationId'
 import { ICreationNode } from '@penx/model-type'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
@@ -53,6 +55,7 @@ const PageHome: React.FC = ({ nav }: any) => {
   const { area } = useArea()
   const y = useMotionValue(0)
   const { isHome, type, setType } = useHomeTab()
+  const { session } = useSession()
 
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -207,7 +210,8 @@ const PageHome: React.FC = ({ nav }: any) => {
         >
           {type === 'HOME' && <MobileHome />}
           {type === 'TASK' && <MobileTask />}
-          {type === 'PROFILE' && <LoginContent />}
+          {type === 'PROFILE' &&
+            (session ? <ProfileContent /> : <LoginContent />)}
         </div>
       </IonContent>
 

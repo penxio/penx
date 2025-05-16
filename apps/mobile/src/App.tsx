@@ -46,6 +46,7 @@ import { useEffect, useRef } from 'react'
 import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
 import { ICreationNode } from '@penx/model-type'
+import { NavProvider } from './components/NavContext'
 import { PageCreation } from './pages/PageCreation'
 
 async function init() {
@@ -120,7 +121,6 @@ setupIonicReact()
 
 const App: React.FC = () => {
   const nav = useRef<HTMLIonNavElement>(null)
-  const { creationId, setCreationId } = useCreationId()
 
   useEffect(() => {
     // if (initRef.current) return
@@ -153,7 +153,9 @@ const App: React.FC = () => {
                     <Redirect to="/folder/area" />
                   </Route>
                   <Route path="/folder/:name" exact={true}>
-                    <IonNav ref={nav} root={() => <PageHome />}></IonNav>
+                    <NavProvider nav={nav.current!}>
+                      <IonNav ref={nav} root={() => <PageHome />}></IonNav>
+                    </NavProvider>
                   </Route>
                 </IonRouterOutlet>
               </IonSplitPane>

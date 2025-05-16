@@ -1,14 +1,5 @@
 'use client'
 
-import { useCallback } from 'react'
-import {
-  AuthKitProvider,
-  SignInButton as FSignInButton,
-  QRCode,
-  StatusAPIResponse,
-  useProfile,
-  useSignIn,
-} from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
@@ -19,10 +10,6 @@ import { LoginForm } from './LoginForm'
 import { useLoginDialog } from './useLoginDialog'
 
 export function LoginDialogContent() {
-  const { setIsOpen } = useLoginDialog()
-  const { login, logout } = useSession()
-  const searchParams = useSearchParams()
-
   return (
     <div className="flex flex-col gap-3 pb-5">
       <div className="space-y-1">

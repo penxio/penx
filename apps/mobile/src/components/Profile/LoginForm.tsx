@@ -4,10 +4,12 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react'
+import { set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { appEmitter } from '@penx/emitter'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
-import { useRouter } from '@penx/libs/i18n'
+import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import {
@@ -20,12 +22,10 @@ import {
 import { Input } from '@penx/uikit/input'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useLoginDialog } from './useLoginDialog'
+import { useNavContext } from '../NavContext'
 
 const FormSchema = z.object({
-  name: z.string().min(4, {
-    message: 'Username must be at least 4 characters.',
-  }),
+  name: z.string().email(),
   password: z.string().min(4, {
     message: 'Password must be at least 4 characters.',
   }),
@@ -35,10 +35,9 @@ interface Props {}
 
 export function LoginForm({}: Props) {
   const [isLoading, setLoading] = useState(false)
-  const { setIsOpen } = useLoginDialog()
-  const { setAuthStatus } = useAuthStatus()
   const { login } = useSession()
-  const { push } = useRouter()
+  const { setAuthStatus } = useAuthStatus()
+  const nav = useNavContext()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -49,21 +48,25 @@ export function LoginForm({}: Props) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log('=====>>>>>>>nav:', nav);
+    
     try {
       setLoading(true)
 
-      const result = await login({
+      const session = await login({
         type: 'password',
         username: data.name,
         password: data.password,
       })
 
-      console.log('=====result:', result)
-      if (!result.isLoggedIn) {
-        toast.error(result.message)
+      console.log('=====result:', session)
+      if (!session.isLoggedIn) {
+        toast.error(session.message)
       } else {
-        location.reload()
-        setIsOpen(false)
+        await set('SESSION', session)
+        queryClient.setQueryData(['SESSION'], session)
+        appEmitter.emit('APP_LOGIN_SUCCESS', session)
+        nav.pop()
       }
     } catch (error) {
       console.log('========error:', error)
@@ -101,6 +104,7 @@ export function LoginForm({}: Props) {
             <FormItem className="w-full">
               <FormControl>
                 <Input
+                  autoComplete="current-password"
                   type="password"
                   placeholder="Password"
                   {...field}
@@ -124,15 +128,14 @@ export function LoginForm({}: Props) {
         </div>
       </form>
 
-      <div className="text-center text-sm">
+      <div className="pt-4 text-center text-sm">
         <Trans id="No account"></Trans>?{' '}
-        <a
-          href="#"
+        <span
           className="text-brand"
           onClick={() => setAuthStatus({ type: 'register' })}
         >
           <Trans id="Create one"></Trans>
-        </a>
+        </span>
       </div>
     </Form>
   )

@@ -7,6 +7,7 @@ import { Trans } from '@lingui/react'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import { localDB } from '@penx/local-db'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
@@ -21,7 +22,6 @@ import {
 import { Input } from '@penx/uikit/input'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useAuthStatus } from './useAuthStatus'
 
 const FormSchema = z.object({
   email: z.string().email(),

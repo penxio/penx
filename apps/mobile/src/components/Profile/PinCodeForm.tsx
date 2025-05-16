@@ -5,66 +5,64 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react'
 import { set } from 'idb-keyval'
+import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { appEmitter } from '@penx/emitter'
-import { useRouter } from '@penx/libs/i18n'
+import { useAuthStatus } from '@penx/hooks/useAuthStatus'
+import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
+import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
+import { useNavContext } from '../NavContext'
 
 const FormSchema = z.object({
-  name: z.string().min(4, {
-    message: 'Username must be at least 4 characters.',
-  }),
-  password: z.string().min(4, {
-    message: 'Password must be at least 4 characters.',
-  }),
+  code: z.string(),
 })
 
 interface Props {}
 
-export function LoginForm({}: Props) {
-  const [isLoading, setLoading] = useState(false)
+export function PinCodeForm({}: Props) {
   const { login } = useSession()
+  const [isLoading, setLoading] = useState(false)
+  const { authStatus } = useAuthStatus()
+  const nav = useNavContext()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: '',
-      password: '',
+      code: '',
     },
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      console.log('======data:', data)
-
       setLoading(true)
-
       const session = await login({
-        type: 'password',
-        username: data.name,
-        password: data.password,
+        type: 'register-by-code',
+        code: data.code,
       })
+      console.log('=====session:', session)
 
-      console.log('=====result:', session)
       if (!session.isLoggedIn) {
         toast.error(session.message)
       } else {
         await set('SESSION', session)
         queryClient.setQueryData(['SESSION'], session)
         appEmitter.emit('APP_LOGIN_SUCCESS', session)
+        nav.pop()
       }
     } catch (error) {
       console.log('========error:', error)
@@ -78,35 +76,41 @@ export function LoginForm({}: Props) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormControl>
-                <Input
-                  placeholder="Username or email"
-                  {...field}
-                  className="w-full"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <p className="text-foreground/60">
+          <Trans id="Please check your email for the verification code."></Trans>
+        </p>
 
         <FormField
           control={form.control}
-          name="password"
+          name="code"
           render={({ field }) => (
             <FormItem className="w-full">
+              <FormLabel className="flex items-center justify-between">
+                <span>
+                  <Trans id="Login code"></Trans>
+                </span>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="xs"
+                  onClick={async () => {
+                    try {
+                      await api.auth.registerByEmail.mutate(
+                        authStatus.data as any,
+                      )
+                      toast.success('Verification code sent successfully')
+                    } catch (error) {
+                      console.log('========error:', error)
+                      const msg = extractErrorMessage(error)
+                      toast.error(msg)
+                    }
+                  }}
+                >
+                  Resend
+                </Button>
+              </FormLabel>
               <FormControl>
-                <Input
-                  type="password"
-                  placeholder="Password"
-                  {...field}
-                  className="w-full"
-                />
+                <Input placeholder="" {...field} className="w-full" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -120,7 +124,7 @@ export function LoginForm({}: Props) {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? <LoadingDots /> : <Trans id="Log in"></Trans>}
+            {isLoading ? <LoadingDots /> : <Trans id="Register"></Trans>}
           </Button>
         </div>
       </form>

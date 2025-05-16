@@ -35,6 +35,7 @@
     "@penx/local-db": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/domain": "workspace:*",
+    "@penx/hooks": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/editor-transforms": "workspace:*",
     "@penx/contexts": "workspace:*",

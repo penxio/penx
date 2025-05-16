@@ -9,7 +9,6 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import { localDB } from '@penx/local-db'
-import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
@@ -22,49 +21,51 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from '@penx/uikit/ui/input-otp'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useLoginDialog } from './useLoginDialog'
 
 const FormSchema = z.object({
-  code: z.string(),
+  email: z.string().email(),
+  password: z.string().min(6, {
+    message: 'Password must be at least 6 characters.',
+  }),
 })
 
 interface Props {}
 
-export function PinCodeForm({}: Props) {
-  const { login } = useSession()
+export function RegisterForm({}: Props) {
   const [isLoading, setLoading] = useState(false)
-  const { authStatus } = useAuthStatus()
-  const { setIsOpen } = useLoginDialog()
+  const { setAuthStatus } = useAuthStatus()
+  const searchParams = useSearchParams()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      code: '',
+      email: '',
+      password: '',
     },
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
-      setLoading(true)
-      const result = await login({
-        type: 'register-by-code',
-        code: data.code,
-      })
-      console.log('=====session:', result)
+      const sites = await localDB.listAllSites()
+      const site = sites.find((s) => !s.props.isRemote)
 
-      if (!result.isLoggedIn) {
-        toast.error(result.message)
-      } else {
-        location.reload()
-        setIsOpen(false)
-      }
+      const ref = searchParams?.get('ref') as string
+      setLoading(true)
+      await api.auth.registerByEmail.mutate({
+        ...data,
+        ref: ref || '',
+        userId: site?.userId,
+      })
+
+      setAuthStatus({
+        type: 'register-email-sent',
+        data: {
+          ...data,
+          ref: ref || '',
+          userId: site?.userId,
+        },
+      })
     } catch (error) {
       console.log('========error:', error)
       const msg = extractErrorMessage(error)
@@ -77,41 +78,37 @@ export function PinCodeForm({}: Props) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <p className="text-foreground/60">
-          <Trans id="Please check your email for the verification code."></Trans>
-        </p>
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>
+                <Trans id="Email"></Trans>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Email" {...field} className="w-full" />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
-          name="code"
+          name="password"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel className="flex items-center justify-between">
-                <span>
-                  <Trans id="Login code"></Trans>
-                </span>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="xs"
-                  onClick={async () => {
-                    try {
-                      await api.auth.registerByEmail.mutate(
-                        authStatus.data as any,
-                      )
-                      toast.success('Verification code sent successfully')
-                    } catch (error) {
-                      console.log('========error:', error)
-                      const msg = extractErrorMessage(error)
-                      toast.error(msg)
-                    }
-                  }}
-                >
-                  Resend
-                </Button>
+              <FormLabel>
+                <Trans id="Password"></Trans>
               </FormLabel>
               <FormControl>
-                <Input placeholder="" {...field} className="w-full" />
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  {...field}
+                  className="w-full"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -129,6 +126,19 @@ export function PinCodeForm({}: Props) {
           </Button>
         </div>
       </form>
+
+      <div className="mt-2 text-center text-sm">
+        <Trans id="Already have an account"></Trans>?{' '}
+        <span
+          className="text-brand"
+          onClick={(e) => {
+            e.preventDefault()
+            setAuthStatus({ type: 'login' })
+          }}
+        >
+          <Trans id="Log in"></Trans>
+        </span>
+      </div>
     </Form>
   )
 }

@@ -2451,6 +2451,9 @@ importers:
       '@penx/editor-transforms':
         specifier: workspace:*
         version: link:../editor-transforms
+      '@penx/hooks':
+        specifier: workspace:*
+        version: link:../hooks
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
