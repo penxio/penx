@@ -8,7 +8,7 @@ import { Button } from '@penx/uikit/button'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
-import { LoginDrawerContent } from './LoginDrawerContent'
+import { LoginContent } from './LoginContent'
 
 export function ProfileButton() {
   const { session, logout } = useSession()

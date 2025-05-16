@@ -1,6 +1,7 @@
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Redirect, Route } from 'react-router-dom'
+import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
@@ -14,7 +15,7 @@ import { IonReactRouter } from '@ionic/react-router'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import Menu from './components/Menu'
-import Page from './pages/Page'
+import PageHome from './pages/PageHome'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
 /* Basic CSS for apps built with Ionic */
@@ -43,47 +44,67 @@ import './theme/variables.css'
 
 async function init() {
   const platform = Capacitor.getPlatform()
-  if (platform === 'android') {
+
+  // const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+  const mode = await DarkMode.isDarkMode()
+
+  const isDark = mode.dark
+
+  if (['ios', 'android'].includes(platform)) {
     SafeArea.enable({
       config: {
         customColorsForSystemBars: true,
         statusBarColor: '#00000000', // transparent
-        // statusBarContent: "light",
+        statusBarContent: isDark ? 'light' : 'dark',
         navigationBarColor: '#00000000', // transparent
-        // navigationBarContent: "light",
+        navigationBarContent: isDark ? 'light' : 'dark',
       },
     })
-  }
 
-  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
+    // if (mode.dark) {
+    //   const html = document.documentElement
+    //   html.classList.add('dark')
+    //   html.classList.add('ion-palette-dark')
+    //   await StatusBar.setStyle({
+    //     style: Style.Dark,
+    //   })
+    // } else {
+    //   const html = document.documentElement
+    //   html.classList.remove('dark')
+    //   html.classList.remove('ion-palette-dark')
 
-  if (['ios', 'android'].includes(platform)) {
-    if (prefersDarkScheme.matches) {
-      const html = document.documentElement
-      html.classList.add('dark')
-      html.classList.add('ion-palette-dark')
-      await StatusBar.setStyle({
-        style: Style.Dark,
-      })
-    } else {
-      const html = document.documentElement
-      html.classList.remove('dark')
-      html.classList.remove('ion-palette-dark')
+    //   await StatusBar.setStyle({
+    //     style: Style.Light,
+    //   })
+    // }
 
-      await StatusBar.setStyle({
-        style: Style.Light,
-      })
-    }
+    // if (prefersDarkScheme.matches) {
+    //   const html = document.documentElement
+    //   html.classList.add('dark')
+    //   html.classList.add('ion-palette-dark')
+    //   await StatusBar.setStyle({
+    //     style: Style.Dark,
+    //   })
+    // } else {
+    //   const html = document.documentElement
+    //   html.classList.remove('dark')
+    //   html.classList.remove('ion-palette-dark')
 
-    prefersDarkScheme.addEventListener('change', async (status) => {
-      try {
-        await StatusBar.setStyle({
-          style: status.matches ? Style.Dark : Style.Light,
-        })
-      } catch {
-        //
-      }
-    })
+    //   await StatusBar.setStyle({
+    //     style: Style.Light,
+    //   })
+    // }
+
+    // prefersDarkScheme.addEventListener('change', async (status) => {
+    //   try {
+    //     await StatusBar.setStyle({
+    //       style: status.matches ? Style.Light : Style.Dark,
+    //     })
+    //   } catch {
+    //     //
+    //   }
+    // })
   }
 }
 
@@ -105,7 +126,7 @@ const App: React.FC = () => {
                     <Redirect to="/folder/area" />
                   </Route>
                   <Route path="/folder/:name" exact={true}>
-                    <Page />
+                    <PageHome />
                   </Route>
                 </IonRouterOutlet>
               </IonSplitPane>

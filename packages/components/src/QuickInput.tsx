@@ -5,6 +5,7 @@ import {
   memo,
   useCallback,
   useEffect,
+  useImperativeHandle,
   useRef,
   useState,
   type ChangeEvent,
@@ -26,11 +27,23 @@ import { Checkbox } from '@penx/uikit/checkbox'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
 
-export function QuickInput({ onCancel }: { onCancel?: () => void }) {
+export function QuickInput({
+  afterSubmit,
+  onCancel,
+  ref,
+  isColorful = true,
+}: {
+  ref?: any
+  onCancel?: () => void
+  afterSubmit?: () => void
+  isColorful?: boolean
+}) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
   const addCreation = useAddCreation()
+
+  useImperativeHandle(ref, () => textareaRef.current)
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -69,14 +82,16 @@ export function QuickInput({ onCancel }: { onCancel?: () => void }) {
       type: CreationType.NOTE,
       content: JSON.stringify(slateValue),
     })
+    afterSubmit?.()
     setInput('')
   }, [input])
 
   return (
     <div
       className={cn(
-        'bg-linear-to-r relative flex w-full flex-col gap-4 rounded-xl from-indigo-500 via-purple-500 to-pink-500 p-0.5',
+        'bg-linear-to-r relative flex w-full flex-col gap-4 rounded-xl shadow-2xl',
         focused && 'shadow-2xl',
+        isColorful && 'from-indigo-500 via-purple-500 to-pink-500 p-0.5',
       )}
     >
       <Textarea
@@ -84,6 +99,8 @@ export function QuickInput({ onCancel }: { onCancel?: () => void }) {
         placeholder="What's on your mind?"
         value={input}
         onChange={handleInput}
+        enterKeyHint="done"
+        autoFocus
         onFocus={() => {
           setFocused(true)
         }}
@@ -91,7 +108,7 @@ export function QuickInput({ onCancel }: { onCancel?: () => void }) {
           setFocused(false)
         }}
         className={cx(
-          'bg-background max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-xl pb-8 !text-base shadow-md focus-visible:ring-0',
+          'bg-background text-foreground max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-xl pb-8 !text-base shadow-md focus-visible:ring-0',
         )}
         // rows={2}
         onKeyDown={(event) => {

@@ -6,7 +6,7 @@ import { Drawer } from 'vaul'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
-import { LoginDrawerContent } from './LoginDrawerContent'
+import { LoginContent } from './LoginContent'
 import { ProfileButton } from './ProfileButton'
 
 export function LoginButton() {
@@ -36,7 +36,7 @@ export function LoginButton() {
               <DialogDescription />
             </DialogTitle>
             {session && <div>{JSON.stringify(session, null, 2)}</div>}
-            <LoginDrawerContent setVisible={setVisible} />
+            <LoginContent setVisible={setVisible} />
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>

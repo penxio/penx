@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Footer } from '@/components/Footer'
 import { MobileHome } from '@/components/MobileHome'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
 import { MobileTask } from '@/components/MobileTask/MobileTask'
 import { useHomeTab } from '@/hooks/useHomeTab'
 import { Capacitor } from '@capacitor/core'
+import { SplashScreen } from '@capacitor/splash-screen'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import { OverlayEventDetail } from '@ionic/core'
 import {
@@ -11,6 +13,7 @@ import {
   IonButtons,
   IonContent,
   IonFab,
+  IonFooter,
   IonHeader,
   IonIcon,
   IonMenuButton,
@@ -37,17 +40,18 @@ import { useArea } from '@penx/hooks/useArea'
 import { Button } from '@penx/uikit/button'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
-import ExploreContainer from '../components/ExploreContainer'
 import { PageCreation } from './PageCreation'
 
 const platform = Capacitor.getPlatform()
 
-const Page: React.FC = () => {
+const PageHome: React.FC = () => {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { area } = useArea()
   const y = useMotionValue(0)
-  const { isHome, setType } = useHomeTab()
+  const { isHome, type, setType } = useHomeTab()
+
+  const inputRef = useRef<HTMLTextAreaElement>(null)
 
   const handleScroll = (event: CustomEvent) => {
     const scrollTop = event.detail.scrollTop
@@ -69,14 +73,93 @@ const Page: React.FC = () => {
   return (
     <IonPage className="">
       <AreaDialog />
+
+      {open && (
+        <div
+          // initial="closed"
+          // variants={{
+          //   open: {
+          //     opacity: 1,
+          //     display: 'block',
+          //     transition: {
+          //       duration: 0.2,
+          //     },
+          //   },
+          //   closed: {
+          //     opacity: 0,
+          //     display: 'none',
+          //     transition: {
+          //       duration: 0.2,
+          //     },
+          //   },
+          // }}
+          // animate={open ? 'open' : 'closed'}
+          className={cn(
+            'bg-background/50 fixed bottom-0 left-0 right-0 top-0 z-[10000] blur-sm',
+          )}
+          onClick={() => {
+            //
+            setOpen(false)
+          }}
+        ></div>
+      )}
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial="closed"
+            exit="closed"
+            variants={{
+              open: {
+                height: 'auto',
+                // translateY: 80,
+                // opacity: 1,
+                top: 60,
+                transition: {
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 20,
+                  // mass: 0.5,
+                  // duration: 0.1,
+                },
+              },
+              closed: {
+                // translateY: '-140%',
+                // opacity: 0,
+                top: -200,
+                transition: {
+                  type: 'tween',
+                  // duration: 0.2,
+                },
+              },
+            }}
+            animate={open ? 'open' : 'closed'}
+            className={cn(
+              'fixed z-[10000000] mx-auto flex w-[100vw] flex-col bg-transparent',
+              open && 'mb-2',
+            )}
+          >
+            <div className="mx-auto w-[90vw] flex-1">
+              <QuickInput
+                isColorful={false}
+                ref={inputRef}
+                onCancel={() => setOpen(false)}
+                afterSubmit={() => {
+                  setOpen(false)
+                }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <IonHeader
-        className={cn('px-3', platform === 'android' ? 'safe-area' : '')}
+        className={cn(platform === 'android' ? 'safe-area' : '')}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
         }}
       >
         <IonToolbar
-          className="toolbar"
+          className="toolbar px-3 "
           style={{
             // '--background': 'white',
             '--border-width': 0,
@@ -117,93 +200,24 @@ const Page: React.FC = () => {
             } as any
           }
         >
-          <motion.div
-            initial="closed"
-            variants={{
-              open: {
-                // margin: 0,
-                height: 'auto',
-                opacity: 1,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-              closed: {
-                height: 0,
-                // marginTop: -110,
-                opacity: 0,
-                transition: {
-                  duration: 0.2,
-                },
-              },
-            }}
-            animate={open ? 'open' : 'closed'}
-            className={cn('flex rounded-2xl px-3', open && 'mb-2')}
-          >
-            <QuickInput onCancel={() => setOpen(false)} />
-          </motion.div>
-
           <div className="">
             {isHome && <MobileHome />}
             {!isHome && <MobileTask />}
           </div>
         </div>
 
-        <IonFab
-          slot="fixed"
-          vertical="bottom"
-          className="flex w-full justify-center pb-6"
-        >
-          <div className="border-foreground/4 bg-background flex h-14 items-center gap-3 rounded-full border px-3 shadow-md dark:bg-neutral-900">
-            <Button
-              size="icon"
-              variant="ghost"
-              className={cn('size-8 rounded-full')}
-              onClick={async () => {
-                setType('HOME')
-              }}
-            >
-              {!isHome && (
-                <span className="icon-[fluent--home-20-regular] size-7"></span>
-              )}
-              {isHome && (
-                <span className="icon-[fluent--home-20-filled] size-7"></span>
-              )}
-            </Button>
-            {/* <Separator orientation="vertical" className="h-4" /> */}
-            <Button
-              size="icon"
-              variant="ghost"
-              className="text-background bg-foreground size-9 rounded-full"
-              onClick={async () => {
-                setOpen(true)
-              }}
-            >
-              <PlusIcon size={24} />
-            </Button>
-            {/* <Separator orientation="vertical" className="bg-foreground/50 h-4" /> */}
-            <Button
-              size="icon"
-              variant="ghost"
-              className={cn('size-8 rounded-full')}
-              onClick={async () => {
-                setType('TASK')
-              }}
-            >
-              {isHome && (
-                <span className="icon-[fluent--checkbox-checked-20-regular] size-7"></span>
-              )}
-              {!isHome && (
-                <span className="icon-[fluent--checkbox-checked-20-filled] size-7"></span>
-              )}
-            </Button>
-          </div>
-        </IonFab>
-
         <PageCreation />
       </IonContent>
+      <Footer
+        onAdd={() => {
+          setOpen(true)
+          setTimeout(() => {
+            inputRef.current?.focus()
+          }, 0)
+        }}
+      />
     </IonPage>
   )
 }
 
-export default Page
+export default PageHome

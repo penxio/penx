@@ -6,6 +6,13 @@ const config: CapacitorConfig = {
   webDir: 'dist',
 
   plugins: {
+    SplashScreen: {
+      androidSplashResourceName: 'splash',
+      androidScaleType: 'CENTER_CROP',
+      backgroundColor: '#ffffffff',
+      showSpinner: false,
+    },
+
     Keyboard: {
       resize: 'none',
       // resize: 'ionic',

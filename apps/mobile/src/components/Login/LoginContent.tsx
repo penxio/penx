@@ -22,7 +22,7 @@ interface Props {
 
 const platform = Capacitor.getPlatform()
 
-export function LoginDrawerContent({ setVisible }: Props) {
+export function LoginContent({ setVisible }: Props) {
   return (
     <div className="-mt-10 flex h-full flex-1 flex-col justify-center px-6">
       <div className="space-y-2">
