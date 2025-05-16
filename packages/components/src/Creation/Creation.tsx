@@ -243,6 +243,7 @@ export function Creation({ panel, className }: Props) {
               }
               showAddButton
               showFixedToolbar={false}
+              // showFixedToolbar
               onChange={(v: any[]) => {
                 const input: UpdateCreationInput = {
                   id: creation.id,

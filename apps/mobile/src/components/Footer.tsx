@@ -20,7 +20,7 @@ export const Footer = ({ onAdd }: Props) => {
           '--border-width': 0,
         }}
       >
-        <div className="bg-background flex items-center justify-between gap-3 rounded-full px-3 dark:bg-neutral-900">
+        <div className="flex items-center justify-between gap-3 rounded-full px-3">
           <Button
             size="icon"
             variant="ghost"
@@ -36,7 +36,7 @@ export const Footer = ({ onAdd }: Props) => {
             variant="ghost"
             className={cn('size-8 rounded-full')}
             onClick={async () => {
-              setType('HOME')
+              setType('NOTE')
             }}
           >
             <span className="icon-[solar--notes-linear] size-6"></span>
@@ -66,7 +66,7 @@ export const Footer = ({ onAdd }: Props) => {
             variant="ghost"
             className={cn('size-8 rounded-full')}
             onClick={async () => {
-              setType('TASK')
+              setType('PROFILE')
             }}
           >
             <span className="icon-[solar--user-linear] size-6"></span>

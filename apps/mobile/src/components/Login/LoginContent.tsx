@@ -13,24 +13,24 @@ import { Button } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { AppleLoginButton } from './AppleLoginButton'
+import { EmailLoginButton } from './EmailLoginButton'
 import { GoogleLoginButton } from './GoogleLoginButton'
 import { LoginForm } from './LoginForm'
 
-interface Props {
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
+interface Props {}
 
 const platform = Capacitor.getPlatform()
 
-export function LoginContent({ setVisible }: Props) {
+export function LoginContent({}: Props) {
   return (
-    <div className="-mt-10 flex h-full flex-1 flex-col justify-center px-6">
+    <div className="flex h-full flex-1 flex-col justify-center px-6">
       <div className="space-y-2">
-        <GoogleLoginButton setVisible={setVisible} />
-        {platform === 'ios' && <AppleLoginButton setVisible={setVisible} />}
+        <GoogleLoginButton />
+        {platform === 'ios' && <AppleLoginButton />}
 
-        <div className="text-foreground/40 my-4 text-center">or</div>
-        <LoginForm setVisible={setVisible} />
+        <EmailLoginButton />
+        {/* <div className="text-foreground/40 my-4 text-center">or</div>
+        <LoginForm setVisible={setVisible} /> */}
       </div>
     </div>
   )

@@ -15,16 +15,25 @@
   --background: white;
 }
 
+.content {
+  --background: white;
+}
+
+.dark .content,
+.ion-palette-dark .content {
+  --background: #222;
+}
+
 .dark .toolbar,
 .ion-palette-dark .toolbar {
   /* --background: hsl(240 10% 3.9%); */
-  --background: dark;
+  --background: #222;
 }
 
 .dark .drawer-menu,
 .ion-palette-dark .drawer-menu {
   /* --background: hsl(240 10% 3.9%); */
-  --background: #111;
+  --background: #333;
 }
 
 :root,

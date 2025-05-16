@@ -14,10 +14,8 @@ import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { LoginForm } from './LoginForm'
 
-interface Props {
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
-export function GoogleLoginButton({ setVisible }: Props) {
+interface Props {}
+export function GoogleLoginButton({}: Props) {
   const { login } = useSession()
   const [json, setJson] = useState({})
   const [error, setError] = useState({})
@@ -53,7 +51,6 @@ export function GoogleLoginButton({ setVisible }: Props) {
       await set('SESSION', session)
       queryClient.setQueryData(['SESSION'], session)
       appEmitter.emit('APP_LOGIN_SUCCESS', session)
-      setVisible(false)
     } catch (error) {
       console.log('=========error:', error)
 
@@ -64,7 +61,7 @@ export function GoogleLoginButton({ setVisible }: Props) {
     setLoading(false)
   }
   return (
-    <Button onClick={onLogin} className="w-full gap-2" variant="secondary">
+    <Button onClick={onLogin} className="w-full gap-2">
       {loading && <LoadingDots className="bg-foreground" />}
       {!loading && (
         <>

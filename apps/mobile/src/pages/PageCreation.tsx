@@ -4,52 +4,35 @@ import { MobileCreation } from '@/components/MobileCreation'
 import { Capacitor } from '@capacitor/core'
 import { OverlayEventDetail } from '@ionic/core'
 import {
+  IonBackButton,
   IonButton,
   IonButtons,
   IonContent,
+  IonFab,
   IonHeader,
   IonModal,
   IonToolbar,
 } from '@ionic/react'
 import { XIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
+import { useCreationId } from '@penx/hooks/useCreationId'
 import { ICreationNode } from '@penx/model-type'
 
 const platform = Capacitor.getPlatform()
 
-export const PageCreation: React.FC = () => {
-  const modal = useRef<HTMLIonModalElement>(null)
-  const [creationId, setCreationId] = useState('')
+export const PageCreation = ({
+  creationId,
+  nav,
+}: {
+  creationId: string
+  nav: HTMLIonNavElement
+}) => {
+  // const { creationId, setCreationId } = useCreationId()
 
-  useEffect(() => {
-    // if (initRef.current) return
-    // initRef.current = true
-    function handle(creation: ICreationNode) {
-      console.log('handle route to creation: ', creation.id)
-      setCreationId(creation.id)
-      modal.current?.present()
-    }
-
-    appEmitter.on('ROUTE_TO_CREATION', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_CREATION', handle)
-    }
-  }, [])
-
-  function onWillDismiss(event: CustomEvent<OverlayEventDetail>) {
-    if (event.detail.role === 'confirm') {
-      // setMessage(`Hello, ${event.detail.data}!`)
-    }
-  }
-
-  if (!creationId) return null
+  // if (!creationId) return null
 
   return (
-    <IonModal
-      ref={modal}
-      trigger="open-modal"
-      onWillDismiss={(event) => onWillDismiss(event)}
-    >
+    <>
       <IonHeader
         className={platform === 'android' ? 'safe-area' : ''}
         style={{
@@ -66,16 +49,15 @@ export const PageCreation: React.FC = () => {
           }}
         >
           <IonButtons slot="start">
-            <IonButton color="dark" onClick={() => modal.current?.dismiss()}>
-              <XIcon size={20} />
-            </IonButton>
+            <IonBackButton color="dark" text=""></IonBackButton>
           </IonButtons>
           {/* <IonTitle>Welcome</IonTitle> */}
           <IonButtons slot="end">
             <CreationMenu
               creationId={creationId}
               afterDelete={() => {
-                modal.current?.dismiss()
+                // modal.current?.dismiss()
+                nav.pop()
               }}
             />
           </IonButtons>
@@ -83,7 +65,14 @@ export const PageCreation: React.FC = () => {
       </IonHeader>
       <IonContent className="ion-padding">
         <MobileCreation creationId={creationId} />
+        <IonFab
+          slot="fixed"
+          vertical="bottom"
+          className="flex w-full justify-center"
+        >
+          <div className="h-10 bg-amber-100">Hello world</div>
+        </IonFab>
       </IonContent>
-    </IonModal>
+    </>
   )
 }

@@ -15,10 +15,8 @@ import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { LoginForm } from './LoginForm'
 
-interface Props {
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
-export function AppleLoginButton({ setVisible }: Props) {
+interface Props {}
+export function AppleLoginButton({}: Props) {
   const { login } = useSession()
   const [json, setJson] = useState({})
   const [error, setError] = useState({})
@@ -58,7 +56,6 @@ export function AppleLoginButton({ setVisible }: Props) {
       await set('SESSION', session)
       queryClient.setQueryData(['SESSION'], session)
       appEmitter.emit('APP_LOGIN_SUCCESS', session)
-      setVisible(false)
     } catch (error) {
       console.log('=========error:', error)
 

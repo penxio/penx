@@ -32,11 +32,9 @@ const FormSchema = z.object({
   }),
 })
 
-interface Props {
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
+interface Props {}
 
-export function LoginForm({ setVisible }: Props) {
+export function LoginForm({}: Props) {
   const [isLoading, setLoading] = useState(false)
   const { login } = useSession()
 
@@ -64,7 +62,6 @@ export function LoginForm({ setVisible }: Props) {
       if (!session.isLoggedIn) {
         toast.error(session.message)
       } else {
-        setVisible(false)
         await set('SESSION', session)
         queryClient.setQueryData(['SESSION'], session)
         appEmitter.emit('APP_LOGIN_SUCCESS', session)

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
+import { LoginContent } from '@/components/Login/LoginContent'
 import { MobileHome } from '@/components/MobileHome'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
 import { MobileTask } from '@/components/MobileTask/MobileTask'
@@ -37,6 +38,8 @@ import { AreaDialog } from '@penx/components/AreaDialog'
 import { QuickInput } from '@penx/components/QuickInput'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
+import { useCreationId } from '@penx/hooks/useCreationId'
+import { ICreationNode } from '@penx/model-type'
 import { Button } from '@penx/uikit/button'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
@@ -44,7 +47,7 @@ import { PageCreation } from './PageCreation'
 
 const platform = Capacitor.getPlatform()
 
-const PageHome: React.FC = () => {
+const PageHome: React.FC = ({ nav }: any) => {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { area } = useArea()
@@ -52,6 +55,8 @@ const PageHome: React.FC = () => {
   const { isHome, type, setType } = useHomeTab()
 
   const inputRef = useRef<HTMLTextAreaElement>(null)
+
+  const { creationId, setCreationId } = useCreationId()
 
   const handleScroll = (event: CustomEvent) => {
     const scrollTop = event.detail.scrollTop
@@ -185,7 +190,7 @@ const PageHome: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className="text-foreground">
+      <IonContent fullscreen className="text-foreground content">
         {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">{name}</IonTitle>
@@ -193,21 +198,19 @@ const PageHome: React.FC = () => {
         </IonHeader> */}
 
         <div
-          className="text-foreground relative flex flex-col px-1 pb-14"
+          className="text-foreground relative flex min-h-full flex-col px-1"
           style={
             {
               '--background': 'oklch(1 0 0)',
             } as any
           }
         >
-          <div className="">
-            {isHome && <MobileHome />}
-            {!isHome && <MobileTask />}
-          </div>
+          {type === 'HOME' && <MobileHome />}
+          {type === 'TASK' && <MobileTask />}
+          {type === 'PROFILE' && <LoginContent />}
         </div>
-
-        <PageCreation />
       </IonContent>
+
       <Footer
         onAdd={() => {
           setOpen(true)

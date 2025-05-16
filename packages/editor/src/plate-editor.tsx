@@ -4,12 +4,16 @@ import React, { useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import isEqual from 'react-fast-compare'
+import { ItalicPlugin } from '@udecode/plate-basic-marks/react'
 import { Plate } from '@udecode/plate/react'
+import { ItalicIcon } from 'lucide-react'
 import {
   Editor,
   EditorContainer,
   EditorVariantProps,
 } from '@penx/editor-plugins/plate-ui/editor'
+import { MarkToolbarButton } from '@penx/editor-plugins/plate-ui/mark-toolbar-button'
+import { Toolbar } from '@penx/editor-plugins/plate-ui/toolbar'
 import {
   PlateEditorType,
   useCreateEditor,

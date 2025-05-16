@@ -7,6 +7,7 @@ import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
 import {
   IonApp,
+  IonNav,
   IonRouterOutlet,
   IonSplitPane,
   setupIonicReact,
@@ -41,6 +42,11 @@ import '@ionic/react/css/palettes/dark.class.css'
 // import '@ionic/react/css/palettes/dark.system.css'
 /* Theme variables */
 import './theme/variables.css'
+import { useEffect, useRef } from 'react'
+import { appEmitter } from '@penx/emitter'
+import { useCreationId } from '@penx/hooks/useCreationId'
+import { ICreationNode } from '@penx/model-type'
+import { PageCreation } from './pages/PageCreation'
 
 async function init() {
   const platform = Capacitor.getPlatform()
@@ -113,6 +119,27 @@ init()
 setupIonicReact()
 
 const App: React.FC = () => {
+  const nav = useRef<HTMLIonNavElement>(null)
+  const { creationId, setCreationId } = useCreationId()
+
+  useEffect(() => {
+    // if (initRef.current) return
+    // initRef.current = true
+    function handle(creation: ICreationNode) {
+      console.log('handle route to creation: ', creation.id)
+      // setCreationId(creation.id)
+      nav.current?.push(PageCreation, {
+        creationId: creation.id,
+        nav: nav.current,
+      })
+    }
+
+    appEmitter.on('ROUTE_TO_CREATION', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_CREATION', handle)
+    }
+  }, [])
+
   return (
     <IonApp>
       <LinguiClientProvider initialLocale={'en'} initialMessages={{}}>
@@ -126,7 +153,7 @@ const App: React.FC = () => {
                     <Redirect to="/folder/area" />
                   </Route>
                   <Route path="/folder/:name" exact={true}>
-                    <PageHome />
+                    <IonNav ref={nav} root={() => <PageHome />}></IonNav>
                   </Route>
                 </IonRouterOutlet>
               </IonSplitPane>
