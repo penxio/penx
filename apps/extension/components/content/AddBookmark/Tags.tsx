@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@/hooks/useSession'
 import { addCreationTag, createTag } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
@@ -12,6 +11,7 @@ import { toast } from 'sonner'
 import { Tag } from '@penx/db/client'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import {
   CommandGroup,

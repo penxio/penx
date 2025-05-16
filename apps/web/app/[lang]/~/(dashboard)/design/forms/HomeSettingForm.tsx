@@ -1,10 +1,16 @@
 'use client'
 
 import { useForm } from 'react-hook-form'
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { produce } from 'immer'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSiteContext } from '@penx/contexts/SiteContext'
+import { Site } from '@penx/db/client'
+import { PlateEditor } from '@penx/editor/plate-editor'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -17,16 +23,10 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { Label } from '@penx/uikit/label'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Switch } from '@penx/uikit/switch'
 import { Textarea } from '@penx/uikit/textarea'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
-import { produce } from 'immer'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useThemeName } from '../hooks/useThemeName'
 
 const FormSchema = z.object({

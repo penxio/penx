@@ -7,8 +7,8 @@ import React, {
   useState,
 } from 'react'
 import { AppType } from '@/lib/constants'
-import { cn } from '@penx/utils'
 import { Check, X } from 'lucide-react'
+import { cn } from '@penx/utils'
 import * as styles from '../content.module.scss'
 import { useForceUpdate } from '../hooks'
 import { blobToBase64, screenShot } from './common/screen-shot'

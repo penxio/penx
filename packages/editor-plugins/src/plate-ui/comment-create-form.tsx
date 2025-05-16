@@ -1,8 +1,13 @@
 'use client'
 
-import React, { useEffect, useMemo } from 'react'
-import { cn, withProps } from '@udecode/cn'
+import * as React from 'react'
+import {
+  discussionPlugin,
+  type TDiscussion,
+} from '../plugins/discussion-plugin'
+import { withProps } from '@udecode/cn'
 import { nanoid, NodeApi, type Value } from '@udecode/plate'
+import { AIPlugin } from '@udecode/plate-ai/react'
 import {
   BasicMarksPlugin,
   BoldPlugin,
@@ -21,20 +26,14 @@ import {
   Plate,
   PlateLeaf,
   useEditorRef,
-  useStoreSelect,
+  usePluginOption,
   type CreatePlateEditorOptions,
 } from '@udecode/plate/react'
 import { ArrowUpIcon } from 'lucide-react'
-// import { AIPlugin } from '@penx/editor-custom-plugins'
-// import { useCreateEditor } from '@penx/editor/use-create-editor'
+import { cn } from '@penx/utils'
 import { AILeaf } from './ai-leaf'
+// import { useCreateEditor } from '@/components/editor/use-create-editor'
 import { Avatar, AvatarFallback, AvatarImage } from './avatar'
-import type { TDiscussion } from './block-discussion'
-import {
-  discussionStore,
-  useFakeCurrentUserId,
-  useFakeUserInfo,
-} from './block-discussion'
 import { Button } from './button'
 import type { TComment } from './comment'
 import { DateElement } from './date-element'
@@ -52,22 +51,21 @@ export const useCommentEditor = (
   // const commentEditor = useCreateEditor(
   //   {
   //     id: 'comment',
-  //     override: {
-  //       components: {
-  //         [AIPlugin.key]: AILeaf,
-  //         [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
-  //         [DatePlugin.key]: DateElement,
-  //         [EmojiInputPlugin.key]: EmojiInputElement,
-  //         [InlineEquationPlugin.key]: InlineEquationElement,
-  //         [ItalicPlugin.key]: withProps(PlateLeaf, { as: 'em' }),
-  //         [LinkPlugin.key]: LinkElement,
-  //         [MentionInputPlugin.key]: MentionInputElement,
-  //         [MentionPlugin.key]: MentionElement,
-  //         [StrikethroughPlugin.key]: withProps(PlateLeaf, { as: 's' }),
-  //         [UnderlinePlugin.key]: withProps(PlateLeaf, { as: 'u' }),
-  //         // [SlashInputPlugin.key]: SlashInputElement,
-  //       },
+  //     components: {
+  //       [AIPlugin.key]: AILeaf,
+  //       [BoldPlugin.key]: withProps(PlateLeaf, { as: 'strong' }),
+  //       [DatePlugin.key]: DateElement,
+  //       [EmojiInputPlugin.key]: EmojiInputElement,
+  //       [InlineEquationPlugin.key]: InlineEquationElement,
+  //       [ItalicPlugin.key]: withProps(PlateLeaf, { as: 'em' }),
+  //       [LinkPlugin.key]: LinkElement,
+  //       [MentionInputPlugin.key]: MentionInputElement,
+  //       [MentionPlugin.key]: MentionElement,
+  //       [StrikethroughPlugin.key]: withProps(PlateLeaf, { as: 's' }),
+  //       [UnderlinePlugin.key]: withProps(PlateLeaf, { as: 'u' }),
+  //       // [SlashInputPlugin.key]: SlashInputElement,
   //     },
+  //     placeholders: false,
   //     plugins: [BasicMarksPlugin],
   //     value: [],
   //     ...options,
@@ -84,49 +82,66 @@ export function CommentCreateForm({
   className,
   discussionId: discussionIdProp,
   focusOnMount = false,
-  isSuggesting,
 }: {
   autoFocus?: boolean
   className?: string
   discussionId?: string
   focusOnMount?: boolean
-  isSuggesting?: boolean
 }) {
-  const discussions = useStoreSelect(
-    discussionStore,
-    (state) => state.discussions,
-  )
+  const discussions = usePluginOption(discussionPlugin, 'discussions')
 
   const editor = useEditorRef()
-  const discussionId = useCommentId() ?? discussionIdProp
-  const [resetKey, setResetKey] = React.useState(0)
+  const commentId = useCommentId()
+  const discussionId = discussionIdProp ?? commentId
 
-  const currentUserId = useFakeCurrentUserId()
-  const userInfo = useFakeUserInfo(currentUserId)
+  const userInfo = usePluginOption(discussionPlugin, 'currentUser')
   const [commentValue, setCommentValue] = React.useState<Value | undefined>()
-  const commentContent = useMemo(
+  const commentContent = React.useMemo(
     () =>
-      commentValue
-        ? NodeApi.string({ children: commentValue as any, type: 'p' })
-        : '',
+      commentValue ? NodeApi.string({ children: commentValue, type: 'p' }) : '',
     [commentValue],
   )
-  const commentEditor = useCommentEditor({}, [resetKey])
+  const commentEditor = useCommentEditor({}, [])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (commentEditor && focusOnMount) {
       commentEditor.tf.focus()
     }
   }, [commentEditor, focusOnMount])
 
   const onAddComment = React.useCallback(async () => {
-    setResetKey((prev) => prev + 1)
+    if (!commentValue) return
+
+    commentEditor.tf.reset()
 
     if (discussionId) {
       // Get existing discussion
-      const discussion = discussions.find((d: any) => d.id === discussionId)
+      const discussion = discussions.find((d) => d.id === discussionId)
+      if (!discussion) {
+        // Mock creating suggestion
+        const newDiscussion: TDiscussion = {
+          id: discussionId,
+          comments: [
+            {
+              id: nanoid(),
+              contentRich: commentValue,
+              createdAt: new Date(),
+              discussionId,
+              isEdited: false,
+              userId: editor.getOption(discussionPlugin, 'currentUserId'),
+            },
+          ],
+          createdAt: new Date(),
+          isResolved: false,
+          userId: editor.getOption(discussionPlugin, 'currentUserId'),
+        }
 
-      if (!discussion || !commentValue) return
+        editor.setOption(discussionPlugin, 'discussions', [
+          ...discussions,
+          newDiscussion,
+        ])
+        return
+      }
 
       // Create reply comment
       const comment: TComment = {
@@ -135,8 +150,7 @@ export function CommentCreateForm({
         createdAt: new Date(),
         discussionId,
         isEdited: false,
-        // mock user id
-        userId: currentUserId,
+        userId: editor.getOption(discussionPlugin, 'currentUserId'),
       }
 
       // Add reply to discussion comments
@@ -147,10 +161,10 @@ export function CommentCreateForm({
 
       // Filter out old discussion and add updated one
       const updatedDiscussions = discussions
-        .filter((d: any) => d.id !== discussionId)
+        .filter((d) => d.id !== discussionId)
         .concat(updatedDiscussion)
 
-      discussionStore.set('discussions', updatedDiscussions)
+      editor.setOption(discussionPlugin, 'discussions', updatedDiscussions)
 
       return
     }
@@ -172,25 +186,27 @@ export function CommentCreateForm({
       comments: [
         {
           id: nanoid(),
-          contentRich: commentValue!,
+          contentRich: commentValue,
           createdAt: new Date(),
           discussionId: _discussionId,
           isEdited: false,
-          userId: currentUserId,
+          userId: editor.getOption(discussionPlugin, 'currentUserId'),
         },
       ],
       createdAt: new Date(),
       documentContent,
       isResolved: false,
-      userId: currentUserId,
+      userId: editor.getOption(discussionPlugin, 'currentUserId'),
     }
 
-    // Update discussions store
-    discussionStore.set('discussions', [...discussions, newDiscussion])
+    editor.setOption(discussionPlugin, 'discussions', [
+      ...discussions,
+      newDiscussion,
+    ])
 
     const id = newDiscussion.id
 
-    commentsNodeEntry.forEach(([_, path]) => {
+    commentsNodeEntry.forEach(([, path]) => {
       editor.tf.setNodes(
         {
           [getCommentKey(id)]: true,
@@ -199,40 +215,13 @@ export function CommentCreateForm({
       )
       editor.tf.unsetNodes([getDraftCommentKey()], { at: path })
     })
-  }, [discussionId, editor, commentValue, currentUserId, discussions])
-
-  const onAddSuggestion = React.useCallback(async () => {
-    if (!discussionId) return
-
-    if (!commentValue) return
-
-    // Mock creating suggestion
-    const suggestion: TDiscussion = {
-      id: discussionId,
-      comments: [
-        {
-          id: nanoid(),
-          contentRich: commentValue!,
-          createdAt: new Date(),
-          discussionId,
-          isEdited: false,
-          userId: 'user1',
-        },
-      ],
-      createdAt: new Date(),
-      isResolved: false,
-      userId: 'user1',
-    }
-
-    // Update discussions store
-    discussionStore.set('discussions', [...discussions, suggestion])
-  }, [discussionId, commentValue, discussions])
+  }, [commentValue, commentEditor.tf, discussionId, editor, discussions])
 
   return (
     <div className={cn('flex w-full', className)}>
-      <div className="mr-1 mt-1 shrink-0">
+      <div className="mr-1 mt-2 shrink-0">
         {/* Replace to your own backend or refer to potion */}
-        <Avatar className="size-6">
+        <Avatar className="size-5">
           <AvatarImage alt={userInfo?.name} src={userInfo?.avatarUrl} />
           <AvatarFallback>{userInfo?.name?.[0]}</AvatarFallback>
         </Avatar>
@@ -249,6 +238,12 @@ export function CommentCreateForm({
             <Editor
               variant="comment"
               className="min-h-[25px] grow pr-8 pt-0.5"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault()
+                  onAddComment()
+                }
+              }}
               placeholder="Reply..."
               autoComplete="off"
               autoFocus={autoFocus}
@@ -257,16 +252,11 @@ export function CommentCreateForm({
             <Button
               size="icon"
               variant="ghost"
-              className="absolute bottom-0 right-0 ml-auto shrink-0"
+              className="absolute bottom-0.5 right-0.5 ml-auto shrink-0"
               disabled={commentContent.trim().length === 0}
               onClick={(e) => {
                 e.stopPropagation()
-
-                if (isSuggesting) {
-                  void onAddSuggestion()
-                } else {
-                  void onAddComment()
-                }
+                onAddComment()
               }}
             >
               <div className="flex size-6 items-center justify-center rounded-full">

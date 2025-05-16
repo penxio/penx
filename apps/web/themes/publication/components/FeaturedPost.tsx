@@ -1,8 +1,8 @@
+import Image from 'next/image'
 import { PostActions } from '@penx/components/PostActions'
 import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
-import Image from 'next/image'
 
 interface Props {
   creation: Creation

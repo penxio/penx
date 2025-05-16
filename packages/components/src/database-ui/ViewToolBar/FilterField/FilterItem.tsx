@@ -1,9 +1,9 @@
 'use client'
 
 import { ChangeEvent } from 'react'
-import { Input } from '@penx/uikit/input'
-import { Filter } from '@penx/types'
 import { Column } from '@penx/db/client'
+import { Filter } from '@penx/types'
+import { Input } from '@penx/uikit/input'
 import { FieldSelect } from './FieldSelect'
 import { OperatorSelect } from './OperatorSelect'
 

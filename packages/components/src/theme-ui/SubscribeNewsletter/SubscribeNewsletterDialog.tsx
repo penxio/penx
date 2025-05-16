@@ -1,5 +1,6 @@
 'use client'
 
+import { Site } from '@penx/types'
 import {
   Dialog,
   DialogContent,
@@ -7,7 +8,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
-import { Site } from '@penx/types'
 import { SubscribeNewsletterForm } from './SubscribeNewsletterForm'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'
 

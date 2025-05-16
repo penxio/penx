@@ -1,5 +1,3 @@
-import { Link } from '@penx/libs/i18n'
-import { cn } from '@penx/utils'
 import {
   ArrowUpRight,
   BotIcon,
@@ -12,6 +10,8 @@ import {
   UserIcon,
   ZapIcon,
 } from 'lucide-react'
+import { Link } from '@penx/libs/i18n'
+import { cn } from '@penx/utils'
 
 const themes: string[] = [
   'minimal',

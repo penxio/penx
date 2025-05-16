@@ -1,7 +1,7 @@
-import { prisma } from '@penx/db'
-import { Balance } from '@penx/types'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
+import { Balance } from '@penx/types'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const affiliateRouter = router({

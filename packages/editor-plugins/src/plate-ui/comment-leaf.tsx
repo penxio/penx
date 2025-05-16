@@ -1,21 +1,19 @@
 'use client'
 
-import React from 'react'
-import { cn } from '@udecode/cn'
-import { getCommentCount, type TCommentText } from '@udecode/plate-comments'
+import * as React from 'react'
+import { commentsPlugin } from '../plugins/comments-plugin'
+import { cn } from '@penx/utils'
+import type { TCommentText } from '@udecode/plate-comments'
+import { getCommentCount } from '@udecode/plate-comments'
+import type { PlateLeafProps } from '@udecode/plate/react'
 import {
   PlateLeaf,
   useEditorPlugin,
   usePluginOption,
-  type PlateLeafProps,
 } from '@udecode/plate/react'
-import { commentsPlugin } from '../plugins/comments-plugin'
 
-export function CommentLeaf({
-  className,
-  ...props
-}: PlateLeafProps<TCommentText>) {
-  const { children, leaf, nodeProps } = props
+export function CommentLeaf(props: PlateLeafProps<TCommentText>) {
+  const { children, leaf } = props
 
   const { api, setOption } = useEditorPlugin(commentsPlugin)
   const hoverId = usePluginOption(commentsPlugin, 'hoverId')
@@ -36,13 +34,12 @@ export function CommentLeaf({
         (isHover || isActive) &&
           isOverlapping &&
           'border-b-highlight bg-highlight/45',
-        className,
       )}
-      onClick={() => setOption('activeId', currentId ?? null)}
-      onMouseEnter={() => setOption('hoverId', currentId ?? null)}
-      onMouseLeave={() => setOption('hoverId', null)}
-      nodeProps={{
-        ...nodeProps,
+      attributes={{
+        ...props.attributes,
+        onClick: () => setOption('activeId', currentId ?? null),
+        onMouseEnter: () => setOption('hoverId', currentId ?? null),
+        onMouseLeave: () => setOption('hoverId', null),
       }}
     >
       {children}

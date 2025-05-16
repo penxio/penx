@@ -1,16 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { Trans } from '@lingui/react'
+import { Edit, Plus } from 'lucide-react'
+import { editorDefaultValue } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
+import { StripeType } from '@penx/db/client'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
-import { editorDefaultValue } from '@penx/constants'
-import { trpc } from '@penx/trpc-client'
-import { Trans } from '@lingui/react'
-import { StripeType } from '@penx/db/client'
-import { Edit, Plus } from 'lucide-react'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { TierDialog } from './TierDialog/TierDialog'
 import { useTierDialog } from './TierDialog/useTierDialog'
 import { TierPriceDialog } from './TierPriceDialog/TierPriceDialog'
@@ -22,7 +22,7 @@ interface Props {
 
 export function MembershipTiers({ type }: Props) {
   const [loading, setLoading] = useState(false)
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   const tierDialog = useTierDialog()
   const priceDialog = useTierPriceDialog()
   const {

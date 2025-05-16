@@ -1,4 +1,4 @@
-import type { SlateEditor } from '@udecode/plate'
+import type { SlateEditor } from '@udecode/plate';
 
 export const undoAI = (editor: SlateEditor) => {
   if (
@@ -8,7 +8,7 @@ export const undoAI = (editor: SlateEditor) => {
       match: (n) => !!(n as any).ai,
     })
   ) {
-    editor.undo()
-    editor.history.redos.pop()
+    editor.undo();
+    editor.history.redos.pop();
   }
-}
+};

@@ -4,8 +4,8 @@ import { Trans } from '@lingui/react'
 import { produce } from 'immer'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Badge } from '@penx/uikit/badge'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Select,
   SelectContent,

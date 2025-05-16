@@ -1,6 +1,8 @@
 'use client'
 
 import { PropsWithChildren, ReactNode } from 'react'
+import { Menu } from 'lucide-react'
+import { Site } from '@penx/types'
 import {
   Sheet,
   SheetClose,
@@ -11,8 +13,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@penx/uikit/sheet'
-import { Site } from '@penx/types'
-import { Menu } from 'lucide-react'
 import { Navigation } from '../Navigation'
 import { useMobileSidebarSheet } from './useMobileSidebarSheet'
 

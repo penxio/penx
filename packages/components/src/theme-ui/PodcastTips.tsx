@@ -1,6 +1,6 @@
+import { ExternalLink, PodcastIcon } from 'lucide-react'
 import { Creation, CreationType } from '@penx/types'
 import { cn, convertSecondsToTime } from '@penx/utils'
-import { ExternalLink, PodcastIcon } from 'lucide-react'
 
 interface Props {
   className?: string

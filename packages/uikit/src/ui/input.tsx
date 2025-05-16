@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { cn } from '@penx/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@penx/utils'
 
 const inputVariants = cva('', {
   variants: {

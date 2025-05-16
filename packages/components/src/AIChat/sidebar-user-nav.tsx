@@ -1,34 +1,33 @@
-'use client';
+'use client'
 
-import { ChevronUp } from 'lucide-react';
-import Image from 'next/image';
-import type { User } from 'next-auth';
-import { signOut, useSession } from 'next-auth/react';
-import { useTheme } from 'next-themes';
-
+import { guestRegex } from '@/lib/constants'
+import { ChevronUp } from 'lucide-react'
+import type { User } from 'next-auth'
+import { signOut, useSession } from 'next-auth/react'
+import { useTheme } from 'next-themes'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@penx/uikit/dropdown-menu';
+} from '@penx/uikit/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@penx/uikit/sidebar';
-import { useRouter } from 'next/navigation';
-import { toast } from './toast';
-import { LoaderIcon } from './icons';
-import { guestRegex } from '@/lib/constants';
+} from '@penx/uikit/sidebar'
+import { LoaderIcon } from './icons'
+import { toast } from './toast'
 
 export function SidebarUserNav({ user }: { user: User }) {
-  const router = useRouter();
-  const { data, status } = useSession();
-  const { setTheme, theme } = useTheme();
+  const router = useRouter()
+  const { data, status } = useSession()
+  const { setTheme, theme } = useTheme()
 
-  const isGuest = guestRegex.test(data?.user?.email ?? '');
+  const isGuest = guestRegex.test(data?.user?.email ?? '')
 
   return (
     <SidebarMenu>
@@ -38,8 +37,8 @@ export function SidebarUserNav({ user }: { user: User }) {
             {status === 'loading' ? (
               <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent bg-background data-[state=open]:text-sidebar-accent-foreground h-10 justify-between">
                 <div className="flex flex-row gap-2">
-                  <div className="size-6 bg-zinc-500/30 rounded-full animate-pulse" />
-                  <span className="bg-zinc-500/30 text-transparent rounded-md animate-pulse">
+                  <div className="size-6 animate-pulse rounded-full bg-zinc-500/30" />
+                  <span className="animate-pulse rounded-md bg-zinc-500/30 text-transparent">
                     Loading auth status
                   </span>
                 </div>
@@ -89,17 +88,17 @@ export function SidebarUserNav({ user }: { user: User }) {
                       type: 'error',
                       description:
                         'Checking authentication status, please try again!',
-                    });
+                    })
 
-                    return;
+                    return
                   }
 
                   if (isGuest) {
-                    router.push('/login');
+                    router.push('/login')
                   } else {
                     signOut({
                       redirectTo: '/',
-                    });
+                    })
                   }
                 }}
               >
@@ -110,5 +109,5 @@ export function SidebarUserNav({ user }: { user: User }) {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  );
+  )
 }

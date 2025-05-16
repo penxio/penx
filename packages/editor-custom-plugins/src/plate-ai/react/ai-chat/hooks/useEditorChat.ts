@@ -1,19 +1,22 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
-import type { NodeEntry } from '@udecode/plate'
-import { BlockSelectionPlugin } from '@udecode/plate-selection/react'
-import { useEditorPlugin, usePluginOption } from '@udecode/plate/react'
-import type { UseChatHelpers } from 'ai/react'
-import { AIChatPlugin } from '../AIChatPlugin'
+import { useEffect } from 'react';
+
+import type { NodeEntry } from '@udecode/plate';
+import type { UseChatHelpers } from 'ai/react';
+
+import { BlockSelectionPlugin } from '@udecode/plate-selection/react';
+import { useEditorPlugin, usePluginOption } from '@udecode/plate/react';
+
+import { AIChatPlugin } from '../AIChatPlugin';
 
 export type UseEditorChatOptions = {
-  chat: UseChatHelpers
-  onOpenBlockSelection?: (blocks: NodeEntry[]) => void
-  onOpenChange?: (open: boolean) => void
-  onOpenCursor?: () => void
-  onOpenSelection?: () => void
-}
+  chat: UseChatHelpers;
+  onOpenBlockSelection?: (blocks: NodeEntry[]) => void;
+  onOpenChange?: (open: boolean) => void;
+  onOpenCursor?: () => void;
+  onOpenSelection?: () => void;
+};
 
 export const useEditorChat = ({
   chat,
@@ -22,44 +25,44 @@ export const useEditorChat = ({
   onOpenCursor,
   onOpenSelection,
 }: UseEditorChatOptions) => {
-  const { editor, setOption } = useEditorPlugin(AIChatPlugin)
-  const open = usePluginOption(AIChatPlugin, 'open')
+  const { editor, setOption } = useEditorPlugin(AIChatPlugin);
+  const open = usePluginOption(AIChatPlugin, 'open');
 
   // Sync useChat with AIChatPlugin
   useEffect(() => {
-    setOption('chat', chat)
+    setOption('chat', chat);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chat.input, chat.messages, chat.isLoading, chat.data, chat.error])
+  }, [chat.input, chat.messages, chat.isLoading, chat.data, chat.error]);
 
   useEffect(() => {
-    onOpenChange?.(open)
+    onOpenChange?.(open);
 
     if (open) {
       if (onOpenBlockSelection) {
         const blockSelectionApi =
-          editor.getApi(BlockSelectionPlugin).blockSelection
+          editor.getApi(BlockSelectionPlugin).blockSelection;
         const isBlockSelecting = editor.getOption(
           BlockSelectionPlugin,
-          'isSelectingSome',
-        )
+          'isSelectingSome'
+        );
 
         if (isBlockSelecting) {
-          onOpenBlockSelection(blockSelectionApi.getNodes())
+          onOpenBlockSelection(blockSelectionApi.getNodes());
 
-          return
+          return;
         }
       }
       if (onOpenCursor && editor.api.isCollapsed()) {
-        onOpenCursor()
+        onOpenCursor();
 
-        return
+        return;
       }
       if (onOpenSelection && editor.api.isExpanded()) {
-        onOpenSelection()
+        onOpenSelection();
 
-        return
+        return;
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open])
-}
+  }, [open]);
+};

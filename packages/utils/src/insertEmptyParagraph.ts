@@ -1,6 +1,6 @@
-import { uniqueId } from '@penx/unique-id'
 import { Editor, Transforms } from 'slate'
 import { NodeInsertNodesOptions } from 'slate/dist/interfaces/transforms/node'
+import { uniqueId } from '@penx/unique-id'
 import { getEmptyElement } from './getEmptyElement'
 
 export const insertEmptyParagraph = (

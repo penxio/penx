@@ -1,8 +1,8 @@
 import { Image } from '@penx/components/Image'
+import { Area } from '@penx/db/client'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { Area } from '@penx/db/client'
 
 interface Props {
   site: Site

@@ -2,7 +2,11 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { ExternalLink } from 'lucide-react'
+import { toast } from 'sonner'
+import { z } from 'zod'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -22,12 +26,8 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { ExternalLink } from 'lucide-react'
-import { toast } from 'sonner'
-import { z } from 'zod'
 import { useApiTokenDialog } from './useApiTokenDialog'
 
 const FormSchema = z.object({

@@ -1,7 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
-import { Project } from '@penx/types'
-import { cn, getUrl } from '@penx/utils'
 import { ArrowUpRight } from 'lucide-react'
+import { Project } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { cn, getUrl } from '@penx/utils'
 
 interface Props {
   projects: Project[]

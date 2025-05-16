@@ -1,7 +1,7 @@
 // export const runtime = 'edge'
 
-import { ContentRender } from '@penx/content-render'
 import { getPage } from '@/lib/fetchers'
+import { ContentRender } from '@penx/content-render'
 
 export const dynamic = 'force-static'
 

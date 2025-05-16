@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
-import { Input } from '@penx/uikit/input'
-import { trpc } from '@penx/trpc-client'
 import { useDebouncedCallback } from 'use-debounce'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
+import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { GithubConnectedBox } from './GitHubConnectedBox'
 import { GithubInstallationSelect } from './GitHubInstallationSelect'
 import { Repos } from './Repos'
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export function GitIntegration({ github }: Props) {
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   const { data: installations, isLoading: isLoadInstallations } =
     trpc.github.appInstallations.useQuery({
       token: github?.token!,

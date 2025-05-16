@@ -1,56 +1,49 @@
 'use client'
 
-import React from 'react'
-import { withRef } from '@udecode/cn'
+import * as React from 'react'
+import { ImagePlugin } from '@udecode/plate-media/react'
+import {
+  insertBlock,
+  insertInlineElement,
+} from '@penx/editor-transforms'
+import { AIChatPlugin } from '@udecode/plate-ai/react'
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
+import { CalloutPlugin } from '@udecode/plate-callout/react'
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react'
 import { DatePlugin } from '@udecode/plate-date/react'
 import { HEADING_KEYS } from '@udecode/plate-heading'
 import { TocPlugin } from '@udecode/plate-heading/react'
 import { INDENT_LIST_KEYS, ListStyleType } from '@udecode/plate-indent-list'
 import { EquationPlugin, InlineEquationPlugin } from '@udecode/plate-math/react'
-import { ImagePlugin } from '@udecode/plate-media/react'
+import type { TSlashInputElement } from '@udecode/plate-slash-command'
 import { TablePlugin } from '@udecode/plate-table/react'
 import { TogglePlugin } from '@udecode/plate-toggle/react'
 import {
   ParagraphPlugin,
   PlateElement,
   type PlateEditor,
+  type PlateElementProps,
 } from '@udecode/plate/react'
 import {
   CalendarIcon,
   ChevronRightIcon,
   Code2,
   Columns3Icon,
-  DollarSignIcon,
   Heading1Icon,
   Heading2Icon,
   Heading3Icon,
-  Image,
-  Lightbulb,
+  ImageIcon,
+  LightbulbIcon,
   ListIcon,
   ListOrdered,
-  MessageCircleMoreIcon,
   PilcrowIcon,
   Quote,
   RadicalIcon,
-  ShoppingBagIcon,
   SparklesIcon,
   Square,
   Table,
   TableOfContentsIcon,
-  TimerIcon,
-  UserRoundIcon,
 } from 'lucide-react'
-import { CampaignPlugin } from '@penx/editor-custom-plugins/campaign/react/CampaignPlugin'
-import { CommentBoxPlugin } from '@penx/editor-custom-plugins/comment-box/react/CommentBoxPlugin'
-import { FriendsPlugin } from '@penx/editor-custom-plugins/friends/react/FriendsPlugin'
-import { AIChatPlugin } from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/AIChatPlugin'
-import { PodcastTimePlugin } from '@penx/editor-custom-plugins/podcast-time/react/PodcastTimePlugin'
-import { ProductPlugin } from '@penx/editor-custom-plugins/product/react/ProductPlugin'
-import { ProjectsPlugin } from '@penx/editor-custom-plugins/projects/react/ProjectsPlugin'
-import { SocialLinksPlugin } from '@penx/editor-custom-plugins/social-links/react/SocialLinksPlugin'
-import { insertBlock, insertInlineElement } from '@penx/editor-transforms'
 import {
   InlineCombobox,
   InlineComboboxContent,
@@ -68,9 +61,7 @@ type Group = {
 
 interface Item {
   icon: React.ReactNode
-
   value: string
-
   onSelect: (editor: PlateEditor, value: string) => void
   className?: string
   focusEditor?: boolean
@@ -144,7 +135,7 @@ const groups: Group[] = [
         value: TogglePlugin.key,
       },
       {
-        icon: <Image />,
+        icon: <ImageIcon />,
         keywords: ['image', 'img'],
         label: 'Image',
         value: ImagePlugin.key,
@@ -165,6 +156,13 @@ const groups: Group[] = [
         keywords: ['citation', 'blockquote', 'quote', '>'],
         label: 'Blockquote',
         value: BlockquotePlugin.key,
+      },
+      {
+        description: 'Insert a highlighted block.',
+        icon: <LightbulbIcon />,
+        keywords: ['note'],
+        label: 'Callout',
+        value: CalloutPlugin.key,
       },
     ].map((item) => ({
       ...item,
@@ -193,42 +191,6 @@ const groups: Group[] = [
         label: 'Equation',
         value: EquationPlugin.key,
       },
-      {
-        focusEditor: false,
-        icon: <ShoppingBagIcon />,
-        label: 'Product',
-        value: ProductPlugin.key,
-      },
-      {
-        focusEditor: false,
-        icon: <MessageCircleMoreIcon />,
-        label: 'Comment Box',
-        value: CommentBoxPlugin.key,
-      },
-      {
-        focusEditor: false,
-        icon: <Lightbulb />,
-        label: 'Project',
-        value: ProjectsPlugin.key,
-      },
-      {
-        focusEditor: false,
-        icon: <DollarSignIcon />,
-        label: 'Campaign',
-        value: CampaignPlugin.key,
-      },
-      {
-        focusEditor: false,
-        icon: <UserRoundIcon />,
-        label: 'Friend Links',
-        value: FriendsPlugin.key,
-      },
-      {
-        focusEditor: false,
-        icon: <UserRoundIcon />,
-        label: 'Social Links',
-        value: SocialLinksPlugin.key,
-      },
     ].map((item) => ({
       ...item,
       onSelect: (editor, value) => {
@@ -252,12 +214,6 @@ const groups: Group[] = [
         label: 'Inline Equation',
         value: InlineEquationPlugin.key,
       },
-      {
-        focusEditor: false,
-        icon: <TimerIcon />,
-        label: 'Podcast time',
-        value: PodcastTimePlugin.key,
-      },
     ].map((item) => ({
       ...item,
       onSelect: (editor, value) => {
@@ -267,51 +223,45 @@ const groups: Group[] = [
   },
 ]
 
-export const SlashInputElement = withRef<typeof PlateElement>(
-  ({ className, ...props }, ref) => {
-    const { children, editor, element } = props
+export function SlashInputElement(
+  props: PlateElementProps<TSlashInputElement>,
+) {
+  const { editor, element } = props
 
-    return (
-      <PlateElement
-        ref={ref}
-        as="span"
-        className={className}
-        data-slate-value={element.value}
-        {...props}
-      >
-        <InlineCombobox element={element} trigger="/">
-          <InlineComboboxInput />
+  return (
+    <PlateElement {...props} as="span" data-slate-value={element.value}>
+      <InlineCombobox element={element} trigger="/">
+        <InlineComboboxInput />
 
-          <InlineComboboxContent>
-            <InlineComboboxEmpty>No results</InlineComboboxEmpty>
+        <InlineComboboxContent>
+          <InlineComboboxEmpty>No results</InlineComboboxEmpty>
 
-            {groups.map(({ group, items }) => (
-              <InlineComboboxGroup key={group}>
-                <InlineComboboxGroupLabel>{group}</InlineComboboxGroupLabel>
+          {groups.map(({ group, items }) => (
+            <InlineComboboxGroup key={group}>
+              <InlineComboboxGroupLabel>{group}</InlineComboboxGroupLabel>
 
-                {items.map(
-                  ({ focusEditor, icon, keywords, label, value, onSelect }) => (
-                    <InlineComboboxItem
-                      key={value}
-                      value={value}
-                      onClick={() => onSelect(editor, value)}
-                      label={label}
-                      focusEditor={focusEditor}
-                      group={group}
-                      keywords={keywords}
-                    >
-                      <div className="text-muted-foreground mr-2">{icon}</div>
-                      {label ?? value}
-                    </InlineComboboxItem>
-                  ),
-                )}
-              </InlineComboboxGroup>
-            ))}
-          </InlineComboboxContent>
-        </InlineCombobox>
+              {items.map(
+                ({ focusEditor, icon, keywords, label, value, onSelect }) => (
+                  <InlineComboboxItem
+                    key={value}
+                    value={value}
+                    onClick={() => onSelect(editor, value)}
+                    label={label}
+                    focusEditor={focusEditor}
+                    group={group}
+                    keywords={keywords}
+                  >
+                    <div className="text-muted-foreground mr-2">{icon}</div>
+                    {label ?? value}
+                  </InlineComboboxItem>
+                ),
+              )}
+            </InlineComboboxGroup>
+          ))}
+        </InlineComboboxContent>
+      </InlineCombobox>
 
-        {children}
-      </PlateElement>
-    )
-  },
-)
+      {props.children}
+    </PlateElement>
+  )
+}

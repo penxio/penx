@@ -1,19 +1,17 @@
-'use client';
+'use client'
 
-import { useFormStatus } from 'react-dom';
-
-import { LoaderIcon } from '@/components/icons';
-
-import { Button } from '@penx/uikit/button';
+import { useFormStatus } from 'react-dom'
+import { LoaderIcon } from '@/components/icons'
+import { Button } from '@penx/uikit/button'
 
 export function SubmitButton({
   children,
   isSuccessful,
 }: {
-  children: React.ReactNode;
-  isSuccessful: boolean;
+  children: React.ReactNode
+  isSuccessful: boolean
 }) {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus()
 
   return (
     <Button
@@ -25,7 +23,7 @@ export function SubmitButton({
       {children}
 
       {(pending || isSuccessful) && (
-        <span className="animate-spin absolute right-4">
+        <span className="absolute right-4 animate-spin">
           <LoaderIcon />
         </span>
       )}
@@ -34,5 +32,5 @@ export function SubmitButton({
         {pending || isSuccessful ? 'Loading' : 'Submit form'}
       </output>
     </Button>
-  );
+  )
 }

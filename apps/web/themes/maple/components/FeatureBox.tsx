@@ -1,8 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import Image from 'next/image'
 import { Link } from '@penx/libs/i18n'
 import { Creation } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, formatDate, getUrl } from '@penx/utils'
-import Image from 'next/image'
 import Tag from './Tag'
 
 interface Props {

@@ -1,5 +1,10 @@
 'use client'
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from './dropdown-menu'
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
 import {
   useColorDropdownMenu,
@@ -7,11 +12,6 @@ import {
 } from '@udecode/plate-font/react'
 import { DEFAULT_COLORS, DEFAULT_CUSTOM_COLORS } from './color-constants'
 import { ColorPicker } from './color-picker'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from './dropdown-menu'
 import { ToolbarButton } from './toolbar'
 
 type ColorDropdownMenuProps = {

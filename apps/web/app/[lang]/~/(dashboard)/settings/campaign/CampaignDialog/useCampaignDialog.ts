@@ -1,5 +1,5 @@
-import { Campaign } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { Campaign } from '@penx/db/client'
 
 type State = {
   isOpen: boolean

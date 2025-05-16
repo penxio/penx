@@ -1,8 +1,8 @@
-import { prisma } from '@penx/db'
-import { Balance } from '@penx/types'
-import { PayoutType } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
+import { PayoutType } from '@penx/db/client'
+import { Balance } from '@penx/types'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const payoutRouter = router({

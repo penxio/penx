@@ -8,9 +8,8 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { api, trpc } from '@penx/trpc-client'
-import { FileUpload } from '@penx/uikit/FileUpload'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
+import { FileUpload } from '@penx/uikit/FileUpload'
 import {
   Form,
   FormControl,
@@ -21,6 +20,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Textarea } from '@penx/uikit/textarea'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useSubmitFriendLinkDialog } from './useSubmitFriendLinkDialog'

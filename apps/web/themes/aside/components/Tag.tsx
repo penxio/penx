@@ -1,6 +1,6 @@
+import { slug } from 'github-slugger'
 import { Link } from '@penx/libs/i18n'
 import { cn } from '@penx/utils'
-import { slug } from 'github-slugger'
 
 interface Props {
   text: string

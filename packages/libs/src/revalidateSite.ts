@@ -1,5 +1,5 @@
-import { Domain } from '@penx/db/client'
 import { revalidateTag } from 'next/cache'
+import { Domain } from '@penx/db/client'
 
 export function revalidateSite(domains: Domain[]) {
   try {

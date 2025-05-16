@@ -1,6 +1,6 @@
-import { precision } from '@penx/math'
 import { createPublicClient, http } from 'viem'
 import { arbitrum } from 'viem/chains'
+import { precision } from '@penx/math'
 
 const priceAbi = [
   {

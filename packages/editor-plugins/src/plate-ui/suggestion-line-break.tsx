@@ -1,14 +1,14 @@
 'use client'
 
-import React, { useRef } from 'react'
-import { cn } from '@udecode/cn'
-import type { TSuggestionData } from '@udecode/plate-suggestion'
-import { usePluginOption, type RenderNodeWrapper } from '@udecode/plate/react'
-import { CornerDownLeftIcon } from 'lucide-react'
+import * as React from 'react'
 import {
   suggestionPlugin,
   type SuggestionConfig,
 } from '../plugins/suggestion-plugin'
+import { cn } from '@penx/utils'
+import type { TSuggestionData } from '@udecode/plate-suggestion'
+import { usePluginOption, type RenderNodeWrapper } from '@udecode/plate/react'
+import { CornerDownLeftIcon } from 'lucide-react'
 
 export const SuggestionBelowNodes: RenderNodeWrapper<SuggestionConfig> = ({
   api,
@@ -45,7 +45,7 @@ function SuggestionLineBreak({
   const isActive = activeSuggestionId === suggestionData.id
   const isHover = hoverSuggestionId === suggestionData.id
 
-  const spanRef = useRef<HTMLSpanElement>(null)
+  const spanRef = React.useRef<HTMLSpanElement>(null)
 
   return (
     <span

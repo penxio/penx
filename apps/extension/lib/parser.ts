@@ -1,6 +1,5 @@
 import { Readability } from '@mozilla/readability'
 import { parseHTML } from 'linkedom'
-
 import { preParseContent } from './content-handler'
 
 const DEBUG_MODE = false

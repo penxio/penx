@@ -1,6 +1,6 @@
+import { z } from 'zod'
 import { prisma } from '@penx/db'
 import { ContributionType, Platform } from '@penx/db/client'
-import { z } from 'zod'
 import { protectedProcedure, router } from '../trpc'
 
 export const rewardsRouter = router({

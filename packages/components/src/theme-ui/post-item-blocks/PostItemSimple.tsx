@@ -1,8 +1,8 @@
+import Image from 'next/image'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType, PostListStyle } from '@penx/types'
 import { formatDate } from '@penx/utils'
-import Image from 'next/image'
 import { PodcastTips } from '../PodcastTips'
 import Tag from './Tag'
 

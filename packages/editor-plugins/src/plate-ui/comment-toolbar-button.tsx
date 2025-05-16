@@ -1,10 +1,10 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
+import { commentsPlugin } from '../plugins/comments-plugin'
 import { getDraftCommentKey } from '@udecode/plate-comments'
 import { useEditorPlugin } from '@udecode/plate/react'
 import { MessageSquareTextIcon } from 'lucide-react'
-import { commentsPlugin } from '../plugins/comments-plugin'
 import { ToolbarButton } from './toolbar'
 
 export function CommentToolbarButton() {

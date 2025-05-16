@@ -1,6 +1,6 @@
-import { prisma } from '@penx/db'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
 import { protectedProcedure, router } from '../trpc'
 
 export const assetRouter = router({

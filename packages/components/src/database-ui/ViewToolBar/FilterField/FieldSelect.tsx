@@ -1,15 +1,11 @@
 'use client'
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { mappedByKey } from '@penx/utils'
-import { Filter } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'
-import { Column } from '@penx/db/client'
 import { Check, ChevronDown } from 'lucide-react'
+import { Column } from '@penx/db/client'
+import { Filter } from '@penx/types'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { mappedByKey } from '@penx/utils'
 import { FieldIcon } from '../../shared/FieldIcon'
 
 interface FieldSelectProps {

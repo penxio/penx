@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import { ContentHandler } from '../content-handler'
 
 export class TDotCoHandler extends ContentHandler {

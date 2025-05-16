@@ -1,11 +1,16 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { MarkdownPlugin } from '@udecode/plate-markdown';
-import { AIChatPlugin, AIPlugin } from '@penx/editor-custom-plugins'
-import { AIMenu } from '@penx/editor-plugins/plate-ui/ai-menu'
-import { cursorOverlayPlugin } from './cursor-overlay-plugin';
-
+import * as React from 'react'
+import { AILoadingBar } from '../plate-ui/ai-loading-bar'
+// import { AIMenu } from '../plate-ui/ai-menu'
+import { AIMenu } from '../plate-ui/ai-menu'
+import { PathApi } from '@udecode/plate'
+import { streamInsertChunk, withAIBatch } from '@udecode/plate-ai'
+import type { AIChatPluginConfig } from '@udecode/plate-ai/react'
+import { AIChatPlugin, AIPlugin, useChatChunk } from '@udecode/plate-ai/react'
+import { usePluginOption } from '@udecode/plate/react'
+import { cursorOverlayPlugin } from './cursor-overlay-plugin'
+import { markdownPlugin } from './markdown-plugin'
 
 const systemCommon = `\
 You are an advanced AI-powered note-taking assistant, designed to enhance productivity and creativity in note management.
@@ -18,14 +23,16 @@ Rules:
 - Your response should be tailored to the user's prompt, providing precise assistance to optimize note management.
 - For INSTRUCTIONS: Follow the <Reminder> exactly. Provide ONLY the content to be inserted or replaced. No explanations or comments.
 - For QUESTIONS: Provide a helpful and concise answer. You may include brief explanations if necessary.
+- CRITICAL: DO NOT remove or modify the following custom MDX tags: <u>, <callout>, <kbd>, <toc>, <sub>, <sup>, <mark>, <del>, <date>, <span>, <column>, <column_group>, <file>, <audio>, <video> in <Selection> unless the user explicitly requests this change.
 - CRITICAL: Distinguish between INSTRUCTIONS and QUESTIONS. Instructions typically ask you to modify or add content. Questions ask for information or clarification.
+- CRITICAL: when asked to write in markdown, do not start with \`\`\`markdown.
 `
 
 const systemDefault = `\
 ${systemCommon}
 - <Block> is the current block of text the user is working on.
 - Ensure your output can seamlessly fit into the existing <Block> structure.
-- CRITICAL: Provide only a single block of text. DO NOT create multiple paragraphs or separate blocks.
+
 <Block>
 {block}
 </Block>
@@ -57,9 +64,7 @@ ${systemCommon}
 `
 
 const userDefault = `<Reminder>
-CRITICAL: DO NOT use block formatting. You can only use inline formatting.
-CRITICAL: DO NOT start new lines or paragraphs.
-NEVER write <Block>.
+CRITICAL: NEVER write <Block>.
 </Reminder>
 {prompt}`
 
@@ -90,7 +95,7 @@ export const PROMPT_TEMPLATES = {
 
 export const aiPlugins = [
   cursorOverlayPlugin,
-  MarkdownPlugin.configure({ options: { indentList: true } }),
+  markdownPlugin,
   AIPlugin,
   AIChatPlugin.configure({
     options: {
@@ -109,6 +114,57 @@ export const aiPlugins = [
             : PROMPT_TEMPLATES.systemDefault
       },
     },
-    render: { afterEditable: () => <AIMenu /> },
+    render: {
+      afterContainer: () => <AILoadingBar />,
+      afterEditable: () => <AIMenu />,
+    },
+  }).extend({
+    useHooks: ({ editor, getOption }) => {
+      const mode = usePluginOption(
+        { key: 'aiChat' } as AIChatPluginConfig,
+        'mode',
+      )
+
+      useChatChunk({
+        onChunk: ({ chunk, isFirst, nodes }) => {
+          if (isFirst && mode == 'insert') {
+            editor.tf.withoutSaving(() => {
+              editor.tf.insertNodes(
+                {
+                  children: [{ text: '' }],
+                  type: AIChatPlugin.key,
+                },
+                {
+                  at: PathApi.next(editor.selection!.focus.path.slice(0, 1)),
+                },
+              )
+            })
+            editor.setOption(AIChatPlugin, 'streaming', true)
+          }
+
+          if (mode === 'insert' && nodes.length > 0) {
+            withAIBatch(
+              editor,
+              () => {
+                if (!getOption('streaming')) return
+                editor.tf.withScrolling(() => {
+                  streamInsertChunk(editor, chunk, {
+                    textProps: {
+                      ai: true,
+                    },
+                  })
+                })
+              },
+              { split: isFirst },
+            )
+          }
+        },
+        onFinish: () => {
+          editor.setOption(AIChatPlugin, 'streaming', false)
+          editor.setOption(AIChatPlugin, '_blockChunks', '')
+          editor.setOption(AIChatPlugin, '_blockPath', null)
+        },
+      })
+    },
   }),
 ] as const

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
-import { api } from '@penx/trpc-client'
 import { v4 as uuidv4 } from 'uuid'
+import { api } from '@penx/trpc-client'
 
 interface PageViewOptions {
   creationId: string

@@ -1,10 +1,10 @@
-import { NoteListWidget } from '@penx/components/NoteListWidget'
-import { PodcastListWidget } from '@penx/components/PodcastListWidget'
 import { initLingui } from '@/initLingui'
 import { getPodcasts, getSite } from '@/lib/fetchers'
-import { AppearanceConfig } from '@penx/types'
-import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
+import { NoteListWidget } from '@penx/components/NoteListWidget'
+import { PodcastListWidget } from '@penx/components/PodcastListWidget'
+import linguiConfig from '@penx/libs/lingui.config'
+import { AppearanceConfig } from '@penx/types'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

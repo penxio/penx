@@ -1,8 +1,8 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { BlockSelectionPlugin } from '@udecode/plate-selection/react'
-import { BlockSelection } from '@penx/editor-plugins/plate-ui/block-selection'
+import { BlockSelectionPlugin } from '@udecode/plate-selection/react';
+
+import { BlockSelection } from '../plate-ui/block-selection';
 
 export const blockSelectionPlugins = [
   BlockSelectionPlugin.configure(({ editor }) => ({
@@ -12,18 +12,19 @@ export const blockSelectionPlugins = [
         return (
           !['code_line', 'column', 'td'].includes(element.type) &&
           !editor.api.block({ above: true, at: path, match: { type: 'tr' } })
-        )
+        );
       },
     },
     render: {
       belowRootNodes: (props) => {
-        if (!props.className?.includes('slate-selectable')) return null
+        if (!props.attributes.className?.includes('slate-selectable'))
+          return null;
 
-        return <BlockSelection />
+        return <BlockSelection />;
       },
     },
   })),
-] as const
+] as const;
 
 export const blockSelectionReadOnlyPlugin = BlockSelectionPlugin.configure({
   api: {},
@@ -32,4 +33,4 @@ export const blockSelectionReadOnlyPlugin = BlockSelectionPlugin.configure({
   options: {},
   render: {},
   useHooks: null,
-})
+});

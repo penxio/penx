@@ -1,19 +1,14 @@
 'use client'
 
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
 import type { PlateContentProps } from '@udecode/plate/react'
-import {
-  PlateContent,
-  useEditorContainerRef,
-  useEditorRef,
-} from '@udecode/plate/react'
+import { PlateContainer, PlateContent } from '@udecode/plate/react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
+import { cn } from '@penx/utils'
 
 const editorContainerVariants = cva(
-  'caret-primary select-text5 [&_.slate-selection-area]:border-brand/25 [&_.slate-selection-area]:bg-brand/15 relative w-full cursor-text overflow-y-auto focus-visible:outline-none [&_.slate-selection-area]:z-50 [&_.slate-selection-area]:border',
-  // 'relative w-full cursor-text overflow-y-auto caret-primary select-text selection:bg-brand/25 focus-visible:outline-none [&_.slate-selection-area]:z-50 [&_.slate-selection-area]:border [&_.slate-selection-area]:border-brand/25 [&_.slate-selection-area]:bg-brand/15',
+  'caret-primary selection:bg-brand/25 [&_.slate-selection-area]:border-brand/25 [&_.slate-selection-area]:bg-brand/15 relative w-full cursor-text select-text overflow-y-auto focus-visible:outline-none [&_.slate-selection-area]:z-50 [&_.slate-selection-area]:border',
   {
     defaultVariants: {
       variant: 'default',
@@ -41,15 +36,10 @@ export const EditorContainer = ({
   className,
   variant,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> &
+}: React.ComponentProps<'div'> &
   VariantProps<typeof editorContainerVariants>) => {
-  const editor = useEditorRef()
-  const containerRef = useEditorContainerRef()
-
   return (
-    <div
-      id={editor.uid}
-      ref={containerRef}
+    <PlateContainer
       className={cn(
         'ignore-click-outside/toolbar',
         editorContainerVariants({ variant }),
@@ -59,6 +49,8 @@ export const EditorContainer = ({
     />
   )
 }
+
+export type EditorVariantProps = VariantProps<typeof editorVariants>
 
 EditorContainer.displayName = 'EditorContainer'
 
@@ -82,15 +74,15 @@ const editorVariants = cva(
         true: 'ring-ring ring-2 ring-offset-2',
       },
       variant: {
-        note: {
-          true: 'w-10',
-        },
         ai: 'w-full px-0 text-base md:text-sm',
+        note: 'w-10',
         aiChat:
           'max-h-[min(70vh,320px)] w-full max-w-[700px] overflow-y-auto px-3 py-2 text-base md:text-sm',
         comment: cn('rounded-none border-none bg-transparent text-sm'),
-        default: 'size-full px-4 pt-3 text-base',
+        default:
+          'size-full px-16 pb-72 pt-4 text-base sm:px-[max(64px,calc(50%-350px))]',
         post: 'size-full px-0 text-base sm:px-[max(10px,calc(50%-350px))]',
+        demo: 'size-full px-16 pb-72 pt-4 text-base sm:px-[max(64px,calc(50%-350px))]',
         fullWidth: 'size-full px-16 pb-72 pt-4 text-base sm:px-24',
         none: '',
         select: 'data-readonly:w-fit px-3 py-2 text-base',
@@ -98,8 +90,6 @@ const editorVariants = cva(
     },
   },
 )
-
-export type EditorVariantProps = VariantProps<typeof editorVariants>
 
 export type EditorProps = PlateContentProps &
   VariantProps<typeof editorVariants>

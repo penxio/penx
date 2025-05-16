@@ -34,7 +34,6 @@ export function GoogleOauthDialog() {
       const qsObject = JSON.parse(decodeURIComponent(qsData))
 
       try {
-
         const result = await login({
           type: 'penx-google',
           accessToken: accessToken,

@@ -1,7 +1,7 @@
-import { prisma } from '@penx/db'
-import { Extension } from '@penx/db/client'
 import Redis from 'ioredis'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
+import { Extension } from '@penx/db/client'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 const ALL_EXTENSIONS_KEY = 'extensions:all'

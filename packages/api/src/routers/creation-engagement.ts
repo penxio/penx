@@ -1,8 +1,8 @@
-import { prisma } from '@penx/db'
-import { redisKeys } from '@penx/constants'
 import { TRPCError } from '@trpc/server'
 import Redis from 'ioredis'
 import { z } from 'zod'
+import { redisKeys } from '@penx/constants'
+import { prisma } from '@penx/db'
 import { publicProcedure, router } from '../trpc'
 
 const redis = new Redis(process.env.REDIS_URL!)

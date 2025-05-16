@@ -1,5 +1,5 @@
-import { Mold } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { Mold } from '@penx/db/client'
 
 type State = {
   isOpen: boolean

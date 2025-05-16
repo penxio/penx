@@ -1,35 +1,31 @@
 'use client'
 
-import React from 'react'
-import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
-import {
-  useLineHeightDropdownMenu,
-  useLineHeightDropdownMenuState,
-} from '@udecode/plate-line-height/react'
-import { WrapText } from 'lucide-react'
+import * as React from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-  useOpenState,
 } from './dropdown-menu'
+import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
+import { DropdownMenuItemIndicator } from '@radix-ui/react-dropdown-menu'
+import {
+  useLineHeightDropdownMenu,
+  useLineHeightDropdownMenuState,
+} from '@udecode/plate-line-height/react'
+import { CheckIcon, WrapText } from 'lucide-react'
 import { ToolbarButton } from './toolbar'
 
 export function LineHeightDropdownMenu({ ...props }: DropdownMenuProps) {
-  const openState = useOpenState()
+  const [open, setOpen] = React.useState(false)
   const state = useLineHeightDropdownMenuState()
   const { radioGroupProps } = useLineHeightDropdownMenu(state)
 
   return (
-    <DropdownMenu modal={false} {...openState} {...props}>
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
-        <ToolbarButton
-          pressed={openState.open}
-          tooltip="Line height"
-          isDropdown
-        >
+        <ToolbarButton pressed={open} tooltip="Line height" isDropdown>
           <WrapText />
         </ToolbarButton>
       </DropdownMenuTrigger>
@@ -39,9 +35,14 @@ export function LineHeightDropdownMenu({ ...props }: DropdownMenuProps) {
           {state.values.map((_value) => (
             <DropdownMenuRadioItem
               key={_value}
-              className="min-w-[180px]"
+              className="*:first:[span]:hidden min-w-[180px] pl-2"
               value={_value}
             >
+              <span className="pointer-events-none absolute right-2 flex size-3.5 items-center justify-center">
+                <DropdownMenuItemIndicator>
+                  <CheckIcon />
+                </DropdownMenuItemIndicator>
+              </span>
               {_value}
             </DropdownMenuRadioItem>
           ))}

@@ -1,18 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { Button } from '@penx/uikit/button'
-import { Input } from '@penx/uikit/input'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { Separator } from '@penx/uikit/separator'
 import { MenuItem } from '@ariakit/react'
-import { View } from '@penx/db/client'
 import { Copy, MoreVertical, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { View } from '@penx/db/client'
+import { Button } from '@penx/uikit/button'
+import { Input } from '@penx/uikit/input'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { Separator } from '@penx/uikit/separator'
 import { useDatabaseContext } from '../DatabaseProvider'
 
 interface ViewMenuProps {

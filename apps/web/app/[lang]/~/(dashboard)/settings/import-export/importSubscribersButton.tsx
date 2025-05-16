@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { HelpCircle } from 'lucide-react'
 import { toast } from 'sonner'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { api, trpc } from '@penx/trpc-client'
 import { ImportResult } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -22,7 +22,7 @@ interface Props {
 const SAMPLE_JSON = [{ email: 'user@example.com' }]
 
 export const ImportSubscribersButton = ({ className, ...rest }: Props) => {
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [importResult, setImportResult] = useState<ImportResult | null>(null)
   const [isImporting, setIsImporting] = useState(false)

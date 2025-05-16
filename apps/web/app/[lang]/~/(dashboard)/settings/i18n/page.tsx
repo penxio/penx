@@ -1,8 +1,8 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { I18nSettingForm } from './I18nSettingForm'
 
 export const dynamic = 'force-static'

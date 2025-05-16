@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 import { useMounted } from '../hooks/use-mounted'
-import { cn, withRef } from '@udecode/cn'
-import { getHandler, IS_APPLE } from '@udecode/plate'
+import { cn } from '@penx/utils'
+import { IS_APPLE } from '@udecode/plate'
 import type { TMentionElement } from '@udecode/plate-mention'
+import type { PlateElementProps } from '@udecode/plate/react'
 import {
   PlateElement,
   useFocused,
@@ -12,14 +13,12 @@ import {
   useSelected,
 } from '@udecode/plate/react'
 
-export const MentionElement = withRef<
-  typeof PlateElement,
-  {
+export function MentionElement(
+  props: PlateElementProps<TMentionElement> & {
     prefix?: string
-    onClick?: (mentionNode: any) => void
-  }
->(({ children, className, prefix, onClick, ...props }, ref) => {
-  const element = props.element as TMentionElement
+  },
+) {
+  const element = props.element
   const selected = useSelected()
   const focused = useFocused()
   const mounted = useMounted()
@@ -27,9 +26,8 @@ export const MentionElement = withRef<
 
   return (
     <PlateElement
-      ref={ref}
+      {...props}
       className={cn(
-        className,
         'bg-muted inline-block rounded-md px-1.5 py-0.5 align-baseline text-sm font-medium',
         !readOnly && 'cursor-pointer',
         selected && focused && 'ring-ring ring-2',
@@ -37,27 +35,28 @@ export const MentionElement = withRef<
         element.children[0].italic === true && 'italic',
         element.children[0].underline === true && 'underline',
       )}
-      onClick={getHandler(onClick, element)}
-      data-slate-value={element.value}
-      contentEditable={false}
-      draggable
-      {...props}
+      attributes={{
+        ...props.attributes,
+        contentEditable: false,
+        'data-slate-value': element.value,
+        draggable: true,
+      }}
     >
       {mounted && IS_APPLE ? (
         // Mac OS IME https://github.com/ianstormtaylor/slate/issues/3490
         <React.Fragment>
-          {children}
-          {prefix}
+          {props.children}
+          {props.prefix}
           {element.value}
         </React.Fragment>
       ) : (
         // Others like Android https://github.com/ianstormtaylor/slate/pull/5360
         <React.Fragment>
-          {prefix}
+          {props.prefix}
           {element.value}
-          {children}
+          {props.children}
         </React.Fragment>
       )}
     </PlateElement>
   )
-})
+}

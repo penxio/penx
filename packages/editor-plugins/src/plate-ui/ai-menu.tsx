@@ -1,7 +1,16 @@
 'use client'
 
 import * as React from 'react'
+import { useChat } from '../hooks/use-chat'
+import { Command, CommandList } from './command'
+import { Popover, PopoverAnchor, PopoverContent } from './popover'
+import { cn } from '@penx/utils'
 import { isHotkey, type NodeEntry } from '@udecode/plate'
+import {
+  AIChatPlugin,
+  useEditorChat,
+  useLastAssistantMessage,
+} from '@udecode/plate-ai/react'
 import {
   BlockSelectionPlugin,
   useIsSelecting,
@@ -11,38 +20,39 @@ import {
   useHotkeys,
   usePluginOption,
 } from '@udecode/plate/react'
+import { Command as CommandPrimitive } from 'cmdk'
 import { Loader2Icon } from 'lucide-react'
-import {
-  AIChatPlugin,
-} from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/AIChatPlugin'
-import {
-  useEditorChat,
-} from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/hooks/useEditorChat'
-import {
-  useLastAssistantMessage,
-} from '@penx/editor-custom-plugins/plate-ai/react/ai-chat/utils/getLastAssistantMessage'
-import { useChat } from '../hooks/use-chat'
 import { AIChatEditor } from './ai-chat-editor'
 import { AIMenuItems } from './ai-menu-items'
-import { Command, CommandList, InputCommand } from './command'
-import { Popover, PopoverAnchor, PopoverContent } from './popover'
 
 export function AIMenu() {
   const { api, editor } = useEditorPlugin(AIChatPlugin)
   const open = usePluginOption(AIChatPlugin, 'open')
   const mode = usePluginOption(AIChatPlugin, 'mode')
+  const streaming = usePluginOption(AIChatPlugin, 'streaming')
   const isSelecting = useIsSelecting()
 
   const [value, setValue] = React.useState('')
 
   const chat = useChat()
 
-  const { input, isLoading, messages, setInput } = chat
+  const { input, messages, setInput, status } = chat
   const [anchorElement, setAnchorElement] = React.useState<HTMLElement | null>(
     null,
   )
 
   const content = useLastAssistantMessage()?.content
+
+  React.useEffect(() => {
+    if (streaming) {
+      const anchor = api.aiChat.node({ anchor: true })
+      setTimeout(() => {
+        const anchorDom = editor.api.toDOMNode(anchor![0])!
+        setAnchorElement(anchorDom)
+      }, 0)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [streaming])
 
   const setOpen = (open: boolean) => {
     if (open) {
@@ -92,6 +102,19 @@ export function AIMenu() {
     { enableOnContentEditable: true, enableOnFormTags: true },
   )
 
+  useHotkeys('esc', () => {
+    api.aiChat.stop()
+
+    // remove when you implement the route /api/ai/command
+    chat._abortFakeStream()
+  })
+
+  const isLoading = status === 'streaming' || status === 'submitted'
+
+  if (isLoading && mode === 'insert') {
+    return null
+  }
+
   return (
     <Popover open={open} onOpenChange={setOpen} modal={false}>
       <PopoverAnchor virtualRef={{ current: anchorElement! }} />
@@ -104,14 +127,9 @@ export function AIMenu() {
         onEscapeKeyDown={(e) => {
           e.preventDefault()
 
-          if (isLoading) {
-            api.aiChat.stop()
-          } else {
-            api.aiChat.hide()
-          }
+          api.aiChat.hide()
         }}
         align="center"
-        // avoidCollisions={false}
         side="bottom"
       >
         <Command
@@ -129,9 +147,12 @@ export function AIMenu() {
               {messages.length > 1 ? 'Editing...' : 'Thinking...'}
             </div>
           ) : (
-            <InputCommand
-              variant="ghost"
-              className="border-border rounded-none border-b border-solid [&_svg]:hidden"
+            <CommandPrimitive.Input
+              className={cn(
+                'border-input placeholder:text-muted-foreground dark:bg-input/30 flex h-9 w-full min-w-0 bg-transparent px-3 py-1 text-base outline-none transition-[color,box-shadow] md:text-sm',
+                'aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40',
+                'border-b focus-visible:ring-transparent',
+              )}
               value={input}
               onKeyDown={(e) => {
                 if (isHotkey('backspace')(e) && input.length === 0) {

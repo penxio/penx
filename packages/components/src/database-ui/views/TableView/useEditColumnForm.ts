@@ -1,8 +1,8 @@
 'use client'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Option } from '@penx/types'
 import { Column } from '@penx/db/client'
+import { Option } from '@penx/types'
 import { useDatabaseContext } from '../../DatabaseProvider'
 
 export type EditFieldValues = {

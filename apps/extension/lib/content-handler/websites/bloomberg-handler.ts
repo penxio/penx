@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { parseHTML } from 'linkedom'
-
 import { ContentHandler, type PreHandleResult } from '../content-handler'
 
 export class BloombergHandler extends ContentHandler {

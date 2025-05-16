@@ -1,9 +1,9 @@
 import { initLingui } from '@/initLingui'
-import { POSTS_PER_PAGE } from '@penx/constants'
 import { getCreations, getFirstSite, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
-import { AppearanceConfig } from '@penx/types'
 import { Metadata } from 'next'
+import { POSTS_PER_PAGE } from '@penx/constants'
+import { AppearanceConfig } from '@penx/types'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

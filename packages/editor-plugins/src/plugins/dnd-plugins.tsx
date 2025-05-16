@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
-import { DraggableAboveNodes } from '@penx/editor-plugins/plate-ui/draggable'
-import { DndPlugin } from '@udecode/plate-dnd'
-import { PlaceholderPlugin } from '@udecode/plate-media/react'
-import { NodeIdPlugin } from '@udecode/plate-node-id'
+import { DndPlugin } from '@udecode/plate-dnd';
+import { PlaceholderPlugin } from '@udecode/plate-media/react';
+import { NodeIdPlugin } from '@udecode/plate-node-id';
+
+import { DraggableAboveNodes } from '../plate-ui/draggable';
 
 export const dndPlugins = [
   NodeIdPlugin,
@@ -13,11 +14,11 @@ export const dndPlugins = [
       onDropFiles: ({ dragItem, editor, target }) => {
         editor
           .getTransforms(PlaceholderPlugin)
-          .insert.media(dragItem.files, { at: target, nextBlock: false })
+          .insert.media(dragItem.files, { at: target, nextBlock: false });
       },
     },
     render: {
       aboveNodes: DraggableAboveNodes,
     },
   }),
-] as const
+] as const;

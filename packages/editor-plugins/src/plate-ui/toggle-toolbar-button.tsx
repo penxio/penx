@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-import { withRef } from '@udecode/cn'
+import * as React from 'react'
 import {
   useToggleToolbarButton,
   useToggleToolbarButtonState,
@@ -9,15 +8,15 @@ import {
 import { ListCollapseIcon } from 'lucide-react'
 import { ToolbarButton } from './toolbar'
 
-export const ToggleToolbarButton = withRef<typeof ToolbarButton>(
-  (rest, ref) => {
-    const state = useToggleToolbarButtonState()
-    const { props } = useToggleToolbarButton(state)
+export function ToggleToolbarButton(
+  props: React.ComponentProps<typeof ToolbarButton>,
+) {
+  const state = useToggleToolbarButtonState()
+  const { props: buttonProps } = useToggleToolbarButton(state)
 
-    return (
-      <ToolbarButton ref={ref} tooltip="Toggle" {...props} {...rest}>
-        <ListCollapseIcon />
-      </ToolbarButton>
-    )
-  },
-)
+  return (
+    <ToolbarButton {...props} {...buttonProps} tooltip="Toggle">
+      <ListCollapseIcon />
+    </ToolbarButton>
+  )
+}

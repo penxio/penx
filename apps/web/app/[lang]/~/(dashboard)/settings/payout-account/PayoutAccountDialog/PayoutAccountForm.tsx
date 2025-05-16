@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react'
-import { TransferMethod } from '@penx/db/client'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { TransferMethod } from '@penx/db/client'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -20,6 +19,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { usePayoutAccountDialog } from './usePayoutAccountDialog'

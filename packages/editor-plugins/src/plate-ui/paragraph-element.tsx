@@ -1,24 +1,14 @@
 'use client'
 
-import React from 'react'
-import { getBlockClassName } from '@penx/utils'
-import { cn } from '@udecode/cn'
-import { PlateElement, withRef } from '@udecode/plate/react'
+import * as React from 'react'
+import { cn } from '@penx/utils'
+import type { PlateElementProps } from '@udecode/plate/react'
+import { PlateElement } from '@udecode/plate/react'
 
-export const ParagraphElement = withRef<typeof PlateElement>(
-  ({ children, className, ...props }, ref) => {
-    return (
-      <PlateElement
-        ref={ref}
-        {...props}
-        className={cn(
-          'text-foreground/85 m-0 px-0 py-2 leading-normal',
-          className,
-          getBlockClassName(props),
-        )}
-      >
-        {children}
-      </PlateElement>
-    )
-  },
-)
+export function ParagraphElement(props: PlateElementProps) {
+  return (
+    <PlateElement {...props} className={cn('m-0 px-0 py-1')}>
+      {props.children}
+    </PlateElement>
+  )
+}

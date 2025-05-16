@@ -1,13 +1,9 @@
 'use client'
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { Separator } from '@penx/uikit/separator'
-import { Sort } from '@penx/types'
 import { SortAsc } from 'lucide-react'
+import { Sort } from '@penx/types'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { Separator } from '@penx/uikit/separator'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { ToolbarBtn } from '../ToolbarBtn'
 import { AddSortBtn } from './AddSortBtn'

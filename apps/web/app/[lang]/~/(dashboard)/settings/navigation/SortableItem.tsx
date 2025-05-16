@@ -1,7 +1,6 @@
-import { NavLink } from '@penx/types'
-import { Widget } from '@penx/types'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import { NavLink, Widget } from '@penx/types'
 import { Item } from './Item'
 
 interface Props {

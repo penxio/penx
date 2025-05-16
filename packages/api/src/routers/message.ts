@@ -1,7 +1,7 @@
-import { prisma } from '@penx/db'
-import { Message } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
+import { Message } from '@penx/db/client'
 import { publicProcedure, router } from '../trpc'
 
 export const messageRouter = router({

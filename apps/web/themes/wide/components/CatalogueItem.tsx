@@ -1,6 +1,8 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
+import { Emoji, EmojiStyle } from 'emoji-picker-react'
+import { ChevronDown, ChevronRight, Plus } from 'lucide-react'
 import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,
@@ -8,8 +10,6 @@ import {
   ICatalogueNode,
 } from '@penx/model-type'
 import { cn } from '@penx/utils'
-import { Emoji, EmojiStyle } from 'emoji-picker-react'
-import { ChevronDown, ChevronRight, Plus } from 'lucide-react'
 
 interface CatalogueItemProps {
   depth: number

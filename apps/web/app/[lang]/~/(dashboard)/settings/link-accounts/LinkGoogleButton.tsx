@@ -1,17 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { IconGoogle } from '@penx/uikit/IconGoogle'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/button'
+import { useSearchParams } from 'next/navigation'
+import { toast } from 'sonner'
 import {
   GOOGLE_CLIENT_ID,
   LINK_GOOGLE_ACCOUNT_REDIRECT_URI,
 } from '@penx/constants'
+import { useSession } from '@penx/session'
+import { Button } from '@penx/uikit/button'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { cn } from '@penx/utils'
-import { useSearchParams } from 'next/navigation'
-import { toast } from 'sonner'
 
 export function LinkGoogleButton() {
   const [loading, setLoading] = useState(false)

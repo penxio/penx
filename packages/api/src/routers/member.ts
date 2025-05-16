@@ -1,5 +1,5 @@
-import { prisma } from '@penx/db'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const memberRouter = router({

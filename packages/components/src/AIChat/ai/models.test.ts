@@ -1,6 +1,6 @@
-import { simulateReadableStream } from 'ai';
-import { MockLanguageModelV1 } from 'ai/test';
-import { getResponseChunksByPrompt } from '@/tests/prompts/utils';
+import { getResponseChunksByPrompt } from '@/tests/prompts/utils'
+import { simulateReadableStream } from 'ai'
+import { MockLanguageModelV1 } from 'ai/test'
 
 export const chatModel = new MockLanguageModelV1({
   doGenerate: async () => ({
@@ -17,7 +17,7 @@ export const chatModel = new MockLanguageModelV1({
     }),
     rawCall: { rawPrompt: null, rawSettings: {} },
   }),
-});
+})
 
 export const reasoningModel = new MockLanguageModelV1({
   doGenerate: async () => ({
@@ -34,7 +34,7 @@ export const reasoningModel = new MockLanguageModelV1({
     }),
     rawCall: { rawPrompt: null, rawSettings: {} },
   }),
-});
+})
 
 export const titleModel = new MockLanguageModelV1({
   doGenerate: async () => ({
@@ -59,7 +59,7 @@ export const titleModel = new MockLanguageModelV1({
     }),
     rawCall: { rawPrompt: null, rawSettings: {} },
   }),
-});
+})
 
 export const artifactModel = new MockLanguageModelV1({
   doGenerate: async () => ({
@@ -76,4 +76,4 @@ export const artifactModel = new MockLanguageModelV1({
     }),
     rawCall: { rawPrompt: null, rawSettings: {} },
   }),
-});
+})

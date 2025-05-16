@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 import { BlockquoteElementStatic } from './blockquote-element-static'
 import { CodeBlockElementStatic } from './code-block-element-static'
 import { CodeLeafStatic } from './code-leaf-static'
@@ -10,14 +10,18 @@ import { ColumnElementStatic } from './column-element-static'
 import { ColumnGroupElementStatic } from './column-group-element-static'
 import { CommentLeafStatic } from './comment-leaf-static'
 import { DateElementStatic } from './date-element-static'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './dropdown-menu'
 import { HeadingElementStatic } from './heading-element-static'
 import { HighlightLeafStatic } from './highlight-leaf-static'
 import { HrElementStatic } from './hr-element-static'
 import { ImageElementStatic } from './image-element-static'
-import {
-  FireLiComponent,
-  FireMarker,
-} from './indent-fire-marker'
+import { FireLiComponent, FireMarker } from './indent-fire-marker'
 import {
   TodoLiStatic,
   TodoMarkerStatic,
@@ -103,37 +107,40 @@ import {
 } from '@udecode/plate-table'
 import { BaseTogglePlugin } from '@udecode/plate-toggle'
 import { useEditorRef } from '@udecode/plate/react'
+import { all, createLowlight } from 'lowlight'
 import { ArrowDownToLineIcon } from 'lucide-react'
-import Prism from 'prismjs'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  useOpenState,
-} from './dropdown-menu'
 import { EditorStatic } from './editor-static'
 import { EquationElementStatic } from './equation-element-static'
 import { InlineEquationElementStatic } from './inline-equation-element-static'
 import { ToolbarButton } from './toolbar'
 
 const siteUrl = 'https://platejs.org'
+const lowlight = createLowlight(all)
 
-export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
+export function ExportToolbarButton(props: DropdownMenuProps) {
   const editor = useEditorRef()
-  const openState = useOpenState()
+  const [open, setOpen] = React.useState(false)
 
   const getCanvas = async () => {
-    const { default: html2canvas } = await import('html2canvas')
+    const { default: html2canvas } = await import('html2canvas-pro')
 
     const style = document.createElement('style')
     document.head.append(style)
-    style.sheet?.insertRule(
-      'body > div:last-child img { display: inline-block !important; }',
-    )
 
-    const canvas = await html2canvas(editor.api.toDOMNode(editor)!)
+    const canvas = await html2canvas(editor.api.toDOMNode(editor)!, {
+      onclone: (document: Document) => {
+        const editorElement = document.querySelector('[contenteditable="true"]')
+        if (editorElement) {
+          Array.from(editorElement.querySelectorAll('*')).forEach((element) => {
+            const existingStyle = element.getAttribute('style') || ''
+            element.setAttribute(
+              'style',
+              `${existingStyle}; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important`,
+            )
+          })
+        }
+      },
+    })
     style.remove()
 
     return canvas
@@ -247,7 +254,7 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
         BaseInlineEquationPlugin,
         BaseCodeBlockPlugin.configure({
           options: {
-            prism: Prism,
+            lowlight,
           },
         }),
         BaseIndentPlugin.extend({
@@ -320,7 +327,6 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
       props: { style: { padding: '0 calc(50% - 350px)', paddingBottom: '' } },
     })
 
-    const prismCss = `<link rel="stylesheet" href="${siteUrl}/prism.css">`
     const tailwindCss = `<link rel="stylesheet" href="${siteUrl}/tailwind.css">`
     const katexCss = `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.18/dist/katex.css" integrity="sha384-9PvLvaiSKCPkFKB1ZsEoTjgnJn+O3KvEwtsz37/XrkYft3DTk2gHdYvd9oWgW3tV" crossorigin="anonymous">`
 
@@ -337,7 +343,6 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
           rel="stylesheet"
         />
         ${tailwindCss}
-        ${prismCss}
         ${katexCss}
         <style>
           :root {
@@ -363,9 +368,9 @@ export function ExportToolbarButton({ children, ...props }: DropdownMenuProps) {
   }
 
   return (
-    <DropdownMenu modal={false} {...openState} {...props}>
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
-        <ToolbarButton pressed={openState.open} tooltip="Export" isDropdown>
+        <ToolbarButton pressed={open} tooltip="Export" isDropdown>
           <ArrowDownToLineIcon className="size-4" />
         </ToolbarButton>
       </DropdownMenuTrigger>

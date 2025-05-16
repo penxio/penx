@@ -1,18 +1,8 @@
-import React from 'react'
-import { cn } from '@udecode/cn'
-import type { SlateLeafProps } from '@udecode/plate'
-import { SlateLeaf } from '@udecode/plate'
+import * as React from 'react'
+import { SlateLeaf, type SlateLeafProps } from '@udecode/plate'
 
-export function CodeSyntaxLeafStatic({
-  children,
-  className,
-  ...props
-}: SlateLeafProps) {
-  const syntaxClassName = `prism-token token ${props.leaf.tokenType}`
+export function CodeSyntaxLeafStatic(props: SlateLeafProps) {
+  const tokenClassName = props.leaf.className as string
 
-  return (
-    <SlateLeaf className={cn(className, syntaxClassName)} {...props}>
-      {children}
-    </SlateLeaf>
-  )
+  return <SlateLeaf className={tokenClassName} {...props} />
 }

@@ -1,7 +1,7 @@
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { Card } from '@penx/uikit/card'
-import { trpc } from '@penx/trpc-client'
 import { LockKeyhole } from 'lucide-react'
+import { trpc } from '@penx/trpc-client'
+import { Card } from '@penx/uikit/card'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { GitHubConnectButton } from './GitHubConnectButton'
 
 interface Props {

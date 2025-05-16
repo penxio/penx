@@ -1,8 +1,8 @@
-import { CreationProvider } from '@penx/contexts/CreationContext'
-import { ContentRender } from '@penx/content-render'
-import { editorDefaultValue } from '@penx/constants'
 import { getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
+import { editorDefaultValue } from '@penx/constants'
+import { ContentRender } from '@penx/content-render'
+import { CreationProvider } from '@penx/contexts/CreationContext'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

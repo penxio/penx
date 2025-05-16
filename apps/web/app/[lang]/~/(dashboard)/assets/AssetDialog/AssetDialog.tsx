@@ -1,10 +1,10 @@
 'use client'
 
 import { Trans } from '@lingui/react'
-import { Asset } from '@penx/db/client'
 import { ExternalLink, Trash2, X } from 'lucide-react'
 import { toast } from 'sonner'
 import { placeholderBlurhash, STATIC_URL } from '@penx/constants'
+import { Asset } from '@penx/db/client'
 import { useAssets } from '@penx/hooks/useAssets'
 import { useLoadAsset } from '@penx/hooks/useLoadAsset'
 import { trpc } from '@penx/trpc-client'

@@ -1,17 +1,15 @@
-'use client'
+'use client';
 
-import {
-  FireLiComponent,
-  FireMarker,
-} from '@penx/editor-plugins/plate-ui/indent-fire-marker'
-import { TodoLi, TodoMarker } from '@penx/editor-plugins/plate-ui/indent-todo-marker'
-import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
-import { CodeBlockPlugin } from '@udecode/plate-code-block/react'
-import { HEADING_LEVELS } from '@udecode/plate-heading'
-import { IndentListPlugin } from '@udecode/plate-indent-list/react'
-import { IndentPlugin } from '@udecode/plate-indent/react'
-import { TogglePlugin } from '@udecode/plate-toggle/react'
-import { ParagraphPlugin } from '@udecode/plate/react'
+import { BlockquotePlugin } from '@udecode/plate-block-quote/react';
+import { CodeBlockPlugin } from '@udecode/plate-code-block/react';
+import { HEADING_LEVELS } from '@udecode/plate-heading';
+import { IndentListPlugin } from '@udecode/plate-indent-list/react';
+import { IndentPlugin } from '@udecode/plate-indent/react';
+import { TogglePlugin } from '@udecode/plate-toggle/react';
+import { ParagraphPlugin } from '@udecode/plate/react';
+
+import { FireLiComponent, FireMarker } from '../plate-ui/indent-fire-marker';
+import { TodoLi, TodoMarker } from '../plate-ui/indent-todo-marker';
 
 export const indentListPlugins = [
   IndentPlugin.extend({
@@ -50,4 +48,4 @@ export const indentListPlugins = [
       },
     },
   }),
-]
+];

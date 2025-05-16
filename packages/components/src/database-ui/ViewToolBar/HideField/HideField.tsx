@@ -1,12 +1,8 @@
 'use client'
 
 import React, { FC } from 'react'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
 import { Eye, EyeOff, HomeIcon } from 'lucide-react'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { ToolbarBtn } from '../ToolbarBtn'
 import { HideFieldOverlay } from './HideFieldOverlay'

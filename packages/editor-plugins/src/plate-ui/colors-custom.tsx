@@ -1,20 +1,20 @@
 'use client'
 
-import React, { type ComponentPropsWithoutRef } from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
+import { buttonVariants } from './button'
+// import { ColorInput } from './color-input';
+import { DropdownMenuItem } from './dropdown-menu'
+import { cn } from '@penx/utils'
 import {
   useColorsCustom,
   useColorsCustomState,
 } from '@udecode/plate-font/react'
 import { PlusIcon } from 'lucide-react'
-import { buttonVariants } from './button'
 import {
   ColorDropdownMenuItems,
   type TColor,
 } from './color-dropdown-menu-items'
 import { ColorInput } from './color-input'
-// import { ColorInput } from './color-input';
-import { DropdownMenuItem } from './dropdown-menu'
 
 type ColorCustomProps = {
   colors: TColor[]
@@ -22,7 +22,7 @@ type ColorCustomProps = {
   updateColor: (color: string) => void
   updateCustomColor: (color: string) => void
   color?: string
-} & ComponentPropsWithoutRef<'div'>
+} & React.ComponentPropsWithoutRef<'div'>
 
 export function ColorCustom({
   className,
@@ -52,11 +52,10 @@ export function ColorCustom({
           <DropdownMenuItem
             className={cn(
               buttonVariants({
-                isMenu: true,
                 size: 'icon',
                 variant: 'outline',
               }),
-              'absolute bottom-2 right-2 top-1.5 flex size-7 items-center justify-center rounded-full',
+              'absolute bottom-2 right-2 top-1 flex size-8 items-center justify-center rounded-full',
             )}
             {...menuItemProps}
           >

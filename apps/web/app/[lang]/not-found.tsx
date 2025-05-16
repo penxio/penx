@@ -1,5 +1,5 @@
-import { ROOT_DOMAIN } from '@penx/constants'
 import Link from 'next/link'
+import { ROOT_DOMAIN } from '@penx/constants'
 
 export default function NotFound() {
   return (

@@ -15,9 +15,9 @@ import Image from 'next/image'
 import { toast } from 'sonner'
 import { RouterOutputs } from '@penx/api'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useDomains } from '@penx/hooks/useDomains'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
 import { api, trpc } from '@penx/trpc-client'
@@ -36,7 +36,7 @@ interface PostItemProps {
 export function PostItem({ creation }: PostItemProps) {
   const { refetch } = trpc.creation.archivedCreations.useQuery()
   const isPublished = creation.status === CreationStatus.PUBLISHED
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   const { data = [] } = useDomains()
   const { isSubdomain, domain } = getSiteDomain(data, false)
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain

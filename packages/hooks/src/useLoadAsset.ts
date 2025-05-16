@@ -1,7 +1,7 @@
-import { STATIC_URL } from '@penx/constants'
-import { localDB } from '@penx/local-db'
-import { Asset } from '@penx/db/client'
 import { useQuery } from '@tanstack/react-query'
+import { STATIC_URL } from '@penx/constants'
+import { Asset } from '@penx/db/client'
+import { localDB } from '@penx/local-db'
 
 export function useLoadAsset(asset: Asset) {
   const hash = asset.url.split('/').pop()!

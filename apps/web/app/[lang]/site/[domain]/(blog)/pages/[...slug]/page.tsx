@@ -1,8 +1,8 @@
-import { CreationProvider } from '@penx/contexts/CreationContext'
-import { PageDefaultUI } from '@penx/components/PageDefaultUI'
 import { getPage, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { Metadata } from 'next'
+import { PageDefaultUI } from '@penx/components/PageDefaultUI'
+import { CreationProvider } from '@penx/contexts/CreationContext'
 
 type Params = Promise<{ domain: string; slug: string[]; lang: string }>
 

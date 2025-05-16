@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { ContentRender } from '@penx/content-render'
+import { ExternalLink } from 'lucide-react'
 import { Footer } from '@penx/components/Footer'
 import { IPFSLink } from '@penx/components/IPFSLink'
 import { PageTitle } from '@penx/components/PageTitle'
@@ -9,10 +9,10 @@ import { PostMetadata } from '@penx/components/PostMetadata'
 import { PostSubtitle } from '@penx/components/PostSubtitle'
 import { SubscribeNewsletterCard } from '@penx/components/SubscribeNewsletterCard'
 import { Toc } from '@penx/components/Toc'
+import { ContentRender } from '@penx/content-render'
 import { Link } from '@penx/libs/i18n'
 import { Creation, Site } from '@penx/types'
 import { cn } from '@penx/utils'
-import { ExternalLink } from 'lucide-react'
 
 interface LayoutProps {
   site: Site

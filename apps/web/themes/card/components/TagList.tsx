@@ -1,8 +1,8 @@
 'use client'
 
+import { slug } from 'github-slugger'
 import { Link, usePathname } from '@penx/libs/i18n'
 import { Tag } from '@penx/types'
-import { slug } from 'github-slugger'
 
 interface PostListWithTagProps {
   tags: Tag[]

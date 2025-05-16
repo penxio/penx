@@ -1,10 +1,10 @@
 'use client'
 
 import * as React from 'react'
-import { toggleVariants } from './toggle'
-import { cn } from '@penx/utils'
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group'
 import { type VariantProps } from 'class-variance-authority'
+import { cn } from '@penx/utils'
+import { toggleVariants } from './toggle'
 
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants>
@@ -27,8 +27,8 @@ function ToggleGroup({
       data-variant={variant}
       data-size={size}
       className={cn(
-        'group/toggle-group flex w-fit items-center rounded-md data-[variant=outline]:shadow-xs text-foreground/60',
-        variant === 'default' && 'bg-foreground/5 p-[3px] gap-x-1',
+        'group/toggle-group data-[variant=outline]:shadow-xs text-foreground/60 flex w-fit items-center rounded-md',
+        variant === 'default' && 'bg-foreground/5 gap-x-1 p-[3px]',
         className,
       )}
       {...props}
@@ -60,7 +60,7 @@ function ToggleGroupItem({
           variant: context.variant || variant,
           size: context.size || size,
         }),
-        'min-w-0 flex-1 shrink-0 shadow-none first:rounded-l-md last:rounded-r-md focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l hover:text-foreground',
+        'hover:text-foreground min-w-0 flex-1 shrink-0 shadow-none first:rounded-l-md last:rounded-r-md focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l',
         variant !== 'default' && 'rounded-none',
         variant === 'default' && 'px-4',
         className,

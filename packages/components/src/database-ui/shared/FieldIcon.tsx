@@ -1,6 +1,5 @@
 'use client'
 
-import { ColumnType } from '@penx/types'
 import {
   CalendarDays,
   CheckCircle2,
@@ -12,6 +11,7 @@ import {
   ListChecks,
   Text,
 } from 'lucide-react'
+import { ColumnType } from '@penx/types'
 
 interface Props {
   index?: number

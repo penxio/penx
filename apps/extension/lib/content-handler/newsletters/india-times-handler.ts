@@ -1,5 +1,4 @@
 import addressparser from 'addressparser'
-
 import { ContentHandler } from '../content-handler'
 
 export class IndiaTimesHandler extends ContentHandler {

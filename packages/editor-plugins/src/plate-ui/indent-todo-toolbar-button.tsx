@@ -1,6 +1,6 @@
 'use client'
 
-import { withRef } from '@udecode/cn'
+import * as React from 'react'
 import {
   useIndentTodoToolBarButton,
   useIndentTodoToolBarButtonState,
@@ -8,15 +8,15 @@ import {
 import { ListTodoIcon } from 'lucide-react'
 import { ToolbarButton } from './toolbar'
 
-export const IndentTodoToolbarButton = withRef<typeof ToolbarButton>(
-  (rest, ref) => {
-    const state = useIndentTodoToolBarButtonState({ nodeType: 'todo' })
-    const { props } = useIndentTodoToolBarButton(state)
+export function IndentTodoToolbarButton(
+  props: React.ComponentProps<typeof ToolbarButton>,
+) {
+  const state = useIndentTodoToolBarButtonState({ nodeType: 'todo' })
+  const { props: buttonProps } = useIndentTodoToolBarButton(state)
 
-    return (
-      <ToolbarButton ref={ref} tooltip="Todo" {...props} {...rest}>
-        <ListTodoIcon />
-      </ToolbarButton>
-    )
-  },
-)
+  return (
+    <ToolbarButton {...props} {...buttonProps} tooltip="Todo">
+      <ListTodoIcon />
+    </ToolbarButton>
+  )
+}

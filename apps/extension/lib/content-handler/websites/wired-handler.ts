@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { parseHTML } from 'linkedom'
-
 import { ContentHandler, type PreHandleResult } from '../content-handler'
 
 export class WiredHandler extends ContentHandler {
@@ -26,8 +25,8 @@ export class WiredHandler extends ContentHandler {
       document.querySelectorAll('[data-most-popular-id]'),
     )
 
-    ;[...genericCallouts, ...ads, ...mostPopularArticles].forEach(
-      (it) => it?.remove(),
+    ;[...genericCallouts, ...ads, ...mostPopularArticles].forEach((it) =>
+      it?.remove(),
     )
 
     return document

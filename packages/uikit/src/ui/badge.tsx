@@ -1,22 +1,22 @@
 import * as React from 'react'
-import { cn } from '@penx/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@penx/utils'
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  'focus:ring-ring inline-flex items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2',
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-primary text-primary-foreground',
+        default: 'bg-primary text-primary-foreground border-transparent',
         secondary:
-          'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+          'bg-secondary text-secondary-foreground hover:bg-secondary/80 border-transparent',
         destructive:
-          'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
+          'bg-destructive text-destructive-foreground hover:bg-destructive/80 border-transparent',
         outline: 'text-foreground border',
         success:
           'border-transparent bg-green-500 text-white hover:bg-green-500/80',
         feature:
-          'text-foreground/60 bg-background shadow-sm dark:bg-white/5 shrink-0',
+          'text-foreground/60 bg-background shrink-0 shadow-sm dark:bg-white/5',
       },
 
       size: {

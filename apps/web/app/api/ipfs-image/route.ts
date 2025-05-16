@@ -1,5 +1,5 @@
-import { IPFS_GATEWAY } from '@penx/constants'
 import { NextResponse } from 'next/server'
+import { IPFS_GATEWAY } from '@penx/constants'
 
 export const runtime = 'edge'
 

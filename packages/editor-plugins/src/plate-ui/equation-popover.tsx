@@ -1,10 +1,12 @@
 'use client'
 
-import React, { useEffect } from 'react'
+import * as React from 'react'
 import TextareaAutosize, {
   type TextareaAutosizeProps,
 } from 'react-textarea-autosize'
-import { cn } from '@udecode/cn'
+import { Button } from './button'
+import { PopoverContent } from './popover'
+import { cn } from '@penx/utils'
 import type { TEquationElement } from '@udecode/plate-math'
 import { useEquationInput } from '@udecode/plate-math/react'
 import { BlockSelectionPlugin } from '@udecode/plate-selection/react'
@@ -15,8 +17,6 @@ import {
   useReadOnly,
 } from '@udecode/plate/react'
 import { CornerDownLeftIcon } from 'lucide-react'
-import { Button } from './button'
-import { PopoverContent } from './popover'
 
 const EquationInput = createPrimitiveComponent(TextareaAutosize)({
   propsHook: useEquationInput,
@@ -37,7 +37,7 @@ const EquationPopoverContent = ({
   const readOnly = useReadOnly()
   const element = useElement<TEquationElement>()
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isInline && open) {
       setOpen(true)
     }
@@ -49,7 +49,7 @@ const EquationPopoverContent = ({
     setOpen(false)
 
     if (isInline) {
-      editor.tf.select(element, { next: true })
+      editor.tf.select(element, { focus: true, next: true })
     } else {
       editor
         .getApi(BlockSelectionPlugin)
@@ -60,7 +60,6 @@ const EquationPopoverContent = ({
   return (
     <PopoverContent
       className="flex gap-2"
-      align="start"
       onEscapeKeyDown={(e) => {
         e.preventDefault()
       }}

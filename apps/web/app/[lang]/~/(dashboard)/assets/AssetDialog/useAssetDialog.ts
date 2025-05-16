@@ -1,7 +1,7 @@
 'use client'
 
-import { RouterOutputs } from '@penx/api'
 import { atom, useAtom } from 'jotai'
+import { RouterOutputs } from '@penx/api'
 
 type Asset = RouterOutputs['asset']['list'][0]
 

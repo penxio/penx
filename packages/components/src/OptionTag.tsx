@@ -1,6 +1,6 @@
+import { X } from 'lucide-react'
 import { getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
-import { X } from 'lucide-react'
 
 interface IOption {
   id: string

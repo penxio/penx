@@ -1,10 +1,16 @@
 'use client'
 
-import React from 'react'
+import * as React from 'react'
 import {
   insertBlock,
   insertInlineElement,
 } from '@penx/editor-transforms'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './dropdown-menu'
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
 import { BlockquotePlugin } from '@udecode/plate-block-quote/react'
 import { CodeBlockPlugin } from '@udecode/plate-code-block/react'
@@ -47,15 +53,7 @@ import {
   TableIcon,
   TableOfContentsIcon,
 } from 'lucide-react'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  useOpenState,
-} from './dropdown-menu'
-import { ToolbarButton } from './toolbar'
+import { ToolbarButton, ToolbarMenuGroup } from './toolbar'
 
 type Group = {
   group: string
@@ -233,12 +231,12 @@ const groups: Group[] = [
 
 export function InsertDropdownMenu(props: DropdownMenuProps) {
   const editor = useEditorRef()
-  const openState = useOpenState()
+  const [open, setOpen] = React.useState(false)
 
   return (
-    <DropdownMenu modal={false} {...openState} {...props}>
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
-        <ToolbarButton pressed={openState.open} tooltip="Insert" isDropdown>
+        <ToolbarButton pressed={open} tooltip="Insert" isDropdown>
           <PlusIcon />
         </ToolbarButton>
       </DropdownMenuTrigger>
@@ -248,7 +246,7 @@ export function InsertDropdownMenu(props: DropdownMenuProps) {
         align="start"
       >
         {groups.map(({ group, items: nestedItems }) => (
-          <DropdownMenuGroup key={group} label={group}>
+          <ToolbarMenuGroup key={group} label={group}>
             {nestedItems.map(({ icon, label, value, onSelect }) => (
               <DropdownMenuItem
                 key={value}
@@ -262,7 +260,7 @@ export function InsertDropdownMenu(props: DropdownMenuProps) {
                 {label}
               </DropdownMenuItem>
             ))}
-          </DropdownMenuGroup>
+          </ToolbarMenuGroup>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

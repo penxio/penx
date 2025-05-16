@@ -1,5 +1,5 @@
-import { PayoutAccount, Product } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { PayoutAccount, Product } from '@penx/db/client'
 
 type State = {
   isOpen: boolean

@@ -1,5 +1,5 @@
-import { STATIC_URL } from '@penx/constants'
 import NextImage, { ImageProps } from 'next/image'
+import { STATIC_URL } from '@penx/constants'
 
 const basePath = process.env.BASE_PATH
 

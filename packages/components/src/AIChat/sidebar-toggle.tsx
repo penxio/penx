@@ -1,19 +1,13 @@
-import type { ComponentProps } from 'react';
-
-import { type SidebarTrigger, useSidebar } from '@penx/uikit/sidebar';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@penx/uikit/tooltip';
-
-import { SidebarLeftIcon } from './icons';
-import { Button } from '@penx/uikit/button';
+import type { ComponentProps } from 'react'
+import { Button } from '@penx/uikit/button'
+import { useSidebar, type SidebarTrigger } from '@penx/uikit/sidebar'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@penx/uikit/tooltip'
+import { SidebarLeftIcon } from './icons'
 
 export function SidebarToggle({
   className,
 }: ComponentProps<typeof SidebarTrigger>) {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar } = useSidebar()
 
   return (
     <Tooltip>
@@ -22,12 +16,12 @@ export function SidebarToggle({
           data-testid="sidebar-toggle-button"
           onClick={toggleSidebar}
           variant="outline"
-          className="md:px-2 md:h-fit"
+          className="md:h-fit md:px-2"
         >
           <SidebarLeftIcon size={16} />
         </Button>
       </TooltipTrigger>
       <TooltipContent align="start">Toggle Sidebar</TooltipContent>
     </Tooltip>
-  );
+  )
 }

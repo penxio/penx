@@ -1,4 +1,3 @@
-
 import { getIronSession, SessionOptions } from 'iron-session'
 import { cookies } from 'next/headers'
 import { SessionData } from '@penx/types'

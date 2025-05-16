@@ -1,5 +1,5 @@
-import { cn } from '@penx/utils'
 import { RenderLeafProps } from 'slate-react'
+import { cn } from '@penx/utils'
 
 export type CustomText = {
   text: string

@@ -1,8 +1,6 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import { uploadFile } from '@penx/services/uploadFile'
-import { cn, getUrl } from '@penx/utils'
 import {
   CustomCell,
   CustomRenderer,
@@ -14,6 +12,8 @@ import {
 } from '@glideapps/glide-data-grid'
 import { UploadCloud } from 'lucide-react'
 import { toast } from 'sonner'
+import { uploadFile } from '@penx/services/uploadFile'
+import { cn, getUrl } from '@penx/utils'
 
 interface ImageCellProps {
   kind: 'image-cell'

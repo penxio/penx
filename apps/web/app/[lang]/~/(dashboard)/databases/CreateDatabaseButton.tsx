@@ -6,8 +6,8 @@ import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useDatabases } from '@penx/hooks/useDatabases'
 import { useRouter } from '@penx/libs/i18n'
 import { api } from '@penx/trpc-client'
-import LoadingCircle from '@penx/uikit/loading-circle'
 import { Button } from '@penx/uikit/button'
+import LoadingCircle from '@penx/uikit/loading-circle'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 export function CreateDatabaseButton() {

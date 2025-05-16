@@ -26,7 +26,10 @@ export function NoteList({ mold, columnCount }: PostListProps) {
 
   return (
     <div className="flex h-full flex-1 flex-col">
-      <div className="flex-1 gap-x-2 overflow-auto px-4" style={{ columnCount }}>
+      <div
+        className="flex-1 gap-x-2 overflow-auto px-4"
+        style={{ columnCount }}
+      >
         {notes.map((note) => {
           return <NoteItem key={note.id} creation={note} />
         })}

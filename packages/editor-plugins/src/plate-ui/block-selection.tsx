@@ -1,14 +1,14 @@
 'use client'
 
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
+import { cn } from '@penx/utils'
 import { DndPlugin } from '@udecode/plate-dnd'
 import { useBlockSelected } from '@udecode/plate-selection/react'
 import { usePluginOption } from '@udecode/plate/react'
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export const blockSelectionVariants = cva(
-  'bg-brand/[.13] z-1 pointer-events-none absolute inset-0 transition-opacity',
+  'z-1 bg-brand/[.13] pointer-events-none absolute inset-0 transition-opacity',
   {
     defaultVariants: {
       active: true,
@@ -25,8 +25,7 @@ export const blockSelectionVariants = cva(
 export function BlockSelection({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof blockSelectionVariants>) {
+}: React.ComponentProps<'div'> & VariantProps<typeof blockSelectionVariants>) {
   const isBlockSelected = useBlockSelected()
   const isDragging = usePluginOption(DndPlugin, 'isDragging')
 
@@ -40,6 +39,7 @@ export function BlockSelection({
         }),
         className,
       )}
+      data-slot="block-selection"
       {...props}
     />
   )

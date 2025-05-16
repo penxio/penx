@@ -1,6 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { langMap } from '@/lib/supportLanguages'
+import { Trans, useLingui } from '@lingui/react'
+import { useRouter } from 'next/navigation'
+import { usePathname } from '@penx/libs/i18n'
+import { Site } from '@penx/types'
 import {
   Select,
   SelectContent,
@@ -10,13 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@penx/uikit/select'
-import { usePathname } from '@penx/libs/i18n'
-import { langMap } from '@/lib/supportLanguages'
-import { Site } from '@penx/types'
 import { cn } from '@penx/utils'
-import { useLingui } from '@lingui/react'
-import { Trans } from '@lingui/react'
-import { useRouter } from 'next/navigation'
 
 type LOCALES = 'en' | 'ja' | 'ko' | 'fr' | 'ru' | 'zh-CN'
 

@@ -1,7 +1,8 @@
 'use client'
 
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
+import { toast } from 'sonner'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Card,
@@ -10,13 +11,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@penx/uikit/card'
-import { api } from '@penx/trpc-client'
-import { toast } from 'sonner'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface Props {}
 
 export function DeletePostsCard({}: Props) {
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   return (
     <Card>
       <CardHeader>

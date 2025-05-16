@@ -1,9 +1,9 @@
-import { PhotoListWidget } from '@penx/components/PhotoListWidget'
 import { initLingui } from '@/initLingui'
 import { getNotes, getPhotos, getSite } from '@/lib/fetchers'
-import { AppearanceConfig } from '@penx/types'
-import linguiConfig from '@penx/libs/lingui.config'
 import { Metadata } from 'next'
+import { PhotoListWidget } from '@penx/components/PhotoListWidget'
+import linguiConfig from '@penx/libs/lingui.config'
+import { AppearanceConfig } from '@penx/types'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

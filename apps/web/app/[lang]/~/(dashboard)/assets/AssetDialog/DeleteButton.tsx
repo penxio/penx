@@ -1,12 +1,12 @@
 'use client'
 
-import { Button } from '@penx/uikit/button'
-import { useAssets } from '@penx/hooks/useAssets'
-import { useTrashedAssets } from '@penx/hooks/useTrashedAssets'
-import { trpc } from '@penx/trpc-client'
 import { Trans } from '@lingui/react'
 import { Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { useAssets } from '@penx/hooks/useAssets'
+import { useTrashedAssets } from '@penx/hooks/useTrashedAssets'
+import { trpc } from '@penx/trpc-client'
+import { Button } from '@penx/uikit/button'
 import { useAssetDialog } from './useAssetDialog'
 
 interface Props {}

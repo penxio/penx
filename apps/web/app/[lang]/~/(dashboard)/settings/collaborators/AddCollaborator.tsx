@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { toast } from 'sonner'
+import { useCollaborators } from '@penx/hooks/useCollaborators'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { Input } from '@penx/uikit/input'
-import { useCollaborators } from '@penx/hooks/useCollaborators'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { trpc } from '@penx/trpc-client'
-import { toast } from 'sonner'
 
 export default function AddCollaborator() {
   const [q, setQ] = useState('')
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   const { refetch } = useCollaborators()
   const { mutateAsync, isPending } =
     trpc.collaborator.addCollaborator.useMutation()

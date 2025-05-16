@@ -9,7 +9,6 @@ import { z } from 'zod'
 import { useSession } from '@penx/session'
 import { api } from '@penx/trpc-client'
 import { Site } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import {
@@ -21,6 +20,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 import { useSubscribeNewsletterDialog } from './useSubscribeNewsletterDialog'

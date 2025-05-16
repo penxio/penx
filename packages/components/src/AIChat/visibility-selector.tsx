@@ -1,7 +1,6 @@
 'use client'
 
 import { ReactNode, useMemo, useState } from 'react'
-import { cn } from '@penx/utils'
 import { useChatVisibility } from '@penx/hooks/use-chat-visibility'
 import { Button } from '@penx/uikit/button'
 import {
@@ -10,6 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@penx/uikit/dropdown-menu'
+import { cn } from '@penx/utils'
 import {
   CheckCircleFillIcon,
   ChevronDownIcon,

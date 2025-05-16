@@ -1,5 +1,5 @@
-import { Creation } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { Creation } from '@penx/db/client'
 
 type State = {
   isOpen: boolean

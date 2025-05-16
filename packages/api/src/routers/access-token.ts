@@ -1,6 +1,6 @@
-import { prisma } from '@penx/db'
 import { nanoid } from 'nanoid'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
 import { protectedProcedure, router } from '../trpc'
 
 export const accessTokenRouter = router({

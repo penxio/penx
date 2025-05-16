@@ -1,25 +1,27 @@
-import { isSelecting } from '@udecode/plate-selection'
-import { BlockSelectionPlugin } from '@udecode/plate-selection/react'
-import type { PlateEditor } from '@udecode/plate/react'
-import { getMarkdown } from './getMarkdown'
+import type { PlateEditor } from '@udecode/plate/react';
+
+import { isSelecting } from '@udecode/plate-selection';
+import { BlockSelectionPlugin } from '@udecode/plate-selection/react';
+
+import { getMarkdown } from './getMarkdown';
 
 export type EditorPrompt =
   | ((params: EditorPromptParams) => string)
   | PromptConfig
-  | string
+  | string;
 
 export interface EditorPromptParams {
-  editor: PlateEditor
-  isBlockSelecting: boolean
-  isSelecting: boolean
+  editor: PlateEditor;
+  isBlockSelecting: boolean;
+  isSelecting: boolean;
 }
 
-export type MarkdownType = 'block' | 'editor' | 'selection'
+export type MarkdownType = 'block' | 'editor' | 'selection';
 
 export interface PromptConfig {
-  default: string
-  blockSelecting?: string
-  selecting?: string
+  default: string;
+  blockSelecting?: string;
+  selecting?: string;
 }
 
 const replacePlaceholders = (
@@ -28,40 +30,40 @@ const replacePlaceholders = (
   {
     prompt,
   }: {
-    prompt?: string
-  },
+    prompt?: string;
+  }
 ): string => {
-  let result = text.replace('{prompt}', prompt || '')
+  let result = text.replace('{prompt}', prompt || '');
 
   const placeholders: Record<string, MarkdownType> = {
     '{block}': 'block',
     '{editor}': 'editor',
     '{selection}': 'selection',
-  }
+  };
 
   Object.entries(placeholders).forEach(([placeholder, type]) => {
     if (result.includes(placeholder)) {
-      result = result.replace(placeholder, getMarkdown(editor, type))
+      result = result.replace(placeholder, getMarkdown(editor, type));
     }
-  })
+  });
 
-  return result
-}
+  return result;
+};
 
 const createPromptFromConfig = (
   config: PromptConfig,
-  params: EditorPromptParams,
+  params: EditorPromptParams
 ): string => {
-  const { isBlockSelecting, isSelecting } = params
+  const { isBlockSelecting, isSelecting } = params;
 
   if (isBlockSelecting && config.blockSelecting) {
-    return config.blockSelecting ?? config.default
+    return config.blockSelecting ?? config.default;
   } else if (isSelecting && config.selecting) {
-    return config.selecting ?? config.default
+    return config.selecting ?? config.default;
   } else {
-    return config.default
+    return config.default;
   }
-}
+};
 
 export const getEditorPrompt = (
   editor: PlateEditor,
@@ -69,31 +71,31 @@ export const getEditorPrompt = (
     prompt = '',
     promptTemplate = () => '{prompt}',
   }: {
-    prompt?: EditorPrompt
-    promptTemplate?: (params: EditorPromptParams) => string | void
-  } = {},
+    prompt?: EditorPrompt;
+    promptTemplate?: (params: EditorPromptParams) => string | void;
+  } = {}
 ): string | undefined => {
   const params: EditorPromptParams = {
     editor,
     isBlockSelecting: editor.getOption(BlockSelectionPlugin, 'isSelectingSome'),
     isSelecting: isSelecting(editor),
-  }
+  };
 
-  const template = promptTemplate(params)
+  const template = promptTemplate(params);
 
-  if (!template) return
+  if (!template) return;
 
-  let promptText = ''
+  let promptText = '';
 
   if (typeof prompt === 'function') {
-    promptText = prompt(params)
+    promptText = prompt(params);
   } else if (typeof prompt === 'object') {
-    promptText = createPromptFromConfig(prompt, params)
+    promptText = createPromptFromConfig(prompt, params);
   } else {
-    promptText = prompt
+    promptText = prompt;
   }
 
   return replacePlaceholders(editor, template, {
     prompt: promptText,
-  })
-}
+  });
+};

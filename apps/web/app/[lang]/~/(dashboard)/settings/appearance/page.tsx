@@ -1,8 +1,8 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/card'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/card'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { AppearanceSettingForm } from './AppearanceSettingForm'
 
 export const dynamic = 'force-static'

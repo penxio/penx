@@ -1,9 +1,9 @@
-import { LoginStatus } from '@penx/constants'
-import { prisma } from '@penx/db'
 import { TRPCError } from '@trpc/server'
 import Redis from 'ioredis'
 import jwt from 'jsonwebtoken'
 import { z } from 'zod'
+import { LoginStatus } from '@penx/constants'
+import { prisma } from '@penx/db'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 const redis = new Redis(process.env.REDIS_URL!)

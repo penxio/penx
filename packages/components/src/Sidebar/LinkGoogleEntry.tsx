@@ -1,10 +1,10 @@
 'use client'
 
-import { IconGoogle } from '@penx/uikit/IconGoogle'
+import { ArrowRight } from 'lucide-react'
+import { ProviderType } from '@penx/db/client'
 import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { Link } from '@penx/libs/i18n'
-import { ProviderType } from '@penx/db/client'
-import { ArrowRight } from 'lucide-react'
+import { IconGoogle } from '@penx/uikit/IconGoogle'
 
 export function LinkGoogleEntry() {
   const { data: accounts = [], isLoading } = useMyAccounts()

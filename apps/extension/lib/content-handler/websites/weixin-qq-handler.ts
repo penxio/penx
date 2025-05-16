@@ -1,5 +1,4 @@
 import { DateTime } from 'luxon'
-
 import { ContentHandler } from '../content-handler'
 
 export class WeixinQqHandler extends ContentHandler {

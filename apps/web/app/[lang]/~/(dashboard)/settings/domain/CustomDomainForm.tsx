@@ -3,16 +3,15 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Site } from '@penx/db/client'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { usePlanListDialog } from '@penx/components/usePlanListDialog'
+import { Site } from '@penx/db/client'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { getSiteCustomDomain, SiteWithDomains } from '@penx/libs/getSiteDomain'
 import { useSession } from '@penx/session'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -24,6 +23,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 const FormSchema = z.object({

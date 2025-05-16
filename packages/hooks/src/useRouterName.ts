@@ -1,5 +1,5 @@
-import { routerAtom } from '@penx/store'
 import { useAtomValue } from 'jotai'
+import { routerAtom } from '@penx/store'
 
 export function useRouterName() {
   const { name } = useAtomValue(routerAtom)

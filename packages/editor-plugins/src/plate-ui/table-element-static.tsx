@@ -1,23 +1,21 @@
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'
-import { BaseTablePlugin, type TTableElement } from '@udecode/plate-table'
+import type { TTableElement } from '@udecode/plate-table'
+import { BaseTablePlugin } from '@udecode/plate-table'
 
-export const TableElementStatic = ({
+export function TableElementStatic({
   children,
-  className,
   ...props
-}: SlateElementProps<TTableElement>) => {
+}: SlateElementProps<TTableElement>) {
   const { disableMarginLeft } = props.editor.getOptions(BaseTablePlugin)
-
   const marginLeft = disableMarginLeft ? 0 : props.element.marginLeft
 
   return (
     <SlateElement
-      className={cn(className, 'overflow-x-auto py-5')}
-      style={{ paddingLeft: marginLeft }}
       {...props}
+      className="overflow-x-auto py-5"
+      style={{ paddingLeft: marginLeft }}
     >
       <div className="group/table relative w-fit">
         <table className="ml-px mr-0 table h-px table-fixed border-collapse">

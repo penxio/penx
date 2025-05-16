@@ -1,5 +1,5 @@
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
+import { cn } from '@penx/utils'
 import { PlateStatic, type PlateStaticProps } from '@udecode/plate'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
@@ -39,7 +39,6 @@ export const editorVariants = cva(
 )
 
 export function EditorStatic({
-  children,
   className,
   variant,
   ...props

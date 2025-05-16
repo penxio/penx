@@ -1,3 +1,4 @@
+import { BaseElement } from 'slate'
 import {
   ELEMENT_LI,
   ELEMENT_LIC,
@@ -5,7 +6,6 @@ import {
   ELEMENT_TITLE,
   ELEMENT_UL,
 } from '@penx/constants'
-import { BaseElement } from 'slate'
 
 export interface TitleElement extends BaseElement {
   id?: string

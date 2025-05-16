@@ -1,5 +1,5 @@
-import { SiteCreation } from '@penx/types'
 import { getEditorPlugin, type SlateEditor } from '@udecode/plate'
+import { SiteCreation } from '@penx/types'
 import {
   BaseBidirectionalLinkPlugin,
   type BidirectionalLink,

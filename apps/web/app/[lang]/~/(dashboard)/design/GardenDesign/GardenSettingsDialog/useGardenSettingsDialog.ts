@@ -1,6 +1,6 @@
-import { LayoutItem } from '@penx/types'
-import { Product } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { Product } from '@penx/db/client'
+import { LayoutItem } from '@penx/types'
 
 type State = {
   isOpen: boolean

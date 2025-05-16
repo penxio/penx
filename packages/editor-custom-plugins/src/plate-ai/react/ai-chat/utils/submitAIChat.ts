@@ -1,9 +1,12 @@
-import { isSelecting } from '@udecode/plate-selection'
-import { getEditorPlugin, type PlateEditor } from '@udecode/plate/react'
-import type { ChatRequestOptions } from 'ai'
-import { AIPlugin } from '../../ai/AIPlugin'
-import type { AIChatPluginConfig } from '../AIChatPlugin'
-import { getEditorPrompt, type EditorPrompt } from './getEditorPrompt'
+import type { ChatRequestOptions } from 'ai';
+
+import { isSelecting } from '@udecode/plate-selection';
+import { type PlateEditor, getEditorPlugin } from '@udecode/plate/react';
+
+import type { AIChatPluginConfig } from '../AIChatPlugin';
+
+import { AIPlugin } from '../../ai/AIPlugin';
+import { type EditorPrompt, getEditorPrompt } from './getEditorPrompt';
 
 export const submitAIChat = (
   editor: PlateEditor,
@@ -13,37 +16,37 @@ export const submitAIChat = (
     prompt,
     system,
   }: {
-    mode?: 'chat' | 'insert'
-    options?: ChatRequestOptions
-    prompt?: EditorPrompt
-    system?: EditorPrompt
-  } = {},
+    mode?: 'chat' | 'insert';
+    options?: ChatRequestOptions;
+    prompt?: EditorPrompt;
+    system?: EditorPrompt;
+  } = {}
 ) => {
   const { getOptions, setOption } = getEditorPlugin<AIChatPluginConfig>(
     editor,
     {
       key: 'aiChat',
-    },
-  )
+    }
+  );
 
-  const { chat, promptTemplate, systemTemplate } = getOptions()
+  const { chat, promptTemplate, systemTemplate } = getOptions();
 
   if (!prompt && chat.input?.length === 0) {
-    return
+    return;
   }
   if (!prompt) {
-    prompt = chat.input
+    prompt = chat.input;
   }
   if (!mode) {
-    mode = isSelecting(editor) ? 'chat' : 'insert'
+    mode = isSelecting(editor) ? 'chat' : 'insert';
   }
   if (mode === 'insert') {
-    editor.getTransforms(AIPlugin).ai.undo()
+    editor.getTransforms(AIPlugin).ai.undo();
   }
 
-  setOption('mode', mode)
+  setOption('mode', mode);
 
-  chat.setInput?.('')
+  chat.setInput?.('');
 
   void chat.append?.(
     {
@@ -62,6 +65,6 @@ export const submitAIChat = (
         }),
       },
       ...options,
-    },
-  )
-}
+    }
+  );
+};

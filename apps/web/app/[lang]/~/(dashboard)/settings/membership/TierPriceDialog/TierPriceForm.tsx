@@ -8,8 +8,6 @@ import { z } from 'zod'
 import { editorDefaultValue } from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { api, trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { NumberInput } from '@penx/uikit/NumberInput'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -21,6 +19,8 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useTierPriceDialog } from './useTierPriceDialog'
 

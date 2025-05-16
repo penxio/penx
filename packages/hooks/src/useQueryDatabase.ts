@@ -1,8 +1,8 @@
 'use client'
 
-import { api } from '@penx/trpc-client'
-import { RouterOutputs } from '@penx/api'
 import { useQuery } from '@tanstack/react-query'
+import { RouterOutputs } from '@penx/api'
+import { api } from '@penx/trpc-client'
 
 export type Database = RouterOutputs['database']['byId']
 

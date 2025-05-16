@@ -1,3 +1,5 @@
+import { PenSquareIcon } from 'lucide-react'
+import { trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -8,8 +10,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/dialog'
-import { trpc } from '@penx/trpc-client'
-import { PenSquareIcon } from 'lucide-react'
 import { EditReferralCodeForm } from './EditReferralCodeForm'
 import { useEditReferralCodeDialog } from './useEditReferralCodeDialog'
 

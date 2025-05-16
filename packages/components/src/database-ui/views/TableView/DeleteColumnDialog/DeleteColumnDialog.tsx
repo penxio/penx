@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { useMutation } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -12,9 +13,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { sleep } from '@penx/utils'
-import { useMutation } from '@tanstack/react-query'
-import { toast } from 'sonner'
 import { useDeleteColumnDialog } from './useDeleteColumnDialog'
 
 interface Props {

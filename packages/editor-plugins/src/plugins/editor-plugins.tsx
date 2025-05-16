@@ -1,36 +1,86 @@
 'use client'
 
 import emojiMartData from '@emoji-mart/data'
+import { CalloutPlugin } from '@udecode/plate-callout/react'
+import { CodeBlockPlugin } from '@udecode/plate-code-block/react'
+import { DatePlugin } from '@udecode/plate-date/react'
 import { DocxPlugin } from '@udecode/plate-docx'
 import { EmojiPlugin } from '@udecode/plate-emoji/react'
-import { JuicePlugin } from '@udecode/plate-juice'
-import { MarkdownPlugin } from '@udecode/plate-markdown'
-import { SlashPlugin } from '@udecode/plate-slash-command/react'
-import { TrailingBlockPlugin } from '@udecode/plate-trailing-block'
 import {
-  BaseBidirectionalLinkPlugin,
-  BaseProductPlugin,
-  BidirectionalLinkPlugin,
-  CampaignPlugin,
-  CommentBoxPlugin,
-  FriendsPlugin,
-  PodcastTimePlugin,
-  ProductPlugin,
-  ProjectsPlugin,
-  SocialLinksPlugin,
-} from '@penx/editor-custom-plugins'
-import { FloatingToolbarPlugin } from '@penx/editor-plugins/plugins/floating-toolbar-plugin'
+  FontBackgroundColorPlugin,
+  FontColorPlugin,
+  FontSizePlugin,
+} from '@udecode/plate-font/react'
+import { HighlightPlugin } from '@udecode/plate-highlight/react'
+import { HorizontalRulePlugin } from '@udecode/plate-horizontal-rule/react'
+import { JuicePlugin } from '@udecode/plate-juice'
+import { KbdPlugin } from '@udecode/plate-kbd/react'
+import { ColumnPlugin } from '@udecode/plate-layout/react'
+import { SlashPlugin } from '@udecode/plate-slash-command/react'
+import { TogglePlugin } from '@udecode/plate-toggle/react'
+import { TrailingBlockPlugin } from '@udecode/plate-trailing-block'
+import { SuggestionBelowNodes } from '../plate-ui/suggestion-line-break'
 import { aiPlugins } from './ai-plugins'
+import { alignPlugin } from './align-plugin'
 import { autoformatPlugin } from './autoformat-plugin'
+import { basicNodesPlugins } from './basic-nodes-plugins'
 import { blockMenuPlugins } from './block-menu-plugins'
+import { commentsPlugin } from './comments-plugin'
 import { cursorOverlayPlugin } from './cursor-overlay-plugin'
 import { deletePlugins } from './delete-plugins'
+import { discussionPlugin } from './discussion-plugin'
 import { dndPlugins } from './dnd-plugins'
+import { equationPlugins } from './equation-plugins'
 import { exitBreakPlugin } from './exit-break-plugin'
 import { FixedToolbarPlugin } from './fixed-toolbar-plugin'
+import { FloatingToolbarPlugin } from './floating-toolbar-plugin'
+import { indentListPlugins } from './indent-list-plugins'
+import { lineHeightPlugin } from './line-height-plugin'
+import { linkPlugin } from './link-plugin'
+import { markdownPlugin } from './markdown-plugin'
+import { mediaPlugins } from './media-plugins'
+import { mentionPlugin } from './mention-plugin'
 import { resetBlockTypePlugin } from './reset-block-type-plugin'
+import { skipMarkPlugin } from './skip-mark-plugin'
 import { softBreakPlugin } from './soft-break-plugin'
-import { viewPlugins } from './views-plugins'
+import { suggestionPlugin } from './suggestion-plugin'
+import { tablePlugin } from './table-plugin'
+import { tocPlugin } from './toc-plugin'
+
+export const viewPlugins = [
+  ...basicNodesPlugins,
+  HorizontalRulePlugin,
+  linkPlugin,
+  DatePlugin,
+  mentionPlugin,
+  tablePlugin,
+  TogglePlugin,
+  tocPlugin,
+  ...mediaPlugins,
+  ...equationPlugins,
+  CalloutPlugin,
+  ColumnPlugin,
+
+  // Marks
+  FontColorPlugin,
+  FontBackgroundColorPlugin,
+  FontSizePlugin,
+  HighlightPlugin,
+  KbdPlugin,
+  skipMarkPlugin,
+
+  // Block Style
+  alignPlugin,
+  ...indentListPlugins,
+  lineHeightPlugin,
+
+  // Collaboration
+  discussionPlugin,
+  commentsPlugin,
+  suggestionPlugin.configure({
+    render: { belowNodes: SuggestionBelowNodes as any },
+  }),
+] as const
 
 export const editorPlugins = [
   // AI
@@ -40,7 +90,15 @@ export const editorPlugins = [
   ...viewPlugins,
 
   // Functionality
-  SlashPlugin,
+  SlashPlugin.extend({
+    options: {
+      triggerQuery(editor) {
+        return !editor.api.some({
+          match: { type: editor.getType(CodeBlockPlugin) },
+        })
+      },
+    },
+  }),
   autoformatPlugin,
   cursorOverlayPlugin,
   ...blockMenuPlugins,
@@ -54,21 +112,10 @@ export const editorPlugins = [
 
   // Deserialization
   DocxPlugin,
-  MarkdownPlugin.configure({ options: { indentList: true } }),
+  markdownPlugin,
   JuicePlugin,
 
   // UI
   // FixedToolbarPlugin,
   FloatingToolbarPlugin,
-
-  BaseProductPlugin,
-  BaseBidirectionalLinkPlugin,
-  ProductPlugin,
-  CommentBoxPlugin,
-  FriendsPlugin,
-  ProjectsPlugin,
-  SocialLinksPlugin,
-  CampaignPlugin,
-  PodcastTimePlugin,
-  BidirectionalLinkPlugin,
 ] as any

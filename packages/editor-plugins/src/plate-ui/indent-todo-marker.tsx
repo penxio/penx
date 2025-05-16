@@ -1,18 +1,17 @@
 'use client'
 
-import { cn } from '@udecode/cn'
+import * as React from 'react'
+import { Checkbox } from './checkbox'
+import { cn } from '@penx/utils'
 import type { SlateRenderElementProps } from '@udecode/plate'
 import {
   useIndentTodoListElement,
   useIndentTodoListElementState,
 } from '@udecode/plate-indent-list/react'
 import { useReadOnly } from '@udecode/plate/react'
-import { Checkbox } from './checkbox'
 
-export const TodoMarker = ({
-  element,
-}: Omit<SlateRenderElementProps, 'children'>) => {
-  const state = useIndentTodoListElementState({ element })
+export function TodoMarker(props: Omit<SlateRenderElementProps, 'children'>) {
+  const state = useIndentTodoListElementState({ element: props.element })
   const { checkboxProps } = useIndentTodoListElement(state)
   const readOnly = useReadOnly()
 
@@ -29,17 +28,16 @@ export const TodoMarker = ({
   )
 }
 
-export const TodoLi = (props: SlateRenderElementProps) => {
-  const { children, element } = props
-
+export function TodoLi(props: SlateRenderElementProps) {
   return (
     <li
       className={cn(
         'list-none',
-        (element.checked as boolean) && 'text-muted-foreground line-through',
+        (props.element.checked as boolean) &&
+          'text-muted-foreground line-through',
       )}
     >
-      {children}
+      {props.children}
     </li>
   )
 }

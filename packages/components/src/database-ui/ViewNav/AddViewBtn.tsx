@@ -1,15 +1,11 @@
 import React, { PropsWithChildren } from 'react'
-import { Button } from '@penx/uikit/button'
-import { MenuItem } from '@penx/uikit/menu'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { ViewType } from '@penx/types'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { Plus } from 'lucide-react'
 import { toast } from 'sonner'
+import { ViewType } from '@penx/types'
+import { Button } from '@penx/uikit/button'
+import { MenuItem } from '@penx/uikit/menu'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { useDatabaseContext } from '../DatabaseProvider'
 import { ViewIcon } from './ViewIcon'
 

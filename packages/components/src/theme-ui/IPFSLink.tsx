@@ -1,5 +1,5 @@
-import { cn } from '@penx/utils'
 import { ExternalLink } from 'lucide-react'
+import { cn } from '@penx/utils'
 
 interface Props {
   className?: string

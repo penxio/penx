@@ -1,8 +1,8 @@
+import { ArrowUpRight } from 'lucide-react'
 import { Image } from '@penx/components/Image'
 import { Link } from '@penx/libs/i18n'
 import { LayoutItem, Project, Site } from '@penx/types'
 import { getUrl } from '@penx/utils'
-import { ArrowUpRight } from 'lucide-react'
 
 export function ProjectCard({
   item,

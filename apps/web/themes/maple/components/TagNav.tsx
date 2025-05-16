@@ -1,8 +1,8 @@
 'use client'
 
+import { slug } from 'github-slugger'
 import { Link } from '@penx/libs/i18n'
 import { Tag as TagEntity } from '@penx/types'
-import { slug } from 'github-slugger'
 
 interface Props {
   tags: TagEntity[]

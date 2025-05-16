@@ -1,7 +1,7 @@
 'use client'
 
-import { Switch } from '@penx/uikit/switch'
 import { Group } from '@penx/types'
+import { Switch } from '@penx/uikit/switch'
 import { useDatabaseContext } from '../../DatabaseProvider'
 
 interface Props {

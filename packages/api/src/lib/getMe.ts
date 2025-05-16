@@ -1,7 +1,7 @@
-import { prisma } from '@penx/db'
-import { Site, Subscription, User } from '@penx/db/client'
 import { TRPCError } from '@trpc/server'
 import jwt from 'jsonwebtoken'
+import { prisma } from '@penx/db'
+import { Site, Subscription, User } from '@penx/db/client'
 
 type Me = User & {
   token?: string

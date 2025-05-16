@@ -6,9 +6,9 @@ import {
   useRef,
   useState,
 } from 'react'
-import { cn } from '@penx/utils'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { Button } from '@penx/uikit/button'
+import { cn } from '@penx/utils'
 import { CrossSmallIcon, LoaderIcon, TerminalWindowIcon } from './icons'
 
 export interface ConsoleOutputContent {

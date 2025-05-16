@@ -1,6 +1,6 @@
+import { Trans } from '@lingui/react'
 import { PageTitle } from '@penx/components/PageTitle'
 import { Creation, Site } from '@penx/types'
-import { Trans } from '@lingui/react'
 import { PostList } from '../components/PostList'
 
 interface Props {

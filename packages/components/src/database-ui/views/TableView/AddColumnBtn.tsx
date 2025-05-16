@@ -1,13 +1,9 @@
 'use client'
 
 import React, { FC, PropsWithChildren, useState } from 'react'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { ColumnType } from '@penx/types'
 import { Plus } from 'lucide-react'
+import { ColumnType } from '@penx/types'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { FieldIcon } from '../../shared/FieldIcon'
 

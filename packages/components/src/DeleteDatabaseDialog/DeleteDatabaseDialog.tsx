@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { toast } from 'sonner'
+import { useDatabases } from '@penx/hooks/useDatabases'
+import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -12,9 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
-import { useDatabases } from '@penx/hooks/useDatabases'
-import { api } from '@penx/trpc-client'
-import { toast } from 'sonner'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useDeleteDatabaseDialog } from './useDeleteDatabaseDialog'
 
 interface Props {}

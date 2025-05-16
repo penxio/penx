@@ -1,44 +1,45 @@
-'use client'
+'use client';
 
-import { BlockSuggestion } from '@penx/editor-plugins/plate-ui/block-suggestion'
 import {
+  type ExtendConfig,
+  type Path,
   isSlateEditor,
   isSlateElement,
   isSlateString,
-  type ExtendConfig,
-  type Path,
-} from '@udecode/plate'
+} from '@udecode/plate';
 import {
-  BaseSuggestionPlugin,
   type BaseSuggestionConfig,
-} from '@udecode/plate-suggestion'
-import { toTPlatePlugin } from '@udecode/plate/react'
+  BaseSuggestionPlugin,
+} from '@udecode/plate-suggestion';
+import { toTPlatePlugin } from '@udecode/plate/react';
+
+import { discussionPlugin } from './discussion-plugin';
+import { BlockSuggestion } from '../plate-ui/block-suggestion';
 
 export type SuggestionConfig = ExtendConfig<
   BaseSuggestionConfig,
   {
-    activeId: string | null
-    currentUserId: string
-    hoverId: string | null
-    uniquePathMap: Map<string, Path>
+    activeId: string | null;
+    hoverId: string | null;
+    uniquePathMap: Map<string, Path>;
   }
->
+>;
 
 export const suggestionPlugin = toTPlatePlugin<SuggestionConfig>(
   BaseSuggestionPlugin,
-  {
+  ({ editor }) => ({
     handlers: {
       // unset active suggestion when clicking outside of suggestion
       onClick: ({ api, event, setOption, type }) => {
-        let leaf = event.target as HTMLElement
-        let isSet = false
+        let leaf = event.target as HTMLElement;
+        let isSet = false;
 
         const unsetActiveSuggestion = () => {
-          setOption('activeId', null)
-          isSet = true
-        }
+          setOption('activeId', null);
+          isSet = true;
+        };
 
-        if (!isSlateString(leaf)) unsetActiveSuggestion()
+        if (!isSlateString(leaf)) unsetActiveSuggestion();
 
         while (
           leaf.parentElement &&
@@ -46,44 +47,42 @@ export const suggestionPlugin = toTPlatePlugin<SuggestionConfig>(
           !isSlateEditor(leaf.parentElement)
         ) {
           if (leaf.classList.contains(`slate-${type}`)) {
-            const suggestionEntry = api.suggestion!.node({
-              isText: true,
-            })
+            const suggestionEntry = api.suggestion!.node({ isText: true });
 
             if (!suggestionEntry) {
-              unsetActiveSuggestion()
+              unsetActiveSuggestion();
 
-              break
+              break;
             }
 
-            const id = api.suggestion!.nodeId(suggestionEntry[0])
+            const id = api.suggestion!.nodeId(suggestionEntry[0]);
 
-            setOption('activeId', id ?? null)
-            isSet = true
+            setOption('activeId', id ?? null);
+            isSet = true;
 
-            break
+            break;
           }
 
-          leaf = leaf.parentElement
+          leaf = leaf.parentElement;
         }
 
-        if (!isSet) unsetActiveSuggestion()
+        if (!isSet) unsetActiveSuggestion();
       },
     },
     options: {
       activeId: null,
-      currentUserId: 'user3',
+      currentUserId: editor.getOption(discussionPlugin, 'currentUserId'),
       hoverId: null,
       uniquePathMap: new Map(),
     },
     render: {
       belowRootNodes: ({ api, element }) => {
         if (!api.suggestion!.isBlockSuggestion(element)) {
-          return null
+          return null;
         }
 
-        return <BlockSuggestion element={element} />
+        return <BlockSuggestion element={element} />;
       },
     },
-  },
-)
+  })
+);

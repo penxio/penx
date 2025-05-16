@@ -1,6 +1,6 @@
-import { prisma } from '@penx/db'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const commentRouter = router({

@@ -1,7 +1,7 @@
 import { getCreations, getSite } from '@/lib/fetchers'
-import { CreationType } from '@penx/types'
 import { Feed } from 'feed'
 import { headers } from 'next/headers'
+import { CreationType } from '@penx/types'
 
 export async function GET(req: Request) {
   const headersList = await headers()

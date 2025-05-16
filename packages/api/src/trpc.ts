@@ -83,7 +83,6 @@ export const protectedProcedure = t.procedure.use(
     const userId = ctx.token.uid || ''
     // console.log('=====activeSiteId:', activeSiteId, 'userId:', userId)
 
-
     return next({
       ctx: {
         token: ctx.token,

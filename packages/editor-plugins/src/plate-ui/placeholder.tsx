@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
+import { cn } from '@penx/utils'
 import { HEADING_KEYS } from '@udecode/plate-heading'
 import {
   createNodeHOC,
@@ -12,16 +12,16 @@ import {
 } from '@udecode/plate/react'
 
 export const Placeholder = (props: PlaceholderProps) => {
-  const { children, nodeProps, placeholder } = props
+  const { attributes, children, placeholder } = props
 
   const { enabled } = usePlaceholderState(props)
 
   return React.Children.map(children, (child) => {
     return React.cloneElement(child, {
-      className: child.props.className,
-      nodeProps: {
-        ...nodeProps,
+      attributes: {
+        ...attributes,
         className: cn(
+          attributes.className,
           enabled &&
             'before:absolute before:cursor-text before:opacity-30 before:content-[attr(placeholder)]',
         ),

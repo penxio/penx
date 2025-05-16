@@ -1,11 +1,7 @@
 import React, { FC, forwardRef, PropsWithChildren } from 'react'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { ColumnType } from '@penx/types'
 import { ChevronDown, RefreshCcw } from 'lucide-react'
+import { ColumnType } from '@penx/types'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { FieldIcon } from '../../shared/FieldIcon'
 import { useFieldTypeSelectPopover } from './hooks/useFieldTypeSelectPopover'
 

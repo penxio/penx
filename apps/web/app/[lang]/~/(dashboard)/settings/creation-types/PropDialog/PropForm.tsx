@@ -10,8 +10,6 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { api, trpc } from '@penx/trpc-client'
 import { Prop, PropType } from '@penx/types'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { NumberInput } from '@penx/uikit/NumberInput'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -23,6 +21,8 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { NumberInput } from '@penx/uikit/NumberInput'
 import {
   Select,
   SelectContent,

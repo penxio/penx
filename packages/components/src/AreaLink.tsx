@@ -1,8 +1,8 @@
 'use client'
 
 import { GlobeIcon } from 'lucide-react'
-import { useArea } from '@penx/hooks/useArea'
 import { ROOT_DOMAIN } from '@penx/constants'
+import { useArea } from '@penx/hooks/useArea'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'

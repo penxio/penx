@@ -1,23 +1,15 @@
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
 import type { SlateLeafProps } from '@udecode/plate'
 import { SlateLeaf } from '@udecode/plate'
 
-export const CodeLeafStatic = ({
-  children,
-  className,
-  ...props
-}: SlateLeafProps) => {
+export function CodeLeafStatic(props: SlateLeafProps) {
   return (
     <SlateLeaf
-      as="code"
-      className={cn(
-        className,
-        'bg-muted whitespace-pre-wrap rounded-md px-[0.3em] py-[0.2em] font-mono text-sm',
-      )}
       {...props}
+      as="code"
+      className="bg-muted whitespace-pre-wrap rounded-md px-[0.3em] py-[0.2em] font-mono text-sm"
     >
-      {children}
+      {props.children}
     </SlateLeaf>
   )
 }

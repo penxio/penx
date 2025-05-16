@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import { getColorByName } from '@penx/libs/color-helper'
-import { Option } from '@penx/types'
 import {
   CustomCell,
   CustomRenderer,
@@ -9,8 +7,10 @@ import {
   measureTextCached,
   Rectangle,
 } from '@glideapps/glide-data-grid'
-import { Column } from '@penx/db/client'
 import { Command } from 'cmdk'
+import { Column } from '@penx/db/client'
+import { getColorByName } from '@penx/libs/color-helper'
+import { Option } from '@penx/types'
 import { useDatabaseContext } from '../database-ui/DatabaseProvider'
 import { OptionTag } from '../OptionTag'
 import { roundedRect } from './draw-fns'

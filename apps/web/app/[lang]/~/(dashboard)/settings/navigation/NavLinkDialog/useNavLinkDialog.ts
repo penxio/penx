@@ -1,5 +1,5 @@
-import { NavLink } from '@penx/types'
 import { atom, useAtom } from 'jotai'
+import { NavLink } from '@penx/types'
 
 type State = {
   isOpen: boolean

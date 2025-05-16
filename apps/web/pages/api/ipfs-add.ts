@@ -1,9 +1,9 @@
-import { redisKeys } from '@penx/constants'
 import Redis from 'ioredis'
 import { create } from 'kubo-rpc-client'
 import { NextApiRequest, NextApiResponse, PageConfig } from 'next'
 import NextCors from 'nextjs-cors'
 import { Address } from 'viem'
+import { redisKeys } from '@penx/constants'
 
 const redis = new Redis(process.env.REDIS_URL!)
 

@@ -1,9 +1,9 @@
+import { Node } from 'slate'
 import { Image } from '@penx/components/Image'
 import { PodcastTips } from '@penx/components/PodcastTips'
 import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
-import { Node } from 'slate'
 import Tag from './Tag'
 
 interface PostItemProps {

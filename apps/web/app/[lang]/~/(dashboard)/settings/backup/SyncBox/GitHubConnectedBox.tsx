@@ -1,18 +1,17 @@
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { ExternalLink } from 'lucide-react'
 import { Github } from '@penx/components/SocialIcon'
-import { Button } from '@penx/uikit/button'
-import { updateSiteState } from '@penx/hooks/useQuerySite'
+import { updateSiteState, useQuerySite } from '@penx/hooks/useQuerySite'
 import { queryClient } from '@penx/query-client'
 import { api } from '@penx/trpc-client'
-import { ExternalLink } from 'lucide-react'
+import { Button } from '@penx/uikit/button'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 interface Props {
   repo: string
 }
 
 export function GithubConnectedBox({ repo }: Props) {
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   return (
     <div className="border-foreground/10 flex items-center justify-between rounded-xl border p-4">
       <div className="flex items-center gap-2">

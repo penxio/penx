@@ -7,7 +7,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '@penx/uikit/sidebar'
-import { Fallback } from '../../Fallback/Fallback'
+import { Fallback } from '../Fallback/Fallback'
 import { AppSidebar } from '../Sidebar/app-sidebar'
 import { PanelList } from './PanelList'
 

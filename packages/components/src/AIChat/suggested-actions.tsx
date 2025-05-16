@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { motion } from 'motion/react';
-import { Button } from '@penx/uikit/button';
-import { memo } from 'react';
-import { UseChatHelpers } from '@ai-sdk/react';
+import { memo } from 'react'
+import { UseChatHelpers } from '@ai-sdk/react'
+import { motion } from 'motion/react'
+import { Button } from '@penx/uikit/button'
 
 interface SuggestedActionsProps {
-  chatId: string;
-  append: UseChatHelpers['append'];
+  chatId: string
+  append: UseChatHelpers['append']
 }
 
 function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
@@ -32,12 +32,12 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
       label: 'in San Francisco?',
       action: 'What is the weather in San Francisco?',
     },
-  ];
+  ]
 
   return (
     <div
       data-testid="suggested-actions"
-      className="grid sm:grid-cols-2 gap-2 w-full"
+      className="grid w-full gap-2 sm:grid-cols-2"
     >
       {suggestedActions.map((suggestedAction, index) => (
         <motion.div
@@ -51,14 +51,14 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
           <Button
             variant="ghost"
             onClick={async () => {
-              window.history.replaceState({}, '', `/chat/${chatId}`);
+              window.history.replaceState({}, '', `/chat/${chatId}`)
 
               append({
                 role: 'user',
                 content: suggestedAction.action,
-              });
+              })
             }}
-            className="text-left border rounded-xl px-4 py-3.5 text-sm flex-1 gap-1 sm:flex-col w-full h-auto justify-start items-start"
+            className="h-auto w-full flex-1 items-start justify-start gap-1 rounded-xl border px-4 py-3.5 text-left text-sm sm:flex-col"
           >
             <span className="font-medium">{suggestedAction.title}</span>
             <span className="text-muted-foreground">
@@ -68,7 +68,7 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
         </motion.div>
       ))}
     </div>
-  );
+  )
 }
 
-export const SuggestedActions = memo(PureSuggestedActions, () => true);
+export const SuggestedActions = memo(PureSuggestedActions, () => true)

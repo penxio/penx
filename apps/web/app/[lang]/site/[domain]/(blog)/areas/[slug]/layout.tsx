@@ -1,19 +1,18 @@
-import { initLingui } from '@/initLingui';
-import { getArea, getSite, getTags } from '@/lib/fetchers';
-import { redirectTo404 } from '@/lib/redirectTo404';
-import { Metadata } from 'next';
-import { AreaProvider } from '@penx/components/AreaContext';
-import { Footer } from '@penx/components/Footer';
-import { SiteProvider } from '@penx/contexts/SiteContext';
-import linguiConfig from '@penx/libs/lingui.config';
-import { AppearanceConfig } from '@penx/types';
-import { cn } from '@penx/utils';
-import { Header as BookHeader } from './book/Header';
-import { Sidebar } from './book/Sidebar';
-import { AreaInfo } from './column/AreaInfo';
-import { Header as ColumnHeader } from './column/Header';
-import { PanelSidebar } from './PanelSidebar/PanelSidebar';
-
+import { initLingui } from '@/initLingui'
+import { getArea, getSite, getTags } from '@/lib/fetchers'
+import { redirectTo404 } from '@/lib/redirectTo404'
+import { Metadata } from 'next'
+import { AreaProvider } from '@penx/components/AreaContext'
+import { Footer } from '@penx/components/Footer'
+import { SiteProvider } from '@penx/contexts/SiteContext'
+import linguiConfig from '@penx/libs/lingui.config'
+import { AppearanceConfig } from '@penx/types'
+import { cn } from '@penx/utils'
+import { Header as BookHeader } from './book/Header'
+import { Sidebar } from './book/Sidebar'
+import { AreaInfo } from './column/AreaInfo'
+import { Header as ColumnHeader } from './column/Header'
+import { PanelSidebar } from './PanelSidebar/PanelSidebar'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

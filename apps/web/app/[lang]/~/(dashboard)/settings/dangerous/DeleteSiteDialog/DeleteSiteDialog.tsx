@@ -1,3 +1,4 @@
+import { Plus } from 'lucide-react'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -8,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/dialog'
-import { Plus } from 'lucide-react'
 import { DeleteSiteForm } from './DeleteSiteForm'
 import { useDeleteSiteDialog } from './useDeleteSiteDialog'
 

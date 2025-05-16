@@ -1,8 +1,8 @@
 'use client'
 
+import { DeployStatus } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Skeleton } from '@penx/uikit/skeleton'
-import { DeployStatus } from '@penx/types'
 
 interface Props {
   isLoading: boolean

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
+import { Trans } from '@lingui/react'
 import { Link } from '@penx/libs/i18n'
 import { NavLink } from '@penx/types'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react'
 
 interface Props {
   link: NavLink

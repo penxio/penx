@@ -1,7 +1,7 @@
 import { type ComponentType } from 'react'
+import { type LucideProps } from 'lucide-react'
 import { AppType } from '@penx/constants'
 import { cn } from '@penx/utils'
-import { type LucideProps } from 'lucide-react'
 
 interface FeatureEntryProps {
   className?: string
@@ -21,7 +21,7 @@ export function FeatureEntry({
   return (
     <div
       className={cn(
-        'group flex cursor-pointer flex-col gap-3 rounded-xl bg-foreground/5 p-2 hover:bg-foreground/10',
+        'bg-foreground/5 hover:bg-foreground/10 group flex cursor-pointer flex-col gap-3 rounded-xl p-2',
         className,
       )}
       onClick={() => onClick?.()}

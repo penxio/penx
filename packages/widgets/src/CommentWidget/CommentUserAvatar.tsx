@@ -1,21 +1,21 @@
 'use client'
 
-import { Comment, User } from '@penx/db/client'
 import { ArrowUpRight } from 'lucide-react'
 import { ROOT_DOMAIN } from '@penx/constants'
+import { Comment, User } from '@penx/db/client'
 import {
   getSiteCustomDomain,
   getSiteCustomSubdomain,
   sortDomains,
 } from '@penx/libs/getSiteDomain'
 import { trpc } from '@penx/trpc-client'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from '@penx/uikit/hover-card'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { getUrl } from '@penx/utils'
 import { UserAvatar } from '../UserAvatar'
 
@@ -52,8 +52,10 @@ function Content({ user }: Props) {
     )
   }
 
-  const customDomain = getSiteCustomDomain(data?.sites?.[0]?.domains||[])
-  const customSubdomain = getSiteCustomSubdomain(data?.sites?.[0]?.domains||[])
+  const customDomain = getSiteCustomDomain(data?.sites?.[0]?.domains || [])
+  const customSubdomain = getSiteCustomSubdomain(
+    data?.sites?.[0]?.domains || [],
+  )
 
   return (
     <div className="flex items-center space-x-4">

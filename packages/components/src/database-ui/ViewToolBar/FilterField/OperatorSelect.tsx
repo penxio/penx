@@ -1,13 +1,9 @@
 'use client'
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { Filter, OperatorType } from '@penx/types'
 import { Menu, MenuItem } from '@ariakit/react'
 import { ChevronDown } from 'lucide-react'
+import { Filter, OperatorType } from '@penx/types'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 
 interface FieldSelectProps {
   filter: Filter

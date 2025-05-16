@@ -1,5 +1,8 @@
 'use client'
 
+import { Plus } from 'lucide-react'
+import { toast } from 'sonner'
+import { Button } from '@penx/uikit/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,9 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@penx/uikit/dropdown-menu'
-import { Plus } from 'lucide-react'
-import { toast } from 'sonner'
-import { Button } from '@penx/uikit/button'
 
 export function AddPropButton() {
   return (

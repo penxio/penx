@@ -1,7 +1,7 @@
 'use client'
 
-import { BillingCycle } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { BillingCycle } from '@penx/db/client'
 
 const billingCycleAtom = atom<BillingCycle>(BillingCycle.MONTHLY)
 

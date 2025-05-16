@@ -1,7 +1,14 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { format } from 'date-fns'
+import { produce } from 'immer'
+import { Edit3, Eye, EyeOff } from 'lucide-react'
+import { toast } from 'sonner'
+import { Site } from '@penx/db/client'
+import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { api, trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Table,
   TableBody,
@@ -10,14 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from '@penx/uikit/table'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
-import { api, trpc } from '@penx/trpc-client'
 import { cn } from '@penx/utils'
-import { Site } from '@penx/db/client'
-import { format } from 'date-fns'
-import { produce } from 'immer'
-import { Edit3, Eye, EyeOff } from 'lucide-react'
-import { toast } from 'sonner'
 import { ProductDialog } from './ProductDialog/ProductDialog'
 import { useProductDialog } from './ProductDialog/useProductDialog'
 import { useProductPriceDialog } from './ProductPriceDialog/useProductPriceDialog'

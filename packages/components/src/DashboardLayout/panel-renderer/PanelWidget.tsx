@@ -52,10 +52,7 @@ export function PanelWidget({ panel, index }: Props) {
 
   if (mold?.type === CreationType.NOTE) {
     return (
-      <div
-        ref={ref}
-        className="flex-1 overflow-x-hidden pt-8"
-      >
+      <div ref={ref} className="flex-1 overflow-x-hidden pt-8">
         <NoteList
           panel={panel}
           index={index}

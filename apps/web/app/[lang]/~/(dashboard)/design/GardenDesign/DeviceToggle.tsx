@@ -1,7 +1,7 @@
 'use client'
 
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { LaptopMinimalIcon, SmartphoneIcon } from 'lucide-react'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { Device, useDesignContext } from './hooks/DesignContext'
 
 export function DeviceToggle() {

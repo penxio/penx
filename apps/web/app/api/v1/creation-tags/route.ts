@@ -1,12 +1,12 @@
-import { getSessionOptions } from '@penx/libs/session'
-import { SessionData } from '@penx/types'
+import { getIronSession } from 'iron-session'
+import { cookies } from 'next/headers'
+import { NextRequest } from 'next/server'
 import {
   addCreationTag,
   AddCreationTagInput,
 } from '@penx/api/lib/addCreationTag'
-import { getIronSession } from 'iron-session'
-import { cookies } from 'next/headers'
-import { NextRequest } from 'next/server'
+import { getSessionOptions } from '@penx/libs/session'
+import { SessionData } from '@penx/types'
 
 export async function POST(req: NextRequest) {
   const input = (await req.json()) as AddCreationTagInput

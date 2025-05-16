@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react'
-import { Mold } from '@penx/db/client'
 import {
   AudioLinesIcon,
   BookmarkIcon,
@@ -11,6 +10,7 @@ import {
   PresentationIcon,
   Users2Icon,
 } from 'lucide-react'
+import { Mold } from '@penx/db/client'
 import { CreationType } from '@penx/types'
 
 export function getCreationIcon(type: any): ReactNode {

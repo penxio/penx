@@ -1,5 +1,5 @@
-import { Product } from '@penx/db/client'
 import { atom, useAtom } from 'jotai'
+import { Product } from '@penx/db/client'
 
 type State = {
   isOpen: boolean

@@ -1,6 +1,6 @@
-import { Profile } from '@penx/components/Profile'
 import { getSite, getTiers } from '@/lib/fetchers'
 import Image from 'next/image'
+import { Profile } from '@penx/components/Profile'
 import { ContributeBox } from './ContributeBox'
 import { GoBackButton } from './GoBackButton'
 

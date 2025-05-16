@@ -1,9 +1,9 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import { usePathname } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
-import { usePathname } from '@penx/libs/i18n'
-import { useRouter } from 'next/navigation'
 
 interface Props {
   slug: string

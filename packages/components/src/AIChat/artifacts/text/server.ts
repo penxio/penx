@@ -1,12 +1,12 @@
-import { smoothStream, streamText } from 'ai';
-import { myProvider } from '@/lib/ai/providers';
-import { createDocumentHandler } from '@/lib/artifacts/server';
-import { updateDocumentPrompt } from '@/lib/ai/prompts';
+import { updateDocumentPrompt } from '@/lib/ai/prompts'
+import { myProvider } from '@/lib/ai/providers'
+import { createDocumentHandler } from '@/lib/artifacts/server'
+import { smoothStream, streamText } from 'ai'
 
 export const textDocumentHandler = createDocumentHandler<'text'>({
   kind: 'text',
   onCreateDocument: async ({ title, dataStream }) => {
-    let draftContent = '';
+    let draftContent = ''
 
     const { fullStream } = streamText({
       model: myProvider.languageModel('artifact-model'),
@@ -14,27 +14,27 @@ export const textDocumentHandler = createDocumentHandler<'text'>({
         'Write about the given topic. Markdown is supported. Use headings wherever appropriate.',
       experimental_transform: smoothStream({ chunking: 'word' }),
       prompt: title,
-    });
+    })
 
     for await (const delta of fullStream) {
-      const { type } = delta;
+      const { type } = delta
 
       if (type === 'text-delta') {
-        const { textDelta } = delta;
+        const { textDelta } = delta
 
-        draftContent += textDelta;
+        draftContent += textDelta
 
         dataStream.writeData({
           type: 'text-delta',
           content: textDelta,
-        });
+        })
       }
     }
 
-    return draftContent;
+    return draftContent
   },
   onUpdateDocument: async ({ document, description, dataStream }) => {
-    let draftContent = '';
+    let draftContent = ''
 
     const { fullStream } = streamText({
       model: myProvider.languageModel('artifact-model'),
@@ -49,22 +49,22 @@ export const textDocumentHandler = createDocumentHandler<'text'>({
           },
         },
       },
-    });
+    })
 
     for await (const delta of fullStream) {
-      const { type } = delta;
+      const { type } = delta
 
       if (type === 'text-delta') {
-        const { textDelta } = delta;
+        const { textDelta } = delta
 
-        draftContent += textDelta;
+        draftContent += textDelta
         dataStream.writeData({
           type: 'text-delta',
           content: textDelta,
-        });
+        })
       }
     }
 
-    return draftContent;
+    return draftContent
   },
-});
+})

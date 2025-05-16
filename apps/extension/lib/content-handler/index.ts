@@ -1,6 +1,5 @@
 import { parseHTML } from 'linkedom'
 import { Browser } from 'puppeteer-core'
-
 import type {
   ContentHandler,
   NewsletterInput,

@@ -1,17 +1,17 @@
 export type GetNextWord = (options: { text: string }) => {
-  firstWord: string
-  remainingText: string
-}
+  firstWord: string;
+  remainingText: string;
+};
 
 export const getNextWord: GetNextWord = ({ text }) => {
-  if (!text) return { firstWord: '', remainingText: '' }
+  if (!text) return { firstWord: '', remainingText: '' };
 
   // Check if the first non-space character is a CJK character
-  const nonSpaceMatch = /^\s*(\S)/.exec(text)
+  const nonSpaceMatch = /^\s*(\S)/.exec(text);
 
-  if (!nonSpaceMatch) return { firstWord: '', remainingText: '' }
+  if (!nonSpaceMatch) return { firstWord: '', remainingText: '' };
 
-  const firstNonSpaceChar = nonSpaceMatch[1]
+  const firstNonSpaceChar = nonSpaceMatch[1];
 
   // Regular expression for matching CJK characters
   // 1. [\u4E00-\u9FA5] - Chinese Characters
@@ -24,41 +24,41 @@ export const getNextWord: GetNextWord = ({ text }) => {
   // 8. [\u1100-\u11FF] - Korean Jamo
   const isCJKChar =
     /[\u1100-\u11FF\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF]/.test(
-      firstNonSpaceChar,
-    )
+      firstNonSpaceChar
+    );
 
-  let firstWord, remainingText
+  let firstWord, remainingText;
 
   if (isCJKChar) {
     // CJK characters: match leading spaces + first character + optional punctuation
     const match =
       /^(\s*)([\u1100-\u11FF\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF])([\u3000-\u303F\uFF00-\uFFEF])?/.exec(
-        text,
-      )
+        text
+      );
 
     if (match) {
-      const [fullMatch, spaces = '', char = '', punctuation = ''] = match
-      firstWord = spaces + char + punctuation
-      remainingText = text.slice(firstWord.length)
+      const [fullMatch, spaces = '', char = '', punctuation = ''] = match;
+      firstWord = spaces + char + punctuation;
+      remainingText = text.slice(firstWord.length);
     } else {
-      firstWord = ''
-      remainingText = text
+      firstWord = '';
+      remainingText = text;
     }
   } else {
     // For non-CJK text (including mixed content), match until space or CJK char
     const match =
       /^(\s*\S+?)(?=[\s\u1100-\u11FF\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uAC00-\uD7AF\uF900-\uFAFF]|$)/.exec(
-        text,
-      )
+        text
+      );
 
     if (match) {
-      firstWord = match[0]
-      remainingText = text.slice(firstWord.length)
+      firstWord = match[0];
+      remainingText = text.slice(firstWord.length);
     } else {
-      firstWord = text
-      remainingText = ''
+      firstWord = text;
+      remainingText = '';
     }
   }
 
-  return { firstWord, remainingText }
-}
+  return { firstWord, remainingText };
+};

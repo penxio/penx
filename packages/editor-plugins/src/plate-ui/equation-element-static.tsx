@@ -1,16 +1,13 @@
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
 import { SlateElement, type SlateElementProps } from '@udecode/plate'
-import type { TEquationElement } from '@udecode/plate-math'
-import { getEquationHtml } from '@udecode/plate-math'
+import { getEquationHtml, type TEquationElement } from '@udecode/plate-math'
 import { RadicalIcon } from 'lucide-react'
+import { cn } from '@penx/utils'
 
-export function EquationElementStatic({
-  children,
-  className,
-  ...props
-}: SlateElementProps) {
-  const element = props.element as TEquationElement
+export function EquationElementStatic(
+  props: SlateElementProps<TEquationElement>,
+) {
+  const { element } = props
 
   const html = getEquationHtml({
     element,
@@ -28,7 +25,7 @@ export function EquationElementStatic({
   })
 
   return (
-    <SlateElement className={cn('my-1', className)} {...props}>
+    <SlateElement className="my-1" {...props}>
       <div
         className={cn(
           'hover:bg-primary/10 data-[selected=true]:bg-primary/10 group flex select-none items-center justify-center rounded-sm',
@@ -50,7 +47,7 @@ export function EquationElementStatic({
           </div>
         )}
       </div>
-      {children}
+      {props.children}
     </SlateElement>
   )
 }

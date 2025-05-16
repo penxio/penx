@@ -1,11 +1,7 @@
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { bgColorMaps, textColorMaps } from '@penx/libs/color-helper'
-import { cn } from '@penx/utils'
 import { PopoverClose } from '@radix-ui/react-popover'
+import { bgColorMaps, textColorMaps } from '@penx/libs/color-helper'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { cn } from '@penx/utils'
 
 export function ColorSelector({
   value,

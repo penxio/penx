@@ -1,7 +1,7 @@
 import { OptionTag } from '@penx/components/OptionTag'
-import { mappedByKey } from '@penx/utils'
-import { ColumnType, Option } from '@penx/types'
 import { Record as Row } from '@penx/db/client'
+import { ColumnType, Option } from '@penx/types'
+import { mappedByKey } from '@penx/utils'
 import { useDatabaseContext } from '../DatabaseProvider'
 import { FieldIcon } from '../shared/FieldIcon'
 

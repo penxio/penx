@@ -1,6 +1,6 @@
-import { prisma } from '@penx/db'
 import { NextApiRequest, NextApiResponse } from 'next'
 import NextCors from 'nextjs-cors'
+import { prisma } from '@penx/db'
 
 export default async function handler(
   req: NextApiRequest,

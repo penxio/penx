@@ -1,7 +1,14 @@
 'use client'
 
-import React, { useMemo, useState } from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
+import {
+  discussionPlugin,
+  type TDiscussion,
+} from '../plugins/discussion-plugin'
+import { suggestionPlugin } from '../plugins/suggestion-plugin'
+import { Avatar, AvatarFallback, AvatarImage } from './avatar'
+import { Button } from './button'
+import { cn } from '@penx/utils'
 import {
   ElementApi,
   PathApi,
@@ -44,17 +51,9 @@ import { TogglePlugin } from '@udecode/plate-toggle/react'
 import {
   ParagraphPlugin,
   useEditorPlugin,
-  useStoreSelect,
+  usePluginOption,
 } from '@udecode/plate/react'
 import { CheckIcon, XIcon } from 'lucide-react'
-import { suggestionPlugin } from '../plugins/suggestion-plugin'
-import { Avatar, AvatarFallback, AvatarImage } from './avatar'
-import {
-  discussionStore,
-  useFakeUserInfo,
-  type TDiscussion,
-} from './block-discussion'
-import { Button } from './button'
 import { Comment, formatCommentDate, type TComment } from './comment'
 import { CommentCreateForm } from './comment-create-form'
 
@@ -107,7 +106,7 @@ export const BlockSuggestionCard = ({
 }) => {
   const { api, editor } = useEditorPlugin(SuggestionPlugin)
 
-  const userInfo = useFakeUserInfo(suggestion.userId)
+  const userInfo = usePluginOption(discussionPlugin, 'user', suggestion.userId)
 
   const accept = (suggestion: ResolvedSuggestion) => {
     api.suggestion.withoutSuggestions(() => {
@@ -121,7 +120,7 @@ export const BlockSuggestionCard = ({
     })
   }
 
-  const [hovering, setHovering] = useState(false)
+  const [hovering, setHovering] = React.useState(false)
 
   const suggestionText2Array = (text: string) => {
     if (text === BLOCK_SUGGESTION) return ['line breaks']
@@ -129,7 +128,7 @@ export const BlockSuggestionCard = ({
     return text.split(BLOCK_SUGGESTION).filter(Boolean)
   }
 
-  const [editingId, setEditingId] = useState<string | null>(null)
+  const [editingId, setEditingId] = React.useState<string | null>(null)
 
   return (
     <div
@@ -141,7 +140,7 @@ export const BlockSuggestionCard = ({
       <div className="flex flex-col p-4">
         <div className="relative flex items-center">
           {/* Replace to your own backend or refer to potion */}
-          <Avatar className="size-6">
+          <Avatar className="size-5">
             <AvatarImage alt={userInfo?.name} src={userInfo?.avatarUrl} />
             <AvatarFallback>{userInfo?.name?.[0]}</AvatarFallback>
           </Avatar>
@@ -198,7 +197,7 @@ export const BlockSuggestionCard = ({
                     <React.Fragment key={index}>
                       <div
                         key={index}
-                        className="text-brand/80 flex items-center"
+                        className="text-brand/80 flex items-start gap-2"
                       >
                         <span className="text-sm">with:</span>
                         <span className="text-sm">{text || 'line breaks'}</span>
@@ -209,7 +208,7 @@ export const BlockSuggestionCard = ({
 
                 {suggestionText2Array(suggestion.text!).map((text, index) => (
                   <React.Fragment key={index}>
-                    <div key={index} className="flex items-center">
+                    <div key={index} className="flex items-start gap-2">
                       <span className="text-muted-foreground text-sm">
                         {index === 0 ? 'Replace:' : 'Delete:'}
                       </span>
@@ -271,10 +270,7 @@ export const BlockSuggestionCard = ({
           </div>
         )}
 
-        <CommentCreateForm
-          discussionId={suggestion.suggestionId}
-          isSuggesting={suggestion.comments.length === 0}
-        />
+        <CommentCreateForm discussionId={suggestion.suggestionId} />
       </div>
 
       {!isLast && <div className="bg-muted h-px w-full" />}
@@ -286,10 +282,7 @@ export const useResolveSuggestion = (
   suggestionNodes: NodeEntry<TElement | TSuggestionText>[],
   blockPath: Path,
 ) => {
-  const discussions = useStoreSelect(
-    discussionStore,
-    (state) => state.discussions,
-  )
+  const discussions = usePluginOption(discussionPlugin, 'discussions')
 
   const { api, editor, getOption, setOption } =
     useEditorPlugin(suggestionPlugin)
@@ -321,7 +314,7 @@ export const useResolveSuggestion = (
     setOption('uniquePathMap', new Map(map).set(id, blockPath))
   })
 
-  const resolvedSuggestion: ResolvedSuggestion[] = useMemo(() => {
+  const resolvedSuggestion: ResolvedSuggestion[] = React.useMemo(() => {
     const map = getOption('uniquePathMap')
 
     if (suggestionNodes.length === 0) return []

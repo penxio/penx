@@ -1,5 +1,5 @@
-import { INode } from '@penx/model-type'
 import { atom, useAtom } from 'jotai'
+import { INode } from '@penx/model-type'
 
 interface BulletDrawerState {
   isOpen: boolean

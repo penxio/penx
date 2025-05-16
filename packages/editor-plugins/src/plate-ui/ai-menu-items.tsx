@@ -1,11 +1,9 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
-import {
-  AIChatPlugin,
-  AIPlugin,
-} from '@penx/editor-custom-plugins'
+import * as React from 'react'
+import { CommandGroup, CommandItem } from './command'
 import { NodeApi, type SlateEditor } from '@udecode/plate'
+import { AIChatPlugin, AIPlugin } from '@udecode/plate-ai/react'
 import { useIsSelecting } from '@udecode/plate-selection/react'
 import {
   useEditorRef,
@@ -15,6 +13,7 @@ import {
 import {
   Album,
   BadgeHelp,
+  BookOpenCheck,
   Check,
   CornerUpLeft,
   FeatherIcon,
@@ -26,7 +25,6 @@ import {
   Wand,
   X,
 } from 'lucide-react'
-import { CommandGroup, CommandItem } from './command'
 
 export type EditorChatState =
   | 'cursorCommand'
@@ -109,6 +107,26 @@ Start writing a new paragraph AFTER <Document> ONLY ONE SENTENCE`
       })
     },
   },
+  generateMarkdownSample: {
+    icon: <BookOpenCheck />,
+    label: 'Generate Markdown sample',
+    value: 'generateMarkdownSample',
+    onSelect: ({ editor }) => {
+      void editor.getApi(AIChatPlugin).aiChat.submit({
+        prompt: 'Generate a markdown sample',
+      })
+    },
+  },
+  generateMdxSample: {
+    icon: <BookOpenCheck />,
+    label: 'Generate MDX sample',
+    value: 'generateMdxSample',
+    onSelect: ({ editor }) => {
+      void editor.getApi(AIChatPlugin).aiChat.submit({
+        prompt: 'Generate a mdx sample',
+      })
+    },
+  },
   improveWriting: {
     icon: <Wand />,
     label: 'Improve writing',
@@ -132,7 +150,6 @@ Start writing a new paragraph AFTER <Document> ONLY ONE SENTENCE`
     label: 'Make longer',
     value: 'makeLonger',
     onSelect: ({ editor }) => {
-      console.log('Make longer......')
       void editor.getApi(AIChatPlugin).aiChat.submit({
         prompt: 'Make longer',
       })
@@ -218,6 +235,8 @@ const menuStateItems: Record<
   cursorCommand: [
     {
       items: [
+        aiChatItems.generateMdxSample,
+        aiChatItems.generateMarkdownSample,
         aiChatItems.continueWrite,
         aiChatItems.summarize,
         aiChatItems.explain,
@@ -263,7 +282,7 @@ export const AIMenuItems = ({
   const aiEditor = usePluginOption(AIChatPlugin, 'aiEditor')!
   const isSelecting = useIsSelecting()
 
-  const menuState = useMemo(() => {
+  const menuState = React.useMemo(() => {
     if (messages && messages.length > 0) {
       return isSelecting ? 'selectionSuggestion' : 'cursorSuggestion'
     }
@@ -271,13 +290,13 @@ export const AIMenuItems = ({
     return isSelecting ? 'selectionCommand' : 'cursorCommand'
   }, [isSelecting, messages])
 
-  const menuGroups = useMemo(() => {
+  const menuGroups = React.useMemo(() => {
     const items = menuStateItems[menuState]
 
     return items
   }, [menuState])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (menuGroups.length > 0 && menuGroups[0].items.length > 0) {
       setValue(menuGroups[0].items[0].value)
     }

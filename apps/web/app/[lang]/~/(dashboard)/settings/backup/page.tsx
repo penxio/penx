@@ -1,7 +1,7 @@
 'use client'
 
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { SyncBox } from './SyncBox/SyncBox'
 
 export const dynamic = 'force-static'

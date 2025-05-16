@@ -1,6 +1,6 @@
-import { NetworkNames } from '@penx/constants'
 import { createPublicClient, http } from 'viem'
 import { base, baseSepolia } from 'viem/chains'
+import { NetworkNames } from '@penx/constants'
 
 export function getBasePublicClient(network: string) {
   const baseClient = createPublicClient({

@@ -1,9 +1,9 @@
 'use client'
 
-import { STATIC_URL } from '@penx/constants'
-import { trpc } from '@penx/trpc-client'
 import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
+import { STATIC_URL } from '@penx/constants'
+import { trpc } from '@penx/trpc-client'
 
 export function ThemeList() {
   const { data = [], isLoading } = trpc.theme.all.useQuery()

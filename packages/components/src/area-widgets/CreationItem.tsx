@@ -58,7 +58,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
           key={creation.id}
           className={cn(
             'hover:bg-foreground/5 group flex h-7 cursor-pointer items-center gap-2 rounded pl-2 pr-1 transition-all',
-            className
+            className,
           )}
           onClick={() => {
             if (isMobileApp) {

@@ -1,10 +1,10 @@
 'use client'
 
 import * as React from 'react'
-import { cn } from '@penx/utils'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, VariantProps } from 'class-variance-authority'
 import { PanelLeftIcon } from 'lucide-react'
+import { cn } from '@penx/utils'
 import { useIsMobile } from '../hooks/use-mobile'
 import { Button } from './button'
 import { Input } from './input'

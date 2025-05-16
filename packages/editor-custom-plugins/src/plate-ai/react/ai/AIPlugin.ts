@@ -1,7 +1,9 @@
-import type { ExtendConfig } from '@udecode/plate'
-import { toPlatePlugin } from '@udecode/plate/react'
-import { BaseAIPlugin, type BaseAIPluginConfig } from '../../lib'
+import type { ExtendConfig } from '@udecode/plate';
 
-export type AIPluginConfig = ExtendConfig<BaseAIPluginConfig>
+import { toPlatePlugin } from '@udecode/plate/react';
 
-export const AIPlugin = toPlatePlugin(BaseAIPlugin)
+import { type BaseAIPluginConfig, BaseAIPlugin } from '../../lib';
+
+export type AIPluginConfig = ExtendConfig<BaseAIPluginConfig>;
+
+export const AIPlugin = toPlatePlugin(BaseAIPlugin);

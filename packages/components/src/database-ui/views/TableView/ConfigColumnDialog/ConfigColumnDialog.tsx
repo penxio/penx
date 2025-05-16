@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
+import { toast } from 'sonner'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
-import { toast } from 'sonner'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useConfigColumnDialog } from './useConfigColumnDialog'
 
 interface Props {}

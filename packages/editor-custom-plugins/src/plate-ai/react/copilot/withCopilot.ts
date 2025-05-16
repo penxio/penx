@@ -1,28 +1,36 @@
-import { RangeApi, type Operation, type TRange } from '@udecode/plate'
-import { serializeInlineMd } from '@udecode/plate-markdown'
-import type { OverrideEditor, PlateEditor } from '@udecode/plate/react'
-import type { CopilotPluginConfig } from './CopilotPlugin'
-import { withoutAbort } from './utils/withoutAbort'
+import type { OverrideEditor, PlateEditor } from '@udecode/plate/react';
+
+import {
+  type Operation,
+  type SlateEditor,
+  type TRange,
+  RangeApi,
+} from '@udecode/plate';
+import { serializeInlineMd } from '@udecode/plate-markdown';
+
+import type { CopilotPluginConfig } from './CopilotPlugin';
+
+import { withoutAbort } from './utils/withoutAbort';
 
 type CopilotBatch = PlateEditor['history']['undos'][number] & {
-  shouldAbort: boolean
-}
+  shouldAbort: boolean;
+};
 
-const getPatchString = (operations: Operation[]) => {
-  let string = ''
+const getPatchString = (editor: SlateEditor, operations: Operation[]) => {
+  let string = '';
 
   for (const operation of operations) {
     if (operation.type === 'insert_node') {
-      const node = operation.node
-      const text = serializeInlineMd([node as any])
-      string += text
+      const node = operation.node;
+      const text = serializeInlineMd(editor, { value: [node] });
+      string += text;
     } else if (operation.type === 'insert_text') {
-      string += operation.text
+      string += operation.text;
     }
   }
 
-  return string
-}
+  return string;
+};
 
 export const withCopilot: OverrideEditor<CopilotPluginConfig> = ({
   api,
@@ -31,62 +39,62 @@ export const withCopilot: OverrideEditor<CopilotPluginConfig> = ({
   setOption,
   tf: { apply, insertText, redo, setSelection, undo, writeHistory },
 }) => {
-  let prevSelection: TRange | null = null
+  let prevSelection: TRange | null = null;
 
   return {
     transforms: {
       apply(operation) {
-        const { shouldAbort } = getOptions()
+        const { shouldAbort } = getOptions();
 
         if (shouldAbort) {
-          api.copilot.reset()
+          api.copilot.reset();
         }
 
-        apply(operation)
+        apply(operation);
       },
       insertText(text, options) {
-        const suggestionText = getOptions().suggestionText
+        const suggestionText = getOptions().suggestionText;
 
         // When using IME input, it's possible to enter two characters at once.
         if (suggestionText?.startsWith(text)) {
           withoutAbort(editor, () => {
             editor.tf.withoutMerging(() => {
-              const newText = suggestionText?.slice(text.length)
-              setOption('suggestionText', newText)
-              insertText(text)
-            })
-          })
+              const newText = suggestionText?.slice(text.length);
+              setOption('suggestionText', newText);
+              insertText(text);
+            });
+          });
 
-          return
+          return;
         }
 
-        insertText(text, options)
+        insertText(text, options);
       },
 
       redo() {
-        if (!getOptions().suggestionText) return redo()
+        if (!getOptions().suggestionText) return redo();
 
-        const topRedo = editor.history.redos.at(-1) as CopilotBatch
-        const prevSuggestion = getOptions().suggestionText
+        const topRedo = editor.history.redos.at(-1) as CopilotBatch;
+        const prevSuggestion = getOptions().suggestionText;
 
         if (topRedo && topRedo.shouldAbort === false && prevSuggestion) {
           withoutAbort(editor, () => {
-            const shouldRemoveText = getPatchString(topRedo.operations)
+            const shouldRemoveText = getPatchString(editor, topRedo.operations);
 
-            const newText = prevSuggestion.slice(shouldRemoveText.length)
-            setOption('suggestionText', newText)
+            const newText = prevSuggestion.slice(shouldRemoveText.length);
+            setOption('suggestionText', newText);
 
-            redo()
-          })
+            redo();
+          });
 
-          return
+          return;
         }
 
-        return redo()
+        return redo();
       },
 
       setSelection(props) {
-        setSelection(props)
+        setSelection(props);
 
         if (
           editor.selection &&
@@ -95,41 +103,44 @@ export const withCopilot: OverrideEditor<CopilotPluginConfig> = ({
           getOptions().autoTriggerQuery!({ editor }) &&
           editor.api.isFocused()
         ) {
-          void api.copilot.triggerSuggestion()
+          void api.copilot.triggerSuggestion();
         }
 
-        prevSelection = editor.selection
+        prevSelection = editor.selection;
       },
 
       undo() {
-        if (!getOptions().suggestionText) return undo()
+        if (!getOptions().suggestionText) return undo();
 
-        const lastUndos = editor.history.undos.at(-1) as CopilotBatch
-        const oldText = getOptions().suggestionText
+        const lastUndos = editor.history.undos.at(-1) as CopilotBatch;
+        const oldText = getOptions().suggestionText;
 
         if (lastUndos && lastUndos.shouldAbort === false && oldText) {
           withoutAbort(editor, () => {
-            const shouldInsertText = getPatchString(lastUndos.operations)
+            const shouldInsertText = getPatchString(
+              editor,
+              lastUndos.operations
+            );
 
-            const newText = shouldInsertText + oldText
-            setOption('suggestionText', newText)
+            const newText = shouldInsertText + oldText;
+            setOption('suggestionText', newText);
 
-            undo()
-          })
+            undo();
+          });
 
-          return
+          return;
         }
 
-        return undo()
+        return undo();
       },
 
       writeHistory(stacks, batch) {
         if (!getOptions().isLoading) {
-          batch.shouldAbort = getOptions().shouldAbort
+          batch.shouldAbort = getOptions().shouldAbort;
         }
 
-        return writeHistory(stacks, batch)
+        return writeHistory(stacks, batch);
       },
     },
-  }
-}
+  };
+};

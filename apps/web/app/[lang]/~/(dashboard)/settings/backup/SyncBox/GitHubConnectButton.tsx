@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
-import { updateSiteState } from '@penx/hooks/useQuerySite'
+import { updateSiteState, useQuerySite } from '@penx/hooks/useQuerySite'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'

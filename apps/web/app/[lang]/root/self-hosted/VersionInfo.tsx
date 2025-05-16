@@ -1,5 +1,9 @@
 'use client'
 
+import { compareVersions } from '@/lib/compareVersions'
+import { ArrowUp } from 'lucide-react'
+import { HostedSite } from '@penx/db/client'
+import { trpc } from '@penx/trpc-client'
 import { Skeleton } from '@penx/uikit/skeleton'
 import {
   Tooltip,
@@ -7,10 +11,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
-import { compareVersions } from '@/lib/compareVersions'
-import { trpc } from '@penx/trpc-client'
-import { HostedSite } from '@penx/db/client'
-import { ArrowUp } from 'lucide-react'
 
 export function VersionInfo({ site }: { site: HostedSite }) {
   const { data: penxVersion = '', isLoading } =

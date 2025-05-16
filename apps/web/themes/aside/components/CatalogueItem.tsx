@@ -1,6 +1,7 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
+import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { Link } from '@penx/libs/i18n'
 import {
   CatalogueNodeJSON,
@@ -8,7 +9,6 @@ import {
   ICatalogueNode,
 } from '@penx/model-type'
 import { cn } from '@penx/utils'
-import { Emoji, EmojiStyle } from 'emoji-picker-react'
 
 interface CatalogueItemProps {
   depth: number

@@ -1,5 +1,5 @@
-import { cn } from '@penx/utils'
 import { Philosopher } from 'next/font/google'
+import { cn } from '@penx/utils'
 
 const logoFont = Philosopher({
   weight: ['400', '700'],

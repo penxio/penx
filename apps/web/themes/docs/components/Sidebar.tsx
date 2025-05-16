@@ -1,6 +1,6 @@
 import type { MutableRefObject } from 'react'
-import { Profile } from '@penx/components/Profile'
 import { CatalogueNode, CatalogueTree } from '@/lib/catalogue'
+import { Profile } from '@penx/components/Profile'
 import { ICatalogueNode } from '@penx/model-type'
 import { Site } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'

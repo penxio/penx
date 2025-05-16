@@ -1,18 +1,17 @@
 'use client'
 
 import React, { useCallback, useEffect, useRef } from 'react'
-import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/button'
-import { trpc } from '@penx/trpc-client'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
+import { useSession } from '@penx/session'
+import { trpc } from '@penx/trpc-client'
+import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 
 export function ValidateEmail() {
   const searchParams = useSearchParams()
   const { data, login } = useSession()
   const inited = useRef(false)
-
 
   const loginWithEmail = useCallback(
     async function () {

@@ -1,66 +1,91 @@
 'use client'
 
-import React from 'react'
-import { cn, withRef } from '@udecode/cn'
-import type { Editor, TElement } from '@udecode/plate'
-import { formatCodeBlock, isLangSupported } from '@udecode/plate-code-block'
-import { useCodeBlockElementState } from '@udecode/plate-code-block/react'
-import { PlateElement } from '@udecode/plate/react'
-import { BracesIcon } from 'lucide-react'
+import * as React from 'react'
 import { Button } from './button'
+import { NodeApi } from '@udecode/plate'
+import {
+  formatCodeBlock,
+  isLangSupported,
+  type TCodeBlockElement,
+} from '@udecode/plate-code-block'
+import { PlateElement, type PlateElementProps } from '@udecode/plate/react'
+import { BracesIcon, CheckIcon, CopyIcon } from 'lucide-react'
 import { CodeBlockCombobox } from './code-block-combobox'
-import './code-block-element.css'
 
-export const CodeBlockElement = withRef<typeof PlateElement>(
-  ({ children, className, ...props }, ref) => {
-    const { element } = props
+export function CodeBlockElement(props: PlateElementProps<TCodeBlockElement>) {
+  const { editor, element } = props
 
-    const state = useCodeBlockElementState({ element })
-
-    return (
-      <PlateElement
-        ref={ref}
-        className={cn(className, 'py-1', state.className)}
-        {...props}
-      >
-        <pre className="bg-muted overflow-x-auto rounded-md px-6 py-8 font-mono text-sm leading-[normal] [tab-size:2]">
-          <code>{children}</code>
+  return (
+    <PlateElement
+      className="**:[.hljs-addition]:bg-[#f0fff4] **:[.hljs-addition]:text-[#22863a] **:[.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable]:text-[#005cc5] **:[.hljs-built_in,.hljs-symbol]:text-[#e36209] **:[.hljs-bullet]:text-[#735c0f] **:[.hljs-comment,.hljs-code,.hljs-formula]:text-[#6a737d] **:[.hljs-deletion]:bg-[#ffeef0] **:[.hljs-deletion]:text-[#b31d28] **:[.hljs-emphasis]:italic **:[.hljs-keyword,.hljs-doctag,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_]:text-[#d73a49] **:[.hljs-name,.hljs-quote,.hljs-selector-tag,.hljs-selector-pseudo]:text-[#22863a] **:[.hljs-regexp,.hljs-string,.hljs-meta_.hljs-string]:text-[#032f62] **:[.hljs-section]:font-bold **:[.hljs-section]:text-[#005cc5] **:[.hljs-strong]:font-bold **:[.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_]:text-[#6f42c1] py-1"
+      {...props}
+    >
+      <div className="bg-muted/50 relative rounded-md">
+        <pre className="overflow-x-auto p-8 pr-4 font-mono text-sm leading-[normal] [tab-size:2] print:break-inside-avoid">
+          <code>{props.children}</code>
         </pre>
 
-        {state.syntax && (
-          <div
-            className="absolute right-2 top-2 z-10 flex select-none items-center gap-1"
-            contentEditable={false}
-          >
-            <CodeBlockFormatButton {...props} />
-            <CodeBlockCombobox />
-          </div>
-        )}
-      </PlateElement>
-    )
-  },
-)
+        <div
+          className="absolute right-1 top-1 z-10 flex select-none gap-0.5"
+          contentEditable={false}
+        >
+          {isLangSupported(element.lang) && (
+            <Button
+              size="icon"
+              variant="ghost"
+              className="size-6 text-xs"
+              onClick={() => formatCodeBlock(editor, { element })}
+              title="Format code"
+            >
+              <BracesIcon className="text-muted-foreground !size-3.5" />
+            </Button>
+          )}
 
-export function CodeBlockFormatButton({
-  editor,
-  element,
-}: {
-  editor: Editor
-  element: TElement
-}) {
-  if (!isLangSupported(element.lang as string)) {
-    return null
-  }
+          <CodeBlockCombobox />
+
+          <CopyButton
+            size="icon"
+            variant="ghost"
+            className="text-muted-foreground size-6 gap-1 text-xs"
+            value={() => NodeApi.string(element)}
+          />
+        </div>
+      </div>
+    </PlateElement>
+  )
+}
+
+function CopyButton({
+  value,
+  ...props
+}: { value: (() => string) | string } & Omit<
+  React.ComponentProps<typeof Button>,
+  'value'
+>) {
+  const [hasCopied, setHasCopied] = React.useState(false)
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setHasCopied(false)
+    }, 2000)
+  }, [hasCopied])
 
   return (
     <Button
-      size="xs"
-      variant="ghost"
-      className="h-5 justify-between px-1 text-xs"
-      onClick={() => formatCodeBlock(editor, { element })}
-      title="Format code"
+      onClick={() => {
+        void navigator.clipboard.writeText(
+          typeof value === 'function' ? value() : value,
+        )
+        setHasCopied(true)
+      }}
+      {...props}
     >
-      <BracesIcon className="text-gray-500" />
+      <span className="sr-only">Copy</span>
+      {hasCopied ? (
+        <CheckIcon className="!size-3" />
+      ) : (
+        <CopyIcon className="!size-3" />
+      )}
     </Button>
   )
 }

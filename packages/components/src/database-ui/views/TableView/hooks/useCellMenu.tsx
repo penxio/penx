@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { useLayer } from 'react-laag'
-import { IRowNode } from '@penx/model-type'
 import { Item, Rectangle } from '@glideapps/glide-data-grid'
 import { Record } from '@penx/db/client'
+import { IRowNode } from '@penx/model-type'
 import { CellMenu } from '../CellMenu'
 
 export const useCellMenu = () => {

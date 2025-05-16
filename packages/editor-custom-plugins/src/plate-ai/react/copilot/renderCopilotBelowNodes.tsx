@@ -1,22 +1,24 @@
-'use client'
+'use client';
 
-import React from 'react'
+import React from 'react';
+
 import {
-  getEditorPlugin,
   type RenderNodeWrapperProps,
-} from '@udecode/plate/react'
-import type { CopilotPluginConfig } from './CopilotPlugin'
+  getEditorPlugin,
+} from '@udecode/plate/react';
+
+import type { CopilotPluginConfig } from './CopilotPlugin';
 
 export const renderCopilotBelowNodes = ({
   editor,
 }: RenderNodeWrapperProps<CopilotPluginConfig>) => {
   const copilot = getEditorPlugin<CopilotPluginConfig>(editor, {
     key: 'copilot',
-  })
+  });
 
-  const { renderGhostText: GhostText } = copilot.getOptions()
+  const { renderGhostText: GhostText } = copilot.getOptions();
 
-  if (!GhostText) return
+  if (!GhostText) return;
 
   return ({ children }: { children: React.ReactNode }) => {
     return (
@@ -25,6 +27,6 @@ export const renderCopilotBelowNodes = ({
 
         <GhostText />
       </React.Fragment>
-    )
-  }
-}
+    );
+  };
+};

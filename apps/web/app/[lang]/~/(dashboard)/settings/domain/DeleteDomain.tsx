@@ -1,9 +1,9 @@
 'use client'
 
-import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
-import { Button } from '@penx/uikit/button'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { api } from '@penx/trpc-client'
+import { Button } from '@penx/uikit/button'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 
 export default function DeleteDomain({ domain }: { domain: string }) {
   const { refetch } = useQuerySite()

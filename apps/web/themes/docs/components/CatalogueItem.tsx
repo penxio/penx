@@ -1,6 +1,7 @@
 'use client'
 
 import { forwardRef, useMemo } from 'react'
+import { Emoji, EmojiStyle } from 'emoji-picker-react'
 import { useMobileSidebarSheet } from '@penx/components/useMobileSidebarSheet'
 import { Link } from '@penx/libs/i18n'
 import {
@@ -9,7 +10,6 @@ import {
   ICatalogueNode,
 } from '@penx/model-type'
 import { cn } from '@penx/utils'
-import { Emoji, EmojiStyle } from 'emoji-picker-react'
 
 interface CatalogueItemProps {
   depth: number

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
-import { Button } from '@penx/uikit/button'
 import { FileUp, Loader2 } from 'lucide-react'
+import { Button } from '@penx/uikit/button'
 
 interface ImportTabProps {
   isImporting: boolean

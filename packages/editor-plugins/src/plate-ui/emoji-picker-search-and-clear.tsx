@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@udecode/cn'
-import type { UseEmojiPickerType } from '@udecode/plate-emoji/react'
 import { Button } from './button'
+import { cn } from '@penx/utils'
+import type { UseEmojiPickerType } from '@udecode/plate-emoji/react'
 import { emojiSearchIcons } from './emoji-icons'
 
 export type EmojiPickerSearchAndClearProps = Pick<

@@ -1,28 +1,30 @@
 'use client'
 
-import React from 'react'
-import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
-import { SuggestionPlugin } from '@udecode/plate-suggestion/react'
-import {
-  useEditorRef,
-  usePlateState,
-  usePluginOption,
-} from '@udecode/plate/react'
-import { Eye, Pen, PencilLineIcon } from 'lucide-react'
+import * as React from 'react'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-  useOpenState,
 } from './dropdown-menu'
+import {
+  DropdownMenuItemIndicator,
+  type DropdownMenuProps,
+} from '@radix-ui/react-dropdown-menu'
+import { SuggestionPlugin } from '@udecode/plate-suggestion/react'
+import {
+  useEditorRef,
+  usePlateState,
+  usePluginOption,
+} from '@udecode/plate/react'
+import { CheckIcon, EyeIcon, PencilLineIcon, PenIcon } from 'lucide-react'
 import { ToolbarButton } from './toolbar'
 
 export function ModeDropdownMenu(props: DropdownMenuProps) {
   const editor = useEditorRef()
   const [readOnly, setReadOnly] = usePlateState('readOnly')
-  const openState = useOpenState()
+  const [open, setOpen] = React.useState(false)
 
   const isSuggesting = usePluginOption(SuggestionPlugin, 'isSuggesting')
 
@@ -32,36 +34,27 @@ export function ModeDropdownMenu(props: DropdownMenuProps) {
 
   if (isSuggesting) value = 'suggestion'
 
-  const item: any = {
-    editing: (
-      <>
-        <Pen />
-        <span className="hidden lg:inline">Editing</span>
-      </>
-    ),
-    suggestion: (
-      <>
-        <PencilLineIcon />
-        <span className="hidden lg:inline">Suggestion</span>
-      </>
-    ),
-    viewing: (
-      <>
-        <Eye />
-        <span className="hidden lg:inline">Viewing</span>
-      </>
-    ),
+  const item: Record<string, { icon: React.ReactNode; label: string }> = {
+    editing: {
+      icon: <PenIcon />,
+      label: 'Editing',
+    },
+    suggestion: {
+      icon: <PencilLineIcon />,
+      label: 'Suggestion',
+    },
+    viewing: {
+      icon: <EyeIcon />,
+      label: 'Viewing',
+    },
   }
 
   return (
-    <DropdownMenu modal={false} {...openState} {...props}>
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false} {...props}>
       <DropdownMenuTrigger asChild>
-        <ToolbarButton
-          pressed={openState.open}
-          tooltip="Editing mode"
-          isDropdown
-        >
-          {item[value]}
+        <ToolbarButton pressed={open} tooltip="Editing mode" isDropdown>
+          {item[value].icon}
+          <span className="hidden lg:inline">{item[value].label}</span>
         </ToolbarButton>
       </DropdownMenuTrigger>
 
@@ -92,19 +85,44 @@ export function ModeDropdownMenu(props: DropdownMenuProps) {
             }
           }}
         >
-          <DropdownMenuRadioItem value="editing">
-            {item.editing}
+          <DropdownMenuRadioItem
+            className="*:first:[span]:hidden *:[svg]:text-muted-foreground pl-2"
+            value="editing"
+          >
+            <Indicator />
+            {item.editing.icon}
+            {item.editing.label}
           </DropdownMenuRadioItem>
 
-          <DropdownMenuRadioItem value="viewing">
-            {item.viewing}
+          <DropdownMenuRadioItem
+            className="*:first:[span]:hidden *:[svg]:text-muted-foreground pl-2"
+            value="viewing"
+          >
+            <Indicator />
+            {item.viewing.icon}
+            {item.viewing.label}
           </DropdownMenuRadioItem>
 
-          <DropdownMenuRadioItem value="suggestion">
-            {item.suggestion}
+          <DropdownMenuRadioItem
+            className="*:first:[span]:hidden *:[svg]:text-muted-foreground pl-2"
+            value="suggestion"
+          >
+            <Indicator />
+            {item.suggestion.icon}
+            {item.suggestion.label}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
+  )
+}
+
+function Indicator() {
+  return (
+    <span className="pointer-events-none absolute right-2 flex size-3.5 items-center justify-center">
+      <DropdownMenuItemIndicator>
+        <CheckIcon />
+      </DropdownMenuItemIndicator>
+    </span>
   )
 }

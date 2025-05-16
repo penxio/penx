@@ -1,7 +1,7 @@
 'use client'
 
-import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { ComponentIcon, SettingsIcon } from 'lucide-react'
+import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { BarType, useDesignContext } from './hooks/DesignContext'
 
 export function BarToggle() {

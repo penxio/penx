@@ -1,7 +1,7 @@
-import { prisma } from '@penx/db'
-import { Theme } from '@penx/db/client'
 import Redis from 'ioredis'
 import { z } from 'zod'
+import { prisma } from '@penx/db'
+import { Theme } from '@penx/db/client'
 import { getTokenByInstallationId } from '../lib/getTokenByInstallationId'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 

@@ -2,8 +2,7 @@
 
 import { CatalogueNode, CatalogueTree } from '@/lib/catalogue'
 import { Link } from '@penx/libs/i18n'
-import { AreaWithCreations, Site } from '@penx/types'
-import { Widget } from '@penx/types'
+import { AreaWithCreations, Site, Widget } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
 import { Item } from './Item'
 

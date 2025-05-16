@@ -1,6 +1,5 @@
 'use client'
 
-import { ViewType } from '@penx/types'
 import {
   CalendarDays,
   Home,
@@ -9,6 +8,7 @@ import {
   List,
   Table,
 } from 'lucide-react'
+import { ViewType } from '@penx/types'
 
 interface Props {
   index?: number

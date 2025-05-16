@@ -1,19 +1,14 @@
-import React from 'react'
-import { cn } from '@udecode/cn'
+import * as React from 'react'
 import type { SlateElementProps } from '@udecode/plate'
 import { SlateElement } from '@udecode/plate'
 import type { TFileElement } from '@udecode/plate-media'
 import { FileUp } from 'lucide-react'
 
-export const MediaFileElementStatic = ({
-  children,
-  className,
-  ...props
-}: SlateElementProps) => {
-  const { name, url } = props.element as TFileElement
+export function MediaFileElementStatic(props: SlateElementProps<TFileElement>) {
+  const { name, url } = props.element
 
   return (
-    <SlateElement className={cn(className, 'my-px rounded-sm')} {...props}>
+    <SlateElement className="my-px rounded-sm" {...props}>
       <a
         className="hover:bg-muted group relative m-0 flex cursor-pointer items-center rounded px-0.5 py-[3px]"
         contentEditable={false}
@@ -25,20 +20,10 @@ export const MediaFileElementStatic = ({
       >
         <div className="flex items-center gap-1 p-1">
           <FileUp className="size-5" />
-
           <div>{name}</div>
         </div>
-
-        {/* <Caption align="left">
-              <CaptionTextarea
-                className="text-left"
-                readOnly={readOnly}
-                placeholder="Write a caption..."
-              />
-            </Caption> */}
       </a>
-
-      {children}
+      {props.children}
     </SlateElement>
   )
 }

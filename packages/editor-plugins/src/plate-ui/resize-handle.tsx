@@ -1,13 +1,14 @@
 'use client'
 
-import React from 'react'
-import { cn, createPrimitiveElement, withRef, withVariants } from '@udecode/cn'
+import * as React from 'react'
+import { cn } from '@penx/utils'
 import {
   Resizable as ResizablePrimitive,
   useResizeHandle,
   useResizeHandleState,
   type ResizeHandle as ResizeHandlePrimitive,
 } from '@udecode/plate-resizable'
+import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 
 export const mediaResizeHandleVariants = cva(
@@ -36,30 +37,27 @@ const resizeHandleVariants = cva(cn('absolute z-40'), {
   },
 })
 
-const ResizeHandleVariants = withVariants(
-  createPrimitiveElement('div'),
-  resizeHandleVariants,
-  ['direction'],
-)
+export function ResizeHandle({
+  className,
+  direction,
+  options,
+  ...props
+}: React.ComponentProps<typeof ResizeHandlePrimitive> &
+  VariantProps<typeof resizeHandleVariants>) {
+  const state = useResizeHandleState(options ?? {})
+  const resizeHandle = useResizeHandle(state)
 
-export const ResizeHandle = withRef<typeof ResizeHandlePrimitive>(
-  ({ options, ...props }, ref) => {
-    const state = useResizeHandleState(options ?? {})
-    const resizeHandle = useResizeHandle(state)
+  if (state.readOnly) return null
 
-    if (state.readOnly) return null
-
-    return (
-      <ResizeHandleVariants
-        ref={ref}
-        data-resizing={state.isResizing}
-        direction={options?.direction}
-        {...resizeHandle.props}
-        {...props}
-      />
-    )
-  },
-)
+  return (
+    <div
+      className={cn(resizeHandleVariants({ direction }), className)}
+      data-resizing={state.isResizing}
+      {...resizeHandle.props}
+      {...props}
+    />
+  )
+}
 
 const resizableVariants = cva('', {
   variants: {
@@ -71,6 +69,16 @@ const resizableVariants = cva('', {
   },
 })
 
-export const Resizable = withVariants(ResizablePrimitive, resizableVariants, [
-  'align',
-])
+export function Resizable({
+  align,
+  className,
+  ...props
+}: React.ComponentProps<typeof ResizablePrimitive> &
+  VariantProps<typeof resizableVariants>) {
+  return (
+    <ResizablePrimitive
+      {...props}
+      className={cn(resizableVariants({ align }), className)}
+    />
+  )
+}

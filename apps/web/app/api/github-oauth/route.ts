@@ -1,6 +1,6 @@
-import { prisma } from '@penx/db'
 import { OAuthApp } from '@octokit/oauth-app'
 import { NextResponse } from 'next/server'
+import { prisma } from '@penx/db'
 
 const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID!
 const clientSecret = process.env.GITHUB_CLIENT_SECRET!

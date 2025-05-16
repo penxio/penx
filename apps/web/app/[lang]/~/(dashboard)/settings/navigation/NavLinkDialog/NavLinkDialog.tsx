@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/react'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -8,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/dialog'
-import { Trans } from '@lingui/react'
 import { NavLinkForm } from './NavLinkForm'
 import { useNavLinkDialog } from './useNavLinkDialog'
 

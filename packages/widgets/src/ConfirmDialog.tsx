@@ -3,7 +3,6 @@
 import * as React from 'react'
 import { Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -16,6 +15,7 @@ import {
   AlertDialogTrigger,
 } from '@penx/uikit/alert-dialog'
 import { Button } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import {
   Tooltip,
   TooltipContent,

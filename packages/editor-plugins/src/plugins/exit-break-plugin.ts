@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { ExitBreakPlugin } from '@udecode/plate-break/react'
-import { HEADING_LEVELS } from '@udecode/plate-heading'
+import { ExitBreakPlugin } from '@udecode/plate-break/react';
+import { HEADING_LEVELS } from '@udecode/plate-heading';
 
 export const exitBreakPlugin = ExitBreakPlugin.configure({
   options: {
@@ -25,4 +25,4 @@ export const exitBreakPlugin = ExitBreakPlugin.configure({
       },
     ],
   },
-})
+});

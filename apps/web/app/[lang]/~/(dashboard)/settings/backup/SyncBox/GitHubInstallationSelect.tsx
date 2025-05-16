@@ -19,7 +19,7 @@ interface Props {
 }
 
 export function GithubInstallationSelect({ token, value, onChange }: Props) {
-  const {site} = useQuerySite()
+  const { site } = useQuerySite()
   const { data: installations, isLoading: isLoadInstallations } =
     trpc.github.appInstallations.useQuery({
       token,

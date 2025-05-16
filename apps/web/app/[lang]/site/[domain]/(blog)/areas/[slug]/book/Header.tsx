@@ -1,8 +1,8 @@
-import { Profile } from '@penx/components/Profile'
 import { MobileSidebarSheet } from '@penx/components/MobileSidebarSheet'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Profile } from '@penx/components/Profile'
 import { Link } from '@penx/libs/i18n'
 import { AreaWithCreations, Site } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
 import { Sidebar } from './Sidebar'
 

@@ -1,7 +1,7 @@
 'use client'
 
-import { Link } from '@penx/libs/i18n'
 import { useSearchParams } from 'next/navigation'
+import { Link } from '@penx/libs/i18n'
 
 export function GoBackButton() {
   const searchParams = useSearchParams()

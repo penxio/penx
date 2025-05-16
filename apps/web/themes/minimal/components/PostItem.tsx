@@ -1,10 +1,10 @@
-import { PlateEditor } from '@penx/editor/plate-editor'
+import { PodcastIcon } from 'lucide-react'
 import { Image } from '@penx/components/Image'
 import { PodcastTips } from '@penx/components/PodcastTips'
+import { PlateEditor } from '@penx/editor/plate-editor'
 import { Link } from '@penx/libs/i18n'
 import { Creation, CreationType } from '@penx/types'
 import { formatDate } from '@penx/utils'
-import { PodcastIcon } from 'lucide-react'
 
 interface PostItemProps {
   creation: Creation

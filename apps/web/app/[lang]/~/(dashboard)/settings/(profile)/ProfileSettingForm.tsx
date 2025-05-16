@@ -2,9 +2,12 @@
 
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
+import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { LoadingDots } from '@penx/uikit/loading-dots'
 import { useSession } from '@penx/session'
+import { api, trpc } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import {
@@ -17,12 +20,9 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Textarea } from '@penx/uikit/textarea'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { api, trpc } from '@penx/trpc-client'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { toast } from 'sonner'
-import { z } from 'zod'
 
 const FormSchema = z.object({
   image: z.string().min(1, { message: 'Please upload your avatar' }),

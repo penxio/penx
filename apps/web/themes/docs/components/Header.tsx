@@ -1,10 +1,10 @@
-import { Profile } from '@penx/components/Profile'
 import { MobileSidebarSheet } from '@penx/components/MobileSidebarSheet'
 import { Navigation } from '@penx/components/Navigation'
+import { Profile } from '@penx/components/Profile'
 import { SocialNav } from '@penx/components/SocialNav'
-import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Link } from '@penx/libs/i18n'
 import { Site } from '@penx/types'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
 import { Sidebar } from './Sidebar'
 

@@ -1,19 +1,14 @@
 import { Dispatch, SetStateAction, useState } from 'react'
-import { Input } from '@penx/uikit/input'
-import { MenuItem } from '@penx/uikit/menu'
-import { Menu } from '@penx/uikit/menu'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@penx/uikit/popover'
-import { Separator } from '@penx/uikit/separator'
-import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
-import { bgColorMaps, textColorMaps } from '@penx/libs/color-helper'
-import { cn } from '@penx/utils'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { PenLine } from 'lucide-react'
 import { toast } from 'sonner'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
+import { bgColorMaps, textColorMaps } from '@penx/libs/color-helper'
+import { Input } from '@penx/uikit/input'
+import { Menu, MenuItem } from '@penx/uikit/menu'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { Separator } from '@penx/uikit/separator'
+import { cn } from '@penx/utils'
 import { useDatabaseContext } from './DatabaseProvider'
 
 function ColorSelector({

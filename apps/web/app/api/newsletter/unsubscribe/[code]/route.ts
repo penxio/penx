@@ -1,6 +1,6 @@
+import { NextResponse } from 'next/server'
 import { prisma } from '@penx/db'
 import { SubscriberStatus } from '@penx/db/client'
-import { NextResponse } from 'next/server'
 
 export async function GET(
   request: Request,

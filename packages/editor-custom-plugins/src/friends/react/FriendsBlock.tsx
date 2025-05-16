@@ -1,8 +1,8 @@
+import { ArrowUpRight } from 'lucide-react'
+import { Friend } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/badge'
-import { Friend } from '@penx/types'
 import { cn, getUrl } from '@penx/utils'
-import { ArrowUpRight } from 'lucide-react'
 import { SubmitFriendLinkDialog } from './SubmitFriendLinkDialog/SubmitFriendLinkDialog'
 
 interface Props {

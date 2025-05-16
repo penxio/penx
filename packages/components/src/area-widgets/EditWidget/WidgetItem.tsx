@@ -96,7 +96,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             'shadow-2xs group/widget relative flex flex-col rounded-md bg-white dark:bg-[#181818]',
             isDragging && 'bg-foreground/6 opacity-50',
             isDragging && 'z-[1000000]',
-            dragOverlay && 'shadow text-foreground',
+            dragOverlay && 'text-foreground shadow',
           )}
           {...rest}
         >

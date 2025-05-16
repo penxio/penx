@@ -1,15 +1,16 @@
-import type { TElement } from '@udecode/plate'
-import { serializeMd, serializeMdNodes } from '@udecode/plate-markdown'
-import { BlockSelectionPlugin } from '@udecode/plate-selection/react'
-import type { PlateEditor } from '@udecode/plate/react'
+import type { TElement } from '@udecode/plate';
+import type { PlateEditor } from '@udecode/plate/react';
+
+import { serializeMd } from '@udecode/plate-markdown';
+import { BlockSelectionPlugin } from '@udecode/plate-selection/react';
 
 // Internal
 export const getMarkdown = (
   editor: PlateEditor,
-  type: 'block' | 'editor' | 'selection',
+  type: 'block' | 'editor' | 'selection'
 ) => {
   if (type === 'editor') {
-    return serializeMd(editor)
+    return serializeMd(editor);
   }
   if (type === 'block') {
     const blocks = editor.getOption(BlockSelectionPlugin, 'isSelectingSome')
@@ -17,14 +18,14 @@ export const getMarkdown = (
       : editor.api.nodes({
           mode: 'highest',
           match: (n) => editor.api.isBlock(n),
-        })
+        });
 
-    const nodes = Array.from(blocks, (entry) => entry[0])
+    const nodes = Array.from(blocks, (entry) => entry[0]);
 
-    return serializeMdNodes(nodes as any)
+    return serializeMd(editor, { value: nodes });
   }
   if (type === 'selection') {
-    const fragment = editor.api.fragment<TElement>()
+    const fragment = editor.api.fragment<TElement>();
 
     // Remove any block formatting
     if (fragment.length === 1) {
@@ -33,13 +34,13 @@ export const getMarkdown = (
           children: fragment[0].children,
           type: 'p',
         },
-      ]
+      ];
 
-      return serializeMdNodes(modifiedFragment)
+      return serializeMd(editor, { value: modifiedFragment });
     }
 
-    return serializeMdNodes(fragment)
+    return serializeMd(editor, { value: fragment });
   }
 
-  return ''
-}
+  return '';
+};
