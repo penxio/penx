@@ -193,11 +193,7 @@ export const serverSideEditor = createSlateEditor({
     BaseDatePlugin,
     BaseEquationPlugin,
     BaseInlineEquationPlugin,
-    BaseCodeBlockPlugin.configure({
-      options: {
-        prism: Prism,
-      },
-    }),
+    BaseCodeBlockPlugin,
     BaseIndentPlugin.extend({
       inject: {
         targetPlugins: [

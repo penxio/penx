@@ -1,5 +1,14 @@
 import { LLMProviderType } from '@penx/types'
 
+export enum AIProviderType {
+  PERPLEXITY = 'PERPLEXITY',
+  DEEPSEEK = 'DEEPSEEK',
+  OPENAI = 'OPENAI',
+  ANTHROPIC = 'ANTHROPIC',
+  GOOGLE_AI = 'GOOGLE_AI',
+  XAI = 'XAI',
+}
+
 export type AIProvider = {
   type: LLMProviderType
   apiKey?: string

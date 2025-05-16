@@ -1,10 +1,6 @@
 'use client'
 
 import * as React from 'react'
-import { useChat } from '../hooks/use-chat'
-import { Command, CommandList } from './command'
-import { Popover, PopoverAnchor, PopoverContent } from './popover'
-import { cn } from '@penx/utils'
 import { isHotkey, type NodeEntry } from '@udecode/plate'
 import {
   AIChatPlugin,
@@ -22,8 +18,12 @@ import {
 } from '@udecode/plate/react'
 import { Command as CommandPrimitive } from 'cmdk'
 import { Loader2Icon } from 'lucide-react'
+import { cn } from '@penx/utils'
+import { useChat } from '../hooks/use-chat'
 import { AIChatEditor } from './ai-chat-editor'
 import { AIMenuItems } from './ai-menu-items'
+import { Command, CommandList } from './command'
+import { Popover, PopoverAnchor, PopoverContent } from './popover'
 
 export function AIMenu() {
   const { api, editor } = useEditorPlugin(AIChatPlugin)
@@ -106,7 +106,7 @@ export function AIMenu() {
     api.aiChat.stop()
 
     // remove when you implement the route /api/ai/command
-    chat._abortFakeStream()
+    // chat._abortFakeStream()
   })
 
   const isLoading = status === 'streaming' || status === 'submitted'

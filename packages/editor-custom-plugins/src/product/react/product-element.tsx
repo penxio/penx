@@ -19,7 +19,7 @@ import { ProductCard } from './ProductCard'
 export const ProductElement = withRef<typeof PlateElement>((props, ref) => {
   // const editor = usePlateEditor()
   const editor = useSlate()
-  const { children, className, nodeProps, ...rest } = props
+  const { children, className, ...rest } = props
   const [value, setValue] = useState('')
 
   const { isPending, mutateAsync } = useMutation({
@@ -38,7 +38,6 @@ export const ProductElement = withRef<typeof PlateElement>((props, ref) => {
           className,
         )}
         {...rest}
-        contentEditable={false}
       >
         <div className="text-foreground/60 text-sm">Enter product ID</div>
         <div className="flex items-center gap-1">
@@ -78,7 +77,6 @@ export const ProductElement = withRef<typeof PlateElement>((props, ref) => {
       ref={ref}
       {...props}
       className={cn(props.className, className)}
-      contentEditable={false}
     >
       <ProductCard productId={props.element.productId as string} />
       {children}

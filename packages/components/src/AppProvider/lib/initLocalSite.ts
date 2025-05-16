@@ -31,7 +31,7 @@ export async function initLocalSite(uid?: string) {
         navLinks: defaultNavLinks,
         newsletterConfig: {},
         notificationConfig: {},
-        aiProviders: [],
+        aiSetting:{},
         repo: '',
         installationId: 0,
         balance: 0,

@@ -123,6 +123,7 @@ function PureMultimodalInput({
   const submitWithModel = useCallback(() => {
     handleSubmit(undefined, {
       experimental_attachments: attachments,
+      // @ts-ignore TODO:
       data: selectedProvider
         ? {
             provider: selectedProvider,

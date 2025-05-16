@@ -18,7 +18,7 @@ import { CampaignCard } from './CampaignCard'
 export const CampaignElement = withRef<typeof PlateElement>((props, ref) => {
   // const editor = usePlateEditor()
   const editor = useSlate()
-  const { children, className, nodeProps, ...rest } = props
+  const { children, className, ...rest } = props
   const [value, setValue] = useState('')
   const { isPending, mutateAsync } = useMutation({
     mutationKey: ['campaign'],
@@ -44,7 +44,6 @@ export const CampaignElement = withRef<typeof PlateElement>((props, ref) => {
           className,
         )}
         {...rest}
-        contentEditable={false}
       >
         <div className="text-foreground/80 text-sm">Enter product ID</div>
         <div className="flex items-center gap-1">
@@ -85,7 +84,6 @@ export const CampaignElement = withRef<typeof PlateElement>((props, ref) => {
       ref={ref}
       {...props}
       className={cn(props.className, 'flex justify-center py-2', className)}
-      contentEditable={false}
     >
       <CampaignCard campaignId={props.element.campaignId as string} />
       {children}

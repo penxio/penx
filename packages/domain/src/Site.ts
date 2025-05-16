@@ -40,8 +40,8 @@ export class Site {
     return this.props.config
   }
 
-  get aiProviders() {
-    return this.props.aiProviders
+  get aiSetting() {
+    return this.props.aiSetting
   }
 
   get createdAt() {

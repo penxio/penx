@@ -9,7 +9,7 @@ import { Link } from '@penx/libs/i18n'
 import { getBlockClassName } from '@penx/utils'
 
 export const SocialLinksElement = withRef<typeof PlateElement>((props, ref) => {
-  const { children, className, nodeProps, ...rest } = props
+  const { children, className, ...rest } = props
   const site = useSiteContext()
 
   return (
@@ -22,7 +22,6 @@ export const SocialLinksElement = withRef<typeof PlateElement>((props, ref) => {
         getBlockClassName(props),
         'flex items-center justify-center',
       )}
-      contentEditable={false}
     >
       {/* {Object.keys(site.socials as any).length > 0 ? (
         <SocialNav site={site as any} size={5} className="" />
