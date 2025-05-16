@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useImperativeHandle, useMemo, useRef } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import TextareaAutosize from 'react-textarea-autosize'
 import { useSearchParams } from 'next/navigation'
 import { Editor, Node } from 'slate'
@@ -23,6 +24,7 @@ import { CreationType, Panel } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
+import { Fallback, fallbackRender } from '../Fallback/Fallback'
 import { AddPropButton } from './AddPropButton'
 import { AudioCreationUpload } from './AudioCreationUpload'
 import { Authors } from './Authors'
@@ -38,15 +40,18 @@ import { Tags } from './Tags'
 interface Props {
   panel?: Panel
   className?: string
+  ref?: any
 }
 
-export function Creation({ panel, className }: Props) {
+export function Creation({ panel, className, ref }: Props) {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
   const isImage = creation.type === CreationType.IMAGE
   const { molds } = useMolds()
   const editorRef = useRef<Editor>(null)
+
+  useImperativeHandle(ref, () => editorRef.current)
 
   useEffect(() => {
     // console.log('=======>>>>>>editorRef:', editorRef.current)
@@ -100,15 +105,15 @@ export function Creation({ panel, className }: Props) {
 
   useEffect(() => {
     //
-    if (mold?.type === CreationType.NOTE) {
-      appEmitter.emit('FOCUS_EDITOR')
-    }
+    // if (mold?.type === CreationType.NOTE) {
+    //   appEmitter.emit('FOCUS_EDITOR')
+    // }
   }, [mold])
 
   // console.log('=========>>>>>>post:', post)
 
   return (
-    <>
+    <ErrorBoundary fallbackRender={fallbackRender}>
       <DeleteCreationDialog />
 
       <div
@@ -264,6 +269,6 @@ export function Creation({ panel, className }: Props) {
           </div>
         )}
       </div>
-    </>
+    </ErrorBoundary>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
   IonButton,
@@ -10,11 +11,30 @@ import {
   IonToolbar,
 } from '@ionic/react'
 
+const platform = Capacitor.getPlatform()
+
 export function PageEmailLogin() {
   return (
     <>
-      <IonHeader>
-        <IonToolbar>
+      <IonHeader
+        className={platform === 'android' ? 'safe-area' : ''}
+        style={
+          {
+            boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+          }
+        }
+      >
+        <IonToolbar
+          className="toolbar"
+          style={
+            {
+              '--border-width': 0,
+              // borderBottom: scrolled ? '1px solid #eeee' : 'none',
+              // borderBottom: 'none',
+              // border: 'none',
+            }
+          }
+        >
           <IonButtons slot="start">
             <IonBackButton></IonBackButton>
           </IonButtons>

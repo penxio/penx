@@ -1328,6 +1328,9 @@ importers:
       '@penx/editor-plugins':
         specifier: workspace:*
         version: link:../../packages/editor-plugins
+      '@penx/editor-transforms':
+        specifier: workspace:*
+        version: link:../../packages/editor-transforms
       '@penx/emitter':
         specifier: workspace:*
         version: link:../../packages/emitter

@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { CreationMenu } from '@/components/CreationMenu'
 import { MobileCreation } from '@/components/MobileCreation'
 import { Capacitor } from '@capacitor/core'
-import { OverlayEventDetail } from '@ionic/core'
 import {
   IonBackButton,
   IonButton,
@@ -13,10 +12,6 @@ import {
   IonModal,
   IonToolbar,
 } from '@ionic/react'
-import { XIcon } from 'lucide-react'
-import { appEmitter } from '@penx/emitter'
-import { useCreationId } from '@penx/hooks/useCreationId'
-import { ICreationNode } from '@penx/model-type'
 
 const platform = Capacitor.getPlatform()
 
@@ -65,13 +60,6 @@ export const PageCreation = ({
       </IonHeader>
       <IonContent className="ion-padding">
         <MobileCreation creationId={creationId} />
-        <IonFab
-          slot="fixed"
-          vertical="bottom"
-          className="flex w-full justify-center"
-        >
-          <div className="h-10 bg-amber-100">Hello world</div>
-        </IonFab>
       </IonContent>
     </>
   )

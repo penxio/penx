@@ -61,6 +61,7 @@
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/widgets": "workspace:*",
+    "@penx/editor-transforms": "workspace:*",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.4.0",

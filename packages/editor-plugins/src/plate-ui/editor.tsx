@@ -2,7 +2,11 @@
 
 import * as React from 'react'
 import type { PlateContentProps } from '@udecode/plate/react'
-import { PlateContainer, PlateContent } from '@udecode/plate/react'
+import {
+  PlateContainer,
+  PlateContent,
+  useEditorRef,
+} from '@udecode/plate/react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
 import { cn } from '@penx/utils'
@@ -96,9 +100,18 @@ export type EditorProps = PlateContentProps &
 
 export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
   ({ className, disabled, focused, variant, ...props }, ref) => {
+    const editor = useEditorRef()
     return (
       <PlateContent
         ref={ref}
+        onCompositionEnd={(event) => {
+          const HAS_INPUT_EVENTS_LEVEL_2 =
+            'InputEvent' in window && 'getTargetRanges' in InputEvent.prototype
+          const isSynthetic = !!event.nativeEvent
+          if (isSynthetic && HAS_INPUT_EVENTS_LEVEL_2) {
+            editor.tf.insertText(event.data)
+          }
+        }}
         className={cn(
           editorVariants({
             disabled,

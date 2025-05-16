@@ -14,8 +14,8 @@ const config: CapacitorConfig = {
     },
 
     Keyboard: {
-      resize: 'none',
-      // resize: 'ionic',
+      // resize: 'none',
+      resize: 'ionic',
     },
   },
 }

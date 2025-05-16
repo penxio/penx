@@ -76,7 +76,7 @@ const PageHome: React.FC = ({ nav }: any) => {
   }, [])
 
   return (
-    <IonPage className="">
+    <>
       <AreaDialog />
 
       {open && (
@@ -219,7 +219,7 @@ const PageHome: React.FC = ({ nav }: any) => {
           }, 0)
         }}
       />
-    </IonPage>
+    </>
   )
 }
 
