@@ -268,3 +268,97 @@ export const serverSideEditor = createSlateEditor({
     BaseBidirectionalLinkPlugin,
   ],
 }) as any
+
+export const createStaticEditor = (value: any) => {
+  return createSlateEditor({
+    plugins: [
+      MarkdownPlugin,
+      BaseColumnPlugin,
+      BaseColumnItemPlugin,
+      BaseTocPlugin,
+      BaseVideoPlugin,
+      BaseAudioPlugin,
+      BaseParagraphPlugin,
+      BaseHeadingPlugin,
+      BaseMediaEmbedPlugin,
+      BaseBoldPlugin,
+      BaseCodePlugin,
+      BaseItalicPlugin,
+      BaseStrikethroughPlugin,
+      BaseSubscriptPlugin,
+      BaseSuperscriptPlugin,
+      BaseUnderlinePlugin,
+      BaseBlockquotePlugin,
+      BaseDatePlugin,
+      BaseCodeBlockPlugin,
+      BaseIndentPlugin.extend({
+        inject: {
+          targetPlugins: [
+            BaseParagraphPlugin.key,
+            BaseBlockquotePlugin.key,
+            BaseCodeBlockPlugin.key,
+          ],
+        },
+      }),
+      BaseIndentListPlugin.extend({
+        inject: {
+          targetPlugins: [
+            BaseParagraphPlugin.key,
+            ...HEADING_LEVELS,
+            BaseBlockquotePlugin.key,
+            BaseCodeBlockPlugin.key,
+            BaseTogglePlugin.key,
+          ],
+        },
+        options: {
+          listStyleTypes: {
+            fire: {
+              liComponent: FireLiComponent,
+              markerComponent: FireMarker,
+              type: 'fire',
+            },
+            todo: {
+              liComponent: TodoLiStatic,
+              markerComponent: TodoMarkerStatic,
+              type: 'todo',
+            },
+          },
+        },
+      }),
+      BaseLinkPlugin,
+      BaseTableRowPlugin,
+      BaseTablePlugin,
+      BaseTableCellPlugin,
+      BaseHorizontalRulePlugin,
+      BaseFontColorPlugin,
+      BaseFontBackgroundColorPlugin,
+      BaseFontSizePlugin,
+      BaseKbdPlugin,
+      BaseAlignPlugin.extend({
+        inject: {
+          targetPlugins: [
+            BaseParagraphPlugin.key,
+            BaseMediaEmbedPlugin.key,
+            ...HEADING_LEVELS,
+            BaseImagePlugin.key,
+          ],
+        },
+      }),
+      BaseLineHeightPlugin,
+      BaseHighlightPlugin,
+      BaseFilePlugin,
+      BaseImagePlugin,
+      BaseMentionPlugin,
+      BaseCommentsPlugin,
+      BaseTogglePlugin,
+      BaseEquationPlugin,
+      BaseInlineEquationPlugin,
+    ],
+    value,
+  })
+}
+
+export const serializeMarkdown = (value: any) => {
+  const editor = createStaticEditor(value)
+  return editor.api.markdown.serialize()
+}

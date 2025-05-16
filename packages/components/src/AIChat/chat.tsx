@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useChat } from '@ai-sdk/react'
 import type { Attachment, UIMessage } from 'ai'
 import { useSearchParams } from 'next/navigation'
@@ -29,20 +29,33 @@ interface ApplicationError extends Error {
 export function Chat({
   id,
   initialMessages,
-  selectedChatModel,
-  selectedVisibilityType,
   isReadonly,
   session,
 }: {
   id: string
   initialMessages: Array<UIMessage>
-  selectedChatModel: string
-  selectedVisibilityType: VisibilityType
   isReadonly: boolean
   session: SessionData
 }) {
   const { site } = useMySite()
-  const provider = site.aiProviders?.find((p) => p.enabled)
+
+  const provider = site?.props?.aiSetting?.providers?.[0]
+
+  // Track the selected provider and model
+  const [selectedProvider, setSelectedProvider] = useState(provider?.type || '')
+  const [selectedModel, setSelectedModel] = useState(
+    provider?.defaultModel || '',
+  )
+
+  // Refs to store latest values for the closure in generateId
+  const selectedProviderRef = useRef(selectedProvider)
+  const selectedModelRef = useRef(selectedModel)
+
+  // Update refs when state changes
+  useEffect(() => {
+    selectedProviderRef.current = selectedProvider
+    selectedModelRef.current = selectedModel
+  }, [selectedProvider, selectedModel])
 
   const {
     messages,
@@ -60,14 +73,22 @@ export function Chat({
     experimental_throttle: 100,
     sendExtraMessageFields: true,
     generateId: uniqueId,
-    experimental_prepareRequestBody: (body) => ({
-      id,
-      message: body.messages.at(-1),
-      selectedChatModel: '',
-      provider: provider?.type,
-      apiKey: provider?.apiKey,
-      baseURL: provider?.baseURL,
-    }),
+    experimental_prepareRequestBody: (body) => {
+      // Find the current provider based on selected type
+      const currentProvider = site?.props?.aiSetting?.providers?.find(
+        (p) => p.type === selectedProviderRef.current,
+      )
+
+      return {
+        id,
+        message: body.messages.at(-1),
+        selectedChatModel:
+          selectedModelRef.current || currentProvider?.defaultModel,
+        provider: selectedProviderRef.current || provider?.type,
+        apiKey: currentProvider?.apiKey || provider?.apiKey,
+        baseURL: currentProvider?.baseURL || provider?.baseURL,
+      }
+    },
     onFinish: async (message, options) => {
       await localDB.message.add({
         id: uniqueId(),
@@ -96,7 +117,7 @@ export function Chat({
       })
       if (error.message === 'Please provide an API key') {
         store.panels.addPanel({
-          type: PanelType.AI_PROVIDERS,
+          type: PanelType.AI_SETTING,
         })
 
         const messages = await queryMessages(session.siteId)
@@ -109,6 +130,15 @@ export function Chat({
 
   const [attachments, setAttachments] = useState<Array<Attachment>>([])
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible)
+
+  // Handle provider and model selection
+  const handleProviderChange = (providerType: string) => {
+    setSelectedProvider(providerType)
+  }
+
+  const handleModelChange = (modelId: string) => {
+    setSelectedModel(modelId)
+  }
 
   return (
     <>
@@ -137,26 +167,14 @@ export function Chat({
               messages={messages}
               setMessages={setMessages}
               append={append}
+              selectedProvider={selectedProvider}
+              selectedModel={selectedModel}
+              onProviderChange={handleProviderChange}
+              onModelChange={handleModelChange}
             />
           )}
         </form>
       </div>
-
-      {/* <Artifact
-        chatId={id}
-        input={input}
-        setInput={setInput}
-        handleSubmit={handleSubmit}
-        status={status}
-        stop={stop}
-        attachments={attachments}
-        setAttachments={setAttachments}
-        append={append}
-        messages={messages}
-        setMessages={setMessages}
-        reload={reload}
-        isReadonly={isReadonly}
-      /> */}
     </>
   )
 }

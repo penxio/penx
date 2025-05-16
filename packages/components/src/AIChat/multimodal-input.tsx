@@ -25,7 +25,7 @@ import { Textarea } from '@penx/uikit/textarea'
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
 import { KnowledgeSourcePicker } from './knowledge-source-picker'
 import { PreviewAttachment } from './preview-attachment'
-import { SuggestedActions } from './suggested-actions'
+import { ProviderSelector } from './provider-selector'
 
 function PureMultimodalInput({
   chatId,
@@ -40,6 +40,10 @@ function PureMultimodalInput({
   append,
   handleSubmit,
   className,
+  selectedProvider,
+  selectedModel,
+  onProviderChange,
+  onModelChange,
 }: {
   chatId: string
   input: UseChatHelpers['input']
@@ -53,9 +57,22 @@ function PureMultimodalInput({
   append: UseChatHelpers['append']
   handleSubmit: UseChatHelpers['handleSubmit']
   className?: string
+  selectedProvider?: string
+  selectedModel?: string
+  onProviderChange?: (providerType: string) => void
+  onModelChange?: (modelId: string) => void
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const { width } = useWindowSize()
+
+  const handleProviderChange = (providerType: string) => {
+    onProviderChange?.(providerType)
+  }
+
+  const handleModelChange = (modelId: string) => {
+    onModelChange?.(modelId)
+    console.log('Selected model:', modelId)
+  }
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -103,9 +120,15 @@ function PureMultimodalInput({
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [uploadQueue, setUploadQueue] = useState<Array<string>>([])
 
-  const submitForm = useCallback(() => {
+  const submitWithModel = useCallback(() => {
     handleSubmit(undefined, {
       experimental_attachments: attachments,
+      data: selectedProvider
+        ? {
+            provider: selectedProvider,
+            model: selectedModel,
+          }
+        : undefined,
     })
 
     setAttachments([])
@@ -122,6 +145,8 @@ function PureMultimodalInput({
     setLocalStorageInput,
     width,
     chatId,
+    selectedProvider,
+    selectedModel,
   ])
 
   const uploadFile = async (file: File) => {
@@ -179,12 +204,6 @@ function PureMultimodalInput({
 
   return (
     <div className="relative flex w-full flex-col gap-4">
-      {/* {messages.length === 0 &&
-        attachments.length === 0 &&
-        uploadQueue.length === 0 && (
-          <SuggestedActions append={append} chatId={chatId} />
-        )} */}
-
       <input
         type="file"
         className="pointer-events-none fixed -left-4 -top-4 size-0.5 opacity-0"
@@ -238,7 +257,7 @@ function PureMultimodalInput({
             if (status !== 'ready') {
               toast.error('Please wait for the model to finish its response!')
             } else {
-              submitForm()
+              submitWithModel()
             }
           }
         }}
@@ -252,12 +271,16 @@ function PureMultimodalInput({
           type="button"
           onClick={() => {
             store.panels.addPanel({
-              type: PanelType.AI_PROVIDERS,
+              type: PanelType.AI_SETTING,
             })
           }}
         >
           <CogIcon size={16} />
         </Button>
+        <ProviderSelector
+          onProviderChange={onProviderChange}
+          onModelChange={onModelChange}
+        />
       </div>
       <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
         <KnowledgeSourcePicker />
@@ -267,7 +290,7 @@ function PureMultimodalInput({
           ) : (
             <SendButton
               input={input}
-              submitForm={submitForm}
+              submitForm={submitWithModel}
               uploadQueue={uploadQueue}
             />
           )}

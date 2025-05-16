@@ -5,18 +5,9 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import { createOpenAI } from '@ai-sdk/openai'
 import { createPerplexity, perplexity } from '@ai-sdk/perplexity'
 import { geolocation } from '@vercel/functions'
-import {
-  appendClientMessage,
-  appendResponseMessages,
-  convertToCoreMessages,
-  createDataStreamResponse,
-  smoothStream,
-  streamText,
-} from 'ai'
+import { appendClientMessage, streamText } from 'ai'
 import { NextResponse } from 'next/server'
-import { isProd } from '@penx/constants'
-import { AIProviderType, IMessage } from '@penx/model-type'
-import { uniqueId } from '@penx/unique-id'
+import { LLMProviderTypeEnum } from '@penx/types'
 import { RequestHints, systemPrompt } from './prompts'
 
 export const maxDuration = 60
@@ -41,10 +32,10 @@ export async function POST(request: Request) {
   const input: Input = await request.json()
 
   try {
-    const { id, message, selectedChatModel, system } = input
+    const { id, message, provider, selectedChatModel, system } = input
 
-    if (!input.apiKey) {
-      throw new Error('Please provide an API key')
+    if (!provider) {
+      throw new Error('Please select a provider')
     }
 
     const previousMessages: any[] = []
@@ -67,42 +58,53 @@ export async function POST(request: Request) {
       country,
     }
 
-    if (input.provider === AIProviderType.GOOGLE_AI) {
+    if (input.provider === LLMProviderTypeEnum.GOOGLE) {
       const google = createGoogleGenerativeAI({
         apiKey: input.apiKey || process.env.GOOGLE_AI_API_KEY,
       })
-      return generate(input, google('gemini-1.5-flash'))
+      return generate(
+        input,
+        google(input.selectedChatModel || 'gemini-1.5-flash'),
+      )
     }
 
-    if (input.provider === AIProviderType.DEEPSEEK) {
+    if (input.provider === LLMProviderTypeEnum.DEEPSEEK) {
       const deepseek = createDeepSeek({
         apiKey: input.apiKey,
       })
-      return generate(input, deepseek('deepseek-chat'))
+      return generate(
+        input,
+        deepseek(input.selectedChatModel || 'deepseek-chat'),
+      )
     }
 
-    if (input.provider === AIProviderType.ANTHROPIC) {
+    if (input.provider === LLMProviderTypeEnum.ANTHROPIC) {
       const anthropic = createAnthropic({
         apiKey: input.apiKey,
       })
 
-      return generate(input, anthropic('claude-3-haiku-20240307'))
+      return generate(
+        input,
+        anthropic(input.selectedChatModel || 'claude-3-haiku-20240307'),
+      )
     }
 
-    if (input.provider === AIProviderType.OPENAI) {
+    if (
+      input.provider === LLMProviderTypeEnum.OPENAI ||
+      input.provider === LLMProviderTypeEnum.OPENAI_COMPATIBLE
+    ) {
       const openai = createOpenAI({
         apiKey: input.apiKey,
         baseURL: input.baseURL,
       })
-      return generate(input, openai('gpt-4o-mini'))
+      return generate(input, openai(input.selectedChatModel || 'gpt-4o-mini'))
     }
 
-    if (input.provider === AIProviderType.PERPLEXITY) {
-      console.log('pp...:', process.env.PERPLEXITY_API_KEY)
+    if (input.provider === LLMProviderTypeEnum.PERPLEXITY) {
       const perplexity = createPerplexity({
         apiKey: input.apiKey,
       })
-      return generate(input, perplexity('sonar-pro'))
+      return generate(input, perplexity(input.selectedChatModel || 'sonar-pro'))
     }
   } catch (error) {
     console.log('====error:', error)
@@ -117,7 +119,7 @@ export async function POST(request: Request) {
 
 async function generate(input: Input, llm: any) {
   const {
-    provider = AIProviderType.OPENAI,
+    provider = LLMProviderTypeEnum.OPENAI,
     apiKey: key,
     system,
     message,

@@ -259,6 +259,7 @@ export enum PanelType {
   MANAGE_TAGS = 'MANAGE_TAGS',
   LOCAL_BACKUP = 'LOCAL_BACKUP',
   AI_PROVIDERS = 'AI_PROVIDERS',
+  AI_SETTING = 'AI_SETTING',
 }
 
 export type Panel = {

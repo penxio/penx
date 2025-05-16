@@ -20,12 +20,8 @@ export function PanelChat({ panel, index }: Props) {
   return (
     <Chat
       id={uniqueId()}
-      // panel={panel}
-      // index={index}
       initialMessages={data}
       session={session}
-      selectedChatModel={''}
-      selectedVisibilityType="private"
       isReadonly={false}
     />
   )

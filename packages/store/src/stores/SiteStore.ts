@@ -3,7 +3,7 @@ import { produce } from 'immer'
 import { atom } from 'jotai'
 import { ACTIVE_SITE } from '@penx/constants'
 import { localDB } from '@penx/local-db'
-import { AIProvider, ISiteNode } from '@penx/model-type'
+import { AIProvider, AISetting, ISiteNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
 export const siteAtom = atom<ISiteNode>(null as unknown as ISiteNode)
@@ -29,24 +29,56 @@ export class SiteStore {
   }
 
   async updateAIProvider(data: Partial<AIProvider>) {
+    // Ensure data is valid
+    if (!data || typeof data !== 'object') {
+      console.error('Invalid provider data')
+      return
+    }
+
+    // Ensure type is specified
+    if (!data.type) {
+      console.error('Provider type is required')
+      return
+    }
+
     const site = this.get()
     const newSite = produce(site, (draft) => {
-      if (!draft.props.aiProviders?.length) draft.props.aiProviders = []
-      const index = draft.props.aiProviders.findIndex(
-        (p) => p.type === data.type,
-      )
-      if (index === -1) {
-        draft.props.aiProviders.push(data as AIProvider)
-      } else {
-        draft.props.aiProviders[index] = {
-          ...draft.props.aiProviders[index],
-          ...data,
-        }
+      // Initialize aiSetting if it doesn't exist
+      if (!draft.props) {
+        draft.props = {} as ISiteNode['props']
       }
 
-      if (Reflect.has(data, 'enabled') && data.enabled) {
-        for (const item of draft.props.aiProviders) {
-          item.enabled = item.type === data.type
+      if (!draft.props.aiSetting) {
+        draft.props.aiSetting = {
+          providers: [],
+        } as AISetting
+      }
+
+      if (!draft.props.aiSetting.providers) {
+        draft.props.aiSetting.providers = []
+      }
+
+      // Check if a provider with the same type already exists
+      const index = draft.props.aiSetting.providers.findIndex(
+        (p) => p.type === data.type,
+      )
+
+      if (index === -1) {
+        // Create a new provider with all required fields
+        draft.props.aiSetting.providers.push({
+          type: data.type,
+          name: data.name || data.type,
+          apiKey: data.apiKey || '',
+          enabled: data.enabled !== undefined ? data.enabled : true,
+          availableModels: data.availableModels || [],
+          defaultModel: data.defaultModel || '',
+          baseURL: data.baseURL,
+        } as AIProvider)
+      } else {
+        // Update existing provider
+        draft.props.aiSetting.providers[index] = {
+          ...draft.props.aiSetting.providers[index],
+          ...data,
         }
       }
     })
@@ -56,7 +88,30 @@ export class SiteStore {
 
     await localDB.updateSiteProps(newSite.id, {
       ...site.props,
-      aiProviders: newSite.props.aiProviders,
+      aiSetting: newSite.props.aiSetting,
+    })
+  }
+
+  async deleteAIProvider(providerType: string) {
+    if (!providerType) {
+      console.error('Provider type is required for deletion')
+      return
+    }
+
+    const site = this.get()
+    const newSite = produce(site, (draft) => {
+      if (draft.props?.aiSetting?.providers) {
+        draft.props.aiSetting.providers =
+          draft.props.aiSetting.providers.filter((p) => p.type !== providerType)
+      }
+    })
+
+    this.set(newSite)
+    await this.save(newSite)
+
+    await localDB.updateSiteProps(newSite.id, {
+      ...site.props,
+      aiSetting: newSite.props.aiSetting,
     })
   }
 }

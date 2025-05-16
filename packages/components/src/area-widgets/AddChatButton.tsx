@@ -5,7 +5,8 @@ import { PlusIcon } from 'lucide-react'
 import { Area } from '@penx/db/client'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useMolds } from '@penx/hooks/useMolds'
-import { Widget } from '@penx/types'
+import { store } from '@penx/store'
+import { PanelType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
 
 export function AddChatButton({ widget }: Props) {
   const { molds } = useMolds()
-  const addCreation = useAddCreation()
+
   return (
     <Button
       variant="ghost"
@@ -24,8 +25,8 @@ export function AddChatButton({ widget }: Props) {
       onPointerDown={async (e) => {
         e.stopPropagation()
         e.preventDefault()
-        const mold = molds.find((mold) => mold.id === widget.moldId)!
-        addCreation({ type: mold.type })
+
+        store.panels.openWidgetPanel(widget)
       }}
     >
       <PlusIcon className="text-muted-foreground pointer-events-none size-4 transition-transform duration-200" />

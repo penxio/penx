@@ -1,19 +1,5 @@
-export enum AIProviderType {
-  PERPLEXITY = 'PERPLEXITY',
-  DEEPSEEK = 'DEEPSEEK',
-  OPENAI = 'OPENAI',
-  ANTHROPIC = 'ANTHROPIC',
-  GOOGLE_AI = 'GOOGLE_AI',
-  XAI = 'XAI',
-}
+import { AISetting } from './IAISetting'
 
-export type AIProvider = {
-  type: AIProviderType
-  enabled: boolean
-  apiKey?: string
-  baseURL?: string
-  [key: string]: any
-}
 export type Widget = {
   id: string
   type: string
@@ -81,7 +67,7 @@ export interface ISiteNode extends INode {
     navLinks: any
     newsletterConfig: any
     notificationConfig: any
-    aiProviders: AIProvider[]
+    aiSetting: AISetting
     repo: string
     installationId: number
     balance: any

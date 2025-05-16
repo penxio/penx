@@ -1,20 +1,3 @@
-export enum AIProviderType {
-  PERPLEXITY = 'PERPLEXITY',
-  DEEPSEEK = 'DEEPSEEK',
-  OPENAI = 'OPENAI',
-  ANTHROPIC = 'ANTHROPIC',
-  GOOGLE_AI = 'GOOGLE_AI',
-  XAI = 'XAI',
-}
-
-export type AIProvider = {
-  type: AIProviderType
-  enabled: boolean
-  apiKey?: string
-  baseURL?: string
-  [key: string]: any
-}
-
 export interface ISite {
   id: string
   name: string
@@ -41,7 +24,6 @@ export interface ISite {
   navLinks: any
   newsletterConfig: any
   notificationConfig: any
-  aiProviders: AIProvider[]
   repo: string
   installationId: number
   balance: any

@@ -16,6 +16,7 @@ import { cn } from '@penx/utils'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { QuickInput } from '../QuickInput'
+import { AddChatButton } from './AddChatButton'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'
 import { IsAllProvider } from './IsAllContext'
@@ -112,6 +113,10 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
         >
           {widget.type === WidgetType.MOLD && (
             <AddCreationButton area={area} widget={widget} />
+          )}
+
+          {widget.type === WidgetType.AI_CHAT && (
+            <AddChatButton widget={widget} />
           )}
 
           <ToggleButton area={area} widget={widget} />

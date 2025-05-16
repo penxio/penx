@@ -7,6 +7,7 @@ import { ClosePanelButton } from './ClosePanelButton'
 import { LocalBackup } from './panel-renderer/LocalBackup/LocalBackup'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
 import { PanelAIProviders } from './panel-renderer/PanelAIProviders'
+import { PanelAISetting } from './panel-renderer/PanelAISetting'
 import { PanelCreation } from './panel-renderer/PanelCreation'
 import { PanelHome } from './panel-renderer/PanelHome'
 import { PanelWidget } from './panel-renderer/PanelWidget'
@@ -46,8 +47,8 @@ export function PanelItem({
           <PanelHome index={index} panel={panel} />
         )}
 
-        {panel.type === PanelType.AI_PROVIDERS && (
-          <PanelAIProviders index={index} panel={panel} />
+        {panel.type === PanelType.AI_SETTING && (
+          <PanelAISetting index={index} panel={panel} />
         )}
 
         {panel.type === PanelType.MANAGE_TAGS && (
