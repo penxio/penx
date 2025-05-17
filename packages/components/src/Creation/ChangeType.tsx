@@ -4,19 +4,19 @@ import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { Creation } from '@penx/domain'
 import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
-import { MoldName } from '@penx/widgets/MoldName'
+import { StructName } from '@penx/widgets/StructName'
 
 export function ChangeType({ creation }: { creation: Creation }) {
-  const { molds } = useMolds()
+  const { structs } = useStructs()
   const [open, setOpen] = useState(false)
-  const mold = molds.find((m) => m.id === creation.moldId)
+  const struct = structs.find((m) => m.id === creation.structId)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -26,30 +26,30 @@ export function ChangeType({ creation }: { creation: Creation }) {
           variant="ghost"
           className="text-foreground/60 -ml-2 h-7 gap-1 rounded-full px-2 text-xs"
         >
-          <MoldName mold={mold!} />
+          <StructName struct={struct!} />
         </Button>
       </PopoverTrigger>
       <PopoverContent align="start" className="w-48 p-2">
         <div className="mb-1 pl-2 text-sm font-semibold">
           <Trans id="Change type"></Trans>
         </div>
-        {molds.map((mold) => {
+        {structs.map((struct) => {
           return (
             <Item
-              key={mold.id}
+              key={struct.id}
               className="flex gap-2"
               onClick={async () => {
                 setOpen(false)
                 updateCreation({
                   id: creation.id,
-                  type: mold.type,
-                  moldId: mold.id,
+                  type: struct.type,
+                  structId: struct.id,
                 })
               }}
             >
-              {getCreationIcon(mold.type)}
+              {getCreationIcon(struct.type)}
               <span>
-                <MoldName mold={mold!} />
+                <StructName struct={struct!} />
               </span>
             </Item>
           )

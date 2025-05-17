@@ -36,8 +36,8 @@ export class Creation {
     return this.raw.props.delivered
   }
 
-  get moldId(): string {
-    return this.raw.props.moldId
+  get structId(): string {
+    return this.raw.props.structId
   }
 
   get type(): string {

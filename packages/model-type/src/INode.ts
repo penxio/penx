@@ -4,7 +4,7 @@ export type Widget = {
   id: string
   type: string
   collapsed?: boolean
-  moldId?: string
+  structId?: string
   creationType?: string
 
   [key: string]: any
@@ -13,7 +13,7 @@ export type Widget = {
 export enum NodeType {
   SITE = 'SITE',
   AREA = 'AREA',
-  MOLD = 'MOLD',
+  STRUCT = 'STRUCT',
   TAG = 'TAG',
   CREATION_TAG = 'CREATION_TAG',
   INBOX = 'INBOX',
@@ -102,8 +102,8 @@ export function isAreaNode(n: any): n is IAreaNode {
   return n.type === NodeType.AREA
 }
 
-export interface IMoldNode extends INode {
-  type: NodeType.MOLD
+export interface IStructNode extends INode {
+  type: NodeType.STRUCT
   props: {
     name: string
     pluralName: string
@@ -114,8 +114,8 @@ export interface IMoldNode extends INode {
   }
 }
 
-export function isMoldNode(n: any): n is IMoldNode {
-  return n.type === NodeType.MOLD
+export function isStructNode(n: any): n is IStructNode {
+  return n.type === NodeType.STRUCT
 }
 
 export interface ITagNode extends INode {
@@ -173,7 +173,7 @@ export interface ICreationNode extends INode {
     archivedAt?: Date
     openedAt: Date
     areaId: string
-    moldId: string
+    structId: string
   }
 }
 

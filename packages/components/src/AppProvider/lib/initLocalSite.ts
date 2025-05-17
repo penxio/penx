@@ -1,9 +1,9 @@
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { AreaType, ChargeMode } from '@penx/db/client'
-import { getDefaultMolds } from '@penx/libs/getDefaultMolds'
+import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
-import { IMoldNode, ISiteNode, NodeType } from '@penx/model-type'
+import { IStructNode, ISiteNode, NodeType } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
 export async function initLocalSite(uid?: string) {
@@ -47,15 +47,15 @@ export async function initLocalSite(uid?: string) {
     } as ISiteNode)
 
     await localDB.node.bulkPut(
-      getDefaultMolds({
+      getDefaultStructs({
         siteId,
         userId,
       }),
     )
 
-    const molds = (await localDB.node
-      .where({ type: NodeType.MOLD, siteId })
-      .toArray()) as unknown as IMoldNode[]
+    const structs = (await localDB.node
+      .where({ type: NodeType.STRUCT, siteId })
+      .toArray()) as unknown as IStructNode[]
 
     await localDB.node.add({
       id: uniqueId(),
@@ -67,7 +67,7 @@ export async function initLocalSite(uid?: string) {
         about: JSON.stringify(editorDefaultValue),
         logo: '',
         chargeMode: ChargeMode.FREE,
-        widgets: getInitialWidgets(molds),
+        widgets: getInitialWidgets(structs),
         isGenesis: true,
         favorites: [],
       },

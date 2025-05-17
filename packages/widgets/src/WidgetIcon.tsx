@@ -8,14 +8,14 @@ import {
   StarIcon,
 } from 'lucide-react'
 import { WidgetType } from '@penx/constants'
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 
 interface Props {
   type: string
-  molds: Mold[]
+  structs: Struct[]
 }
 
-export function WidgetIcon({ type, molds }: Props) {
+export function WidgetIcon({ type, structs }: Props) {
   if (type === WidgetType.ALL_CREATIONS) {
     return <Rows4Icon size={16} />
   }

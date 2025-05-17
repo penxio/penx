@@ -15,7 +15,7 @@ import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { updateCreation } from '@penx/hooks/useCreation'
 import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
-import { useCreationMold } from '@penx/hooks/useCreationMold'
+import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { usePanels } from '@penx/hooks/usePanels'
 import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
@@ -39,7 +39,7 @@ interface CreationItemProps {
 export function CreationItem({ creation, className }: CreationItemProps) {
   const { isCreationInPanels } = usePanels()
   const { isAll, setVisible } = useIsAllContext()
-  const mold = useCreationMold(creation)
+  const struct = useCreationStruct(creation)
 
   const getTitleFromContent = () => {
     try {
@@ -76,14 +76,14 @@ export function CreationItem({ creation, className }: CreationItemProps) {
           }}
         >
           {[CreationType.PAGE, CreationType.NOTE].includes(
-            mold?.type as CreationType,
+            struct?.type as CreationType,
           ) && <FileTextIcon size={16} className="text-foreground/60" />}
 
-          {[CreationType.BOOKMARK].includes(mold?.type as CreationType) && (
+          {[CreationType.BOOKMARK].includes(struct?.type as CreationType) && (
             <BookmarkIcon size={16} className="text-foreground/60" />
           )}
 
-          {mold?.type === CreationType.TASK && (
+          {struct?.type === CreationType.TASK && (
             <Checkbox
               onClick={(e) => e.stopPropagation()}
               checked={creation.checked}

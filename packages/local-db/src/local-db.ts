@@ -8,7 +8,7 @@ import {
   ICreationTagNode,
   IDocument,
   IMessage,
-  IMoldNode,
+  IStructNode,
   INode,
   ISiteNode,
   ISuggestion,
@@ -34,7 +34,7 @@ class LocalDB extends Dexie {
     super('penx-local')
     this.version(19).stores({
       // Primary key and indexed props
-      node: 'id, siteId, userId, areaId, type, date, [userId+type], [siteId+type], [areaId+type], [siteId+type+moldType]',
+      node: 'id, siteId, userId, areaId, type, date, [userId+type], [siteId+type], [areaId+type], [siteId+type+structType]',
       file: 'id, hash',
       asset: 'id, siteId, url, isPublic, isTrashed',
       chat: 'id, siteId',
@@ -141,10 +141,10 @@ class LocalDB extends Dexie {
     return this.node.get(newNodeId) as any as Promise<T>
   }
 
-  listMolds = (siteId: string) => {
+  listStructs = (siteId: string) => {
     return this.node
-      .where({ type: NodeType.MOLD, siteId })
-      .toArray() as unknown as Promise<IMoldNode[]>
+      .where({ type: NodeType.STRUCT, siteId })
+      .toArray() as unknown as Promise<IStructNode[]>
   }
 
   getTag = (id: string) => {
@@ -224,20 +224,20 @@ class LocalDB extends Dexie {
     return await this.updateNodeProps(id, props)
   }
 
-  addMold = async (data: Partial<IMoldNode>) => {
-    const mold = await this.addNode({
+  addStruct = async (data: Partial<IStructNode>) => {
+    const struct = await this.addNode({
       id: uniqueId(),
       ...data,
-    } as IMoldNode)
+    } as IStructNode)
 
-    await this.addChange(mold.id, OperationType.CREATE, mold)
+    await this.addChange(struct.id, OperationType.CREATE, struct)
   }
 
-  updateMoldProps = async (id: string, props: Partial<IMoldNode['props']>) => {
+  updateStructProps = async (id: string, props: Partial<IStructNode['props']>) => {
     await this.updateNodeProps(id, props)
   }
 
-  deleteMold = async (id: string) => {
+  deleteStruct = async (id: string) => {
     await this.addChange(id, OperationType.DELETE)
     await this.node.delete(id)
   }

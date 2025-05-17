@@ -46,8 +46,8 @@ const FormSchema = z.object({
 
 export function PropForm() {
   const [isLoading, setLoading] = useState(false)
-  const { setIsOpen, prop, mold } = usePropDialog()
-  const { refetch } = trpc.mold.list.useQuery()
+  const { setIsOpen, prop, struct } = usePropDialog()
+  const { refetch } = trpc.struct.list.useQuery()
 
   const isEdit = !!prop
 
@@ -67,17 +67,17 @@ export function PropForm() {
     try {
       setLoading(true)
       if (isEdit) {
-        const props = (mold.props as Prop[]) || []
+        const props = (struct.props as Prop[]) || []
         const index = props.findIndex((item) => item.id === prop.id)!
         props[index] = { ...props[index], ...data } as any
-        await api.mold.update.mutate({
-          id: mold.id,
+        await api.struct.update.mutate({
+          id: struct.id,
           props,
         })
       } else {
-        await api.mold.update.mutate({
-          id: mold.id,
-          props: [...((mold.props as any) || []), { id: uniqueId(), ...data }],
+        await api.struct.update.mutate({
+          id: struct.id,
+          props: [...((struct.props as any) || []), { id: uniqueId(), ...data }],
         })
       }
 

@@ -3,8 +3,8 @@ export const redisKeys = {
     return `area-creations:${areaId}`
   },
 
-  moldCreations(siteId: string, moldId: string) {
-    return `site-creations:${siteId}:${moldId}`
+  structCreations(siteId: string, structId: string) {
+    return `site-creations:${siteId}:${structId}`
   },
 
   sitePages(siteId: string) {

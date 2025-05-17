@@ -184,9 +184,9 @@ export const tagRouter = router({
       revalidate(creationTag.siteId)
       revalidateCreationTags(creationTag.siteId, [{ tag: creationTag.tag }])
       await cacheHelper.updateCreation(creationTag.creationId, null)
-      await cacheHelper.updateMoldCreations(
+      await cacheHelper.updateStructCreations(
         creationTag.siteId,
-        creationTag.creation.moldId!,
+        creationTag.creation.structId!,
         null,
       )
       return creationTag

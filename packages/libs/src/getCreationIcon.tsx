@@ -10,7 +10,7 @@ import {
   PresentationIcon,
   Users2Icon,
 } from 'lucide-react'
-import { Mold } from '@penx/db/client'
+import { Struct } from '@penx/db/client'
 import { CreationType } from '@penx/types'
 
 export function getCreationIcon(type: any): ReactNode {

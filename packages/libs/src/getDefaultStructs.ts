@@ -1,5 +1,5 @@
 import { editorDefaultValue } from '@penx/constants'
-import { IMoldNode, NodeType } from '@penx/model-type'
+import { IStructNode, NodeType } from '@penx/model-type'
 import { CreationType, Prop, PropType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
@@ -8,7 +8,7 @@ type Input = {
   userId: string
 }
 
-function getMoldNode(
+function getStructNode(
   type: string,
   name: string,
   input: Input,
@@ -16,7 +16,7 @@ function getMoldNode(
 ) {
   return {
     id: uniqueId(),
-    type: NodeType.MOLD,
+    type: NodeType.STRUCT,
     props: {
       name,
       pluralName: `${name}s`,
@@ -28,12 +28,12 @@ function getMoldNode(
     createdAt: new Date(),
     updatedAt: new Date(),
     ...input,
-  } as IMoldNode
+  } as IStructNode
 }
 
-export function getDefaultMolds(input: Input): IMoldNode[] {
+export function getDefaultStructs(input: Input): IStructNode[] {
   return [
-    getMoldNode(CreationType.PAGE, 'Page', input),
+    getStructNode(CreationType.PAGE, 'Page', input),
     // {
     //   id: uniqueId(),
     //   name: 'Articles',
@@ -46,7 +46,7 @@ export function getDefaultMolds(input: Input): IMoldNode[] {
     //   ...input,
     // },
 
-    getMoldNode(CreationType.NOTE, 'Note', input),
+    getStructNode(CreationType.NOTE, 'Note', input),
     // {
     //   id: uniqueId(),
     //   name: 'Images',
@@ -70,9 +70,9 @@ export function getDefaultMolds(input: Input): IMoldNode[] {
     //   ...input,
     // },
 
-    getMoldNode(CreationType.TASK, 'Task', input),
+    getStructNode(CreationType.TASK, 'Task', input),
 
-    getMoldNode(CreationType.BOOKMARK, 'Bookmark', input, [
+    getStructNode(CreationType.BOOKMARK, 'Bookmark', input, [
       { id: uniqueId(), name: 'URL', slug: 'url', type: PropType.URL },
     ]),
     // {
@@ -121,5 +121,5 @@ export function getDefaultMolds(input: Input): IMoldNode[] {
     //   updatedAt: new Date(),
     //   ...input,
     // },
-  ] as IMoldNode[]
+  ] as IStructNode[]
 }

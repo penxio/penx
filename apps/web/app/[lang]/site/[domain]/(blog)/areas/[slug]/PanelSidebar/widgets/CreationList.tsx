@@ -14,7 +14,7 @@ export function CreationList({ widget }: Props) {
   const { creations: data } = useCreations()
 
   let creations = [...data]
-    .filter((post) => post.moldId === widget.moldId)
+    .filter((post) => post.structId === widget.structId)
     .sort((a, b) => b.updatedAt.valueOf() - a.updatedAt.valueOf())
 
   if (!isAll) {

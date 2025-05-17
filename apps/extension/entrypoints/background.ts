@@ -113,15 +113,15 @@ async function queryAreas() {
 
 async function addNote(content: string, area: IAreaNode) {
   const site = await localDB.getSite(area.siteId)
-  const molds = await localDB.listMolds(area.siteId)
-  const mold = molds.find((mold) => mold.props.type === CreationType.NOTE)!
+  const structs = await localDB.listStructs(area.siteId)
+  const struct = structs.find((struct) => struct.props.type === CreationType.NOTE)!
 
   const creation: ICreationNode = {
     id: uniqueId(),
     type: NodeType.CREATION,
     props: {
       slug: uniqueId(),
-      moldId: mold.id,
+      structId: struct.id,
       title: content.slice(0, 20),
       description: '',
       content: noteToContent(content),
@@ -146,7 +146,7 @@ async function addNote(content: string, area: IAreaNode) {
       openedAt: new Date(),
     },
     userId: site.userId,
-    siteId: mold.siteId,
+    siteId: struct.siteId,
     createdAt: new Date(),
     updatedAt: new Date(),
   }

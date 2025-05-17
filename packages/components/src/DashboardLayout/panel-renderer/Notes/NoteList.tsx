@@ -1,20 +1,20 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 import { useNotes } from '@penx/hooks/useNotes'
 import { Panel } from '@penx/types'
 import { NoteInput } from './NoteInput'
 import { NoteItem } from './NoteItem'
 
 interface PostListProps {
-  mold: Mold
+  struct: Struct
   panel: Panel
   index: number
   columnCount: number
 }
 
-export function NoteList({ mold, columnCount }: PostListProps) {
+export function NoteList({ struct, columnCount }: PostListProps) {
   const notes = useNotes()
 
   // TODO:

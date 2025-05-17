@@ -1,14 +1,14 @@
 import { atom, useAtom } from 'jotai'
-import { Mold } from '@penx/db/client'
+import { Struct } from '@penx/db/client'
 
 type State = {
   isOpen: boolean
-  mold: Mold
+  struct: Struct
 }
 
 const addNoteDialogAtom = atom<State>({
   isOpen: false,
-  mold: null as any,
+  struct: null as any,
 } as State)
 
 export function useAddNoteDialog() {

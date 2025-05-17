@@ -23,7 +23,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
 
   return (
     <ContextMenuContent>
-      {widget.type === WidgetType.MOLD && (
+      {widget.type === WidgetType.STRUCT && (
         <ContextMenuItem
           onClick={async (e) => {
             onOpenInPanel?.()

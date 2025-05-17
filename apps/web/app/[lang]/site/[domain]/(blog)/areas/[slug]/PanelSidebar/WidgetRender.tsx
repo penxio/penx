@@ -28,7 +28,7 @@ export function WidgetRender({ widget }: Props) {
     return <AllCreations />
   }
 
-  if (widget.type === WidgetType.MOLD) {
+  if (widget.type === WidgetType.STRUCT) {
     return <CreationList widget={widget} />
   }
   return null

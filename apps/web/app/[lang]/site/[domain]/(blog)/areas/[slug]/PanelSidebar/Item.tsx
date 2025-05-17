@@ -13,7 +13,7 @@ import {
 import { AnimatePresence, motion } from 'motion/react'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useArea } from '@penx/hooks/useArea'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
@@ -34,7 +34,7 @@ interface Props {
 
 export const Item = forwardRef<HTMLDivElement, Props>(
   function Item(props, ref) {
-    const { molds } = useMolds()
+    const { structs } = useStructs()
     const [visible, setVisible] = useState(false)
     const { area } = useArea()
     const [widget, setWidget] = useState(props.widget)
@@ -53,7 +53,7 @@ export const Item = forwardRef<HTMLDivElement, Props>(
             >
               <div className="flex items-center justify-between gap-1 px-3 py-2">
                 <div className="select-none text-sm font-semibold">
-                  <WidgetName widget={widget} molds={molds} />
+                  <WidgetName widget={widget} structs={structs} />
                 </div>
                 <Button
                   variant="ghost"
@@ -116,7 +116,7 @@ export const Item = forwardRef<HTMLDivElement, Props>(
             </motion.div>
 
             <div className="inline-flex h-full select-none items-center text-sm font-semibold leading-none">
-              <WidgetName widget={widget} molds={molds} />
+              <WidgetName widget={widget} structs={structs} />
             </div>
             <div className="ml-auto">
               <Button

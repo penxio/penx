@@ -79,7 +79,7 @@ function Footer({
   setValue: (v: any) => void
 }) {
   const { site } = useMySite()
-  const { setIsOpen, mold } = useAddNoteDialog()
+  const { setIsOpen, struct } = useAddNoteDialog()
   const creation = usePanelCreationContext()
   const [isLoading, setLoading] = useState(false)
   const { session } = useSession()
@@ -97,8 +97,8 @@ function Footer({
     setLoading(true)
     try {
       const newCreation = await api.creation.create.mutate({
-        moldId: mold.id,
-        type: mold.type,
+        structId: struct.id,
+        type: struct.type,
         siteId: site.id,
         areaId: area.id,
         title: title,

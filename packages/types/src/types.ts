@@ -7,7 +7,7 @@ import {
   Creation,
   CreationTag,
   Domain,
-  Mold,
+  Struct,
   ProviderType,
   Site,
   Subscription,
@@ -182,12 +182,12 @@ export type CreationInList = {
   createdAt: Date
   updatedAt: Date
   areaId: string | null
-  moldId: string | null
+  structId: string | null
 }
 
 export type SiteCreation = CreationInList & {
   creationTags: Array<CreationTag & { tag: Tag }>
-  mold: Mold | null
+  struct: Struct | null
   user: {
     displayName: string | null
     image: string | null
@@ -200,7 +200,7 @@ export type CreationById = Omit<Creation, 'podcast'> & {
     duration: number
     [key: string]: any
   }
-  mold: Mold | null
+  struct: Struct | null
   creationTags: Array<CreationTag & { tag: Tag }>
   authors: Array<
     Author & {
@@ -247,7 +247,7 @@ export type Widget = {
   id: string
   type: string
   collapsed?: boolean
-  moldId?: string
+  structId?: string
 
   [key: string]: any
 }

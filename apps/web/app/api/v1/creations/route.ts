@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
   const siteId = session.siteId
   const { type, ...rest } = json
 
-  const mold = await prisma.mold.findUniqueOrThrow({
+  const struct = await prisma.struct.findUniqueOrThrow({
     where: {
       siteId_type: { siteId, type },
     },
@@ -42,9 +42,9 @@ export async function POST(req: NextRequest) {
 
   const creation = await createCreation(siteId, session.uid, false, {
     ...rest,
-    type: mold.type,
+    type: struct.type,
     siteId,
-    moldId: mold.id,
+    structId: struct.id,
     content: getContent(),
   } as AddCreationInput)
 

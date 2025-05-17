@@ -13,18 +13,18 @@ import { useCreationTypeDialog } from './CreationTypeDialog/useCreationTypeDialo
 import { usePropDialog } from './PropDialog/usePropDialog'
 
 type Props = {
-  mold: RouterOutputs['mold']['list']['0']
+  struct: RouterOutputs['struct']['list']['0']
 }
-export function CreationTypeItem({ mold }: Props) {
-  const { refetch } = trpc.mold.list.useQuery()
+export function CreationTypeItem({ struct }: Props) {
+  const { refetch } = trpc.struct.list.useQuery()
   const { setState } = useCreationTypeDialog()
   const propDialog = usePropDialog()
-  const props = (mold.props as Prop[]) || []
+  const props = (struct.props as Prop[]) || []
 
   return (
     <div className="border-foreground/10 gap-1 rounded-xl border p-4 ">
       <div className="flex items-center justify-between">
-        <span className="text-xl font-bold">{mold.name}</span>
+        <span className="text-xl font-bold">{struct.name}</span>
         <Button
           variant="ghost"
           size="icon"
@@ -32,7 +32,7 @@ export function CreationTypeItem({ mold }: Props) {
           onClick={() => {
             setState({
               isOpen: true,
-              mold,
+              struct,
             })
           }}
         >
@@ -51,7 +51,7 @@ export function CreationTypeItem({ mold }: Props) {
           onClick={() => {
             propDialog.setState({
               isOpen: true,
-              mold: mold,
+              struct,
               prop: null as any,
             })
           }}
@@ -79,7 +79,7 @@ export function CreationTypeItem({ mold }: Props) {
                 onClick={() => {
                   propDialog.setState({
                     isOpen: true,
-                    mold: mold,
+                    struct,
                     prop: item,
                   })
                 }}
@@ -98,8 +98,8 @@ export function CreationTypeItem({ mold }: Props) {
                     '=====>>>>:',
                     props.filter((_, i) => i !== index),
                   )
-                  await api.mold.update.mutate({
-                    id: mold.id,
+                  await api.struct.update.mutate({
+                    id: struct.id,
                     props: props.filter((_, i) => i !== index),
                   })
                   await refetch()

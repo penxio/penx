@@ -1,8 +1,8 @@
-import { Author, Creation, CreationTag, Mold, User } from '@penx/db/client'
+import { Author, Creation, CreationTag, Struct, User } from '@penx/db/client'
 
 export type CreationById = Creation & {
   creationTags: CreationTag[]
-  mold: Mold
+  struct: Struct
   authors: Array<
     Author & {
       user: User

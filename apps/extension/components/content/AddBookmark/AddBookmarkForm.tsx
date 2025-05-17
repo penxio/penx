@@ -74,17 +74,16 @@ export function AddBookmarkForm() {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log('site=======:', store.site.get(), store.molds.get())
     const site = store.site.get()
-    const molds = store.molds.get()
-    const mold = molds.find((mold) => mold.type === CreationType.BOOKMARK)!
+    const structs = store.structs.get()
+    const struct = structs.find((struct) => struct.type === CreationType.BOOKMARK)!
 
     try {
       setLoading(true)
       const creation: ICreation = {
         id: uniqueId(),
         slug: uniqueId(),
-        moldId: mold.id,
+        structId: struct.id,
         title: data.title || '',
         description: data.description,
         content: JSON.stringify(editorDefaultValue),
@@ -94,7 +93,7 @@ export function AddBookmarkForm() {
         },
         type: CreationType.BOOKMARK,
         areaId: data.areaId,
-        siteId: mold.siteId,
+        siteId: struct.siteId,
         icon: '',
         podcast: {},
         i18n: {},

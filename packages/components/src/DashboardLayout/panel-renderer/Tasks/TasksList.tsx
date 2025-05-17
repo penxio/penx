@@ -2,23 +2,23 @@
 
 import { Trans } from '@lingui/react'
 import { useQuery } from '@tanstack/react-query'
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
 import { TaskInput } from './TaskInput'
 import { TaskItem } from './TaskItem'
 
 interface PostListProps {
-  mold: Mold
+  struct: Struct
   panel: Panel
   index: number
 }
 
-export function TasksList({ mold }: PostListProps) {
+export function TasksList({ struct }: PostListProps) {
   const { creations } = useCreations()
-  const tasks = creations.filter((item) => item.moldId === mold.id)
+  const tasks = creations.filter((item) => item.structId === struct.id)
 
   const todoTasks = tasks
     .filter((item) => !item.checked)

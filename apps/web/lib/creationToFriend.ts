@@ -1,12 +1,12 @@
-import { IMoldNode } from '@penx/model-type'
+import { IStructNode } from '@penx/model-type'
 import { SiteCreation } from '@penx/types'
 import { Creation, Friend, Prop } from './theme.types'
 
 export function creationToFriend(
   creation: Creation | SiteCreation,
-  mold: IMoldNode,
+  struct: IStructNode,
 ): Friend {
-  const props = (mold?.props.props || []) as Prop[]
+  const props = (struct?.props.props || []) as Prop[]
   const output = props.reduce(
     (acc, prop) => {
       return { ...acc, [prop.slug]: creation.props?.[prop.id] }

@@ -1,15 +1,15 @@
 import { Trans } from '@lingui/react'
 import { WidgetType } from '@penx/constants'
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 import { Widget } from '@penx/types'
-import { MoldName } from './MoldName'
+import { StructName } from './StructName'
 
 interface Props {
   widget: Widget
-  molds: Mold[]
+  structs: Struct[]
 }
 
-export function WidgetName({ widget, molds }: Props) {
+export function WidgetName({ widget, structs }: Props) {
   if (widget.type === WidgetType.ALL_CREATIONS) {
     return <Trans id="All creations"></Trans>
   }
@@ -30,7 +30,7 @@ export function WidgetName({ widget, molds }: Props) {
   if (widget.type === WidgetType.RECENTLY_OPENED) {
     return <Trans id="Recently opened"></Trans>
   }
-  const mold = molds.find((m) => m.id === widget.moldId)
-  if (mold) return <MoldName mold={mold!} />
+  const struct = structs.find((m) => m.id === widget.structId)
+  if (struct) return <StructName struct={struct!} />
   return null
 }

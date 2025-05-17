@@ -16,7 +16,7 @@ import { toast } from 'sonner'
 import { Image } from '@penx/components/Image'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { Creation } from '@penx/domain'
-import { useCreationMold } from '@penx/hooks/useCreationMold'
+import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { useDomains } from '@penx/hooks/useDomains'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
@@ -47,14 +47,14 @@ export function BookmarkItem({ creation }: Props) {
 
   const postUrl = `${location.protocol}//${host}/creations/${creation.slug}`
 
-  const mold = useCreationMold(creation)
+  const struct = useCreationStruct(creation)
   const url = useMemo(() => {
-    const modeProps = mold?.props as Prop[]
+    const modeProps = struct?.props as Prop[]
     const prop = modeProps.find((p) => p.slug === 'url')!
     if (!prop?.id) return ''
     const props: any = creation.props
     return props?.[prop.id] || ''
-  }, [creation, mold])
+  }, [creation, struct])
 
   return (
     <div className={cn('flex flex-col gap-2 py-1')}>
@@ -133,7 +133,7 @@ export function BookmarkItem({ creation }: Props) {
             href={
               isPublished
                 ? postUrl
-                : `/~/post?id=${post.id}&type=${post.mold?.type || ''}`
+                : `/~/post?id=${post.id}&type=${post.struct?.type || ''}`
             }
             className="inline-flex items-center gap-2 transition-transform hover:scale-105"
           >

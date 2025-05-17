@@ -2,17 +2,17 @@
 
 import { Trans } from '@lingui/react'
 import { useCreations } from '@penx/hooks/useCreations'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { CreationType, Panel } from '@penx/types'
 import { TaskItem } from './TaskItem'
 
 interface Props {}
 
 export function MobileTask({}: Props) {
-  const { molds } = useMolds()
-  const mold = molds.find((item) => item.type === CreationType.TASK)
+  const { structs } = useStructs()
+  const struct = structs.find((item) => item.type === CreationType.TASK)
   const { creations } = useCreations()
-  const tasks = creations.filter((item) => item.moldId === mold?.id)
+  const tasks = creations.filter((item) => item.structId === struct?.id)
 
   const todoTasks = tasks
     .filter((item) => !item.checked)

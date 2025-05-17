@@ -2,11 +2,11 @@
 
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
 import { STATIC_URL } from '@penx/constants'
-import { Area, Channel, Mold, Site, Tag } from '@penx/db/client'
+import { Area, Channel, Struct, Site, Tag } from '@penx/db/client'
 
 type SiteType = Site & {
   channels: Channel[]
-  molds: Mold[]
+  structs: Struct[]
   areas: Area[]
   tags: Tag[]
 }

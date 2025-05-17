@@ -4,7 +4,7 @@ import { CreationById } from '@penx/types'
 export async function getCreation(id: string) {
   const creation = await prisma.creation.findUniqueOrThrow({
     include: {
-      mold: true,
+      struct: true,
       creationTags: { include: { tag: true } },
       authors: {
         include: {

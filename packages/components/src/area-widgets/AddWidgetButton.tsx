@@ -13,9 +13,9 @@ import {
 import { toast } from 'sonner'
 import { AddNoteDialog } from '@penx/components/AddNoteDialog'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 import { useArea } from '@penx/hooks/useArea'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
@@ -29,7 +29,7 @@ import { Separator } from '@penx/uikit/separator'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { MoldName } from '@penx/widgets/MoldName'
+import { StructName } from '@penx/widgets/StructName'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { useAddNoteDialog } from '../Creation/AddNoteDialog/useAddNoteDialog'
 
@@ -44,14 +44,14 @@ export function AddWidgetButton({ className }: Props) {
   const [open, setOpen] = useState(false)
   const addNoteDialog = useAddNoteDialog()
   const { area } = useArea()
-  const { molds } = useMolds()
+  const { structs } = useStructs()
 
-  async function addMoldWidget(mold: Mold) {
+  async function addStructWidget(struct: Struct) {
     setOpen(false)
     await store.area.addWidget({
       id: uniqueId(),
-      type: WidgetType.MOLD,
-      moldId: mold.id,
+      type: WidgetType.STRUCT,
+      structId: struct.id,
       collapsed: false,
     })
   }
@@ -123,7 +123,7 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.ALL_STRUCTS) {
                   return (
                     <>
-                      <Trans id="Favorites"></Trans>
+                      <Trans id="All "></Trans>
                     </>
                   )
                 }
@@ -150,7 +150,7 @@ export function AddWidgetButton({ className }: Props) {
                 }
                 return null
               }
-              if (item === WidgetType.MOLD) return null
+              if (item === WidgetType.STRUCT) return null
               return (
                 <Item
                   key={item}
@@ -159,7 +159,7 @@ export function AddWidgetButton({ className }: Props) {
                     await addBuiltinWidget(item)
                   }}
                 >
-                  <WidgetIcon type={item} molds={molds} />
+                  <WidgetIcon type={item} structs={structs} />
                   {getName()}
                 </Item>
               )
@@ -168,18 +168,18 @@ export function AddWidgetButton({ className }: Props) {
           <Separator className="my-1"></Separator>
           <div className="text-foreground/50 px-4 py-2 text-xs">Structs</div>
 
-          {molds.map((item) => {
+          {structs.map((item) => {
             return (
               <Item
                 key={item.id}
                 className="flex gap-2"
                 onClick={async () => {
-                  await addMoldWidget(item)
+                  await addStructWidget(item)
                 }}
               >
                 {getCreationIcon(item.type)}
                 <span>
-                  <MoldName mold={item} />
+                  <StructName struct={item} />
                 </span>
               </Item>
             )

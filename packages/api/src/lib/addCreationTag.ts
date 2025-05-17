@@ -50,9 +50,9 @@ export async function addCreationTag(input: Required<AddCreationTagInput>) {
   }
 
   await cacheHelper.updateAreaCreations(creationTag.creation.areaId!, null)
-  await cacheHelper.updateMoldCreations(
+  await cacheHelper.updateStructCreations(
     creationTag.siteId,
-    creationTag.creation.moldId!,
+    creationTag.creation.structId!,
     null,
   )
   return creationTag

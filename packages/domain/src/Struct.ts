@@ -1,7 +1,7 @@
-import { IMoldNode } from '@penx/model-type'
+import { IStructNode } from '@penx/model-type'
 
-export class Mold {
-  constructor(public raw: IMoldNode) {}
+export class Struct {
+  constructor(public raw: IStructNode) {}
 
   get id(): string {
     return this.raw?.id || ''

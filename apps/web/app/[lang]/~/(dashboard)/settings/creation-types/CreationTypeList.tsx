@@ -5,7 +5,7 @@ import { LoadingDots } from '@penx/uikit/loading-dots'
 import { CreationTypeItem } from './CreationTypeItem'
 
 export function CreationTypeList() {
-  const { data } = trpc.mold.list.useQuery()
+  const { data } = trpc.struct.list.useQuery()
 
   if (!data) {
     return (
@@ -18,7 +18,7 @@ export function CreationTypeList() {
   return (
     <div className="grid grid-cols-2 gap-2">
       {data.map((item) => (
-        <CreationTypeItem key={item.id} mold={item} />
+        <CreationTypeItem key={item.id} struct={item} />
       ))}
     </div>
   )

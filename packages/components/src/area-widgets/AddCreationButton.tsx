@@ -5,7 +5,7 @@ import { PlusIcon } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
 import { Area } from '@penx/domain'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { CreationType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -19,13 +19,13 @@ interface Props {
 }
 
 export function AddCreationButton({ area, widget }: Props) {
-  const { molds } = useMolds()
+  const { structs } = useStructs()
   const addCreation = useAddCreation()
-  const mold = molds.find((mold) => mold.id === widget.moldId)!
+  const struct = structs.find((struct) => struct.id === widget.structId)!
   const [showInput, setShowInput] = useState(false)
 
   if (
-    [CreationType.TASK, CreationType.NOTE].includes(mold.type as CreationType)
+    [CreationType.TASK, CreationType.NOTE].includes(struct.type as CreationType)
   ) {
     return (
       <Popover open={showInput} onOpenChange={setShowInput}>
@@ -51,7 +51,7 @@ export function AddCreationButton({ area, widget }: Props) {
           className="inline-flex w-auto border-none bg-transparent p-0 px-0 shadow-none"
           // asChild
         >
-          {mold.type === CreationType.NOTE && (
+          {struct.type === CreationType.NOTE && (
             <NoteInput
               className="shadow-2xl"
               onSubmit={() => {
@@ -60,7 +60,7 @@ export function AddCreationButton({ area, widget }: Props) {
             />
           )}
 
-          {mold.type === CreationType.TASK && (
+          {struct.type === CreationType.TASK && (
             <TaskInput
               className="shadow-2xl"
               onSubmit={() => {
@@ -85,8 +85,8 @@ export function AddCreationButton({ area, widget }: Props) {
       onPointerDown={async (e) => {
         e.stopPropagation()
         e.preventDefault()
-        const mold = molds.find((mold) => mold.id === widget.moldId)!
-        addCreation({ type: mold.type })
+        const struct = structs.find((struct) => struct.id === widget.structId)!
+        addCreation({ type: struct.type })
       }}
     >
       <PlusIcon

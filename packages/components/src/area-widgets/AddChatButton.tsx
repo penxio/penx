@@ -4,7 +4,7 @@ import React from 'react'
 import { PlusIcon } from 'lucide-react'
 import { Area } from '@penx/db/client'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { PanelType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function AddChatButton({ widget }: Props) {
-  const { molds } = useMolds()
+  const { structs } = useStructs()
 
   return (
     <Button

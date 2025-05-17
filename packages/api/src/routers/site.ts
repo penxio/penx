@@ -117,7 +117,7 @@ export const siteRouter = router({
             deletedAt: null,
           },
         },
-        molds: true,
+        structs: true,
         products: {
           where: {
             type: ProductType.TIER,
@@ -146,7 +146,7 @@ export const siteRouter = router({
               deletedAt: null,
             },
           },
-          molds: true,
+          structs: true,
         },
       })
 
@@ -735,7 +735,7 @@ export const siteRouter = router({
           await tx.area.deleteMany({ where: { siteId } })
           await tx.subscription.deleteMany({ where: { siteId } })
           await tx.payout.deleteMany({ where: { siteId } })
-          await tx.mold.deleteMany({ where: { siteId } })
+          await tx.struct.deleteMany({ where: { siteId } })
           await tx.node.deleteMany({ where: { siteId } })
           await tx.siteUser.deleteMany({ where: { siteId } })
           await tx.site.delete({ where: { id: siteId } })

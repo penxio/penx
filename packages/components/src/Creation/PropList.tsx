@@ -7,7 +7,7 @@ import {
   LinkIcon,
   TextIcon,
 } from 'lucide-react'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { Prop, PropType } from '@penx/types'
 import { Input } from '@penx/uikit/input'
 import {
@@ -30,10 +30,10 @@ interface Props {
 
 export const PropList = ({ onUpdateProps }: Props) => {
   const creation = usePanelCreationContext()
-  const { molds } = useMolds()
-  const mold = molds.find((m) => m.id === creation.moldId)
-  if (!Array.isArray(mold?.props)) return null
-  const props = mold?.props as Prop[]
+  const { structs } = useStructs()
+  const struct = structs.find((m) => m.id === creation.structId)
+  if (!Array.isArray(struct?.props)) return null
+  const props = struct?.props as Prop[]
 
   // console.log('====-->>props:', post.props, post)
 

@@ -16,7 +16,7 @@ import { Creation as CreationDomain } from '@penx/domain'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { appEmitter } from '@penx/emitter'
 import { updateCreation } from '@penx/hooks/useCreation'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
@@ -48,7 +48,7 @@ export function Creation({ panel, className, ref }: Props) {
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
   const isImage = creation.type === CreationType.IMAGE
-  const { molds } = useMolds()
+  const { structs } = useStructs()
   const editorRef = useRef<Editor>(null)
 
   useImperativeHandle(ref, () => editorRef.current)
@@ -78,37 +78,37 @@ export function Creation({ panel, className, ref }: Props) {
     200,
   )
 
-  const mold = molds.find((m) => m.id === creation.moldId)
+  const struct = structs.find((m) => m.id === creation.structId)
 
   const showTitle = useMemo(() => {
     if (
-      mold?.type === CreationType.ARTICLE ||
-      mold?.type === CreationType.PAGE ||
-      mold?.type === CreationType.BOOKMARK ||
-      mold?.type === CreationType.FRIEND ||
-      mold?.type === CreationType.PROJECT ||
-      mold?.type === CreationType.IMAGE ||
-      mold?.type === CreationType.TASK ||
-      mold?.type === CreationType.AUDIO
+      struct?.type === CreationType.ARTICLE ||
+      struct?.type === CreationType.PAGE ||
+      struct?.type === CreationType.BOOKMARK ||
+      struct?.type === CreationType.FRIEND ||
+      struct?.type === CreationType.PROJECT ||
+      struct?.type === CreationType.IMAGE ||
+      struct?.type === CreationType.TASK ||
+      struct?.type === CreationType.AUDIO
     ) {
       return true
     }
     return false
-  }, [mold])
+  }, [struct])
 
   const isCover = useMemo(() => {
-    if (mold?.type === CreationType.BOOKMARK) {
+    if (struct?.type === CreationType.BOOKMARK) {
       return false
     }
     return true
-  }, [mold])
+  }, [struct])
 
   useEffect(() => {
     //
-    // if (mold?.type === CreationType.NOTE) {
+    // if (struct?.type === CreationType.NOTE) {
     //   appEmitter.emit('FOCUS_EDITOR')
     // }
-  }, [mold])
+  }, [struct])
 
   // console.log('=========>>>>>>post:', post)
 
@@ -145,7 +145,7 @@ export function Creation({ panel, className, ref }: Props) {
                   />
                 )}
                 <div className="flex items-center gap-2">
-                  {mold?.type === CreationType.TASK && (
+                  {struct?.type === CreationType.TASK && (
                     <Checkbox
                       className="bg-foreground/10 size-6 border-none"
                       checked={creation.checked}
@@ -214,7 +214,7 @@ export function Creation({ panel, className, ref }: Props) {
             }}
           />
 
-          {mold?.type === CreationType.AUDIO && (
+          {struct?.type === CreationType.AUDIO && (
             <div className="mt-6">
               <AudioCreationUpload creation={creation as any} />
             </div>

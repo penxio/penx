@@ -118,11 +118,11 @@ export const cacheHelper = {
     }
   },
 
-  async getMoldCreation(
+  async getStructCreation(
     siteId: string,
-    moldId: string,
+    structId: string,
   ): Promise<SiteCreation[] | undefined> {
-    const key = redisKeys.moldCreations(siteId, moldId)
+    const key = redisKeys.structCreations(siteId, structId)
     try {
       const str = await redis.get(key)
       if (str) {
@@ -143,12 +143,12 @@ export const cacheHelper = {
     } catch (error) {}
   },
 
-  async updateMoldCreations(
+  async updateStructCreations(
     siteId: string,
-    moldId: string,
+    structId: string,
     creations: SiteCreation[] | null,
   ) {
-    const key = redisKeys.moldCreations(siteId, moldId)
+    const key = redisKeys.structCreations(siteId, structId)
     if (!creations) {
       redis.del(key)
     } else {

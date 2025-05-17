@@ -39,7 +39,7 @@ export async function createCreation(
       let props: Record<string, any> = {}
 
       if (inputProps) {
-        const mold = await tx.mold.findUnique({
+        const struct = await tx.struct.findUnique({
           where: {
             siteId_type: {
               siteId,
@@ -47,8 +47,8 @@ export async function createCreation(
             },
           },
         })
-        const moldProps = (mold?.props || []) as Prop[]
-        for (const item of moldProps) {
+        const structProps = (struct?.props || []) as Prop[]
+        for (const item of structProps) {
           if (inputProps[item.slug]) {
             props[item.id] = inputProps[item.slug]
           }
@@ -95,9 +95,9 @@ export async function createCreation(
       }
 
       if (!data.areaId) {
-        await cacheHelper.updateMoldCreations(
+        await cacheHelper.updateStructCreations(
           creation.siteId,
-          creation.moldId!,
+          creation.structId!,
           null,
         )
       }
@@ -118,7 +118,7 @@ export async function createCreation(
 
   if (creation.type === CreationType.NOTE) {
     let notes = await findNotes({
-      moldId: creation.moldId!,
+      structId: creation.structId!,
       areaId: creation.areaId!,
     })
     await cacheHelper.updateNotes(creation.areaId!, notes)

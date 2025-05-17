@@ -126,7 +126,7 @@ model Site {
   pledges                Pledge[]
   siteUsers              SiteUser[]
   areas                  Area[]
-  molds                  Mold[]
+  structs                Struct[]
   nodes                  Node[]
 
   @@index([userId])
@@ -184,8 +184,8 @@ model User {
   referrals         Referral[]
   payoutAccounts    PayoutAccount[]
   invoices          Invoice[]
-  molds             Mold[]
-  Node              Node[]
+  structs           Struct[]
+  nodes             Node[]
 
   @@index([id])
   @@map("user")
@@ -504,7 +504,7 @@ model Coupon {
   @@map("coupon")
 }
 
-model Mold {
+model Struct {
   id          String     @id @default(uuid()) @db.Uuid
   name        String     @default("")
   description String     @default("") @db.VarChar(500)
@@ -522,7 +522,7 @@ model Mold {
   @@unique([siteId, type])
   @@index([userId])
   @@index([siteId])
-  @@map("mold")
+  @@map("struct")
 }
 
 enum GateType {
@@ -578,8 +578,8 @@ model Creation {
   siteId          String                   @db.Uuid
   areas           Area?                    @relation(fields: [areaId], references: [id])
   areaId          String?                  @db.Uuid
-  moldId          String?                  @db.Uuid
-  mold            Mold?                    @relation(fields: [moldId], references: [id])
+  structId        String?                  @db.Uuid
+  struct          Struct?                  @relation(fields: [structId], references: [id])
   comments        Comment[]
   creationTags    CreationTag[]
   newsletters     Newsletter[]
@@ -593,7 +593,7 @@ model Creation {
   @@index([siteId, status])
   @@index([siteId, type])
   @@index([areaId])
-  @@index([areaId, moldId])
+  @@index([areaId, structId])
   @@index([siteId, slug, status])
   @@index([siteId, gateType])
   @@map("creation")

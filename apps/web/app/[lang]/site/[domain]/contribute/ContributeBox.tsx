@@ -35,17 +35,17 @@ export function ContributeBox({ site }: Props) {
       return
     }
 
-    const molds = site.molds || []
+    const structs = site.structs || []
 
-    const mold = molds.find((i) => i.type === CreationType.ARTICLE)
+    const struct = structs.find((i) => i.type === CreationType.ARTICLE)
     try {
       window.__SITE_ID__ = site.id
       await mutateAsync({
         siteId: site.id,
         title,
         description,
-        moldId: mold?.id!,
-        type: mold?.type!,
+        structId: struct?.id!,
+        type: struct?.type!,
         areaId: '', //TODO:
         content,
         status: CreationStatus.CONTRIBUTED,

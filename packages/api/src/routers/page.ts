@@ -29,14 +29,14 @@ export const pageRouter = router({
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.token.uid
       const siteId = input.siteId
-      const mold = await prisma.mold.findFirstOrThrow({
+      const struct = await prisma.struct.findFirstOrThrow({
         where: {
           siteId,
           type: CreationType.FRIEND,
         },
       })
 
-      const props = (mold.props as Prop[]).reduce(
+      const props = (struct.props as Prop[]).reduce(
         (acc, prop) => {
           // @ts-ignore
           let value = input.data[prop.slug]
@@ -55,8 +55,8 @@ export const pageRouter = router({
           userId,
           title: input.data.name,
           description: input.data.introduction,
-          moldId: mold.id,
-          type: mold.type,
+          structId: struct.id,
+          type: struct.type,
           props,
           status: CreationStatus.PUBLISHED,
           publishedAt: new Date(),

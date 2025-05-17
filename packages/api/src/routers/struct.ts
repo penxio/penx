@@ -1,14 +1,14 @@
 import { z } from 'zod'
 import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'
-import { getDefaultMolds } from '@penx/libs/getDefaultMolds'
+import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { revalidateSite } from '@penx/libs/revalidateSite'
 import { CreationType, Prop, PropType } from '@penx/types'
 import { protectedProcedure, router } from '../trpc'
 
-export const moldRouter = router({
+export const structRouter = router({
   listBySite: protectedProcedure.query(async ({ ctx, input }) => {
-    let list = await prisma.mold.findMany({
+    let list = await prisma.struct.findMany({
       where: {
         siteId: ctx.activeSiteId,
       },
@@ -40,7 +40,7 @@ export const moldRouter = router({
   }),
 
   list: protectedProcedure.query(async ({ ctx, input }) => {
-    let list = await prisma.mold.findMany({
+    let list = await prisma.struct.findMany({
       where: {
         siteId: ctx.activeSiteId,
       },
@@ -49,14 +49,14 @@ export const moldRouter = router({
       },
     })
     if (!list.length) {
-      await prisma.mold.createMany({
-        data: getDefaultMolds({
+      await prisma.struct.createMany({
+        data: getDefaultStructs({
           userId: ctx.token.uid,
           siteId: ctx.activeSiteId,
         }),
       })
 
-      list = await prisma.mold.findMany({
+      list = await prisma.struct.findMany({
         where: {
           siteId: ctx.activeSiteId,
         },
@@ -97,7 +97,7 @@ export const moldRouter = router({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      await prisma.mold.create({
+      await prisma.struct.create({
         data: {
           ...input,
           siteId: ctx.activeSiteId,
@@ -127,7 +127,7 @@ export const moldRouter = router({
     )
     .mutation(async ({ ctx, input }) => {
       const { id, ...data } = input
-      await prisma.mold.update({
+      await prisma.struct.update({
         where: { id },
         data,
       })

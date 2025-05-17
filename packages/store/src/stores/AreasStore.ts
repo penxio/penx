@@ -38,13 +38,13 @@ export class AreasStore {
   async addArea(input: CreateAreaInput) {
     const site = this.store.site.get()
     const id = uniqueId()
-    const molds = await localDB.listMolds(site.id)
+    const structs = await localDB.listStructs(site.id)
     const area: IAreaNode = {
       id,
       type: NodeType.AREA,
       props: {
         cover: '',
-        widgets: getInitialWidgets(molds),
+        widgets: getInitialWidgets(structs),
         // type: AreaType.SUBJECT,
         favorites: [],
         isGenesis: false,

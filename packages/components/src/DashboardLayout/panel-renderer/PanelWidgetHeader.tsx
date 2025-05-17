@@ -1,6 +1,6 @@
 'use client'
 
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { Panel, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { ClosePanelButton } from '../ClosePanelButton'
@@ -12,13 +12,13 @@ interface Props {
 }
 
 export function PanelWidgetHeader({ panel, index }: Props) {
-  const { molds } = useMolds()
+  const { structs } = useStructs()
   const widget = panel.widget as Widget
 
   return (
     <PanelHeaderWrapper index={index}>
       <div>
-        <WidgetName widget={widget} molds={molds} />
+        <WidgetName widget={widget} structs={structs} />
       </div>
       <ClosePanelButton panel={panel} />
     </PanelHeaderWrapper>

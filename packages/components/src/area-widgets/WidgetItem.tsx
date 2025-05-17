@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Widget } from '@penx/types'
 import { ContextMenu, ContextMenuTrigger } from '@penx/uikit/context-menu'
@@ -61,7 +61,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
       ...rest
     } = props
 
-    const { molds } = useMolds()
+    const { structs } = useStructs()
     const { area } = useArea()
     const [visible, setVisible] = useState(false)
 
@@ -104,9 +104,9 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             setVisible(!visible)
           }}
         >
-          {/* <WidgetIcon type={widget.type} molds={molds} /> */}
+          {/* <WidgetIcon type={widget.type} structs={structs} /> */}
           <div className="text-foreground select-none text-base font-semibold">
-            <WidgetName widget={widget} molds={molds} />
+            <WidgetName widget={widget} structs={structs} />
           </div>
         </div>
         <div
@@ -115,7 +115,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             !isMobileApp && 'opacity-0 group-hover/widget:opacity-100',
           )}
         >
-          {widget.type === WidgetType.MOLD && (
+          {widget.type === WidgetType.STRUCT && (
             <AddCreationButton area={area} widget={widget} />
           )}
 
@@ -174,7 +174,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
 
         {!isMobileApp && (
           <AllCreationCard
-            name={<WidgetName widget={widget} molds={molds} />}
+            name={<WidgetName widget={widget} structs={structs} />}
             visible={visible}
             setVisible={setVisible}
             widget={widget}
@@ -195,7 +195,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                   <DialogDescription></DialogDescription>
                 </DialogTitle>
                 <div className="mb-2 flex items-center justify-center font-bold">
-                  <WidgetName widget={widget} molds={molds} />
+                  <WidgetName widget={widget} structs={structs} />
                 </div>
                 <div className="">
                   <IsAllProvider isAll setVisible={setVisible}>

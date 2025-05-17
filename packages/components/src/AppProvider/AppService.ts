@@ -8,7 +8,7 @@ import {
   isCreationNode,
   isCreationTagNode,
   ISiteNode,
-  isMoldNode,
+  isStructNode,
   isTagNode,
   NodeType,
 } from '@penx/model-type'
@@ -114,7 +114,7 @@ export class AppService {
       ) || areas[0]
 
     const visit = await store.visit.save({ activeAreaId: area.id })
-    const molds = nodes.filter((n) => isMoldNode(n))
+    const structs = nodes.filter((n) => isStructNode(n))
     const tags = nodes.filter((n) => isTagNode(n))
     const creationTags = nodes.filter((n) => isCreationTagNode(n))
     const creations = nodes.filter(
@@ -126,7 +126,7 @@ export class AppService {
     store.visit.set(visit)
     store.area.set(area)
     store.areas.set(areas)
-    store.molds.set(molds)
+    store.structs.set(structs)
     store.tags.set(tags)
     store.creationTags.set(creationTags)
     store.panels.set(panels)

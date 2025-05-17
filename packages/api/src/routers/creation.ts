@@ -85,38 +85,38 @@ export const creationRouter = router({
   listNotes: protectedProcedure
     .input(
       z.object({
-        moldId: z.string(),
+        structId: z.string(),
         areaId: z.string(),
       }),
     )
     .query(async ({ ctx, input }) => {
-      const { moldId, areaId } = input
+      const { structId, areaId } = input
       const cachedNotes = await cacheHelper.getNotes(areaId)
       if (cachedNotes) return cachedNotes
-      let notes = await findNotes({ moldId, areaId })
+      let notes = await findNotes({ structId, areaId })
 
       await cacheHelper.updateNotes(areaId, notes)
       return notes as Creation[]
     }),
 
-  listCreationsByMold: protectedProcedure
+  listCreationsByStruct: protectedProcedure
     .input(
       z.object({
-        moldId: z.string(),
+        structId: z.string(),
       }),
     )
     .query(async ({ ctx, input }) => {
       const siteId = ctx.activeSiteId
-      const { moldId } = input
-      const cachedCreations = await cacheHelper.getMoldCreation(siteId, moldId)
+      const { structId } = input
+      const cachedCreations = await cacheHelper.getStructCreation(siteId, structId)
       if (cachedCreations) return cachedCreations
 
       let creations = await findCreations({
         siteId,
-        moldId: input.moldId,
+        structId: input.structId,
       })
 
-      await cacheHelper.updateMoldCreations(siteId, moldId, creations)
+      await cacheHelper.updateStructCreations(siteId, structId, creations)
 
       return creations as SiteCreation[]
     }),
@@ -146,7 +146,7 @@ export const creationRouter = router({
     )
     .query(async ({ ctx, input }) => {
       const siteId = input.siteId || ctx.activeSiteId
-      const mold = await prisma.mold.findFirstOrThrow({
+      const struct = await prisma.struct.findFirstOrThrow({
         where: {
           siteId,
           type: CreationType.PROJECT,
@@ -154,7 +154,7 @@ export const creationRouter = router({
       })
       let creations = await findCreations({
         siteId,
-        moldId: mold.id,
+        structId: struct.id,
       })
 
       const projects = creations.map((item) => ({
@@ -162,7 +162,7 @@ export const creationRouter = router({
         image: getUrl(item.image || ''),
       }))
 
-      await cacheHelper.updateMoldCreations(siteId, mold.id, creations)
+      await cacheHelper.updateStructCreations(siteId, struct.id, creations)
       return projects as SiteCreation[]
     }),
 
@@ -231,7 +231,7 @@ export const creationRouter = router({
     const creation = await prisma.creation.findFirstOrThrow({
       where: { slug: input, siteId: ctx.activeSiteId },
       include: {
-        mold: true,
+        struct: true,
         authors: {
           include: {
             user: {
@@ -275,16 +275,16 @@ export const creationRouter = router({
 
         if (creation.type === CreationType.NOTE) {
           let notes = await findNotes({
-            moldId: creation.moldId!,
+            structId: creation.structId!,
             areaId: creation.areaId!,
           })
           await cacheHelper.updateNotes(creation.areaId!, notes)
         }
       }
 
-      await cacheHelper.updateMoldCreations(
+      await cacheHelper.updateStructCreations(
         creation.siteId,
-        creation.moldId!,
+        creation.structId!,
         null,
       )
       return newCreation
@@ -315,7 +315,7 @@ export const creationRouter = router({
       let creation = await prisma.creation.findUniqueOrThrow({
         where: { id: input.creationId },
         include: {
-          mold: true,
+          struct: true,
           creationTags: { include: { tag: true } },
         },
       })
@@ -370,7 +370,7 @@ export const creationRouter = router({
           publishedAt: input.publishedAt || creation.publishedAt || new Date(),
         },
         include: {
-          mold: true,
+          struct: true,
           creationTags: { include: { tag: true } },
         },
       })
@@ -391,7 +391,7 @@ export const creationRouter = router({
 
       if (creation.type === CreationType.NOTE) {
         let notes = await findNotes({
-          moldId: creation.moldId!,
+          structId: creation.structId!,
           areaId: creation.areaId!,
         })
         await cacheHelper.updateNotes(creation.areaId!, notes)
@@ -399,9 +399,9 @@ export const creationRouter = router({
 
       await cacheHelper.updateCreationProps(creation.id, creation)
 
-      await cacheHelper.updateMoldCreations(
+      await cacheHelper.updateStructCreations(
         creation.siteId,
-        creation.moldId!,
+        creation.structId!,
         null,
       )
 
@@ -448,9 +448,9 @@ export const creationRouter = router({
       await cacheHelper.updateCreationProps(creation.id, {
         ...creation,
       })
-      await cacheHelper.updateMoldCreations(
+      await cacheHelper.updateStructCreations(
         creation.siteId,
-        creation.moldId!,
+        creation.structId!,
         null,
       )
 
@@ -481,9 +481,9 @@ export const creationRouter = router({
       })
 
       await cacheHelper.updateCreationProps(creation.id, creation)
-      await cacheHelper.updateMoldCreations(
+      await cacheHelper.updateStructCreations(
         creation.siteId,
-        creation.moldId!,
+        creation.structId!,
         null,
       )
 
@@ -494,7 +494,7 @@ export const creationRouter = router({
 
       if (creation.type === CreationType.NOTE) {
         let notes = await findNotes({
-          moldId: creation.moldId!,
+          structId: creation.structId!,
           areaId: creation.areaId!,
         })
         await cacheHelper.updateNotes(creation.areaId!, notes)
@@ -521,7 +521,7 @@ export const creationRouter = router({
 
       return prisma.$transaction(
         async (tx) => {
-          const molds = await tx.mold.findMany({
+          const structs = await tx.struct.findMany({
             where: {
               siteId: input.siteId,
             },
@@ -529,10 +529,10 @@ export const creationRouter = router({
 
           const newPosts = await tx.creation.createManyAndReturn({
             data: input.creations.map((p: Creation) => {
-              const mold = molds.find((m) => m.type === p.type) || molds[0]
+              const struct = structs.find((m) => m.type === p.type) || structs[0]
               return {
-                moldId: mold.id,
-                type: mold.type,
+                structId: struct.id,
+                type: struct.type,
                 siteId,
                 userId: ctx.token.uid,
                 title: p.title,
@@ -568,8 +568,8 @@ export const creationRouter = router({
             data: { creationCount },
           })
 
-          for (const mold of molds) {
-            await cacheHelper.updateMoldCreations(siteId, mold.id, null)
+          for (const struct of structs) {
+            await cacheHelper.updateStructCreations(siteId, struct.id, null)
           }
 
           revalidateTag(`${siteId}-creations`)
@@ -591,9 +591,9 @@ export const creationRouter = router({
       })
 
       await cacheHelper.updateCreation(creation.id, null)
-      await cacheHelper.updateMoldCreations(
+      await cacheHelper.updateStructCreations(
         creation.siteId,
-        creation.moldId!,
+        creation.structId!,
         null,
       )
 
@@ -604,7 +604,7 @@ export const creationRouter = router({
 
       if (creation.type === CreationType.NOTE) {
         let notes = await findNotes({
-          moldId: creation.moldId!,
+          structId: creation.structId!,
           areaId: creation.areaId!,
         })
         await cacheHelper.updateNotes(creation.areaId!, notes)
@@ -631,9 +631,9 @@ export const creationRouter = router({
         })
 
         await cacheHelper.updateCreation(creation.id, null)
-        await cacheHelper.updateMoldCreations(
+        await cacheHelper.updateStructCreations(
           creation.siteId,
-          creation.moldId!,
+          creation.structId!,
           null,
         )
 
@@ -644,7 +644,7 @@ export const creationRouter = router({
 
         if (creation.type === CreationType.NOTE) {
           let notes = await findNotes({
-            moldId: creation.moldId!,
+            structId: creation.structId!,
             areaId: creation.areaId!,
           })
           await cacheHelper.updateNotes(creation.areaId!, notes)
@@ -660,7 +660,7 @@ export const creationRouter = router({
       return prisma.$transaction(async (tx) => {
         const creation = await tx.creation.findUniqueOrThrow({
           where: { id },
-          include: { mold: true },
+          include: { struct: true },
         })
 
         if (BUILTIN_PAGE_SLUGS.includes(creation.slug)) {
@@ -678,9 +678,9 @@ export const creationRouter = router({
           where: { id: id },
         })
         await cacheHelper.updateCreation(creation.id, null)
-        await cacheHelper.updateMoldCreations(
+        await cacheHelper.updateStructCreations(
           creation.siteId,
-          creation.moldId!,
+          creation.structId!,
           null,
         )
 
@@ -691,7 +691,7 @@ export const creationRouter = router({
 
         if (creation.type === CreationType.NOTE) {
           let notes = await findNotes({
-            moldId: creation.moldId!,
+            structId: creation.structId!,
             areaId: creation.areaId!,
           })
           await cacheHelper.updateNotes(creation.areaId!, notes)
@@ -735,10 +735,10 @@ export const creationRouter = router({
           data: { creationCount: 0 },
         })
 
-        const molds = await prisma.mold.findMany({ where: { siteId } })
+        const structs = await prisma.struct.findMany({ where: { siteId } })
 
-        for (const mold of molds) {
-          await cacheHelper.updateMoldCreations(input.siteId, mold.id, null)
+        for (const struct of structs) {
+          await cacheHelper.updateStructCreations(input.siteId, struct.id, null)
         }
 
         return true

@@ -5,8 +5,8 @@ import { CreationById } from '@penx/types'
 export function revalidateCreation(_creation: any) {
   const creation = _creation as CreationById
 
-  if (creation.mold?.type) {
-    revalidateTag(`${creation.siteId}-${creation.mold.type.toLowerCase()}s`)
+  if (creation.struct?.type) {
+    revalidateTag(`${creation.siteId}-${creation.struct.type.toLowerCase()}s`)
   }
 }
 

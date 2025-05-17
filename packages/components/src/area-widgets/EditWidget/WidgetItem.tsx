@@ -14,7 +14,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -70,7 +70,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
       ...rest
     } = props
 
-    const { molds } = useMolds()
+    const { structs } = useStructs()
     const { area } = useArea()
     const [visible, setVisible] = useState(false)
 
@@ -120,9 +120,9 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }}
           >
             <div className="flex items-center gap-1">
-              <WidgetIcon type={widget.type} molds={molds} />
+              <WidgetIcon type={widget.type} structs={structs} />
               <div className="select-none text-sm font-semibold">
-                <WidgetName widget={widget} molds={molds} />
+                <WidgetName widget={widget} structs={structs} />
               </div>
             </div>
             <div className={cn('flex items-center gap-0.5')}>

@@ -1,12 +1,12 @@
 import { WidgetType } from '@penx/constants'
-import { IMoldNode } from '@penx/model-type'
+import { IStructNode } from '@penx/model-type'
 import { CreationType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
-export const getInitialWidgets = (molds: IMoldNode[]) => {
-  const pageMold = molds.find((mold) => mold.props.type === CreationType.PAGE)!
-  const noteMold = molds.find((mold) => mold.props.type === CreationType.NOTE)!
-  const taskMold = molds.find((mold) => mold.props.type === CreationType.TASK)!
+export const getInitialWidgets = (structs: IStructNode[]) => {
+  const pageStruct = structs.find((struct) => struct.props.type === CreationType.PAGE)!
+  const noteStruct = structs.find((struct) => struct.props.type === CreationType.NOTE)!
+  const taskStruct = structs.find((struct) => struct.props.type === CreationType.TASK)!
 
   const widgets: Widget[] = [
     {
@@ -21,21 +21,21 @@ export const getInitialWidgets = (molds: IMoldNode[]) => {
     },
     {
       id: uniqueId(),
-      type: WidgetType.MOLD,
+      type: WidgetType.STRUCT,
       collapsed: true,
-      moldId: pageMold.id,
+      structId: pageStruct.id,
     },
     {
       id: uniqueId(),
-      type: WidgetType.MOLD,
+      type: WidgetType.STRUCT,
       collapsed: true,
-      moldId: noteMold.id,
+      structId: noteStruct.id,
     },
     {
       id: uniqueId(),
-      type: WidgetType.MOLD,
+      type: WidgetType.STRUCT,
       collapsed: true,
-      moldId: taskMold.id,
+      structId: taskStruct.id,
     },
   ]
   return widgets

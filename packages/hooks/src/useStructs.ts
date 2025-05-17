@@ -1,10 +1,10 @@
 import { useAtomValue } from 'jotai'
-import { Mold } from '@penx/domain'
-import { moldsAtom } from '@penx/store'
+import { Struct } from '@penx/domain'
+import { structsAtom } from '@penx/store'
 import { CreationType } from '@penx/types'
 
-export function useMolds() {
-  const raw = useAtomValue(moldsAtom)
+export function useStructs() {
+  const raw = useAtomValue(structsAtom)
 
   const sortKeys = [
     CreationType.PAGE,
@@ -20,8 +20,8 @@ export function useMolds() {
 
   return {
     raw,
-    molds: raw
-      .map((m) => new Mold(m))
+    structs: raw
+      .map((m) => new Struct(m))
       .sort((a, b) => {
         const indexA = sortKeys.indexOf(a.type as any)
         const indexB = sortKeys.indexOf(b.type as any)

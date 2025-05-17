@@ -145,9 +145,9 @@ async function sync(
       // await store.areas.refetchAreas()
     }
 
-    const hasMolds = changeNodes.some((c) => c.type === NodeType.MOLD)
-    if (hasMolds) {
-      // await store.molds.refetchMolds()
+    const hasStructs = changeNodes.some((c) => c.type === NodeType.STRUCT)
+    if (hasStructs) {
+      // await store.structs.refetchStructs()
     }
 
     // TODO:

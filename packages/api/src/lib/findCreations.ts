@@ -4,7 +4,7 @@ import { SiteCreation } from '@penx/types'
 
 interface Opt {
   siteId?: string
-  moldId?: string
+  structId?: string
   areaId?: string
 }
 export async function findCreations(opt: Opt) {
@@ -16,7 +16,7 @@ export async function findCreations(opt: Opt) {
       },
     },
     include: {
-      mold: true,
+      struct: true,
       creationTags: { include: { tag: true } },
       user: {
         select: {

@@ -59,7 +59,7 @@ export async function getSite(params: any) {
           user: true,
           channels: true,
           areas: true,
-          molds: true,
+          structs: true,
           products: {
             where: {
               type: ProductType.TIER,
@@ -137,11 +137,11 @@ export async function getCreations(site: Site) {
   console.log('=============site:', site)
 
   const siteId = site.id
-  const mold = site.molds.find((i) => i.type === CreationType.PAGE)!
+  const struct = site.structs.find((i) => i.type === CreationType.PAGE)!
 
   const creations = await unstable_cache(
     async () => {
-      let creations = await findManyCreations(site, mold.id)
+      let creations = await findManyCreations(site, struct.id)
       return creations
     },
     [`${siteId}-creations`],
@@ -156,11 +156,11 @@ export async function getCreations(site: Site) {
 
 export async function getPodcasts(site: Site): Promise<Creation[]> {
   const siteId = site.id
-  const mold = site.molds.find((i) => i.type === CreationType.AUDIO)!
-  if (!mold) return []
+  const struct = site.structs.find((i) => i.type === CreationType.AUDIO)!
+  if (!struct) return []
   const creations = await unstable_cache(
     async () => {
-      let creations = await findManyCreations(site, mold.id)
+      let creations = await findManyCreations(site, struct.id)
       return creations
     },
     [`${siteId}-podcasts`],
@@ -175,10 +175,10 @@ export async function getPodcasts(site: Site): Promise<Creation[]> {
 
 export async function getNotes(site: Site) {
   const siteId = site.id
-  const mold = site.molds.find((i) => i.type === CreationType.NOTE)!
+  const struct = site.structs.find((i) => i.type === CreationType.NOTE)!
   const creations = await unstable_cache(
     async () => {
-      let creations = await findManyCreations(site, mold.id)
+      let creations = await findManyCreations(site, struct.id)
       return creations
     },
     [`${siteId}-notes`],
@@ -193,11 +193,11 @@ export async function getNotes(site: Site) {
 
 export async function getPhotos(site: Site): Promise<Creation[]> {
   const siteId = site.id
-  const mold = site.molds.find((i) => i.type === CreationType.IMAGE)!
-  if (!mold) return []
+  const struct = site.structs.find((i) => i.type === CreationType.IMAGE)!
+  if (!struct) return []
   const creations = await unstable_cache(
     async () => {
-      let creations = await findManyCreations(site, mold.id)
+      let creations = await findManyCreations(site, struct.id)
       return creations
     },
     [`${siteId}-images`],
@@ -402,13 +402,13 @@ export async function getPage(siteId = '', slug = '') {
 
 export async function getFriends(site: Site) {
   const siteId = site.id
-  const mold = site.molds.find((mold) => mold.type === CreationType.FRIEND)
-  if (!mold) return []
+  const struct = site.structs.find((struct) => struct.type === CreationType.FRIEND)
+  if (!struct) return []
   return await unstable_cache(
     async () => {
-      const creations = await findManyCreations(site, mold!.id)
+      const creations = await findManyCreations(site, struct!.id)
       return creations.map((item) => {
-        return creationToFriend(item, item.mold as any)
+        return creationToFriend(item, item.struct as any)
       })
     },
     [`${siteId}-friends`],
@@ -421,13 +421,13 @@ export async function getFriends(site: Site) {
 
 export async function getProjects(site: Site) {
   const siteId = site.id
-  const mold = site.molds.find((mold) => mold.type === CreationType.PROJECT)
-  if (!mold) return []
+  const struct = site.structs.find((struct) => struct.type === CreationType.PROJECT)
+  if (!struct) return []
   return await unstable_cache(
     async () => {
-      const creations = await findManyCreations(site, mold!.id)
+      const creations = await findManyCreations(site, struct!.id)
       return creations.map((item) => {
-        const props = (item.mold?.props || []) as Prop[]
+        const props = (item.struct?.props || []) as Prop[]
         const output = props.reduce(
           (acc, prop) => {
             return { ...acc, [prop.slug]: item.props?.[prop.id] }
@@ -497,12 +497,12 @@ export async function getSiteCount() {
   )()
 }
 
-async function findManyCreations(site: Site, moldId: string) {
+async function findManyCreations(site: Site, structId: string) {
   const area = site.areas.find((item) => item.isGenesis)
   const creations = await prisma.creation.findMany({
     include: {
       creationTags: { include: { tag: true } },
-      mold: true,
+      struct: true,
       authors: {
         include: {
           user: {
@@ -519,7 +519,7 @@ async function findManyCreations(site: Site, moldId: string) {
     },
     where: {
       siteId: site.id,
-      moldId,
+      structId,
       areaId: area?.id,
       status: CreationStatus.PUBLISHED,
     },

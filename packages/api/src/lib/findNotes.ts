@@ -2,7 +2,7 @@ import { prisma } from '@penx/db'
 import { CreationStatus } from '@penx/db/client'
 
 interface Opt {
-  moldId: string
+  structId: string
   areaId: string
 }
 export function findNotes(opt: Opt) {
@@ -14,7 +14,7 @@ export function findNotes(opt: Opt) {
       },
     },
     include: {
-      mold: true,
+      struct: true,
       creationTags: { include: { tag: true } },
       authors: {
         include: {

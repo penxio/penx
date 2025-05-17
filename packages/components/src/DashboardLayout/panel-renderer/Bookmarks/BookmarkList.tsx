@@ -1,6 +1,6 @@
 'use client'
 
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useMySite } from '@penx/hooks/useMySite'
 import { useTags } from '@penx/hooks/useTags'
@@ -10,7 +10,7 @@ import { cn } from '@penx/utils'
 import { BookmarkItem } from './BookmarkItem'
 
 interface Props {
-  mold: Mold
+  struct: Struct
   panel: Panel
   index: number
 }
@@ -18,7 +18,7 @@ interface Props {
 export function BookmarkList(props: Props) {
   const { creations: data } = useCreations()
   const { tags } = useTags()
-  const creations = data.filter((item) => item.moldId === props.mold.id)
+  const creations = data.filter((item) => item.structId === props.struct.id)
 
   return (
     <div className="flex w-full flex-col gap-2">

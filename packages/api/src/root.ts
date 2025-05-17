@@ -25,7 +25,6 @@ import { googleRouter } from './routers/google'
 import { hostedSiteRouter } from './routers/hosted-site'
 import { memberRouter } from './routers/member'
 import { messageRouter } from './routers/message'
-import { moldRouter } from './routers/mold'
 import { newsletterRouter } from './routers/newsletter'
 import { orderRouter } from './routers/order'
 import { pageRouter } from './routers/page'
@@ -38,6 +37,7 @@ import { referralRouter } from './routers/referral'
 import { rewardsRouter } from './routers/rewards'
 import { siteRouter } from './routers/site'
 import { stripeRouter } from './routers/stripe'
+import { structRouter } from './routers/struct'
 import { subscriberRouter } from './routers/subscriber'
 import { syncRouter } from './routers/sync'
 import { tagRouter } from './routers/tag'
@@ -87,7 +87,7 @@ export const appRouter = router({
   payoutAccount: payoutAccountRouter,
   payout: payoutRouter,
   member: memberRouter,
-  mold: moldRouter,
+  struct: structRouter,
   creationEngagement: creationEngagementRouter,
   sync: syncRouter,
 })

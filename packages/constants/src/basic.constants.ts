@@ -373,7 +373,7 @@ export enum WidgetType {
   COLLECTION = 'COLLECTION',
   FAVORITES = 'FAVORITES',
   ALL_STRUCTS = 'ALL_STRUCTS',
-  MOLD = 'MOLD',
+  STRUCT = 'STRUCT',
 }
 
 export const reservedDomains = [

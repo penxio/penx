@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { WidgetType } from '@penx/constants'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { CreationType, Panel, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { ClosePanelButton } from '../ClosePanelButton'
@@ -19,9 +19,9 @@ interface Props {
 }
 
 export function PanelWidget({ panel, index }: Props) {
-  const { molds } = useMolds()
+  const { structs } = useStructs()
   const widget = panel.widget as Widget
-  const mold = molds.find((m) => m.id === widget.moldId)!
+  const struct = structs.find((m) => m.id === widget.structId)!
 
   const ref = useRef<HTMLDivElement>(null)
   const [columns, setColumns] = useState(3)
@@ -50,13 +50,13 @@ export function PanelWidget({ panel, index }: Props) {
     return () => resizeObserver.disconnect()
   }, [])
 
-  if (mold?.type === CreationType.NOTE) {
+  if (struct?.type === CreationType.NOTE) {
     return (
       <div ref={ref} className="flex-1 overflow-x-hidden pt-8">
         <NoteList
           panel={panel}
           index={index}
-          mold={mold}
+          struct={struct}
           columnCount={columns}
         />
       </div>
@@ -71,13 +71,13 @@ export function PanelWidget({ panel, index }: Props) {
     )
   }
 
-  if (mold?.type === CreationType.TASK) {
-    return <TasksList panel={panel} index={index} mold={mold} />
+  if (struct?.type === CreationType.TASK) {
+    return <TasksList panel={panel} index={index} struct={struct} />
   }
 
-  if (mold?.type === CreationType.BOOKMARK) {
-    return <BookmarkList panel={panel} index={index} mold={mold} />
+  if (struct?.type === CreationType.BOOKMARK) {
+    return <BookmarkList panel={panel} index={index} struct={struct} />
   }
 
-  return <CreationList panel={panel} index={index} mold={mold} />
+  return <CreationList panel={panel} index={index} struct={struct} />
 }

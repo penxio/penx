@@ -13,7 +13,7 @@ import { CreationTypeForm } from './CreationTypeForm'
 import { useCreationTypeDialog } from './useCreationTypeDialog'
 
 export function CreationTypeDialog() {
-  const { isOpen, setIsOpen, mold } = useCreationTypeDialog()
+  const { isOpen, setIsOpen, struct } = useCreationTypeDialog()
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
@@ -23,7 +23,7 @@ export function CreationTypeDialog() {
       <DialogContent className="sm:max-w-[520px]">
         <DialogHeader>
           <DialogTitle>
-            {!!mold ? (
+            {!!struct ? (
               <Trans id="Update type"></Trans>
             ) : (
               <Trans id="Add type"></Trans>

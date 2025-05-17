@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react'
-import { Mold } from '@penx/domain'
+import { Struct } from '@penx/domain'
 
 interface Props {
-  mold: Mold
+  struct: Struct
 }
 
-export function MoldName({ mold }: Props) {
-  let name: ReactNode = mold.name
+export function StructName({ struct }: Props) {
+  let name: ReactNode = struct.name
   if (name === 'Articles') name = <Trans id="Articles"></Trans>
   if (name === 'Notes') name = <Trans id="Notes"></Trans>
   if (name === 'Podcasts') name = <Trans id="Podcasts"></Trans>

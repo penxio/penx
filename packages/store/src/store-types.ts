@@ -4,7 +4,7 @@ import { AreasStore } from './stores/AreasStore'
 import { AreaStore } from './stores/AreaStore'
 import { CreationsStore } from './stores/CreationsStore'
 import { CreationTagsStore } from './stores/CreationTagsStore'
-import { MoldsStore } from './stores/MoldsStore'
+import { StructsStore } from './stores/StructsStore'
 import { PanelsStore } from './stores/PanelsStore'
 import { SiteStore } from './stores/SiteStore'
 import { TagsStore } from './stores/TagsStore'
@@ -21,7 +21,7 @@ export type StoreType = {
   visit: VisitStore
   site: SiteStore
   panels: PanelsStore
-  molds: MoldsStore
+  structs: StructsStore
   tags: TagsStore
   creationTags: CreationTagsStore
   area: AreaStore

@@ -1,5 +1,5 @@
 import { JSX, PropsWithChildren } from 'react'
-import { Area, Author, Mold, Product } from '@penx/db/client'
+import { Area, Author, Struct, Product } from '@penx/db/client'
 
 export enum CreationType {
   NOTE = 'NOTE',
@@ -140,7 +140,7 @@ export type Site = {
   seoDescription: string
   products: Product[]
   areas: Area[]
-  molds: Mold[]
+  structs: Struct[]
   createdAt: Date
   updatedAt: Date
 }
@@ -183,7 +183,7 @@ export type Creation = {
   userId: string
   siteId: string
   creationTags: CreationTag[]
-  mold: Mold
+  struct: Struct
   authors: Array<
     Author & {
       user: User

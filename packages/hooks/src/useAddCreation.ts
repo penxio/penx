@@ -6,7 +6,7 @@ import {
 import { CommentStatus } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
 import { updateCreationState } from '@penx/hooks/useCreation'
-import { useMolds } from '@penx/hooks/useMolds'
+import { useStructs } from '@penx/hooks/useStructs'
 import { ICreationNode, NodeType } from '@penx/model-type'
 import { store } from '@penx/store'
 import { CreationStatus, GateType, PanelType } from '@penx/types'
@@ -21,15 +21,15 @@ export type Input = {
 }
 
 export function useAddCreation() {
-  const { molds } = useMolds()
+  const { structs } = useStructs()
   const { site } = useMySite()
 
   return async (input: Input) => {
     const { isAddPanel = true } = input
-    const mold = molds.find((mold) => mold.type === input.type)
+    const struct = structs.find((struct) => struct.type === input.type)
     const area = store.area.get()
 
-    if (!mold) throw new Error('Invalid mold type')
+    if (!struct) throw new Error('Invalid struct type')
 
     const id = uniqueId()
     const addCreationInput: AddCreationInput = {
@@ -39,8 +39,8 @@ export function useAddCreation() {
       description: '',
       image: '',
       content: input.content || JSON.stringify(editorDefaultValue),
-      type: mold.type,
-      moldId: mold.id,
+      type: struct.type,
+      structId: struct.id,
       areaId: area.id,
     }
 
@@ -69,7 +69,7 @@ export function useAddCreation() {
       createdAt: new Date(),
       updatedAt: new Date(),
       areaId: area.id,
-      siteId: mold.siteId,
+      siteId: struct.siteId,
       userId: site.userId,
     }
 

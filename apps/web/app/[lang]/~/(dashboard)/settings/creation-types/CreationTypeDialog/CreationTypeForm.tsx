@@ -33,24 +33,24 @@ const FormSchema = z.object({
 
 export function CreationTypeForm() {
   const [isLoading, setLoading] = useState(false)
-  const { setIsOpen, mold } = useCreationTypeDialog()
-  const { refetch } = trpc.mold.list.useQuery()
+  const { setIsOpen, struct } = useCreationTypeDialog()
+  const { refetch } = trpc.struct.list.useQuery()
 
-  const isEdit = !!mold
+  const isEdit = !!struct
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      name: isEdit ? mold.name : '',
-      type: isEdit ? mold.type : '',
+      name: isEdit ? struct.name : '',
+      type: isEdit ? struct.type : '',
     },
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true)
-      await api.mold.update.mutate({
-        id: mold.id,
+      await api.struct.update.mutate({
+        id: struct.id,
         ...data,
       })
       setIsOpen(false)
