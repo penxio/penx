@@ -96,7 +96,11 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
               return
             }
 
-            // store.panels.openWidgetPanel(widget)
+            if (widget.type === WidgetType.AI_CHAT) {
+              store.panels.openWidgetPanel(widget)
+              return
+            }
+
             setVisible(!visible)
           }}
         >

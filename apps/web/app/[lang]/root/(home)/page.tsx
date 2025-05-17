@@ -30,12 +30,12 @@ export const revalidate = 86400 // 3600 * 24 * 365
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'PenX - A structured note-taking App for creators',
+    title: 'PenX - A structured note-taking App',
     description:
-      'PenX is an elegant note-taking app designed for creators to effortlessly capture, organize, and manage their ideas, tasks, and inspiration all in one place.',
+      'An elegant App designed to help you capture, organize, and store your thoughts, tasks, ideas, and information.',
     openGraph: {
       title: 'PenX',
-      description: 'A structured note-taking App for creators',
+      description: 'A structured note-taking App',
     },
     other: {
       'fc:frame': JSON.stringify(frame),

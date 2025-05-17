@@ -18,7 +18,7 @@ export default defineConfig({
   },
   manifest: {
     name: 'PenX',
-    description: 'A structured note-taking App for creators',
+    description: 'A structured note-taking App',
     host_permissions: ['<all_urls>'],
   },
 })

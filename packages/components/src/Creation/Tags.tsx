@@ -75,11 +75,9 @@ export function Tags({ creation }: Props) {
             className="text-foreground/60 h-7 gap-1 rounded-full px-2 text-xs"
             onClick={() => setIsOpen(true)}
           >
-            <HashIcon size={14} className="inline-flex group-hover:hidden" />
-            {/* <Plus size={16}></Plus> */}
-            {/* <div>
+            <div>
               <Trans id="Tag"></Trans>
-            </div> */}
+            </div>
           </Button>
         </PopoverTrigger>
         <PopoverContent align="start" side="bottom" className="w-48 p-0">

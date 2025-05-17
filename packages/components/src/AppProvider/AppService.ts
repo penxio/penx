@@ -40,8 +40,6 @@ export class AppService {
   }
 
   private async getInitialSite(session: SessionData): Promise<ISiteNode> {
-    console.log('========session:', session)
-
     if (!session) {
       const sites = await localDB.listAllSites()
       const site = sites.find((s) => s.props.isRemote) || sites?.[0]

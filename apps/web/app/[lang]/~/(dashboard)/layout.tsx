@@ -30,10 +30,10 @@ const roboto = Poppins({
   display: 'swap',
 })
 
-const title = 'PenX - A structured note-taking App for creators'
+const title = 'PenX - A structured note-taking App'
 
 const description =
-  'PenX is an elegant note-taking app designed for creators to effortlessly capture, organize, and manage their ideas, tasks, and inspiration all in one place.'
+  'An elegant App designed to help you capture, organize, and store your thoughts, tasks, ideas, and information.'
 
 const image = 'https://penx.io/opengraph-image'
 

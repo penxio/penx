@@ -119,6 +119,14 @@ export function AddWidgetButton({ className }: Props) {
                     </>
                   )
                 }
+
+                if (item === WidgetType.ALL_STRUCTS) {
+                  return (
+                    <>
+                      <Trans id="Favorites"></Trans>
+                    </>
+                  )
+                }
                 if (item === WidgetType.RECENTLY_EDITED) {
                   return (
                     <>
@@ -158,6 +166,7 @@ export function AddWidgetButton({ className }: Props) {
             })}
 
           <Separator className="my-1"></Separator>
+          <div className="text-foreground/50 px-4 py-2 text-xs">Structs</div>
 
           {molds.map((item) => {
             return (

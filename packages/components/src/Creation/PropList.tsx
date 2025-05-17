@@ -41,12 +41,12 @@ export const PropList = ({ onUpdateProps }: Props) => {
   return (
     <div className="mt-4 flex flex-col gap-1">
       {props.map((prop, i) => {
-        const props: any = creation.props || {}
+        const props = creation.props.props || {}
         const value = props[prop.id] || ''
 
         return (
           <div key={i} className="flex gap-2">
-            <div className="text-foreground/60 flex w-40 items-center gap-1">
+            <div className="text-foreground/60 flex w-32 items-center gap-1">
               <div>
                 {prop.type === PropType.TEXT && <TextIcon size={16} />}
                 {prop.type === PropType.URL && <LinkIcon size={16} />}
@@ -60,24 +60,28 @@ export const PropList = ({ onUpdateProps }: Props) => {
             <div className="flex-1">
               {prop.type === PropType.TEXT && (
                 <Input
-                  placeholder=""
-                  variant="filled"
+                  placeholder="Empty"
+                  variant="unstyled"
                   className=""
                   defaultValue={value}
                   onChange={(e) => {
-                    console.log('======>>>>>e:', e.target.value)
+                    onUpdateProps({
+                      ...props,
+                      [prop.id]: e.target.value,
+                    })
                   }}
                 />
               )}
               {prop.type === PropType.URL && (
                 <Input
+                  variant="unstyled"
+                  placeholder="Empty"
                   defaultValue={value}
                   onChange={(e) => {
-                    // const newPost = updateProps({
-                    //   ...props,
-                    //   [prop.id]: e.target.value,
-                    // })
-                    // onUpdateProps(newPost)
+                    onUpdateProps({
+                      ...props,
+                      [prop.id]: e.target.value,
+                    })
                   }}
                 />
               )}
@@ -85,11 +89,10 @@ export const PropList = ({ onUpdateProps }: Props) => {
                 <FileUpload
                   value={value}
                   onChange={(v) => {
-                    // const newPost = updateProps({
-                    //   ...props,
-                    //   [prop.id]: v,
-                    // })
-                    // onUpdateProps(newPost)
+                    onUpdateProps({
+                      ...props,
+                      [prop.id]: v,
+                    })
                   }}
                 />
               )}
@@ -97,11 +100,10 @@ export const PropList = ({ onUpdateProps }: Props) => {
                 <Select
                   defaultValue={value}
                   onValueChange={(v) => {
-                    // const newPost = updateProps({
-                    //   ...props,
-                    //   [prop.id]: v,
-                    // })
-                    // onUpdateProps(newPost)
+                    onUpdateProps({
+                      ...props,
+                      [prop.id]: v,
+                    })
                   }}
                 >
                   <SelectTrigger>

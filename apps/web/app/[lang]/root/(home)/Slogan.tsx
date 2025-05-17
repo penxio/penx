@@ -19,16 +19,12 @@ export function Slogan() {
     <div className="space-y-3 text-center">
       <div className="text-foreground space-y-2 text-4xl font-bold leading-none md:leading-tight">
         <div className="mx-auto flex justify-center gap-3">
-          A structured note-taking App for creators
+          A structured note-taking App
         </div>
       </div>
 
-      <div className="text-foreground/80 text-xl font-semibold">
-        Everyone is a creator.
-      </div>
-
       <div className="text-foreground/60 mx-auto max-w-lg text-lg">
-        <Trans id="PenX is an elegant note-taking app designed for creators to effortlessly capture, organize, and manage their ideas, tasks, and inspiration all in one place."></Trans>
+        <Trans id="An elegant App designed to help you capture, organize, and store your thoughts, tasks, ideas, and information."></Trans>
         <br />
       </div>
     </div>

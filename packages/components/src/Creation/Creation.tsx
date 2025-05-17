@@ -200,7 +200,7 @@ export function Creation({ panel, className, ref }: Props) {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-1">
               <ChangeType creation={creation} />
-              <div className="text-lg">•</div>
+              <div className="text-foreground/60 text-lg">•</div>
               <div className="flex items-center gap-2">
                 <Tags creation={creation} />
                 {/* <PostLocales /> */}
@@ -209,8 +209,8 @@ export function Creation({ panel, className, ref }: Props) {
           </div>
 
           <PropList
-            onUpdateProps={(newCreation) => {
-              debouncedUpdate(newCreation)
+            onUpdateProps={(newProps) => {
+              updateCreation({ id: creation.id, props: newProps })
             }}
           />
 

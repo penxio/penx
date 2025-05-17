@@ -1,5 +1,3 @@
-# PenX
-
 <div align="center">
 
 <a href="https://www.penx.io" alt="PenX Logo">
@@ -7,7 +5,7 @@
 
 <h1 style="border-bottom: none">
     <b>PenX</b><br />
-    A structured note-taking App for creators.
+    A structured note-taking App.
     <br>
 </h1>
 
@@ -17,7 +15,7 @@
 
 ## Introduction
 
-PenX is an elegant note-taking app designed for creators to effortlessly capture, organize, and manage their ideas, tasks, and inspiration all in one place.
+An elegant App designed to help you capture, organize, and store your thoughts, tasks, ideas, and information
 
 ## Features
 

@@ -13,7 +13,7 @@ const inputVariants = cva('', {
     variant: {
       default: '',
       unstyled:
-        'border-none shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-transparent',
+        'border-none shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-transparent focus-visible:bg-foreground/5 hover:bg-foreground/5',
       filled:
         'bg-foreground/5 border-none shadow-none focus-visible:border-none focus-visible:ring-0',
     },
