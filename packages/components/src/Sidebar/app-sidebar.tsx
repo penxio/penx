@@ -9,7 +9,7 @@ import {
   TagsIcon,
 } from 'lucide-react'
 import { ModeToggle } from '@penx/components/ModeToggle'
-import { isDesktop, isWeb, ROOT_HOST } from '@penx/constants'
+import { isDesktop, isMobileApp, isWeb, ROOT_HOST } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
@@ -37,6 +37,7 @@ import { ProfileButton } from '../ProfileButton'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
+import { AddCreationButton } from '../AddCreationButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { session } = useSession()
@@ -49,11 +50,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <AreasPopover />
           </SidebarMenuItem>
         </SidebarMenu>
-        <QuickSearchTrigger />
+        <div className='flex items-center justify-between mb-1 gap-1'>
+          <QuickSearchTrigger />
+          {!isMobileApp && <AddCreationButton></AddCreationButton>}
+        </div>
       </SidebarHeader>
       <SidebarContent className="-mx-2">
         <AreaWidgets />
-        {/* <ImportPostEntry /> */}
       </SidebarContent>
       <SidebarFooter className="py-0">
         <div className="flex items-center justify-between">

@@ -15,7 +15,6 @@ import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
 import { cn } from '@penx/utils'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
-import { QuickInput } from '../QuickInput'
 import { AddChatButton } from './AddChatButton'
 import { AddCreationButton } from './AddCreationButton'
 import { AllCreationCard } from './AllCreationCard'
@@ -23,6 +22,7 @@ import { IsAllProvider } from './IsAllContext'
 import { TitleContextMenu } from './TitleContextMenu'
 import { ToggleButton } from './ToggleButton'
 import { WidgetRender } from './WidgetRender'
+import { StructList } from './widgets/StructList'
 
 interface Props {
   dragging?: boolean
@@ -64,6 +64,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
     const { structs } = useStructs()
     const { area } = useArea()
     const [visible, setVisible] = useState(false)
+    const [struct, setStruct] = useState(null as any)
 
     // useEffect(() => {
     //   if (!dragOverlay) {
@@ -93,6 +94,11 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           onClick={(e) => {
             if (isMobileApp) {
               setVisible(true)
+              return
+            }
+
+            if (widget.type === WidgetType.ALL_STRUCTS) {
+              store.area.toggleCollapsed(widget.id)
               return
             }
 
@@ -165,7 +171,16 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                 exit={{ height: 0 }}
               >
                 <IsAllProvider>
-                  <WidgetRender widget={widget} />
+                  {widget.type === WidgetType.ALL_STRUCTS ? (
+                    <StructList
+                      onSelect={(struct) => {
+                        setVisible(!visible)
+                        setStruct(struct)
+                      }}
+                    />
+                  ) : (
+                    <WidgetRender widget={widget} />
+                  )}
                 </IsAllProvider>
               </motion.div>
             ) : null}
@@ -178,6 +193,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             visible={visible}
             setVisible={setVisible}
             widget={widget}
+            struct={struct}
           />
         )}
 

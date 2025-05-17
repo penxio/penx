@@ -103,6 +103,13 @@ export function AddWidgetButton({ className }: Props) {
                     </>
                   )
                 }
+                if (item === WidgetType.ALL_STRUCTS) {
+                  return (
+                    <>
+                      <Trans id="All structs"></Trans>
+                    </>
+                  )
+                }
 
                 if (item === WidgetType.COLLECTION) {
                   return (
@@ -120,13 +127,6 @@ export function AddWidgetButton({ className }: Props) {
                   )
                 }
 
-                if (item === WidgetType.ALL_STRUCTS) {
-                  return (
-                    <>
-                      <Trans id="All "></Trans>
-                    </>
-                  )
-                }
                 if (item === WidgetType.RECENTLY_EDITED) {
                   return (
                     <>

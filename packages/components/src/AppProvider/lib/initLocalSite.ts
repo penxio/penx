@@ -3,7 +3,7 @@ import { AreaType, ChargeMode } from '@penx/db/client'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
-import { IStructNode, ISiteNode, NodeType } from '@penx/model-type'
+import { ISiteNode, IStructNode, NodeType } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
 export async function initLocalSite(uid?: string) {
@@ -15,7 +15,7 @@ export async function initLocalSite(uid?: string) {
       type: NodeType.SITE,
       siteId: siteId,
       props: {
-        name: 'My Penx Site',
+        name: 'My Site',
         description: '',
         about: JSON.stringify(editorDefaultValue),
         logo: '',
@@ -31,7 +31,7 @@ export async function initLocalSite(uid?: string) {
         navLinks: defaultNavLinks,
         newsletterConfig: {},
         notificationConfig: {},
-        aiSetting:{},
+        aiSetting: {},
         repo: '',
         installationId: 0,
         balance: 0,

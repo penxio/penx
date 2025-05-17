@@ -73,7 +73,6 @@ export function useTableView() {
     currentView,
     deleteColumn,
     sortedColumns,
-
     // options,
     addRecord,
     updateRowsIndexes,
@@ -258,8 +257,8 @@ export function useTableView() {
 
       return {
         kind: getKind(),
-        allowOverlay: ColumnType.NODE_ID !== column.columnType,
-        readonly: ColumnType.NODE_ID === column.columnType,
+        allowOverlay: ColumnType.PRIMARY !== column.columnType,
+        readonly: ColumnType.PRIMARY === column.columnType,
         data: cellData,
         displayData: cellData,
       }

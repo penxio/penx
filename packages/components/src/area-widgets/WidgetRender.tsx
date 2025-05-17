@@ -6,6 +6,7 @@ import { CreationList } from './widgets/CreationList'
 import { Favorites } from './widgets/Favorites'
 import { RecentlyEdited } from './widgets/RecentlyEdited'
 import { RecentlyOpened } from './widgets/RecentlyOpened'
+import { StructList } from './widgets/StructList'
 
 interface Props {
   widget: Widget
@@ -34,5 +35,6 @@ export function WidgetRender({ widget }: Props) {
   if (widget.type === WidgetType.AI_CHAT) {
     return <AIChatHistorys />
   }
+
   return null
 }

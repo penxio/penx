@@ -101,12 +101,20 @@ export class PanelsStore {
           size: size,
         })
       } else {
-        draft.unshift({
+        const size = 100 / draft.length
+        draft[0] = {
           id: uniqueId(),
           type: PanelType.WIDGET,
           widget,
           size: size,
-        })
+        }
+
+        // draft.unshift({
+        //   id: uniqueId(),
+        //   type: PanelType.WIDGET,
+        //   widget,
+        //   size: size,
+        // })
       }
     })
     await this.savePanels(newPanels)

@@ -18,7 +18,7 @@ export const passwordCellRenderer: CustomRenderer<PasswordCell> = {
   isMatch: (c): c is PasswordCell => (c.data as any).kind === 'password-cell',
   draw: (args, cell) => {
     const { data = '' } = cell.data
-    drawTextCell(args, data.replace(/./g, '*'))
+    drawTextCell(args, data)
     return true
   },
   provideEditor: () => ({

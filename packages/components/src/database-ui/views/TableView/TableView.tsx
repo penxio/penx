@@ -103,10 +103,10 @@ export const TableView = ({ height, width }: Props) => {
         onColumnResize={onColumnResize}
         onColumnResizeEnd={onColumnResizeEnd}
         onHeaderMenuClick={onHeaderMenuClick}
-        onCellContextMenu={(cell, e) => {
-          setCellMenu({ row: database.records[cell[1]], bounds: e.bounds })
-          e.preventDefault()
-        }}
+        // onCellContextMenu={(cell, e) => {
+        //   setCellMenu({ row: database.records[cell[1]], bounds: e.bounds })
+        //   e.preventDefault()
+        // }}
         onHeaderClicked={(index, event) => {
           // if (isMobile) {
           //   modalController.open(ModalNames.CONFIG_COLUMN, {

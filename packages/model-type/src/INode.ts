@@ -1,4 +1,6 @@
 import { AISetting } from './IAISetting'
+import { IColumn } from './IColumn'
+import { IView } from './IView'
 
 export type Widget = {
   id: string
@@ -111,6 +113,11 @@ export interface IStructNode extends INode {
     type: string
     props: any[]
     content: string
+    color: string
+    activeViewId: string
+    viewIds: string[]
+    columns: IColumn[]
+    views: IView[]
   }
 }
 
@@ -180,11 +187,3 @@ export interface ICreationNode extends INode {
 export function isCreationNode(n: any): n is ICreationNode {
   return n.type === NodeType.CREATION
 }
-
-export interface IColumnNode extends INode {}
-export interface IRowNode extends INode {}
-export interface IViewNode extends INode {}
-
-export interface IFilterNode extends INode {}
-
-export interface IOptionNode extends INode {}

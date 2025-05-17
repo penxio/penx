@@ -16,6 +16,10 @@ interface Props {
 }
 
 export function WidgetIcon({ type, structs }: Props) {
+  if (type === WidgetType.ALL_STRUCTS) {
+    return <span className="icon-[mdi--shape-outline] size-5"></span>
+  }
+
   if (type === WidgetType.ALL_CREATIONS) {
     return <Rows4Icon size={16} />
   }
@@ -37,5 +41,6 @@ export function WidgetIcon({ type, structs }: Props) {
   if (type === WidgetType.AI_CHAT) {
     return <BotMessageSquareIcon size={16} />
   }
+
   return null
 }

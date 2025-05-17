@@ -3,6 +3,8 @@
 import React, { ReactNode } from 'react'
 import { XIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
+import { WidgetType } from '@penx/constants'
+import { Struct } from '@penx/domain'
 import { Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { IsAllProvider } from './IsAllContext'
@@ -13,9 +15,16 @@ interface Props {
   visible: boolean
   setVisible: any
   widget: Widget
+  struct?: Struct
 }
 
-export function AllCreationCard({ name, visible, setVisible, widget }: Props) {
+export function AllCreationCard({
+  name,
+  visible,
+  setVisible,
+  widget,
+  struct,
+}: Props) {
   return (
     <AnimatePresence initial={false}>
       {visible && (
@@ -26,7 +35,9 @@ export function AllCreationCard({ name, visible, setVisible, widget }: Props) {
           className="bg-background fixed bottom-2 left-[8px] top-2 z-50 flex w-[240px] flex-col rounded-md shadow-lg dark:bg-neutral-900"
         >
           <div className="flex items-center justify-between gap-1 px-3 py-2">
-            <div className="select-none text-sm font-semibold">{name}</div>
+            <div className="select-none text-sm font-semibold">
+              {struct ? struct.name : name}
+            </div>
             <Button
               variant="ghost"
               size="icon"
@@ -41,7 +52,17 @@ export function AllCreationCard({ name, visible, setVisible, widget }: Props) {
 
           <div className="flex-1 overflow-auto">
             <IsAllProvider isAll>
-              <WidgetRender widget={widget} />
+              <WidgetRender
+                widget={
+                  struct
+                    ? {
+                        ...widget,
+                        structId: struct.id,
+                        type: WidgetType.STRUCT,
+                      }
+                    : widget
+                }
+              />
             </IsAllProvider>
           </div>
         </motion.div>

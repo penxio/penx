@@ -1,6 +1,7 @@
+import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
-import { IStructNode } from '@penx/model-type'
+import { IColumn, IStructNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
 export const structsAtom = atom<IStructNode[]>([])
@@ -14,6 +15,15 @@ export class StructsStore {
 
   set(state: IStructNode[]) {
     this.store.set(structsAtom, state)
+  }
+
+  updateStruct(id: string, newStruct: IStructNode) {
+    const structs = this.get()
+    const newStructs = produce(structs, (draft) => {
+      const index = draft.findIndex((s) => s.id === id)
+      draft[index] = newStruct
+    })
+    this.set(newStructs)
   }
 
   async refetchStructs() {

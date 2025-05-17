@@ -30,7 +30,6 @@ export function SettingNav({}: Props) {
     features: '/~/settings/features',
     socials: '/~/settings/socials',
     domain: '/~/settings/domain',
-    creationTypes: '/~/settings/creation-types',
     web3: '/~/settings/web3',
     subscription: '/~/settings/subscription',
     collaborators: '/~/settings/collaborators',
@@ -145,13 +144,6 @@ export function SettingNav({}: Props) {
 
         {/* <Link href={Paths.backup} className={linkClassName(Paths.backup)}>
           <Trans id="Backup"></Trans>
-        </Link> */}
-
-        {/* <Link
-          href={Paths.creationTypes}
-          className={linkClassName(Paths.creationTypes)}
-        >
-          <Trans id="Creation types"></Trans>
         </Link> */}
 
         {/* <Link href={Paths.i18n} className={linkClassName(Paths.i18n)}>

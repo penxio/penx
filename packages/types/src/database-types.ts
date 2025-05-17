@@ -12,7 +12,7 @@ export enum ColumnType {
 
   TODO_SOURCE = 'TODO_SOURCE',
 
-  NODE_ID = 'NODE_ID',
+  PRIMARY = 'PRIMARY',
 
   SINGLE_SELECT = 'SINGLE_SELECT',
 

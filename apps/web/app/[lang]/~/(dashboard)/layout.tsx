@@ -3,7 +3,7 @@ import '@/globals.css'
 import 'shikwasa/dist/style.css'
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
-// import 'react-datepicker/dist/react-datepicker.css'
+import 'react-datepicker/dist/react-datepicker.css'
 import '@glideapps/glide-data-grid/dist/index.css'
 import { allMessages } from '@/appRouterI18n'
 import { SubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog'
@@ -105,10 +105,9 @@ export default async function RootLayout({
                 {children}
               </DashboardLayout>
             </ThemeProvider>
-
-            <div id="portal" />
           </DashboardProviders>
         </LinguiClientProvider>
+        <div id="portal" className="fixed left-0 top-0 z-[100000000]" />
       </body>
     </html>
   )

@@ -43,13 +43,17 @@ export function useAddCreation() {
       structId: struct.id,
       areaId: area.id,
     }
+    const props = struct.columns.reduce(
+      (acc, column) => ({ ...acc, [column.id]: '' }),
+      {} as Record<string, any>,
+    )
 
     const newCreation: ICreationNode = {
       id,
       type: NodeType.CREATION,
       props: {
         icon: '',
-        props: {},
+        props,
         podcast: {},
         i18n: {},
         gateType: GateType.FREE,

@@ -12,11 +12,11 @@ import {
   TextCellEntry,
 } from '@glideapps/glide-data-grid'
 import { Command } from 'cmdk'
-import { Column } from '@penx/db/client'
 import { getColorByName } from '@penx/libs/color-helper'
+import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
-import { useDatabaseContext } from '../database-ui/DatabaseProvider'
 import { OptionTag } from '../OptionTag'
+import { useDatabaseContext } from '../struct-database-ui/DatabaseProvider'
 import { roundedRect } from './draw-fns'
 import {
   CommandGroup,
@@ -27,7 +27,7 @@ import {
 interface SingleSelectCellProps {
   kind: 'single-select-cell'
   readonly?: boolean
-  column: Column
+  column: IColumn
   options: Option[]
   data: string[] // options ids
   newOption?: Option

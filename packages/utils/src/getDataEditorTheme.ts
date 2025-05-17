@@ -1,6 +1,7 @@
 export function getDataEditorTheme(isDark: boolean) {
   return {
-    accentColor: '#4F5DFF',
+    // accentColor: '#4F5DFF',
+    accentColor: 'transparent',
     accentFg: '#FFFFFF',
     accentLight: 'rgba(62, 116, 253, 0.1)',
 

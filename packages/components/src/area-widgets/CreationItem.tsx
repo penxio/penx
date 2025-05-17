@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/react'
 import {
   BookmarkIcon,
+  FileIcon,
   FileTextIcon,
   PanelLeft,
   StarIcon,
@@ -77,7 +78,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
         >
           {[CreationType.PAGE, CreationType.NOTE].includes(
             struct?.type as CreationType,
-          ) && <FileTextIcon size={16} className="text-foreground/60" />}
+          ) && <FileIcon size={16} className="text-foreground/60" />}
 
           {[CreationType.BOOKMARK].includes(struct?.type as CreationType) && (
             <BookmarkIcon size={16} className="text-foreground/60" />

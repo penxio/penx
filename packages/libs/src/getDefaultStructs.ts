@@ -1,7 +1,15 @@
 import { editorDefaultValue } from '@penx/constants'
-import { IStructNode, NodeType } from '@penx/model-type'
-import { CreationType, Prop, PropType } from '@penx/types'
+import { IColumn, IStructNode, IView, NodeType } from '@penx/model-type'
+import {
+  ColumnType,
+  CreationType,
+  Prop,
+  PropType,
+  ViewColumn,
+  ViewType,
+} from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { getRandomColorName } from './color-helper'
 
 type Input = {
   siteId: string
@@ -14,6 +22,58 @@ function getStructNode(
   input: Input,
   props: Prop[] = [],
 ) {
+  const columns: IColumn[] = [
+    {
+      id: uniqueId(),
+      slug: uniqueId(),
+      name: 'Title',
+      description: '',
+      columnType: ColumnType.PRIMARY,
+      config: {},
+      options: [],
+      isPrimary: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ]
+
+  const viewColumns: ViewColumn[] = columns.map((column) => ({
+    columnId: column.id,
+    width: 160,
+    visible: true,
+  }))
+
+  const views: IView[] = [
+    {
+      id: uniqueId(),
+      name: 'Table',
+      viewType: ViewType.TABLE,
+      viewColumns,
+      description: '',
+      kanbanColumnId: '',
+      sorts: [],
+      filters: [],
+      groups: [],
+      kanbanOptionIds: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      id: uniqueId(),
+      name: 'Gallery',
+      viewType: ViewType.GALLERY,
+      viewColumns,
+      description: '',
+      kanbanColumnId: '',
+      sorts: [],
+      filters: [],
+      groups: [],
+      kanbanOptionIds: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+  ]
+
   return {
     id: uniqueId(),
     type: NodeType.STRUCT,
@@ -24,6 +84,11 @@ function getStructNode(
       type,
       props,
       content: JSON.stringify(editorDefaultValue),
+      color: getRandomColorName(),
+      activeViewId: views[0].id,
+      viewIds: views.map((view) => view.id),
+      columns,
+      views,
     },
     createdAt: new Date(),
     updatedAt: new Date(),

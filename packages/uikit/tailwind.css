@@ -9,7 +9,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --shadow-popover:
+    rgba(0, 0, 0, 0.1) 0px 14px 28px -6px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px,
+    rgba(84, 72, 49, 0.08) 0px 0px 0px 1px;
+}
+
 :root {
+  --shadow-popover:
+    rgba(0, 0, 0, 0.1) 0px 14px 28px -6px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px,
+    rgba(84, 72, 49, 0.08) 0px 0px 0px 1px;
+
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(240 10% 3.9%);
   --popover: hsl(0 0% 100%);
@@ -94,6 +104,10 @@
 }
 
 @theme inline {
+  --shadow-popover:
+    rgba(0, 0, 0, 0.1) 0px 14px 28px -6px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px,
+    rgba(84, 72, 49, 0.08) 0px 0px 0px 1px;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

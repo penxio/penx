@@ -16,7 +16,10 @@ export function AddCreationButton({ className }: Props) {
     <Button
       variant="ghost"
       size="icon"
-      className={cn('hover:bg-foreground/10 size-8 rounded-full', className)}
+      className={cn(
+        'hover:bg-foreground/10 bg-background size-8 rounded-lg',
+        className,
+      )}
       onClick={() => {
         addCreation({ type: CreationType.PAGE })
       }}

@@ -11,8 +11,8 @@ import { Command } from 'cmdk'
 import { Column } from '@penx/db/client'
 import { getColorByName } from '@penx/libs/color-helper'
 import { Option } from '@penx/types'
-import { useDatabaseContext } from '../database-ui/DatabaseProvider'
 import { OptionTag } from '../OptionTag'
+import { useDatabaseContext } from '../struct-database-ui/DatabaseProvider'
 import { roundedRect } from './draw-fns'
 import {
   CommandGroup,
@@ -23,7 +23,7 @@ import {
 interface MultipleSelectCellProps {
   kind: 'multiple-select-cell'
   readonly?: boolean
-  field: Column
+  column: Column
   options: Option[]
   data: string[] // options ids
   newOption?: Option
@@ -128,9 +128,7 @@ interface PreviewProps {
 }
 
 function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
-  // console.log('======value:', value)
-
-  const { field, options } = value.data
+  const { column: field, options } = value.data
   const fieldOptions = (field.options as any as Option[]) || []
   // console.log('====options:', options, value)
 

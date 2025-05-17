@@ -14,6 +14,10 @@ export function WidgetName({ widget, structs }: Props) {
     return <Trans id="All creations"></Trans>
   }
 
+  if (widget.type === WidgetType.ALL_STRUCTS) {
+    return <Trans id="Structs"></Trans>
+  }
+
   if (widget.type === WidgetType.COLLECTION) {
     return <Trans id="Collection"></Trans>
   }
