@@ -62,7 +62,6 @@ export function PinCodeForm({}: Props) {
         await set('SESSION', session)
         queryClient.setQueryData(['SESSION'], session)
         appEmitter.emit('APP_LOGIN_SUCCESS', session)
-        nav.pop()
       }
     } catch (error) {
       console.log('========error:', error)

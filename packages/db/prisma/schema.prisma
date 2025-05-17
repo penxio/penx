@@ -82,7 +82,7 @@ model Site {
   navLinks               Json?
   newsletterConfig       Json?
   notificationConfig     Json?
-  aiProviders            Json?
+  aiSetting              Json?
   repo                   String?        @db.VarChar(100)
   installationId         Int?           @db.Integer // github app installationId
   balance                Json?
@@ -127,7 +127,7 @@ model Site {
   siteUsers              SiteUser[]
   areas                  Area[]
   molds                  Mold[]
-  Node                   Node[]
+  nodes                  Node[]
 
   @@index([userId])
   @@map("site")

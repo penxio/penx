@@ -79,7 +79,7 @@ export const authRouter = router({
       const nanoid = customAlphabet(alphabet, 6)
       let code: string
 
-      const expireSeconds = 60 * 100
+      const expireSeconds = 60 * 60
       while (true) {
         code = nanoid()
 
@@ -121,7 +121,7 @@ export const authRouter = router({
       const nanoid = customAlphabet(alphabet, 6)
       let code: string
 
-      const expireSeconds = 60 * 10
+      const expireSeconds = 60 * 60
       while (true) {
         code = nanoid()
 

@@ -40,6 +40,8 @@ export class AppService {
   }
 
   private async getInitialSite(session: SessionData): Promise<ISiteNode> {
+    console.log('========session:', session)
+
     if (!session) {
       const sites = await localDB.listAllSites()
       const site = sites.find((s) => s.props.isRemote) || sites?.[0]
@@ -99,7 +101,7 @@ export class AppService {
   }
 
   private async initStore(site: ISiteNode) {
-    const siteId = site.id
+    console.log('=============site..:', site)
     await store.site.save(site)
 
     const panels = await this.getPanels(site.id)
