@@ -117,7 +117,6 @@
     "./single-select-cell": "./src/cells/single-select-cell.tsx",
     "./system-date-cell": "./src/cells/system-date-cell.tsx",
     "./database-ui": "./src/database-ui/index.ts",
-    "./struct-database-ui": "./src/struct-database-ui/index.ts",
     "./DashboardProviders": "./src/providers/DashboardProviders.tsx",
     "./RootProviders": "./src/providers/RootProviders.tsx",
     "./AreaPageWidget": "./src/theme-ui/AreaPageWidget.tsx",

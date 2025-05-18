@@ -25,7 +25,7 @@ import { LoadingDots } from '@penx/uikit/loading-dots'
 import { NumberInput } from '@penx/uikit/NumberInput'
 import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useDatabaseContext } from '../struct-database-ui'
+import { useDatabaseContext } from '../database-ui'
 
 const FormSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),

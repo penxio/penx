@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { isMobile } from 'react-device-detect'
 import {
   ArrowDown,
   ArrowLeft,
@@ -11,9 +10,9 @@ import {
   Trash,
   Trash2,
 } from 'lucide-react'
+import { toast } from 'sonner'
 import { useDatabaseContext } from '@penx/components/database-ui'
-import { Column } from '@penx/db/client'
-import { IColumnNode } from '@penx/model-type'
+import { IColumn } from '@penx/model-type'
 import { Input } from '@penx/uikit/input'
 import { Menu, MenuItem } from '@penx/uikit/menu'
 import { useDeleteColumnDialog } from '../DeleteColumnDialog/useDeleteColumnDialog'
@@ -21,12 +20,12 @@ import { EditField } from './EditField'
 
 interface ColumnMenuProps {
   index?: number
-  column: Column
+  column: IColumn
   close: () => void
 }
 export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
   const ctx = useDatabaseContext()
-  const [name, setName] = useState(column.displayName || '')
+  const [name, setName] = useState(column.name || '')
   const [isEditField, setIsEditField] = useState(false)
   const { setState } = useDeleteColumnDialog()
 
@@ -35,7 +34,7 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
   )!
   const [width, setWidth] = useState(viewColumn.width || 120)
 
-  async function moveField(fromIndex: number, toIndex: number) {
+  async function moveColumn(fromIndex: number, toIndex: number) {
     await ctx.sortColumns(fromIndex, toIndex)
     close()
   }
@@ -108,17 +107,27 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
             <div>
               <Pen size={16} />
             </div>
-            <div>Edit field</div>
+            <div>Edit column</div>
           </MenuItem>
         )}
 
-        <MenuItem className="gap-2">
+        <MenuItem
+          className="gap-2"
+          onClick={() => {
+            toast.info('Coming soon...')
+          }}
+        >
           <div>
             <ArrowUp size={16} />
           </div>
           <div>Sort ascending</div>
         </MenuItem>
-        <MenuItem className="gap-2">
+        <MenuItem
+          className="gap-2"
+          onClick={() => {
+            toast.info('Coming soon...')
+          }}
+        >
           <div>
             <ArrowDown size={16} />
           </div>
@@ -130,7 +139,7 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
             {index > 1 && (
               <MenuItem
                 className="gap-2"
-                onClick={() => moveField(index, index - 1)}
+                onClick={() => moveColumn(index, index - 1)}
               >
                 <div>
                   <ArrowLeft size={16} />
@@ -139,10 +148,10 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
               </MenuItem>
             )}
 
-            {index < ctx.database.columns.length - 1 && (
+            {index < ctx.struct.columns.length - 1 && (
               <MenuItem
                 className="gap-2"
-                onClick={() => moveField(index, index + 1)}
+                onClick={() => moveColumn(index, index + 1)}
               >
                 <div>
                   <ArrowRight size={16} />
@@ -164,7 +173,7 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
               <div>
                 <Trash2 size={16} />
               </div>
-              <div>Delete field</div>
+              <div>Delete column</div>
             </MenuItem>
           </>
         )}

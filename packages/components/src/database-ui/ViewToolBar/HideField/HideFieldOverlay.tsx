@@ -30,6 +30,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable'
 import { useDatabaseContext } from '../../DatabaseProvider'
+import { Item } from './Item'
 import { SortableItem } from './SortableItem'
 
 const measuring: MeasuringConfiguration = {
@@ -83,7 +84,7 @@ export const HideFieldOverlay = () => {
     : null
 
   return (
-    <div className="bg-background flex w-[200px] flex-col rounded">
+    <div className="bg-background flex w-full flex-col rounded">
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
@@ -103,14 +104,14 @@ export const HideFieldOverlay = () => {
           ))}
         </SortableContext>
 
-        {/* {createPortal(
+        {createPortal(
           <DragOverlay>
             {activeId && activeItem && (
               <Item dragOverlay viewColumn={activeItem} id={activeId} />
             )}
           </DragOverlay>,
           document.body,
-        )} */}
+        )}
       </DndContext>
       {/* <Box toBetween mt2>
         <Button size={28}>Hide all</Button>

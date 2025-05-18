@@ -5,10 +5,12 @@ import { isMobile } from 'react-device-detect'
 import {
   DataEditor,
   DataEditorRef,
+  GridMouseEventArgs,
   Rectangle,
 } from '@glideapps/glide-data-grid'
 import { useTheme } from 'next-themes'
 import { DATABASE_TOOLBAR_HEIGHT, SIDEBAR_WIDTH } from '@penx/constants'
+import { useCreations } from '@penx/hooks/useCreations'
 import { getDataEditorTheme } from '@penx/utils/getDataEditorTheme'
 import { cellRenderers } from '../../../cells'
 import { useDatabaseContext } from '../../DatabaseProvider'
@@ -26,7 +28,9 @@ interface Props {
 }
 
 export const TableView = ({ height, width }: Props) => {
-  const { database } = useDatabaseContext()
+  const { struct } = useDatabaseContext()
+  const { creationsByStruct } = useCreations()
+  const records = creationsByStruct(struct.id)
   const { theme } = useTheme()
 
   const {
@@ -65,9 +69,15 @@ export const TableView = ({ height, width }: Props) => {
 
   const isDark = theme === 'dark'
   const rowHeight = 36
+
+  const onItemHovered = (data: GridMouseEventArgs) => {
+    if (data.kind === 'cell') {
+      // console.log('data', data.bounds, data)
+    }
+  }
   return (
     <div
-      className=""
+      className="relative"
       style={{
         height: (rowsNum + 2) * rowHeight + 2,
         maxHeight: `calc(100vh - ${DATABASE_TOOLBAR_HEIGHT}px)`,
@@ -77,7 +87,7 @@ export const TableView = ({ height, width }: Props) => {
       <ConfigColumnDialog />
       <DataEditor
         ref={gridRef}
-        className="border-foreground/10 h-full w-full border-t p-0"
+        className="border-foreground/10 m-0 h-full w-full border-t p-0"
         columns={cols}
         rowHeight={rowHeight}
         rows={rowsNum}
@@ -103,10 +113,11 @@ export const TableView = ({ height, width }: Props) => {
         onColumnResize={onColumnResize}
         onColumnResizeEnd={onColumnResizeEnd}
         onHeaderMenuClick={onHeaderMenuClick}
-        // onCellContextMenu={(cell, e) => {
-        //   setCellMenu({ row: database.records[cell[1]], bounds: e.bounds })
-        //   e.preventDefault()
-        // }}
+        onItemHovered={onItemHovered}
+        onCellContextMenu={(cell, e) => {
+          setCellMenu({ row: records[cell[1]], bounds: e.bounds })
+          e.preventDefault()
+        }}
         onHeaderClicked={(index, event) => {
           // if (isMobile) {
           //   modalController.open(ModalNames.CONFIG_COLUMN, {

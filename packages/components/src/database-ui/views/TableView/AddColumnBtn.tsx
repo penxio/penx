@@ -107,14 +107,14 @@ interface Props {}
 export const AddColumnBtn: FC<Props> = ({}) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
-    <div className="flex h-9 w-9 items-center justify-center">
+    <div className="flex h-9 w-9 shrink-0 items-center justify-center">
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
-          <div className="text-foreground/50 flex h-full w-full cursor-pointer items-center justify-between">
+          <div className="text-foreground/50 flex h-full w-full cursor-pointer items-center justify-center">
             <Plus size={20} />
           </div>
         </PopoverTrigger>
-        <PopoverContent className="p-0">
+        <PopoverContent isPortal className="p-0">
           <Content setIsOpen={setIsOpen} />
         </PopoverContent>
       </Popover>

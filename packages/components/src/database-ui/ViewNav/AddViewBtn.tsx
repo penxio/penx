@@ -16,9 +16,11 @@ interface ItemProps extends PropsWithChildren {
 function Item({ children, viewType, ...rest }: ItemProps) {
   const ctx = useDatabaseContext()
   async function addView() {
-    toast.info('Coming soon!')
-    // const view = await ctx.addView(viewType)
-    // ctx.setActiveViewId(view.id)
+    if (viewType === ViewType.KANBAN) {
+      toast.info('Kanban view is not supported yet.')
+      return
+    }
+    const view = await ctx.addView(viewType)
   }
 
   return (
@@ -37,21 +39,21 @@ function Content() {
         <ViewIcon viewType={ViewType.TABLE} />
         <div>Table</div>
       </Item>
-      {/* 
+
       <Item viewType={ViewType.LIST}>
         <ViewIcon viewType={ViewType.LIST} />
         <div>List</div>
-      </Item> */}
+      </Item>
 
       <Item viewType={ViewType.GALLERY}>
         <ViewIcon viewType={ViewType.GALLERY} />
         <div>Gallery</div>
       </Item>
 
-      {/* <Item viewType={ViewType.KANBAN}>
+      <Item viewType={ViewType.KANBAN}>
         <ViewIcon viewType={ViewType.KANBAN} />
-        <Box>Kanban</Box>
-      </Item> */}
+        <div>Kanban</div>
+      </Item>
     </div>
   )
 }
@@ -60,7 +62,7 @@ export const AddViewBtn = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="secondary" size="icon" className="h-7 w-7">
+        <Button variant="ghost" size="icon" className="h-7 w-7">
           <Plus size={18} className="text-foreground/60" />
         </Button>
       </PopoverTrigger>

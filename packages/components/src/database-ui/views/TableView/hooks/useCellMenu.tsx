@@ -3,13 +3,12 @@
 import { useState } from 'react'
 import { useLayer } from 'react-laag'
 import { Item, Rectangle } from '@glideapps/glide-data-grid'
-import { Record } from '@penx/db/client'
-import { IRowNode } from '@penx/model-type'
+import { Creation } from '@penx/domain'
 import { CellMenu } from '../CellMenu'
 
 export const useCellMenu = () => {
   const [menu, setMenu] = useState<{
-    row: Record
+    row: Creation
     bounds: Rectangle
   }>()
 
@@ -38,7 +37,7 @@ export const useCellMenu = () => {
         renderLayer(
           <div
             {...layerProps}
-            className="bg-popover overflow-hidden rounded-lg border shadow-md"
+            className="bg-popover z-[10000] overflow-hidden rounded-lg border shadow-md"
           >
             <CellMenu row={menu.row} close={() => setMenu(undefined)} />
           </div>,

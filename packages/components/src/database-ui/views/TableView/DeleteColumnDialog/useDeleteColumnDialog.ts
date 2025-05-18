@@ -1,11 +1,11 @@
 'use client'
 
 import { atom, useAtom } from 'jotai'
-import { Column } from '@penx/db/client'
+import { IColumn } from '@penx/model-type'
 
 type State = {
   isOpen: boolean
-  column: Column
+  column: IColumn
 }
 
 const dialogAtom = atom<State>({

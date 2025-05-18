@@ -4,10 +4,11 @@ import { useState } from 'react'
 import { useLayer } from 'react-laag'
 import { Rectangle } from '@glideapps/glide-data-grid'
 import { Column } from '@penx/db/client'
+import { IColumn } from '@penx/model-type'
 import { ColumnMenu } from '../ColumnMenu/ColumnMenu'
 import { useFieldTypeSelectPopover } from './useFieldTypeSelectPopover'
 
-export const useColumnMenu = (columns: Column[]) => {
+export const useColumnMenu = (columns: IColumn[]) => {
   const [menu, setMenu] = useState<{
     col: number
     bounds: Rectangle
@@ -43,7 +44,7 @@ export const useColumnMenu = (columns: Column[]) => {
         renderLayer(
           <div
             {...layerProps}
-            className="bg-popover w-[260px] overflow-hidden rounded-lg border shadow-md"
+            className="bg-popover shadow-popover z-[10000] w-[260px] overflow-hidden rounded-lg"
           >
             <ColumnMenu
               index={menu.col}

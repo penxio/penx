@@ -1,25 +1,25 @@
 'use client'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Column } from '@penx/db/client'
+import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
 import { useDatabaseContext } from '../../DatabaseProvider'
 
 export type EditFieldValues = {
-  displayName: string
   name: string
+  slug: string
   columnType: any
   options: Option[]
 }
 
-export function useEditColumnForm(column: Column) {
+export function useEditColumnForm(column: IColumn) {
   const ctx = useDatabaseContext()
   const columnOptions = (column.options as any as Option[]) || []
 
   const form = useForm<EditFieldValues>({
     defaultValues: {
-      displayName: column.displayName || '',
       name: column.name,
+      slug: column.slug || '',
       columnType: column.columnType,
       options: columnOptions.map((o) => ({
         id: o.id,

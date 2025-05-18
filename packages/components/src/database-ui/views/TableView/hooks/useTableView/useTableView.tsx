@@ -13,7 +13,6 @@ import {
 } from '@glideapps/glide-data-grid'
 import { format } from 'date-fns'
 import { produce } from 'immer'
-import { useDatabaseContext } from '@penx/components/database-ui'
 import { DateCell } from '@penx/components/date-cell'
 import { FileCell } from '@penx/components/file-cell'
 import { ImageCell } from '@penx/components/image-cell'
@@ -21,25 +20,33 @@ import {
   PasswordCell,
   passwordCellRenderer,
 } from '@penx/components/password-cell'
+import { PrimaryCell } from '@penx/components/primary-cell'
 import { RateCell } from '@penx/components/rate-cell'
 import { SingleSelectCell } from '@penx/components/single-select-cell'
+import { useDatabaseContext } from '@penx/components/database-ui'
 import { SystemDateCell } from '@penx/components/system-date-cell'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { Column } from '@penx/db/client'
+import { Struct } from '@penx/domain'
+import { useCreations } from '@penx/hooks/useCreations'
+import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { ColumnType, Option, ViewColumn } from '@penx/types'
 import { mappedByKey } from '@penx/utils'
 
-function getCols(columns: Column[], viewColumns: ViewColumn[]) {
-  const sortedColumns = viewColumns
+function getCols(struct: Struct) {
+  const sortedColumns = struct.currentView.viewColumns
     .filter((v) => v.visible)
     .map(({ columnId }) => {
-      return columns.find((col) => col.id === columnId)!
+      return struct.columns.find((col) => col.id === columnId)!
     })
-    .filter((col) => !!col)
 
-  const viewColumnsMapped = mappedByKey(viewColumns, 'columnId')
+  const viewColumnsMapped = mappedByKey(
+    struct.currentView.viewColumns,
+    'columnId',
+  )
 
   const cols: GridColumn[] = sortedColumns.map((column) => {
     function getIcon() {
@@ -53,7 +60,7 @@ function getCols(columns: Column[], viewColumns: ViewColumn[]) {
 
     return {
       id: column.id,
-      title: column.displayName || '',
+      title: column.name || '',
       width: viewColumn?.width ?? 160,
       icon: getIcon(),
       hasMenu: true,
@@ -68,22 +75,20 @@ function getCols(columns: Column[], viewColumns: ViewColumn[]) {
 
 export function useTableView() {
   const {
-    database,
-    filterResult: { filterRows = [], cellNodesMapList = [] },
+    struct,
+    // filterResult: { filterRows = [], cellNodesMapList = [] },
     currentView,
     deleteColumn,
     sortedColumns,
-    // options,
     addRecord,
-    updateRowsIndexes,
   } = useDatabaseContext()
-  const { columns, records, views } = database
-  // console.log('========database:', database)
+  const { columns } = struct
 
+  const { creations, raw: creationNodes, creationsByStruct } = useCreations()
+  const records = creationsByStruct(struct.id)
   const columnsMap = mappedByKey(columns, 'id')
   const rowsMap = mappedByKey(records, 'id')
-  let { viewColumns = [] } = currentView
-  const [cols, setCols] = useState(getCols(columns, viewColumns))
+  const [cols, setCols] = useState(getCols(struct))
 
   const gridRef = useRef<DataEditorRef>(null)
 
@@ -92,11 +97,12 @@ export function useTableView() {
       const [col, row] = cell
       const column = columnsMap[currentView.viewColumns[col].columnId]
       const record = records[row]
-      const columns = record.columns as Record<string, any>
+      const props = record.props.props as Record<string, any>
 
       function getCellData() {
         if (!record) return ''
-        let cellData: any = columns?.[column.id]
+        if (column.isPrimary) return record.title
+        let cellData: any = props?.[column.id]
         if (!cellData) return ''
 
         if (column.columnType === ColumnType.NUMBER) {
@@ -127,6 +133,20 @@ export function useTableView() {
           data: '',
           displayData: '',
         }
+      }
+
+      if (column.columnType === ColumnType.PRIMARY) {
+        return {
+          kind: GridCellKind.Custom,
+          allowOverlay: true,
+          copyData: cellData,
+
+          data: {
+            kind: 'primary-cell',
+            data: cellData,
+            record: record,
+          },
+        } as PrimaryCell
       }
 
       if (column.columnType === ColumnType.DATE) {
@@ -207,7 +227,7 @@ export function useTableView() {
         const ids: string[] = Array.isArray(cellData) ? cellData : []
         // console.log('====>>>>>>:ids:', ids, 'cellData:', cellData)
 
-        const options = (column.options as any as Option[]) || []
+        const options = column.options
 
         const cellOptions = ids
           .map((id) => options.find((o) => o.id === id)!)
@@ -224,7 +244,7 @@ export function useTableView() {
               ColumnType.SINGLE_SELECT === column.columnType
                 ? 'single-select-cell'
                 : 'multiple-select-cell',
-            column,
+            column: column,
             options: cellOptions,
             data: cellOptions.map((o) => o.id),
           },
@@ -257,13 +277,15 @@ export function useTableView() {
 
       return {
         kind: getKind(),
-        allowOverlay: ColumnType.PRIMARY !== column.columnType,
-        readonly: ColumnType.PRIMARY === column.columnType,
+        // allowOverlay: ColumnType.NODE_ID !== column.columnType,
+        // readonly: ColumnType.NODE_ID === column.columnType,
+        allowOverlay: true,
+        readonly: false,
         data: cellData,
         displayData: cellData,
       }
     },
-    [columnsMap, currentView, records],
+    [columnsMap, currentView, struct],
   )
 
   const setCellValue = async (
@@ -280,46 +302,56 @@ export function useTableView() {
       data = data.data
     }
 
-    const newDatabase = produce(database, (draft) => {
-      draft.records[rowIndex].columns = {
-        ...(record.columns as any),
-        [column.id]: data,
-      }
-
-      // hack for create option
-      if (typeof newValue.data === 'object') {
-        const newOption = (newValue?.data as any)?.newOption
-        if (newOption) {
-          for (const item of draft.columns) {
-            if (item.id === column.id) {
-              const options = (item.options as any as Option[]) || []
-              item.options = [...options, newOption]
-              break
-            }
-          }
-        }
+    const newCreation = produce(record.raw, (draft) => {
+      if (colIndex === 0) {
+        draft.props.title = data
+      } else {
+        draft.props.props[column.id] = data
       }
     })
 
-    queryClient.setQueriesData(
-      {
-        queryKey: [
-          'database',
-          [PROJECT_DATABASE_NAME, FRIEND_DATABASE_NAME].includes(database.slug)
-            ? database.slug
-            : database.id,
-        ],
-      },
-      newDatabase,
-    )
+    if (colIndex === 0) {
+      store.creations.updateCreationById(record.id, {
+        props: {
+          ...record.props,
+          title: data,
+        },
+      })
 
-    await api.database.updateRecord.mutate({
-      recordId: record.id,
-      columns: {
-        ...(record.columns as any),
-        [column.id]: data,
-      },
-    })
+      await localDB.updateCreationProps(record.id, {
+        title: data,
+      })
+    } else {
+      store.creations.updateCreationById(record.id, {
+        props: {
+          ...record.props,
+          props: newCreation.props.props,
+        },
+      })
+
+      await localDB.updateCreationProps(record.id, {
+        props: newCreation.props.props,
+      })
+    }
+
+    console.log('=======newValue:', newValue)
+
+    // const newDatabase = produce(database, (draft) => {
+
+    //   // hack for create option
+    //   if (typeof newValue.data === 'object') {
+    //     const newOption = (newValue?.data as any)?.newOption
+    //     if (newOption) {
+    //       for (const item of draft.columns) {
+    //         if (item.id === column.id) {
+    //           const options = (item.options as any as Option[]) || []
+    //           item.options = [...options, newOption]
+    //           break
+    //         }
+    //       }
+    //     }
+    //   }
+    // })
   }
 
   function onColumnResize(
@@ -341,10 +373,22 @@ export function useTableView() {
     colIndex: number,
     newSizeWithGrow: number,
   ) {
-    await api.database.updateViewColumn.mutate({
-      viewId: currentView.id,
-      columnId: column.id!,
-      width: newSize,
+    const newStruct = produce(struct.raw, (draft) => {
+      for (const view of draft.props.views) {
+        if (view.id === currentView.id) {
+          const index = view.viewColumns.findIndex(
+            (i) => i.columnId === column.id,
+          )
+          view.viewColumns[index].width = newSize
+          break
+        }
+      }
+    })
+
+    store.structs.updateStruct(struct.id, newStruct)
+
+    await localDB.updateStructProps(struct.id, {
+      views: newStruct.props.views,
     })
   }
 
@@ -362,20 +406,19 @@ export function useTableView() {
   }, [addRecord])
 
   useEffect(() => {
-    const newCols = getCols(columns, viewColumns)
+    const newCols = getCols(struct)
     // TODO: has bug when resize columns;
     if (!isEqual(cols, newCols)) {
       setCols(newCols)
     }
     // TODO: don't add cols to deps
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [database.columns, database.views])
+  }, [struct])
 
   return {
     gridRef,
-    records,
+    records: records,
     // filterRows,
-    // rowsNum: cellNodesMapList.length,
     sortedColumns,
     rowsNum: records.length,
     cols,

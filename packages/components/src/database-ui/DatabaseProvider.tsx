@@ -16,12 +16,14 @@ import { useSearchParams } from 'next/navigation'
 import { RouterInputs, RouterOutputs } from '@penx/api'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { Column, Record as Row, View } from '@penx/db/client'
-import { useMySite } from '@penx/hooks/useMySite'
-import { useQueryDatabase } from '@penx/hooks/useQueryDatabase'
+import { Creation, Struct } from '@penx/domain'
+import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { useCreations } from '@penx/hooks/useCreations'
 import { getRandomColorName } from '@penx/libs/color-helper'
-import { queryClient } from '@penx/query-client'
+import { localDB } from '@penx/local-db'
+import { IColumn, IStructNode, IView } from '@penx/model-type'
 import { useSession } from '@penx/session'
-import { api } from '@penx/trpc-client'
+import { store } from '@penx/store'
 import {
   ColumnType,
   Filter,
@@ -34,29 +36,9 @@ import {
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { uniqueId } from '@penx/unique-id'
 
-type DatabaseView = Omit<View, 'viewColumns'> & {
-  viewColumns: ViewColumn[]
-}
+type UpdateDatabaseInput = Partial<IStructNode['props']>
 
-type DatabaseRecord = Omit<Row, 'columns'> & {
-  columns: Record<string, any>
-}
-
-export type Database = Omit<RouterOutputs['database']['byId'], 'view'> & {
-  viewIds: string[]
-  views: DatabaseView[]
-  records: DatabaseRecord[]
-}
-
-type UpdateDatabaseInput = Omit<
-  RouterInputs['database']['updateDatabase'],
-  'databaseId'
->
-
-type UpdateViewColumnInput = Omit<
-  RouterInputs['database']['updateViewColumn'],
-  'viewId' | 'columnId'
->
+type UpdateViewColumnInput = Partial<ViewColumn>
 
 type UpdateColumnInput = {
   name?: string
@@ -65,20 +47,20 @@ type UpdateColumnInput = {
 }
 
 export interface IDatabaseContext {
-  database: Database
-  currentView: DatabaseView
-
-  filterResult: any
-  updateRowsIndexes: () => void
-
+  struct: Struct
+  records: Creation[]
+  columns: IColumn[]
+  currentView: IView
+  // filterResult: any
+  // updateRowsIndexes: () => void
   activeViewId: string
   setActiveViewId: (viewId: string) => void
-  sortedColumns: Column[]
+  sortedColumns: IColumn[]
 
   updateDatabase: (props: UpdateDatabaseInput) => void
 
   addView(viewType: ViewType): any
-  updateView(viewId: string, props: any): Promise<void>
+  updateView(viewId: string, data: Partial<IView>): Promise<void>
   deleteView(viewId: string): Promise<void>
 
   updateViewColumn(columnId: string, props: any): Promise<void>
@@ -125,163 +107,145 @@ export interface IDatabaseContext {
 export const DatabaseContext = createContext({} as IDatabaseContext)
 
 interface DatabaseProviderProps {
-  id?: string
-  slug?: string
-  fetcher?: () => Promise<RouterOutputs['database']['byId']>
+  struct: Struct
 }
 export function DatabaseProvider({
-  id,
-  slug,
-  fetcher,
+  struct,
   children,
 }: PropsWithChildren<DatabaseProviderProps>) {
-  const params = useSearchParams()
-  const databaseId = id || params?.get('id')!
-  const { isLoading, data } = useQueryDatabase({
-    id: databaseId,
-    slug,
-    fetcher,
-  })
-
-  if (isLoading) {
-    return (
-      <div className="flex h-[80vh] items-center justify-center">
-        <LoadingDots className="bg-foreground/60" />
-      </div>
-    )
-  }
-
-  return (
-    <DatabaseContent database={data as any as Database}>
-      {children}
-    </DatabaseContent>
-  )
-}
-
-interface DatabaseContentProps {
-  database: Database
-}
-
-function DatabaseContent({
-  database,
-  children,
-}: PropsWithChildren<DatabaseContentProps>) {
-  const params = useSearchParams()
-  const databaseId = params?.get('id')!
-  const { site } = useMySite()
   const { data } = useSession()
+  const { creations, raw: creationNodes, creationsByStruct } = useCreations()
+  const records = creationsByStruct(struct.id)
   const userId = data?.userId || ''
+  const addCreation = useAddCreation()
 
-  function reloadDatabase(newDatabase: Database) {
-    queryClient.setQueriesData(
-      {
-        queryKey: [
-          'database',
-          [PROJECT_DATABASE_NAME, FRIEND_DATABASE_NAME].includes(database.slug)
-            ? database.slug
-            : databaseId,
-        ],
-      },
-      newDatabase,
-    )
+  const activeViewId = struct.activeViewId
+
+  async function setActiveViewId(viewId: string) {
+    const newStruct = produce(struct.raw, (draft) => {
+      draft.props.activeViewId = viewId
+    })
+
+    store.structs.updateStruct(struct.id, newStruct)
+
+    await localDB.updateStructProps(struct.id, {
+      activeViewId: viewId,
+    })
   }
 
   async function updateDatabase(props: UpdateDatabaseInput) {
-    const newDatabase = produce(database, (draft) => {
-      if (props.name) draft.name = props.name
-      if (props.color) draft.color = props.color
+    const newStruct = produce(struct.raw, (draft) => {
+      draft.props = {
+        ...draft.props,
+        ...props,
+      }
     })
 
-    reloadDatabase(newDatabase)
-    await api.database.updateDatabase.mutate({
-      ...props,
-      databaseId: database.id,
-    })
+    store.structs.updateStruct(struct.id, newStruct)
+    await localDB.updateStructProps(struct.id, props)
   }
 
   async function addView(viewType: ViewType) {
-    //
+    const viewColumns: ViewColumn[] = struct.columns.map((column) => ({
+      columnId: column.id,
+      width: 160,
+      visible: true,
+    }))
+
+    const newView: IView = {
+      id: uniqueId(),
+      name: viewType.toLowerCase(),
+      description: '',
+      viewType: viewType,
+      viewColumns: viewColumns,
+      sorts: [],
+      groups: [],
+      filters: [],
+      kanbanColumnId: '',
+      kanbanOptionIds: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }
+
+    const newStruct = produce(struct.raw, (draft) => {
+      draft.props.views.push(newView)
+      draft.props.activeViewId = newView.id
+      draft.props.viewIds.push(newView.id)
+    })
+
+    store.structs.updateStruct(struct.id, newStruct)
+
+    await localDB.updateStructProps(struct.id, {
+      activeViewId: newView.id,
+      views: newStruct.props.views,
+    })
   }
 
-  async function updateView(viewId: string, props: any) {}
+  async function updateView(viewId: string, data: Partial<IView>) {
+    const newStruct = produce(struct.raw, (draft) => {
+      const index = draft.props.views.findIndex((v) => v.id === viewId)
+      draft.props.views[index] = { ...draft.props.views[index], ...data }
+    })
 
-  async function deleteView(viewId: string) {}
+    store.structs.updateStruct(struct.id, newStruct)
+    await localDB.updateStructProps(struct.id, {
+      views: newStruct.props.views,
+    })
+  }
+
+  async function deleteView(viewId: string) {
+    if (struct.views.length === 1) return
+    const newStruct = produce(struct.raw, (draft) => {
+      draft.props.views = draft.props.views.filter((v) => v.id !== viewId)
+    })
+
+    store.structs.updateStruct(struct.id, newStruct)
+    await localDB.updateStructProps(struct.id, {
+      activeViewId: newStruct.props.views[0].id,
+      views: newStruct.props.views,
+    })
+  }
 
   async function updateViewColumn(
     columnId: string,
     props: UpdateViewColumnInput,
   ) {
-    const newDatabase = produce(database, (draft) => {
-      for (const view of draft.views) {
+    const newStruct = produce(struct.raw, (draft) => {
+      for (const view of draft.props.views) {
         if (view.id === activeViewId) {
           const index = view.viewColumns.findIndex(
             (i) => i.columnId === columnId,
           )
-          if (typeof props.width === 'number') {
-            view.viewColumns[index].width = props.width
-          }
-          if (typeof props.visible === 'boolean') {
-            view.viewColumns[index].visible = props.visible
-          }
+          view.viewColumns[index] = { ...view.viewColumns[index], ...props }
           break
         }
       }
     })
 
-    reloadDatabase(newDatabase)
-
-    await api.database.updateViewColumn.mutate({
-      viewId: currentView.id,
-      columnId,
-      ...props,
+    store.structs.updateStruct(struct.id, newStruct)
+    await localDB.updateStructProps(struct.id, {
+      views: newStruct.props.views,
     })
   }
 
   async function addRecord() {
-    const newColumns = database.columns.reduce(
-      (acc, column) => {
-        return {
-          ...acc,
-          [column.id]: '',
-        }
-      },
-      {} as Record<string, any>,
-    )
-
-    const id = uniqueId()
-    const newDatabase = produce(database, (draft) => {
-      draft.records.push({
-        id,
-        databaseId: database.id,
-        sort: database.records.length,
-        columns: newColumns,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      } as DatabaseRecord)
-    })
-
-    reloadDatabase(newDatabase)
-
-    await api.database.addRecord.mutate({
-      id,
-      siteId: site.id,
-      databaseId: database.id,
-      columns: newColumns,
+    addCreation({
+      type: struct.type,
+      isAddPanel: false,
     })
   }
 
   async function deleteRecord(recordId: string) {
-    const newDatabase = produce(database, (draft) => {
-      draft.records = draft.records.filter(
-        (record) => record.id !== recordId,
-      ) as DatabaseRecord[]
-    })
-
-    reloadDatabase(newDatabase)
-    await api.database.deleteRecord.mutate({
-      databaseId: database.id,
-      recordId,
-    })
+    // const newDatabase = produce(database, (draft) => {
+    //   draft.records = draft.records.filter(
+    //     (record) => record.id !== recordId,
+    //   ) as DatabaseRecord[]
+    // })
+    // reloadDatabase(newDatabase)
+    // await api.database.deleteRecord.mutate({
+    //   databaseId: database.id,
+    //   recordId,
+    // })
   }
 
   async function addColumn(columnType: ColumnType) {
@@ -299,20 +263,15 @@ function DatabaseContent({
       [ColumnType.CREATED_AT]: 'Created At',
       [ColumnType.UPDATED_AT]: 'Updated At',
     }
-
     const id = uniqueId()
-    const name = uniqueId()
-    const displayName = nameMap[columnType] || ''
-
-    const newDatabase = produce(database, (draft) => {
-      draft.columns.push({
-        siteId: site.id,
-        userId: site.userId,
+    const slug = uniqueId()
+    const name = nameMap[columnType] || ''
+    const newStruct = produce(struct.raw, (draft) => {
+      draft.props.columns.push({
         id,
         isPrimary: false,
-        databaseId: database.id,
         name,
-        displayName,
+        slug,
         description: '',
         config: {},
         options: [],
@@ -320,56 +279,81 @@ function DatabaseContent({
         createdAt: new Date(),
         updatedAt: new Date(),
       })
-
-      for (const view of draft.views) {
+      for (const view of draft.props.views) {
         view.viewColumns.push({
           columnId: id,
           width: 160,
           visible: true,
         })
       }
+    })
 
-      for (const record of draft.records) {
-        record.columns[id] = ''
+    const newCreations = produce(creationNodes, (draft) => {
+      for (const item of draft) {
+        if (item.props.structId !== struct.id) continue
+        item.props.props[id] = ''
       }
     })
 
-    reloadDatabase(newDatabase)
-    await api.database.addColumn.mutate({
-      siteId: site.id,
-      id,
-      columnType,
-      databaseId: database.id,
-      name,
-      displayName,
+    store.structs.updateStruct(struct.id, newStruct)
+    store.creations.set(newCreations)
+
+    await localDB.updateStructProps(struct.id, {
+      columns: newStruct.props.columns,
+      views: newStruct.props.views,
     })
+
+    for (const item of records) {
+      const newProps = produce(item.props, (draft) => {
+        draft.props[id] = ''
+      })
+      await localDB.updateCreationProps(item.id, {
+        props: newProps.props,
+      })
+    }
   }
 
   async function deleteColumn(columnId: string) {
-    const newDatabase = produce(database, (draft) => {
-      draft.columns = draft.columns.filter((column) => column.id !== columnId)
+    const newStruct = produce(struct.raw, (draft) => {
+      draft.props.columns = draft.props.columns.filter(
+        (column) => column.id !== columnId,
+      )
 
-      for (const view of draft.views) {
-        const viewColumns = view.viewColumns as ViewColumn[]
-        view.viewColumns = viewColumns.filter(
+      for (const view of draft.props.views) {
+        view.viewColumns = view.viewColumns.filter(
           (i) => i.columnId !== columnId,
-        ) as any
+        )
       }
+    })
 
-      for (const record of draft.records) {
-        delete record.columns[columnId]
+    const newCreations = produce(creationNodes, (draft) => {
+      for (const item of draft) {
+        if (item.props.structId !== struct.id) continue
+        delete item.props.props[columnId]
       }
     })
-    reloadDatabase(newDatabase)
-    await api.database.deleteColumn.mutate({
-      databaseId: database.id,
-      columnId,
+
+    store.creations.set(newCreations)
+    store.structs.updateStruct(struct.id, newStruct)
+
+    await localDB.updateStructProps(struct.id, {
+      columns: newStruct.props.columns,
+      views: newStruct.props.views,
     })
+
+    for (const item of records) {
+      const newProps = produce(item.props, (draft) => {
+        delete draft.props[columnId]
+      })
+      await localDB.updateCreationProps(item.id, {
+        props: newProps.props,
+      })
+    }
   }
 
   async function sortColumn(fromIndex: number, toIndex: number) {
-    const newDatabase = produce(database, (draft) => {
-      for (const view of draft.views) {
+    const newStruct = produce(struct.raw, (draft) => {
+      for (const view of draft.props.views) {
         if (view.id === activeViewId) {
           view.viewColumns = arrayMoveImmutable(
             view.viewColumns,
@@ -381,56 +365,33 @@ function DatabaseContent({
       }
     })
 
-    reloadDatabase(newDatabase)
+    store.structs.updateStruct(struct.id, newStruct)
 
-    await api.database.sortViewColumns.mutate({
-      viewId: activeViewId,
-      fromIndex,
-      toIndex,
+    await localDB.updateStructProps(struct.id, {
+      views: newStruct.props.views,
     })
   }
 
   async function updateColumnName(columnId: string, name: string) {
-    const newDatabase = produce(database, (draft) => {
-      for (const field of draft.columns) {
-        if (field.id === columnId) {
-          field.displayName = name
+    const newStruct = produce(struct.raw, (draft) => {
+      for (const column of draft.props.columns) {
+        if (column.id === columnId) {
+          column.name = name
           break
         }
       }
     })
 
-    reloadDatabase(newDatabase)
+    store.structs.updateStruct(struct.id, newStruct)
 
-    await api.database.updateColumn.mutate({
-      columnId,
-      displayName: name,
-    })
-  }
-
-  async function updateColumn(columnId: string, data: UpdateColumnInput) {
-    const newDatabase = produce(database, (draft) => {
-      for (const field of draft.columns) {
-        if (field.id === columnId) {
-          if (data.displayName) field.displayName = data.displayName
-          if (data.name) field.name = data.name
-          if (data.columnType) field.columnType = data.columnType
-          break
-        }
-      }
-    })
-
-    reloadDatabase(newDatabase)
-
-    await api.database.updateColumn.mutate({
-      columnId,
-      ...data,
+    await localDB.updateStructProps(struct.id, {
+      columns: newStruct.props.columns,
     })
   }
 
   async function updateColumnWidth(columnId: string, width: number) {
-    const newDatabase = produce(database, (draft) => {
-      for (const view of draft.views) {
+    const newStruct = produce(struct.raw, (draft) => {
+      for (const view of draft.props.views) {
         if (view.id === activeViewId) {
           const index = view.viewColumns.findIndex(
             (i) => i.columnId === columnId,
@@ -441,35 +402,55 @@ function DatabaseContent({
       }
     })
 
-    reloadDatabase(newDatabase)
+    store.structs.updateStruct(struct.id, newStruct)
 
-    await api.database.updateViewColumn.mutate({
-      viewId: currentView.id,
-      columnId,
-      width,
+    await localDB.updateStructProps(struct.id, {
+      views: newStruct.props.views,
     })
+  }
+
+  async function updateColumn(columnId: string, data: UpdateColumnInput) {
+    // const newDatabase = produce(database, (draft) => {
+    //   for (const field of draft.columns) {
+    //     if (field.id === columnId) {
+    //       if (data.displayName) field.displayName = data.displayName
+    //       if (data.name) field.name = data.name
+    //       if (data.columnType) field.columnType = data.columnType
+    //       break
+    //     }
+    //   }
+    // })
+    // reloadDatabase(newDatabase)
+    // await api.database.updateColumn.mutate({
+    //   columnId,
+    //   ...data,
+    // })
   }
 
   async function addOption(columnId: string, name: string) {
     const id = uniqueId()
-    const newOption = {
+    const newOption: Option = {
       id,
       columnId,
       name,
       color: getRandomColorName(),
     }
-    const newDatabase = produce(database, (draft) => {
-      for (const field of draft.columns) {
-        if (field.id === columnId) {
-          const options = (field.options as any as Option[]) || []
-          field.options = [...options, newOption] as any[]
+
+    const newStruct = produce(struct.raw, (draft) => {
+      for (const column of draft.props.columns) {
+        if (column.id === columnId) {
+          column.options = [...column.options, newOption]
           break
         }
       }
     })
 
-    reloadDatabase(newDatabase)
-    api.database.addOption.mutate(newOption)
+    store.structs.updateStruct(struct.id, newStruct)
+
+    localDB.updateStructProps(struct.id, {
+      columns: newStruct.props.columns,
+    })
+
     return newOption
   }
 
@@ -509,24 +490,16 @@ function DatabaseContent({
   ) {}
   // console.log('=======database:', database)
 
-  const [activeViewId, setActiveViewId] = useState(() => {
-    const view = database.views.find((v) => v.id === database.activeViewId)
-    return view?.id || database?.views[0]?.id
-  })
-
-  const currentView = useMemo(() => {
-    return database.views.find((view) => view.id === activeViewId)!
-  }, [database.views, activeViewId])
-
   const updateRowsIndexes = useCallback(() => {}, [])
 
   const sortedColumns = useMemo(() => {
-    if (!currentView) return []
-    const viewColumns = currentView.viewColumns as any as ViewColumn[]
-    return viewColumns.map(({ columnId: columnId }) => {
-      return database.columns.find((col) => col.id === columnId)!
-    })
-  }, [currentView, database])
+    if (!struct.currentView) return []
+    return struct.currentView.viewColumns
+      .filter((v) => v.visible)
+      .map(({ columnId }) => {
+        return struct.columns.find((col) => col.id === columnId)!
+      })
+  }, [struct])
 
   const generateFilter = (databaseId: string) => {
     //
@@ -536,10 +509,12 @@ function DatabaseContent({
   return (
     <DatabaseContext.Provider
       value={{
-        database,
-        filterResult: generateFilter(databaseId),
-        updateRowsIndexes,
-        currentView: currentView as any, // TODO
+        struct,
+        // filterResult: generateFilter(databaseId),
+        // updateRowsIndexes,
+        records,
+        columns: struct.columns,
+        currentView: struct.currentView,
         sortedColumns,
         activeViewId,
         setActiveViewId,

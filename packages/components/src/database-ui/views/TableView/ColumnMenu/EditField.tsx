@@ -4,8 +4,7 @@ import { FormEvent, forwardRef } from 'react'
 import { Controller } from 'react-hook-form'
 import { Trans } from '@lingui/react'
 import { ChevronDown, X } from 'lucide-react'
-import { useDatabaseContext } from '@penx/components/database-ui'
-import { Column } from '@penx/db/client'
+import { IColumn } from '@penx/model-type'
 import { ColumnType, Option } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Input } from '@penx/uikit/input'
@@ -13,13 +12,12 @@ import { FieldSelectPopover } from '../FieldSelectPopover'
 import { useEditColumnForm } from '../useEditColumnForm'
 
 interface EditFieldProps {
-  column: Column
+  column: IColumn
   onSave: () => void
   onCancel: () => void
   close: () => void
 }
 export function EditField({ column, onSave, onCancel, close }: EditFieldProps) {
-  const { database } = useDatabaseContext()
   const form = useEditColumnForm(column)
   const { control, formState } = form
 
@@ -35,17 +33,17 @@ export function EditField({ column, onSave, onCancel, close }: EditFieldProps) {
     >
       <div className="text-foreground/50 -mb-1 text-xs">Display name</div>
       <Controller
-        name="displayName"
+        name="name"
         control={control}
         rules={{ required: true }}
         render={({ field }) => <Input size="sm" placeholder="" {...field} />}
       />
 
       <div className="text-foreground/50 -mb-1 text-xs">
-        <Trans id="Area name"></Trans>
+        <Trans id="Slug"></Trans>
       </div>
       <Controller
-        name="name"
+        name="slug"
         control={control}
         rules={{ required: true }}
         render={({ field }) => <Input size="sm" placeholder="" {...field} />}

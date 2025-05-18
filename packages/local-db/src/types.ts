@@ -1,17 +1,3 @@
-import { IColumnNode } from '@penx/model-type'
-
-export type ColumnSchema = Partial<IColumnNode['props']>
-
-export interface createDatabaseOptions {
-  userId?: string
-
-  name: string
-
-  columnSchema?: ColumnSchema[]
-
-  shouldInitCells?: boolean
-}
-
 export interface AddRowOptions {
   databaseId: string
 

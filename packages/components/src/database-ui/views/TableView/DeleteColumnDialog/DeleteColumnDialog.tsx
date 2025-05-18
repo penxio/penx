@@ -14,7 +14,6 @@ import {
   DialogTitle,
 } from '@penx/uikit/dialog'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { sleep } from '@penx/utils'
 import { useDeleteColumnDialog } from './useDeleteColumnDialog'
 
 interface Props {
@@ -22,13 +21,13 @@ interface Props {
 }
 
 export function DeleteColumnDialog({ onDeleteColumn }: Props) {
-  const { isOpen, setIsOpen, column: field } = useDeleteColumnDialog()
+  const { isOpen, setIsOpen, column } = useDeleteColumnDialog()
   const [loading, setLoading] = useState(false)
 
   async function deleteColumn() {
     setLoading(true)
     try {
-      await onDeleteColumn(field?.id)
+      await onDeleteColumn(column?.id)
       setIsOpen(false)
     } catch (error) {
       toast.error('Failed to delete')
@@ -36,7 +35,7 @@ export function DeleteColumnDialog({ onDeleteColumn }: Props) {
     setLoading(false)
   }
 
-  if (!field) return null
+  if (!column) return null
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>

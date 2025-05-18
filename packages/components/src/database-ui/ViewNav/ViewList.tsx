@@ -1,18 +1,16 @@
 'use client'
 
-import { ViewType } from '@penx/types'
 import { cn, mappedByKey } from '@penx/utils'
 import { useDatabaseContext } from '../DatabaseProvider'
-import { ViewIcon } from './ViewIcon'
-import { ViewMenu } from './ViewMenu'
+import { ViewItem } from './ViewItem'
 
 export const ViewList = () => {
-  const { database, activeViewId, setActiveViewId } = useDatabaseContext()
+  const { struct, activeViewId, setActiveViewId } = useDatabaseContext()
 
-  const { views } = database
-  const { viewIds = [] } = database
+  const { views } = struct
+  const { viewIds = [] } = struct
 
-  if (!database) return null
+  if (!struct) return null
 
   const viewMap = mappedByKey(views, 'id')
   const sortedViews = viewIds.map((viewId) => viewMap[viewId])
@@ -21,22 +19,7 @@ export const ViewList = () => {
     <div className="flex items-center gap-1">
       {sortedViews.map((view, index) => {
         if (!view) return null
-        const active = activeViewId === view.id
-        return (
-          <div
-            key={view.id}
-            className={cn(
-              'text-foreground/60 hover:bg-foreground/5 flex h-7 cursor-pointer items-center justify-center gap-1 rounded px-3',
-              active && 'text-foreground/90 bg-foreground/5',
-            )}
-            onClick={async () => {
-              setActiveViewId(view.id)
-            }}
-          >
-            <ViewIcon viewType={view.viewType as any} />
-            <div className="shrink-0">{view.name}</div>
-          </div>
-        )
+        return <ViewItem key={view.id} view={view} index={index} />
       })}
     </div>
   )

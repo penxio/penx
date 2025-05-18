@@ -28,11 +28,6 @@ export const ViewIcon = ({ viewType, size = 16, index }: Props) => {
 
   if (index === 0) Icon = Home
 
-  if (Icon)
-    return (
-      <div className="text-foreground/50 inline-flex">
-        <Icon size={size} />
-      </div>
-    )
+  if (Icon) return <Icon size={size} />
   return null
 }

@@ -2,7 +2,7 @@
 
 import { Menu, MenuItem } from '@ariakit/react'
 import { Plus } from 'lucide-react'
-import { IColumnNode } from '@penx/model-type'
+import { IColumn } from '@penx/model-type'
 import { Group } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -19,7 +19,7 @@ export const AddGroupBtn = () => {
     (o) => columns.find((c) => c.id === o.columnId)!,
   )
 
-  async function selectColumn(column: IColumnNode) {
+  async function selectColumn(column: IColumn) {
     await addGroup(currentView.id, column.id, {
       isAscending: true,
     })

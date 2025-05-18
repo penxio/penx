@@ -5,7 +5,6 @@ import { Link } from '@penx/libs/i18n'
 import { Button } from '@penx/uikit/button'
 // import { TTagElement } from '../editor/plugins/tag-plugin/lib/types'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { FieldIcon } from '../database-ui/shared/FieldIcon'
 
 // import { FieldIcon } from '../shared/FieldIcon'
 // import { CellField } from './fields'

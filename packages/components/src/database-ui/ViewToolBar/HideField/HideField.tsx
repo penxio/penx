@@ -21,7 +21,7 @@ export const HideField = () => {
           {count > 0 && count} Hide Fields
         </ToolbarBtn>
       </PopoverTrigger>
-      <PopoverContent className="p-0">
+      <PopoverContent className="inline-flex w-[240px] p-0" align="end">
         <HideFieldOverlay></HideFieldOverlay>
       </PopoverContent>
     </Popover>

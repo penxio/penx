@@ -12,7 +12,7 @@ import { Column } from '@penx/db/client'
 import { getColorByName } from '@penx/libs/color-helper'
 import { Option } from '@penx/types'
 import { OptionTag } from '../OptionTag'
-import { useDatabaseContext } from '../struct-database-ui/DatabaseProvider'
+import { useDatabaseContext } from '../database-ui/DatabaseProvider'
 import { roundedRect } from './draw-fns'
 import {
   CommandGroup,

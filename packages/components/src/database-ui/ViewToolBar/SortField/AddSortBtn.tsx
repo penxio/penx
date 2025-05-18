@@ -2,7 +2,7 @@
 
 import { Menu, MenuItem } from '@ariakit/react'
 import { Plus } from 'lucide-react'
-import { IColumnNode } from '@penx/model-type'
+import { IColumn } from '@penx/model-type'
 import { Sort } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -11,7 +11,7 @@ import { FieldIcon } from '../../shared/FieldIcon'
 
 export const AddSortBtn = () => {
   const { currentView, addSort } = useDatabaseContext()
-  const columns: IColumnNode[] = []
+  const columns: IColumn[] = []
 
   let { viewColumns = [] } = currentView
 
@@ -19,7 +19,7 @@ export const AddSortBtn = () => {
     (o) => columns.find((c) => c.id === o.columnId)!,
   )
 
-  async function selectColumn(column: IColumnNode) {
+  async function selectColumn(column: IColumn) {
     await addSort(currentView.id, column.id, {
       isAscending: true,
     })
@@ -42,18 +42,19 @@ export const AddSortBtn = () => {
               return !find
             })
             .map((column) => {
-              return (
-                <MenuItem
-                  key={column.id}
-                  onClick={() => {
-                    // close()
-                    selectColumn(column)
-                  }}
-                >
-                  <FieldIcon size={18} columnType={column.props.columnType} />
-                  <div>{column.props.displayName}</div>
-                </MenuItem>
-              )
+              return null
+              // return (
+              //   <MenuItem
+              //     key={column.id}
+              //     onClick={() => {
+              //       // close()
+              //       selectColumn(column)
+              //     }}
+              //   >
+              //     <FieldIcon size={18} columnType={column.props.columnType} />
+              //     <div>{column.props.displayName}</div>
+              //   </MenuItem>
+              // )
             })}
         </Menu>
       </PopoverContent>

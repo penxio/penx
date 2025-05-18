@@ -9,9 +9,7 @@ interface Props {}
 export const ViewRenderer = ({}: Props) => {
   const { currentView } = useDatabaseContext()
 
-  if (!currentView) return null
-
-  if (currentView.viewType === ViewType.GALLERY) {
+  if (currentView?.viewType === ViewType.GALLERY) {
     return <GalleryView />
   }
 

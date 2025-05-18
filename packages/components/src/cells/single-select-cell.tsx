@@ -16,7 +16,7 @@ import { getColorByName } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
 import { OptionTag } from '../OptionTag'
-import { useDatabaseContext } from '../struct-database-ui/DatabaseProvider'
+import { useDatabaseContext } from '../database-ui/DatabaseProvider'
 import { roundedRect } from './draw-fns'
 import {
   CommandGroup,
