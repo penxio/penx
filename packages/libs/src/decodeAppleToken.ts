@@ -14,7 +14,6 @@ export type AppleUserInfo = {
   nonce_supported: string
 }
 
-const clientId = 'io.penx.app'
 const client = jwksClient({
   jwksUri: 'https://appleid.apple.com/auth/keys',
 })
@@ -32,6 +31,7 @@ function getKey(header: any, callback: any) {
 
 export async function decodeAppleToken(
   accessToken: string,
+  clientId = 'io.penx.app',
 ): Promise<AppleUserInfo> {
   return new Promise((resolve, reject) => {
     jwt.verify(

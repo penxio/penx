@@ -45,6 +45,7 @@ export type AppleLoginInfo = {
   username?: string
   ref?: string
   userId?: string
+  clientId?: string
 }
 
 export type LoginData =

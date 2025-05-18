@@ -7,6 +7,8 @@ export const GOOGLE_OAUTH_REDIRECT_URI = 'https://www.penx.io/api/google-oauth'
 export const LINK_GOOGLE_ACCOUNT_REDIRECT_URI =
   'https://www.penx.io/api/link-google-account-oauth'
 
+export const APPLE_OAUTH_REDIRECT_URI = 'https://penx.io/api/apple-oauth'
+
 export const PENX_URL = 'https://penx.io'
 export const STATIC_URL = 'https://asset.penx.me'
 

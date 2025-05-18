@@ -9,6 +9,7 @@ import {
   User,
 } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
+import { AppleLoginInfo } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { decodeAppleToken } from './decodeAppleToken'
 import { getGoogleUserInfo } from './getGoogleUserInfo'
@@ -125,15 +126,16 @@ export async function initUserByGoogleToken(
   )
 }
 
-export async function initUserByAppleToken(
-  accessToken: string,
-  username: string,
-  ref: string,
-  userId?: string,
-) {
+export async function initUserByAppleToken({
+  accessToken,
+  username,
+  ref,
+  userId,
+  clientId,
+}: AppleLoginInfo) {
   return prisma.$transaction(
     async (tx) => {
-      const info = await decodeAppleToken(accessToken)
+      const info = await decodeAppleToken(accessToken, clientId)
       const email = info.email || ''
 
       const account = await tx.account.findUnique({

@@ -29,21 +29,30 @@ export function GoogleOauthDialog() {
   const loginWithGoogle = useCallback(
     async function () {
       const accessToken = searchParams?.get('access_token')!
+      const id_token = searchParams?.get('id_token')!
       const userId = searchParams?.get('userId')!
       const qsData = searchParams?.get('qs') as string
       const qsObject = JSON.parse(decodeURIComponent(qsData))
 
       try {
-        const result = await login({
-          type: 'penx-google',
-          accessToken: accessToken,
-          // email: info.email,
-          // openid: info.sub,
-          // picture: info.picture,
-          // name: info.name,
-          userId: userId,
-          ref: qsObject?.ref || '',
-        })
+        if (authType === 'google') {
+          await login({
+            type: 'penx-google',
+            accessToken: accessToken,
+            userId: userId,
+            ref: qsObject?.ref || '',
+          })
+        }
+
+        if (authType === 'apple') {
+          await login({
+            type: 'penx-apple',
+            accessToken: id_token,
+            userId: userId,
+            ref: qsObject?.ref || '',
+            clientId: process.env.NEXT_PUBLIC_APPLE_CLIENT_ID,
+          })
+        }
 
         // push('/~')
         location.href = `${location.origin}/${location.pathname}?${qs.stringify(qsObject)}`
@@ -51,11 +60,11 @@ export function GoogleOauthDialog() {
         toast.error('Failed to sign in with Google. Please try again.')
       }
     },
-    [searchParams, login],
+    [searchParams, login, authType],
   )
 
   useEffect(() => {
-    if (authType === 'google' && !isOpen) {
+    if (['google', 'apple'].includes(authType || '') && !isOpen) {
       setIsOpen(true)
       loginWithGoogle()
     }
@@ -70,7 +79,12 @@ export function GoogleOauthDialog() {
         closable={false}
         className="flex h-64 w-[90%] items-center justify-center rounded-xl focus-visible:outline-none sm:max-w-[425px]"
       >
-        <IconGoogle className="h-6 w-6" />
+        {authType === 'google' ? (
+          <IconGoogle className="h-6 w-6" />
+        ) : (
+          <span className="icon-[ic--baseline-apple] size-6"></span>
+        )}
+
         <div className="text-lg">Logging in</div>
         <LoadingDots className="bg-foreground/60" />
       </DialogContent>

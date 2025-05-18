@@ -26,8 +26,10 @@ const queue = new AsyncQueue()
 export async function syncNodesToLocal(siteId: string) {
   // await tryToSyncInitialData(siteId)
   // return
-  const { last_lsn, ...metadata } = await getElectricSyncState()
+  const { last_lsn, ...metadata } = await getElectricSyncState(siteId)
   // console.log('========syncState:', metadata, 'last_lsn:', last_lsn)
+
+  console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
 
   const stream = new ShapeStream({
     url: SHAPE_URL,
@@ -43,6 +45,8 @@ export async function syncNodesToLocal(siteId: string) {
     const nodes = await localDB.listNodes(siteId)
     const site = nodes.find((n) => n.type === NodeType.SITE)
 
+    console.log('=====nodes:', nodes, 'site:', site)
+
     if (!nodes?.length || !site) {
       // await localDB.node.where({ siteId }).delete()
 
@@ -50,6 +54,8 @@ export async function syncNodesToLocal(siteId: string) {
 
       const shape = new Shape(stream)
       const rows = await shape.rows
+      console.log('=======rows:', rows)
+
       await localDB.node.bulkPut(rows as any)
     }
   }
@@ -76,7 +82,7 @@ async function sync(
 
   console.log('========changes:', changes, 'lsn:', lsn)
   if (!changes.length) return
-  const state = await getElectricSyncState()
+  const state = await getElectricSyncState(siteId)
 
   if (lsn && state?.last_lsn && BigInt(lsn) <= BigInt(state.last_lsn)) {
     return
@@ -129,7 +135,7 @@ async function sync(
 
     console.log('synced:', updated, '=====changeNodes:', changeNodes)
 
-    await setElectricSyncState({
+    await setElectricSyncState(siteId, {
       handle: stream.shapeHandle!,
       offset: stream.lastOffset,
       last_lsn: lsn,

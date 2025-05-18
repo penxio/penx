@@ -69,6 +69,8 @@ export class AppService {
       }
 
       const remoteSite = await syncNodesToLocal(session.siteId)
+      console.log('=======remoteSite:', remoteSite)
+
       return remoteSite
     }
 

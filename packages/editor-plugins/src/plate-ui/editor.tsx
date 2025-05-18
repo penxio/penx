@@ -9,6 +9,7 @@ import {
 } from '@udecode/plate/react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
+import { isMobileApp } from '@penx/constants'
 import { cn } from '@penx/utils'
 
 const editorContainerVariants = cva(
@@ -105,6 +106,7 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
       <PlateContent
         ref={ref}
         onCompositionEnd={(event) => {
+          if (!isMobileApp) return
           const HAS_INPUT_EVENTS_LEVEL_2 =
             'InputEvent' in window && 'getTargetRanges' in InputEvent.prototype
           const isSynthetic = !!event.nativeEvent
@@ -129,3 +131,4 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
 )
 
 Editor.displayName = 'Editor'
+

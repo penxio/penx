@@ -153,12 +153,10 @@ export async function POST(req: NextRequest) {
     const ref = json?.ref || ''
     const userId = json?.userId || ''
     const username = json?.username || ''
-    const user = await initUserByAppleToken(
-      json.accessToken,
-      username,
-      ref,
-      userId,
-    )
+    const user = await initUserByAppleToken({
+      ...json,
+      username: username || json.username,
+    })
     await updateSession(session, user)
     try {
       await registerSiteUser(hostname, user.id)
