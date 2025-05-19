@@ -177,6 +177,7 @@ export function DatabaseProvider({
 
     await localDB.updateStructProps(struct.id, {
       activeViewId: newView.id,
+      viewIds: newStruct.props.viewIds,
       views: newStruct.props.views,
     })
   }

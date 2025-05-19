@@ -2,8 +2,8 @@ import { OptionTag } from '@penx/components/OptionTag'
 import { Creation } from '@penx/domain'
 import { ColumnType, Option } from '@penx/types'
 import { mappedByKey } from '@penx/utils'
-import { useDatabaseContext } from '../DatabaseProvider'
-import { FieldIcon } from '../shared/FieldIcon'
+import { useDatabaseContext } from '../../DatabaseProvider'
+import { FieldIcon } from '../../shared/FieldIcon'
 
 interface Tag {
   text: string
@@ -13,10 +13,9 @@ interface GalleryViewProps {}
 
 export const GalleryView = ({}: GalleryViewProps) => {
   const { records } = useDatabaseContext()
-  console.log('======records:', records)
 
   return (
-    <div className="grid grid-cols-1 gap-4 py-20 pt-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div className="grid grid-cols-1 gap-4 overflow-auto px-4 py-20 pt-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       {records.map((record, index) => (
         <GalleryItem key={record.id} record={record} index={index} />
       ))}

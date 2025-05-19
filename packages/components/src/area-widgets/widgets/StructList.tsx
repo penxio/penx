@@ -1,4 +1,4 @@
-import { CogIcon } from 'lucide-react'
+import { CogIcon, Maximize2Icon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
@@ -26,7 +26,7 @@ export function StructList({ onSelect }: Props) {
             className="hover:bg-foreground/10 size-6 rounded-md"
             variant="ghost"
           >
-            <CogIcon
+            <Maximize2Icon
               size={16}
               className="text-foreground/60 hidden transition-all group-hover/struct:block"
               onClick={(e) => {

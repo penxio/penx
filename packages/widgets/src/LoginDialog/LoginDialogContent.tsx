@@ -14,7 +14,6 @@ export function LoginDialogContent() {
   return (
     <div className="flex flex-col gap-3 pb-5">
       <div className="space-y-2">
-        {/* <div className="text-foreground/40">Web2 login</div> */}
         <GoogleOauthButton
           variant="outline"
           size="lg"
@@ -27,8 +26,8 @@ export function LoginDialogContent() {
           className="border-foreground w-full"
         />
       </div>
-      {/* <div className="text-foreground/40 text-center">or</div> */}
-      {/* <LoginForm /> */}
+      <div className="text-foreground/40 text-center">or</div>
+      <LoginForm />
     </div>
   )
 }

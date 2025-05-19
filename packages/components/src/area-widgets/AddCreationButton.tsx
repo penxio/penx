@@ -10,8 +10,8 @@ import { CreationType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
-import { NoteInput } from '../DashboardLayout/panel-renderer/Notes/NoteInput'
-import { TaskInput } from '../DashboardLayout/panel-renderer/Tasks/TaskInput'
+import { NoteInput } from '../NoteInput'
+import { TaskInput } from '../TaskInput'
 
 interface Props {
   area: Area

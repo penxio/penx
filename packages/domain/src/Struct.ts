@@ -32,7 +32,7 @@ export class Struct {
   }
 
   get activeViewId() {
-    return this.raw.props.activeViewId || this.viewIds[0]
+    return this.raw.props.activeViewId || this.viewIds?.[0]
   }
 
   get viewIds() {

@@ -77,7 +77,7 @@ export const TableView = ({ height, width }: Props) => {
   }
   return (
     <div
-      className="relative"
+      className="relative flex p-0"
       style={{
         height: (rowsNum + 2) * rowHeight + 2,
         maxHeight: `calc(100vh - ${DATABASE_TOOLBAR_HEIGHT}px)`,
@@ -87,7 +87,7 @@ export const TableView = ({ height, width }: Props) => {
       <ConfigColumnDialog />
       <DataEditor
         ref={gridRef}
-        className="border-foreground/10 m-0 h-full w-full border-t p-0"
+        className="border-foreground/10 m-0 h-full w-full flex-1 border-t p-0"
         columns={cols}
         rowHeight={rowHeight}
         rows={rowsNum}

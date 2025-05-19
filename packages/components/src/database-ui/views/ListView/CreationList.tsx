@@ -3,12 +3,10 @@
 import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { Panel } from '@penx/types'
-import { CreationItem } from '../../../area-widgets/CreationItem'
+import { CreationItem } from './CreationItem'
 
 interface PostListProps {
   struct: Struct
-  panel: Panel
-  index: number
 }
 
 export function CreationList(props: PostListProps) {
