@@ -2315,6 +2315,9 @@ importers:
       '@penx/db':
         specifier: workspace:*
         version: link:../db
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../domain
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs

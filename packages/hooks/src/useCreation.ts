@@ -2,7 +2,6 @@ import isEqual from 'react-fast-compare'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import debounce from 'lodash.debounce'
-import { UpdateCreationInput } from '@penx/constants'
 import { Creation, Tag } from '@penx/domain'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { localDB } from '@penx/local-db'
@@ -114,8 +113,10 @@ export async function updateCreationState(
   queryClient.setQueryData(getQueryKey(data.id), newCreation)
 }
 
-async function persistCreation(input: UpdateCreationInput) {
-  const { id, ...props } = input
+async function persistCreation(
+  id: string,
+  props: Partial<ICreationNode['props']>,
+) {
   await localDB.updateCreationProps(id, props)
 }
 
@@ -123,15 +124,20 @@ const debouncedSaveCreation = debounce(persistCreation, 300, {
   maxWait: 1000,
 })
 
-export async function updateCreation(input: UpdateCreationInput) {
-  const { id, ...props } = input
-  const creation = getCreation(input.id) || (await localDB.getNode(id))
+export async function updateCreationProps(
+  id: string,
+  input: Partial<ICreationNode['props']>,
+) {
+  const creation = getCreation(id) || (await localDB.getNode(id))
   const newCreation: ICreationNode = {
     ...creation,
-    props: { ...creation.props, ...props },
+    props: {
+      ...creation.props,
+      ...input,
+    },
   }
 
-  queryClient.setQueryData(getQueryKey(input.id), newCreation)
-  store.creations.updateCreationById(input.id, newCreation)
-  await debouncedSaveCreation(input)
+  queryClient.setQueryData(getQueryKey(id), newCreation)
+  store.creations.updateCreationById(id, newCreation)
+  await debouncedSaveCreation(id, input)
 }

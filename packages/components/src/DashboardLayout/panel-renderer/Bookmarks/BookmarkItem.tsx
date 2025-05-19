@@ -23,7 +23,7 @@ import { Link } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
-import { Panel, PanelType, Prop } from '@penx/types'
+import { Panel, PanelType } from '@penx/types'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import { Calendar } from '@penx/uikit/calendar'
@@ -49,11 +49,7 @@ export function BookmarkItem({ creation }: Props) {
 
   const struct = useCreationStruct(creation)
   const url = useMemo(() => {
-    const modeProps = struct?.props as Prop[]
-    const prop = modeProps.find((p) => p.slug === 'url')!
-    if (!prop?.id) return ''
-    const props: any = creation.props
-    return props?.[prop.id] || ''
+    return ''
   }, [creation, struct])
 
   return (

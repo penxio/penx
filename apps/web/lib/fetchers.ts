@@ -25,7 +25,6 @@ import {
   NavLinkLocation,
   NavLinkType,
   Project,
-  Prop,
   Site,
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -402,7 +401,9 @@ export async function getPage(siteId = '', slug = '') {
 
 export async function getFriends(site: Site) {
   const siteId = site.id
-  const struct = site.structs.find((struct) => struct.type === CreationType.FRIEND)
+  const struct = site.structs.find(
+    (struct) => struct.type === CreationType.FRIEND,
+  )
   if (!struct) return []
   return await unstable_cache(
     async () => {
@@ -421,13 +422,15 @@ export async function getFriends(site: Site) {
 
 export async function getProjects(site: Site) {
   const siteId = site.id
-  const struct = site.structs.find((struct) => struct.type === CreationType.PROJECT)
+  const struct = site.structs.find(
+    (struct) => struct.type === CreationType.PROJECT,
+  )
   if (!struct) return []
   return await unstable_cache(
     async () => {
       const creations = await findManyCreations(site, struct!.id)
       return creations.map((item) => {
-        const props = (item.struct?.props || []) as Prop[]
+        const props: any[] = []
         const output = props.reduce(
           (acc, prop) => {
             return { ...acc, [prop.slug]: item.props?.[prop.id] }

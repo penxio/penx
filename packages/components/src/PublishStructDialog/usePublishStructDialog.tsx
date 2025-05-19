@@ -1,18 +1,18 @@
 import { atom, useAtom } from 'jotai'
-import { Struct } from '@penx/db/client'
+import { Struct } from '@penx/domain'
 
 type State = {
   isOpen: boolean
   struct: Struct
 }
 
-const addNoteDialogAtom = atom<State>({
+const dialogAtom = atom<State>({
   isOpen: false,
   struct: null as any,
 } as State)
 
-export function useAddNoteDialog() {
-  const [state, setState] = useAtom(addNoteDialogAtom)
+export function usePublishStructDialog() {
+  const [state, setState] = useAtom(dialogAtom)
   return {
     ...state,
     setIsOpen: (isOpen: boolean) => setState({ ...state, isOpen }),

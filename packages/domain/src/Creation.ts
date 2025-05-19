@@ -60,6 +60,10 @@ export class Creation {
     return this.props.checked
   }
 
+  get cells() {
+    return this.props.cells
+  }
+
   get content() {
     return this.props.content
   }

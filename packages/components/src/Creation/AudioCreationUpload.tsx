@@ -4,7 +4,7 @@ import { AudioLinesIcon, ImageIcon, X } from 'lucide-react'
 import { Player } from 'shikwasa'
 import { toast } from 'sonner'
 import { Creation } from '@penx/domain'
-import { updateCreation } from '@penx/hooks/useCreation'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useMySite } from '@penx/hooks/useMySite'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
@@ -71,8 +71,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
         try {
           const data = await uploadFile(file)
           const uri = data.url || data.cid || ''
-          updateCreation({
-            id: creation.id,
+          updateCreationProps(creation.id, {
             podcast: {
               ...(creation.podcast as any),
               duration,
@@ -93,8 +92,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
     async function removeAudio() {
       setValue('')
       playerRef.current = null
-      updateCreation({
-        id: creation.id,
+      updateCreationProps(creation.id, {
         podcast: {},
       })
     }

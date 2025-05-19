@@ -14,7 +14,7 @@ import { CreationStatus } from '@penx/db/client'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
-import { updateCreation } from '@penx/hooks/useCreation'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { usePanels } from '@penx/hooks/usePanels'
@@ -85,8 +85,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
               onClick={(e) => e.stopPropagation()}
               checked={creation.checked}
               onCheckedChange={(v) => {
-                updateCreation({
-                  id: creation.id,
+                updateCreationProps(creation.id, {
                   checked: v as any,
                 })
               }}

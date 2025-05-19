@@ -16,7 +16,7 @@ export function getDataEditorTheme(isDark: boolean) {
     textGroupHeader: '#313139BB',
     textHeaderSelected: '#FFFFFF',
 
-    bgCell: isDark ? '#000' : '#FFFFFF',
+    bgCell: isDark ? '#111' : '#FFFFFF',
     bgCellMedium: '#FAFAFB',
     bgHeader: isDark ? '#111' : '#fff',
     bgHeaderHasFocus: isDark ? '#111' : '#E9E9EB',

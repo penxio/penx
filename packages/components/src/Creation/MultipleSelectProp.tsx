@@ -17,7 +17,7 @@ interface Props {
   value: string[]
   onChange: (ids: string[]) => void
 }
-export const SingleSelectProp = ({
+export const MultipleSelectProp = ({
   column,
   struct,
   value,
@@ -44,7 +44,7 @@ export const SingleSelectProp = ({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div className="hover:bg-foreground/5 flex h-10 w-full max-w-[600px] items-center rounded-lg px-3">
+        <div className="hover:bg-foreground/5 flex h-10 w-full max-w-[600px] items-center gap-2 rounded-lg px-3">
           {options.map((o) => {
             if (!value.includes(o.id)) return null
             return (
@@ -108,7 +108,17 @@ export const SingleSelectProp = ({
                       )
                       id = newOption.id
                     }
-                    onChange([id])
+
+                    let newIds = value
+
+                    const existed = newIds.includes(id)
+                    if (!existed) {
+                      newIds = [...newIds, id]
+                    } else {
+                      newIds = newIds.filter((id2) => id2 !== id)
+                    }
+
+                    onChange(newIds)
                     setSearch('')
                     setOpen(false)
                   }}

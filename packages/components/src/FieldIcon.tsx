@@ -9,6 +9,7 @@ import {
   Key,
   Link,
   ListChecks,
+  StarIcon,
   Text,
 } from 'lucide-react'
 import { ColumnType } from '@penx/types'
@@ -33,6 +34,7 @@ export const FieldIcon = ({
     [ColumnType.SINGLE_SELECT]: CheckCircle2,
     [ColumnType.MULTIPLE_SELECT]: ListChecks,
     [ColumnType.MARKDOWN]: Text,
+    [ColumnType.RATE]: StarIcon,
     [ColumnType.IMAGE]: Image,
     [ColumnType.DATE]: CalendarDays,
     [ColumnType.CREATED_AT]: CalendarDays,

@@ -429,30 +429,7 @@ export function DatabaseProvider({
   }
 
   async function addOption(columnId: string, name: string) {
-    const id = uniqueId()
-    const newOption: Option = {
-      id,
-      columnId,
-      name,
-      color: getRandomColorName(),
-    }
-
-    const newStruct = produce(struct.raw, (draft) => {
-      for (const column of draft.props.columns) {
-        if (column.id === columnId) {
-          column.options = [...column.options, newOption]
-          break
-        }
-      }
-    })
-
-    store.structs.updateStruct(struct.id, newStruct)
-
-    localDB.updateStructProps(struct.id, {
-      columns: newStruct.props.columns,
-    })
-
-    return newOption
+    return store.structs.addOption(struct, columnId, name)
   }
 
   async function deleteCellOption(cellId: string, optionId: string) {}

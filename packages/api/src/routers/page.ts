@@ -10,7 +10,7 @@ import {
 import { prisma } from '@penx/db'
 import { Creation, CreationStatus } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
-import { CreationType, Option, Prop } from '@penx/types'
+import { CreationType, Option } from '@penx/types'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const pageRouter = router({
@@ -36,19 +36,6 @@ export const pageRouter = router({
         },
       })
 
-      const props = (struct.props as Prop[]).reduce(
-        (acc, prop) => {
-          // @ts-ignore
-          let value = input.data[prop.slug]
-          if (prop.slug === 'status') value = 'pending'
-          return {
-            ...acc,
-            [prop.id]: value,
-          }
-        },
-        {} as Record<string, any>,
-      )
-
       const creation = await prisma.creation.create({
         data: {
           siteId: input.siteId,
@@ -57,7 +44,7 @@ export const pageRouter = router({
           description: input.data.introduction,
           structId: struct.id,
           type: struct.type,
-          props,
+          props: [],
           status: CreationStatus.PUBLISHED,
           publishedAt: new Date(),
           content: JSON.stringify(editorDefaultValue),

@@ -63,8 +63,6 @@
     "./PanelCreationProvider": "./src/Creation/PanelCreationProvider.tsx",
     "./PropList": "./src/Creation/PropList.tsx",
     "./SingleSelectProp": "./src/Creation/SingleSelectProp.tsx",
-    "./AddNoteDialog": "./src/Creation/AddNoteDialog/AddNoteDialog.tsx",
-    "./useAddNoteDialog": "./src/Creation/AddNoteDialog/useAddNoteDialog.tsx",
     "./DeleteCreationDialog": "./src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx",
     "./useDeleteCreationDialog": "./src/Creation/DeleteCreationDialog/useDeleteCreationDialog.ts",
     "./PublishDialog": "./src/Creation/PublishDialog/PublishDialog.tsx",

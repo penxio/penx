@@ -8,6 +8,7 @@ import {
   Trash2Icon,
 } from 'lucide-react'
 import { bgColorMaps } from '@penx/libs/color-helper'
+import { useSession } from '@penx/session'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,12 +18,15 @@ import {
   DropdownMenuTrigger,
 } from '@penx/uikit/dropdown-menu'
 import { cn } from '@penx/utils'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useStructDialog } from '../StructDialog/useStructDialog'
 import { useDatabaseContext } from './DatabaseProvider'
 
 export const TableInfo = () => {
   const { struct } = useDatabaseContext()
   const structDialog = useStructDialog()
+  const { session } = useSession()
+  const loginDialog = useLoginDialog()
 
   if (!struct) return null
 
@@ -60,7 +64,7 @@ export const TableInfo = () => {
 
         <DropdownMenuItem
           onClick={async () => {
-            //
+            if (!session) return loginDialog.setIsOpen(true)
           }}
         >
           <GlobeIcon />

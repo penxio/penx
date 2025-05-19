@@ -31,7 +31,7 @@ export const TableView = ({ height, width }: Props) => {
   const { struct } = useDatabaseContext()
   const { creationsByStruct } = useCreations()
   const records = creationsByStruct(struct.id)
-  const { theme } = useTheme()
+  const { theme, resolvedTheme } = useTheme()
 
   const {
     gridRef,
@@ -67,7 +67,7 @@ export const TableView = ({ height, width }: Props) => {
     [setColumnMenu],
   )
 
-  const isDark = theme === 'dark'
+  const isDark = resolvedTheme === 'dark'
   const rowHeight = 36
 
   const onItemHovered = (data: GridMouseEventArgs) => {

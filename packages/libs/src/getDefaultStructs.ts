@@ -1,13 +1,6 @@
 import { editorDefaultValue } from '@penx/constants'
 import { IColumn, IStructNode, IView, NodeType } from '@penx/model-type'
-import {
-  ColumnType,
-  CreationType,
-  Prop,
-  PropType,
-  ViewColumn,
-  ViewType,
-} from '@penx/types'
+import { ColumnType, CreationType, ViewColumn, ViewType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { getRandomColorName } from './color-helper'
 

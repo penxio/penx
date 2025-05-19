@@ -3,7 +3,7 @@ import { ImageIcon, X } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { Creation } from '@penx/domain'
-import { updateCreation } from '@penx/hooks/useCreation'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { api } from '@penx/trpc-client'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -47,8 +47,7 @@ export const ImageCreationUpload = forwardRef<HTMLDivElement, Props>(
 
     async function removeImage() {
       setValue('')
-      updateCreation({
-        id: creation.id,
+      updateCreationProps(creation.id, {
         content: '',
       })
     }

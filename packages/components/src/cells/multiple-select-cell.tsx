@@ -8,11 +8,11 @@ import {
   Rectangle,
 } from '@glideapps/glide-data-grid'
 import { Command } from 'cmdk'
-import { Column } from '@penx/db/client'
 import { getColorByName } from '@penx/libs/color-helper'
+import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
-import { OptionTag } from '../OptionTag'
 import { useDatabaseContext } from '../database-ui/DatabaseProvider'
+import { OptionTag } from '../OptionTag'
 import { roundedRect } from './draw-fns'
 import {
   CommandGroup,
@@ -23,7 +23,7 @@ import {
 interface MultipleSelectCellProps {
   kind: 'multiple-select-cell'
   readonly?: boolean
-  column: Column
+  column: IColumn
   options: Option[]
   data: string[] // options ids
   newOption?: Option
@@ -128,8 +128,8 @@ interface PreviewProps {
 }
 
 function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
-  const { column: field, options } = value.data
-  const fieldOptions = (field.options as any as Option[]) || []
+  const { column: column } = value.data
+  const options = column.options || []
   // console.log('====options:', options, value)
 
   const { addOption } = useDatabaseContext()
@@ -140,7 +140,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
 
   const currentIds = options.map((o) => o.id)
 
-  const filteredOptions = fieldOptions.filter((o) => {
+  const filteredOptions = options.filter((o) => {
     return o.name.toLowerCase().includes(search.toLowerCase())
   })
 
@@ -187,7 +187,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
                 let id = item.id
                 let newOption: Option = undefined as any
                 if (item.id === 'CREATE') {
-                  newOption = await addOption(field.id, search)
+                  newOption = await addOption(column.id, search)
                   id = newOption.id
                 }
 

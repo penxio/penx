@@ -53,10 +53,6 @@ export class Struct {
     )
   }
 
-  get props() {
-    return this.raw.props.props || []
-  }
-
   get createdAt() {
     return new Date(this.raw.createdAt)
   }

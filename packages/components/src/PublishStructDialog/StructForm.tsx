@@ -21,7 +21,7 @@ import {
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
 import { cn } from '@penx/utils'
-import { useStructDialog } from './useStructDialog'
+import { usePublishStructDialog } from './usePublishStructDialog'
 
 const FormSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
@@ -30,7 +30,7 @@ const FormSchema = z.object({
 })
 
 export function StructForm() {
-  const { struct, setIsOpen } = useStructDialog()
+  const { struct, setIsOpen } = usePublishStructDialog()
 
   const isEdit = !!struct
   const form = useForm<z.infer<typeof FormSchema>>({

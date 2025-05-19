@@ -1,7 +1,6 @@
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
-import { createCreation } from '@penx/api/lib/createCreation'
 import { AddCreationInput, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { getSessionOptions } from '@penx/libs/session'
@@ -40,16 +39,8 @@ export async function POST(req: NextRequest) {
     },
   })
 
-  const creation = await createCreation(siteId, session.uid, false, {
-    ...rest,
-    type: struct.type,
-    siteId,
-    structId: struct.id,
-    content: getContent(),
-  } as AddCreationInput)
-
   // console.log('=========value:', value)
-  return Response.json(creation)
+  return Response.json({})
 }
 
 export async function PATCH(request: NextRequest) {}

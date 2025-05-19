@@ -3,7 +3,7 @@ import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { revalidateSite } from '@penx/libs/revalidateSite'
-import { CreationType, Prop, PropType } from '@penx/types'
+import { CreationType } from '@penx/types'
 import { protectedProcedure, router } from '../trpc'
 
 export const structRouter = router({
@@ -102,7 +102,6 @@ export const structRouter = router({
           ...input,
           siteId: ctx.activeSiteId,
           userId: ctx.token.uid,
-          props: [],
           updatedAt: new Date(),
         },
       })

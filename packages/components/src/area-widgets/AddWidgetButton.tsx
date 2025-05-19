@@ -2,16 +2,6 @@
 
 import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react'
-import {
-  BotMessageSquareIcon,
-  Calendar,
-  FilePenLine,
-  GroupIcon,
-  Rows4Icon,
-  StarIcon,
-} from 'lucide-react'
-import { toast } from 'sonner'
-import { AddNoteDialog } from '@penx/components/AddNoteDialog'
 import { editorDefaultValue, WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useArea } from '@penx/hooks/useArea'
@@ -31,7 +21,6 @@ import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { StructName } from '@penx/widgets/StructName'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
-import { useAddNoteDialog } from '../Creation/AddNoteDialog/useAddNoteDialog'
 
 interface Props {
   className?: string
@@ -42,7 +31,6 @@ export function AddWidgetButton({ className }: Props) {
   const [isLoading, setLoading] = useState(false)
   const [type, setType] = useState<CreationType>('' as any)
   const [open, setOpen] = useState(false)
-  const addNoteDialog = useAddNoteDialog()
   const { area } = useArea()
   const { structs } = useStructs()
 
@@ -67,7 +55,6 @@ export function AddWidgetButton({ className }: Props) {
 
   return (
     <div className={cn('flex justify-center')}>
-      <AddNoteDialog />
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

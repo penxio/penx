@@ -2,7 +2,7 @@
 
 import TextareaAutosize from 'react-textarea-autosize'
 import { Creation } from '@penx/domain'
-import { updateCreation } from '@penx/hooks/useCreation'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreations } from '@penx/hooks/useCreations'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
@@ -32,8 +32,7 @@ export function TaskItem({ creation: creation }: PostItemProps) {
           checked={creation.checked}
           onClick={(e) => e.stopPropagation()}
           onCheckedChange={(v) => {
-            updateCreation({
-              id: creation.id,
+            updateCreationProps(creation.id, {
               checked: v as any,
             })
           }}

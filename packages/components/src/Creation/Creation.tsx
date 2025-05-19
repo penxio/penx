@@ -15,9 +15,10 @@ import {
 import { Creation as CreationDomain } from '@penx/domain'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { appEmitter } from '@penx/emitter'
-import { updateCreation } from '@penx/hooks/useCreation'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
 import { useStructs } from '@penx/hooks/useStructs'
+import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
 import { CreationType, Panel } from '@penx/types'
@@ -128,8 +129,7 @@ export function Creation({ panel, className, ref }: Props) {
                     creation={creation}
                     isCover={isCover}
                     onCoverUpdated={async (uri) => {
-                      updateCreation({
-                        id: creation.id,
+                      updateCreationProps(creation.id, {
                         image: uri,
                       })
                     }}
@@ -141,8 +141,7 @@ export function Creation({ panel, className, ref }: Props) {
                       className="bg-foreground/10 size-6 border-none"
                       checked={creation.checked}
                       onCheckedChange={(v) => {
-                        updateCreation({
-                          id: creation.id,
+                        updateCreationProps(creation.id, {
                           checked: v as any,
                         })
                       }}
@@ -157,7 +156,7 @@ export function Creation({ panel, className, ref }: Props) {
                     autoFocus
                     onChange={(e) => {
                       const title = e.target.value
-                      updateCreation({ id: creation.id, title })
+                      updateCreationProps(creation.id, { title })
                     }}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter') {
@@ -200,8 +199,8 @@ export function Creation({ panel, className, ref }: Props) {
           </div>
 
           <PropList
-            onUpdateProps={(newProps) => {
-              updateCreation({ id: creation.id, props: newProps })
+            onUpdateProps={(newCells) => {
+              updateCreationProps(creation.id, { cells: newCells })
             }}
           />
 
@@ -216,10 +215,10 @@ export function Creation({ panel, className, ref }: Props) {
               creation={creation}
               onFileChange={(file) => {
                 const title = file.name
-                updateCreation({ id: creation.id, title })
+                updateCreationProps(creation.id, { title })
               }}
               onUploaded={async (url) => {
-                updateCreation({ id: creation.id, image: url })
+                updateCreationProps(creation.id, { image: url })
               }}
             />
           )}
@@ -241,10 +240,9 @@ export function Creation({ panel, className, ref }: Props) {
               showFixedToolbar={false}
               // showFixedToolbar
               onChange={(v: any[]) => {
-                const input: UpdateCreationInput = {
-                  id: creation.id,
+                const input = {
                   content: JSON.stringify(v),
-                }
+                } as ICreationNode['props']
 
                 if (creation.type === CreationType.NOTE) {
                   const title = v
@@ -254,7 +252,7 @@ export function Creation({ panel, className, ref }: Props) {
                   input.title = title
                 }
 
-                updateCreation(input)
+                updateCreationProps(creation.id, input)
               }}
             />
           </div>

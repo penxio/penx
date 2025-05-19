@@ -275,15 +275,6 @@ export type LayoutItem = {
   props?: Record<string, any>
 }
 
-export enum PropType {
-  TEXT = 'TEXT',
-  MARKDOWN = 'MARKDOWN',
-  IMAGE = 'IMAGE',
-  URL = 'URL',
-  SINGLE_SELECT = 'SINGLE_SELECT',
-  MULTIPLE_SELECT = 'MULTIPLE_SELECT',
-}
-
 type Option = {
   id?: string
   name: string

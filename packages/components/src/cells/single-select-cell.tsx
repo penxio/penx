@@ -15,8 +15,8 @@ import { Command } from 'cmdk'
 import { getColorByName } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
-import { OptionTag } from '../OptionTag'
 import { useDatabaseContext } from '../database-ui/DatabaseProvider'
+import { OptionTag } from '../OptionTag'
 import { roundedRect } from './draw-fns'
 import {
   CommandGroup,
@@ -132,8 +132,8 @@ interface PreviewProps {
 }
 
 function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
-  const { column: field, options } = value.data
-  const fieldOptions = (field.options as any as Option[]) || []
+  const { column, options } = value.data
+  const fieldOptions = column.options || []
   // console.log('====options:', options, value)
 
   const { addOption } = useDatabaseContext()
@@ -191,7 +191,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
                 let id = item.id
                 let newOption: Option = undefined as any
                 if (item.id === 'CREATE') {
-                  newOption = await addOption(field.id, search)
+                  newOption = await addOption(column.id, search)
                   id = newOption.id
                 }
 

@@ -9,7 +9,7 @@ export const updateCreationInputSchema = z.object({
   podcast: z.any(),
   type: z.any().optional(),
   structId: z.any().optional(),
-  props: z.any(),
+  cells: z.any(),
   checked: z.boolean().optional(),
   description: z.string().optional(),
   i18n: z.record(z.any()).optional(),

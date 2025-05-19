@@ -23,7 +23,7 @@ export function ContributeBox({ site }: Props) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [content, setContent] = useState('')
-  const { isPending, mutateAsync } = trpc.creation.create.useMutation()
+  // const { isPending, mutateAsync } = trpc.creation.create.useMutation()
   const { session } = useSession()
   const { push } = useRouter()
   const search = useSearchParams()!
@@ -37,27 +37,27 @@ export function ContributeBox({ site }: Props) {
 
     const structs = site.structs || []
 
-    const struct = structs.find((i) => i.type === CreationType.ARTICLE)
-    try {
-      window.__SITE_ID__ = site.id
-      await mutateAsync({
-        siteId: site.id,
-        title,
-        description,
-        structId: struct?.id!,
-        type: struct?.type!,
-        areaId: '', //TODO:
-        content,
-        status: CreationStatus.CONTRIBUTED,
-        userId: session?.userId || '',
-      })
-      toast.success('Your post has been submitted for review')
-      push(source)
-    } catch (error) {
-      console.log('====error:', error)
+    // const struct = structs.find((i) => i.type === CreationType.ARTICLE)
+    // try {
+    //   window.__SITE_ID__ = site.id
+    //   await mutateAsync({
+    //     siteId: site.id,
+    //     title,
+    //     description,
+    //     structId: struct?.id!,
+    //     type: struct?.type!,
+    //     areaId: '', //TODO:
+    //     content,
+    //     status: CreationStatus.CONTRIBUTED,
+    //     userId: session?.userId || '',
+    //   })
+    //   toast.success('Your post has been submitted for review')
+    //   push(source)
+    // } catch (error) {
+    //   console.log('====error:', error)
 
-      toast.error(extractErrorMessage(error))
-    }
+    //   toast.error(extractErrorMessage(error))
+    // }
   }
   return (
     <div className="">
@@ -107,17 +107,13 @@ export function ContributeBox({ site }: Props) {
           size="lg"
           variant="outline-solid"
           // variant="brand"
-          disabled={isPending}
+          // disabled={isPending}
           className="h-12 w-36 rounded-full text-lg font-bold shadow-xl"
           onClick={() => {
             submitPost()
           }}
         >
-          {isPending ? (
-            <LoadingDots className="bg-foreground" />
-          ) : (
-            'Submit post'
-          )}
+          Submit post
         </Button>
         <div className="text-foreground/50 text-sm">
           After the post is submitted, the owner will review it.

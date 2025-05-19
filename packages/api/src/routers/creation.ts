@@ -23,7 +23,6 @@ import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { renderSlateToHtml } from '@penx/libs/slate-to-html'
 import { CreationById, CreationType, SiteCreation } from '@penx/types'
 import { getUrl } from '@penx/utils'
-import { createCreation } from '../lib/createCreation'
 import { createNewsletterWithDelivery } from '../lib/createNewsletterWithDelivery'
 import { findCreations } from '../lib/findCreations'
 import { findNotes } from '../lib/findNotes'
@@ -108,7 +107,10 @@ export const creationRouter = router({
     .query(async ({ ctx, input }) => {
       const siteId = ctx.activeSiteId
       const { structId } = input
-      const cachedCreations = await cacheHelper.getStructCreation(siteId, structId)
+      const cachedCreations = await cacheHelper.getStructCreation(
+        siteId,
+        structId,
+      )
       if (cachedCreations) return cachedCreations
 
       let creations = await findCreations({
@@ -248,12 +250,6 @@ export const creationRouter = router({
     })
     return creation
   }),
-
-  create: protectedProcedure
-    .input(addCreationInputSchema)
-    .mutation(async ({ ctx, input }) => {
-      return createCreation(ctx.activeSiteId, ctx.token.uid, ctx.isFree, input)
-    }),
 
   update: protectedProcedure
     .input(updateCreationInputSchema)
@@ -529,7 +525,8 @@ export const creationRouter = router({
 
           const newPosts = await tx.creation.createManyAndReturn({
             data: input.creations.map((p: Creation) => {
-              const struct = structs.find((m) => m.type === p.type) || structs[0]
+              const struct =
+                structs.find((m) => m.type === p.type) || structs[0]
               return {
                 structId: struct.id,
                 type: struct.type,

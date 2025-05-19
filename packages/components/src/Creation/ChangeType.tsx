@@ -3,7 +3,10 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { Creation } from '@penx/domain'
-import { updateCreation, updateCreationState } from '@penx/hooks/useCreation'
+import {
+  updateCreationProps,
+  updateCreationState,
+} from '@penx/hooks/useCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { api } from '@penx/trpc-client'
@@ -40,8 +43,7 @@ export function ChangeType({ creation }: { creation: Creation }) {
               className="flex gap-2"
               onClick={async () => {
                 setOpen(false)
-                updateCreation({
-                  id: creation.id,
+                updateCreationProps(creation.id, {
                   type: struct.type,
                   structId: struct.id,
                 })
