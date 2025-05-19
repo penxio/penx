@@ -7,7 +7,7 @@ import { ViewColumn } from '@penx/types'
 import { Switch } from '@penx/uikit/switch'
 import { cn } from '@penx/utils'
 import { useDatabaseContext } from '../../DatabaseProvider'
-import { FieldIcon } from '../../shared/FieldIcon'
+import { FieldIcon } from '../../../FieldIcon'
 
 interface Props {
   dragging?: boolean

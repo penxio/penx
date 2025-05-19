@@ -53,7 +53,7 @@ export function useAddCreation() {
       type: NodeType.CREATION,
       props: {
         icon: '',
-        props,
+        cells: props,
         podcast: {},
         i18n: {},
         gateType: GateType.FREE,

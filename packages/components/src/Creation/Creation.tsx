@@ -16,8 +16,8 @@ import { Creation as CreationDomain } from '@penx/domain'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { appEmitter } from '@penx/emitter'
 import { updateCreation } from '@penx/hooks/useCreation'
-import { useStructs } from '@penx/hooks/useStructs'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
+import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
 import { CreationType, Panel } from '@penx/types'
@@ -80,17 +80,8 @@ export function Creation({ panel, className, ref }: Props) {
 
   const struct = structs.find((m) => m.id === creation.structId)
 
-  const showTitle = useMemo(() => {
-    if (
-      struct?.type === CreationType.ARTICLE ||
-      struct?.type === CreationType.PAGE ||
-      struct?.type === CreationType.BOOKMARK ||
-      struct?.type === CreationType.FRIEND ||
-      struct?.type === CreationType.PROJECT ||
-      struct?.type === CreationType.IMAGE ||
-      struct?.type === CreationType.TASK ||
-      struct?.type === CreationType.AUDIO
-    ) {
+  const hideTitle = useMemo(() => {
+    if (struct?.type === CreationType.NOTE) {
       return true
     }
     return false
@@ -129,7 +120,7 @@ export function Creation({ panel, className, ref }: Props) {
         }}
       >
         <div className={cn('w-full px-0 sm:px-[max(10px,calc(50%-350px))]')}>
-          {showTitle && (
+          {!hideTitle && (
             <div className="mb-2 flex flex-col space-y-3 md:mb-5">
               <div className="relative">
                 {!isImage && !isMobileApp && (

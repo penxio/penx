@@ -1,5 +1,5 @@
 import { JSX, PropsWithChildren } from 'react'
-import { Area, Author, Struct, Product } from '@penx/db/client'
+import { Area, Author, Product, Struct } from '@penx/db/client'
 
 export enum CreationType {
   NOTE = 'NOTE',
@@ -288,15 +288,6 @@ type Option = {
   id?: string
   name: string
   color: string
-}
-
-export type Prop = {
-  id: string
-  name: string
-  slug: string
-  type: PropType
-  options?: Option[]
-  config?: any
 }
 
 export interface Features {

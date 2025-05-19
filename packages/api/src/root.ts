@@ -38,6 +38,7 @@ import { rewardsRouter } from './routers/rewards'
 import { siteRouter } from './routers/site'
 import { stripeRouter } from './routers/stripe'
 import { structRouter } from './routers/struct'
+import { structTemplateRouter } from './routers/struct-template'
 import { subscriberRouter } from './routers/subscriber'
 import { syncRouter } from './routers/sync'
 import { tagRouter } from './routers/tag'
@@ -88,6 +89,7 @@ export const appRouter = router({
   payout: payoutRouter,
   member: memberRouter,
   struct: structRouter,
+  structTemplate: structTemplateRouter,
   creationEngagement: creationEngagementRouter,
   sync: syncRouter,
 })

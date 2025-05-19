@@ -16,12 +16,7 @@ type Input = {
   userId: string
 }
 
-function getStructNode(
-  type: string,
-  name: string,
-  input: Input,
-  props: Prop[] = [],
-) {
+export function generateStructNode(type: string, name: string, input: Input) {
   const columns: IColumn[] = [
     {
       id: uniqueId(),
@@ -74,7 +69,7 @@ function getStructNode(
     },
   ]
 
-  return {
+  const struct: IStructNode = {
     id: uniqueId(),
     type: NodeType.STRUCT,
     props: {
@@ -82,8 +77,7 @@ function getStructNode(
       pluralName: `${name}s`,
       description: '',
       type,
-      props,
-      content: JSON.stringify(editorDefaultValue),
+      about: JSON.stringify(editorDefaultValue),
       color: getRandomColorName(),
       activeViewId: views[0].id,
       viewIds: views.map((view) => view.id),
@@ -93,12 +87,13 @@ function getStructNode(
     createdAt: new Date(),
     updatedAt: new Date(),
     ...input,
-  } as IStructNode
+  }
+  return struct
 }
 
 export function getDefaultStructs(input: Input): IStructNode[] {
   return [
-    getStructNode(CreationType.PAGE, 'Page', input),
+    generateStructNode(CreationType.PAGE, 'Page', input),
     // {
     //   id: uniqueId(),
     //   name: 'Articles',
@@ -111,7 +106,7 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   ...input,
     // },
 
-    getStructNode(CreationType.NOTE, 'Note', input),
+    generateStructNode(CreationType.NOTE, 'Note', input),
     // {
     //   id: uniqueId(),
     //   name: 'Images',
@@ -135,11 +130,9 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   ...input,
     // },
 
-    getStructNode(CreationType.TASK, 'Task', input),
+    generateStructNode(CreationType.TASK, 'Task', input),
 
-    getStructNode(CreationType.BOOKMARK, 'Bookmark', input, [
-      { id: uniqueId(), name: 'URL', slug: 'url', type: PropType.URL },
-    ]),
+    generateStructNode(CreationType.BOOKMARK, 'Bookmark', input),
     // {
     //   id: uniqueId(),
     //   name: 'Friends',

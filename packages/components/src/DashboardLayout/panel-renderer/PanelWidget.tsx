@@ -9,6 +9,7 @@ import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
 import { BookmarkList } from './Bookmarks/BookmarkList'
 import { PanelChat } from './PanelChat'
+import { PanelStructs } from './PanelStructs/PanelStructs'
 
 interface Props {
   panel: Panel
@@ -26,6 +27,10 @@ export function PanelWidget({ panel, index }: Props) {
         <PanelChat panel={panel} index={index} />
       </div>
     )
+  }
+
+  if (widget.type === WidgetType.ALL_STRUCTS) {
+    return <PanelStructs panel={panel} index={index} />
   }
 
   // if (struct?.type === CreationType.BOOKMARK) {

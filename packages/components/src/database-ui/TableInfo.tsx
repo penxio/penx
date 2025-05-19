@@ -1,22 +1,35 @@
 import { useState } from 'react'
-import { PenLine, ShapesIcon } from 'lucide-react'
+import { Trans } from '@lingui/react'
+import {
+  Edit2Icon,
+  EllipsisVerticalIcon,
+  GlobeIcon,
+  ShapesIcon,
+  Trash2Icon,
+} from 'lucide-react'
 import { bgColorMaps } from '@penx/libs/color-helper'
-import { Menu, MenuItem } from '@penx/uikit/menu'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@penx/uikit/dropdown-menu'
 import { cn } from '@penx/utils'
+import { useStructDialog } from '../StructDialog/useStructDialog'
 import { useDatabaseContext } from './DatabaseProvider'
-import { StructForm } from './StructForm'
 
 export const TableInfo = () => {
   const { struct } = useDatabaseContext()
-  const [open, setOpen] = useState(false)
+  const structDialog = useStructDialog()
 
   if (!struct) return null
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <div className="flex cursor-pointer items-center gap-1">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <div className="flex cursor-pointer items-center gap-0">
           <div className="flex items-center gap-1 text-base font-bold">
             <span
               className={cn(
@@ -28,12 +41,41 @@ export const TableInfo = () => {
             </span>
             <span>{struct.name || 'Untitled'}</span>
           </div>
-          <PenLine size={14} />
+          <EllipsisVerticalIcon size={16} />
         </div>
-      </PopoverTrigger>
-      <PopoverContent isPortal className="w-64 p-3">
-        <StructForm setOpen={setOpen} />
-      </PopoverContent>
-    </Popover>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+        align="start"
+        sideOffset={4}
+      >
+        <DropdownMenuItem
+          onClick={async () => {
+            structDialog.setState({ isOpen: true, struct })
+          }}
+        >
+          <Edit2Icon />
+          <Trans id="Edit struct"></Trans>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem
+          onClick={async () => {
+            //
+          }}
+        >
+          <GlobeIcon />
+          <Trans id="Publish to marketplace"></Trans>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem
+          onClick={async () => {
+            //
+          }}
+        >
+          <Trash2Icon />
+          <Trans id="Delete"></Trans>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

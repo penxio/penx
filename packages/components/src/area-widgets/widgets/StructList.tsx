@@ -1,8 +1,14 @@
-import { CogIcon, Maximize2Icon } from 'lucide-react'
+import { Maximize2Icon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@penx/uikit/tooltip'
 import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 
@@ -21,24 +27,32 @@ export function StructList({ onSelect }: Props) {
           onClick={() => onSelect(struct)}
         >
           <div>{struct.name}</div>
-          <Button
-            size="icon"
-            className="hover:bg-foreground/10 size-6 rounded-md"
-            variant="ghost"
-          >
-            <Maximize2Icon
-              size={16}
-              className="text-foreground/60 hidden transition-all group-hover/struct:block"
-              onClick={(e) => {
-                e.stopPropagation()
-                store.panels.openWidgetPanel({
-                  id: uniqueId(),
-                  type: PanelType.WIDGET,
-                  structId: struct.id,
-                })
-              }}
-            />
-          </Button>
+
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  size="icon"
+                  className="hover:bg-foreground/10 size-6 rounded-md"
+                  variant="ghost"
+                >
+                  <Maximize2Icon
+                    size={16}
+                    className="text-foreground/60 hidden transition-all group-hover/struct:block"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      store.panels.openWidgetPanel({
+                        id: uniqueId(),
+                        type: PanelType.WIDGET,
+                        structId: struct.id,
+                      })
+                    }}
+                  />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Open in new panel</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       ))}
     </div>

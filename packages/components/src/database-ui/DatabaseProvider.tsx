@@ -292,7 +292,7 @@ export function DatabaseProvider({
     const newCreations = produce(creationNodes, (draft) => {
       for (const item of draft) {
         if (item.props.structId !== struct.id) continue
-        item.props.props[id] = ''
+        item.props.cells[id] = ''
       }
     })
 
@@ -306,10 +306,10 @@ export function DatabaseProvider({
 
     for (const item of records) {
       const newProps = produce(item.props, (draft) => {
-        draft.props[id] = ''
+        draft.cells[id] = ''
       })
       await localDB.updateCreationProps(item.id, {
-        props: newProps.props,
+        cells: newProps.cells,
       })
     }
   }
@@ -330,7 +330,7 @@ export function DatabaseProvider({
     const newCreations = produce(creationNodes, (draft) => {
       for (const item of draft) {
         if (item.props.structId !== struct.id) continue
-        delete item.props.props[columnId]
+        delete item.props.cells[columnId]
       }
     })
 
@@ -344,10 +344,10 @@ export function DatabaseProvider({
 
     for (const item of records) {
       const newProps = produce(item.props, (draft) => {
-        delete draft.props[columnId]
+        delete draft.cells[columnId]
       })
       await localDB.updateCreationProps(item.id, {
-        props: newProps.props,
+        cells: newProps.cells,
       })
     }
   }

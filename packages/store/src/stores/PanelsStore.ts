@@ -86,7 +86,7 @@ export class PanelsStore {
     }, 1)
   }
 
-  async openWidgetPanel(widget: Widget) {
+  async openWidgetPanel(widget: Widget, isNewPanel = false) {
     let panels = this.get()
     const newPanels = produce(panels, (draft) => {
       const size = 100 / (draft.length + 1)
@@ -101,12 +101,35 @@ export class PanelsStore {
           size: size,
         })
       } else {
-        const size = 100 / draft.length
-        draft[0] = {
-          id: uniqueId(),
-          type: PanelType.WIDGET,
-          widget,
-          size: size,
+        const hasStruct = panels.some(
+          (p) => p.type === PanelType.WIDGET && !!p.widget?.structId,
+        )
+
+        if (isNewPanel) {
+          if (hasStruct) {
+            const size = 100 / draft.length
+            draft[draft.length - 1] = {
+              id: uniqueId(),
+              type: PanelType.WIDGET,
+              widget,
+              size: size,
+            }
+          } else {
+            draft.push({
+              id: uniqueId(),
+              type: PanelType.WIDGET,
+              widget,
+              size: size,
+            })
+          }
+        } else {
+          const size = 100 / draft.length
+          draft[0] = {
+            id: uniqueId(),
+            type: PanelType.WIDGET,
+            widget,
+            size: size,
+          }
         }
 
         // draft.unshift({

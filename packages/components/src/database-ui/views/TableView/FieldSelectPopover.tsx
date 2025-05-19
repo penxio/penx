@@ -2,7 +2,7 @@ import React, { FC, forwardRef, PropsWithChildren } from 'react'
 import { ChevronDown, RefreshCcw } from 'lucide-react'
 import { ColumnType } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { FieldIcon } from '../../shared/FieldIcon'
+import { FieldIcon } from '../../../FieldIcon'
 import { useFieldTypeSelectPopover } from './hooks/useFieldTypeSelectPopover'
 
 const textMap: Record<string, string> = {

@@ -8,7 +8,7 @@ import {
   TextIcon,
 } from 'lucide-react'
 import { useStructs } from '@penx/hooks/useStructs'
-import { Prop, PropType } from '@penx/types'
+import { ColumnType, PropType } from '@penx/types'
 import { Input } from '@penx/uikit/input'
 import {
   Select,
@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from '@penx/uikit/select'
 import { cn } from '@penx/utils'
+import { FieldIcon } from '../FieldIcon'
 import { FileUpload } from '../FileUpload'
 import { usePanelCreationContext } from './PanelCreationProvider'
 import { SingleSelectProp } from './SingleSelectProp'
@@ -33,32 +34,23 @@ export const PropList = ({ onUpdateProps }: Props) => {
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)
   if (!Array.isArray(struct?.props)) return null
-  const props = struct?.props as Prop[]
 
-  // console.log('====-->>props:', post.props, post)
-
-  if (!props.length) return null
+  if (!struct.columns.length) return null
   return (
     <div className="mt-4 flex flex-col gap-1">
-      {props.map((prop, i) => {
-        const props = creation.props.props || {}
-        const value = props[prop.id] || ''
-
+      {struct.columns.map((column, i) => {
+        const props = creation.props.cells || {}
+        const value = props[column.id] || ''
         return (
           <div key={i} className="flex gap-2">
             <div className="text-foreground/60 flex w-32 items-center gap-1">
               <div>
-                {prop.type === PropType.TEXT && <TextIcon size={16} />}
-                {prop.type === PropType.URL && <LinkIcon size={16} />}
-                {prop.type === PropType.IMAGE && <ImageIcon size={16} />}
-                {prop.type === PropType.SINGLE_SELECT && (
-                  <CheckCircleIcon size={16} />
-                )}
+                <FieldIcon columnType={column.columnType} />
               </div>
-              <span className="text-sm">{prop.name}</span>
+              <span className="text-sm">{column.name}</span>
             </div>
             <div className="flex-1">
-              {prop.type === PropType.TEXT && (
+              {column.columnType === ColumnType.TEXT && (
                 <Input
                   placeholder="Empty"
                   variant="unstyled"
@@ -67,12 +59,12 @@ export const PropList = ({ onUpdateProps }: Props) => {
                   onChange={(e) => {
                     onUpdateProps({
                       ...props,
-                      [prop.id]: e.target.value,
+                      [column.id]: e.target.value,
                     })
                   }}
                 />
               )}
-              {prop.type === PropType.URL && (
+              {column.columnType === ColumnType.URL && (
                 <Input
                   variant="unstyled"
                   placeholder="Empty"
@@ -80,29 +72,29 @@ export const PropList = ({ onUpdateProps }: Props) => {
                   onChange={(e) => {
                     onUpdateProps({
                       ...props,
-                      [prop.id]: e.target.value,
+                      [column.id]: e.target.value,
                     })
                   }}
                 />
               )}
-              {prop.type === PropType.IMAGE && (
+              {column.columnType === ColumnType.IMAGE && (
                 <FileUpload
                   value={value}
                   onChange={(v) => {
                     onUpdateProps({
                       ...props,
-                      [prop.id]: v,
+                      [column.id]: v,
                     })
                   }}
                 />
               )}
-              {prop.type === PropType.SINGLE_SELECT && (
+              {column.columnType === ColumnType.SINGLE_SELECT && (
                 <Select
                   defaultValue={value}
                   onValueChange={(v) => {
                     onUpdateProps({
                       ...props,
-                      [prop.id]: v,
+                      [column.id]: v,
                     })
                   }}
                 >
@@ -112,7 +104,7 @@ export const PropList = ({ onUpdateProps }: Props) => {
                     />
                   </SelectTrigger>
                   <SelectContent>
-                    {prop.options?.map((option, i) => (
+                    {column.options?.map((option, i) => (
                       <SelectItem key={i} value={option.name}>
                         <div className="flex items-center gap-2">
                           <div

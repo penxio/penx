@@ -7,7 +7,7 @@ import { Group } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { useDatabaseContext } from '../../DatabaseProvider'
-import { FieldIcon } from '../../shared/FieldIcon'
+import { FieldIcon } from '../../../FieldIcon'
 
 export const AddGroupBtn = () => {
   const { currentView, addGroup } = useDatabaseContext()

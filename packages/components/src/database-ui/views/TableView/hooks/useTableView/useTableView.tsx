@@ -97,7 +97,7 @@ export function useTableView() {
       const [col, row] = cell
       const column = columnsMap[currentView.viewColumns[col].columnId]
       const record = records[row]
-      const props = record.props.props as Record<string, any>
+      const props = record.props.cells as Record<string, any>
 
       function getCellData() {
         if (!record) return ''
@@ -306,7 +306,7 @@ export function useTableView() {
       if (colIndex === 0) {
         draft.props.title = data
       } else {
-        draft.props.props[column.id] = data
+        draft.props.cells[column.id] = data
       }
     })
 
@@ -325,12 +325,12 @@ export function useTableView() {
       store.creations.updateCreationById(record.id, {
         props: {
           ...record.props,
-          props: newCreation.props.props,
+          cells: newCreation.props.cells,
         },
       })
 
       await localDB.updateCreationProps(record.id, {
-        props: newCreation.props.props,
+        cells: newCreation.props.cells,
       })
     }
 

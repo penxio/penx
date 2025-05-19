@@ -57,22 +57,22 @@ enum StripeType {
 }
 
 model Site {
-  id                     String         @id @default(uuid()) @db.Uuid
-  name                   String         @default("") @db.VarChar(100)
-  description            String         @default("") @db.VarChar(500)
-  about                  String         @default("") @db.Text
-  logo                   String?        @default("") @db.VarChar(2183)
-  font                   String         @default("font-cal") @db.VarChar(50)
-  image                  String?        @default("") @db.VarChar(2183)
-  podcastCover           String?        @default("") @db.VarChar(2183)
-  email                  String?        @db.VarChar(255)
-  stripeType             StripeType     @default(NONE)
-  sassSubscriptionId     String?        @unique @db.VarChar(50)
-  sassSubscriptionStatus String?        @db.VarChar(50)
-  sassBillingCycle       BillingCycle?  @default(NONE)
-  sassPlanType           PlanType       @default(FREE)
-  sassCustomerId         String?        @unique @db.VarChar(50)
-  sassProductId          String?        @db.VarChar(50)
+  id                     String           @id @default(uuid()) @db.Uuid
+  name                   String           @default("") @db.VarChar(100)
+  description            String           @default("") @db.VarChar(500)
+  about                  String           @default("") @db.Text
+  logo                   String?          @default("") @db.VarChar(2183)
+  font                   String           @default("font-cal") @db.VarChar(50)
+  image                  String?          @default("") @db.VarChar(2183)
+  podcastCover           String?          @default("") @db.VarChar(2183)
+  email                  String?          @db.VarChar(255)
+  stripeType             StripeType       @default(NONE)
+  sassSubscriptionId     String?          @unique @db.VarChar(50)
+  sassSubscriptionStatus String?          @db.VarChar(50)
+  sassBillingCycle       BillingCycle?    @default(NONE)
+  sassPlanType           PlanType         @default(FREE)
+  sassCustomerId         String?          @unique @db.VarChar(50)
+  sassProductId          String?          @db.VarChar(50)
   sassCurrentPeriodEnd   DateTime?
   sassBelieverPeriodEnd  DateTime?
   stripeOAuthToken       Json?
@@ -83,18 +83,18 @@ model Site {
   newsletterConfig       Json?
   notificationConfig     Json?
   aiSetting              Json?
-  repo                   String?        @db.VarChar(100)
-  installationId         Int?           @db.Integer // github app installationId
+  repo                   String?          @db.VarChar(100)
+  installationId         Int?             @db.Integer // github app installationId
   balance                Json?
-  themeName              String?        @db.VarChar(50)
+  themeName              String?          @db.VarChar(50)
   themeConfig            Json?
-  memberCount            Int            @default(0) @db.Integer
-  creationCount          Int            @default(0) @db.Integer
-  isRemote               Boolean        @default(true)
-  createdAt              DateTime       @default(now())
-  updatedAt              DateTime
-  user                   User           @relation(fields: [userId], references: [id])
-  userId                 String         @db.Uuid
+  memberCount            Int              @default(0) @db.Integer
+  creationCount          Int              @default(0) @db.Integer
+  isRemote               Boolean          @default(true)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  user                   User             @relation(fields: [userId], references: [id])
+  userId                 String           @db.Uuid
   collaborators          Collaborator[]
   channels               Channel[]
   messages               Message[]
@@ -128,31 +128,32 @@ model Site {
   areas                  Area[]
   structs                Struct[]
   nodes                  Node[]
+  structTemplates        StructTemplate[]
 
   @@index([userId])
   @@map("site")
 }
 
 model User {
-  id                String          @id @default(uuid()) @db.Uuid
-  name              String?         @db.VarChar(255)
-  displayName       String?         @db.VarChar(255)
-  ensName           String?         @db.VarChar(255)
-  email             String?         @unique @db.VarChar(255)
-  password          String?         @db.VarChar(255)
+  id                String           @id @default(uuid()) @db.Uuid
+  name              String?          @db.VarChar(255)
+  displayName       String?          @db.VarChar(255)
+  ensName           String?          @db.VarChar(255)
+  email             String?          @unique @db.VarChar(255)
+  password          String?          @db.VarChar(255)
   emailVerified     DateTime?
-  referralCode      String?         @unique @db.VarChar(50)
+  referralCode      String?          @unique @db.VarChar(50)
   commissionBalance Json?
-  commissionRate    Int             @default(50)
+  commissionRate    Int              @default(50)
   github            Json? // github oauth info
   google            Json? // google oauth info
-  cfApiToken        String          @default("") @db.VarChar(2183)
-  image             String?         @db.VarChar(2183)
-  cover             String?         @db.VarChar(2183)
-  bio               String          @default("") @db.VarChar(5000)
-  about             String          @default("")
-  createdAt         DateTime        @default(now())
-  updatedAt         DateTime        @updatedAt
+  cfApiToken        String           @default("") @db.VarChar(2183)
+  image             String?          @db.VarChar(2183)
+  cover             String?          @db.VarChar(2183)
+  bio               String           @default("") @db.VarChar(5000)
+  about             String           @default("")
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
   creations         Creation[]
   comments          Comment[]
   tags              Tag[]
@@ -186,6 +187,7 @@ model User {
   invoices          Invoice[]
   structs           Struct[]
   nodes             Node[]
+  structTemplates   StructTemplate[]
 
   @@index([id])
   @@map("user")
@@ -288,7 +290,7 @@ model Area {
   isGenesis   Boolean    @default(false)
   deletedAt   DateTime?
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime   @updatedAt
   user        User       @relation(fields: [userId], references: [id])
   userId      String     @db.Uuid
   site        Site       @relation(fields: [siteId], references: [id])
@@ -509,10 +511,9 @@ model Struct {
   name        String     @default("")
   description String     @default("") @db.VarChar(500)
   type        String
-  props       Json?
-  content     String     @default("") @db.Text
+  about       String     @default("") @db.Text
   createdAt   DateTime   @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime   @updatedAt
   user        User       @relation(fields: [userId], references: [id])
   userId      String     @db.Uuid
   site        Site       @relation(fields: [siteId], references: [id])
@@ -523,6 +524,29 @@ model Struct {
   @@index([userId])
   @@index([siteId])
   @@map("struct")
+}
+
+model StructTemplate {
+  id          String    @id @default(uuid()) @db.Uuid
+  name        String    @default("")
+  pluralName  String    @default("")
+  description String    @default("") @db.VarChar(500)
+  type        String
+  columns     Json?
+  about       String    @default("") @db.Text
+  usedCount   Int       @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String    @db.Uuid
+  site        Site      @relation(fields: [siteId], references: [id])
+  siteId      String    @db.Uuid
+
+  @@unique([siteId, type])
+  @@index([userId])
+  @@index([siteId])
+  @@map("struct_template")
 }
 
 enum GateType {
@@ -571,7 +595,7 @@ model Creation {
   archivedAt      DateTime?
   openedAt        DateTime                 @default(now())
   createdAt       DateTime                 @default(now())
-  updatedAt       DateTime
+  updatedAt       DateTime                 @updatedAt
   user            User                     @relation(fields: [userId], references: [id])
   userId          String                   @db.Uuid
   site            Site                     @relation(fields: [siteId], references: [id])
@@ -644,7 +668,7 @@ model Tag {
   creationCount Int      @default(0) @db.Integer
   hidden        Boolean  @default(false)
   createdAt     DateTime @default(now())
-  updatedAt     DateTime
+  updatedAt     DateTime @updatedAt
 
   User         User?         @relation(fields: [userId], references: [id])
   userId       String?       @db.Uuid
@@ -660,7 +684,7 @@ model Tag {
 model CreationTag {
   id         String   @id @default(uuid()) @db.Uuid
   createdAt  DateTime @default(now())
-  updatedAt  DateTime
+  updatedAt  DateTime @updatedAt
   creation   Creation @relation(fields: [creationId], references: [id])
   creationId String   @db.Uuid
   tag        Tag      @relation(fields: [tagId], references: [id])

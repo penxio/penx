@@ -5,7 +5,7 @@ import { Plus } from 'lucide-react'
 import { ColumnType } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { useDatabaseContext } from '../../DatabaseProvider'
-import { FieldIcon } from '../../shared/FieldIcon'
+import { FieldIcon } from '../../../FieldIcon'
 
 interface PopoverStateProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>

@@ -20,6 +20,7 @@ import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { cn } from '@penx/utils'
 import { PlanListDialog } from '../PlanList/PlanListDialog'
+import { StructDialog } from '../StructDialog/StructDialog'
 import { PanelLayout } from './PanelLayout'
 import { SettingsLayout } from './SettingsLayout'
 
@@ -59,6 +60,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
     <>
       <CommandPanel />
       <AreaDialog />
+      <StructDialog />
       <PlanListDialog />
       {isDesign && children}
       {!isDesign && <Layout>{children}</Layout>}

@@ -111,9 +111,8 @@ export interface IStructNode extends INode {
     pluralName: string
     description: string
     type: string
-    props: any[]
-    content: string
     color: string
+    about: string
     activeViewId: string
     viewIds: string[]
     columns: IColumn[]
@@ -162,7 +161,7 @@ export interface ICreationNode extends INode {
     content: string
     podcast: any
     i18n: any
-    props: any
+    cells: Record<string, any>
     cid: string
     type: string
     gateType: string

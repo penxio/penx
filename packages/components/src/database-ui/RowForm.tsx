@@ -1,7 +1,7 @@
 'use client'
 
 import { forwardRef } from 'react'
-import { FieldIcon } from './shared/FieldIcon'
+import { FieldIcon } from '../FieldIcon'
 
 interface Props {
   databaseId: string

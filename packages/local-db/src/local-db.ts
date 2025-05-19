@@ -8,9 +8,9 @@ import {
   ICreationTagNode,
   IDocument,
   IMessage,
-  IStructNode,
   INode,
   ISiteNode,
+  IStructNode,
   ISuggestion,
   ITagNode,
   NodeType,
@@ -233,7 +233,10 @@ class LocalDB extends Dexie {
     await this.addChange(struct.id, OperationType.CREATE, struct)
   }
 
-  updateStructProps = async (id: string, props: Partial<IStructNode['props']>) => {
+  updateStructProps = async (
+    id: string,
+    props: Partial<IStructNode['props']>,
+  ) => {
     await this.updateNodeProps(id, props)
   }
 

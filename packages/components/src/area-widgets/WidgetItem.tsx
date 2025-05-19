@@ -98,7 +98,9 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
-              store.area.toggleCollapsed(widget.id)
+              console.log('======widget:', widget)
+
+              store.panels.openWidgetPanel(widget)
               return
             }
 

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { Struct } from '@penx/db/client'
 import { CreationType } from '@penx/types'
+import { cn } from '@penx/utils'
 
 export function getCreationIcon(type: any): ReactNode {
   if (type === CreationType.ARTICLE) return <FileText size={16} />
