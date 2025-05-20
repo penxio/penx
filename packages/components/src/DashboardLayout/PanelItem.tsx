@@ -1,5 +1,6 @@
 'use client'
 
+import { isMobileApp } from '@penx/constants'
 import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
 import { cn } from '@penx/utils'
@@ -60,7 +61,7 @@ export function PanelItem({
 
         {panel.type === PanelType.WIDGET && (
           <>
-            <PanelWidgetHeader index={index} panel={panel} />
+            {!isMobileApp && <PanelWidgetHeader index={index} panel={panel} />}
             <PanelWidget index={index} panel={panel} />
           </>
         )}

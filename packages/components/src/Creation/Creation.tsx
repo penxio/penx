@@ -21,7 +21,7 @@ import { useStructs } from '@penx/hooks/useStructs'
 import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
-import { StructType, Panel } from '@penx/types'
+import { Panel, StructType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
@@ -111,7 +111,7 @@ export function Creation({ panel, className, ref }: Props) {
       <div
         className={cn(
           'creation-container relative z-0 min-h-[100vh] flex-1 flex-col overflow-y-auto overflow-x-hidden px-0 pb-40 md:px-8',
-          isMobileApp && 'pt-0',
+          isMobileApp && 'px-3 pt-0',
           className,
         )}
         onClick={(e: any) => {
@@ -187,7 +187,7 @@ export function Creation({ panel, className, ref }: Props) {
             </div>
           )}
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between bg-">
             <div className="flex items-center gap-1">
               <ChangeType creation={creation} />
               <div className="text-foreground/60 text-lg">•</div>

@@ -7,11 +7,13 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
+import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
-import { Widget } from '@penx/types'
+import { PanelType, Widget } from '@penx/types'
 import { ContextMenu, ContextMenuTrigger } from '@penx/uikit/context-menu'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
+import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
@@ -65,6 +67,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
     const { area } = useArea()
     const [visible, setVisible] = useState(false)
     const [struct, setStruct] = useState(null as any)
+    const { close } = useMobileMenu()
 
     // useEffect(() => {
     //   if (!dragOverlay) {
@@ -176,7 +179,16 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                   {widget.type === WidgetType.ALL_STRUCTS ? (
                     <StructList
                       onSelect={(struct) => {
-                        setVisible(!visible)
+                        if (isMobileApp) {
+                          close()
+                          store.panels.openWidgetPanel({
+                            id: uniqueId(),
+                            type: PanelType.WIDGET,
+                            structId: struct.id,
+                          })
+                        } else {
+                          setVisible(!visible)
+                        }
                         setStruct(struct)
                       }}
                     />

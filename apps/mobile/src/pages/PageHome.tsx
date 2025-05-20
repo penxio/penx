@@ -36,6 +36,7 @@ import {
 } from 'motion/react'
 import { EditWidgetButton } from '@penx/components/area-widgets/EditWidget/EditWidgetButton'
 import { AreaDialog } from '@penx/components/AreaDialog'
+import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { QuickInput } from '@penx/components/QuickInput'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
@@ -44,6 +45,7 @@ import { ICreationNode } from '@penx/model-type'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { Separator } from '@penx/uikit/separator'
+import { SidebarProvider } from '@penx/uikit/ui/sidebar'
 import { cn } from '@penx/utils'
 import { PageCreation } from './PageCreation'
 
@@ -188,7 +190,7 @@ const PageHome: React.FC = ({ nav }: any) => {
 
           <IonButtons slot="end" className="">
             <SearchButton />
-            <EditWidgetButton />
+            {/* <EditWidgetButton /> */}
           </IonButtons>
         </IonToolbar>
       </IonHeader>
@@ -201,17 +203,20 @@ const PageHome: React.FC = ({ nav }: any) => {
         </IonHeader> */}
 
         <div
-          className="text-foreground relative flex min-h-full flex-col px-1"
+          className="text-foreground z-1 relative flex min-h-full flex-col px-1"
           style={
             {
               '--background': 'oklch(1 0 0)',
             } as any
           }
         >
-          {type === 'HOME' && <MobileHome />}
-          {type === 'TASK' && <MobileTask />}
-          {type === 'PROFILE' &&
-            (session ? <ProfileContent /> : <LoginContent />)}
+          <SidebarProvider>
+            <PanelList />
+          </SidebarProvider>
+          {/* {type === 'HOME' && <MobileHome />} */}
+          {/* {type === 'TASK' && <MobileTask />} */}
+          {/* {type === 'PROFILE' &&
+            (session ? <ProfileContent /> : <LoginContent />)} */}
         </div>
       </IonContent>
 

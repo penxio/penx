@@ -31,17 +31,15 @@ import {
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { AddCreationButton } from '../AddCreationButton'
 import { AreaWidgets } from '../area-widgets'
 import { AreasPopover } from '../AreasPopover/AreasPopover'
 import { ProfileButton } from '../ProfileButton'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
 import { VisitSiteButton } from './VisitSiteButton'
-import { AddCreationButton } from '../AddCreationButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { session } = useSession()
-  const { setIsOpen } = useLoginDialog()
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader className="m-0 p-0 pb-1">
@@ -50,7 +48,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <AreasPopover />
           </SidebarMenuItem>
         </SidebarMenu>
-        <div className='flex items-center justify-between mb-1 gap-1'>
+        <div className="mb-1 flex items-center justify-between gap-1">
           <QuickSearchTrigger />
           {!isMobileApp && <AddCreationButton></AddCreationButton>}
         </div>

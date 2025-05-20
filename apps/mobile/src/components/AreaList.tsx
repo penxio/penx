@@ -51,7 +51,21 @@ export const AreaList: React.FC = () => {
 
   return (
     <div className="">
-      <div className="mb-2 mt-2 px-3 text-xl font-bold">My areas</div>
+      <div className="flex items-center justify-between">
+        <div className="mb-2 mt-2 px-3 text-xl font-bold">My areas</div>
+        <IonMenuToggle>
+          <MenuItem
+            className="flex cursor-pointer items-center gap-2"
+            onClick={async () => {
+              setIsOpen(true)
+              // menuController.close()
+              menuController.close('main')
+            }}
+          >
+            <PlusIcon size={24} />
+          </MenuItem>
+        </IonMenuToggle>
+      </div>
 
       <div className="flex flex-col gap-1">
         {areas.map((item) => (
@@ -81,22 +95,6 @@ export const AreaList: React.FC = () => {
             </MenuItem>
           </IonMenuToggle>
         ))}
-
-        <IonMenuToggle>
-          <MenuItem
-            className="flex cursor-pointer items-center gap-2"
-            onClick={async () => {
-              setIsOpen(true)
-              // menuController.close()
-              // menuController.close('main')
-            }}
-          >
-            <PlusIcon size={24} />
-            <div>
-              <Trans id="Create area"></Trans>
-            </div>
-          </MenuItem>
-        </IonMenuToggle>
       </div>
     </div>
   )

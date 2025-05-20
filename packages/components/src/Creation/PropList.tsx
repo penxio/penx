@@ -11,7 +11,7 @@ export const PropList = ({ onUpdateProps }: Props) => {
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)!
 
-  if (!struct.columns.length) return null
+  if (struct.columns.length < 2) return null
   return (
     <div className="mt-4 flex flex-col gap-1">
       {struct.columns.map((column, i) => {

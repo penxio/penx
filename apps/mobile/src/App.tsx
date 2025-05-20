@@ -1,5 +1,3 @@
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 import { Redirect, Route } from 'react-router-dom'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
@@ -30,6 +28,11 @@ import '@ionic/react/css/text-alignment.css'
 import '@ionic/react/css/text-transformation.css'
 import '@ionic/react/css/flex-utils.css'
 import '@ionic/react/css/display.css'
+//
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
+import 'react-datepicker/dist/react-datepicker.css'
+import '@glideapps/glide-data-grid/dist/index.css'
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------
@@ -142,26 +145,25 @@ const App: React.FC = () => {
 
   return (
     <IonApp>
+      <div id="portal" className="fixed left-0 top-0 z-[100000000]" />
       <LinguiClientProvider initialLocale={'en'} initialMessages={{}}>
-        <DndProvider backend={HTML5Backend}>
-          <DashboardProviders>
-            <IonReactRouter>
-              <IonSplitPane contentId="main">
-                <Menu />
-                <IonRouterOutlet id="main">
-                  <Route path="/" exact={true}>
-                    <Redirect to="/folder/area" />
-                  </Route>
-                  <Route path="/folder/:name" exact={true}>
-                    <NavProvider nav={nav.current!}>
-                      <IonNav ref={nav} root={() => <PageHome />}></IonNav>
-                    </NavProvider>
-                  </Route>
-                </IonRouterOutlet>
-              </IonSplitPane>
-            </IonReactRouter>
-          </DashboardProviders>
-        </DndProvider>
+        <DashboardProviders>
+          <IonReactRouter>
+            <IonSplitPane contentId="main">
+              <Menu />
+              <IonRouterOutlet id="main">
+                <Route path="/" exact={true}>
+                  <Redirect to="/folder/area" />
+                </Route>
+                <Route path="/folder/:name" exact={true}>
+                  <NavProvider nav={nav.current!}>
+                    <IonNav ref={nav} root={() => <PageHome />}></IonNav>
+                  </NavProvider>
+                </Route>
+              </IonRouterOutlet>
+            </IonSplitPane>
+          </IonReactRouter>
+        </DashboardProviders>
       </LinguiClientProvider>
     </IonApp>
   )

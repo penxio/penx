@@ -15,7 +15,8 @@ export function AreaWidgets({}: Props) {
       <div className="space-y-2">
         {isMobileApp && <MobileWidgetList />}
         {!isMobileApp && <WidgetList />}
-        {!isMobileApp && <AddWidgetButton />}
+        {/* {!isMobileApp && } */}
+        <AddWidgetButton />
       </div>
     </>
   )

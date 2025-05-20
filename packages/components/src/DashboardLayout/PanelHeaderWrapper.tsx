@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import { isMobileApp } from '@penx/constants'
 import { SidebarTrigger } from '@penx/uikit/sidebar'
 
 export function PanelHeaderWrapper({
@@ -10,6 +11,7 @@ export function PanelHeaderWrapper({
   children: ReactNode
   index: number
 }) {
+  if (isMobileApp!) return null
   if (index === 0)
     return (
       <div className="flex h-10 shrink-0 items-center gap-1 pl-2 pr-1">

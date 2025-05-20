@@ -17,10 +17,11 @@ import { useArea } from '@penx/hooks/useArea'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
+import { mobileMenuAtom, useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { usePanels } from '@penx/hooks/usePanels'
 import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
-import { StructType, PanelType, SiteCreation } from '@penx/types'
+import { PanelType, SiteCreation, StructType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import {
   ContextMenu,
@@ -41,6 +42,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
   const { isCreationInPanels } = usePanels()
   const { isAll, setVisible } = useIsAllContext()
   const struct = useCreationStruct(creation)
+  const { close } = useMobileMenu()
 
   const getTitleFromContent = () => {
     try {
@@ -63,10 +65,11 @@ export function CreationItem({ creation, className }: CreationItemProps) {
           )}
           onClick={() => {
             if (isMobileApp) {
-              appEmitter.emit('ROUTE_TO_CREATION', creation)
-              store.set(creationIdAtom, creation.id)
+              // appEmitter.emit('ROUTE_TO_CREATION', creation)
+              // store.set(creationIdAtom, creation.id)
+              close()
               setVisible?.(false)
-              return
+              // return
             }
 
             store.panels.updateMainPanel({

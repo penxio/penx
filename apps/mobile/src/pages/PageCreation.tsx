@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import { CreationMenu } from '@/components/CreationMenu'
 import { MobileCreation } from '@/components/MobileCreation'
 import { Capacitor } from '@capacitor/core'
@@ -59,7 +61,9 @@ export const PageCreation = ({
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-        <MobileCreation creationId={creationId} />
+        <DndProvider backend={HTML5Backend}>
+          <MobileCreation creationId={creationId} />
+        </DndProvider>
       </IonContent>
     </>
   )

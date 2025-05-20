@@ -7,7 +7,7 @@ import {
   usePanelCreationContext,
 } from '@penx/components/PanelCreationProvider'
 import { PublishDialog } from '@penx/components/PublishDialog'
-import { BUILTIN_PAGE_SLUGS, ROOT_DOMAIN } from '@penx/constants'
+import { BUILTIN_PAGE_SLUGS, isMobileApp, ROOT_DOMAIN } from '@penx/constants'
 import { CreationStatus } from '@penx/db/client'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Panel } from '@penx/types'
@@ -45,6 +45,7 @@ export function Content({ panel, index }: Props) {
           <ClosePanelButton panel={panel} />
         </div>
       </PanelHeaderWrapper>
+
       <Creation panel={panel} className="" />
     </>
   )
