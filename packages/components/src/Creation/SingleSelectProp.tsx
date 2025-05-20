@@ -51,7 +51,7 @@ export const SingleSelectProp = ({
               <div
                 key={o.id}
                 className={cn(
-                  'rounded-full px-2 py-0.5 text-white',
+                  'rounded-full px-2 py-0.5 text-sm text-white',
                   getBgColor(o.color),
                 )}
               >
@@ -119,7 +119,7 @@ export const SingleSelectProp = ({
 
                   <OptionTag
                     option={{
-                      id: item.columnId,
+                      id: item.id,
                       name: item?.name,
                       color: item?.color,
                     }}

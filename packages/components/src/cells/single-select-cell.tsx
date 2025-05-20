@@ -190,6 +190,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
               onSelect={async (v) => {
                 let id = item.id
                 let newOption: Option = undefined as any
+
                 if (item.id === 'CREATE') {
                   newOption = await addOption(column.id, search)
                   id = newOption.id

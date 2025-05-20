@@ -13,6 +13,7 @@ import {
 } from '@glideapps/glide-data-grid'
 import { format } from 'date-fns'
 import { produce } from 'immer'
+import { useDatabaseContext } from '@penx/components/database-ui'
 import { DateCell } from '@penx/components/date-cell'
 import { FileCell } from '@penx/components/file-cell'
 import { ImageCell } from '@penx/components/image-cell'
@@ -23,7 +24,6 @@ import {
 import { PrimaryCell } from '@penx/components/primary-cell'
 import { RateCell } from '@penx/components/rate-cell'
 import { SingleSelectCell } from '@penx/components/single-select-cell'
-import { useDatabaseContext } from '@penx/components/database-ui'
 import { SystemDateCell } from '@penx/components/system-date-cell'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { Column } from '@penx/db/client'
@@ -97,12 +97,13 @@ export function useTableView() {
       const [col, row] = cell
       const column = columnsMap[currentView.viewColumns[col].columnId]
       const record = records[row]
-      const props = record.props.cells as Record<string, any>
+      const cells = record.props.cells
 
       function getCellData() {
         if (!record) return ''
         if (column.isPrimary) return record.title
-        let cellData: any = props?.[column.id]
+        let cellData = cells?.[column.id]
+
         if (!cellData) return ''
 
         if (column.columnType === ColumnType.NUMBER) {
@@ -150,6 +151,7 @@ export function useTableView() {
       }
 
       if (column.columnType === ColumnType.DATE) {
+        // console.log('======cellData:', cellData, 'column:', column)
         return {
           kind: GridCellKind.Custom,
           allowOverlay: true,
@@ -417,7 +419,7 @@ export function useTableView() {
 
   return {
     gridRef,
-    records: records,
+    records: records.reverse(),
     // filterRows,
     sortedColumns,
     rowsNum: records.length,

@@ -1,4 +1,4 @@
-import { X } from 'lucide-react'
+import { XIcon } from 'lucide-react'
 import { getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
 
@@ -29,7 +29,7 @@ export function OptionTag({
     <div
       key={option.id}
       className={cn(
-        'optionTag relative inline-flex cursor-pointer items-center justify-center gap-1 rounded-full px-2 py-1 text-sm text-white',
+        'optionTag relative inline-flex cursor-pointer items-center justify-center gap-1 rounded-full px-2 py-1 text-sm font-medium text-white',
         getBgColor(color),
         className,
       )}
@@ -43,13 +43,13 @@ export function OptionTag({
             onDelete?.()
           }}
         >
-          <X size={12}></X>
+          <XIcon size={10}></XIcon>
         </div>
       )}
 
       {showClose && (
         <div className="inline-flex">
-          <X size={12}></X>
+          <XIcon size={10}></XIcon>
         </div>
       )}
     </div>

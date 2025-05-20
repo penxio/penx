@@ -9,7 +9,7 @@ import { updateCreationState } from '@penx/hooks/useCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { ICreationNode, NodeType } from '@penx/model-type'
 import { store } from '@penx/store'
-import { CreationStatus, GateType, PanelType } from '@penx/types'
+import { ColumnType, CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { useMySite } from './useMySite'
 
@@ -43,8 +43,18 @@ export function useAddCreation() {
       structId: struct.id,
       areaId: area.id,
     }
-    const props = struct.columns.reduce(
-      (acc, column) => ({ ...acc, [column.id]: '' }),
+    const cells = struct.columns.reduce(
+      (acc, column) => {
+        let value: any = ''
+        if (
+          column.columnType === ColumnType.SINGLE_SELECT ||
+          column.columnType === ColumnType.MULTIPLE_SELECT
+        ) {
+          value = column.options.filter((o) => o.isDefault).map((o) => o.id)
+        }
+
+        return { ...acc, [column.id]: value }
+      },
       {} as Record<string, any>,
     )
 
@@ -53,7 +63,7 @@ export function useAddCreation() {
       type: NodeType.CREATION,
       props: {
         icon: '',
-        cells: props,
+        cells: cells,
         podcast: {},
         i18n: {},
         gateType: GateType.FREE,

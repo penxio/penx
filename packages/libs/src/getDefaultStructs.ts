@@ -13,7 +13,8 @@ export function generateStructNode(type: string, name: string, input: Input) {
   const columns: IColumn[] = [
     {
       id: uniqueId(),
-      slug: uniqueId(),
+      // slug: uniqueId(),
+      slug: 'title',
       name: 'Title',
       description: '',
       columnType: ColumnType.PRIMARY,
@@ -25,8 +26,100 @@ export function generateStructNode(type: string, name: string, input: Input) {
     },
   ]
 
-  if (type === StructType.NOTE) {
-    //
+  if (type === StructType.TASK) {
+    columns.push(
+      ...[
+        {
+          id: uniqueId(),
+          slug: 'status',
+          name: 'Status',
+          description: '',
+          columnType: ColumnType.SINGLE_SELECT,
+          config: {},
+          options: [
+            {
+              id: uniqueId(),
+              name: 'To Do',
+              color: getRandomColorName(),
+              isDefault: true,
+            },
+            {
+              id: uniqueId(),
+              name: 'Doing',
+              color: getRandomColorName(),
+              isDefault: false,
+            },
+            {
+              id: uniqueId(),
+              name: 'Done',
+              color: getRandomColorName(),
+              isDefault: false,
+            },
+          ],
+          isPrimary: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: uniqueId(),
+          slug: 'priority',
+          name: 'Priority',
+          description: '',
+          columnType: ColumnType.SINGLE_SELECT,
+          config: {},
+          options: [
+            {
+              id: uniqueId(),
+              name: 'Low',
+              color: getRandomColorName(),
+              isDefault: false,
+            },
+            {
+              id: uniqueId(),
+              name: 'Medium',
+              color: getRandomColorName(),
+              isDefault: true,
+            },
+            {
+              id: uniqueId(),
+              name: 'High',
+              color: getRandomColorName(),
+              isDefault: false,
+            },
+          ],
+          isPrimary: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          id: uniqueId(),
+          slug: 'dueDate',
+          name: 'Due date',
+          description: '',
+          columnType: ColumnType.DATE,
+          config: {},
+          options: [],
+          isPrimary: false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+    )
+  }
+
+  if (type === StructType.BOOKMARK) {
+    columns.push({
+      id: uniqueId(),
+      slug: 'url',
+      name: 'URL',
+      description: '',
+      columnType: ColumnType.URL,
+      config: {},
+      options: [],
+      isPrimary: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    })
   }
 
   const viewColumns: ViewColumn[] = columns.map((column) => ({

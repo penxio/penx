@@ -5,7 +5,6 @@ import { getBgColor } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
 import { Option } from '@penx/types'
-import { Input } from '@penx/uikit/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
 import { OptionTag } from '../OptionTag'
@@ -129,7 +128,7 @@ export const MultipleSelectProp = ({
 
                   <OptionTag
                     option={{
-                      id: item.columnId,
+                      id: item.id,
                       name: item?.name,
                       color: item?.color,
                     }}

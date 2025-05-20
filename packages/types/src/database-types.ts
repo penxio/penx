@@ -38,9 +38,9 @@ export interface ViewColumn {
 
 export interface Option {
   id: string
-  columnId: string
   name: string
   color: string
+  isDefault: boolean
 }
 
 export interface Sort {
