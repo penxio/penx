@@ -34,6 +34,9 @@ export function PublishStructContent() {
       <Button
         disabled={isPending}
         onClick={async () => {
+          console.log('=====struct.columns:', struct.columns)
+
+          return
           try {
             await mutateAsync({
               id: struct.id,

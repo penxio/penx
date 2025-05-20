@@ -24,9 +24,7 @@ export function AddCreationButton({ area, widget }: Props) {
   const struct = structs.find((struct) => struct.id === widget.structId)!
   const [showInput, setShowInput] = useState(false)
 
-  if (
-    [StructType.TASK, StructType.NOTE].includes(struct.type as StructType)
-  ) {
+  if ([StructType.TASK, StructType.NOTE].includes(struct?.type as StructType)) {
     return (
       <Popover open={showInput} onOpenChange={setShowInput}>
         <PopoverTrigger asChild>

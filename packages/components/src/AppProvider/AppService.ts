@@ -116,7 +116,9 @@ export class AppService {
       ) || areas[0]
 
     const visit = await store.visit.save({ activeAreaId: area.id })
-    const structs = nodes.filter((n) => isStructNode(n))
+    const structs = nodes
+      .filter((n) => n.areaId === area.id)
+      .filter((n) => isStructNode(n))
     const tags = nodes.filter((n) => isTagNode(n))
     const creationTags = nodes.filter((n) => isCreationTagNode(n))
     const creations = nodes.filter(

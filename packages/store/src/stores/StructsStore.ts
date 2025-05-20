@@ -35,10 +35,12 @@ export class StructsStore {
 
   createStruct(name: string) {
     const site = this.store.site.get()
+    const area = this.store.area.get()
     const structs = this.get()
     const newStruct = generateStructNode({
       type: '',
       name,
+      areaId: area.id,
       siteId: site.id,
       userId: site.userId,
     })
@@ -54,8 +56,10 @@ export class StructsStore {
   installStruct(input: InstallStructInput) {
     const site = this.store.site.get()
     const structs = this.get()
+    const area = this.store.area.get()
     const newStruct = generateStructNode({
       ...input,
+      areaId: area.id,
       siteId: site.id,
       userId: site.userId,
     })

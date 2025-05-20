@@ -46,18 +46,7 @@ export async function initLocalSite(uid?: string) {
       userId,
     } as ISiteNode)
 
-    await localDB.node.bulkPut(
-      getDefaultStructs({
-        siteId,
-        userId,
-      }),
-    )
-
-    const structs = (await localDB.node
-      .where({ type: NodeType.STRUCT, siteId })
-      .toArray()) as unknown as IStructNode[]
-
-    await localDB.node.add({
+    const areaId = await localDB.node.add({
       id: uniqueId(),
       type: NodeType.AREA,
       props: {
@@ -67,7 +56,7 @@ export async function initLocalSite(uid?: string) {
         about: JSON.stringify(editorDefaultValue),
         logo: '',
         chargeMode: ChargeMode.FREE,
-        widgets: getInitialWidgets(structs),
+        widgets: getInitialWidgets(),
         isGenesis: true,
         favorites: [],
       },
@@ -76,6 +65,18 @@ export async function initLocalSite(uid?: string) {
       siteId,
       userId,
     })
+
+    await localDB.node.bulkPut(
+      getDefaultStructs({
+        siteId: siteId,
+        userId,
+        areaId,
+      }),
+    )
+
+    // const structs = (await localDB.node
+    //   .where({ type: NodeType.STRUCT, siteId })
+    //   .toArray()) as unknown as IStructNode[]
 
     const site = await localDB.node.get(siteId)
     console.log('init local site!!!')

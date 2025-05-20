@@ -8,11 +8,13 @@ type MetaInfo = {
   id?: string
   siteId: string
   userId: string
+  areaId: string
 }
 
 export function generateStructNode({
   siteId,
   userId,
+  areaId,
   ...props
 }: Partial<IStructNode['props']> & MetaInfo) {
   const { type, name } = props
@@ -201,6 +203,7 @@ export function generateStructNode({
     },
     createdAt: new Date(),
     updatedAt: new Date(),
+    areaId,
     userId,
     siteId,
   }
