@@ -38,7 +38,7 @@ export class StructsStore {
     const area = this.store.area.get()
     const structs = this.get()
     const newStruct = generateStructNode({
-      type: '',
+      type: name.toUpperCase(),
       name,
       areaId: area.id,
       siteId: site.id,

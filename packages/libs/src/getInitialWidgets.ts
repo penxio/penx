@@ -22,13 +22,13 @@ export const getInitialWidgets = (structs?: IStructNode[]) => {
     },
     {
       id: uniqueId(),
-      collapsed: true,
+      collapsed: false,
       type: WidgetType.ALL_CREATIONS,
     },
 
     {
       id: uniqueId(),
-      collapsed: true,
+      collapsed: false,
       type: WidgetType.FAVORITES,
     },
     // {

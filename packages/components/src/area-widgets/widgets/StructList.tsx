@@ -35,18 +35,18 @@ export function StructList({ onSelect }: Props) {
                   size="icon"
                   className="hover:bg-foreground/10 size-6 rounded-md"
                   variant="ghost"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    store.panels.openWidgetPanel({
+                      id: uniqueId(),
+                      type: PanelType.WIDGET,
+                      structId: struct.id,
+                    })
+                  }}
                 >
                   <Maximize2Icon
                     size={16}
                     className="text-foreground/60 hidden transition-all group-hover/struct:block"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      store.panels.openWidgetPanel({
-                        id: uniqueId(),
-                        type: PanelType.WIDGET,
-                        structId: struct.id,
-                      })
-                    }}
                   />
                 </Button>
               </TooltipTrigger>

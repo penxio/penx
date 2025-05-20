@@ -48,23 +48,6 @@ export const structRouter = router({
         id: 'desc',
       },
     })
-    if (!list.length) {
-      await prisma.struct.createMany({
-        data: getDefaultStructs({
-          userId: ctx.token.uid,
-          siteId: ctx.activeSiteId,
-        }),
-      })
-
-      list = await prisma.struct.findMany({
-        where: {
-          siteId: ctx.activeSiteId,
-        },
-        orderBy: {
-          id: 'desc',
-        },
-      })
-    }
 
     const sortKeys = [
       StructType.ARTICLE,

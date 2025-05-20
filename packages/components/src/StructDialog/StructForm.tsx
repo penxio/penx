@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react'
@@ -25,7 +26,8 @@ import { useStructDialog } from './useStructDialog'
 
 const FormSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  pluralName: z.string().optional(),
+  pluralName: z.string().min(1, { message: 'Plural name is required' }),
+  type: z.string().min(1, { message: 'Unique code is required' }),
   color: z.string().optional(),
 })
 
@@ -38,11 +40,27 @@ export function StructForm() {
     defaultValues: {
       name: struct?.name || '',
       pluralName: struct?.pluralName || '',
+      type: struct?.type || '',
       color: struct?.color || '',
     },
   })
+  const type = form.watch('type')
+
+  useEffect(() => {
+    if (!/^[A-Z]+$/.test(type)) {
+      form.setValue(
+        'type',
+        type
+          .toUpperCase()
+          .trim()
+          .replace(/[^(A-Z|0-9)]/g, ''),
+      )
+    }
+  }, [type, form])
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log('======data:', data)
+
     if (isEdit) {
       const newStruct = produce(struct.raw, (draft) => {
         draft.props = {
@@ -88,6 +106,22 @@ export function StructForm() {
                 <FormItem className="w-full">
                   <FormLabel>
                     <Trans id="Plural name"></Trans>
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="" {...field} className="w-full" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="type"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormLabel>
+                    <Trans id="Unique code"></Trans>
                   </FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} className="w-full" />

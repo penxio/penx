@@ -24,7 +24,7 @@ export function PublishedStructList({}: Props) {
     <div className="flex flex-wrap gap-2 px-1 pb-2">
       {data.map((struct) => {
         const columns = struct.columns as any as IColumn[]
-        const installed = structs.some((s) => s.id === struct.id)
+        const installed = structs.some((s) => s.type === struct.type)
         return (
           <div
             key={struct.id}

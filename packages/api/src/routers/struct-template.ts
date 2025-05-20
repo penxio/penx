@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { prisma } from '@penx/db'
+import { StructType } from '@penx/types'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const structTemplateRouter = router({
@@ -16,37 +17,42 @@ export const structTemplateRouter = router({
   publish: protectedProcedure
     .input(
       z.object({
-        id: z.string().uuid(),
         name: z.string().min(1, { message: 'Type name is required' }),
         pluralName: z.string().min(1, { message: 'Type name is required' }),
-        type: z.string().optional(),
+        type: z.string(),
         color: z.string().optional(),
         about: z.string().optional(),
         columns: z.any(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const { id, ...data } = input
+      if (Object.values(StructType).includes(input.type as StructType)) {
+        throw new Error('Unique code is used, please try another code')
+      }
+
       const item = await prisma.structTemplate.findUnique({
-        where: { id },
-        select: { id: true },
+        where: { type: input.type },
+        select: { type: true, userId: true },
       })
 
       if (!item) {
         await prisma.structTemplate.create({
           data: {
-            id,
-            ...data,
+            ...input,
             publishedAt: new Date(),
             userId: ctx.token.uid,
             siteId: ctx.token.activeSiteId,
           },
         })
       } else {
+        if (ctx.token.uid !== item.userId) {
+          throw new Error('No permission to update this struct')
+        }
+
         await prisma.structTemplate.update({
-          where: { id: input.id },
+          where: { type: input.type },
           data: {
-            ...data,
+            ...input,
             publishedAt: new Date(),
           },
         })
