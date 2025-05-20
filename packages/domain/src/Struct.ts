@@ -24,7 +24,7 @@ export class Struct {
   }
 
   get pluralName() {
-    return this.raw.props.pluralName || ''
+    return this.raw.props.pluralName || this.name
   }
 
   get color() {

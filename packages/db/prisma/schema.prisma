@@ -532,7 +532,8 @@ model StructTemplate {
   name        String    @default("")
   pluralName  String    @default("")
   description String    @default("") @db.VarChar(500)
-  type        String
+  type        String    @default("")
+  color       String    @default("") @db.VarChar(50)
   columns     Json?
   about       String    @default("") @db.Text
   usedCount   Int       @default(0)

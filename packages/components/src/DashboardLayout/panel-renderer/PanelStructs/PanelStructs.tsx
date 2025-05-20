@@ -2,10 +2,11 @@
 
 import { useArea } from '@penx/hooks/useArea'
 import { store } from '@penx/store'
-import { StructType, Panel, PanelType } from '@penx/types'
+import { Panel, PanelType, StructType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { useStructDialog } from '../../../StructDialog/useStructDialog'
+import { PublishedStructList } from './PublishedStructList'
 import { StructList } from './StructList'
 
 interface Props {
@@ -45,8 +46,7 @@ export function PanelStructs({ panel, index }: Props) {
 
         <div className="space-y-3">
           <div className="text-foreground/50 text-base">Struct marketplace</div>
-          <div>Hello</div>
-          <div>Hello</div>
+          <PublishedStructList />
         </div>
       </div>
     </div>

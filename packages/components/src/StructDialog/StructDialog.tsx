@@ -18,9 +18,6 @@ export function StructDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
-      <DialogHeader className="hidden">
-        <DialogDescription></DialogDescription>
-      </DialogHeader>
       <DialogContent
         className="text-foreground sm:max-w-[520px]"
         onInteractOutside={(e) => {

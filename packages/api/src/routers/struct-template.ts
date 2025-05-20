@@ -19,16 +19,19 @@ export const structTemplateRouter = router({
         id: z.string().uuid(),
         name: z.string().min(1, { message: 'Type name is required' }),
         pluralName: z.string().min(1, { message: 'Type name is required' }),
-        type: z.string().min(1, { message: 'Type slug is required' }),
+        type: z.string().optional(),
+        color: z.string().optional(),
         about: z.string().optional(),
-        column: z.any(),
+        columns: z.any(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       const { id, ...data } = input
       const item = await prisma.structTemplate.findUnique({
         where: { id },
+        select: { id: true },
       })
+
       if (!item) {
         await prisma.structTemplate.create({
           data: {

@@ -4,122 +4,133 @@ import { ColumnType, StructType, ViewColumn, ViewType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { getRandomColorName } from './color-helper'
 
-type Input = {
+type MetaInfo = {
+  id?: string
   siteId: string
   userId: string
 }
 
-export function generateStructNode(type: string, name: string, input: Input) {
-  const columns: IColumn[] = [
-    {
-      id: uniqueId(),
-      // slug: uniqueId(),
-      slug: 'title',
-      name: 'Title',
-      description: '',
-      columnType: ColumnType.PRIMARY,
-      config: {},
-      options: [],
-      isPrimary: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-  ]
+export function generateStructNode({
+  siteId,
+  userId,
+  ...props
+}: Partial<IStructNode['props']> & MetaInfo) {
+  const { type, name } = props
 
-  if (type === StructType.TASK) {
-    columns.push(
-      ...[
-        {
-          id: uniqueId(),
-          slug: 'status',
-          name: 'Status',
-          description: '',
-          columnType: ColumnType.SINGLE_SELECT,
-          config: {},
-          options: [
-            {
-              id: uniqueId(),
-              name: 'To Do',
-              color: getRandomColorName(),
-              isDefault: true,
-            },
-            {
-              id: uniqueId(),
-              name: 'Doing',
-              color: getRandomColorName(),
-              isDefault: false,
-            },
-            {
-              id: uniqueId(),
-              name: 'Done',
-              color: getRandomColorName(),
-              isDefault: false,
-            },
-          ],
-          isPrimary: false,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          id: uniqueId(),
-          slug: 'priority',
-          name: 'Priority',
-          description: '',
-          columnType: ColumnType.SINGLE_SELECT,
-          config: {},
-          options: [
-            {
-              id: uniqueId(),
-              name: 'Low',
-              color: getRandomColorName(),
-              isDefault: false,
-            },
-            {
-              id: uniqueId(),
-              name: 'Medium',
-              color: getRandomColorName(),
-              isDefault: true,
-            },
-            {
-              id: uniqueId(),
-              name: 'High',
-              color: getRandomColorName(),
-              isDefault: false,
-            },
-          ],
-          isPrimary: false,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          id: uniqueId(),
-          slug: 'dueDate',
-          name: 'Due date',
-          description: '',
-          columnType: ColumnType.DATE,
-          config: {},
-          options: [],
-          isPrimary: false,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-    )
-  }
+  let columns: IColumn[] = []
 
-  if (type === StructType.BOOKMARK) {
-    columns.push({
-      id: uniqueId(),
-      slug: 'url',
-      name: 'URL',
-      description: '',
-      columnType: ColumnType.URL,
-      config: {},
-      options: [],
-      isPrimary: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
+  if (!props.columns) {
+    columns = [
+      {
+        id: uniqueId(),
+        // slug: uniqueId(),
+        slug: 'title',
+        name: 'Title',
+        description: '',
+        columnType: ColumnType.PRIMARY,
+        config: {},
+        options: [],
+        isPrimary: true,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]
+
+    if (type === StructType.TASK) {
+      columns.push(
+        ...[
+          {
+            id: uniqueId(),
+            slug: 'status',
+            name: 'Status',
+            description: '',
+            columnType: ColumnType.SINGLE_SELECT,
+            config: {},
+            options: [
+              {
+                id: uniqueId(),
+                name: 'To Do',
+                color: getRandomColorName(),
+                isDefault: true,
+              },
+              {
+                id: uniqueId(),
+                name: 'Doing',
+                color: getRandomColorName(),
+                isDefault: false,
+              },
+              {
+                id: uniqueId(),
+                name: 'Done',
+                color: getRandomColorName(),
+                isDefault: false,
+              },
+            ],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'priority',
+            name: 'Priority',
+            description: '',
+            columnType: ColumnType.SINGLE_SELECT,
+            config: {},
+            options: [
+              {
+                id: uniqueId(),
+                name: 'Low',
+                color: getRandomColorName(),
+                isDefault: false,
+              },
+              {
+                id: uniqueId(),
+                name: 'Medium',
+                color: getRandomColorName(),
+                isDefault: true,
+              },
+              {
+                id: uniqueId(),
+                name: 'High',
+                color: getRandomColorName(),
+                isDefault: false,
+              },
+            ],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'dueDate',
+            name: 'Due date',
+            description: '',
+            columnType: ColumnType.DATE,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+      )
+    }
+
+    if (type === StructType.BOOKMARK) {
+      columns.push({
+        id: uniqueId(),
+        slug: 'url',
+        name: 'URL',
+        description: '',
+        columnType: ColumnType.URL,
+        config: {},
+        options: [],
+        isPrimary: false,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })
+    }
   }
 
   const viewColumns: ViewColumn[] = columns.map((column) => ({
@@ -174,13 +185,13 @@ export function generateStructNode(type: string, name: string, input: Input) {
   ]
 
   const struct: IStructNode = {
-    id: uniqueId(),
+    id: props.id || uniqueId(),
     type: NodeType.STRUCT,
     props: {
-      name,
+      name: props.name!,
       pluralName: `${name}s`,
       description: '',
-      type,
+      type: props.type!,
       about: JSON.stringify(editorDefaultValue),
       color: getRandomColorName(),
       activeViewId: views[0].id,
@@ -190,14 +201,19 @@ export function generateStructNode(type: string, name: string, input: Input) {
     },
     createdAt: new Date(),
     updatedAt: new Date(),
-    ...input,
+    userId,
+    siteId,
   }
   return struct
 }
 
-export function getDefaultStructs(input: Input): IStructNode[] {
+export function getDefaultStructs(input: MetaInfo): IStructNode[] {
   return [
-    generateStructNode(StructType.PAGE, 'Page', input),
+    generateStructNode({
+      type: StructType.PAGE,
+      name: 'Page',
+      ...input,
+    }),
     // {
     //   id: uniqueId(),
     //   name: 'Articles',
@@ -210,7 +226,12 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   ...input,
     // },
 
-    generateStructNode(StructType.NOTE, 'Note', input),
+    generateStructNode({
+      type: StructType.NOTE,
+      name: 'Note',
+      ...input,
+    }),
+
     // {
     //   id: uniqueId(),
     //   name: 'Images',
@@ -234,9 +255,17 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   ...input,
     // },
 
-    generateStructNode(StructType.TASK, 'Task', input),
+    generateStructNode({
+      type: StructType.TASK,
+      name: 'Task',
+      ...input,
+    }),
 
-    generateStructNode(StructType.BOOKMARK, 'Bookmark', input),
+    generateStructNode({
+      type: StructType.BOOKMARK,
+      name: 'Bookmark',
+      ...input,
+    }),
     // {
     //   id: uniqueId(),
     //   name: 'Friends',

@@ -1,9 +1,10 @@
+import { format } from 'date-fns'
 import { OptionTag } from '@penx/components/OptionTag'
 import { Creation } from '@penx/domain'
 import { ColumnType, Option } from '@penx/types'
 import { mappedByKey } from '@penx/utils'
-import { useDatabaseContext } from '../../DatabaseProvider'
 import { FieldIcon } from '../../../FieldIcon'
+import { useDatabaseContext } from '../../DatabaseProvider'
 
 interface Tag {
   text: string
@@ -45,6 +46,10 @@ function GalleryItem({ record }: GalleryItemProps) {
 
           if (column.columnType === ColumnType.TEXT) {
             return value
+          }
+
+          if (column.columnType === ColumnType.DATE) {
+            return value ? format(new Date(value), 'PPP') : ''
           }
 
           if (

@@ -23,7 +23,7 @@ export function StructList({ onSelect }: Props) {
       {structs.map((struct) => (
         <div
           key={struct.id}
-          className="text-foreground hover:bg-foreground/5 group/struct flex cursor-pointer items-center justify-between rounded-md px-2 py-1 text-base"
+          className="text-foreground hover:bg-foreground/5 group/struct flex cursor-pointer items-center justify-between rounded-md px-2 py-1 text-sm font-semibold"
           onClick={() => onSelect(struct)}
         >
           <div>{struct.name}</div>

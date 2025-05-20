@@ -19,6 +19,7 @@ import {
 } from '@penx/uikit/dropdown-menu'
 import { cn } from '@penx/utils'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { usePublishStructDialog } from '../PublishStructDialog/usePublishStructDialog'
 import { useStructDialog } from '../StructDialog/useStructDialog'
 import { useDatabaseContext } from './DatabaseProvider'
 
@@ -27,6 +28,7 @@ export const TableInfo = () => {
   const structDialog = useStructDialog()
   const { session } = useSession()
   const loginDialog = useLoginDialog()
+  const publishDialog = usePublishStructDialog()
 
   if (!struct) return null
 
@@ -65,6 +67,7 @@ export const TableInfo = () => {
         <DropdownMenuItem
           onClick={async () => {
             if (!session) return loginDialog.setIsOpen(true)
+            publishDialog.setState({ isOpen: true, struct })
           }}
         >
           <GlobeIcon />

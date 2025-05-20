@@ -76,7 +76,7 @@ export const RateCellRenderer: CustomRenderer<RateCell> = {
               key={index}
               className={cn(
                 'relative mr-[2px] h-4 w-4 cursor-pointer',
-                Number(value) < index + 1
+                Number(value.data.data) < index + 1
                   ? 'text-foreground/40'
                   : 'text-yellow-500',
               )}

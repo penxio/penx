@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/dialog'
-import { StructForm } from './StructForm'
+import { PublishStructContent } from './PublishStructContent'
 import { usePublishStructDialog } from './usePublishStructDialog'
 
 export function PublishStructDialog() {
@@ -18,25 +18,21 @@ export function PublishStructDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
-      <DialogHeader className="hidden">
-        <DialogDescription></DialogDescription>
-      </DialogHeader>
       <DialogContent
-        className="text-foreground sm:max-w-[520px]"
+        className="text-foreground sm:max-w-[460px]"
         onInteractOutside={(e) => {
           e.preventDefault()
         }}
       >
         <DialogHeader>
-          <DialogTitle>
-            {!!struct ? (
-              <Trans id="Update struct"></Trans>
-            ) : (
-              <Trans id="Create struct"></Trans>
-            )}
-          </DialogTitle>
+          <DialogTitle>Publish struct</DialogTitle>
+          <DialogDescription>
+            Publish{' '}
+            <span className="text-foreground font-bold">{struct?.name}</span> to
+            marketplace
+          </DialogDescription>
         </DialogHeader>
-        <StructForm />
+        <PublishStructContent />
       </DialogContent>
     </Dialog>
   )

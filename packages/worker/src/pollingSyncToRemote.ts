@@ -52,11 +52,14 @@ async function sync() {
         }
       }
 
-      await fetch(`${ROOT_HOST}/api/v1/sync`, {
+      const res = await fetch(`${ROOT_HOST}/api/v1/sync`, {
         method: 'POST',
         headers,
         body: JSON.stringify(data),
-      }).then((r) => r.json())
+      })
+
+      const json = res.json()
+
       // await localDB.change.update(change.id, { synced: 1 })
       await localDB.change.delete(change.id)
     } catch (error) {

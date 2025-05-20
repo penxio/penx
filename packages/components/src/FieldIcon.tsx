@@ -27,6 +27,7 @@ export const FieldIcon = ({
   index,
 }: Props) => {
   const iconsMap: Record<string, any> = {
+    [ColumnType.PRIMARY]: Text,
     [ColumnType.TEXT]: Text,
     [ColumnType.NUMBER]: Hash,
     [ColumnType.URL]: Link,

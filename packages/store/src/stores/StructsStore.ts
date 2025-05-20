@@ -1,6 +1,5 @@
 import { produce } from 'immer'
 import { atom } from 'jotai'
-import { editorDefaultValue } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
@@ -11,6 +10,17 @@ import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
 
 export const structsAtom = atom<IStructNode[]>([])
+
+export type InstallStructInput = {
+  id: string
+  name: string
+  pluralName?: string
+  description?: string
+  type?: string
+  color?: string
+  about?: string
+  columns: IColumn[]
+}
 
 export class StructsStore {
   constructor(private store: StoreType) {}
@@ -26,7 +36,26 @@ export class StructsStore {
   createStruct(name: string) {
     const site = this.store.site.get()
     const structs = this.get()
-    const newStruct = generateStructNode('', name, {
+    const newStruct = generateStructNode({
+      type: '',
+      name,
+      siteId: site.id,
+      userId: site.userId,
+    })
+
+    const newStructs = produce(structs, (draft) => {
+      draft.push(newStruct)
+    })
+
+    this.set(newStructs)
+    localDB.addStruct(newStruct)
+  }
+
+  installStruct(input: InstallStructInput) {
+    const site = this.store.site.get()
+    const structs = this.get()
+    const newStruct = generateStructNode({
+      ...input,
       siteId: site.id,
       userId: site.userId,
     })
@@ -52,9 +81,9 @@ export class StructsStore {
     const id = uniqueId()
     const newOption: Option = {
       id,
-      columnId,
       name,
       color: getRandomColorName(),
+      isDefault: false,
     }
 
     const newStruct = produce(struct.raw, (draft) => {
