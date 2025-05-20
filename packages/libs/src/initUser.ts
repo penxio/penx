@@ -1,4 +1,5 @@
 import ky from 'ky'
+import { customAlphabet } from 'nanoid'
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
 import {
@@ -84,6 +85,7 @@ export async function initUserByGoogleToken(
       let newUser = await tx.user.create({
         data: {
           id: userId ? userId : undefined,
+          pid: await generatePID(tx),
           name: info.name,
           displayName: info.name,
           email: info.email,
@@ -157,6 +159,7 @@ export async function initUserByAppleToken({
       let newUser = await tx.user.create({
         data: {
           id: userId ? userId : undefined,
+          pid: await generatePID(tx),
           name: name,
           displayName: name,
           email: email,
@@ -218,6 +221,7 @@ export async function initUserByEmail(
       let newUser = await tx.user.create({
         data: {
           id: userId ? userId : undefined,
+          pid: await generatePID(tx),
           name: name,
           displayName: name,
           email: email,
@@ -266,6 +270,7 @@ export async function initUserByEmailLoginCode(email: string, userId?: string) {
       let newUser = await tx.user.create({
         data: {
           id: userId ? userId : undefined,
+          pid: await generatePID(tx),
           name: name,
           displayName: name,
           email: email,
@@ -282,4 +287,16 @@ export async function initUserByEmailLoginCode(email: string, userId?: string) {
       timeout: 10000, // default: 5000
     },
   )
+}
+
+async function generatePID(tx: any) {
+  let code: string
+  const alphabet = '0123456789'
+  const nanoid = customAlphabet(alphabet, 6)
+  while (true) {
+    code = nanoid()
+    const user = await tx.user.findUnique({ where: { pid: code } })
+    if (!user) break
+  }
+  return code
 }

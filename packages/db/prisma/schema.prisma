@@ -136,6 +136,7 @@ model Site {
 
 model User {
   id                String           @id @default(uuid()) @db.Uuid
+  pid               String           @unique @db.VarChar(255)
   name              String?          @db.VarChar(255)
   displayName       String?          @db.VarChar(255)
   ensName           String?          @db.VarChar(255)

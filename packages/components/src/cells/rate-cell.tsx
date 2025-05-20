@@ -4,6 +4,7 @@ import {
   GridCellKind,
   type Item,
 } from '@glideapps/glide-data-grid'
+import { cn } from '@penx/utils'
 import { StarSVG } from '../StarSVG'
 
 interface RateCellProps {
