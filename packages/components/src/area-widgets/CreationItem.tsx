@@ -20,7 +20,7 @@ import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { usePanels } from '@penx/hooks/usePanels'
 import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
-import { CreationType, PanelType, SiteCreation } from '@penx/types'
+import { StructType, PanelType, SiteCreation } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import {
   ContextMenu,
@@ -76,15 +76,15 @@ export function CreationItem({ creation, className }: CreationItemProps) {
             })
           }}
         >
-          {[CreationType.PAGE, CreationType.NOTE].includes(
-            struct?.type as CreationType,
+          {[StructType.PAGE, StructType.NOTE].includes(
+            struct?.type as StructType,
           ) && <FileIcon size={16} className="text-foreground/60" />}
 
-          {[CreationType.BOOKMARK].includes(struct?.type as CreationType) && (
+          {[StructType.BOOKMARK].includes(struct?.type as StructType) && (
             <BookmarkIcon size={16} className="text-foreground/60" />
           )}
 
-          {struct?.type === CreationType.TASK && (
+          {struct?.type === StructType.TASK && (
             <Checkbox
               onClick={(e) => e.stopPropagation()}
               checked={creation.checked}

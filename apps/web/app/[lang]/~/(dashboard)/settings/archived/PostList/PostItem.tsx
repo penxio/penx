@@ -21,7 +21,7 @@ import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Link } from '@penx/libs/i18n'
 import { api, trpc } from '@penx/trpc-client'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import { Calendar } from '@penx/uikit/calendar'
@@ -42,7 +42,7 @@ export function PostItem({ creation }: PostItemProps) {
   const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
 
   function getContent() {
-    if (creation.type === CreationType.NOTE) {
+    if (creation.type === StructType.NOTE) {
       return (
         <div className="flex-1">
           <PlateEditor
@@ -55,7 +55,7 @@ export function PostItem({ creation }: PostItemProps) {
     }
 
     if (
-      creation.type === CreationType.IMAGE &&
+      creation.type === StructType.IMAGE &&
       creation.content.startsWith('/')
     ) {
       return (
@@ -79,8 +79,8 @@ export function PostItem({ creation }: PostItemProps) {
     )
   }
 
-  function getCreationType() {
-    if (creation.type === CreationType.NOTE) {
+  function getStructType() {
+    if (creation.type === StructType.NOTE) {
       return (
         <Badge variant="secondary" size="sm" className="h-6 text-xs">
           <Trans id="Note"></Trans>
@@ -100,9 +100,9 @@ export function PostItem({ creation }: PostItemProps) {
           href={isPublished ? postUrl : `/~/post?id=${creation.id}`}
           className="inline-flex items-center gap-2 transition-transform hover:scale-105"
         >
-          {getCreationType()}
+          {getStructType()}
           {getContent()}
-          {isPublished && creation.type === CreationType.ARTICLE && (
+          {isPublished && creation.type === StructType.ARTICLE && (
             <ExternalLink size={14} className="text-foreground/40" />
           )}
         </a>

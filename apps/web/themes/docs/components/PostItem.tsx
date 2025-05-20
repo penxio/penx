@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { Link } from '@penx/libs/i18n'
-import { Creation, CreationType } from '@penx/types'
+import { Creation, StructType } from '@penx/types'
 import { formatDate } from '@penx/utils'
 
 interface PostItemProps {
@@ -12,7 +12,7 @@ export function PostItem({ creation }: PostItemProps) {
   const { slug, title } = creation
 
   const getContent = () => {
-    if (creation.type === CreationType.IMAGE) {
+    if (creation.type === StructType.IMAGE) {
       return (
         <div className="flex items-center gap-2">
           <div className="text-base font-bold">
@@ -29,7 +29,7 @@ export function PostItem({ creation }: PostItemProps) {
       )
     }
 
-    if (creation.type === CreationType.NOTE) {
+    if (creation.type === StructType.NOTE) {
       return (
         <div className="text-foreground/80">
           <PlateEditor

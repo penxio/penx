@@ -19,7 +19,7 @@ import { calculateSHA256FromString } from '@penx/encryption'
 import { cacheHelper } from '@penx/libs/cache-header'
 import {
   Creation,
-  CreationType,
+  StructType,
   Friend,
   NavLink,
   NavLinkLocation,
@@ -136,7 +136,7 @@ export async function getCreations(site: Site) {
   console.log('=============site:', site)
 
   const siteId = site.id
-  const struct = site.structs.find((i) => i.type === CreationType.PAGE)!
+  const struct = site.structs.find((i) => i.type === StructType.PAGE)!
 
   const creations = await unstable_cache(
     async () => {
@@ -155,7 +155,7 @@ export async function getCreations(site: Site) {
 
 export async function getPodcasts(site: Site): Promise<Creation[]> {
   const siteId = site.id
-  const struct = site.structs.find((i) => i.type === CreationType.AUDIO)!
+  const struct = site.structs.find((i) => i.type === StructType.AUDIO)!
   if (!struct) return []
   const creations = await unstable_cache(
     async () => {
@@ -174,7 +174,7 @@ export async function getPodcasts(site: Site): Promise<Creation[]> {
 
 export async function getNotes(site: Site) {
   const siteId = site.id
-  const struct = site.structs.find((i) => i.type === CreationType.NOTE)!
+  const struct = site.structs.find((i) => i.type === StructType.NOTE)!
   const creations = await unstable_cache(
     async () => {
       let creations = await findManyCreations(site, struct.id)
@@ -192,7 +192,7 @@ export async function getNotes(site: Site) {
 
 export async function getPhotos(site: Site): Promise<Creation[]> {
   const siteId = site.id
-  const struct = site.structs.find((i) => i.type === CreationType.IMAGE)!
+  const struct = site.structs.find((i) => i.type === StructType.IMAGE)!
   if (!struct) return []
   const creations = await unstable_cache(
     async () => {
@@ -340,8 +340,8 @@ export async function getTagWithCreation(siteId: string, name: string) {
           const creation = creationTag.creation
           let content = creation.content
           if (
-            creation.type === CreationType.IMAGE ||
-            creation.type === CreationType.VIDEO
+            creation.type === StructType.IMAGE ||
+            creation.type === StructType.VIDEO
           ) {
             content = getUrl(creation.content)
           }
@@ -402,7 +402,7 @@ export async function getPage(siteId = '', slug = '') {
 export async function getFriends(site: Site) {
   const siteId = site.id
   const struct = site.structs.find(
-    (struct) => struct.type === CreationType.FRIEND,
+    (struct) => struct.type === StructType.FRIEND,
   )
   if (!struct) return []
   return await unstable_cache(
@@ -423,7 +423,7 @@ export async function getFriends(site: Site) {
 export async function getProjects(site: Site) {
   const siteId = site.id
   const struct = site.structs.find(
-    (struct) => struct.type === CreationType.PROJECT,
+    (struct) => struct.type === StructType.PROJECT,
   )
   if (!struct) return []
   return await unstable_cache(
@@ -531,7 +531,7 @@ async function findManyCreations(site: Site, structId: string) {
 
   return creations.map((item) => {
     let content = item.content
-    if (item.type === CreationType.IMAGE || item.type === CreationType.VIDEO) {
+    if (item.type === StructType.IMAGE || item.type === StructType.VIDEO) {
       content = getUrl(item.content)
     }
 

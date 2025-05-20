@@ -2,7 +2,7 @@
 
 import { WidgetType } from '@penx/constants'
 import { useStructs } from '@penx/hooks/useStructs'
-import { CreationType, Panel, Widget } from '@penx/types'
+import { StructType, Panel, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { FullPageDatabase } from '../../database-ui'
 import { ClosePanelButton } from '../ClosePanelButton'
@@ -33,7 +33,7 @@ export function PanelWidget({ panel, index }: Props) {
     return <PanelStructs panel={panel} index={index} />
   }
 
-  // if (struct?.type === CreationType.BOOKMARK) {
+  // if (struct?.type === StructType.BOOKMARK) {
   //   return <BookmarkList panel={panel} index={index} struct={struct} />
   // }
 

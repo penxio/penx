@@ -8,7 +8,7 @@ import { CommentSheet } from '@penx/components/CommentSheet'
 import { PodcastTips } from '@penx/components/PodcastTips'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { Link } from '@penx/libs/i18n'
-import { AreaWithCreations, Creation, CreationType, User } from '@penx/types'
+import { AreaWithCreations, Creation, StructType, User } from '@penx/types'
 import { cn, formatDate, getUrl } from '@penx/utils'
 import { AuthorAvatar } from './AuthorAvatar'
 
@@ -32,12 +32,12 @@ export function PostItem({
 
   // console.log('========post:', post)
 
-  if (type === 'photos' && creation.type !== CreationType.IMAGE) return null
-  if (type === 'notes' && creation.type !== CreationType.NOTE) return null
-  if (type === 'articles' && creation.type !== CreationType.ARTICLE) return null
+  if (type === 'photos' && creation.type !== StructType.IMAGE) return null
+  if (type === 'notes' && creation.type !== StructType.NOTE) return null
+  if (type === 'articles' && creation.type !== StructType.ARTICLE) return null
 
   const getContent = () => {
-    if (creation.type === CreationType.IMAGE) {
+    if (creation.type === StructType.IMAGE) {
       return (
         <img
           src={creation.content}
@@ -47,7 +47,7 @@ export function PostItem({
       )
     }
 
-    if (creation.type === CreationType.NOTE) {
+    if (creation.type === StructType.NOTE) {
       return (
         <div className="text-foreground/80">
           <PlateEditor

@@ -17,7 +17,7 @@ import { CreationsProvider } from '@penx/contexts/CreationsContext'
 import { FriendsProvider } from '@penx/contexts/FriendsContext'
 import { ProjectsProvider } from '@penx/contexts/ProjectsContext'
 import linguiConfig from '@penx/libs/lingui.config'
-import { AppearanceConfig, CreationType, DesignMode } from '@penx/types'
+import { AppearanceConfig, StructType, DesignMode } from '@penx/types'
 
 type Params = Promise<{ domain: string; lang: string }>
 

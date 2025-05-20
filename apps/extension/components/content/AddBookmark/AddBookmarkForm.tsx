@@ -16,7 +16,7 @@ import { useAreas } from '@penx/hooks/useAreas'
 import { localDB } from '@penx/local-db'
 import { ICreation, ISite } from '@penx/model-type'
 import { siteAtom, store } from '@penx/store'
-import { CreationStatus, CreationType, GateType } from '@penx/types'
+import { CreationStatus, StructType, GateType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -76,7 +76,7 @@ export function AddBookmarkForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const site = store.site.get()
     const structs = store.structs.get()
-    const struct = structs.find((struct) => struct.type === CreationType.BOOKMARK)!
+    const struct = structs.find((struct) => struct.type === StructType.BOOKMARK)!
 
     try {
       setLoading(true)
@@ -91,7 +91,7 @@ export function AddBookmarkForm() {
         props: {
           url: data.url,
         },
-        type: CreationType.BOOKMARK,
+        type: StructType.BOOKMARK,
         areaId: data.areaId,
         siteId: struct.siteId,
         icon: '',
@@ -121,7 +121,7 @@ export function AddBookmarkForm() {
       //   props: {
       //     url: data.url,
       //   },
-      //   type: CreationType.BOOKMARK,
+      //   type: StructType.BOOKMARK,
       //   tagIds: data.tags.map((tag) => tag.id),
       //   areaId: data.areaId,
       // })

@@ -3,7 +3,7 @@ import { prisma } from '@penx/db'
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { revalidateSite } from '@penx/libs/revalidateSite'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { protectedProcedure, router } from '../trpc'
 
 export const structRouter = router({
@@ -18,13 +18,13 @@ export const structRouter = router({
     })
 
     const sortKeys = [
-      CreationType.ARTICLE,
-      CreationType.NOTE,
-      CreationType.AUDIO,
-      CreationType.IMAGE,
-      CreationType.BOOKMARK,
-      CreationType.FRIEND,
-      CreationType.PROJECT,
+      StructType.ARTICLE,
+      StructType.NOTE,
+      StructType.AUDIO,
+      StructType.IMAGE,
+      StructType.BOOKMARK,
+      StructType.FRIEND,
+      StructType.PROJECT,
     ]
 
     return list.sort((a, b) => {
@@ -67,13 +67,13 @@ export const structRouter = router({
     }
 
     const sortKeys = [
-      CreationType.ARTICLE,
-      CreationType.NOTE,
-      CreationType.AUDIO,
-      CreationType.IMAGE,
-      CreationType.BOOKMARK,
-      CreationType.FRIEND,
-      CreationType.PROJECT,
+      StructType.ARTICLE,
+      StructType.NOTE,
+      StructType.AUDIO,
+      StructType.IMAGE,
+      StructType.BOOKMARK,
+      StructType.FRIEND,
+      StructType.PROJECT,
     ]
 
     return list.sort((a, b) => {

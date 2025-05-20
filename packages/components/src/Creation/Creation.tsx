@@ -21,7 +21,7 @@ import { useStructs } from '@penx/hooks/useStructs'
 import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
-import { CreationType, Panel } from '@penx/types'
+import { StructType, Panel } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Separator } from '@penx/uikit/separator'
 import { cn } from '@penx/utils'
@@ -48,7 +48,7 @@ export function Creation({ panel, className, ref }: Props) {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
-  const isImage = creation.type === CreationType.IMAGE
+  const isImage = creation.type === StructType.IMAGE
   const { structs } = useStructs()
   const editorRef = useRef<Editor>(null)
 
@@ -82,14 +82,14 @@ export function Creation({ panel, className, ref }: Props) {
   const struct = structs.find((m) => m.id === creation.structId)
 
   const hideTitle = useMemo(() => {
-    if (struct?.type === CreationType.NOTE) {
+    if (struct?.type === StructType.NOTE) {
       return true
     }
     return false
   }, [struct])
 
   const isCover = useMemo(() => {
-    if (struct?.type === CreationType.BOOKMARK) {
+    if (struct?.type === StructType.BOOKMARK) {
       return false
     }
     return true
@@ -97,7 +97,7 @@ export function Creation({ panel, className, ref }: Props) {
 
   useEffect(() => {
     //
-    // if (struct?.type === CreationType.NOTE) {
+    // if (struct?.type === StructType.NOTE) {
     //   appEmitter.emit('FOCUS_EDITOR')
     // }
   }, [struct])
@@ -136,7 +136,7 @@ export function Creation({ panel, className, ref }: Props) {
                   />
                 )}
                 <div className="flex items-center gap-2">
-                  {struct?.type === CreationType.TASK && (
+                  {struct?.type === StructType.TASK && (
                     <Checkbox
                       className="bg-foreground/10 size-6 border-none"
                       checked={creation.checked}
@@ -204,7 +204,7 @@ export function Creation({ panel, className, ref }: Props) {
             }}
           />
 
-          {struct?.type === CreationType.AUDIO && (
+          {struct?.type === StructType.AUDIO && (
             <div className="mt-6">
               <AudioCreationUpload creation={creation as any} />
             </div>
@@ -244,7 +244,7 @@ export function Creation({ panel, className, ref }: Props) {
                   content: JSON.stringify(v),
                 } as ICreationNode['props']
 
-                if (creation.type === CreationType.NOTE) {
+                if (creation.type === StructType.NOTE) {
                   const title = v
                     .map((n) => Node.string(n))
                     .join(', ')

@@ -8,7 +8,7 @@ import { PodcastTips } from '@penx/components/PodcastTips'
 import { PostActions } from '@penx/components/PostActions'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { Link } from '@penx/libs/i18n'
-import { Creation, CreationType, User } from '@penx/types'
+import { Creation, StructType, User } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
 import { getUserName } from '../lib/getUserName'
 import { AuthorAvatar } from './AuthorAvatar'
@@ -33,23 +33,23 @@ export function PostItem({
 
   // console.log('========post:', post)
 
-  if (type === 'photos' && creation.type !== CreationType.IMAGE) return null
-  if (type === 'notes' && creation.type !== CreationType.NOTE) return null
-  if (type === 'articles' && creation.type !== CreationType.ARTICLE) return null
+  if (type === 'photos' && creation.type !== StructType.IMAGE) return null
+  if (type === 'notes' && creation.type !== StructType.NOTE) return null
+  if (type === 'articles' && creation.type !== StructType.ARTICLE) return null
 
   const getTitle = () => {
-    if (creation.type === CreationType.IMAGE)
+    if (creation.type === StructType.IMAGE)
       return <div className="">{title}</div>
-    if (creation.type === CreationType.NOTE)
+    if (creation.type === StructType.NOTE)
       return <div className="">a note</div>
-    if (creation.type === CreationType.ARTICLE) {
+    if (creation.type === StructType.ARTICLE) {
       return <div className="">an article</div>
     }
     return <div></div>
   }
 
   const getContent = () => {
-    if (creation.type === CreationType.IMAGE) {
+    if (creation.type === StructType.IMAGE) {
       return (
         <img
           src={creation.content}
@@ -59,7 +59,7 @@ export function PostItem({
       )
     }
 
-    if (creation.type === CreationType.NOTE) {
+    if (creation.type === StructType.NOTE) {
       return (
         <div className="text-foreground/80">
           <PlateEditor

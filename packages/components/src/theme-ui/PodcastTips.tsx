@@ -1,5 +1,5 @@
 import { ExternalLink, PodcastIcon } from 'lucide-react'
-import { Creation, CreationType } from '@penx/types'
+import { Creation, StructType } from '@penx/types'
 import { cn, convertSecondsToTime } from '@penx/utils'
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function PodcastTips({ creation, showIcon = true, className }: Props) {
-  if (creation?.struct?.type !== CreationType.AUDIO) return null
+  if (creation?.struct?.type !== StructType.AUDIO) return null
   return (
     <div className="flex items-center gap-1">
       {showIcon && <PodcastIcon size={16} className="" />}

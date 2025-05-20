@@ -1,6 +1,6 @@
 import { getCreations, getSite } from '@/lib/fetchers'
 import { headers } from 'next/headers'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { getUrl } from '@penx/utils'
 import { Podcast } from '../lib/node-podcast'
 
@@ -60,7 +60,7 @@ export async function GET(req: Request) {
   })
 
   creations
-    .filter((p) => p.type === CreationType.AUDIO)
+    .filter((p) => p.type === StructType.AUDIO)
     .slice(0, 20)
     .forEach((post) => {
       const author = post.authors[0]?.user?.name || site.name

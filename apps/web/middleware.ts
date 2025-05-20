@@ -107,7 +107,7 @@ export default async function middleware(req: NextRequest) {
     }
 
     if (isDashboard) {
-      console.log('====>>>>>>>isDashboard:', isDashboard, path)
+      // console.log('====>>>>>>>isDashboard:', isDashboard, path)
 
       if (
         !token?.userId &&

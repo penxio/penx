@@ -6,7 +6,7 @@ import cx from 'classnames'
 import equal from 'fast-deep-equal'
 import { CogIcon, ExpandIcon, SendHorizonalIcon, XIcon } from 'lucide-react'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
@@ -50,7 +50,7 @@ export function TaskInput({ className, onSubmit }: Props) {
   const submitForm = useCallback(() => {
     const title = input.split('\n').join(',')
     addCreation({
-      type: CreationType.TASK,
+      type: StructType.TASK,
       title,
       isAddPanel: false,
     })

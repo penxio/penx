@@ -16,7 +16,7 @@ import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import {
   CreationStatus,
-  CreationType,
+  StructType,
   GateType,
   SessionData,
 } from '@penx/types'
@@ -114,7 +114,7 @@ async function queryAreas() {
 async function addNote(content: string, area: IAreaNode) {
   const site = await localDB.getSite(area.siteId)
   const structs = await localDB.listStructs(area.siteId)
-  const struct = structs.find((struct) => struct.props.type === CreationType.NOTE)!
+  const struct = structs.find((struct) => struct.props.type === StructType.NOTE)!
 
   const creation: ICreationNode = {
     id: uniqueId(),
@@ -127,7 +127,7 @@ async function addNote(content: string, area: IAreaNode) {
       content: noteToContent(content),
       image: '',
       props: {},
-      type: CreationType.NOTE,
+      type: StructType.NOTE,
       areaId: area.id,
       icon: '',
       podcast: {},

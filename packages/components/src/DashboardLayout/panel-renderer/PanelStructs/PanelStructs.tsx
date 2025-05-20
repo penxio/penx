@@ -2,7 +2,7 @@
 
 import { useArea } from '@penx/hooks/useArea'
 import { store } from '@penx/store'
-import { CreationType, Panel, PanelType } from '@penx/types'
+import { StructType, Panel, PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { useStructDialog } from '../../../StructDialog/useStructDialog'

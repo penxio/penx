@@ -1,7 +1,7 @@
 import { CardStyle, GardenCardType, SocialType } from '@penx/constants'
 import {
   Creation,
-  CreationType,
+  StructType,
   Friend,
   LayoutItem,
   Project,
@@ -126,18 +126,18 @@ export function GridLayoutUI({
                   <TitleCard item={item} />
                 )}
                 {item.type === GardenCardType.TEXT && <TextCard item={item} />}
-                {item.type === CreationType.IMAGE && <ImageCard item={item} />}
+                {item.type === StructType.IMAGE && <ImageCard item={item} />}
                 {item.type === GardenCardType.AREA && (
                   <AreaCard item={item} site={site} />
                 )}
-                {item.type === CreationType.ARTICLE && (
+                {item.type === StructType.ARTICLE && (
                   <ArticleCard site={site} creations={creations} item={item} />
                 )}
-                {item.type === CreationType.AUDIO && (
+                {item.type === StructType.AUDIO && (
                   <PodcastCard podcasts={podcasts} />
                 )}
 
-                {item.type === CreationType.PROJECT && (
+                {item.type === StructType.PROJECT && (
                   <ProjectCard item={item} projects={projects} />
                 )}
 

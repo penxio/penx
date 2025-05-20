@@ -3,14 +3,14 @@
 import { Trans } from '@lingui/react'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
-import { CreationType, Panel } from '@penx/types'
+import { StructType, Panel } from '@penx/types'
 import { TaskItem } from './TaskItem'
 
 interface Props {}
 
 export function MobileTask({}: Props) {
   const { structs } = useStructs()
-  const struct = structs.find((item) => item.type === CreationType.TASK)
+  const struct = structs.find((item) => item.type === StructType.TASK)
   const { creations } = useCreations()
   const tasks = creations.filter((item) => item.structId === struct?.id)
 

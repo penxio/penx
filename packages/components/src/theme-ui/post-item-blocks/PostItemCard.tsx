@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Node } from 'slate'
 import { Link } from '@penx/libs/i18n'
-import { Creation, CreationType } from '@penx/types'
+import { Creation, StructType } from '@penx/types'
 import { cn, formatDate } from '@penx/utils'
 import { PodcastTips } from '../PodcastTips'
 import Tag from './Tag'
@@ -14,7 +14,7 @@ export function PostItemCard({ creation }: PostItemProps) {
   const { slug, title } = creation
 
   function getCardContent() {
-    if (creation.type === CreationType.IMAGE) {
+    if (creation.type === StructType.IMAGE) {
       return (
         <Image
           src={creation.content}
@@ -42,7 +42,7 @@ export function PostItemCard({ creation }: PostItemProps) {
       })
       .join('')
 
-    if (creation.type === CreationType.NOTE) {
+    if (creation.type === StructType.NOTE) {
       return (
         <span className="text-foreground/80 border-foreground/5 block h-full border p-4">
           {text}

@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server'
 import { AddCreationInput, editorDefaultValue } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { getSessionOptions } from '@penx/libs/session'
-import { CreationType, SessionData } from '@penx/types'
+import { StructType, SessionData } from '@penx/types'
 
 export async function POST(req: NextRequest) {
   const json = (await req.json()) as AddCreationInput
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
   }
 
   const getContent = () => {
-    if (json.type === CreationType.NOTE) {
+    if (json.type === StructType.NOTE) {
       const content = json.content.split('\n')
       const slateValue = content.map((line) => ({
         type: 'p',

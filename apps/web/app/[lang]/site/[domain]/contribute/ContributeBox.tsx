@@ -9,7 +9,7 @@ import { CreationStatus, Product } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useSession } from '@penx/session'
 import { api, trpc } from '@penx/trpc-client'
-import { CreationType, Site } from '@penx/types'
+import { StructType, Site } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
@@ -37,7 +37,7 @@ export function ContributeBox({ site }: Props) {
 
     const structs = site.structs || []
 
-    // const struct = structs.find((i) => i.type === CreationType.ARTICLE)
+    // const struct = structs.find((i) => i.type === StructType.ARTICLE)
     // try {
     //   window.__SITE_ID__ = site.id
     //   await mutateAsync({

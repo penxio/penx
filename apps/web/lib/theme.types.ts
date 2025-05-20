@@ -1,7 +1,7 @@
 import { JSX, PropsWithChildren } from 'react'
 import { Area, Author, Product, Struct } from '@penx/db/client'
 
-export enum CreationType {
+export enum StructType {
   NOTE = 'NOTE',
   TASK = 'TASK',
   PAGE = 'PAGE',
@@ -155,7 +155,7 @@ export type Creation = {
   i18n: any
   nodeId: string
   creationId: number
-  type: CreationType
+  type: StructType
   gateType: GateType
   readingTime: {
     text: string

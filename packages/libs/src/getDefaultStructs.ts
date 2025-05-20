@@ -1,6 +1,6 @@
 import { editorDefaultValue } from '@penx/constants'
 import { IColumn, IStructNode, IView, NodeType } from '@penx/model-type'
-import { ColumnType, CreationType, ViewColumn, ViewType } from '@penx/types'
+import { ColumnType, StructType, ViewColumn, ViewType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { getRandomColorName } from './color-helper'
 
@@ -24,6 +24,10 @@ export function generateStructNode(type: string, name: string, input: Input) {
       updatedAt: new Date(),
     },
   ]
+
+  if (type === StructType.NOTE) {
+    //
+  }
 
   const viewColumns: ViewColumn[] = columns.map((column) => ({
     columnId: column.id,
@@ -60,6 +64,20 @@ export function generateStructNode(type: string, name: string, input: Input) {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
+    {
+      id: uniqueId(),
+      name: 'List',
+      viewType: ViewType.LIST,
+      viewColumns,
+      description: '',
+      kanbanColumnId: '',
+      sorts: [],
+      filters: [],
+      groups: [],
+      kanbanOptionIds: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
   ]
 
   const struct: IStructNode = {
@@ -86,12 +104,12 @@ export function generateStructNode(type: string, name: string, input: Input) {
 
 export function getDefaultStructs(input: Input): IStructNode[] {
   return [
-    generateStructNode(CreationType.PAGE, 'Page', input),
+    generateStructNode(StructType.PAGE, 'Page', input),
     // {
     //   id: uniqueId(),
     //   name: 'Articles',
     //   description: '',
-    //   type: CreationType.ARTICLE,
+    //   type: StructType.ARTICLE,
     //   props: [],
     //   content: JSON.stringify(editorDefaultValue),
     //   createdAt: new Date(),
@@ -99,12 +117,12 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   ...input,
     // },
 
-    generateStructNode(CreationType.NOTE, 'Note', input),
+    generateStructNode(StructType.NOTE, 'Note', input),
     // {
     //   id: uniqueId(),
     //   name: 'Images',
     //   description: '',
-    //   type: CreationType.IMAGE,
+    //   type: StructType.IMAGE,
     //   props: [],
     //   content: JSON.stringify(editorDefaultValue),
     //   createdAt: new Date(),
@@ -115,7 +133,7 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   id: uniqueId(),
     //   name: 'Podcasts',
     //   description: '',
-    //   type: CreationType.AUDIO,
+    //   type: StructType.AUDIO,
     //   props: [],
     //   content: JSON.stringify(editorDefaultValue),
     //   createdAt: new Date(),
@@ -123,14 +141,14 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   ...input,
     // },
 
-    generateStructNode(CreationType.TASK, 'Task', input),
+    generateStructNode(StructType.TASK, 'Task', input),
 
-    generateStructNode(CreationType.BOOKMARK, 'Bookmark', input),
+    generateStructNode(StructType.BOOKMARK, 'Bookmark', input),
     // {
     //   id: uniqueId(),
     //   name: 'Friends',
     //   description: '',
-    //   type: CreationType.FRIEND,
+    //   type: StructType.FRIEND,
     //   props: [
     //     {
     //       id: uniqueId(),
@@ -161,7 +179,7 @@ export function getDefaultStructs(input: Input): IStructNode[] {
     //   id: uniqueId(),
     //   name: 'Projects',
     //   description: '',
-    //   type: CreationType.PROJECT,
+    //   type: StructType.PROJECT,
     //   props: [
     //     { id: uniqueId(), name: 'Icon', slug: 'icon', type: PropType.IMAGE },
     //     { id: uniqueId(), name: 'Cover', slug: 'cover', type: PropType.IMAGE },

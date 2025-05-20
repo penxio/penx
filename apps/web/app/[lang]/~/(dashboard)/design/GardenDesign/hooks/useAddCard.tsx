@@ -3,7 +3,7 @@ import { GardenCardType, SocialType } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { useThemeName } from '../../hooks/useThemeName'
 import { useDesignContext } from './DesignContext'
@@ -19,14 +19,14 @@ export function useAddCard() {
   return async (type: any) => {
     let w = [2, 2]
     let h = [2, 2]
-    if (type === CreationType.ARTICLE) {
+    if (type === StructType.ARTICLE) {
       w = [4, 4]
       h = [4, 4]
     }
 
     if (
       [
-        CreationType.AUDIO,
+        StructType.AUDIO,
         GardenCardType.COMMENTS,
         GardenCardType.COMMENTS,
       ].includes(type)

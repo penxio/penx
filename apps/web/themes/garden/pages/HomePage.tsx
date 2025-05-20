@@ -1,7 +1,7 @@
 import { GridLayoutUI } from '@penx/components/GridLayoutUI'
 import {
   Creation,
-  CreationType,
+  StructType,
   Friend,
   LayoutItem,
   Project,

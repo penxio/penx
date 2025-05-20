@@ -7,7 +7,6 @@ export type Widget = {
   type: string
   collapsed?: boolean
   structId?: string
-  creationType?: string
 
   [key: string]: any
 }

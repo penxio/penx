@@ -1,5 +1,5 @@
 import { DATABASE_TOOLBAR_HEIGHT, WORKBENCH_NAV_HEIGHT } from '@penx/constants'
-import { CreationType, ViewType } from '@penx/types'
+import { StructType, ViewType } from '@penx/types'
 import { useDatabaseContext } from './DatabaseProvider'
 import { GalleryView } from './views/GalleryView/GalleryView'
 import { NoteGalleryView } from './views/GalleryView/Notes/NoteGalleryView'
@@ -12,7 +12,7 @@ export const ViewRenderer = ({}: Props) => {
   const { currentView, struct } = useDatabaseContext()
 
   if (currentView?.viewType === ViewType.GALLERY) {
-    if (struct.type === CreationType.NOTE) {
+    if (struct.type === StructType.NOTE) {
       return <NoteGalleryView struct={struct} />
     }
     return <GalleryView />

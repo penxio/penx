@@ -6,7 +6,7 @@ import cx from 'classnames'
 import equal from 'fast-deep-equal'
 import { CogIcon, ExpandIcon, SendHorizonalIcon, XIcon } from 'lucide-react'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
@@ -53,7 +53,7 @@ export function NoteInput({ className, onSubmit }: Props) {
       children: [{ text: line }],
     }))
     addCreation({
-      type: CreationType.NOTE,
+      type: StructType.NOTE,
       content: JSON.stringify(slateValue),
       isAddPanel: false,
     })

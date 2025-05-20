@@ -10,7 +10,7 @@ import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import LoadingCircle from '@penx/uikit/loading-circle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -29,7 +29,7 @@ interface Props {
 
 export function AddWidgetButton({ className }: Props) {
   const [isLoading, setLoading] = useState(false)
-  const [type, setType] = useState<CreationType>('' as any)
+  const [type, setType] = useState<StructType>('' as any)
   const [open, setOpen] = useState(false)
   const { area } = useArea()
   const { structs } = useStructs()

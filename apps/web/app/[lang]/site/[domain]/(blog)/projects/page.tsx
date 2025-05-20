@@ -5,7 +5,7 @@ import { editorDefaultValue } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { FriendsProvider } from '@penx/contexts/FriendsContext'
 import { ProjectsProvider } from '@penx/contexts/ProjectsContext'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 
 export const dynamic = 'force-static'
 export const revalidate = 86400 // 3600 * 24

@@ -5,7 +5,7 @@ import { GardenCardType, SocialType } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { trpc } from '@penx/trpc-client'
-import { CreationType, LayoutItem } from '@penx/types'
+import { StructType, LayoutItem } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { useThemeName } from '../hooks/useThemeName'
 import { AreaCard } from './cards/AreaCard'
@@ -31,7 +31,7 @@ export function CardRender({ item }: { item: LayoutItem }) {
     return <TextCard layoutItem={item} layout={layout} setLayout={setLayout} />
   }
 
-  if (item.type === CreationType.IMAGE) {
+  if (item.type === StructType.IMAGE) {
     return <ImageCard layoutItem={item} layout={layout} setLayout={setLayout} />
   }
 
@@ -39,11 +39,11 @@ export function CardRender({ item }: { item: LayoutItem }) {
     return <SocialCard layoutItem={item} layout={layout} />
   }
 
-  if (item.type === CreationType.ARTICLE) {
+  if (item.type === StructType.ARTICLE) {
     return <ArticleCard />
   }
 
-  if (item.type === CreationType.AUDIO) {
+  if (item.type === StructType.AUDIO) {
     return <PodcastCard />
   }
 
@@ -55,7 +55,7 @@ export function CardRender({ item }: { item: LayoutItem }) {
     return <FriendsCard />
   }
 
-  if (item.type === CreationType.PROJECT) {
+  if (item.type === StructType.PROJECT) {
     return (
       <ProjectCard layoutItem={item} layout={layout} setLayout={setLayout} />
     )

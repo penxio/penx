@@ -1,21 +1,21 @@
 import { useAtomValue } from 'jotai'
 import { Struct } from '@penx/domain'
 import { structsAtom } from '@penx/store'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 
 export function useStructs() {
   const raw = useAtomValue(structsAtom)
 
   const sortKeys = [
-    CreationType.PAGE,
-    CreationType.NOTE,
-    CreationType.TASK,
-    CreationType.ARTICLE,
-    CreationType.AUDIO,
-    CreationType.IMAGE,
-    CreationType.BOOKMARK,
-    CreationType.FRIEND,
-    CreationType.PROJECT,
+    StructType.PAGE,
+    StructType.NOTE,
+    StructType.TASK,
+    StructType.ARTICLE,
+    StructType.AUDIO,
+    StructType.IMAGE,
+    StructType.BOOKMARK,
+    StructType.FRIEND,
+    StructType.PROJECT,
   ]
 
   return {

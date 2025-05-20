@@ -1,7 +1,7 @@
 import { getCreations, getSite } from '@/lib/fetchers'
 import { Feed } from 'feed'
 import { headers } from 'next/headers'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 
 export async function GET(req: Request) {
   const headersList = await headers()
@@ -40,7 +40,7 @@ export async function GET(req: Request) {
   })
 
   creations
-    .filter((p) => p.type === CreationType.ARTICLE)
+    .filter((p) => p.type === StructType.ARTICLE)
     .slice(0, 20)
     .forEach((post) => {
       feed.addItem({

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Image } from '@penx/components/Image'
 import { ContentRender } from '@penx/content-render'
-import { Creation, CreationType, Site } from '@penx/types'
+import { Creation, StructType, Site } from '@penx/types'
 import { cn } from '@penx/utils'
 import { BackLinks } from './BackLinks'
 import { IPFSLink } from './IPFSLink'
@@ -65,7 +65,7 @@ export function PostPageWidget({
 
           <div className="pt-2 md:pt-4">
             <div className="flex flex-col gap-4">
-              {creation.type === CreationType.AUDIO && (
+              {creation.type === StructType.AUDIO && (
                 <div className="mb-2 flex h-[130px] items-center">
                   <PodcastPlayer creation={creation} />
                 </div>

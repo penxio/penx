@@ -2,7 +2,7 @@
 
 import { PlusIcon } from 'lucide-react'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 
@@ -21,7 +21,7 @@ export function AddCreationButton({ className }: Props) {
         className,
       )}
       onClick={() => {
-        addCreation({ type: CreationType.PAGE })
+        addCreation({ type: StructType.PAGE })
       }}
     >
       <PlusIcon size={20} className="" />

@@ -1,6 +1,6 @@
 import { OptionTag } from '@penx/components/OptionTag'
 import { Creation } from '@penx/domain'
-import { ColumnType, CreationType, Option } from '@penx/types'
+import { ColumnType, StructType, Option } from '@penx/types'
 import { mappedByKey } from '@penx/utils'
 import { useDatabaseContext } from '../../DatabaseProvider'
 import { CreationList } from '../ListView/CreationList'
@@ -15,7 +15,7 @@ interface Props {}
 export const ListView = ({}: Props) => {
   const { struct } = useDatabaseContext()
 
-  if (struct.type === CreationType.TASK) {
+  if (struct.type === StructType.TASK) {
     return <TasksList struct={struct} />
   }
 

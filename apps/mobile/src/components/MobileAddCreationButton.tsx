@@ -7,7 +7,7 @@ import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { creationIdAtom } from '@penx/hooks/useCreationId'
 import { store } from '@penx/store'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 
@@ -22,7 +22,7 @@ export function MobileAddCreationButton({ className }: Props) {
       size="icon"
       className={cn('size-12 shadow-xl', className)}
       onClick={async () => {
-        const creation = await addCreation({ type: CreationType.PAGE })
+        const creation = await addCreation({ type: StructType.PAGE })
         store.set(creationIdAtom, creation.id)
       }}
     >

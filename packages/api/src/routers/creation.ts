@@ -21,7 +21,7 @@ import {
 import { cacheHelper } from '@penx/libs/cache-header'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { renderSlateToHtml } from '@penx/libs/slate-to-html'
-import { CreationById, CreationType, SiteCreation } from '@penx/types'
+import { CreationById, StructType, SiteCreation } from '@penx/types'
 import { getUrl } from '@penx/utils'
 import { createNewsletterWithDelivery } from '../lib/createNewsletterWithDelivery'
 import { findCreations } from '../lib/findCreations'
@@ -151,7 +151,7 @@ export const creationRouter = router({
       const struct = await prisma.struct.findFirstOrThrow({
         where: {
           siteId,
-          type: CreationType.PROJECT,
+          type: StructType.PROJECT,
         },
       })
       let creations = await findCreations({
@@ -269,7 +269,7 @@ export const creationRouter = router({
         let creations = await findCreations({ areaId: creation.areaId! })
         await cacheHelper.updateAreaCreations(creation.areaId!, creations)
 
-        if (creation.type === CreationType.NOTE) {
+        if (creation.type === StructType.NOTE) {
           let notes = await findNotes({
             structId: creation.structId!,
             areaId: creation.areaId!,
@@ -385,7 +385,7 @@ export const creationRouter = router({
         await cacheHelper.updateAreaCreations(creation.areaId!, creations)
       }
 
-      if (creation.type === CreationType.NOTE) {
+      if (creation.type === StructType.NOTE) {
         let notes = await findNotes({
           structId: creation.structId!,
           areaId: creation.areaId!,
@@ -488,7 +488,7 @@ export const creationRouter = router({
         await cacheHelper.updateAreaCreations(creation.areaId!, creations)
       }
 
-      if (creation.type === CreationType.NOTE) {
+      if (creation.type === StructType.NOTE) {
         let notes = await findNotes({
           structId: creation.structId!,
           areaId: creation.areaId!,
@@ -599,7 +599,7 @@ export const creationRouter = router({
         await cacheHelper.updateAreaCreations(creation.areaId!, creations)
       }
 
-      if (creation.type === CreationType.NOTE) {
+      if (creation.type === StructType.NOTE) {
         let notes = await findNotes({
           structId: creation.structId!,
           areaId: creation.areaId!,
@@ -639,7 +639,7 @@ export const creationRouter = router({
           await cacheHelper.updateAreaCreations(creation.areaId!, creations)
         }
 
-        if (creation.type === CreationType.NOTE) {
+        if (creation.type === StructType.NOTE) {
           let notes = await findNotes({
             structId: creation.structId!,
             areaId: creation.areaId!,
@@ -686,7 +686,7 @@ export const creationRouter = router({
           await cacheHelper.updateAreaCreations(creation.areaId!, creations)
         }
 
-        if (creation.type === CreationType.NOTE) {
+        if (creation.type === StructType.NOTE) {
           let notes = await findNotes({
             structId: creation.structId!,
             areaId: creation.areaId!,

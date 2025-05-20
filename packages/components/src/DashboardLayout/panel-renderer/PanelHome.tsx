@@ -8,7 +8,7 @@ import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
-import { CreationType, Panel, PanelType } from '@penx/types'
+import { StructType, Panel, PanelType } from '@penx/types'
 import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
 

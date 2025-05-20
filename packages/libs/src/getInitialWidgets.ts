@@ -1,17 +1,17 @@
 import { WidgetType } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
-import { CreationType, Widget } from '@penx/types'
+import { StructType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
 export const getInitialWidgets = (structs: IStructNode[]) => {
   const pageStruct = structs.find(
-    (struct) => struct.props.type === CreationType.PAGE,
+    (struct) => struct.props.type === StructType.PAGE,
   )!
   const noteStruct = structs.find(
-    (struct) => struct.props.type === CreationType.NOTE,
+    (struct) => struct.props.type === StructType.NOTE,
   )!
   const taskStruct = structs.find(
-    (struct) => struct.props.type === CreationType.TASK,
+    (struct) => struct.props.type === StructType.TASK,
   )!
 
   const widgets: Widget[] = [

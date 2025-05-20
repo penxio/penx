@@ -15,7 +15,7 @@ import {
   TextIcon,
 } from 'lucide-react'
 import { GardenCardType, ROOT_HOST, SocialType } from '@penx/constants'
-import { CreationType } from '@penx/types'
+import { StructType } from '@penx/types'
 import { cn } from '@penx/utils'
 import { BarToggle } from './BarToggle'
 import { DesignSettings } from './DesignSettings'
@@ -80,14 +80,14 @@ export function GardenDesignBar() {
             </Item>
             <Item
               name={<Trans id="Image"></Trans>}
-              type={CreationType.IMAGE}
+              type={StructType.IMAGE}
               {...props}
             >
               <ImageIcon />
             </Item>
             {/* <Item
               name={<Trans id="Articles"></Trans>}
-              type={CreationType.ARTICLE}
+              type={StructType.ARTICLE}
               {...props}
               className=""
             >
@@ -95,7 +95,7 @@ export function GardenDesignBar() {
             </Item> */}
             {/* <Item
               name={<Trans id="Podcasts"></Trans>}
-              type={CreationType.AUDIO}
+              type={StructType.AUDIO}
               {...props}
             >
               <PodcastIcon />
@@ -116,7 +116,7 @@ export function GardenDesignBar() {
             </Item> */}
             {/* <Item
               name={<Trans id="Projects"></Trans>}
-              type={CreationType.PROJECT}
+              type={StructType.PROJECT}
               {...props}
             >
               <KanbanIcon />

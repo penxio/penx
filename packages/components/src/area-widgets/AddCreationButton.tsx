@@ -6,7 +6,7 @@ import { isMobileApp } from '@penx/constants'
 import { Area } from '@penx/domain'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
-import { CreationType, Widget } from '@penx/types'
+import { StructType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
@@ -25,7 +25,7 @@ export function AddCreationButton({ area, widget }: Props) {
   const [showInput, setShowInput] = useState(false)
 
   if (
-    [CreationType.TASK, CreationType.NOTE].includes(struct.type as CreationType)
+    [StructType.TASK, StructType.NOTE].includes(struct.type as StructType)
   ) {
     return (
       <Popover open={showInput} onOpenChange={setShowInput}>
@@ -51,7 +51,7 @@ export function AddCreationButton({ area, widget }: Props) {
           className="inline-flex w-auto border-none bg-transparent p-0 px-0 shadow-none"
           // asChild
         >
-          {struct.type === CreationType.NOTE && (
+          {struct.type === StructType.NOTE && (
             <NoteInput
               className="shadow-2xl"
               onSubmit={() => {
@@ -60,7 +60,7 @@ export function AddCreationButton({ area, widget }: Props) {
             />
           )}
 
-          {struct.type === CreationType.TASK && (
+          {struct.type === StructType.TASK && (
             <TaskInput
               className="shadow-2xl"
               onSubmit={() => {

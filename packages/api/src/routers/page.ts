@@ -10,7 +10,7 @@ import {
 import { prisma } from '@penx/db'
 import { Creation, CreationStatus } from '@penx/db/client'
 import { cacheHelper } from '@penx/libs/cache-header'
-import { CreationType, Option } from '@penx/types'
+import { StructType, Option } from '@penx/types'
 import { protectedProcedure, publicProcedure, router } from '../trpc'
 
 export const pageRouter = router({
@@ -32,7 +32,7 @@ export const pageRouter = router({
       const struct = await prisma.struct.findFirstOrThrow({
         where: {
           siteId,
-          type: CreationType.FRIEND,
+          type: StructType.FRIEND,
         },
       })
 

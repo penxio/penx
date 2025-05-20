@@ -21,7 +21,7 @@ import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { store } from '@penx/store'
-import { CreationType, PanelType } from '@penx/types'
+import { StructType, PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Textarea } from '@penx/uikit/textarea'
@@ -79,7 +79,7 @@ export function QuickInput({
       children: [{ text: line }],
     }))
     addCreation({
-      type: CreationType.NOTE,
+      type: StructType.NOTE,
       content: JSON.stringify(slateValue),
     })
     afterSubmit?.()
