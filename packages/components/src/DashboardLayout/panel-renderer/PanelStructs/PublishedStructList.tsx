@@ -1,7 +1,5 @@
 import { toast } from 'sonner'
-import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
-import { getBgColor } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'

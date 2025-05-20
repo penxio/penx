@@ -1,19 +1,20 @@
 'use client'
 
 import { atom, useAtom } from 'jotai'
+import { Struct } from '@penx/domain'
 
 type State = {
   isOpen: boolean
-  databaseId: string
+  struct: Struct
 }
 
-const deleteDatabaseDialogAtom = atom<State>({
+const dialogAtom = atom<State>({
   isOpen: false,
-  databaseId: '',
+  struct: undefined as any,
 } as State)
 
-export function useDeleteDatabaseDialog() {
-  const [state, setState] = useAtom(deleteDatabaseDialogAtom)
+export function useDeleteStructDialog() {
+  const [state, setState] = useAtom(dialogAtom)
   return {
     ...state,
     setIsOpen: (isOpen: boolean) => setState({ ...state, isOpen }),

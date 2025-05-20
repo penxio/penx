@@ -19,6 +19,7 @@ import {
 } from '@penx/uikit/dropdown-menu'
 import { cn } from '@penx/utils'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
+import { useDeleteStructDialog } from '../DeleteStructDialog/useDeleteStructDialog'
 import { usePublishStructDialog } from '../PublishStructDialog/usePublishStructDialog'
 import { useStructDialog } from '../StructDialog/useStructDialog'
 import { useDatabaseContext } from './DatabaseProvider'
@@ -29,6 +30,7 @@ export const TableInfo = () => {
   const { session } = useSession()
   const loginDialog = useLoginDialog()
   const publishDialog = usePublishStructDialog()
+  const deleteDialog = useDeleteStructDialog()
 
   if (!struct) return null
 
@@ -76,7 +78,7 @@ export const TableInfo = () => {
 
         <DropdownMenuItem
           onClick={async () => {
-            //
+            deleteDialog.setState({ isOpen: true, struct })
           }}
         >
           <Trash2Icon />

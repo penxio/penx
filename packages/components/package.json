@@ -76,8 +76,6 @@
     "./PanelList": "./src/DashboardLayout/PanelList.tsx",
     "./SettingsLayout": "./src/DashboardLayout/SettingsLayout.tsx",
     "./CreationLink": "./src/DashboardLayout/panel-renderer/CreationLink.tsx",
-    "./DeleteDatabaseDialog": "./src/DeleteDatabaseDialog/DeleteDatabaseDialog.tsx",
-    "./useDeleteDatabaseDialog": "./src/DeleteDatabaseDialog/useDeleteDatabaseDialog.tsx",
     "./GoogleOauthDialog": "./src/GoogleOauthDialog/GoogleOauthDialog.tsx",
     "./useGoogleOauthDialog": "./src/GoogleOauthDialog/useGoogleOauthDialog.tsx",
     "./NavbarWrapper": "./src/Navbar/NavbarWrapper.tsx",

@@ -15,16 +15,16 @@ import {
   DialogTitle,
 } from '@penx/uikit/dialog'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { useDeleteDatabaseDialog } from './useDeleteDatabaseDialog'
+import { useDeleteStructDialog } from './useDeleteStructDialog'
 
 interface Props {}
 
-export function DeleteDatabaseDialog({}: Props) {
-  const { isOpen, setIsOpen, databaseId } = useDeleteDatabaseDialog()
+export function DeleteStructDialog({}: Props) {
+  const { isOpen, setIsOpen, structId: databaseId } = useDeleteStructDialog()
   const [loading, setLoading] = useState(false)
   const { refetch } = useDatabases()
 
-  async function deleteColumn() {
+  async function deleteField() {
     setLoading(true)
     try {
       await api.database.deleteDatabase.mutate(databaseId)
@@ -60,7 +60,7 @@ export function DeleteDatabaseDialog({}: Props) {
             className="w-20"
             disabled={loading}
             variant="destructive"
-            onClick={deleteColumn}
+            onClick={deleteField}
           >
             {loading ? <LoadingDots className="bg-white" /> : 'Delete'}
           </Button>

@@ -19,6 +19,7 @@ import { usePathname } from '@penx/libs/i18n'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { cn } from '@penx/utils'
+import { DeleteStructDialog } from '../DeleteStructDialog/DeleteStructDialog'
 import { PlanListDialog } from '../PlanList/PlanListDialog'
 import { PublishStructDialog } from '../PublishStructDialog/PublishStructDialog'
 import { StructDialog } from '../StructDialog/StructDialog'
@@ -64,6 +65,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
       <StructDialog />
       <PublishStructDialog />
       <PlanListDialog />
+      <DeleteStructDialog />
       {isDesign && children}
       {!isDesign && <Layout>{children}</Layout>}
     </>
