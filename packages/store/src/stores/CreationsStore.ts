@@ -1,4 +1,3 @@
-import { set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
@@ -46,7 +45,7 @@ export class CreationsStore {
 
   async refetchCreations(areaId?: string) {
     const area = this.store.area.get()
-    const newCreations = await localDB.listCreationsByArea(area.id)
+    const newCreations = await localDB.listCreationsByArea(areaId || area.id)
     this.set(newCreations)
   }
 }

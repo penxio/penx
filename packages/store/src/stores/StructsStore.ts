@@ -116,9 +116,9 @@ export class StructsStore {
     return newOption
   }
 
-  async refetchStructs() {
-    const site = this.store.site.get()
-    const structs = await localDB.listStructs(site.id)
+  async refetchStructs(areaId?: string) {
+    const area = this.store.area.get()
+    const structs = await localDB.listStructs(areaId || area.id)
     this.set(structs)
     return structs
   }

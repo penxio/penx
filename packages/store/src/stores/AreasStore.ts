@@ -2,6 +2,7 @@ import { get, set } from 'idb-keyval'
 import { atom } from 'jotai'
 import { ACTIVE_SITE, CreateAreaInput, WidgetType } from '@penx/constants'
 import { AreaType } from '@penx/db/client'
+import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {
@@ -38,13 +39,12 @@ export class AreasStore {
   async addArea(input: CreateAreaInput) {
     const site = this.store.site.get()
     const id = uniqueId()
-    const structs = await localDB.listStructs(site.id)
     const area: IAreaNode = {
       id,
       type: NodeType.AREA,
       props: {
         cover: '',
-        widgets: getInitialWidgets(structs),
+        widgets: getInitialWidgets(),
         // type: AreaType.SUBJECT,
         favorites: [],
         isGenesis: false,
@@ -58,6 +58,18 @@ export class AreasStore {
     }
 
     await localDB.addArea(area)
+
+    const structs = getDefaultStructs({
+      areaId: area.id,
+      userId: site.userId,
+      siteId: site.id,
+    })
+
+    for (const struct of structs) {
+      await localDB.addStruct(struct)
+    }
+
+    this.store.structs.refetchStructs(area.id)
     this.refetchAreas()
     return area
   }

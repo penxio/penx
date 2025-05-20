@@ -144,9 +144,9 @@ class LocalDB extends Dexie {
     return this.node.get(newNodeId) as any as Promise<T>
   }
 
-  listStructs = (siteId: string) => {
+  listStructs = (areaId: string) => {
     return this.node
-      .where({ type: NodeType.STRUCT, siteId })
+      .where({ type: NodeType.STRUCT, areaId })
       .toArray() as unknown as Promise<IStructNode[]>
   }
 
@@ -221,6 +221,7 @@ class LocalDB extends Dexie {
     } as IAreaNode)
 
     await this.addChange(area.id, OperationType.CREATE, area)
+    return area as IAreaNode
   }
 
   updateAreaProps = async (id: string, props: Partial<IAreaNode['props']>) => {

@@ -14,12 +14,7 @@ import { get } from 'idb-keyval'
 import { CommentStatus } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
-import {
-  CreationStatus,
-  StructType,
-  GateType,
-  SessionData,
-} from '@penx/types'
+import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 
 const storage = new Storage()
@@ -113,8 +108,10 @@ async function queryAreas() {
 
 async function addNote(content: string, area: IAreaNode) {
   const site = await localDB.getSite(area.siteId)
-  const structs = await localDB.listStructs(area.siteId)
-  const struct = structs.find((struct) => struct.props.type === StructType.NOTE)!
+  const structs = await localDB.listStructs(area.id)
+  const struct = structs.find(
+    (struct) => struct.props.type === StructType.NOTE,
+  )!
 
   const creation: ICreationNode = {
     id: uniqueId(),
@@ -126,7 +123,7 @@ async function addNote(content: string, area: IAreaNode) {
       description: '',
       content: noteToContent(content),
       image: '',
-      props: {},
+      cells: {},
       type: StructType.NOTE,
       areaId: area.id,
       icon: '',

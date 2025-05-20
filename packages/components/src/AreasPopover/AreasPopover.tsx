@@ -60,6 +60,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
               onClick={async () => {
                 store.area.set(item.raw)
                 store.creations.refetchCreations(item.id)
+                store.structs.refetchStructs(item.id)
                 store.visit.setAndSave({ activeAreaId: item.id })
                 store.panels.resetPanels()
               }}

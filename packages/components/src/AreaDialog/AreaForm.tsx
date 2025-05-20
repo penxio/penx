@@ -83,6 +83,7 @@ export function AreaForm() {
 
         store.area.set(area)
         store.creations.refetchCreations(area.id)
+        store.structs.refetchStructs(area.id)
         store.visit.setAndSave({ activeAreaId: area.id })
         await store.panels.resetPanels()
       }
