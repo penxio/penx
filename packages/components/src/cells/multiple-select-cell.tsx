@@ -222,7 +222,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
 
               <OptionTag
                 option={{
-                  id: item.columnId,
+                  id: item.id,
                   name: item?.name,
                   color: item?.color,
                 }}

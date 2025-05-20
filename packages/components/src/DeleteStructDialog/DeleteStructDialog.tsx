@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { useDatabases } from '@penx/hooks/useDatabases'
+import { localDB } from '@penx/local-db'
+import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
@@ -20,33 +22,32 @@ import { useDeleteStructDialog } from './useDeleteStructDialog'
 interface Props {}
 
 export function DeleteStructDialog({}: Props) {
-  const { isOpen, setIsOpen, structId: databaseId } = useDeleteStructDialog()
+  const { isOpen, setIsOpen, struct } = useDeleteStructDialog()
   const [loading, setLoading] = useState(false)
-  const { refetch } = useDatabases()
 
-  async function deleteField() {
+  async function deleteStruct() {
     setLoading(true)
     try {
-      await api.database.deleteDatabase.mutate(databaseId)
-      await refetch()
-      toast.success('Database deleted successfully')
+      await store.structs.deleteStruct(struct.id)
       setIsOpen(false)
+      toast.success('Struct deleted successfully')
     } catch (error) {
       toast.error('Failed to delete')
     }
     setLoading(false)
   }
-  if (!databaseId) return null
+  if (!struct) return null
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
       <DialogContent closable={false} className="">
         <DialogHeader className="">
           <DialogTitle className="">
-            Are you sure delete this database permanently?
+            Are you sure delete this struct permanently?
           </DialogTitle>
           <DialogDescription>
-            Once deleted, You can't undo this action.
+            All creations will be deleted, once deleted, You can't undo this
+            action.
           </DialogDescription>
         </DialogHeader>
 
@@ -60,7 +61,7 @@ export function DeleteStructDialog({}: Props) {
             className="w-20"
             disabled={loading}
             variant="destructive"
-            onClick={deleteField}
+            onClick={deleteStruct}
           >
             {loading ? <LoadingDots className="bg-white" /> : 'Delete'}
           </Button>

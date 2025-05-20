@@ -68,6 +68,14 @@ export class StructsStore {
     localDB.addStruct(newStruct)
   }
 
+  async deleteStruct(id: string) {
+    await localDB.deleteStruct(id)
+    const panels = this.store.panels.get()
+    const panel = panels.find((p) => p.widget?.structId === id)
+    if (panel) this.store.panels.closePanel(panel.id)
+    await this.refetchStructs()
+  }
+
   updateStruct(id: string, newStruct: IStructNode) {
     const structs = this.get()
     const newStructs = produce(structs, (draft) => {

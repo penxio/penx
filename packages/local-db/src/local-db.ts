@@ -70,6 +70,9 @@ class LocalDB extends Dexie {
     await this.addChange(node.id, OperationType.CREATE, node)
     return node
   }
+  deleteNodeByIds = (nodeIds: string[]) => {
+    return this.node.where('id').anyOf(nodeIds).delete()
+  }
 
   updateNodeProps = async <T extends any>(id: string, input: Partial<T>) => {
     const node = await this.getNode(id)
@@ -240,9 +243,25 @@ class LocalDB extends Dexie {
     await this.updateNodeProps(id, props)
   }
 
+  // TODO: need  improve
   deleteStruct = async (id: string) => {
-    await this.addChange(id, OperationType.DELETE)
+    const struct = await this.getNode<IStructNode>(id)
+    console.log('====struct:', struct)
+
+    const nodes = (await this.node
+      .where({
+        // areaId: struct.areaId,
+        type: NodeType.CREATION,
+      })
+      .toArray()) as ICreationNode[]
+
+    const ids = nodes
+      .filter((node) => node.props.structId === id)
+      .map((n) => n.id)
+
+    await this.deleteNodeByIds(ids)
     await this.node.delete(id)
+    await this.addChange(id, OperationType.DELETE)
   }
 
   addTag = async (data: Partial<ITagNode>) => {
