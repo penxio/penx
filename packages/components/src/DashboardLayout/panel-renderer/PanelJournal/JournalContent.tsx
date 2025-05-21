@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
+import { isMobileApp } from '@penx/constants'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useJournal } from '@penx/hooks/useJournal'
 import { Panel } from '@penx/types'
@@ -20,10 +21,10 @@ export function JournalContent({ panel }: Props) {
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
-      <JournalTitle date={data?.props.date!} />
+      {!isMobileApp && <JournalTitle date={data?.props.date!} />}
 
       {!data?.props.children.length && (
-        <div className="flex flex-col gap-4 pt-20">
+        <div className="flex flex-col gap-4 pt-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 import { MobileHome } from '@/components/MobileHome'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
 import { MobileTask } from '@/components/MobileTask/MobileTask'
@@ -162,38 +163,7 @@ const PageHome: React.FC = ({ nav }: any) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <IonHeader
-        className={cn(platform === 'android' ? 'safe-area' : '')}
-        style={{
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
-        }}
-      >
-        <IonToolbar
-          className="toolbar px-3 "
-          style={{
-            // '--background': 'white',
-            '--border-width': 0,
-            // borderBottom: scrolled ? '1px solid #eeee' : 'none',
-            // borderBottom: 'none',
-            // border: 'none',
-          }}
-        >
-          <IonButtons slot="start">
-            <IonMenuToggle>
-              <span className="icon-[heroicons-outline--menu-alt-2] size-6"></span>
-            </IonMenuToggle>
-          </IonButtons>
-
-          <IonTitle slot="center" className="mx-1">
-            {area?.name}
-          </IonTitle>
-
-          <IonButtons slot="end" className="">
-            <SearchButton />
-            {/* <EditWidgetButton /> */}
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
+      <Header />
 
       <IonContent fullscreen className="text-foreground content">
         {/* <IonHeader collapse="condense">
@@ -215,7 +185,7 @@ const PageHome: React.FC = ({ nav }: any) => {
           {/* <SidebarProvider>
           </SidebarProvider> */}
 
-            <PanelList />
+          <PanelList />
           {/* {type === 'HOME' && <MobileHome />} */}
           {/* {type === 'TASK' && <MobileTask />} */}
           {/* {type === 'PROFILE' &&

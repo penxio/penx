@@ -1,5 +1,6 @@
 'use client'
 
+import { isMobileApp } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { getTextColorByName } from '@penx/libs/color-helper'
@@ -19,8 +20,12 @@ export function CreationCard({ creation }: Props) {
 
   return (
     <div
-      className="bg-background/90 shadow-xs flex cursor-pointer flex-col gap-2 rounded-lg p-4 transition-all hover:scale-105 hover:shadow-2xl"
+      className={cn(
+        'bg-background/90 shadow-xs flex cursor-pointer flex-col gap-2 rounded-lg p-4 transition-all hover:scale-105 hover:shadow-2xl',
+        // isMobileApp && 'bg-foreground text-background',
+      )}
       onClick={() => {
+        if (isMobileApp) return
         store.panels.updateMainPanel({
           id: uniqueId(),
           type: PanelType.CREATION,

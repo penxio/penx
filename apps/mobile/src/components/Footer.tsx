@@ -15,19 +15,21 @@ export const Footer = ({ onAdd }: Props) => {
     <IonFooter
       style={{
         boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+        '--background': 'transparent',
       }}
     >
       <IonToolbar
         className="toolbar px-3"
         style={{
           '--border-width': 0,
+          '--background': 'transparent',
         }}
       >
         <div className="flex items-center justify-center gap-3 rounded-full px-3 pb-4">
           <Button
             size="icon"
             variant="ghost"
-            className="text-background shadow-popover size-14 rounded-full"
+            className="text-background shadow-popover bg-background size-14 rounded-full"
             onClick={async () => {
               onAdd()
             }}

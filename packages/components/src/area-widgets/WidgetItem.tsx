@@ -95,13 +95,20 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           {...attributes}
           {...listeners}
           onClick={(e) => {
-            if (isMobileApp) {
-              setVisible(true)
+            if (widget.type === WidgetType.JOURNAL) {
+              store.panels.openJournal(new Date())
+              close()
               return
             }
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
               store.panels.openWidgetPanel(widget)
+              close()
+              return
+            }
+
+            if (isMobileApp) {
+              setVisible(true)
               return
             }
 
@@ -132,7 +139,9 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             <AddChatButton widget={widget} />
           )}
 
-          <ToggleButton area={area} widget={widget} />
+          {![WidgetType.AI_CHAT, WidgetType.JOURNAL].includes(
+            widget.type as WidgetType,
+          ) && <ToggleButton area={area} widget={widget} />}
         </div>
       </div>
     )

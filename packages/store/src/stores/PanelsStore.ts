@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
-import { WidgetType } from '@penx/constants'
+import { isMobileApp, WidgetType } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { NodeType } from '@penx/model-type'
 import { Panel, PanelType, Widget } from '@penx/types'
@@ -80,7 +80,7 @@ export class PanelsStore {
 
     let journalIndex = panels.findIndex((p) => p.type === PanelType.JOURNAL)
 
-    if (journalIndex > -1) {
+    if (journalIndex > -1 && !isMobileApp) {
       index = journalIndex + 1
     }
 

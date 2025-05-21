@@ -17,18 +17,23 @@ export const getInitialWidgets = (structs?: IStructNode[]) => {
   const widgets: Widget[] = [
     {
       id: uniqueId(),
-      collapsed: false,
+      collapsed: true,
+      type: WidgetType.JOURNAL,
+    },
+    {
+      id: uniqueId(),
+      collapsed: true,
       type: WidgetType.ALL_STRUCTS,
     },
     {
       id: uniqueId(),
-      collapsed: false,
+      collapsed: true,
       type: WidgetType.ALL_CREATIONS,
     },
 
     {
       id: uniqueId(),
-      collapsed: false,
+      collapsed: true,
       type: WidgetType.FAVORITES,
     },
     // {

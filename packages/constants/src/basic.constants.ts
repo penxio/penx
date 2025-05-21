@@ -366,6 +366,7 @@ export const defaultLayouts = [
 ]
 
 export enum WidgetType {
+  JOURNAL = 'JOURNAL',
   ALL_CREATIONS = 'ALL_CREATIONS',
   RECENTLY_EDITED = 'RECENTLY_EDITED',
   RECENTLY_OPENED = 'RECENTLY_OPENED',

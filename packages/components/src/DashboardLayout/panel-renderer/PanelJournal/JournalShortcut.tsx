@@ -2,7 +2,6 @@ import { forwardRef } from 'react'
 import { addDays, format, subDays } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { goToDay } from '@penx/hooks/useJournal'
-import { useRouter } from '@penx/libs/i18n'
 
 interface Props {
   date: string
@@ -11,7 +10,6 @@ interface Props {
 export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
   function DailyShortcut({ date, ...rest }, ref) {
     const currentDate = new Date(date ?? Date.now())
-    const { push } = useRouter()
 
     return (
       <div ref={ref} className="flex items-center text-xs" {...rest}>

@@ -10,6 +10,10 @@ interface Props {
 }
 
 export function WidgetName({ widget, structs }: Props) {
+  if (widget.type === WidgetType.JOURNAL) {
+    return <Trans id="Journals"></Trans>
+  }
+
   if (widget.type === WidgetType.ALL_CREATIONS) {
     return <Trans id="All creations"></Trans>
   }
