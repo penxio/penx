@@ -4,12 +4,11 @@ import { isMobileApp } from '@penx/constants'
 import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
 import { cn } from '@penx/utils'
-import { ClosePanelButton } from './ClosePanelButton'
 import { LocalBackup } from './panel-renderer/LocalBackup/LocalBackup'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
 import { PanelAISetting } from './panel-renderer/PanelAISetting'
 import { PanelCreation } from './panel-renderer/PanelCreation'
-import { PanelHome } from './panel-renderer/PanelHome'
+import { PanelJournal } from './panel-renderer/PanelJournal/PanelJournal'
 import { PanelWidget } from './panel-renderer/PanelWidget'
 import { PanelWidgetHeader } from './panel-renderer/PanelWidgetHeader'
 
@@ -30,8 +29,9 @@ export function PanelItem({
       <ResizablePanel
         {...sizes}
         className={cn(
-          'bg-background flex flex-col rounded-md shadow-sm dark:bg-[#181818]',
+          'bg-background flex flex-col overflow-hidden rounded-md shadow-sm dark:bg-[#181818]',
           // panel.type === PanelType.HOME && 'bg-transparent',
+          // panel.type === PanelType.TODAY && 'bg-yellow-50',
         )}
         minSize={20}
         style={{
@@ -43,8 +43,8 @@ export function PanelItem({
           <PanelCreation index={index} panel={panel} />
         )}
 
-        {panel.type === PanelType.HOME && (
-          <PanelHome index={index} panel={panel} />
+        {panel.type === PanelType.JOURNAL && (
+          <PanelJournal index={index} panel={panel} />
         )}
 
         {panel.type === PanelType.AI_SETTING && (

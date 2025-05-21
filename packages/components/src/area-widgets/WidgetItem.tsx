@@ -101,8 +101,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
-              console.log('======widget:', widget)
-
               store.panels.openWidgetPanel(widget)
               return
             }
@@ -148,8 +146,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             isDragging && 'bg-foreground/6 opacity-50',
             isDragging && 'z-[1000000]',
             dragOverlay && 'shadow',
-            !isMobileApp &&
-              'shadow-2xs dark:bg-foreground/8 rounded-md bg-white',
+            // !isMobileApp &&
+            'shadow-2xs dark:bg-foreground/8 rounded-md bg-white',
           )}
           {...rest}
         >

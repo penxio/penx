@@ -1,8 +1,11 @@
 import isEqual from 'react-fast-compare'
+import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { WidgetType } from '@penx/constants'
+import { localDB } from '@penx/local-db'
+import { NodeType } from '@penx/model-type'
 import { Panel, PanelType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
@@ -23,8 +26,8 @@ export class PanelsStore {
   }
 
   async savePanels(newPanels: Panel[]) {
-    const site = this.store.site.get()
-    const key = `${PANELS}_${site.id}`
+    const area = this.store.area.get()
+    const key = `${PANELS}_${area.id}`
     this.set(newPanels)
     await set(key, newPanels)
   }
@@ -56,17 +59,40 @@ export class PanelsStore {
     await this.savePanels(newPanels)
   }
 
+  async updateJournalPanel(date: string) {
+    let panels = this.get()
+    const newPanels = produce(panels, (draft) => {
+      for (const panel of panels) {
+        if (panel.type === PanelType.JOURNAL) {
+          panel.date = date
+        }
+      }
+    })
+    await this.savePanels(newPanels)
+  }
+
   async updateMainPanel(panel: Partial<Panel>) {
     let panels = this.get()
+    let len = panels.length
 
     let index = panels.findIndex((p) => p.type !== PanelType.WIDGET)
     if (index < 0) index = panels.length - 1
 
+    let journalIndex = panels.findIndex((p) => p.type === PanelType.JOURNAL)
+
+    if (journalIndex > -1) {
+      index = journalIndex + 1
+    }
+
     if (panel.type === PanelType.CREATION) {
       panels = produce(panels, (draft) => {
+        const len = index > draft.length ? draft.length + 1 : index
+        const size = 100 / len
+
         draft[index] = {
           id: uniqueId(),
           ...panel,
+          size: size,
         } as Panel
         draft[index].isLoading = true
       })
@@ -75,15 +101,33 @@ export class PanelsStore {
 
     setTimeout(async () => {
       const newPanels = produce(panels, (draft) => {
+        const len = index > draft.length ? draft.length + 1 : index
+        const size = 100 / len
+
         draft[index] = {
           id: uniqueId(),
           ...panel,
+          size: size,
         } as Panel
         draft[index].isLoading = false
       })
 
       await this.savePanels(newPanels)
     }, 1)
+  }
+
+  async openJournal(date: Date = new Date()) {
+    let panels = this.get()
+    const panel: Panel = {
+      id: uniqueId(),
+      type: PanelType.JOURNAL,
+      date: format(date, 'yyyy-MM-dd'),
+    }
+
+    panels = produce(panels, (draft) => {
+      draft[0] = panel
+    })
+    await this.savePanels(panels)
   }
 
   async openWidgetPanel(widget: Widget, isNewPanel = false) {
@@ -147,21 +191,48 @@ export class PanelsStore {
     let panels = this.get()
     const newPanels = panels.filter((p) => p.id !== id)
     if (!newPanels.length) {
-      newPanels.push({
-        id: uniqueId(),
-        type: PanelType.HOME,
-      })
+      return this.resetPanels()
     }
     await this.savePanels(newPanels)
   }
 
   async resetPanels() {
-    await this.savePanels([
+    const area = this.store.area.get()
+    const date = new Date()
+    const dateStr = format(date, 'yyyy-MM-dd')
+
+    const journals = await localDB.listJournals(area.id)
+    let journal = journals.find(
+      (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
+    )!
+
+    if (!journal) {
+      journal = {
+        id: uniqueId(),
+        type: NodeType.JOURNAL,
+        props: {
+          date: dateStr,
+          children: [],
+        },
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        siteId: area.siteId,
+        userId: area.userId,
+        areaId: area.id,
+      }
+
+      await localDB.addJournal(journal)
+    }
+
+    const defaultPanels = [
       {
         id: uniqueId(),
-        type: PanelType.HOME,
-      },
-    ])
+        type: PanelType.JOURNAL,
+        date: dateStr,
+      } as Panel,
+    ]
+
+    await this.savePanels(defaultPanels)
   }
 
   async updatePanelSizes(sizes: number[]) {

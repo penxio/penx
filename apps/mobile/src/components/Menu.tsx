@@ -2,11 +2,13 @@ import { useEffect, useRef } from 'react'
 import { Capacitor } from '@capacitor/core'
 import { IonContent, IonMenu } from '@ionic/react'
 import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
+import { AreasPopover } from '@penx/components/AreasPopover/AreasPopover'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { cn } from '@penx/utils'
 import { AreaList } from './AreaList'
+// import { AreasPopover } from './AreasPopover'
 import { MobileModeToggle } from './MobileModeToggle'
 
 const platform = Capacitor.getPlatform()
@@ -27,21 +29,42 @@ const Menu: React.FC = () => {
       menuId="myMenu"
       contentId="main"
       type="overlay"
+      // className="bg-foreground/5"
     >
-      <IonContent className="ion-padding safe-area drawer-menu h-full">
+      <IonContent
+        className="ion-padding safe-area drawer-menu relative h-full"
+        style={{
+          '--background': '#f0f0f0',
+        }}
+      >
         <div
           className={cn(
-            'flex h-full flex-col pt-5',
+            'relative z-10 flex h-full flex-col pt-5',
             platform === 'ios' && 'pt-10',
           )}
+          style={
+            {
+              '--background': '#fff',
+            } as any
+          }
         >
-          <div className="flex-1">
-            <AreaList />
+          <div className="relative z-10 flex-1">
+            {/* <AreaList /> */}
+            <AreasPopover />
             <AreaWidgets />
           </div>
-          <div className="flex items-center justify-between">
+          <div className="relative z-10 flex items-center justify-between">
             <MobileModeToggle />
           </div>
+          <div
+            className="absolute -top-[0px] left-[0%] z-[1] h-[100vh] w-[100vw] opacity-20 dark:opacity-0"
+            style={{
+              filter: 'blur(150px) saturate(150%)',
+              transform: 'translateZ(0)',
+              backgroundImage:
+                'radial-gradient(at 27% 37%, #3a8bfd 0, transparent 50%), radial-gradient(at 97% 21%, #9772fe 0, transparent 50%), radial-gradient(at 52% 99%, #fd3a4e 0, transparent 50%), radial-gradient(at 10% 29%, #5afc7d 0, transparent 50%), radial-gradient(at 97% 96%, #e4c795 0, transparent 50%), radial-gradient(at 33% 50%, #8ca8e8 0, transparent 50%), radial-gradient(at 79% 53%, #eea5ba 0, transparent 50%)',
+            }}
+          ></div>
         </div>
       </IonContent>
     </IonMenu>

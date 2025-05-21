@@ -1,9 +1,11 @@
+import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import { Node } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import {
   IAreaNode,
   ICreationNode,
+  IJournalNode,
   isAreaNode,
   isCreationNode,
   isCreationTagNode,
@@ -69,7 +71,7 @@ export class AppService {
       }
 
       const remoteSite = await syncNodesToLocal(session.siteId)
-      console.log('=======remoteSite:', remoteSite)
+      // console.log('=======remoteSite:', remoteSite)
 
       return remoteSite
     }
@@ -101,10 +103,9 @@ export class AppService {
   }
 
   private async initStore(site: ISiteNode) {
-    console.log('=============site..:', site)
+    // console.log('=============site..:', site)
     await store.site.save(site)
 
-    const panels = await this.getPanels(site.id)
     const nodes = await localDB.listNodes(site.id)
     const areas = nodes.filter((n) => isAreaNode(n))
 
@@ -125,6 +126,8 @@ export class AppService {
       (n) => isCreationNode(n) && n.areaId === area.id,
     )
 
+    const panels = await this.getPanels(area)
+
     store.site.set(site)
     store.creations.set(creations as ICreationNode[])
     store.visit.set(visit)
@@ -137,14 +140,44 @@ export class AppService {
     store.app.setAppLoading(false)
   }
 
-  private async getPanels(siteId: string) {
-    const key = `${PANELS}_${siteId}`
+  private async getPanels(area: IAreaNode) {
+    const key = `${PANELS}_${area.id}`
     const panels: Panel[] = (await get(key)) || []
+
+    console.log('======panels:', panels)
+
     if (!panels.length) {
+      const date = new Date()
+      const dateStr = format(date, 'yyyy-MM-dd')
+
+      const journals = await localDB.listJournals(area.id)
+      let journal = journals.find(
+        (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
+      )!
+
+      if (!journal) {
+        journal = {
+          id: uniqueId(),
+          type: NodeType.JOURNAL,
+          props: {
+            date: dateStr,
+            children: [],
+          },
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          siteId: area.siteId,
+          userId: area.userId,
+          areaId: area.id,
+        }
+
+        await localDB.addJournal(journal)
+      }
+
       const defaultPanels = [
         {
           id: uniqueId(),
-          type: PanelType.HOME,
+          type: PanelType.JOURNAL,
+          date: dateStr,
         } as Panel,
       ]
       set(key, defaultPanels)

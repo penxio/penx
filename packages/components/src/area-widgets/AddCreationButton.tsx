@@ -46,26 +46,27 @@ export function AddCreationButton({ area, widget }: Props) {
         </PopoverTrigger>
         <PopoverContent
           isPortal
-          className="inline-flex w-auto border-none bg-transparent p-0 px-0 shadow-none"
-          // asChild
+          className="inline-flex w-auto border-none p-0 px-0  ring-0"
         >
-          {struct.type === StructType.NOTE && (
-            <NoteInput
-              className="shadow-2xl"
-              onSubmit={() => {
-                setShowInput(false)
-              }}
-            />
-          )}
+          <>
+            {struct.type === StructType.NOTE && (
+              <NoteInput
+                className="shadow-none"
+                onSubmit={() => {
+                  setShowInput(false)
+                }}
+              />
+            )}
 
-          {struct.type === StructType.TASK && (
-            <TaskInput
-              className="shadow-2xl"
-              onSubmit={() => {
-                setShowInput(false)
-              }}
-            />
-          )}
+            {struct.type === StructType.TASK && (
+              <TaskInput
+                className="shadow-none"
+                onSubmit={() => {
+                  setShowInput(false)
+                }}
+              />
+            )}
+          </>
         </PopoverContent>
       </Popover>
     )

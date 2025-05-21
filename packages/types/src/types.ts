@@ -253,7 +253,7 @@ export type Widget = {
 }
 
 export enum PanelType {
-  HOME = 'HOME',
+  JOURNAL = 'JOURNAL',
   CREATION = 'CREATION',
   WIDGET = 'WIDGET',
   MANAGE_TAGS = 'MANAGE_TAGS',
@@ -269,6 +269,7 @@ export type Panel = {
   size?: number
   creationId?: string
   widget?: Widget
+  date?: string
   // [key: string]: any
 }
 

@@ -62,13 +62,7 @@ export function NoteInput({ className, onSubmit }: Props) {
   }, [input])
 
   return (
-    <div
-      className={cn(
-        'bg-linear-to-r relative flex w-full flex-col gap-4 rounded-xl from-indigo-500 via-purple-500 to-pink-500 p-0.5',
-        focused && 'shadow-2xl',
-        className,
-      )}
-    >
+    <div className={cn('relative', className)}>
       <Textarea
         ref={textareaRef}
         placeholder="What's on your mind?"
@@ -81,7 +75,7 @@ export function NoteInput({ className, onSubmit }: Props) {
           setFocused(false)
         }}
         className={cx(
-          'bg-background max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-xl pb-8 !text-base shadow-md focus-visible:ring-0',
+          'bg-background shadow-popover max-h-[calc(75dvh)] min-h-[24px] resize-none border-0 pb-8 !text-base ring-0 focus-visible:ring-0',
         )}
         // rows={2}
         onKeyDown={(event) => {

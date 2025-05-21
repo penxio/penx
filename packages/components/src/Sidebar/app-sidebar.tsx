@@ -37,6 +37,7 @@ import { AreasPopover } from '../AreasPopover/AreasPopover'
 import { ProfileButton } from '../ProfileButton'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
+import { JournalEntry } from './JournalEntry'
 import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -53,7 +54,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           {!isMobileApp && <AddCreationButton></AddCreationButton>}
         </div>
       </SidebarHeader>
-      <SidebarContent className="-mx-2">
+      <SidebarContent className="-mx-2 space-y-2">
+        <JournalEntry></JournalEntry>
         <AreaWidgets />
       </SidebarContent>
       <SidebarFooter className="py-0">

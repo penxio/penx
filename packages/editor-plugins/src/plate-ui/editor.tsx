@@ -111,8 +111,14 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
             'InputEvent' in window && 'getTargetRanges' in InputEvent.prototype
           const isSynthetic = !!event.nativeEvent
           if (isSynthetic && HAS_INPUT_EVENTS_LEVEL_2) {
-            editor.tf.insertText(event.data)
+            // event.preventDefault()
+            // editor.tf.insertText(event.data)
           }
+        }}
+        onChange={(e) => {
+          console.log('e====:', e)
+
+          //
         }}
         className={cn(
           editorVariants({
@@ -131,4 +137,3 @@ export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
 )
 
 Editor.displayName = 'Editor'
-

@@ -4,9 +4,10 @@ import { AreasStore } from './stores/AreasStore'
 import { AreaStore } from './stores/AreaStore'
 import { CreationsStore } from './stores/CreationsStore'
 import { CreationTagsStore } from './stores/CreationTagsStore'
-import { StructsStore } from './stores/StructsStore'
+import { JournalStore } from './stores/JournalStore'
 import { PanelsStore } from './stores/PanelsStore'
 import { SiteStore } from './stores/SiteStore'
+import { StructsStore } from './stores/StructsStore'
 import { TagsStore } from './stores/TagsStore'
 import { VisitStore } from './stores/VisitStore'
 
@@ -27,4 +28,5 @@ export type StoreType = {
   area: AreaStore
   areas: AreasStore
   creations: CreationsStore
+  journal: JournalStore
 }

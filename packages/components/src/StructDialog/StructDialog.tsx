@@ -10,7 +10,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/dialog'
-import { StructForm } from './StructForm'
+import { CreateStructForm } from './CreateStructForm'
+import { EditStructForm } from './EditStructForm'
 import { useStructDialog } from './useStructDialog'
 
 export function StructDialog() {
@@ -32,8 +33,9 @@ export function StructDialog() {
               <Trans id="Create struct"></Trans>
             )}
           </DialogTitle>
+          <DialogDescription className="hidden"></DialogDescription>
         </DialogHeader>
-        <StructForm />
+        {!!struct ? <EditStructForm /> : <CreateStructForm />}
       </DialogContent>
     </Dialog>
   )

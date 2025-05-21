@@ -1,7 +1,7 @@
 import { GoToDay } from './GoToDay'
 import { JournalShortcut } from './JournalShortcut'
 
-export const JournalNav = ({ date }: { date?: string }) => {
+export const JournalNav = ({ date }: { date: string }) => {
   const currentDate = new Date(date ?? Date.now())
 
   return (

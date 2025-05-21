@@ -202,6 +202,8 @@ const PageHome: React.FC = ({ nav }: any) => {
           </IonToolbar>
         </IonHeader> */}
 
+        <div id="portal" className="fixed left-0 top-0 z-[10]" />
+
         <div
           className="text-foreground z-1 relative flex min-h-full flex-col px-1"
           style={
@@ -210,9 +212,10 @@ const PageHome: React.FC = ({ nav }: any) => {
             } as any
           }
         >
-          <SidebarProvider>
+          {/* <SidebarProvider>
+          </SidebarProvider> */}
+
             <PanelList />
-          </SidebarProvider>
           {/* {type === 'HOME' && <MobileHome />} */}
           {/* {type === 'TASK' && <MobileTask />} */}
           {/* {type === 'PROFILE' &&

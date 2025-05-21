@@ -145,7 +145,6 @@ const App: React.FC = () => {
 
   return (
     <IonApp>
-      <div id="portal" className="fixed left-0 top-0 z-[100000000]" />
       <LinguiClientProvider initialLocale={'en'} initialMessages={{}}>
         <DashboardProviders>
           <IonReactRouter>

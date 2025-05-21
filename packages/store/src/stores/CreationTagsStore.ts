@@ -20,8 +20,8 @@ export class CreationTagsStore {
   }
 
   async refetchCreationTags() {
-    const siteId = this.store.site.get().id
-    const list = await localDB.listCreationTags(siteId)
+    const areaId = this.store.area.get().id
+    const list = await localDB.listCreationTags(areaId)
     this.set(list)
   }
 }

@@ -96,6 +96,14 @@ export function useTableView() {
     (cell: Item): GridCell => {
       const [col, row] = cell
       const column = columnsMap[currentView.viewColumns[col].columnId]
+
+      // For debug
+      try {
+        columnsMap[currentView.viewColumns[col].columnId]
+      } catch (error) {
+        console.log('======struct:', struct)
+      }
+
       const record = records[row]
       const cells = record.props.cells
 

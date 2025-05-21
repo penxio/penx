@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { format } from 'date-fns'
 import { CalendarDays } from 'lucide-react'
+import { goToDay } from '@penx/hooks/useJournal'
 import { useRouter } from '@penx/libs/i18n'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -14,7 +15,6 @@ interface Props {
 export function GoToDay({ initialDate }: Props) {
   const [date, setDate] = useState<Date | undefined>(initialDate || new Date())
   const [open, setOpen] = useState(false)
-  const { push } = useRouter()
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -29,8 +29,7 @@ export function GoToDay({ initialDate }: Props) {
             // console.log('========date:', date)
             setOpen(false)
             setDate(date)
-            const dateStr = format(date!, 'yyyy-MM-dd')
-            push(`/~/page?id=${dateStr}`)
+            date && goToDay(date)
           }}
           // disabled={(date) =>
           //   date > new Date() || date < new Date('1900-01-01')

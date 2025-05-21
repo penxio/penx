@@ -20,7 +20,7 @@ export enum NodeType {
   INBOX = 'INBOX',
   TRASH = 'TRASH',
   FAVORITE = 'FAVORITE',
-  DAILY = 'DAILY',
+  JOURNAL = 'JOURNAL',
   CREATION = 'CREATION',
 }
 
@@ -105,6 +105,7 @@ export function isAreaNode(n: any): n is IAreaNode {
 
 export interface IStructNode extends INode {
   type: NodeType.STRUCT
+  areaId: string
   props: {
     name: string
     pluralName: string
@@ -123,8 +124,22 @@ export function isStructNode(n: any): n is IStructNode {
   return n.type === NodeType.STRUCT
 }
 
+export interface IJournalNode extends INode {
+  type: NodeType.JOURNAL
+  areaId: string
+  props: {
+    date: string
+    children: string[]
+  }
+}
+
+export function isDailyNode(n: any): n is IJournalNode {
+  return n.type === NodeType.JOURNAL
+}
+
 export interface ITagNode extends INode {
   type: NodeType.TAG
+  areaId: string
   props: {
     name: string
     color: string
@@ -139,6 +154,7 @@ export function isTagNode(n: any): n is ITagNode {
 
 export interface ICreationTagNode extends INode {
   type: NodeType.CREATION_TAG
+  areaId: string
   props: {
     creationId: string
     tagId: string
@@ -151,6 +167,7 @@ export function isCreationTagNode(n: any): n is ICreationTagNode {
 
 export interface ICreationNode extends INode {
   type: NodeType.CREATION
+  areaId: string
   props: {
     slug: string
     title: string

@@ -1,4 +1,7 @@
-import { ICreationNode } from '@penx/model-type'
+import { format } from 'date-fns'
+import { Node } from 'slate'
+import { ICreationNode, NodeType } from '@penx/model-type'
+import { StructType } from '@penx/types'
 import { getUrl } from '@penx/utils'
 
 export class Creation {
@@ -18,6 +21,10 @@ export class Creation {
 
   get userId(): string {
     return this.raw.siteId
+  }
+
+  get areaId(): string {
+    return this.raw.props.areaId || ''
   }
 
   get slug(): string {
@@ -68,8 +75,26 @@ export class Creation {
     return this.props.content
   }
 
+  get previewedContent() {
+    const content: any[] = JSON.parse(this.content)
+    const str = content.map((n) => Node.string(n)).join(' ')
+    return str
+  }
+
   get podcast() {
     return this.props.podcast
+  }
+
+  get isTask() {
+    return this.type === StructType.TASK
+  }
+
+  get isNote() {
+    return this.type === StructType.NOTE
+  }
+
+  get isBookmark() {
+    return this.type === StructType.BOOKMARK
   }
 
   get publishedAt() {
@@ -82,5 +107,9 @@ export class Creation {
 
   get updatedAt() {
     return new Date(this.raw.updatedAt)
+  }
+
+  get formattedTime() {
+    return format(this.createdAt, 'HH:mm:ss')
   }
 }

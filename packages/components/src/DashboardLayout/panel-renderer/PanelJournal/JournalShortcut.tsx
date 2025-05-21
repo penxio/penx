@@ -1,10 +1,11 @@
 import { forwardRef } from 'react'
 import { addDays, format, subDays } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { goToDay } from '@penx/hooks/useJournal'
 import { useRouter } from '@penx/libs/i18n'
 
 interface Props {
-  date?: string
+  date: string
 }
 
 export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
@@ -17,8 +18,7 @@ export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
         <div
           className="bg-foreground/5 hover:bg-foreground/10 cursor-pointer rounded-full px-2 py-[6px] transition-colors"
           onClick={() => {
-            const dateStr = format(new Date(), 'yyyy-MM-dd')
-            push(`/~/page?id=${dateStr}`)
+            goToDay(new Date())
           }}
         >
           Today
@@ -28,7 +28,7 @@ export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
             className="bg-foreground/5 hover:bg-foreground/10 cursor-pointer rounded-full px-2 py-[6px] transition-colors"
             onClick={() => {
               const dateStr = format(subDays(currentDate, 1), 'yyyy-MM-dd')
-              push(`/~/page?id=${dateStr}`)
+              goToDay(new Date(dateStr))
             }}
           >
             <ChevronLeft size={16} />
@@ -37,7 +37,7 @@ export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
             className="bg-foreground/5 hover:bg-foreground/10 cursor-pointer rounded-full px-2 py-[6px] transition-colors"
             onClick={() => {
               const dateStr = format(addDays(currentDate, 1), 'yyyy-MM-dd')
-              push(`/~/page?id=${dateStr}`)
+              goToDay(new Date(dateStr))
             }}
           >
             <ChevronRight size={16} />

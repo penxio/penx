@@ -1,9 +1,15 @@
+import { format } from 'date-fns'
 import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
 import { AreaType, ChargeMode } from '@penx/db/client'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
-import { ISiteNode, IStructNode, NodeType } from '@penx/model-type'
+import {
+  IJournalNode,
+  ISiteNode,
+  IStructNode,
+  NodeType,
+} from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
 export async function initLocalSite(uid?: string) {
@@ -73,6 +79,21 @@ export async function initLocalSite(uid?: string) {
         areaId,
       }),
     )
+
+    await localDB.node.add({
+      id: uniqueId(),
+      type: NodeType.JOURNAL,
+      props: {
+        date: format(new Date(), 'yyyy-MM-dd'),
+        children: [],
+      },
+
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      siteId: siteId,
+      userId,
+      areaId,
+    } as IJournalNode)
 
     // const structs = (await localDB.node
     //   .where({ type: NodeType.STRUCT, siteId })

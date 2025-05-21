@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import Dexie, { Table } from 'dexie'
 import { get } from 'idb-keyval'
 import { ACTIVE_SITE } from '@penx/constants'
@@ -7,6 +8,7 @@ import {
   ICreationNode,
   ICreationTagNode,
   IDocument,
+  IJournalNode,
   IMessage,
   INode,
   ISiteNode,
@@ -154,15 +156,15 @@ class LocalDB extends Dexie {
     return this.getNode<ITagNode>(id)
   }
 
-  listTags = (siteId: string) => {
+  listTags = (areaId: string) => {
     return this.node
-      .where({ type: NodeType.TAG, siteId })
+      .where({ type: NodeType.TAG, areaId })
       .toArray() as unknown as Promise<ITagNode[]>
   }
 
-  listCreationTags = (siteId: string) => {
+  listCreationTags = (areaId: string) => {
     return this.node
-      .where({ type: NodeType.CREATION_TAG, siteId })
+      .where({ type: NodeType.CREATION_TAG, areaId })
       .toArray() as unknown as Promise<ICreationTagNode[]>
   }
 
@@ -180,9 +182,9 @@ class LocalDB extends Dexie {
     return this.getNode<ICreationNode>(id)
   }
 
-  listCreations = (siteId: string) => {
+  listCreations = (areaId: string) => {
     return this.node
-      .where({ type: NodeType.CREATION, siteId })
+      .where({ type: NodeType.CREATION, areaId })
       .toArray() as unknown as Promise<ICreationNode[]>
   }
 
@@ -199,6 +201,7 @@ class LocalDB extends Dexie {
       type: NodeType.CREATION,
       ...node,
     } as T)
+
     return this.node.get(newNodeId) as any as Promise<T>
   }
 
@@ -263,6 +266,29 @@ class LocalDB extends Dexie {
     await this.deleteNodeByIds(ids)
     await this.node.delete(id)
     await this.addChange(id, OperationType.DELETE)
+  }
+
+  listJournals = (areaId: string) => {
+    return this.node
+      .where({ type: NodeType.JOURNAL, areaId })
+      .toArray() as unknown as Promise<IJournalNode[]>
+  }
+
+  addJournal = async (data: Partial<IJournalNode>) => {
+    const journal = await this.addNode({
+      id: uniqueId(),
+      ...data,
+    } as IJournalNode)
+
+    await this.addChange(journal.id, OperationType.CREATE, journal)
+    return journal
+  }
+
+  updateJournalProps = async (
+    id: string,
+    props: Partial<IJournalNode['props']>,
+  ) => {
+    await this.updateNodeProps(id, props)
   }
 
   addTag = async (data: Partial<ITagNode>) => {

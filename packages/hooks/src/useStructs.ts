@@ -7,9 +7,9 @@ export function useStructs() {
   const raw = useAtomValue(structsAtom)
 
   const sortKeys = [
-    StructType.PAGE,
     StructType.NOTE,
     StructType.TASK,
+    StructType.PAGE,
     StructType.ARTICLE,
     StructType.AUDIO,
     StructType.IMAGE,

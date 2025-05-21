@@ -11,6 +11,7 @@ import { ICreationNode, NodeType } from '@penx/model-type'
 import { store } from '@penx/store'
 import { ColumnType, CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { addCreationToJournal } from './useJournal'
 import { useMySite } from './useMySite'
 
 export type Input = {
@@ -88,6 +89,7 @@ export function useAddCreation() {
     }
 
     store.creations.addCreation(newCreation)
+    addCreationToJournal(newCreation.id)
 
     updateCreationState(newCreation)
 

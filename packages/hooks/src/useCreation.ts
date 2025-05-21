@@ -35,7 +35,7 @@ export function getCreation(creationId: string) {
 }
 
 export async function createTag(creation: Creation, tagName: string) {
-  const tags = await localDB.listTags(creation.siteId)
+  const tags = await localDB.listTags(creation.areaId)
   const tag = tags.find((t) => t.props.name === tagName)!
 
   let newTag: ITagNode
@@ -53,6 +53,7 @@ export async function createTag(creation: Creation, tagName: string) {
       },
       createdAt: new Date(),
       updatedAt: new Date(),
+      areaId: creation.areaId,
       userId: creation.userId,
       siteId: creation.siteId,
     }
@@ -68,6 +69,7 @@ export async function createTag(creation: Creation, tagName: string) {
       },
       createdAt: new Date(),
       updatedAt: new Date(),
+      areaId: creation.areaId,
       userId: creation.userId,
       siteId: creation.siteId,
     }
@@ -88,6 +90,7 @@ export async function addCreationTag(creation: Creation, tag: Tag) {
     },
     createdAt: new Date(),
     updatedAt: new Date(),
+    areaId: creation.areaId,
     siteId: creation.siteId,
     userId: creation.userId,
   }

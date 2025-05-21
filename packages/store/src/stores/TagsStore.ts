@@ -17,13 +17,13 @@ export class TagsStore {
   }
 
   async refetchTags() {
-    const site = this.store.site.get()
-    const tags = await localDB.listTags(site.id)
+    const area = this.store.area.get()
+    const tags = await localDB.listTags(area.id)
     this.set(tags)
   }
 
   async deleteTag(tag: ITagNode) {
-    const creationTags = await localDB.listCreationTags(tag.siteId)
+    const creationTags = await localDB.listCreationTags(tag.areaId!)
 
     const ids = creationTags
       .filter((ct) => ct.props.tagId === tag.id)

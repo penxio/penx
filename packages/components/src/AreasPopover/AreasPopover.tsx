@@ -3,8 +3,10 @@
 import { Trans } from '@lingui/react'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronsUpDown, PlusIcon } from 'lucide-react'
+import { isMobileApp } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'
+import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { store } from '@penx/store'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { MenuItem } from '@penx/uikit/menu'
@@ -21,6 +23,7 @@ interface Props {
 export const AreasPopover = ({ className = '' }: Props) => {
   const { setIsOpen } = useAreaDialog()
   const { areas = [] } = useAreas()
+  const { close } = useMobileMenu()
   const { area } = useArea()
 
   if (!area) return null
@@ -86,6 +89,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
             className="flex cursor-pointer items-center gap-2"
             onClick={async () => {
               setIsOpen(true)
+              if (isMobileApp) close()
             }}
           >
             <PlusIcon size={16} />
