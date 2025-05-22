@@ -1,43 +1,46 @@
 import React from 'react'
 import { useHomeTab } from '@/hooks/useHomeTab'
-import { IonFooter, IonToolbar } from '@ionic/react'
+import { Capacitor } from '@capacitor/core'
+import { IonFab, IonFabButton, IonFooter, IonToolbar } from '@ionic/react'
 import { PlusIcon } from 'lucide-react'
 import { Button } from '@penx/uikit/button'
+import { cn } from '@penx/utils'
+
+const platform = Capacitor.getPlatform()
 
 interface Props {
+  open: boolean
   onAdd: () => void
 }
 
-export const Footer = ({ onAdd }: Props) => {
-  const { setType } = useHomeTab()
-
+export const Footer = ({ open, onAdd }: Props) => {
+  if (open) return null
   return (
-    <IonFooter
-      style={{
-        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        '--background': 'transparent',
-      }}
+    <IonFab
+      slot="fixed"
+      vertical="bottom"
+      horizontal="center"
+      className="flex w-full flex-col"
     >
-      <IonToolbar
-        className="toolbar px-3"
-        style={{
-          '--border-width': 0,
-          '--background': 'transparent',
-        }}
+      {/* <IonFabButton></IonFabButton> */}
+
+      <div
+        className={cn(
+          'flex items-center justify-center gap-3 pb-2',
+          platform === 'android' && 'pb-4',
+        )}
       >
-        <div className="flex items-center justify-center gap-3 rounded-full px-3 pb-4">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="text-background shadow-popover bg-background size-14 rounded-full"
-            onClick={async () => {
-              onAdd()
-            }}
-          >
-            <PlusIcon size={28} className="text-foreground" />
-          </Button>
-        </div>
-      </IonToolbar>
-    </IonFooter>
+        <Button
+          size="icon"
+          variant="ghost"
+          className="text-background shadow-popover dark:bg-brand size-14 rounded-full bg-white"
+          onClick={async () => {
+            onAdd()
+          }}
+        >
+          <PlusIcon size={28} className="text-foreground" />
+        </Button>
+      </div>
+    </IonFab>
   )
 }

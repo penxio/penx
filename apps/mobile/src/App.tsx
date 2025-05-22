@@ -2,7 +2,6 @@ import { Redirect, Route } from 'react-router-dom'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
-import { StatusBar, Style } from '@capacitor/status-bar'
 import {
   IonApp,
   IonNav,
@@ -50,7 +49,10 @@ import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
 import { ICreationNode } from '@penx/model-type'
 import { NavProvider } from './components/NavContext'
+import { PageAllStructs } from './pages/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
+import { PageLogin } from './pages/PageLogin'
+import { PageStruct } from './pages/PageStruct'
 
 async function init() {
   const platform = Capacitor.getPlatform()
@@ -126,11 +128,7 @@ const App: React.FC = () => {
   const nav = useRef<HTMLIonNavElement>(null)
 
   useEffect(() => {
-    // if (initRef.current) return
-    // initRef.current = true
     function handle(creation: ICreationNode) {
-      console.log('handle route to creation: ', creation.id)
-      // setCreationId(creation.id)
       nav.current?.push(PageCreation, {
         creationId: creation.id,
         nav: nav.current,
@@ -143,8 +141,41 @@ const App: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    function handle() {
+      nav.current?.push(PageStruct, {})
+    }
+
+    appEmitter.on('ROUTE_TO_STRUCT', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_STRUCT', handle)
+    }
+  }, [])
+
+  useEffect(() => {
+    function handle() {
+      nav.current?.push(PageLogin, {})
+    }
+
+    appEmitter.on('ROUTE_TO_LOGIN', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_LOGIN', handle)
+    }
+  }, [])
+
+  useEffect(() => {
+    function handle() {
+      nav.current?.push(PageAllStructs, {})
+    }
+
+    appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
+    }
+  }, [])
+
   return (
-    <IonApp>
+    <IonApp className="">
       <LinguiClientProvider initialLocale={'en'} initialMessages={{}}>
         <DashboardProviders>
           <IonReactRouter>
@@ -156,7 +187,10 @@ const App: React.FC = () => {
                 </Route>
                 <Route path="/folder/:name" exact={true}>
                   <NavProvider nav={nav.current!}>
-                    <IonNav ref={nav} root={() => <PageHome />}></IonNav>
+                    <IonNav
+                      ref={nav}
+                      root={() => <PageHome nav={nav.current} />}
+                    ></IonNav>
                   </NavProvider>
                 </Route>
               </IonRouterOutlet>

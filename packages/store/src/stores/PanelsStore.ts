@@ -28,8 +28,10 @@ export class PanelsStore {
   async savePanels(newPanels: Panel[]) {
     const area = this.store.area.get()
     const key = `${PANELS}_${area.id}`
-    this.set(newPanels)
-    await set(key, newPanels)
+    // const panels = isMobileApp ? [newPanels[0]] : newPanels
+    const panels = newPanels
+    this.set(panels)
+    await set(key, panels)
   }
 
   async addPanel(panel: Partial<Panel>) {
@@ -68,6 +70,7 @@ export class PanelsStore {
         }
       }
     })
+
     await this.savePanels(newPanels)
   }
 
@@ -125,7 +128,61 @@ export class PanelsStore {
     }
 
     panels = produce(panels, (draft) => {
-      draft[0] = panel
+      if (isMobileApp) {
+        const index = panels.findIndex((p) => p.type === PanelType.JOURNAL)
+        if (index > -1) {
+          draft[0] = panel
+        } else {
+          draft.push(panel)
+        }
+      } else {
+        draft[0] = panel
+      }
+    })
+    await this.savePanels(panels)
+  }
+
+  async openStruct(structId: string) {
+    let panels = this.get()
+    const panel: Panel = {
+      id: uniqueId(),
+      type: PanelType.STRUCT,
+      structId,
+    }
+
+    panels = produce(panels, (draft) => {
+      if (isMobileApp) {
+        const index = panels.findIndex((p) => p.type === PanelType.STRUCT)
+        if (index > -1) {
+          draft[index] = panel
+        } else {
+          draft.push(panel)
+        }
+      } else {
+        draft[0] = panel
+      }
+    })
+    await this.savePanels(panels)
+  }
+
+  async openAllStructs() {
+    let panels = this.get()
+    const panel: Panel = {
+      id: uniqueId(),
+      type: PanelType.ALL_STRUCTS,
+    }
+
+    panels = produce(panels, (draft) => {
+      if (isMobileApp) {
+        const index = panels.findIndex((p) => p.type === PanelType.ALL_STRUCTS)
+        if (index > -1) {
+          draft[index] = panel
+        } else {
+          draft.push(panel)
+        }
+      } else {
+        draft[0] = panel
+      }
     })
     await this.savePanels(panels)
   }

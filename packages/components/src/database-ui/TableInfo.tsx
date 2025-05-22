@@ -7,6 +7,7 @@ import {
   ShapesIcon,
   Trash2Icon,
 } from 'lucide-react'
+import { Struct } from '@penx/domain'
 import { bgColorMaps } from '@penx/libs/color-helper'
 import { useSession } from '@penx/session'
 import {
@@ -24,8 +25,7 @@ import { usePublishStructDialog } from '../PublishStructDialog/usePublishStructD
 import { useStructDialog } from '../StructDialog/useStructDialog'
 import { useDatabaseContext } from './DatabaseProvider'
 
-export const TableInfo = () => {
-  const { struct } = useDatabaseContext()
+export const TableInfo = ({ struct }: { struct: Struct }) => {
   const structDialog = useStructDialog()
   const { session } = useSession()
   const loginDialog = useLoginDialog()
@@ -39,14 +39,6 @@ export const TableInfo = () => {
       <DropdownMenuTrigger asChild>
         <div className="flex cursor-pointer items-center gap-0">
           <div className="flex items-center gap-1 text-base font-bold">
-            <span
-              className={cn(
-                'text-background flex h-5 w-5 items-center justify-center rounded-full text-sm',
-                bgColorMaps[struct.color] || 'bg-foreground/50',
-              )}
-            >
-              <ShapesIcon size={12} />
-            </span>
             <span>{struct.name || 'Untitled'}</span>
           </div>
           <EllipsisVerticalIcon size={16} />

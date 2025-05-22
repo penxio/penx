@@ -211,7 +211,7 @@ export function AreaForm() {
           />
         )}
 
-        {isEdit && (
+        {isEdit && !isMobileApp && (
           <FormField
             control={form.control}
             name="about"

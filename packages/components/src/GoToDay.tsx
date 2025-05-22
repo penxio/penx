@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { format } from 'date-fns'
 import { CalendarDays } from 'lucide-react'
+import { isMobileApp } from '@penx/constants'
 import { goToDay } from '@penx/hooks/useJournal'
-import { useRouter } from '@penx/libs/i18n'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { cn } from '@penx/utils'
 
 interface Props {
   initialDate: Date
@@ -19,9 +19,15 @@ export function GoToDay({ initialDate }: Props) {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <CalendarDays size={20} className="text-foreground/60 cursor-pointer" />
+        <CalendarDays
+          size={20}
+          className={cn(
+            'text-foreground/60 cursor-pointer',
+            isMobileApp && 'text-foreground',
+          )}
+        />
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent isPortal className="w-auto p-0" align="end">
         <Calendar
           mode="single"
           selected={date}

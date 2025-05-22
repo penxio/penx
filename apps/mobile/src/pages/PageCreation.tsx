@@ -37,7 +37,7 @@ export const PageCreation = ({
         }}
       >
         <IonToolbar
-          className="toolbar"
+          className="creation-toolbar"
           style={{
             '--border-width': 0,
             // borderBottom: scrolled ? '1px solid #eeee' : 'none',

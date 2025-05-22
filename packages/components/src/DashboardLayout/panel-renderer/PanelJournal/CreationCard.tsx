@@ -2,14 +2,18 @@
 
 import { isMobileApp } from '@penx/constants'
 import { Creation } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
-import { getTextColorByName } from '@penx/libs/color-helper'
+import { getBgColor, getTextColorByName } from '@penx/libs/color-helper'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
+import { generateGradient } from '@penx/utils/generateGradient'
 import { Link } from './Link'
+import { Tags } from './Tags'
 
 interface Props {
   creation: Creation
@@ -18,40 +22,18 @@ interface Props {
 export function CreationCard({ creation }: Props) {
   const struct = useCreationStruct(creation)
 
-  return (
-    <div
-      className={cn(
-        'bg-background/90 shadow-xs flex cursor-pointer flex-col gap-2 rounded-lg p-4 transition-all hover:scale-105 hover:shadow-2xl',
-        // isMobileApp && 'bg-foreground text-background',
-      )}
-      onClick={() => {
-        if (isMobileApp) return
-        store.panels.updateMainPanel({
-          id: uniqueId(),
-          type: PanelType.CREATION,
-          creationId: creation.id,
-        })
-      }}
-    >
-      <div className="flex items-center justify-between">
-        <div className={cn('text-xs', getTextColorByName(struct.color))}>
-          {struct.name}
-        </div>
-        <div>
-          <div className="text-foreground/50 text-xs">
-            {creation.formattedTime}
-          </div>
-        </div>
-      </div>
+  const contentJsx = (
+    <>
       {!creation.isNote && (
         <div className="flex items-center gap-2">
           {creation.isTask && (
             <Checkbox
+              onClick={(e) => e.stopPropagation()}
               defaultChecked={creation.checked}
               onCheckedChange={(v) => {
-                // updateCreationProps(creation.id, {
-                //   checked: v as any,
-                // })
+                updateCreationProps(creation.id, {
+                  checked: v as any,
+                })
               }}
             />
           )}
@@ -70,14 +52,48 @@ export function CreationCard({ creation }: Props) {
       {creation.previewedContent && (
         <div className="line-clamp-2">{creation.previewedContent}</div>
       )}
-      {/* <div className="text-foreground/50 flex items-center gap-2">
-        {creation.isTask && (
-          <div>
-            <div>Todo</div>
+      <Tags creation={creation} />
+    </>
+  )
+
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center gap-2">
+        {/* <div
+          className={cn('size-4 rounded-sm', generateGradient(struct.name))}
+        ></div> */}
+
+        {/* <div
+          className={cn('size-2 rounded-full', getBgColor(struct.color))}
+        ></div> */}
+
+        <div className={cn('from-accent-foreground text-xs font-medium')}>
+          {struct.name}
+        </div>
+
+        <div>
+          <div className="text-foreground/50 text-[10px]">
+            {creation.formattedTime}
           </div>
-        )}
-        <TagIcon className="size-4" />
-      </div> */}
+        </div>
+      </div>
+      <div>
+        <div
+          className="shadow-card inline-flex flex-col rounded-xl bg-white px-4 py-3 dark:bg-neutral-700"
+          onClick={() => {
+            if (isMobileApp) {
+              return appEmitter.emit('ROUTE_TO_CREATION', creation)
+            }
+            store.panels.updateMainPanel({
+              id: uniqueId(),
+              type: PanelType.CREATION,
+              creationId: creation.id,
+            })
+          }}
+        >
+          {contentJsx}
+        </div>
+      </div>
     </div>
   )
 }

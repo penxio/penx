@@ -11,17 +11,18 @@
   padding-top: var(--safe-area-inset-top);
 }
 
-.toolbar {
-  --background: white;
-}
-
 .content {
-  --background: white;
+  --background: #f9f9f9;
 }
 
 .dark .content,
 .ion-palette-dark .content {
   --background: #222;
+}
+
+.toolbar {
+  /* --background: white; */
+  --background: #f9f9f9;
 }
 
 .dark .toolbar,
@@ -34,6 +35,16 @@
 .ion-palette-dark .drawer-menu {
   /* --background: hsl(240 10% 3.9%); */
   --background: #333;
+}
+
+.creation-toolbar {
+  --background: white;
+}
+
+.dark .creation-toolbar,
+.ion-palette-dark .creation-toolbar {
+  /* --background: hsl(240 10% 3.9%); */
+  --background: #222;
 }
 
 :root,

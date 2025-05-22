@@ -18,7 +18,6 @@ import { LoginForm } from './LoginForm'
 interface Props {}
 export function AppleLoginButton({}: Props) {
   const { login } = useSession()
-  const [json, setJson] = useState({})
   const [error, setError] = useState({})
   const [session, setSession] = useState({})
   const [loading, setLoading] = useState(false)
@@ -37,8 +36,6 @@ export function AppleLoginButton({}: Props) {
       // handle the response. popoutStore is specific to my app
       console.log('======res:', res)
 
-      setJson(res)
-
       const sites = await localDB.listAllSites()
       const site = sites.find((s) => !s.props.isRemote)
 
@@ -49,8 +46,6 @@ export function AppleLoginButton({}: Props) {
         userId: site?.userId!,
         ref: '',
       })
-
-      console.log('======session:', session)
 
       setSession(session)
       await set('SESSION', session)
@@ -76,21 +71,6 @@ export function AppleLoginButton({}: Props) {
           </>
         )}
       </Button>
-
-      <div>
-        <pre
-          onClick={() => {
-            copy(JSON.stringify(json, null, 2))
-          }}
-        >
-          {JSON.stringify(json, null, 2)}
-        </pre>
-        session:
-        <pre>{JSON.stringify(session, null, 2)}</pre>
-        error:
-        <pre>{JSON.stringify(error, null, 2)}</pre>
-        <div>{process.env.NEXT_PUBLIC_ROOT_HOST}</div>
-      </div>
     </>
   )
 }

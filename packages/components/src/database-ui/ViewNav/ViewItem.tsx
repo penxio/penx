@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { CopyIcon, Trash2Icon } from 'lucide-react'
+import { isMobileApp } from '@penx/constants'
 import { IView } from '@penx/model-type'
 import {
   ContextMenu,
@@ -28,14 +29,14 @@ export const ViewItem = ({ view, index }: Props) => {
       <ContextMenuTrigger asChild className="">
         <div
           className={cn(
-            'text-foreground/50 hover:bg-foreground/5 flex h-7 cursor-pointer items-center justify-center gap-1 rounded px-3',
+            'text-foreground/60 hover:bg-foreground/5 flex h-7 cursor-pointer items-center justify-center gap-1 rounded px-3',
             active && 'text-foreground bg-foreground/5',
           )}
           onClick={async () => {
             setActiveViewId(view.id)
           }}
         >
-          <ViewIcon viewType={view.viewType} />
+          {!isMobileApp && <ViewIcon viewType={view.viewType} />}
           <div className="shrink-0 text-sm font-medium">{view.name}</div>
         </div>
       </ContextMenuTrigger>

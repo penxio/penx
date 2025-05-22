@@ -1,7 +1,11 @@
 'use client'
 
 import { RouterOutputs } from '@penx/api'
-import { DATABASE_TOOLBAR_HEIGHT, WORKBENCH_NAV_HEIGHT } from '@penx/constants'
+import {
+  DATABASE_TOOLBAR_HEIGHT,
+  isMobileApp,
+  WORKBENCH_NAV_HEIGHT,
+} from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { Separator } from '@penx/uikit/separator'
 import { DatabaseProvider } from './DatabaseProvider'
@@ -24,7 +28,7 @@ export const FullPageDatabase = (props: Props) => {
           style={{ height: DATABASE_TOOLBAR_HEIGHT }}
         >
           <div className="flex items-center gap-2">
-            <TableInfo />
+            {!isMobileApp && <TableInfo struct={props.struct} />}
             <ViewList />
             <AddViewBtn />
           </div>

@@ -1,31 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { MobileHome } from '@/components/MobileHome'
-import { SearchButton } from '@/components/MobileSearch/SearchButton'
+import { HomeHeader } from '@/components/HomeHeader'
 import { MobileTask } from '@/components/MobileTask/MobileTask'
 import { LoginContent } from '@/components/Profile/LoginContent'
 import { ProfileContent } from '@/components/Profile/ProfileContent'
-import { useHomeTab } from '@/hooks/useHomeTab'
+import { StructTypeSelect } from '@/components/StructTypeSelect'
+import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
+import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { Capacitor } from '@capacitor/core'
 import { SplashScreen } from '@capacitor/splash-screen'
+import { StatusBar, Style } from '@capacitor/status-bar'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import { OverlayEventDetail } from '@ionic/core'
-import {
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonFab,
-  IonFooter,
-  IonHeader,
-  IonIcon,
-  IonMenuButton,
-  IonMenuToggle,
-  IonModal,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react'
+import { IonContent } from '@ionic/react'
+import { useQuery } from '@tanstack/react-query'
 import { cog, ellipsisHorizontal } from 'ionicons/icons'
 import { LayersIcon, PlusIcon, XIcon } from 'lucide-react'
 import {
@@ -35,39 +23,35 @@ import {
   PanInfo,
   useMotionValue,
 } from 'motion/react'
-import { EditWidgetButton } from '@penx/components/area-widgets/EditWidget/EditWidgetButton'
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
-import { QuickInput } from '@penx/components/QuickInput'
-import { appEmitter } from '@penx/emitter'
-import { useArea } from '@penx/hooks/useArea'
-import { useCreationId } from '@penx/hooks/useCreationId'
-import { ICreationNode } from '@penx/model-type'
-import { useSession } from '@penx/session'
-import { Button } from '@penx/uikit/button'
-import { Separator } from '@penx/uikit/separator'
-import { SidebarProvider } from '@penx/uikit/ui/sidebar'
+import { JournalQuickInput } from '@penx/components/JournalQuickInput'
+import { usePanels } from '@penx/hooks/usePanels'
+import { PanelType } from '@penx/types'
 import { cn } from '@penx/utils'
-import { PageCreation } from './PageCreation'
 
 const platform = Capacitor.getPlatform()
 
-const PageHome: React.FC = ({ nav }: any) => {
+const PageHome = ({ nav }: any) => {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const { area } = useArea()
-  const y = useMotionValue(0)
-  const { isHome, type, setType } = useHomeTab()
-  const { session } = useSession()
-
   const inputRef = useRef<HTMLTextAreaElement>(null)
+  const { panels } = usePanels()
 
-  const { creationId, setCreationId } = useCreationId()
+  const { height, isShow, setState } = useKeyboard()
+  useKeyboardChange()
 
-  const handleScroll = (event: CustomEvent) => {
-    const scrollTop = event.detail.scrollTop
-    setScrolled(scrollTop > 0)
-  }
+  const { data: isDark } = useQuery({
+    queryKey: ['isDark'],
+    queryFn: async () => {
+      const mode = await DarkMode.isDarkMode()
+      return mode.dark
+    },
+  })
+
+  useEffect(() => {
+    if (!isShow && open) setOpen(false)
+  }, [isShow])
 
   useEffect(() => {
     SocialLogin.initialize({
@@ -109,7 +93,6 @@ const PageHome: React.FC = ({ nav }: any) => {
             'bg-background/50 fixed bottom-0 left-0 right-0 top-0 z-[10000] blur-sm',
           )}
           onClick={() => {
-            //
             setOpen(false)
           }}
         ></div>
@@ -125,7 +108,7 @@ const PageHome: React.FC = ({ nav }: any) => {
                 height: 'auto',
                 // translateY: 80,
                 // opacity: 1,
-                top: 60,
+                bottom: platform === 'ios' ? height : 30,
                 transition: {
                   type: 'spring',
                   stiffness: 300,
@@ -137,9 +120,10 @@ const PageHome: React.FC = ({ nav }: any) => {
               closed: {
                 // translateY: '-140%',
                 // opacity: 0,
-                top: -200,
+                bottom: platform === 'ios' ? -height : -300,
+                // bottom: 0,
                 transition: {
-                  type: 'tween',
+                  // type: 'tween',
                   // duration: 0.2,
                 },
               },
@@ -151,8 +135,7 @@ const PageHome: React.FC = ({ nav }: any) => {
             )}
           >
             <div className="mx-auto w-[90vw] flex-1">
-              <QuickInput
-                isColorful={false}
+              <JournalQuickInput
                 ref={inputRef}
                 onCancel={() => setOpen(false)}
                 afterSubmit={() => {
@@ -163,30 +146,41 @@ const PageHome: React.FC = ({ nav }: any) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <Header />
+      <HomeHeader />
 
-      <IonContent fullscreen className="text-foreground content">
-        {/* <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">{name}</IonTitle>
-          </IonToolbar>
-        </IonHeader> */}
+      <IonContent
+        fullscreen
+        className="text-foreground content"
+        scrollEvents={true}
+        onIonScroll={async (event) => {
+          const scrollTop = event.detail.scrollTop
+          setScrolled(scrollTop > 0)
 
-        <div id="portal" className="fixed left-0 top-0 z-[10]" />
-
+          if (Capacitor.getPlatform() === 'android') {
+            if (scrollTop > 0) {
+              await StatusBar.setBackgroundColor({
+                color: isDark ? '#222' : '#f9f9f9',
+              })
+            } else {
+              await StatusBar.setBackgroundColor({
+                color: '#00000000',
+              })
+            }
+          }
+        }}
+      >
         <div
-          className="text-foreground z-1 relative flex min-h-full flex-col px-1"
+          className="text-foreground z-1 relative flex flex-col px-1 pt-0 pb-20"
           style={
             {
               '--background': 'oklch(1 0 0)',
             } as any
           }
         >
-          {/* <SidebarProvider>
-          </SidebarProvider> */}
-
-          <PanelList />
-          {/* {type === 'HOME' && <MobileHome />} */}
+          <StructTypeSelect className="mb-4" />
+          <PanelList
+            panels={panels.filter((p) => p.type === PanelType.JOURNAL)}
+          />
           {/* {type === 'TASK' && <MobileTask />} */}
           {/* {type === 'PROFILE' &&
             (session ? <ProfileContent /> : <LoginContent />)} */}
@@ -194,7 +188,12 @@ const PageHome: React.FC = ({ nav }: any) => {
       </IonContent>
 
       <Footer
+        open={open}
         onAdd={() => {
+          // setState({
+          //   height: 300,
+          //   isShow: true,
+          // })
           setOpen(true)
           setTimeout(() => {
             inputRef.current?.focus()

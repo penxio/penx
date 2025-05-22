@@ -3,9 +3,12 @@ import { Capacitor } from '@capacitor/core'
 import { IonContent, IonMenu } from '@ionic/react'
 import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
 import { AreasPopover } from '@penx/components/AreasPopover/AreasPopover'
+import { ProfileButton } from '@penx/components/ProfileButton'
+import { appEmitter } from '@penx/emitter'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
+import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 import { AreaList } from './AreaList'
 // import { AreasPopover } from './AreasPopover'
@@ -55,9 +58,22 @@ const Menu: React.FC = () => {
           </div>
           <div className="relative z-10 flex items-center justify-between">
             <MobileModeToggle />
+            <ProfileButton
+              loginButton={
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    appEmitter.emit('ROUTE_TO_LOGIN')
+                    menu.current?.close()
+                  }}
+                >
+                  Log in
+                </Button>
+              }
+            />
           </div>
           <div
-            className="absolute -top-[0px] left-[0%] z-[1] h-[100vh] w-[100vw] opacity-20 dark:opacity-0"
+            className="absolute bottom-0 left-0 right-0 top-0 z-[1] opacity-10 dark:opacity-0"
             style={{
               filter: 'blur(150px) saturate(150%)',
               transform: 'translateZ(0)',

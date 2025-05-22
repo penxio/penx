@@ -6,6 +6,7 @@ import { Trans } from '@lingui/react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -102,7 +103,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
-              store.panels.openWidgetPanel(widget)
+              store.panels.openAllStructs()
+              appEmitter.emit('ROUTE_TO_ALL_STRUCTS')
               close()
               return
             }
@@ -188,11 +190,9 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                       onSelect={(struct) => {
                         if (isMobileApp) {
                           close()
-                          store.panels.openWidgetPanel({
-                            id: uniqueId(),
-                            type: PanelType.WIDGET,
-                            structId: struct.id,
-                          })
+
+                          appEmitter.emit('ROUTE_TO_STRUCT')
+                          store.panels.openStruct(struct.id)
                         } else {
                           setVisible(!visible)
                         }

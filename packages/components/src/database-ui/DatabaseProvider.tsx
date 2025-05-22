@@ -110,10 +110,8 @@ export function DatabaseProvider({
   struct,
   children,
 }: PropsWithChildren<DatabaseProviderProps>) {
-  const { data } = useSession()
   const { creations, raw: creationNodes, creationsByStruct } = useCreations()
   const records = creationsByStruct(struct.id)
-  const userId = data?.userId || ''
   const addCreation = useAddCreation()
 
   const activeViewId = struct.activeViewId

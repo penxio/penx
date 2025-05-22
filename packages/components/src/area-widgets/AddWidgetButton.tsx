@@ -2,7 +2,7 @@
 
 import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react'
-import { editorDefaultValue, WidgetType } from '@penx/constants'
+import { editorDefaultValue, isMobileApp, WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -67,7 +67,10 @@ export function AddWidgetButton({ className }: Props) {
             <Trans id="Add widget"></Trans>
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="start" className="w-48 p-0">
+        <PopoverContent
+          align="center"
+          className={cn('w-48 p-0', isMobileApp && 'max-h-60 overflow-auto')}
+        >
           {Object.values(WidgetType)
             .filter(
               (i) =>
@@ -83,6 +86,14 @@ export function AddWidgetButton({ className }: Props) {
               //   return null
               // }
               const getName = () => {
+                if (item === WidgetType.JOURNAL) {
+                  return (
+                    <>
+                      <Trans id="Journals"></Trans>
+                    </>
+                  )
+                }
+
                 if (item === WidgetType.ALL_CREATIONS) {
                   return (
                     <>

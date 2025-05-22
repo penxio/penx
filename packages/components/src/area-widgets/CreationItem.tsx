@@ -65,11 +65,11 @@ export function CreationItem({ creation, className }: CreationItemProps) {
           )}
           onClick={() => {
             if (isMobileApp) {
-              // appEmitter.emit('ROUTE_TO_CREATION', creation)
-              // store.set(creationIdAtom, creation.id)
+              appEmitter.emit('ROUTE_TO_CREATION', creation)
+              store.set(creationIdAtom, creation.id)
               close()
               setVisible?.(false)
-              // return
+              return
             }
 
             store.panels.updateMainPanel({

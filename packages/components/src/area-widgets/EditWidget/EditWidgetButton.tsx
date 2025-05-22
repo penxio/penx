@@ -24,12 +24,16 @@ export function EditWidgetButton({ className }: Props) {
   const [visible, setVisible] = useState(false)
   return (
     <>
-      <LayersIcon
-        size={24}
+      <Button
+        size="xs"
+        variant="secondary"
+        className="bg-foreground/8 hover:bg-foreground/10"
         onClick={() => {
           setVisible(true)
         }}
-      />
+      >
+        <Trans id="Edit widget"></Trans>
+      </Button>
 
       <Drawer.Root open={visible} onOpenChange={setVisible}>
         <Drawer.Portal>

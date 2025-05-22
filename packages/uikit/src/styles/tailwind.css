@@ -226,6 +226,12 @@ h4 {
     rgba(84, 72, 49, 0.08) 0px 0px 0px 1px;
 }
 
+.shadow-card {
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 14px 28px -6px,
+    rgba(84, 72, 49, 0.08) 0px 0px 0px 1px;
+}
+
 .primary-cell .gdg-growing-entry {
   flex: 1;
   height: 100%;

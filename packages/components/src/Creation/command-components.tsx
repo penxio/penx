@@ -9,7 +9,7 @@ export const CommandItem = withCn(
 
 export const CommandInput = withRef<typeof Command.Input>(
   ({ className, ...props }, ref) => (
-    <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
+    <div className="flex items-center border-b border-foreground/10 px-3" cmdk-input-wrapper="">
       <Command.Input
         ref={ref}
         className={cn(

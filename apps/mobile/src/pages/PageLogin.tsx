@@ -1,6 +1,6 @@
 import React from 'react'
+import { LoginContent } from '@/components/Profile/LoginContent'
 import { LoginForm } from '@/components/Profile/LoginForm'
-import { PinCodeForm } from '@/components/Profile/PinCodeForm'
 import { RegisterForm } from '@/components/Profile/RegisterForm'
 import { Capacitor } from '@capacitor/core'
 import {
@@ -17,8 +17,7 @@ import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 
 const platform = Capacitor.getPlatform()
 
-export function PageEmailLogin() {
-  const { authStatus } = useAuthStatus()
+export function PageLogin() {
   return (
     <>
       <IonHeader
@@ -39,19 +38,11 @@ export function PageEmailLogin() {
           <IonButtons slot="start">
             <IonBackButton color="dark" text=""></IonBackButton>
           </IonButtons>
-          <IonTitle>Email login</IonTitle>
+          <IonTitle>Login</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding content">
-        <div className="flex h-full w-full flex-col justify-center">
-          {authStatus.type === 'login' && <LoginForm></LoginForm>}
-
-          {authStatus.type === 'register' && <RegisterForm />}
-
-          {authStatus.type === 'register-email-sent' && (
-            <PinCodeForm></PinCodeForm>
-          )}
-        </div>
+        <LoginContent />
       </IonContent>
     </>
   )

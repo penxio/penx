@@ -37,11 +37,7 @@ export function StructList({ onSelect }: Props) {
                   variant="ghost"
                   onClick={(e) => {
                     e.stopPropagation()
-                    store.panels.openWidgetPanel({
-                      id: uniqueId(),
-                      type: PanelType.WIDGET,
-                      structId: struct.id,
-                    })
+                    store.panels.openStruct(struct.id)
                   }}
                 >
                   <Maximize2Icon

@@ -8,39 +8,34 @@ import {
   useImperativeHandle,
   useRef,
   useState,
-  type ChangeEvent,
-  type Dispatch,
-  type SetStateAction,
 } from 'react'
-import type { UseChatHelpers } from '@ai-sdk/react'
-import type { Attachment, UIMessage } from 'ai'
 import cx from 'classnames'
-import equal from 'fast-deep-equal'
-import { CogIcon, ExpandIcon, SendHorizonalIcon, XIcon } from 'lucide-react'
+import { SendHorizonalIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useLocalStorage, useWindowSize } from 'usehooks-ts'
+import { editorDefaultValue, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { store } from '@penx/store'
-import { PanelType, StructType } from '@penx/types'
+import { useStructs } from '@penx/hooks/useStructs'
+import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
-import { Checkbox } from '@penx/uikit/checkbox'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
+import { StructTypeSelect } from './StructTypeSelect'
 
-export function QuickInput({
+export function JournalQuickInput({
   afterSubmit,
   onCancel,
   ref,
-  isColorful = true,
 }: {
   ref?: any
   onCancel?: () => void
   afterSubmit?: () => void
-  isColorful?: boolean
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [focused, setFocused] = useState(false)
   const [input, setInput] = useState('')
+  const { structs } = useStructs()
+  const noteStruct = structs.find((s) => s.type === StructType.NOTE)!
+  const [struct, setStruct] = useState(noteStruct)
   const addCreation = useAddCreation()
 
   useImperativeHandle(ref, () => textareaRef.current)
@@ -66,8 +61,6 @@ export function QuickInput({
   }
 
   const handleInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log('====event.target.value:', event.target.value)
-
     setInput(event.target.value)
     adjustHeight()
   }
@@ -78,9 +71,14 @@ export function QuickInput({
       type: 'p',
       children: [{ text: line }],
     }))
+    const title = content.join('. ')
     addCreation({
-      type: StructType.NOTE,
-      content: JSON.stringify(slateValue),
+      type: struct.type,
+      title: title,
+      content:
+        struct.type === StructType.NOTE
+          ? JSON.stringify(slateValue)
+          : JSON.stringify(editorDefaultValue),
       isAddPanel: false,
     })
     afterSubmit?.()
@@ -90,9 +88,8 @@ export function QuickInput({
   return (
     <div
       className={cn(
-        'bg-linear-to-r relative flex w-full flex-col gap-4 rounded-xl shadow-2xl',
-        focused && 'shadow-2xl',
-        isColorful && 'from-indigo-500 via-purple-500 to-pink-500 p-0.5',
+        'relative flex w-full flex-col',
+        // isColorful && 'bg-linear-to-r  from-indigo-500 via-purple-500 to-pink-500 p-0.5',
       )}
     >
       <Textarea
@@ -109,7 +106,7 @@ export function QuickInput({
           setFocused(false)
         }}
         className={cx(
-          'bg-background text-foreground max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-xl pb-8 !text-base shadow-md focus-visible:ring-0',
+          'bg-background text-foreground shadow-popover max-h-[calc(75dvh)] min-h-[24px] resize-none overflow-hidden rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0',
         )}
         // rows={2}
         onKeyDown={(event) => {
@@ -124,35 +121,22 @@ export function QuickInput({
         }}
       />
       <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
-        <Checkbox />
-        {/* <Button
-          size="icon"
-          variant="ghost"
-          className="hover:bg-foreground/10 size-7 rounded-md"
-          type="button"
-          onClick={() => {
-            store.panels.addPanel({
-              type: PanelType.AI_PROVIDERS,
-            })
+        <StructTypeSelect
+          value={struct}
+          onOpenChange={() => {
+            textareaRef.current?.focus()
           }}
-        >
-          <ExpandIcon size={15} />
-        </Button> */}
+          onChange={(s) => {
+            setStruct(s)
+            textareaRef.current?.focus()
+          }}
+        />
       </div>
-      <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end gap-1 p-2">
-        <Button
-          variant="secondary"
-          size="sm"
-          className="h-7"
-          onClick={(event) => {
-            setInput('')
-            resetHeight()
-            onCancel && onCancel()
-          }}
-        >
-          <XIcon size={16} />
-        </Button>
-
+      <div
+        className={cn(
+          'absolute bottom-0 right-0 flex w-fit flex-row justify-end gap-1 p-2',
+        )}
+      >
         <SendButton input={input} submitForm={submitForm} />
       </div>
     </div>
@@ -169,7 +153,7 @@ function PureSendButton({
   return (
     <Button
       size="sm"
-      className="h-7"
+      className={cn('h-7', isMobileApp && 'h-8 px-3')}
       onClick={(event) => {
         event.preventDefault()
         submitForm()

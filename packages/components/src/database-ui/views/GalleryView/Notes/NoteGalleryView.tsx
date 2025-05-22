@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { isMobileApp } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useNotes } from '@penx/hooks/useNotes'
 import { Panel } from '@penx/types'
@@ -51,11 +52,13 @@ export function NoteGalleryView({ struct }: PostListProps) {
           <NoteList />
         </div>
 
-        <div className="px-6 pb-2">
-          <div className="mx-auto flex w-full max-w-2xl flex-col gap-2">
-            <NoteInput />
+        {!isMobileApp && (
+          <div className="px-6 pb-2">
+            <div className="mx-auto flex w-full max-w-2xl flex-col gap-2">
+              <NoteInput />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )

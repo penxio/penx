@@ -2,7 +2,7 @@
 
 import { WidgetType } from '@penx/constants'
 import { useStructs } from '@penx/hooks/useStructs'
-import { StructType, Panel, Widget } from '@penx/types'
+import { Panel, StructType, Widget } from '@penx/types'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { FullPageDatabase } from '../../database-ui'
 import { ClosePanelButton } from '../ClosePanelButton'
@@ -21,16 +21,14 @@ export function PanelWidget({ panel, index }: Props) {
   const widget = panel.widget as Widget
   const struct = structs.find((m) => m.id === widget.structId)!
 
+  if (!struct) return null
+
   if (widget.type === WidgetType.AI_CHAT) {
     return (
       <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 pt-8">
         <PanelChat panel={panel} index={index} />
       </div>
     )
-  }
-
-  if (widget.type === WidgetType.ALL_STRUCTS) {
-    return <PanelStructs panel={panel} index={index} />
   }
 
   // if (struct?.type === StructType.BOOKMARK) {

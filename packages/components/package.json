@@ -9,7 +9,6 @@
   "exports": {
     "./tailwind.css": "./src/styles/tailwind.css",
     "./*": "./src/*.tsx",
-    "./QuickInput": "./src/QuickInput.tsx",
     "./ProfileButton": "./src/ProfileButton.tsx",
     "./AddCreationButton": "./src/AddCreationButton.tsx",
     "./AreaContext": "./src/AreaContext.tsx",
@@ -56,7 +55,6 @@
     "./Creation": "./src/Creation/Creation.tsx",
     "./Tags": "./src/Creation/Tags.tsx",
     "./CreationMoreMenu": "./src/Creation/CreationMoreMenu.tsx",
-    "./GoToDay": "./src/Creation/GoToDay.tsx",
     "./ImageCreationUpload": "./src/Creation/ImageCreationUpload.tsx",
     "./JournalNav": "./src/Creation/JournalNav.tsx",
     "./JournalShortcut": "./src/Creation/JournalShortcut.tsx",

@@ -254,8 +254,10 @@ export type Widget = {
 
 export enum PanelType {
   JOURNAL = 'JOURNAL',
-  CREATION = 'CREATION',
+  STRUCT = 'STRUCT',
+  ALL_STRUCTS = 'ALL_STRUCTS',
   WIDGET = 'WIDGET',
+  CREATION = 'CREATION',
   MANAGE_TAGS = 'MANAGE_TAGS',
   LOCAL_BACKUP = 'LOCAL_BACKUP',
   AI_PROVIDERS = 'AI_PROVIDERS',
@@ -268,6 +270,7 @@ export type Panel = {
   isLoading?: boolean
   size?: number
   creationId?: string
+  structId?: string
   widget?: Widget
   date?: string
   // [key: string]: any

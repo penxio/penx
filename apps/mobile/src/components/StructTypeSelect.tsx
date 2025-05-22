@@ -23,7 +23,7 @@ export const StructTypeSelect = ({ className }: Props) => {
     >
       <div
         className={cn(
-          'text-foreground/50 flex cursor-pointer items-center justify-center px-2 border',
+          'text-foreground/50 flex flex-1 cursor-pointer items-center justify-center px-2',
           !struct && 'text-foreground font-bold',
         )}
         onClick={() => {
