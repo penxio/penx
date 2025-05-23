@@ -1,7 +1,7 @@
 import { getPage, getProjects, getSite } from '@/lib/fetchers'
 import { loadTheme } from '@/lib/loadTheme'
 import { Metadata } from 'next'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { FriendsProvider } from '@penx/contexts/FriendsContext'
 import { ProjectsProvider } from '@penx/contexts/ProjectsContext'
@@ -36,7 +36,7 @@ export default async function Page({
   return (
     <div className="mx-auto max-w-2xl">
       <ProjectsProvider projects={projects}>
-        <ContentRender content={page?.content || editorDefaultValue} />
+        <ContentRender content={page?.content || defaultEditorContent} />
       </ProjectsProvider>
     </div>
   )

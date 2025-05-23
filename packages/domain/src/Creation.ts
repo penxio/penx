@@ -1,8 +1,8 @@
 import { format } from 'date-fns'
-import { Node } from 'slate'
 import { ICreationNode, NodeType } from '@penx/model-type'
 import { StructType } from '@penx/types'
 import { getUrl } from '@penx/utils'
+import { docToString } from '@penx/utils/editorHelper'
 
 export class Creation {
   props: ICreationNode['props']
@@ -76,9 +76,8 @@ export class Creation {
   }
 
   get previewedContent() {
-    const content: any[] = JSON.parse(this.content)
-    const str = content.map((n) => Node.string(n)).join(' ')
-    return str
+    const content = JSON.parse(this.content)
+    return docToString(content)
   }
 
   get podcast() {

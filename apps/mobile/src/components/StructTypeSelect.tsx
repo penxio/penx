@@ -1,7 +1,8 @@
-import { Struct } from '@penx/domain'
-import { useActiveStruct } from '@penx/hooks/useActiveStruct'
-import { useStructs } from '@penx/hooks/useStructs'
-import { cn } from '@penx/utils'
+import { Struct } from '@penx/domain';
+import { useActiveStruct } from '@penx/hooks/useActiveStruct';
+import { useStructs } from '@penx/hooks/useStructs';
+import { cn } from '@penx/utils';
+
 
 interface Props {
   className?: string
@@ -17,27 +18,27 @@ export const StructTypeSelect = ({ className }: Props) => {
   return (
     <div
       className={cn(
-        'flex w-full flex-1 items-center gap-1 overflow-auto text-xl',
+        'scroll-container flex w-full flex-1 items-center gap-1 text-lg ',
         className,
       )}
     >
       <div
         className={cn(
-          'text-foreground/50 flex flex-1 cursor-pointer items-center justify-center px-2',
+          'text-foreground/40 flex cursor-pointer items-center justify-center px-1',
           !struct && 'text-foreground font-bold',
         )}
         onClick={() => {
           onChange(null)
         }}
       >
-        All
+        Journal
       </div>
 
       {suggestions.map((item, index) => (
         <div
           key={item.id}
           className={cn(
-            'text-foreground/50 flex flex-1 cursor-pointer items-center justify-center px-2',
+            'text-foreground/40 flex flex-1 cursor-pointer items-center justify-center px-2',
             struct?.id == item.id && 'text-foreground font-bold',
           )}
           onClick={() => {

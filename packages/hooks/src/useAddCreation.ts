@@ -1,6 +1,6 @@
 import {
   AddCreationInput,
-  editorDefaultValue,
+  defaultEditorContent,
   isMobileApp,
 } from '@penx/constants'
 import { CommentStatus } from '@penx/db/client'
@@ -39,7 +39,7 @@ export function useAddCreation() {
       title: input.title || '',
       description: '',
       image: '',
-      content: input.content || JSON.stringify(editorDefaultValue),
+      content: input.content || JSON.stringify(defaultEditorContent),
       type: struct.type,
       structId: struct.id,
       areaId: area.id,

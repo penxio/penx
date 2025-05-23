@@ -1,7 +1,7 @@
 import { getIronSession } from 'iron-session'
 import { cookies } from 'next/headers'
 import { NextRequest } from 'next/server'
-import { AddCreationInput, editorDefaultValue } from '@penx/constants'
+import { AddCreationInput, defaultEditorContent } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { getSessionOptions } from '@penx/libs/session'
 import { StructType, SessionData } from '@penx/types'
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       return JSON.stringify(slateValue)
     }
 
-    return JSON.stringify(editorDefaultValue)
+    return JSON.stringify(defaultEditorContent)
   }
 
   const siteId = session.siteId

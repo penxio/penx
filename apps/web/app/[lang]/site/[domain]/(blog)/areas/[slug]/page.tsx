@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import { Footer } from '@penx/components/Footer'
 import { PageTitle } from '@penx/components/PageTitle'
 import { Toc } from '@penx/components/Toc'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { AreaType } from '@penx/db/client'
 import linguiConfig from '@penx/libs/lingui.config'
@@ -71,7 +71,7 @@ export default async function Page(props: {
             <div className="">
               <ContentRender
                 content={
-                  field?.about ? JSON.parse(field.about) : editorDefaultValue
+                  field?.about ? JSON.parse(field.about) : defaultEditorContent
                 }
               />
             </div>
@@ -79,7 +79,7 @@ export default async function Page(props: {
         </div>
       </div>
       <Toc
-        content={field?.about ? JSON.parse(field.about) : editorDefaultValue}
+        content={field?.about ? JSON.parse(field.about) : defaultEditorContent}
         className="sticky top-20 hidden w-56 overflow-y-auto py-10 pl-6 xl:block"
         style={{
           height: 'calc(100vh - 4rem)',

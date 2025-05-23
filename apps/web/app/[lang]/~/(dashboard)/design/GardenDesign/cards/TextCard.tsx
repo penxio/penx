@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { TextareaAutosize } from '@udecode/plate-caption/react'
 import { produce } from 'immer'
 import { useDebouncedCallback } from 'use-debounce'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
@@ -61,7 +61,7 @@ export function TextCard({ layoutItem, layout, setLayout }: Props) {
 
   const value = Array.isArray(layoutItem.props?.text)
     ? layoutItem.props?.text
-    : editorDefaultValue
+    : defaultEditorContent
   return (
     <div className="flex h-full w-full p-2">
       <PlateEditor

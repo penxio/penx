@@ -10,7 +10,7 @@ import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
 import {
   createAreaInputSchema,
-  editorDefaultValue,
+  defaultEditorContent,
   isMobileApp,
 } from '@penx/constants'
 import { ChargeMode } from '@penx/db/client'
@@ -229,7 +229,7 @@ export function AreaForm() {
                         value={
                           field.value
                             ? JSON.parse(field.value)
-                            : editorDefaultValue
+                            : defaultEditorContent
                         }
                         onChange={(v) => {
                           // console.log('value:',v, JSON.stringify(v));

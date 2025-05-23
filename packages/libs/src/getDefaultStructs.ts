@@ -1,4 +1,4 @@
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { IColumn, IStructNode, IView, NodeType } from '@penx/model-type'
 import { ColumnType, StructType, ViewColumn, ViewType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -194,7 +194,7 @@ export function generateStructNode({
       pluralName: `${name}s`,
       description: '',
       type: props.type!,
-      about: JSON.stringify(editorDefaultValue),
+      about: JSON.stringify(defaultEditorContent),
       color: getRandomColorName(),
       activeViewId: views[0].id,
       viewIds: views.map((view) => view.id),
@@ -223,7 +223,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     //   description: '',
     //   type: StructType.ARTICLE,
     //   props: [],
-    //   content: JSON.stringify(editorDefaultValue),
+    //   content: JSON.stringify(defaultEditorContent),
     //   createdAt: new Date(),
     //   updatedAt: new Date(),
     //   ...input,
@@ -241,7 +241,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     //   description: '',
     //   type: StructType.IMAGE,
     //   props: [],
-    //   content: JSON.stringify(editorDefaultValue),
+    //   content: JSON.stringify(defaultEditorContent),
     //   createdAt: new Date(),
     //   updatedAt: new Date(),
     //   ...input,
@@ -252,7 +252,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     //   description: '',
     //   type: StructType.AUDIO,
     //   props: [],
-    //   content: JSON.stringify(editorDefaultValue),
+    //   content: JSON.stringify(defaultEditorContent),
     //   createdAt: new Date(),
     //   updatedAt: new Date(),
     //   ...input,
@@ -294,7 +294,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     //       ],
     //     },
     //   ] as Prop[],
-    //   content: JSON.stringify(editorDefaultValue),
+    //   content: JSON.stringify(defaultEditorContent),
     //   createdAt: new Date(),
     //   updatedAt: new Date(),
     //   ...input,
@@ -310,7 +310,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     //     { id: uniqueId(), name: 'Cover', slug: 'cover', type: PropType.IMAGE },
     //     { id: uniqueId(), name: 'URL', slug: 'url', type: PropType.URL },
     //   ] as Prop[],
-    //   content: JSON.stringify(editorDefaultValue),
+    //   content: JSON.stringify(defaultEditorContent),
     //   createdAt: new Date(),
     //   updatedAt: new Date(),
     //   ...input,

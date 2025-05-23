@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { api, trpc } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
@@ -137,7 +137,7 @@ export function TierForm() {
                       value={
                         field.value
                           ? JSON.parse(field.value)
-                          : editorDefaultValue
+                          : defaultEditorContent
                       }
                       onChange={(v) => {
                         // console.log('value:',v, JSON.stringify(v));

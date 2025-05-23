@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { Edit, Plus } from 'lucide-react'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { StripeType } from '@penx/db/client'
 import { useQuerySite } from '@penx/hooks/useQuerySite'

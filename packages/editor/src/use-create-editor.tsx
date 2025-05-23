@@ -210,20 +210,20 @@ export const useCreateEditor = (
     {
       override: {
         components: {
-          ...(readOnly
-            ? viewComponents
-            : isMobileApp
-              ? editorComponents
-              : withPlaceholders(editorComponents, placeholder)),
-          ...components,
+          // ...(readOnly
+          //   ? viewComponents
+          //   : isMobileApp
+          //     ? editorComponents
+          //     : withPlaceholders(editorComponents, placeholder)),
+          // ...components,
         },
         ...override,
       },
       plugins: [
-        ...copilotPlugins,
-        ...editorPlugins,
-        FloatingToolbarPlugin,
-        ...(showFixedToolbar ? [FixedToolbarPlugin] : []),
+        // ...copilotPlugins,
+        // ...editorPlugins,
+        // FloatingToolbarPlugin,
+        // ...(showFixedToolbar ? [FixedToolbarPlugin] : []),
       ],
       value: editorValue,
       ...options,

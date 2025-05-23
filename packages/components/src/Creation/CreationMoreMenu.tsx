@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Trans } from '@lingui/react'
 import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { useCreateEditor } from '@penx/editor/use-create-editor'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
@@ -111,7 +111,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
 function CopyMarkdown({ creation }: { creation: Creation }) {
   const { copy } = useCopyToClipboard()
   const editor: any = useCreateEditor({
-    value: creation.content ? JSON.parse(creation.content) : editorDefaultValue,
+    value: creation.content ? JSON.parse(creation.content) : defaultEditorContent,
   })
   return (
     <MenuItem

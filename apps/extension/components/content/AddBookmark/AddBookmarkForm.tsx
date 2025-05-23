@@ -10,7 +10,7 @@ import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { CommentStatus } from '@penx/db/client'
 import { useAreas } from '@penx/hooks/useAreas'
 import { localDB } from '@penx/local-db'
@@ -86,7 +86,7 @@ export function AddBookmarkForm() {
         structId: struct.id,
         title: data.title || '',
         description: data.description,
-        content: JSON.stringify(editorDefaultValue),
+        content: JSON.stringify(defaultEditorContent),
         image: data.avatar,
         props: {
           url: data.url,

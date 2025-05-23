@@ -20,7 +20,7 @@ interface Props {
 export const SingleSelectProp = ({
   column,
   struct,
-  value,
+  value = [],
   onChange,
 }: Props) => {
   const [open, setOpen] = useState(false)

@@ -24,12 +24,7 @@ export const Footer = ({ open, onAdd }: Props) => {
     >
       {/* <IonFabButton></IonFabButton> */}
 
-      <div
-        className={cn(
-          'flex items-center justify-center gap-3 pb-2',
-          platform === 'android' && 'pb-4',
-        )}
-      >
+      <div className={cn('flex items-center justify-center gap-3 pb-4')}>
         <Button
           size="icon"
           variant="ghost"

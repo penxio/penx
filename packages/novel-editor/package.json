@@ -1,0 +1,38 @@
+{
+  "name": "@penx/novel-editor",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    "./tailwind.css": "./src/styles/tailwind.css",
+    "./*": "./src/*.tsx",
+    "./NovelEditor": "./src/components/novel-editor.tsx"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@penx/constants": "workspace:*",
+    "@penx/content-render": "workspace:*",
+    "@penx/contexts": "workspace:*",
+    "@penx/editor-custom-plugins": "workspace:*",
+    "@penx/editor-plugins": "workspace:*",
+    "@penx/emitter": "workspace:*",
+    "@penx/libs": "workspace:*",
+    "@penx/query-client": "workspace:*",
+    "@penx/session": "workspace:*",
+    "@penx/trpc-client": "workspace:*",
+    "@penx/types": "workspace:*",
+    "@penx/uikit": "workspace:*",
+    "@penx/unique-id": "workspace:*",
+    "@penx/utils": "workspace:*",
+    "highlight.js": "^11.11.1"
+  }
+}

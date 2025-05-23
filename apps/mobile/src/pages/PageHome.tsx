@@ -1,28 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { HomeHeader } from '@/components/HomeHeader'
-import { MobileTask } from '@/components/MobileTask/MobileTask'
-import { LoginContent } from '@/components/Profile/LoginContent'
-import { ProfileContent } from '@/components/Profile/ProfileContent'
-import { StructTypeSelect } from '@/components/StructTypeSelect'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { Capacitor } from '@capacitor/core'
-import { SplashScreen } from '@capacitor/splash-screen'
 import { StatusBar, Style } from '@capacitor/status-bar'
 import { SocialLogin } from '@capgo/capacitor-social-login'
-import { OverlayEventDetail } from '@ionic/core'
 import { IonContent } from '@ionic/react'
 import { useQuery } from '@tanstack/react-query'
-import { cog, ellipsisHorizontal } from 'ionicons/icons'
-import { LayersIcon, PlusIcon, XIcon } from 'lucide-react'
-import {
-  animate,
-  AnimatePresence,
-  motion,
-  PanInfo,
-  useMotionValue,
-} from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { JournalQuickInput } from '@penx/components/JournalQuickInput'
@@ -170,14 +156,13 @@ const PageHome = ({ nav }: any) => {
         }}
       >
         <div
-          className="text-foreground z-1 relative flex flex-col px-1 pt-0 pb-20"
+          className="text-foreground z-1 relative flex flex-col px-1 pb-32 pt-4"
           style={
             {
               '--background': 'oklch(1 0 0)',
             } as any
           }
         >
-          <StructTypeSelect className="mb-4" />
           <PanelList
             panels={panels.filter((p) => p.type === PanelType.JOURNAL)}
           />

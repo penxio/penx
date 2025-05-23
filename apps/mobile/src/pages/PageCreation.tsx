@@ -10,6 +10,7 @@ import {
   IonButtons,
   IonContent,
   IonFab,
+  IonFooter,
   IonHeader,
   IonModal,
   IonToolbar,
@@ -60,11 +61,16 @@ export const PageCreation = ({
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <DndProvider backend={HTML5Backend}>
-          <MobileCreation creationId={creationId} />
-        </DndProvider>
+      <IonContent fullscreen className="ion-padding">
+        <MobileCreation creationId={creationId} />
       </IonContent>
+
+      {/* <IonFooter style={{}}>
+        <IonToolbar>
+          <IonButton>Bold</IonButton>
+          <IonButton>Italic</IonButton>
+        </IonToolbar> */}
+      {/* </IonFooter> */}
     </>
   )
 }

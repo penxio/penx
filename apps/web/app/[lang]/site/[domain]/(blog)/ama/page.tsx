@@ -1,6 +1,6 @@
 import { getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 
 export const dynamic = 'force-static'
@@ -28,7 +28,7 @@ export default async function Page({
 
   return (
     <div className="mx-auto max-w-2xl">
-      <ContentRender content={page?.content || editorDefaultValue} />
+      <ContentRender content={page?.content || defaultEditorContent} />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import { slug } from 'github-slugger'
 import { revalidateTag } from 'next/cache'
 import { z } from 'zod'
 import {
-  editorDefaultValue,
+  defaultEditorContent,
   FREE_PLAN_PAGE_LIMIT,
   FRIEND_DATABASE_NAME,
 } from '@penx/constants'
@@ -47,7 +47,7 @@ export const pageRouter = router({
           props: [],
           status: CreationStatus.PUBLISHED,
           publishedAt: new Date(),
-          content: JSON.stringify(editorDefaultValue),
+          content: JSON.stringify(defaultEditorContent),
           i18n: {},
           updatedAt: new Date(),
           authors: {

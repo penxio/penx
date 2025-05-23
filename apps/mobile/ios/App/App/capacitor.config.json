@@ -10,7 +10,8 @@
 			"showSpinner": false
 		},
 		"Keyboard": {
-			"resize": "none"
+			"resize": "none",
+			"resizeOnFullScreen": true
 		}
 	},
 	"packageClassList": [
@@ -21,6 +22,7 @@
 		"KeyboardPlugin",
 		"SplashScreenPlugin",
 		"StatusBarPlugin",
+		"NavigationBarPlugin",
 		"SocialLoginPlugin"
 	]
 }

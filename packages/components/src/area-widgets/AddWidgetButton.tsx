@@ -2,7 +2,7 @@
 
 import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react'
-import { editorDefaultValue, isMobileApp, WidgetType } from '@penx/constants'
+import { defaultEditorContent, isMobileApp, WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'

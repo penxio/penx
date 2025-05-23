@@ -11,14 +11,14 @@ import {
 } from 'react'
 import cx from 'classnames'
 import { SendHorizonalIcon } from 'lucide-react'
-import { toast } from 'sonner'
-import { editorDefaultValue, isMobileApp } from '@penx/constants'
+import { defaultEditorContent, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
+import { stringToDoc } from '@penx/utils/editorHelper'
 import { StructTypeSelect } from './StructTypeSelect'
 
 export function JournalQuickInput({
@@ -67,18 +67,15 @@ export function JournalQuickInput({
 
   const submitForm = useCallback(() => {
     const content = input.split('\n')
-    const slateValue = content.map((line) => ({
-      type: 'p',
-      children: [{ text: line }],
-    }))
     const title = content.join('. ')
+    const value = stringToDoc(input)
     addCreation({
       type: struct.type,
       title: title,
       content:
         struct.type === StructType.NOTE
-          ? JSON.stringify(slateValue)
-          : JSON.stringify(editorDefaultValue),
+          ? JSON.stringify(value)
+          : JSON.stringify(defaultEditorContent),
       isAddPanel: false,
     })
     afterSubmit?.()

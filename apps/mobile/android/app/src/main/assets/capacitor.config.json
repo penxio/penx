@@ -10,7 +10,8 @@
 			"showSpinner": false
 		},
 		"Keyboard": {
-			"resize": "none"
+			"resize": "none",
+			"resizeOnFullScreen": true
 		}
 	}
 }

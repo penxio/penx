@@ -9,8 +9,11 @@ import {
 } from '@udecode/plate/react'
 import type { VariantProps } from 'class-variance-authority'
 import { cva } from 'class-variance-authority'
+import { useComposing } from 'slate-react'
+import 'slate-react'
 import { isMobileApp } from '@penx/constants'
-import { cn } from '@penx/utils'
+import { cn, isIOS } from '@penx/utils'
+import { useOnCompositionEvent } from '../hooks/useOnCompositionEvent'
 
 const editorContainerVariants = cva(
   'caret-primary selection:bg-brand/25 [&_.slate-selection-area]:border-brand/25 [&_.slate-selection-area]:bg-brand/15 relative w-full cursor-text select-text overflow-y-auto focus-visible:outline-none [&_.slate-selection-area]:z-50 [&_.slate-selection-area]:border',
@@ -102,23 +105,38 @@ export type EditorProps = PlateContentProps &
 export const Editor = React.forwardRef<HTMLDivElement, EditorProps>(
   ({ className, disabled, focused, variant, ...props }, ref) => {
     const editor = useEditorRef()
+    const onOnCompositionEvent = useOnCompositionEvent(editor)
+    const isComposing = useComposing()
+
     return (
       <PlateContent
         ref={ref}
+        spellCheck={false}
+        onCompositionUpdate={onOnCompositionEvent}
         onCompositionEnd={(event) => {
-          if (!isMobileApp) return
+          onOnCompositionEvent(event)
+          if (!isMobileApp || !isIOS()) return
+
           const HAS_INPUT_EVENTS_LEVEL_2 =
             'InputEvent' in window && 'getTargetRanges' in InputEvent.prototype
           const isSynthetic = !!event.nativeEvent
           if (isSynthetic && HAS_INPUT_EVENTS_LEVEL_2) {
-            // event.preventDefault()
             // editor.tf.insertText(event.data)
+          }
+        }}
+        onBeforeInput={(e) => {
+          if (isMobileApp && isIOS() && editor.isOnComposition) {
+            e.preventDefault()
+            alert('iOS does not support composition events.')
+          }
+        }}
+        onKeyDown={(e) => {
+          if (editor.isOnComposition) {
+            e.preventDefault()
           }
         }}
         onChange={(e) => {
           console.log('e====:', e)
-
-          //
         }}
         className={cn(
           editorVariants({

@@ -82,12 +82,15 @@ export const DATABASE_TOOLBAR_HEIGHT = 42
 
 export const SIDEBAR_WIDTH = 240
 
-export const editorDefaultValue = [
-  {
-    type: 'p',
-    children: [{ text: '' }],
-  },
-]
+export const defaultEditorContent = {
+  type: 'doc',
+  content: [
+    {
+      type: 'paragraph',
+      content: [{ type: 'text', text: '' }],
+    },
+  ],
+}
 
 export enum LoginStatus {
   CANCELED = 'CANCELED',

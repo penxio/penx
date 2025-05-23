@@ -144,8 +144,6 @@ export class AppService {
     const key = `${PANELS}_${area.id}`
     const panels: Panel[] = (await get(key)) || []
 
-    console.log('======panels:', panels)
-
     if (!panels.length) {
       const date = new Date()
       const dateStr = format(date, 'yyyy-MM-dd')

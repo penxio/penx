@@ -19,7 +19,7 @@ interface Props {
 export const MultipleSelectProp = ({
   column,
   struct,
-  value,
+  value = [],
   onChange,
 }: Props) => {
   const [open, setOpen] = useState(false)

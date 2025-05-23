@@ -7,7 +7,7 @@ import { produce } from 'immer'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { FileUpload } from '@penx/components/FileUpload'
-import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
+import { defaultNavLinks, defaultEditorContent } from '@penx/constants'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { api, trpc } from '@penx/trpc-client'
@@ -169,7 +169,7 @@ export function ProductForm() {
                       value={
                         field.value
                           ? JSON.parse(field.value)
-                          : editorDefaultValue
+                          : defaultEditorContent
                       }
                       onChange={(v) => {
                         // console.log('value:',v, JSON.stringify(v));

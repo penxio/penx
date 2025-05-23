@@ -16,6 +16,7 @@ import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { stringToDoc } from '@penx/utils/editorHelper'
 
 const storage = new Storage()
 
@@ -152,10 +153,5 @@ async function addNote(content: string, area: IAreaNode) {
 }
 
 const noteToContent = (str: string) => {
-  const content = str.split('\n')
-  const slateValue = content.map((line) => ({
-    type: 'p',
-    children: [{ text: line }],
-  }))
-  return JSON.stringify(slateValue)
+  return JSON.stringify(stringToDoc(str))
 }

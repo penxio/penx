@@ -8,6 +8,7 @@ import {
   IonButton,
   IonButtons,
   IonContent,
+  IonFooter,
   IonHeader,
   IonNavLink,
   IonTitle,

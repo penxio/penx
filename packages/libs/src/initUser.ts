@@ -1,6 +1,6 @@
 import ky from 'ky'
 import { customAlphabet } from 'nanoid'
-import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
+import { defaultNavLinks, defaultEditorContent } from '@penx/constants'
 import { prisma } from '@penx/db'
 import {
   CollaboratorRole,
@@ -42,7 +42,7 @@ const getSiteInfo = (newUser: User) => {
     themeName: 'sue',
     themeConfig: {},
     navLinks: defaultNavLinks,
-    about: JSON.stringify(editorDefaultValue),
+    about: JSON.stringify(defaultEditorContent),
     collaborators: {
       create: {
         userId: newUser.id,

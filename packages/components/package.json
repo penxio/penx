@@ -165,6 +165,7 @@
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/content-render": "workspace:*",
+    "@penx/novel-editor": "workspace:*",
     "@penx/editor": "workspace:*",
     "@penx/editor-plugins": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",

@@ -8,7 +8,7 @@ import { Editor, Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
 // import { usePanelCreationContext } from '@penx/components/Creation'
 import {
-  editorDefaultValue,
+  defaultEditorContent,
   isMobileApp,
   UpdateCreationInput,
 } from '@penx/constants'
@@ -19,6 +19,7 @@ import { updateCreationProps } from '@penx/hooks/useCreation'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
 import { useStructs } from '@penx/hooks/useStructs'
 import { ICreationNode } from '@penx/model-type'
+import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { store } from '@penx/store'
 import { trpc } from '@penx/trpc-client'
 import { Panel, StructType } from '@penx/types'
@@ -41,9 +42,10 @@ interface Props {
   panel?: Panel
   className?: string
   ref?: any
+  editorFooter?: React.ReactNode
 }
 
-export function Creation({ panel, className, ref }: Props) {
+export function Creation({ panel, className, ref, editorFooter }: Props) {
   const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
@@ -109,7 +111,7 @@ export function Creation({ panel, className, ref }: Props) {
 
       <div
         className={cn(
-          'creation-container relative z-0 min-h-[100vh] flex-1 flex-col overflow-y-auto overflow-x-hidden px-0 pb-40 md:px-8',
+          'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 md:px-8',
           isMobileApp && 'px-3 pt-0',
           className,
         )}
@@ -119,7 +121,7 @@ export function Creation({ panel, className, ref }: Props) {
           }
         }}
       >
-        <div className={cn('w-full px-0 sm:px-[max(10px,calc(50%-350px))]')}>
+        <div className={cn('mx-auto w-full max-w-2xl px-0')}>
           {!hideTitle && (
             <div className="mb-2 flex flex-col space-y-3 md:mb-5">
               <div className="relative">
@@ -186,7 +188,7 @@ export function Creation({ panel, className, ref }: Props) {
             </div>
           )}
 
-          <div className="flex items-center justify-between bg-">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-1">
               <ChangeType creation={creation} />
               <div className="text-foreground/60 text-lg">•</div>
@@ -222,8 +224,35 @@ export function Creation({ panel, className, ref }: Props) {
             />
           )}
         </div>
+        <div className={cn('mx-auto w-full max-w-2xl px-0')}>
+          <NovelEditor
+            className=""
+            value={
+              creation.content
+                ? JSON.parse(creation.content)
+                : defaultEditorContent
+            }
+            onChange={(v: any[]) => {
+              const input = {
+                content: JSON.stringify(v),
+              } as ICreationNode['props']
 
-        {!isImage && (
+              // if (creation.type === StructType.NOTE) {
+              //   const title = v
+              //     .map((n) => Node.string(n))
+              //     .join(', ')
+              //     .slice(0, 20)
+              //   input.title = title
+              // }
+
+              updateCreationProps(creation.id, input)
+            }}
+          >
+            {editorFooter}
+          </NovelEditor>
+        </div>
+
+        {/* {!isImage && (
           <div className="mt-4 w-full" data-registry="plate">
             <PlateEditor
               ref={editorRef}
@@ -233,7 +262,7 @@ export function Creation({ panel, className, ref }: Props) {
               value={
                 creation.content
                   ? JSON.parse(creation.content)
-                  : editorDefaultValue
+                  : defaultEditorContent
               }
               showAddButton
               showFixedToolbar={false}
@@ -255,7 +284,7 @@ export function Creation({ panel, className, ref }: Props) {
               }}
             />
           </div>
-        )}
+        )} */}
       </div>
     </ErrorBoundary>
   )

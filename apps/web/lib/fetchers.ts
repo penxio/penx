@@ -7,7 +7,7 @@ import {
   CreationStatus,
   defaultLayouts,
   defaultNavLinks,
-  editorDefaultValue,
+  defaultEditorContent,
   FRIEND_DATABASE_NAME,
   isProd,
   PROJECT_DATABASE_NAME,
@@ -68,11 +68,11 @@ export async function getSite(params: any) {
       })
 
       function getAbout() {
-        if (!site?.about) return editorDefaultValue
+        if (!site?.about) return defaultEditorContent
         try {
           return JSON.parse(site.about)
         } catch (error) {
-          return editorDefaultValue
+          return defaultEditorContent
         }
       }
       const config = site.config as any as Site['config']

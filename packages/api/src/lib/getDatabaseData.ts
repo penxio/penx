@@ -1,4 +1,4 @@
-import { editorDefaultValue, ELEMENT_P } from '@penx/constants'
+import { defaultEditorContent, ELEMENT_P } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { Option } from '@penx/types'
 

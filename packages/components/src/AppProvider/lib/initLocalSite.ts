@@ -1,5 +1,5 @@
 import { format } from 'date-fns'
-import { defaultNavLinks, editorDefaultValue } from '@penx/constants'
+import { defaultNavLinks, defaultEditorContent } from '@penx/constants'
 import { AreaType, ChargeMode } from '@penx/db/client'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
@@ -23,7 +23,7 @@ export async function initLocalSite(uid?: string) {
       props: {
         name: 'My Site',
         description: '',
-        about: JSON.stringify(editorDefaultValue),
+        about: JSON.stringify(defaultEditorContent),
         logo: '',
         font: '',
         image: '',
@@ -59,7 +59,7 @@ export async function initLocalSite(uid?: string) {
         slug: 'first-area',
         name: 'First area',
         description: 'An area for sharing thoughts, stories, and insights.',
-        about: JSON.stringify(editorDefaultValue),
+        about: JSON.stringify(defaultEditorContent),
         logo: '',
         chargeMode: ChargeMode.FREE,
         widgets: getInitialWidgets(),

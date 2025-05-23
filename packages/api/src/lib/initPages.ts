@@ -1,4 +1,4 @@
-import { editorDefaultValue, ELEMENT_P } from '@penx/constants'
+import { defaultEditorContent, ELEMENT_P } from '@penx/constants'
 import { prisma } from '@penx/db'
 import { CreationStatus } from '@penx/db/client'
 import { StructType } from '@penx/types'

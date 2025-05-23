@@ -15,6 +15,7 @@ import { useArea } from '@penx/hooks/useArea'
 import { usePanels } from '@penx/hooks/usePanels'
 import { PanelType } from '@penx/types'
 import { cn } from '@penx/utils'
+import { StructTypeSelect } from './StructTypeSelect'
 
 const platform = Capacitor.getPlatform()
 
@@ -52,8 +53,9 @@ export const HomeHeader: React.FC = () => {
           </IonMenuToggle>
         </IonButtons>
 
-        <div className="text-foreground/50 text-md flex items-center gap-1 px-2">
-          <div className="text-foreground text-xl font-bold">Journal</div>
+        <div className="text-foreground/50 text-md flex h-full items-center gap-1 px-2">
+          {/* <div className="text-foreground text-xl font-bold">Journal</div> */}
+          <StructTypeSelect className="" />
         </div>
         {/* <IonTitle slot="start" className="mx-1">
           {title}

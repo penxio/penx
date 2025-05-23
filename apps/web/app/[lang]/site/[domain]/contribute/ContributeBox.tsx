@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { TextareaAutosize } from '@udecode/plate-caption/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { CreationStatus, Product } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import { useSession } from '@penx/session'
@@ -95,7 +95,7 @@ export function ContributeBox({ site }: Props) {
       <PlateEditor
         variant="post"
         className="dark:caret-brand w-full"
-        value={editorDefaultValue}
+        value={defaultEditorContent}
         showAddButton
         showFixedToolbar
         onChange={(v) => {

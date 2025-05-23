@@ -1,6 +1,6 @@
 import { getFriends, getPage, getSite } from '@/lib/fetchers'
 import { Metadata } from 'next'
-import { editorDefaultValue } from '@penx/constants'
+import { defaultEditorContent } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { FriendsProvider } from '@penx/contexts/FriendsContext'
 
@@ -31,7 +31,7 @@ export default async function Page({
   return (
     <div className="mx-auto w-full max-w-2xl">
       <FriendsProvider friends={friends}>
-        <ContentRender content={page?.content || editorDefaultValue} />
+        <ContentRender content={page?.content || defaultEditorContent} />
       </FriendsProvider>
     </div>
   )

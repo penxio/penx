@@ -10,6 +10,7 @@ import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { cn } from '@penx/utils'
+import { stringToDoc } from '@penx/utils/editorHelper'
 
 interface Props {
   className?: string
@@ -48,13 +49,10 @@ export function NoteInput({ className, onSubmit }: Props) {
 
   const submitForm = useCallback(() => {
     const content = input.split('\n')
-    const slateValue = content.map((line) => ({
-      type: 'p',
-      children: [{ text: line }],
-    }))
+    const value = stringToDoc(input)
     addCreation({
       type: StructType.NOTE,
-      content: JSON.stringify(slateValue),
+      content: JSON.stringify(value),
       isAddPanel: false,
     })
     onSubmit?.()

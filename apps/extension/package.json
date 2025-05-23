@@ -25,6 +25,7 @@
     "@penx/contexts": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/domain": "workspace:*",
+    "@penx/novel-editor": "workspace:*",
     "@penx/editor": "workspace:*",
     "@penx/editor-custom-plugins": "workspace:*",
     "@penx/editor-plugins": "workspace:*",

@@ -3,6 +3,7 @@
 @import '@penx/libs/tailwind.css';
 @import '@penx/content-render/tailwind.css';
 @import '@penx/widgets/tailwind.css';
+@import '@penx/novel-editor/tailwind.css';
 @import '@penx/editor/tailwind.css';
 @import '@penx/editor-custom-plugins/tailwind.css';
 @import '@penx/editor-plugins/tailwind.css';

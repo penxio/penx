@@ -9,7 +9,7 @@ import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { BUILTIN_PAGE_SLUGS, editorDefaultValue } from '@penx/constants'
+import { BUILTIN_PAGE_SLUGS, defaultEditorContent } from '@penx/constants'
 import { GateType } from '@penx/db/client'
 import { PlateEditor } from '@penx/editor/plate-editor'
 import {
