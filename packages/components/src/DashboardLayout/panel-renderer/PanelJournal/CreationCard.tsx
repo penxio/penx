@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import { isMobileApp } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
@@ -14,6 +15,7 @@ import { cn } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { Link } from './Link'
 import { Tags } from './Tags'
+import { VoiceContent } from './VoiceContent'
 
 interface Props {
   creation: Creation
@@ -22,39 +24,44 @@ interface Props {
 export function CreationCard({ creation }: Props) {
   const struct = useCreationStruct(creation)
 
-  const contentJsx = (
-    <>
-      {!creation.isNote && (
-        <div className="flex items-center gap-2">
-          {creation.isTask && (
-            <Checkbox
-              onClick={(e) => e.stopPropagation()}
-              defaultChecked={creation.checked}
-              onCheckedChange={(v) => {
-                updateCreationProps(creation.id, {
-                  checked: v as any,
-                })
-              }}
-            />
-          )}
-
-          <div
-            className={cn(
-              '',
-              !creation.isNote && !creation.isTask && 'font-bold',
+  const content = useMemo(() => {
+    if (creation.isVoice) {
+      return <VoiceContent recording={JSON.parse(creation.content)} />
+    }
+    return (
+      <>
+        {!creation.isNote && (
+          <div className="flex items-center gap-2">
+            {creation.isTask && (
+              <Checkbox
+                onClick={(e) => e.stopPropagation()}
+                defaultChecked={creation.checked}
+                onCheckedChange={(v) => {
+                  updateCreationProps(creation.id, {
+                    checked: v as any,
+                  })
+                }}
+              />
             )}
-          >
-            {creation.title || 'untitled'}
+
+            <div
+              className={cn(
+                '',
+                !creation.isNote && !creation.isTask && 'font-bold',
+              )}
+            >
+              {creation.title || 'untitled'}
+            </div>
           </div>
-        </div>
-      )}
-      {creation.isBookmark && <Link creation={creation} struct={struct} />}
-      {creation.previewedContent && (
-        <div className="line-clamp-2">{creation.previewedContent}</div>
-      )}
-      <Tags creation={creation} />
-    </>
-  )
+        )}
+        {creation.isBookmark && <Link creation={creation} struct={struct} />}
+        {creation.previewedContent && (
+          <div className="line-clamp-2">{creation.previewedContent}</div>
+        )}
+        <Tags creation={creation} />
+      </>
+    )
+  }, [creation])
 
   return (
     <div className="flex flex-col gap-2">
@@ -82,6 +89,7 @@ export function CreationCard({ creation }: Props) {
           className="shadow-card inline-flex flex-col rounded-xl bg-white px-4 py-3 dark:bg-neutral-700"
           onClick={() => {
             if (isMobileApp) {
+              if (creation.isVoice) return
               return appEmitter.emit('ROUTE_TO_CREATION', creation)
             }
             store.panels.updateMainPanel({
@@ -91,7 +99,7 @@ export function CreationCard({ creation }: Props) {
             })
           }}
         >
-          {contentJsx}
+          {content}
         </div>
       </div>
     </div>

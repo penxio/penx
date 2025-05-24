@@ -1,15 +1,10 @@
 'use client'
 
-import { Trans } from '@lingui/react'
-import { PlusIcon } from 'lucide-react'
-import { motion } from 'motion/react'
 import { AreaInfo } from '@penx/components/AreaInfo'
 import { isMobileApp } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreations } from '@penx/hooks/useCreations'
-import { useStructs } from '@penx/hooks/useStructs'
-import { store } from '@penx/store'
 import { Panel, PanelType, StructType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
@@ -56,8 +51,6 @@ export function PanelJournal({ panel, index }: Props) {
               </div>
             </div>
           )}
-
-          {/* <div className="bg-background absolute bottom-0 left-0 right-0 top-0 z-[11] h-full"></div> */}
 
           <div
             className="absolute bottom-0 left-0 right-0 top-0 z-10 opacity-30 dark:opacity-0"

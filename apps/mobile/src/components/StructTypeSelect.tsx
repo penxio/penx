@@ -1,15 +1,15 @@
-import { Struct } from '@penx/domain';
-import { useActiveStruct } from '@penx/hooks/useActiveStruct';
-import { useStructs } from '@penx/hooks/useStructs';
-import { cn } from '@penx/utils';
-
+import { Struct } from '@penx/domain'
+import { useActiveStruct } from '@penx/hooks/useActiveStruct'
+import { useStructs } from '@penx/hooks/useStructs'
+import { StructType } from '@penx/types'
+import { cn } from '@penx/utils'
 
 interface Props {
   className?: string
 }
 export const StructTypeSelect = ({ className }: Props) => {
   const { structs } = useStructs()
-  const suggestions = structs
+  const suggestions = structs.filter((s) => s.type !== StructType.VOICE)
   const { struct, setStruct } = useActiveStruct()
   function onChange(value: Struct | null) {
     setStruct(value)

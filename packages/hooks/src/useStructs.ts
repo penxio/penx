@@ -9,6 +9,7 @@ export function useStructs() {
   const sortKeys = [
     StructType.NOTE,
     StructType.TASK,
+    StructType.VOICE,
     StructType.PAGE,
     StructType.ARTICLE,
     StructType.AUDIO,

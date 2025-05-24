@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useKeyboard } from '@/hooks/useKeyboard'
 import { Capacitor } from '@capacitor/core'
 import { Keyboard } from '@capacitor/keyboard'
 import { Editor, useCurrentEditor } from '@tiptap/react'
@@ -92,7 +93,6 @@ const turnIntoItems = [
 const platform = Capacitor.getPlatform()
 
 export function FixedToolbar() {
-  useKeyboardChange()
   const { editor } = useCurrentEditor()
   const { height, isShow, setState } = useKeyboard()
 
@@ -158,40 +158,4 @@ export function FixedToolbar() {
       )}
     </AnimatePresence>
   )
-}
-
-interface State {
-  isShow: boolean
-  height: number
-}
-
-const keyboardAtom = atom<State>({
-  isShow: false,
-  height: 0,
-} as State)
-
-export function useKeyboard() {
-  const [state, setState] = useAtom(keyboardAtom)
-
-  return {
-    ...state,
-    setState,
-  }
-}
-
-export function useKeyboardChange() {
-  const { setState } = useKeyboard()
-
-  useEffect(() => {
-    const showHandler = Keyboard.addListener('keyboardWillShow', (info) => {
-      setState({ isShow: true, height: info.keyboardHeight })
-    })
-    const hideHandler = Keyboard.addListener('keyboardWillHide', () => {
-      setState({ isShow: false, height: 0 })
-    })
-    return () => {
-      showHandler.then((handle) => handle?.remove())
-      hideHandler.then((handle) => handle?.remove())
-    }
-  }, [])
 }

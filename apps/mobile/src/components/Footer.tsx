@@ -1,10 +1,10 @@
 import React from 'react'
-import { useHomeTab } from '@/hooks/useHomeTab'
 import { Capacitor } from '@capacitor/core'
-import { IonFab, IonFabButton, IonFooter, IonToolbar } from '@ionic/react'
+import { IonFab } from '@ionic/react'
 import { PlusIcon } from 'lucide-react'
-import { Button } from '@penx/uikit/button'
+import { motion } from 'motion/react'
 import { cn } from '@penx/utils'
+import { VoiceRecorderButton } from './VoiceRecorderButton'
 
 const platform = Capacitor.getPlatform()
 
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Footer = ({ open, onAdd }: Props) => {
-  if (open) return null
+  // if (open) return null
   return (
     <IonFab
       slot="fixed"
@@ -24,17 +24,24 @@ export const Footer = ({ open, onAdd }: Props) => {
     >
       {/* <IonFabButton></IonFabButton> */}
 
-      <div className={cn('flex items-center justify-center gap-3 pb-4')}>
-        <Button
-          size="icon"
-          variant="ghost"
-          className="text-background shadow-popover dark:bg-brand size-14 rounded-full bg-white"
-          onClick={async () => {
-            onAdd()
-          }}
-        >
-          <PlusIcon size={28} className="text-foreground" />
-        </Button>
+      <div
+        className={cn(
+          'relative inline-flex items-center justify-center gap-3 pb-4',
+        )}
+      >
+        <div className="relative inline-flex">
+          <motion.div
+            whileTap={{ scale: 1.2 }}
+            className="text-background shadow-popover dark:bg-brand bg-background relative flex size-14 items-center justify-center rounded-full"
+            onClick={async () => {
+              onAdd()
+            }}
+          >
+            <PlusIcon size={28} className="text-foreground" />
+          </motion.div>
+
+          <VoiceRecorderButton />
+        </div>
       </div>
     </IonFab>
   )

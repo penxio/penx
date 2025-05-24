@@ -91,7 +91,7 @@ export const NovelEditor = ({
         <EditorContent
           initialContent={value || defaultEditorContent}
           extensions={extensions}
-          className="relative"
+          className="penx-editor relative"
           editorProps={{
             handleDOMEvents: {
               keydown: (_view, event) => handleCommandNavigation(event),
@@ -101,8 +101,7 @@ export const NovelEditor = ({
             handleDrop: (view, event, _slice, moved) =>
               handleImageDrop(view, event, moved, uploadFn),
             attributes: {
-              class:
-                'prose prose-headings:font-title font-default focus:outline-none max-w-full flex flex-col',
+              class: 'focus:outline-none max-w-full flex flex-col ProseMirror',
             },
           }}
           onUpdate={({ editor }) => {

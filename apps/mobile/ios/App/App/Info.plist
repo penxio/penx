@@ -54,5 +54,7 @@
 				</array>
 			</dict>
 		</array>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>This app uses the microphone to record audio.</string>
 	</dict>
 </plist>

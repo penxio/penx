@@ -9,6 +9,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.penx-editor {
+  @apply prose prose-neutral prose-p:m-0 prose-p:px-0 prose-p:py-1 prose-ul:m-0 prose-li:m-0 prose-p:text-foreground prose-h1:text-foreground prose-h2:text-foreground prose-h3:text-foreground prose-h1:mt-[1em] prose-h2:mt-[0.8em] prose-h3:mt-[0.7em] prose-h4:mt-[0.6] prose-h1:text-4xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-lg prose-h1:mb-[0.4em] prose-h2:mb-[0.3em] prose-h3:mb-[0.2em] prose-h4:mb-[0.1];
+}
+
 :root {
   --card: hsl(0 0% 100%);
   --card-foreground: hsl(240 10% 3.9%);

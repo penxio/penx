@@ -1,81 +1,89 @@
 import { useState } from 'react'
-import { MoreHorizontalIcon } from 'lucide-react'
-import { isMobileApp } from '@penx/constants'
+import { AnimatePresence, motion } from 'motion/react'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@penx/uikit/dropdown-menu'
 import { cn } from '@penx/utils'
 
 interface Props {
+  className?: string
   value: Struct
   onChange: (value: Struct) => void
-  onOpenChange: (isOpen: boolean) => void
+  setFocused: () => void
 }
-export const StructTypeSelect = ({ value, onChange, onOpenChange }: Props) => {
+export const StructTypeSelect = ({
+  className,
+  value,
+  onChange,
+  setFocused,
+}: Props) => {
   const { structs } = useStructs()
-  const [open, setOpen] = useState(false)
-  const suggestions = structs.slice(0, 3)
-  const rest = structs.slice(3)
-  const [other, setOther] = useState<Struct | null>(null)
-  if (other) suggestions.push(other)
+  const [visible, setVisible] = useState(false)
 
   return (
-    <div className="flex items-center gap-1">
-      {suggestions.map((struct, index) => (
-        <div
-          key={struct.id}
-          className={cn(
-            'hover:text-brand bg-foreground/5 flex h-6 cursor-pointer items-center rounded-full px-2 text-xs',
-            value.id == struct.id && 'text-brand',
-          )}
-          onClick={() => {
-            if (struct.id === other?.id) return
-            onChange(struct)
-            setOther(null)
-          }}
-        >
-          {struct.name}
-        </div>
-      ))}
-
-      {!isMobileApp && (
-        <DropdownMenu
-          open={open}
-          onOpenChange={(v) => {
-            setOpen(v)
-            onOpenChange(v)
-          }}
-        >
-          <DropdownMenuTrigger asChild>
-            <div className="hover:text-brand flex h-6 cursor-pointer items-center rounded-full px-2 text-xs">
-              <MoreHorizontalIcon size={20} />
-            </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            className=""
-            side="top"
-            align="end"
-            sideOffset={4}
+    <div className={cn('relative', className)}>
+      <div
+        className="shadow-popover text-foreground flex h-[32px] items-center justify-center rounded-full px-2 text-sm"
+        onClick={() => {
+          setVisible(!visible)
+          setFocused()
+        }}
+      >
+        {value.name}
+      </div>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial="closed"
+            exit="closed"
+            variants={{
+              open: {
+                // -top-[48px]
+                y: -48,
+                display: 'flex',
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  // ease: 'easeOut',
+                  // duration: 0.25,
+                },
+              },
+              closed: {
+                // top: 0,
+                opacity: 0,
+                display: 'none',
+                y: -32,
+                scale: 0.8,
+                // translateY: -100,
+                transition: {
+                  // type: 'keyframes',
+                },
+              },
+            }}
+            animate={visible ? 'open' : 'closed'}
+            className="shadow-popover bg-background absolute left-0  top-0 flex h-[40px] max-w-[90wv] origin-bottom-left items-center gap-2 rounded-md px-3 font-medium"
+            onClick={(e) => {
+              e.stopPropagation()
+              setVisible(false)
+              setFocused()
+            }}
           >
-            {rest.map((struct) => (
-              <DropdownMenuItem
+            {structs.map((struct, index) => (
+              <div
                 key={struct.id}
-                onClick={async () => {
+                className={cn(
+                  'hover:text-brand flex h-6 cursor-pointer items-center rounded-full text-sm',
+                  value.id == struct.id && 'text-brand',
+                )}
+                onClick={() => {
                   onChange(struct)
-                  setOther(struct)
                 }}
               >
                 {struct.name}
-              </DropdownMenuItem>
+              </div>
             ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

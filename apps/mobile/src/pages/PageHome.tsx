@@ -94,7 +94,7 @@ const PageHome = ({ nav }: any) => {
                 height: 'auto',
                 // translateY: 80,
                 // opacity: 1,
-                bottom: platform === 'ios' ? height : 30,
+                bottom: platform === 'ios' ? height + 20 : 20,
                 transition: {
                   type: 'spring',
                   stiffness: 300,
@@ -120,7 +120,7 @@ const PageHome = ({ nav }: any) => {
               open && 'mb-2',
             )}
           >
-            <div className="mx-auto w-[90vw] flex-1">
+            <div className="mx-auto w-[92vw] flex-1">
               <JournalQuickInput
                 ref={inputRef}
                 onCancel={() => setOpen(false)}

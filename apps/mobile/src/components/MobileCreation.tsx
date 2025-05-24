@@ -1,9 +1,6 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { useKeyboard } from '@/hooks/useKeyboard'
-import { Keyboard } from '@capacitor/keyboard'
-import { NavigationBar } from '@capgo/capacitor-navigation-bar'
 import { useQuery } from '@tanstack/react-query'
 import { Creation } from '@penx/components/Creation'
 import { PanelCreationProvider } from '@penx/components/PanelCreationProvider'

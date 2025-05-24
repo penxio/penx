@@ -1,20 +1,41 @@
 .ProseMirror {
   /* @apply p-12 px-8 sm:px-12; */
+  /* --muted: hsl(240 4.8% 95.9%); */
+}
+
+.dark .ProseMirror {
+  /* @apply p-12 px-8 sm:px-12; */
+  /* --muted: hsl(240 3.7% 15.9%); */
 }
 
 .ProseMirror .is-editor-empty:first-child::before {
   content: attr(data-placeholder);
   float: left;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   pointer-events: none;
   height: 0;
 }
+
 .ProseMirror .is-empty::before {
   content: attr(data-placeholder);
   float: left;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   pointer-events: none;
   height: 0;
+}
+
+.ProseMirror ol.is-empty::before,
+.ProseMirror ul.is-empty::before,
+.ProseMirror li.is-empty::before,
+.ProseMirror pre.is-empty::before,
+.ProseMirror blockquote.is-empty::before 
+/* .ProseMirror li .is-empty::before { */ {
+  display: none;
+}
+
+.ProseMirror:focus-visible {
+  outline: none;
+  border: none;
 }
 
 /* Custom image styles */
@@ -37,7 +58,7 @@
   position: relative;
 
   &:before {
-    content: "";
+    content: '';
     box-sizing: border-box;
     position: absolute;
     top: 50%;
@@ -59,42 +80,42 @@
 
 /* Custom TODO list checkboxes – shoutout to this awesome tutorial: https://moderncss.dev/pure-css-custom-checkbox-style/ */
 
-ul[data-type="taskList"] li > label {
+ul[data-type='taskList'] li > label {
   margin-right: 0.2rem;
   user-select: none;
 }
 
 @media screen and (max-width: 768px) {
-  ul[data-type="taskList"] li > label {
+  ul[data-type='taskList'] li > label {
     margin-right: 0.5rem;
   }
 }
 
-ul[data-type="taskList"] li > label input[type="checkbox"] {
+ul[data-type='taskList'] li > label input[type='checkbox'] {
   -webkit-appearance: none;
   appearance: none;
-  background-color: hsl(var(--background));
+  background-color: var(--background);
   margin: 0;
   cursor: pointer;
   width: 1.2em;
   height: 1.2em;
   position: relative;
   top: 5px;
-  border: 2px solid hsl(var(--border));
+  border: 2px solid var(--foreground);
   margin-right: 0.3rem;
   display: grid;
   place-content: center;
 
   &:hover {
-    background-color: hsl(var(--accent));
+    background-color: var(--accent);
   }
 
   &:active {
-    background-color: hsl(var(--accent));
+    background-color: var(--accent);
   }
 
   &::before {
-    content: "";
+    content: '';
     width: 0.65em;
     height: 0.65em;
     transform: scale(0);
@@ -109,7 +130,7 @@ ul[data-type="taskList"] li > label input[type="checkbox"] {
   }
 }
 
-ul[data-type="taskList"] li[data-checked="true"] > div > p {
+ul[data-type='taskList'] li[data-checked='true'] > div > p {
   color: var(--muted-foreground);
   text-decoration: line-through;
   text-decoration-thickness: 2px;

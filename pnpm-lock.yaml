@@ -215,12 +215,18 @@ importers:
       '@tauri-apps/plugin-updater':
         specifier: ^2.7.1
         version: 2.7.1
+      '@tiptap/core':
+        specifier: ^2.12.0
+        version: 2.12.0(@tiptap/pm@2.12.0)
       '@tiptap/pm':
         specifier: ^2.11.2
         version: 2.12.0
       '@tiptap/react':
         specifier: ^2.11.2
         version: 2.12.0(@tiptap/core@2.12.0(@tiptap/pm@2.12.0))(@tiptap/pm@2.12.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@tiptap/starter-kit':
+        specifier: ^2.12.0
+        version: 2.12.0
       '@trpc/client':
         specifier: 11.1.2
         version: 11.1.2(@trpc/server@11.1.2(typescript@5.8.2))(typescript@5.8.2)
@@ -1301,9 +1307,6 @@ importers:
       '@capacitor/status-bar':
         specifier: 7.0.1
         version: 7.0.1(@capacitor/core@7.2.0)
-      '@capgo/capacitor-navigation-bar':
-        specifier: ^7.1.14
-        version: 7.1.14(@capacitor/core@7.2.0)
       '@capgo/capacitor-social-login':
         specifier: 7.5.9
         version: 7.5.9(@capacitor/core@7.2.0)
@@ -1409,6 +1412,9 @@ importers:
       '@types/react-router-dom':
         specifier: ^5.3.3
         version: 5.3.3
+      capacitor-voice-recorder:
+        specifier: ^7.0.5
+        version: 7.0.5(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0))
       ionicons:
         specifier: ^7.4.0
         version: 7.4.0
@@ -3401,6 +3407,9 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0 || ^8.0.0-0 <8.0.0
 
+  '@babel/runtime@7.11.2':
+    resolution: {integrity: sha512-TeWkU52so0mPtDcaCTxNBI/IHiz0pZgr8VEFqXFtZWpYD08ZB6FaSwVAS8MKRQAP3bYKiVjwysOJgMFY28o6Tw==}
+
   '@babel/runtime@7.27.0':
     resolution: {integrity: sha512-VtPOkrdPHZsKc/clNqyi9WUA8TINkZ4cGk63UUE3u4pmB2k+ZMQRDuIOagv8UVd6j7k0T3+RRIb7beKTebNbcw==}
     engines: {node: '>=6.9.0'}
@@ -3465,6 +3474,11 @@ packages:
   '@capacitor/core@7.2.0':
     resolution: {integrity: sha512-2zCnA6RJeZ9ec4470o8QMZEQTWpekw9FNoqm5TLc10jeCrhvHVI8MPgxdZVc3mOdFlyieYu4AS1fNxSqbS57Pw==}
 
+  '@capacitor/filesystem@7.0.1':
+    resolution: {integrity: sha512-dxuKNLFoUejm7tBKkQPs1j7+BLpDh5JKPSVu7nT8jgCbA/KXt5FoCLiepfkjWkYfq60X0JNFzGnIquc5FPOLzQ==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
   '@capacitor/haptics@7.0.1':
     resolution: {integrity: sha512-ewZmspE5krgDUj5ZvUDcfNZvgerAIr+3bDSk6DLzyvBZ/dYmr/tMLu5H6WtYaaKYZJ32aZAudGpIal5epDyBYA==}
     peerDependencies:
@@ -3497,11 +3511,6 @@ packages:
 
   '@capacitor/status-bar@7.0.1':
     resolution: {integrity: sha512-iDv3mXYo9CdxYRVwt3/pRyuk25p7Sn4GfaS/zMZyVIqTzsvKLCIIH3GdKK+ta+nsNcAVpCw/t5jFEBt1D18ctA==}
-    peerDependencies:
-      '@capacitor/core': '>=7.0.0'
-
-  '@capgo/capacitor-navigation-bar@7.1.14':
-    resolution: {integrity: sha512-BD4adx9kMEQK9+1G3ErVkD9pUtbXlbJlTgze0DoBiBKHK5VWYKtX+7HbUouPrQbPhbe2huR7ZvV3VneH7OaiPg==}
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
 
@@ -8611,6 +8620,18 @@ packages:
   canvas-hypertxt@1.0.3:
     resolution: {integrity: sha512-+VsMpRr64jYgKq2IeFUNel3vCZH/IzS+iXSHxmUV3IUH5dXlC9xHz4AwtPZisDxZ5MWcuK0V+TXgPKFPiZnxzg==}
 
+  capacitor-blob-writer@1.1.19:
+    resolution: {integrity: sha512-2uZjL/y6F2yblA6lc5SP0JE+rQhxZcinmsLQKwGuSIDQySAdrcDkCAoQ07nqQV9qMtaeWsVTD6n08wo4R2sSjA==}
+    peerDependencies:
+      '@capacitor/core': '>=3.0.0'
+      '@capacitor/filesystem': '>=1.0.0'
+
+  capacitor-voice-recorder@7.0.5:
+    resolution: {integrity: sha512-5ADnmouV/mKusXyV6HLqhsUCwWDIeezFilulYkCt/ExL7op3vMz4/gtq5gw/jQjx82Ry5Nf+C3hN1lUhJdRtlw==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+      '@capacitor/filesystem': ^7.0.0
+
   caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
 
@@ -10564,6 +10585,9 @@ packages:
 
   gesto@1.19.4:
     resolution: {integrity: sha512-hfr/0dWwh0Bnbb88s3QVJd1ZRJeOWcgHPPwmiH6NnafDYvhTsxg+SLYu+q/oPNh9JS3V+nlr6fNs8kvPAtcRDQ==}
+
+  get-blob-duration@1.2.0:
+    resolution: {integrity: sha512-2xNJa+oKznR21eC2ThMzw4a1931a3ogA8aHoY92xruZufc/02G7pl/P793GJZytkyI8xMJ2DepEQ7MWvg/tn/Q==}
 
   get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
@@ -14388,6 +14412,9 @@ packages:
   regenerate@1.4.2:
     resolution: {integrity: sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==}
 
+  regenerator-runtime@0.13.11:
+    resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
+
   regenerator-runtime@0.14.1:
     resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
 
@@ -17780,6 +17807,10 @@ snapshots:
       '@babel/types': 7.27.1
       esutils: 2.0.3
 
+  '@babel/runtime@7.11.2':
+    dependencies:
+      regenerator-runtime: 0.13.11
+
   '@babel/runtime@7.27.0':
     dependencies:
       regenerator-runtime: 0.14.1
@@ -17901,6 +17932,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+
   '@capacitor/haptics@7.0.1(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
@@ -17926,10 +17961,6 @@ snapshots:
       '@capacitor/core': 6.2.1
 
   '@capacitor/status-bar@7.0.1(@capacitor/core@7.2.0)':
-    dependencies:
-      '@capacitor/core': 7.2.0
-
-  '@capgo/capacitor-navigation-bar@7.1.14(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
 
@@ -23896,6 +23927,18 @@ snapshots:
 
   canvas-hypertxt@1.0.3: {}
 
+  capacitor-blob-writer@1.1.19(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)):
+    dependencies:
+      '@capacitor/core': 7.2.0
+      '@capacitor/filesystem': 7.0.1(@capacitor/core@7.2.0)
+
+  capacitor-voice-recorder@7.0.5(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)):
+    dependencies:
+      '@capacitor/core': 7.2.0
+      '@capacitor/filesystem': 7.0.1(@capacitor/core@7.2.0)
+      capacitor-blob-writer: 1.1.19(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0))
+      get-blob-duration: 1.2.0
+
   caseless@0.12.0: {}
 
   cborg@4.2.10: {}
@@ -26138,6 +26181,10 @@ snapshots:
     dependencies:
       '@daybrush/utils': 1.13.0
       '@scena/event-emitter': 1.0.5
+
+  get-blob-duration@1.2.0:
+    dependencies:
+      '@babel/runtime': 7.11.2
 
   get-caller-file@2.0.5: {}
 
@@ -30995,6 +31042,8 @@ snapshots:
       regenerate: 1.4.2
 
   regenerate@1.4.2: {}
+
+  regenerator-runtime@0.13.11: {}
 
   regenerator-runtime@0.14.1: {}
 

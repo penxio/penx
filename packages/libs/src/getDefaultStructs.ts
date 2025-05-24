@@ -265,6 +265,12 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     }),
 
     generateStructNode({
+      type: StructType.VOICE,
+      name: 'Voice',
+      ...input,
+    }),
+
+    generateStructNode({
       type: StructType.BOOKMARK,
       name: 'Bookmark',
       ...input,

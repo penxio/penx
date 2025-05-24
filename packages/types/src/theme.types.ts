@@ -9,6 +9,7 @@ export enum StructType {
   IMAGE = 'IMAGE',
   VIDEO = 'VIDEO',
   AUDIO = 'AUDIO',
+  VOICE = 'VOICE',
   BOOKMARK = 'BOOKMARK',
   FRIEND = 'FRIEND',
   PROJECT = 'PROJECT',

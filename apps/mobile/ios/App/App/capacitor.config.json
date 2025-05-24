@@ -22,7 +22,7 @@
 		"KeyboardPlugin",
 		"SplashScreenPlugin",
 		"StatusBarPlugin",
-		"NavigationBarPlugin",
-		"SocialLoginPlugin"
+		"SocialLoginPlugin",
+		"VoiceRecorder"
 	]
 }

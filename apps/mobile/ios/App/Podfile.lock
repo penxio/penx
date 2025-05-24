@@ -27,7 +27,7 @@ PODS:
     - Capacitor
   - CapacitorStatusBar (7.0.1):
     - Capacitor
-  - CapgoCapacitorNavigationBar (7.1.14):
+  - CapacitorVoiceRecorder (7.0.5):
     - Capacitor
   - CapgoCapacitorSocialLogin (7.5.9):
     - Alamofire (~> 5.10.2)
@@ -73,7 +73,7 @@ DEPENDENCIES:
   - "CapacitorKeyboard (from `../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard`)"
   - "CapacitorSplashScreen (from `../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar`)"
-  - "CapgoCapacitorNavigationBar (from `../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.14_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar`)"
+  - "CapacitorVoiceRecorder (from `../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.0.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder`)"
   - "CapgoCapacitorSocialLogin (from `../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login`)"
 
 SPEC REPOS:
@@ -110,8 +110,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen"
   CapacitorStatusBar:
     :path: "../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar"
-  CapgoCapacitorNavigationBar:
-    :path: "../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.14_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar"
+  CapacitorVoiceRecorder:
+    :path: "../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.0.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder"
   CapgoCapacitorSocialLogin:
     :path: "../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login"
 
@@ -128,7 +128,7 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: 09fd91dcde4f8a37313e7f11bde553ad1ed52036
   CapacitorSplashScreen: 1d67815a422a9b61539c94f283c08ed56667c0fc
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
-  CapgoCapacitorNavigationBar: 3d6c7ff86e0a7dd403b09fb88a95902d4bfbd7b4
+  CapacitorVoiceRecorder: d971261c83b35475ab202c357ece2c0f83a83ee3
   CapgoCapacitorSocialLogin: 981a9b3c980d90cca812f2a161678f6ca8f24096
   FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
   FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
@@ -140,6 +140,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
 
-PODFILE CHECKSUM: ab5fad587cbd2a425114ca0a4baae5ca52b12261
+PODFILE CHECKSUM: 3846a20b0d978b212779bc8e5c2d4fd66cb140c6
 
 COCOAPODS: 1.16.2

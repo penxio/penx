@@ -92,6 +92,10 @@ export class Creation {
     return this.type === StructType.NOTE
   }
 
+  get isVoice() {
+    return this.type === StructType.VOICE
+  }
+
   get isBookmark() {
     return this.type === StructType.BOOKMARK
   }
