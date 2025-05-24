@@ -1,3 +1,4 @@
+import { mergeAttributes } from '@tiptap/core'
 import { cx } from 'class-variance-authority'
 import { common, createLowlight } from 'lowlight'
 import {
@@ -24,6 +25,7 @@ import {
   UploadImagesPlugin,
   Youtube,
 } from 'novel'
+import { getUrl } from '@penx/utils'
 
 //TODO I am using cx here to get tailwind autocomplete working, idk if someone else can write a regex to just capture the class key in objects
 const aiHighlight = AIHighlight
@@ -38,10 +40,22 @@ const tiptapLink = TiptapLink.configure({
 })
 
 const tiptapImage = TiptapImage.extend({
+  addAttributes() {
+    return {
+      src: {
+        renderHTML: (attributes) => {
+          attributes.src = getUrl(attributes.src)
+          return {}
+        },
+      },
+    }
+  },
   addProseMirrorPlugins() {
     return [
       UploadImagesPlugin({
-        imageClass: cx('opacity-40 rounded-lg border border-stone-200'),
+        // imageClass: cx('opacity-40 rounded-lg border border-stone-200'),
+
+        imageClass: cx('rounded-lg border border-stone-200'),
       }),
     ]
   },
@@ -87,6 +101,7 @@ const starterKit = StarterKit.configure({
       class: cx('list-decimal list-outside leading-3 -mt-2'),
     },
   },
+
   listItem: {
     HTMLAttributes: {
       class: cx('leading-normal -mb-2'),

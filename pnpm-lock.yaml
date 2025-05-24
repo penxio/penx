@@ -2310,6 +2310,9 @@ importers:
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client

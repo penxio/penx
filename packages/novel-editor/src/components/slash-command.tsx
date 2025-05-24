@@ -14,6 +14,8 @@ import {
   Youtube,
 } from 'lucide-react'
 import { Command, createSuggestionItems, renderItems } from 'novel'
+import { getUrl } from '@penx/utils'
+import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 import { uploadFn } from './image-upload'
 
 export const suggestionItems = createSuggestionItems([
@@ -146,7 +148,18 @@ export const suggestionItems = createSuggestionItems([
         if (input.files?.length) {
           const file = input.files[0]
           const pos = editor.view.state.selection.from
-          uploadFn(file, editor.view, pos)
+          // TODO: need improve
+          const fileHash = await calculateSHA256FromFile(file)
+          const a = uploadFn(file, editor.view, pos)
+          console.log('a===:', a)
+
+          editor
+            .chain()
+            .focus()
+            .setImage({
+              src: `/${fileHash}`,
+            })
+            .run()
         }
       }
       input.click()
