@@ -1,0 +1,26 @@
+{
+  "name": "@penx/locales",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@penx/constants": "workspace:*",
+    "@penx/query-client": "workspace:*",
+    "@penx/model-type": "workspace:*",
+    "@penx/types": "workspace:*",
+    "@penx/unique-id": "workspace:*"
+  }
+}

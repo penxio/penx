@@ -11,6 +11,7 @@ import {
   setupIonicReact,
 } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
+import { i18n } from '@lingui/core'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants'
@@ -49,8 +50,10 @@ import './theme/variables.css'
 import { useEffect, useRef } from 'react'
 import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
+import { dynamicActivate, LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { NavProvider } from './components/NavContext'
+// import { activateLocale } from './lib/activateLocale'
 import { PageAllStructs } from './pages/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
@@ -194,9 +197,13 @@ const App: React.FC = () => {
     )
   }, [])
 
+  useEffect(() => {
+    dynamicActivate('zh_CN')
+  }, [])
+
   return (
     <IonApp className="">
-      <LinguiClientProvider initialLocale={'en'} initialMessages={{}}>
+      <LocaleProvider>
         <DashboardProviders>
           <IonReactRouter>
             <IonSplitPane contentId="main">
@@ -217,7 +224,7 @@ const App: React.FC = () => {
             </IonSplitPane>
           </IonReactRouter>
         </DashboardProviders>
-      </LinguiClientProvider>
+      </LocaleProvider>
     </IonApp>
   )
 }

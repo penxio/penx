@@ -20,10 +20,23 @@ export default {
   },
   catalogs: [
     {
+      path: '<rootDir>/packages/locales/src/locales/{locale}',
+      include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
+      exclude: ['**/node_modules/**'],
+    },
+
+    {
       path: '<rootDir>/apps/web/locales/{locale}',
       include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
       exclude: ['**/node_modules/**'],
     },
+
+    {
+      path: '<rootDir>/apps/mobile/src/locales/{locale}',
+      include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
+      exclude: ['**/node_modules/**'],
+    },
+
     {
       path: '<rootDir>/apps/extension/locales/{locale}',
       include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],

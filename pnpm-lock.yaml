@@ -95,6 +95,9 @@ importers:
       '@lingui/core':
         specifier: 5.3.1
         version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)
+      '@lingui/detect-locale':
+        specifier: 5.3.1
+        version: 5.3.1
       '@lingui/macro':
         specifier: ^5.3.1
         version: 5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)(react@19.0.0)
@@ -1014,6 +1017,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../../packages/local-db
+      '@penx/locales':
+        specifier: workspace:*
+        version: link:../../packages/locales
       '@penx/model-type':
         specifier: workspace:*
         version: link:../../packages/model-type
@@ -1138,6 +1144,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../../packages/local-db
+      '@penx/locales':
+        specifier: workspace:*
+        version: link:../../packages/locales
       '@penx/model-type':
         specifier: workspace:*
         version: link:../../packages/model-type
@@ -1292,6 +1301,9 @@ importers:
       '@capacitor/core':
         specifier: 7.2.0
         version: 7.2.0
+      '@capacitor/device':
+        specifier: 7.0.1
+        version: 7.0.1(@capacitor/core@7.2.0)
       '@capacitor/haptics':
         specifier: 7.0.1
         version: 7.0.1(@capacitor/core@7.2.0)
@@ -1367,6 +1379,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../../packages/local-db
+      '@penx/locales':
+        specifier: workspace:*
+        version: link:../../packages/locales
       '@penx/math':
         specifier: workspace:*
         version: link:../../packages/math
@@ -1581,6 +1596,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../../packages/local-db
+      '@penx/locales':
+        specifier: workspace:*
+        version: link:../../packages/locales
       '@penx/math':
         specifier: workspace:*
         version: link:../../packages/math
@@ -2240,6 +2258,28 @@ importers:
         version: link:../typescript-config
 
   packages/local-db:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+    devDependencies:
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
+  packages/locales:
     dependencies:
       '@penx/constants':
         specifier: workspace:*
@@ -3480,6 +3520,11 @@ packages:
   '@capacitor/core@7.2.0':
     resolution: {integrity: sha512-2zCnA6RJeZ9ec4470o8QMZEQTWpekw9FNoqm5TLc10jeCrhvHVI8MPgxdZVc3mOdFlyieYu4AS1fNxSqbS57Pw==}
 
+  '@capacitor/device@7.0.1':
+    resolution: {integrity: sha512-ImjR2LmCEhbckYtOHXTfi5v6B7d4HPX9uKIAQs7wzzmE+yRRXuUTEzARBQ00dZDInAInkbuyQRdjwPTSHZUpnw==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
   '@capacitor/filesystem@7.0.1':
     resolution: {integrity: sha512-dxuKNLFoUejm7tBKkQPs1j7+BLpDh5JKPSVu7nT8jgCbA/KXt5FoCLiepfkjWkYfq60X0JNFzGnIquc5FPOLzQ==}
     peerDependencies:
@@ -4537,6 +4582,10 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
+
+  '@lingui/detect-locale@5.3.1':
+    resolution: {integrity: sha512-uHVjHDtgEMf80Gj/WZpmHAUqxQwyYFMZk/IFNWco3tTlJ/I55Mul312yiVPxQoYraEK+OCkb3eIs6E9rRxDxGA==}
+    engines: {node: '>=20.0.0'}
 
   '@lingui/format-po@5.3.1':
     resolution: {integrity: sha512-TE4nbvOspzj4M1PdBr6lYpMQAM4qulhQij8uyO32aNpejt6psivZ1bdcG6UGh1+ue38C5QYvjVSlWR8UCShTWg==}
@@ -17938,6 +17987,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@capacitor/device@7.0.1(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+
   '@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
@@ -19149,6 +19202,8 @@ snapshots:
     optionalDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2)
       babel-plugin-macros: 3.1.0
+
+  '@lingui/detect-locale@5.3.1': {}
 
   '@lingui/format-po@5.3.1(typescript@5.8.2)':
     dependencies:

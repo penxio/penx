@@ -32,6 +32,7 @@
     "@penx/hooks": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/locales": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/services": "workspace:*",
