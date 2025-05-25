@@ -5,9 +5,9 @@ import { unstable_cache } from 'next/cache'
 import { initPages } from '@penx/api/lib/initPages'
 import {
   CreationStatus,
+  defaultEditorContent,
   defaultLayouts,
   defaultNavLinks,
-  defaultEditorContent,
   FRIEND_DATABASE_NAME,
   isProd,
   PROJECT_DATABASE_NAME,
@@ -19,13 +19,13 @@ import { calculateSHA256FromString } from '@penx/encryption'
 import { cacheHelper } from '@penx/libs/cache-header'
 import {
   Creation,
-  StructType,
   Friend,
   NavLink,
   NavLinkLocation,
   NavLinkType,
   Project,
   Site,
+  StructType,
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { creationToFriend } from './creationToFriend'
@@ -409,7 +409,7 @@ export async function getFriends(site: Site) {
     async () => {
       const creations = await findManyCreations(site, struct!.id)
       return creations.map((item) => {
-        return creationToFriend(item, item.struct as any)
+        return creationToFriend(item as any, item.struct as any)
       })
     },
     [`${siteId}-friends`],

@@ -149,7 +149,6 @@ const PageHome = ({ nav }: any) => {
             } as any
           }
         >
-          <GoogleLoginButton />
           <PanelList
             panels={panels.filter((p) => p.type === PanelType.JOURNAL)}
           />

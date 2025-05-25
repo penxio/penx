@@ -56,9 +56,8 @@ import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
 import { PageStruct } from './pages/PageStruct'
 
+const platform = Capacitor.getPlatform()
 async function init() {
-  const platform = Capacitor.getPlatform()
-
   // const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
   const mode = await DarkMode.isDarkMode()
@@ -177,19 +176,22 @@ const App: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    // SocialLogin.initialize({
-    //   apple: {},
-    //   google: {
-    //     iOSClientId:
-    //       '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
+    SocialLogin.initialize(
+      platform === 'ios'
+        ? { apple: {} }
+        : {
+            google: {
+              iOSClientId:
+                '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
 
-    //     webClientId:
-    //       '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
+              webClientId:
+                '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
 
-    //     // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
-    //     mode: 'online',
-    //   },
-    // })
+              // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
+              mode: 'online',
+            },
+          },
+    )
   }, [])
 
   return (
