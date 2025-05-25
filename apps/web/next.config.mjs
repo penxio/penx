@@ -15,7 +15,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: process.env.IGNORE_BUILD_ERRORS === 'true',
+    ignoreBuildErrors: true
   },
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],

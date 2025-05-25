@@ -8,7 +8,6 @@ import {
   StarOffIcon,
   TrashIcon,
 } from 'lucide-react'
-import { Node } from 'slate'
 import { isMobileApp } from '@penx/constants'
 import { CreationStatus } from '@penx/db/client'
 import { Creation } from '@penx/domain'
@@ -19,7 +18,6 @@ import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { mobileMenuAtom, useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { usePanels } from '@penx/hooks/usePanels'
-import { ICreationNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { PanelType, SiteCreation, StructType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -46,9 +44,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
 
   const getTitleFromContent = () => {
     try {
-      const json: any[] = JSON.parse(creation.content)
-      const title = json.map((item) => Node.string(item)).join(', ')
-      return title.slice(0, 30)
+      return ''
     } catch (error) {
       return ''
     }

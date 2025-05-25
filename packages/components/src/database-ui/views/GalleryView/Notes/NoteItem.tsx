@@ -15,11 +15,11 @@ import { Tags } from '@penx/components/Tags'
 import { CreationStatus, ROOT_DOMAIN } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { Creation } from '@penx/domain'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import { useDomains } from '@penx/hooks/useDomains'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { localDB } from '@penx/local-db'
+import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { store } from '@penx/store'
 import { api } from '@penx/trpc-client'
 import { Badge } from '@penx/uikit/badge'
@@ -65,10 +65,8 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
 
       {readonly && <ContentRender className="px-3 text-sm" content={content} />}
       {!readonly && (
-        <PlateEditor
+        <NovelEditor
           value={content}
-          readonly={readonly}
-          variant="note"
           className={cn('w-auto px-3 py-1')}
           onChange={(v) => {
             setContent(v)

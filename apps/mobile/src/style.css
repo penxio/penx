@@ -5,9 +5,6 @@
 @import '@penx/widgets/tailwind.css';
 @import '@penx/novel-editor/tailwind.css';
 @import '@penx/novel-editor/tailwind.css';
-@import '@penx/editor/tailwind.css';
-@import '@penx/editor-custom-plugins/tailwind.css';
-@import '@penx/editor-plugins/tailwind.css';
 
 .safe-area {
   padding-top: var(--safe-area-inset-top);

@@ -11,7 +11,6 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { BUILTIN_PAGE_SLUGS, defaultEditorContent } from '@penx/constants'
 import { GateType } from '@penx/db/client'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import {
   PublishPostFormSchema,
   usePublishPost,

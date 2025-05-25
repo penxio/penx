@@ -14,10 +14,10 @@ import {
   isMobileApp,
 } from '@penx/constants'
 import { ChargeMode } from '@penx/db/client'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import { useArea } from '@penx/hooks/useArea'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { useRouter } from '@penx/libs/i18n'
+import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { updateSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { api, trpc } from '@penx/trpc-client'
@@ -223,8 +223,7 @@ export function AreaForm() {
                   </FormLabel>
                   <FormControl>
                     <div className="border-foreground/20  h-[250px] overflow-auto rounded-lg border">
-                      <PlateEditor
-                        variant="default"
+                      <NovelEditor
                         className="min-h-[240px]"
                         value={
                           field.value

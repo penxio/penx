@@ -106,23 +106,9 @@ export default async function middleware(req: NextRequest) {
       return NextResponse.rewrite(newUrl)
     }
 
-    if (isDashboard) {
-      // console.log('====>>>>>>>isDashboard:', isDashboard, path)
+    console.log('========isRoot:', isRoot)
 
-      if (
-        !token?.userId &&
-        (path.includes('/~/settings') || path.includes('/~/design'))
-      ) {
-        return NextResponse.redirect(new URL('/', req.url))
-      }
-      return NextResponse.rewrite(new URL(`/${locale}${path}`, req.url))
-    } else {
-      if (token?.userId && pathname === '/') {
-        return NextResponse.redirect(new URL(`/${locale}/~`, req.url))
-      } else {
-        return NextResponse.rewrite(new URL(`/${locale}/root${path}`, req.url))
-      }
-    }
+    return NextResponse.rewrite(new URL(`/${locale}`, req.url))
   }
 
   if (path.startsWith('/@')) {

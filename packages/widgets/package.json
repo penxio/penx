@@ -38,7 +38,6 @@
     "@penx/domain": "workspace:*",
     "@penx/hooks": "workspace:*",
     "@penx/query-client": "workspace:*",
-    "@penx/editor-transforms": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",
     "@penx/unique-id": "workspace:*",

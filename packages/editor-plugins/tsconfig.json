@@ -1,9 +1,0 @@
-{
-  "extends": "@penx/typescript-config/internal-package.json",
-  "compilerOptions": {
-    "lib": ["DOM"],
-    "outDir": "dist"
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
-}

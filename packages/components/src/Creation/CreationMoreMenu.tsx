@@ -6,7 +6,6 @@ import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
 import { defaultEditorContent } from '@penx/constants'
 import { Creation } from '@penx/domain'
-import { useCreateEditor } from '@penx/editor/use-create-editor'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { useMySite } from '@penx/hooks/useMySite'
 import { Button } from '@penx/uikit/button'
@@ -110,15 +109,10 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
 
 function CopyMarkdown({ creation }: { creation: Creation }) {
   const { copy } = useCopyToClipboard()
-  const editor: any = useCreateEditor({
-    value: creation.content ? JSON.parse(creation.content) : defaultEditorContent,
-  })
   return (
     <MenuItem
       onClick={() => {
-        const content = (editor.api as any).markdown.serialize()
-        copy(content)
-        toast.success('Copied to clipboard')
+        toast.info('Coming soon...')
       }}
     >
       Copy markdown

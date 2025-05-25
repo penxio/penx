@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { createPlateEditor } from '@udecode/plate/react'
 import { toast } from 'sonner'
 import { Address } from 'viem'
 import { z } from 'zod'
@@ -10,7 +9,6 @@ import { ICreationNode } from '@penx/model-type'
 // import { revalidateMetadata } from '@penx/libs/revalidateTag'
 import { api } from '@penx/trpc-client'
 import { CreationById } from '@penx/types'
-// import { editorPlugins } from '@penx/editor-plugins/plugins/editor-plugins'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { syncPostToHub } from '../../services/src/syncPostToHub'
 

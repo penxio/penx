@@ -4,7 +4,6 @@ import { useEffect, useImperativeHandle, useMemo, useRef } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import TextareaAutosize from 'react-textarea-autosize'
 import { useSearchParams } from 'next/navigation'
-import { Editor, Node } from 'slate'
 import { useDebouncedCallback } from 'use-debounce'
 // import { usePanelCreationContext } from '@penx/components/Creation'
 import {
@@ -13,7 +12,6 @@ import {
   UpdateCreationInput,
 } from '@penx/constants'
 import { Creation as CreationDomain } from '@penx/domain'
-import { PlateEditor } from '@penx/editor/plate-editor'
 import { appEmitter } from '@penx/emitter'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { usePostSaving } from '@penx/hooks/usePostSaving'
@@ -51,13 +49,6 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
   const creation = usePanelCreationContext()
   const isImage = creation.type === StructType.IMAGE
   const { structs } = useStructs()
-  const editorRef = useRef<Editor>(null)
-
-  useImperativeHandle(ref, () => editorRef.current)
-
-  useEffect(() => {
-    // console.log('=======>>>>>>editorRef:', editorRef.current)
-  }, [])
 
   const debouncedUpdate = useDebouncedCallback(
     async (value: CreationDomain) => {

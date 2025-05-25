@@ -20,10 +20,7 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
-    "@penx/content-render": "workspace:*",
     "@penx/contexts": "workspace:*",
-    "@penx/editor-custom-plugins": "workspace:*",
-    "@penx/editor-plugins": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/emitter": "workspace:*",
     "@penx/libs": "workspace:*",

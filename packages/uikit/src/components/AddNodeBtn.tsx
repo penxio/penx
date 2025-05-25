@@ -1,12 +1,9 @@
 import { PlusIcon } from 'lucide-react'
-import { Path, Transforms } from 'slate'
 import { isMobileApp } from '@penx/constants'
 import { cn } from '@penx/utils'
+
 // import { insertEmptyParagraph } from '../editor/lib/insertEmptyParagraph'
 // import { useCreateEditor } from '../editor/use-create-editor'
-import { findNodePath } from '@penx/utils/findNodePath'
-import { insertEmptyParagraph } from '@penx/utils/insertEmptyParagraph'
-import { selectEditor } from '@penx/utils/selectEditor'
 
 interface Props {
   // editor: ReturnType<typeof useCreateEditor>
@@ -14,13 +11,7 @@ interface Props {
 }
 
 export function AddNodeBtn({ editor }: Props) {
-  function add() {
-    const node = editor.children[editor.children.length - 1]
-    const nodePath = findNodePath(editor as any, node)!
-    const at = Path.next(nodePath)
-    insertEmptyParagraph(editor as any, { at })
-    selectEditor(editor as any, { at, focus: true })
-  }
+  function add() {}
 
   return (
     <div

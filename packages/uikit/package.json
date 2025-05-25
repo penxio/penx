@@ -76,7 +76,6 @@
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/db": "workspace:*",
-    "@penx/editor-transforms": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",
