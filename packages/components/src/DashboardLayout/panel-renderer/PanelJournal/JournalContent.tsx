@@ -6,7 +6,7 @@ import { useActiveStruct } from '@penx/hooks/useActiveStruct'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useJournal } from '@penx/hooks/useJournal'
 import { cn, mappedByKey } from '@penx/utils'
-import { CreationCard } from './CreationCard'
+import { CreationCard } from '../../../CreationCard/CreationCard'
 import { JournalTitle } from './JournalTitle'
 import { StructTypeSelect } from './StructTypeSelect'
 
@@ -24,26 +24,16 @@ export function JournalContent({ date }: Props) {
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
-      {!isMobileApp && <JournalTitle date={data?.props.date!} />}
+      <JournalTitle date={data?.props.date!} />
       {/* <StructTypeSelect /> */}
 
       {!data?.props.children.length && (
-        <div className="flex flex-col gap-4 pt-10">
+        <div className="flex h-[50vh] flex-col items-center justify-center gap-4 pt-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            transition={{ delay: 0.2 }}
-            className="text-foreground/80 text-2xl font-semibold"
-          >
-            Hello there!
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.1 }}
             className="text-foreground/60 text-2xl"
           >
             What's on your mind today?

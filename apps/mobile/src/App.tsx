@@ -2,6 +2,7 @@ import { Redirect, Route } from 'react-router-dom'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
+import { SocialLogin } from '@capgo/capacitor-social-login'
 import {
   IonApp,
   IonNav,
@@ -12,6 +13,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants'
 import Menu from './components/Menu'
 import PageHome from './pages/PageHome'
 /* Core CSS required for Ionic components to work properly */
@@ -172,6 +174,22 @@ const App: React.FC = () => {
     return () => {
       appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
     }
+  }, [])
+
+  useEffect(() => {
+    // SocialLogin.initialize({
+    //   apple: {},
+    //   google: {
+    //     iOSClientId:
+    //       '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
+
+    //     webClientId:
+    //       '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
+
+    //     // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
+    //     mode: 'online',
+    //   },
+    // })
   }, [])
 
   return (

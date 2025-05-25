@@ -25,50 +25,69 @@ export function GoogleLoginButton({}: Props) {
   async function onLogin() {
     setLoading(true)
     try {
+      setJson({ foo: 'bar' })
+
+      await SocialLogin.initialize({
+        apple: {},
+        google: {
+          iOSClientId:
+            '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
+
+          webClientId:
+            '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
+
+          // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
+          mode: 'online',
+        },
+      })
       const res = (await SocialLogin.login({
         provider: 'google',
         options: {
-          scopes: ['email', 'openid', 'profile'],
+          // scopes: ['email', 'openid', 'profile'],
         },
       })) as any as MobileGoogleLoginInfo
       // alert(JSON.stringify(res))
       // handle the response. popoutStore is specific to my app
       console.log('======res:', res)
 
-      setJson(res)
+      // setJson(res)
 
-      const sites = await localDB.listAllSites()
-      const site = sites.find((s) => !s.props.isRemote)
+      // const sites = await localDB.listAllSites()
+      // const site = sites.find((s) => !s.props.isRemote)
 
-      const session = await login({
-        type: 'penx-google',
-        accessToken: res.result.accessToken.token as string,
-        userId: site?.userId!,
-        ref: '',
-      })
+      // const session = await login({
+      //   type: 'penx-google',
+      //   accessToken: res.result.accessToken.token as string,
+      //   userId: site?.userId!,
+      //   ref: '',
+      // })
 
-      setSession(session)
-      await set('SESSION', session)
-      queryClient.setQueryData(['SESSION'], session)
-      appEmitter.emit('APP_LOGIN_SUCCESS', session)
+      // setSession(session)
+      // await set('SESSION', session)
+      // queryClient.setQueryData(['SESSION'], session)
+      // appEmitter.emit('APP_LOGIN_SUCCESS', session)
     } catch (error) {
       console.log('=========error:', error)
 
-      setError(Object.values(error))
-      //
+      setError(Object.keys(error))
     }
 
     setLoading(false)
   }
   return (
-    <Button onClick={onLogin} className="w-full gap-2">
-      {loading && <LoadingDots className="bg-foreground" />}
-      {!loading && (
-        <>
-          <IconGoogle className="h-4 w-4" />
-          <div className="">Google login</div>
-        </>
-      )}
-    </Button>
+    <div>
+      <Button onClick={onLogin} className="w-full gap-2">
+        {loading && <LoadingDots className="bg-background" />}
+        {!loading && (
+          <>
+            <IconGoogle className="h-4 w-4" />
+            <div className="">Google login</div>
+          </>
+        )}
+      </Button>
+      <pre>{JSON.stringify(error, null, 2)}</pre>
+      <pre>{JSON.stringify(json, null, 2)}</pre>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
+    </div>
   )
 }

@@ -62,7 +62,7 @@ export const HomeHeader: React.FC = () => {
         </IonTitle> */}
 
         <IonButtons slot="end" className="">
-          {panel.date && <GoToDay initialDate={new Date(panel.date!)} />}
+          {/* {panel.date && <GoToDay initialDate={new Date(panel.date!)} />} */}
           <SearchButton />
           {/* <EditWidgetButton /> */}
         </IonButtons>

@@ -1,5 +1,7 @@
 import { format } from 'date-fns'
+import { isMobileApp } from '@penx/constants'
 import { Badge } from '@penx/uikit/ui/badge'
+import { cn } from '@penx/utils'
 import { JournalNav } from './JournalNav'
 
 interface Props {
@@ -9,16 +11,15 @@ interface Props {
 export const JournalTitle = ({ date }: Props) => {
   const formattedDate = format(new Date(date || Date.now()), 'LLL do')
 
-  const isToday = false
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex flex-col gap-2 leading-none">
-        <div className="flex flex-col gap-2">
-          <div className="text-3xl font-bold">{formattedDate}</div>
-          {isToday && <Badge>Today</Badge>}
-        </div>
-        <JournalNav date={date} />
-      </div>
+    <div
+      className={cn(
+        'flex flex-row gap-2 leading-none md:flex-col',
+        isMobileApp && 'justify-between',
+      )}
+    >
+      <div className="text-3xl font-bold">{formattedDate}</div>
+      <JournalNav date={date} />
     </div>
   )
 }

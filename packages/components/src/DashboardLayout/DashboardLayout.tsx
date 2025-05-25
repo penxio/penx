@@ -61,8 +61,6 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
   return (
     <>
       <CommandPanel />
-      <AreaDialog />
-      <StructDialog />
       <PublishStructDialog />
       <PlanListDialog />
       <DeleteStructDialog />

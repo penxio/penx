@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { HomeHeader } from '@/components/HomeHeader'
+import { GoogleLoginButton } from '@/components/Profile/GoogleLoginButton'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
-import { SocialLogin } from '@capgo/capacitor-social-login'
 import { IonContent } from '@ionic/react'
 import { useQuery } from '@tanstack/react-query'
 import { AnimatePresence, motion } from 'motion/react'
@@ -39,22 +39,8 @@ const PageHome = ({ nav }: any) => {
     if (!isShow && open) setOpen(false)
   }, [isShow])
 
-  useEffect(() => {
-    SocialLogin.initialize({
-      apple: {},
-      google: {
-        iOSClientId:
-          '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
-        webClientId:
-          '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
-      },
-    })
-  }, [])
-
   return (
     <>
-      <AreaDialog />
-
       {open && (
         <div
           // initial="closed"
@@ -163,6 +149,7 @@ const PageHome = ({ nav }: any) => {
             } as any
           }
         >
+          <GoogleLoginButton />
           <PanelList
             panels={panels.filter((p) => p.type === PanelType.JOURNAL)}
           />

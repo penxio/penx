@@ -7,6 +7,8 @@ import { SessionProvider } from '@penx/session'
 import { StoreProvider } from '@penx/store'
 import { trpc, trpcClient } from '@penx/trpc-client'
 import { AppProvider } from '../AppProvider/AppProvider'
+import { AreaDialog } from '../AreaDialog/AreaDialog'
+import { StructDialog } from '../StructDialog/StructDialog'
 
 export function DashboardProviders({
   children,
@@ -24,7 +26,11 @@ export function DashboardProviders({
         <SessionProvider>
           <trpc.Provider client={trpcClient} queryClient={queryClient}>
             <StoreProvider>
-              <AppProvider>{children}</AppProvider>
+              <AppProvider>
+                <AreaDialog />
+                <StructDialog />
+                {children}
+              </AppProvider>
             </StoreProvider>
           </trpc.Provider>
         </SessionProvider>

@@ -25,17 +25,17 @@ export const getInitialWidgets = (structs?: IStructNode[]) => {
       collapsed: true,
       type: WidgetType.ALL_STRUCTS,
     },
-    {
-      id: uniqueId(),
-      collapsed: true,
-      type: WidgetType.ALL_CREATIONS,
-    },
+    // {
+    //   id: uniqueId(),
+    //   collapsed: true,
+    //   type: WidgetType.ALL_CREATIONS,
+    // },
 
-    {
-      id: uniqueId(),
-      collapsed: true,
-      type: WidgetType.FAVORITES,
-    },
+    // {
+    //   id: uniqueId(),
+    //   collapsed: true,
+    //   type: WidgetType.FAVORITES,
+    // },
     // {
     //   id: uniqueId(),
     //   type: WidgetType.STRUCT,

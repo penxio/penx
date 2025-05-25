@@ -9,6 +9,7 @@ import { isMobileApp, WidgetType } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
+import { structIdAtom } from '@penx/hooks/useStructId'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { PanelType, Widget } from '@penx/types'
@@ -16,7 +17,6 @@ import { ContextMenu, ContextMenuTrigger } from '@penx/uikit/context-menu'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
-import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { AddChatButton } from './AddChatButton'
 import { AddCreationButton } from './AddCreationButton'
@@ -103,6 +103,10 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
+              if (isMobileApp) {
+                store.area.toggleCollapsed(widget.id)
+                return
+              }
               store.panels.openAllStructs()
               appEmitter.emit('ROUTE_TO_ALL_STRUCTS')
               close()
@@ -193,6 +197,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
 
                           appEmitter.emit('ROUTE_TO_STRUCT')
                           store.panels.openStruct(struct.id)
+                          store.set(structIdAtom, struct.id)
                         } else {
                           // setVisible(!visible)
                           store.panels.openStruct(struct.id)

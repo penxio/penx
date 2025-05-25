@@ -12,6 +12,7 @@
     "./ProfileButton": "./src/ProfileButton.tsx",
     "./AddCreationButton": "./src/AddCreationButton.tsx",
     "./AreaContext": "./src/AreaContext.tsx",
+    "./CreationCard": "./src/CreationCard/CreationCard.tsx",
     "./AreasPopover": "./src/AreasPopover/AreasPopover.tsx",
     "./AreaWidgets": "./src/area-widgets/AreaWidgets.tsx",
     "./AreaInfo": "./src/AreaInfo.tsx",

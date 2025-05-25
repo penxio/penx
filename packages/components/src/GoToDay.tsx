@@ -2,11 +2,14 @@
 
 import { useState } from 'react'
 import { CalendarDays } from 'lucide-react'
+import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { goToDay } from '@penx/hooks/useJournal'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
+
+const MotionCalendarDays = motion(CalendarDays)
 
 interface Props {
   initialDate: Date
@@ -19,7 +22,8 @@ export function GoToDay({ initialDate }: Props) {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <CalendarDays
+        <MotionCalendarDays
+          whileTap={{ scale: 1.2, opacity: 0.95 }}
           size={20}
           className={cn(
             'text-foreground/60 cursor-pointer',

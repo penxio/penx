@@ -63,6 +63,7 @@ export function CreationCard({ creation }: Props) {
     )
   }, [creation])
 
+  if (!struct) return null
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">

@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { addDays, format, subDays } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { isMobileApp } from '@penx/constants'
 import { goToDay } from '@penx/hooks/useJournal'
 
 interface Props {
@@ -13,14 +14,16 @@ export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div ref={ref} className="flex items-center text-xs" {...rest}>
-        <div
-          className="bg-foreground/5 hover:bg-foreground/10 cursor-pointer rounded-full px-2 py-[6px] transition-colors"
-          onClick={() => {
-            goToDay(new Date())
-          }}
-        >
-          Today
-        </div>
+        {!isMobileApp && (
+          <div
+            className="bg-foreground/5 hover:bg-foreground/10 cursor-pointer rounded-full px-2 py-[6px] transition-colors"
+            onClick={() => {
+              goToDay(new Date())
+            }}
+          >
+            Today
+          </div>
+        )}
         <div className="ml-2 flex items-center gap-2">
           <div
             className="bg-foreground/5 hover:bg-foreground/10 cursor-pointer rounded-full px-2 py-[6px] transition-colors"
