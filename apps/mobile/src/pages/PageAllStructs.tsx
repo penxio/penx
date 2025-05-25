@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AllStructsHeader } from '@/components/AllStructsHeader'
 import { StructHeader } from '@/components/StructHeader'
+import { mainBackgroundLight } from '@/lib/constants'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
@@ -44,7 +45,7 @@ function Content() {
         if (Capacitor.getPlatform() === 'android') {
           if (scrollTop > 0) {
             await StatusBar.setBackgroundColor({
-              color: isDark ? '#222' : '#f9f9f9',
+              color: isDark ? '#222' : mainBackgroundLight,
             })
           } else {
             await StatusBar.setBackgroundColor({

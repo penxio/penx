@@ -18,6 +18,7 @@ import { toast } from 'sonner'
 import {
   isDesktop,
   isExtension,
+  isMobileApp,
   isWeb,
   LoginStatus,
   ROOT_HOST,
@@ -185,56 +186,60 @@ export function ProfileButton({ loginButton }: Props) {
             </DropdownMenuItem>
           ))}
         </DropdownMenuGroup> */}
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem
-            onClick={async () => {
-              if (isExtension) {
-                window.open(`${ROOT_HOST}/~/settings`)
-                return
-              }
-              if (isDesktop) {
-                console.log('is desktop....')
-                return
-              }
-              appEmitter.emit('ROUTE_TO_SETTINGS')
-            }}
-          >
-            <BadgeCheck />
-            <Trans id="Settings"></Trans>
-          </DropdownMenuItem>
-          {/* <DropdownMenuItem>
+        {!isMobileApp && <DropdownMenuSeparator />}
+
+        {!isMobileApp && (
+          <DropdownMenuGroup>
+            <DropdownMenuItem
+              onClick={async () => {
+                if (isExtension) {
+                  window.open(`${ROOT_HOST}/~/settings`)
+                  return
+                }
+                if (isDesktop) {
+                  console.log('is desktop....')
+                  return
+                }
+                appEmitter.emit('ROUTE_TO_SETTINGS')
+              }}
+            >
+              <BadgeCheck />
+              <Trans id="Settings"></Trans>
+            </DropdownMenuItem>
+
+            {/* <DropdownMenuItem>
                 <CreditCard />
                 <Trans id="Billing"></Trans>
               </DropdownMenuItem> */}
 
-          <DropdownMenuItem
-            onClick={async () => {
-              if (isExtension) {
-                window.open(`${ROOT_HOST}/~/settings/subscription`)
-                return
-              }
-              setIsOpen(true)
-            }}
-          >
-            <Sparkles />
-            <Trans id="Upgrade to Pro"></Trans>
-          </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={async () => {
+                if (isExtension) {
+                  window.open(`${ROOT_HOST}/~/settings/subscription`)
+                  return
+                }
+                setIsOpen(true)
+              }}
+            >
+              <Sparkles />
+              <Trans id="Upgrade to Pro"></Trans>
+            </DropdownMenuItem>
 
-          <DropdownMenuItem
-            onClick={() => {
-              window.open('https://discord.gg/nyVpH9njDu')
-            }}
-          >
-            <MessageCircleIcon />
-            <Trans id="Support"></Trans>
-          </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                window.open('https://discord.gg/nyVpH9njDu')
+              }}
+            >
+              <MessageCircleIcon />
+              <Trans id="Support"></Trans>
+            </DropdownMenuItem>
 
-          {/* <DropdownMenuItem>
+            {/* <DropdownMenuItem>
                 <Bell />
                 Notifications
               </DropdownMenuItem> */}
-        </DropdownMenuGroup>
+          </DropdownMenuGroup>
+        )}
 
         <DropdownMenuSeparator />
         <DropdownMenuItem

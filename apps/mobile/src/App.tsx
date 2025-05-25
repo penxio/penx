@@ -188,7 +188,7 @@ const App: React.FC = () => {
                 '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
 
               // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
-              mode: 'online',
+              // mode: 'online',
             },
           },
     )

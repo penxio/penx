@@ -1,8 +1,10 @@
 import { format } from 'date-fns'
+import { ChevronDown } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
 import { Badge } from '@penx/uikit/ui/badge'
 import { cn } from '@penx/utils'
 import { JournalNav } from './JournalNav'
+import { JournalTitleMobile } from './JournalTitleMobile'
 
 interface Props {
   date: string
@@ -10,6 +12,10 @@ interface Props {
 
 export const JournalTitle = ({ date }: Props) => {
   const formattedDate = format(new Date(date || Date.now()), 'LLL do')
+
+  if (isMobileApp) {
+    return <JournalTitleMobile initialDate={new Date(date)} />
+  }
 
   return (
     <div
@@ -19,7 +25,8 @@ export const JournalTitle = ({ date }: Props) => {
       )}
     >
       <div className="text-3xl font-bold">{formattedDate}</div>
-      <JournalNav date={date} />
+
+      {!isMobileApp && <JournalNav date={date} />}
     </div>
   )
 }

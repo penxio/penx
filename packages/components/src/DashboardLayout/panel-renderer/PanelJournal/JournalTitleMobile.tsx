@@ -1,14 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { format } from 'date-fns'
 import { CalendarDays } from 'lucide-react'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { goToDay } from '@penx/hooks/useJournal'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { cn } from '@penx/utils'
-import { JournalShortcut } from './DashboardLayout/panel-renderer/PanelJournal/JournalShortcut'
+import { JournalShortcut } from './JournalShortcut'
 
 const MotionCalendarDays = motion(CalendarDays)
 
@@ -16,36 +16,42 @@ interface Props {
   initialDate: Date
 }
 
-export function GoToDay({ initialDate }: Props) {
-  const [date, setDate] = useState<Date | undefined>(initialDate || new Date())
+export function JournalTitleMobile({ initialDate }: Props) {
+  const [date, setDate] = useState<Date>(initialDate || new Date())
   const [open, setOpen] = useState(false)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <MotionCalendarDays
-          whileTap={{ scale: 1.2, opacity: 0.95 }}
-          size={20}
-          className={cn(
-            'text-foreground/60 cursor-pointer',
-            isMobileApp && 'text-foreground',
-          )}
-        />
+        <div className="flex items-center gap-1">
+          <div className="text-3xl font-bold">
+            {format(new Date(date), 'LLL do')}
+          </div>
+          <span className="icon-[ion--caret-down] text-foreground/90 size-5" />
+        </div>
       </PopoverTrigger>
-      <PopoverContent isPortal className="w-auto p-0" align="end">
+      <PopoverContent isPortal className="w-auto p-0" align="start">
         <Calendar
           mode="single"
           selected={date}
           onSelect={(date) => {
             // console.log('========date:', date)
             setOpen(false)
-            setDate(date)
+            setDate(date!)
             date && goToDay(date)
           }}
-          // disabled={(date) =>
-          //   date > new Date() || date < new Date('1900-01-01')
-          // }
           initialFocus
+          footer={
+            <div className="mt-2 flex items-center justify-center">
+              <JournalShortcut
+                date={initialDate}
+                onSelect={(date) => {
+                  setDate(date)
+                  setOpen(false)
+                }}
+              />
+            </div>
+          }
         />
       </PopoverContent>
     </Popover>
