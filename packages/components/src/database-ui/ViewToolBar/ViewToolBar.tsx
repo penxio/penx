@@ -12,7 +12,7 @@ export const ViewToolBar = () => {
 
   return (
     <div className="flex items-center gap-1">
-      <HideField />
+      {/* <HideField /> */}
       {/* <FilterField /> */}
       {/* <SortField /> */}
       {/* <GroupField /> */}

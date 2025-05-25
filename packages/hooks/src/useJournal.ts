@@ -45,7 +45,9 @@ export function useJournal(date?: string) {
   const { data, ...rest } = useQuery({
     queryKey: getQueryKey(),
     queryFn: async () => {
-      return getOrCreateJournal(date ? new Date(date) : new Date())
+      const journal = getOrCreateJournal(date ? new Date(date) : new Date())
+
+      return journal
     },
   })
   return { data, ...rest }
@@ -55,8 +57,12 @@ export function getJournal() {
   return queryClient.getQueryData(getQueryKey()) as IJournalNode
 }
 
-export function addCreationToJournal(creationId: string) {
-  const journal = getJournal()
+export async function addCreationToJournal(creationId: string, date = '') {
+  let journal = getJournal()
+  if (!journal) {
+    journal = await getOrCreateJournal(date ? new Date(date) : new Date())
+  }
+
   const newJournal = produce(journal, (draft) => {
     draft.props.children.unshift(creationId)
   })

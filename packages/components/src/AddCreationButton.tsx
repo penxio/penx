@@ -21,7 +21,7 @@ export function AddCreationButton({ className }: Props) {
         className,
       )}
       onClick={() => {
-        addCreation({ type: StructType.PAGE })
+        addCreation({ type: StructType.PAGE, isAddPanel: true })
       }}
     >
       <PlusIcon size={20} className="" />

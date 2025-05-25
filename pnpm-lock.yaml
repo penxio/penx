@@ -1864,6 +1864,9 @@ importers:
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
+      '@penx/novel-editor':
+        specifier: workspace:*
+        version: link:../novel-editor
       '@penx/session':
         specifier: workspace:*
         version: link:../session

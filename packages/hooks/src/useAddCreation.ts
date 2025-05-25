@@ -97,6 +97,8 @@ export function useAddCreation() {
       if (isMobileApp && !input.content) {
         appEmitter.emit('ROUTE_TO_CREATION', newCreation)
       } else {
+        console.log('add panellse......')
+
         store.panels.addPanel({
           id: uniqueId(),
           type: PanelType.CREATION,

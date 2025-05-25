@@ -95,6 +95,7 @@ export function JournalQuickInput({
         onKeyDown={(event) => {
           if (
             event.key === 'Enter' &&
+            (event.ctrlKey || event.metaKey) &&
             !event.shiftKey &&
             !event.nativeEvent.isComposing
           ) {

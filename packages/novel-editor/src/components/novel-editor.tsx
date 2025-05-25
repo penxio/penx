@@ -22,6 +22,7 @@ import { defaultEditorContent } from '@penx/constants'
 import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
 import { defaultExtensions } from './extensions'
+import { FocusHelper } from './FocusHelper'
 import GenerativeMenuSwitch from './generative/generative-menu-switch'
 import { uploadFn } from './image-upload'
 import { ColorSelector } from './selectors/color-selector'
@@ -151,6 +152,7 @@ export const NovelEditor = ({
             <Separator orientation="vertical" />
             <ColorSelector open={openColor} onOpenChange={setOpenColor} />
           </GenerativeMenuSwitch>
+          <FocusHelper />
           {children}
         </EditorContent>
       </EditorRoot>

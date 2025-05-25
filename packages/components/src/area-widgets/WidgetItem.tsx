@@ -194,7 +194,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                           appEmitter.emit('ROUTE_TO_STRUCT')
                           store.panels.openStruct(struct.id)
                         } else {
-                          setVisible(!visible)
+                          // setVisible(!visible)
+                          store.panels.openStruct(struct.id)
                         }
                         setStruct(struct)
                       }}

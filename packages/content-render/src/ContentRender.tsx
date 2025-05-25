@@ -8,17 +8,10 @@ import {
 import Image from 'next/image'
 import { BaseBidirectionalLinkPlugin } from '@penx/editor-custom-plugins/bidirectional-link/lib/BaseBidirectionalLinkPlugin'
 import { BaseProductPlugin } from '@penx/editor-custom-plugins/product/lib/BaseProductPlugin'
+import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { cn, getUrl } from '@penx/utils'
-import { BidirectionalLinkElementStatic } from './bidirectional-link/bidirectional-link-static'
 import { components } from './components'
 import { serverSideComponents, serverSideEditor } from './server-side-editor'
-import { SlateContent } from './SlateContent'
-
-interface Element {
-  type: string
-  id: string
-  [key: string]: any
-}
 
 interface Props {
   content: any
@@ -40,23 +33,5 @@ export function ContentRender({ content, className }: Props) {
     )
   }
 
-  // console.log('========:>>content:', content)
-
-  const value: Element[] = Array.isArray(content)
-    ? content
-    : JSON.parse(content)
-
-  return (
-    <PlateStatic
-      editor={serverSideEditor}
-      components={{
-        ...serverSideComponents,
-        [BaseBidirectionalLinkPlugin.key]: BidirectionalLinkElementStatic,
-      }}
-      // editor={editor}
-      // components={components}
-      value={value.map(({ id, ...rest }) => rest) as any}
-      className={cn('break-all text-base', className)}
-    />
-  )
+  return <NovelEditor className="px-3" value={content} />
 }

@@ -29,7 +29,7 @@ export function TasksList({ struct }: PostListProps) {
     <div className="relative flex-1">
       <div className="absolute bottom-0 left-0 right-0 top-0  flex h-full flex-1 flex-col">
         {!tasks.length && (
-          <div className="text-foreground/60">
+          <div className="text-foreground/60 px-3">
             <Trans id="No task yet."></Trans>
           </div>
         )}
@@ -38,11 +38,6 @@ export function TasksList({ struct }: PostListProps) {
             {[...todoTasks, ...completedTasks].map((item) => {
               return <TaskItem key={item.id} creation={item as any} />
             })}
-          </div>
-        </div>
-        <div className="px-6 pb-2">
-          <div className="sticky bottom-0 mx-auto flex w-full max-w-2xl flex-col gap-2">
-            <TaskInput />
           </div>
         </div>
       </div>

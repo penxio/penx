@@ -111,7 +111,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
 
       <div
         className={cn(
-          'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 md:px-8',
+          'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 pt-14 md:px-8',
           isMobileApp && 'px-3 pt-0',
           className,
         )}
@@ -125,7 +125,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
           {!hideTitle && (
             <div className="mb-2 flex flex-col space-y-3 md:mb-5">
               <div className="relative">
-                {!isImage && !isMobileApp && (
+                {/* {!isImage && !isMobileApp && (
                   <CoverUpload
                     creation={creation}
                     isCover={isCover}
@@ -135,7 +135,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
                       })
                     }}
                   />
-                )}
+                )} */}
                 <div className="flex items-center gap-2">
                   {struct?.type === StructType.TASK && (
                     <Checkbox

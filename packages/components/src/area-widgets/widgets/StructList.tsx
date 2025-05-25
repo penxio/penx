@@ -28,7 +28,7 @@ export function StructList({ onSelect }: Props) {
         >
           <div>{struct.name}</div>
 
-          <TooltipProvider>
+          {/* <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -48,7 +48,7 @@ export function StructList({ onSelect }: Props) {
               </TooltipTrigger>
               <TooltipContent>Open in new panel</TooltipContent>
             </Tooltip>
-          </TooltipProvider>
+          </TooltipProvider> */}
         </div>
       ))}
     </div>

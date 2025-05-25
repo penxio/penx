@@ -51,14 +51,6 @@ export function NoteGalleryView({ struct }: PostListProps) {
         >
           <NoteList />
         </div>
-
-        {!isMobileApp && (
-          <div className="px-6 pb-2">
-            <div className="mx-auto flex w-full max-w-2xl flex-col gap-2">
-              <NoteInput />
-            </div>
-          </div>
-        )}
       </div>
     </div>
   )
