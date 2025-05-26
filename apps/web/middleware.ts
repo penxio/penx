@@ -1,4 +1,4 @@
-import { getIronSession } from 'iron-session'
+// import { getIronSession } from 'iron-session'
 import Negotiator from 'negotiator'
 import { NextRequest, NextResponse } from 'next/server'
 import { getSessionOptions } from '@penx/libs/session'
@@ -92,42 +92,7 @@ export default async function middleware(req: NextRequest) {
   //   locale,
   // )
 
-  const isDashboard = path.startsWith('/~')
-
-  const token = await getIronSession<SessionData>(
-    req.cookies as any,
-    getSessionOptions(),
-  )
-
-  // console.log('====isRoot:', isRoot, path)
-  if (isRoot) {
-    if (path.startsWith('/docs/')) {
-      const newUrl = `https://docs.penx.io/${path.replace('/docs/', 'posts/')}`
-      return NextResponse.rewrite(newUrl)
-    }
-
-    console.log('========isRoot:', isRoot)
-
-    return NextResponse.rewrite(new URL(`/${locale}`, req.url))
-  }
-
-  if (path.startsWith('/@')) {
-    return NextResponse.rewrite(new URL(`/site${path}`, req.url), {
-      headers: { 'x-current-path': path },
-    })
-  }
-
-  // return NextResponse.rewrite(new URL(`/${hostname}${path}`, req.url));
-  // return NextResponse.next()
-
-  // console.log('>>>>>>>hostname:', hostname, 'path:', path, 'locale:', locale)
-
-  return NextResponse.rewrite(
-    new URL(`/${locale}/site/${hostname}${path}`, req.url),
-    {
-      headers: { 'x-current-path': path },
-    },
-  )
+  return NextResponse.rewrite(new URL(`/${locale}`, req.url))
 }
 
 function getRequestLocale(requestHeaders: Headers): string {
