@@ -40,6 +40,8 @@ export const SITE_MODE = 'SITE_MODE'
 
 export const ACTIVE_SITE = 'ACTIVE_SITE'
 
+export const LOCALE = 'LOCALE'
+
 export enum SubscriptionType {
   SUBSCRIBE = 'SUBSCRIBE',
   UNSUBSCRIBE = 'UNSUBSCRIBE',
@@ -87,7 +89,7 @@ export const defaultEditorContent = {
   content: [
     {
       type: 'paragraph',
-      content: [{ type: 'text', text: '' }],
+      content: [],
     },
   ],
 }
@@ -416,3 +418,23 @@ export const reservedDomains = [
   'production',
   'sepolia',
 ]
+
+export const supportLanguages: [string, string][] = [
+  ['en', 'English'],
+  ['zh-CN', '简体中文'],
+  ['ja', '日本語'],
+  ['fr', 'Français'],
+  ['de', 'Deutsch'],
+  ['ru', 'Русский'],
+  ['ko', '한국어'],
+]
+
+export const langs = supportLanguages.map(([lang]) => lang)
+
+export const locales = [...langs, 'pseudo']
+
+export const langMap: Map<string, string> = new Map(supportLanguages)
+
+export const langMapReverse = new Map(
+  supportLanguages.map(([standardLang, lang]) => [lang, standardLang]),
+)

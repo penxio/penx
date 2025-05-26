@@ -114,41 +114,9 @@ async function addNote(content: string, area: IAreaNode) {
   )!
 
   const creation: ICreationNode = {
-    id: uniqueId(),
-    type: NodeType.CREATION,
-    props: {
-      slug: uniqueId(),
-      structId: struct.id,
-      title: content.slice(0, 20),
-      description: '',
-      content: noteToContent(content),
-      image: '',
-      cells: {},
-      type: StructType.NOTE,
-      areaId: area.id,
-      icon: '',
-      podcast: {},
-      i18n: {},
-      gateType: GateType.FREE,
-      status: CreationStatus.DRAFT,
-      commentStatus: any
-      featured: false,
-      collectible: false,
-      isJournal: false,
-      isPopular: false,
-      checked: false,
-      delivered: false,
-      commentCount: 0,
-      cid: '',
-      openedAt: new Date(),
-    },
-    userId: site.userId,
-    siteId: struct.siteId,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
+  } as any
 
-  await localDB.addCreation(creation)
+  // await localDB.addCreation(creation)
 }
 
 const noteToContent = (str: string) => {

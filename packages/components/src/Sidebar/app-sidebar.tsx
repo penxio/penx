@@ -34,6 +34,7 @@ import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { AddCreationButton } from '../AddCreationButton'
 import { AreaWidgets } from '../area-widgets'
 import { AreasPopover } from '../AreasPopover/AreasPopover'
+import { LangSwitcher } from '../LangSwitcher'
 import { ProfileButton } from '../ProfileButton'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
@@ -58,7 +59,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarFooter className="py-0">
         <div className="flex items-center justify-between">
-          <div>
+          <div className='flex items-center gap-1'>
             {/* {session && <VisitSiteButton />} */}
 
             {/* <TooltipProvider>
@@ -132,6 +133,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </TooltipProvider>
             )} */}
             <ModeToggle className="hover:bg-foreground/8" />
+            <LangSwitcher />
           </div>
           <ProfileButton />
         </div>

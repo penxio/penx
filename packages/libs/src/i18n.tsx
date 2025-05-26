@@ -7,13 +7,11 @@ import {
   usePathname as usePathnameNext,
   useRouter as useRouterNext,
 } from 'next/navigation'
-import linguiConfig from './lingui.config'
+import { locales } from '@penx/constants'
 
 type Props = React.ComponentPropsWithoutRef<typeof NextLink> & {
   isSite?: boolean
 }
-
-const locales = linguiConfig.locales as string[]
 
 export function Link({ isSite = false, ...props }: Props) {
   const pathname = usePathnameNext()!

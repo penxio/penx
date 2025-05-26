@@ -17,6 +17,7 @@
 	"packageClassList": [
 		"DarkModeNative",
 		"SafeAreaPlugin",
+		"DevicePlugin",
 		"AppPlugin",
 		"HapticsPlugin",
 		"KeyboardPlugin",

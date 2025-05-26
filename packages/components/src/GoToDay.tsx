@@ -8,9 +8,8 @@ import { goToDay } from '@penx/hooks/useJournal'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
-import { JournalShortcut } from './DashboardLayout/panel-renderer/PanelJournal/JournalShortcut'
 
-const MotionCalendarDays = motion(CalendarDays)
+const MotionCalendarDays = motion.create(CalendarDays)
 
 interface Props {
   initialDate: Date

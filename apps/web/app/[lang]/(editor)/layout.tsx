@@ -5,9 +5,7 @@ import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import '@glideapps/glide-data-grid/dist/index.css'
-import { allMessages } from '@/appRouterI18n'
 import { SubscriptionGuideDialog } from '@/components/SubscriptionGuideDialog'
-import { initLingui } from '@/initLingui'
 // import { setI18n } from '@lingui/react/server'
 import { Metadata } from 'next'
 import { Poppins, Roboto } from 'next/font/google'
@@ -19,7 +17,8 @@ import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
-import linguiConfig from '@penx/libs/lingui.config'
+import { locales } from '@penx/constants'
+import { LocaleProvider } from '@penx/locales'
 import { cn } from '@penx/utils'
 import { LoginDialog } from '@penx/widgets/LoginDialog/LoginDialog'
 import { WatchAppEvent } from './WatchAppEvent'
@@ -38,7 +37,7 @@ const description =
 const image = 'https://penx.io/opengraph-image'
 
 export async function generateStaticParams() {
-  return linguiConfig.locales.map((lang: any) => ({ lang }))
+  return locales.map((lang: any) => ({ lang }))
 }
 
 export const metadata: Metadata = {
@@ -70,7 +69,8 @@ export default async function RootLayout({
 }) {
   const lang = (await params).lang
   const locale = lang === 'pseudo' ? 'en' : lang
-  initLingui(locale)
+
+  console.log('=====locale:', locale)
 
   const headersList = await headers()
   const cookies = headersList.get('cookie')
@@ -78,10 +78,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={cn('bg-background min-h-screen font-sans antialiased')}>
-        <LinguiClientProvider
-          initialLocale={locale}
-          initialMessages={allMessages[locale]!}
-        >
+        <LocaleProvider locale={locale}>
           <DashboardProviders cookies={cookies}>
             <GoogleOauthDialog />
             <LoginDialog />
@@ -106,7 +103,8 @@ export default async function RootLayout({
               </DashboardLayout>
             </ThemeProvider>
           </DashboardProviders>
-        </LinguiClientProvider>
+        </LocaleProvider>
+
         <div id="portal" className="fixed left-0 top-0 z-[100000000]" />
       </body>
     </html>

@@ -4,6 +4,7 @@ import { DashboardLayout } from '@penx/components/DashboardLayout'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { LoginStatus } from '@penx/constants'
+import { LocaleProvider } from '@penx/locales'
 import { queryClient } from '@penx/query-client'
 import { StoreProvider } from '@penx/store'
 import { SessionData } from '@penx/types'
@@ -14,15 +15,13 @@ import { Updater } from './Updater'
 import './style.css'
 
 function App() {
-  const locale = 'en'
-
   return (
-    <LinguiClientProvider initialLocale={locale} initialMessages={{}}>
+    <LocaleProvider>
       <DashboardProviders>
         <DashboardLayout></DashboardLayout>
         <Updater />
       </DashboardProviders>
-    </LinguiClientProvider>
+    </LocaleProvider>
   )
 }
 

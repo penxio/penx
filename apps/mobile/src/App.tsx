@@ -50,7 +50,7 @@ import './theme/variables.css'
 import { useEffect, useRef } from 'react'
 import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
-import { dynamicActivate, LocaleProvider } from '@penx/locales'
+import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { NavProvider } from './components/NavContext'
 // import { activateLocale } from './lib/activateLocale'
@@ -195,10 +195,6 @@ const App: React.FC = () => {
             },
           },
     )
-  }, [])
-
-  useEffect(() => {
-    dynamicActivate('zh_CN')
   }, [])
 
   return (

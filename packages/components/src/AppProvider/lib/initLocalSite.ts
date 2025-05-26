@@ -1,11 +1,16 @@
-import { format } from 'date-fns';
-import { defaultEditorContent, defaultNavLinks } from '@penx/constants';
-import { getDefaultStructs } from '@penx/libs/getDefaultStructs';
-import { getInitialWidgets } from '@penx/libs/getInitialWidgets';
-import { localDB } from '@penx/local-db';
-import { IJournalNode, ISiteNode, IStructNode, NodeType } from '@penx/model-type';
-import { uniqueId } from '@penx/unique-id';
-
+import { t } from '@lingui/core/macro'
+import { format } from 'date-fns'
+import { defaultEditorContent, defaultNavLinks } from '@penx/constants'
+import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
+import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
+import { localDB } from '@penx/local-db'
+import {
+  IJournalNode,
+  ISiteNode,
+  IStructNode,
+  NodeType,
+} from '@penx/model-type'
+import { uniqueId } from '@penx/unique-id'
 
 export async function initLocalSite(uid?: string) {
   return await localDB.transaction('rw', localDB.node, async () => {
@@ -16,7 +21,7 @@ export async function initLocalSite(uid?: string) {
       type: NodeType.SITE,
       siteId: siteId,
       props: {
-        name: 'My Site',
+        name: t`My Site`,
         description: '',
         about: JSON.stringify(defaultEditorContent),
         logo: '',
@@ -51,9 +56,9 @@ export async function initLocalSite(uid?: string) {
       id: uniqueId(),
       type: NodeType.AREA,
       props: {
-        slug: 'first-area',
-        name: 'First area',
-        description: 'An area for sharing thoughts, stories, and insights.',
+        slug: 'my-area',
+        name: t`My area`,
+        description: t`An area for sharing thoughts, stories, and insights.`,
         about: JSON.stringify(defaultEditorContent),
         logo: '',
         chargeMode: 'FREE',

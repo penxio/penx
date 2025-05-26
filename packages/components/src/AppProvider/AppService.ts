@@ -1,3 +1,4 @@
+import { i18n } from '@lingui/core'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import ky from 'ky'
@@ -26,6 +27,7 @@ import { syncNodesToLocal } from './lib/syncNodesToLocal'
 const PANELS = 'PANELS'
 
 export class AppService {
+  constructor() {}
   inited = false
 
   async init(session: SessionData) {

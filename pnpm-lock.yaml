@@ -714,6 +714,9 @@ importers:
       '@iconify/tailwind4':
         specifier: ^1.0.4
         version: 1.0.6(tailwindcss@4.1.6)
+      '@lingui/babel-plugin-lingui-macro':
+        specifier: 5.3.1
+        version: 5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2)
       '@lingui/cli':
         specifier: 5.3.1
         version: 5.3.1(typescript@5.8.2)
@@ -1049,9 +1052,6 @@ importers:
       '@iconify/tailwind4':
         specifier: ^1.0.4
         version: 1.0.6(tailwindcss@4.1.6)
-      '@lingui/babel-plugin-lingui-macro':
-        specifier: ^5.3.1
-        version: 5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2)
       '@lingui/cli':
         specifier: 5.3.1
         version: 5.3.1(typescript@5.8.2)

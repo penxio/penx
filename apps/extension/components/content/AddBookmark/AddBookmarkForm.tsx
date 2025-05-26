@@ -13,9 +13,9 @@ import { z } from 'zod'
 import { defaultEditorContent } from '@penx/constants'
 import { useAreas } from '@penx/hooks/useAreas'
 import { localDB } from '@penx/local-db'
-import { ICreation, ISite } from '@penx/model-type'
+import { ICreationNode } from '@penx/model-type'
 import { siteAtom, store } from '@penx/store'
-import { CreationStatus, StructType, GateType } from '@penx/types'
+import { CreationStatus, GateType, StructType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -75,43 +75,14 @@ export function AddBookmarkForm() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const site = store.site.get()
     const structs = store.structs.get()
-    const struct = structs.find((struct) => struct.type === StructType.BOOKMARK)!
+    const struct = structs.find(
+      (struct) => struct.props.type === StructType.BOOKMARK,
+    )!
 
     try {
       setLoading(true)
-      const creation: ICreation = {
-        id: uniqueId(),
-        slug: uniqueId(),
-        structId: struct.id,
-        title: data.title || '',
-        description: data.description,
-        content: JSON.stringify(defaultEditorContent),
-        image: data.avatar,
-        props: {
-          url: data.url,
-        },
-        type: StructType.BOOKMARK,
-        areaId: data.areaId,
-        siteId: struct.siteId,
-        icon: '',
-        podcast: {},
-        i18n: {},
-        userId: site.userId,
-        gateType: GateType.FREE,
-        status: CreationStatus.DRAFT,
-        commentStatus: any
-        featured: false,
-        collectible: false,
-        isJournal: false,
-        isPopular: false,
-        checked: false,
-        delivered: false,
-        commentCount: 0,
-        cid: '',
-        openedAt: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
+      // TODO:
+      const creation: ICreationNode = {} as any
       await localDB.addCreation(creation)
       // await addCreation({
       //   title: data.title,
@@ -156,10 +127,10 @@ export function AddBookmarkForm() {
     if (areas.length > 0) {
       let areaId = await get(AREA_ID)
 
-      if (!areas.some((f) => f.id === areaId)) {
-        const field = areas.find((field) => field.isGenesis) || areas[0]
-        areaId = field.id
-      }
+      // if (!areas.some((f) => f.id === areaId)) {
+      //   const field = areas.find((field) => field.isGenesis) || areas[0]
+      //   areaId = field.id
+      // }
 
       setTimeout(() => {
         form.setValue('areaId', areaId)

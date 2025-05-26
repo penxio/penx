@@ -41,3 +41,5 @@ yarn-error.log*
 .output
 
 tsconfig.tsbuildinfo
+
+packages/locales/**/*.ts 

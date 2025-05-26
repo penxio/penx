@@ -55,7 +55,6 @@
   },
   "devDependencies": {
     "@iconify/tailwind4": "^1.0.4",
-    "@lingui/babel-plugin-lingui-macro": "^5.3.1",
     "@lingui/cli": "5.3.1",
     "@lingui/macro": "^5.3.1",
     "@lingui/swc-plugin": "5.5.2",

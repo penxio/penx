@@ -47,6 +47,7 @@ export function JournalQuickInput({
   const editor = useEditor({
     content: defaultEditorContent,
     extensions: [StarterKit],
+    immediatelyRender: false,
     onUpdate({ editor }) {
       setInput(JSON.stringify(editor.getJSON()))
     },

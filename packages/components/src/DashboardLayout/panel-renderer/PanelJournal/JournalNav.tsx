@@ -1,4 +1,3 @@
-import { isMobileApp } from '@penx/constants'
 import { cn } from '@penx/utils'
 import { GoToDay } from '../../../GoToDay'
 import { JournalShortcut } from './JournalShortcut'

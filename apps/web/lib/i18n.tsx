@@ -1,6 +1,5 @@
 'use client'
 
-import linguiConfig from '@/lingui.config'
 import { useLingui } from '@lingui/react'
 import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import NextLink from 'next/link'
@@ -8,12 +7,11 @@ import {
   usePathname as usePathnameNext,
   useRouter as useRouterNext,
 } from 'next/navigation'
+import { locales } from '@penx/constants'
 
 type Props = React.ComponentPropsWithoutRef<typeof NextLink> & {
   isSite?: boolean
 }
-
-const locales = linguiConfig.locales as string[]
 
 export function Link({ isSite = false, ...props }: Props) {
   const pathname = usePathnameNext()!

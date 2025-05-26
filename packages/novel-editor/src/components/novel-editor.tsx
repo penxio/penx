@@ -90,6 +90,7 @@ export const NovelEditor = ({
     <div className={cn('relative w-full', className)}>
       <EditorRoot>
         <EditorContent
+          immediatelyRender={false}
           initialContent={value || defaultEditorContent}
           extensions={extensions}
           className="penx-editor relative"

@@ -8,8 +8,7 @@ export function TabContent() {
   return (
     <div>
       <div></div>
-      <Trans id="hello" message="Hello worldXXX." />
-      HElloxxx
+      Hello
     </div>
   )
 }

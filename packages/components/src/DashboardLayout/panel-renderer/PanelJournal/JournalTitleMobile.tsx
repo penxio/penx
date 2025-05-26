@@ -10,8 +10,6 @@ import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { JournalShortcut } from './JournalShortcut'
 
-const MotionCalendarDays = motion(CalendarDays)
-
 interface Props {
   initialDate: Date
 }

@@ -10,7 +10,7 @@ const supportLanguages = [
 
 const langs = supportLanguages.map(([lang]) => lang)
 
-// /** @type {import('@lingui/conf').LinguiConfig} */
+/** @type {import('@lingui/conf').LinguiConfig} */
 export default {
   locales: [...langs, 'pseudo'],
   pseudoLocale: 'pseudo',
@@ -21,25 +21,7 @@ export default {
   catalogs: [
     {
       path: '<rootDir>/packages/locales/src/locales/{locale}',
-      include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
-      exclude: ['**/node_modules/**'],
-    },
-
-    {
-      path: '<rootDir>/apps/web/locales/{locale}',
-      include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
-      exclude: ['**/node_modules/**'],
-    },
-
-    {
-      path: '<rootDir>/apps/mobile/src/locales/{locale}',
-      include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
-      exclude: ['**/node_modules/**'],
-    },
-
-    {
-      path: '<rootDir>/apps/extension/locales/{locale}',
-      include: ['<rootDir>/apps/**/*.tsx', '<rootDir>/packages/**/*.tsx'],
+      include: ['<rootDir>/apps/**/*.{ts,tsx}', '<rootDir>/packages/**/*.{ts,tsx}'],
       exclude: ['**/node_modules/**'],
     },
   ],

@@ -3,6 +3,7 @@ import { Capacitor } from '@capacitor/core'
 import { IonContent, IonMenu } from '@ionic/react'
 import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
 import { AreasPopover } from '@penx/components/AreasPopover/AreasPopover'
+import { LangSwitcher } from '@penx/components/LangSwitcher'
 import { ProfileButton } from '@penx/components/ProfileButton'
 import { appEmitter } from '@penx/emitter'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
@@ -58,6 +59,7 @@ const Menu: React.FC = () => {
           </div>
           <div className="relative z-10 flex items-center justify-between">
             <MobileModeToggle />
+            <LangSwitcher />
             <ProfileButton
               loginButton={
                 <Button

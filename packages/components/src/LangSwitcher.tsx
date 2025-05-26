@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { langMap } from '@/lib/supportLanguages'
 import { msg } from '@lingui/core/macro'
 import { useLingui } from '@lingui/react'
-import { useRouter } from 'next/navigation'
+import { langMap, LOCALE } from '@penx/constants'
 import { usePathname } from '@penx/libs/i18n'
 import {
   Select,
@@ -28,7 +27,6 @@ export function LangSwitcher({
   className,
   locales = ['en', 'ja', 'ru', 'zh-CN'],
 }: LangSwitcherProps) {
-  const router = useRouter()
   const { i18n } = useLingui()
   const pathname = usePathname()
 
@@ -40,13 +38,10 @@ export function LangSwitcher({
   function handleChange(value: string) {
     const locale = value as LOCALES
 
-    // console.log('=====pathname:', pathname, 'locale:', locale)
-
-    // const pathNameWithoutLocale = pathname?.split('/')?.slice(2) ?? []
-    const newPath = `/${locale}/${pathname}`
-
     setLocale(locale)
-    router.push(newPath)
+    i18n.activate(locale)
+    localStorage.setItem(LOCALE, locale)
+    // router.push(newPath)
   }
 
   return (

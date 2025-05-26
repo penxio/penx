@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { Trans } from '@lingui/react'
 import {
   AudioLinesIcon,
   BookmarkIcon,
