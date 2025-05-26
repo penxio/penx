@@ -1,4 +1,3 @@
-export * from './theme.types'
 export * from './types'
 export * from './session.types'
 export * from './database-types'

@@ -6,42 +6,52 @@ import { SessionData } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import './style.css'
-import { LoginStatus } from '@penx/constants'
+import ky from 'ky'
+import { LoginStatus, ROOT_HOST } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
+import { useSession } from '@penx/session'
 import { sleep } from '@penx/utils'
 
 export function Login() {
+  const { login } = useSession()
   const [loading, setLoading] = useState(false)
-  async function login() {
-    // setLoading(true)
-    // const authToken = nanoid()
-    // console.log('hello........')
-    // const host = import.meta.env.VITE_ROOT_HOST
-    // openUrl(`${host}/desktop-login?token=${authToken}`)
-    // while (true) {
-    //   try {
-    //     const { status } = await api.desktop.getLoginStatus.query({
-    //       token: authToken,
-    //     })
-    //     // console.log('=======status:', status)
-    //     if (status === LoginStatus.CONFIRMED) {
-    //       break
-    //     }
-    //     if (status === LoginStatus.CANCELED) {
-    //       setLoading(false)
-    //       return
-    //       // break
-    //     }
-    //     await sleep(1000)
-    //   } catch (error) {
-    //     console.log('error:', error)
-    //     // toost
-    //     setLoading(false)
-    //     return
-    //   }
-    // }
-    // const session = await api.desktop.loginByToken.mutate(authToken)
-    // appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
+  async function loginToDesktop() {
+    setLoading(true)
+    const authToken = nanoid()
+    const host = import.meta.env.VITE_ROOT_HOST
+    openUrl(`${host}/desktop-login?token=${authToken}`)
+    while (true) {
+      try {
+        const { status } = await ky
+          .get(`${ROOT_HOST}/api/app/get-desktop-login-status`, {
+            searchParams: { token: authToken },
+          })
+          .json<{ status: string }>()
+
+        // console.log('=======status:', status)
+        if (status === LoginStatus.CONFIRMED) {
+          break
+        }
+        if (status === LoginStatus.CANCELED) {
+          setLoading(false)
+          return
+          // break
+        }
+        await sleep(1000)
+      } catch (error) {
+        console.log('error:', error)
+        // toost
+        setLoading(false)
+        return
+      }
+    }
+
+    const session = await login({
+      type: 'desktop-login',
+      authToken,
+    })
+
+    appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
   }
 
   return (
@@ -57,7 +67,7 @@ export function Login() {
           className="w-48"
           disabled={loading}
           onClick={() => {
-            login()
+            loginToDesktop()
           }}
         >
           {loading ? (

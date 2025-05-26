@@ -33,9 +33,4 @@ export enum NetworkNames {
   BASE = 'BASE',
 }
 
-export const SHAPE_URL = ROOT_HOST.includes('penx.io')
-  ? `https://sync.penx.io/api/shape-proxy`
-  : `https://sync-dev.penx.io/api/shape-proxy`
-
-// export const SHAPE_URL = `https://sync-dev.penx.io/api/shape-proxy`
-// export const SHAPE_URL = `https://sync.penx.io/api/shape-proxy`
+export const SHAPE_URL = process.env.NEXT_PUBLIC_SYNC_URL!

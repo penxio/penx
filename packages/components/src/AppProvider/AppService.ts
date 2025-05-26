@@ -1,5 +1,6 @@
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
+import ky from 'ky'
 import { Node } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import {
@@ -69,8 +70,10 @@ export class AppService {
         return site
       }
 
+      console.log('>>>>>>>>>>_------------')
+
       const remoteSite = await syncNodesToLocal(session.siteId)
-      // console.log('=======remoteSite:', remoteSite)
+      console.log('=======remoteSite:', remoteSite)
 
       return remoteSite
     }
@@ -83,21 +86,23 @@ export class AppService {
 
     const nodes = await localDB.listNodes(site.id)
 
-    // const { existed, siteId } = await api.site.syncInitialNodes.mutate({
-    //   nodes,
-    // })
+    const { existed, siteId } = await ky
+      .post('/api/app/sync-initial-nodes', {
+        json: { nodes },
+      })
+      .json<{ ok: boolean; existed: boolean; siteId: string }>()
 
-    // if (existed) {
-    //   site = await syncNodesToLocal(siteId)
-    // } else {
-    //   await localDB.updateSiteProps(site.id, { isRemote: true })
-    //   await syncNodesToLocal(site.id)
-    // }
+    if (existed) {
+      site = await syncNodesToLocal(siteId)
+    } else {
+      await localDB.updateSiteProps(site.id, { isRemote: true })
+      await syncNodesToLocal(site.id)
+    }
 
-    // await updateSession({
-    //   activeSiteId: site.id,
-    //   siteId: site.id,
-    // })
+    await updateSession({
+      activeSiteId: site.id,
+      siteId: site.id,
+    })
     return site
   }
 

@@ -237,10 +237,6 @@ export function DatabaseProvider({
     //   ) as DatabaseRecord[]
     // })
     // reloadDatabase(newDatabase)
-    // await api.database.deleteRecord.mutate({
-    //   databaseId: database.id,
-    //   recordId,
-    // })
   }
 
   async function addColumn(columnType: ColumnType) {

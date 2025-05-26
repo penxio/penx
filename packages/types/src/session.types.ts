@@ -53,6 +53,7 @@ export type LoginData =
   | AppleLoginData
   | WalletLoginData
   | PasswordLoginData
+  | DesktopLoginData
   | RegisterByEmailData
   | RegisterByCodeData
 
@@ -74,6 +75,11 @@ export type PasswordLoginData = {
   type: 'password'
   username: string
   password: string
+}
+
+export type DesktopLoginData = {
+  type: 'desktop-login'
+  authToken: string
 }
 
 export type RegisterByEmailData = {

@@ -1,7 +1,6 @@
 import { get, set } from 'idb-keyval'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { localDB } from '@penx/local-db'
-import { api } from '@penx/trpc-client'
 import { SessionData } from '@penx/types'
 import { sleep } from '@penx/utils'
 

@@ -55,6 +55,15 @@ const nextConfig = {
         source: '/api/session/:path*',
         destination: 'https://penx.io/api/session/:path*',
       },
+
+      {
+        source: '/api/app/:path*',
+        destination: 'https://penx.io/api/app/:path*',
+      },
+      {
+        source: '/api/v1/:path*',
+        destination: 'https://penx.io/api/v1/:path*',
+      },
     ]
   },
 
