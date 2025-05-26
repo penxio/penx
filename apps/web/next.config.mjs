@@ -15,7 +15,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
   },
   experimental: {
     swcPlugins: [['@lingui/swc-plugin', {}]],
@@ -50,6 +50,10 @@ const nextConfig = {
         source: '/blog/:path*',
         destination: 'https://docs.penx.io/creations/:path*',
         // https://my-blog.super.so/blog/:path*
+      },
+      {
+        source: '/api/session/:path*',
+        destination: 'https://penx.io/api/session/:path*',
       },
     ]
   },
