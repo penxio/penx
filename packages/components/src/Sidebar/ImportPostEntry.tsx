@@ -2,8 +2,6 @@
 
 import { useState } from 'react'
 import { ArrowRight, XIcon } from 'lucide-react'
-import { ProviderType } from '@penx/db/client'
-import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { Link } from '@penx/libs/i18n'
 import { Button } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'

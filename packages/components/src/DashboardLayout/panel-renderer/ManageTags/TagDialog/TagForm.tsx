@@ -6,10 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans, useLingui } from '@lingui/react'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { useSiteTags } from '@penx/hooks/useSiteTags'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -49,10 +47,10 @@ export function TagForm() {
       await store.tags.refetchTags()
       form.reset()
       setIsOpen(false)
-      await api.tag.updateTag.mutate({
-        tagId: tag.id,
-        ...data,
-      })
+      // await api.tag.updateTag.mutate({
+      //   tagId: tag.id,
+      //   ...data,
+      // })
       toast.success(<Trans id="Updated successfully!"></Trans>)
     } catch (error) {
       const msg = extractErrorMessage(error)

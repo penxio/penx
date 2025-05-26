@@ -2,14 +2,8 @@
 
 import { createContext, PropsWithChildren, useContext, useEffect } from 'react'
 import { STATIC_URL } from '@penx/constants'
-import { Area, Channel, Struct, Site, Tag } from '@penx/db/client'
 
-type SiteType = Site & {
-  channels: Channel[]
-  structs: Struct[]
-  areas: Area[]
-  tags: Tag[]
-}
+type SiteType = any
 
 interface Features {
   journal: boolean

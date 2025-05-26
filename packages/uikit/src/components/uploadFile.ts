@@ -1,6 +1,5 @@
 import { get } from 'idb-keyval'
 import { ACTIVE_SITE, STATIC_URL } from '@penx/constants'
-import { api } from '@penx/trpc-client'
 import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 
 type UploadReturn = {
@@ -42,35 +41,36 @@ export async function uploadFile(file: File, opt = {} as UploadOptions) {
   const pathname = `${prefix}${filename}`
 
   const url = `/${pathname}`
-  const asset = await api.asset.getByUrl.query({ url })
+  // const asset = await api.asset.getByUrl.query({ url })
 
-  if (!asset) {
-    const res = await fetch(`${STATIC_URL}/${pathname}${qs}`, {
-      method: 'PUT',
-      body: file,
-    })
+  // if (!asset) {
+  //   const res = await fetch(`${STATIC_URL}/${pathname}${qs}`, {
+  //     method: 'PUT',
+  //     body: file,
+  //   })
 
-    if (!res.ok) {
-      throw new Error('Failed to upload file')
-    }
+  //   if (!res.ok) {
+  //     throw new Error('Failed to upload file')
+  //   }
 
-    data = await res.json()
-    data = { ...data, url, hash: fileHash }
-  } else {
-    data = { ...data, url: asset.url, hash: fileHash }
-  }
+  //   data = await res.json()
+  //   data = { ...data, url, hash: fileHash }
+  // } else {
+  //   data = { ...data, url: asset.url, hash: fileHash }
+  // }
 
-  if (saveToDB) {
-    await api.asset.create.mutate({
-      siteId: site.id,
-      url,
-      filename: file.name,
-      contentType: file.type,
-      size: file.size,
-      isPublic,
-      createdAt: file.lastModified ? new Date(file.lastModified) : new Date(),
-    })
-  }
+  // if (saveToDB) {
+  //   await api.asset.create.mutate({
+  //     siteId: site.id,
+  //     url,
+  //     filename: file.name,
+  //     contentType: file.type,
+  //     size: file.size,
+  //     isPublic,
+  //     createdAt: file.lastModified ? new Date(file.lastModified) : new Date(),
+  //   })
+  // }
 
-  return data as UploadReturn
+  // return data as UploadReturn
+  return {} as UploadReturn
 }

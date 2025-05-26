@@ -3,12 +3,9 @@ import { toast } from 'sonner'
 import { Address } from 'viem'
 import { z } from 'zod'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { GateType } from '@penx/db/client'
 import { Creation } from '@penx/domain'
 import { ICreationNode } from '@penx/model-type'
 // import { revalidateMetadata } from '@penx/libs/revalidateTag'
-import { api } from '@penx/trpc-client'
-import { CreationById } from '@penx/types'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { syncPostToHub } from '../../services/src/syncPostToHub'
 
@@ -35,39 +32,39 @@ export function usePublishPost() {
       setLoading(true)
 
       let creationId: number | undefined
-      try {
-        await api.creation.publish.mutate({
-          siteId: id,
-          creationId: creation?.id,
-          ...opt,
-          slug,
-        })
+      // try {
+      //   await api.creation.publish.mutate({
+      //     siteId: id,
+      //     creationId: creation?.id,
+      //     ...opt,
+      //     slug,
+      //   })
 
-        setLoading(false)
-        // revalidateMetadata(`posts`)
-        // revalidateMetadata(`posts-${post.slug}`)
-        toast.success('published successfully!')
+      //   setLoading(false)
+      //   // revalidateMetadata(`posts`)
+      //   // revalidateMetadata(`posts-${post.slug}`)
+      //   toast.success('published successfully!')
 
-        // backup to github
-        if (site.repo && site.installationId) {
-          // const editor = createPlateEditor({
-          //   value: JSON.parse(creation.content),
-          //   plugins: editorPlugins,
-          // })
-          // const content = (editor.api as any).markdown.serialize()
-          // syncPostToHub(site, creation, content).catch((error) => {
-          //   const msg = extractErrorMessage(error)
-          //   toast.error(msg)
-          // })
-        }
-        // setIsOpen(false)
-      } catch (error) {
-        console.log('========error:', error)
-        const msg = extractErrorMessage(error)
-        toast.error(msg)
-        setLoading(false)
-        throw error
-      }
+      //   // backup to github
+      //   if (site.repo && site.installationId) {
+      //     // const editor = createPlateEditor({
+      //     //   value: JSON.parse(creation.content),
+      //     //   plugins: editorPlugins,
+      //     // })
+      //     // const content = (editor.api as any).markdown.serialize()
+      //     // syncPostToHub(site, creation, content).catch((error) => {
+      //     //   const msg = extractErrorMessage(error)
+      //     //   toast.error(msg)
+      //     // })
+      //   }
+      //   // setIsOpen(false)
+      // } catch (error) {
+      //   console.log('========error:', error)
+      //   const msg = extractErrorMessage(error)
+      //   toast.error(msg)
+      //   setLoading(false)
+      //   throw error
+      // }
     },
   }
 }

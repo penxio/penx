@@ -1,5 +1,4 @@
 import { Octokit } from 'octokit'
-import { Creation, Site } from '@penx/db/client'
 
 export type TreeItem = {
   path: string
@@ -39,8 +38,8 @@ export class SyncService {
 
   private baseBranchSha: string
 
-  private site: Site
-  private creation: Creation
+  private site: any
+  private creation: any
 
   filesTree: Content[]
 
@@ -145,14 +144,14 @@ export class SyncService {
     return tree
   }
 
-  async pushSite(site: Site) {
+  async pushSite(site: any) {
     this.site = site
     let tree: TreeItem[] = []
     tree = await this.getSiteTree()
     await this.pushTree(tree)
   }
 
-  async pushPost(post: Creation, markdown = '') {
+  async pushPost(post: any, markdown = '') {
     this.creation = post
     let tree: TreeItem[] = []
     tree = await this.getPostTree(markdown)

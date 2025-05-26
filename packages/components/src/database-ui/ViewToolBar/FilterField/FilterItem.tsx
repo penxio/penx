@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEvent } from 'react'
-import { Column } from '@penx/db/client'
+import { IColumn } from '@penx/model-type'
 import { Filter } from '@penx/types'
 import { Input } from '@penx/uikit/input'
 import { FieldSelect } from './FieldSelect'
@@ -9,8 +9,8 @@ import { OperatorSelect } from './OperatorSelect'
 
 interface Props {
   filter: Filter
-  columns: Column[]
-  sortedColumns: Column[]
+  columns: IColumn[]
+  sortedColumns: IColumn[]
   deleteFilter: (columnId: string) => void
   updateFilter: (columnId: string, newColumnId: string) => void
   onChangeValue: (val: ChangeEvent<HTMLInputElement>, columnId: string) => void

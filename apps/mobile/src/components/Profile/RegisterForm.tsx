@@ -9,7 +9,6 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import { localDB } from '@penx/local-db'
-import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -46,33 +45,30 @@ export function RegisterForm({}: Props) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    try {
-      const sites = await localDB.listAllSites()
-      const site = sites.find((s) => !s.props.isRemote)
-
-      const ref = searchParams?.get('ref') as string
-      setLoading(true)
-      await api.auth.registerByEmail.mutate({
-        ...data,
-        ref: ref || '',
-        userId: site?.userId,
-      })
-
-      setAuthStatus({
-        type: 'register-email-sent',
-        data: {
-          ...data,
-          ref: ref || '',
-          userId: site?.userId,
-        },
-      })
-    } catch (error) {
-      console.log('========error:', error)
-      const msg = extractErrorMessage(error)
-      toast.error(msg)
-    }
-
-    setLoading(false)
+    // try {
+    //   const sites = await localDB.listAllSites()
+    //   const site = sites.find((s) => !s.props.isRemote)
+    //   const ref = searchParams?.get('ref') as string
+    //   setLoading(true)
+    //   await api.auth.registerByEmail.mutate({
+    //     ...data,
+    //     ref: ref || '',
+    //     userId: site?.userId,
+    //   })
+    //   setAuthStatus({
+    //     type: 'register-email-sent',
+    //     data: {
+    //       ...data,
+    //       ref: ref || '',
+    //       userId: site?.userId,
+    //     },
+    //   })
+    // } catch (error) {
+    //   console.log('========error:', error)
+    //   const msg = extractErrorMessage(error)
+    //   toast.error(msg)
+    // }
+    // setLoading(false)
   }
 
   return (

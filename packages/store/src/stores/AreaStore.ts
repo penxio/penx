@@ -3,7 +3,6 @@ import { atom } from 'jotai'
 import { UpdateAreaInput } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { IAreaNode } from '@penx/model-type'
-import { api } from '@penx/trpc-client'
 import { Widget } from '@penx/types'
 import { StoreType } from '../store-types'
 

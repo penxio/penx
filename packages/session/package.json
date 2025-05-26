@@ -19,7 +19,6 @@
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/local-db": "workspace:*",
-    "@penx/db": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/query-client": "workspace:*"
   }

@@ -75,11 +75,9 @@
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
-    "@penx/db": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",

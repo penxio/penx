@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import { api } from '@penx/trpc-client'
 
 interface PageViewOptions {
   creationId: string
@@ -30,15 +29,15 @@ export function usePostEngagement({ creationId }: PageViewOptions) {
 
     // Silently record page view without affecting user experience
     // Errors are caught and logged but not propagated to the UI
-    api.creationEngagement.recordPageView
-      .mutate({
-        creationId: creationId,
-        sessionId: data.sessionId,
-      })
-      .catch((err) => {
-        // Log error for debugging but don't affect user experience
-        console.error('Failed to record page view:', err)
-      })
+    // api.creationEngagement.recordPageView
+    //   .mutate({
+    //     creationId: creationId,
+    //     sessionId: data.sessionId,
+    //   })
+    //   .catch((err) => {
+    //     // Log error for debugging but don't affect user experience
+    //     console.error('Failed to record page view:', err)
+    //   })
   }, [creationId])
 
   return trackingData.current

@@ -8,12 +8,10 @@ import {
 } from '@penx/components/PanelCreationProvider'
 import { PublishDialog } from '@penx/components/PublishDialog'
 import { BUILTIN_PAGE_SLUGS, isMobileApp, ROOT_DOMAIN } from '@penx/constants'
-import { CreationStatus } from '@penx/db/client'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { Panel } from '@penx/types'
 import { ClosePanelButton } from '../ClosePanelButton'
 import { PanelHeaderWrapper } from '../PanelHeaderWrapper'
-import { CreationLink } from './CreationLink'
 
 interface Props {
   panel: Panel

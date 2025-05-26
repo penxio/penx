@@ -10,7 +10,6 @@ import { z } from 'zod'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
-import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -95,16 +94,16 @@ export function PinCodeForm({}: Props) {
                   variant="ghost"
                   size="xs"
                   onClick={async () => {
-                    try {
-                      await api.auth.registerByEmail.mutate(
-                        authStatus.data as any,
-                      )
-                      toast.success('Verification code sent successfully')
-                    } catch (error) {
-                      console.log('========error:', error)
-                      const msg = extractErrorMessage(error)
-                      toast.error(msg)
-                    }
+                    // try {
+                    //   await api.auth.registerByEmail.mutate(
+                    //     authStatus.data as any,
+                    //   )
+                    //   toast.success('Verification code sent successfully')
+                    // } catch (error) {
+                    //   console.log('========error:', error)
+                    //   const msg = extractErrorMessage(error)
+                    //   toast.error(msg)
+                    // }
                   }}
                 >
                   Resend

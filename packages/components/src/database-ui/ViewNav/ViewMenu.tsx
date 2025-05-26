@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { MenuItem } from '@ariakit/react'
 import { Copy, MoreVertical, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
-import { View } from '@penx/db/client'
 import { Button } from '@penx/uikit/button'
 import { Input } from '@penx/uikit/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -13,7 +12,7 @@ import { useDatabaseContext } from '../DatabaseProvider'
 
 interface ViewMenuProps {
   index: number
-  view: View
+  view: any
 }
 
 export const ViewMenu = ({ view, index }: ViewMenuProps) => {
@@ -33,8 +32,7 @@ export const ViewMenu = ({ view, index }: ViewMenuProps) => {
 
 function Content({ view, index }: ViewMenuProps) {
   // const { close } = usePopoverContext()
-  const { database, updateView, deleteView, setActiveViewId } =
-    useDatabaseContext()
+  const { updateView, deleteView, setActiveViewId } = useDatabaseContext()
   const [name, setName] = useState(view.name || '')
 
   return (

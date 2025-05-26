@@ -12,18 +12,16 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
-    "postinstall": "wxt prepare"
+    "wxt prepare": "wxt prepare"
   },
   "dependencies": {
     "@lingui/core": "5.3.1",
     "@lingui/react": "5.3.1",
     "@mozilla/readability": "^0.6.0",
-    "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/content-render": "workspace:*",
     "@penx/contexts": "workspace:*",
-    "@penx/db": "workspace:*",
     "@penx/domain": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/emitter": "workspace:*",
@@ -37,7 +35,6 @@
     "@penx/services": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/store": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/uikit": "workspace:*",
     "@penx/unique-id": "workspace:*",

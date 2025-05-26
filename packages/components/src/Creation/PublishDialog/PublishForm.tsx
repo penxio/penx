@@ -10,13 +10,12 @@ import { CalendarIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { BUILTIN_PAGE_SLUGS, defaultEditorContent } from '@penx/constants'
-import { GateType } from '@penx/db/client'
 import {
   PublishPostFormSchema,
   usePublishPost,
 } from '@penx/hooks/usePublishPost'
 import { useSession } from '@penx/session'
-import { api, trpc } from '@penx/trpc-client'
+import { GateType } from '@penx/types'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import { Calendar } from '@penx/uikit/calendar'
@@ -52,7 +51,7 @@ export function PublishForm() {
     resolver: zodResolver(PublishPostFormSchema),
     defaultValues: {
       slug: creation?.slug ? `/${creation?.slug}` : '',
-      gateType: creation?.gateType || GateType.FREE,
+      gateType: creation?.gateType || 'FREE',
       collectible: creation?.collectible || false,
       delivered: creation?.delivered || false,
       publishedAt: creation?.publishedAt

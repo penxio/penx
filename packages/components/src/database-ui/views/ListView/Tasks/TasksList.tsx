@@ -5,7 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
-import { api } from '@penx/trpc-client'
 import { TaskInput } from '../../../../TaskInput'
 import { TaskItem } from './TaskItem'
 

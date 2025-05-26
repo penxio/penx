@@ -11,12 +11,13 @@ import {
   PLATFORM,
   ROOT_HOST,
 } from '@penx/constants'
-import { BillingCycle, PlanType } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import {
+  BillingCycle,
   GoogleLoginData,
   LoginData,
+  PlanType,
   SessionData,
   UpdateProps,
   UpdateSessionData,

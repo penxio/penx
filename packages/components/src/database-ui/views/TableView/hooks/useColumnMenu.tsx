@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useLayer } from 'react-laag'
 import { Rectangle } from '@glideapps/glide-data-grid'
-import { Column } from '@penx/db/client'
 import { IColumn } from '@penx/model-type'
 import { ColumnMenu } from '../ColumnMenu/ColumnMenu'
 import { useFieldTypeSelectPopover } from './useFieldTypeSelectPopover'

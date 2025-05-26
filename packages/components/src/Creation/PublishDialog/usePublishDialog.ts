@@ -1,9 +1,8 @@
 import { atom, useAtom } from 'jotai'
-import { Creation } from '@penx/db/client'
 
 type State = {
   isOpen: boolean
-  creation: Creation
+  creation: any
 }
 
 const priceDialogAtom = atom<State>({

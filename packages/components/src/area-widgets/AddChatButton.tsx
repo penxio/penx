@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { PlusIcon } from 'lucide-react'
-import { Area } from '@penx/db/client'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'

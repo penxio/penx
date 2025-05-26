@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { api } from '@penx/trpc-client'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 // Define the maximum number of polling attempts to prevent infinite polling
@@ -114,30 +113,30 @@ export function useImportTask() {
         abortControllerRef.current = new AbortController()
 
         // Get task status
-        const task = await api.creationImport.getImportTaskStatus.query(
-          { taskId },
-          { signal: abortControllerRef.current.signal },
-        )
+        // const task = await api.creationImport.getImportTaskStatus.query(
+        //   { taskId },
+        //   { signal: abortControllerRef.current.signal },
+        // )
 
-        setImportTask(task)
+        // setImportTask(task)
 
         // If the task is completed or failed, stop polling
-        if (task.status === 'completed' || task.status === 'failed') {
-          clearPolling()
-          setIsLoading(false)
+        // if (task.status === 'completed' || task.status === 'failed') {
+        //   clearPolling()
+        //   setIsLoading(false)
 
-          if (task.status === 'completed') {
-            if (task.result && task.result.length > 0) {
-              toast.success(`Found ${task.result.length} posts from URL`)
-            } else {
-              toast.info('No content was found to import')
-            }
-          } else {
-            toast.error(task.error || 'Import failed')
-          }
+        //   if (task.status === 'completed') {
+        //     if (task.result && task.result.length > 0) {
+        //       toast.success(`Found ${task.result.length} posts from URL`)
+        //     } else {
+        //       toast.info('No content was found to import')
+        //     }
+        //   } else {
+        //     toast.error(task.error || 'Import failed')
+        //   }
 
-          return
-        }
+        //   return
+        // }
 
         // Continue polling with adaptive interval
         pollingAttemptsRef.current++
@@ -173,7 +172,7 @@ export function useImportTask() {
   }
 
   // Create a new import task
-  const createImportTask = async (url: string): Promise<boolean> => {
+  const createImportTask = async (url: string): Promise<any> => {
     clearPolling() // Clear any existing polling
     setIsLoading(true)
     setImportTask(null)
@@ -187,14 +186,14 @@ export function useImportTask() {
 
     try {
       // Submit URL to start import task with abort signal
-      const task = await api.creationImport.createImportTask.mutate(
-        { siteId: site.id, url },
-        { signal: abortControllerRef.current.signal },
-      )
+      // const task = await api.creationImport.createImportTask.mutate(
+      //   { siteId: site.id, url },
+      //   { signal: abortControllerRef.current.signal },
+      // )
 
-      setImportTask(task)
-      startPolling(task.id)
-      return true
+      // setImportTask(task)
+      // startPolling(task.id)
+      // return true
     } catch (error) {
       // Don't show errors for aborted requests
       if (error.name === 'AbortError') {

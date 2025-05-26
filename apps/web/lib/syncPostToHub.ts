@@ -1,6 +1,4 @@
 import { NetworkNames } from '@penx/constants'
-import { Creation, Site } from '@penx/db/client'
-import { api } from '@penx/trpc-client'
 import { SyncService } from './SyncService'
 
 export async function syncPostToHub(
@@ -8,9 +6,9 @@ export async function syncPostToHub(
   creation: Creation,
   markdown = '',
 ) {
-  const token = await api.github.getGitHubToken.query({
-    installationId: site.installationId!,
-  })
-  const sync = await SyncService.init(token, site)
-  await sync.pushPost(creation, markdown)
+  // const token = await api.github.getGitHubToken.query({
+  //   installationId: site.installationId!,
+  // })
+  // const sync = await SyncService.init(token, site)
+  // await sync.pushPost(creation, markdown)
 }

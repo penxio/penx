@@ -2,7 +2,6 @@
 
 import { ZapIcon } from 'lucide-react'
 import { usePlanListDialog } from '@penx/components/usePlanListDialog'
-import { PlanType } from '@penx/db/client'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 
@@ -12,7 +11,7 @@ export function UpgradeButton({}: Props) {
   const { data: session } = useSession()
   const { setIsOpen } = usePlanListDialog()
 
-  if (session?.planType === PlanType.FREE) {
+  if (session?.planType === 'FREE') {
     return (
       <div className="mb-4 px-4">
         <Button

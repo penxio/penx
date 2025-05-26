@@ -9,7 +9,6 @@ import {
 } from '@penx/hooks/useCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
-import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'

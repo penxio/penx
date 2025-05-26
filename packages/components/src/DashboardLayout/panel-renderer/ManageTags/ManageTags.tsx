@@ -6,7 +6,6 @@ import { Edit3Icon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useTags } from '@penx/hooks/useTags'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { Panel } from '@penx/types'
 import { Skeleton } from '@penx/uikit/skeleton'
 import {

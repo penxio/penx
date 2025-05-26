@@ -1,5 +1,4 @@
 import { GOOGLE_DRIVE_FOLDER_PREFIX } from '@penx/constants'
-import { api } from '@penx/trpc-client'
 import { GoogleDrive } from './google-drive'
 
 export async function uploadToGoogleDrive(fileHash: string, file: File) {

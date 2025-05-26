@@ -26,7 +26,6 @@ import {
 import { appEmitter } from '@penx/emitter'
 import { useMySite } from '@penx/hooks/useMySite'
 import { useSession } from '@penx/session'
-import { api } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import {
@@ -49,212 +48,213 @@ interface Props {
 }
 
 export function ProfileButton({ loginButton }: Props) {
-  const { site } = useMySite()
-  // const { data: sites = [], error } = useMySites()
-  const { session, data, logout, update } = useSession()
-  const isMobile = useIsMobile()
-  const { setIsOpen } = usePlanListDialog()
-  const sigInState = useSignIn({})
-  const loginDialog = useLoginDialog()
+  // const { site } = useMySite()
+  // // const { data: sites = [], error } = useMySites()
+  // const { session, data, logout, update } = useSession()
+  // const isMobile = useIsMobile()
+  // const { setIsOpen } = usePlanListDialog()
+  // const sigInState = useSignIn({})
+  // const loginDialog = useLoginDialog()
 
-  async function desktopLogin() {
-    const authToken = nanoid()
-    openUrl(`${ROOT_HOST}/desktop-login?token=${authToken}`)
+  // async function desktopLogin() {
+  //   const authToken = nanoid()
+  //   openUrl(`${ROOT_HOST}/desktop-login?token=${authToken}`)
 
-    while (true) {
-      try {
-        const { status } = await api.desktop.getLoginStatus.query({
-          token: authToken,
-        })
+  //   while (true) {
+  //     try {
+  //       const { status } = await api.desktop.getLoginStatus.query({
+  //         token: authToken,
+  //       })
 
-        // console.log('=======status:', status)
+  //       // console.log('=======status:', status)
 
-        if (status === LoginStatus.CONFIRMED) {
-          break
-        }
+  //       if (status === LoginStatus.CONFIRMED) {
+  //         break
+  //       }
 
-        if (status === LoginStatus.CANCELED) {
-          return
-          // break
-        }
+  //       if (status === LoginStatus.CANCELED) {
+  //         return
+  //         // break
+  //       }
 
-        await sleep(1000)
-      } catch (error) {
-        console.log('error:', error)
-        toast.error('please try again')
-        return
-      }
-    }
+  //       await sleep(1000)
+  //     } catch (error) {
+  //       console.log('error:', error)
+  //       toast.error('please try again')
+  //       return
+  //     }
+  //   }
 
-    const session = await api.desktop.loginByToken.mutate(authToken)
-    console.log('===desktop=session:', session)
+  //   const session = await api.desktop.loginByToken.mutate(authToken)
+  //   console.log('===desktop=session:', session)
 
-    appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
-  }
-
-  async function login() {
-    if (isDesktop) {
-      await desktopLogin()
-      console.log('Login with Google', 'isDesktop:', isDesktop)
-      return
-    }
-
-    loginDialog.setIsOpen(true)
-  }
-
-  // async function selectSite(site: MySite) {
-  //   updateSiteState(site)
-
-  //   // window.__SITE_ID__ = site.id
-  //   update({
-  //     type: 'update-props',
-  //     activeSiteId: site.id,
-  //   })
-
-  //   await store.panels.resetPanels()
+  //   appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
   // }
 
-  if (!session) {
-    if (loginButton) return loginButton
-    return (
-      <Button size="sm" onClick={login}>
-        Log in
-      </Button>
-    )
-  }
+  // async function login() {
+  //   if (isDesktop) {
+  //     await desktopLogin()
+  //     console.log('Login with Google', 'isDesktop:', isDesktop)
+  //     return
+  //   }
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Avatar className="h-7 w-7 cursor-pointer rounded-lg">
-          <AvatarImage src={getUrl(session.image || '')} alt={session?.name} />
-          <AvatarFallback
-            className={cn(
-              'rounded-lg text-white',
-              generateGradient(session.name),
-            )}
-          >
-            {session?.name?.slice(0, 1)}
-          </AvatarFallback>
-        </Avatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-        side={isMobile ? 'bottom' : 'right'}
-        align="end"
-        sideOffset={4}
-      >
-        <DropdownMenuLabel className="p-0 font-normal">
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar className="h-8 w-8 rounded-lg">
-              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-              <AvatarFallback
-                className={cn(
-                  'rounded-lg text-white',
-                  generateGradient(session.name),
-                )}
-              >
-                {session?.name.slice(0, 1)}
-              </AvatarFallback>
-            </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{session?.name}</span>
-              <span className="truncate text-xs">{session?.email}</span>
-            </div>
-          </div>
-        </DropdownMenuLabel>
-        {/* <DropdownMenuSeparator /> */}
+  //   loginDialog.setIsOpen(true)
+  // }
 
-        {/* <DropdownMenuGroup>
-          <DropdownMenuLabel>Sites</DropdownMenuLabel>
-          {sites.map((site) => (
-            <DropdownMenuItem
-              key={site.id}
-              className="flex cursor-pointer items-center gap-2"
-              onClick={() => {
-                selectSite(site as any)
-              }}
-            >
-              <Avatar className="h-6 w-6">
-                <AvatarImage src={getUrl(site.logo!)} alt="" />
-                <AvatarFallback>{site.name.slice(0, 1)}</AvatarFallback>
-              </Avatar>
-              <div>{site.name}</div>
-              <div className="ml-auto">
-                {session?.activeSiteId === site.id && <CheckIcon />}
-              </div>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuGroup> */}
-        {!isMobileApp && <DropdownMenuSeparator />}
+  // // async function selectSite(site: MySite) {
+  // //   updateSiteState(site)
 
-        {!isMobileApp && (
-          <DropdownMenuGroup>
-            <DropdownMenuItem
-              onClick={async () => {
-                if (isExtension) {
-                  window.open(`${ROOT_HOST}/~/settings`)
-                  return
-                }
-                if (isDesktop) {
-                  console.log('is desktop....')
-                  return
-                }
-                appEmitter.emit('ROUTE_TO_SETTINGS')
-              }}
-            >
-              <BadgeCheck />
-              <Trans id="Settings"></Trans>
-            </DropdownMenuItem>
+  // //   // window.__SITE_ID__ = site.id
+  // //   update({
+  // //     type: 'update-props',
+  // //     activeSiteId: site.id,
+  // //   })
 
-            {/* <DropdownMenuItem>
-                <CreditCard />
-                <Trans id="Billing"></Trans>
-              </DropdownMenuItem> */}
+  // //   await store.panels.resetPanels()
+  // // }
 
-            <DropdownMenuItem
-              onClick={async () => {
-                if (isExtension) {
-                  window.open(`${ROOT_HOST}/~/settings/subscription`)
-                  return
-                }
-                setIsOpen(true)
-              }}
-            >
-              <Sparkles />
-              <Trans id="Upgrade to Pro"></Trans>
-            </DropdownMenuItem>
+  // if (!session) {
+  //   if (loginButton) return loginButton
+  //   return (
+  //     <Button size="sm" onClick={login}>
+  //       Log in
+  //     </Button>
+  //   )
+  // }
 
-            <DropdownMenuItem
-              onClick={() => {
-                window.open('https://discord.gg/nyVpH9njDu')
-              }}
-            >
-              <MessageCircleIcon />
-              <Trans id="Support"></Trans>
-            </DropdownMenuItem>
+  // return (
+  //   <DropdownMenu>
+  //     <DropdownMenuTrigger asChild>
+  //       <Avatar className="h-7 w-7 cursor-pointer rounded-lg">
+  //         <AvatarImage src={getUrl(session.image || '')} alt={session?.name} />
+  //         <AvatarFallback
+  //           className={cn(
+  //             'rounded-lg text-white',
+  //             generateGradient(session.name),
+  //           )}
+  //         >
+  //           {session?.name?.slice(0, 1)}
+  //         </AvatarFallback>
+  //       </Avatar>
+  //     </DropdownMenuTrigger>
+  //     <DropdownMenuContent
+  //       className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+  //       side={isMobile ? 'bottom' : 'right'}
+  //       align="end"
+  //       sideOffset={4}
+  //     >
+  //       <DropdownMenuLabel className="p-0 font-normal">
+  //         <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+  //           <Avatar className="h-8 w-8 rounded-lg">
+  //             <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+  //             <AvatarFallback
+  //               className={cn(
+  //                 'rounded-lg text-white',
+  //                 generateGradient(session.name),
+  //               )}
+  //             >
+  //               {session?.name.slice(0, 1)}
+  //             </AvatarFallback>
+  //           </Avatar>
+  //           <div className="grid flex-1 text-left text-sm leading-tight">
+  //             <span className="truncate font-medium">{session?.name}</span>
+  //             <span className="truncate text-xs">{session?.email}</span>
+  //           </div>
+  //         </div>
+  //       </DropdownMenuLabel>
+  //       {/* <DropdownMenuSeparator /> */}
 
-            {/* <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem> */}
-          </DropdownMenuGroup>
-        )}
+  //       {/* <DropdownMenuGroup>
+  //         <DropdownMenuLabel>Sites</DropdownMenuLabel>
+  //         {sites.map((site) => (
+  //           <DropdownMenuItem
+  //             key={site.id}
+  //             className="flex cursor-pointer items-center gap-2"
+  //             onClick={() => {
+  //               selectSite(site as any)
+  //             }}
+  //           >
+  //             <Avatar className="h-6 w-6">
+  //               <AvatarImage src={getUrl(site.logo!)} alt="" />
+  //               <AvatarFallback>{site.name.slice(0, 1)}</AvatarFallback>
+  //             </Avatar>
+  //             <div>{site.name}</div>
+  //             <div className="ml-auto">
+  //               {session?.activeSiteId === site.id && <CheckIcon />}
+  //             </div>
+  //           </DropdownMenuItem>
+  //         ))}
+  //       </DropdownMenuGroup> */}
+  //       {!isMobileApp && <DropdownMenuSeparator />}
 
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={async () => {
-            try {
-              await logout()
-              sigInState?.signOut()
-              appEmitter.emit('ON_LOGOUT_SUCCESS')
-            } catch (error) {}
-          }}
-        >
-          <LogOut />
-          <Trans id="Log out"></Trans>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
+  //       {!isMobileApp && (
+  //         <DropdownMenuGroup>
+  //           <DropdownMenuItem
+  //             onClick={async () => {
+  //               if (isExtension) {
+  //                 window.open(`${ROOT_HOST}/~/settings`)
+  //                 return
+  //               }
+  //               if (isDesktop) {
+  //                 console.log('is desktop....')
+  //                 return
+  //               }
+  //               appEmitter.emit('ROUTE_TO_SETTINGS')
+  //             }}
+  //           >
+  //             <BadgeCheck />
+  //             <Trans id="Settings"></Trans>
+  //           </DropdownMenuItem>
+
+  //           {/* <DropdownMenuItem>
+  //               <CreditCard />
+  //               <Trans id="Billing"></Trans>
+  //             </DropdownMenuItem> */}
+
+  //           <DropdownMenuItem
+  //             onClick={async () => {
+  //               if (isExtension) {
+  //                 window.open(`${ROOT_HOST}/~/settings/subscription`)
+  //                 return
+  //               }
+  //               setIsOpen(true)
+  //             }}
+  //           >
+  //             <Sparkles />
+  //             <Trans id="Upgrade to Pro"></Trans>
+  //           </DropdownMenuItem>
+
+  //           <DropdownMenuItem
+  //             onClick={() => {
+  //               window.open('https://discord.gg/nyVpH9njDu')
+  //             }}
+  //           >
+  //             <MessageCircleIcon />
+  //             <Trans id="Support"></Trans>
+  //           </DropdownMenuItem>
+
+  //           {/* <DropdownMenuItem>
+  //               <Bell />
+  //               Notifications
+  //             </DropdownMenuItem> */}
+  //         </DropdownMenuGroup>
+  //       )}
+
+  //       <DropdownMenuSeparator />
+  //       <DropdownMenuItem
+  //         onClick={async () => {
+  //           try {
+  //             await logout()
+  //             sigInState?.signOut()
+  //             appEmitter.emit('ON_LOGOUT_SUCCESS')
+  //           } catch (error) {}
+  //         }}
+  //       >
+  //         <LogOut />
+  //         <Trans id="Log out"></Trans>
+  //       </DropdownMenuItem>
+  //     </DropdownMenuContent>
+  //   </DropdownMenu>
+  // )
+  return null
 }

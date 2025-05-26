@@ -1,14 +1,7 @@
 import { NetworkNames } from '@penx/constants'
-import { Creation, Site } from '@penx/db/client'
 import { SyncService } from './SyncService'
 
-// import { api } from '@penx/trpc-client'
-
-export async function syncPostToHub(
-  site: Site,
-  creation: Creation,
-  markdown = '',
-) {
+export async function syncPostToHub(site: any, creation: any, markdown = '') {
   // const token = await api.github.getGitHubToken.query({
   //   installationId: site.installationId!,
   // })

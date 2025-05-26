@@ -1,7 +1,11 @@
 'use client'
 
 import { atom, useAtom } from 'jotai'
-import { BillingCycle } from '@penx/db/client'
+
+export enum BillingCycle {
+  MONTHLY = 'MONTHLY',
+  YEARLY = 'YEARLY',
+}
 
 const billingCycleAtom = atom<BillingCycle>(BillingCycle.MONTHLY)
 

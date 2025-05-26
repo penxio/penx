@@ -1,6 +1,7 @@
-import { Domain, Site, SubdomainType, User } from '@penx/db/client'
+import { SubdomainType } from '@penx/types'
 
-export type SiteWithDomains = Site & { domains: Domain[] }
+type Domain = any
+export type SiteWithDomains = any
 
 export function getSiteDomain(domains: Domain[], isCustomDomain = true) {
   const customDomain = domains.find((d) => !d.isSubdomain)

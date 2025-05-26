@@ -13,7 +13,6 @@
     "./GoogleOauthButton": "./src/GoogleOauthButton.tsx",
     "./AppleOauthButton": "./src/AppleOauthButton.tsx",
     "./UserAvatar": "./src/UserAvatar.tsx",
-    "./CommentWidget": "./src/CommentWidget/index.ts",
     "./LoginDialog": "./src/LoginDialog/LoginDialog.tsx",
     "./LoginForm": "./src/LoginDialog/LoginForm.tsx",
     "./RegisterForm": "./src/LoginDialog/RegisterForm.tsx",
@@ -41,10 +40,8 @@
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/utils": "workspace:*",
-    "@penx/libs": "workspace:*",
-    "@penx/db": "workspace:*"
+    "@penx/libs": "workspace:*"
   }
 }

@@ -19,7 +19,6 @@ import { useStructs } from '@penx/hooks/useStructs'
 import { ICreationNode } from '@penx/model-type'
 import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { store } from '@penx/store'
-import { trpc } from '@penx/trpc-client'
 import { Panel, StructType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { Separator } from '@penx/uikit/separator'
@@ -44,32 +43,11 @@ interface Props {
 }
 
 export function Creation({ panel, className, ref, editorFooter }: Props) {
-  const { mutateAsync } = trpc.creation.update.useMutation()
+  // const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
   const isImage = creation.type === StructType.IMAGE
   const { structs } = useStructs()
-
-  const debouncedUpdate = useDebouncedCallback(
-    async (value: CreationDomain) => {
-      setPostSaving(true)
-      try {
-        await mutateAsync({
-          id: value.id,
-          title: value.title,
-          content: value.content,
-          // description: value.description,
-          // i18n: value.i18n ?? {},
-          // props: value?.props ?? {},
-        })
-      } catch (error) {
-        //
-      }
-      setPostSaving(false)
-    },
-    // delay in ms
-    200,
-  )
 
   const struct = structs.find((m) => m.id === creation.structId)
 

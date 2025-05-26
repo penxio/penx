@@ -8,7 +8,6 @@ import { Command } from 'cmdk'
 import { produce } from 'immer'
 import { Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { Tag } from '@penx/db/client'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -21,8 +20,8 @@ import {
 import { useSiteTags } from '../hooks/useSiteTags'
 
 interface Props {
-  value: Tag[]
-  onChange: (tags: Tag[]) => void
+  value: any[]
+  onChange: (tags: any[]) => void
 }
 export function Tags({ value: tags, onChange: setTags }: Props) {
   const [adding, setAdding] = useState(false)

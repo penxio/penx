@@ -2,20 +2,16 @@
 
 import { Trans } from '@lingui/react'
 import { GlobeIcon, PencilIcon, TrashIcon } from 'lucide-react'
-import { AreaType } from '@penx/db/client'
 import { useArea } from '@penx/hooks/useArea'
-import { updateSiteState } from '@penx/hooks/useQuerySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
 import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/badge'
 import { Button } from '@penx/uikit/button'
 import { cn, getUrl } from '@penx/utils'
 import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useAreaDialog } from './AreaDialog/useAreaDialog'
-import { AreaLink } from './AreaLink'
 
 interface Props {
   className?: string

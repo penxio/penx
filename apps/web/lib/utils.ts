@@ -1,6 +1,5 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { ProviderType } from '@penx/db/client'
 import { uniqueId } from '@penx/unique-id'
 
 export const isProductionEnvironment = process.env.NODE_ENV === 'production'

@@ -9,7 +9,6 @@ import {
   TrashIcon,
 } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
-import { CreationStatus } from '@penx/db/client'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
@@ -18,7 +17,7 @@ import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { usePanels } from '@penx/hooks/usePanels'
 import { store } from '@penx/store'
-import { PanelType, SiteCreation, StructType } from '@penx/types'
+import { PanelType, StructType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import {
   ContextMenu,

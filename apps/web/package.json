@@ -15,12 +15,10 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/content-render": "workspace:*",
     "@penx/contexts": "workspace:*",
-    "@penx/db": "workspace:*",
     "@penx/domain": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/emitter": "workspace:*",
@@ -35,7 +33,6 @@
     "@penx/session": "workspace:*",
     "@penx/math": "workspace:*",
     "@penx/store": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/uikit": "workspace:*",
     "@penx/unique-id": "workspace:*",

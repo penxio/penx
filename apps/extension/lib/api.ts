@@ -1,6 +1,5 @@
 import ky from 'ky'
 import { z } from 'zod'
-import { Area, Tag } from '@penx/db/client'
 import '@penx/types'
 import { BASE_URL } from './constants'
 
@@ -42,7 +41,7 @@ interface CreateTagInput {
 
 export async function createTag(input: CreateTagInput) {
   const url = `${API_BASE_URL}/tags`
-  const res = await ky.post<Tag>(url, { json: input }).json()
+  const res = await ky.post<any>(url, { json: input }).json()
   return res
 }
 
@@ -62,6 +61,6 @@ export async function addCreationTag(input: AddCreationTagInput) {
 
 export async function getAreas() {
   const url = `${API_BASE_URL}/areas`
-  const res = await ky.get<Area[]>(url).json()
+  const res = await ky.get<any[]>(url).json()
   return res
 }

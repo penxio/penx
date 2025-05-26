@@ -1,4 +1,3 @@
-import { PlanType } from '@penx/db/client'
 import { BillingCycleSelect } from './BillingCycleSelect'
 import { PlanItem } from './PlanItem'
 import { PricingSlogan } from './PricingSlogan'
@@ -15,7 +14,7 @@ export function PlanList() {
           monthlyPrice={0}
           annualPrice={0}
           name="Free"
-          type={PlanType.FREE}
+          type={'FREE'}
           collaboratorCount={1}
           benefits={[
             { ok: true, text: '1 co-creators' },
@@ -51,7 +50,7 @@ export function PlanList() {
           monthlyPrice={10.24}
           annualPrice={92.16}
           name="Standard"
-          type={PlanType.STANDARD}
+          type={'STANDARD'}
           collaboratorCount={3}
           benefits={[
             { ok: true, text: '3 co-creators' },
@@ -69,7 +68,7 @@ export function PlanList() {
           monthlyPrice={25.6}
           annualPrice={230.4}
           name="Pro"
-          type={PlanType.PRO}
+          type={'PRO'}
           collaboratorCount={3}
           benefits={[
             { ok: true, text: '5 co-creators' },

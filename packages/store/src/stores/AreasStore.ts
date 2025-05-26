@@ -1,7 +1,6 @@
 import { get, set } from 'idb-keyval'
 import { atom } from 'jotai'
 import { ACTIVE_SITE, CreateAreaInput, WidgetType } from '@penx/constants'
-import { AreaType } from '@penx/db/client'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'

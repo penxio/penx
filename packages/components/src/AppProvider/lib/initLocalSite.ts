@@ -1,16 +1,11 @@
-import { format } from 'date-fns'
-import { defaultNavLinks, defaultEditorContent } from '@penx/constants'
-import { AreaType, ChargeMode } from '@penx/db/client'
-import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
-import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
-import { localDB } from '@penx/local-db'
-import {
-  IJournalNode,
-  ISiteNode,
-  IStructNode,
-  NodeType,
-} from '@penx/model-type'
-import { uniqueId } from '@penx/unique-id'
+import { format } from 'date-fns';
+import { defaultEditorContent, defaultNavLinks } from '@penx/constants';
+import { getDefaultStructs } from '@penx/libs/getDefaultStructs';
+import { getInitialWidgets } from '@penx/libs/getInitialWidgets';
+import { localDB } from '@penx/local-db';
+import { IJournalNode, ISiteNode, IStructNode, NodeType } from '@penx/model-type';
+import { uniqueId } from '@penx/unique-id';
+
 
 export async function initLocalSite(uid?: string) {
   return await localDB.transaction('rw', localDB.node, async () => {
@@ -61,7 +56,7 @@ export async function initLocalSite(uid?: string) {
         description: 'An area for sharing thoughts, stories, and insights.',
         about: JSON.stringify(defaultEditorContent),
         logo: '',
-        chargeMode: ChargeMode.FREE,
+        chargeMode: 'FREE',
         widgets: getInitialWidgets(),
         isGenesis: true,
         favorites: [],

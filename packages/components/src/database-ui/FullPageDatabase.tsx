@@ -1,6 +1,5 @@
 'use client'
 
-import { RouterOutputs } from '@penx/api'
 import {
   DATABASE_TOOLBAR_HEIGHT,
   isMobileApp,

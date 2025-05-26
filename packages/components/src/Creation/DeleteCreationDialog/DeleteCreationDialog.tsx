@@ -6,7 +6,6 @@ import { toast } from 'sonner'
 import { usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,

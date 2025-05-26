@@ -1,5 +1,4 @@
 import { JSX, PropsWithChildren } from 'react'
-import { Area, Author, Product, Struct } from '@penx/db/client'
 
 export enum StructType {
   NOTE = 'NOTE',
@@ -139,9 +138,9 @@ export type Site = {
   message404: string | null
   seoTitle: string
   seoDescription: string
-  products: Product[]
-  areas: Area[]
-  structs: Struct[]
+  products: any[]
+  areas: any[]
+  structs: any[]
   createdAt: Date
   updatedAt: Date
 }
@@ -184,12 +183,8 @@ export type Creation = {
   userId: string
   siteId: string
   creationTags: CreationTag[]
-  struct: Struct
-  authors: Array<
-    Author & {
-      user: User
-    }
-  >
+  struct: any
+  authors: any[]
 }
 
 export type User = {
@@ -259,10 +254,6 @@ export interface AppearanceConfig {
 export enum PostListStyle {
   SIMPLE = 'SIMPLE',
   CARD = 'CARD',
-}
-
-export type AreaWithCreations = Area & {
-  creations: Array<Creation & { authors: Author[] }>
 }
 
 export type LayoutItem = {

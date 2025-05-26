@@ -12,7 +12,6 @@ import {
 } from 'react'
 import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'
-import { Column, Record as Row, View } from '@penx/db/client'
 import { Creation, Struct } from '@penx/domain'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useCreations } from '@penx/hooks/useCreations'

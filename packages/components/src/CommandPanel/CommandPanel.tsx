@@ -7,7 +7,6 @@ import { CommonList } from './CommonList'
 import { useOpen } from './hooks/useOpen'
 import { useSearch } from './hooks/useSearch'
 import { SearchCreationList } from './SearchCreationList'
-import { SearchDatabaseList } from './SearchDatabaseList'
 
 interface CommandPanelProps {
   isMobile?: boolean
@@ -38,10 +37,6 @@ export function CommandPanel({ isMobile = false }: CommandPanelProps) {
   const listJSX = useMemo(() => {
     if (isCommand) {
       return <CommandList />
-    }
-
-    if (isTag) {
-      return <SearchDatabaseList />
     }
 
     if (isPage) {

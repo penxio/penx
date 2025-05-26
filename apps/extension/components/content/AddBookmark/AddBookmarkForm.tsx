@@ -11,7 +11,6 @@ import { get, set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { defaultEditorContent } from '@penx/constants'
-import { CommentStatus } from '@penx/db/client'
 import { useAreas } from '@penx/hooks/useAreas'
 import { localDB } from '@penx/local-db'
 import { ICreation, ISite } from '@penx/model-type'
@@ -100,7 +99,7 @@ export function AddBookmarkForm() {
         userId: site.userId,
         gateType: GateType.FREE,
         status: CreationStatus.DRAFT,
-        commentStatus: CommentStatus.OPEN,
+        commentStatus: any
         featured: false,
         collectible: false,
         isJournal: false,

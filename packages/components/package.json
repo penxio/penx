@@ -46,7 +46,6 @@
     "./CommandPanel": "./src/CommandPanel/CommandPanel.tsx",
     "./CommandWrapper": "./src/CommandPanel/CommandWrapper.tsx",
     "./CommonList": "./src/CommandPanel/CommonList.tsx",
-    "./SearchDatabaseList": "./src/CommandPanel/SearchDatabaseList.tsx",
     "./SearchPageList": "./src/CommandPanel/SearchPageList.tsx",
     "./AddPropButton": "./src/Creation/AddPropButton.tsx",
     "./AudioCreationUpload": "./src/Creation/AudioCreationUpload.tsx",
@@ -158,8 +157,6 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
-    "@penx/db": "workspace:*",
-    "@penx/api": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/domain": "workspace:*",
     "@penx/libs": "workspace:*",
@@ -176,7 +173,6 @@
     "@penx/widgets": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/worker": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*"

@@ -11,7 +11,6 @@ import {
 import { parsePreparedContent } from '@/lib/parser'
 import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
-import { CommentStatus } from '@penx/db/client'
 import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
@@ -132,7 +131,7 @@ async function addNote(content: string, area: IAreaNode) {
       i18n: {},
       gateType: GateType.FREE,
       status: CreationStatus.DRAFT,
-      commentStatus: CommentStatus.OPEN,
+      commentStatus: any
       featured: false,
       collectible: false,
       isJournal: false,

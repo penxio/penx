@@ -1,23 +1,26 @@
 import { Address } from 'viem'
-import {
-  Account,
-  Area,
-  Author,
-  Channel,
-  Creation,
-  CreationTag,
-  Domain,
-  ProviderType,
-  Site,
-  Struct,
-  Subscription,
-  Tag,
-  User,
-} from '@penx/db/client'
 
 export enum TierInterval {
   MONTHLY = 'MONTHLY',
   YEARLY = 'YEARLY',
+}
+
+export enum BillingCycle {
+  MONTHLY = 'MONTHLY',
+  YEARLY = 'YEARLY',
+}
+
+export enum SubdomainType {
+  Custom = 'Custom',
+  EnsName = 'EnsName',
+  Address = 'Address',
+  UserId = 'UserId',
+}
+
+export enum PlanType {
+  FREE = 'FREE',
+  PRO = 'PRO',
+  BASIC = 'BASIC',
 }
 
 export type App = {
@@ -122,25 +125,6 @@ export interface DomainVerificationResponse {
   }[]
 }
 
-export type SiteInSession = Site & {
-  domains: Domain[]
-  areas: Area[]
-}
-
-export type UserWithSites = User & {
-  sites: SiteInSession[]
-}
-
-export type AccountWithUser = Account & {
-  user: User & {
-    sites: SiteInSession[]
-  }
-}
-
-export type AuthorWithUser = Author & {
-  user: User
-}
-
 export type Period = '1m' | '5m' | '15m' | '1h' | '4h' | '1d'
 
 export type Candle = {
@@ -156,12 +140,6 @@ export enum DeployStatus {
   SUCCESS = 'SUCCESS',
   DOMAIN_PENDING = 'DOMAIN_PENDING',
   FAIL = 'FAIL',
-}
-
-export type MySite = Site & {
-  channels: Channel[]
-  domains: Domain[]
-  areas: Area[]
 }
 
 export type CreationInList = {
@@ -183,41 +161,6 @@ export type CreationInList = {
   updatedAt: Date
   areaId: string | null
   structId: string | null
-}
-
-export type SiteCreation = CreationInList & {
-  creationTags: Array<CreationTag & { tag: Tag }>
-  struct: Struct | null
-  user: {
-    displayName: string | null
-    image: string | null
-  }
-}
-
-export type CreationById = Omit<Creation, 'podcast'> & {
-  podcast: {
-    media: string
-    duration: number
-    [key: string]: any
-  }
-  struct: Struct | null
-  creationTags: Array<CreationTag & { tag: Tag }>
-  authors: Array<
-    Author & {
-      user: {
-        name: string | null
-        image: string | null
-        displayName: string | null
-        ensName: string | null
-      }
-    }
-  >
-}
-
-export type AreaById = Omit<Area, 'widgets' | 'favorites'> & {
-  creations: CreationById[]
-  widgets: Widget[]
-  favorites: string[]
 }
 
 export type GithubInfo = {

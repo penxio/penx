@@ -1,7 +1,6 @@
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
 import { ICreationTagNode } from '@penx/model-type'
-import { api } from '@penx/trpc-client'
 import { StoreType } from '../store-types'
 
 export const creationTagsAtom = atom<ICreationTagNode[]>(

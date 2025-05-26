@@ -32,7 +32,6 @@ import { useCreation } from '@penx/hooks/useCreation'
 import { useMySite } from '@penx/hooks/useMySite'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import {

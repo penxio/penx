@@ -2,7 +2,7 @@
 
 import { Menu, MenuItem } from '@ariakit/react'
 import { Check, ChevronDown } from 'lucide-react'
-import { Column } from '@penx/db/client'
+import { IColumn } from '@penx/model-type'
 import { Filter } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { mappedByKey } from '@penx/utils'
@@ -10,8 +10,8 @@ import { FieldIcon } from '../../../FieldIcon'
 
 interface FieldSelectProps {
   filter: Filter
-  columns: Column[]
-  sortedColumns: Column[]
+  columns: IColumn[]
+  sortedColumns: IColumn[]
   updateFilter: (
     columnId: string,
     newColumnId: string,
@@ -32,7 +32,7 @@ export function FieldSelect({
         <div className="flex h-8 w-32 items-center justify-between rounded-lg border px-2 text-sm">
           <div className="flex items-center gap-1">
             <FieldIcon columnType={column.columnType as any} />
-            <div className="text-sm">{column.displayName}</div>
+            <div className="text-sm">{column.name}</div>
           </div>
           <ChevronDown size={16} />
         </div>
@@ -57,7 +57,7 @@ export function FieldSelect({
             >
               <div className="flex items-center gap-2">
                 <FieldIcon columnType={item.columnType} />
-                <div>{item.displayName}</div>
+                <div>{item.name}</div>
               </div>
               {/* {item.id === filter.columnId && <Check size={18}></Check>} */}
             </MenuItem>

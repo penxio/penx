@@ -1,1 +1,0 @@
-export type FeedCustomElement = any

@@ -10,7 +10,6 @@ import {
   PresentationIcon,
   Users2Icon,
 } from 'lucide-react'
-import { Struct } from '@penx/db/client'
 import { StructType } from '@penx/types'
 import { cn } from '@penx/utils'
 

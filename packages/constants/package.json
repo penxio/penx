@@ -17,7 +17,6 @@
     "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
-    "@penx/db": "workspace:*",
     "@penx/types": "workspace:*"
   }
 }

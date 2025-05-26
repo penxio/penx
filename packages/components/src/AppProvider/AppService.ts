@@ -16,7 +16,6 @@ import {
 } from '@penx/model-type'
 import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
-import { api } from '@penx/trpc-client'
 import { Panel, PanelType, SessionData, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { initLocalSite } from './lib/initLocalSite'
@@ -84,21 +83,21 @@ export class AppService {
 
     const nodes = await localDB.listNodes(site.id)
 
-    const { existed, siteId } = await api.site.syncInitialNodes.mutate({
-      nodes,
-    })
+    // const { existed, siteId } = await api.site.syncInitialNodes.mutate({
+    //   nodes,
+    // })
 
-    if (existed) {
-      site = await syncNodesToLocal(siteId)
-    } else {
-      await localDB.updateSiteProps(site.id, { isRemote: true })
-      await syncNodesToLocal(site.id)
-    }
+    // if (existed) {
+    //   site = await syncNodesToLocal(siteId)
+    // } else {
+    //   await localDB.updateSiteProps(site.id, { isRemote: true })
+    //   await syncNodesToLocal(site.id)
+    // }
 
-    await updateSession({
-      activeSiteId: site.id,
-      siteId: site.id,
-    })
+    // await updateSession({
+    //   activeSiteId: site.id,
+    //   siteId: site.id,
+    // })
     return site
   }
 

@@ -1,5 +1,5 @@
-import { getCreations, getSite } from '@/lib/fetchers'
-import { headers } from 'next/headers'
+import { headers } from 'next/headers';
+
 
 export default async function Sitemap(...arg: any) {
   const headersList = await headers()
@@ -42,8 +42,6 @@ export default async function Sitemap(...arg: any) {
       },
     ]
   }
-  const site = await getSite({ domain: hostname })
-  const creations = await getCreations(site)
 
   return [
     {
@@ -65,9 +63,5 @@ export default async function Sitemap(...arg: any) {
       lastModified: new Date(),
       changeFrequency: 'weekly',
     },
-    ...creations.map((item) => ({
-      url: `https://${hostname}/creations/${item.slug}`,
-      lastModified: item.publishedAt,
-    })),
   ]
 }

@@ -1,10 +1,10 @@
 import { produce } from 'immer'
 import Redis from 'ioredis'
 import { redisKeys } from '@penx/constants'
-import { Creation } from '@penx/db/client'
 import { AreaById, MySite, SiteCreation } from '@penx/types'
 
 const redis = new Redis(process.env.REDIS_URL!)
+type Creation = any
 
 export const cacheHelper = {
   async getSite(siteId: string): Promise<MySite | undefined> {
@@ -14,7 +14,7 @@ export const cacheHelper = {
       if (str) {
         const site = JSON.parse(str)
         const siteById = site as MySite
-        return produce(siteById, (draft) => {
+        return produce(siteById, (draft: any) => {
           draft.createdAt = new Date(draft.createdAt)
           draft.updatedAt = new Date(draft.updatedAt)
         })
@@ -194,7 +194,7 @@ export const cacheHelper = {
       if (str) {
         const creation = JSON.parse(str)
         const creationById = creation as Creation
-        return produce(creationById, (draft) => {
+        return produce(creationById, (draft: any) => {
           draft.createdAt = new Date(draft.createdAt)
           draft.updatedAt = new Date(draft.updatedAt)
         })

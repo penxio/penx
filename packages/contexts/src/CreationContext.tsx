@@ -1,12 +1,11 @@
 'use client'
 
 import { createContext, PropsWithChildren, useContext } from 'react'
-import { CreationById } from '@penx/types'
 
-export const CreationContext = createContext({} as CreationById)
+export const CreationContext = createContext({} as any)
 
 interface Props {
-  creation: CreationById
+  creation: any
 }
 
 export const CreationProvider = ({

@@ -17,9 +17,7 @@
     "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
-    "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
-    "@penx/api": "workspace:*",
     "@penx/domain": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/unique-id": "workspace:*",
@@ -31,7 +29,6 @@
     "@penx/store": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/utils": "workspace:*",
-    "@penx/db": "workspace:*",
     "@penx/types": "workspace:*"
   }
 }

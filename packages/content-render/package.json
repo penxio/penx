@@ -19,14 +19,12 @@
   },
   "dependencies": {
     "@penx/types": "workspace:*",
-    "@penx/db": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/utils": "workspace:*"
   }

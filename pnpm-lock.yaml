@@ -834,9 +834,6 @@ importers:
 
   apps/desktop:
     dependencies:
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../../packages/api
       '@penx/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -849,9 +846,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@penx/domain':
         specifier: workspace:*
         version: link:../../packages/domain
@@ -891,9 +885,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../../packages/store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../../packages/trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -952,9 +943,6 @@ importers:
       '@mozilla/readability':
         specifier: ^0.6.0
         version: 0.6.0
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../../packages/api
       '@penx/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -967,9 +955,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@penx/domain':
         specifier: workspace:*
         version: link:../../packages/domain
@@ -1009,9 +994,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../../packages/store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../../packages/trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -1175,9 +1157,6 @@ importers:
       '@ionic/react-router':
         specifier: ^8.5.0
         version: 8.5.7(react-dom@19.0.0(react@19.0.0))(react-router-dom@5.3.4(react@19.0.0))(react-router@5.3.4(react@19.0.0))(react@19.0.0)
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../../packages/api
       '@penx/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -1190,9 +1169,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@penx/domain':
         specifier: workspace:*
         version: link:../../packages/domain
@@ -1235,9 +1211,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../../packages/store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../../packages/trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -1383,9 +1356,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../../packages/api
       '@penx/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -1398,9 +1368,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@penx/domain':
         specifier: workspace:*
         version: link:../../packages/domain
@@ -1443,9 +1410,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../../packages/store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../../packages/trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -1544,51 +1508,8 @@ importers:
         specifier: ^4.19.1
         version: 4.19.4
 
-  packages/api:
-    dependencies:
-      '@penx/constants':
-        specifier: workspace:*
-        version: link:../constants
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
-      '@penx/encryption':
-        specifier: workspace:*
-        version: link:../encryption
-      '@penx/libs':
-        specifier: workspace:*
-        version: link:../libs
-      '@penx/math':
-        specifier: workspace:*
-        version: link:../math
-      '@penx/model-type':
-        specifier: workspace:*
-        version: link:../model-type
-      '@penx/types':
-        specifier: workspace:*
-        version: link:../types
-      '@penx/unique-id':
-        specifier: workspace:*
-        version: link:../unique-id
-      '@penx/utils':
-        specifier: workspace:*
-        version: link:../utils
-      bcrypt-edge:
-        specifier: ^0.1.0
-        version: 0.1.1
-      next:
-        specifier: ^15.3.0
-        version: 15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-    devDependencies:
-      '@penx/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-
   packages/components:
     dependencies:
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../api
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
@@ -1598,9 +1519,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
@@ -1634,9 +1552,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -1665,9 +1580,6 @@ importers:
 
   packages/constants:
     dependencies:
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -1684,9 +1596,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -1696,9 +1605,6 @@ importers:
       '@penx/session':
         specifier: workspace:*
         version: link:../session
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -1721,9 +1627,6 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
@@ -1734,22 +1637,6 @@ importers:
       '@penx/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-
-  packages/db:
-    dependencies:
-      '@prisma/client':
-        specifier: 6.6.0
-        version: 6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2)
-    devDependencies:
-      '@penx/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.4.4
-      prisma:
-        specifier: ^6.6.0
-        version: 6.7.0(typescript@5.8.2)
 
   packages/domain:
     dependencies:
@@ -1827,18 +1714,12 @@ importers:
 
   packages/hooks:
     dependencies:
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../api
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
@@ -1863,9 +1744,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -1885,9 +1763,6 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
@@ -2001,9 +1876,6 @@ importers:
       '@penx/session':
         specifier: workspace:*
         version: link:../session
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2035,15 +1907,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2060,9 +1926,6 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
@@ -2082,9 +1945,6 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
@@ -2097,9 +1957,6 @@ importers:
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2111,24 +1968,7 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
-  packages/trpc-client:
-    dependencies:
-      '@penx/api':
-        specifier: workspace:*
-        version: link:../api
-      '@penx/constants':
-        specifier: workspace:*
-        version: link:../constants
-    devDependencies:
-      '@penx/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-
   packages/types:
-    dependencies:
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
     devDependencies:
       '@penx/typescript-config':
         specifier: workspace:*
@@ -2144,9 +1984,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2156,9 +1993,6 @@ importers:
       '@penx/session':
         specifier: workspace:*
         version: link:../session
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2212,9 +2046,6 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
-      '@penx/db':
-        specifier: workspace:*
-        version: link:../db
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
@@ -2236,9 +2067,6 @@ importers:
       '@penx/session':
         specifier: workspace:*
         version: link:../session
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2276,9 +2104,6 @@ importers:
       '@penx/store':
         specifier: workspace:*
         version: link:../store
-      '@penx/trpc-client':
-        specifier: workspace:*
-        version: link:../trpc-client
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -19016,10 +18841,13 @@ snapshots:
       esbuild-register: 3.6.0(esbuild@0.25.4)
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
-  '@prisma/debug@6.7.0': {}
+  '@prisma/debug@6.7.0':
+    optional: true
 
-  '@prisma/engines-version@6.7.0-36.3cff47a7f5d65c3ea74883f1d736e41d68ce91ed': {}
+  '@prisma/engines-version@6.7.0-36.3cff47a7f5d65c3ea74883f1d736e41d68ce91ed':
+    optional: true
 
   '@prisma/engines@6.7.0':
     dependencies:
@@ -19027,16 +18855,19 @@ snapshots:
       '@prisma/engines-version': 6.7.0-36.3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
       '@prisma/fetch-engine': 6.7.0
       '@prisma/get-platform': 6.7.0
+    optional: true
 
   '@prisma/fetch-engine@6.7.0':
     dependencies:
       '@prisma/debug': 6.7.0
       '@prisma/engines-version': 6.7.0-36.3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
       '@prisma/get-platform': 6.7.0
+    optional: true
 
   '@prisma/get-platform@6.7.0':
     dependencies:
       '@prisma/debug': 6.7.0
+    optional: true
 
   '@prisma/nextjs-monorepo-workaround-plugin@6.7.0': {}
 
@@ -24232,6 +24063,7 @@ snapshots:
       esbuild: 0.25.4
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   esbuild@0.20.2:
     optionalDependencies:
@@ -28681,6 +28513,7 @@ snapshots:
       typescript: 5.8.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   prismjs@1.30.0: {}
 

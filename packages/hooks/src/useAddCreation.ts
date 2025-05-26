@@ -3,7 +3,6 @@ import {
   defaultEditorContent,
   isMobileApp,
 } from '@penx/constants'
-import { CommentStatus } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
 import { updateCreationState } from '@penx/hooks/useCreation'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -69,7 +68,7 @@ export function useAddCreation() {
         i18n: {},
         gateType: GateType.FREE,
         status: CreationStatus.DRAFT,
-        commentStatus: CommentStatus.OPEN,
+        commentStatus: 'OPEN',
         featured: false,
         collectible: false,
         isJournal: false,

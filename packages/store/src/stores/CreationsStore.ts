@@ -2,7 +2,6 @@ import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
 import { ICreationNode } from '@penx/model-type'
-import { api } from '@penx/trpc-client'
 import { StoreType } from '../store-types'
 
 export const creationsAtom = atom<ICreationNode[]>([])

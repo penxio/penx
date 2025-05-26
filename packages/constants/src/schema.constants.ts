@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { AreaType, ChargeMode, CreationStatus } from '@penx/db/client'
 
 export const updateCreationInputSchema = z.object({
   id: z.string(),
@@ -26,7 +25,7 @@ export const addCreationInputSchema = z.object({
   description: z.string().optional(),
   image: z.string().optional(),
   content: z.string(),
-  status: z.nativeEnum(CreationStatus).optional(),
+  status: z.any().optional(),
   userId: z.string().optional(),
   structId: z.string().uuid(),
   areaId: z.string(),

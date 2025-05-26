@@ -12,9 +12,7 @@ import {
   SIDEBAR_WIDTH,
 } from '@penx/constants'
 // import { runWorker } from '@/lib/worker'
-import { Site } from '@penx/db/client'
 import { appEmitter } from '@penx/emitter'
-import { useDomains } from '@penx/hooks/useDomains'
 import { usePathname } from '@penx/libs/i18n'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
@@ -36,7 +34,6 @@ import { SettingsLayout } from './SettingsLayout'
 // }
 
 export function DashboardLayout({ children }: { children?: ReactNode }) {
-  const domainsQuery = useDomains()
 
   const pathname = usePathname()!
   const isSettings = pathname.includes('/~/settings')

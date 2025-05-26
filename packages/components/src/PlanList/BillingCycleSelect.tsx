@@ -1,6 +1,5 @@
 'use client'
 
-import { BillingCycle } from '@penx/db/client'
 import { Badge } from '@penx/uikit/badge'
 import { ToggleGroup, ToggleGroupItem } from '@penx/uikit/toggle-group'
 import { useBillingCycle } from './useBillingCycle'
@@ -13,19 +12,19 @@ export function BillingCycleSelect() {
       value={cycle}
       onValueChange={(v) => {
         if (!v) return
-        setCycle(v as BillingCycle)
+        setCycle(v as any)
       }}
       type="single"
     >
       <ToggleGroupItem
         className="bg-accent ring-foreground data-[state=on]:bg-background flex h-full w-32 flex-1 cursor-pointer rounded-lg text-sm font-semibold"
-        value={BillingCycle.MONTHLY}
+        value={'MONTHLY'}
       >
         Monthly
       </ToggleGroupItem>
 
       <ToggleGroupItem
-        value={BillingCycle.YEARLY}
+        value={'YEARLY'}
         className="bg-accent ring-foreground data-[state=on]:bg-background flex h-full w-36 flex-1 cursor-pointer rounded-lg text-sm font-semibold"
       >
         Yearly

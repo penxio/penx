@@ -5,7 +5,6 @@ import { Toaster } from 'sonner'
 import { queryClient } from '@penx/query-client'
 import { SessionProvider } from '@penx/session'
 import { StoreProvider } from '@penx/store'
-import { trpc, trpcClient } from '@penx/trpc-client'
 
 export function RootProviders({
   children,
@@ -21,9 +20,7 @@ export function RootProviders({
 
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
-          <trpc.Provider client={trpcClient} queryClient={queryClient}>
-            <StoreProvider>{children}</StoreProvider>
-          </trpc.Provider>
+          <StoreProvider>{children}</StoreProvider>
         </SessionProvider>
       </QueryClientProvider>
     </>

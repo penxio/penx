@@ -17,7 +17,6 @@ import {
 } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
-import { api } from '@penx/trpc-client'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import {

@@ -1,35 +1,22 @@
-import { Trans } from '@lingui/react'
-import {
-  BookmarkIcon,
-  FileIcon,
-  FileTextIcon,
-  PanelLeft,
-  StarIcon,
-  StarOffIcon,
-  TrashIcon,
-} from 'lucide-react'
-import { isMobileApp } from '@penx/constants'
-import { CreationStatus } from '@penx/db/client'
-import { Creation } from '@penx/domain'
-import { appEmitter } from '@penx/emitter'
-import { useArea } from '@penx/hooks/useArea'
-import { updateCreationProps } from '@penx/hooks/useCreation'
-import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId'
-import { useCreationStruct } from '@penx/hooks/useCreationStruct'
-import { mobileMenuAtom, useMobileMenu } from '@penx/hooks/useMobileMenu'
-import { usePanels } from '@penx/hooks/usePanels'
-import { store } from '@penx/store'
-import { PanelType, SiteCreation, StructType } from '@penx/types'
-import { Checkbox } from '@penx/uikit/checkbox'
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from '@penx/uikit/context-menu'
-import { uniqueId } from '@penx/unique-id'
-import { cn } from '@penx/utils'
-import { useIsAllContext } from './IsAllContext'
+import { Trans } from '@lingui/react';
+import { BookmarkIcon, FileIcon, FileTextIcon, PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react';
+import { isMobileApp } from '@penx/constants';
+import { Creation } from '@penx/domain';
+import { appEmitter } from '@penx/emitter';
+import { useArea } from '@penx/hooks/useArea';
+import { updateCreationProps } from '@penx/hooks/useCreation';
+import { creationIdAtom, useCreationId } from '@penx/hooks/useCreationId';
+import { useCreationStruct } from '@penx/hooks/useCreationStruct';
+import { mobileMenuAtom, useMobileMenu } from '@penx/hooks/useMobileMenu';
+import { usePanels } from '@penx/hooks/usePanels';
+import { store } from '@penx/store';
+import { PanelType, StructType } from '@penx/types';
+import { Checkbox } from '@penx/uikit/checkbox';
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '@penx/uikit/context-menu';
+import { uniqueId } from '@penx/unique-id';
+import { cn } from '@penx/utils';
+import { useIsAllContext } from './IsAllContext';
+
 
 interface CreationItemProps {
   creation: Creation
@@ -102,7 +89,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
           >
             {creation.title || getTitleFromContent() || 'Untitled'}
           </div>
-          {isAll && creation.status === CreationStatus.PUBLISHED && (
+          {isAll && creation.status === 'PUBLISHED' && (
             <div className="size-1 rounded-full bg-green-500 text-xs opacity-50"></div>
           )}
         </div>

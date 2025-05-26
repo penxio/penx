@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { toast } from 'sonner'
 // import { serverSideEditor } from '@penx/content-render/server-side-editor'
 import { useSiteContext } from '@penx/contexts/SiteContext'
-import { Creation } from '@penx/db/client'
-import { api } from '@penx/trpc-client'
 import { CreationStatus } from '@penx/types'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { ImportPostData } from './usePostImportTask'
@@ -15,24 +13,24 @@ export function usePostImport() {
   /**
    * Save posts to database
    */
-  const saveCreations = async (creation: Creation[]): Promise<boolean> => {
+  const saveCreations = async (creation: any[]): Promise<any> => {
     if (!creation.length) {
       toast.error('No posts to import')
       return false
     }
 
-    try {
-      await api.creation.importPosts.mutate({
-        siteId: site.id,
-        creations: creation,
-        creationStatus: CreationStatus.PUBLISHED,
-      })
+    // try {
+    //   await api.creation.importPosts.mutate({
+    //     siteId: site.id,
+    //     creations: creation,
+    //     creationStatus: CreationStatus.PUBLISHED,
+    //   })
 
-      return true
-    } catch (error) {
-      console.error('Error importing posts:', error)
-      return false
-    }
+    //   return true
+    // } catch (error) {
+    //   console.error('Error importing posts:', error)
+    //   return false
+    // }
   }
 
   /**

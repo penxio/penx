@@ -26,7 +26,6 @@
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",
-    "@penx/trpc-client": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/uikit": "workspace:*",
     "@penx/unique-id": "workspace:*",

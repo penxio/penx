@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { invoke } from '@tauri-apps/api/core'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import { nanoid } from 'nanoid'
-import { api } from '@penx/trpc-client'
 import { SessionData } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -14,42 +13,35 @@ import { sleep } from '@penx/utils'
 export function Login() {
   const [loading, setLoading] = useState(false)
   async function login() {
-    setLoading(true)
-    const authToken = nanoid()
-    console.log('hello........')
-    const host = import.meta.env.VITE_ROOT_HOST
-    openUrl(`${host}/desktop-login?token=${authToken}`)
-
-    while (true) {
-      try {
-        const { status } = await api.desktop.getLoginStatus.query({
-          token: authToken,
-        })
-
-        // console.log('=======status:', status)
-
-        if (status === LoginStatus.CONFIRMED) {
-          break
-        }
-
-        if (status === LoginStatus.CANCELED) {
-          setLoading(false)
-          return
-          // break
-        }
-
-        await sleep(1000)
-      } catch (error) {
-        console.log('error:', error)
-        // toost
-        setLoading(false)
-        return
-      }
-    }
-
-    const session = await api.desktop.loginByToken.mutate(authToken)
-
-    appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
+    // setLoading(true)
+    // const authToken = nanoid()
+    // console.log('hello........')
+    // const host = import.meta.env.VITE_ROOT_HOST
+    // openUrl(`${host}/desktop-login?token=${authToken}`)
+    // while (true) {
+    //   try {
+    //     const { status } = await api.desktop.getLoginStatus.query({
+    //       token: authToken,
+    //     })
+    //     // console.log('=======status:', status)
+    //     if (status === LoginStatus.CONFIRMED) {
+    //       break
+    //     }
+    //     if (status === LoginStatus.CANCELED) {
+    //       setLoading(false)
+    //       return
+    //       // break
+    //     }
+    //     await sleep(1000)
+    //   } catch (error) {
+    //     console.log('error:', error)
+    //     // toost
+    //     setLoading(false)
+    //     return
+    //   }
+    // }
+    // const session = await api.desktop.loginByToken.mutate(authToken)
+    // appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
   }
 
   return (
