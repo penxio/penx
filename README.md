@@ -45,8 +45,6 @@ After clone the repo, in the root dir:
 # Install the dependencies
 pnpm install
 
-pnpm run build:packages
-
 # copy .env.local.example to .env.local copy
 copy apps/web/.env.local.example apps/web/.env.local
 

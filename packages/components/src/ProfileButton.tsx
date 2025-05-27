@@ -1,7 +1,6 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import ky from 'ky'
@@ -54,7 +53,6 @@ export function ProfileButton({ loginButton }: Props) {
   const { session, data, logout, update } = useSession()
   const isMobile = useIsMobile()
   const { setIsOpen } = usePlanListDialog()
-  const sigInState = useSignIn({})
   const loginDialog = useLoginDialog()
 
   async function desktopLogin() {
@@ -245,7 +243,6 @@ export function ProfileButton({ loginButton }: Props) {
           onClick={async () => {
             try {
               await logout()
-              sigInState?.signOut()
               appEmitter.emit('ON_LOGOUT_SUCCESS')
             } catch (error) {}
           }}

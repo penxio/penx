@@ -13,7 +13,6 @@ import {
   Settings,
 } from 'lucide-react'
 import { ROOT_DOMAIN } from '@penx/constants'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { usePathname, useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
