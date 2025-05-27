@@ -56,7 +56,6 @@
   "devDependencies": {
     "@iconify/tailwind4": "^1.0.4",
     "@lingui/cli": "5.3.1",
-    "@lingui/macro": "^5.3.1",
     "@lingui/swc-plugin": "5.5.2",
     "@lingui/vite-plugin": "^5.3.1",
     "@tailwindcss/forms": "^0.5.10",

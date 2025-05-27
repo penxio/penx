@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import {
   Dialog,
   DialogContent,

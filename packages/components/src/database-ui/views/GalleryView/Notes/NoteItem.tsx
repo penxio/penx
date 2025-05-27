@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { produce } from 'immer'
 import {

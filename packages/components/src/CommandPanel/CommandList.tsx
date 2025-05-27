@@ -2,6 +2,7 @@ import { Command } from 'cmdk'
 import { useOpen } from './hooks/useOpen'
 import { useSearch } from './hooks/useSearch'
 import { useCommands } from './useCommands'
+import { Trans } from '@lingui/react/macro'
 
 const CommandItem = Command.Item
 
@@ -25,7 +26,7 @@ export function CommandList({}: Props) {
   if (!filteredItems.length) {
     return (
       <div className="flex h-[64px] items-center text-sm">
-        No results found.
+        <Trans>No results found.</Trans>
       </div>
     )
   }

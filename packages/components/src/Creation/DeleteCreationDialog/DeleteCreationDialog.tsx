@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
 import { usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
@@ -46,17 +46,17 @@ export function DeleteCreationDialog({}: Props) {
       <DialogContent closable={false} className="">
         <DialogHeader className="">
           <DialogTitle className="">
-            <Trans id="Are you sure delete it permanently?"></Trans>
+            <Trans>Are you sure delete it permanently?</Trans>
           </DialogTitle>
           <DialogDescription>
-            <Trans id="Once deleted, You can't undo this action."></Trans>
+            <Trans>Once deleted, You can't undo this action.</Trans>
           </DialogDescription>
         </DialogHeader>
 
         <DialogFooter className="flex flex-row gap-2">
           <DialogClose asChild>
             <Button className="w-20" variant="outline">
-              <Trans id="Cancel"></Trans>
+              <Trans>Cancel</Trans>
             </Button>
           </DialogClose>
           <Button
@@ -68,7 +68,7 @@ export function DeleteCreationDialog({}: Props) {
             {loading ? (
               <LoadingDots className="bg-background" />
             ) : (
-              <Trans id="Delete"></Trans>
+              <Trans>Delete</Trans>
             )}
           </Button>
         </DialogFooter>

@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react';
+import { Trans } from '@lingui/react/macro';
 import { BookmarkIcon, FileIcon, FileTextIcon, PanelLeft, StarIcon, StarOffIcon, TrashIcon } from 'lucide-react';
 import { isMobileApp } from '@penx/constants';
 import { Creation } from '@penx/domain';
@@ -106,7 +106,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
         >
           <PanelLeft size={16} />
           <span>
-            <Trans id="Open in new panel"></Trans>
+            <Trans>Open in new panel</Trans>
           </span>
         </ContextMenuItem>
         <ToggleFavorite creation={creation} />
@@ -114,7 +114,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
         <ContextMenuItem disabled>
           <TrashIcon size={16} />
           <span>
-            <Trans id="Delete"></Trans>
+            <Trans>Delete</Trans>
           </span>
         </ContextMenuItem>
       </ContextMenuContent>
@@ -140,9 +140,9 @@ function ToggleFavorite({ creation }: CreationItemProps) {
 
       <span>
         {isFavor ? (
-          <Trans id="Remove from favorites"></Trans>
+          <Trans>Remove from favorites</Trans>
         ) : (
-          <Trans id="Add to favorites"></Trans>
+          <Trans>Add to favorites</Trans>
         )}
       </span>
     </ContextMenuItem>

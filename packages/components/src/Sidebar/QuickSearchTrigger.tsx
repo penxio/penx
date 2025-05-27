@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { Search } from 'lucide-react'
 import { Kbd } from '@penx/components/Kbd'
 import { useOpen } from '../CommandPanel/hooks/useOpen'
@@ -20,7 +20,7 @@ export const QuickSearchTrigger = ({}: Props) => {
         <div className="flex items-center gap-1">
           <Search size={18} className="text-foreground/40" />
           <span className="text-foreground/40 text-sm">
-            <Trans id="Search"></Trans>
+            <Trans>Search</Trans>
           </span>
         </div>
         <div className="flex items-center gap-1">

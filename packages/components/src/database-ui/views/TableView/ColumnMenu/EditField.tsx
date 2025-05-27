@@ -2,7 +2,7 @@
 
 import { FormEvent, forwardRef } from 'react'
 import { Controller } from 'react-hook-form'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { ChevronDown, X } from 'lucide-react'
 import { IColumn } from '@penx/model-type'
 import { ColumnType, Option } from '@penx/types'
@@ -40,7 +40,7 @@ export function EditField({ column, onSave, onCancel, close }: EditFieldProps) {
       />
 
       <div className="text-foreground/50 -mb-1 text-xs">
-        <Trans id="Slug"></Trans>
+        <Trans>Slug</Trans>
       </div>
       <Controller
         name="slug"

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { Ellipsis } from 'lucide-react'
 import { toast } from 'sonner'
 import { defaultEditorContent } from '@penx/constants'
@@ -47,7 +47,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
               setIsOpen(false)
             }}
           >
-            <Trans id="Publish"></Trans>
+            <Trans>Publish</Trans>
           </MenuItem>
         )} */}
 
@@ -58,14 +58,14 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
             toast.info('Coming soon...')
           }}
         >
-          <Trans id="Copy link"></Trans>
+          <Trans>Copy link</Trans>
         </MenuItem> */}
         <MenuItem
           onClick={() => {
             toast.info('Coming soon...')
           }}
         >
-          <Trans id="Copy html"></Trans>
+          <Trans>Copy html</Trans>
         </MenuItem>
 
         {/* {creation.publishedAt && (
@@ -86,7 +86,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
               setIsOpen(false)
             }}
           >
-            <Trans id="Unpublish"></Trans>
+            <Trans>Unpublish</Trans>
           </MenuItem>
         )} */}
 
@@ -100,7 +100,7 @@ export function CreationMoreMenu({ creation }: { creation: Creation }) {
             })
           }}
         >
-          <Trans id="Delete"></Trans>
+          <Trans>Delete</Trans>
         </MenuItem>
       </PopoverContent>
     </Popover>

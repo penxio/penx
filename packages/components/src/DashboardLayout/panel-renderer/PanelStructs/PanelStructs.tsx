@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from '@lingui/react/macro'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { Panel } from '@penx/types'
@@ -26,13 +27,15 @@ export function PanelStructs({ panel, index }: Props) {
       >
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <div className="text-foreground/50 text-base">My Structs</div>
+            <div className="text-foreground/50 text-base">
+              <Trans>My Structs</Trans>
+            </div>
             <Button
               size="xs"
               className="rounded-lg"
               onClick={() => setState({ isOpen: true, struct: null as any })}
             >
-              Create
+              <Trans>Create</Trans>
             </Button>
           </div>
           <StructList
@@ -44,7 +47,9 @@ export function PanelStructs({ panel, index }: Props) {
         </div>
 
         <div className="space-y-3">
-          <div className="text-foreground/50 text-base">Struct marketplace</div>
+          <div className="text-foreground/50 text-base">
+            <Trans>Struct marketplace</Trans>
+          </div>
           <PublishedStructList />
         </div>
       </div>

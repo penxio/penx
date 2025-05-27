@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useSession } from '@penx/session'

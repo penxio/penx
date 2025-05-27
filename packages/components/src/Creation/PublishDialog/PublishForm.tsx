@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { DialogClose } from '@radix-ui/react-dialog'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
@@ -80,7 +80,7 @@ export function PublishForm() {
     <Form {...form}>
       <DialogHeader>
         <DialogTitle>
-          <Trans id="Publish your creation"></Trans>
+          <Trans>Publish your creation</Trans>
         </DialogTitle>
       </DialogHeader>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -90,7 +90,7 @@ export function PublishForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Slug"></Trans>
+                <Trans>Slug</Trans>
               </FormLabel>
               <FormControl>
                 <Input
@@ -112,10 +112,10 @@ export function PublishForm() {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>
-                  <Trans id="Access control"></Trans>
+                  <Trans>Access control</Trans>
                 </FormLabel>
                 <FormDescription>
-                  <Trans id="Gate this post, config who can read this post."></Trans>
+                  <Trans>Gate this post, config who can read this post.</Trans>
                 </FormDescription>
                 <FormControl>
                   <GateTypeSelect {...field} />
@@ -133,20 +133,20 @@ export function PublishForm() {
                 <FormItem className="flex w-full items-center">
                   <div className="flex items-center gap-2">
                     <FormLabel htmlFor="post-delivered">
-                      <Trans id="Deliver your newsletter"></Trans>
+                      <Trans>Deliver your newsletter</Trans>
                     </FormLabel>
                     <Badge
                       size="sm"
                       className="h-6 cursor-pointer"
                       onClick={() => setIsOpen(true)}
                     >
-                      <Trans id="Upgrade"></Trans>
+                      <Trans>Upgrade</Trans>
                     </Badge>
                   </div>
                   <FormControl>
                     {creation.delivered ? (
                       <div className="text-muted-foreground text-sm">
-                        <Trans id="Upgrade"></Trans>
+                        <Trans>Upgrade</Trans>
                         Already sent
                       </div>
                     ) : (
@@ -196,7 +196,7 @@ export function PublishForm() {
                           <span>{format(field.value, 'PPP')}</span>
                         ) : (
                           <span>
-                            <Trans id="Pick a date"></Trans>
+                            <Trans>Pick a date</Trans>
                           </span>
                         )}
                       </Button>
@@ -227,7 +227,7 @@ export function PublishForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Authors"></Trans>
+                <Trans>Authors</Trans>
               </FormLabel>
               <FormControl>
                 <Authors creation={creation} />
@@ -240,7 +240,7 @@ export function PublishForm() {
         <div className="flex items-center justify-end gap-2">
           <DialogClose asChild>
             <Button variant="secondary">
-              <Trans id="Cancel"></Trans>
+              <Trans>Cancel</Trans>
             </Button>
           </DialogClose>
           <Button type="submit" className="w-24" disabled={isLoading}>
@@ -248,7 +248,7 @@ export function PublishForm() {
               <LoadingDots />
             ) : (
               <span>
-                <Trans id="Publish"></Trans>
+                <Trans>Publish</Trans>
               </span>
             )}
           </Button>

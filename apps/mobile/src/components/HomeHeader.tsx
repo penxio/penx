@@ -9,6 +9,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { ChevronDown, ListFilterIcon } from 'lucide-react'
 import { GoToDay } from '@penx/components/GoToDay'
 import { useArea } from '@penx/hooks/useArea'
@@ -25,7 +26,7 @@ export const HomeHeader: React.FC = () => {
   const [panel] = panels
   const title = useMemo(() => {
     if (panel) {
-      if (panel.type === PanelType.JOURNAL) return 'Journal'
+      if (panel.type === PanelType.JOURNAL) return <Trans>Journal</Trans>
     }
     return ''
   }, [panel])
@@ -54,7 +55,6 @@ export const HomeHeader: React.FC = () => {
         </IonButtons>
 
         <div className="text-foreground/50 text-md flex h-full items-center gap-1 px-2">
-          {/* <div className="text-foreground text-xl font-bold">Journal</div> */}
           <StructTypeSelect className="" />
         </div>
         {/* <IonTitle slot="start" className="mx-1">

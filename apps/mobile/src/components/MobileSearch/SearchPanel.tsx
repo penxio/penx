@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useMemo, useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { appEmitter } from '@penx/emitter'
 import { creationIdAtom } from '@penx/hooks/useCreationId'
 import { useCreations } from '@penx/hooks/useCreations'
@@ -38,7 +39,7 @@ export function SearchPanel({ setVisible }: Props) {
       <div className="flex-1 overflow-auto px-4 pb-10">
         {!filteredItems.length && (
           <div className="flex h-16 items-center justify-center text-sm">
-            No results found.
+            <Trans>No results found.</Trans>
           </div>
         )}
         {

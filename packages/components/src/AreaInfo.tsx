@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { GlobeIcon, PencilIcon, TrashIcon } from 'lucide-react'
 import { useArea } from '@penx/hooks/useArea'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'

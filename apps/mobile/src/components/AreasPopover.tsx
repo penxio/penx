@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { DialogTitle } from '@radix-ui/react-dialog'
 import { ChevronDown, ChevronsUpDown, HomeIcon, PlusIcon } from 'lucide-react'
 import { Drawer } from 'vaul'
@@ -97,7 +97,7 @@ export const AreasPopover = ({ className = '', oncClick }: Props) => {
               >
                 <PlusIcon size={16} />
                 <div>
-                  <Trans id="Create area"></Trans>
+                  <Trans>Create area</Trans>
                 </div>
               </MenuItem>
             </div>

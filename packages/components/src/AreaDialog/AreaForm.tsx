@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { slug } from 'github-slugger'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -108,7 +108,7 @@ export function AreaForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  <Trans id="logo"></Trans>
+                  <Trans>logo</Trans>
                 </FormLabel>
                 <FileUpload {...field} />
               </FormItem>
@@ -134,18 +134,18 @@ export function AreaForm() {
                   type="single"
                 >
                   <ToggleGroupItem className="" value={FieldType.COLUMN}>
-                    <Trans id="Column"></Trans>
+                    <Trans>Column</Trans>
                   </ToggleGroupItem>
 
                   <ToggleGroupItem value={FieldType.BOOK} className="">
-                    <Trans id="Book"></Trans>
+                    <Trans>Book</Trans>
                   </ToggleGroupItem>
                   <ToggleGroupItem
                     value={FieldType.SUBJECT}
                     className=""
                     disabled
                   >
-                    <Trans id="Subject"></Trans>
+                    <Trans>Subject</Trans>
                   </ToggleGroupItem>
                 </ToggleGroup>
               </FormControl>
@@ -160,7 +160,7 @@ export function AreaForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Name"></Trans>
+                <Trans>Name</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -177,7 +177,7 @@ export function AreaForm() {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>
-                  <Trans id="Slug"></Trans>
+                  <Trans>Slug</Trans>
                 </FormLabel>
                 <FormControl>
                   <Input placeholder="" {...field} className="w-full" />
@@ -196,7 +196,7 @@ export function AreaForm() {
               return (
                 <FormItem className="w-full">
                   <FormLabel>
-                    <Trans id="Description"></Trans>
+                    <Trans>Description</Trans>
                   </FormLabel>
                   <FormControl>
                     <Textarea placeholder="" {...field} className="w-full" />
@@ -208,7 +208,7 @@ export function AreaForm() {
           />
         )}
 
-        {isEdit && !isMobileApp && (
+        {/* {isEdit && !isMobileApp && (
           <FormField
             control={form.control}
             name="about"
@@ -216,7 +216,7 @@ export function AreaForm() {
               return (
                 <FormItem className="w-full">
                   <FormLabel>
-                    <Trans id="About"></Trans>
+                    <Trans>About</Trans>
                   </FormLabel>
                   <FormControl>
                     <div className="border-foreground/20  h-[250px] overflow-auto rounded-lg border">
@@ -239,7 +239,7 @@ export function AreaForm() {
               )
             }}
           />
-        )}
+        )} */}
 
         {/* <FormField
           control={form.control}
@@ -316,9 +316,9 @@ export function AreaForm() {
             ) : (
               <span>
                 {isEdit ? (
-                  <Trans id="Update area"></Trans>
+                  <Trans>Update area</Trans>
                 ) : (
-                  <Trans id="Create area"></Trans>
+                  <Trans>Create area</Trans>
                 )}
               </span>
             )}

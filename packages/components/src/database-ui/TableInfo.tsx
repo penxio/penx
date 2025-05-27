@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import {
   Edit2Icon,
   EllipsisVerticalIcon,
@@ -55,7 +55,7 @@ export const TableInfo = ({ struct }: { struct: Struct }) => {
           }}
         >
           <Edit2Icon />
-          <Trans id="Edit struct"></Trans>
+          <Trans>Edit struct</Trans>
         </DropdownMenuItem>
 
         <DropdownMenuItem
@@ -65,7 +65,7 @@ export const TableInfo = ({ struct }: { struct: Struct }) => {
           }}
         >
           <GlobeIcon />
-          <Trans id="Publish to marketplace"></Trans>
+          <Trans>Publish to marketplace</Trans>
         </DropdownMenuItem>
 
         <DropdownMenuItem
@@ -74,7 +74,7 @@ export const TableInfo = ({ struct }: { struct: Struct }) => {
           }}
         >
           <Trash2Icon />
-          <Trans id="Delete"></Trans>
+          <Trans>Delete</Trans>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

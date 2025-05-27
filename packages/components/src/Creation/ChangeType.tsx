@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { Creation } from '@penx/domain'
 import {
   updateCreationProps,
@@ -33,7 +33,7 @@ export function ChangeType({ creation }: { creation: Creation }) {
       </PopoverTrigger>
       <PopoverContent align="start" className="w-48 p-2">
         <div className="mb-1 pl-2 text-sm font-semibold">
-          <Trans id="Change type"></Trans>
+          <Trans>Change type</Trans>
         </div>
         {structs.map((struct) => {
           return (

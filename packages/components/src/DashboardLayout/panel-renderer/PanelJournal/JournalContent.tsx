@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from '@lingui/react/macro'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { useActiveStruct } from '@penx/hooks/useActiveStruct'
@@ -36,7 +37,7 @@ export function JournalContent({ date }: Props) {
             transition={{ delay: 0.1 }}
             className="text-foreground/60 text-2xl"
           >
-            What's on your mind today?
+            <Trans>What's on your mind today?</Trans>
           </motion.div>
         </div>
       )}

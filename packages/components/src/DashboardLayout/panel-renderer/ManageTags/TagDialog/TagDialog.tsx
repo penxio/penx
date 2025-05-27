@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -22,9 +22,9 @@ export function TagDialog() {
         <DialogHeader>
           <DialogTitle>
             {!navLink ? (
-              <Trans id="Add navigation"></Trans>
+              <Trans>Add navigation</Trans>
             ) : (
-              <Trans id="Edit navigation"></Trans>
+              <Trans>Edit navigation</Trans>
             )}
           </DialogTitle>
         </DialogHeader>

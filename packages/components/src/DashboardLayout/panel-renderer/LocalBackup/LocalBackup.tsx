@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { ask, open } from '@tauri-apps/plugin-dialog'
 import { get, set } from 'idb-keyval'
@@ -34,7 +34,7 @@ export const LocalBackup = ({ panel, index }: Props) => {
     <>
       <PanelHeaderWrapper index={index}>
         <div>
-          <Trans id="Local backup"></Trans>
+          <Trans>Local backup</Trans>
         </div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>

@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { PanelLeft, PencilIcon, Rows4Icon, TrashIcon } from 'lucide-react'
 import { WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
@@ -31,7 +31,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
         >
           <PanelLeft size={16} />
           <span>
-            <Trans id="Open in new panel"></Trans>
+            <Trans>Open in new panel</Trans>
           </span>
         </ContextMenuItem>
       )}
@@ -43,7 +43,7 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
       >
         <Rows4Icon size={16} />
         <div>
-          <Trans id="Show all"></Trans>
+          <Trans>Show all</Trans>
         </div>
       </ContextMenuItem>
       <ContextMenuItem
@@ -53,13 +53,13 @@ export const TitleContextMenu: FC<PropsWithChildren<Props>> = ({
       >
         <TrashIcon size={16} />
         <div>
-          <Trans id="Delete"></Trans>
+          <Trans>Delete</Trans>
         </div>
       </ContextMenuItem>
       <ContextMenuItem disabled onClick={async (e) => {}}>
         <PencilIcon size={16} />
         <div>
-          <Trans id="Rename"></Trans>
+          <Trans>Rename</Trans>
         </div>
       </ContextMenuItem>
     </ContextMenuContent>

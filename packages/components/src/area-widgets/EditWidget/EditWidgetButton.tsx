@@ -2,7 +2,7 @@
 
 import { ReactNode, useState } from 'react'
 import { isAndroid, isIOS } from 'react-device-detect'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { LayersIcon } from 'lucide-react'
 import { Drawer } from 'vaul'
 import { Button } from '@penx/uikit/button'
@@ -32,7 +32,7 @@ export function EditWidgetButton({ className }: Props) {
           setVisible(true)
         }}
       >
-        <Trans id="Edit widget"></Trans>
+        <Trans>Edit widget</Trans>
       </Button>
 
       <Drawer.Root open={visible} onOpenChange={setVisible}>

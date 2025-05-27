@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -80,7 +80,7 @@ export function RegisterForm({}: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Email"></Trans>
+                <Trans>Email</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="Email" {...field} className="w-full" />
@@ -96,7 +96,7 @@ export function RegisterForm({}: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Password"></Trans>
+                <Trans>Password</Trans>
               </FormLabel>
               <FormControl>
                 <Input
@@ -118,13 +118,13 @@ export function RegisterForm({}: Props) {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? <LoadingDots /> : <Trans id="Register"></Trans>}
+            {isLoading ? <LoadingDots /> : <Trans>Register</Trans>}
           </Button>
         </div>
       </form>
 
       <div className="mt-2 text-center text-sm">
-        <Trans id="Already have an account"></Trans>?{' '}
+        <Trans>Already have an account</Trans>?{' '}
         <span
           className="text-brand"
           onClick={(e) => {
@@ -132,7 +132,7 @@ export function RegisterForm({}: Props) {
             setAuthStatus({ type: 'login' })
           }}
         >
-          <Trans id="Log in"></Trans>
+          <Trans>Log in</Trans>
         </span>
       </div>
     </Form>

@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { z } from 'zod'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/button'
@@ -46,7 +46,7 @@ export function CreateStructForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Name"></Trans>
+                <Trans>Name</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />

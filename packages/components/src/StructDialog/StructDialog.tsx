@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import {
   Dialog,
   DialogContent,
@@ -28,9 +28,9 @@ export function StructDialog() {
         <DialogHeader>
           <DialogTitle>
             {!!struct ? (
-              <Trans id="Update struct"></Trans>
+              <Trans>Update struct</Trans>
             ) : (
-              <Trans id="Create struct"></Trans>
+              <Trans>Create struct</Trans>
             )}
           </DialogTitle>
           <DialogDescription className="hidden"></DialogDescription>

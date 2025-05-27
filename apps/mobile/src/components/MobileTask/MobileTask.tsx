@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
 import { StructType, Panel } from '@penx/types'
@@ -26,7 +26,7 @@ export function MobileTask({}: Props) {
     <div className="flex flex-1 flex-col">
       {!tasks.length && (
         <div className="text-foreground/60">
-          <Trans id="No task yet."></Trans>
+          <Trans>No task yet.</Trans>
         </div>
       )}
       <div className="flex w-full flex-1 overflow-auto px-4 pt-6">

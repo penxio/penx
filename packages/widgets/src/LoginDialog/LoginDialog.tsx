@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import {
   Dialog,
@@ -27,7 +27,7 @@ export function LoginDialog({}: Props) {
           <>
             <DialogHeader>
               <DialogTitle className="mb-4 text-center text-2xl">
-                <Trans id="Welcome to PenX"></Trans>
+                <Trans>Welcome to PenX</Trans>
               </DialogTitle>
               <DialogDescription className="hidden"></DialogDescription>
             </DialogHeader>
@@ -39,7 +39,7 @@ export function LoginDialog({}: Props) {
           <div className="h-[290px]">
             <DialogHeader>
               <DialogTitle className="mb-6 text-center text-2xl">
-                <Trans id="Register to PenX"></Trans>
+                <Trans>Register to PenX</Trans>
               </DialogTitle>
             </DialogHeader>
             <RegisterForm />
@@ -50,7 +50,7 @@ export function LoginDialog({}: Props) {
           <div className="flex h-full flex-col">
             <DialogHeader>
               <DialogTitle className="">
-                <Trans id="Register to PenX"></Trans>
+                <Trans>Register to PenX</Trans>
               </DialogTitle>
               <DialogDescription></DialogDescription>
             </DialogHeader>

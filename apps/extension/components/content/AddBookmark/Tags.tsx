@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useSession } from '@/hooks/useSession'
 import { addCreationTag, createTag } from '@/lib/api'
 import { extractErrorMessage } from '@/lib/extractErrorMessage'
+import { t } from '@lingui/core/macro'
 import { Command } from 'cmdk'
 import { produce } from 'immer'
 import { Plus, XIcon } from 'lucide-react'
@@ -17,7 +18,6 @@ import {
   CommandInput,
   CommandItem,
 } from '../../command-components'
-import { useSiteTags } from '../hooks/useSiteTags'
 
 interface Props {
   value: any[]
@@ -27,8 +27,8 @@ export function Tags({ value: tags, onChange: setTags }: Props) {
   const [adding, setAdding] = useState(false)
   const [search, setSearch] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const { data = [], refetch } = useSiteTags()
   const { session } = useSession()
+  const data: any[] = []
 
   return (
     <div className="flex flex-wrap items-center gap-1">
@@ -66,7 +66,7 @@ export function Tags({ value: tags, onChange: setTags }: Props) {
             <CommandInput
               autoFocus
               className=""
-              placeholder="Find or create option"
+              placeholder={t`Find or create option`}
               value={search}
               onValueChange={(v) => {
                 setSearch(v)

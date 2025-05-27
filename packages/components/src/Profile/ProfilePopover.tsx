@@ -2,7 +2,7 @@
 
 import { memo } from 'react'
 import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import {
   DatabaseBackup,
   FileText,
@@ -88,7 +88,7 @@ export const ProfilePopover = memo(function ProfilePopover({
             >
               <Home className="mr-2 h-4 w-4" />
               <span>
-                <Trans id="Home"></Trans>
+                <Trans>Home</Trans>
               </span>
             </DropdownMenuItem>
           )}
@@ -106,7 +106,7 @@ export const ProfilePopover = memo(function ProfilePopover({
           >
             <Gauge className="mr-2 h-4 w-4" />
             <span>
-              <Trans id="Dashboard"></Trans>
+              <Trans>Dashboard</Trans>
             </span>
           </DropdownMenuItem>
 
@@ -123,7 +123,7 @@ export const ProfilePopover = memo(function ProfilePopover({
           >
             <Settings className="mr-2 h-4 w-4" />
             <span>
-              <Trans id="Settings"></Trans>
+              <Trans>Settings</Trans>
             </span>
           </DropdownMenuItem>
 
@@ -150,7 +150,7 @@ export const ProfilePopover = memo(function ProfilePopover({
         >
           <LogOut className="mr-2 h-4 w-4" />
           <span>
-            <Trans id="Log out"></Trans>
+            <Trans>Log out</Trans>
           </span>
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { produce } from 'immer'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -80,7 +80,7 @@ export function EditStructForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Name"></Trans>
+                <Trans>Name</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -96,7 +96,7 @@ export function EditStructForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Plural name"></Trans>
+                <Trans>Plural name</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -112,7 +112,7 @@ export function EditStructForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Unique code"></Trans>
+                <Trans>Unique code</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -128,7 +128,7 @@ export function EditStructForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Color"></Trans>
+                <Trans>Color</Trans>
               </FormLabel>
               <FormControl>
                 <ColorSelector

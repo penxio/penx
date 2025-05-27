@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import { Command } from 'cmdk'
 import { Struct } from '@penx/domain'
 import { getBgColor } from '@penx/libs/color-helper'
@@ -82,7 +84,7 @@ export const MultipleSelectProp = ({
           <CommandInput
             autoFocus
             className=""
-            placeholder="Find or create option"
+            placeholder={t`Find or create option`}
             value={search}
             onValueChange={(v) => {
               setSearch(v)
@@ -90,7 +92,7 @@ export const MultipleSelectProp = ({
           />
           <Command.List>
             <Command.Empty className="text-foreground/40 py-2 text-center">
-              No results found.
+              <Trans>No results found.</Trans>
             </Command.Empty>
             <CommandGroup heading={''}>
               {filteredOptions.map((item) => (

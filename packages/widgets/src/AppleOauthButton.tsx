@@ -1,6 +1,7 @@
 'use client'
 
 import { PropsWithChildren, useEffect, useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 import qs from 'query-string'
@@ -75,7 +76,7 @@ export function AppleOauthButton({
       {!loading && (
         <>
           <span className="icon-[ic--baseline-apple] size-6"></span>
-          <div className="">{children || 'Google login'}</div>
+          <div className="">{children || <Trans>Apple login</Trans>}</div>
         </>
       )}
     </Button>

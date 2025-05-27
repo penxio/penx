@@ -14,7 +14,7 @@ import {
   IonNote,
   IonToggle,
 } from '@ionic/react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { DialogTitle } from '@radix-ui/react-dialog'
 import {
   ChevronDown,

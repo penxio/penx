@@ -22,7 +22,7 @@ export const StructTypeSelect = ({
   return (
     <div className={cn('relative', className)}>
       <div
-        className="shadow-popover text-foreground flex h-[32px] items-center justify-center rounded-full px-2 text-sm"
+        className="shadow-popover text-foreground flex h-[32px] shrink-0 items-center justify-center rounded-full px-2 text-sm"
         onClick={() => {
           setVisible(!visible)
           setFocused()
@@ -60,7 +60,7 @@ export const StructTypeSelect = ({
               },
             }}
             animate={visible ? 'open' : 'closed'}
-            className="shadow-popover bg-background absolute left-0  top-0 flex h-[40px] max-w-[90wv] origin-bottom-left items-center gap-2 rounded-md px-3 font-medium"
+            className="shadow-popover bg-background absolute left-0  top-0 flex h-[40px] max-w-[90vw] origin-bottom-left items-center gap-2 rounded-md px-3 font-medium"
             onClick={(e) => {
               e.stopPropagation()
               setVisible(false)
@@ -71,7 +71,7 @@ export const StructTypeSelect = ({
               <div
                 key={struct.id}
                 className={cn(
-                  'hover:text-brand flex h-6 cursor-pointer items-center rounded-full text-sm',
+                  'hover:text-brand flex h-6 min-w-12 shrink-0 cursor-pointer items-center rounded-full px-2 text-sm',
                   value.id == struct.id && 'text-brand',
                 )}
                 onClick={() => {

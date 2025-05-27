@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import ky from 'ky'
 import {
@@ -117,7 +117,7 @@ export function ProfileButton({ loginButton }: Props) {
     if (loginButton) return loginButton
     return (
       <Button size="sm" onClick={handleLogin}>
-        Log in
+        <Trans>Log in</Trans>
       </Button>
     )
   }
@@ -203,12 +203,12 @@ export function ProfileButton({ loginButton }: Props) {
               }}
             >
               <BadgeCheck />
-              <Trans id="Settings"></Trans>
+              <Trans>Settings</Trans>
             </DropdownMenuItem>
 
             {/* <DropdownMenuItem>
                 <CreditCard />
-                <Trans id="Billing"></Trans>
+                <Trans>Billing</Trans>
               </DropdownMenuItem> */}
 
             <DropdownMenuItem
@@ -221,7 +221,7 @@ export function ProfileButton({ loginButton }: Props) {
               }}
             >
               <Sparkles />
-              <Trans id="Upgrade to Pro"></Trans>
+              <Trans>Upgrade to Pro</Trans>
             </DropdownMenuItem>
 
             <DropdownMenuItem
@@ -230,7 +230,7 @@ export function ProfileButton({ loginButton }: Props) {
               }}
             >
               <MessageCircleIcon />
-              <Trans id="Support"></Trans>
+              <Trans>Support</Trans>
             </DropdownMenuItem>
 
             {/* <DropdownMenuItem>
@@ -251,7 +251,7 @@ export function ProfileButton({ loginButton }: Props) {
           }}
         >
           <LogOut />
-          <Trans id="Log out"></Trans>
+          <Trans>Log out</Trans>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

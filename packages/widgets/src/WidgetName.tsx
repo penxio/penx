@@ -1,4 +1,4 @@
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { Widget } from '@penx/types'
@@ -11,32 +11,32 @@ interface Props {
 
 export function WidgetName({ widget, structs }: Props) {
   if (widget.type === WidgetType.JOURNAL) {
-    return <Trans id="Journals"></Trans>
+    return <Trans>Journals</Trans>
   }
 
   if (widget.type === WidgetType.ALL_CREATIONS) {
-    return <Trans id="All creations"></Trans>
+    return <Trans>All creations</Trans>
   }
 
   if (widget.type === WidgetType.ALL_STRUCTS) {
-    return <Trans id="Structs"></Trans>
+    return <Trans>Structs</Trans>
   }
 
   if (widget.type === WidgetType.COLLECTION) {
-    return <Trans id="Collection"></Trans>
+    return <Trans>Collection</Trans>
   }
 
   if (widget.type === WidgetType.FAVORITES) {
-    return <Trans id="Favorites"></Trans>
+    return <Trans>Favorites</Trans>
   }
   if (widget.type === WidgetType.RECENTLY_EDITED) {
-    return <Trans id="Recently edited"></Trans>
+    return <Trans>Recently edited</Trans>
   }
   if (widget.type === WidgetType.AI_CHAT) {
-    return <Trans id="AI chat"></Trans>
+    return <Trans>AI chat</Trans>
   }
   if (widget.type === WidgetType.RECENTLY_OPENED) {
-    return <Trans id="Recently opened"></Trans>
+    return <Trans>Recently opened</Trans>
   }
   const struct = structs.find((m) => m.id === widget.structId)
   if (struct) return <StructName struct={struct!} />

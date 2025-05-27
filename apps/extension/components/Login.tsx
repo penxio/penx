@@ -1,4 +1,5 @@
 import { BASE_URL } from '@/lib/constants'
+import { Trans } from '@lingui/react/macro'
 import { Button } from '@penx/uikit/button'
 import {
   Card,
@@ -34,7 +35,7 @@ export function Login({
           }
         }
       >
-        Welcome to PenX
+        <Trans>Welcome to PenX</Trans>
       </h1>
       <>
         <Button
@@ -46,7 +47,9 @@ export function Login({
           }}
         >
           <IconGoogle className="h-4 w-4" />
-          <div className="">{'Google login'}</div>
+          <div className="">
+            <Trans>Google login</Trans>
+          </div>
         </Button>
       </>
     </div>

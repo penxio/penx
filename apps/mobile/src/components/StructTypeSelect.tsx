@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { useActiveStruct } from '@penx/hooks/useActiveStruct'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -31,7 +32,7 @@ export const StructTypeSelect = ({ className }: Props) => {
           onChange(null)
         }}
       >
-        Journal
+        <Trans>Journal</Trans>
       </div>
 
       {suggestions.map((item, index) => (

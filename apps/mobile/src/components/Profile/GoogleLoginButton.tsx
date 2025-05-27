@@ -3,6 +3,7 @@
 import React, { useMemo, useState } from 'react'
 import { Capacitor } from '@capacitor/core'
 import { SocialLogin } from '@capgo/capacitor-social-login'
+import { Trans } from '@lingui/react/macro'
 import { set } from 'idb-keyval'
 import { appEmitter } from '@penx/emitter'
 import { localDB } from '@penx/local-db'
@@ -64,7 +65,9 @@ export function GoogleLoginButton({}: Props) {
       {!loading && (
         <>
           <IconGoogle className="h-4 w-4" />
-          <div className="">Google login</div>
+          <div className="">
+            <Trans>Google login</Trans>
+          </div>
         </>
       )}
     </Button>

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useMemo } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { File } from 'lucide-react'
 import { useCreations } from '@penx/hooks/useCreations'
 import { usePaletteDrawer } from '@penx/hooks/usePaletteDrawer'
@@ -33,7 +34,7 @@ export function SearchCreationList({ heading = '', isRecent = false }: Props) {
   if (!filteredItems.length) {
     return (
       <div className="flex h-16 items-center justify-center text-sm">
-        No results found.
+        <Trans>No results found.</Trans>
       </div>
     )
   }

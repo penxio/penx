@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { ROOT_DOMAIN } from '@penx/constants'
 import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { useRouter } from '@penx/libs/i18n'
@@ -55,7 +55,7 @@ export function Profile({
                 location.href = `${location.protocol}//${ROOT_DOMAIN}/~`
               }}
             >
-              <Trans id="Dashboard"></Trans>
+              <Trans>Dashboard</Trans>
             </Button>
           )}
           <ProfilePopover />

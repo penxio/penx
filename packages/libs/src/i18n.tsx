@@ -1,6 +1,6 @@
 'use client'
 
-import { useLingui } from '@lingui/react'
+import { useLingui } from '@lingui/react/macro'
 import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import NextLink from 'next/link'
 import {

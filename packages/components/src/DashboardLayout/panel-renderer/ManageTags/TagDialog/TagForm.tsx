@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans, useLingui } from '@lingui/react'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { localDB } from '@penx/local-db'
@@ -51,7 +51,7 @@ export function TagForm() {
       //   tagId: tag.id,
       //   ...data,
       // })
-      toast.success(<Trans id="Updated successfully!"></Trans>)
+      toast.success(<Trans>Updated successfully!</Trans>)
     } catch (error) {
       const msg = extractErrorMessage(error)
       toast.error(msg)
@@ -68,7 +68,7 @@ export function TagForm() {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormLabel>
-                <Trans id="Name"></Trans>
+                <Trans>Name</Trans>
               </FormLabel>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -87,7 +87,7 @@ export function TagForm() {
             <LoadingDots />
           ) : (
             <span>
-              {isEdit ? <Trans id="Save"></Trans> : <Trans id="Add"></Trans>}
+              {isEdit ? <Trans>Save</Trans> : <Trans>Add</Trans>}
             </span>
           )}
         </Button>

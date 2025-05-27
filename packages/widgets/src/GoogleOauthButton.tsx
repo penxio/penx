@@ -17,6 +17,7 @@ import { Button, ButtonProps } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { cn } from '@penx/utils'
+import { Trans } from '@lingui/react/macro'
 
 interface Props extends ButtonProps {
   className?: string
@@ -67,7 +68,7 @@ export function GoogleOauthButton({
       {!loading && (
         <>
           <IconGoogle className="h-4 w-4" />
-          <div className="">{children || 'Google login'}</div>
+          <div className="">{children || <Trans>Google login</Trans>}</div>
         </>
       )}
     </Button>

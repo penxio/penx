@@ -1,3 +1,4 @@
+import { t } from '@lingui/core/macro'
 import { defaultEditorContent } from '@penx/constants'
 import { IColumn, IStructNode, IView, NodeType } from '@penx/model-type'
 import { ColumnType, StructType, ViewColumn, ViewType } from '@penx/types'
@@ -27,7 +28,7 @@ export function generateStructNode({
         id: uniqueId(),
         // slug: uniqueId(),
         slug: 'title',
-        name: 'Title',
+        name: t`Title`,
         description: '',
         columnType: ColumnType.PRIMARY,
         config: {},
@@ -44,26 +45,26 @@ export function generateStructNode({
           {
             id: uniqueId(),
             slug: 'status',
-            name: 'Status',
+            name: t`Status`,
             description: '',
             columnType: ColumnType.SINGLE_SELECT,
             config: {},
             options: [
               {
                 id: uniqueId(),
-                name: 'To Do',
+                name: t`To Do`,
                 color: getRandomColorName(),
                 isDefault: true,
               },
               {
                 id: uniqueId(),
-                name: 'Doing',
+                name: t`Doing`,
                 color: getRandomColorName(),
                 isDefault: false,
               },
               {
                 id: uniqueId(),
-                name: 'Done',
+                name: t`Done`,
                 color: getRandomColorName(),
                 isDefault: false,
               },
@@ -75,26 +76,26 @@ export function generateStructNode({
           {
             id: uniqueId(),
             slug: 'priority',
-            name: 'Priority',
+            name: t`Priority`,
             description: '',
             columnType: ColumnType.SINGLE_SELECT,
             config: {},
             options: [
               {
                 id: uniqueId(),
-                name: 'Low',
+                name: t`Low`,
                 color: getRandomColorName(),
                 isDefault: false,
               },
               {
                 id: uniqueId(),
-                name: 'Medium',
+                name: t`Medium`,
                 color: getRandomColorName(),
                 isDefault: true,
               },
               {
                 id: uniqueId(),
-                name: 'High',
+                name: t`High`,
                 color: getRandomColorName(),
                 isDefault: false,
               },
@@ -106,7 +107,7 @@ export function generateStructNode({
           {
             id: uniqueId(),
             slug: 'dueDate',
-            name: 'Due date',
+            name: t`Due date`,
             description: '',
             columnType: ColumnType.DATE,
             config: {},
@@ -123,7 +124,7 @@ export function generateStructNode({
       columns.push({
         id: uniqueId(),
         slug: 'url',
-        name: 'URL',
+        name: t`URL`,
         description: '',
         columnType: ColumnType.URL,
         config: {},
@@ -144,7 +145,7 @@ export function generateStructNode({
   const views: IView[] = [
     {
       id: uniqueId(),
-      name: 'Table',
+      name: t`Table`,
       viewType: ViewType.TABLE,
       viewColumns,
       description: '',
@@ -158,7 +159,7 @@ export function generateStructNode({
     },
     {
       id: uniqueId(),
-      name: 'Gallery',
+      name: t`Gallery`,
       viewType: ViewType.GALLERY,
       viewColumns,
       description: '',
@@ -172,7 +173,7 @@ export function generateStructNode({
     },
     {
       id: uniqueId(),
-      name: 'List',
+      name: t`List`,
       viewType: ViewType.LIST,
       viewColumns,
       description: '',
@@ -214,7 +215,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
   return [
     generateStructNode({
       type: StructType.PAGE,
-      name: 'Page',
+      name: t`Page`,
       ...input,
     }),
     // {
@@ -231,7 +232,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
 
     generateStructNode({
       type: StructType.NOTE,
-      name: 'Note',
+      name: t`Note`,
       ...input,
     }),
 
@@ -260,19 +261,19 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
 
     generateStructNode({
       type: StructType.TASK,
-      name: 'Task',
+      name: t`Task`,
       ...input,
     }),
 
     generateStructNode({
       type: StructType.VOICE,
-      name: 'Voice',
+      name: t`Voice`,
       ...input,
     }),
 
     generateStructNode({
       type: StructType.BOOKMARK,
-      name: 'Bookmark',
+      name: t`Bookmark`,
       ...input,
     }),
     // {

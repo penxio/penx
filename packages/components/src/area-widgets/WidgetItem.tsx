@@ -2,7 +2,7 @@
 
 import React, { forwardRef, memo, ReactNode, useEffect, useState } from 'react'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { AnimatePresence, motion } from 'motion/react'
 import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'

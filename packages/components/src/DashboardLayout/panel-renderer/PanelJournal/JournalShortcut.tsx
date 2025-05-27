@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { addDays, format, subDays } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
@@ -27,7 +27,7 @@ export const JournalShortcut = forwardRef<HTMLDivElement, Props>(
             onSelect?.(new Date())
           }}
         >
-          <Trans id="Today"></Trans>
+          <Trans>Today</Trans>
         </div>
 
         <div className="ml-2 flex items-center gap-2">

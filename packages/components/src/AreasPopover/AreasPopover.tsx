@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { PopoverClose } from '@radix-ui/react-popover'
 import { ChevronsUpDown, PlusIcon } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
@@ -94,7 +94,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
           >
             <PlusIcon size={16} />
             <div>
-              <Trans id="Create area"></Trans>
+              <Trans>Create area</Trans>
             </div>
           </MenuItem>
         </PopoverClose>

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { AudioLinesIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 
@@ -51,7 +52,11 @@ export const VoiceContent: React.FC<AudioPlayerProps> = ({ recording }) => {
   const audioSrc = getAudioSrc()
 
   if (!audioSrc) {
-    return <div>No voice data!</div>
+    return (
+      <div>
+        <Trans>No voice data!</Trans>
+      </div>
+    )
   }
 
   return (

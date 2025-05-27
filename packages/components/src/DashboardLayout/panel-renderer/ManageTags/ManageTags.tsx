@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { Edit3Icon } from 'lucide-react'
 import { toast } from 'sonner'
@@ -35,7 +35,7 @@ export function ManageTags({ panel, index }: Props) {
     <>
       <PanelHeaderWrapper index={index}>
         <div>
-          <Trans id="Manage tags"></Trans>
+          <Trans>Manage tags</Trans>
         </div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>
@@ -45,16 +45,16 @@ export function ManageTags({ panel, index }: Props) {
           <TableHeader>
             <TableRow>
               <TableHead>
-                <Trans id="Name"></Trans>
+                <Trans>Name</Trans>
               </TableHead>
               <TableHead>
-                <Trans id="Creation counts"></Trans>
+                <Trans>Creation counts</Trans>
               </TableHead>
               <TableHead>
-                <Trans id="Created date"></Trans>
+                <Trans>Created date</Trans>
               </TableHead>
               <TableHead>
-                <Trans id="Operation"></Trans>
+                <Trans>Operation</Trans>
               </TableHead>
             </TableRow>
           </TableHeader>
@@ -68,7 +68,7 @@ export function ManageTags({ panel, index }: Props) {
                   <ConfirmDialog
                     title={`Delete tag: ${item.name}`}
                     content="All tags in post will be deleted, are you sure you want to delete this tag?"
-                    tooltipContent={<Trans id="Delete tag"></Trans>}
+                    tooltipContent={<Trans>Delete tag</Trans>}
                     onConfirm={async () => {
                       await store.tags.deleteTag(item.raw)
                       toast.success('Tag deleted successfully!')

@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useSession } from '@penx/session'
@@ -40,7 +40,7 @@ export function DesktopLogin() {
   // //             setIsOpen(true)
   // //           }}
   // //         >
-  // //           <Trans id="Sign in"></Trans>
+  // //           <Trans>Sign in</Trans>
   // //         </Button>
   // //       </div>
   // //     </div>
@@ -50,10 +50,10 @@ export function DesktopLogin() {
   // return (
   //   <div className="flex h-screen flex-col items-center justify-center p-10">
   //     <div className="text-3xl font-bold">
-  //       <Trans id="Login to PenX desktop"></Trans>
+  //       <Trans>Login to PenX desktop</Trans>
   //     </div>
   //     <div className="text-foreground/50">
-  //       <Trans id="Please confirm your authorization for this login."></Trans>
+  //       <Trans>Please confirm your authorization for this login.</Trans>
   //     </div>
 
   //     <div className="mt-6 flex items-center justify-between gap-2">
@@ -73,7 +73,7 @@ export function DesktopLogin() {
   //       >
   //         {isCanceling && <LoadingDots></LoadingDots>}
   //         <div>
-  //           <Trans id="Cancel"></Trans>
+  //           <Trans>Cancel</Trans>
   //         </div>
   //       </Button>
   //       <Button
@@ -86,21 +86,21 @@ export function DesktopLogin() {
   //           try {
   //             await confirm({ token })
   //             fetch('http://localhost:14158/open-window')
-  //             toast.success(<Trans id="Desktop login successfully"></Trans>)
+  //             toast.success(<Trans>Desktop login successfully</Trans>)
   //             location.href = '/'
   //           } catch (error) {
-  //             toast.error(<Trans id="Please try again~"></Trans>)
+  //             toast.error(<Trans>Please try again~</Trans>)
   //           }
   //         }}
   //       >
   //         {isConfirming && <LoadingDots></LoadingDots>}
   //         {session ? (
   //           <div>
-  //             <Trans id="Authorize desktop login"></Trans>
+  //             <Trans>Authorize desktop login</Trans>
   //           </div>
   //         ) : (
   //           <div>
-  //             <Trans id="Login"></Trans>
+  //             <Trans>Login</Trans>
   //           </div>
   //         )}
   //       </Button>

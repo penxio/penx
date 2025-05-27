@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { set } from 'idb-keyval'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
@@ -75,7 +75,7 @@ export function PinCodeForm({}: Props) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <p className="text-foreground/60">
-          <Trans id="Please check your email for the verification code."></Trans>
+          <Trans>Please check your email for the verification code.</Trans>
         </p>
 
         <FormField
@@ -85,7 +85,7 @@ export function PinCodeForm({}: Props) {
             <FormItem className="w-full">
               <FormLabel className="flex items-center justify-between">
                 <span>
-                  <Trans id="Login code"></Trans>
+                  <Trans>Login code</Trans>
                 </span>
                 <Button
                   type="button"
@@ -122,7 +122,7 @@ export function PinCodeForm({}: Props) {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? <LoadingDots /> : <Trans id="Register"></Trans>}
+            {isLoading ? <LoadingDots /> : <Trans>Register</Trans>}
           </Button>
         </div>
       </form>

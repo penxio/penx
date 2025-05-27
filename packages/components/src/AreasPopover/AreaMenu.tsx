@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import {
   BadgeCheck,
@@ -81,7 +81,7 @@ export function AreaMenu({}: Props) {
               }}
             >
               <PencilEditIcon size={20} />
-              <Trans id="Settings"></Trans>
+              <Trans>Settings</Trans>
             </DropdownMenuItem>
 
             <DropdownMenuItem
@@ -93,7 +93,7 @@ export function AreaMenu({}: Props) {
               }}
             >
               <TrashIcon />
-              <Trans id="Delete"></Trans>
+              <Trans>Delete</Trans>
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

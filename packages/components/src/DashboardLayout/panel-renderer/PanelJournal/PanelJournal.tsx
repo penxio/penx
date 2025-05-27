@@ -1,5 +1,6 @@
 'use client'
 
+import { Trans } from '@lingui/react/macro'
 import { AreaInfo } from '@penx/components/AreaInfo'
 import { isMobileApp } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
@@ -31,7 +32,9 @@ export function PanelJournal({ panel, index }: Props) {
   return (
     <>
       <PanelHeaderWrapper index={index}>
-        <div>Journals</div>
+        <div>
+          <Trans>Journals</Trans>
+        </div>
         <ClosePanelButton panel={panel} />
       </PanelHeaderWrapper>
 

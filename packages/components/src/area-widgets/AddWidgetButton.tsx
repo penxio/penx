@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { defaultEditorContent, isMobileApp, WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useArea } from '@penx/hooks/useArea'
@@ -63,7 +63,7 @@ export function AddWidgetButton({ className }: Props) {
             className="bg-foreground/8 hover:bg-foreground/10"
             onClick={() => setOpen(true)}
           >
-            <Trans id="Add widget"></Trans>
+            <Trans>Add widget</Trans>
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -88,7 +88,7 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.JOURNAL) {
                   return (
                     <>
-                      <Trans id="Journals"></Trans>
+                      <Trans>Journals</Trans>
                     </>
                   )
                 }
@@ -96,14 +96,14 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.ALL_CREATIONS) {
                   return (
                     <>
-                      <Trans id="All creations"></Trans>
+                      <Trans>All creations</Trans>
                     </>
                   )
                 }
                 if (item === WidgetType.ALL_STRUCTS) {
                   return (
                     <>
-                      <Trans id="All structs"></Trans>
+                      <Trans>All structs</Trans>
                     </>
                   )
                 }
@@ -111,7 +111,7 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.COLLECTION) {
                   return (
                     <>
-                      <Trans id="Collection"></Trans>
+                      <Trans>Collection</Trans>
                     </>
                   )
                 }
@@ -119,7 +119,7 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.FAVORITES) {
                   return (
                     <>
-                      <Trans id="Favorites"></Trans>
+                      <Trans>Favorites</Trans>
                     </>
                   )
                 }
@@ -127,21 +127,21 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.RECENTLY_EDITED) {
                   return (
                     <>
-                      <Trans id="Recently edited"></Trans>
+                      <Trans>Recently edited</Trans>
                     </>
                   )
                 }
                 if (item === WidgetType.AI_CHAT) {
                   return (
                     <>
-                      <Trans id="AI chat"></Trans>
+                      <Trans>AI chat</Trans>
                     </>
                   )
                 }
                 if (item === WidgetType.RECENTLY_OPENED) {
                   return (
                     <>
-                      <Trans id="Recently opened"></Trans>
+                      <Trans>Recently opened</Trans>
                     </>
                   )
                 }
@@ -163,7 +163,9 @@ export function AddWidgetButton({ className }: Props) {
             })}
 
           <Separator className="my-1"></Separator>
-          <div className="text-foreground/50 px-4 py-2 text-xs">Structs</div>
+          <div className="text-foreground/50 px-4 py-2 text-xs">
+            <Trans>Structs</Trans>
+          </div>
 
           {structs.map((item) => {
             return (

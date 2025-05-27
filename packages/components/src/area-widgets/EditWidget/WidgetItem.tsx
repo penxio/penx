@@ -3,7 +3,7 @@
 import React, { forwardRef, memo, ReactNode, useEffect, useState } from 'react'
 import isEqual from 'react-fast-compare'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import {
   GripHorizontalIcon,
   GripVerticalIcon,

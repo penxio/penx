@@ -13,17 +13,135 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/CreationMenu.tsx:88
-msgid "Remove favorites"
-msgstr "Remove favorites"
+#: packages/components/src/AreaDialog/AreaForm.tsx:219
+msgid "About"
+msgstr "About"
 
-#. js-lingui-explicit-id
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
+msgid "Access control"
+msgstr "Access control"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
+msgid "Add"
+msgstr "Add"
+
+#: packages/components/src/Creation/CoverUpload.tsx:110
+msgid "Add cover"
+msgstr "Add cover"
+
 #: apps/mobile/src/components/CreationMenu.tsx:90
 msgid "Add favorites"
 msgstr "Add favorites"
 
-#. js-lingui-explicit-id
+#: packages/components/src/Creation/CoverUpload.tsx:112
+msgid "Add image"
+msgstr "Add image"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:25
+msgid "Add navigation"
+msgstr "Add navigation"
+
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:148
+#: packages/components/src/area-widgets/CreationItem.tsx:145
+msgid "Add to favorites"
+msgstr "Add to favorites"
+
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:66
+msgid "Add widget"
+msgstr "Add widget"
+
+#: packages/widgets/src/WidgetName.tsx:36
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:137
+msgid "AI chat"
+msgstr "AI chat"
+
+#: packages/widgets/src/WidgetName.tsx:18
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:99
+msgid "All creations"
+msgstr "All creations"
+
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:106
+msgid "All structs"
+msgstr "All structs"
+
+#: apps/mobile/src/components/Profile/RegisterForm.tsx:127
+#: packages/widgets/src/LoginDialog/RegisterForm.tsx:127
+msgid "Already have an account"
+msgstr "Already have an account"
+
+#: packages/components/src/AppProvider/lib/initLocalSite.ts:61
+msgid "An area for sharing thoughts, stories, and insights."
+msgstr "An area for sharing thoughts, stories, and insights."
+
+#: packages/widgets/src/AppleOauthButton.tsx:79
+msgid "Apple login"
+msgstr "Apple login"
+
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:49
+#: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:51
+msgid "Are you sure delete it permanently?"
+msgstr "Are you sure delete it permanently?"
+
+#: packages/libs/src/getDefaultStructs.ts:276
+msgid "Bookmark"
+msgstr "Bookmark"
+
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:59
+#: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
+msgid "Cancel"
+msgstr "Cancel"
+
+#: packages/components/src/Creation/ChangeType.tsx:36
+msgid "Change type"
+msgstr "Change type"
+
+#: packages/widgets/src/WidgetName.tsx:26
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:114
+msgid "Collection"
+msgstr "Collection"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:131
+msgid "Color"
+msgstr "Color"
+
+#: packages/components/src/Creation/CreationMoreMenu.tsx:68
+msgid "Copy html"
+msgstr "Copy html"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:38
+msgid "Create"
+msgstr "Create"
+
+#: apps/mobile/src/components/AreasPopover.tsx:100
+#: packages/components/src/AreasPopover/AreasPopover.tsx:97
+#: packages/components/src/AreaDialog/AreaForm.tsx:321
+#: packages/components/src/AreaDialog/AreaDialog.tsx:36
+msgid "Create area"
+msgstr "Create area"
+
+#: apps/mobile/src/components/Profile/LoginForm.tsx:133
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:131
+msgid "Create one"
+msgstr "Create one"
+
+#: packages/components/src/StructDialog/StructDialog.tsx:33
+msgid "Create struct"
+msgstr "Create struct"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:54
+msgid "Created date"
+msgstr "Created date"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:51
+msgid "Creation counts"
+msgstr "Creation counts"
+
+#: packages/components/src/Profile/ProfilePopover.tsx:109
+#: packages/components/src/Profile/Profile.tsx:58
+msgid "Dashboard"
+msgstr "Dashboard"
+
 #: apps/mobile/src/components/CreationMenu.tsx:103
 #: packages/components/src/database-ui/TableInfo.tsx:77
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
@@ -36,550 +154,138 @@ msgstr "Add favorites"
 msgid "Delete"
 msgstr "Delete"
 
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/AreasPopover.tsx:100
-#: packages/components/src/AreasPopover/AreasPopover.tsx:97
-#: packages/components/src/AreaDialog/AreaForm.tsx:321
-#: packages/components/src/AreaDialog/AreaDialog.tsx:36
-msgid "Create area"
-msgstr "Create area"
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:71
+msgid "Delete tag"
+msgstr "Delete tag"
 
-#. js-lingui-explicit-id
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:136
+msgid "Deliver your newsletter"
+msgstr "Deliver your newsletter"
+
+#: packages/components/src/AreaDialog/AreaForm.tsx:199
+msgid "Description"
+msgstr "Description"
+
+#: packages/libs/src/getDefaultStructs.ts:61
+msgid "Doing"
+msgstr "Doing"
+
+#: packages/libs/src/getDefaultStructs.ts:67
+msgid "Done"
+msgstr "Done"
+
+#: packages/libs/src/getDefaultStructs.ts:110
+msgid "Due date"
+msgstr "Due date"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:27
+msgid "Edit navigation"
+msgstr "Edit navigation"
+
+#: packages/components/src/database-ui/TableInfo.tsx:58
+msgid "Edit struct"
+msgstr "Edit struct"
+
+#: packages/components/src/area-widgets/EditWidget/EditWidgetButton.tsx:35
+msgid "Edit widget"
+msgstr "Edit widget"
+
 #: apps/mobile/src/components/Profile/RegisterForm.tsx:83
+#: apps/mobile/src/components/Profile/LoginForm.tsx:89
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:83
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:87
 msgid "Email"
 msgstr "Email"
 
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:99
-#: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
-msgid "Password"
-msgstr "Password"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:121
-#: apps/mobile/src/components/Profile/PinCodeForm.tsx:125
-#: packages/widgets/src/LoginDialog/RegisterForm.tsx:121
-#: packages/widgets/src/LoginDialog/PinCodeForm.tsx:127
-msgid "Register"
-msgstr "Register"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:127
-#: packages/widgets/src/LoginDialog/RegisterForm.tsx:127
-msgid "Already have an account"
-msgstr "Already have an account"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:135
-#: apps/mobile/src/components/Profile/LoginForm.tsx:125
-#: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:122
-msgid "Log in"
-msgstr "Log in"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/PinCodeForm.tsx:78
-#: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
-msgid "Please check your email for the verification code."
-msgstr "Please check your email for the verification code."
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/PinCodeForm.tsx:88
-#: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
-msgid "Login code"
-msgstr "Login code"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/LoginForm.tsx:131
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:128
-msgid "No account"
-msgstr "No account"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/Profile/LoginForm.tsx:136
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:134
-msgid "Create one"
-msgstr "Create one"
-
-#. js-lingui-explicit-id
-#: apps/mobile/src/components/MobileTask/MobileTask.tsx:29
-#: packages/components/src/database-ui/views/ListView/Tasks/TasksList.tsx:32
-msgid "No task yet."
-msgstr "No task yet."
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:14
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:91
-msgid "Journals"
-msgstr "Journals"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:18
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:99
-msgid "All creations"
-msgstr "All creations"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:22
-msgid "Structs"
-msgstr "Structs"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:26
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:114
-msgid "Collection"
-msgstr "Collection"
-
-#. js-lingui-explicit-id
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:122
 msgid "Favorites"
 msgstr "Favorites"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:33
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:130
-msgid "Recently edited"
-msgstr "Recently edited"
+#: apps/extension/components/content/AddBookmark/Tags.tsx:69
+#: packages/components/src/cells/single-select-cell.tsx:178
+#: packages/components/src/cells/multiple-select-cell.tsx:174
+#: packages/components/src/Creation/Tags.tsx:116
+#: packages/components/src/Creation/SingleSelectProp.tsx:88
+#: packages/components/src/Creation/MultipleSelectProp.tsx:87
+msgid "Find or create option"
+msgstr "Find or create option"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:36
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:137
-msgid "AI chat"
-msgstr "AI chat"
+#: packages/libs/src/getDefaultStructs.ts:162
+msgid "Gallery"
+msgstr "Gallery"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/WidgetName.tsx:39
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:144
-msgid "Recently opened"
-msgstr "Recently opened"
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:118
+msgid "Gate this post, config who can read this post."
+msgstr "Gate this post, config who can read this post."
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:11
-msgid "Articles"
-msgstr "Articles"
+#: apps/mobile/src/components/Profile/GoogleLoginButton.tsx:69
+#: apps/extension/components/Login.tsx:51
+#: packages/widgets/src/GoogleOauthButton.tsx:71
+msgid "Google login"
+msgstr "Google login"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:12
-msgid "Notes"
-msgstr "Notes"
+#: packages/libs/src/getDefaultStructs.ts:98
+msgid "High"
+msgstr "High"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:13
-msgid "Podcasts"
-msgstr "Podcasts"
+#: packages/components/src/Profile/ProfilePopover.tsx:91
+msgid "Home"
+msgstr "Home"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:14
-msgid "Tasks"
-msgstr "Tasks"
+#: apps/mobile/src/components/StructTypeSelect.tsx:35
+#: apps/mobile/src/components/HomeHeader.tsx:29
+msgid "Journal"
+msgstr "Journal"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:15
-msgid "Images"
-msgstr "Images"
+#: packages/widgets/src/WidgetName.tsx:14
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:91
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
+msgid "Journals"
+msgstr "Journals"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:16
-msgid "Bookmarks"
-msgstr "Bookmarks"
+#: packages/libs/src/getDefaultStructs.ts:176
+msgid "List"
+msgstr "List"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:17
-msgid "Friends"
-msgstr "Friends"
+#: packages/components/src/DashboardLayout/panel-renderer/LocalBackup/LocalBackup.tsx:37
+msgid "Local backup"
+msgstr "Local backup"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:18
-msgid "Projects"
-msgstr "Projects"
+#: apps/mobile/src/components/Profile/RegisterForm.tsx:135
+#: apps/mobile/src/components/Profile/LoginForm.tsx:122
+#: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:119
+#: packages/components/src/ProfileButton.tsx:120
+msgid "Log in"
+msgstr "Log in"
 
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:19
-msgid "Pages"
-msgstr "Pages"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:20
-msgid "Article"
-msgstr "Article"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:21
-msgid "Note"
-msgstr "Note"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:22
-msgid "Podcast"
-msgstr "Podcast"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:23
-msgid "Task"
-msgstr "Task"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:24
-msgid "Image"
-msgstr "Image"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:25
-msgid "Bookmark"
-msgstr "Bookmark"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:26
-msgid "Friend"
-msgstr "Friend"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:27
-msgid "Project"
-msgstr "Project"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/StructName.tsx:28
-msgid "Page"
-msgstr "Page"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
-msgid "Welcome to PenX"
-msgstr "Welcome to PenX"
-
-#. js-lingui-explicit-id
-#: packages/widgets/src/LoginDialog/LoginDialog.tsx:42
-#: packages/widgets/src/LoginDialog/LoginDialog.tsx:53
-msgid "Register to PenX"
-msgstr "Register to PenX"
-
-#. js-lingui-explicit-id
-#: packages/components/src/ProfileButton.tsx:206
-#: packages/components/src/Profile/ProfilePopover.tsx:126
-#: packages/components/src/AreasPopover/AreaMenu.tsx:84
-msgid "Settings"
-msgstr "Settings"
-
-#. js-lingui-explicit-id
-#: packages/components/src/ProfileButton.tsx:224
-msgid "Upgrade to Pro"
-msgstr "Upgrade to Pro"
-
-#. js-lingui-explicit-id
-#: packages/components/src/ProfileButton.tsx:233
-msgid "Support"
-msgstr "Support"
-
-#. js-lingui-explicit-id
 #: packages/components/src/ProfileButton.tsx:254
 #: packages/components/src/Profile/ProfilePopover.tsx:153
 msgid "Log out"
 msgstr "Log out"
 
-#. js-lingui-explicit-id
-#: packages/components/src/LoginButton.tsx:28
-msgid "Sign in"
-msgstr "Sign in"
+#: apps/mobile/src/components/Profile/PinCodeForm.tsx:88
+#: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
+msgid "Login code"
+msgstr "Login code"
 
-#. js-lingui-explicit-id
-#: packages/components/src/database-ui/TableInfo.tsx:58
-msgid "Edit struct"
-msgstr "Edit struct"
+#: packages/components/src/AreaDialog/AreaForm.tsx:111
+msgid "logo"
+msgstr "logo"
 
-#. js-lingui-explicit-id
-#: packages/components/src/database-ui/TableInfo.tsx:68
-msgid "Publish to marketplace"
-msgstr "Publish to marketplace"
+#: packages/libs/src/getDefaultStructs.ts:86
+msgid "Low"
+msgstr "Low"
 
-#. js-lingui-explicit-id
-#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
-#: packages/components/src/AreaDialog/AreaForm.tsx:180
-msgid "Slug"
-msgstr "Slug"
-
-#. js-lingui-explicit-id
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:112
-#: packages/components/src/area-widgets/TitleContextMenu.tsx:34
-#: packages/components/src/area-widgets/CreationItem.tsx:109
-msgid "Open in new panel"
-msgstr "Open in new panel"
-
-#. js-lingui-explicit-id
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:146
-#: packages/components/src/area-widgets/CreationItem.tsx:143
-msgid "Remove from favorites"
-msgstr "Remove from favorites"
-
-#. js-lingui-explicit-id
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:148
-#: packages/components/src/area-widgets/CreationItem.tsx:145
-msgid "Add to favorites"
-msgstr "Add to favorites"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/TitleContextMenu.tsx:46
-msgid "Show all"
-msgstr "Show all"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/TitleContextMenu.tsx:62
-msgid "Rename"
-msgstr "Rename"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:66
-msgid "Add widget"
-msgstr "Add widget"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:106
-msgid "All structs"
-msgstr "All structs"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/widgets/AIChatHistorys.tsx:7
-msgid "No chat history yet!"
-msgstr "No chat history yet!"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/components/NoCreationYet.tsx:7
-msgid "No creation yet!"
-msgstr "No creation yet!"
-
-#. js-lingui-explicit-id
-#: packages/components/src/area-widgets/EditWidget/EditWidgetButton.tsx:35
-msgid "Edit widget"
-msgstr "Edit widget"
-
-#. js-lingui-explicit-id
-#: packages/components/src/StructDialog/StructDialog.tsx:31
-msgid "Update struct"
-msgstr "Update struct"
-
-#. js-lingui-explicit-id
-#: packages/components/src/StructDialog/StructDialog.tsx:33
-msgid "Create struct"
-msgstr "Create struct"
-
-#. js-lingui-explicit-id
-#: packages/components/src/StructDialog/EditStructForm.tsx:83
-#: packages/components/src/StructDialog/CreateStructForm.tsx:49
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
-#: packages/components/src/AreaDialog/AreaForm.tsx:163
-msgid "Name"
-msgstr "Name"
-
-#. js-lingui-explicit-id
-#: packages/components/src/StructDialog/EditStructForm.tsx:99
-msgid "Plural name"
-msgstr "Plural name"
-
-#. js-lingui-explicit-id
-#: packages/components/src/StructDialog/EditStructForm.tsx:115
-msgid "Unique code"
-msgstr "Unique code"
-
-#. js-lingui-explicit-id
-#: packages/components/src/StructDialog/EditStructForm.tsx:131
-msgid "Color"
-msgstr "Color"
-
-#. js-lingui-explicit-id
 #: packages/components/src/Sidebar/app-sidebar.tsx:107
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:38
 msgid "Manage tags"
 msgstr "Manage tags"
 
-#. js-lingui-explicit-id
-#: packages/components/src/Sidebar/VisitSiteButton.tsx:39
-msgid "Visit my site"
-msgstr "Visit my site"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Sidebar/QuickSearchTrigger.tsx:23
-msgid "Search"
-msgstr "Search"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Profile/ProfilePopover.tsx:91
-msgid "Home"
-msgstr "Home"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Profile/ProfilePopover.tsx:109
-#: packages/components/src/Profile/Profile.tsx:58
-msgid "Dashboard"
-msgstr "Dashboard"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalShortcut.tsx:30
-msgid "Today"
-msgstr "Today"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:51
-msgid "Creation counts"
-msgstr "Creation counts"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:54
-msgid "Created date"
-msgstr "Created date"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:57
-msgid "Operation"
-msgstr "Operation"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:71
-msgid "Delete tag"
-msgstr "Delete tag"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:54
-msgid "Updated successfully!"
-msgstr "Updated successfully!"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
-msgid "Save"
-msgstr "Save"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
-msgid "Add"
-msgstr "Add"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:25
-msgid "Add navigation"
-msgstr "Add navigation"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:27
-msgid "Edit navigation"
-msgstr "Edit navigation"
-
-#. js-lingui-explicit-id
-#: packages/components/src/DashboardLayout/panel-renderer/LocalBackup/LocalBackup.tsx:37
-msgid "Local backup"
-msgstr "Local backup"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/Tags.tsx:94
-msgid "Tag"
-msgstr "Tag"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/Tags.tsx:124
-msgid "Press Enter to add a tag."
-msgstr "Press Enter to add a tag."
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/CreationMoreMenu.tsx:68
-msgid "Copy html"
-msgstr "Copy html"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/CoverUpload.tsx:110
-msgid "Add cover"
-msgstr "Add cover"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/CoverUpload.tsx:112
-msgid "Add image"
-msgstr "Add image"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/ChangeType.tsx:36
-msgid "Change type"
-msgstr "Change type"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:83
-msgid "Publish your creation"
-msgstr "Publish your creation"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
-msgid "Access control"
-msgstr "Access control"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:118
-msgid "Gate this post, config who can read this post."
-msgstr "Gate this post, config who can read this post."
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:136
-msgid "Deliver your newsletter"
-msgstr "Deliver your newsletter"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:143
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:149
-msgid "Upgrade"
-msgstr "Upgrade"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
-msgid "Pick a date"
-msgstr "Pick a date"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:59
-#: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
-msgid "Cancel"
-msgstr "Cancel"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:251
-msgid "Publish"
-msgstr "Publish"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:49
-#: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:51
-msgid "Are you sure delete it permanently?"
-msgstr "Are you sure delete it permanently?"
-
-#. js-lingui-explicit-id
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:52
-#: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:54
-msgid "Once deleted, You can't undo this action."
-msgstr "Once deleted, You can't undo this action."
-
-#. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:111
-msgid "logo"
-msgstr "logo"
-
-#. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:199
-msgid "Description"
-msgstr "Description"
-
-#. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:219
-msgid "About"
-msgstr "About"
-
-#. js-lingui-explicit-id
-#: packages/components/src/AreaDialog/AreaForm.tsx:319
-#: packages/components/src/AreaDialog/AreaDialog.tsx:34
-msgid "Update area"
-msgstr "Update area"
-
-#: packages/components/src/AppProvider/lib/initLocalSite.ts:61
-msgid "An area for sharing thoughts, stories, and insights."
-msgstr "An area for sharing thoughts, stories, and insights."
+#: packages/libs/src/getDefaultStructs.ts:92
+msgid "Medium"
+msgstr "Medium"
 
 #: packages/components/src/AppProvider/lib/initLocalSite.ts:60
 msgid "My area"
@@ -589,6 +295,260 @@ msgstr "My area"
 msgid "My Site"
 msgstr "My Site"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalNav.tsx:17
-msgid "Test"
-msgstr "Test"
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:31
+msgid "My Structs"
+msgstr "My Structs"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:83
+#: packages/components/src/StructDialog/CreateStructForm.tsx:49
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
+#: packages/components/src/AreaDialog/AreaForm.tsx:163
+msgid "Name"
+msgstr "Name"
+
+#: apps/mobile/src/components/Profile/LoginForm.tsx:128
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:125
+msgid "No account"
+msgstr "No account"
+
+#: packages/components/src/area-widgets/widgets/AIChatHistorys.tsx:7
+msgid "No chat history yet!"
+msgstr "No chat history yet!"
+
+#: packages/components/src/area-widgets/components/NoCreationYet.tsx:7
+msgid "No creation yet!"
+msgstr "No creation yet!"
+
+#: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:42
+#: packages/components/src/cells/single-select-cell.tsx:186
+#: packages/components/src/cells/multiple-select-cell.tsx:182
+#: packages/components/src/Creation/SingleSelectProp.tsx:96
+#: packages/components/src/Creation/MultipleSelectProp.tsx:95
+#: packages/components/src/CommandPanel/SearchCreationList.tsx:37
+#: packages/components/src/CommandPanel/CommandList.tsx:29
+msgid "No results found."
+msgstr "No results found."
+
+#: apps/mobile/src/components/MobileTask/MobileTask.tsx:29
+#: packages/components/src/database-ui/views/ListView/Tasks/TasksList.tsx:32
+msgid "No task yet."
+msgstr "No task yet."
+
+#: packages/components/src/CreationCard/VoiceContent.tsx:57
+msgid "No voice data!"
+msgstr "No voice data!"
+
+#: packages/libs/src/getDefaultStructs.ts:235
+msgid "Note"
+msgstr "Note"
+
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:52
+#: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:54
+msgid "Once deleted, You can't undo this action."
+msgstr "Once deleted, You can't undo this action."
+
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:112
+#: packages/components/src/area-widgets/TitleContextMenu.tsx:34
+#: packages/components/src/area-widgets/CreationItem.tsx:109
+msgid "Open in new panel"
+msgstr "Open in new panel"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:57
+msgid "Operation"
+msgstr "Operation"
+
+#: packages/libs/src/getDefaultStructs.ts:218
+msgid "Page"
+msgstr "Page"
+
+#: apps/mobile/src/components/Profile/RegisterForm.tsx:99
+#: apps/mobile/src/components/Profile/LoginForm.tsx:105
+#: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:102
+msgid "Password"
+msgstr "Password"
+
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
+msgid "Pick a date"
+msgstr "Pick a date"
+
+#: apps/mobile/src/components/Profile/PinCodeForm.tsx:78
+#: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
+msgid "Please check your email for the verification code."
+msgstr "Please check your email for the verification code."
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:99
+msgid "Plural name"
+msgstr "Plural name"
+
+#: packages/components/src/Creation/Tags.tsx:124
+msgid "Press Enter to add a tag."
+msgstr "Press Enter to add a tag."
+
+#: packages/libs/src/getDefaultStructs.ts:79
+msgid "Priority"
+msgstr "Priority"
+
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:251
+msgid "Publish"
+msgstr "Publish"
+
+#: packages/components/src/database-ui/TableInfo.tsx:68
+msgid "Publish to marketplace"
+msgstr "Publish to marketplace"
+
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:83
+msgid "Publish your creation"
+msgstr "Publish your creation"
+
+#: packages/widgets/src/WidgetName.tsx:33
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:130
+msgid "Recently edited"
+msgstr "Recently edited"
+
+#: packages/widgets/src/WidgetName.tsx:39
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:144
+msgid "Recently opened"
+msgstr "Recently opened"
+
+#: apps/mobile/src/components/Profile/RegisterForm.tsx:121
+#: apps/mobile/src/components/Profile/PinCodeForm.tsx:125
+#: packages/widgets/src/LoginDialog/RegisterForm.tsx:121
+#: packages/widgets/src/LoginDialog/PinCodeForm.tsx:127
+msgid "Register"
+msgstr "Register"
+
+#: packages/widgets/src/LoginDialog/LoginDialog.tsx:42
+#: packages/widgets/src/LoginDialog/LoginDialog.tsx:53
+msgid "Register to PenX"
+msgstr "Register to PenX"
+
+#: apps/mobile/src/components/CreationMenu.tsx:88
+msgid "Remove favorites"
+msgstr "Remove favorites"
+
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:146
+#: packages/components/src/area-widgets/CreationItem.tsx:143
+msgid "Remove from favorites"
+msgstr "Remove from favorites"
+
+#: packages/components/src/area-widgets/TitleContextMenu.tsx:62
+msgid "Rename"
+msgstr "Rename"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
+msgid "Save"
+msgstr "Save"
+
+#: packages/components/src/Sidebar/QuickSearchTrigger.tsx:23
+msgid "Search"
+msgstr "Search"
+
+#: packages/components/src/ProfileButton.tsx:206
+#: packages/components/src/Profile/ProfilePopover.tsx:126
+#: packages/components/src/AreasPopover/AreaMenu.tsx:84
+msgid "Settings"
+msgstr "Settings"
+
+#: packages/components/src/area-widgets/TitleContextMenu.tsx:46
+msgid "Show all"
+msgstr "Show all"
+
+#: packages/components/src/LoginButton.tsx:28
+msgid "Sign in"
+msgstr "Sign in"
+
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
+#: packages/components/src/AreaDialog/AreaForm.tsx:180
+msgid "Slug"
+msgstr "Slug"
+
+#: packages/libs/src/getDefaultStructs.ts:48
+msgid "Status"
+msgstr "Status"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:51
+msgid "Struct marketplace"
+msgstr "Struct marketplace"
+
+#: packages/widgets/src/WidgetName.tsx:22
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:167
+msgid "Structs"
+msgstr "Structs"
+
+#: packages/components/src/ProfileButton.tsx:233
+msgid "Support"
+msgstr "Support"
+
+#: packages/libs/src/getDefaultStructs.ts:148
+msgid "Table"
+msgstr "Table"
+
+#: packages/components/src/Creation/Tags.tsx:94
+msgid "Tag"
+msgstr "Tag"
+
+#: packages/libs/src/getDefaultStructs.ts:264
+msgid "Task"
+msgstr "Task"
+
+#: packages/libs/src/getDefaultStructs.ts:31
+msgid "Title"
+msgstr "Title"
+
+#: packages/libs/src/getDefaultStructs.ts:55
+msgid "To Do"
+msgstr "To Do"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalShortcut.tsx:30
+msgid "Today"
+msgstr "Today"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:115
+msgid "Unique code"
+msgstr "Unique code"
+
+#: packages/components/src/AreaDialog/AreaForm.tsx:319
+#: packages/components/src/AreaDialog/AreaDialog.tsx:34
+msgid "Update area"
+msgstr "Update area"
+
+#: packages/components/src/StructDialog/StructDialog.tsx:31
+msgid "Update struct"
+msgstr "Update struct"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:54
+msgid "Updated successfully!"
+msgstr "Updated successfully!"
+
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:143
+#: packages/components/src/Creation/PublishDialog/PublishForm.tsx:149
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: packages/components/src/ProfileButton.tsx:224
+msgid "Upgrade to Pro"
+msgstr "Upgrade to Pro"
+
+#: packages/libs/src/getDefaultStructs.ts:127
+msgid "URL"
+msgstr "URL"
+
+#: packages/components/src/Sidebar/VisitSiteButton.tsx:39
+msgid "Visit my site"
+msgstr "Visit my site"
+
+#: packages/libs/src/getDefaultStructs.ts:270
+msgid "Voice"
+msgstr "Voice"
+
+#: apps/extension/components/Login.tsx:38
+#: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
+msgid "Welcome to PenX"
+msgstr "Welcome to PenX"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:40
+msgid "What's on your mind today?"
+msgstr "What's on your mind today?"

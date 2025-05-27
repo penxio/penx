@@ -70,8 +70,6 @@ export default async function RootLayout({
   const lang = (await params).lang
   const locale = lang === 'pseudo' ? 'en' : lang
 
-  console.log('=====locale:', locale)
-
   const headersList = await headers()
   const cookies = headersList.get('cookie')
 

@@ -11,6 +11,8 @@ import {
   Rectangle,
   TextCellEntry,
 } from '@glideapps/glide-data-grid'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import { Command } from 'cmdk'
 import { getColorByName } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
@@ -173,7 +175,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
       <CommandInput
         autoFocus
         className=""
-        placeholder="Find or create option"
+        placeholder={t`Find or create option`}
         value={search}
         onValueChange={(v) => {
           setSearch(v)
@@ -181,7 +183,7 @@ function Preview({ onChange, value, onFinishedEditing }: PreviewProps) {
       />
       <Command.List>
         <Command.Empty className="text-foreground/40 py-2 text-center">
-          No results found.
+          <Trans>No results found.</Trans>
         </Command.Empty>
         <CommandGroup heading={''}>
           {filteredOptions.map((item) => (

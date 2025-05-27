@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { useSignIn } from '@farcaster/auth-kit'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import {
   BadgeCheck,
@@ -85,9 +85,9 @@ export function CreationMenu({ creationId, afterDelete }: Props) {
             {isFavor && <StarOffIcon />}
             {!isFavor && <StarIcon />}
             {isFavor ? (
-              <Trans id="Remove favorites"></Trans>
+              <Trans>Remove favorites</Trans>
             ) : (
-              <Trans id="Add favorites"></Trans>
+              <Trans>Add favorites</Trans>
             )}
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -100,7 +100,7 @@ export function CreationMenu({ creationId, afterDelete }: Props) {
           }}
         >
           <Trash2Icon />
-          <Trans id="Delete"></Trans>
+          <Trans>Delete</Trans>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import { Command } from 'cmdk'
 import { CheckIcon, HashIcon, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
@@ -40,7 +41,6 @@ export function Tags({ creation }: Props) {
   const filteredTags = tags.filter((t) => {
     return t.name.toLowerCase().includes(search.toLowerCase())
   })
-
 
   if (search.length && filteredTags.length === 0) {
     filteredTags.push({
@@ -91,7 +91,7 @@ export function Tags({ creation }: Props) {
             onClick={() => setIsOpen(true)}
           >
             <div>
-              <Trans id="Tag"></Trans>
+              <Trans>Tag</Trans>
             </div>
           </Button>
         </PopoverTrigger>
@@ -113,7 +113,7 @@ export function Tags({ creation }: Props) {
             <CommandInput
               autoFocus
               className=""
-              placeholder="Find or create option"
+              placeholder={t`Find or create option`}
               value={search}
               onValueChange={(v) => {
                 setSearch(v)
@@ -121,7 +121,7 @@ export function Tags({ creation }: Props) {
             />
             <Command.List>
               <Command.Empty className="text-foreground/40 flex items-center justify-center gap-1 py-2 text-center text-sm">
-                <Trans id="Press Enter to add a tag."></Trans>
+                <Trans>Press Enter to add a tag.</Trans>
               </Command.Empty>
 
               <CommandGroup heading={''}>

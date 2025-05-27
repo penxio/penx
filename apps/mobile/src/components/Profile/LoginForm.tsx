@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import { set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -48,8 +49,8 @@ export function LoginForm({}: Props) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log('=====>>>>>>>nav:', nav);
-    
+    console.log('=====>>>>>>>nav:', nav)
+
     try {
       setLoading(true)
 
@@ -85,11 +86,7 @@ export function LoginForm({}: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input
-                  placeholder="Username or email"
-                  {...field}
-                  className="w-full"
-                />
+                <Input placeholder={t`Email`} {...field} className="w-full" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -105,7 +102,7 @@ export function LoginForm({}: Props) {
                 <Input
                   autoComplete="current-password"
                   type="password"
-                  placeholder="Password"
+                  placeholder={t`Password`}
                   {...field}
                   className="w-full"
                 />
@@ -122,18 +119,18 @@ export function LoginForm({}: Props) {
             className="w-full"
             disabled={isLoading}
           >
-            {isLoading ? <LoadingDots /> : <Trans id="Log in"></Trans>}
+            {isLoading ? <LoadingDots /> : <Trans>Log in</Trans>}
           </Button>
         </div>
       </form>
 
       <div className="pt-4 text-center text-sm">
-        <Trans id="No account"></Trans>?{' '}
+        <Trans>No account</Trans>?{' '}
         <span
           className="text-brand"
           onClick={() => setAuthStatus({ type: 'register' })}
         >
-          <Trans id="Create one"></Trans>
+          <Trans>Create one</Trans>
         </span>
       </div>
     </Form>

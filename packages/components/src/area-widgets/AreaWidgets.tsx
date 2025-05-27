@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { AddCreationButton } from '@penx/components/AddCreationButton'
 import { isMobileApp } from '@penx/constants'
 import { AddWidgetButton } from './AddWidgetButton'

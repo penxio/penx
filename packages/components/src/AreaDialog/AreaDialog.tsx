@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { Button } from '@penx/uikit/button'
 import {
   Dialog,
@@ -31,9 +31,9 @@ export function AreaDialog() {
         <DialogHeader>
           <DialogTitle>
             {!!area ? (
-              <Trans id="Update area"></Trans>
+              <Trans>Update area</Trans>
             ) : (
-              <Trans id="Create area"></Trans>
+              <Trans>Create area</Trans>
             )}
           </DialogTitle>
         </DialogHeader>

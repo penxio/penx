@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import {
   DatabaseBackupIcon,
   GlobeIcon,
@@ -83,7 +83,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <Trans id="Design my site"></Trans>
+                  <Trans>Design my site</Trans>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider> */}
@@ -104,7 +104,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <Trans id="Manage tags"></Trans>
+                  <Trans>Manage tags</Trans>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -127,7 +127,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <Trans id="Local backup"></Trans>
+                    <Trans>Local backup</Trans>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>

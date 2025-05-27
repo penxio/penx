@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { msg } from '@lingui/core/macro'
-import { useLingui } from '@lingui/react'
+import { useLingui } from '@lingui/react/macro'
 import { langMap, LOCALE } from '@penx/constants'
 import { usePathname } from '@penx/libs/i18n'
 import {

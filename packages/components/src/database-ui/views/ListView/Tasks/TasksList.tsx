@@ -1,6 +1,6 @@
 'use client'
 
-import { Trans } from '@lingui/react'
+import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
@@ -29,7 +29,7 @@ export function TasksList({ struct }: PostListProps) {
       <div className="absolute bottom-0 left-0 right-0 top-0  flex h-full flex-1 flex-col">
         {!tasks.length && (
           <div className="text-foreground/60 px-3">
-            <Trans id="No task yet."></Trans>
+            <Trans>No task yet.</Trans>
           </div>
         )}
         <div className="flex w-full flex-1 overflow-auto px-6 pb-20 pt-6">
