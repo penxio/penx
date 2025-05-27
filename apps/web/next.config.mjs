@@ -7,10 +7,7 @@ const withVanillaExtract = createVanillaExtractPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix:
-    process.env.NODE_ENV === 'production' ? 'https://penx.io/app' : undefined,
   basePath: '/app',
-
   compiler: {
     // removeConsole: process.env.NODE_ENV === 'production',
   },

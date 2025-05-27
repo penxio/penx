@@ -26,7 +26,7 @@ export const BillingCycle = {
   COUPON: 'COUPON',
 }
 
-const sessionApiRoute = `${BASE_URL}/api/auth/session`
+const sessionApiRoute = `${BASE_URL}/api/session`
 
 const SESSION_KEY = 'SESSION'
 
