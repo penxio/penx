@@ -1,3 +1,4 @@
+import { PlanType } from '@penx/types'
 import { BillingCycleSelect } from './BillingCycleSelect'
 import { PlanItem } from './PlanItem'
 import { PricingSlogan } from './PricingSlogan'

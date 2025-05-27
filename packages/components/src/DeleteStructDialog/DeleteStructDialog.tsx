@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { useDatabases } from '@penx/hooks/useDatabases'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/button'
