@@ -7,6 +7,10 @@ const withVanillaExtract = createVanillaExtractPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  assetPrefix:
+    process.env.NODE_ENV === 'production' ? 'https://penx.io/app' : undefined,
+  basePath: '/app',
+
   compiler: {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
@@ -30,32 +34,6 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      {
-        source: '/posts/feed.xml',
-        destination: '/api/feed/posts',
-      },
-      {
-        source: '/:locale/posts/feed.xml',
-        destination: '/api/feed/posts',
-      },
-      {
-        source: '/podcasts/feed.xml',
-        destination: '/api/feed/podcasts',
-      },
-      {
-        source: '/:locale/podcasts/feed.xml',
-        destination: '/api/feed/podcasts',
-      },
-      {
-        source: '/blog/:path*',
-        destination: 'https://docs.penx.io/creations/:path*',
-        // https://my-blog.super.so/blog/:path*
-      },
-      {
-        source: '/api/session/:path*',
-        destination: 'https://penx.io/api/session/:path*',
-      },
-
       {
         source: '/api/app/:path*',
         destination: 'https://penx.io/api/app/:path*',

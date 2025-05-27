@@ -26,7 +26,7 @@ import {
 const fetchClient = isDesktop ? tauriFetch : fetch
 
 // @ts-ignore
-const sessionApiRoute = `${ROOT_HOST}/api/session`
+const sessionApiRoute = `${ROOT_HOST}/api/auth/session`
 
 const SESSION = 'SESSION'
 
