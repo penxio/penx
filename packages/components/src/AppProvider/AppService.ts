@@ -31,16 +31,21 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
-    // console.log('========session:', session)
+    console.log('=======app=session:', session)
 
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return
+    try {
+      const site = await this.getInitialSite(session)
 
-    const site = await this.getInitialSite(session)
+      console.log('============site:', site)
 
-    await this.initStore(site)
-    this.inited = true
+      await this.initStore(site)
+      this.inited = true
+    } catch (error) {
+      console.log('init error=====>>>:', error)
+    }
   }
 
   private async getInitialSite(session: SessionData): Promise<ISiteNode> {

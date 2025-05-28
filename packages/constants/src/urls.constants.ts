@@ -25,4 +25,5 @@ export enum NetworkNames {
   BASE = 'BASE',
 }
 
-export const SHAPE_URL = process.env.NEXT_PUBLIC_SYNC_URL!
+export const SHAPE_URL =
+  process.env.NEXT_PUBLIC_SYNC_URL! || 'https://sync.penx.io/api/shape-proxy'

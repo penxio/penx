@@ -17,13 +17,14 @@
 	"packageClassList": [
 		"DarkModeNative",
 		"SafeAreaPlugin",
-		"DevicePlugin",
 		"AppPlugin",
+		"DevicePlugin",
 		"HapticsPlugin",
 		"KeyboardPlugin",
 		"SplashScreenPlugin",
 		"StatusBarPlugin",
 		"SocialLoginPlugin",
+		"PurchasesPlugin",
 		"VoiceRecorder"
 	]
 }

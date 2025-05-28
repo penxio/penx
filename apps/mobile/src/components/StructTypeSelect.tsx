@@ -25,7 +25,7 @@ export const StructTypeSelect = ({ className }: Props) => {
     >
       <div
         className={cn(
-          'text-foreground/40 flex cursor-pointer items-center justify-center px-1',
+          'text-foreground/40 flex shrink-0 cursor-pointer items-center justify-center px-1',
           !struct && 'text-foreground font-bold',
         )}
         onClick={() => {
@@ -39,7 +39,7 @@ export const StructTypeSelect = ({ className }: Props) => {
         <div
           key={item.id}
           className={cn(
-            'text-foreground/40 flex flex-1 cursor-pointer items-center justify-center px-2',
+            'text-foreground/40 flex flex-1 shrink-0 cursor-pointer items-center justify-center px-2',
             struct?.id == item.id && 'text-foreground font-bold',
           )}
           onClick={() => {

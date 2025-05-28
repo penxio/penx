@@ -1220,6 +1220,9 @@ importers:
       '@penx/widgets':
         specifier: workspace:*
         version: link:../../packages/widgets
+      '@revenuecat/purchases-capacitor':
+        specifier: ^10.3.0
+        version: 10.3.0(@capacitor/core@7.2.0)
       '@types/react-router':
         specifier: ^5.1.20
         version: 5.1.20
@@ -5264,6 +5267,14 @@ packages:
 
   '@remirror/core-constants@3.0.0':
     resolution: {integrity: sha512-42aWfPrimMfDKDi4YegyS7x+/0tlzaqwPQCULLanv3DMIlu96KTJR0fM5isWX2UViOqlGnX6YFgqWepcX+XMNg==}
+
+  '@revenuecat/purchases-capacitor@10.3.0':
+    resolution: {integrity: sha512-gJblBlaz5r2BgvAg3O7xBEQG+WU1QbH7jBNglAe9hHVTGiPF4hepGnKMaTMfDj1M+VMkCM80vul5oUtZLDJENg==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
+  '@revenuecat/purchases-typescript-internal-esm@13.32.0':
+    resolution: {integrity: sha512-14ru8Kj2uI9xHtsCutnNH6P8JhZ8mgEOiFTfGMLesL8lvfrFim2qdnCBvuCBmdbtcOecUGV6308mWgbLADy8SQ==}
 
   '@rollup/rollup-android-arm-eabi@4.40.2':
     resolution: {integrity: sha512-JkdNEq+DFxZfUwxvB58tHMHBHVgX23ew41g1OQinthJ+ryhdRk67O31S7sYw8u2lTjHUPFxwar07BBt1KHp/hg==}
@@ -19698,6 +19709,13 @@ snapshots:
   '@react-dnd/shallowequal@4.0.2': {}
 
   '@remirror/core-constants@3.0.0': {}
+
+  '@revenuecat/purchases-capacitor@10.3.0(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+      '@revenuecat/purchases-typescript-internal-esm': 13.32.0
+
+  '@revenuecat/purchases-typescript-internal-esm@13.32.0': {}
 
   '@rollup/rollup-android-arm-eabi@4.40.2':
     optional: true

@@ -13,10 +13,6 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: packages/components/src/AreaDialog/AreaForm.tsx:219
-msgid "About"
-msgstr ""
-
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
 msgid "Access control"
 msgstr ""
@@ -137,7 +133,7 @@ msgstr ""
 msgid "Creation counts"
 msgstr ""
 
-#: packages/components/src/Profile/ProfilePopover.tsx:109
+#: packages/components/src/Profile/ProfilePopover.tsx:108
 #: packages/components/src/Profile/Profile.tsx:58
 msgid "Dashboard"
 msgstr ""
@@ -221,7 +217,7 @@ msgstr ""
 
 #: apps/mobile/src/components/Profile/GoogleLoginButton.tsx:69
 #: apps/extension/components/Login.tsx:51
-#: packages/widgets/src/GoogleOauthButton.tsx:71
+#: packages/widgets/src/GoogleOauthButton.tsx:70
 msgid "Google login"
 msgstr ""
 
@@ -229,7 +225,7 @@ msgstr ""
 msgid "High"
 msgstr ""
 
-#: packages/components/src/Profile/ProfilePopover.tsx:91
+#: packages/components/src/Profile/ProfilePopover.tsx:90
 msgid "Home"
 msgstr ""
 
@@ -256,12 +252,12 @@ msgstr ""
 #: apps/mobile/src/components/Profile/LoginForm.tsx:122
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:120
+#: packages/components/src/ProfileButton.tsx:118
 msgid "Log in"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:254
-#: packages/components/src/Profile/ProfilePopover.tsx:153
+#: packages/components/src/ProfileButton.tsx:252
+#: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
 msgstr ""
 
@@ -445,8 +441,8 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:206
-#: packages/components/src/Profile/ProfilePopover.tsx:126
+#: packages/components/src/ProfileButton.tsx:204
+#: packages/components/src/Profile/ProfilePopover.tsx:125
 #: packages/components/src/AreasPopover/AreaMenu.tsx:84
 msgid "Settings"
 msgstr ""
@@ -478,7 +474,11 @@ msgstr ""
 msgid "Structs"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:233
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:59
+msgid "Subscribe now"
+msgstr ""
+
+#: packages/components/src/ProfileButton.tsx:232
 msgid "Support"
 msgstr ""
 
@@ -528,16 +528,12 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:224
+#: packages/components/src/ProfileButton.tsx:223
 msgid "Upgrade to Pro"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:127
 msgid "URL"
-msgstr ""
-
-#: packages/components/src/Sidebar/VisitSiteButton.tsx:39
-msgid "Visit my site"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:270

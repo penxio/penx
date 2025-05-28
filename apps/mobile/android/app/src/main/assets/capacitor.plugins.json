@@ -8,12 +8,12 @@
 		"classpath": "com.getcapacitor.community.safearea.SafeAreaPlugin"
 	},
 	{
-		"pkg": "@capacitor/device",
-		"classpath": "com.capacitorjs.plugins.device.DevicePlugin"
-	},
-	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
+	},
+	{
+		"pkg": "@capacitor/device",
+		"classpath": "com.capacitorjs.plugins.device.DevicePlugin"
 	},
 	{
 		"pkg": "@capacitor/haptics",
@@ -34,6 +34,10 @@
 	{
 		"pkg": "@capgo/capacitor-social-login",
 		"classpath": "ee.forgr.capacitor.social.login.SocialLoginPlugin"
+	},
+	{
+		"pkg": "@revenuecat/purchases-capacitor",
+		"classpath": "com.revenuecat.purchases.capacitor.PurchasesPlugin"
 	},
 	{
 		"pkg": "capacitor-voice-recorder",

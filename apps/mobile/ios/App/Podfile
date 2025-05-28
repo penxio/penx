@@ -13,13 +13,14 @@ def capacitor_pods
   pod 'CapacitorCordova', :path => '../../../../node_modules/.pnpm/@capacitor+ios@7.2.0_@capacitor+core@7.2.0/node_modules/@capacitor/ios'
   pod 'AparajitaCapacitorDarkMode', :path => '../../../../node_modules/.pnpm/@aparajita+capacitor-dark-mode@5.0.2/node_modules/@aparajita/capacitor-dark-mode'
   pod 'CapacitorCommunitySafeArea', :path => '../../../../node_modules/.pnpm/@capacitor-community+safe-area@7.0.0-alpha.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/safe-area'
-  pod 'CapacitorDevice', :path => '../../../../node_modules/.pnpm/@capacitor+device@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/device'
   pod 'CapacitorApp', :path => '../../../../node_modules/.pnpm/@capacitor+app@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/app'
+  pod 'CapacitorDevice', :path => '../../../../node_modules/.pnpm/@capacitor+device@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/device'
   pod 'CapacitorHaptics', :path => '../../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics'
   pod 'CapacitorKeyboard', :path => '../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard'
   pod 'CapacitorSplashScreen', :path => '../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen'
   pod 'CapacitorStatusBar', :path => '../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar'
   pod 'CapgoCapacitorSocialLogin', :path => '../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login'
+  pod 'RevenuecatPurchasesCapacitor', :path => '../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.0_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor'
   pod 'CapacitorVoiceRecorder', :path => '../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.0.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder'
 end
 

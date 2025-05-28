@@ -64,6 +64,12 @@ PODS:
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
   - PromisesObjC (2.4.0)
+  - PurchasesHybridCommon (13.32.0):
+    - RevenueCat (= 5.24.0)
+  - RevenueCat (5.24.0)
+  - RevenuecatPurchasesCapacitor (10.3.0):
+    - Capacitor
+    - PurchasesHybridCommon (= 13.32.0)
 
 DEPENDENCIES:
   - "AparajitaCapacitorDarkMode (from `../../../../node_modules/.pnpm/@aparajita+capacitor-dark-mode@5.0.2/node_modules/@aparajita/capacitor-dark-mode`)"
@@ -78,6 +84,7 @@ DEPENDENCIES:
   - "CapacitorStatusBar (from `../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar`)"
   - "CapacitorVoiceRecorder (from `../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.0.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder`)"
   - "CapgoCapacitorSocialLogin (from `../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login`)"
+  - "RevenuecatPurchasesCapacitor (from `../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.0_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor`)"
 
 SPEC REPOS:
   trunk:
@@ -93,6 +100,8 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - PromisesObjC
+    - PurchasesHybridCommon
+    - RevenueCat
 
 EXTERNAL SOURCES:
   AparajitaCapacitorDarkMode:
@@ -119,6 +128,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.0.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder"
   CapgoCapacitorSocialLogin:
     :path: "../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login"
+  RevenuecatPurchasesCapacitor:
+    :path: "../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.0_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor"
 
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
@@ -145,7 +156,10 @@ SPEC CHECKSUMS:
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  PurchasesHybridCommon: 662aa1f4769ff4ef594e35adf1a5d0ad7b3d08b7
+  RevenueCat: 2d3639d30b8a71cbfe3d99cef8243c602793e0ec
+  RevenuecatPurchasesCapacitor: d2caee5c90772184b79466cfb0e25cc651b3b97c
 
-PODFILE CHECKSUM: 4a1032ecb90ca3749b95d367cbb78fca7716d15a
+PODFILE CHECKSUM: 4c72eb302d958edb3ae0ecbe751db578fd163bf7
 
 COCOAPODS: 1.16.2

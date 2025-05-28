@@ -11,13 +11,14 @@ apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':aparajita-capacitor-dark-mode')
     implementation project(':capacitor-community-safe-area')
-    implementation project(':capacitor-device')
     implementation project(':capacitor-app')
+    implementation project(':capacitor-device')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-splash-screen')
     implementation project(':capacitor-status-bar')
     implementation project(':capgo-capacitor-social-login')
+    implementation project(':revenuecat-purchases-capacitor')
     implementation project(':capacitor-voice-recorder')
 
 }

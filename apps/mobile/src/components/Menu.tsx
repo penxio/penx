@@ -14,6 +14,7 @@ import { cn } from '@penx/utils'
 import { AreaList } from './AreaList'
 // import { AreasPopover } from './AreasPopover'
 import { MobileModeToggle } from './MobileModeToggle'
+import { useUpgradeDrawer } from './UpgradeDrawer/useUpgradeDrawer'
 
 const platform = Capacitor.getPlatform()
 
@@ -21,6 +22,7 @@ const Menu: React.FC = () => {
   const { setMenu } = useMobileMenu()
   const { isLoading } = useSession()
   const menu = useRef<HTMLIonMenuElement>(null)
+  const { setIsOpen } = useUpgradeDrawer()
 
   useEffect(() => {
     setMenu(menu)
@@ -60,6 +62,13 @@ const Menu: React.FC = () => {
           <div className="relative z-10 flex items-center justify-between">
             <MobileModeToggle />
             <LangSwitcher />
+            {/* <Button
+              onClick={() => {
+                setIsOpen(true)
+              }}
+            >
+              Upgrade
+            </Button> */}
             <ProfileButton
               loginButton={
                 <Button

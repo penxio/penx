@@ -73,7 +73,7 @@ export function PlanItem({
 function BenefitItem({ benefit }: { benefit: Benefit }) {
   return (
     <div className="flex shrink-0 items-center gap-2">
-      {benefit.ok && <Check className="text-green-500" size={16} />}
+      {benefit.ok && <CheckIcon className="text-green-500" size={16} />}
       {!benefit.ok && <XIcon className="text-foreground/40" size={16} />}
       <div
         className={cn(

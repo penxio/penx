@@ -1,10 +1,4 @@
 import { get } from 'idb-keyval'
-import {
-  ACTIVE_SITE,
-  IPFS_GATEWAY,
-  IPFS_UPLOAD_URL,
-  STATIC_URL,
-} from '@penx/constants'
 import { ISite } from '@penx/model-type/ISite'
 import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 

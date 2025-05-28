@@ -53,6 +53,8 @@ import { useCreationId } from '@penx/hooks/useCreationId'
 import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { NavProvider } from './components/NavContext'
+import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
+import { initializeRevenueCat } from './lib/initializeRevenueCat'
 // import { activateLocale } from './lib/activateLocale'
 import { PageAllStructs } from './pages/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
@@ -66,6 +68,8 @@ async function init() {
   const mode = await DarkMode.isDarkMode()
 
   const isDark = mode.dark
+
+  initializeRevenueCat()
 
   if (['ios', 'android'].includes(platform)) {
     SafeArea.enable({
@@ -201,6 +205,7 @@ const App: React.FC = () => {
     <IonApp className="">
       <LocaleProvider>
         <DashboardProviders>
+          <UpgradeDrawer />
           <IonReactRouter>
             <IonSplitPane contentId="main">
               <Menu />
