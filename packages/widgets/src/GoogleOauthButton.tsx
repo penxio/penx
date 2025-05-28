@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import qs from 'query-string'
 import { toast } from 'sonner'
@@ -17,7 +17,6 @@ import { Button, ButtonProps } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { cn } from '@penx/utils'
-import { Trans } from '@lingui/react/macro'
 
 interface Props extends ButtonProps {
   className?: string
@@ -52,7 +51,7 @@ export function GoogleOauthButton({
 
         const redirectUri = GOOGLE_OAUTH_REDIRECT_URI
         const parsed = qs.parse(location.search) || {}
-        const state = `${location.protocol}//${location.host}__${pathname}__uid${site?.userId || ''}__${encodeURIComponent(JSON.stringify(parsed))}`
+        const state = `${location.protocol}//${location.host}__${location.pathname}__uid${site?.userId || ''}__${encodeURIComponent(JSON.stringify(parsed))}`
 
         const scope = 'openid email profile'
         const googleAuthUrl =

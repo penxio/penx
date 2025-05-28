@@ -3,11 +3,13 @@ import { fileURLToPath } from 'url'
 import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
+const isProd = process.env.NODE_ENV === 'production'
+
 const withVanillaExtract = createVanillaExtractPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/app',
+  basePath: isProd ? '/app' : '',
   compiler: {
     // removeConsole: process.env.NODE_ENV === 'production',
   },
@@ -30,16 +32,14 @@ const nextConfig = {
     },
   },
   async rewrites() {
-    return [
-      {
-        source: '/api/app/:path*',
-        destination: 'https://penx.io/api/app/:path*',
-      },
-      {
-        source: '/api/v1/:path*',
-        destination: 'https://penx.io/api/v1/:path*',
-      },
-    ]
+    return isProd
+      ? []
+      : [
+          {
+            source: '/api/:path*',
+            destination: 'https://penx.io/api/:path*',
+          },
+        ]
   },
 
   output: 'standalone',

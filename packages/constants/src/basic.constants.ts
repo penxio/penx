@@ -213,22 +213,6 @@ export const STRIPE_TEAM_YEARLY_PRICE_ID =
 export const STRIPE_BELIEVER_PRICE_ID =
   process.env.NEXT_PUBLIC_STRIPE_BELIEVER_PRICE_ID
 
-export const FREE_PLAN_POST_LIMIT = Number(
-  process.env.FREE_PLAN_POST_LIMIT || 50,
-)
-
-export const FREE_PLAN_PAGE_LIMIT = Number(
-  process.env.FREE_PLAN_PAGE_LIMIT || 5,
-)
-
-export const PRO_PLAN_COLLABORATOR_LIMIT = Number(
-  process.env.PRO_PLAN_COLLABORATOR_LIMIT || 3,
-)
-
-export const TEAM_PLAN_COLLABORATOR_LIMIT = Number(
-  process.env.TEAM_PLAN_COLLABORATOR_LIMIT || 6,
-)
-
 export const BUILTIN_PAGE_SLUGS = [
   'about',
   'projects',
