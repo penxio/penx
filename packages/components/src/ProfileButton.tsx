@@ -211,11 +211,12 @@ export function ProfileButton({ loginButton }: Props) {
 
             <DropdownMenuItem
               onClick={async () => {
+                const path = `${ROOT_HOST}/~/settings/subscription`
                 if (isExtension) {
-                  window.open(`${ROOT_HOST}/~/settings/subscription`)
+                  window.open(path)
                   return
                 }
-                setIsOpen(true)
+                location.href = path
               }}
             >
               <Sparkles />

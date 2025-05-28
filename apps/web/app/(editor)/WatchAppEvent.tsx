@@ -12,7 +12,7 @@ export function WatchAppEvent() {
     })
 
     appEmitter.on('ROUTE_TO_SETTINGS', () => {
-      push('/~/settings')
+      location.href = '/~/settings'
     })
 
     appEmitter.on('ROUTE_TO_DESIGN', () => {

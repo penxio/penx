@@ -114,7 +114,7 @@ export const ProfilePopover = memo(function ProfilePopover({
             onClick={() => {
               const path = '/~/settings'
               if (location.host === ROOT_DOMAIN) {
-                push(path)
+                location.href = path
                 return
               }
               window.open(`${location.protocol}//${ROOT_DOMAIN}${path}`)
