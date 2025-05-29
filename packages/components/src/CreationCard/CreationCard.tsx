@@ -63,6 +63,7 @@ export function CreationCard({ creation }: Props) {
   const deletePostDialog = useDeleteCreationDialog()
 
   const viewType: string = CreationViewType.LIST
+  const isCardView = true
 
   const { refs, context, floatingStyles } = useFloating({
     placement: 'bottom',
@@ -221,7 +222,7 @@ export function CreationCard({ creation }: Props) {
 
       {viewType === CreationViewType.LIST && (
         <div
-          className="flex flex-col gap-2  rounded-xl bg-white px-4 py-3 dark:bg-neutral-700"
+          className="mb-2 flex break-inside-avoid flex-col gap-2 rounded-xl bg-white px-4 py-3 align-top dark:bg-neutral-700"
           ref={refs.setReference}
           {...handlers()}
           onClick={() => {

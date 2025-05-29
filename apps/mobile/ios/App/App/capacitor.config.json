@@ -10,7 +10,7 @@
 			"showSpinner": false
 		},
 		"Keyboard": {
-			"resize": "ionic",
+			"resize": "none",
 			"resizeOnFullScreen": true
 		}
 	},

@@ -60,6 +60,7 @@ import { initializeRevenueCat } from './lib/initializeRevenueCat'
 import { PageAllStructs } from './pages/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
+import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
 
 const platform = Capacitor.getPlatform()
@@ -165,7 +166,6 @@ const App: React.FC = () => {
     function handle() {
       nav.current?.push(PageLogin, {})
     }
-
     appEmitter.on('ROUTE_TO_LOGIN', handle)
     return () => {
       appEmitter.off('ROUTE_TO_LOGIN', handle)
@@ -180,6 +180,16 @@ const App: React.FC = () => {
     appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)
     return () => {
       appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
+    }
+  }, [])
+
+  useEffect(() => {
+    function handle() {
+      nav.current?.push(PageProfile, {})
+    }
+    appEmitter.on('ROUTE_TO_PROFILE', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_PROFILE', handle)
     }
   }, [])
 

@@ -19,6 +19,7 @@ export type AppEvent = {
   ROUTE_TO_ALL_STRUCTS: any
   ROUTE_TO_LOGIN: any
   ROUTE_TO_UPGRADE: any
+  ROUTE_TO_PROFILE: any
 }
 
 export const appEmitter = mitt<AppEvent>()

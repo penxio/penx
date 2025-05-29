@@ -9,8 +9,10 @@ import { appEmitter } from '@penx/emitter'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/ui/button'
-import { cn } from '@penx/utils'
+import { cn, getUrl } from '@penx/utils'
+import { generateGradient } from '@penx/utils/generateGradient'
 import { AreaList } from './AreaList'
 // import { AreasPopover } from './AreasPopover'
 import { MobileModeToggle } from './MobileModeToggle'
@@ -23,6 +25,7 @@ const Menu: React.FC = () => {
   const { isLoading } = useSession()
   const menu = useRef<HTMLIonMenuElement>(null)
   const { setIsOpen } = useUpgradeDrawer()
+  const { session } = useSession()
 
   useEffect(() => {
     setMenu(menu)
@@ -69,19 +72,36 @@ const Menu: React.FC = () => {
             >
               Upgrade
             </Button> */}
-            <ProfileButton
-              loginButton={
-                <Button
-                  size="sm"
-                  onClick={() => {
-                    appEmitter.emit('ROUTE_TO_LOGIN')
-                    menu.current?.close()
-                  }}
+            {!session && (
+              <Button
+                size="sm"
+                onClick={() => {
+                  appEmitter.emit('ROUTE_TO_LOGIN')
+                  menu.current?.close()
+                }}
+              >
+                Log in
+              </Button>
+            )}
+            {session && (
+              <Avatar
+                className="h-8 w-8 rounded-lg"
+                onClick={() => {
+                  appEmitter.emit('ROUTE_TO_PROFILE')
+                  menu.current?.close()
+                }}
+              >
+                <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+                <AvatarFallback
+                  className={cn(
+                    'rounded-lg text-white',
+                    generateGradient(session.name),
+                  )}
                 >
-                  Log in
-                </Button>
-              }
-            />
+                  {session?.name.slice(0, 1)}
+                </AvatarFallback>
+              </Avatar>
+            )}
           </div>
           <div
             className="absolute bottom-0 left-0 right-0 top-0 z-[1] opacity-10 dark:opacity-0"

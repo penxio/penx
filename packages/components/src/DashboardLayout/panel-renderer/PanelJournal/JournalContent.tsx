@@ -22,6 +22,7 @@ export function JournalContent({ date }: Props) {
   const { isLoading, data } = useJournal(date)
   if (isLoading) return null
   const creationMaps = mappedByKey(creations, 'id')
+  const isCardView = true
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
@@ -53,7 +54,12 @@ export function JournalContent({ date }: Props) {
       )}
 
       {!!data?.props.children.length && (
-        <div className={cn('flex flex-col gap-4', isMobileApp && 'gap-6')}>
+        <div
+          className={cn(
+            isCardView ? 'columns-2 gap-x-2' : 'flex flex-col gap-4 ',
+            isMobileApp && !isCardView && 'gap-6',
+          )}
+        >
           {data?.props.children.map((id) => {
             const creation = creationMaps[id]
             if (!creation) return null
