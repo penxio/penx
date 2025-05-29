@@ -39,6 +39,16 @@ export function JournalContent({ date }: Props) {
           >
             <Trans>What's on your mind today?</Trans>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ delay: 0.2 }}
+            className="text-foreground/40 text-xs"
+          >
+            <Trans>A structured note-taking App</Trans>
+          </motion.div>
         </div>
       )}
 

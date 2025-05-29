@@ -10,11 +10,13 @@ import {
   Users2Icon,
 } from 'lucide-react'
 import { StructType } from '@penx/types'
-import { cn } from '@penx/utils'
 
 export function getCreationIcon(type: any): ReactNode {
   if (type === StructType.ARTICLE) return <FileText size={16} />
-  if (type === StructType.NOTE) return <Pen size={16} />
+  // if (type === StructType.NOTE) return <Pen size={16} />
+  if (type === StructType.NOTE)
+    return <span className="icon-[mdi--feather] size-5"></span>
+
   if (type === StructType.BOOKMARK) return <BookmarkIcon size={16} />
   if (type === StructType.IMAGE) return <ImageIcon size={16} />
   if (type === StructType.PAGE) return <Columns2Icon size={16} />

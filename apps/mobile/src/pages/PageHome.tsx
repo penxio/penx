@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { HomeHeader } from '@/components/HomeHeader'
+import { useMoreStructDrawer } from '@/components/MoreStructDrawer/useMoreStructDrawer'
 import { GoogleLoginButton } from '@/components/Profile/GoogleLoginButton'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { mainBackgroundLight } from '@/lib/constants'

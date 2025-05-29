@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
+msgid "A structured note-taking App"
+msgstr ""
+
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
 msgid "Access control"
 msgstr "访问控制"
@@ -47,16 +51,16 @@ msgid "Add widget"
 msgstr "添加组件"
 
 #: packages/widgets/src/WidgetName.tsx:36
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:137
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:111
 msgid "AI chat"
 msgstr "AI 聊天"
 
 #: packages/widgets/src/WidgetName.tsx:18
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:99
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:93
 msgid "All creations"
 msgstr "所有创作"
 
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:106
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:96
 msgid "All structs"
 msgstr "所有结构体"
 
@@ -93,7 +97,7 @@ msgid "Change type"
 msgstr "更改类型"
 
 #: packages/widgets/src/WidgetName.tsx:26
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:114
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:100
 msgid "Collection"
 msgstr "合集"
 
@@ -194,7 +198,7 @@ msgid "Email"
 msgstr "邮箱"
 
 #: packages/widgets/src/WidgetName.tsx:30
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:122
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:104
 msgid "Favorites"
 msgstr "收藏"
 
@@ -235,7 +239,7 @@ msgid "Journal"
 msgstr "日记"
 
 #: packages/widgets/src/WidgetName.tsx:14
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:91
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:89
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
 msgid "Journals"
 msgstr "日记"
@@ -290,6 +294,10 @@ msgstr "我的领域"
 #: packages/components/src/AppProvider/lib/initLocalSite.ts:24
 msgid "My Site"
 msgstr "我的站点"
+
+#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:27
+msgid "My structs"
+msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:31
 msgid "My Structs"
@@ -399,12 +407,12 @@ msgid "Publish your creation"
 msgstr "发布您的创作"
 
 #: packages/widgets/src/WidgetName.tsx:33
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:130
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:108
 msgid "Recently edited"
 msgstr "最近编辑"
 
 #: packages/widgets/src/WidgetName.tsx:39
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:144
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:114
 msgid "Recently opened"
 msgstr "最近打开"
 
@@ -470,11 +478,11 @@ msgid "Struct marketplace"
 msgstr "结构体市场"
 
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:167
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:135
 msgid "Structs"
 msgstr "结构体"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:59
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:63
 msgid "Subscribe now"
 msgstr ""
 

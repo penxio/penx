@@ -52,6 +52,7 @@ import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
 import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
+import { MoreStructDrawer } from './components/MoreStructDrawer/MoreStructDrawer'
 import { NavProvider } from './components/NavContext'
 import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
 import { initializeRevenueCat } from './lib/initializeRevenueCat'
@@ -206,6 +207,7 @@ const App: React.FC = () => {
       <LocaleProvider>
         <DashboardProviders>
           <UpgradeDrawer />
+          <MoreStructDrawer />
           <IonReactRouter>
             <IonSplitPane contentId="main">
               <Menu />

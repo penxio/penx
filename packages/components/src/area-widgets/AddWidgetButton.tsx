@@ -86,64 +86,32 @@ export function AddWidgetButton({ className }: Props) {
               // }
               const getName = () => {
                 if (item === WidgetType.JOURNAL) {
-                  return (
-                    <>
-                      <Trans>Journals</Trans>
-                    </>
-                  )
+                  return <Trans>Journals</Trans>
                 }
 
                 if (item === WidgetType.ALL_CREATIONS) {
-                  return (
-                    <>
-                      <Trans>All creations</Trans>
-                    </>
-                  )
+                  return <Trans>All creations</Trans>
                 }
                 if (item === WidgetType.ALL_STRUCTS) {
-                  return (
-                    <>
-                      <Trans>All structs</Trans>
-                    </>
-                  )
+                  return <Trans>All structs</Trans>
                 }
 
                 if (item === WidgetType.COLLECTION) {
-                  return (
-                    <>
-                      <Trans>Collection</Trans>
-                    </>
-                  )
+                  return <Trans>Collection</Trans>
                 }
 
                 if (item === WidgetType.FAVORITES) {
-                  return (
-                    <>
-                      <Trans>Favorites</Trans>
-                    </>
-                  )
+                  return <Trans>Favorites</Trans>
                 }
 
                 if (item === WidgetType.RECENTLY_EDITED) {
-                  return (
-                    <>
-                      <Trans>Recently edited</Trans>
-                    </>
-                  )
+                  return <Trans>Recently edited</Trans>
                 }
                 if (item === WidgetType.AI_CHAT) {
-                  return (
-                    <>
-                      <Trans>AI chat</Trans>
-                    </>
-                  )
+                  return <Trans>AI chat</Trans>
                 }
                 if (item === WidgetType.RECENTLY_OPENED) {
-                  return (
-                    <>
-                      <Trans>Recently opened</Trans>
-                    </>
-                  )
+                  return <Trans>Recently opened</Trans>
                 }
                 return null
               }

@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
+msgid "A structured note-taking App"
+msgstr ""
+
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
 msgid "Access control"
 msgstr ""
@@ -47,16 +51,16 @@ msgid "Add widget"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:36
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:137
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:111
 msgid "AI chat"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:18
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:99
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:93
 msgid "All creations"
 msgstr ""
 
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:106
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:96
 msgid "All structs"
 msgstr ""
 
@@ -93,7 +97,7 @@ msgid "Change type"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:26
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:114
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:100
 msgid "Collection"
 msgstr ""
 
@@ -194,7 +198,7 @@ msgid "Email"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:30
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:122
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:104
 msgid "Favorites"
 msgstr ""
 
@@ -235,7 +239,7 @@ msgid "Journal"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:14
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:91
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:89
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
 msgid "Journals"
 msgstr ""
@@ -289,6 +293,10 @@ msgstr ""
 
 #: packages/components/src/AppProvider/lib/initLocalSite.ts:24
 msgid "My Site"
+msgstr ""
+
+#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:27
+msgid "My structs"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:31
@@ -399,12 +407,12 @@ msgid "Publish your creation"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:33
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:130
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:108
 msgid "Recently edited"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:39
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:144
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:114
 msgid "Recently opened"
 msgstr ""
 
@@ -470,11 +478,11 @@ msgid "Struct marketplace"
 msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:167
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:135
 msgid "Structs"
 msgstr ""
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:59
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:63
 msgid "Subscribe now"
 msgstr ""
 

@@ -680,6 +680,9 @@ importers:
       use-file-picker:
         specifier: ^2.1.2
         version: 2.1.2(react@19.0.0)
+      use-long-press:
+        specifier: ^3.3.0
+        version: 3.3.0(react@19.0.0)
       usehooks-ts:
         specifier: ^3.1.1
         version: 3.1.1(react@19.0.0)
@@ -15055,6 +15058,11 @@ packages:
     peerDependenciesMeta:
       '@types/react':
         optional: true
+
+  use-long-press@3.3.0:
+    resolution: {integrity: sha512-Yedz46ILxsb1BTS6kUzpV/wyEZPUlJDq+8Oat0LP1eOZQHbS887baJHJbIGENqCo8wTKNxmoTHLdY8lU/e+wvw==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   use-merge-value@1.2.0:
     resolution: {integrity: sha512-DXgG0kkgJN45TcyoXL49vJnn55LehnrmoHc7MbKi+QDBvr8dsesqws8UlyIWGHMR+JXgxc1nvY+jDGMlycsUcw==}
@@ -31482,6 +31490,10 @@ snapshots:
       use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.10)(react@19.0.0)
     optionalDependencies:
       '@types/react': 19.0.10
+
+  use-long-press@3.3.0(react@19.0.0):
+    dependencies:
+      react: 19.0.0
 
   use-merge-value@1.2.0(react@19.0.0):
     dependencies:

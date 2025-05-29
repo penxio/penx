@@ -1,9 +1,11 @@
 import React from 'react'
 import { Capacitor } from '@capacitor/core'
-import { IonFab } from '@ionic/react'
+import { createGesture, IonButton, IonFab, IonText } from '@ionic/react'
 import { PlusIcon } from 'lucide-react'
 import { motion } from 'motion/react'
+import { useLongPress } from 'use-long-press'
 import { cn } from '@penx/utils'
+import { useMoreStructDrawer } from './MoreStructDrawer/useMoreStructDrawer'
 import { VoiceRecorderButton } from './VoiceRecorderButton'
 
 const platform = Capacitor.getPlatform()
@@ -14,7 +16,14 @@ interface Props {
 }
 
 export const Footer = ({ open, onAdd }: Props) => {
+  const { setIsOpen } = useMoreStructDrawer()
   // if (open) return null
+  const handlers = useLongPress(() => {
+    // Your action here
+    console.log('Long pressed!')
+    setIsOpen(true)
+  })
+
   return (
     <IonFab
       slot="fixed"
@@ -26,13 +35,14 @@ export const Footer = ({ open, onAdd }: Props) => {
 
       <div
         className={cn(
-          'relative inline-flex items-center justify-center gap-3 pb-4',
+          'relative inline-flex items-center justify-center gap-3 pb-6',
         )}
       >
         <div className="relative inline-flex">
           <motion.div
+            {...handlers()}
             whileTap={{ scale: 1.2 }}
-            className="text-background shadow-popover dark:bg-brand bg-background relative flex size-14 items-center justify-center rounded-full"
+            className="text-background shadow-popover dark:bg-brand bg-background relative flex  size-14 select-none items-center justify-center rounded-full"
             onClick={async () => {
               onAdd()
             }}

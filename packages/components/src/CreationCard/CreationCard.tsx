@@ -7,12 +7,14 @@ import { appEmitter } from '@penx/emitter'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { getBgColor, getTextColorByName } from '@penx/libs/color-helper'
+import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
+import { StructIcon } from '@penx/widgets/StructIcon'
 import { Link } from './Link'
 import { Tags } from './Tags'
 import { VoiceContent } from './VoiceContent'
@@ -56,9 +58,8 @@ export function CreationCard({ creation }: Props) {
         )}
         {creation.isBookmark && <Link creation={creation} struct={struct} />}
         {creation.previewedContent && (
-          <div className="line-clamp-2">{creation.previewedContent}</div>
+          <div className="line-clamp-5">{creation.previewedContent}</div>
         )}
-        <Tags creation={creation} />
       </>
     )
   }, [creation])
@@ -70,20 +71,19 @@ export function CreationCard({ creation }: Props) {
         {/* <div
           className={cn('size-4 rounded-sm', generateGradient(struct.name))}
         ></div> */}
+        <div className="flex items-center gap-1">
+          <StructIcon type={creation.type} className={cn('size-4')} />
 
-        {/* <div
-          className={cn('size-2 rounded-full', getBgColor(struct.color))}
-        ></div> */}
-
-        <div className={cn('from-accent-foreground text-xs font-medium')}>
-          {struct.name}
-        </div>
-
-        <div>
-          <div className="text-foreground/50 text-[10px]">
-            {creation.formattedTime}
+          <div className={cn('from-accent-foreground text-xs font-medium')}>
+            {struct.name}
           </div>
         </div>
+
+        <div className="text-foreground/50 text-[10px]">
+          {creation.formattedTime}
+        </div>
+
+        <Tags creation={creation} />
       </div>
       <div>
         <div
