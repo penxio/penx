@@ -13,8 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:51
 msgid "A structured note-taking App"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:39
+msgid "About"
 msgstr ""
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
@@ -64,7 +68,7 @@ msgstr ""
 msgid "All structs"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:127
+#: apps/mobile/src/components/Login/RegisterForm.tsx:127
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:127
 msgid "Already have an account"
 msgstr ""
@@ -77,7 +81,7 @@ msgstr ""
 msgid "Apple login"
 msgstr ""
 
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:49
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:51
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:51
 msgid "Are you sure delete it permanently?"
 msgstr ""
@@ -87,7 +91,7 @@ msgid "Bookmark"
 msgstr ""
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:59
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
 msgstr ""
@@ -105,11 +109,11 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: packages/components/src/CreationCard/CreationCard.tsx:150
+#: packages/components/src/CreationCard/CreationCard.tsx:181
 msgid "Copy"
 msgstr ""
 
-#: packages/components/src/Creation/CreationMoreMenu.tsx:68
+#: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr ""
 
@@ -124,7 +128,7 @@ msgstr ""
 msgid "Create area"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/LoginForm.tsx:133
+#: apps/mobile/src/components/Login/LoginForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:131
 msgid "Create one"
 msgstr ""
@@ -141,6 +145,10 @@ msgstr ""
 msgid "Creation counts"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:56
+msgid "Dark"
+msgstr ""
+
 #: packages/components/src/Profile/ProfilePopover.tsx:108
 #: packages/components/src/Profile/Profile.tsx:58
 msgid "Dashboard"
@@ -151,9 +159,9 @@ msgstr ""
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:117
-#: packages/components/src/CreationCard/CreationCard.tsx:169
-#: packages/components/src/Creation/CreationMoreMenu.tsx:103
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:71
+#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/Creation/CreationMoreMenu.tsx:102
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:73
 msgid "Delete"
@@ -183,7 +191,7 @@ msgstr ""
 msgid "Due date"
 msgstr ""
 
-#: packages/components/src/CreationCard/CreationCard.tsx:156
+#: packages/components/src/CreationCard/CreationCard.tsx:193
 msgid "Edit"
 msgstr ""
 
@@ -199,8 +207,8 @@ msgstr ""
 msgid "Edit widget"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:83
-#: apps/mobile/src/components/Profile/LoginForm.tsx:89
+#: apps/mobile/src/components/Login/RegisterForm.tsx:83
+#: apps/mobile/src/components/Login/LoginForm.tsx:89
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:83
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:87
 msgid "Email"
@@ -228,7 +236,7 @@ msgstr ""
 msgid "Gate this post, config who can read this post."
 msgstr ""
 
-#: apps/mobile/src/components/Profile/GoogleLoginButton.tsx:69
+#: apps/mobile/src/components/Login/GoogleLoginButton.tsx:69
 #: apps/extension/components/Login.tsx:51
 #: packages/widgets/src/GoogleOauthButton.tsx:70
 msgid "Google login"
@@ -243,7 +251,6 @@ msgid "Home"
 msgstr ""
 
 #: apps/mobile/src/components/StructTypeSelect.tsx:35
-#: apps/mobile/src/components/HomeHeader.tsx:29
 msgid "Journal"
 msgstr ""
 
@@ -251,6 +258,15 @@ msgstr ""
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:89
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
 msgid "Journals"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:43
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:54
+msgid "Language"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:48
+msgid "Light"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:176
@@ -261,8 +277,8 @@ msgstr ""
 msgid "Local backup"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:135
-#: apps/mobile/src/components/Profile/LoginForm.tsx:122
+#: apps/mobile/src/components/Login/RegisterForm.tsx:135
+#: apps/mobile/src/components/Login/LoginForm.tsx:122
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
 #: packages/components/src/ProfileButton.tsx:118
@@ -274,7 +290,7 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/PinCodeForm.tsx:88
+#: apps/mobile/src/components/Login/PinCodeForm.tsx:88
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
 msgid "Login code"
 msgstr ""
@@ -320,7 +336,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/LoginForm.tsx:128
+#: apps/mobile/src/components/Login/LoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:125
 msgid "No account"
 msgstr ""
@@ -356,7 +372,7 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:52
+#: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:54
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:54
 msgid "Once deleted, You can't undo this action."
 msgstr ""
@@ -375,8 +391,8 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:99
-#: apps/mobile/src/components/Profile/LoginForm.tsx:105
+#: apps/mobile/src/components/Login/RegisterForm.tsx:99
+#: apps/mobile/src/components/Login/LoginForm.tsx:105
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 msgid "Password"
@@ -386,7 +402,7 @@ msgstr ""
 msgid "Pick a date"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/PinCodeForm.tsx:78
+#: apps/mobile/src/components/Login/PinCodeForm.tsx:78
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
 msgid "Please check your email for the verification code."
 msgstr ""
@@ -425,8 +441,8 @@ msgstr ""
 msgid "Recently opened"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/RegisterForm.tsx:121
-#: apps/mobile/src/components/Profile/PinCodeForm.tsx:125
+#: apps/mobile/src/components/Login/RegisterForm.tsx:121
+#: apps/mobile/src/components/Login/PinCodeForm.tsx:125
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:121
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:127
 msgid "Register"
@@ -464,16 +480,16 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: packages/components/src/CreationCard/CreationCard.tsx:163
-msgid "Share"
-msgstr ""
-
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:46
 msgid "Show all"
 msgstr ""
 
 #: packages/components/src/LoginButton.tsx:28
 msgid "Sign in"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:42
+msgid "Signout"
 msgstr ""
 
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
@@ -499,8 +515,16 @@ msgstr ""
 msgid "Subscribe now"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/Profile.tsx:33
+msgid "Subscription"
+msgstr ""
+
 #: packages/components/src/ProfileButton.tsx:232
 msgid "Support"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:64
+msgid "System"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:148
@@ -513,6 +537,11 @@ msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:264
 msgid "Task"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:28
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
+msgid "Theme"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:31
@@ -566,6 +595,6 @@ msgstr ""
 msgid "Welcome to PenX"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:40
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:41
 msgid "What's on your mind today?"
 msgstr ""

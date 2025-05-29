@@ -56,7 +56,7 @@ export function JournalContent({ date }: Props) {
       {!!data?.props.children.length && (
         <div
           className={cn(
-            isCardView ? 'columns-2 gap-x-2' : 'flex flex-col gap-4 ',
+            isCardView ? 'columns-2 gap-x-2 align-top' : 'flex flex-col gap-4 ',
             isMobileApp && !isCardView && 'gap-6',
           )}
         >

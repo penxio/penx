@@ -18,7 +18,7 @@ export function Drawer({ open, setOpen, children, className }: Props) {
         <VaulDrawer.Overlay className="fixed inset-0 bg-black/40" />
         <VaulDrawer.Content
           className={cn(
-            'bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[50vh] flex-col rounded-t-[10px] px-4 pb-6 outline-none',
+            'bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] flex-col rounded-t-[10px] px-4 pb-6 outline-none',
             platform === 'ios' && 'max-h-[80vh]',
             className,
           )}

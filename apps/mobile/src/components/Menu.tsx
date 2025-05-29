@@ -8,7 +8,6 @@ import { ProfileButton } from '@penx/components/ProfileButton'
 import { appEmitter } from '@penx/emitter'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useSession } from '@penx/session'
-import { store } from '@penx/store'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import { cn, getUrl } from '@penx/utils'
@@ -16,6 +15,7 @@ import { generateGradient } from '@penx/utils/generateGradient'
 import { AreaList } from './AreaList'
 // import { AreasPopover } from './AreasPopover'
 import { MobileModeToggle } from './MobileModeToggle'
+import { useTheme } from './theme-provider'
 import { useUpgradeDrawer } from './UpgradeDrawer/useUpgradeDrawer'
 
 const platform = Capacitor.getPlatform()
@@ -24,8 +24,8 @@ const Menu: React.FC = () => {
   const { setMenu } = useMobileMenu()
   const { isLoading } = useSession()
   const menu = useRef<HTMLIonMenuElement>(null)
-  const { setIsOpen } = useUpgradeDrawer()
   const { session } = useSession()
+  const { isDark } = useTheme()
 
   useEffect(() => {
     setMenu(menu)
@@ -43,12 +43,12 @@ const Menu: React.FC = () => {
       <IonContent
         className="ion-padding safe-area drawer-menu relative h-full"
         style={{
-          '--background': '#f0f0f0',
+          '--background': isDark ? '#222' : '#f0f0f0',
         }}
       >
         <div
           className={cn(
-            'relative z-10 flex h-full flex-col pt-5',
+            'text-foreground relative z-10 flex h-full flex-col pt-5',
             platform === 'ios' && 'pt-10',
           )}
           style={
@@ -63,8 +63,7 @@ const Menu: React.FC = () => {
             <AreaWidgets />
           </div>
           <div className="relative z-10 flex items-center justify-between">
-            <MobileModeToggle />
-            <LangSwitcher />
+            <div></div>
             {/* <Button
               onClick={() => {
                 setIsOpen(true)

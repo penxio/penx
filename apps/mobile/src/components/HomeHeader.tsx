@@ -25,38 +25,26 @@ export const HomeHeader = ({ scrolled }: Props) => {
       <IonToolbar
         className="relative flex p-0 transition-all duration-300 ease-in-out"
         style={{
-          '--background': 'transparent',
-          // '--background': scrolled ? '#fff' : 'transparent',
-          // borderBottom: scrolled ? '1px solid #eeee' : 'none',
+          // '--background': 'transparent',
+          '--background': scrolled ? '#fff' : 'transparent',
+          borderBottom: scrolled ? '1px solid #eeee' : 'none',
         }}
       >
         <motion.div
           initial="inactive"
           animate={{
             backgroundColor: scrolled ? '#fff' : 'transparent',
-            borderBottom: scrolled
-              ? '1px solid #eeee'
-              : '0px solid transparent',
-            boxShadow: scrolled
-              ? '0 2px 4px rgba(0,0,0,0.1)'
-              : '0 0 0 rgba(0,0,0,0)',
+            // borderBottom: scrolled
+            //   ? '1px solid #eeee'
+            //   : '0px solid transparent',
+            // boxShadow: scrolled
+            //   ? '0 2px 4px rgba(0,0,0,0.1)'
+            //   : '0 0 0 rgba(0,0,0,0)',
           }}
           transition={{
             duration: 0.3,
             ease: 'easeInOut',
           }}
-          // animate={scrolled ? 'active' : 'inactive'}
-          // exit="inactive"
-          // variants={{
-          //   active: {
-          //     backgroundColor: '#fff',
-          //     transition: { duration: 0.3, ease: 'easeInOut' },
-          //   },
-          //   inactive: {
-          //     backgroundColor: 'transparent',
-          //     transition: { duration: 0.3, ease: 'easeInOut' },
-          //   },
-          // }}
           className="absolute bottom-0 top-0 flex h-full w-full flex-1 items-center pl-3"
         >
           <IonButtons slot="start">

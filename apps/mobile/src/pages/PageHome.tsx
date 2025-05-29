@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AnimatedJournalInput } from '@/components/AnimatedJournalInput'
 import { Footer } from '@/components/Footer'
 import { HomeHeader } from '@/components/HomeHeader'
+import { GoogleLoginButton } from '@/components/Login/GoogleLoginButton'
 import { useMoreStructDrawer } from '@/components/MoreStructDrawer/useMoreStructDrawer'
-import { GoogleLoginButton } from '@/components/Profile/GoogleLoginButton'
+import { useTheme } from '@/components/theme-provider'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { mainBackgroundLight } from '@/lib/constants'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
@@ -25,14 +26,15 @@ const PageHome = ({ nav }: any) => {
 
   const { height, isShow, setState } = useKeyboard()
   useKeyboardChange()
+  const { isDark } = useTheme()
 
-  const { data: isDark } = useQuery({
-    queryKey: ['isDark'],
-    queryFn: async () => {
-      const mode = await DarkMode.isDarkMode()
-      return mode.dark
-    },
-  })
+  // const { data: isDark } = useQuery({
+  //   queryKey: ['isDark'],
+  //   queryFn: async () => {
+  //     const mode = await DarkMode.isDarkMode()
+  //     return mode.dark
+  //   },
+  // })
 
   useEffect(() => {
     if (!isShow && open) setOpen(false)
@@ -51,22 +53,18 @@ const PageHome = ({ nav }: any) => {
           const scrollTop = event.detail.scrollTop
           setScrolled(scrollTop > 0)
 
-          if (Capacitor.getPlatform() === 'android') {
-            SafeArea.enable({
-              config: {
-                customColorsForSystemBars: true,
-                statusBarColor:
-                  scrollTop > 0
-                    ? isDark
-                      ? '#ffffff'
-                      : '#ffffff'
-                    : '#00000000',
-                statusBarContent: isDark ? 'light' : 'dark',
-                navigationBarColor: '#00000000', // transparent
-                navigationBarContent: isDark ? 'light' : 'dark',
-              },
-            })
-          }
+          // if (Capacitor.getPlatform() === 'android') {
+          // }
+          SafeArea.enable({
+            config: {
+              customColorsForSystemBars: true,
+              statusBarColor:
+                scrollTop > 0 ? (isDark ? '#ffffff' : '#ffffff') : '#00000000',
+              statusBarContent: isDark ? 'light' : 'dark',
+              navigationBarColor: '#00000000', // transparent
+              navigationBarContent: isDark ? 'light' : 'dark',
+            },
+          })
         }}
       >
         <div

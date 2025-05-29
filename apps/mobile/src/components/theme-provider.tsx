@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 type Theme = 'dark' | 'light' | 'system'
 
@@ -10,11 +10,13 @@ type ThemeProviderProps = {
 
 type ThemeProviderState = {
   theme: Theme
+  isDark: boolean
   setTheme: (theme: Theme) => void
 }
 
 const initialState: ThemeProviderState = {
   theme: 'system',
+  isDark: false,
   setTheme: () => null,
 }
 
@@ -34,22 +36,29 @@ export function ThemeProvider({
     const root = window.document.documentElement
 
     root.classList.remove('light', 'dark')
+    root.classList.remove('ion-palette-dark')
 
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light'
+      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 
-      root.classList.add(systemTheme)
+      root.classList.add(isDark ? 'dark' : 'light')
+      if (isDark) root.classList.add('ion-palette-dark')
       return
     }
 
     root.classList.add(theme)
   }, [theme])
 
+  const isDark = useMemo(() => {
+    if (theme === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+    }
+    return theme === 'dark'
+  }, [theme])
+
   const value = {
     theme,
+    isDark,
     setTheme: (theme: Theme) => {
       localStorage.setItem(storageKey, theme)
       setTheme(theme)

@@ -15,6 +15,7 @@ import { i18n } from '@lingui/core'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants'
+import { useMobileNav } from '@penx/hooks/useMobileNav'
 import Menu from './components/Menu'
 import PageHome from './pages/PageHome'
 /* Core CSS required for Ionic components to work properly */
@@ -54,6 +55,7 @@ import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { MoreStructDrawer } from './components/MoreStructDrawer/MoreStructDrawer'
 import { NavProvider } from './components/NavContext'
+import { ThemeProvider } from './components/theme-provider'
 import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
 import { initializeRevenueCat } from './lib/initializeRevenueCat'
 // import { activateLocale } from './lib/activateLocale'
@@ -136,6 +138,17 @@ setupIonicReact()
 
 const App: React.FC = () => {
   const nav = useRef<HTMLIonNavElement>(null)
+  const { setNav } = useMobileNav()
+
+  useEffect(() => {
+    setNav(nav)
+  }, [nav])
+
+  useEffect(() => {
+    appEmitter.on('ON_LOGOUT_SUCCESS', () => {
+      nav.current?.popToRoot()
+    })
+  }, [])
 
   useEffect(() => {
     function handle(creation: ICreationNode) {
@@ -215,28 +228,30 @@ const App: React.FC = () => {
   return (
     <IonApp className="">
       <LocaleProvider>
-        <DashboardProviders>
-          <UpgradeDrawer />
-          <MoreStructDrawer />
-          <IonReactRouter>
-            <IonSplitPane contentId="main">
-              <Menu />
-              <IonRouterOutlet id="main">
-                <Route path="/" exact={true}>
-                  <Redirect to="/folder/area" />
-                </Route>
-                <Route path="/folder/:name" exact={true}>
-                  <NavProvider nav={nav.current!}>
-                    <IonNav
-                      ref={nav}
-                      root={() => <PageHome nav={nav.current} />}
-                    ></IonNav>
-                  </NavProvider>
-                </Route>
-              </IonRouterOutlet>
-            </IonSplitPane>
-          </IonReactRouter>
-        </DashboardProviders>
+        <ThemeProvider>
+          <DashboardProviders>
+            <UpgradeDrawer />
+            <MoreStructDrawer />
+            <IonReactRouter>
+              <IonSplitPane contentId="main">
+                <Menu />
+                <IonRouterOutlet id="main">
+                  <Route path="/" exact={true}>
+                    <Redirect to="/folder/area" />
+                  </Route>
+                  <Route path="/folder/:name" exact={true}>
+                    <NavProvider nav={nav.current!}>
+                      <IonNav
+                        ref={nav}
+                        root={() => <PageHome nav={nav.current} />}
+                      ></IonNav>
+                    </NavProvider>
+                  </Route>
+                </IonRouterOutlet>
+              </IonSplitPane>
+            </IonReactRouter>
+          </DashboardProviders>
+        </ThemeProvider>
       </LocaleProvider>
     </IonApp>
   )

@@ -63,7 +63,7 @@ export const VoiceContent: React.FC<AudioPlayerProps> = ({ recording }) => {
     <div
       className="flex items-center gap-2"
       style={{
-        width: calcAudioBubbleWidth(recording.msDuration / 1000),
+        // width: calcAudioBubbleWidth(recording.msDuration / 1000),
       }}
       onClick={handlePlay}
     >

@@ -1,7 +1,7 @@
 import React from 'react'
-import { LoginForm } from '@/components/Profile/LoginForm'
-import { PinCodeForm } from '@/components/Profile/PinCodeForm'
-import { RegisterForm } from '@/components/Profile/RegisterForm'
+import { LoginForm } from '@/components/Login/LoginForm'
+import { PinCodeForm } from '@/components/Login/PinCodeForm'
+import { RegisterForm } from '@/components/Login/RegisterForm'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,

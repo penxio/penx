@@ -222,7 +222,7 @@ export function CreationCard({ creation }: Props) {
 
       {viewType === CreationViewType.LIST && (
         <div
-          className="mb-2 flex break-inside-avoid flex-col gap-2 rounded-xl bg-white px-4 py-3 align-top dark:bg-neutral-700"
+          className="mb-2 inline-block w-full break-inside-avoid space-y-2 rounded-xl bg-white px-4 py-3 align-top dark:bg-neutral-700"
           ref={refs.setReference}
           {...handlers()}
           onClick={() => {
