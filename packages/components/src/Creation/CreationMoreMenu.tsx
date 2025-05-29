@@ -11,7 +11,6 @@ import { useMySite } from '@penx/hooks/useMySite'
 import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { sleep } from '@penx/utils'
 import { useDeleteCreationDialog } from './DeleteCreationDialog/useDeleteCreationDialog'
 import { usePublishDialog } from './PublishDialog/usePublishDialog'
 

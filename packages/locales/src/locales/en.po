@@ -105,6 +105,10 @@ msgstr "Collection"
 msgid "Color"
 msgstr "Color"
 
+#: packages/components/src/CreationCard/CreationCard.tsx:150
+msgid "Copy"
+msgstr "Copy"
+
 #: packages/components/src/Creation/CreationMoreMenu.tsx:68
 msgid "Copy html"
 msgstr "Copy html"
@@ -147,6 +151,7 @@ msgstr "Dashboard"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:117
+#: packages/components/src/CreationCard/CreationCard.tsx:169
 #: packages/components/src/Creation/CreationMoreMenu.tsx:103
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:71
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -177,6 +182,10 @@ msgstr "Done"
 #: packages/libs/src/getDefaultStructs.ts:110
 msgid "Due date"
 msgstr "Due date"
+
+#: packages/components/src/CreationCard/CreationCard.tsx:156
+msgid "Edit"
+msgstr "Edit"
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:27
 msgid "Edit navigation"
@@ -454,6 +463,10 @@ msgstr "Search"
 #: packages/components/src/AreasPopover/AreaMenu.tsx:84
 msgid "Settings"
 msgstr "Settings"
+
+#: packages/components/src/CreationCard/CreationCard.tsx:163
+msgid "Share"
+msgstr "Share"
 
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:46
 msgid "Show all"

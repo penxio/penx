@@ -19,8 +19,6 @@ export const Footer = ({ open, onAdd }: Props) => {
   const { setIsOpen } = useMoreStructDrawer()
   // if (open) return null
   const handlers = useLongPress(() => {
-    // Your action here
-    console.log('Long pressed!')
     setIsOpen(true)
   })
 

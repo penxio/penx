@@ -76,8 +76,6 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
 
   return (
     <ErrorBoundary fallbackRender={fallbackRender}>
-      <DeleteCreationDialog />
-
       <div
         className={cn(
           'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 pt-14 md:px-8',

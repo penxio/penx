@@ -16,10 +16,8 @@ export function StructList({}: Props) {
   return (
     <div className="flex flex-col gap-2 px-1 pb-2">
       {structs
-        .filter((struct) =>
-          [!StructType.NOTE, StructType.VOICE].includes(
-            struct.type as StructType,
-          ),
+        .filter(
+          (struct) => ![StructType.VOICE].includes(struct.type as StructType),
         )
         .map((struct, index) => (
           <motion.div

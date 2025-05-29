@@ -38,7 +38,6 @@
     "@farcaster/auth-client": "^0.3.0",
     "@farcaster/auth-kit": "^0.6.0",
     "@farcaster/frame-sdk": "^0.0.10",
-    "@floating-ui/react": "^0.25.4",
     "@glideapps/glide-data-grid": "^6.0.3",
     "@hookform/resolvers": "^3.10.0",
     "@ionic/react": "^8.5.7",
@@ -294,6 +293,7 @@
     "typescript": "5.8.2"
   },
   "peerDependencies": {
+    "@floating-ui/react": "^0.25.4",
     "jotai": "~2.8.4"
   },
   "packageManager": "pnpm@9.2.0",

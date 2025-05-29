@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
+import { isMobileApp } from '@penx/constants'
 import { usePanels } from '@penx/hooks/usePanels'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
@@ -17,6 +18,7 @@ import {
   DialogTitle,
 } from '@penx/uikit/dialog'
 import { LoadingDots } from '@penx/uikit/loading-dots'
+import { cn } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 import { useDeleteCreationDialog } from './useDeleteCreationDialog'
 
@@ -53,7 +55,12 @@ export function DeleteCreationDialog({}: Props) {
           </DialogDescription>
         </DialogHeader>
 
-        <DialogFooter className="flex flex-row gap-2">
+        <DialogFooter
+          className={cn(
+            'flex flex-row justify-between gap-2',
+            isMobileApp && 'justify-center',
+          )}
+        >
           <DialogClose asChild>
             <Button className="w-20" variant="outline">
               <Trans>Cancel</Trans>

@@ -7,6 +7,7 @@ import { SessionProvider } from '@penx/session'
 import { StoreProvider } from '@penx/store'
 import { AppProvider } from '../AppProvider/AppProvider'
 import { AreaDialog } from '../AreaDialog/AreaDialog'
+import { DeleteCreationDialog } from '../Creation/DeleteCreationDialog/DeleteCreationDialog'
 import { StructDialog } from '../StructDialog/StructDialog'
 
 export function DashboardProviders({
@@ -27,6 +28,7 @@ export function DashboardProviders({
             <AppProvider>
               <AreaDialog />
               <StructDialog />
+              <DeleteCreationDialog />
               {children}
             </AppProvider>
           </StoreProvider>

@@ -41,7 +41,7 @@ export const HomeHeader: React.FC = () => {
       <IonToolbar
         className="toolbar flex items-center pl-3"
         style={{
-          // '--background': 'white',
+          '--background': 'transparent',
           '--border-width': 0,
           // borderBottom: scrolled ? '1px solid #eeee' : 'none',
           // borderBottom: 'none',
@@ -54,7 +54,7 @@ export const HomeHeader: React.FC = () => {
           </IonMenuToggle>
         </IonButtons>
 
-        <div className="text-foreground/50 text-md flex h-full items-center gap-1 px-2">
+        <div className="text-foreground/50 text-md h-ful scroll-container flex flex-1 items-center gap-1 overflow-auto px-2 ">
           <StructTypeSelect className="" />
         </div>
         {/* <IonTitle slot="start" className="mx-1">
