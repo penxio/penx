@@ -30,6 +30,7 @@ import { appEmitter } from '@penx/emitter'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
+import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { getBgColor, getTextColorByName } from '@penx/libs/color-helper'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { store } from '@penx/store'
@@ -62,8 +63,7 @@ export function CreationCard({ creation }: Props) {
   const { copy } = useCopyToClipboard()
   const deletePostDialog = useDeleteCreationDialog()
 
-  const viewType: string = CreationViewType.LIST
-  const isCardView = true
+  const { data: layout, isCard, isList, isBubble } = useJournalLayout()
 
   const { refs, context, floatingStyles } = useFloating({
     placement: 'bottom',
@@ -220,7 +220,7 @@ export function CreationCard({ creation }: Props) {
         </AnimatePresence>
       )}
 
-      {viewType === CreationViewType.LIST && (
+      {!isBubble && (
         <div
           className="mb-2 inline-block w-full break-inside-avoid space-y-2 rounded-xl bg-white px-4 py-3 align-top dark:bg-neutral-700"
           ref={refs.setReference}
@@ -259,7 +259,7 @@ export function CreationCard({ creation }: Props) {
         </div>
       )}
 
-      {viewType === CreationViewType.BUBBLE && (
+      {isBubble && (
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">

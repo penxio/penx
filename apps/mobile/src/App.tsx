@@ -206,6 +206,7 @@ const App: React.FC = () => {
     }
   }, [])
 
+
   useEffect(() => {
     SocialLogin.initialize(
       platform === 'ios'

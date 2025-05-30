@@ -6,6 +6,7 @@ import { isMobileApp } from '@penx/constants'
 import { useActiveStruct } from '@penx/hooks/useActiveStruct'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useJournal } from '@penx/hooks/useJournal'
+import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { cn, mappedByKey } from '@penx/utils'
 import { CreationCard } from '../../../CreationCard/CreationCard'
 import { JournalTitle } from './JournalTitle'
@@ -17,12 +18,11 @@ interface Props {
 
 export function JournalContent({ date }: Props) {
   const { creations } = useCreations()
-
   const { struct } = useActiveStruct()
   const { isLoading, data } = useJournal(date)
+  const { data: layout, isCard, isList, isBubble } = useJournalLayout()
   if (isLoading) return null
   const creationMaps = mappedByKey(creations, 'id')
-  const isCardView = true
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
@@ -56,8 +56,9 @@ export function JournalContent({ date }: Props) {
       {!!data?.props.children.length && (
         <div
           className={cn(
-            isCardView ? 'columns-2 gap-x-2 align-top' : 'flex flex-col gap-4 ',
-            isMobileApp && !isCardView && 'gap-6',
+            isCard ? 'columns-2 gap-x-2 align-top' : 'flex flex-col gap-4 ',
+            // isMobileApp && !isCard && 'gap-6',
+            isMobileApp && isList && 'gap-0',
           )}
         >
           {data?.props.children.map((id) => {

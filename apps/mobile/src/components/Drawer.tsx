@@ -1,6 +1,7 @@
 import { Capacitor } from '@capacitor/core'
-import { DialogTitle } from '@radix-ui/react-dialog'
+import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
 import { Drawer as VaulDrawer } from 'vaul'
+import { DialogHeader } from '@penx/uikit/ui/dialog'
 import { cn } from '@penx/utils'
 
 const platform = Capacitor.getPlatform()
@@ -33,7 +34,10 @@ export function Drawer({ open, setOpen, children, className }: Props) {
             className="bg-foreground/30 mx-auto mb-4 mt-2 h-1 w-10 shrink-0 rounded-full"
           />
 
-          <DialogTitle className="hidden"></DialogTitle>
+          <DialogHeader className="hidden">
+            <DialogTitle></DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
           {children}
         </VaulDrawer.Content>
       </VaulDrawer.Portal>

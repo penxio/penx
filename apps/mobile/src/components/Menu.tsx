@@ -1,10 +1,19 @@
 import { useEffect, useRef } from 'react'
+import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
-import { IonContent, IonMenu } from '@ionic/react'
+import { menuController } from '@ionic/core/components'
+import {
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenu,
+  IonTitle,
+  IonToolbar,
+} from '@ionic/react'
 import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
-import { AreasPopover } from '@penx/components/AreasPopover/AreasPopover'
+import { AreasPopover } from '@penx/components/AreasPopover'
 import { LangSwitcher } from '@penx/components/LangSwitcher'
-import { ProfileButton } from '@penx/components/ProfileButton'
 import { appEmitter } from '@penx/emitter'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useSession } from '@penx/session'
@@ -13,7 +22,6 @@ import { Button } from '@penx/uikit/ui/button'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { AreaList } from './AreaList'
-// import { AreasPopover } from './AreasPopover'
 import { MobileModeToggle } from './MobileModeToggle'
 import { useTheme } from './theme-provider'
 import { useUpgradeDrawer } from './UpgradeDrawer/useUpgradeDrawer'
@@ -38,12 +46,22 @@ const Menu: React.FC = () => {
       menuId="myMenu"
       contentId="main"
       type="overlay"
+      // type="push"
       // className="bg-foreground/5"
     >
+      <IonHeader
+        className={cn(isAndroid ? 'safe-area' : '')}
+        style={{ boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)' }}
+      >
+        <IonToolbar color="light" className="toolbar px-3">
+          <AreasPopover />
+        </IonToolbar>
+      </IonHeader>
+
       <IonContent
         className="ion-padding safe-area drawer-menu relative h-full"
         style={{
-          '--background': isDark ? '#222' : '#f0f0f0',
+          '--background': isDark ? '#222' : '#f6f6f6',
         }}
       >
         <div
@@ -59,7 +77,7 @@ const Menu: React.FC = () => {
         >
           <div className="relative z-10 flex-1">
             {/* <AreaList /> */}
-            <AreasPopover />
+
             <AreaWidgets />
           </div>
           <div className="relative z-10 flex items-center justify-between">
