@@ -11,7 +11,7 @@ import {
 import { parsePreparedContent } from '@/lib/parser'
 import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -99,24 +99,21 @@ export default defineBackground(() => {
 async function queryAreas() {
   const session = await get('SESSION')
   if (session?.siteId) {
-    return localDB.listAreas(session.siteId)
+    return db.listAreas(session.siteId)
   }
-  const sites = await localDB.listAllSites()
+  const sites = await db.listAllSites()
   const site = sites.find((site) => site.props.isRemote) || sites[0]
-  return localDB.listAreas(site.id)
+  return db.listAreas(site.id)
 }
 
 async function addNote(content: string, area: IAreaNode) {
-  const site = await localDB.getSite(area.siteId)
-  const structs = await localDB.listStructs(area.id)
+  const site = await db.getSite(area.siteId)
+  const structs = await db.listStructs(area.id)
   const struct = structs.find(
     (struct) => struct.props.type === StructType.NOTE,
   )!
 
-  const creation: ICreationNode = {
-  } as any
-
-  // await localDB.addCreation(creation)
+  const creation: ICreationNode = {} as any
 }
 
 const noteToContent = (str: string) => {

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { toast } from 'sonner'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { store } from '@penx/store'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
@@ -78,7 +78,7 @@ export function PublishStructContent() {
   //             },
   //           })
 
-  //           await localDB.updateStructProps(struct.id, {
+  //           await db.updateStructProps(struct.id, {
   //             type,
   //           })
   //           refetch()

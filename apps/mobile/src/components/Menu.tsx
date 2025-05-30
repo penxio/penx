@@ -52,41 +52,14 @@ const Menu: React.FC = () => {
         style={{ boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)' }}
       >
         <IonToolbar
-          className="menu-toolbar px-3"
+          className="menu-toolbar  px-3"
           style={{
             '--border-width': 0,
           }}
         >
-          <AreasPopover />
-        </IonToolbar>
-      </IonHeader>
+          <div className="flex items-center justify-between gap-1">
+            <AreasPopover />
 
-      <IonContent
-        className="ion-padding safe-area drawer-menu relative h-full"
-        style={{
-          '--background': isDark ? '#222' : '#fff',
-        }}
-      >
-        <div
-          className={cn('text-foreground relative z-10 flex h-full flex-col')}
-          style={
-            {
-              '--background': '#fff',
-            } as any
-          }
-        >
-          <div className="relative z-10 flex-1">
-            <AreaWidgets />
-          </div>
-          <div className="relative z-10 flex items-center justify-between">
-            <div></div>
-            {/* <Button
-              onClick={() => {
-                setIsOpen(true)
-              }}
-            >
-              Upgrade
-            </Button> */}
             {!session && (
               <Button
                 size="sm"
@@ -117,6 +90,36 @@ const Menu: React.FC = () => {
                 </AvatarFallback>
               </Avatar>
             )}
+          </div>
+        </IonToolbar>
+      </IonHeader>
+
+      <IonContent
+        className="ion-padding safe-area drawer-menu relative h-full"
+        style={{
+          '--background': isDark ? '#222' : '#fff',
+        }}
+      >
+        <div
+          className={cn('text-foreground relative z-10 flex h-full flex-col')}
+          style={
+            {
+              '--background': '#fff',
+            } as any
+          }
+        >
+          <div className="relative z-10 flex-1">
+            <AreaWidgets />
+          </div>
+          <div className="relative z-10 flex items-center justify-between">
+            <div></div>
+            {/* <Button
+              onClick={() => {
+                setIsOpen(true)
+              }}
+            >
+              Upgrade
+            </Button> */}
           </div>
         </div>
       </IonContent>

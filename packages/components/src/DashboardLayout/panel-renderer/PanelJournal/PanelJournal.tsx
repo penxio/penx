@@ -21,6 +21,7 @@ interface Props {
 
 export function PanelJournal({ panel, index }: Props) {
   const { area } = useArea()
+
   if (!area) return null
   if (isMobileApp) {
     return (

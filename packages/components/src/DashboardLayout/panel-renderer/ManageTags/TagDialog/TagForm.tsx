@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/button'
 import {
@@ -43,7 +43,7 @@ export function TagForm() {
     try {
       setLoading(true)
 
-      await localDB.updateTagProps(tag.id, data)
+      await db.updateTagProps(tag.id, data)
       await store.tags.refetchTags()
       form.reset()
       setIsOpen(false)

@@ -8,7 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import {

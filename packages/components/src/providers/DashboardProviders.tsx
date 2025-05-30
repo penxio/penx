@@ -9,6 +9,7 @@ import { AppProvider } from '../AppProvider/AppProvider'
 import { AreaDialog } from '../AreaDialog/AreaDialog'
 import { DeleteCreationDialog } from '../Creation/DeleteCreationDialog/DeleteCreationDialog'
 import { StructDialog } from '../StructDialog/StructDialog'
+import { SyncProvider } from './SyncProvider'
 
 export function DashboardProviders({
   children,
@@ -24,14 +25,16 @@ export function DashboardProviders({
 
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
-          <StoreProvider>
-            <AppProvider>
-              <AreaDialog />
-              <StructDialog />
-              <DeleteCreationDialog />
-              {children}
-            </AppProvider>
-          </StoreProvider>
+          <SyncProvider>
+            <StoreProvider>
+              <AppProvider>
+                <AreaDialog />
+                <StructDialog />
+                <DeleteCreationDialog />
+                {children}
+              </AppProvider>
+            </StoreProvider>
+          </SyncProvider>
         </SessionProvider>
       </QueryClientProvider>
     </>

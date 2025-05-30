@@ -26,6 +26,7 @@
     "@penx/contexts": "workspace:*",
     "@penx/emitter": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/pg": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/utils": "workspace:*",

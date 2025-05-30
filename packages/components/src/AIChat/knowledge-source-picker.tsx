@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { BookOpen, Check, ChevronDown, Database, Search, X } from 'lucide-react'
 import { Area } from '@penx/domain'
 import { useMySite } from '@penx/hooks/useMySite'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { Button } from '@penx/uikit/button'
 import {
   DropdownMenu,
@@ -40,7 +40,7 @@ export const KnowledgeSourcePicker = ({
     const fetchAreas = async () => {
       try {
         setLoading(true)
-        const areasData = await localDB.listAreas(site.id)
+        const areasData = await db.listAreas(site.id)
         const areas = areasData.map((i) => new Area(i))
         setAreas(areas)
         setFilteredAreas(areas)

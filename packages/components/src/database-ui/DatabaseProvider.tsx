@@ -16,8 +16,8 @@ import { Creation, Struct } from '@penx/domain'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useCreations } from '@penx/hooks/useCreations'
 import { getRandomColorName } from '@penx/libs/color-helper'
-import { localDB } from '@penx/local-db'
 import { IColumn, IStructNode, IView } from '@penx/model-type'
+import { db } from '@penx/pg'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import {
@@ -122,7 +122,7 @@ export function DatabaseProvider({
 
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       activeViewId: viewId,
     })
   }
@@ -136,7 +136,7 @@ export function DatabaseProvider({
     })
 
     store.structs.updateStruct(struct.id, newStruct)
-    await localDB.updateStructProps(struct.id, props)
+    await db.updateStructProps(struct.id, props)
   }
 
   async function addView(viewType: ViewType) {
@@ -169,7 +169,7 @@ export function DatabaseProvider({
 
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       activeViewId: newView.id,
       viewIds: newStruct.props.viewIds,
       views: newStruct.props.views,
@@ -183,7 +183,7 @@ export function DatabaseProvider({
     })
 
     store.structs.updateStruct(struct.id, newStruct)
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       views: newStruct.props.views,
     })
   }
@@ -195,7 +195,7 @@ export function DatabaseProvider({
     })
 
     store.structs.updateStruct(struct.id, newStruct)
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       activeViewId: newStruct.props.views[0].id,
       views: newStruct.props.views,
     })
@@ -218,7 +218,7 @@ export function DatabaseProvider({
     })
 
     store.structs.updateStruct(struct.id, newStruct)
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       views: newStruct.props.views,
     })
   }
@@ -289,7 +289,7 @@ export function DatabaseProvider({
     store.structs.updateStruct(struct.id, newStruct)
     store.creations.set(newCreations)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       columns: newStruct.props.columns,
       views: newStruct.props.views,
     })
@@ -298,7 +298,7 @@ export function DatabaseProvider({
       const newProps = produce(item.props, (draft) => {
         draft.cells[id] = ''
       })
-      await localDB.updateCreationProps(item.id, {
+      await db.updateCreationProps(item.id, {
         cells: newProps.cells,
       })
     }
@@ -327,7 +327,7 @@ export function DatabaseProvider({
     store.creations.set(newCreations)
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       columns: newStruct.props.columns,
       views: newStruct.props.views,
     })
@@ -336,7 +336,7 @@ export function DatabaseProvider({
       const newProps = produce(item.props, (draft) => {
         delete draft.cells[columnId]
       })
-      await localDB.updateCreationProps(item.id, {
+      await db.updateCreationProps(item.id, {
         cells: newProps.cells,
       })
     }
@@ -358,7 +358,7 @@ export function DatabaseProvider({
 
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       views: newStruct.props.views,
     })
   }
@@ -375,7 +375,7 @@ export function DatabaseProvider({
 
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       columns: newStruct.props.columns,
     })
   }
@@ -395,7 +395,7 @@ export function DatabaseProvider({
 
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       views: newStruct.props.views,
     })
   }

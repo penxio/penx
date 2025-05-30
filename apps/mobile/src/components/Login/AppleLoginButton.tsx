@@ -6,7 +6,7 @@ import { SocialLogin } from '@capgo/capacitor-social-login'
 import { set } from 'idb-keyval'
 import { appEmitter } from '@penx/emitter'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { MobileAppleLoginInfo, MobileGoogleLoginInfo } from '@penx/types'
@@ -36,7 +36,7 @@ export function AppleLoginButton({}: Props) {
       // handle the response. popoutStore is specific to my app
       console.log('======res:', res)
 
-      const sites = await localDB.listAllSites()
+      const sites = await db.listAllSites()
       const site = sites.find((s) => !s.props.isRemote)
 
       const session = await login({

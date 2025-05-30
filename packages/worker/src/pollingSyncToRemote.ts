@@ -1,6 +1,7 @@
 import { get, set } from 'idb-keyval'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { SessionData } from '@penx/types'
 import { sleep } from '@penx/utils'
 
@@ -17,15 +18,9 @@ export async function pollingSyncToRemote() {
 }
 
 async function sync() {
-  console.log('sync to remote.......')
-
   const session = (await get('SESSION')) as SessionData
 
   if (!session || !session?.siteId) return
-
-  const site = await localDB.getSite(session.siteId)
-
-  if (!site) return
 
   const changes = await localDB.change
     .where({ siteId: session.siteId, synced: 0 })
@@ -59,7 +54,7 @@ async function sync() {
 
       const json = res.json()
 
-      // await localDB.change.update(change.id, { synced: 1 })
+      // await db.change.update(change.id, { synced: 1 })
       await localDB.change.delete(change.id)
     } catch (error) {
       console.log('error syncing change:', error)

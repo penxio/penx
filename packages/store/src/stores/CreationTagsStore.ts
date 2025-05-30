@@ -1,5 +1,5 @@
 import { atom } from 'jotai'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { ICreationTagNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
@@ -20,7 +20,7 @@ export class CreationTagsStore {
 
   async refetchCreationTags() {
     const areaId = this.store.area.get().id
-    const list = await localDB.listCreationTags(areaId)
+    const list = await db.listCreationTags(areaId)
     this.set(list)
   }
 }

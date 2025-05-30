@@ -5,7 +5,7 @@ import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
 import { isMobileApp } from '@penx/constants'
 import { usePanels } from '@penx/hooks/usePanels'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/button'
 import {

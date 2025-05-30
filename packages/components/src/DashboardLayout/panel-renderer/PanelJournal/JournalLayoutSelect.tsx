@@ -35,7 +35,7 @@ export function JournalLayoutSelect({}: Props) {
           <Drawer.Overlay className="fixed inset-0 bg-black/40" />
           <Drawer.Content
             className={cn(
-              'bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] flex-col rounded-t-[10px] px-4 pb-6 outline-none',
+              'bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] flex-col rounded-t-[10px] px-4 pb-6 outline-none dark:bg-[#0a0a0a]',
             )}
             style={{
               // boxShadow:
@@ -57,7 +57,7 @@ export function JournalLayoutSelect({}: Props) {
               <Trans>Layout</Trans>
             </div>
             {layout && (
-              <div className="divide-foreground/5 divide-y rounded-xl dark:bg-neutral-700">
+              <div className="divide-foreground/5 divide-y rounded-xl dark:bg-neutral-900">
                 <MenuItem
                   checked={layout == JournalLayout.BUBBLE}
                   onClick={() => {

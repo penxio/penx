@@ -62,6 +62,15 @@ importers:
       '@electric-sql/client':
         specifier: ^1.0.3
         version: 1.0.4
+      '@electric-sql/pglite':
+        specifier: ^0.3.2
+        version: 0.3.2
+      '@electric-sql/pglite-react':
+        specifier: ^0.2.20
+        version: 0.2.20(@electric-sql/pglite@0.3.2)(react@19.0.0)
+      '@electric-sql/pglite-sync':
+        specifier: ^0.3.5
+        version: 0.3.5(@electric-sql/pglite@0.3.2)
       '@emoji-mart/data':
         specifier: 1.2.1
         version: 1.2.1
@@ -316,7 +325,7 @@ importers:
         version: 8.5.0(react@19.0.0)
       drizzle-orm:
         specifier: ^0.43.1
-        version: 0.43.1(@opentelemetry/api@1.9.0)(@prisma/client@6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2))(@types/pg@8.6.6)(postgres@3.4.5)(prisma@6.7.0(typescript@5.8.2))
+        version: 0.43.1(@electric-sql/pglite@0.3.2)(@opentelemetry/api@1.9.0)(@prisma/client@6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2))(@types/pg@8.6.6)(postgres@3.4.5)(prisma@6.7.0(typescript@5.8.2))
       embla-carousel-react:
         specifier: ^8.5.1
         version: 8.6.0(react@19.0.0)
@@ -876,6 +885,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../../packages/novel-editor
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../../packages/pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
@@ -985,6 +997,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../../packages/novel-editor
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../../packages/pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
@@ -1196,6 +1211,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../../packages/novel-editor
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../../packages/pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
@@ -1398,6 +1416,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../../packages/novel-editor
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../../packages/pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
@@ -1543,6 +1564,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../novel-editor
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
@@ -1738,6 +1762,9 @@ importers:
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
@@ -1899,6 +1926,34 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
+  packages/pg:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../local-db
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
+      '@penx/pg':
+        specifier: workspace:*
+        version: 'link:'
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../store
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+    devDependencies:
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/query-client:
     devDependencies:
       '@penx/typescript-config':
@@ -1932,6 +1987,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
@@ -1960,6 +2018,9 @@ importers:
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../pg
       '@penx/types':
         specifier: workspace:*
         version: link:../types
@@ -2064,6 +2125,9 @@ importers:
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../pg
       '@penx/query-client':
         specifier: workspace:*
         version: link:../query-client
@@ -2104,6 +2168,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
+      '@penx/pg':
+        specifier: workspace:*
+        version: link:../pg
       '@penx/store':
         specifier: workspace:*
         version: link:../store
@@ -3161,8 +3228,30 @@ packages:
   '@egjs/list-differ@1.0.1':
     resolution: {integrity: sha512-OTFTDQcWS+1ZREOdCWuk5hCBgYO4OsD30lXcOCyVOAjXMhgL5rBRDnt/otb6Nz8CzU0L/igdcaQBDLWc4t9gvg==}
 
+  '@electric-sql/client@1.0.0':
+    resolution: {integrity: sha512-kGiVbBIlMqc/CeJpWZuLjxNkm0836NWxeMtIWH2w5IUK8pUL13hyxg3ZkR7+FlTGhpKuZRiCP5nPOH9D6wbhPw==}
+
   '@electric-sql/client@1.0.4':
     resolution: {integrity: sha512-kyywKJNYvbzuAXfykPm537axuFjvpCxGWCKfOLeziNNMEM5LY81UfpEV450gKqPN2Fws51VL0tLgRTTYEPOzrg==}
+
+  '@electric-sql/experimental@1.0.0':
+    resolution: {integrity: sha512-wOKZyph3cvJ4J5fDwqDpR7nilPOHEFwAtbAM5X/PhV3JZCSzmkbosaQRWsxbHQ80MJv7gNFP960+TyqGAjqouQ==}
+    peerDependencies:
+      '@electric-sql/client': 1.0.0
+
+  '@electric-sql/pglite-react@0.2.20':
+    resolution: {integrity: sha512-vH7rdut+ZSh+Rnz/3OOeqq6eBRk1d23VARTmAFWUE8mON/d5xPaTrangOC63XnnIrEzafv9+r0vrwVi4NiWIjw==}
+    peerDependencies:
+      '@electric-sql/pglite': 0.3.2
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+
+  '@electric-sql/pglite-sync@0.3.5':
+    resolution: {integrity: sha512-YXoGNiZ0qK9PrwiD5bf0zpQGbUZP3ZfOeRMSmlBWYylHgCFjC2PGvk2mgbSi+Cg6JNiT9mAD75Sg/+lQv8aHVg==}
+    peerDependencies:
+      '@electric-sql/pglite': 0.3.2
+
+  '@electric-sql/pglite@0.3.2':
+    resolution: {integrity: sha512-zfWWa+V2ViDCY/cmUfRqeWY1yLto+EpxjXnZzenB1TyxsTiXaTWeZFIZw6mac52BsuQm0RjCnisjBtdBaXOI6w==}
 
   '@emnapi/core@1.4.3':
     resolution: {integrity: sha512-4m62DuCE07lw01soJwPiBGC0nAww0Q+RY70VZ+n49yDIO13yyinhbWCeNnaob0lakDtWQzSdtNWzJeOJt2ma+g==}
@@ -17247,9 +17336,32 @@ snapshots:
 
   '@egjs/list-differ@1.0.1': {}
 
+  '@electric-sql/client@1.0.0':
+    optionalDependencies:
+      '@rollup/rollup-darwin-arm64': 4.40.2
+
   '@electric-sql/client@1.0.4':
     optionalDependencies:
       '@rollup/rollup-darwin-arm64': 4.40.2
+
+  '@electric-sql/experimental@1.0.0(@electric-sql/client@1.0.0)':
+    dependencies:
+      '@electric-sql/client': 1.0.0
+    optionalDependencies:
+      '@rollup/rollup-darwin-arm64': 4.40.2
+
+  '@electric-sql/pglite-react@0.2.20(@electric-sql/pglite@0.3.2)(react@19.0.0)':
+    dependencies:
+      '@electric-sql/pglite': 0.3.2
+      react: 19.0.0
+
+  '@electric-sql/pglite-sync@0.3.5(@electric-sql/pglite@0.3.2)':
+    dependencies:
+      '@electric-sql/client': 1.0.0
+      '@electric-sql/experimental': 1.0.0(@electric-sql/client@1.0.0)
+      '@electric-sql/pglite': 0.3.2
+
+  '@electric-sql/pglite@0.3.2': {}
 
   '@emnapi/core@1.4.3':
     dependencies:
@@ -23832,8 +23944,9 @@ snapshots:
       react-is: 18.3.1
       tslib: 2.8.1
 
-  drizzle-orm@0.43.1(@opentelemetry/api@1.9.0)(@prisma/client@6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2))(@types/pg@8.6.6)(postgres@3.4.5)(prisma@6.7.0(typescript@5.8.2)):
+  drizzle-orm@0.43.1(@electric-sql/pglite@0.3.2)(@opentelemetry/api@1.9.0)(@prisma/client@6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2))(@types/pg@8.6.6)(postgres@3.4.5)(prisma@6.7.0(typescript@5.8.2)):
     optionalDependencies:
+      '@electric-sql/pglite': 0.3.2
       '@opentelemetry/api': 1.9.0
       '@prisma/client': 6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2)
       '@types/pg': 8.6.6

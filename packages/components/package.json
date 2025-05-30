@@ -165,6 +165,7 @@
     "@penx/content-render": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/pg": "workspace:*",
     "@penx/services": "workspace:*",
     "@penx/emitter": "workspace:*",
     "@penx/contexts": "workspace:*",

@@ -8,7 +8,7 @@ import { produce } from 'immer'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { bgColorMaps } from '@penx/libs/color-helper'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/button'
 import {
@@ -66,7 +66,7 @@ export function EditStructForm() {
     })
 
     store.structs.updateStruct(struct.id, newStruct)
-    await localDB.updateStructProps(struct.id, data)
+    await db.updateStructProps(struct.id, data)
 
     setIsOpen(false)
   }

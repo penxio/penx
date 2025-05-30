@@ -107,8 +107,6 @@ export const NovelEditor = ({
             },
           }}
           onUpdate={({ editor }) => {
-            console.log('=======editor.getJSON():', editor.getJSON())
-
             // debouncedUpdates(editor)
             onChange?.(editor.getJSON())
           }}

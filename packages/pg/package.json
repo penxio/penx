@@ -1,6 +1,6 @@
 {
-  "name": "@penx/store",
-  "version": "0.0.0",
+  "name": "@penx/pg",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "module": "index.ts",
@@ -17,13 +17,12 @@
     "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
+    "@penx/constants": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/pg": "workspace:*",
-    "@penx/constants": "workspace:*",
-    "@penx/libs": "workspace:*",
-    "@penx/domain": "workspace:*",
-    "@penx/unique-id": "workspace:*",
+    "@penx/store": "workspace:*",
     "@penx/model-type": "workspace:*",
-    "@penx/types": "workspace:*"
+    "@penx/types": "workspace:*",
+    "@penx/unique-id": "workspace:*"
   }
 }

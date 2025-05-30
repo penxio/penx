@@ -6,7 +6,7 @@ import { SocialLogin } from '@capgo/capacitor-social-login'
 import { Trans } from '@lingui/react/macro'
 import { set } from 'idb-keyval'
 import { appEmitter } from '@penx/emitter'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { queryClient } from '@penx/query-client'
 import { useSession } from '@penx/session'
 import { MobileGoogleLoginInfo } from '@penx/types'
@@ -37,7 +37,7 @@ export function GoogleLoginButton({}: Props) {
 
       setJson(res)
 
-      const sites = await localDB.listAllSites()
+      const sites = await db.listAllSites()
       const site = sites.find((s) => !s.props.isRemote)
 
       const session = await login({

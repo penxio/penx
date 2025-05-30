@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import { produce } from 'immer'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { IAreaNode, IJournalNode, NodeType } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { store } from '@penx/store'
@@ -14,7 +14,7 @@ function getQueryKey() {
 async function getOrCreateJournal(date: Date) {
   const dateStr = format(date, 'yyyy-MM-dd')
   const area = store.area.get()
-  const journals = await localDB.listJournals(area.id)
+  const journals = await db.listJournals(area.id)
 
   let dateNode = journals.find(
     (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
@@ -35,7 +35,7 @@ async function getOrCreateJournal(date: Date) {
       areaId: area.id,
     }
 
-    await localDB.addJournal(journal)
+    await db.addJournal(journal)
     return journal
   }
   return dateNode
@@ -67,7 +67,7 @@ export async function addCreationToJournal(creationId: string, date = '') {
     draft.props.children.unshift(creationId)
   })
   queryClient.setQueryData(getQueryKey(), newJournal)
-  localDB.updateJournalProps(journal.id, {
+  db.updateJournalProps(journal.id, {
     children: newJournal.props.children,
   })
 }

@@ -17,6 +17,12 @@ export default defineConfig({
   outDir: 'dist',
   vite: ({ mode }) => {
     return {
+      optimizeDeps: {
+        exclude: ['@electric-sql/pglite'],
+      },
+      worker: {
+        format: 'es',
+      } as any,
       plugins: [lingui(), tailwindcss()],
       define: {
         'process.env': {},

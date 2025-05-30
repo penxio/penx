@@ -12,7 +12,7 @@ import {
   GOOGLE_DRIVE_OAUTH_REDIRECT_URI,
 } from '@penx/constants'
 import { usePathname } from '@penx/libs/i18n'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { useSession } from '@penx/session'
 import { Button, ButtonProps } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
@@ -48,7 +48,7 @@ export function AppleOauthButton({
       disabled={loading}
       onClick={async () => {
         setLoading(true)
-        const sites = await localDB.listAllSites()
+        const sites = await db.listAllSites()
         const site = sites.find((s) => !s.props.isRemote)
 
         const redirectUri = APPLE_OAUTH_REDIRECT_URI

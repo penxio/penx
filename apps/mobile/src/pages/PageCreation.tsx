@@ -61,7 +61,7 @@ export const PageCreation = ({
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className="ion-padding">
+      <IonContent fullscreen className="ion-padding content">
         <MobileCreation creationId={creationId} />
       </IonContent>
 

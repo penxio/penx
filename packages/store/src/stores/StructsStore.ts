@@ -3,7 +3,7 @@ import { atom } from 'jotai'
 import { Struct } from '@penx/domain'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { IColumn, IStructNode } from '@penx/model-type'
 import { Option } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -50,7 +50,7 @@ export class StructsStore {
     })
 
     this.set(newStructs)
-    localDB.addStruct(newStruct)
+    db.addStruct(newStruct)
   }
 
   installStruct(input: InstallStructInput) {
@@ -69,11 +69,11 @@ export class StructsStore {
     })
 
     this.set(newStructs)
-    localDB.addStruct(newStruct)
+    db.addStruct(newStruct)
   }
 
   async deleteStruct(id: string) {
-    await localDB.deleteStruct(id)
+    await db.deleteStruct(id)
     const panels = this.store.panels.get()
     const panel = panels.find((p) => p.widget?.structId === id)
     if (panel) this.store.panels.closePanel(panel.id)
@@ -109,7 +109,7 @@ export class StructsStore {
 
     this.updateStruct(struct.id, newStruct)
 
-    localDB.updateStructProps(struct.id, {
+    db.updateStructProps(struct.id, {
       columns: newStruct.props.columns,
     })
 
@@ -118,7 +118,7 @@ export class StructsStore {
 
   async refetchStructs(areaId?: string) {
     const area = this.store.area.get()
-    const structs = await localDB.listStructs(areaId || area.id)
+    const structs = await db.listStructs(areaId || area.id)
     this.set(structs)
     return structs
   }

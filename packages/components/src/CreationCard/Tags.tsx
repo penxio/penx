@@ -17,7 +17,7 @@ export function Tags({ creation }: Props) {
   const creationTags = queryByCreation(creation.id)
 
   return (
-    <div className="mt-1 flex items-center gap-2">
+    <div className="flex items-center gap-2">
       {creationTags.map((item) => {
         const tag = tags.find((t) => t.id === item.tagId)!
         if (!tag) return null

@@ -25,6 +25,7 @@
     "@penx/hooks": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/pg": "workspace:*",
     "@penx/locales": "workspace:*",
     "@penx/math": "workspace:*",
     "@penx/model-type": "workspace:*",

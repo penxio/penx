@@ -17,7 +17,7 @@ import { ContentRender } from '@penx/content-render'
 import { Creation } from '@penx/domain'
 import { useMySite } from '@penx/hooks/useMySite'
 import { getSiteDomain } from '@penx/libs/getSiteDomain'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { store } from '@penx/store'
 import { Badge } from '@penx/uikit/badge'
@@ -113,7 +113,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
   //             className="size-7 gap-1 rounded-full text-xs opacity-50"
   //             onClick={async () => {
   //               setReadonly(true)
-  //               await localDB.updateCreationProps(creation.id, {
+  //               await db.updateCreationProps(creation.id, {
   //                 content: JSON.stringify(content),
   //               })
   //               await store.creations.refetchCreations()

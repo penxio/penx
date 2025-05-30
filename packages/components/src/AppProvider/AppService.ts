@@ -1,9 +1,10 @@
+import { Shape, ShapeStream } from '@electric-sql/client'
 import { i18n } from '@lingui/core'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import ky from 'ky'
+import { SHAPE_URL } from '@penx/constants'
 import { Node } from '@penx/domain'
-import { localDB } from '@penx/local-db'
 import {
   IAreaNode,
   ICreationNode,
@@ -16,13 +17,13 @@ import {
   isTagNode,
   NodeType,
 } from '@penx/model-type'
+import { db } from '@penx/pg'
 import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
 import { Panel, PanelType, SessionData, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { sleep } from '@penx/utils'
 import { initLocalSite } from './lib/initLocalSite'
-import { isRowsEqual } from './lib/isRowsEqual'
-import { syncNodesToLocal } from './lib/syncNodesToLocal'
 
 const PANELS = 'PANELS'
 
@@ -31,15 +32,12 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
-    console.log('=======app=session:', session)
-
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return
     try {
       const site = await this.getInitialSite(session)
-
-      console.log('============site:', site)
+      console.log('init============site:', site)
 
       await this.initStore(site)
       this.inited = true
@@ -50,7 +48,8 @@ export class AppService {
 
   private async getInitialSite(session: SessionData): Promise<ISiteNode> {
     if (!session) {
-      const sites = await localDB.listAllSites()
+      const sites = await db.listAllSites()
+
       const site = sites.find((s) => s.props.isRemote) || sites?.[0]
       if (site) return site
       return initLocalSite()
@@ -58,40 +57,49 @@ export class AppService {
 
     if (!navigator.onLine) {
       if (!session.siteId) {
-        const sites = await localDB.listAllSites()
+        const sites = await db.listAllSites()
         if (sites) return sites[0]
         return initLocalSite()
       }
 
-      const site = await localDB.getSite(session.siteId)
+      const site = await db.getSite(session.siteId)
       if (site) return site
       return initLocalSite()
     }
 
     if (session.siteId) {
-      const sites = await localDB.listAllSiteByUserId(session.userId)
+      const sites = await db.listAllSiteByUserId(session.userId)
       const site = sites.find((s) => s.props.isRemote)
 
-      if (site) {
-        await syncNodesToLocal(site.id)
-        return site
+      if (site) return site
+
+      const stream = new ShapeStream({
+        url: SHAPE_URL,
+        params: {
+          table: 'node',
+          where: `"siteId" = '${session.siteId}'`,
+        },
+      })
+
+      const shape = new Shape(stream)
+      const rows = await shape.rows
+
+      if (rows.length > 0) {
+        while (true) {
+          const site = await db.getSite(session.siteId)
+          if (site) return site
+          await sleep(100)
+        }
       }
-
-      console.log('>>>>>>>>>>_------------')
-
-      const remoteSite = await syncNodesToLocal(session.siteId)
-      console.log('=======remoteSite:', remoteSite)
-
-      return remoteSite
     }
 
-    let site = await localDB.getSiteByUserId(session.userId)
+    let site = await db.getSiteByUserId(session.userId)
 
     if (!site) {
       site = await initLocalSite(session.userId)
     }
 
-    const nodes = await localDB.listNodes(site.id)
+    const nodes = await db.listNodes(site.id)
 
     const { existed, siteId } = await ky
       .post('/api/app/sync-initial-nodes', {
@@ -99,12 +107,7 @@ export class AppService {
       })
       .json<{ ok: boolean; existed: boolean; siteId: string }>()
 
-    if (existed) {
-      site = await syncNodesToLocal(siteId)
-    } else {
-      await localDB.updateSiteProps(site.id, { isRemote: true })
-      await syncNodesToLocal(site.id)
-    }
+    await db.updateSiteProps(site.id, { isRemote: true })
 
     await updateSession({
       activeSiteId: site.id,
@@ -116,8 +119,10 @@ export class AppService {
   private async initStore(site: ISiteNode) {
     // console.log('=============site..:', site)
     await store.site.save(site)
+    const nodes = await db.listNodes(site.id)
 
-    const nodes = await localDB.listNodes(site.id)
+    console.log('------nodes:', nodes)
+
     const areas = nodes.filter((n) => isAreaNode(n))
 
     const localVisit = await store.visit.fetch()
@@ -159,7 +164,7 @@ export class AppService {
       const date = new Date()
       const dateStr = format(date, 'yyyy-MM-dd')
 
-      const journals = await localDB.listJournals(area.id)
+      const journals = await db.listJournals(area.id)
       let journal = journals.find(
         (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
       )!
@@ -179,7 +184,7 @@ export class AppService {
           areaId: area.id,
         }
 
-        await localDB.addJournal(journal)
+        await db.addJournal(journal)
       }
 
       const defaultPanels = [

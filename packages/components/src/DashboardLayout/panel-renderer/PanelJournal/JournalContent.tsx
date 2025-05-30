@@ -20,9 +20,11 @@ export function JournalContent({ date }: Props) {
   const { creations } = useCreations()
   const { struct } = useActiveStruct()
   const { isLoading, data } = useJournal(date)
-  const { data: layout, isCard, isList, isBubble } = useJournalLayout()
+  const { isCard, isList } = useJournalLayout()
   if (isLoading) return null
   const creationMaps = mappedByKey(creations, 'id')
+
+  console.log('======>>>>data:', data)
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">

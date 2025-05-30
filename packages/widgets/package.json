@@ -33,6 +33,7 @@
     "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/pg": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/domain": "workspace:*",
     "@penx/hooks": "workspace:*",

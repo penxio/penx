@@ -8,7 +8,7 @@ import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -46,7 +46,7 @@ export function RegisterForm({}: Props) {
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     // try {
-    //   const sites = await localDB.listAllSites()
+    //   const sites = await db.listAllSites()
     //   const site = sites.find((s) => !s.props.isRemote)
     //   const ref = searchParams?.get('ref') as string
     //   setLoading(true)

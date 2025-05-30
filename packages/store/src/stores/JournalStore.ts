@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import { atom } from 'jotai'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { IJournalNode, NodeType } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
@@ -19,13 +19,13 @@ export class JournalStore {
   }
 
   async persistJournal(id: string, input: Partial<IJournalNode['props']>) {
-    await localDB.updateJournalProps(id, input)
+    await db.updateJournalProps(id, input)
   }
 
   async selectDay(date: Date = new Date()) {
     const dateStr = format(date, 'yyyy-MM-dd')
     const area = this.store.area.get()
-    const journals = await localDB.listJournals(area.id)
+    const journals = await db.listJournals(area.id)
 
     let dateNode = journals.find(
       (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
@@ -45,7 +45,7 @@ export class JournalStore {
         userId: area.userId,
         areaId: area.id,
       }
-      await localDB.addJournal(journal)
+      await db.addJournal(journal)
       this.set(journal)
     }
   }

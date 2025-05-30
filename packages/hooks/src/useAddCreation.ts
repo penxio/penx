@@ -43,6 +43,7 @@ export function useAddCreation() {
       structId: struct.id,
       areaId: area.id,
     }
+
     const cells = struct.columns.reduce(
       (acc, column) => {
         let value: any = ''

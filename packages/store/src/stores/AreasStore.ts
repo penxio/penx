@@ -11,6 +11,7 @@ import {
   NodeType,
   OperationType,
 } from '@penx/model-type'
+import { db } from '@penx/pg'
 import { Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
@@ -30,7 +31,7 @@ export class AreasStore {
 
   async refetchAreas() {
     const site = this.store.site.get()
-    const areas = await localDB.listAreas(site.id)
+    const areas = await db.listAreas(site.id)
     this.set(areas)
     return areas
   }
@@ -56,7 +57,7 @@ export class AreasStore {
       siteId: site.id,
     }
 
-    await localDB.addArea(area)
+    await db.addArea(area)
 
     const structs = getDefaultStructs({
       areaId: area.id,
@@ -65,7 +66,7 @@ export class AreasStore {
     })
 
     for (const struct of structs) {
-      await localDB.addStruct(struct)
+      await db.addStruct(struct)
     }
 
     this.store.structs.refetchStructs(area.id)
@@ -74,33 +75,33 @@ export class AreasStore {
   }
 
   async deleteArea(area: IAreaNode) {
-    await localDB.transaction('rw', localDB.node, localDB.change, async () => {
-      if (area.props.isGenesis) {
-        throw new Error('Cannot delete last area')
-      }
+    if (area.props.isGenesis) {
+      throw new Error('Cannot delete last area')
+    }
 
-      const creations = await localDB.listCreationsByArea(area.id)
-      const creationIds = creations.map((c) => c.id)
+    const creations = await db.listCreationsByArea(area.id)
+    const creationIds = creations.map((c) => c.id)
 
-      const creationTags = await localDB.listCreationTagsByArea(area.id)
-      const creationTagsIds = creationTags.map((c) => c.id)
+    const creationTags = await db.listCreationTagsByArea(area.id)
+    const creationTagsIds = creationTags.map((c) => c.id)
 
-      await localDB.node.where('id').anyOf(creationTagsIds).delete()
-      await localDB.node.where('id').anyOf(creationIds).delete()
-      await localDB.node.delete(area.id)
+    await db.deleteNodeByIds(creationTagsIds)
+    await db.deleteNodeByIds(creationIds)
 
-      const site = (await get(ACTIVE_SITE)) as ISiteNode
-      if (site.props.isRemote) {
-        await localDB.change.add({
-          operation: OperationType.DELETE,
-          siteId: site.id,
-          synced: 0,
-          createdAt: new Date(),
-          key: area.id,
-          data: { id: area.id },
-        } as IChange)
-      }
-    })
+    await db.deleteNode(area.id)
+
+    const site = (await get(ACTIVE_SITE)) as ISiteNode
+    if (site.props.isRemote) {
+      await localDB.change.add({
+        operation: OperationType.DELETE,
+        siteId: site.id,
+        synced: 0,
+        createdAt: new Date(),
+        key: area.id,
+        data: { id: area.id },
+      } as IChange)
+    }
+
     const areas = await this.refetchAreas()
     return areas
   }

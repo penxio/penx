@@ -9,7 +9,7 @@ import { unstable_serialize } from 'swr/infinite'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
 import { useMySite } from '@penx/hooks/useMySite'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { PanelType, SessionData } from '@penx/types'
@@ -20,6 +20,7 @@ import { MultimodalInput } from './multimodal-input'
 import { getChatHistoryPaginationKey } from './sidebar-history'
 import { toast } from './toast'
 import type { VisibilityType } from './visibility-selector'
+import { localDB } from '@penx/local-db'
 
 interface ApplicationError extends Error {
   info: string

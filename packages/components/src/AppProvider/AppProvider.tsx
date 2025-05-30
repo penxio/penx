@@ -1,6 +1,7 @@
 import { createContext, FC, PropsWithChildren, useEffect, useRef } from 'react'
+import { useLiveQuery, usePGlite } from '@electric-sql/pglite-react'
 import { useAtomValue } from 'jotai'
-import { isBrowser, isServer } from '@penx/constants'
+import { isBrowser, isServer, SHAPE_URL } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { useSession } from '@penx/session'
@@ -8,6 +9,7 @@ import { appLoadingAtom, store } from '@penx/store'
 import { LogoSpinner } from '@penx/widgets/LogoSpinner'
 import { runWorker } from '@penx/worker'
 import { AppService } from './AppService'
+import { WatchNodes } from './WatchNodes'
 
 if (!isServer) {
   runWorker()
@@ -21,6 +23,36 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   const appRef = useRef(new AppService())
   const { Provider } = appContext
   const journalLayout = useJournalLayout()
+
+  const pg = usePGlite()
+
+  const started = useRef(false)
+
+  // console.log('=====data:', data)
+
+  async function sync() {
+    const shape = await pg.electric.syncShapeToTable({
+      shape: {
+        url: SHAPE_URL,
+        params: {
+          table: 'node',
+          where: `"siteId" = '${session.siteId}'`,
+        },
+      },
+      table: 'node',
+      primaryKey: ['id'],
+      shapeKey: 'node',
+    })
+
+    console.log('=======shape:', await shape.stream)
+  }
+
+  useEffect(() => {
+    if (!session) return
+    if (started.current) return
+    started.current = true
+    sync()
+  }, [session])
 
   useEffect(() => {
     if (isLoading) return
@@ -43,5 +75,10 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     )
   }
 
-  return <Provider value={{ app: appRef.current }}>{children}</Provider>
+  return (
+    <Provider value={{ app: appRef.current }}>
+      {session && <WatchNodes />}
+      {children}
+    </Provider>
+  )
 }

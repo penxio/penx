@@ -22,6 +22,7 @@
     "@penx/types": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/pg": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*"
   }

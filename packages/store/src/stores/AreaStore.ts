@@ -1,7 +1,7 @@
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { UpdateAreaInput } from '@penx/constants'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { IAreaNode } from '@penx/model-type'
 import { Widget } from '@penx/types'
 import { StoreType } from '../store-types'
@@ -21,7 +21,7 @@ export class AreaStore {
 
   async persistArea(input: UpdateAreaInput) {
     const { id, ...data } = input
-    await localDB.updateAreaProps(id, data)
+    await db.updateAreaProps(id, data)
   }
 
   async addWidget(widget: Widget) {

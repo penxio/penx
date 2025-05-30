@@ -12,8 +12,8 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { defaultEditorContent } from '@penx/constants'
 import { useAreas } from '@penx/hooks/useAreas'
-import { localDB } from '@penx/local-db'
 import { ICreationNode } from '@penx/model-type'
+import { db } from '@penx/pg'
 import { siteAtom, store } from '@penx/store'
 import { CreationStatus, GateType, StructType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
@@ -83,7 +83,7 @@ export function AddBookmarkForm() {
       setLoading(true)
       // TODO:
       const creation: ICreationNode = {} as any
-      await localDB.addCreation(creation)
+      await db.addCreation(creation)
       // await addCreation({
       //   title: data.title,
       //   description: data.description,

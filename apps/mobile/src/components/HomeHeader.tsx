@@ -5,12 +5,16 @@ import { Capacitor } from '@capacitor/core'
 import { IonButtons, IonHeader, IonMenuToggle, IonToolbar } from '@ionic/react'
 import { cn } from '@penx/utils'
 import { StructTypeSelect } from './StructTypeSelect'
+import { useTheme } from './theme-provider'
 
 interface Props {
   scrolled: boolean
 }
 
 export const HomeHeader = ({ scrolled }: Props) => {
+  const { isDark } = useTheme()
+  const bg = isDark ? '#222' : '#fff'
+  const border = isDark ? '1px solid #222' : '1px solid #eeee'
   return (
     <IonHeader
       className={cn(isAndroid && 'safe-area')}
@@ -21,8 +25,8 @@ export const HomeHeader = ({ scrolled }: Props) => {
         style={{
           '--border-width': 0,
           // '--background': 'transparent',
-          '--background': scrolled ? '#fff' : 'transparent',
-          borderBottom: scrolled ? '1px solid #eeee' : 'none',
+          '--background': scrolled ? bg : 'transparent',
+          // borderBottom: scrolled ? border : 'none',
         }}
       >
         <IonButtons slot="start">

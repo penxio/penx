@@ -28,7 +28,7 @@ import { SystemDateCell } from '@penx/components/system-date-cell'
 import { FRIEND_DATABASE_NAME, PROJECT_DATABASE_NAME } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { queryClient } from '@penx/query-client'
 import { store } from '@penx/store'
 import { ColumnType, Option, ViewColumn } from '@penx/types'
@@ -327,7 +327,7 @@ export function useTableView() {
         },
       })
 
-      await localDB.updateCreationProps(record.id, {
+      await db.updateCreationProps(record.id, {
         title: data,
       })
     } else {
@@ -338,7 +338,7 @@ export function useTableView() {
         },
       })
 
-      await localDB.updateCreationProps(record.id, {
+      await db.updateCreationProps(record.id, {
         cells: newCreation.props.cells,
       })
     }
@@ -396,7 +396,7 @@ export function useTableView() {
 
     store.structs.updateStruct(struct.id, newStruct)
 
-    await localDB.updateStructProps(struct.id, {
+    await db.updateStructProps(struct.id, {
       views: newStruct.props.views,
     })
   }

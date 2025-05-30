@@ -26,16 +26,12 @@ export enum NodeType {
 
 export interface INode {
   id: string
-
   type: NodeType
-
   props: {
     [key: string]: any
   }
-
   createdAt: Date
   updatedAt: Date
-
   areaId?: string
   userId: string
   siteId: string

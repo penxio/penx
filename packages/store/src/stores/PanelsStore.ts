@@ -4,8 +4,8 @@ import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { isMobileApp, WidgetType } from '@penx/constants'
-import { localDB } from '@penx/local-db'
 import { NodeType } from '@penx/model-type'
+import { db } from '@penx/pg'
 import { Panel, PanelType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
@@ -64,7 +64,7 @@ export class PanelsStore {
   async updateJournalPanel(date: string) {
     let panels = this.get()
     const newPanels = produce(panels, (draft) => {
-      for (const panel of panels) {
+      for (const panel of draft) {
         if (panel.type === PanelType.JOURNAL) {
           panel.date = date
         }
@@ -258,7 +258,7 @@ export class PanelsStore {
     const date = new Date()
     const dateStr = format(date, 'yyyy-MM-dd')
 
-    const journals = await localDB.listJournals(area.id)
+    const journals = await db.listJournals(area.id)
     let journal = journals.find(
       (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
     )!
@@ -278,7 +278,7 @@ export class PanelsStore {
         areaId: area.id,
       }
 
-      await localDB.addJournal(journal)
+      await db.addJournal(journal)
     }
 
     const defaultPanels = [

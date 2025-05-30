@@ -2,7 +2,7 @@ import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { ACTIVE_SITE } from '@penx/constants'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { AIProvider, AISetting, ISiteNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
@@ -86,7 +86,7 @@ export class SiteStore {
     this.set(newSite)
     await this.save(newSite)
 
-    await localDB.updateSiteProps(newSite.id, {
+    await db.updateSiteProps(newSite.id, {
       ...site.props,
       aiSetting: newSite.props.aiSetting,
     })
@@ -109,7 +109,7 @@ export class SiteStore {
     this.set(newSite)
     await this.save(newSite)
 
-    await localDB.updateSiteProps(newSite.id, {
+    await db.updateSiteProps(newSite.id, {
       ...site.props,
       aiSetting: newSite.props.aiSetting,
     })

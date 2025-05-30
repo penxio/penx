@@ -11,7 +11,7 @@ import {
   PLATFORM,
   ROOT_HOST,
 } from '@penx/constants'
-import { localDB } from '@penx/local-db'
+import { db } from '@penx/pg'
 import { queryClient } from '@penx/query-client'
 import {
   BillingCycle,

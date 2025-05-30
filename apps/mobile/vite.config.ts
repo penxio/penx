@@ -15,6 +15,9 @@ export default defineConfig({
     lingui(),
     tailwindcss(),
   ],
+  optimizeDeps: {
+    exclude: ['@electric-sql/pglite'],
+  },
   build: {
     target: 'esnext',
   },
