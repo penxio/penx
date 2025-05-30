@@ -53,6 +53,7 @@ import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
 import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
+import { Widget } from '@penx/types'
 import { MoreStructDrawer } from './components/MoreStructDrawer/MoreStructDrawer'
 import { NavProvider } from './components/NavContext'
 import { ThemeProvider } from './components/theme-provider'
@@ -64,6 +65,7 @@ import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
+import { PageWidget } from './pages/PageWidget'
 
 const platform = Capacitor.getPlatform()
 async function init() {
@@ -206,6 +208,15 @@ const App: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    function handle(widget: Widget) {
+      nav.current?.push(PageWidget, { widget })
+    }
+    appEmitter.on('ROUTE_TO_WIDGET', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_WIDGET', handle)
+    }
+  }, [])
 
   useEffect(() => {
     SocialLogin.initialize(

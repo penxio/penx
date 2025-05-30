@@ -21,12 +21,20 @@ import {
   useInteractions,
 } from '@floating-ui/react'
 import { Trans } from '@lingui/react/macro'
-import { CopyIcon, Edit2Icon, ShareIcon, Trash2Icon } from 'lucide-react'
+import {
+  CopyIcon,
+  Edit2Icon,
+  ShareIcon,
+  StarIcon,
+  StarOffIcon,
+  Trash2Icon,
+} from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { LongPressReactEvents, useLongPress } from 'use-long-press'
 import { isMobileApp } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
+import { useArea } from '@penx/hooks/useArea'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
@@ -62,6 +70,8 @@ export function CreationCard({ creation }: Props) {
   const isLongPressed = useRef(false)
   const { copy } = useCopyToClipboard()
   const deletePostDialog = useDeleteCreationDialog()
+  const { area } = useArea()
+  const isFavor = area.favorites?.includes(creation.id)
 
   const { data: layout, isCard, isList, isBubble } = useJournalLayout()
 
@@ -156,67 +166,82 @@ export function CreationCard({ creation }: Props) {
     <>
       {isOpen && (
         <AnimatePresence>
-          <Portal>
-            <motion.div
-              ref={refs.setFloating}
-              className="shadow-popover z-[10000] mt-1 flex w-48 flex-col gap-0 rounded-xl bg-white"
-              // style={floatingStyles}
-              style={{
-                position: context.strategy,
-                top: context.y ?? 0,
-                left: context.x === 0 ? 16 : context.x,
-              }}
-              {...getMotionConfig(isOpen, context.placement)}
-            >
-              {creation.isNote && (
-                <ActionItem
-                  onClick={() => {
-                    const text = creation.previewedContent
-                    copy(text)
-                    setIsOpen(false)
-                  }}
-                >
-                  <CopyIcon size={20}></CopyIcon>
-                  <span>
-                    <Trans>Copy</Trans>
-                  </span>
-                </ActionItem>
-              )}
+          <motion.div
+            ref={refs.setFloating}
+            className="shadow-popover z-[10] mt-1 flex w-48 flex-col gap-0 rounded-xl bg-white"
+            // style={floatingStyles}
+            style={{
+              position: context.strategy,
+              top: context.y ?? 0,
+              left: context.x === 0 ? 16 : context.x,
+            }}
+            {...getMotionConfig(isOpen, context.placement)}
+          >
+            {creation.isNote && (
               <ActionItem
                 onClick={() => {
-                  handleClick()
+                  const text = creation.previewedContent
+                  copy(text)
                   setIsOpen(false)
                 }}
               >
-                <Edit2Icon size={20}></Edit2Icon>
+                <CopyIcon size={20}></CopyIcon>
                 <span>
-                  <Trans>Edit</Trans>
+                  <Trans>Copy</Trans>
                 </span>
               </ActionItem>
-              {/* <ActionItem>
+            )}
+
+            <ActionItem
+              onClick={async () => {
+                if (isFavor) {
+                  await store.area.removeFromFavorites(creation.id)
+                } else {
+                  await store.area.addToFavorites(creation.id)
+                }
+                setIsOpen(false)
+              }}
+            >
+              {isFavor && <StarOffIcon />}
+              {!isFavor && <StarIcon />}
+              <span>
+                {isFavor ? <Trans>Unstar</Trans> : <Trans>Star</Trans>}
+              </span>
+            </ActionItem>
+            <ActionItem
+              onClick={() => {
+                handleClick()
+                setIsOpen(false)
+              }}
+            >
+              <Edit2Icon size={20}></Edit2Icon>
+              <span>
+                <Trans>Edit</Trans>
+              </span>
+            </ActionItem>
+            {/* <ActionItem>
                 <ShareIcon size={20}></ShareIcon>
                 <span>
                   <Trans>Share</Trans>
                 </span>
               </ActionItem> */}
 
-              <ActionItem
-                className="text-red-500"
-                onClick={() => {
-                  deletePostDialog.setState({
-                    isOpen: true,
-                    creation: creation,
-                  })
-                  setIsOpen(false)
-                }}
-              >
-                <Trash2Icon size={20}></Trash2Icon>
-                <span>
-                  <Trans>Delete</Trans>
-                </span>
-              </ActionItem>
-            </motion.div>
-          </Portal>
+            <ActionItem
+              className="text-red-500"
+              onClick={() => {
+                deletePostDialog.setState({
+                  isOpen: true,
+                  creation: creation,
+                })
+                setIsOpen(false)
+              }}
+            >
+              <Trash2Icon size={20}></Trash2Icon>
+              <span>
+                <Trans>Delete</Trans>
+              </span>
+            </ActionItem>
+          </motion.div>
         </AnimatePresence>
       )}
 

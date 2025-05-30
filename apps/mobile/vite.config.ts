@@ -15,12 +15,12 @@ export default defineConfig({
     lingui(),
     tailwindcss(),
   ],
-  // build: {
-  //   target: 'esnext',
-  // },
-  // worker: {
-  //   format: 'es',
-  // } as any,
+  build: {
+    target: 'esnext',
+  },
+  worker: {
+    format: 'es',
+  } as any,
   envPrefix: ['VITE_'],
   define: {
     'process.env': {},

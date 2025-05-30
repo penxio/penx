@@ -46,6 +46,16 @@
   --background: #222;
 }
 
+.menu-toolbar {
+  --background: white;
+}
+
+.dark .menu-toolbar,
+.ion-palette-dark .menu-toolbar {
+  /* --background: hsl(240 10% 3.9%); */
+  --background: #222;
+}
+
 .scroll-container {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

@@ -141,13 +141,7 @@ function ToggleFavorite({ creation }: CreationItemProps) {
       {isFavor && <StarOffIcon size={16} />}
       {!isFavor && <StarIcon size={16} />}
 
-      <span>
-        {isFavor ? (
-          <Trans>Remove from favorites</Trans>
-        ) : (
-          <Trans>Add to favorites</Trans>
-        )}
-      </span>
+      <span>{isFavor ? <Trans>Unstar</Trans> : <Trans>Star</Trans>}</span>
     </ContextMenuItem>
   )
 }

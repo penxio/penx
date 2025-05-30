@@ -14,7 +14,6 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
-import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 
 const platform = Capacitor.getPlatform()
 

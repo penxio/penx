@@ -84,11 +84,7 @@ export function CreationMenu({ creationId, afterDelete }: Props) {
           >
             {isFavor && <StarOffIcon />}
             {!isFavor && <StarIcon />}
-            {isFavor ? (
-              <Trans>Remove favorites</Trans>
-            ) : (
-              <Trans>Add favorites</Trans>
-            )}
+            {isFavor ? <Trans>Unstar</Trans> : <Trans>Star</Trans>}
           </DropdownMenuItem>
         </DropdownMenuGroup>
 

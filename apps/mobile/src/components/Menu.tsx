@@ -26,8 +26,6 @@ import { MobileModeToggle } from './MobileModeToggle'
 import { useTheme } from './theme-provider'
 import { useUpgradeDrawer } from './UpgradeDrawer/useUpgradeDrawer'
 
-const platform = Capacitor.getPlatform()
-
 const Menu: React.FC = () => {
   const { setMenu } = useMobileMenu()
   const { isLoading } = useSession()
@@ -47,13 +45,18 @@ const Menu: React.FC = () => {
       contentId="main"
       type="overlay"
       // type="push"
-      // className="bg-foreground/5"
+      className="bg-foreground/5 z-[1000]"
     >
       <IonHeader
-        className={cn(isAndroid ? 'safe-area' : '')}
+        className={cn(isAndroid && 'safe-area')}
         style={{ boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)' }}
       >
-        <IonToolbar color="light" className="toolbar px-3">
+        <IonToolbar
+          className="menu-toolbar px-3"
+          style={{
+            '--border-width': 0,
+          }}
+        >
           <AreasPopover />
         </IonToolbar>
       </IonHeader>
@@ -61,14 +64,11 @@ const Menu: React.FC = () => {
       <IonContent
         className="ion-padding safe-area drawer-menu relative h-full"
         style={{
-          '--background': isDark ? '#222' : '#f6f6f6',
+          '--background': isDark ? '#222' : '#fff',
         }}
       >
         <div
-          className={cn(
-            'text-foreground relative z-10 flex h-full flex-col pt-5',
-            platform === 'ios' && 'pt-10',
-          )}
+          className={cn('text-foreground relative z-10 flex h-full flex-col')}
           style={
             {
               '--background': '#fff',
@@ -76,8 +76,6 @@ const Menu: React.FC = () => {
           }
         >
           <div className="relative z-10 flex-1">
-            {/* <AreaList /> */}
-
             <AreaWidgets />
           </div>
           <div className="relative z-10 flex items-center justify-between">
@@ -120,15 +118,6 @@ const Menu: React.FC = () => {
               </Avatar>
             )}
           </div>
-          <div
-            className="absolute bottom-0 left-0 right-0 top-0 z-[1] opacity-10 dark:opacity-0"
-            style={{
-              filter: 'blur(150px) saturate(150%)',
-              transform: 'translateZ(0)',
-              backgroundImage:
-                'radial-gradient(at 27% 37%, #3a8bfd 0, transparent 50%), radial-gradient(at 97% 21%, #9772fe 0, transparent 50%), radial-gradient(at 52% 99%, #fd3a4e 0, transparent 50%), radial-gradient(at 10% 29%, #5afc7d 0, transparent 50%), radial-gradient(at 97% 96%, #e4c795 0, transparent 50%), radial-gradient(at 33% 50%, #8ca8e8 0, transparent 50%), radial-gradient(at 79% 53%, #eea5ba 0, transparent 50%)',
-            }}
-          ></div>
         </div>
       </IonContent>
     </IonMenu>

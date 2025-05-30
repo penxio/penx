@@ -4,7 +4,6 @@ import React, { forwardRef, memo, ReactNode, useEffect, useState } from 'react'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { Trans } from '@lingui/react/macro'
 import { AnimatePresence, motion } from 'motion/react'
-import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
@@ -17,6 +16,7 @@ import { ContextMenu, ContextMenuTrigger } from '@penx/uikit/context-menu'
 import { DialogDescription, DialogTitle } from '@penx/uikit/dialog'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
+import { WidgetIcon } from '@penx/widgets/WidgetIcon'
 import { WidgetName } from '@penx/widgets/WidgetName'
 import { AddChatButton } from './AddChatButton'
 import { AddCreationButton } from './AddCreationButton'
@@ -88,7 +88,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
       <div
         className={cn(
           'relative flex h-10 cursor-pointer select-none items-center justify-between pr-2',
-          isMobileApp && 'h-11',
+          isMobileApp && 'h-9',
         )}
       >
         <div
@@ -114,7 +114,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }
 
             if (isMobileApp) {
-              setVisible(true)
+              appEmitter.emit('ROUTE_TO_WIDGET', widget)
+              close()
               return
             }
 
@@ -137,7 +138,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             !isMobileApp && 'opacity-0 group-hover/widget:opacity-100',
           )}
         >
-          {widget.type === WidgetType.STRUCT && (
+          {widget.type === WidgetType.STRUCT && !isMobileApp && (
             <AddCreationButton area={area} widget={widget} />
           )}
 
@@ -145,9 +146,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             <AddChatButton widget={widget} />
           )}
 
-          {![WidgetType.AI_CHAT, WidgetType.JOURNAL].includes(
-            widget.type as WidgetType,
-          ) && <ToggleButton area={area} widget={widget} />}
+          <ToggleButton area={area} widget={widget} />
         </div>
       </div>
     )
@@ -161,8 +160,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             isDragging && 'bg-foreground/6 opacity-50',
             isDragging && 'z-[1000000]',
             dragOverlay && 'shadow',
-            // !isMobileApp &&
-            'shadow-2xs dark:bg-foreground/8 rounded-md bg-white',
+            !isMobileApp &&
+              'shadow-2xs dark:bg-foreground/8 rounded-md bg-white',
           )}
           {...rest}
         >
@@ -222,32 +221,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             widget={widget}
             struct={struct}
           />
-        )}
-
-        {isMobileApp && (
-          <Drawer.Root open={visible} onOpenChange={setVisible}>
-            <Drawer.Portal>
-              <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-              <Drawer.Content className="bg-background text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] min-h-[90vh] flex-col rounded-t-[10px] px-0 pb-0 outline-none">
-                <div
-                  aria-hidden
-                  className="bg-foreground/30 mx-auto mb-4 mt-2 h-1 w-10 flex-shrink-0 rounded-full"
-                />
-
-                <DialogTitle className="hidden">
-                  <DialogDescription></DialogDescription>
-                </DialogTitle>
-                <div className="mb-2 flex items-center justify-center font-bold">
-                  <WidgetName widget={widget} structs={structs} />
-                </div>
-                <div className="">
-                  <IsAllProvider isAll setVisible={setVisible}>
-                    <WidgetRender widget={widget} />
-                  </IsAllProvider>
-                </div>
-              </Drawer.Content>
-            </Drawer.Portal>
-          </Drawer.Root>
         )}
       </>
     )

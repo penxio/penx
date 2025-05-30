@@ -11,7 +11,7 @@ export const MobileWidgetList = () => {
   const { area } = useArea()
   const widgets = (area?.widgets || []) as Widget[]
   return (
-    <div className={cn('mt-2 flex flex-col gap-2')}>
+    <div className={cn('mt-2 flex flex-col gap-2', isMobileApp && 'gap-0.5')}>
       {widgets.map((widget, index) => {
         return (
           <WidgetItem

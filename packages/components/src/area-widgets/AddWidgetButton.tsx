@@ -28,9 +28,7 @@ interface Props {
 
 export function AddWidgetButton({ className }: Props) {
   const [isLoading, setLoading] = useState(false)
-  const [type, setType] = useState<StructType>('' as any)
   const [open, setOpen] = useState(false)
-  const { area } = useArea()
   const { structs } = useStructs()
 
   async function addStructWidget(struct: Struct) {
@@ -39,7 +37,7 @@ export function AddWidgetButton({ className }: Props) {
       id: uniqueId(),
       type: WidgetType.STRUCT,
       structId: struct.id,
-      collapsed: false,
+      collapsed: true,
     })
   }
 
@@ -47,7 +45,7 @@ export function AddWidgetButton({ className }: Props) {
     setOpen(false)
     await store.area.addWidget({
       id: uniqueId(),
-      collapsed: false,
+      collapsed: true,
       type,
     })
   }
@@ -73,9 +71,11 @@ export function AddWidgetButton({ className }: Props) {
           {Object.values(WidgetType)
             .filter(
               (i) =>
-                ![WidgetType.RECENTLY_OPENED, WidgetType.COLLECTION].includes(
-                  i,
-                ),
+                ![
+                  WidgetType.RECENTLY_OPENED,
+                  WidgetType.COLLECTION,
+                  WidgetType.AI_CHAT,
+                ].includes(i),
             )
             .map((item) => {
               // if (

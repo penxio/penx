@@ -3,7 +3,7 @@
 import React from 'react'
 import { ChevronRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
-import { isMobileApp } from '@penx/constants'
+import { isMobileApp, WidgetType } from '@penx/constants'
 import { Area, Creation } from '@penx/domain'
 import { store } from '@penx/store'
 import { Widget } from '@penx/types'
@@ -16,6 +16,15 @@ interface Props {
 }
 
 export function ToggleButton({ area, widget }: Props) {
+  if (isMobileApp) {
+    if (widget.type !== WidgetType.ALL_STRUCTS) return null
+  }
+
+  if (
+    [WidgetType.AI_CHAT, WidgetType.JOURNAL].includes(widget.type as WidgetType)
+  ) {
+    return null
+  }
   return (
     <Button
       variant="ghost"

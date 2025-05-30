@@ -14,8 +14,6 @@ import { useStructId } from '@penx/hooks/useStructId'
 import { PanelType } from '@penx/types'
 import { cn } from '@penx/utils'
 
-const platform = Capacitor.getPlatform()
-
 export const PageStruct: React.FC = ({ nav }: any) => {
   return (
     <>
