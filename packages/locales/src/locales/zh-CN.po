@@ -13,11 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:51
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:51
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:39
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:31
 msgid "About"
 msgstr "关于"
 
@@ -33,10 +34,6 @@ msgstr "添加"
 msgid "Add cover"
 msgstr "添加封面"
 
-#: apps/mobile/src/components/CreationMenu.tsx:90
-msgid "Add favorites"
-msgstr "添加收藏"
-
 #: packages/components/src/Creation/CoverUpload.tsx:112
 msgid "Add image"
 msgstr "添加图片"
@@ -45,12 +42,7 @@ msgstr "添加图片"
 msgid "Add navigation"
 msgstr "添加导航"
 
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:148
-#: packages/components/src/area-widgets/CreationItem.tsx:145
-msgid "Add to favorites"
-msgstr "添加到收藏"
-
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:66
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:64
 msgid "Add widget"
 msgstr "添加组件"
 
@@ -90,11 +82,19 @@ msgstr "确定要永久删除吗？"
 msgid "Bookmark"
 msgstr "书签"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:68
+msgid "Bubble"
+msgstr ""
+
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
 msgstr "取消"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:77
+msgid "Card"
+msgstr ""
 
 #: packages/components/src/Creation/ChangeType.tsx:36
 msgid "Change type"
@@ -109,7 +109,7 @@ msgstr "合集"
 msgid "Color"
 msgstr "颜色"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:181
+#: packages/components/src/CreationCard/CreationCard.tsx:190
 msgid "Copy"
 msgstr "复制"
 
@@ -121,8 +121,7 @@ msgstr "复制 HTML"
 msgid "Create"
 msgstr "创建"
 
-#: apps/mobile/src/components/AreasPopover.tsx:100
-#: packages/components/src/AreasPopover/AreasPopover.tsx:97
+#: packages/components/src/AreasPopover/AreasPopover.tsx:99
 #: packages/components/src/AreaDialog/AreaForm.tsx:321
 #: packages/components/src/AreaDialog/AreaDialog.tsx:36
 msgid "Create area"
@@ -154,12 +153,12 @@ msgstr "深色"
 msgid "Dashboard"
 msgstr "仪表板"
 
-#: apps/mobile/src/components/CreationMenu.tsx:103
+#: apps/mobile/src/components/CreationMenu.tsx:99
 #: packages/components/src/database-ui/TableInfo.tsx:77
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
-#: packages/components/src/area-widgets/CreationItem.tsx:117
-#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/area-widgets/CreationItem.tsx:121
+#: packages/components/src/CreationCard/CreationCard.tsx:241
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -191,7 +190,7 @@ msgstr "已完成"
 msgid "Due date"
 msgstr "截止日期"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:193
+#: packages/components/src/CreationCard/CreationCard.tsx:219
 msgid "Edit"
 msgstr "编辑"
 
@@ -260,16 +259,21 @@ msgstr "日记"
 msgid "Journals"
 msgstr "日记"
 
-#: apps/mobile/src/components/Profile/LocaleMenu.tsx:43
-#: apps/mobile/src/components/Profile/LocaleMenu.tsx:54
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:44
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:57
 msgid "Language"
 msgstr "语言"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:57
+msgid "Layout"
+msgstr ""
 
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:48
 msgid "Light"
 msgstr "浅色"
 
 #: packages/libs/src/getDefaultStructs.ts:176
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:86
 msgid "List"
 msgstr "列表"
 
@@ -285,6 +289,7 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
+#: apps/mobile/src/components/Profile/Profile.tsx:50
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -379,7 +384,7 @@ msgstr "删除后，您无法撤销此操作。"
 
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:112
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:34
-#: packages/components/src/area-widgets/CreationItem.tsx:109
+#: packages/components/src/area-widgets/CreationItem.tsx:113
 msgid "Open in new panel"
 msgstr "在新面板中打开"
 
@@ -453,15 +458,6 @@ msgstr "注册"
 msgid "Register to PenX"
 msgstr "注册 PenX"
 
-#: apps/mobile/src/components/CreationMenu.tsx:88
-msgid "Remove favorites"
-msgstr "取消收藏"
-
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:146
-#: packages/components/src/area-widgets/CreationItem.tsx:143
-msgid "Remove from favorites"
-msgstr "取消收藏"
-
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr "重命名"
@@ -488,15 +484,18 @@ msgstr "显示全部"
 msgid "Sign in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:42
-msgid "Signout"
-msgstr "注销"
-
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
 #: packages/components/src/AreaDialog/AreaForm.tsx:180
 msgid "Slug"
 msgstr "别名"
+
+#: apps/mobile/src/components/CreationMenu.tsx:87
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
+#: packages/components/src/area-widgets/CreationItem.tsx:145
+#: packages/components/src/CreationCard/CreationCard.tsx:208
+msgid "Star"
+msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:48
 msgid "Status"
@@ -511,11 +510,11 @@ msgstr "结构体市场"
 msgid "Structs"
 msgstr "结构体"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:63
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:58
 msgid "Subscribe now"
 msgstr "立即订阅"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:33
+#: apps/mobile/src/components/Profile/SubscriptionMenu.tsx:29
 msgid "Subscription"
 msgstr "订阅"
 
@@ -559,6 +558,13 @@ msgstr "今天"
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
 msgstr "唯一代码"
+
+#: apps/mobile/src/components/CreationMenu.tsx:87
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
+#: packages/components/src/area-widgets/CreationItem.tsx:145
+#: packages/components/src/CreationCard/CreationCard.tsx:208
+msgid "Unstar"
+msgstr ""
 
 #: packages/components/src/AreaDialog/AreaForm.tsx:319
 #: packages/components/src/AreaDialog/AreaDialog.tsx:34

@@ -41,14 +41,6 @@ export function CreationItem({ creation, className }: CreationItemProps) {
   const struct = useCreationStruct(creation)
   const { close } = useMobileMenu()
 
-  const getTitleFromContent = () => {
-    try {
-      return ''
-    } catch (error) {
-      return ''
-    }
-  }
-
   return (
     <ContextMenu>
       <ContextMenuTrigger>
@@ -99,7 +91,7 @@ export function CreationItem({ creation, className }: CreationItemProps) {
               isMobileApp && 'text-base',
             )}
           >
-            {creation.title || getTitleFromContent() || 'Untitled'}
+            {creation.title || creation.previewedContent || 'Untitled'}
           </div>
           {isAll && creation.status === 'PUBLISHED' && (
             <div className="size-1 rounded-full bg-green-500 text-xs opacity-50"></div>

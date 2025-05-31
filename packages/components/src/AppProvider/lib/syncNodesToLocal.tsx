@@ -1,6 +1,6 @@
 'use client'
 
-import isEqual from 'react-fast-compare'
+import fastCompare from 'react-fast-compare'
 import {
   ChangeMessage,
   isChangeMessage,
@@ -13,8 +13,19 @@ import {
 } from '@electric-sql/client'
 import { SHAPE_URL } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
+import { getJournal, updateJournal } from '@penx/hooks/useJournal'
 import { localDB } from '@penx/local-db'
-import { ICreationNode, INode, NodeType } from '@penx/model-type'
+import {
+  ICreationNode,
+  IJournalNode,
+  INode,
+  isAreaNode,
+  isCreationNode,
+  isCreationTagNode,
+  isStructNode,
+  isTagNode,
+  NodeType,
+} from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { store } from '@penx/store'
 import { AsyncQueue } from './AsyncQueue'
@@ -77,10 +88,18 @@ async function sync(
   stream: ShapeStream<Row<never>>,
   messages: Message<Row<never>>[],
 ) {
-  console.log('=======>>>>>>messages:', messages)
+  // console.log('=======>>>>>>messages:', messages)
   const { changes, lsn } = handleMessages(messages)
 
-  console.log('========changes:', changes, 'lsn:', lsn)
+  {
+    const nodes = await localDB.listNodes(siteId)
+    const localLatestUpdated = Math.max(
+      ...nodes.map((n) => new Date(n.updatedAt).getTime()),
+    )
+    console.log('========changes:localLatestUpdated', localLatestUpdated, nodes)
+  }
+
+  console.log('========changes:', changes)
   if (!changes.length) return
   const state = await getElectricSyncState(siteId)
 
@@ -88,85 +107,157 @@ async function sync(
     return
   }
 
-  try {
-    const changeNodes: INode[] = []
+  const changeNodes: INode[] = []
 
-    let updated = false
-    const nodes = await localDB.listNodes(siteId)
-    await localDB.transaction('rw', localDB.node, async () => {
-      for (const message of changes) {
-        const value = message.value as any
-        const operation = message.headers.operation
-        if (operation === 'insert') {
-          // console.log('insert:', message)
-          await localDB.node.put(value)
-          const newNode = await localDB.node.get(value.id)
-          newNode && changeNodes.push(newNode)
-          updated = true // TODO:
-        }
-        if (operation === 'update') {
-          const node = nodes.find((c) => c.id === value.id)
-          const changed = Object.keys(value)
-            .filter((k) => k !== 'updatedAt')
-            .some((key) => {
-              if (!node) return true
-              // console.log('=====value[key]:', value[key], creation[key])
-              return !isEqual(value[key], (node as any)[key])
-            })
+  let updated = false
+  const nodes = await localDB.listNodes(siteId)
 
-          // console.log('=====changed:', changed)
+  const isInsertedOrUpdate = !changes.some(
+    (c) => c.headers.operation === 'delete',
+  )
 
-          if (changed) {
-            node && changeNodes.push(node)
-          }
+  console.log('========changes:isInsertedOrUpdate', isInsertedOrUpdate)
 
-          await localDB.node.update(value.id, value)
-        }
-        if (operation === 'delete') {
-          const node = nodes.find((c) => c.id === value.id)
-          node && changeNodes.push(node)
+  const localLatestUpdated = Math.max(
+    ...nodes.map((n) => new Date(n.updatedAt).getTime()),
+  )
 
-          // console.log('message delete:', message)
-          await localDB.node.delete(value.id)
-          updated = true // TODO:
-        }
+  const changesLatestUpdated = Math.max(
+    ...changes.map((c: any) => new Date(c.value.updatedAt).getTime()),
+  )
+
+  // console.log(
+  //   '========changes:-------localLatestUpdated:',
+  //   localLatestUpdated,
+  //   changesLatestUpdated,
+  //   localLatestUpdated >= changesLatestUpdated,
+  //   localLatestUpdated - changesLatestUpdated,
+  // )
+  if (localLatestUpdated >= changesLatestUpdated) return
+
+  await localDB.transaction('rw', localDB.node, async () => {
+    for (const message of changes) {
+      const value = message.value as any
+      const operation = message.headers.operation
+      if (operation === 'insert') {
+        // console.log('insert:', message)
+        await localDB.node.put(value)
+        const newNode = await localDB.node.get(value.id)
+        newNode && changeNodes.push(newNode)
+        updated = true // TODO:
       }
-    })
+      if (operation === 'update') {
+        const node = nodes.find((c) => c.id === value.id)
+        const changed = Object.keys(value)
+          .filter((k) => k !== 'updatedAt')
+          .some((key) => {
+            if (!node) return true
+            // console.log('=====value[key]:', value[key], creation[key])
+            return !fastCompare(value[key], (node as any)[key])
+          })
 
-    console.log('synced:', updated, '=====changeNodes:', changeNodes)
+        // console.log('=====changed:', changed)
 
-    await setElectricSyncState(siteId, {
-      handle: stream.shapeHandle!,
-      offset: stream.lastOffset,
-      last_lsn: lsn,
-    })
+        if (changed) {
+          node && changeNodes.push(node)
+        }
 
-    const hasCreations = changeNodes.some((c) => c.type === NodeType.CREATION)
-    if (hasCreations) {
+        await localDB.node.update(value.id, value)
+      }
+      if (operation === 'delete') {
+        const node = nodes.find((c) => c.id === value.id)
+        node && changeNodes.push(node)
+
+        // console.log('message delete:', message)
+        await localDB.node.delete(value.id)
+        updated = true // TODO:
+      }
+    }
+  })
+
+  // console.log('synced:', updated, '=====changeNodes:', changeNodes)
+  // console.log('======>>>>>>>>equal1:', changeNodes)
+
+  await setElectricSyncState(siteId, {
+    handle: stream.shapeHandle!,
+    offset: stream.lastOffset,
+    last_lsn: lsn,
+  })
+
+  {
+    const nodes = await localDB.listNodes(siteId)
+    const area = store.area.get()
+
+    const creations = nodes.filter(
+      (n) => isCreationNode(n) && n.areaId === area.id,
+    )
+
+    console.log('=====creations:', creations, store.creations.get())
+
+    const isCreationsEqual = isEqual(creations, store.creations.get())
+    console.log('>===============is creation equal:', isCreationsEqual)
+
+    if (!isCreationsEqual) {
       await store.creations.refetchCreations()
     }
 
-    const hasAreas = changeNodes.some((c) => c.type === NodeType.AREA)
-    if (hasAreas) {
-      // await store.areas.refetchAreas()
-    }
+    // const areas = nodes.filter((n) => isAreaNode(n))
 
-    const hasStructs = changeNodes.some((c) => c.type === NodeType.STRUCT)
-    if (hasStructs) {
-      // await store.structs.refetchStructs()
-    }
-
-    // TODO:
-    // const panels = store.panels.get()
-    // for (const panel of panels) {
-    //   const creation = changeNodes.find((c) => c.id === panel.creationId)
-    //   if (creation) {
-    //     appEmitter.emit('PANEL_CREATION_UPDATED', creation as ICreationNode)
-    //   }
+    // if (!isEqual(areas, store.areas.get())) {
+    //   await store.areas.refetchAreas()
     // }
-  } catch (error) {
-    console.error(error)
+
+    // const structs = nodes
+    //   .filter((n) => n.areaId === area.id)
+    //   .filter((n) => isStructNode(n))
+
+    // if (!isEqual(structs, store.structs.get())) {
+    //   await store.structs.refetchStructs()
+    // }
+
+    // const tags = nodes.filter((n) => isTagNode(n))
+    // if (!isEqual(tags, store.tags.get())) {
+    //   await store.tags.refetchTags()
+    // }
+
+    // const creationTags = nodes.filter((n) => isCreationTagNode(n))
+
+    // if (!isEqual(creationTags, store.creationTags.get())) {
+    //   await store.creationTags.refetchCreationTags()
+    // }
+
+    const journal = getJournal()
+    if (journal) {
+      const localJournal = nodes.find((c) => c.id === journal.id)!
+      if (!fastCompare(journal.props.children, localJournal.props.children)) {
+        updateJournal(localJournal as IJournalNode)
+      }
+    }
   }
+
+  const hasCreations = changeNodes.some((c) => c.type === NodeType.CREATION)
+  if (hasCreations) {
+    // await store.creations.refetchCreations()
+  }
+
+  const hasAreas = changeNodes.some((c) => c.type === NodeType.AREA)
+  if (hasAreas) {
+    // await store.areas.refetchAreas()
+  }
+
+  const hasStructs = changeNodes.some((c) => c.type === NodeType.STRUCT)
+  if (hasStructs) {
+    // await store.structs.refetchStructs()
+  }
+
+  // TODO:
+  // const panels = store.panels.get()
+  // for (const panel of panels) {
+  //   const creation = changeNodes.find((c) => c.id === panel.creationId)
+  //   if (creation) {
+  //     appEmitter.emit('PANEL_CREATION_UPDATED', creation as ICreationNode)
+  //   }
+  // }
 }
 
 function handleMessages(messages: Message<Row<never>>[], debug = true) {
@@ -206,4 +297,23 @@ function handleMessages(messages: Message<Row<never>>[], debug = true) {
     }
   }
   return { lsn, changes }
+}
+
+function formatList(arr: any[]) {
+  return [...arr]
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((i) => i.props)
+    .map((v) => {
+      return Object.keys(v)
+        .filter((k) => k !== 'updatedAt')
+        .sort()
+        .map((k) => v[k])
+    })
+}
+
+// TODO:
+function isEqual(localArr: INode[], storeArr: INode[]): boolean {
+  const p1 = formatList(localArr)
+  const p2 = formatList(storeArr)
+  return fastCompare(p1, p2)
 }

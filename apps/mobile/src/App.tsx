@@ -226,7 +226,6 @@ const App: React.FC = () => {
             google: {
               iOSClientId:
                 '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
-
               webClientId:
                 '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
 

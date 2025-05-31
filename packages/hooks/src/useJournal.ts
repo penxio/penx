@@ -57,6 +57,10 @@ export function getJournal() {
   return queryClient.getQueryData(getQueryKey()) as IJournalNode
 }
 
+export function updateJournal(journal: IJournalNode) {
+  queryClient.setQueryData(getQueryKey(), journal)
+}
+
 export async function addCreationToJournal(creationId: string, date = '') {
   let journal = getJournal()
   if (!journal) {

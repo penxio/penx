@@ -13,11 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:51
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:51
 msgid "A structured note-taking App"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:39
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:31
 msgid "About"
 msgstr ""
 
@@ -33,10 +34,6 @@ msgstr ""
 msgid "Add cover"
 msgstr ""
 
-#: apps/mobile/src/components/CreationMenu.tsx:90
-msgid "Add favorites"
-msgstr ""
-
 #: packages/components/src/Creation/CoverUpload.tsx:112
 msgid "Add image"
 msgstr ""
@@ -45,12 +42,7 @@ msgstr ""
 msgid "Add navigation"
 msgstr ""
 
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:148
-#: packages/components/src/area-widgets/CreationItem.tsx:145
-msgid "Add to favorites"
-msgstr ""
-
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:66
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:64
 msgid "Add widget"
 msgstr ""
 
@@ -90,10 +82,18 @@ msgstr ""
 msgid "Bookmark"
 msgstr ""
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:68
+msgid "Bubble"
+msgstr ""
+
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
+msgstr ""
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:77
+msgid "Card"
 msgstr ""
 
 #: packages/components/src/Creation/ChangeType.tsx:36
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: packages/components/src/CreationCard/CreationCard.tsx:181
+#: packages/components/src/CreationCard/CreationCard.tsx:190
 msgid "Copy"
 msgstr ""
 
@@ -121,8 +121,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: apps/mobile/src/components/AreasPopover.tsx:100
-#: packages/components/src/AreasPopover/AreasPopover.tsx:97
+#: packages/components/src/AreasPopover/AreasPopover.tsx:99
 #: packages/components/src/AreaDialog/AreaForm.tsx:321
 #: packages/components/src/AreaDialog/AreaDialog.tsx:36
 msgid "Create area"
@@ -154,12 +153,12 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: apps/mobile/src/components/CreationMenu.tsx:103
+#: apps/mobile/src/components/CreationMenu.tsx:99
 #: packages/components/src/database-ui/TableInfo.tsx:77
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
-#: packages/components/src/area-widgets/CreationItem.tsx:117
-#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/area-widgets/CreationItem.tsx:121
+#: packages/components/src/CreationCard/CreationCard.tsx:241
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -191,7 +190,7 @@ msgstr ""
 msgid "Due date"
 msgstr ""
 
-#: packages/components/src/CreationCard/CreationCard.tsx:193
+#: packages/components/src/CreationCard/CreationCard.tsx:219
 msgid "Edit"
 msgstr ""
 
@@ -260,9 +259,13 @@ msgstr ""
 msgid "Journals"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/LocaleMenu.tsx:43
-#: apps/mobile/src/components/Profile/LocaleMenu.tsx:54
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:44
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:57
 msgid "Language"
+msgstr ""
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:57
+msgid "Layout"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:48
@@ -270,6 +273,7 @@ msgid "Light"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:176
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:86
 msgid "List"
 msgstr ""
 
@@ -285,6 +289,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/Profile.tsx:50
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -379,7 +384,7 @@ msgstr ""
 
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:112
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:34
-#: packages/components/src/area-widgets/CreationItem.tsx:109
+#: packages/components/src/area-widgets/CreationItem.tsx:113
 msgid "Open in new panel"
 msgstr ""
 
@@ -453,15 +458,6 @@ msgstr ""
 msgid "Register to PenX"
 msgstr ""
 
-#: apps/mobile/src/components/CreationMenu.tsx:88
-msgid "Remove favorites"
-msgstr ""
-
-#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:146
-#: packages/components/src/area-widgets/CreationItem.tsx:143
-msgid "Remove from favorites"
-msgstr ""
-
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr ""
@@ -488,14 +484,17 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:42
-msgid "Signout"
-msgstr ""
-
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
 #: packages/components/src/AreaDialog/AreaForm.tsx:180
 msgid "Slug"
+msgstr ""
+
+#: apps/mobile/src/components/CreationMenu.tsx:87
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
+#: packages/components/src/area-widgets/CreationItem.tsx:145
+#: packages/components/src/CreationCard/CreationCard.tsx:208
+msgid "Star"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:48
@@ -511,11 +510,11 @@ msgstr ""
 msgid "Structs"
 msgstr ""
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeDrawer.tsx:63
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:58
 msgid "Subscribe now"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:33
+#: apps/mobile/src/components/Profile/SubscriptionMenu.tsx:29
 msgid "Subscription"
 msgstr ""
 
@@ -558,6 +557,13 @@ msgstr ""
 
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
+msgstr ""
+
+#: apps/mobile/src/components/CreationMenu.tsx:87
+#: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
+#: packages/components/src/area-widgets/CreationItem.tsx:145
+#: packages/components/src/CreationCard/CreationCard.tsx:208
+msgid "Unstar"
 msgstr ""
 
 #: packages/components/src/AreaDialog/AreaForm.tsx:319
