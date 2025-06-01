@@ -5,17 +5,17 @@ import { IJournalNode, NodeType } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
 
-export const journalAtom = atom<IJournalNode>(null as unknown as IJournalNode)
+export const journalsAtom = atom<IJournalNode[]>([] as IJournalNode[])
 
-export class JournalStore {
+export class JournalsStore {
   constructor(private store: StoreType) {}
 
   get() {
-    return this.store.get(journalAtom)
+    return this.store.get(journalsAtom)
   }
 
-  set(state: IJournalNode) {
-    this.store.set(journalAtom, state)
+  set(state: IJournalNode[]) {
+    this.store.set(journalsAtom, state)
   }
 
   async persistJournal(id: string, input: Partial<IJournalNode['props']>) {
@@ -46,12 +46,18 @@ export class JournalStore {
         areaId: area.id,
       }
       await localDB.addJournal(journal)
-      this.set(journal)
+      // this.set(journal)
     }
   }
 
   async addJournal(journal: IJournalNode) {
-    this.set(journal)
-    //
+    // this.set(journal)
+  }
+
+  async refetchJournals(areaId?: string) {
+    const area = this.store.area.get()
+    const journals = await localDB.listJournals(areaId || area.id)
+    this.set(journals)
+    return journals
   }
 }

@@ -76,7 +76,7 @@ export async function initLocalSite(uid?: string) {
       getDefaultStructs({
         siteId: siteId,
         userId,
-        areaId,
+        areaId: areaId,
       }),
     )
 

@@ -59,8 +59,12 @@ class LocalDB extends Dexie {
     return this.node.get(id) as any as Promise<T>
   }
 
-  listNodes = (siteId: string) => {
+  listSiteNodes = (siteId: string) => {
     return this.node.where({ siteId }).toArray() as unknown as Promise<INode[]>
+  }
+
+  listAreaNodes = (areaId: string) => {
+    return this.node.where({ areaId }).toArray() as unknown as Promise<INode[]>
   }
 
   addNode = async <T extends INode>(data: Partial<T>): Promise<T> => {

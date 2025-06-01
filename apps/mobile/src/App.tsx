@@ -221,7 +221,11 @@ const App: React.FC = () => {
   useEffect(() => {
     SocialLogin.initialize(
       platform === 'ios'
-        ? { apple: {} }
+        ? {
+            apple: {
+              // clientId: '',
+            },
+          }
         : {
             google: {
               iOSClientId:

@@ -55,7 +55,6 @@ export function AppleLoginButton({}: Props) {
       console.log('=========error:', error)
 
       setError(Object.values(error))
-      //
     }
 
     setLoading(false)

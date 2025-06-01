@@ -20,7 +20,7 @@ export function JournalContent({ date }: Props) {
   const { creations } = useCreations()
   const { struct } = useActiveStruct()
   const { isLoading, data } = useJournal(date)
-  const { data: layout, isCard, isList, isBubble } = useJournalLayout()
+  const { isCard, isList } = useJournalLayout()
   if (isLoading) return null
   const creationMaps = mappedByKey(creations, 'id')
 

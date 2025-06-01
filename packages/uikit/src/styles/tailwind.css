@@ -245,3 +245,20 @@ h4 {
 .gdg-edit-icon {
   --gdg-accent-color: var(--color-foreground);
 }
+
+.day-with-notes {
+  position: relative;
+}
+
+.day-with-notes::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  z-index: 1;
+}

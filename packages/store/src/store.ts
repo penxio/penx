@@ -6,7 +6,7 @@ import { AreasStore } from './stores/AreasStore'
 import { AreaStore } from './stores/AreaStore'
 import { CreationsStore } from './stores/CreationsStore'
 import { CreationTagsStore } from './stores/CreationTagsStore'
-import { JournalStore } from './stores/JournalStore'
+import { JournalsStore } from './stores/JournalsStore'
 import { PanelsStore } from './stores/PanelsStore'
 import { SiteStore } from './stores/SiteStore'
 import { StructsStore } from './stores/StructsStore'
@@ -31,8 +31,8 @@ export const store = Object.assign(baseStore, {
     return new SiteStore(this)
   },
 
-  get journal(): JournalStore {
-    return new JournalStore(this)
+  get journals(): JournalsStore {
+    return new JournalsStore(this)
   },
 
   get panels(): PanelsStore {

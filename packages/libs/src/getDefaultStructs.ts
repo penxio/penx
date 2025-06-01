@@ -204,7 +204,7 @@ export function generateStructNode({
     },
     createdAt: new Date(),
     updatedAt: new Date(),
-    areaId,
+    areaId: areaId,
     userId,
     siteId,
   }

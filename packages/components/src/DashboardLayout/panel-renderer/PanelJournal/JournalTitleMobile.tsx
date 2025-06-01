@@ -6,6 +6,7 @@ import { CalendarDays, LayoutDashboardIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { goToDay } from '@penx/hooks/useJournal'
+import { useJournals } from '@penx/hooks/useJournals'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { Button } from '@penx/uikit/ui/button'
@@ -19,6 +20,12 @@ interface Props {
 export function JournalTitleMobile({ initialDate }: Props) {
   const [date, setDate] = useState<Date>(initialDate || new Date())
   const [open, setOpen] = useState(false)
+
+  const { journals } = useJournals()
+  const daysWithNotes = journals.reduce<Date[]>((acc, journal) => {
+    if (!journal.hasNotes) return acc
+    return [...acc, new Date(journal.date)]
+  }, [])
 
   return (
     <div className="flex items-center justify-between">
@@ -35,6 +42,12 @@ export function JournalTitleMobile({ initialDate }: Props) {
           <Calendar
             mode="single"
             selected={date}
+            modifiers={{
+              hasNotes: daysWithNotes,
+            }}
+            modifiersClassNames={{
+              hasNotes: 'day-with-notes',
+            }}
             onSelect={(date) => {
               // console.log('========date:', date)
               setOpen(false)

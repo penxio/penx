@@ -53,7 +53,7 @@ export async function syncNodesToLocal(siteId: string) {
 
   /** init data (first time) */
   {
-    const nodes = await localDB.listNodes(siteId)
+    const nodes = await localDB.listSiteNodes(siteId)
     const site = nodes.find((n) => n.type === NodeType.SITE)
 
     console.log('=====nodes:', nodes, 'site:', site)
@@ -91,14 +91,6 @@ async function sync(
   // console.log('=======>>>>>>messages:', messages)
   const { changes, lsn } = handleMessages(messages)
 
-  {
-    const nodes = await localDB.listNodes(siteId)
-    const localLatestUpdated = Math.max(
-      ...nodes.map((n) => new Date(n.updatedAt).getTime()),
-    )
-    console.log('========changes:localLatestUpdated', localLatestUpdated, nodes)
-  }
-
   console.log('========changes:', changes)
   if (!changes.length) return
   const state = await getElectricSyncState(siteId)
@@ -110,7 +102,7 @@ async function sync(
   const changeNodes: INode[] = []
 
   let updated = false
-  const nodes = await localDB.listNodes(siteId)
+  const nodes = await localDB.listSiteNodes(siteId)
 
   const isInsertedOrUpdate = !changes.some(
     (c) => c.headers.operation === 'delete',
@@ -185,7 +177,7 @@ async function sync(
   })
 
   {
-    const nodes = await localDB.listNodes(siteId)
+    const nodes = await localDB.listSiteNodes(siteId)
     const area = store.area.get()
 
     const creations = nodes.filter(

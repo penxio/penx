@@ -133,7 +133,7 @@ export interface IJournalNode extends INode {
   }
 }
 
-export function isDailyNode(n: any): n is IJournalNode {
+export function isJournalNode(n: any): n is IJournalNode {
   return n.type === NodeType.JOURNAL
 }
 

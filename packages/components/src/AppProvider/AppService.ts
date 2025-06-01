@@ -12,6 +12,7 @@ import {
   isCreationNode,
   isCreationTagNode,
   ISiteNode,
+  isJournalNode,
   isStructNode,
   isTagNode,
   NodeType,
@@ -91,7 +92,7 @@ export class AppService {
       site = await initLocalSite(session.userId)
     }
 
-    const nodes = await localDB.listNodes(site.id)
+    const nodes = await localDB.listSiteNodes(site.id)
 
     const { existed, siteId } = await ky
       .post('/api/app/sync-initial-nodes', {
@@ -117,7 +118,9 @@ export class AppService {
     // console.log('=============site..:', site)
     await store.site.save(site)
 
-    const nodes = await localDB.listNodes(site.id)
+    const nodes = await localDB.listSiteNodes(site.id)
+    console.log('========>>>nodes:', nodes)
+
     const areas = nodes.filter((n) => isAreaNode(n))
 
     const localVisit = await store.visit.fetch()
@@ -128,22 +131,24 @@ export class AppService {
       ) || areas[0]
 
     const visit = await store.visit.save({ activeAreaId: area.id })
-    const structs = nodes
-      .filter((n) => n.areaId === area.id)
-      .filter((n) => isStructNode(n))
-    const tags = nodes.filter((n) => isTagNode(n))
-    const creationTags = nodes.filter((n) => isCreationTagNode(n))
-    const creations = nodes.filter(
-      (n) => isCreationNode(n) && n.areaId === area.id,
-    )
+
+    const areaNodes = nodes.filter((n) => n.areaId === area.id)
+
+    const structs = areaNodes.filter((n) => isStructNode(n))
+
+    const journals = areaNodes.filter((n) => isJournalNode(n))
+    const tags = areaNodes.filter((n) => isTagNode(n))
+    const creationTags = areaNodes.filter((n) => isCreationTagNode(n))
+    const creations = areaNodes.filter((n) => isCreationNode(n))
 
     const panels = await this.getPanels(area)
 
     store.site.set(site)
-    store.creations.set(creations as ICreationNode[])
+    store.creations.set(creations)
     store.visit.set(visit)
     store.area.set(area)
     store.areas.set(areas)
+    store.journals.set(journals)
     store.structs.set(structs)
     store.tags.set(tags)
     store.creationTags.set(creationTags)

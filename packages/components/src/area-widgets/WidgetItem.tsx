@@ -179,38 +179,40 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
           )}
 
           {isMobileApp && titleJSX}
-          <AnimatePresence initial={false}>
-            {!widget.collapsed ? (
-              <motion.div
-                className="overflow-hidden"
-                initial={{ height: 0 }}
-                animate={{ height: 'auto' }}
-                exit={{ height: 0 }}
-              >
-                <IsAllProvider>
-                  {widget.type === WidgetType.ALL_STRUCTS ? (
-                    <StructList
-                      onSelect={(struct) => {
-                        if (isMobileApp) {
-                          close()
+          {(!isMobileApp || widget.type === WidgetType.ALL_STRUCTS) && (
+            <AnimatePresence initial={false}>
+              {!widget.collapsed ? (
+                <motion.div
+                  className="overflow-hidden"
+                  initial={{ height: 0 }}
+                  animate={{ height: 'auto' }}
+                  exit={{ height: 0 }}
+                >
+                  <IsAllProvider>
+                    {widget.type === WidgetType.ALL_STRUCTS ? (
+                      <StructList
+                        onSelect={(struct) => {
+                          if (isMobileApp) {
+                            close()
 
-                          appEmitter.emit('ROUTE_TO_STRUCT')
-                          store.panels.openStruct(struct.id)
-                          store.set(structIdAtom, struct.id)
-                        } else {
-                          // setVisible(!visible)
-                          store.panels.openStruct(struct.id)
-                        }
-                        setStruct(struct)
-                      }}
-                    />
-                  ) : (
-                    <WidgetRender widget={widget} />
-                  )}
-                </IsAllProvider>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
+                            appEmitter.emit('ROUTE_TO_STRUCT')
+                            store.panels.openStruct(struct.id)
+                            store.set(structIdAtom, struct.id)
+                          } else {
+                            // setVisible(!visible)
+                            store.panels.openStruct(struct.id)
+                          }
+                          setStruct(struct)
+                        }}
+                      />
+                    ) : (
+                      <WidgetRender widget={widget} />
+                    )}
+                  </IsAllProvider>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          )}
         </div>
 
         {!isMobileApp && (

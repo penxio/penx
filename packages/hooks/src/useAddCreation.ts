@@ -88,7 +88,9 @@ export function useAddCreation() {
     }
 
     store.creations.addCreation(newCreation)
-    addCreationToJournal(newCreation.id)
+    await addCreationToJournal(newCreation.id)
+
+    store.journals.refetchJournals()
 
     updateCreationState(newCreation)
 

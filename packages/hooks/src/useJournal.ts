@@ -71,7 +71,7 @@ export async function addCreationToJournal(creationId: string, date = '') {
     draft.props.children.unshift(creationId)
   })
   queryClient.setQueryData(getQueryKey(), newJournal)
-  localDB.updateJournalProps(journal.id, {
+  await localDB.updateJournalProps(journal.id, {
     children: newJournal.props.children,
   })
 }
