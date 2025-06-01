@@ -61,6 +61,8 @@ export enum WorkerEvents {
   START_PULL,
   PULL_SUCCEEDED,
   PULL_FAILED,
+
+  CHECK_TODAY_JOURNAL,
 }
 
 export const TODO_DATABASE_NAME = '__TODO__'

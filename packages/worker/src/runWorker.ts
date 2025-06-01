@@ -11,10 +11,14 @@ export function runWorker() {
   const worker = new Worker(new URL('./worker.ts', import.meta.url), {
     type: 'module',
   })
-  // worker.onmessage = async (event: MessageEvent<number>) => {
-  //   console.log(`WebWorker Response => ${event.data}`)
-  //   if (event.data === WorkerEvents.PUSH_FAILED) {
-  //   }
-  // }
+
+  worker.onmessage = async (event: MessageEvent<any>) => {
+    // console.log(`WebWorker Response => ${JSON.stringify(event.data)}`)
+    if (event.data.type === WorkerEvents.CHECK_TODAY_JOURNAL) {
+      try {
+        store.journals.checkTodayJournal()
+      } catch (error) {}
+    }
+  }
   worker.postMessage(WorkerEvents.START_POLLING)
 }

@@ -1,12 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { CalendarDays, LayoutDashboardIcon } from 'lucide-react'
-import { motion } from 'motion/react'
-import { isMobileApp } from '@penx/constants'
-import { goToDay } from '@penx/hooks/useJournal'
+import { useJournal } from '@penx/hooks/useJournal'
 import { useJournals } from '@penx/hooks/useJournals'
+import { store } from '@penx/store'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { Button } from '@penx/uikit/ui/button'
@@ -20,6 +19,14 @@ interface Props {
 export function JournalTitleMobile({ initialDate }: Props) {
   const [date, setDate] = useState<Date>(initialDate || new Date())
   const [open, setOpen] = useState(false)
+
+  const { journal } = useJournal()
+
+  useEffect(() => {
+    if (format(date, 'yyyy-MM-dd') !== journal.date) {
+      setDate(new Date(journal.date))
+    }
+  }, [journal.date])
 
   const { journals } = useJournals()
   const daysWithNotes = journals.reduce<Date[]>((acc, journal) => {
@@ -52,7 +59,7 @@ export function JournalTitleMobile({ initialDate }: Props) {
               // console.log('========date:', date)
               setOpen(false)
               setDate(date!)
-              date && goToDay(date)
+              date && store.journals.goToDay(date)
             }}
             initialFocus
             footer={

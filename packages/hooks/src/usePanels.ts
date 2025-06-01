@@ -9,5 +9,9 @@ export function usePanels() {
       (p) => p.type === PanelType.CREATION && p?.creationId === creationId,
     )
   }
-  return { panels, isCreationInPanels }
+  return {
+    panels,
+    isCreationInPanels,
+    journalPanel: panels.find((p) => p.type === PanelType.JOURNAL)!,
+  }
 }

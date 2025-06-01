@@ -142,10 +142,14 @@ class LocalDB extends Dexie {
     await this.updateNodeProps(id, props)
   }
 
-  listAreas = (siteId: string) => {
-    return this.node
-      .where({ type: NodeType.AREA, siteId })
-      .toArray() as unknown as Promise<IAreaNode[]>
+  listAreas = (siteId?: string) => {
+    const condition = siteId
+      ? { type: NodeType.AREA, siteId }
+      : { type: NodeType.SITE }
+
+    return this.node.where(condition).toArray() as unknown as Promise<
+      IAreaNode[]
+    >
   }
 
   addAreaNode = async <T extends IAreaNode>(node: Partial<T>): Promise<T> => {
@@ -278,10 +282,14 @@ class LocalDB extends Dexie {
     await this.addChange(id, OperationType.DELETE)
   }
 
-  listJournals = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.JOURNAL, areaId })
-      .toArray() as unknown as Promise<IJournalNode[]>
+  listJournals = (areaId?: string) => {
+    const condition = areaId
+      ? { type: NodeType.JOURNAL, areaId }
+      : { type: NodeType.JOURNAL }
+
+    return this.node.where(condition).toArray() as unknown as Promise<
+      IJournalNode[]
+    >
   }
 
   addJournal = async (data: Partial<IJournalNode>) => {

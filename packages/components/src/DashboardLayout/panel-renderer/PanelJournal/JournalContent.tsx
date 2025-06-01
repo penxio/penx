@@ -10,26 +10,22 @@ import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { cn, mappedByKey } from '@penx/utils'
 import { CreationCard } from '../../../CreationCard/CreationCard'
 import { JournalTitle } from './JournalTitle'
-import { StructTypeSelect } from './StructTypeSelect'
 
-interface Props {
-  date: string
-}
+interface Props {}
 
-export function JournalContent({ date }: Props) {
+export function JournalContent({}: Props) {
   const { creations } = useCreations()
   const { struct } = useActiveStruct()
-  const { isLoading, data } = useJournal(date)
+  const { journal } = useJournal()
   const { isCard, isList } = useJournalLayout()
-  if (isLoading) return null
   const creationMaps = mappedByKey(creations, 'id')
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
-      <JournalTitle date={data?.props.date!} />
+      <JournalTitle date={journal.date!} />
       {/* <StructTypeSelect /> */}
 
-      {!data?.props.children.length && (
+      {!journal.children.length && (
         <div className="flex h-[50vh] flex-col items-center justify-center gap-4 pt-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -53,7 +49,7 @@ export function JournalContent({ date }: Props) {
         </div>
       )}
 
-      {!!data?.props.children.length && (
+      {!!journal.children.length && (
         <div
           className={cn(
             isCard ? 'columns-2 gap-x-2 align-top' : 'flex flex-col gap-4 ',
@@ -61,7 +57,7 @@ export function JournalContent({ date }: Props) {
             isMobileApp && isList && 'gap-0',
           )}
         >
-          {data?.props.children.map((id) => {
+          {journal.children.map((id) => {
             const creation = creationMaps[id]
             if (!creation) return null
             if (struct && creation.structId !== struct.id) return null

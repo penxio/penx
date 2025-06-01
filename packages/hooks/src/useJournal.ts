@@ -1,56 +1,18 @@
-import { useQuery } from '@tanstack/react-query'
-import { format } from 'date-fns'
-import { produce } from 'immer'
-import { localDB } from '@penx/local-db'
 import { IAreaNode, IJournalNode, NodeType } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
-import { store } from '@penx/store'
-import { uniqueId } from '@penx/unique-id'
+import { useJournals } from './useJournals'
+import { usePanels } from './usePanels'
 
 function getQueryKey() {
   return ['journal']
 }
 
-async function getOrCreateJournal(date: Date) {
-  const dateStr = format(date, 'yyyy-MM-dd')
-  const area = store.area.get()
-  const journals = await localDB.listJournals(area.id)
+export function useJournal() {
+  const { journalPanel } = usePanels()
+  const { journals } = useJournals()
+  const journal = journals.find((n) => n.props.date === journalPanel.date)
 
-  let dateNode = journals.find(
-    (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
-  )
-
-  if (!dateNode) {
-    const journal: IJournalNode = {
-      id: uniqueId(),
-      type: NodeType.JOURNAL,
-      props: {
-        date: dateStr,
-        children: [],
-      },
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      siteId: area.siteId,
-      userId: area.userId,
-      areaId: area.id,
-    }
-
-    await localDB.addJournal(journal)
-    return journal
-  }
-  return dateNode
-}
-
-export function useJournal(date?: string) {
-  const { data, ...rest } = useQuery({
-    queryKey: getQueryKey(),
-    queryFn: async () => {
-      const journal = getOrCreateJournal(date ? new Date(date) : new Date())
-
-      return journal
-    },
-  })
-  return { data, ...rest }
+  return { journal: journal! }
 }
 
 export function getJournal() {
@@ -59,25 +21,4 @@ export function getJournal() {
 
 export function updateJournal(journal: IJournalNode) {
   queryClient.setQueryData(getQueryKey(), journal)
-}
-
-export async function addCreationToJournal(creationId: string, date = '') {
-  let journal = getJournal()
-  if (!journal) {
-    journal = await getOrCreateJournal(date ? new Date(date) : new Date())
-  }
-
-  const newJournal = produce(journal, (draft) => {
-    draft.props.children.unshift(creationId)
-  })
-  queryClient.setQueryData(getQueryKey(), newJournal)
-  await localDB.updateJournalProps(journal.id, {
-    children: newJournal.props.children,
-  })
-}
-
-export async function goToDay(date: Date) {
-  const journal = await getOrCreateJournal(date)
-  queryClient.setQueryData(getQueryKey(), journal)
-  store.panels.updateJournalPanel(format(date, 'yyyy-MM-dd'))
 }

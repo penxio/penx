@@ -64,7 +64,7 @@ export class PanelsStore {
   async updateJournalPanel(date: string) {
     let panels = this.get()
     const newPanels = produce(panels, (draft) => {
-      for (const panel of panels) {
+      for (const panel of draft) {
         if (panel.type === PanelType.JOURNAL) {
           panel.date = date
         }

@@ -25,7 +25,7 @@ export function PanelJournal({ panel, index }: Props) {
   if (isMobileApp) {
     return (
       <div className="px-3">
-        <JournalContent date={panel.date!} />
+        <JournalContent />
       </div>
     )
   }
@@ -45,7 +45,7 @@ export function PanelJournal({ panel, index }: Props) {
               'relative z-50 flex w-full flex-1 flex-col overflow-auto px-6 pb-20 pt-6',
             )}
           >
-            <JournalContent date={panel.date!} />
+            <JournalContent />
           </div>
           {!isMobileApp && (
             <div className="relative z-50 px-6 pb-6">

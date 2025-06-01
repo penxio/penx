@@ -119,7 +119,6 @@ export class AppService {
     await store.site.save(site)
 
     const nodes = await localDB.listSiteNodes(site.id)
-    console.log('========>>>nodes:', nodes)
 
     const areas = nodes.filter((n) => isAreaNode(n))
 
@@ -165,9 +164,7 @@ export class AppService {
       const dateStr = format(date, 'yyyy-MM-dd')
 
       const journals = await localDB.listJournals(area.id)
-      let journal = journals.find(
-        (n) => n.type === NodeType.JOURNAL && n.props.date === dateStr,
-      )!
+      let journal = journals.find((n) => n.props.date === dateStr)!
 
       if (!journal) {
         journal = {

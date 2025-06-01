@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { CalendarDays } from 'lucide-react'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
-import { goToDay } from '@penx/hooks/useJournal'
+import { store } from '@penx/store'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
@@ -39,7 +39,7 @@ export function GoToDay({ initialDate }: Props) {
             // console.log('========date:', date)
             setOpen(false)
             setDate(date)
-            date && goToDay(date)
+            date && store.journals.goToDay(date)
           }}
           // disabled={(date) =>
           //   date > new Date() || date < new Date('1900-01-01')

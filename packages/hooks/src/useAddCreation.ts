@@ -10,7 +10,7 @@ import { ICreationNode, NodeType } from '@penx/model-type'
 import { store } from '@penx/store'
 import { ColumnType, CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
-import { addCreationToJournal } from './useJournal'
+import { useJournal } from './useJournal'
 import { useMySite } from './useMySite'
 
 export type Input = {
@@ -23,6 +23,7 @@ export type Input = {
 export function useAddCreation() {
   const { structs } = useStructs()
   const { site } = useMySite()
+  const { journal } = useJournal()
 
   return async (input: Input) => {
     const { isAddPanel = true } = input
@@ -88,9 +89,8 @@ export function useAddCreation() {
     }
 
     store.creations.addCreation(newCreation)
-    await addCreationToJournal(newCreation.id)
 
-    store.journals.refetchJournals()
+    await store.journals.addCreationToJournal(newCreation.id, journal.date)
 
     updateCreationState(newCreation)
 

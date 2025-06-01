@@ -17,8 +17,6 @@ export async function pollingSyncToRemote() {
 }
 
 async function sync() {
-  console.log('sync to remote.......')
-
   const session = (await get('SESSION')) as SessionData
 
   if (!session || !session?.siteId) return

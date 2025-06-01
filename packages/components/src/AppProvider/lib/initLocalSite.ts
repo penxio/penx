@@ -87,7 +87,6 @@ export async function initLocalSite(uid?: string) {
         date: format(new Date(), 'yyyy-MM-dd'),
         children: [],
       },
-
       createdAt: new Date(),
       updatedAt: new Date(),
       siteId: siteId,
