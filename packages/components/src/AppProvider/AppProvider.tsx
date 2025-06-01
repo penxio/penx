@@ -10,7 +10,9 @@ import { runWorker } from '@penx/worker'
 import { AppService } from './AppService'
 
 if (!isServer) {
-  runWorker()
+  setTimeout(() => {
+    runWorker()
+  }, 5000)
 }
 
 export const appContext = createContext({} as { app: AppService })

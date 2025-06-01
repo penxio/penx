@@ -8,9 +8,8 @@ import { useJournals } from '@penx/hooks/useJournals'
 import { store } from '@penx/store'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { Button } from '@penx/uikit/ui/button'
-import { JournalLayoutSelect } from './JournalLayoutSelect'
 import { JournalShortcut } from './JournalShortcut'
+import { StructTypeSelect } from './StructTypeSelect'
 
 interface Props {
   initialDate: Date
@@ -76,7 +75,7 @@ export function JournalTitleMobile({ initialDate }: Props) {
           />
         </PopoverContent>
       </Popover>
-      <JournalLayoutSelect />
+      <StructTypeSelect />
     </div>
   )
 }

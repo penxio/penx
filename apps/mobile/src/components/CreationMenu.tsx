@@ -62,7 +62,7 @@ export function CreationMenu({ creationId, afterDelete }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="text-foreground">
           <EllipsisIcon size={24} />
         </Button>
       </DropdownMenuTrigger>

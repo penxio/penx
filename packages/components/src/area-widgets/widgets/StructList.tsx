@@ -1,4 +1,5 @@
 import { Maximize2Icon } from 'lucide-react'
+import { isMobileApp } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
@@ -11,6 +12,7 @@ import {
 } from '@penx/uikit/tooltip'
 import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
+import { cn } from '@penx/utils'
 
 interface Props {
   onSelect: (struct: Struct) => void
@@ -19,11 +21,16 @@ interface Props {
 export function StructList({ onSelect }: Props) {
   const { structs } = useStructs()
   return (
-    <div className="flex flex-col gap-0.5 px-1 pb-2">
+    <div
+      className={cn('flex flex-col gap-0.5 px-1 pb-2', isMobileApp && 'px-0')}
+    >
       {structs.map((struct) => (
         <div
           key={struct.id}
-          className="text-foreground hover:bg-foreground/5 group/struct flex cursor-pointer items-center justify-between rounded-md px-2 py-1 text-sm"
+          className={cn(
+            'text-foreground hover:bg-foreground/5 group/struct flex cursor-pointer items-center justify-between rounded-md px-2 py-1 text-sm',
+            isMobileApp && 'px-0 text-base',
+          )}
           onClick={() => onSelect(struct)}
         >
           <div>{struct.name}</div>

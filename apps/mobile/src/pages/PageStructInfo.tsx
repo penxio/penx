@@ -1,8 +1,5 @@
 import React from 'react'
 import { LoginContent } from '@/components/Login/LoginContent'
-import { LoginForm } from '@/components/Login/LoginForm'
-import { RegisterForm } from '@/components/Login/RegisterForm'
-import { Profile } from '@/components/Profile/Profile'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -16,11 +13,10 @@ import {
   IonToolbar,
 } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
-import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 
 const platform = Capacitor.getPlatform()
 
-export function PageProfile() {
+export function PageStructInfo() {
   return (
     <>
       <IonHeader
@@ -33,9 +29,6 @@ export function PageProfile() {
           className="toolbar text-foreground"
           style={{
             '--border-width': 0,
-            // borderBottom: scrolled ? '1px solid #eeee' : 'none',
-            // borderBottom: 'none',
-            // border: 'none',
           }}
         >
           <IonButtons slot="start">
@@ -43,13 +36,13 @@ export function PageProfile() {
           </IonButtons>
           <IonTitle>
             <div className="text-foreground">
-              <Trans>Settings</Trans>
+              <Trans>Create struct</Trans>
             </div>
           </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding content">
-        <Profile></Profile>
+        <LoginContent />
       </IonContent>
     </>
   )

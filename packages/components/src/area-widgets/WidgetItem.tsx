@@ -88,11 +88,14 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
       <div
         className={cn(
           'relative flex h-10 cursor-pointer select-none items-center justify-between pr-2',
-          isMobileApp && 'h-9',
+          isMobileApp && 'h-10',
         )}
       >
         <div
-          className="flex h-full flex-1 items-center gap-1 pl-3"
+          className={cn(
+            'flex h-full flex-1 items-center gap-1 pl-3',
+            isMobileApp && 'pl-0',
+          )}
           {...attributes}
           {...listeners}
           onClick={(e) => {
@@ -138,7 +141,8 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             !isMobileApp && 'opacity-0 group-hover/widget:opacity-100',
           )}
         >
-          {widget.type === WidgetType.STRUCT && !isMobileApp && (
+          {((widget.type === WidgetType.STRUCT && !isMobileApp) ||
+            widget.type === WidgetType.ALL_STRUCTS) && (
             <AddCreationButton area={area} widget={widget} />
           )}
 
@@ -194,7 +198,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
                         onSelect={(struct) => {
                           if (isMobileApp) {
                             close()
-
                             appEmitter.emit('ROUTE_TO_STRUCT')
                             store.panels.openStruct(struct.id)
                             store.set(structIdAtom, struct.id)

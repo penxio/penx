@@ -53,7 +53,7 @@ const Menu: React.FC = () => {
         style={{ boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)' }}
       >
         <IonToolbar
-          className="menu-toolbar px-3"
+          className="menu-toolbar text-foreground px-3"
           style={{
             '--border-width': 0,
           }}
@@ -99,7 +99,7 @@ const Menu: React.FC = () => {
       <IonContent
         className="ion-padding safe-area drawer-menu relative h-full"
         style={{
-          '--background': isDark ? '#222' : '#fff',
+          '--background': isDark ? '#333' : '#fff',
         }}
       >
         <div

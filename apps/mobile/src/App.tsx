@@ -49,6 +49,7 @@ import '@ionic/react/css/palettes/dark.class.css'
 /* Theme variables */
 import './theme/variables.css'
 import { useEffect, useRef } from 'react'
+import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
 import { LocaleProvider } from '@penx/locales'
@@ -65,6 +66,7 @@ import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
+import { PageStructInfo } from './pages/PageStructInfo'
 import { PageWidget } from './pages/PageWidget'
 
 const platform = Capacitor.getPlatform()
@@ -215,6 +217,16 @@ const App: React.FC = () => {
     appEmitter.on('ROUTE_TO_WIDGET', handle)
     return () => {
       appEmitter.off('ROUTE_TO_WIDGET', handle)
+    }
+  }, [])
+
+  useEffect(() => {
+    function handle(struct?: Struct) {
+      nav.current?.push(PageStructInfo, { struct })
+    }
+    appEmitter.on('ROUTE_TO_STRUCT_INFO', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_STRUCT_INFO', handle)
     }
   }, [])
 

@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { AboutMenu } from './AboutMenu'
+import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
 import { ThemeMenu } from './ThemeMenu'
@@ -60,6 +61,7 @@ export function Profile() {
         {/* <SubscriptionMenu /> */}
         <LocaleMenu />
         <ThemeMenu />
+        <JournalLayoutMenu />
 
         <AboutMenu />
         {session && (

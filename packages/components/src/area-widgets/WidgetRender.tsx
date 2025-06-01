@@ -6,7 +6,6 @@ import { CreationList } from './widgets/CreationList'
 import { Favorites } from './widgets/Favorites'
 import { RecentlyEdited } from './widgets/RecentlyEdited'
 import { RecentlyOpened } from './widgets/RecentlyOpened'
-import { StructList } from './widgets/StructList'
 
 interface Props {
   widget: Widget

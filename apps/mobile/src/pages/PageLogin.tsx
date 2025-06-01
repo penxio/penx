@@ -14,6 +14,8 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
+import { ChevronLeft, ChevronLeftIcon } from 'lucide-react'
 
 const platform = Capacitor.getPlatform()
 
@@ -27,7 +29,7 @@ export function PageLogin() {
         }}
       >
         <IonToolbar
-          className="toolbar"
+          className="toolbar text-foreground"
           style={{
             '--border-width': 0,
             // borderBottom: scrolled ? '1px solid #eeee' : 'none',
@@ -36,9 +38,13 @@ export function PageLogin() {
           }}
         >
           <IonButtons slot="start">
-            <IonBackButton color="dark" text=""></IonBackButton>
+            <IonBackButton className="" text=""></IonBackButton>
           </IonButtons>
-          <IonTitle>Login</IonTitle>
+          <IonTitle>
+            <div className="text-foreground">
+              <Trans>Login</Trans>
+            </div>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding content">

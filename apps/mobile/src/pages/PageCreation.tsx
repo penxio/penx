@@ -38,7 +38,7 @@ export const PageCreation = ({
         }}
       >
         <IonToolbar
-          className="creation-toolbar"
+          className="creation-toolbar text-foreground"
           style={{
             '--border-width': 0,
             // borderBottom: scrolled ? '1px solid #eeee' : 'none',
@@ -47,7 +47,7 @@ export const PageCreation = ({
           }}
         >
           <IonButtons slot="start">
-            <IonBackButton color="dark" text=""></IonBackButton>
+            <IonBackButton text=""></IonBackButton>
           </IonButtons>
           {/* <IonTitle>Welcome</IonTitle> */}
           <IonButtons slot="end">
@@ -61,7 +61,7 @@ export const PageCreation = ({
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className="ion-padding">
+      <IonContent fullscreen className="ion-padding content">
         <MobileCreation creationId={creationId} />
       </IonContent>
 

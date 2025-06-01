@@ -4,7 +4,9 @@ import React, { useState } from 'react'
 import { PlusIcon } from 'lucide-react'
 import { isMobileApp } from '@penx/constants'
 import { Area } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useStructs } from '@penx/hooks/useStructs'
 import { StructType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -23,6 +25,7 @@ export function AddCreationButton({ area, widget }: Props) {
   const addCreation = useAddCreation()
   const struct = structs.find((struct) => struct.id === widget.structId)!
   const [showInput, setShowInput] = useState(false)
+  const { close } = useMobileMenu()
 
   if ([StructType.TASK, StructType.NOTE].includes(struct?.type as StructType)) {
     return (
@@ -84,6 +87,12 @@ export function AddCreationButton({ area, widget }: Props) {
       onPointerDown={async (e) => {
         e.stopPropagation()
         e.preventDefault()
+
+        if (isMobileApp) {
+          appEmitter.emit('ROUTE_TO_STRUCT_INFO')
+          close()
+          return
+        }
         const struct = structs.find((struct) => struct.id === widget.structId)!
         addCreation({ type: struct.type })
       }}

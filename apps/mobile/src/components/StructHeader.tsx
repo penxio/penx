@@ -37,7 +37,7 @@ export const StructHeader: React.FC = () => {
       }}
     >
       <IonToolbar
-        className="toolbar flex items-center"
+        className="toolbar text-foreground flex items-center"
         style={{
           // '--background': 'white',
           '--border-width': 0,
@@ -47,7 +47,7 @@ export const StructHeader: React.FC = () => {
         }}
       >
         <IonButtons slot="start">
-          <IonBackButton color="dark" text=""></IonBackButton>
+          <IonBackButton text=""></IonBackButton>
         </IonButtons>
 
         <IonTitle slot="start" className="mx-1">

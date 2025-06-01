@@ -9,6 +9,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { cn } from '@penx/utils'
 
 const platform = Capacitor.getPlatform()
@@ -32,11 +33,11 @@ export const AllStructsHeader: React.FC = () => {
         }}
       >
         <IonButtons slot="start">
-          <IonBackButton color="dark" text=""></IonBackButton>
+          <IonBackButton text=""></IonBackButton>
         </IonButtons>
 
         <IonTitle slot="start" className="mx-1">
-          Structs
+          <Trans>Structs</Trans>
         </IonTitle>
       </IonToolbar>
     </IonHeader>

@@ -42,7 +42,7 @@ export function PageWidget({ widget }: { widget: Widget }) {
           }}
         >
           <IonButtons slot="start">
-            <IonBackButton color="dark" text=""></IonBackButton>
+            <IonBackButton text=""></IonBackButton>
           </IonButtons>
           <IonTitle>
             <Title widget={widget} />

@@ -14,6 +14,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 
 const platform = Capacitor.getPlatform()
@@ -37,9 +38,11 @@ export function PagePlan() {
           }}
         >
           <IonButtons slot="start">
-            <IonBackButton color="dark" text=""></IonBackButton>
+            <IonBackButton text=""></IonBackButton>
           </IonButtons>
-          <IonTitle>Plan</IonTitle>
+          <IonTitle>
+            <Trans>Plan</Trans>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding content">

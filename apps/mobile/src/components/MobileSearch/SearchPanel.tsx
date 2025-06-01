@@ -19,8 +19,11 @@ export function SearchPanel({ setVisible }: Props) {
 
   const filteredItems = useMemo(() => {
     if (!q) return recentCreations
-    const items = recentCreations.filter(({ title = '' }) => {
-      return title?.toLowerCase().includes(q.toLowerCase())
+    const items = recentCreations.filter((c) => {
+      return (
+        c.title?.toLowerCase().includes(q.toLowerCase()) ||
+        c.previewedContent?.toLowerCase().includes(q.toLowerCase())
+      )
     })
 
     return items
@@ -30,7 +33,7 @@ export function SearchPanel({ setVisible }: Props) {
       <div className="px-4">
         <Input
           variant="filled"
-          className="w-full"
+          className="w-full dark:bg-neutral-700"
           placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}

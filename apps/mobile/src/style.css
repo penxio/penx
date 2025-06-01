@@ -53,7 +53,7 @@
 .dark .menu-toolbar,
 .ion-palette-dark .menu-toolbar {
   /* --background: hsl(240 10% 3.9%); */
-  --background: #222;
+  --background: #333;
 }
 
 .scroll-container {

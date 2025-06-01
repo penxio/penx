@@ -16,7 +16,7 @@ export function runWorker() {
     // console.log(`WebWorker Response => ${JSON.stringify(event.data)}`)
     if (event.data.type === WorkerEvents.CHECK_TODAY_JOURNAL) {
       try {
-        store.journals.checkTodayJournal()
+        await store.journals.checkTodayJournal()
       } catch (error) {}
     }
   }

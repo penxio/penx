@@ -13,7 +13,7 @@ import { Editor } from '@tiptap/core'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import cx from 'classnames'
-import { SendHorizonalIcon } from 'lucide-react'
+import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
 import { defaultEditorContent, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -81,7 +81,7 @@ export function JournalQuickInput({
     <div
       id="journal-quick-input"
       className={cn(
-        'bg-background text-foreground shadow-popover penx-editor relative flex max-h-[calc(75dvh)] min-h-[36px] w-full flex-col rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0',
+        'bg-background text-foreground shadow-popover penx-editor relative flex max-h-[calc(75dvh)] min-h-[36px] w-full flex-col rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0 dark:bg-neutral-800',
         className,
       )}
       onClick={(e: any) => {
@@ -107,7 +107,10 @@ export function JournalQuickInput({
       />
 
       <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
-        <StructTypeSelect
+        <div>
+          <SquareCheckIcon className='text-foreground' />
+        </div>
+        {/* <StructTypeSelect
           value={struct}
           setFocused={() => {
             editor.chain().focus().run()
@@ -116,7 +119,7 @@ export function JournalQuickInput({
             setStruct(s)
             editor.chain().focus().run()
           }}
-        />
+        /> */}
 
         <JournalInputToolbar editor={editor} />
       </div>

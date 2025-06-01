@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { CheckIcon } from 'lucide-react'
+import { appEmitter } from '@penx/emitter'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 import { Drawer } from '../Drawer'
@@ -26,8 +27,16 @@ export function MoreStructDrawer({}: Props) {
           <span>
             <Trans>My structs</Trans>
           </span>
-          <Button variant="default" size="xs" className="rounded-full">
-            Install more
+          <Button
+            variant="default"
+            size="xs"
+            className="rounded-full"
+            onClick={() => {
+              appEmitter.emit('ROUTE_TO_STRUCT_INFO')
+              setIsOpen(false)
+            }}
+          >
+            <Trans>Create</Trans>
           </Button>
         </div>
 
