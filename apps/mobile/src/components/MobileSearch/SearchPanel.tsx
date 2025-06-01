@@ -48,7 +48,7 @@ export function SearchPanel({ setVisible }: Props) {
               return (
                 <div
                   key={item.id}
-                  className=""
+                  className="line-clamp-1"
                   onClick={() => {
                     close()
                     setSearch('')
@@ -57,7 +57,7 @@ export function SearchPanel({ setVisible }: Props) {
                     setVisible(false)
                   }}
                 >
-                  {item.title || 'Untitled'}
+                  {item.title || item.previewedContent || 'Untitled'}
                 </div>
               )
             })}

@@ -11,6 +11,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { UserIcon } from 'lucide-react'
 import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
 import { AreasPopover } from '@penx/components/AreasPopover'
 import { LangSwitcher } from '@penx/components/LangSwitcher'
@@ -60,15 +61,17 @@ const Menu: React.FC = () => {
           <div className=" flex items-center justify-between gap-2">
             <AreasPopover />
             {!session && (
-              <Button
-                size="sm"
+              <Avatar
+                className="h-8 w-8 rounded-lg"
                 onClick={() => {
-                  appEmitter.emit('ROUTE_TO_LOGIN')
+                  appEmitter.emit('ROUTE_TO_PROFILE')
                   menu.current?.close()
                 }}
               >
-                Log in
-              </Button>
+                <AvatarFallback className=" bg-foreground/10 rounded-lg">
+                  <UserIcon size={20} />
+                </AvatarFallback>
+              </Avatar>
             )}
             {session && (
               <Avatar
