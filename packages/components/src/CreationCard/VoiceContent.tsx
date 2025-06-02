@@ -25,7 +25,8 @@ export const VoiceContent = ({ creation }: Props) => {
   const { isLoading, data: voice } = useQuery({
     queryKey: ['voice', creation.id],
     queryFn: async () => {
-      return await localDB.voice.get(creation.data['voiceId'])
+      const result = await localDB.voice.get(creation.data['voiceId'])
+      return result ? result : null
     },
   })
 

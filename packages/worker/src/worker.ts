@@ -10,6 +10,8 @@ self.addEventListener('message', async (event) => {
     // pollingBackupToGoogle()
     // pollingCloudSync()
     pollingSyncToRemote()
-    pollingCheckTodayJournal()
+    setTimeout(() => {
+      pollingCheckTodayJournal()
+    }, 10 * 1000)
   }
 })

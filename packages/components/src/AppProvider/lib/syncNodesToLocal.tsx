@@ -13,7 +13,6 @@ import {
 } from '@electric-sql/client'
 import { SHAPE_URL } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
-import { getJournal, updateJournal } from '@penx/hooks/useJournal'
 import { localDB } from '@penx/local-db'
 import {
   ICreationNode,
@@ -67,7 +66,16 @@ export async function syncNodesToLocal(siteId: string) {
       const rows = await shape.rows
       console.log('=======rows:', rows)
 
-      await localDB.node.bulkPut(rows as any)
+      await localDB.node.bulkPut(
+        rows.map(
+          (row) =>
+            ({
+              ...row,
+              createdAt: new Date(Number(row.createdAt)),
+              updatedAt: new Date(Number(row.updatedAt)),
+            }) as any,
+        ),
+      )
     }
   }
 
@@ -115,7 +123,7 @@ async function sync(
   )
 
   const changesLatestUpdated = Math.max(
-    ...changes.map((c: any) => new Date(c.value.updatedAt).getTime()),
+    ...changes.map((c: any) => Number(c.value.updatedAt)),
   )
 
   console.log(
@@ -125,7 +133,8 @@ async function sync(
     localLatestUpdated >= changesLatestUpdated,
     localLatestUpdated - changesLatestUpdated,
   )
-  // if (localLatestUpdated >= changesLatestUpdated) return
+
+  if (localLatestUpdated >= changesLatestUpdated) return
 
   await localDB.transaction('rw', localDB.node, async () => {
     for (const message of changes) {
@@ -133,7 +142,13 @@ async function sync(
       const operation = message.headers.operation
       if (operation === 'insert') {
         // console.log('insert:', message)
-        await localDB.node.put(value)
+
+        await localDB.node.put({
+          ...value,
+          createdAt: new Date(Number(value.createdAt)),
+          updatedAt: new Date(Number(value.updatedAt)),
+        })
+
         const newNode = await localDB.node.get(value.id)
         newNode && changeNodes.push(newNode)
         updated = true // TODO:
@@ -154,7 +169,10 @@ async function sync(
           node && changeNodes.push(node)
         }
 
-        await localDB.node.update(value.id, value)
+        await localDB.node.update(value.id, {
+          ...value,
+          updatedAt: new Date(Number(value.updatedAt)),
+        })
       }
       if (operation === 'delete') {
         const node = nodes.find((c) => c.id === value.id)
@@ -184,45 +202,53 @@ async function sync(
       (n) => isCreationNode(n) && n.areaId === area.id,
     )
 
-    console.log('=====creations:', creations, store.creations.get())
+    // console.log('=====creations:', creations, store.creations.get())
 
     const isCreationsEqual = isEqual(creations, store.creations.get())
-    console.log('>===============is creation equal:', isCreationsEqual)
 
     if (!isCreationsEqual) {
       await store.creations.refetchCreations()
     }
 
-    // const areas = nodes.filter((n) => isAreaNode(n))
+    const areas = nodes.filter((n) => isAreaNode(n))
 
-    // if (!isEqual(areas, store.areas.get())) {
-    //   await store.areas.refetchAreas()
-    // }
+    if (!isEqual(areas, store.areas.get())) {
+      await store.areas.refetchAreas()
+    }
 
-    // const structs = nodes
-    //   .filter((n) => n.areaId === area.id)
-    //   .filter((n) => isStructNode(n))
+    const structs = nodes
+      .filter((n) => n.areaId === area.id)
+      .filter((n) => isStructNode(n))
 
-    // if (!isEqual(structs, store.structs.get())) {
-    //   await store.structs.refetchStructs()
-    // }
+    if (!isEqual(structs, store.structs.get())) {
+      await store.structs.refetchStructs()
+    }
 
-    // const tags = nodes.filter((n) => isTagNode(n))
-    // if (!isEqual(tags, store.tags.get())) {
-    //   await store.tags.refetchTags()
-    // }
+    const tags = nodes
+      .filter((n) => n.areaId === area.id)
+      .filter((n) => isTagNode(n))
+    if (!isEqual(tags, store.tags.get())) {
+      await store.tags.refetchTags()
+    }
 
-    // const creationTags = nodes.filter((n) => isCreationTagNode(n))
+    const creationTags = nodes
+      .filter((n) => n.areaId === area.id)
+      .filter((n) => isCreationTagNode(n))
 
-    // if (!isEqual(creationTags, store.creationTags.get())) {
-    //   await store.creationTags.refetchCreationTags()
-    // }
+    if (!isEqual(creationTags, store.creationTags.get())) {
+      await store.creationTags.refetchCreationTags()
+    }
 
-    const journal = getJournal()
+    const journal = store.journals.getActiveJournal()
+    console.log('======journal:', journal)
+
     if (journal) {
       const localJournal = nodes.find((c) => c.id === journal.id)!
+      console.log('=====localJournal:', localJournal)
+
       if (!fastCompare(journal.props.children, localJournal.props.children)) {
-        updateJournal(localJournal as IJournalNode)
+        // updateJournal(localJournal as IJournalNode)
+        store.journals.refetchJournals()
       }
     }
   }

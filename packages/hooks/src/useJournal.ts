@@ -18,15 +18,13 @@ export function useJournal() {
     return n.props.date === journalPanel?.date
   })
 
+  if (journal) return { journal }
+
   // console.log('==========journal>>>>>>>>>>>>>:', journal)
 
-  return { journal: journal! }
-}
-
-export function getJournal() {
-  return queryClient.getQueryData(getQueryKey()) as IJournalNode
-}
-
-export function updateJournal(journal: IJournalNode) {
-  queryClient.setQueryData(getQueryKey(), journal)
+  return {
+    journal: journals.find((n) => {
+      return n.props.date === format(new Date(), 'yyyy-MM-dd')
+    })!,
+  }
 }

@@ -39,6 +39,18 @@ async function sync() {
       data: change.data,
     }
 
+    if (change.data?.createdAt) {
+      data.data.createdAt = new Date(change.data?.createdAt)
+        .getTime()
+        .toString()
+    }
+
+    if (change.data?.updatedAt) {
+      data.data.updatedAt = new Date(change.data?.updatedAt)
+        .getTime()
+        .toString()
+    }
+
     try {
       let headers: Record<string, string> = {}
 
@@ -64,3 +76,37 @@ async function sync() {
     }
   }
 }
+
+const journals = [
+  {
+    date: '2023-01-01',
+    children: [1, 2],
+  },
+  {
+    date: '2023-01-02',
+    children: [2],
+  },
+  {
+    date: '2023-01-01',
+    children: [3, 4],
+  },
+  {
+    date: '2023-01-03',
+    children: [5, 8],
+  },
+]
+
+const formattedJournals = [
+  {
+    date: '2023-01-01',
+    children: [1, 2, 3, 4],
+  },
+  {
+    date: '2023-01-02',
+    children: [2],
+  },
+  {
+    date: '2023-01-03',
+    children: [5, 8],
+  },
+]

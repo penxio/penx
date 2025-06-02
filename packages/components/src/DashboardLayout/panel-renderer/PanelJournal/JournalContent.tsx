@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react/macro'
+import { create } from 'lodash'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { useActiveStruct } from '@penx/hooks/useActiveStruct'
@@ -20,7 +21,7 @@ export function JournalContent({}: Props) {
   const { isCard, isList } = useJournalLayout()
   const creationMaps = mappedByKey(creations, 'id')
 
-  console.log('====journal:', journal)
+  // console.log('====journal:', journal)
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
@@ -63,6 +64,7 @@ export function JournalContent({}: Props) {
             const creation = creationMaps[id]
             if (!creation) return null
             if (struct && creation.structId !== struct.id) return null
+
             return <CreationCard key={id} creation={creation}></CreationCard>
           })}
         </div>

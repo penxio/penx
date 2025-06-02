@@ -32,7 +32,7 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
-    console.log('=======app=session:', session)
+    // console.log('=======app=session:', session)
 
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
@@ -40,7 +40,7 @@ export class AppService {
     try {
       const site = await this.getInitialSite(session)
 
-      console.log('============site:', site)
+      // console.log('============site:', site)
 
       await this.initStore(site)
       this.inited = true
@@ -78,8 +78,6 @@ export class AppService {
         return site
       }
 
-      console.log('>>>>>>>>>>_------------')
-
       const remoteSite = await syncNodesToLocal(session.siteId)
       console.log('=======remoteSite:', remoteSite)
 
@@ -96,7 +94,13 @@ export class AppService {
 
     const { existed, siteId } = await ky
       .post('/api/app/sync-initial-nodes', {
-        json: { nodes },
+        json: {
+          nodes: nodes.map((n) => ({
+            ...n,
+            createdAt: new Date(n.createdAt).getTime().toString(),
+            updatedAt: new Date(n.updatedAt).getTime().toString(),
+          })),
+        },
       })
       .json<{ ok: boolean; existed: boolean; siteId: string }>()
 
@@ -133,9 +137,19 @@ export class AppService {
 
     const areaNodes = nodes.filter((n) => n.areaId === area.id)
     const structs = areaNodes.filter((n) => isStructNode(n))
-    const journals = areaNodes.filter((n) => isJournalNode(n))
+    let journals = areaNodes.filter((n) => isJournalNode(n))
+    const mergedJournals = mergeJournals(journals)
 
-    console.log('=====journals:', journals)
+    if (journals.length !== mergedJournals.length) {
+      return await localDB.transaction('rw', localDB.node, async () => {
+        await localDB.node.bulkDelete(journals.map((n) => n.id))
+        await localDB.node.bulkPut(mergedJournals)
+      })
+    }
+
+    journals = mergedJournals
+
+    // console.log('=====journals:', journals)
 
     const tags = areaNodes.filter((n) => isTagNode(n))
     const creationTags = areaNodes.filter((n) => isCreationTagNode(n))
@@ -160,7 +174,7 @@ export class AppService {
     const key = `${PANELS}_${area.id}`
     const panels: Panel[] = (await get(key)) || []
 
-    console.log('====panels:', panels)
+    // console.log('====panels:', panels)
 
     const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)
 
@@ -202,4 +216,20 @@ export class AppService {
     }
     return panels
   }
+}
+
+function mergeJournals(journals: IJournalNode[]) {
+  const accumulator = journals.reduce(
+    (acc, item) => {
+      if (!acc[item.props.date]) {
+        acc[item.props.date] = item
+      } else {
+        acc[item.props.date].props.children.push(...item.props.children)
+      }
+      return acc
+    },
+    {} as Record<string, IJournalNode>,
+  )
+
+  return Object.values(accumulator)
 }

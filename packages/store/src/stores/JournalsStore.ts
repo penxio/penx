@@ -27,13 +27,15 @@ export class JournalsStore {
     )
   }
 
-  // getActiveJournal() {
-  //   const panels = this.store.panels.get()
-  //   const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)!
+  getActiveJournal() {
+    const panels = this.store.panels.get()
+    const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)!
 
-  //   const journals = this.get()
-  //   const journal = journals.find((j) => j.id === journalPanel.id)!
-  // }
+    const journals = this.get()
+    const journal = journals.find((j) => j.props.date === journalPanel.date)!
+
+    return journal!
+  }
 
   async persistJournal(id: string, input: Partial<IJournalNode['props']>) {
     await localDB.updateJournalProps(id, input)
@@ -60,12 +62,14 @@ export class JournalsStore {
   }
 
   checkTodayJournal() {
-    const todayJournal = this.getTodayJournal()
+    try {
+      const todayJournal = this.getTodayJournal()
 
-    if (!todayJournal) {
-      this.goToDay(new Date())
-      this.store.panels.updateJournalPanel(format(new Date(), 'yyyy-MM-dd'))
-    }
+      if (!todayJournal) {
+        this.goToDay(new Date())
+        this.store.panels.updateJournalPanel(format(new Date(), 'yyyy-MM-dd'))
+      }
+    } catch (error) {}
   }
 
   async addCreationToJournal(creationId: string, date: string) {
@@ -85,9 +89,11 @@ export class JournalsStore {
 
     this.set(newJournals)
 
-    await localDB.updateJournalProps(journal.id, {
-      children: [creationId, ...journal.props.children],
-    })
+    setTimeout(async () => {
+      await localDB.updateJournalProps(journal.id, {
+        children: [creationId, ...journal.props.children],
+      })
+    }, 10)
   }
 
   private async getOrCreateJournal(date: Date | string) {
