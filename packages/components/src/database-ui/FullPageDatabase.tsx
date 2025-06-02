@@ -6,7 +6,6 @@ import {
   WORKBENCH_NAV_HEIGHT,
 } from '@penx/constants'
 import { Struct } from '@penx/domain'
-import { Separator } from '@penx/uikit/separator'
 import { DatabaseProvider } from './DatabaseProvider'
 import { TableInfo } from './TableInfo'
 import { AddViewBtn } from './ViewNav/AddViewBtn'
@@ -16,6 +15,7 @@ import { ViewToolBar } from './ViewToolBar/ViewToolBar'
 
 interface Props {
   struct: Struct
+  theme?: string
 }
 
 export const FullPageDatabase = (props: Props) => {

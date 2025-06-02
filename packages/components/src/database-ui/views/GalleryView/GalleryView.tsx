@@ -34,7 +34,7 @@ function GalleryItem({ record }: GalleryItemProps) {
   const columnMaps = mappedByKey(columns, 'id')
 
   return (
-    <div className="border-foreground/10 relative mb-5 flex w-full flex-col gap-1 rounded-md border p-4">
+    <div className="border-foreground/10 text-foreground relative mb-5 flex w-full flex-col gap-1 rounded-md border p-4">
       {Object.entries<any>(record.props.cells).map(([key, value]) => {
         const column = columnMaps[key]
         if (!column) return null

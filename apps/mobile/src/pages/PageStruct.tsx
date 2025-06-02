@@ -24,7 +24,6 @@ export const PageStruct: React.FC = ({ nav }: any) => {
 }
 
 function Content() {
-  const { panels } = usePanels()
   const { creations } = useCreations()
   const { structId } = useStructId()
 

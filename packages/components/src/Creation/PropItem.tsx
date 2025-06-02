@@ -61,7 +61,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
         {[ColumnType.DATE].includes(column.columnType) && (
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="ghost" className={cn('flex items-center gap-1 px-3')}>
+              <Button variant="ghost" className={cn('flex items-center gap-1 px-3 text-foreground')}>
                 <CalendarIcon size={16} />
                 {value ? (
                   format(new Date(value), 'PPP')

@@ -83,12 +83,6 @@ class LocalDB extends Dexie {
   updateNodeProps = async <T extends any>(id: string, input: Partial<T>) => {
     const node = await this.getNode(id)
     const updatedAt = new Date()
-    console.log(
-      '========changes-------:updatedAt:',
-      updatedAt,
-      updatedAt.getTime(),
-    )
-
     await this.node.update(id, {
       updatedAt,
       props: {

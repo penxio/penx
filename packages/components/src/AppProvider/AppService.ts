@@ -159,7 +159,9 @@ export class AppService {
     const key = `${PANELS}_${area.id}`
     const panels: Panel[] = (await get(key)) || []
 
-    if (!panels.length) {
+    const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)
+
+    if (!journalPanel) {
       const date = new Date()
       const dateStr = format(date, 'yyyy-MM-dd')
 
@@ -184,15 +186,16 @@ export class AppService {
         await localDB.addJournal(journal)
       }
 
-      const defaultPanels = [
-        {
-          id: uniqueId(),
-          type: PanelType.JOURNAL,
-          date: dateStr,
-        } as Panel,
-      ]
-      set(key, defaultPanels)
-      return defaultPanels
+      const journalPanel: Panel = {
+        id: uniqueId(),
+        type: PanelType.JOURNAL,
+        date: dateStr,
+      }
+
+      panels.push(journalPanel)
+
+      set(key, panels)
+      return panels
     }
     return panels
   }

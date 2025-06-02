@@ -33,6 +33,8 @@ export const ViewItem = ({ view, index }: Props) => {
             active && 'text-foreground bg-foreground/5',
           )}
           onClick={async () => {
+            console.log('======view.id:', view.id)
+
             setActiveViewId(view.id)
           }}
         >

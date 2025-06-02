@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import { IAreaNode, IJournalNode, NodeType } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
 import { useJournals } from './useJournals'
@@ -8,9 +9,12 @@ function getQueryKey() {
 }
 
 export function useJournal() {
-  const { journalPanel } = usePanels()
+  const { journalPanel, panels } = usePanels()
   const { journals } = useJournals()
-  const journal = journals.find((n) => n.props.date === journalPanel.date)
+  const journal = journals.find(
+    (n) =>
+      n.props.date === journalPanel?.date || format(new Date(), 'yyyy-MM-dd'),
+  )
 
   return { journal: journal! }
 }

@@ -50,7 +50,7 @@ export const StructHeader: React.FC = () => {
           <IonBackButton text=""></IonBackButton>
         </IonButtons>
 
-        <IonTitle slot="start" className="mx-1">
+        <IonTitle slot="start" className="mx-1 text-foreground">
           {title}
         </IonTitle>
       </IonToolbar>

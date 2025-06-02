@@ -2,12 +2,13 @@
 
 import React, { useState } from 'react'
 import { PlusIcon } from 'lucide-react'
-import { isMobileApp } from '@penx/constants'
+import { isMobileApp, WidgetType } from '@penx/constants'
 import { Area } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useStructs } from '@penx/hooks/useStructs'
+import { store } from '@penx/store'
 import { StructType, Widget } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -26,6 +27,8 @@ export function AddCreationButton({ area, widget }: Props) {
   const struct = structs.find((struct) => struct.id === widget.structId)!
   const [showInput, setShowInput] = useState(false)
   const { close } = useMobileMenu()
+
+  if (widget.type === WidgetType.ALL_STRUCTS && !isMobileApp) return null
 
   if ([StructType.TASK, StructType.NOTE].includes(struct?.type as StructType)) {
     return (
@@ -89,7 +92,8 @@ export function AddCreationButton({ area, widget }: Props) {
         e.preventDefault()
 
         if (isMobileApp) {
-          appEmitter.emit('ROUTE_TO_STRUCT_INFO')
+          store.panels.openAllStructs()
+          appEmitter.emit('ROUTE_TO_ALL_STRUCTS')
           close()
           return
         }

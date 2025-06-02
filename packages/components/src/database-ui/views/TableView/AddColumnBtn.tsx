@@ -114,7 +114,7 @@ export const AddColumnBtn: FC<Props> = ({}) => {
             <Plus size={20} />
           </div>
         </PopoverTrigger>
-        <PopoverContent isPortal className="p-0">
+        <PopoverContent isPortal className="p-0" align="end" alignOffset={10}>
           <Content setIsOpen={setIsOpen} />
         </PopoverContent>
       </Popover>

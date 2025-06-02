@@ -10,7 +10,6 @@ import { useQuery } from '@tanstack/react-query'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { usePanels } from '@penx/hooks/usePanels'
 import { PanelType } from '@penx/types'
-import { cn } from '@penx/utils'
 
 const platform = Capacitor.getPlatform()
 

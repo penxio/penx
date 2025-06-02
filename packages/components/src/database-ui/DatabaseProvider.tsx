@@ -43,6 +43,7 @@ type UpdateColumnInput = {
 }
 
 export interface IDatabaseContext {
+  theme?: string
   struct: Struct
   records: Creation[]
   columns: IColumn[]
@@ -104,8 +105,10 @@ export const DatabaseContext = createContext({} as IDatabaseContext)
 
 interface DatabaseProviderProps {
   struct: Struct
+  theme?: string
 }
 export function DatabaseProvider({
+  theme,
   struct,
   children,
 }: PropsWithChildren<DatabaseProviderProps>) {
@@ -477,6 +480,7 @@ export function DatabaseProvider({
   return (
     <DatabaseContext.Provider
       value={{
+        theme,
         struct,
         // filterResult: generateFilter(databaseId),
         // updateRowsIndexes,

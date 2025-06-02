@@ -90,212 +90,229 @@ export function useTableView() {
 
   const gridRef = useRef<DataEditorRef>(null)
 
-  const getContent = useCallback(
-    (cell: Item): GridCell => {
-      const [col, row] = cell
+  const getContent = (cell: Item): GridCell => {
+    const [col, row] = cell
 
-      // For debug
-      try {
-        columnsMap[currentView.viewColumns[col].columnId]
-      } catch (error) {
-        console.log('======struct:', struct, currentView.viewColumns, col)
-      }
+    // For debug
+    try {
+      columnsMap[currentView.viewColumns[col].columnId]
+    } catch (error) {
+      console.log(
+        '======struct:',
+        struct,
+        currentView.viewColumns,
+        col,
+        'cols:',
+        cols,
+      )
+    }
 
-      const column = columnsMap[currentView.viewColumns[col].columnId]
-
-      const record = records[row]
-      const cells = record.props.cells
-
-      function getCellData() {
-        if (!record) return ''
-        if (column.isPrimary) return record.title
-        let cellData = cells?.[column.id]
-
-        if (!cellData) return ''
-
-        if (column.columnType === ColumnType.NUMBER) {
-          cellData = cellData?.toString()
-        }
-
-        return cellData
-      }
-
-      function getKind(): any {
-        const maps: Record<any, GridCellKind> = {
-          [ColumnType.NUMBER]: GridCellKind.Number,
-          [ColumnType.URL]: GridCellKind.Uri,
-          [ColumnType.MARKDOWN]: GridCellKind.Markdown,
-        }
-
-        return maps[column.columnType!] || GridCellKind.Text
-      }
-
-      const cellData = getCellData()
-
-      if (cellData?.refType) {
-        return {
-          kind: GridCellKind.Text,
-          readonly: false,
-          allowOverlay: true,
-          copyData: '',
-          data: '',
-          displayData: '',
-        }
-      }
-
-      if (column.columnType === ColumnType.PRIMARY) {
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          copyData: cellData,
-
-          data: {
-            kind: 'primary-cell',
-            data: cellData,
-            record: record,
-          },
-        } as PrimaryCell
-      }
-
-      if (column.columnType === ColumnType.DATE) {
-        // console.log('======cellData:', cellData, 'column:', column)
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          copyData: cellData
-            ? format(new Date(cellData), 'yyyy-MM-dd HH:mm:ss')
-            : '',
-          themeOverride: {
-            //
-          },
-          data: {
-            kind: 'date-cell',
-            data: cellData,
-          },
-        } as DateCell
-      }
-
-      if (column.columnType === ColumnType.RATE) {
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          copyData: cellData,
-          data: {
-            kind: 'rate-cell',
-            data: cellData,
-          },
-        } as RateCell
-      }
-
-      if (column.columnType === ColumnType.PASSWORD) {
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          copyData: cellData,
-          data: {
-            kind: 'password-cell',
-            data: cellData,
-          },
-        } as PasswordCell
-      }
-
-      if (column.columnType === ColumnType.FILE) {
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          readonly: true,
-          copyData: '',
-          data: {
-            kind: 'file-cell',
-            url: cellData,
-            name: '',
-          },
-        } as FileCell
-      }
-
-      if (column.columnType === ColumnType.IMAGE) {
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          readonly: true,
-          copyData: '',
-          data: {
-            kind: 'image-cell',
-            data: cellData,
-          },
-        } as ImageCell
-      }
-
-      if (
-        [ColumnType.SINGLE_SELECT, ColumnType.MULTIPLE_SELECT].includes(
-          column.columnType as any,
-        )
-      ) {
-        // console.log('=====cellData:', cellData)
-
-        const ids: string[] = Array.isArray(cellData) ? cellData : []
-        // console.log('====>>>>>>:ids:', ids, 'cellData:', cellData)
-
-        const options = column.options
-
-        const cellOptions = ids
-          .map((id) => options.find((o) => o.id === id)!)
-          .filter((o) => !!o)
-        // console.log('===cellOptions:', cellOptions)
-        // console.log('=====options:', options, 'cellOptions:', cellOptions)
-
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: true,
-          copyData: cellOptions.map((o) => o.name).join(','),
-          data: {
-            kind:
-              ColumnType.SINGLE_SELECT === column.columnType
-                ? 'single-select-cell'
-                : 'multiple-select-cell',
-            column: column,
-            options: cellOptions,
-            data: cellOptions.map((o) => o.id),
-          },
-        } as SingleSelectCell
-
-        // } as SingleSelectCell | MultipleSelectCell
-      }
-
-      if (
-        [ColumnType.CREATED_AT, ColumnType.UPDATED_AT].includes(
-          column.columnType as any,
-        )
-      ) {
-        const isCreatedAt = ColumnType.CREATED_AT === column.columnType
-
-        const date = isCreatedAt
-          ? new Date(record.createdAt)
-          : new Date(record.updatedAt)
-        return {
-          kind: GridCellKind.Custom,
-          allowOverlay: false,
-          readonly: true,
-          copyData: format(date, 'yyyy-MM-dd HH:mm:ss'),
-          data: {
-            kind: 'system-date-cell',
-            data: date,
-          },
-        } as SystemDateCell
-      }
-
+    // Hack fallback
+    if (cols.length > struct.columns.length) {
       return {
-        kind: getKind(),
+        kind: GridCellKind.Text,
         // allowOverlay: ColumnType.NODE_ID !== column.columnType,
         // readonly: ColumnType.NODE_ID === column.columnType,
         allowOverlay: true,
         readonly: false,
-        data: cellData,
-        displayData: cellData,
+        data: '',
+        displayData: '',
       }
-    },
-    [columnsMap, currentView, struct],
-  )
+    }
+
+    const column = columnsMap[currentView.viewColumns[col].columnId]
+
+    const record = records[row]
+    const cells = record.props.cells
+
+    function getCellData() {
+      if (!record) return ''
+      if (column.isPrimary) return record.title
+      let cellData = cells?.[column.id]
+
+      if (!cellData) return ''
+
+      if (column.columnType === ColumnType.NUMBER) {
+        cellData = cellData?.toString()
+      }
+
+      return cellData
+    }
+
+    function getKind(): any {
+      const maps: Record<any, GridCellKind> = {
+        [ColumnType.NUMBER]: GridCellKind.Number,
+        [ColumnType.URL]: GridCellKind.Uri,
+        [ColumnType.MARKDOWN]: GridCellKind.Markdown,
+      }
+
+      return maps[column.columnType!] || GridCellKind.Text
+    }
+
+    const cellData = getCellData()
+
+    if (cellData?.refType) {
+      return {
+        kind: GridCellKind.Text,
+        readonly: false,
+        allowOverlay: true,
+        copyData: '',
+        data: '',
+        displayData: '',
+      }
+    }
+
+    if (column.columnType === ColumnType.PRIMARY) {
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        copyData: cellData,
+
+        data: {
+          kind: 'primary-cell',
+          data: cellData,
+          record: record,
+        },
+      } as PrimaryCell
+    }
+
+    if (column.columnType === ColumnType.DATE) {
+      // console.log('======cellData:', cellData, 'column:', column)
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        copyData: cellData
+          ? format(new Date(cellData), 'yyyy-MM-dd HH:mm:ss')
+          : '',
+        themeOverride: {
+          //
+        },
+        data: {
+          kind: 'date-cell',
+          data: cellData,
+        },
+      } as DateCell
+    }
+
+    if (column.columnType === ColumnType.RATE) {
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        copyData: cellData,
+        data: {
+          kind: 'rate-cell',
+          data: cellData,
+        },
+      } as RateCell
+    }
+
+    if (column.columnType === ColumnType.PASSWORD) {
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        copyData: cellData,
+        data: {
+          kind: 'password-cell',
+          data: cellData,
+        },
+      } as PasswordCell
+    }
+
+    if (column.columnType === ColumnType.FILE) {
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        readonly: true,
+        copyData: '',
+        data: {
+          kind: 'file-cell',
+          url: cellData,
+          name: '',
+        },
+      } as FileCell
+    }
+
+    if (column.columnType === ColumnType.IMAGE) {
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        readonly: true,
+        copyData: '',
+        data: {
+          kind: 'image-cell',
+          data: cellData,
+        },
+      } as ImageCell
+    }
+
+    if (
+      [ColumnType.SINGLE_SELECT, ColumnType.MULTIPLE_SELECT].includes(
+        column.columnType as any,
+      )
+    ) {
+      // console.log('=====cellData:', cellData)
+
+      const ids: string[] = Array.isArray(cellData) ? cellData : []
+      // console.log('====>>>>>>:ids:', ids, 'cellData:', cellData)
+
+      const options = column.options
+
+      const cellOptions = ids
+        .map((id) => options.find((o) => o.id === id)!)
+        .filter((o) => !!o)
+      // console.log('===cellOptions:', cellOptions)
+      // console.log('=====options:', options, 'cellOptions:', cellOptions)
+
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: true,
+        copyData: cellOptions.map((o) => o.name).join(','),
+        data: {
+          kind:
+            ColumnType.SINGLE_SELECT === column.columnType
+              ? 'single-select-cell'
+              : 'multiple-select-cell',
+          column: column,
+          options: cellOptions,
+          data: cellOptions.map((o) => o.id),
+        },
+      } as SingleSelectCell
+
+      // } as SingleSelectCell | MultipleSelectCell
+    }
+
+    if (
+      [ColumnType.CREATED_AT, ColumnType.UPDATED_AT].includes(
+        column.columnType as any,
+      )
+    ) {
+      const isCreatedAt = ColumnType.CREATED_AT === column.columnType
+
+      const date = isCreatedAt
+        ? new Date(record.createdAt)
+        : new Date(record.updatedAt)
+      return {
+        kind: GridCellKind.Custom,
+        allowOverlay: false,
+        readonly: true,
+        copyData: format(date, 'yyyy-MM-dd HH:mm:ss'),
+        data: {
+          kind: 'system-date-cell',
+          data: date,
+        },
+      } as SystemDateCell
+    }
+
+    return {
+      kind: getKind(),
+      // allowOverlay: ColumnType.NODE_ID !== column.columnType,
+      // readonly: ColumnType.NODE_ID === column.columnType,
+      allowOverlay: true,
+      readonly: false,
+      data: cellData,
+      displayData: cellData,
+    }
+  }
 
   const setCellValue = async (
     [colIndex, rowIndex]: Item,
@@ -416,6 +433,7 @@ export function useTableView() {
 
   useEffect(() => {
     const newCols = getCols(struct)
+
     // TODO: has bug when resize columns;
     if (!isEqual(cols, newCols)) {
       setCols(newCols)

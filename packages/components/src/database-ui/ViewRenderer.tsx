@@ -11,6 +11,8 @@ interface Props {}
 export const ViewRenderer = ({}: Props) => {
   const { currentView, struct } = useDatabaseContext()
 
+  console.log('======currentView:', currentView)
+
   if (currentView?.viewType === ViewType.GALLERY) {
     if (struct.type === StructType.NOTE) {
       return <NoteGalleryView struct={struct} />

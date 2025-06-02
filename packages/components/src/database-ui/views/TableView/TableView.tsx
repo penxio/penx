@@ -28,10 +28,10 @@ interface Props {
 }
 
 export const TableView = ({ height, width }: Props) => {
-  const { struct } = useDatabaseContext()
+  const { struct, theme } = useDatabaseContext()
   const { creationsByStruct } = useCreations()
   const records = creationsByStruct(struct.id)
-  const { theme, resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
 
   const {
     gridRef,
@@ -67,7 +67,7 @@ export const TableView = ({ height, width }: Props) => {
     [setColumnMenu],
   )
 
-  const isDark = resolvedTheme === 'dark'
+  const isDark = (theme || resolvedTheme) === 'dark'
   const rowHeight = 36
 
   const onItemHovered = (data: GridMouseEventArgs) => {

@@ -1,6 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react/macro'
+import { isMobileApp } from '@penx/constants'
 import {
   Dialog,
   DialogContent,
@@ -10,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/dialog'
+import { cn } from '@penx/utils'
 import { CreateStructForm } from './CreateStructForm'
 import { EditStructForm } from './EditStructForm'
 import { useStructDialog } from './useStructDialog'
@@ -20,7 +22,10 @@ export function StructDialog() {
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
       <DialogContent
-        className="text-foreground sm:max-w-[520px]"
+        className={cn(
+          'text-foreground sm:max-w-[520px]',
+          isMobileApp && '-mt-32',
+        )}
         onInteractOutside={(e) => {
           e.preventDefault()
         }}

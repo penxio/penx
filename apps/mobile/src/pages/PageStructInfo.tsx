@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoginContent } from '@/components/Login/LoginContent'
+import { useTheme } from '@/components/theme-provider'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -13,10 +13,13 @@ import {
   IonToolbar,
 } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
+import { FullPageDatabase } from '@penx/components/database-ui'
+import { Struct } from '@penx/domain'
+import { useStructs } from '@penx/hooks/useStructs'
 
 const platform = Capacitor.getPlatform()
 
-export function PageStructInfo() {
+export function PageStructInfo({ struct }: { struct: Struct }) {
   return (
     <>
       <IonHeader
@@ -36,14 +39,23 @@ export function PageStructInfo() {
           </IonButtons>
           <IonTitle>
             <div className="text-foreground">
-              <Trans>Create struct</Trans>
+              <Trans>{struct.name}</Trans>
             </div>
           </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen class="ion-padding content">
-        <LoginContent />
+      <IonContent fullscreen class="content text-foreground">
+        <div id="portal" className="fixed left-0 top-0 z-[1000]" />
+        <Content structId={struct.id} />
       </IonContent>
     </>
   )
+}
+
+function Content({ structId }: { structId: string }) {
+  const { theme, isDark } = useTheme()
+  const { structs } = useStructs()
+  const struct = structs.find((s) => s.id === structId)!
+
+  return <FullPageDatabase struct={struct} theme={isDark ? 'dark' : 'light'} />
 }

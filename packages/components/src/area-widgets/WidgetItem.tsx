@@ -106,10 +106,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             }
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
-              if (isMobileApp) {
-                store.area.toggleCollapsed(widget.id)
-                return
-              }
               store.panels.openAllStructs()
               appEmitter.emit('ROUTE_TO_ALL_STRUCTS')
               close()
