@@ -1,5 +1,6 @@
 import React from 'react'
 import { Capacitor } from '@capacitor/core'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
 import { createGesture, IonButton, IonFab, IonText } from '@ionic/react'
 import { PlusIcon } from 'lucide-react'
 import { motion } from 'motion/react'
@@ -7,8 +8,6 @@ import { useLongPress } from 'use-long-press'
 import { cn } from '@penx/utils'
 import { useMoreStructDrawer } from './MoreStructDrawer/useMoreStructDrawer'
 import { VoiceRecorderButton } from './VoiceRecorderButton'
-
-const platform = Capacitor.getPlatform()
 
 interface Props {
   open: boolean
@@ -18,8 +17,9 @@ interface Props {
 export const Footer = ({ open, onAdd }: Props) => {
   const { setIsOpen } = useMoreStructDrawer()
   // if (open) return null
-  const handlers = useLongPress(() => {
+  const handlers = useLongPress(async () => {
     setIsOpen(true)
+    await Haptics.impact({ style: ImpactStyle.Medium })
   })
 
   return (

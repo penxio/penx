@@ -59,6 +59,10 @@ import { MoreStructDrawer } from './components/MoreStructDrawer/MoreStructDrawer
 import { NavProvider } from './components/NavContext'
 import { ThemeProvider } from './components/theme-provider'
 import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
+import {
+  showEstimatedQuota,
+  tryPersistWithoutPromptingUser,
+} from './lib/indexeddbHelder'
 import { initializeRevenueCat } from './lib/initializeRevenueCat'
 // import { activateLocale } from './lib/activateLocale'
 import { PageAllStructs } from './pages/PageAllStructs'
@@ -78,6 +82,9 @@ async function init() {
   const isDark = mode.dark
 
   initializeRevenueCat()
+  // showEstimatedQuota()
+  const persist = await tryPersistWithoutPromptingUser()
+  console.log('========persist:', persist)
 
   if (['ios', 'android'].includes(platform)) {
     SafeArea.enable({

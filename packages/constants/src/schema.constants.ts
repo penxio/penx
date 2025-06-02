@@ -25,12 +25,12 @@ export const addCreationInputSchema = z.object({
   description: z.string().optional(),
   image: z.string().optional(),
   content: z.string(),
+  data: z.any(),
   status: z.any().optional(),
   userId: z.string().optional(),
   structId: z.string().uuid(),
   areaId: z.string(),
   tagIds: z.array(z.string()).optional(),
-  props: z.record(z.string(), z.any()).optional(),
   isPublishDirectly: z.boolean().optional(),
 })
 

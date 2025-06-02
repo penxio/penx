@@ -35,6 +35,9 @@ importers:
       '@aws-sdk/client-ses':
         specifier: ^3.749.0
         version: 3.806.0
+      '@capacitor/filesystem':
+        specifier: ^7.1.1
+        version: 7.1.1(@capacitor/core@7.2.0)
       '@codemirror/lang-javascript':
         specifier: ^6.2.2
         version: 6.2.3
@@ -1234,7 +1237,7 @@ importers:
         version: 5.3.3
       capacitor-voice-recorder:
         specifier: ^7.0.5
-        version: 7.0.5(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0))
+        version: 7.0.5(@capacitor/core@7.2.0)(@capacitor/filesystem@7.1.1(@capacitor/core@7.2.0))
       ionicons:
         specifier: ^7.4.0
         version: 7.4.0
@@ -2986,8 +2989,8 @@ packages:
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
 
-  '@capacitor/filesystem@7.0.1':
-    resolution: {integrity: sha512-dxuKNLFoUejm7tBKkQPs1j7+BLpDh5JKPSVu7nT8jgCbA/KXt5FoCLiepfkjWkYfq60X0JNFzGnIquc5FPOLzQ==}
+  '@capacitor/filesystem@7.1.1':
+    resolution: {integrity: sha512-xAQvurZlfKOO7I8d98GFRymS/Dd25sw0L1weF4dKR59nXloWEeagoFv+xtaNlDfolJHo4/uKVvxsLzM0xSmiUQ==}
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
 
@@ -3025,6 +3028,9 @@ packages:
     resolution: {integrity: sha512-iDv3mXYo9CdxYRVwt3/pRyuk25p7Sn4GfaS/zMZyVIqTzsvKLCIIH3GdKK+ta+nsNcAVpCw/t5jFEBt1D18ctA==}
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
+
+  '@capacitor/synapse@1.0.2':
+    resolution: {integrity: sha512-ynq39s4D2rhk+aVLWKfKfMCz9SHPKijL9tq8aFL5dG7ik7/+PvBHmg9cPHbqdvFEUSMmaGzL6cIjzkOruW7vGA==}
 
   '@capgo/capacitor-social-login@7.5.9':
     resolution: {integrity: sha512-rrTYHQfKByvnka1isSuodcSjNEFl8cLYSIZHMViC7gf/4+eeD+9G3zmEe+JYzqn9w77KRFtNfOcD3NEarQj1ZA==}
@@ -17016,9 +17022,10 @@ snapshots:
     dependencies:
       '@capacitor/core': 7.2.0
 
-  '@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)':
+  '@capacitor/filesystem@7.1.1(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
+      '@capacitor/synapse': 1.0.2
 
   '@capacitor/haptics@7.0.1(@capacitor/core@7.2.0)':
     dependencies:
@@ -17047,6 +17054,8 @@ snapshots:
   '@capacitor/status-bar@7.0.1(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
+
+  '@capacitor/synapse@1.0.2': {}
 
   '@capgo/capacitor-social-login@7.5.9(@capacitor/core@7.2.0)':
     dependencies:
@@ -22655,16 +22664,16 @@ snapshots:
 
   canvas-hypertxt@1.0.3: {}
 
-  capacitor-blob-writer@1.1.19(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)):
+  capacitor-blob-writer@1.1.19(@capacitor/core@7.2.0)(@capacitor/filesystem@7.1.1(@capacitor/core@7.2.0)):
     dependencies:
       '@capacitor/core': 7.2.0
-      '@capacitor/filesystem': 7.0.1(@capacitor/core@7.2.0)
+      '@capacitor/filesystem': 7.1.1(@capacitor/core@7.2.0)
 
-  capacitor-voice-recorder@7.0.5(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0)):
+  capacitor-voice-recorder@7.0.5(@capacitor/core@7.2.0)(@capacitor/filesystem@7.1.1(@capacitor/core@7.2.0)):
     dependencies:
       '@capacitor/core': 7.2.0
-      '@capacitor/filesystem': 7.0.1(@capacitor/core@7.2.0)
-      capacitor-blob-writer: 1.1.19(@capacitor/core@7.2.0)(@capacitor/filesystem@7.0.1(@capacitor/core@7.2.0))
+      '@capacitor/filesystem': 7.1.1(@capacitor/core@7.2.0)
+      capacitor-blob-writer: 1.1.19(@capacitor/core@7.2.0)(@capacitor/filesystem@7.1.1(@capacitor/core@7.2.0))
       get-blob-duration: 1.2.0
 
   caseless@0.12.0: {}

@@ -74,19 +74,16 @@ export class JournalsStore {
       if (isCreate) draft.push(journal)
       for (const item of draft) {
         if (item.id === journal.id) {
-          console.log('=======creationId:', creationId)
           item.props.children.unshift(creationId)
           break
         }
       }
     })
 
-    console.log('========newJournals:', newJournals, 'journal:', journal)
-
     this.set(newJournals)
 
     await localDB.updateJournalProps(journal.id, {
-      children: journal.props.children,
+      children: [creationId, ...journal.props.children],
     })
   }
 

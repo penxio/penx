@@ -136,6 +136,7 @@ export class AppService {
     const structs = areaNodes.filter((n) => isStructNode(n))
 
     const journals = areaNodes.filter((n) => isJournalNode(n))
+
     const tags = areaNodes.filter((n) => isTagNode(n))
     const creationTags = areaNodes.filter((n) => isCreationTagNode(n))
     const creations = areaNodes.filter((n) => isCreationNode(n))

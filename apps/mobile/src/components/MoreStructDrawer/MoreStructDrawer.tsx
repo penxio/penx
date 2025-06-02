@@ -27,7 +27,7 @@ export function MoreStructDrawer({}: Props) {
           <span>
             <Trans>My structs</Trans>
           </span>
-          <Button
+          {/* <Button
             variant="default"
             size="xs"
             className="rounded-full"
@@ -37,7 +37,7 @@ export function MoreStructDrawer({}: Props) {
             }}
           >
             <Trans>Create</Trans>
-          </Button>
+          </Button> */}
         </div>
 
         <StructList />

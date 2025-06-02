@@ -55,10 +55,13 @@ export function JournalTitleMobile({ initialDate }: Props) {
               hasNotes: 'day-with-notes',
             }}
             onSelect={(date) => {
-              // console.log('========date:', date)
+              console.log('========date:', date)
+
               setOpen(false)
-              setDate(date!)
-              date && store.journals.goToDay(date)
+              if (date) {
+                setDate(date!)
+                store.journals.goToDay(date)
+              }
             }}
             initialFocus
             footer={

@@ -15,6 +15,7 @@ import {
   IStructNode,
   ISuggestion,
   ITagNode,
+  IVoice,
   NodeType,
 } from '@penx/model-type'
 import { IAsset } from '@penx/model-type/IAsset'
@@ -25,6 +26,7 @@ import { uniqueId } from '@penx/unique-id'
 class LocalDB extends Dexie {
   node!: Table<INode, string>
   file!: Table<IFile, string>
+  voice!: Table<IVoice, string>
   asset!: Table<IAsset, string>
   change!: Table<IChange, number>
   chat!: Table<IChat, string>
@@ -38,6 +40,7 @@ class LocalDB extends Dexie {
       // Primary key and indexed props
       node: 'id, siteId, userId, areaId, type, date, [userId+type], [siteId+type], [areaId+type], [siteId+type+structType]',
       file: 'id, hash',
+      voice: 'id, hash',
       asset: 'id, siteId, url, isPublic, isTrashed',
       chat: 'id, siteId',
       message: 'id, siteId',

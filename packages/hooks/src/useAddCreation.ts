@@ -18,6 +18,7 @@ export type Input = {
   isAddPanel?: boolean
   content?: string
   title?: string
+  data?: any
 }
 
 export function useAddCreation() {
@@ -40,6 +41,7 @@ export function useAddCreation() {
       description: '',
       image: '',
       content: input.content || JSON.stringify(defaultEditorContent),
+      data: input.data || {},
       type: struct.type,
       structId: struct.id,
       areaId: area.id,

@@ -1,7 +1,13 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
+import { useQuery } from '@tanstack/react-query'
 import { AudioLinesIcon } from 'lucide-react'
 import { motion } from 'motion/react'
+import { Creation } from '@penx/domain'
+import { localDB } from '@penx/local-db'
+import { IVoice } from '@penx/model-type'
+import { base64StringToFile } from '@penx/utils/base64StringToFile'
+import { uploadAudio } from './uploadAudio'
 
 export interface RecordingData {
   recordDataBase64?: string // Base64String
@@ -10,16 +16,29 @@ export interface RecordingData {
   uri?: string
 }
 
-interface AudioPlayerProps {
-  recording: RecordingData
+interface Props {
+  creation: Creation
 }
 
-export const VoiceContent: React.FC<AudioPlayerProps> = ({ recording }) => {
+export const VoiceContent = ({ creation }: Props) => {
+  const { isLoading, data: voice } = useQuery({
+    queryKey: ['voice', creation.id],
+    queryFn: async () => {
+      return await localDB.voice.get(creation.data['voiceId'])
+    },
+  })
+
+  useEffect(() => {
+    if (!voice) return
+    tryToUploadVoice(creation, voice)
+  }, [voice, creation])
+
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
   const getAudioSrc = () => {
-    const { recordDataBase64, mimeType, uri } = recording
+    if (!voice) return null
+    const { recordDataBase64, mimeType, uri } = voice!
     if (recordDataBase64) {
       return `data:${mimeType};base64,${recordDataBase64}`
     } else if (uri) {
@@ -49,6 +68,8 @@ export const VoiceContent: React.FC<AudioPlayerProps> = ({ recording }) => {
     setIsPlaying(false)
   }
 
+  if (isLoading) return null
+
   const audioSrc = getAudioSrc()
 
   if (!audioSrc) {
@@ -62,9 +83,11 @@ export const VoiceContent: React.FC<AudioPlayerProps> = ({ recording }) => {
   return (
     <div
       className="flex items-center gap-2"
-      style={{
-        // width: calcAudioBubbleWidth(recording.msDuration / 1000),
-      }}
+      style={
+        {
+          // width: calcAudioBubbleWidth(recording.msDuration / 1000),
+        }
+      }
       onClick={handlePlay}
     >
       <div className="flex h-8 items-center justify-center">
@@ -87,7 +110,8 @@ export const VoiceContent: React.FC<AudioPlayerProps> = ({ recording }) => {
         onEnded={() => setIsPlaying(false)}
         preload="auto"
       />
-      <div>{(recording.msDuration / 1000).toFixed(1)} s</div>
+      <div>{(voice!.msDuration / 1000).toFixed(1)} s</div>
+      <div>{voice!.mimeType} </div>
     </div>
   )
 }
@@ -103,4 +127,26 @@ export function calcAudioBubbleWidth(
   const width =
     minWidth + ((maxWidth - minWidth) * (effectiveSec - 1)) / (maxDuration - 1)
   return `${width}vw`
+}
+
+async function tryToUploadVoice(creation: Creation, voice: IVoice) {
+  if (voice.uploaded) return
+
+  const file = base64StringToFile(
+    voice.recordDataBase64!,
+    voice.mimeType.split(';')[0],
+  )
+
+  try {
+    const data = await uploadAudio(file)
+    await localDB.voice.update(voice.id, { uploaded: true })
+    await localDB.updateCreationProps(creation.id, {
+      data: {
+        ...creation.data,
+        url: data.url,
+      },
+    })
+  } catch (error) {
+    console.log('upload voice error:', error)
+  }
 }

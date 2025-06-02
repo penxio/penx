@@ -24,6 +24,7 @@
     "@ai-sdk/xai": "^1.2.10",
     "@ariakit/react": "^0.4.13",
     "@aws-sdk/client-ses": "^3.749.0",
+    "@capacitor/filesystem": "^7.1.1",
     "@codemirror/lang-javascript": "^6.2.2",
     "@codemirror/lang-python": "^6.1.6",
     "@codemirror/state": "^6.5.0",

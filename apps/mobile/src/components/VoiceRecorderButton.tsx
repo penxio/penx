@@ -1,10 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { checkAndRequestPermission } from '@/lib/checkAndRequestPermission'
+import { Directory, Filesystem } from '@capacitor/filesystem'
 import { VoiceRecorder } from 'capacitor-voice-recorder'
 import { AudioLinesIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
+import { defaultEditorContent } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { localDB } from '@penx/local-db'
 import { StructType } from '@penx/types'
+import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 
 interface Props {}
@@ -37,9 +41,21 @@ export const VoiceRecorderButton = ({}: Props) => {
     setStatus('init')
     stopTimer()
     const result = await VoiceRecorder.stopRecording()
+    // console.log('======result:', result.value)
+
+    const id = uniqueId()
+    await localDB.voice.add({
+      id,
+      ...result.value,
+      uploaded: false,
+    })
+
     await addCreation({
       type: StructType.VOICE,
-      content: JSON.stringify(result.value),
+      content: JSON.stringify(defaultEditorContent),
+      data: {
+        voiceId: id,
+      },
     })
   }
 

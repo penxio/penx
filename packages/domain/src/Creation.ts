@@ -84,6 +84,10 @@ export class Creation {
     return this.props.podcast
   }
 
+  get data() {
+    return this.props.data || {}
+  }
+
   get isTask() {
     return this.type === StructType.TASK
   }

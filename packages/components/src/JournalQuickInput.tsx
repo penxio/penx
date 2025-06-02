@@ -107,10 +107,7 @@ export function JournalQuickInput({
       />
 
       <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
-        <div>
-          <SquareCheckIcon className='text-foreground' />
-        </div>
-        {/* <StructTypeSelect
+        <StructTypeSelect
           value={struct}
           setFocused={() => {
             editor.chain().focus().run()
@@ -119,7 +116,7 @@ export function JournalQuickInput({
             setStruct(s)
             editor.chain().focus().run()
           }}
-        /> */}
+        />
 
         <JournalInputToolbar editor={editor} />
       </div>

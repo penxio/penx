@@ -122,7 +122,7 @@ export function CreationCard({ creation }: Props) {
 
   const content = useMemo(() => {
     if (creation.isVoice) {
-      return <VoiceContent recording={JSON.parse(creation.content)} />
+      return <VoiceContent creation={creation} />
     }
 
     return (
