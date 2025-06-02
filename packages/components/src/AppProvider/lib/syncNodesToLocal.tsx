@@ -118,14 +118,14 @@ async function sync(
     ...changes.map((c: any) => new Date(c.value.updatedAt).getTime()),
   )
 
-  // console.log(
-  //   '========changes:-------localLatestUpdated:',
-  //   localLatestUpdated,
-  //   changesLatestUpdated,
-  //   localLatestUpdated >= changesLatestUpdated,
-  //   localLatestUpdated - changesLatestUpdated,
-  // )
-  if (localLatestUpdated >= changesLatestUpdated) return
+  console.log(
+    '========changes:-------localLatestUpdated:',
+    localLatestUpdated,
+    changesLatestUpdated,
+    localLatestUpdated >= changesLatestUpdated,
+    localLatestUpdated - changesLatestUpdated,
+  )
+  // if (localLatestUpdated >= changesLatestUpdated) return
 
   await localDB.transaction('rw', localDB.node, async () => {
     for (const message of changes) {

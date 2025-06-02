@@ -20,6 +20,8 @@ export function JournalContent({}: Props) {
   const { isCard, isList } = useJournalLayout()
   const creationMaps = mappedByKey(creations, 'id')
 
+  console.log('====journal:', journal)
+
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
       <JournalTitle date={journal.date!} />

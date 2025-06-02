@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
-import { CalendarDays, LayoutDashboardIcon } from 'lucide-react'
+import { isMobileApp } from '@penx/constants'
 import { useJournal } from '@penx/hooks/useJournal'
 import { useJournals } from '@penx/hooks/useJournals'
 import { store } from '@penx/store'
@@ -78,7 +78,7 @@ export function JournalTitleMobile({ initialDate }: Props) {
           />
         </PopoverContent>
       </Popover>
-      <StructTypeSelect />
+      {isMobileApp && <StructTypeSelect />}
     </div>
   )
 }

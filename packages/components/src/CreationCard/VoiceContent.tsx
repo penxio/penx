@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { AudioLinesIcon } from 'lucide-react'
@@ -6,6 +6,7 @@ import { motion } from 'motion/react'
 import { Creation } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import { IVoice } from '@penx/model-type'
+import { getUrl } from '@penx/utils'
 import { base64StringToFile } from '@penx/utils/base64StringToFile'
 import { uploadAudio } from './uploadAudio'
 
@@ -28,6 +29,8 @@ export const VoiceContent = ({ creation }: Props) => {
     },
   })
 
+  const [duration, setDuration] = useState('')
+
   useEffect(() => {
     if (!voice) return
     tryToUploadVoice(creation, voice)
@@ -36,17 +39,32 @@ export const VoiceContent = ({ creation }: Props) => {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const getAudioSrc = () => {
-    if (!voice) return null
-    const { recordDataBase64, mimeType, uri } = voice!
-    if (recordDataBase64) {
-      return `data:${mimeType};base64,${recordDataBase64}`
-    } else if (uri) {
-      return uri
+  useEffect(() => {
+    if (audioRef.current) {
+      setDuration(audioRef.current?.duration.toString())
     }
+  }, [audioRef.current])
 
-    return null
+  const getAudioSrc = () => {
+    if (voice) {
+      const { recordDataBase64, mimeType, uri } = voice!
+      if (recordDataBase64) {
+        return `data:${mimeType};base64,${recordDataBase64}`
+      } else if (uri) {
+        return uri
+      }
+    } else {
+      return creation.audioUrl
+    }
   }
+
+  const time = useMemo(() => {
+    if (voice?.msDuration) {
+      return (voice?.msDuration || 0) / 1000
+    }
+    if (duration) return Number(duration)
+    return 0
+  }, [duration, voice])
 
   const handlePlay = () => {
     const audio = audioRef.current
@@ -107,11 +125,15 @@ export const VoiceContent = ({ creation }: Props) => {
       <audio
         ref={audioRef}
         src={audioSrc}
+        onLoadedMetadata={(e: any) => {
+          e.target?.duration && setDuration(e.target?.duration)
+        }}
         onEnded={() => setIsPlaying(false)}
         preload="auto"
       />
-      <div>{(voice!.msDuration / 1000).toFixed(1)} s</div>
-      <div>{voice!.mimeType} </div>
+      {/* <div>{audioRef.current?.duration}</div> */}
+      <div>{time.toFixed(1)} s</div>
+      {voice && <div>{voice!.mimeType} </div>}
     </div>
   )
 }

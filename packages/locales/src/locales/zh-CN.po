@@ -13,8 +13,13 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: struct.name
+#: apps/mobile/src/pages/PageStructInfo.tsx:42
+msgid "{0}"
+msgstr ""
+
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:51
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:51
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:47
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
 
@@ -51,6 +56,10 @@ msgstr "添加组件"
 msgid "AI chat"
 msgstr "AI 聊天"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
+msgid "All"
+msgstr ""
+
 #: packages/widgets/src/WidgetName.tsx:18
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:93
 msgid "All creations"
@@ -82,7 +91,7 @@ msgstr "确定要永久删除吗？"
 msgid "Bookmark"
 msgstr "书签"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:68
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:55
 msgid "Bubble"
 msgstr ""
 
@@ -92,7 +101,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "取消"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:77
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:64
 msgid "Card"
 msgstr ""
 
@@ -117,7 +126,7 @@ msgstr "复制"
 msgid "Copy html"
 msgstr "复制 HTML"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 msgid "Create"
 msgstr "创建"
 
@@ -132,7 +141,7 @@ msgstr "创建领域"
 msgid "Create one"
 msgstr "创建账户"
 
-#: packages/components/src/StructDialog/StructDialog.tsx:33
+#: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr "创建结构体"
 
@@ -213,6 +222,10 @@ msgstr "编辑组件"
 msgid "Email"
 msgstr "邮箱"
 
+#: apps/mobile/src/pages/PageEmailLogin.tsx:44
+msgid "Email login"
+msgstr ""
+
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:104
 msgid "Favorites"
@@ -249,9 +262,13 @@ msgstr "高"
 msgid "Home"
 msgstr "首页"
 
-#: apps/mobile/src/components/StructTypeSelect.tsx:35
+#: apps/mobile/src/components/HomeHeader.tsx:43
 msgid "Journal"
 msgstr "日记"
+
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:32
+msgid "Journal layout"
+msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:14
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:89
@@ -264,16 +281,12 @@ msgstr "日记"
 msgid "Language"
 msgstr "语言"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:57
-msgid "Layout"
-msgstr ""
-
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:48
 msgid "Light"
 msgstr "浅色"
 
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:73
 #: packages/libs/src/getDefaultStructs.ts:176
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:86
 msgid "List"
 msgstr "列表"
 
@@ -289,16 +302,24 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:50
+#: apps/mobile/src/components/Profile/Profile.tsx:75
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
 msgstr "退出登录"
 
+#: apps/mobile/src/pages/PageLogin.tsx:45
+msgid "Login"
+msgstr ""
+
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:88
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
 msgid "Login code"
 msgstr "登录验证码"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:33
+msgid "Login or Register"
+msgstr ""
 
 #: packages/components/src/AreaDialog/AreaForm.tsx:111
 msgid "logo"
@@ -325,11 +346,11 @@ msgstr "我的领域"
 msgid "My Site"
 msgstr "我的站点"
 
-#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:27
+#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:28
 msgid "My structs"
 msgstr "我的结构体"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:31
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:42
 msgid "My Structs"
 msgstr "我的结构体"
 
@@ -354,7 +375,7 @@ msgstr "暂无聊天记录！"
 msgid "No creation yet!"
 msgstr "暂无创作！"
 
-#: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:42
+#: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
 #: packages/components/src/cells/single-select-cell.tsx:186
 #: packages/components/src/cells/multiple-select-cell.tsx:182
 #: packages/components/src/Creation/SingleSelectProp.tsx:96
@@ -369,7 +390,7 @@ msgstr "未找到结果"
 msgid "No task yet."
 msgstr "暂无任务。"
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:57
+#: packages/components/src/CreationCard/VoiceContent.tsx:78
 msgid "No voice data!"
 msgstr "暂无语音数据！"
 
@@ -406,6 +427,10 @@ msgstr "密码"
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
 msgid "Pick a date"
 msgstr "选择日期"
+
+#: apps/mobile/src/pages/PagePlan.tsx:44
+msgid "Plan"
+msgstr ""
 
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:78
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
@@ -470,6 +495,7 @@ msgstr "保存"
 msgid "Search"
 msgstr "搜索"
 
+#: apps/mobile/src/pages/PageProfile.tsx:46
 #: packages/components/src/ProfileButton.tsx:204
 #: packages/components/src/Profile/ProfilePopover.tsx:125
 #: packages/components/src/AreasPopover/AreaMenu.tsx:84
@@ -501,12 +527,10 @@ msgstr ""
 msgid "Status"
 msgstr "状态"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:51
-msgid "Struct marketplace"
-msgstr "结构体市场"
-
+#: apps/mobile/src/components/AllStructsHeader.tsx:40
 #: packages/widgets/src/WidgetName.tsx:22
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:135
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
 msgstr "结构体"
 
@@ -540,6 +564,7 @@ msgstr "任务"
 
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:28
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43
 msgid "Theme"
 msgstr "主题"
 
@@ -571,7 +596,7 @@ msgstr ""
 msgid "Update area"
 msgstr "更新领域"
 
-#: packages/components/src/StructDialog/StructDialog.tsx:31
+#: packages/components/src/StructDialog/StructDialog.tsx:36
 msgid "Update struct"
 msgstr "更新结构体"
 
@@ -601,6 +626,6 @@ msgstr "语音"
 msgid "Welcome to PenX"
 msgstr "欢迎使用 PenX"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:41
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:37
 msgid "What's on your mind today?"
 msgstr "今天有什么想法？"

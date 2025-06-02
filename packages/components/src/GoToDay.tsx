@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { format } from 'date-fns'
 import { CalendarDays } from 'lucide-react'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
+import { useJournal } from '@penx/hooks/useJournal'
 import { store } from '@penx/store'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -16,8 +18,15 @@ interface Props {
 }
 
 export function GoToDay({ initialDate }: Props) {
-  const [date, setDate] = useState<Date | undefined>(initialDate || new Date())
+  const [date, setDate] = useState<Date>(initialDate || new Date())
   const [open, setOpen] = useState(false)
+
+  const { journal } = useJournal()
+  useEffect(() => {
+    if (format(date, 'yyyy-MM-dd') !== journal.date) {
+      setDate(new Date(journal.date))
+    }
+  }, [journal.date])
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -36,10 +45,15 @@ export function GoToDay({ initialDate }: Props) {
           mode="single"
           selected={date}
           onSelect={(date) => {
-            // console.log('========date:', date)
+            console.log('========date:', date)
             setOpen(false)
-            setDate(date)
-            date && store.journals.goToDay(date)
+
+            console.log('====date:', date)
+
+            if (date) {
+              setDate(date)
+              store.journals.goToDay(date)
+            }
           }}
           // disabled={(date) =>
           //   date > new Date() || date < new Date('1900-01-01')

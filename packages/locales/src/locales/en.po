@@ -13,8 +13,13 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: struct.name
+#: apps/mobile/src/pages/PageStructInfo.tsx:42
+msgid "{0}"
+msgstr "{0}"
+
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:51
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:51
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:47
 msgid "A structured note-taking App"
 msgstr "A structured note-taking App"
 
@@ -51,6 +56,10 @@ msgstr "Add widget"
 msgid "AI chat"
 msgstr "AI chat"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
+msgid "All"
+msgstr "All"
+
 #: packages/widgets/src/WidgetName.tsx:18
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:93
 msgid "All creations"
@@ -82,7 +91,7 @@ msgstr "Are you sure delete it permanently?"
 msgid "Bookmark"
 msgstr "Bookmark"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:68
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:55
 msgid "Bubble"
 msgstr "Bubble"
 
@@ -92,7 +101,7 @@ msgstr "Bubble"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:77
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:64
 msgid "Card"
 msgstr "Card"
 
@@ -117,7 +126,7 @@ msgstr "Copy"
 msgid "Copy html"
 msgstr "Copy html"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 msgid "Create"
 msgstr "Create"
 
@@ -132,7 +141,7 @@ msgstr "Create area"
 msgid "Create one"
 msgstr "Create one"
 
-#: packages/components/src/StructDialog/StructDialog.tsx:33
+#: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr "Create struct"
 
@@ -213,6 +222,10 @@ msgstr "Edit widget"
 msgid "Email"
 msgstr "Email"
 
+#: apps/mobile/src/pages/PageEmailLogin.tsx:44
+msgid "Email login"
+msgstr "Email login"
+
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:104
 msgid "Favorites"
@@ -249,9 +262,13 @@ msgstr "High"
 msgid "Home"
 msgstr "Home"
 
-#: apps/mobile/src/components/StructTypeSelect.tsx:35
+#: apps/mobile/src/components/HomeHeader.tsx:43
 msgid "Journal"
 msgstr "Journal"
+
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:32
+msgid "Journal layout"
+msgstr "Journal layout"
 
 #: packages/widgets/src/WidgetName.tsx:14
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:89
@@ -264,16 +281,12 @@ msgstr "Journals"
 msgid "Language"
 msgstr "Language"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:57
-msgid "Layout"
-msgstr "Layout"
-
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:48
 msgid "Light"
 msgstr "Light"
 
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:73
 #: packages/libs/src/getDefaultStructs.ts:176
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalLayoutSelect.tsx:86
 msgid "List"
 msgstr "List"
 
@@ -289,16 +302,24 @@ msgstr "Local backup"
 msgid "Log in"
 msgstr "Log in"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:50
+#: apps/mobile/src/components/Profile/Profile.tsx:75
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
 msgstr "Log out"
 
+#: apps/mobile/src/pages/PageLogin.tsx:45
+msgid "Login"
+msgstr "Login"
+
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:88
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
 msgid "Login code"
 msgstr "Login code"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:33
+msgid "Login or Register"
+msgstr "Login or Register"
 
 #: packages/components/src/AreaDialog/AreaForm.tsx:111
 msgid "logo"
@@ -325,11 +346,11 @@ msgstr "My area"
 msgid "My Site"
 msgstr "My Site"
 
-#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:27
+#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:28
 msgid "My structs"
 msgstr "My structs"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:31
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:42
 msgid "My Structs"
 msgstr "My Structs"
 
@@ -354,7 +375,7 @@ msgstr "No chat history yet!"
 msgid "No creation yet!"
 msgstr "No creation yet!"
 
-#: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:42
+#: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
 #: packages/components/src/cells/single-select-cell.tsx:186
 #: packages/components/src/cells/multiple-select-cell.tsx:182
 #: packages/components/src/Creation/SingleSelectProp.tsx:96
@@ -369,7 +390,7 @@ msgstr "No results found."
 msgid "No task yet."
 msgstr "No task yet."
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:57
+#: packages/components/src/CreationCard/VoiceContent.tsx:78
 msgid "No voice data!"
 msgstr "No voice data!"
 
@@ -406,6 +427,10 @@ msgstr "Password"
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
 msgid "Pick a date"
 msgstr "Pick a date"
+
+#: apps/mobile/src/pages/PagePlan.tsx:44
+msgid "Plan"
+msgstr "Plan"
 
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:78
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
@@ -470,6 +495,7 @@ msgstr "Save"
 msgid "Search"
 msgstr "Search"
 
+#: apps/mobile/src/pages/PageProfile.tsx:46
 #: packages/components/src/ProfileButton.tsx:204
 #: packages/components/src/Profile/ProfilePopover.tsx:125
 #: packages/components/src/AreasPopover/AreaMenu.tsx:84
@@ -501,12 +527,10 @@ msgstr "Star"
 msgid "Status"
 msgstr "Status"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:51
-msgid "Struct marketplace"
-msgstr "Struct marketplace"
-
+#: apps/mobile/src/components/AllStructsHeader.tsx:40
 #: packages/widgets/src/WidgetName.tsx:22
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:135
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
 msgstr "Structs"
 
@@ -540,6 +564,7 @@ msgstr "Task"
 
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:28
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43
 msgid "Theme"
 msgstr "Theme"
 
@@ -571,7 +596,7 @@ msgstr "Unstar"
 msgid "Update area"
 msgstr "Update area"
 
-#: packages/components/src/StructDialog/StructDialog.tsx:31
+#: packages/components/src/StructDialog/StructDialog.tsx:36
 msgid "Update struct"
 msgstr "Update struct"
 
@@ -601,6 +626,6 @@ msgstr "Voice"
 msgid "Welcome to PenX"
 msgstr "Welcome to PenX"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:41
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:37
 msgid "What's on your mind today?"
 msgstr "What's on your mind today?"

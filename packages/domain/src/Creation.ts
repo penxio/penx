@@ -88,6 +88,10 @@ export class Creation {
     return this.props.data || {}
   }
 
+  get audioUrl() {
+    return this.data?.url ? getUrl(this.data.url) : ''
+  }
+
   get isTask() {
     return this.type === StructType.TASK
   }

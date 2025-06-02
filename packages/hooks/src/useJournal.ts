@@ -11,10 +11,14 @@ function getQueryKey() {
 export function useJournal() {
   const { journalPanel, panels } = usePanels()
   const { journals } = useJournals()
-  const journal = journals.find(
-    (n) =>
-      n.props.date === journalPanel?.date || format(new Date(), 'yyyy-MM-dd'),
-  )
+
+  // console.log('=====journalPanel:', journalPanel, 'journals:', journals)
+
+  const journal = journals.find((n) => {
+    return n.props.date === journalPanel?.date
+  })
+
+  // console.log('==========journal>>>>>>>>>>>>>:', journal)
 
   return { journal: journal! }
 }

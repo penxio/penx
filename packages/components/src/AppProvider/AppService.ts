@@ -132,10 +132,10 @@ export class AppService {
     const visit = await store.visit.save({ activeAreaId: area.id })
 
     const areaNodes = nodes.filter((n) => n.areaId === area.id)
-
     const structs = areaNodes.filter((n) => isStructNode(n))
-
     const journals = areaNodes.filter((n) => isJournalNode(n))
+
+    console.log('=====journals:', journals)
 
     const tags = areaNodes.filter((n) => isTagNode(n))
     const creationTags = areaNodes.filter((n) => isCreationTagNode(n))
@@ -159,6 +159,8 @@ export class AppService {
   private async getPanels(area: IAreaNode) {
     const key = `${PANELS}_${area.id}`
     const panels: Panel[] = (await get(key)) || []
+
+    console.log('====panels:', panels)
 
     const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)
 

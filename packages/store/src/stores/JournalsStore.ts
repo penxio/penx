@@ -53,6 +53,9 @@ export class JournalsStore {
       if (isCreate) draft.push(journal)
     })
     this.set(newJournals)
+
+    console.log(`format(date, 'yyyy-MM-dd')`, format(date, 'yyyy-MM-dd'))
+
     this.store.panels.updateJournalPanel(format(date, 'yyyy-MM-dd'))
   }
 
