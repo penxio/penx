@@ -20,7 +20,7 @@ export class Creation {
   }
 
   get userId(): string {
-    return this.raw.siteId
+    return this.raw.userId
   }
 
   get areaId(): string {

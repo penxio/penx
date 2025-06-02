@@ -67,7 +67,7 @@ async function sync() {
         body: JSON.stringify(data),
       })
 
-      const json = res.json()
+      const json = await res.json()
 
       // await localDB.change.update(change.id, { synced: 1 })
       await localDB.change.delete(change.id)

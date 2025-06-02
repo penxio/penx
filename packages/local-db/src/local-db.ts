@@ -234,7 +234,6 @@ class LocalDB extends Dexie {
       ...data,
     } as IAreaNode)
 
-    await this.addChange(area.id, OperationType.CREATE, area)
     return area as IAreaNode
   }
 
@@ -247,8 +246,6 @@ class LocalDB extends Dexie {
       id: uniqueId(),
       ...data,
     } as IStructNode)
-
-    await this.addChange(struct.id, OperationType.CREATE, struct)
   }
 
   updateStructProps = async (
@@ -295,7 +292,6 @@ class LocalDB extends Dexie {
       ...data,
     } as IJournalNode)
 
-    await this.addChange(journal.id, OperationType.CREATE, journal)
     return journal
   }
 
@@ -311,8 +307,6 @@ class LocalDB extends Dexie {
       id: uniqueId(),
       ...data,
     } as ITagNode)
-
-    await this.addChange(tag.id, OperationType.CREATE, tag)
   }
 
   updateTagProps = async (id: string, props: Partial<ITagNode['props']>) => {
@@ -329,8 +323,6 @@ class LocalDB extends Dexie {
       id: uniqueId(),
       ...data,
     } as ICreationTagNode)
-
-    await this.addChange(creationTag.id, OperationType.CREATE, creationTag)
 
     const creationTags = (await this.node
       .where({ type: NodeType.CREATION_TAG })

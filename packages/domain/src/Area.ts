@@ -20,7 +20,7 @@ export class Area {
   }
 
   get userId(): string {
-    return this.raw.siteId
+    return this.raw.userId
   }
 
   get type(): string {

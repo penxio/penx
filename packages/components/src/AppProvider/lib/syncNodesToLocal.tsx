@@ -194,78 +194,55 @@ async function sync(
     last_lsn: lsn,
   })
 
-  {
-    const nodes = await localDB.listSiteNodes(siteId)
-    const area = store.area.get()
+  // {
+  //   const nodes = await localDB.listSiteNodes(siteId)
 
-    const creations = nodes.filter(
-      (n) => isCreationNode(n) && n.areaId === area.id,
-    )
+  //   // console.log('=====creations:', creations, store.creations.get())
 
-    // console.log('=====creations:', creations, store.creations.get())
+  //   const journal = store.journals.getActiveJournal()
+  //   console.log('======journal:', journal)
 
-    const isCreationsEqual = isEqual(creations, store.creations.get())
+  //   if (journal) {
+  //     const localJournal = nodes.find((c) => c.id === journal.id)!
+  //     console.log('=====localJournal:', localJournal)
 
-    if (!isCreationsEqual) {
-      await store.creations.refetchCreations()
-    }
-
-    const areas = nodes.filter((n) => isAreaNode(n))
-
-    if (!isEqual(areas, store.areas.get())) {
-      await store.areas.refetchAreas()
-    }
-
-    const structs = nodes
-      .filter((n) => n.areaId === area.id)
-      .filter((n) => isStructNode(n))
-
-    if (!isEqual(structs, store.structs.get())) {
-      await store.structs.refetchStructs()
-    }
-
-    const tags = nodes
-      .filter((n) => n.areaId === area.id)
-      .filter((n) => isTagNode(n))
-    if (!isEqual(tags, store.tags.get())) {
-      await store.tags.refetchTags()
-    }
-
-    const creationTags = nodes
-      .filter((n) => n.areaId === area.id)
-      .filter((n) => isCreationTagNode(n))
-
-    if (!isEqual(creationTags, store.creationTags.get())) {
-      await store.creationTags.refetchCreationTags()
-    }
-
-    const journal = store.journals.getActiveJournal()
-    console.log('======journal:', journal)
-
-    if (journal) {
-      const localJournal = nodes.find((c) => c.id === journal.id)!
-      console.log('=====localJournal:', localJournal)
-
-      if (!fastCompare(journal.props.children, localJournal.props.children)) {
-        // updateJournal(localJournal as IJournalNode)
-        store.journals.refetchJournals()
-      }
-    }
-  }
+  //     if (!fastCompare(journal.props.children, localJournal.props.children)) {
+  //       // updateJournal(localJournal as IJournalNode)
+  //       store.journals.refetchJournals()
+  //     }
+  //   }
+  // }
 
   const hasCreations = changeNodes.some((c) => c.type === NodeType.CREATION)
   if (hasCreations) {
-    // await store.creations.refetchCreations()
+    await store.creations.refetchCreations()
   }
 
   const hasAreas = changeNodes.some((c) => c.type === NodeType.AREA)
   if (hasAreas) {
-    // await store.areas.refetchAreas()
+    await store.areas.refetchAreas()
   }
 
   const hasStructs = changeNodes.some((c) => c.type === NodeType.STRUCT)
   if (hasStructs) {
-    // await store.structs.refetchStructs()
+    await store.structs.refetchStructs()
+  }
+
+  const hasTags = changeNodes.some((c) => c.type === NodeType.TAG)
+  if (hasTags) {
+    await store.tags.refetchTags()
+  }
+
+  const hasCreationTags = changeNodes.some(
+    (c) => c.type === NodeType.CREATION_TAG,
+  )
+  if (hasCreationTags) {
+    await store.creationTags.refetchCreationTags()
+  }
+
+  const hasJournals = changeNodes.some((c) => c.type === NodeType.JOURNAL)
+  if (hasJournals) {
+    await store.journals.refetchJournals()
   }
 
   // TODO:

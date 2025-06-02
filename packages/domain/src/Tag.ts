@@ -12,7 +12,7 @@ export class Tag {
   }
 
   get userId(): string {
-    return this.raw.siteId
+    return this.raw.userId
   }
 
   get name(): string {
