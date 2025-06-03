@@ -138,16 +138,19 @@ export class AppService {
     const areaNodes = nodes.filter((n) => n.areaId === area.id)
     const structs = areaNodes.filter((n) => isStructNode(n))
     let journals = areaNodes.filter((n) => isJournalNode(n))
-    const mergedJournals = mergeJournals(journals)
 
-    if (journals.length !== mergedJournals.length) {
-      return await localDB.transaction('rw', localDB.node, async () => {
-        await localDB.node.bulkDelete(journals.map((n) => n.id))
-        await localDB.node.bulkPut(mergedJournals)
-      })
-    }
+    // console.log('======journals:', journals)
 
-    journals = mergedJournals
+    // const mergedJournals = mergeJournals(journals)
+
+    // if (journals.length !== mergedJournals.length) {
+    //   return await localDB.transaction('rw', localDB.node, async () => {
+    //     await localDB.node.bulkDelete(journals.map((n) => n.id))
+    //     await localDB.node.bulkPut(mergedJournals)
+    //   })
+    // }
+
+    // journals = mergedJournals
 
     // console.log('=====journals:', journals)
 

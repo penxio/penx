@@ -19,16 +19,18 @@ export function JournalContent({}: Props) {
   const { struct } = useActiveStruct()
   const { journal } = useJournal()
   const { isCard, isList } = useJournalLayout()
-  const creationMaps = mappedByKey(creations, 'id')
 
   // console.log('====journal:', journal)
+  const journalCreations = creations.filter((c) => c.date === journal.date)
+
+  console.log('====creations:', creations, journal)
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
       <JournalTitle date={journal.date!} />
       {/* <StructTypeSelect /> */}
 
-      {!journal.children.length && (
+      {!journalCreations.length && (
         <div className="flex h-[50vh] flex-col items-center justify-center gap-4 pt-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -52,7 +54,7 @@ export function JournalContent({}: Props) {
         </div>
       )}
 
-      {!!journal.children.length && (
+      {!!journalCreations.length && (
         <div
           className={cn(
             isCard ? 'columns-2 gap-x-2 align-top' : 'flex flex-col gap-4 ',
@@ -60,12 +62,8 @@ export function JournalContent({}: Props) {
             isMobileApp && isList && 'gap-0',
           )}
         >
-          {journal.children.map((id) => {
-            const creation = creationMaps[id]
-            if (!creation) return null
-            if (struct && creation.structId !== struct.id) return null
-
-            return <CreationCard key={id} creation={creation}></CreationCard>
+          {journalCreations.map((creation) => {
+            return <CreationCard key={creation.id} creation={creation} />
           })}
         </div>
       )}

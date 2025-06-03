@@ -4,7 +4,7 @@ import { isIOS } from '@/lib/utils'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'
 import { PluginListenerHandle } from '@capacitor/core'
 import { Device } from '@capacitor/device'
-import { Trans } from '@lingui/react/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { VoiceRecorder } from 'capacitor-voice-recorder'
 import {
   AudioLinesIcon,
@@ -27,6 +27,7 @@ import { Drawer } from './Drawer'
 interface Props {}
 
 export const VoiceRecorderButton = ({}: Props) => {
+  const { i18n } = useLingui()
   const [isOpen, setIsOpen] = useState(false)
   const addCreation = useAddCreation()
   const [status, setStatus] = useState<
@@ -205,7 +206,10 @@ export const VoiceRecorderButton = ({}: Props) => {
                     const { languages } =
                       await SpeechRecognition.getSupportedLanguages()
 
-                    if (languages[value]) return languages[value]
+                    if (languages.includes(value)) return value
+                    if (languages.includes(i18n.locale)) return i18n.locale
+
+                    if (lang.startsWith('zh-')) lang = 'zh-CN'
                     if (lang === 'zh-Hans-CN') lang = 'zh-CN'
                     return lang
                   }
@@ -244,7 +248,7 @@ export const VoiceRecorderButton = ({}: Props) => {
 
         <div
           className={cn(
-            'text-foreground flex flex-1 items-center justify-between gap-1',
+            'text-foreground flex flex-1 items-center justify-between gap-0.5',
             status === 'init' && 'hidden',
           )}
         >
@@ -303,7 +307,7 @@ export const VoiceRecorderButton = ({}: Props) => {
                   },
                 }}
                 // animate={status === 'init' ? 'closed' : 'open'}
-                className="text-foreground inline-flex w-auto flex-1 items-center justify-end gap-1 pr-2 text-base"
+                className="text-foreground inline-flex w-auto flex-1 items-center justify-center gap-1 pr-2 text-base"
               >
                 <span className="font-bold">{formatTime(elapsedTime)}</span>
               </motion.div>

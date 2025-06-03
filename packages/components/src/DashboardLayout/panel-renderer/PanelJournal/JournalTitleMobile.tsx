@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { isMobileApp } from '@penx/constants'
+import { useCreations } from '@penx/hooks/useCreations'
 import { useJournal } from '@penx/hooks/useJournal'
 import { useJournals } from '@penx/hooks/useJournals'
 import { store } from '@penx/store'
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export function JournalTitleMobile({ initialDate }: Props) {
+  const { creations } = useCreations()
   const [date, setDate] = useState<Date>(initialDate || new Date())
   const [open, setOpen] = useState(false)
 
@@ -27,11 +29,13 @@ export function JournalTitleMobile({ initialDate }: Props) {
     }
   }, [journal.date])
 
-  const { journals } = useJournals()
-  const daysWithNotes = journals.reduce<Date[]>((acc, journal) => {
-    if (!journal.hasNotes) return acc
-    return [...acc, new Date(journal.date)]
-  }, [])
+  const daysWithNotes = creations
+    .reduce<string[]>((acc, item) => {
+      const date = format(item.createdAt, 'yyyy-MM-dd')
+      if (acc.includes(date)) return acc
+      return [...acc, date]
+    }, [])
+    .map((date) => new Date(date))
 
   return (
     <div className="flex items-center justify-between">
