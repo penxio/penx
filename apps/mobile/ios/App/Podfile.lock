@@ -25,6 +25,9 @@ PODS:
     - Capacitor
   - CapacitorHaptics (7.0.1):
     - Capacitor
+  - CapacitorInappbrowser (2.1.0):
+    - Capacitor
+    - OSInAppBrowserLib (~> 2.0)
   - CapacitorKeyboard (7.0.1):
     - Capacitor
   - CapacitorSplashScreen (7.0.1):
@@ -65,6 +68,7 @@ PODS:
     - AppAuth/Core (~> 1.7)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
+  - OSInAppBrowserLib (2.0.0)
   - PromisesObjC (2.4.0)
   - PurchasesHybridCommon (13.32.0):
     - RevenueCat (= 5.24.0)
@@ -82,6 +86,7 @@ DEPENDENCIES:
   - "CapacitorCordova (from `../../../../node_modules/.pnpm/@capacitor+ios@7.2.0_@capacitor+core@7.2.0/node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../../../node_modules/.pnpm/@capacitor+device@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/device`)"
   - "CapacitorHaptics (from `../../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics`)"
+  - "CapacitorInappbrowser (from `../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser`)"
   - "CapacitorKeyboard (from `../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard`)"
   - "CapacitorSplashScreen (from `../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar`)"
@@ -102,6 +107,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - OSInAppBrowserLib
     - PromisesObjC
     - PurchasesHybridCommon
     - RevenueCat
@@ -123,6 +129,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+device@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/device"
   CapacitorHaptics:
     :path: "../../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics"
+  CapacitorInappbrowser:
+    :path: "../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser"
   CapacitorKeyboard:
     :path: "../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard"
   CapacitorSplashScreen:
@@ -148,6 +156,7 @@ SPEC CHECKSUMS:
   CapacitorCordova: 5967b9ba03915ef1d585469d6e31f31dc49be96f
   CapacitorDevice: c6f6d587dd310527f8a48bf09c4e7b4a4cf14329
   CapacitorHaptics: 1f1e17041f435d8ead9ff2a34edd592c6aa6a8d6
+  CapacitorInappbrowser: b9b366f37561bf92da226df6353631ac01cc5b92
   CapacitorKeyboard: 09fd91dcde4f8a37313e7f11bde553ad1ed52036
   CapacitorSplashScreen: 1d67815a422a9b61539c94f283c08ed56667c0fc
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
@@ -161,11 +170,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
+  OSInAppBrowserLib: 232c74691cffb9959aa07b1d5ff57d96fca2af7f
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PurchasesHybridCommon: 662aa1f4769ff4ef594e35adf1a5d0ad7b3d08b7
   RevenueCat: 2d3639d30b8a71cbfe3d99cef8243c602793e0ec
   RevenuecatPurchasesCapacitor: d2caee5c90772184b79466cfb0e25cc651b3b97c
 
-PODFILE CHECKSUM: c380e4740a65bf24aeac5d46a4e293ef78078fc2
+PODFILE CHECKSUM: 5c30ee6e6e2675d98a8af24a8f9c4146a5eb38d6
 
 COCOAPODS: 1.16.2

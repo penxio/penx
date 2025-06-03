@@ -21,6 +21,7 @@
 		"AppPlugin",
 		"DevicePlugin",
 		"HapticsPlugin",
+		"InAppBrowserPlugin",
 		"KeyboardPlugin",
 		"SplashScreenPlugin",
 		"StatusBarPlugin",

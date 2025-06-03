@@ -297,7 +297,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:75
+#: apps/mobile/src/components/Profile/Profile.tsx:79
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -312,7 +312,7 @@ msgstr ""
 msgid "Login code"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:33
+#: apps/mobile/src/components/Profile/Profile.tsx:37
 msgid "Login or Register"
 msgstr ""
 
@@ -442,6 +442,10 @@ msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:79
 msgid "Priority"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:94
+msgid "Privacy Policy"
 msgstr ""
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:251

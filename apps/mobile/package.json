@@ -28,6 +28,7 @@
     "@capacitor/core": "7.2.0",
     "@capacitor/device": "7.0.1",
     "@capacitor/haptics": "7.0.1",
+    "@capacitor/inappbrowser": "^2.1.0",
     "@capacitor/ios": "7.2.0",
     "@capacitor/keyboard": "7.0.1",
     "@capacitor/splash-screen": "^7.0.1",

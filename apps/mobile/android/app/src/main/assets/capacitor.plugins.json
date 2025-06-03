@@ -24,6 +24,10 @@
 		"classpath": "com.capacitorjs.plugins.haptics.HapticsPlugin"
 	},
 	{
+		"pkg": "@capacitor/inappbrowser",
+		"classpath": "com.capacitorjs.osinappbrowser.InAppBrowserPlugin"
+	},
+	{
 		"pkg": "@capacitor/keyboard",
 		"classpath": "com.capacitorjs.plugins.keyboard.KeyboardPlugin"
 	},

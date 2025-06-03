@@ -297,7 +297,7 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:75
+#: apps/mobile/src/components/Profile/Profile.tsx:79
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -312,7 +312,7 @@ msgstr "登录"
 msgid "Login code"
 msgstr "登录验证码"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:33
+#: apps/mobile/src/components/Profile/Profile.tsx:37
 msgid "Login or Register"
 msgstr "登录或注册"
 
@@ -443,6 +443,10 @@ msgstr "按回车键添加标签。"
 #: packages/libs/src/getDefaultStructs.ts:79
 msgid "Priority"
 msgstr "优先级"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:94
+msgid "Privacy Policy"
+msgstr "隐私政策"
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:251
 msgid "Publish"

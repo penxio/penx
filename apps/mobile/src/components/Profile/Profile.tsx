@@ -1,3 +1,7 @@
+import {
+  DefaultSystemBrowserOptions,
+  InAppBrowser,
+} from '@capacitor/inappbrowser'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon, UserIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
@@ -15,7 +19,7 @@ import { ThemeMenu } from './ThemeMenu'
 export function Profile() {
   const { session, logout } = useSession()
   return (
-    <div>
+    <div className="flex h-full flex-col">
       {!session && (
         <div
           className={cn(
@@ -57,7 +61,7 @@ export function Profile() {
           </div>
         </div>
       )}
-      <div className="text-foreground mt-10 flex flex-col gap-1">
+      <div className="text-foreground mt-10 flex flex-1 flex-col gap-1">
         {/* <SubscriptionMenu /> */}
         <LocaleMenu />
         <ThemeMenu />
@@ -75,6 +79,20 @@ export function Profile() {
             <Trans>Log out</Trans>
           </Item>
         )}
+      </div>
+      <div className="flex items-center justify-center">
+        <span
+          className="text-foreground/50 text-sm"
+          onClick={async (e) => {
+            e.preventDefault()
+            await InAppBrowser.openInSystemBrowser({
+              url: 'https://penx.io/privacy',
+              options: DefaultSystemBrowserOptions,
+            })
+          }}
+        >
+          <Trans>Privacy Policy</Trans>
+        </span>
       </div>
     </div>
   )

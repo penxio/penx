@@ -64,7 +64,6 @@ import {
   tryPersistWithoutPromptingUser,
 } from './lib/indexeddbHelder'
 import { initializeRevenueCat } from './lib/initializeRevenueCat'
-// import { activateLocale } from './lib/activateLocale'
 import { PageAllStructs } from './pages/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'

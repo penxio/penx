@@ -17,6 +17,7 @@ def capacitor_pods
   pod 'CapacitorApp', :path => '../../../../node_modules/.pnpm/@capacitor+app@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/app'
   pod 'CapacitorDevice', :path => '../../../../node_modules/.pnpm/@capacitor+device@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/device'
   pod 'CapacitorHaptics', :path => '../../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics'
+  pod 'CapacitorInappbrowser', :path => '../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser'
   pod 'CapacitorKeyboard', :path => '../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard'
   pod 'CapacitorSplashScreen', :path => '../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen'
   pod 'CapacitorStatusBar', :path => '../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar'

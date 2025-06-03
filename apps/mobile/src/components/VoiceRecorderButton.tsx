@@ -3,6 +3,7 @@ import { checkAndRequestPermission } from '@/lib/checkAndRequestPermission'
 import { isIOS } from '@/lib/utils'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'
 import { PluginListenerHandle } from '@capacitor/core'
+import { Device } from '@capacitor/device'
 import { Trans } from '@lingui/react/macro'
 import { VoiceRecorder } from 'capacitor-voice-recorder'
 import {
@@ -141,7 +142,7 @@ export const VoiceRecorderButton = ({}: Props) => {
           open: {
             // width: 'auto',
             // minWidth: 36,
-            width: 128,
+            width: 130,
             height: 36,
             transition: {
               type: 'keyframes',
@@ -190,20 +191,27 @@ export const VoiceRecorderButton = ({}: Props) => {
                     if (speechRecognition !== 'granted') return
                   }
 
-                  // const langs = await SpeechRecognition.getSupportedLanguages()
                   // console.log('=====langs:', langs)
-                  try {
-                    await SpeechRecognition.stop()
-                    console.log(
-                      '======await SpeechRecognition.isListening():',
-                      await SpeechRecognition.isListening(),
-                    )
 
-                    await SpeechRecognition.removeAllListeners()
-                  } catch {}
+                  // try {
+                  //   await SpeechRecognition.stop()
+
+                  //   await SpeechRecognition.removeAllListeners()
+                  // } catch {}
+
+                  const getLang = async () => {
+                    let lang = 'en-US'
+                    let { value } = await getDeviceLanguage()
+                    const { languages } =
+                      await SpeechRecognition.getSupportedLanguages()
+
+                    if (languages[value]) return languages[value]
+                    if (lang === 'zh-Hans-CN') lang = 'zh-CN'
+                    return lang
+                  }
 
                   await SpeechRecognition.start({
-                    language: 'zh-CN',
+                    language: await getLang(),
                     partialResults: true,
                     popup: false,
                     // maxResults: 2,
@@ -365,4 +373,15 @@ const formatTime = (seconds: number) => {
   return (
     (minutes < 10 ? '0' : '') + minutes + ':' + (secs < 10 ? '0' : '') + secs
   )
+}
+
+const getDeviceLanguage = async () => {
+  // 获取当前设备的语言代码（两字符语言码，如 "en", "zh"）
+  const languageCode = await Device.getLanguageCode()
+  console.log('Language Code:', languageCode.value)
+
+  // 获取当前设备的完整语言标签（IETF BCP 47 格式，如 "en-US", "zh-CN"）
+  const languageTag = await Device.getLanguageTag()
+  console.log('Language Tag:', languageTag.value)
+  return languageTag
 }
