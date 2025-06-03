@@ -13,13 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. placeholder {0}: struct.name
-#: apps/mobile/src/pages/PageStructInfo.tsx:42
-msgid "{0}"
-msgstr ""
-
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:51
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:47
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
 
@@ -58,7 +53,7 @@ msgstr "AI 聊天"
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 #: packages/widgets/src/WidgetName.tsx:18
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:93
@@ -93,7 +88,7 @@ msgstr "书签"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:55
 msgid "Bubble"
-msgstr ""
+msgstr "气泡"
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
@@ -103,7 +98,7 @@ msgstr "取消"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:64
 msgid "Card"
-msgstr ""
+msgstr "卡片"
 
 #: packages/components/src/Creation/ChangeType.tsx:36
 msgid "Change type"
@@ -118,7 +113,7 @@ msgstr "合集"
 msgid "Color"
 msgstr "颜色"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:190
+#: packages/components/src/CreationCard/CreationCard.tsx:197
 msgid "Copy"
 msgstr "复制"
 
@@ -167,7 +162,7 @@ msgstr "仪表板"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/CreationCard/CreationCard.tsx:241
+#: packages/components/src/CreationCard/CreationCard.tsx:248
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -199,7 +194,7 @@ msgstr "已完成"
 msgid "Due date"
 msgstr "截止日期"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:219
+#: packages/components/src/CreationCard/CreationCard.tsx:226
 msgid "Edit"
 msgstr "编辑"
 
@@ -224,7 +219,7 @@ msgstr "邮箱"
 
 #: apps/mobile/src/pages/PageEmailLogin.tsx:44
 msgid "Email login"
-msgstr ""
+msgstr "邮箱登录"
 
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:104
@@ -268,7 +263,7 @@ msgstr "日记"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:32
 msgid "Journal layout"
-msgstr ""
+msgstr "日记布局"
 
 #: packages/widgets/src/WidgetName.tsx:14
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:89
@@ -310,7 +305,7 @@ msgstr "退出登录"
 
 #: apps/mobile/src/pages/PageLogin.tsx:45
 msgid "Login"
-msgstr ""
+msgstr "登录"
 
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:88
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
@@ -319,7 +314,7 @@ msgstr "登录验证码"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:33
 msgid "Login or Register"
-msgstr ""
+msgstr "登录或注册"
 
 #: packages/components/src/AreaDialog/AreaForm.tsx:111
 msgid "logo"
@@ -390,7 +385,7 @@ msgstr "未找到结果"
 msgid "No task yet."
 msgstr "暂无任务。"
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:78
+#: packages/components/src/CreationCard/VoiceContent.tsx:99
 msgid "No voice data!"
 msgstr "暂无语音数据！"
 
@@ -430,7 +425,7 @@ msgstr "选择日期"
 
 #: apps/mobile/src/pages/PagePlan.tsx:44
 msgid "Plan"
-msgstr ""
+msgstr "计划"
 
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:78
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
@@ -519,9 +514,9 @@ msgstr "别名"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:208
+#: packages/components/src/CreationCard/CreationCard.tsx:215
 msgid "Star"
-msgstr ""
+msgstr "收藏"
 
 #: packages/libs/src/getDefaultStructs.ts:48
 msgid "Status"
@@ -587,9 +582,9 @@ msgstr "唯一代码"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:208
+#: packages/components/src/CreationCard/CreationCard.tsx:215
 msgid "Unstar"
-msgstr ""
+msgstr "取消收藏"
 
 #: packages/components/src/AreaDialog/AreaForm.tsx:319
 #: packages/components/src/AreaDialog/AreaDialog.tsx:34
@@ -626,6 +621,6 @@ msgstr "语音"
 msgid "Welcome to PenX"
 msgstr "欢迎使用 PenX"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:37
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:40
 msgid "What's on your mind today?"
 msgstr "今天有什么想法？"

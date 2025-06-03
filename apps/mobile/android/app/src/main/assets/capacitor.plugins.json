@@ -8,6 +8,10 @@
 		"classpath": "com.getcapacitor.community.safearea.SafeAreaPlugin"
 	},
 	{
+		"pkg": "@capacitor-community/speech-recognition",
+		"classpath": "com.getcapacitor.community.speechrecognition.SpeechRecognition"
+	},
+	{
 		"pkg": "@capacitor/app",
 		"classpath": "com.capacitorjs.plugins.app.AppPlugin"
 	},

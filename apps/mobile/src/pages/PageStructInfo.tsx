@@ -38,9 +38,7 @@ export function PageStructInfo({ struct }: { struct: Struct }) {
             <IonBackButton text=""></IonBackButton>
           </IonButtons>
           <IonTitle>
-            <div className="text-foreground">
-              <Trans>{struct.name}</Trans>
-            </div>
+            <div className="text-foreground">{struct.name}</div>
           </IonTitle>
         </IonToolbar>
       </IonHeader>

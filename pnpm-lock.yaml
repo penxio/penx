@@ -1115,6 +1115,9 @@ importers:
       '@capacitor-community/safe-area':
         specifier: 7.0.0-alpha.1
         version: 7.0.0-alpha.1(@capacitor/core@7.2.0)
+      '@capacitor-community/speech-recognition':
+        specifier: ^7.0.0
+        version: 7.0.0(@capacitor/core@7.2.0)
       '@capacitor/android':
         specifier: 7.2.0
         version: 7.2.0(@capacitor/core@7.2.0)
@@ -2945,6 +2948,11 @@ packages:
 
   '@capacitor-community/safe-area@7.0.0-alpha.1':
     resolution: {integrity: sha512-N6ktkRiofqrt+N/vQzh4jcWY8IzJ4TVw1tKAPssvbddWFTyZzXzSdBeX/l/nracJF0PZqmLdA7JYTBfnOxXQYw==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
+  '@capacitor-community/speech-recognition@7.0.0':
+    resolution: {integrity: sha512-GwNaijf0Q2LilNtlnfKL2dJB6voZYOm95D6dbhzPwa1mV+PnzwcGCaeipjbID3oRlAnsDUFEFiakbdZDyxe54w==}
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
 
@@ -16929,6 +16937,10 @@ snapshots:
   '@braintree/sanitize-url@7.1.1': {}
 
   '@capacitor-community/safe-area@7.0.0-alpha.1(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+
+  '@capacitor-community/speech-recognition@7.0.0(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
 

@@ -6,9 +6,9 @@ export async function initializeRevenueCat() {
     await Purchases.setLogLevel({ level: LOG_LEVEL.DEBUG })
 
     if (Capacitor.getPlatform() === 'ios') {
-      await Purchases.configure({
-        apiKey: 'appl_CioLamReqEDMuGMBQXyHhPjELYv',
-      })
+      // await Purchases.configure({
+      //   apiKey: 'appl_CioLamReqEDMuGMBQXyHhPjELYv',
+      // })
     }
 
     console.log('RevenueCat inited')

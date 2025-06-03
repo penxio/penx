@@ -13,13 +13,8 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#. placeholder {0}: struct.name
-#: apps/mobile/src/pages/PageStructInfo.tsx:42
-msgid "{0}"
-msgstr "{0}"
-
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:51
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:47
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
 msgid "A structured note-taking App"
 msgstr "A structured note-taking App"
 
@@ -118,7 +113,7 @@ msgstr "Collection"
 msgid "Color"
 msgstr "Color"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:190
+#: packages/components/src/CreationCard/CreationCard.tsx:197
 msgid "Copy"
 msgstr "Copy"
 
@@ -167,7 +162,7 @@ msgstr "Dashboard"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/CreationCard/CreationCard.tsx:241
+#: packages/components/src/CreationCard/CreationCard.tsx:248
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -199,7 +194,7 @@ msgstr "Done"
 msgid "Due date"
 msgstr "Due date"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:219
+#: packages/components/src/CreationCard/CreationCard.tsx:226
 msgid "Edit"
 msgstr "Edit"
 
@@ -390,7 +385,7 @@ msgstr "No results found."
 msgid "No task yet."
 msgstr "No task yet."
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:78
+#: packages/components/src/CreationCard/VoiceContent.tsx:99
 msgid "No voice data!"
 msgstr "No voice data!"
 
@@ -519,7 +514,7 @@ msgstr "Slug"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:208
+#: packages/components/src/CreationCard/CreationCard.tsx:215
 msgid "Star"
 msgstr "Star"
 
@@ -587,7 +582,7 @@ msgstr "Unique code"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:208
+#: packages/components/src/CreationCard/CreationCard.tsx:215
 msgid "Unstar"
 msgstr "Unstar"
 
@@ -626,6 +621,6 @@ msgstr "Voice"
 msgid "Welcome to PenX"
 msgstr "Welcome to PenX"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:37
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:40
 msgid "What's on your mind today?"
 msgstr "What's on your mind today?"

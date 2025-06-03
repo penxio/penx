@@ -122,7 +122,14 @@ export function CreationCard({ creation }: Props) {
 
   const content = useMemo(() => {
     if (creation.isVoice) {
-      return <VoiceContent creation={creation} />
+      return (
+        <div>
+          {creation.previewedContent && (
+            <div className="line-clamp-5">{creation.previewedContent}</div>
+          )}
+          <VoiceContent creation={creation} />
+        </div>
+      )
     }
 
     return (

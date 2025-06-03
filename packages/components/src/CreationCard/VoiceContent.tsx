@@ -6,6 +6,7 @@ import { motion } from 'motion/react'
 import { Creation } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import { IVoice } from '@penx/model-type'
+import { useSession } from '@penx/session'
 import { getUrl } from '@penx/utils'
 import { base64StringToFile } from '@penx/utils/base64StringToFile'
 import { uploadAudio } from './uploadAudio'
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export const VoiceContent = ({ creation }: Props) => {
+  const { session } = useSession()
   const { isLoading, data: voice } = useQuery({
     queryKey: ['voice', creation.id],
     queryFn: async () => {
@@ -33,9 +35,9 @@ export const VoiceContent = ({ creation }: Props) => {
   const [duration, setDuration] = useState('')
 
   useEffect(() => {
-    if (!voice) return
+    if (!voice || !session) return
     tryToUploadVoice(creation, voice)
-  }, [voice, creation])
+  }, [voice, creation, session])
 
   const audioRef = useRef<HTMLAudioElement>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -120,7 +122,11 @@ export const VoiceContent = ({ creation }: Props) => {
             }}
           />
         )}
-        {!isPlaying && <AudioLinesIcon size={20} />}
+        {!isPlaying && (
+          <div className="bg-foreground/10 flex size-6 items-center justify-center rounded-full">
+            <span className="icon-[heroicons--play-20-solid] size-3" />
+          </div>
+        )}
       </div>
 
       <audio
@@ -134,7 +140,6 @@ export const VoiceContent = ({ creation }: Props) => {
       />
       {/* <div>{audioRef.current?.duration}</div> */}
       <div>{time.toFixed(1)} s</div>
-      {voice && <div>{voice!.mimeType} </div>}
     </div>
   )
 }

@@ -58,5 +58,7 @@
 		</array>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>This app uses the microphone to record audio.</string>
+		<key>NSSpeechRecognitionUsageDescription</key>
+		<string>This app needs to access the speech recognition functionality.</string>
 	</dict>
 </plist>
