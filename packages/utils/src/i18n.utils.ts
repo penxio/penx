@@ -1,5 +1,3 @@
-import { isProd, isWeb, ROOT_HOST } from './basic.constants'
-
 export const GOOGLE_OAUTH_REDIRECT_URI = 'https://www.penx.io/api/google-oauth'
 // export const GOOGLE_OAUTH_REDIRECT_URI =
 //   'http://localhost:4000/api/google-oauth'

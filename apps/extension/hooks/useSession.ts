@@ -95,6 +95,7 @@ export function useSession() {
       body: JSON.stringify(data),
       method: 'PATCH',
     })
+    await set('SESSION', res)
     queryClient.setQueriesData({ queryKey: ['session'] }, res)
   }
 

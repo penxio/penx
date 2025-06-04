@@ -2,6 +2,7 @@ import { i18n } from '@lingui/core'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import ky from 'ky'
+import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { Node } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import {
@@ -32,22 +33,22 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
-    // console.log('=======app=session:', session)
-
+    console.log('=======app=session:', session)
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return
     try {
       const site = await this.getInitialSite(session)
 
-      // console.log('============site:', site)
+      // console.log('===========getInital=site:', site)
       await this.initStore(site)
-      this.inited = true
     } catch (error) {
       console.log('init error=====>>>:', error)
       store.app.setAppError('App init error: ' + error.message)
       store.app.setAppLoading(false)
     }
+
+    this.inited = true
   }
 
   private async getInitialSite(session: SessionData): Promise<ISiteNode> {
@@ -70,6 +71,8 @@ export class AppService {
       return initLocalSite()
     }
 
+    // console.log('========session.siteId:', session.siteId)
+
     if (session.siteId) {
       const sites = await localDB.listAllSiteByUserId(session.userId)
       const site = sites.find((s) => s.props.isRemote)
@@ -80,7 +83,6 @@ export class AppService {
       }
 
       const remoteSite = await syncNodesToLocal(session.siteId)
-      console.log('=======remoteSite:', remoteSite)
 
       return remoteSite
     }
@@ -93,8 +95,16 @@ export class AppService {
 
     const nodes = await localDB.listSiteNodes(site.id)
 
+    let headers: Record<string, string> = {}
+
+    if (isDesktop || isMobileApp) {
+      if (session?.accessToken) {
+        headers.Authorization = session.accessToken
+      }
+    }
+
     const { existed, siteId } = await ky
-      .post('/api/app/sync-initial-nodes', {
+      .post(`${ROOT_HOST}/api/app/sync-initial-nodes`, {
         json: {
           nodes: nodes.map((n) => ({
             ...n,
@@ -102,20 +112,20 @@ export class AppService {
             updatedAt: new Date(n.updatedAt).getTime().toString(),
           })),
         },
+        headers,
       })
       .json<{ ok: boolean; existed: boolean; siteId: string }>()
 
-    if (existed) {
-      site = await syncNodesToLocal(siteId)
-    } else {
-      await localDB.updateSiteProps(site.id, { isRemote: true })
-      await syncNodesToLocal(site.id)
-    }
+    const exisitedSite = await localDB.getSite(siteId)
+
+    await localDB.updateSiteProps(site.id, { isRemote: true })
+    await syncNodesToLocal(site.id)
 
     await updateSession({
       activeSiteId: site.id,
       siteId: site.id,
     })
+
     return site
   }
 

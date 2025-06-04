@@ -29,7 +29,7 @@ export function GoogleLoginButton({}: Props) {
       const res = (await SocialLogin.login({
         provider: 'google',
         options: {
-          // scopes: ['email', 'openid', 'profile'],
+          scopes: ['email', 'openid', 'profile'],
         },
       })) as any as MobileGoogleLoginInfo
       // handle the response. popoutStore is specific to my app

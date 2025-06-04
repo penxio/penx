@@ -6,6 +6,7 @@ import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
 import {
   isDesktop,
+  isExtension,
   isMobileApp,
   isWeb,
   PLATFORM,
@@ -174,13 +175,15 @@ export function useQuerySession() {
 }
 
 export async function updateSession(data: Partial<SessionData>) {
-  const res = await fetchJson<SessionData>(sessionApiRoute, {
-    body: JSON.stringify({
-      type: 'update-props',
-      ...data,
-    }),
-    method: 'PATCH',
-  })
+  if (isWeb || isExtension) {
+    const res = await fetchJson<SessionData>(sessionApiRoute, {
+      body: JSON.stringify({
+        type: 'update-props',
+        ...data,
+      }),
+      method: 'PATCH',
+    })
+  }
 
   const session = queryClient.getQueryData(queryKey) || (await getSession())
   const newSession = { ...session, ...data }

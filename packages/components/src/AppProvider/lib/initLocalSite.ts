@@ -16,7 +16,9 @@ export async function initLocalSite(uid?: string) {
   return await localDB.transaction('rw', localDB.node, async () => {
     const siteId = uniqueId()
     const userId = uid || uniqueId()
-    await localDB.node.add({
+    console.log('========siteId:', siteId, 'uid:', uid)
+
+    const newSite: ISiteNode = {
       id: siteId,
       type: NodeType.SITE,
       siteId: siteId,
@@ -50,7 +52,8 @@ export async function initLocalSite(uid?: string) {
       createdAt: new Date(),
       updatedAt: new Date(),
       userId,
-    } as ISiteNode)
+    }
+    await localDB.node.add(newSite)
 
     const areaId = await localDB.node.add({
       id: uniqueId(),
