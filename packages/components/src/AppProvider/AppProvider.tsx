@@ -4,7 +4,8 @@ import { isBrowser, isServer } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { useSession } from '@penx/session'
-import { appLoadingAtom, store } from '@penx/store'
+import { appErrorAtom, appLoadingAtom, store } from '@penx/store'
+import { Button } from '@penx/uikit/ui/button'
 import { LogoSpinner } from '@penx/widgets/LogoSpinner'
 import { runWorker } from '@penx/worker'
 import { AppService } from './AppService'
@@ -20,6 +21,7 @@ export const appContext = createContext({} as { app: AppService })
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   const { session, isLoading } = useSession()
   const loading = useAtomValue(appLoadingAtom)
+  const error = useAtomValue(appErrorAtom)
   const appRef = useRef(new AppService())
   const { Provider } = appContext
   const journalLayout = useJournalLayout()
@@ -36,6 +38,25 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
       appRef.current.init(session)
     })
   }, [])
+
+  if (error) {
+    return (
+      <div className="text-foreground/60 flex h-screen items-center justify-center text-lg">
+        <div className="flex flex-col items-center justify-center gap-2">
+          <div>{error}</div>
+          <div>
+            <Button
+              onClick={() => {
+                appRef.current.init(session)
+              }}
+            >
+              Reload App
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (loading || journalLayout.isLoading) {
     return (

@@ -61,13 +61,17 @@ export class JournalsStore {
     this.store.panels.updateJournalPanel(format(date, 'yyyy-MM-dd'))
   }
 
-  checkTodayJournal() {
+  async checkTodayJournal() {
     try {
+      const site = this.store.site.get()
+      if (!site) return
       const todayJournal = this.getTodayJournal()
 
       if (!todayJournal) {
-        this.goToDay(new Date())
-        this.store.panels.updateJournalPanel(format(new Date(), 'yyyy-MM-dd'))
+        await this.goToDay(new Date())
+        await this.store.panels.updateJournalPanel(
+          format(new Date(), 'yyyy-MM-dd'),
+        )
       }
     } catch (error) {}
   }

@@ -71,8 +71,8 @@ export async function syncNodesToLocal(siteId: string) {
           (row) =>
             ({
               ...row,
-              createdAt: new Date(Number(row.createdAt)),
-              updatedAt: new Date(Number(row.updatedAt)),
+              createdAt: new Date(Number(row.createdAt?.toString())),
+              updatedAt: new Date(Number(row.updatedAt?.toString())),
             }) as any,
         ),
       )
@@ -123,7 +123,7 @@ async function sync(
   )
 
   const changesLatestUpdated = Math.max(
-    ...changes.map((c: any) => Number(c.value.updatedAt)),
+    ...changes.map((c: any) => Number(c.value.updatedAt.toString())),
   )
 
   console.log(
@@ -145,8 +145,8 @@ async function sync(
 
         await localDB.node.put({
           ...value,
-          createdAt: new Date(Number(value.createdAt)),
-          updatedAt: new Date(Number(value.updatedAt)),
+          createdAt: new Date(Number(value.createdAt.toString())),
+          updatedAt: new Date(Number(value.updatedAt.toString())),
         })
 
         const newNode = await localDB.node.get(value.id)
@@ -171,7 +171,7 @@ async function sync(
 
         await localDB.node.update(value.id, {
           ...value,
-          updatedAt: new Date(Number(value.updatedAt)),
+          updatedAt: new Date(Number(value.updatedAt.toString())),
         })
       }
       if (operation === 'delete') {

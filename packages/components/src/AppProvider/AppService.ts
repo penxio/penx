@@ -41,11 +41,12 @@ export class AppService {
       const site = await this.getInitialSite(session)
 
       // console.log('============site:', site)
-
       await this.initStore(site)
       this.inited = true
     } catch (error) {
       console.log('init error=====>>>:', error)
+      store.app.setAppError('App init error: ' + error.message)
+      store.app.setAppLoading(false)
     }
   }
 

@@ -15,7 +15,7 @@ export function runWorker() {
   worker.onmessage = async (event: MessageEvent<any>) => {
     // console.log(`WebWorker Response => ${JSON.stringify(event.data)}`)
     if (event.data.type === WorkerEvents.CHECK_TODAY_JOURNAL) {
-      store.journals.checkTodayJournal()
+      await store.journals.checkTodayJournal()
     }
   }
   worker.postMessage(WorkerEvents.START_POLLING)

@@ -23,8 +23,6 @@ export function JournalContent({}: Props) {
   // console.log('====journal:', journal)
   const journalCreations = creations.filter((c) => c.date === journal.date)
 
-  console.log('====creations:', creations, journal)
-
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
       <JournalTitle date={journal.date!} />
