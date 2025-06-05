@@ -70,6 +70,25 @@ export function Profile() {
         <JournalLayoutMenu />
 
         <AboutMenu />
+
+        {session && (
+          <Item
+            onClick={async () => {
+              const { value } = await Dialog.confirm({
+                title: t`Delete Account`,
+                message: t`All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?`,
+              })
+
+              if (value) {
+                await logout()
+                appEmitter.emit('ON_LOGOUT_SUCCESS')
+              }
+            }}
+          >
+            <Trans>Log out</Trans>
+          </Item>
+        )}
+
         {session && (
           <Item
             onClick={async () => {

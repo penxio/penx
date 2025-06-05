@@ -32,6 +32,13 @@ async function sync() {
   for (const change of changes) {
     if (change.synced) continue
 
+    if (
+      Reflect.has(change.data, 'userId') &&
+      change.data.userId !== session.userId
+    ) {
+      continue
+    }
+
     const data = {
       operation: change.operation,
       siteId: change.siteId,
