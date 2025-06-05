@@ -1,15 +1,15 @@
 {
-  "name": "@penx/worker",
-  "version": "0.0.0",
+  "name": "@penx/api",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "module": "index.ts",
   "main": "index.ts",
-  "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts"
   },
   "scripts": {
+    "brl": "barrelsby --delete -d ./src",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
@@ -18,12 +18,9 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
-    "@penx/store": "workspace:*",
-    "@penx/types": "workspace:*",
-    "@penx/libs": "workspace:*",
-    "@penx/api": "workspace:*",
-    "@penx/local-db": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/utils": "workspace:*"
+    "@penx/utils": "workspace:*",
+    "@penx/model-type": "workspace:*",
+    "@penx/types": "workspace:*"
   }
 }

@@ -1166,6 +1166,9 @@ importers:
       '@ionic/react-router':
         specifier: ^8.5.0
         version: 8.5.7(react-dom@19.0.0(react@19.0.0))(react-router-dom@5.3.4(react@19.0.0))(react-router@5.3.4(react@19.0.0))(react@19.0.0)
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../../packages/api
       '@penx/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -1523,8 +1526,33 @@ importers:
         specifier: ^4.19.1
         version: 4.19.4
 
+  packages/api:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+    devDependencies:
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/components:
     dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../api
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
@@ -2107,6 +2135,9 @@ importers:
 
   packages/worker:
     dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../api
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants

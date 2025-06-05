@@ -34,12 +34,8 @@ import { getElectricSyncState, setElectricSyncState } from './syncState'
 const queue = new AsyncQueue()
 
 export async function syncNodesToLocal(siteId: string) {
-  // await tryToSyncInitialData(siteId)
-  // return
   const { last_lsn, ...metadata } = await getElectricSyncState(siteId)
-  // console.log('========syncState:', metadata, 'last_lsn:', last_lsn)
-
-  console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
+  // console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
 
   const stream = new ShapeStream({
     url: SHAPE_URL,
@@ -55,7 +51,7 @@ export async function syncNodesToLocal(siteId: string) {
     const nodes = await localDB.listSiteNodes(siteId)
     const site = nodes.find((n) => n.type === NodeType.SITE)
 
-    console.log('=====nodes:', nodes, 'site:', site)
+    // console.log('=====nodes:', nodes, 'site:', site)
 
     if (!nodes?.length || !site) {
       // await localDB.node.where({ siteId }).delete()

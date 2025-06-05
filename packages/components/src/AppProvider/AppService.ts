@@ -1,8 +1,6 @@
-import { i18n } from '@lingui/core'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
-import ky from 'ky'
-import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
+import { api } from '@penx/api'
 import { Node } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import {
@@ -95,26 +93,13 @@ export class AppService {
 
     const nodes = await localDB.listSiteNodes(site.id)
 
-    let headers: Record<string, string> = {}
-
-    if (isDesktop || isMobileApp) {
-      if (session?.accessToken) {
-        headers.Authorization = session.accessToken
-      }
-    }
-
-    const { existed, siteId } = await ky
-      .post(`${ROOT_HOST}/api/sync-initial-nodes`, {
-        json: {
-          nodes: nodes.map((n) => ({
-            ...n,
-            createdAt: new Date(n.createdAt).getTime().toString(),
-            updatedAt: new Date(n.updatedAt).getTime().toString(),
-          })),
-        },
-        headers,
-      })
-      .json<{ ok: boolean; existed: boolean; siteId: string }>()
+    await api.syncInitialNodes(
+      nodes.map((n) => ({
+        ...n,
+        createdAt: new Date(n.createdAt).getTime().toString(),
+        updatedAt: new Date(n.updatedAt).getTime().toString(),
+      })),
+    )
 
     await localDB.updateSiteProps(site.id, { isRemote: true })
     await syncNodesToLocal(site.id)

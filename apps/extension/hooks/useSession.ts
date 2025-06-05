@@ -1,9 +1,9 @@
 'use client'
 
 import { useMemo } from 'react'
-import { BASE_URL } from '@/lib/constants'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
+import { ROOT_HOST } from '@penx/constants'
 import { queryClient } from '@penx/query-client'
 import type { LoginData, SessionData, UpdateSessionData } from '@penx/types'
 
@@ -26,7 +26,7 @@ export const BillingCycle = {
   COUPON: 'COUPON',
 }
 
-const sessionApiRoute = `${BASE_URL}/api/session`
+const sessionApiRoute = `${ROOT_HOST}/api/session`
 
 const SESSION_KEY = 'SESSION'
 

@@ -1,4 +1,5 @@
 import { get, set } from 'idb-keyval'
+import { api } from '@penx/api'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { SessionData } from '@penx/types'
@@ -68,13 +69,7 @@ async function sync() {
         }
       }
 
-      const res = await fetch(`${ROOT_HOST}/api/v1/sync`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(data),
-      })
-
-      const json = await res.json()
+      await api.sync(data)
 
       // await localDB.change.update(change.id, { synced: 1 })
       await localDB.change.delete(change.id)
@@ -83,37 +78,3 @@ async function sync() {
     }
   }
 }
-
-const journals = [
-  {
-    date: '2023-01-01',
-    children: [1, 2],
-  },
-  {
-    date: '2023-01-02',
-    children: [2],
-  },
-  {
-    date: '2023-01-01',
-    children: [3, 4],
-  },
-  {
-    date: '2023-01-03',
-    children: [5, 8],
-  },
-]
-
-const formattedJournals = [
-  {
-    date: '2023-01-01',
-    children: [1, 2, 3, 4],
-  },
-  {
-    date: '2023-01-02',
-    children: [2],
-  },
-  {
-    date: '2023-01-03',
-    children: [5, 8],
-  },
-]

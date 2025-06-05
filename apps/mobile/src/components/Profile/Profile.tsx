@@ -17,6 +17,7 @@ import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
 import { ThemeMenu } from './ThemeMenu'
+import { api } from '@penx/api'
 
 export function Profile() {
   const { session, logout } = useSession()
@@ -80,12 +81,13 @@ export function Profile() {
               })
 
               if (value) {
+                api.
                 await logout()
                 appEmitter.emit('ON_LOGOUT_SUCCESS')
               }
             }}
           >
-            <Trans>Log out</Trans>
+            <Trans>Delete account</Trans>
           </Item>
         )}
 
