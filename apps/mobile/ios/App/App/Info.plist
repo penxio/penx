@@ -57,8 +57,8 @@
 			</dict>
 		</array>
 		<key>NSMicrophoneUsageDescription</key>
-		<string>This app uses the microphone to record audio.</string>
+		<string>PenX uses the microphone to create voice notes.</string>
 		<key>NSSpeechRecognitionUsageDescription</key>
-		<string>This app needs to access the speech recognition functionality.</string>
+		<string>PenX needs to access the speech recognition to recognize voice notes.</string>
 	</dict>
 </plist>

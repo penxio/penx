@@ -1,9 +1,8 @@
-import { format } from 'date-fns';
-import { ICreationNode, NodeType } from '@penx/model-type';
-import { StructType } from '@penx/types';
-import { getUrl } from '@penx/utils';
-import { docToString } from '@penx/utils/editorHelper';
-
+import { format } from 'date-fns'
+import { ICreationNode, NodeType } from '@penx/model-type'
+import { StructType } from '@penx/types'
+import { getUrl } from '@penx/utils'
+import { docToString } from '@penx/utils/editorHelper'
 
 export class Creation {
   props: ICreationNode['props']
@@ -33,7 +32,7 @@ export class Creation {
   }
 
   get date() {
-    return format(new Date(this.createdAt), 'yyyy-MM-dd')
+    return this.props.date
   }
 
   get gateType(): string {

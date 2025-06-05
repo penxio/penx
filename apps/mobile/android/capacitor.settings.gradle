@@ -17,6 +17,9 @@ project(':capacitor-app').projectDir = new File('../../../node_modules/.pnpm/@ca
 include ':capacitor-device'
 project(':capacitor-device').projectDir = new File('../../../node_modules/.pnpm/@capacitor+device@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/device/android')
 
+include ':capacitor-dialog'
+project(':capacitor-dialog').projectDir = new File('../../../node_modules/.pnpm/@capacitor+dialog@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/dialog/android')
+
 include ':capacitor-haptics'
 project(':capacitor-haptics').projectDir = new File('../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics/android')
 

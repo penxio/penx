@@ -1,7 +1,9 @@
+import { Dialog } from '@capacitor/dialog'
 import {
   DefaultSystemBrowserOptions,
   InAppBrowser,
 } from '@capacitor/inappbrowser'
+import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon, UserIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
@@ -71,9 +73,15 @@ export function Profile() {
         {session && (
           <Item
             onClick={async () => {
-              await logout()
-              appEmitter.emit('ON_LOGOUT_SUCCESS')
-              // routeToHome()
+              const { value } = await Dialog.confirm({
+                title: t`Log out`,
+                message: t`Are you sure you want to log out?`,
+              })
+
+              if (value) {
+                await logout()
+                appEmitter.emit('ON_LOGOUT_SUCCESS')
+              }
             }}
           >
             <Trans>Log out</Trans>

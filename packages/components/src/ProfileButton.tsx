@@ -61,7 +61,7 @@ export function ProfileButton({ loginButton }: Props) {
     while (true) {
       try {
         const { status } = await ky
-          .get(`${ROOT_HOST}/api/app/get-desktop-login-status`, {
+          .get(`${ROOT_HOST}/api/get-desktop-login-status`, {
             searchParams: { token: authToken },
           })
           .json<{ status: string }>()

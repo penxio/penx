@@ -191,7 +191,7 @@ export interface ICreationNode extends INode {
     checked: boolean
     isPopular: boolean
     isJournal: boolean
-    date?: string
+    date: string
     publishedAt?: Date
     archivedAt?: Date
     openedAt: Date

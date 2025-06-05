@@ -161,7 +161,7 @@
     "nodemailer": "^6.10.0",
     "novel": "^1.0.2",
     "octokit": "^4.0.2",
-    "openai": "^4.85.4",
+    "openai": "^5.1.0",
     "openai-edge": "^1.2.2",
     "orderedmap": "^2.1.1",
     "p-retry": "^6.2.1",

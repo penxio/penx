@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import {
   AddCreationInput,
   defaultEditorContent,
@@ -81,6 +82,7 @@ export function useAddCreation() {
         commentCount: 0,
         cid: '',
         openedAt: new Date(),
+        date: journal.date,
         ...addCreationInput,
       } as ICreationNode['props'],
       createdAt: new Date(),

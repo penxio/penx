@@ -9,6 +9,7 @@ import { IVoice } from '@penx/model-type'
 import { useSession } from '@penx/session'
 import { getUrl } from '@penx/utils'
 import { base64StringToFile } from '@penx/utils/base64StringToFile'
+import { getAudioFileFromUrl } from './getAudioFileFromUrl'
 import { uploadAudio } from './uploadAudio'
 
 export interface RecordingData {
@@ -92,6 +93,7 @@ export const VoiceContent = ({ creation }: Props) => {
   if (isLoading) return null
 
   const audioSrc = getAudioSrc()
+  console.log('====audioSrc:', audioSrc)
 
   if (!audioSrc) {
     return (
@@ -109,7 +111,34 @@ export const VoiceContent = ({ creation }: Props) => {
           // width: calcAudioBubbleWidth(recording.msDuration / 1000),
         }
       }
-      onClick={handlePlay}
+      onClick={async (e) => {
+        e.stopPropagation()
+        handlePlay()
+        console.log('click......:', creation)
+        const file = await getAudioFileFromUrl(
+          'https://pub-52a4c119f0b8428499eda7d07a9bb005.r2.dev/baf14ce45889ca6979ecc56bc7be50c1a36df6bf9623eb7faa47ee9208b7ed48.mp3',
+          // 'https://static.penx.me/audios/baf14ce45889ca6979ecc56bc7be50c1a36df6bf9623eb7faa47ee9208b7ed48.aac',
+        )
+
+        console.log('======file:', file)
+
+        const formData = new FormData()
+        formData.append('file', file)
+        try {
+          const res = await fetch('/transcribe', {
+            method: 'POST',
+            body: formData,
+          })
+          const data = await res.json()
+          if (res.ok) {
+            console.log('=====data:', data)
+          } else {
+            alert(data.error || '转录失败')
+          }
+        } catch (err) {
+          alert('请求出错')
+        }
+      }}
     >
       <div className="flex h-8 items-center justify-center">
         {isPlaying && (

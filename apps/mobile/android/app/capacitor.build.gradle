@@ -14,6 +14,7 @@ dependencies {
     implementation project(':capacitor-community-speech-recognition')
     implementation project(':capacitor-app')
     implementation project(':capacitor-device')
+    implementation project(':capacitor-dialog')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-inappbrowser')
     implementation project(':capacitor-keyboard')

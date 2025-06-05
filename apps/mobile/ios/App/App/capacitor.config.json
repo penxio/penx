@@ -20,6 +20,7 @@
 		"SpeechRecognition",
 		"AppPlugin",
 		"DevicePlugin",
+		"DialogPlugin",
 		"HapticsPlugin",
 		"InAppBrowserPlugin",
 		"KeyboardPlugin",

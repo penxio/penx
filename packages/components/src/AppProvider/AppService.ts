@@ -104,7 +104,7 @@ export class AppService {
     }
 
     const { existed, siteId } = await ky
-      .post(`${ROOT_HOST}/api/app/sync-initial-nodes`, {
+      .post(`${ROOT_HOST}/api/sync-initial-nodes`, {
         json: {
           nodes: nodes.map((n) => ({
             ...n,
@@ -115,8 +115,6 @@ export class AppService {
         headers,
       })
       .json<{ ok: boolean; existed: boolean; siteId: string }>()
-
-    const exisitedSite = await localDB.getSite(siteId)
 
     await localDB.updateSiteProps(site.id, { isRemote: true })
     await syncNodesToLocal(site.id)

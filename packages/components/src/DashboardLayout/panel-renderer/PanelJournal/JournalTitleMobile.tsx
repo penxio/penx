@@ -31,7 +31,7 @@ export function JournalTitleMobile({ initialDate }: Props) {
 
   const daysWithNotes = creations
     .reduce<string[]>((acc, item) => {
-      const date = format(item.createdAt, 'yyyy-MM-dd')
+      const date = item.date
       if (acc.includes(date)) return acc
       return [...acc, date]
     }, [])
