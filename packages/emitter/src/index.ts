@@ -12,6 +12,8 @@ export type AppEvent = {
   FOCUS_EDITOR: undefined
   PANEL_CREATION_UPDATED: ICreationNode
 
+  DELETE_ACCOUNT: any
+
   ROUTE_TO_SETTINGS: undefined
   ROUTE_TO_DESIGN: undefined
   ROUTE_TO_CREATION: any

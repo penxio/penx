@@ -64,12 +64,16 @@ msgstr ""
 msgid "All structs"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/Profile.tsx:84
+msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
+msgstr ""
+
 #: apps/mobile/src/components/Login/RegisterForm.tsx:127
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:127
 msgid "Already have an account"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSite.ts:61
+#: packages/components/src/AppProvider/lib/initLocalSite.ts:64
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr ""
 
@@ -80,6 +84,10 @@ msgstr ""
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:51
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:51
 msgid "Are you sure delete it permanently?"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:119
+msgid "Are you sure you want to log out?"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:276
@@ -168,6 +176,11 @@ msgstr ""
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:73
 msgid "Delete"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:83
+#: apps/mobile/src/components/Profile/Profile.tsx:109
+msgid "Delete account"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:71
@@ -297,7 +310,8 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:79
+#: apps/mobile/src/components/Profile/Profile.tsx:118
+#: apps/mobile/src/components/Profile/Profile.tsx:128
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -312,7 +326,7 @@ msgstr ""
 msgid "Login code"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:37
+#: apps/mobile/src/components/Profile/Profile.tsx:43
 msgid "Login or Register"
 msgstr ""
 
@@ -333,11 +347,11 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSite.ts:60
+#: packages/components/src/AppProvider/lib/initLocalSite.ts:63
 msgid "My area"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSite.ts:24
+#: packages/components/src/AppProvider/lib/initLocalSite.ts:26
 msgid "My Site"
 msgstr ""
 
@@ -385,7 +399,7 @@ msgstr ""
 msgid "No task yet."
 msgstr ""
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:99
+#: packages/components/src/CreationCard/VoiceContent.tsx:101
 msgid "No voice data!"
 msgstr ""
 
@@ -444,7 +458,7 @@ msgstr ""
 msgid "Priority"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:94
+#: apps/mobile/src/components/Profile/Profile.tsx:143
 msgid "Privacy Policy"
 msgstr ""
 
@@ -620,6 +634,7 @@ msgstr ""
 msgid "Voice"
 msgstr ""
 
+#: apps/mobile/src/components/Login/LoginContent.tsx:40
 #: apps/extension/components/Login.tsx:38
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"

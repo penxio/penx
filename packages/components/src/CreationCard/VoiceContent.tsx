@@ -93,7 +93,7 @@ export const VoiceContent = ({ creation }: Props) => {
   if (isLoading) return null
 
   const audioSrc = getAudioSrc()
-  console.log('====audioSrc:', audioSrc)
+  // console.log('====audioSrc:', audioSrc)
 
   if (!audioSrc) {
     return (

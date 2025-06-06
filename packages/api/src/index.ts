@@ -56,4 +56,8 @@ export const api = {
   async deleteAccount() {
     return ky.post(`${ROOT_HOST}/api/delete-account`).json()
   },
+
+  async getSession() {
+    return ky.get(`${ROOT_HOST}/api/session`).json()
+  },
 }

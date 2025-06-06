@@ -26,4 +26,9 @@ export enum NetworkNames {
 }
 
 export const SHAPE_URL =
-  process.env.NEXT_PUBLIC_SYNC_URL! || 'https://sync.penx.io/api/shape-proxy'
+  process.env.NEXT_PUBLIC_SYNC_URL ||
+  // @ts-ignores
+  import.meta.env?.VITE_SYNC_URL ||
+  // @ts-ignores
+  import.meta.env?.WXT_SYNC_URL ||
+  'https://sync.penx.io/api/shape-proxy'

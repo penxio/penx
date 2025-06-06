@@ -81,6 +81,8 @@ export function useQuerySession() {
   })
 
   async function login(data: LoginData & { host?: string }) {
+    console.log('=========sessionApiRoute:', sessionApiRoute)
+
     const res = await fetchJson<SessionData>(sessionApiRoute, {
       body: JSON.stringify({
         ...data,

@@ -92,6 +92,10 @@ export class Creation {
     return this.props.data || {}
   }
 
+  get transcribedText() {
+    return this.props.data?.transcribedText || ''
+  }
+
   get audioUrl() {
     return this.data?.url ? getUrl(this.data.url) : ''
   }

@@ -21,10 +21,11 @@ import {
   useInteractions,
 } from '@floating-ui/react'
 import { Trans } from '@lingui/react/macro'
+import { useQuery } from '@tanstack/react-query'
 import {
   CopyIcon,
   Edit2Icon,
-  ShareIcon,
+  SparklesIcon,
   StarIcon,
   StarOffIcon,
   Trash2Icon,
@@ -41,11 +42,14 @@ import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { getBgColor, getTextColorByName } from '@penx/libs/color-helper'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
+import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
+import { base64StringToFile } from '@penx/utils/base64StringToFile'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { StructIcon } from '@penx/widgets/StructIcon'
 import { useDeleteCreationDialog } from '../Creation/DeleteCreationDialog/useDeleteCreationDialog'
@@ -58,20 +62,25 @@ interface Props {
   creation: Creation
 }
 
-enum CreationViewType {
-  BUBBLE = 'BUBBLE',
-  CARD = 'CARD',
-  LIST = 'LIST',
-}
-
 export function CreationCard({ creation }: Props) {
   const struct = useCreationStruct(creation)
   const [isOpen, setIsOpen] = useState(false)
+  const [isTranscribing, setTranscribing] = useState(false)
   const isLongPressed = useRef(false)
   const { copy } = useCopyToClipboard()
   const deletePostDialog = useDeleteCreationDialog()
   const { area } = useArea()
   const isFavor = area.favorites?.includes(creation.id)
+
+  const { data: voice } = useQuery({
+    queryKey: ['voice', creation.id],
+    queryFn: async () => {
+      const result = await localDB.voice.get(creation.data['voiceId'])
+      return result ? result : null
+    },
+  })
+
+  console.log('=======voice:', voice)
 
   const { data: layout, isCard, isList, isBubble } = useJournalLayout()
 
@@ -127,6 +136,15 @@ export function CreationCard({ creation }: Props) {
           {creation.previewedContent && (
             <div className="line-clamp-5">{creation.previewedContent}</div>
           )}
+          {isTranscribing && (
+            <div className="flex items-center gap-1">
+              <span className="text-foreground/90 text-sm">
+                <Trans>Transcribing</Trans>
+              </span>
+              <LoadingDots className="bg-foreground" />
+            </div>
+          )}
+          {creation.transcribedText && <div>{creation.transcribedText}</div>}
           <VoiceContent creation={creation} />
         </div>
       )
@@ -184,6 +202,51 @@ export function CreationCard({ creation }: Props) {
             }}
             {...getMotionConfig(isOpen, context.placement)}
           >
+            {creation.isVoice && (
+              <ActionItem
+                onClick={async () => {
+                  console.log('======creation:', creation)
+
+                  setTranscribing(true)
+                  const formData = new FormData()
+                  const file = base64StringToFile(
+                    voice?.recordDataBase64!,
+                    voice?.mimeType!,
+                  )
+                  formData.append('file', file)
+
+                  try {
+                    const res = await fetch(
+                      'http://localhost:3000/api/transcribe',
+                      {
+                        method: 'POST',
+                        body: formData,
+                      },
+                    )
+                    const data = await res.json()
+                    if (res.ok) {
+                      // setTranscript(data.text)
+                      store.creations.updateCreationDataById(creation.id, {
+                        isTranscribed: true,
+                        transcribedText: data.text,
+                      })
+                    } else {
+                      alert(data.error || 'Transcribe failed')
+                    }
+                  } catch (err) {
+                    alert(`error: ${err.message}`)
+                  }
+
+                  setTranscribing(false)
+                }}
+              >
+                <SparklesIcon size={18}></SparklesIcon>
+                <span>
+                  <Trans>AI transcribe</Trans>
+                </span>
+              </ActionItem>
+            )}
+
             {creation.isNote && (
               <ActionItem
                 onClick={() => {
@@ -192,7 +255,7 @@ export function CreationCard({ creation }: Props) {
                   setIsOpen(false)
                 }}
               >
-                <CopyIcon size={20}></CopyIcon>
+                <CopyIcon size={18}></CopyIcon>
                 <span>
                   <Trans>Copy</Trans>
                 </span>
@@ -209,8 +272,8 @@ export function CreationCard({ creation }: Props) {
                 setIsOpen(false)
               }}
             >
-              {isFavor && <StarOffIcon />}
-              {!isFavor && <StarIcon />}
+              {isFavor && <StarOffIcon size={18} />}
+              {!isFavor && <StarIcon size={18} />}
               <span>
                 {isFavor ? <Trans>Unstar</Trans> : <Trans>Star</Trans>}
               </span>
@@ -221,7 +284,7 @@ export function CreationCard({ creation }: Props) {
                 setIsOpen(false)
               }}
             >
-              <Edit2Icon size={20}></Edit2Icon>
+              <Edit2Icon size={18}></Edit2Icon>
               <span>
                 <Trans>Edit</Trans>
               </span>
@@ -243,7 +306,7 @@ export function CreationCard({ creation }: Props) {
                 setIsOpen(false)
               }}
             >
-              <Trash2Icon size={20}></Trash2Icon>
+              <Trash2Icon size={18}></Trash2Icon>
               <span>
                 <Trans>Delete</Trans>
               </span>

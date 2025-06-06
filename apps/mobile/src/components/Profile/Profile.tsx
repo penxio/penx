@@ -6,8 +6,11 @@ import {
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon, UserIcon } from 'lucide-react'
+import { toast } from 'sonner'
+import { api } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { useMobileNav } from '@penx/hooks/useMobileNav'
+import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
@@ -17,10 +20,10 @@ import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
 import { ThemeMenu } from './ThemeMenu'
-import { api } from '@penx/api'
 
 export function Profile() {
   const { session, logout } = useSession()
+
   return (
     <div className="flex h-full flex-col">
       {!session && (
@@ -74,16 +77,32 @@ export function Profile() {
 
         {session && (
           <Item
+            className="text-red-500"
             onClick={async () => {
               const { value } = await Dialog.confirm({
-                title: t`Delete Account`,
+                title: t`Delete account`,
                 message: t`All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?`,
               })
 
               if (value) {
-                api.
-                await logout()
-                appEmitter.emit('ON_LOGOUT_SUCCESS')
+                // api.
+
+                toast.promise(
+                  async () => {
+                    await api.deleteAccount()
+                    await localDB.deleteAllSiteData(session.siteId)
+                    await logout()
+                    appEmitter.emit('ON_LOGOUT_SUCCESS')
+                    appEmitter.emit('DELETE_ACCOUNT')
+                  },
+                  {
+                    loading: 'Account deletion in progress...',
+                    success: 'Account deleted successfully!',
+                    error: () => {
+                      return 'Failed to delete account. Please try again.'
+                    },
+                  },
+                )
               }
             }}
           >
@@ -93,6 +112,7 @@ export function Profile() {
 
         {session && (
           <Item
+            className="text-red-500"
             onClick={async () => {
               const { value } = await Dialog.confirm({
                 title: t`Log out`,

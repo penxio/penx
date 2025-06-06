@@ -378,6 +378,10 @@ class LocalDB extends Dexie {
       await this.change.add(change)
     }
   }
+
+  deleteAllSiteData = (siteId: string) => {
+    return this.node.where('siteId').anyOf(siteId).delete()
+  }
 }
 
 export const localDB = new LocalDB()

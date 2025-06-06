@@ -34,9 +34,16 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [isLoading, session])
 
   useEffect(() => {
-    appEmitter.on('APP_LOGIN_SUCCESS', (session) => {
+    function handleInit(session: any) {
       appRef.current.init(session)
-    })
+    }
+    appEmitter.on('APP_LOGIN_SUCCESS', handleInit)
+    appEmitter.on('DELETE_ACCOUNT', handleInit)
+
+    return () => {
+      appEmitter.off('APP_LOGIN_SUCCESS', handleInit)
+      appEmitter.off('DELETE_ACCOUNT', handleInit)
+    }
   }, [])
 
   if (error) {
