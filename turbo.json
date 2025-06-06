@@ -53,7 +53,9 @@
     "APPLE_PRIVATE_KEY",
     "APPLE_TEAM_ID",
     "NEXT_PUBLIC_APPLE_CLIENT_ID",
-    "APPLE_KEY_ID"
+    "APPLE_KEY_ID",
+    "NEXT_PUBLIC_SYNC_SERVICE_HOST",
+    "BASE_PATH"
   ],
   "tasks": {
     "build": {

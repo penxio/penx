@@ -25,10 +25,18 @@ export enum NetworkNames {
   BASE = 'BASE',
 }
 
-export const SHAPE_URL =
-  process.env.NEXT_PUBLIC_SYNC_URL ||
+export const SYNC_SERVICE_HOST =
+  process.env.NEXT_PUBLIC_SYNC_SERVICE_HOST ||
   // @ts-ignores
-  import.meta.env?.VITE_SYNC_URL ||
+  import.meta.env?.VITE_SYNC_SERVICE_HOST ||
   // @ts-ignores
-  import.meta.env?.WXT_SYNC_URL ||
-  'https://sync.penx.io/api/shape-proxy'
+  import.meta.env?.WXT_SYNC_SERVICE_HOST ||
+  ''
+
+export const SHAPE_URL = SYNC_SERVICE_HOST
+  ? `${SYNC_SERVICE_HOST}/api/shape-proxy`
+  : 'https://sync.penx.io/api/shape-proxy'
+
+export const TRANSCRIBE_URL = SYNC_SERVICE_HOST
+  ? `${SYNC_SERVICE_HOST}/api/transcribe`
+  : 'https://sync.penx.io/api/transcribe'

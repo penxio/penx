@@ -7,7 +7,8 @@
   "main": "index.ts",
   "types": "./src/index.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

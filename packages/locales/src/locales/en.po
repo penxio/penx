@@ -51,6 +51,10 @@ msgstr "Add widget"
 msgid "AI chat"
 msgstr "AI chat"
 
+#: packages/components/src/CreationCard/CreationCard.tsx:250
+msgid "AI transcribe"
+msgstr "AI transcribe"
+
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
 msgid "All"
 msgstr "All"
@@ -64,7 +68,7 @@ msgstr "All creations"
 msgid "All structs"
 msgstr "All structs"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:84
+#: apps/mobile/src/components/Profile/Profile.tsx:89
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 
@@ -86,7 +90,7 @@ msgstr "Apple login"
 msgid "Are you sure delete it permanently?"
 msgstr "Are you sure delete it permanently?"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:119
+#: apps/mobile/src/components/Profile/Profile.tsx:124
 msgid "Are you sure you want to log out?"
 msgstr "Are you sure you want to log out?"
 
@@ -121,7 +125,7 @@ msgstr "Collection"
 msgid "Color"
 msgstr "Color"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:197
+#: packages/components/src/CreationCard/CreationCard.tsx:265
 msgid "Copy"
 msgstr "Copy"
 
@@ -170,7 +174,7 @@ msgstr "Dashboard"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/CreationCard/CreationCard.tsx:248
+#: packages/components/src/CreationCard/CreationCard.tsx:316
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -178,8 +182,8 @@ msgstr "Dashboard"
 msgid "Delete"
 msgstr "Delete"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:83
-#: apps/mobile/src/components/Profile/Profile.tsx:109
+#: apps/mobile/src/components/Profile/Profile.tsx:88
+#: apps/mobile/src/components/Profile/Profile.tsx:114
 msgid "Delete account"
 msgstr "Delete account"
 
@@ -207,7 +211,7 @@ msgstr "Done"
 msgid "Due date"
 msgstr "Due date"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:226
+#: packages/components/src/CreationCard/CreationCard.tsx:294
 msgid "Edit"
 msgstr "Edit"
 
@@ -247,6 +251,10 @@ msgstr "Favorites"
 #: packages/components/src/Creation/MultipleSelectProp.tsx:87
 msgid "Find or create option"
 msgstr "Find or create option"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:72
+msgid "Free"
+msgstr "Free"
 
 #: packages/libs/src/getDefaultStructs.ts:162
 msgid "Gallery"
@@ -310,8 +318,8 @@ msgstr "Local backup"
 msgid "Log in"
 msgstr "Log in"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:118
-#: apps/mobile/src/components/Profile/Profile.tsx:128
+#: apps/mobile/src/components/Profile/Profile.tsx:123
+#: apps/mobile/src/components/Profile/Profile.tsx:133
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -326,7 +334,7 @@ msgstr "Login"
 msgid "Login code"
 msgstr "Login code"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:43
+#: apps/mobile/src/components/Profile/Profile.tsx:45
 msgid "Login or Register"
 msgstr "Login or Register"
 
@@ -399,7 +407,7 @@ msgstr "No results found."
 msgid "No task yet."
 msgstr "No task yet."
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:101
+#: packages/components/src/CreationCard/VoiceContent.tsx:104
 msgid "No voice data!"
 msgstr "No voice data!"
 
@@ -458,7 +466,7 @@ msgstr "Press Enter to add a tag."
 msgid "Priority"
 msgstr "Priority"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:143
+#: apps/mobile/src/components/Profile/Profile.tsx:153
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
@@ -532,7 +540,7 @@ msgstr "Slug"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/CreationCard/CreationCard.tsx:283
 msgid "Star"
 msgstr "Star"
 
@@ -550,6 +558,14 @@ msgstr "Structs"
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:58
 msgid "Subscribe now"
 msgstr "Subscribe now"
+
+#: apps/web/components/SubscriptionGuideDialog/SubscriptionGuideDialog.tsx:24
+msgid "Subscribe to PenX"
+msgstr "Subscribe to PenX"
+
+#: apps/web/components/SubscriptionGuideDialog/SubscriptionGuideDialog.tsx:27
+msgid "Subscribe to Penx to support us in building the best product and enjoy the features:"
+msgstr "Subscribe to Penx to support us in building the best product and enjoy the features:"
 
 #: apps/mobile/src/components/Profile/SubscriptionMenu.tsx:29
 msgid "Subscription"
@@ -593,6 +609,10 @@ msgstr "To Do"
 msgid "Today"
 msgstr "Today"
 
+#: packages/components/src/CreationCard/CreationCard.tsx:176
+msgid "Transcribing"
+msgstr "Transcribing"
+
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
 msgstr "Unique code"
@@ -600,7 +620,7 @@ msgstr "Unique code"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/CreationCard/CreationCard.tsx:283
 msgid "Unstar"
 msgstr "Unstar"
 

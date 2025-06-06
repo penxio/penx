@@ -7,10 +7,7 @@ import { Creation } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import { IVoice } from '@penx/model-type'
 import { useSession } from '@penx/session'
-import { getUrl } from '@penx/utils'
-import { base64StringToFile } from '@penx/utils/base64StringToFile'
-import { getAudioFileFromUrl } from './getAudioFileFromUrl'
-import { uploadAudio } from './uploadAudio'
+import { tryToUploadVoice } from './lib/tryToUploadVoice'
 
 export interface RecordingData {
   recordDataBase64?: string // Base64String
@@ -37,7 +34,9 @@ export const VoiceContent = ({ creation }: Props) => {
 
   useEffect(() => {
     if (!voice || !session) return
-    tryToUploadVoice(creation, voice)
+    if (session.isPro) {
+      tryToUploadVoice(creation, voice)
+    }
   }, [voice, creation, session])
 
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -66,9 +65,14 @@ export const VoiceContent = ({ creation }: Props) => {
     if (voice?.msDuration) {
       return (voice?.msDuration || 0) / 1000
     }
+
+    if (creation.data?.duration) {
+      return creation.data?.duration / 1000
+    }
+
     if (duration) return Number(duration)
     return 0
-  }, [duration, voice])
+  }, [duration, voice, creation])
 
   const handlePlay = () => {
     const audio = audioRef.current
@@ -114,30 +118,6 @@ export const VoiceContent = ({ creation }: Props) => {
       onClick={async (e) => {
         e.stopPropagation()
         handlePlay()
-        console.log('click......:', creation)
-        const file = await getAudioFileFromUrl(
-          'https://pub-52a4c119f0b8428499eda7d07a9bb005.r2.dev/baf14ce45889ca6979ecc56bc7be50c1a36df6bf9623eb7faa47ee9208b7ed48.mp3',
-          // 'https://static.penx.me/audios/baf14ce45889ca6979ecc56bc7be50c1a36df6bf9623eb7faa47ee9208b7ed48.aac',
-        )
-
-        console.log('======file:', file)
-
-        const formData = new FormData()
-        formData.append('file', file)
-        try {
-          const res = await fetch('/transcribe', {
-            method: 'POST',
-            body: formData,
-          })
-          const data = await res.json()
-          if (res.ok) {
-            console.log('=====data:', data)
-          } else {
-            alert(data.error || '转录失败')
-          }
-        } catch (err) {
-          alert('请求出错')
-        }
       }}
     >
       <div className="flex h-8 items-center justify-center">
@@ -171,39 +151,4 @@ export const VoiceContent = ({ creation }: Props) => {
       <div>{time.toFixed(1)} s</div>
     </div>
   )
-}
-
-export function calcAudioBubbleWidth(
-  durationSec: number,
-  minWidth = 20,
-  maxWidth = 80,
-  maxDuration = 60,
-): string {
-  const sec = Math.max(1, durationSec)
-  const effectiveSec = Math.min(sec, maxDuration)
-  const width =
-    minWidth + ((maxWidth - minWidth) * (effectiveSec - 1)) / (maxDuration - 1)
-  return `${width}vw`
-}
-
-async function tryToUploadVoice(creation: Creation, voice: IVoice) {
-  if (voice.uploaded) return
-
-  const file = base64StringToFile(
-    voice.recordDataBase64!,
-    voice.mimeType.split(';')[0],
-  )
-
-  try {
-    const data = await uploadAudio(file)
-    await localDB.voice.update(voice.id, { uploaded: true })
-    await localDB.updateCreationProps(creation.id, {
-      data: {
-        ...creation.data,
-        url: data.url,
-      },
-    })
-  } catch (error) {
-    console.log('upload voice error:', error)
-  }
 }

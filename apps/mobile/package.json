@@ -62,6 +62,7 @@
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/widgets": "workspace:*",
+    "@penx/worker": "workspace:*",
     "@revenuecat/purchases-capacitor": "^10.3.0",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",

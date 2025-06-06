@@ -35,7 +35,7 @@ const queue = new AsyncQueue()
 
 export async function syncNodesToLocal(siteId: string) {
   const { last_lsn, ...metadata } = await getElectricSyncState(siteId)
-  // console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
+  console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
 
   const stream = new ShapeStream({
     url: SHAPE_URL,
@@ -113,24 +113,25 @@ async function sync(
   )
 
   console.log('========changes:isInsertedOrUpdate', isInsertedOrUpdate)
+  if (isInsertedOrUpdate) {
+    const localLatestUpdated = Math.max(
+      ...nodes.map((n) => new Date(n.updatedAt).getTime()),
+    )
 
-  const localLatestUpdated = Math.max(
-    ...nodes.map((n) => new Date(n.updatedAt).getTime()),
-  )
+    const changesLatestUpdated = Math.max(
+      ...changes.map((c: any) => Number(c.value.updatedAt.toString())),
+    )
 
-  const changesLatestUpdated = Math.max(
-    ...changes.map((c: any) => Number(c.value.updatedAt.toString())),
-  )
+    console.log(
+      '========changes:-------localLatestUpdated:',
+      localLatestUpdated,
+      changesLatestUpdated,
+      localLatestUpdated >= changesLatestUpdated,
+      localLatestUpdated - changesLatestUpdated,
+    )
 
-  console.log(
-    '========changes:-------localLatestUpdated:',
-    localLatestUpdated,
-    changesLatestUpdated,
-    localLatestUpdated >= changesLatestUpdated,
-    localLatestUpdated - changesLatestUpdated,
-  )
-
-  if (localLatestUpdated >= changesLatestUpdated) return
+    if (localLatestUpdated >= changesLatestUpdated) return
+  }
 
   await localDB.transaction('rw', localDB.node, async () => {
     for (const message of changes) {

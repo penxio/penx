@@ -51,6 +51,10 @@ msgstr "添加组件"
 msgid "AI chat"
 msgstr "AI 聊天"
 
+#: packages/components/src/CreationCard/CreationCard.tsx:250
+msgid "AI transcribe"
+msgstr "AI 转录"
+
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
 msgid "All"
 msgstr "全部"
@@ -64,7 +68,7 @@ msgstr "所有创作"
 msgid "All structs"
 msgstr "所有结构体"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:84
+#: apps/mobile/src/components/Profile/Profile.tsx:89
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr "所有数据将被删除，此操作无法撤销。您确定要删除您的账户吗？"
 
@@ -86,7 +90,7 @@ msgstr "Apple 登录"
 msgid "Are you sure delete it permanently?"
 msgstr "确定要永久删除吗？"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:119
+#: apps/mobile/src/components/Profile/Profile.tsx:124
 msgid "Are you sure you want to log out?"
 msgstr "您确定要退出登录吗？"
 
@@ -121,7 +125,7 @@ msgstr "合集"
 msgid "Color"
 msgstr "颜色"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:197
+#: packages/components/src/CreationCard/CreationCard.tsx:265
 msgid "Copy"
 msgstr "复制"
 
@@ -170,7 +174,7 @@ msgstr "仪表板"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/CreationCard/CreationCard.tsx:248
+#: packages/components/src/CreationCard/CreationCard.tsx:316
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -178,8 +182,8 @@ msgstr "仪表板"
 msgid "Delete"
 msgstr "删除"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:83
-#: apps/mobile/src/components/Profile/Profile.tsx:109
+#: apps/mobile/src/components/Profile/Profile.tsx:88
+#: apps/mobile/src/components/Profile/Profile.tsx:114
 msgid "Delete account"
 msgstr "删除账户"
 
@@ -207,7 +211,7 @@ msgstr "已完成"
 msgid "Due date"
 msgstr "截止日期"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:226
+#: packages/components/src/CreationCard/CreationCard.tsx:294
 msgid "Edit"
 msgstr "编辑"
 
@@ -247,6 +251,10 @@ msgstr "收藏"
 #: packages/components/src/Creation/MultipleSelectProp.tsx:87
 msgid "Find or create option"
 msgstr "查找或创建选项"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:72
+msgid "Free"
+msgstr "免费"
 
 #: packages/libs/src/getDefaultStructs.ts:162
 msgid "Gallery"
@@ -310,8 +318,8 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:118
-#: apps/mobile/src/components/Profile/Profile.tsx:128
+#: apps/mobile/src/components/Profile/Profile.tsx:123
+#: apps/mobile/src/components/Profile/Profile.tsx:133
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -326,7 +334,7 @@ msgstr "登录"
 msgid "Login code"
 msgstr "登录验证码"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:43
+#: apps/mobile/src/components/Profile/Profile.tsx:45
 msgid "Login or Register"
 msgstr "登录或注册"
 
@@ -399,7 +407,7 @@ msgstr "未找到结果"
 msgid "No task yet."
 msgstr "暂无任务。"
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:101
+#: packages/components/src/CreationCard/VoiceContent.tsx:104
 msgid "No voice data!"
 msgstr "暂无语音数据！"
 
@@ -458,7 +466,7 @@ msgstr "按回车键添加标签。"
 msgid "Priority"
 msgstr "优先级"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:143
+#: apps/mobile/src/components/Profile/Profile.tsx:153
 msgid "Privacy Policy"
 msgstr "隐私政策"
 
@@ -532,7 +540,7 @@ msgstr "别名"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/CreationCard/CreationCard.tsx:283
 msgid "Star"
 msgstr "收藏"
 
@@ -550,6 +558,14 @@ msgstr "结构体"
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:58
 msgid "Subscribe now"
 msgstr "立即订阅"
+
+#: apps/web/components/SubscriptionGuideDialog/SubscriptionGuideDialog.tsx:24
+msgid "Subscribe to PenX"
+msgstr "订阅 PenX 会员"
+
+#: apps/web/components/SubscriptionGuideDialog/SubscriptionGuideDialog.tsx:27
+msgid "Subscribe to Penx to support us in building the best product and enjoy the features:"
+msgstr ""
 
 #: apps/mobile/src/components/Profile/SubscriptionMenu.tsx:29
 msgid "Subscription"
@@ -593,6 +609,10 @@ msgstr "待办"
 msgid "Today"
 msgstr "今天"
 
+#: packages/components/src/CreationCard/CreationCard.tsx:176
+msgid "Transcribing"
+msgstr "转录中"
+
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
 msgstr "唯一代码"
@@ -600,7 +620,7 @@ msgstr "唯一代码"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:215
+#: packages/components/src/CreationCard/CreationCard.tsx:283
 msgid "Unstar"
 msgstr "取消收藏"
 

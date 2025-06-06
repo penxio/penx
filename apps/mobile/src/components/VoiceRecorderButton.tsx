@@ -125,6 +125,7 @@ export const VoiceRecorderButton = ({}: Props) => {
         : JSON.stringify(defaultEditorContent),
       data: {
         voiceId: id,
+        duration: recordingData.value.msDuration,
       },
     })
 

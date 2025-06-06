@@ -1,14 +1,19 @@
 import { get } from 'idb-keyval'
 import _ky from 'ky'
-import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
+import {
+  isDesktop,
+  isMobileApp,
+  ROOT_HOST,
+  TRANSCRIBE_URL,
+} from '@penx/constants'
 
 async function getHeaders() {
   if (isDesktop || isMobileApp) {
     const session = await get('SESSION')
-    // console.log('========session>>>>>:', session)
+    console.log('========session>>>>>:', session)
     if (session?.accessToken) {
       return {
-        Authorization: session.accessToken,
+        Authorization: `Bearer ${session.accessToken}`,
       }
     }
   }
@@ -59,5 +64,17 @@ export const api = {
 
   async getSession() {
     return ky.get(`${ROOT_HOST}/api/session`).json()
+  },
+
+  async transcribe(file: File, duration: number, hash: string) {
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('duration', duration.toString())
+    formData.append('hash', hash)
+    return ky
+      .post(TRANSCRIBE_URL, {
+        body: formData,
+      })
+      .json<{ text: string }>()
   },
 }

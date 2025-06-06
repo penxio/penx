@@ -9,7 +9,7 @@ const withVanillaExtract = createVanillaExtractPlugin()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: isProd ? '/app' : '',
+  basePath: process.env.BASE_PATH,
   compiler: {
     // removeConsole: process.env.NODE_ENV === 'production',
   },

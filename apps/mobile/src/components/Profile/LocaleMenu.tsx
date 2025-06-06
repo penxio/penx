@@ -59,6 +59,7 @@ export function LocaleMenu({ children, className }: ItemProps) {
         <div className="divide-foreground/5 divide-y rounded-xl dark:bg-neutral-700">
           {supportLanguages.map(([code, name]) => (
             <MenuItem
+              key={code}
               checked={code == locale}
               onClick={() => {
                 handleChange(code)

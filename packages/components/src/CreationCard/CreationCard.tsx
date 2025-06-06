@@ -32,7 +32,8 @@ import {
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { LongPressReactEvents, useLongPress } from 'use-long-press'
-import { isMobileApp } from '@penx/constants'
+import { api } from '@penx/api'
+import { isMobileApp, TRANSCRIBE_URL } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
@@ -43,6 +44,7 @@ import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { getBgColor, getTextColorByName } from '@penx/libs/color-helper'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { localDB } from '@penx/local-db'
+import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -50,10 +52,11 @@ import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { base64StringToFile } from '@penx/utils/base64StringToFile'
+import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { StructIcon } from '@penx/widgets/StructIcon'
 import { useDeleteCreationDialog } from '../Creation/DeleteCreationDialog/useDeleteCreationDialog'
-import { getMotionConfig } from './getMotionConfig'
+import { getMotionConfig } from './lib/getMotionConfig'
 import { Link } from './Link'
 import { Tags } from './Tags'
 import { VoiceContent } from './VoiceContent'
@@ -69,6 +72,7 @@ export function CreationCard({ creation }: Props) {
   const isLongPressed = useRef(false)
   const { copy } = useCopyToClipboard()
   const deletePostDialog = useDeleteCreationDialog()
+  const { session } = useSession()
   const { area } = useArea()
   const isFavor = area.favorites?.includes(creation.id)
 
@@ -79,8 +83,6 @@ export function CreationCard({ creation }: Props) {
       return result ? result : null
     },
   })
-
-  console.log('=======voice:', voice)
 
   const { data: layout, isCard, isList, isBubble } = useJournalLayout()
 
@@ -129,13 +131,42 @@ export function CreationCard({ creation }: Props) {
     },
   )
 
+  async function transcribe() {
+    setTranscribing(true)
+
+    const file = base64StringToFile(voice?.recordDataBase64!, voice?.mimeType!)
+
+    const hash = await calculateSHA256FromFile(file)
+
+    try {
+      const { text } = await api.transcribe(file, voice!.msDuration, hash)
+      // setTranscript(data.text)
+      store.creations.updateCreationDataById(creation.id, {
+        isTranscribed: true,
+        transcribedText: text,
+      })
+    } catch (err) {
+      // alert(`error: ${err.message}`)
+      // console.log('error');
+    }
+    setTranscribing(false)
+  }
+
+  const inited = useRef(false)
+  useEffect(() => {
+    if (!voice) return
+    if (creation.transcribedText || inited.current) return
+    if (!session?.isPro) return
+    inited.current = true
+    if (Date.now() - creation.createdAt.getTime() < 5 * 60 * 1000) {
+      transcribe()
+    }
+  }, [voice, creation, session])
+
   const content = useMemo(() => {
     if (creation.isVoice) {
       return (
         <div>
-          {creation.previewedContent && (
-            <div className="line-clamp-5">{creation.previewedContent}</div>
-          )}
           {isTranscribing && (
             <div className="flex items-center gap-1">
               <span className="text-foreground/90 text-sm">
@@ -144,7 +175,9 @@ export function CreationCard({ creation }: Props) {
               <LoadingDots className="bg-foreground" />
             </div>
           )}
-          {creation.transcribedText && <div>{creation.transcribedText}</div>}
+          {!isTranscribing && creation.previewedContent && (
+            <div>{creation.previewedContent}</div>
+          )}
           <VoiceContent creation={creation} />
         </div>
       )
@@ -182,7 +215,7 @@ export function CreationCard({ creation }: Props) {
         )}
       </>
     )
-  }, [creation])
+  }, [creation, isTranscribing])
 
   if (!struct) return null
   // console.log('-------floatingStyles:', floatingStyles, context.strategy)
@@ -205,39 +238,8 @@ export function CreationCard({ creation }: Props) {
             {creation.isVoice && (
               <ActionItem
                 onClick={async () => {
-                  console.log('======creation:', creation)
-
-                  setTranscribing(true)
-                  const formData = new FormData()
-                  const file = base64StringToFile(
-                    voice?.recordDataBase64!,
-                    voice?.mimeType!,
-                  )
-                  formData.append('file', file)
-
-                  try {
-                    const res = await fetch(
-                      'http://localhost:3000/api/transcribe',
-                      {
-                        method: 'POST',
-                        body: formData,
-                      },
-                    )
-                    const data = await res.json()
-                    if (res.ok) {
-                      // setTranscript(data.text)
-                      store.creations.updateCreationDataById(creation.id, {
-                        isTranscribed: true,
-                        transcribedText: data.text,
-                      })
-                    } else {
-                      alert(data.error || 'Transcribe failed')
-                    }
-                  } catch (err) {
-                    alert(`error: ${err.message}`)
-                  }
-
-                  setTranscribing(false)
+                  setIsOpen(false)
+                  transcribe()
                 }}
               >
                 <SparklesIcon size={18}></SparklesIcon>

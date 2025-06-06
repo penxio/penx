@@ -1,6 +1,7 @@
 import { Dialog } from '@capacitor/dialog'
 import {
   DefaultSystemBrowserOptions,
+  DefaultWebViewOptions,
   InAppBrowser,
 } from '@capacitor/inappbrowser'
 import { t } from '@lingui/core/macro'
@@ -13,6 +14,7 @@ import { useMobileNav } from '@penx/hooks/useMobileNav'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Badge } from '@penx/uikit/ui/badge'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { AboutMenu } from './AboutMenu'
@@ -49,22 +51,25 @@ export function Profile() {
         </div>
       )}
       {session && (
-        <div className="text-foreground flex items-center gap-2">
-          <Avatar className="size-12 rounded-lg">
-            <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-            <AvatarFallback
-              className={cn(
-                'rounded-lg text-white',
-                generateGradient(session.name),
-              )}
-            >
-              {session?.name.slice(0, 1)}
-            </AvatarFallback>
-          </Avatar>
-          <div>
-            <div className="text-lg font-bold">{session?.name}</div>
-            <div className="text-foreground/60">{session?.email}</div>
+        <div className="flex items-center justify-between">
+          <div className="text-foreground flex items-center gap-2">
+            <Avatar className="size-12 rounded-lg">
+              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+              <AvatarFallback
+                className={cn(
+                  'rounded-lg text-white',
+                  generateGradient(session.name),
+                )}
+              >
+                {session?.name.slice(0, 1)}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <div className="text-lg font-bold">{session?.name}</div>
+              <div className="text-foreground/60">{session?.email}</div>
+            </div>
           </div>
+          <Badge>{session?.planType || <Trans>Free</Trans>}</Badge>
         </div>
       )}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-1">
@@ -134,10 +139,15 @@ export function Profile() {
           className="text-foreground/50 text-sm"
           onClick={async (e) => {
             e.preventDefault()
-            await InAppBrowser.openInSystemBrowser({
+
+            await InAppBrowser.openInWebView({
               url: 'https://penx.io/privacy',
-              options: DefaultSystemBrowserOptions,
+              options: DefaultWebViewOptions,
             })
+            // await InAppBrowser.openInSystemBrowser({
+            //   url: 'https://penx.io/privacy',
+            //   options: DefaultSystemBrowserOptions,
+            // })
           }}
         >
           <Trans>Privacy Policy</Trans>

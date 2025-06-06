@@ -1238,6 +1238,9 @@ importers:
       '@penx/widgets':
         specifier: workspace:*
         version: link:../../packages/widgets
+      '@penx/worker':
+        specifier: workspace:*
+        version: link:../../packages/worker
       '@revenuecat/purchases-capacitor':
         specifier: ^10.3.0
         version: 10.3.0(@capacitor/core@7.2.0)

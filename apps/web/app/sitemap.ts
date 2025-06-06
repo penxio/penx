@@ -1,12 +1,11 @@
-import { headers } from 'next/headers';
-
+import { headers } from 'next/headers'
 
 export default async function Sitemap(...arg: any) {
   const headersList = await headers()
   const hostname = headersList.get('host')
 
   const isRoot =
-    hostname === 'localhost:4000' ||
+    hostname === 'localhost:3000' ||
     hostname === process.env.NEXT_PUBLIC_ROOT_DOMAIN
 
   if (isRoot) {

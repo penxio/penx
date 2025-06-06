@@ -32,10 +32,7 @@
           "url": "https://*"
         },
         {
-          "url": "https://*"
-        },
-        {
-          "url": "http://localhost:4000"
+          "url": "http://*"
         }
       ]
     }
