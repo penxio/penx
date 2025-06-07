@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'
@@ -34,10 +34,10 @@ const FormSchema = z.object({
 
 interface Props {}
 
-export function PinCodeForm({}: Props) {
+export function PhonePinCodeForm({}: Props) {
   const { login } = useSession()
   const [isLoading, setLoading] = useState(false)
-  const { authStatus } = useAuthStatus()
+  const { authStatus, setAuthStatus } = useAuthStatus()
   const nav = useNavContext()
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -74,52 +74,31 @@ export function PinCodeForm({}: Props) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <p className="text-foreground/60">
-          <Trans>Please check your email for the verification code.</Trans>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col items-center justify-center gap-4"
+      >
+        <p className="text-foreground/80 text-sm">
+          <Trans>Please enter the verification code.</Trans>
         </p>
 
         <FormField
           control={form.control}
           name="code"
           render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel className="flex items-center justify-between">
-                <span>
-                  <Trans>Login code</Trans>
-                </span>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="xs"
-                  onClick={async () => {
-                    // try {
-                    //   await api.auth.registerByEmail.mutate(
-                    //     authStatus.data as any,
-                    //   )
-                    //   toast.success('Verification code sent successfully')
-                    // } catch (error) {
-                    //   console.log('========error:', error)
-                    //   const msg = extractErrorMessage(error)
-                    //   toast.error(msg)
-                    // }
-                  }}
-                >
-                  Resend
-                </Button>
-              </FormLabel>
+            <FormItem className="">
               <FormControl>
-                <Input size="xl" placeholder="" {...field} className="w-full" />
-                {/* <InputOTP maxLength={6} {...field}>
+                {/* <Input placeholder="" {...field} className="w-full" /> */}
+                <InputOTP maxLength={6} {...field}>
                   <InputOTPGroup>
-                    <InputOTPSlot index={0} />
-                    <InputOTPSlot index={1} />
-                    <InputOTPSlot index={2} />
-                    <InputOTPSlot index={3} />
-                    <InputOTPSlot index={4} />
-                    <InputOTPSlot index={5} />
+                    <InputOTPSlot className="size-12" index={0} />
+                    <InputOTPSlot className="size-12" index={1} />
+                    <InputOTPSlot className="size-12" index={2} />
+                    <InputOTPSlot className="size-12" index={3} />
+                    <InputOTPSlot className="size-12" index={4} />
+                    <InputOTPSlot className="size-12" index={5} />
                   </InputOTPGroup>
-                </InputOTP> */}
+                </InputOTP>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -127,16 +106,31 @@ export function PinCodeForm({}: Props) {
         />
 
         <div>
-          <Button
-            size="xl"
-            type="submit"
-            className="w-full"
-            disabled={isLoading}
-          >
-            {isLoading ? <LoadingDots /> : <Trans>Register</Trans>}
+          <Button size="xl" type="submit" disabled={isLoading} className="w-72">
+            {isLoading ? <LoadingDots /> : <Trans>Log in</Trans>}
           </Button>
         </div>
       </form>
+
+      <Button
+        type="button"
+        variant="ghost"
+        size="xs"
+        onClick={async () => {
+          // try {
+          //   await api.auth.registerByEmail.mutate(
+          //     authStatus.data as any,
+          //   )
+          //   toast.success('Verification code sent successfully')
+          // } catch (error) {
+          //   console.log('========error:', error)
+          //   const msg = extractErrorMessage(error)
+          //   toast.error(msg)
+          // }
+        }}
+      >
+        <Trans>Resend</Trans>
+      </Button>
     </Form>
   )
 }

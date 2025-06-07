@@ -22,16 +22,20 @@ export interface SessionData {
   subscriptionStatus: string
   accessToken: string
   believerPeriodEnd: string
+  credits: {
+    tokenBalance: number
+    transcribeBalance: number
+  }
   domain: {
     domain: string
     isSubdomain: boolean
   }
   message: string
   isFree: boolean
-  isBeliever: boolean
   isSubscription: boolean
+  isStandard: boolean
   isPro: boolean
-  isBasic: boolean
+  isBeliever: boolean
 }
 
 export type GoogleLoginInfo = {
@@ -88,7 +92,12 @@ export type RegisterByEmailData = {
 }
 
 export type RegisterByCodeData = {
-  type: 'register-by-code'
+  type: 'register-by-email-code'
+  code: string
+}
+
+export type LoginBySmsCodeData = {
+  type: 'register-by-sms-code'
   code: string
 }
 
@@ -108,8 +117,16 @@ export function isPasswordLogin(value: any): value is PasswordLoginData {
   return typeof value === 'object' && value?.type === 'password'
 }
 
+export function isDesktopLogin(value: any): value is DesktopLoginData {
+  return typeof value === 'object' && value?.type === 'desktop-login'
+}
+
 export function isRegisterByEmail(value: any): value is RegisterByEmailData {
   return typeof value === 'object' && value?.type === 'register-by-email'
+}
+
+export function isLoginBySmsCode(value: any): value is LoginBySmsCodeData {
+  return typeof value === 'object' && value?.type === 'register-by-sms-code'
 }
 
 export type RegisterByCodePayload = {
@@ -120,7 +137,7 @@ export type RegisterByCodePayload = {
 }
 
 export function isRegisterByCode(value: any): value is RegisterByCodeData {
-  return typeof value === 'object' && value?.type === 'register-by-code'
+  return typeof value === 'object' && value?.type === 'register-by-email-code'
 }
 
 export type UpdateSessionData =

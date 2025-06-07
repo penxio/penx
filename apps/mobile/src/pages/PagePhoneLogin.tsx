@@ -1,7 +1,6 @@
 import React from 'react'
-import { EmailLoginForm } from '@/components/Login/EmailLoginForm'
-import { PinCodeForm } from '@/components/Login/PinCodeForm'
-import { RegisterForm } from '@/components/Login/RegisterForm'
+import { PhoneLoginForm } from '@/components/Login/PhoneLoginForm'
+import { PhonePinCodeForm } from '@/components/Login/PhonePinCodeForm'
 import { isAndroid } from '@/lib/utils'
 import {
   IonBackButton,
@@ -16,7 +15,7 @@ import {
 import { Trans } from '@lingui/react/macro'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 
-export function PageEmailLogin() {
+export function PagePhoneLogin() {
   const { authStatus } = useAuthStatus()
   return (
     <>
@@ -39,18 +38,15 @@ export function PageEmailLogin() {
             <IonBackButton text=""></IonBackButton>
           </IonButtons>
           <IonTitle>
-            <Trans>Email login</Trans>
+            <Trans>Phone login</Trans>
           </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding content">
         <div className="mt-[20vh] flex h-full w-full flex-col">
-          {authStatus.type === 'login' && <EmailLoginForm />}
-
-          {authStatus.type === 'register' && <RegisterForm />}
-
-          {authStatus.type === 'register-email-sent' && (
-            <PinCodeForm></PinCodeForm>
+          {authStatus.type === 'login' && <PhoneLoginForm />}
+          {authStatus.type === 'sms-code-sent' && (
+            <PhonePinCodeForm></PhonePinCodeForm>
           )}
         </div>
       </IonContent>

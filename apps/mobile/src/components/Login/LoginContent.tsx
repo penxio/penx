@@ -18,7 +18,8 @@ import { LoadingDots } from '@penx/uikit/loading-dots'
 import { AppleLoginButton } from './AppleLoginButton'
 import { EmailLoginButton } from './EmailLoginButton'
 import { GoogleLoginButton } from './GoogleLoginButton'
-import { LoginForm } from './LoginForm'
+import { EmailLoginForm } from './EmailLoginForm'
+import { PhoneLoginButton } from './PhoneLoginButton'
 
 interface Props {}
 
@@ -34,8 +35,8 @@ export function LoginContent({}: Props) {
   })
 
   return (
-    <div className="text-foreground flex h-full flex-1 flex-col justify-center px-6">
-      <div className="-mt-20 space-y-2">
+    <div className="text-foreground flex h-full flex-1 flex-col justify-center gap-3 px-6">
+      <div className="-mt-20 flex flex-col gap-2">
         <div className="mb-10 text-center text-2xl font-bold">
           <Trans>Welcome to PenX</Trans>
         </div>
@@ -43,6 +44,7 @@ export function LoginContent({}: Props) {
         {platform === 'ios' && <AppleLoginButton />}
 
         <EmailLoginButton />
+        <PhoneLoginButton />
         {/* <div className="text-foreground/40 my-4 text-center">or</div>
         <LoginForm setVisible={setVisible} /> */}
       </div>

@@ -13,7 +13,7 @@ import { MobileAppleLoginInfo, MobileGoogleLoginInfo } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { IconGoogle } from '@penx/uikit/IconGoogle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { LoginForm } from './LoginForm'
+import { EmailLoginForm } from './EmailLoginForm'
 
 interface Props {}
 export function AppleLoginButton({}: Props) {

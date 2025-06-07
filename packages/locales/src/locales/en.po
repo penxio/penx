@@ -51,9 +51,13 @@ msgstr "Add widget"
 msgid "AI chat"
 msgstr "AI chat"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:250
+#: packages/components/src/CreationCard/CreationCard.tsx:247
 msgid "AI transcribe"
 msgstr "AI transcribe"
+
+#: packages/components/src/CreationCard/CreationCard.tsx:173
+msgid "AI Transcribing"
+msgstr "AI Transcribing"
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
 msgid "All"
@@ -72,7 +76,7 @@ msgstr "All structs"
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 
-#: apps/mobile/src/components/Login/RegisterForm.tsx:127
+#: apps/mobile/src/components/Login/RegisterForm.tsx:134
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:127
 msgid "Already have an account"
 msgstr "Already have an account"
@@ -125,7 +129,7 @@ msgstr "Collection"
 msgid "Color"
 msgstr "Color"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:265
+#: packages/components/src/CreationCard/CreationCard.tsx:262
 msgid "Copy"
 msgstr "Copy"
 
@@ -143,7 +147,7 @@ msgstr "Create"
 msgid "Create area"
 msgstr "Create area"
 
-#: apps/mobile/src/components/Login/LoginForm.tsx:133
+#: apps/mobile/src/components/Login/EmailLoginForm.tsx:139
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:131
 msgid "Create one"
 msgstr "Create one"
@@ -174,7 +178,7 @@ msgstr "Dashboard"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/CreationCard/CreationCard.tsx:316
+#: packages/components/src/CreationCard/CreationCard.tsx:313
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:96
@@ -211,7 +215,7 @@ msgstr "Done"
 msgid "Due date"
 msgstr "Due date"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:294
+#: packages/components/src/CreationCard/CreationCard.tsx:291
 msgid "Edit"
 msgstr "Edit"
 
@@ -227,14 +231,16 @@ msgstr "Edit struct"
 msgid "Edit widget"
 msgstr "Edit widget"
 
-#: apps/mobile/src/components/Login/RegisterForm.tsx:83
-#: apps/mobile/src/components/Login/LoginForm.tsx:89
+#: apps/mobile/src/components/Login/RegisterForm.tsx:84
+#: apps/mobile/src/components/Login/RegisterForm.tsx:89
+#: apps/mobile/src/components/Login/EmailLoginForm.tsx:91
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:83
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:87
 msgid "Email"
 msgstr "Email"
 
-#: apps/mobile/src/pages/PageEmailLogin.tsx:44
+#: apps/mobile/src/pages/PageEmailLogin.tsx:42
+#: apps/mobile/src/components/Login/EmailLoginButton.tsx:17
 msgid "Email login"
 msgstr "Email login"
 
@@ -278,6 +284,10 @@ msgstr "High"
 msgid "Home"
 msgstr "Home"
 
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:34
+msgid "Invalid phone number."
+msgstr "Invalid phone number."
+
 #: apps/mobile/src/components/HomeHeader.tsx:43
 msgid "Journal"
 msgstr "Journal"
@@ -310,8 +320,10 @@ msgstr "List"
 msgid "Local backup"
 msgstr "Local backup"
 
-#: apps/mobile/src/components/Login/RegisterForm.tsx:135
-#: apps/mobile/src/components/Login/LoginForm.tsx:122
+#: apps/mobile/src/components/Login/RegisterForm.tsx:142
+#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:110
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:103
+#: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
 #: packages/components/src/ProfileButton.tsx:118
@@ -329,7 +341,7 @@ msgstr "Log out"
 msgid "Login"
 msgstr "Login"
 
-#: apps/mobile/src/components/Login/PinCodeForm.tsx:88
+#: apps/mobile/src/components/Login/PinCodeForm.tsx:89
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:90
 msgid "Login code"
 msgstr "Login code"
@@ -379,7 +391,7 @@ msgstr "My Structs"
 msgid "Name"
 msgstr "Name"
 
-#: apps/mobile/src/components/Login/LoginForm.tsx:128
+#: apps/mobile/src/components/Login/EmailLoginForm.tsx:134
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:125
 msgid "No account"
 msgstr "No account"
@@ -407,7 +419,7 @@ msgstr "No results found."
 msgid "No task yet."
 msgstr "No task yet."
 
-#: packages/components/src/CreationCard/VoiceContent.tsx:104
+#: packages/components/src/CreationCard/VoiceContent.tsx:105
 msgid "No voice data!"
 msgstr "No voice data!"
 
@@ -434,12 +446,22 @@ msgstr "Operation"
 msgid "Page"
 msgstr "Page"
 
-#: apps/mobile/src/components/Login/RegisterForm.tsx:99
-#: apps/mobile/src/components/Login/LoginForm.tsx:105
+#: apps/mobile/src/components/Login/RegisterForm.tsx:105
+#: apps/mobile/src/components/Login/RegisterForm.tsx:111
+#: apps/mobile/src/components/Login/EmailLoginForm.tsx:111
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 msgid "Password"
 msgstr "Password"
+
+#: apps/mobile/src/pages/PagePhoneLogin.tsx:41
+#: apps/mobile/src/components/Login/PhoneLoginButton.tsx:18
+msgid "Phone login"
+msgstr "Phone login"
+
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:86
+msgid "Phone number"
+msgstr "Phone number"
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
 msgid "Pick a date"
@@ -449,10 +471,14 @@ msgstr "Pick a date"
 msgid "Plan"
 msgstr "Plan"
 
-#: apps/mobile/src/components/Login/PinCodeForm.tsx:78
+#: apps/mobile/src/components/Login/PinCodeForm.tsx:79
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:80
 msgid "Please check your email for the verification code."
 msgstr "Please check your email for the verification code."
+
+#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:82
+msgid "Please enter the verification code."
+msgstr "Please enter the verification code."
 
 #: packages/components/src/StructDialog/EditStructForm.tsx:99
 msgid "Plural name"
@@ -492,8 +518,8 @@ msgstr "Recently edited"
 msgid "Recently opened"
 msgstr "Recently opened"
 
-#: apps/mobile/src/components/Login/RegisterForm.tsx:121
-#: apps/mobile/src/components/Login/PinCodeForm.tsx:125
+#: apps/mobile/src/components/Login/RegisterForm.tsx:128
+#: apps/mobile/src/components/Login/PinCodeForm.tsx:136
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:121
 #: packages/widgets/src/LoginDialog/PinCodeForm.tsx:127
 msgid "Register"
@@ -507,6 +533,10 @@ msgstr "Register to PenX"
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr "Rename"
+
+#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:132
+msgid "Resend"
+msgstr "Resend"
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
@@ -540,7 +570,7 @@ msgstr "Slug"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:283
+#: packages/components/src/CreationCard/CreationCard.tsx:280
 msgid "Star"
 msgstr "Star"
 
@@ -574,6 +604,10 @@ msgstr "Subscription"
 #: packages/components/src/ProfileButton.tsx:232
 msgid "Support"
 msgstr "Support"
+
+#: apps/mobile/src/components/Menu.tsx:140
+msgid "Sync now"
+msgstr "Sync now"
 
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:64
 msgid "System"
@@ -609,10 +643,6 @@ msgstr "To Do"
 msgid "Today"
 msgstr "Today"
 
-#: packages/components/src/CreationCard/CreationCard.tsx:176
-msgid "Transcribing"
-msgstr "Transcribing"
-
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
 msgstr "Unique code"
@@ -620,7 +650,7 @@ msgstr "Unique code"
 #: apps/mobile/src/components/CreationMenu.tsx:87
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/CreationCard/CreationCard.tsx:283
+#: packages/components/src/CreationCard/CreationCard.tsx:280
 msgid "Unstar"
 msgstr "Unstar"
 
@@ -654,7 +684,7 @@ msgstr "URL"
 msgid "Voice"
 msgstr "Voice"
 
-#: apps/mobile/src/components/Login/LoginContent.tsx:40
+#: apps/mobile/src/components/Login/LoginContent.tsx:41
 #: apps/extension/components/Login.tsx:38
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"

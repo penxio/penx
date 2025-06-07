@@ -53,7 +53,7 @@ export function PinCodeForm({}: Props) {
     try {
       setLoading(true)
       const result = await login({
-        type: 'register-by-code',
+        type: 'register-by-email-code',
         code: data.code,
       })
       console.log('=====session:', result)

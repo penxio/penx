@@ -34,7 +34,7 @@ const FormSchema = z.object({
 
 interface Props {}
 
-export function LoginForm({}: Props) {
+export function EmailLoginForm({}: Props) {
   const [isLoading, setLoading] = useState(false)
   const { login } = useSession()
   const { setAuthStatus } = useAuthStatus()
@@ -86,7 +86,12 @@ export function LoginForm({}: Props) {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input placeholder={t`Email`} {...field} className="w-full" />
+                <Input
+                  size="xl"
+                  placeholder={t`Email`}
+                  {...field}
+                  className="w-full"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -100,6 +105,7 @@ export function LoginForm({}: Props) {
             <FormItem className="w-full">
               <FormControl>
                 <Input
+                  size="xl"
                   autoComplete="current-password"
                   type="password"
                   placeholder={t`Password`}
@@ -114,7 +120,7 @@ export function LoginForm({}: Props) {
 
         <div>
           <Button
-            size="lg"
+            size="xl"
             type="submit"
             className="w-full"
             disabled={isLoading}

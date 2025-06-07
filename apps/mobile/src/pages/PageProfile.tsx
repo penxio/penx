@@ -1,6 +1,6 @@
 import React from 'react'
 import { LoginContent } from '@/components/Login/LoginContent'
-import { LoginForm } from '@/components/Login/LoginForm'
+import { EmailLoginForm } from '@/components/Login/EmailLoginForm'
 import { RegisterForm } from '@/components/Login/RegisterForm'
 import { Profile } from '@/components/Profile/Profile'
 import { Capacitor } from '@capacitor/core'

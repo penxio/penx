@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
@@ -83,7 +84,12 @@ export function RegisterForm({}: Props) {
                 <Trans>Email</Trans>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} className="w-full" />
+                <Input
+                  size="xl"
+                  placeholder={t`Email`}
+                  {...field}
+                  className="w-full"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -100,8 +106,9 @@ export function RegisterForm({}: Props) {
               </FormLabel>
               <FormControl>
                 <Input
+                  size="xl"
                   type="password"
-                  placeholder="Password"
+                  placeholder={t`Password`}
                   {...field}
                   className="w-full"
                 />
@@ -113,7 +120,7 @@ export function RegisterForm({}: Props) {
 
         <div>
           <Button
-            size="lg"
+            size="xl"
             type="submit"
             className="w-full"
             disabled={isLoading}

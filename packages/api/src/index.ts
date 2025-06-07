@@ -77,4 +77,15 @@ export const api = {
       })
       .json<{ text: string }>()
   },
+
+  async sendSmsCode(phone: string, userId = '') {
+    return ky
+      .post(TRANSCRIBE_URL, {
+        json: {
+          phone,
+          userId,
+        },
+      })
+      .json()
+  },
 }

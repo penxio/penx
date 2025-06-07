@@ -3,7 +3,7 @@
 import { atom, useAtom } from 'jotai'
 
 type State = {
-  type: 'login' | 'register' | 'register-email-sent'
+  type: 'login' | 'register' | 'register-email-sent' | 'sms-code-sent'
   data?: Record<string, any>
 }
 const authStatusAtom = atom<State>({

@@ -3,6 +3,7 @@
 import React from 'react'
 import { PageEmailLogin } from '@/pages/PageEmailLogin'
 import { IonNavLink } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { MailIcon } from 'lucide-react'
 import { Button } from '@penx/uikit/button'
 
@@ -12,7 +13,9 @@ export function EmailLoginButton({}: Props) {
     <IonNavLink routerDirection="forward" component={() => <PageEmailLogin />}>
       <Button className="w-full gap-2">
         <MailIcon size={20} />
-        <div className="">Email login</div>
+        <div className="">
+          <Trans>Email login</Trans>
+        </div>
       </Button>
     </IonNavLink>
   )

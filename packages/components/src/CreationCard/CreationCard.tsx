@@ -170,7 +170,7 @@ export function CreationCard({ creation }: Props) {
           {isTranscribing && (
             <div className="flex items-center gap-1">
               <span className="text-foreground/90 text-sm">
-                <Trans>Transcribing</Trans>
+                <Trans>AI Transcribing</Trans>
               </span>
               <LoadingDots className="bg-foreground" />
             </div>
