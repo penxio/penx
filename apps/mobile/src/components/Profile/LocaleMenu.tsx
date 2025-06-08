@@ -3,9 +3,12 @@ import { Trans, useLingui } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
 import { LOCALE, supportLanguages } from '@penx/constants'
 import { cn } from '@penx/utils'
-import { Drawer } from '../Drawer'
 import { useTheme } from '../theme-provider'
-import { MenuItem } from './MenuItem'
+import { Drawer } from '../ui/Drawer'
+import { DrawerHeader } from '../ui/DrawerHeader'
+import { DrawerTitle } from '../ui/DrawerTitle'
+import { Menu } from '../ui/Menu'
+import { MenuItem } from '../ui/MenuItem'
 
 type LOCALES = 'en' | 'ja' | 'ko' | 'fr' | 'ru' | 'zh-CN'
 interface ItemProps {
@@ -48,15 +51,14 @@ export function LocaleMenu({ children, className }: ItemProps) {
         </div>
       </div>
 
-      <Drawer
-        open={isOpen}
-        setOpen={setIsOpen}
-        className="bg-neutral-100 dark:bg-neutral-800"
-      >
-        <div className="mb-2 text-center font-bold">
-          <Trans>Language</Trans>
-        </div>
-        <div className="divide-foreground/5 divide-y rounded-xl dark:bg-neutral-700">
+      <Drawer open={isOpen} setOpen={setIsOpen}>
+        <DrawerHeader>
+          <DrawerTitle>
+            <Trans>Language</Trans>
+          </DrawerTitle>
+        </DrawerHeader>
+
+        <Menu>
           {supportLanguages.map(([code, name]) => (
             <MenuItem
               key={code}
@@ -68,7 +70,7 @@ export function LocaleMenu({ children, className }: ItemProps) {
               {name}
             </MenuItem>
           ))}
-        </div>
+        </Menu>
       </Drawer>
     </>
   )

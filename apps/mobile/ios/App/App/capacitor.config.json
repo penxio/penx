@@ -26,6 +26,7 @@
 		"KeyboardPlugin",
 		"SplashScreenPlugin",
 		"StatusBarPlugin",
+		"ToastPlugin",
 		"SocialLoginPlugin",
 		"PurchasesPlugin",
 		"VoiceRecorder"

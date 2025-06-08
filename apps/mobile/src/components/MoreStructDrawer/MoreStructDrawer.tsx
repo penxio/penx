@@ -6,7 +6,9 @@ import { CheckIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { Drawer } from '../Drawer'
+import { Drawer } from '../ui/Drawer'
+import { DrawerHeader } from '../ui/DrawerHeader'
+import { DrawerTitle } from '../ui/DrawerTitle'
 import { PublishedStructList } from './PublishedStructList'
 import { StructList } from './StructList'
 import { useMoreStructDrawer } from './useMoreStructDrawer'
@@ -17,17 +19,13 @@ export function MoreStructDrawer({}: Props) {
   const { isOpen, setIsOpen } = useMoreStructDrawer()
 
   return (
-    <Drawer
-      open={isOpen}
-      setOpen={setIsOpen}
-      className="select-none bg-neutral-100 dark:bg-neutral-800"
-    >
-      <div className="flex flex-1 flex-col gap-4">
-        <div className="text-foreground flex items-center justify-between gap-2 text-lg">
-          <span>
-            <Trans>My structs</Trans>
-          </span>
-          {/* <Button
+    <Drawer open={isOpen} setOpen={setIsOpen} className="">
+      <DrawerHeader>
+        <DrawerTitle>
+          <Trans>My structs</Trans>
+        </DrawerTitle>
+      </DrawerHeader>
+      {/* <Button
             variant="default"
             size="xs"
             className="rounded-full"
@@ -38,10 +36,8 @@ export function MoreStructDrawer({}: Props) {
           >
             <Trans>Create</Trans>
           </Button> */}
-        </div>
 
-        <StructList />
-      </div>
+      <StructList />
     </Drawer>
   )
 }

@@ -69,7 +69,7 @@ import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
-import { PageStructInfo } from './pages/PageStructInfo'
+import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
 import { PageWidget } from './pages/PageWidget'
 
 const platform = Capacitor.getPlatform()

@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
-import { Drawer } from '../Drawer'
+import { Drawer } from '../ui/Drawer'
 import { UpgradeContent } from '../UpgradeDrawer/UpgradeContent'
 
 interface ItemProps {

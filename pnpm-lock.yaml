@@ -1154,6 +1154,9 @@ importers:
       '@capacitor/status-bar':
         specifier: 7.0.1
         version: 7.0.1(@capacitor/core@7.2.0)
+      '@capacitor/toast':
+        specifier: ^7.0.1
+        version: 7.0.1(@capacitor/core@7.2.0)
       '@capgo/capacitor-social-login':
         specifier: 7.5.9
         version: 7.5.9(@capacitor/core@7.2.0)
@@ -3089,6 +3092,11 @@ packages:
 
   '@capacitor/synapse@1.0.2':
     resolution: {integrity: sha512-ynq39s4D2rhk+aVLWKfKfMCz9SHPKijL9tq8aFL5dG7ik7/+PvBHmg9cPHbqdvFEUSMmaGzL6cIjzkOruW7vGA==}
+
+  '@capacitor/toast@7.0.1':
+    resolution: {integrity: sha512-3GFhejVwKqUjosYnpQVfq5eml7X6B97jcVpncY75lBDiTlCYJeRanj63OChZPuw1KWudkBTYZMcXdRYWguJdKw==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
 
   '@capgo/capacitor-social-login@7.5.9':
     resolution: {integrity: sha512-rrTYHQfKByvnka1isSuodcSjNEFl8cLYSIZHMViC7gf/4+eeD+9G3zmEe+JYzqn9w77KRFtNfOcD3NEarQj1ZA==}
@@ -17126,6 +17134,10 @@ snapshots:
       '@capacitor/core': 7.2.0
 
   '@capacitor/synapse@1.0.2': {}
+
+  '@capacitor/toast@7.0.1(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
 
   '@capgo/capacitor-social-login@7.5.9(@capacitor/core@7.2.0)':
     dependencies:

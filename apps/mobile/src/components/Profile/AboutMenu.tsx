@@ -2,9 +2,8 @@ import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
-import { Drawer } from '../Drawer'
+import { Drawer } from '../ui/Drawer'
 import { useTheme } from '../theme-provider'
-import { MenuItem } from './MenuItem'
 
 interface ItemProps {
   className?: string
@@ -14,7 +13,6 @@ interface ItemProps {
 export function AboutMenu({ children, className }: ItemProps) {
   const [isOpen, setIsOpen] = useState(false)
   const { theme } = useTheme()
-  console.log('======theme:', theme)
 
   return (
     <>

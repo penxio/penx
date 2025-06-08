@@ -30,7 +30,7 @@ export function SearchPanel({ setVisible }: Props) {
   }, [recentCreations, q])
   return (
     <div className="flex flex-1 flex-col gap-2 overflow-hidden">
-      <div className="px-4">
+      <div className="px-4 pt-4">
         <Input
           variant="filled"
           className="w-full dark:bg-neutral-700"

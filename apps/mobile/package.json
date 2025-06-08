@@ -34,6 +34,7 @@
     "@capacitor/keyboard": "7.0.1",
     "@capacitor/splash-screen": "^7.0.1",
     "@capacitor/status-bar": "7.0.1",
+    "@capacitor/toast": "^7.0.1",
     "@capgo/capacitor-social-login": "7.5.9",
     "@ionic/core": "^8.5.7",
     "@ionic/react": "^8.5.0",

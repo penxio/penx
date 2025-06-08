@@ -2,7 +2,7 @@ import { CheckIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
 
 interface ItemProps {
-  checked: boolean
+  checked?: boolean
   className?: string
   onClick?: () => void
   children?: React.ReactNode

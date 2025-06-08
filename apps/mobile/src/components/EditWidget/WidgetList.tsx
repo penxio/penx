@@ -34,9 +34,9 @@ import {
 } from '@dnd-kit/sortable'
 import { isMobileApp } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
-import { queryClient } from '@penx/query-client'
 import { store } from '@penx/store'
 import { Widget } from '@penx/types'
+import { Card } from '../ui/Card'
 import { SortableWidgetItem } from './SortableWidgetItem'
 import { WidgetItem } from './WidgetItem'
 
@@ -80,11 +80,11 @@ export const WidgetList = () => {
 
   const [items, setItems] = useState<string[]>(widgets.map((item) => item.id))
 
-  useEffect(() => {
-    const newItems = widgets.map((item) => item.id)
-    if (isEqual(items, newItems)) return
-    setItems(newItems)
-  }, [area])
+  // useEffect(() => {
+  //   const newItems = widgets.map((item) => item.id)
+  //   if (isEqual(items, newItems)) return
+  //   setItems(newItems)
+  // }, [area])
 
   function handleDragStart({ active }: DragStartEvent) {
     if (active) {
@@ -118,7 +118,7 @@ export const WidgetList = () => {
   const activeItem = activeId ? widgets.find(({ id }) => id === activeId) : null
 
   return (
-    <div className="text-foreground flex flex-col gap-2">
+    <Card className="text-foreground flex flex-col">
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
@@ -150,6 +150,6 @@ export const WidgetList = () => {
           document.body,
         )}
       </DndContext>
-    </div>
+    </Card>
   )
 }

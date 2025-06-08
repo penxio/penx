@@ -90,8 +90,6 @@ export function Profile() {
               })
 
               if (value) {
-                // api.
-
                 toast.promise(
                   async () => {
                     await api.deleteAccount()
@@ -101,10 +99,10 @@ export function Profile() {
                     appEmitter.emit('DELETE_ACCOUNT')
                   },
                   {
-                    loading: 'Account deletion in progress...',
-                    success: 'Account deleted successfully!',
+                    loading: t`Account deletion in progress...`,
+                    success: t`Account deleted successfully!`,
                     error: () => {
-                      return 'Failed to delete account. Please try again.'
+                      return t`Failed to delete account. Please try again.`
                     },
                   },
                 )

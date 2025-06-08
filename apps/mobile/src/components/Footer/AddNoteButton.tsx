@@ -21,13 +21,15 @@ export const AddNoteButton = ({ onAdd }: Props) => {
     <motion.div
       {...handlers()}
       whileTap={{ scale: 1.1 }}
-      className=" bg-foreground relative  flex size-10 select-none items-center justify-center rounded-full"
+      className=" relative  flex size-10 select-none items-center justify-center rounded-full"
       onClick={async () => {
         onAdd()
       }}
     >
-      {/* <span className="icon-[mdi--feather] text-background size-6"></span> */}
-      <PlusIcon size={20} className="text-background" />
+      {/* <span className="icon-[mdi--feather] size-6"></span> */}
+      <PlusIcon size={28} className="text-foreground" />
+      {/* <span className="icon-[ic--round-plus] size-8"></span> */}
+      {/* <span className="icon-[stash--plus-solid] size-8"></span> */}
     </motion.div>
   )
 }

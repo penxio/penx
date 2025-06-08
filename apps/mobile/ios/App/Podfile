@@ -22,6 +22,7 @@ def capacitor_pods
   pod 'CapacitorKeyboard', :path => '../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard'
   pod 'CapacitorSplashScreen', :path => '../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen'
   pod 'CapacitorStatusBar', :path => '../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar'
+  pod 'CapacitorToast', :path => '../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast'
   pod 'CapgoCapacitorSocialLogin', :path => '../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login'
   pod 'RevenuecatPurchasesCapacitor', :path => '../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.0_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor'
   pod 'CapacitorVoiceRecorder', :path => '../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder'

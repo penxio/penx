@@ -36,6 +36,8 @@ PODS:
     - Capacitor
   - CapacitorStatusBar (7.0.1):
     - Capacitor
+  - CapacitorToast (7.0.1):
+    - Capacitor
   - CapacitorVoiceRecorder (7.0.5):
     - Capacitor
   - CapgoCapacitorSocialLogin (7.5.9):
@@ -93,6 +95,7 @@ DEPENDENCIES:
   - "CapacitorKeyboard (from `../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard`)"
   - "CapacitorSplashScreen (from `../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar`)"
+  - "CapacitorToast (from `../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast`)"
   - "CapacitorVoiceRecorder (from `../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder`)"
   - "CapgoCapacitorSocialLogin (from `../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login`)"
   - "RevenuecatPurchasesCapacitor (from `../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.0_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor`)"
@@ -142,6 +145,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen"
   CapacitorStatusBar:
     :path: "../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar"
+  CapacitorToast:
+    :path: "../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast"
   CapacitorVoiceRecorder:
     :path: "../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder"
   CapgoCapacitorSocialLogin:
@@ -166,6 +171,7 @@ SPEC CHECKSUMS:
   CapacitorKeyboard: 09fd91dcde4f8a37313e7f11bde553ad1ed52036
   CapacitorSplashScreen: 1d67815a422a9b61539c94f283c08ed56667c0fc
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
+  CapacitorToast: ddfc4b36080dbe3634c9faf510b20f6ddcff9330
   CapacitorVoiceRecorder: d971261c83b35475ab202c357ece2c0f83a83ee3
   CapgoCapacitorSocialLogin: 981a9b3c980d90cca812f2a161678f6ca8f24096
   FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
@@ -182,6 +188,6 @@ SPEC CHECKSUMS:
   RevenueCat: 2d3639d30b8a71cbfe3d99cef8243c602793e0ec
   RevenuecatPurchasesCapacitor: d2caee5c90772184b79466cfb0e25cc651b3b97c
 
-PODFILE CHECKSUM: 9048c970ec1b9b57aeac5c1a8aa0ba10f4bbbfff
+PODFILE CHECKSUM: 8e1b272bae3498bc39d532ca837a51d9eb9aecb0
 
 COCOAPODS: 1.16.2

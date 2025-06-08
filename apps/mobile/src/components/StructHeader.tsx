@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
+import { PageStructInfo } from '@/pages/PageStructInfo/PageStructInfo'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -7,14 +8,17 @@ import {
   IonHeader,
   IonIcon,
   IonMenuToggle,
+  IonNavLink,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { GoToDay } from '@penx/components/GoToDay'
 import { useArea } from '@penx/hooks/useArea'
 import { usePanels } from '@penx/hooks/usePanels'
 import { useStructs } from '@penx/hooks/useStructs'
 import { PanelType } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 
 const platform = Capacitor.getPlatform()
@@ -23,10 +27,10 @@ export const StructHeader: React.FC = () => {
   const { area } = useArea()
   const { panels } = usePanels()
   const { structs } = useStructs()
-  const title = useMemo(() => {
+  const struct = useMemo(() => {
     const structPanels = panels.find((p) => p.type === PanelType.STRUCT)
     const struct = structs.find((s) => s.id === structPanels?.structId)
-    return struct?.name || ''
+    return struct
   }, [panels, structs])
 
   return (
@@ -50,9 +54,20 @@ export const StructHeader: React.FC = () => {
           <IonBackButton text=""></IonBackButton>
         </IonButtons>
 
-        <IonTitle slot="start" className="mx-1 text-foreground">
-          {title}
+        <IonTitle slot="start" className="text-foreground mx-1">
+          {struct?.name}
         </IonTitle>
+
+        <IonButtons slot="end">
+          <IonNavLink
+            routerDirection="forward"
+            component={() => <PageStructInfo struct={struct!} />}
+          >
+            <div className="text-brand mr-2 flex h-8 items-center">
+              <Trans>Edit props</Trans>
+            </div>
+          </IonNavLink>
+        </IonButtons>
       </IonToolbar>
     </IonHeader>
   )

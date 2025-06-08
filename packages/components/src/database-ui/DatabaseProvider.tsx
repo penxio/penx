@@ -131,15 +131,7 @@ export function DatabaseProvider({
   }
 
   async function updateDatabase(props: UpdateDatabaseInput) {
-    const newStruct = produce(struct.raw, (draft) => {
-      draft.props = {
-        ...draft.props,
-        ...props,
-      }
-    })
-
-    store.structs.updateStruct(struct.id, newStruct)
-    await localDB.updateStructProps(struct.id, props)
+    store.structs.updateStructProps(struct, props)
   }
 
   async function addView(viewType: ViewType) {
@@ -243,106 +235,11 @@ export function DatabaseProvider({
   }
 
   async function addColumn(columnType: ColumnType) {
-    const nameMap: Record<string, string> = {
-      [ColumnType.TEXT]: 'Text',
-      [ColumnType.NUMBER]: 'Number',
-      [ColumnType.URL]: 'URL',
-      [ColumnType.PASSWORD]: 'Password',
-      [ColumnType.SINGLE_SELECT]: 'Single Select',
-      [ColumnType.MULTIPLE_SELECT]: 'Multiple Select',
-      [ColumnType.RATE]: 'Rate',
-      [ColumnType.IMAGE]: 'Image',
-      [ColumnType.MARKDOWN]: 'Markdown',
-      [ColumnType.DATE]: 'Date',
-      [ColumnType.CREATED_AT]: 'Created At',
-      [ColumnType.UPDATED_AT]: 'Updated At',
-    }
-    const id = uniqueId()
-    const slug = uniqueId()
-    const name = nameMap[columnType] || ''
-    const newStruct = produce(struct.raw, (draft) => {
-      draft.props.columns.push({
-        id,
-        isPrimary: false,
-        name,
-        slug,
-        description: '',
-        config: {},
-        options: [],
-        columnType,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      })
-      for (const view of draft.props.views) {
-        view.viewColumns.push({
-          columnId: id,
-          width: 160,
-          visible: true,
-        })
-      }
-    })
-
-    const newCreations = produce(creationNodes, (draft) => {
-      for (const item of draft) {
-        if (item.props.structId !== struct.id) continue
-        item.props.cells[id] = ''
-      }
-    })
-
-    store.structs.updateStruct(struct.id, newStruct)
-    store.creations.set(newCreations)
-
-    await localDB.updateStructProps(struct.id, {
-      columns: newStruct.props.columns,
-      views: newStruct.props.views,
-    })
-
-    for (const item of records) {
-      const newProps = produce(item.props, (draft) => {
-        draft.cells[id] = ''
-      })
-      await localDB.updateCreationProps(item.id, {
-        cells: newProps.cells,
-      })
-    }
+    store.structs.addColumn(struct, { columnType })
   }
 
   async function deleteColumn(columnId: string) {
-    const newStruct = produce(struct.raw, (draft) => {
-      draft.props.columns = draft.props.columns.filter(
-        (column) => column.id !== columnId,
-      )
-
-      for (const view of draft.props.views) {
-        view.viewColumns = view.viewColumns.filter(
-          (i) => i.columnId !== columnId,
-        )
-      }
-    })
-
-    const newCreations = produce(creationNodes, (draft) => {
-      for (const item of draft) {
-        if (item.props.structId !== struct.id) continue
-        delete item.props.cells[columnId]
-      }
-    })
-
-    store.creations.set(newCreations)
-    store.structs.updateStruct(struct.id, newStruct)
-
-    await localDB.updateStructProps(struct.id, {
-      columns: newStruct.props.columns,
-      views: newStruct.props.views,
-    })
-
-    for (const item of records) {
-      const newProps = produce(item.props, (draft) => {
-        delete draft.cells[columnId]
-      })
-      await localDB.updateCreationProps(item.id, {
-        cells: newProps.cells,
-      })
-    }
+    store.structs.deleteColumn(struct, columnId)
   }
 
   async function sortColumn(fromIndex: number, toIndex: number) {
@@ -367,20 +264,7 @@ export function DatabaseProvider({
   }
 
   async function updateColumnName(columnId: string, name: string) {
-    const newStruct = produce(struct.raw, (draft) => {
-      for (const column of draft.props.columns) {
-        if (column.id === columnId) {
-          column.name = name
-          break
-        }
-      }
-    })
-
-    store.structs.updateStruct(struct.id, newStruct)
-
-    await localDB.updateStructProps(struct.id, {
-      columns: newStruct.props.columns,
-    })
+    store.structs.updateColumnName(struct, columnId, name)
   }
 
   async function updateColumnWidth(columnId: string, width: number) {

@@ -4,8 +4,9 @@ import React, { FC, PropsWithChildren, useState } from 'react'
 import { Plus } from 'lucide-react'
 import { ColumnType } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { ColumnTypeName } from '../../../ColumnTypeName'
 import { FieldIcon } from '../../../FieldIcon'
+import { useDatabaseContext } from '../../DatabaseProvider'
 
 interface PopoverStateProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -38,66 +39,26 @@ function Item({
 }
 
 function Content({ setIsOpen }: PopoverStateProps) {
+  const types = [
+    ColumnType.TEXT,
+    ColumnType.NUMBER,
+    ColumnType.URL,
+    ColumnType.PASSWORD,
+    ColumnType.SINGLE_SELECT,
+    ColumnType.MULTIPLE_SELECT,
+    ColumnType.RATE,
+    ColumnType.DATE,
+    ColumnType.CREATED_AT,
+    ColumnType.UPDATED_AT,
+  ]
   return (
     <div className="p-2">
-      <Item fieldType={ColumnType.TEXT} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.TEXT} />
-        <div>Text</div>
-      </Item>
-      <Item fieldType={ColumnType.NUMBER} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.NUMBER} />
-        <div>Number</div>
-      </Item>
-
-      <Item fieldType={ColumnType.URL} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.URL} />
-        <div>URL</div>
-      </Item>
-
-      <Item fieldType={ColumnType.PASSWORD} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.PASSWORD} />
-        <div>Password</div>
-      </Item>
-
-      <Item fieldType={ColumnType.SINGLE_SELECT} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.SINGLE_SELECT} />
-        <div>Single Select</div>
-      </Item>
-
-      <Item fieldType={ColumnType.MULTIPLE_SELECT} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.MULTIPLE_SELECT} />
-        <div>Multiple Select</div>
-      </Item>
-
-      <Item fieldType={ColumnType.RATE} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.SINGLE_SELECT} />
-        <div>Rate</div>
-      </Item>
-
-      <Item fieldType={ColumnType.IMAGE} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.IMAGE} />
-        <div>Image</div>
-      </Item>
-
-      {/* <Item fieldType={FieldType.MARKDOWN} setIsOpen={setIsOpen}>
-        <FieldIcon fieldType={FieldType.MARKDOWN} />
-        <div>Markdown</div>
-      </Item> */}
-
-      <Item fieldType={ColumnType.DATE} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.DATE} />
-        <div>Date</div>
-      </Item>
-
-      <Item fieldType={ColumnType.CREATED_AT} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.CREATED_AT} />
-        <div>Created At</div>
-      </Item>
-
-      <Item fieldType={ColumnType.UPDATED_AT} setIsOpen={setIsOpen}>
-        <FieldIcon columnType={ColumnType.UPDATED_AT} />
-        <div>Updated At</div>
-      </Item>
+      {types.map((type) => (
+        <Item key={type} fieldType={ColumnType.TEXT} setIsOpen={setIsOpen}>
+          <FieldIcon columnType={type} />
+          <ColumnTypeName columnType={type} />
+        </Item>
+      ))}
     </div>
   )
 }

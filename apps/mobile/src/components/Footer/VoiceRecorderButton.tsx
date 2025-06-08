@@ -23,7 +23,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { stringToDoc } from '@penx/utils/editorHelper'
-import { Drawer } from '../Drawer'
+import { Drawer } from '../ui/Drawer'
 
 interface Props {}
 

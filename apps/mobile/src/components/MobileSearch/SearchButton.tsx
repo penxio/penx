@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react'
 import { SearchIcon } from 'lucide-react'
 import { Button } from '@penx/uikit/button'
 import { cn, isIOS } from '@penx/utils'
-import { Drawer } from '../Drawer'
+import { Drawer } from '../ui/Drawer'
 import { SearchPanel } from './SearchPanel'
 
 export function SearchButton() {
@@ -20,11 +20,7 @@ export function SearchButton() {
         <SearchIcon size={24} />
       </Button>
 
-      <Drawer
-        open={visible}
-        setOpen={setVisible}
-        className={cn('min-h-[80vh] px-0 pb-0', isIOS() && 'max-h-[80vh]')}
-      >
+      <Drawer open={visible} setOpen={setVisible} isFullHeight className="px-0">
         <SearchPanel setVisible={setVisible} />
       </Drawer>
     </>

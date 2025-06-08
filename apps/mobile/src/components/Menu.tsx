@@ -13,7 +13,9 @@ import {
 } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
 import { UserIcon } from 'lucide-react'
+import { AddWidgetButton } from '@penx/components/area-widgets/AddWidgetButton'
 import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
+import { MobileWidgetList } from '@penx/components/area-widgets/MobileWidgetList'
 import { AreasPopover } from '@penx/components/AreasPopover'
 import { LangSwitcher } from '@penx/components/LangSwitcher'
 import { appEmitter } from '@penx/emitter'
@@ -26,6 +28,7 @@ import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
 import { AreaList } from './AreaList'
+import { EditWidgetButton } from './EditWidget/EditWidgetButton'
 import { MobileModeToggle } from './MobileModeToggle'
 import { useTheme } from './theme-provider'
 
@@ -112,8 +115,13 @@ const Menu: React.FC = () => {
             } as any
           }
         >
-          <div className="relative z-10 flex-1">
-            <AreaWidgets />
+          <div className="relative z-10 flex flex-1 flex-col gap-2">
+            <MobileWidgetList></MobileWidgetList>
+
+            <div className="flex items-center justify-center gap-2">
+              <AddWidgetButton />
+              <EditWidgetButton />
+            </div>
           </div>
           <div className="relative z-10 flex items-center justify-between">
             {/* <Button
@@ -126,7 +134,7 @@ const Menu: React.FC = () => {
           </div>
         </div>
       </IonContent>
-      <IonFooter>
+      {/* <IonFooter>
         <div className="p-2">
           <Button
             variant="secondary"
@@ -140,7 +148,7 @@ const Menu: React.FC = () => {
             <Trans>Sync now</Trans>
           </Button>
         </div>
-      </IonFooter>
+      </IonFooter> */}
     </IonMenu>
   )
 }

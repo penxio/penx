@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { CheckIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
-import { Drawer } from '../Drawer'
+import { Drawer } from '../ui/Drawer'
 import { UpgradeContent } from './UpgradeContent'
 import { useUpgradeDrawer } from './useUpgradeDrawer'
 

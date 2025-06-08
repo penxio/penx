@@ -1,10 +1,7 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
-import { AddCreationButton } from '@penx/components/AddCreationButton'
 import { isMobileApp } from '@penx/constants'
 import { AddWidgetButton } from './AddWidgetButton'
-import { EditWidgetButton } from './EditWidget/EditWidgetButton'
 import { MobileWidgetList } from './MobileWidgetList'
 import { WidgetList } from './WidgetList'
 
@@ -19,7 +16,6 @@ export function AreaWidgets({}: Props) {
         {/* {!isMobileApp && } */}
         <div className="flex items-center justify-center gap-2">
           <AddWidgetButton />
-          {isMobileApp && <EditWidgetButton />}
         </div>
       </div>
     </>

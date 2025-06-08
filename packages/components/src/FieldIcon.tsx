@@ -13,18 +13,21 @@ import {
   Text,
 } from 'lucide-react'
 import { ColumnType } from '@penx/types'
+import { cn } from '@penx/utils'
 
 interface Props {
   index?: number
   // columnType: `${FieldType}`
   columnType: any
   size?: number
+  className?: string
 }
 
 export const FieldIcon = ({
   columnType: fieldType,
   size = 16,
   index,
+  className,
 }: Props) => {
   const iconsMap: Record<string, any> = {
     [ColumnType.PRIMARY]: Text,
@@ -47,9 +50,10 @@ export const FieldIcon = ({
 
   if (Icon)
     return (
-      <div className="text-foreground/50 inline-flex">
-        <Icon size={size} />
-      </div>
+      <Icon
+        size={size}
+        className={cn('text-foreground/70 inline-flex', className)}
+      />
     )
   return null
 }

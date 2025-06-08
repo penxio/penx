@@ -13,18 +13,26 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:51
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:31
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:29
 msgid "About"
 msgstr "关于"
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:115
 msgid "Access control"
 msgstr "访问控制"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:103
+msgid "Account deleted successfully!"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:102
+msgid "Account deletion in progress..."
+msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Add"
@@ -41,6 +49,10 @@ msgstr "添加图片"
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:25
 msgid "Add navigation"
 msgstr "添加导航"
+
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:45
+msgid "Add property"
+msgstr ""
 
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:64
 msgid "Add widget"
@@ -94,7 +106,7 @@ msgstr "Apple 登录"
 msgid "Are you sure delete it permanently?"
 msgstr "确定要永久删除吗？"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:124
+#: apps/mobile/src/components/Profile/Profile.tsx:122
 msgid "Are you sure you want to log out?"
 msgstr "您确定要退出登录吗？"
 
@@ -102,17 +114,18 @@ msgstr "您确定要退出登录吗？"
 msgid "Bookmark"
 msgstr "书签"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:55
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
 msgid "Bubble"
 msgstr "气泡"
 
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:36
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
 msgstr "取消"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:64
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:65
 msgid "Card"
 msgstr "卡片"
 
@@ -147,7 +160,6 @@ msgstr "创建"
 msgid "Create area"
 msgstr "创建领域"
 
-#: apps/mobile/src/components/Login/EmailLoginForm.tsx:139
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:131
 msgid "Create one"
 msgstr "创建账户"
@@ -155,6 +167,10 @@ msgstr "创建账户"
 #: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr "创建结构体"
+
+#: packages/components/src/ColumnTypeName.tsx:27
+msgid "Created At"
+msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:54
 msgid "Created date"
@@ -164,7 +180,7 @@ msgstr "创建日期"
 msgid "Creation counts"
 msgstr "创作数量"
 
-#: apps/mobile/src/components/Profile/ThemeMenu.tsx:56
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr "深色"
 
@@ -172,6 +188,10 @@ msgstr "深色"
 #: packages/components/src/Profile/Profile.tsx:58
 msgid "Dashboard"
 msgstr "仪表板"
+
+#: packages/components/src/ColumnTypeName.tsx:26
+msgid "Date"
+msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:99
 #: packages/components/src/database-ui/TableInfo.tsx:77
@@ -187,7 +207,7 @@ msgid "Delete"
 msgstr "删除"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:88
-#: apps/mobile/src/components/Profile/Profile.tsx:114
+#: apps/mobile/src/components/Profile/Profile.tsx:112
 msgid "Delete account"
 msgstr "删除账户"
 
@@ -195,10 +215,16 @@ msgstr "删除账户"
 msgid "Delete tag"
 msgstr "删除标签"
 
+#: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:93
+msgid "Delete this property?"
+msgstr ""
+
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:136
 msgid "Deliver your newsletter"
 msgstr "发送您的简报"
 
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:107
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:79
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
 msgstr "描述"
@@ -223,13 +249,25 @@ msgstr "编辑"
 msgid "Edit navigation"
 msgstr "编辑导航"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:62
+msgid "Edit property"
+msgstr ""
+
+#: apps/mobile/src/components/StructHeader.tsx:67
+msgid "Edit props"
+msgstr ""
+
 #: packages/components/src/database-ui/TableInfo.tsx:58
 msgid "Edit struct"
 msgstr "编辑结构体"
 
-#: packages/components/src/area-widgets/EditWidget/EditWidgetButton.tsx:35
+#: apps/mobile/src/components/EditWidget/EditWidgetButton.tsx:30
 msgid "Edit widget"
 msgstr "编辑组件"
+
+#: apps/mobile/src/components/EditWidget/EditWidgetButton.tsx:35
+msgid "Edit widgets"
+msgstr ""
 
 #: apps/mobile/src/components/Login/RegisterForm.tsx:84
 #: apps/mobile/src/components/Login/RegisterForm.tsx:89
@@ -243,6 +281,10 @@ msgstr "邮箱"
 #: apps/mobile/src/components/Login/EmailLoginButton.tsx:17
 msgid "Email login"
 msgstr "邮箱登录"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:105
+msgid "Failed to delete account. Please try again."
+msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:104
@@ -284,7 +326,11 @@ msgstr "高"
 msgid "Home"
 msgstr "首页"
 
-#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:34
+#: packages/components/src/ColumnTypeName.tsx:25
+msgid "Image"
+msgstr ""
+
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:35
 msgid "Invalid phone number."
 msgstr ""
 
@@ -292,7 +338,7 @@ msgstr ""
 msgid "Journal"
 msgstr "日记"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:32
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:35
 msgid "Journal layout"
 msgstr "日记布局"
 
@@ -302,16 +348,16 @@ msgstr "日记布局"
 msgid "Journals"
 msgstr "日记"
 
-#: apps/mobile/src/components/Profile/LocaleMenu.tsx:44
+#: apps/mobile/src/components/Profile/LocaleMenu.tsx:47
 #: apps/mobile/src/components/Profile/LocaleMenu.tsx:57
 msgid "Language"
 msgstr "语言"
 
-#: apps/mobile/src/components/Profile/ThemeMenu.tsx:48
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
 msgstr "浅色"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:73
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:74
 #: packages/libs/src/getDefaultStructs.ts:176
 msgid "List"
 msgstr "列表"
@@ -321,8 +367,8 @@ msgid "Local backup"
 msgstr "本地备份"
 
 #: apps/mobile/src/components/Login/RegisterForm.tsx:142
-#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:110
-#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:103
+#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:111
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:104
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
@@ -330,8 +376,8 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:123
-#: apps/mobile/src/components/Profile/Profile.tsx:133
+#: apps/mobile/src/components/Profile/Profile.tsx:121
+#: apps/mobile/src/components/Profile/Profile.tsx:131
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:152
 msgid "Log out"
@@ -367,6 +413,10 @@ msgstr "管理标签"
 msgid "Medium"
 msgstr "中"
 
+#: packages/components/src/ColumnTypeName.tsx:21
+msgid "Multiple Select"
+msgstr ""
+
 #: packages/components/src/AppProvider/lib/initLocalSite.ts:63
 msgid "My area"
 msgstr "我的领域"
@@ -375,7 +425,7 @@ msgstr "我的领域"
 msgid "My Site"
 msgstr "我的站点"
 
-#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:28
+#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:25
 msgid "My structs"
 msgstr "我的结构体"
 
@@ -383,6 +433,8 @@ msgstr "我的结构体"
 msgid "My Structs"
 msgstr "我的结构体"
 
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:102
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:74
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
@@ -391,7 +443,10 @@ msgstr "我的结构体"
 msgid "Name"
 msgstr "名称"
 
-#: apps/mobile/src/components/Login/EmailLoginForm.tsx:134
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:90
+msgid "New property"
+msgstr ""
+
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:125
 msgid "No account"
 msgstr "没有账户"
@@ -427,6 +482,10 @@ msgstr "暂无语音数据！"
 msgid "Note"
 msgstr "笔记"
 
+#: packages/components/src/ColumnTypeName.tsx:16
+msgid "Number"
+msgstr ""
+
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:54
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:54
 msgid "Once deleted, You can't undo this action."
@@ -451,15 +510,16 @@ msgstr "页面"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:111
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
+#: packages/components/src/ColumnTypeName.tsx:24
 msgid "Password"
 msgstr "密码"
 
 #: apps/mobile/src/pages/PagePhoneLogin.tsx:41
-#: apps/mobile/src/components/Login/PhoneLoginButton.tsx:18
+#: apps/mobile/src/components/Login/PhoneLoginButton.tsx:27
 msgid "Phone login"
 msgstr ""
 
-#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:86
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:87
 msgid "Phone number"
 msgstr ""
 
@@ -476,7 +536,7 @@ msgstr "计划"
 msgid "Please check your email for the verification code."
 msgstr "请查看您的邮箱获取验证码。"
 
-#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:82
+#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:83
 msgid "Please enter the verification code."
 msgstr ""
 
@@ -492,9 +552,17 @@ msgstr "按回车键添加标签。"
 msgid "Priority"
 msgstr "优先级"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:153
+#: apps/mobile/src/components/Profile/Profile.tsx:151
 msgid "Privacy Policy"
 msgstr "隐私政策"
+
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:79
+msgid "Properties"
+msgstr ""
+
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:83
+msgid "Property added successfully!"
+msgstr ""
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:251
 msgid "Publish"
@@ -507,6 +575,10 @@ msgstr "发布到应用市场"
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:83
 msgid "Publish your creation"
 msgstr "发布您的创作"
+
+#: packages/components/src/ColumnTypeName.tsx:23
+msgid "Rate"
+msgstr ""
 
 #: packages/widgets/src/WidgetName.tsx:33
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:108
@@ -534,10 +606,11 @@ msgstr "注册 PenX"
 msgid "Rename"
 msgstr "重命名"
 
-#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:132
+#: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:134
 msgid "Resend"
 msgstr ""
 
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:54
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr "保存"
@@ -545,6 +618,10 @@ msgstr "保存"
 #: packages/components/src/Sidebar/QuickSearchTrigger.tsx:23
 msgid "Search"
 msgstr "搜索"
+
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:51
+msgid "Select Property type"
+msgstr ""
 
 #: apps/mobile/src/pages/PageProfile.tsx:46
 #: packages/components/src/ProfileButton.tsx:204
@@ -560,6 +637,10 @@ msgstr "显示全部"
 #: packages/components/src/LoginButton.tsx:28
 msgid "Sign in"
 msgstr "登录"
+
+#: packages/components/src/ColumnTypeName.tsx:19
+msgid "Single Select"
+msgstr ""
 
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
@@ -577,6 +658,10 @@ msgstr "收藏"
 #: packages/libs/src/getDefaultStructs.ts:48
 msgid "Status"
 msgstr "状态"
+
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:67
+msgid "Struct name"
+msgstr ""
 
 #: apps/mobile/src/components/AllStructsHeader.tsx:40
 #: packages/widgets/src/WidgetName.tsx:22
@@ -605,11 +690,7 @@ msgstr "订阅"
 msgid "Support"
 msgstr "支持"
 
-#: apps/mobile/src/components/Menu.tsx:140
-msgid "Sync now"
-msgstr ""
-
-#: apps/mobile/src/components/Profile/ThemeMenu.tsx:64
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:65
 msgid "System"
 msgstr "跟随系统"
 
@@ -625,11 +706,19 @@ msgstr "标签"
 msgid "Task"
 msgstr "任务"
 
-#: apps/mobile/src/components/Profile/ThemeMenu.tsx:28
+#: packages/components/src/ColumnTypeName.tsx:15
+msgid "Text"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/ThemeMenu.tsx:31
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43
 msgid "Theme"
 msgstr "主题"
+
+#: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:94
+msgid "This action cannot be undone. Are you sure you want to delete this property?"
+msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:31
 msgid "Title"
@@ -663,6 +752,10 @@ msgstr "更新领域"
 msgid "Update struct"
 msgstr "更新结构体"
 
+#: packages/components/src/ColumnTypeName.tsx:28
+msgid "Updated At"
+msgstr ""
+
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:54
 msgid "Updated successfully!"
 msgstr "更新成功！"
@@ -677,6 +770,7 @@ msgid "Upgrade to Pro"
 msgstr "升级到专业版"
 
 #: packages/libs/src/getDefaultStructs.ts:127
+#: packages/components/src/ColumnTypeName.tsx:17
 msgid "URL"
 msgstr "网址"
 
@@ -684,7 +778,7 @@ msgstr "网址"
 msgid "Voice"
 msgstr "语音"
 
-#: apps/mobile/src/components/Login/LoginContent.tsx:41
+#: apps/mobile/src/components/Login/LoginContent.tsx:42
 #: apps/extension/components/Login.tsx:38
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"
