@@ -11,9 +11,9 @@ interface Props {}
 export function EmailLoginButton({}: Props) {
   return (
     <IonNavLink routerDirection="forward" component={() => <PageEmailLogin />}>
-      <Button className="w-full gap-2">
+      <Button className="w-full" size="xl" variant="outline">
         <MailIcon size={20} />
-        <div className="">
+        <div className="flex-1">
           <Trans>Email login</Trans>
         </div>
       </Button>

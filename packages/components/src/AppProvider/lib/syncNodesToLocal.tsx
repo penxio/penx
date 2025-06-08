@@ -113,7 +113,7 @@ async function sync(
   )
 
   console.log('========changes:isInsertedOrUpdate', isInsertedOrUpdate)
-  if (isInsertedOrUpdate) {
+  if (isInsertedOrUpdate && state?.last_lsn) {
     const localLatestUpdated = Math.max(
       ...nodes.map((n) => new Date(n.updatedAt).getTime()),
     )

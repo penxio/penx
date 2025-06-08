@@ -130,7 +130,7 @@ export function EmailLoginForm({}: Props) {
         </div>
       </form>
 
-      <div className="pt-4 text-center text-sm">
+      {/* <div className="pt-4 text-center text-sm">
         <Trans>No account</Trans>?{' '}
         <span
           className="text-brand"
@@ -138,7 +138,7 @@ export function EmailLoginForm({}: Props) {
         >
           <Trans>Create one</Trans>
         </span>
-      </div>
+      </div> */}
     </Form>
   )
 }

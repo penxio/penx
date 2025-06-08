@@ -8,6 +8,7 @@ import { Trans } from '@lingui/react/macro'
 import { set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { api } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import { localDB } from '@penx/local-db'
@@ -48,12 +49,12 @@ export function PhoneLoginForm({}: Props) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log('=====>>>>>>>nav:', nav)
-
     try {
       setLoading(true)
       const sites = await localDB.listAllSites()
       const site = sites.find((s) => !s.props.isRemote)
+
+      await api.sendSmsCode(data.phone, site?.userId!)
 
       setAuthStatus({
         type: 'sms-code-sent',

@@ -60,12 +60,12 @@ export function GoogleLoginButton({}: Props) {
     setLoading(false)
   }
   return (
-    <Button onClick={onLogin} className="w-full gap-2">
+    <Button onClick={onLogin} className="w-full" size="xl" variant="outline">
       {loading && <LoadingDots className="bg-background" />}
       {!loading && (
         <>
           <IconGoogle className="h-4 w-4" />
-          <div className="">
+          <div className="flex-1">
             <Trans>Google login</Trans>
           </div>
         </>

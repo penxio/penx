@@ -160,7 +160,7 @@ export const VoiceRecorderButton = ({}: Props) => {
           },
         }}
         animate={status === 'init' ? 'closed' : 'open'}
-        className="text-background shadow-popover dark:bg-brand absolute left-[70px] top-[10px] flex h-[36px] items-center justify-start rounded-full bg-white"
+        className="text-background shadow-popover dark:bg-brand items-center justify-start rounded-full bg-white"
       >
         <div
           className={cn(

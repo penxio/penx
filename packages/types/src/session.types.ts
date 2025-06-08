@@ -60,6 +60,7 @@ export type LoginData =
   | DesktopLoginData
   | RegisterByEmailData
   | RegisterByCodeData
+  | LoginBySmsCodeData
 
 export type GoogleLoginData = GoogleLoginInfo & {
   type: 'penx-google'
@@ -97,7 +98,7 @@ export type RegisterByCodeData = {
 }
 
 export type LoginBySmsCodeData = {
-  type: 'register-by-sms-code'
+  type: 'login-by-sms-code'
   code: string
 }
 
@@ -126,7 +127,7 @@ export function isRegisterByEmail(value: any): value is RegisterByEmailData {
 }
 
 export function isLoginBySmsCode(value: any): value is LoginBySmsCodeData {
-  return typeof value === 'object' && value?.type === 'register-by-sms-code'
+  return typeof value === 'object' && value?.type === 'login-by-sms-code'
 }
 
 export type RegisterByCodePayload = {

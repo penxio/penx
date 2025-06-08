@@ -80,7 +80,7 @@ export const api = {
 
   async sendSmsCode(phone: string, userId = '') {
     return ky
-      .post(TRANSCRIBE_URL, {
+      .post(`${ROOT_HOST}/api/send-sms-code`, {
         json: {
           phone,
           userId,

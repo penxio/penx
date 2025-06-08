@@ -61,12 +61,12 @@ export function AppleLoginButton({}: Props) {
   }
   return (
     <>
-      <Button onClick={onLogin} className="w-full gap-2" variant="default">
+      <Button onClick={onLogin} className="w-full" variant="default" size="xl">
         {loading && <LoadingDots className="bg-background" />}
         {!loading && (
           <>
             <span className="icon-[ic--baseline-apple] size-6"></span>
-            <div className="">Apple login</div>
+            <div className="flex-1">Apple login</div>
           </>
         )}
       </Button>

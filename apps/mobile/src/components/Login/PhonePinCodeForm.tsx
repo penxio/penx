@@ -8,6 +8,7 @@ import { set } from 'idb-keyval'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { api } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
 import { localDB } from '@penx/local-db'
@@ -51,7 +52,7 @@ export function PhonePinCodeForm({}: Props) {
     try {
       setLoading(true)
       const session = await login({
-        type: 'register-by-email-code',
+        type: 'login-by-sms-code',
         code: data.code,
       })
       console.log('=====session:', session)
@@ -117,16 +118,17 @@ export function PhonePinCodeForm({}: Props) {
         variant="ghost"
         size="xs"
         onClick={async () => {
-          // try {
-          //   await api.auth.registerByEmail.mutate(
-          //     authStatus.data as any,
-          //   )
-          //   toast.success('Verification code sent successfully')
-          // } catch (error) {
-          //   console.log('========error:', error)
-          //   const msg = extractErrorMessage(error)
-          //   toast.error(msg)
-          // }
+          try {
+            await api.sendSmsCode(
+              authStatus.data?.phone!,
+              authStatus.data?.userId!,
+            )
+            toast.success('Verification code sent successfully')
+          } catch (error) {
+            console.log('========error:', error)
+            const msg = extractErrorMessage(error)
+            toast.error(msg)
+          }
         }}
       >
         <Trans>Resend</Trans>

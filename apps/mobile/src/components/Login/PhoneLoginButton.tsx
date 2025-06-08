@@ -15,13 +15,15 @@ export function PhoneLoginButton({}: Props) {
   return (
     <IonNavLink routerDirection="forward" component={() => <PagePhoneLogin />}>
       <Button
-        className="w-full gap-2"
+        className="w-full"
+        size="xl"
+        variant="outline"
         onClick={() => {
           setAuthStatus({ type: 'login' })
         }}
       >
         <PhoneIcon size={20} />
-        <div className="">
+        <div className="flex-1">
           <Trans>Phone login</Trans>
         </div>
       </Button>

@@ -33,10 +33,10 @@ export const Footer = ({ open, onAdd }: Props) => {
 
       <div
         className={cn(
-          'relative inline-flex items-center justify-center gap-3 pb-6',
+          'relative inline-flex items-center justify-center gap-3 bg-green-200 pb-6',
         )}
       >
-        <div className="relative inline-flex">
+        <div className="relative inline-flex bg-amber-200">
           <motion.div
             {...handlers()}
             whileTap={{ scale: 1.2 }}
