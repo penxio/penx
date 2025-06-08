@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatedJournalInput } from '@/components/AnimatedJournalInput'
-import { Footer } from '@/components/Footer'
+import { Footer } from '@/components/Footer/Footer'
 import { HomeHeader } from '@/components/HomeHeader'
 import { GoogleLoginButton } from '@/components/Login/GoogleLoginButton'
 import { useMoreStructDrawer } from '@/components/MoreStructDrawer/useMoreStructDrawer'

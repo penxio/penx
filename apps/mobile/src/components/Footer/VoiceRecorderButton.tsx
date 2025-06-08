@@ -4,6 +4,7 @@ import { isIOS } from '@/lib/utils'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'
 import { PluginListenerHandle } from '@capacitor/core'
 import { Device } from '@capacitor/device'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { VoiceRecorder } from 'capacitor-voice-recorder'
 import {
@@ -22,7 +23,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { stringToDoc } from '@penx/utils/editorHelper'
-import { Drawer } from './Drawer'
+import { Drawer } from '../Drawer'
 
 interface Props {}
 
@@ -160,7 +161,7 @@ export const VoiceRecorderButton = ({}: Props) => {
           },
         }}
         animate={status === 'init' ? 'closed' : 'open'}
-        className="text-background shadow-popover dark:bg-brand items-center justify-start rounded-full bg-white"
+        className="text-background items-center justify-start rounded-full"
       >
         <div
           className={cn(
@@ -168,6 +169,7 @@ export const VoiceRecorderButton = ({}: Props) => {
             status !== 'init' && 'hidden',
           )}
           onClick={async (e) => {
+            await Haptics.impact({ style: ImpactStyle.Medium })
             // e.stopPropagation()
             const permissionGranted = await checkAndRequestPermission()
             if (!permissionGranted) {
@@ -245,6 +247,7 @@ export const VoiceRecorderButton = ({}: Props) => {
           }}
         >
           <AudioLinesIcon size={20} className="text-foreground" />
+          {/* <span className="icon-[icon-park-solid--voice] size-6 text-foreground"></span> */}
         </div>
 
         <div
