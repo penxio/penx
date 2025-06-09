@@ -10,8 +10,10 @@ import { ColumnTypeName } from '@penx/components/ColumnTypeName'
 import { Struct } from '@penx/domain'
 import { store } from '@penx/store'
 import { ColumnType } from '@penx/types'
+import { ColorSelector } from './ColorSelector'
 import { OptionList } from './OptionList'
 import { useEditPropertyDrawer } from './useEditPropertyDrawer'
+import { useOptionDrawer } from './useOptionDrawer'
 
 const types = [
   ColumnType.TEXT,
@@ -26,21 +28,21 @@ const types = [
   ColumnType.UPDATED_AT,
 ]
 
-export function EditPropertyDrawer({ struct }: { struct: Struct }) {
-  const { isOpen, setIsOpen, column } = useEditPropertyDrawer()
-  const [columnType, setColumnType] = useState(ColumnType.TEXT)
-  const [name, setName] = useState(column?.name || '')
-  const [description, setDescription] = useState(column?.description || '')
+export function OptionDrawer({ struct }: { struct: Struct }) {
+  const { isOpen, setIsOpen, option, column } = useOptionDrawer()
+  const propertyDrawer = useEditPropertyDrawer()
+  const [name, setName] = useState(option?.name || '')
+  const [color, setColor] = useState(option?.color || '')
 
   useEffect(() => {
-    if (name !== column?.name) setName(column?.name)
-  }, [column?.name, setName])
+    if (name !== option?.name) setName(option?.name)
+  }, [option?.name, setName])
 
   useEffect(() => {
-    if (description !== column?.description) setDescription(column?.description)
-  }, [column?.description, setDescription])
+    if (color !== option?.color) setColor(option?.color)
+  }, [option?.color, setColor])
 
-  if (!column) return null
+  if (!option) return null
 
   return (
     <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight>
@@ -48,22 +50,30 @@ export function EditPropertyDrawer({ struct }: { struct: Struct }) {
         disabled={!name}
         onConfirm={async () => {
           if (!name) return null
-          await store.structs.updateColumn(struct, column.id, {
-            name,
-            description,
+
+          const newColumns = await store.structs.updateOption(
+            struct,
+            column.id,
+            option.id,
+            {
+              name,
+              color,
+            },
+          )
+          const newColumn = newColumns.find((c) => c.id === column.id)
+          propertyDrawer.setState({
+            isOpen: true,
+            column: newColumn!,
           })
 
           setIsOpen(false)
         }}
       >
         <DrawerTitle>
-          <Trans>Edit property</Trans>
+          {option ? <Trans>Edit Option</Trans> : <Trans>Add Option</Trans>}
         </DrawerTitle>
       </DrawerHeader>
       <div className="space-y-2">
-        <div>
-          <ColumnTypeName columnType={columnType} />
-        </div>
         <Menu>
           <MobileInput
             isRequired
@@ -71,23 +81,12 @@ export function EditPropertyDrawer({ struct }: { struct: Struct }) {
             onChange={(e) => setName(e.target.value)}
             label={<Trans>Name</Trans>}
           />
-          <MobileInput
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            label={<Trans>Description</Trans>}
-          />
         </Menu>
-      </div>
 
-      {(column.columnType === ColumnType.SINGLE_SELECT ||
-        column.columnType === ColumnType.MULTIPLE_SELECT) && (
-        <div className="mt-6 space-y-2">
-          <div>
-            <Trans>Options</Trans>
-          </div>
-          <OptionList column={column} struct={struct} />
+        <div className="mt-6">
+          <ColorSelector value={color} onChange={setColor} />
         </div>
-      )}
+      </div>
     </Drawer>
   )
 }

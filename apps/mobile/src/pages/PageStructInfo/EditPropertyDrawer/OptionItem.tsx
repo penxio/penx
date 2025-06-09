@@ -5,11 +5,13 @@ import { t } from '@lingui/core/macro'
 import { ColumnTypeName } from '@penx/components/ColumnTypeName'
 import { FieldIcon } from '@penx/components/FieldIcon'
 import { Struct } from '@penx/domain'
+import { getBgColor } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
+import { Option } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { useEditPropertyDrawer } from './EditPropertyDrawer/useEditPropertyDrawer'
+import { useOptionDrawer } from './useOptionDrawer'
 
 interface Props {
   dragging?: boolean
@@ -30,15 +32,17 @@ interface Props {
 
   style?: any
 
+  option: Option
   column: IColumn
   struct: Struct
 }
 
-export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
+export const OptionItem = forwardRef<HTMLDivElement, Props>(function Item(
   props: Props,
   ref,
 ) {
   const {
+    option,
     column,
     struct,
     index,
@@ -52,9 +56,9 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
     ...rest
   } = props
 
-  const { setState } = useEditPropertyDrawer()
+  const { setState } = useOptionDrawer()
 
-  if (!column) return null
+  if (!option) return null
 
   return (
     <div
@@ -70,7 +74,8 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
       onClick={() => {
         setState({
           isOpen: true,
-          column: column,
+          option,
+          column,
         })
       }}
     >
@@ -81,58 +86,49 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
       >
         <div className="flex items-center gap-2 px-2">
           <span
-            className={cn(
-              'icon-[ic--round-remove-circle] size-6 text-red-500',
-              index === 0 && 'opacity-40',
-            )}
+            className={cn('icon-[ic--round-remove-circle] size-6 text-red-500')}
             onClick={async (e) => {
               e.stopPropagation()
               if (index === 0) return
               const { value } = await Dialog.confirm({
-                title: t`Delete this property?`,
+                title: t`Delete this option?`,
                 message: t`This action cannot be undone. Are you sure you want to delete this property?`,
               })
 
               if (value) {
-                await store.structs.deleteColumn(struct, column.id)
+                // await store.structs.deleteColumn(struct, option.id)
               }
             }}
           ></span>
-          <div className="flex items-center gap-1">
-            <FieldIcon columnType={column.columnType} />
-            <ColumnTypeName
-              className="w-28 text-sm"
-              columnType={column.columnType}
-            />
-          </div>
-          <div>{column.name}</div>
+          <div
+            className={cn('size-5 rounded-full', getBgColor(option.color))}
+          ></div>
+          <div>{option.name}</div>
         </div>
 
-        {index !== 0 && (
-          <div
-            className="inline-flex"
-            onTouchStart={async (e) => {
-              e.stopPropagation()
-              e.preventDefault()
-            }}
-            onPointerDown={async (e) => {
-              e.stopPropagation()
-              e.preventDefault()
-            }}
+        <div
+          className="inline-flex"
+          onTouchStart={async (e) => {
+            e.stopPropagation()
+            e.preventDefault()
+          }}
+          onPointerDown={async (e) => {
+            e.stopPropagation()
+            e.preventDefault()
+          }}
+        >
+          <Button
+            variant="ghost"
+            size="icon"
+            className=""
+            {...attributes}
+            {...listeners}
           >
-            <Button
-              variant="ghost"
-              size="icon"
-              className=""
-              {...attributes}
-              {...listeners}
-            >
-              <div>
-                <span className="icon-[system-uicons--drag] text-foreground/60 size-6"></span>
-              </div>
-            </Button>
-          </div>
-        )}
+            <div>
+              <span className="icon-[system-uicons--drag] text-foreground/60 size-6"></span>
+            </div>
+          </Button>
+        </div>
       </div>
     </div>
   )

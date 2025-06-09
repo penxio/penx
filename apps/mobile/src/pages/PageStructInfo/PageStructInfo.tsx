@@ -18,6 +18,7 @@ import { store } from '@penx/store'
 import { Input } from '@penx/uikit/ui/input'
 import { ColumnList } from './ColumnList'
 import { EditPropertyDrawer } from './EditPropertyDrawer/EditPropertyDrawer'
+import { OptionDrawer } from './EditPropertyDrawer/OptionDrawer'
 
 const platform = Capacitor.getPlatform()
 
@@ -80,6 +81,7 @@ function Content({ structId }: { structId: string }) {
         </div>
         <ColumnList struct={struct} />
         <EditPropertyDrawer struct={struct} />
+        <OptionDrawer struct={struct} />
       </div>
     </div>
   )

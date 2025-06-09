@@ -275,4 +275,42 @@ export class StructsStore {
       columns: newStruct.props.columns,
     })
   }
+
+  async updateColumn(struct: Struct, columnId: string, data: Partial<IColumn>) {
+    const newStruct = produce(struct.raw, (draft) => {
+      const index = draft.props.columns.findIndex((c) => c.id === columnId)
+      draft.props.columns[index] = { ...draft.props.columns[index], ...data }
+    })
+
+    this.updateStruct(struct.id, newStruct)
+
+    await localDB.updateStructProps(struct.id, {
+      columns: newStruct.props.columns,
+    })
+  }
+
+  async updateOption(
+    struct: Struct,
+    columnId: string,
+    optionId: string,
+    data: Partial<Option>,
+  ) {
+    const newColumns = produce(struct.columns, (draft) => {
+      for (const column of draft) {
+        if (column.id !== columnId) continue
+        if (!column.options) column.options = []
+        const optionIndex = column.options.findIndex((o) => o.id === optionId)
+
+        column.options[optionIndex] = {
+          ...column.options[optionIndex],
+          ...data,
+        }
+      }
+    })
+
+    this.updateStructProps(struct, {
+      columns: newColumns,
+    })
+    return newColumns
+  }
 }
