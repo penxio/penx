@@ -3,6 +3,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -115,6 +116,10 @@ export const WidgetList = () => {
     setActiveId(null)
   }
 
+  const handleDragOver = async (event: DragOverEvent) => {
+    await Haptics.impact({ style: ImpactStyle.Medium })
+  }
+
   const activeItem = activeId ? widgets.find(({ id }) => id === activeId) : null
 
   return (
@@ -123,6 +128,7 @@ export const WidgetList = () => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
+        onDragOver={handleDragOver}
         sensors={sensors}
         collisionDetection={closestCenter}
         measuring={measuring}

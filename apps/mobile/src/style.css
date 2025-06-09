@@ -70,7 +70,7 @@
 
 :root,
 :host {
-  --main-background: #f6f6f6;
+  --main-background: #f4f4f4;
   --font-sans: var(--font-inter), system-ui;
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono: var(--font-plex-mono);

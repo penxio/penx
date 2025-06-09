@@ -103,11 +103,13 @@ export const SingleSelectProp = ({
                     let id = item.id
                     let newOption: Option = undefined as any
                     if (item.id === 'CREATE') {
-                      newOption = await store.structs.addOption(
+                      const res = await store.structs.addOption(
                         struct,
                         column.id,
-                        search,
+                        { name: search },
                       )
+
+                      newOption = res.newOption
                       id = newOption.id
                     }
                     onChange([id])

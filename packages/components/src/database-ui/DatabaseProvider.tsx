@@ -97,7 +97,13 @@ export interface IDatabaseContext {
   updateColumnName(columnId: string, name: string): Promise<void>
   updateColumn(columnId: string, input: UpdateColumnInput): Promise<void>
   updateColumnWidth(columnId: string, width: number): Promise<void>
-  addOption(columnId: string, name: string): Promise<Option>
+  addOption(
+    columnId: string,
+    name: string,
+  ): Promise<{
+    newOption: Option
+    newColumns: IColumn[]
+  }>
   deleteCellOption(cellId: string, optionId: string): Promise<void>
 }
 
@@ -306,7 +312,7 @@ export function DatabaseProvider({
   }
 
   async function addOption(columnId: string, name: string) {
-    return store.structs.addOption(struct, columnId, name)
+    return store.structs.addOption(struct, columnId, { name })
   }
 
   async function deleteCellOption(cellId: string, optionId: string) {}

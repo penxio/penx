@@ -50,6 +50,11 @@ msgstr "Add image"
 msgid "Add navigation"
 msgstr "Add navigation"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/AddOptionButton.tsx:29
+msgid "Add Option"
+msgstr "Add Option"
+
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:45
 msgid "Add property"
 msgstr "Add property"
@@ -215,7 +220,11 @@ msgstr "Delete account"
 msgid "Delete tag"
 msgstr "Delete tag"
 
-#: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:93
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:94
+msgid "Delete this option?"
+msgstr "Delete this option?"
+
+#: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:92
 msgid "Delete this property?"
 msgstr "Delete this property?"
 
@@ -224,7 +233,7 @@ msgid "Deliver your newsletter"
 msgstr "Deliver your newsletter"
 
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:107
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:79
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
 msgstr "Description"
@@ -249,7 +258,11 @@ msgstr "Edit"
 msgid "Edit navigation"
 msgstr "Edit navigation"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:62
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
+msgid "Edit Option"
+msgstr "Edit Option"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
 msgid "Edit property"
 msgstr "Edit property"
 
@@ -434,7 +447,8 @@ msgid "My Structs"
 msgstr "My Structs"
 
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:102
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:74
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
@@ -501,6 +515,10 @@ msgstr "Open in new panel"
 msgid "Operation"
 msgstr "Operation"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
+msgid "Options"
+msgstr "Options"
+
 #: packages/libs/src/getDefaultStructs.ts:218
 msgid "Page"
 msgstr "Page"
@@ -556,7 +574,7 @@ msgstr "Priority"
 msgid "Privacy Policy"
 msgstr "Privacy Policy"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:79
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:80
 msgid "Properties"
 msgstr "Properties"
 
@@ -659,7 +677,7 @@ msgstr "Star"
 msgid "Status"
 msgstr "Status"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:67
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:68
 msgid "Struct name"
 msgstr "Struct name"
 
@@ -716,7 +734,8 @@ msgstr "Text"
 msgid "Theme"
 msgstr "Theme"
 
-#: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:94
+#: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:93
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:95
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr "This action cannot be undone. Are you sure you want to delete this property?"
 

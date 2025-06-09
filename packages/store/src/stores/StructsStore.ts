@@ -110,14 +110,14 @@ export class StructsStore {
     await localDB.updateStructProps(struct.id, props)
   }
 
-  async addOption(struct: Struct, columnId: string, name: string) {
+  async addOption(struct: Struct, columnId: string, data: Partial<Option>) {
     const id = uniqueId()
-    const newOption: Option = {
+    const newOption = {
       id,
-      name,
       color: getRandomColorName(),
       isDefault: false,
-    }
+      ...data,
+    } as Option
 
     const newStruct = produce(struct.raw, (draft) => {
       for (const column of draft.props.columns) {
@@ -134,7 +134,10 @@ export class StructsStore {
       columns: newStruct.props.columns,
     })
 
-    return newOption
+    return {
+      newOption,
+      newColumns: newStruct.props.columns,
+    }
   }
 
   async refetchStructs(areaId?: string) {
@@ -305,6 +308,20 @@ export class StructsStore {
           ...column.options[optionIndex],
           ...data,
         }
+      }
+    })
+
+    this.updateStructProps(struct, {
+      columns: newColumns,
+    })
+    return newColumns
+  }
+
+  async deleteOption(struct: Struct, columnId: string, optionId: string) {
+    const newColumns = produce(struct.columns, (draft) => {
+      for (const column of draft) {
+        if (column.id !== columnId) continue
+        column.options = column.options.filter((o) => o.id !== optionId)
       }
     })
 

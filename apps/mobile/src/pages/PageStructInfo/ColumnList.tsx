@@ -4,6 +4,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
 import { Card } from '@/components/ui/Card'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -118,6 +119,10 @@ export const ColumnList = ({ struct }: Props) => {
     setActiveId(null)
   }
 
+  const handleDragOver = async (event: DragOverEvent) => {
+    await Haptics.impact({ style: ImpactStyle.Medium })
+  }
+
   const activeItem = activeId ? columns.find(({ id }) => id === activeId) : null
 
   return (
@@ -126,6 +131,7 @@ export const ColumnList = ({ struct }: Props) => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
+        onDragOver={handleDragOver}
         sensors={sensors}
         collisionDetection={closestCenter}
         measuring={measuring}

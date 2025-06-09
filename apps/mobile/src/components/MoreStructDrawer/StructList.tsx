@@ -1,9 +1,11 @@
+import { ArrowRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { getBgColor } from '@penx/libs/color-helper'
 import { StructType } from '@penx/types'
 import { cn } from '@penx/utils'
+import { generateGradient } from '@penx/utils/generateGradient'
 import { StructIcon } from '@penx/widgets/StructIcon'
 import { useMoreStructDrawer } from './useMoreStructDrawer'
 
@@ -32,7 +34,7 @@ export function StructList({}: Props) {
               },
             }}
             className={cn(
-              'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer select-none items-center gap-2 rounded-lg py-2 text-lg font-bold',
+              'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer select-none items-center justify-between gap-2 rounded-lg py-2 text-lg font-bold',
             )}
             onClick={() => {
               addCreation({
@@ -41,10 +43,19 @@ export function StructList({}: Props) {
               setIsOpen(false)
             }}
           >
-            <div className="shadow-popover bg-background flex size-6 items-center justify-center rounded-md">
-              <StructIcon type={struct.type} className="" />
+            <div className="flex items-center gap-2">
+              <div
+                className={cn(
+                  'flex size-6 items-center justify-center rounded-md text-white',
+                  // generateGradient(struct.color),
+                  getBgColor(struct.color),
+                )}
+              >
+                <StructIcon type={struct.type} className="" />
+              </div>
+              <div>{struct.name}</div>
             </div>
-            <div>{struct.name}</div>
+            <ArrowRightIcon size={20} className="text-foreground/40" />
           </motion.div>
         ))}
     </div>

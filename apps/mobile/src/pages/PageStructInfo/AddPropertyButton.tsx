@@ -80,7 +80,6 @@ export function AddPropertyButton({ struct }: { struct: Struct }) {
               name,
               description,
             })
-            toast.info(t`Property added successfully!`)
             setVisible(false)
             setName('')
             setDescription('')

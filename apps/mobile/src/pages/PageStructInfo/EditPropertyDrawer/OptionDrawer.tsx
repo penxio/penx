@@ -35,14 +35,16 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
   const [color, setColor] = useState(option?.color || '')
 
   useEffect(() => {
+    if (!option) return setName('')
     if (name !== option?.name) setName(option?.name)
-  }, [option?.name, setName])
+  }, [option, setName])
 
   useEffect(() => {
+    if (!option) return setColor('')
     if (color !== option?.color) setColor(option?.color)
-  }, [option?.color, setColor])
+  }, [option, setColor])
 
-  if (!option) return null
+  const isEdit = !!option
 
   return (
     <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight>
@@ -51,20 +53,31 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
         onConfirm={async () => {
           if (!name) return null
 
-          const newColumns = await store.structs.updateOption(
-            struct,
-            column.id,
-            option.id,
-            {
-              name,
-              color,
-            },
-          )
-          const newColumn = newColumns.find((c) => c.id === column.id)
-          propertyDrawer.setState({
-            isOpen: true,
-            column: newColumn!,
-          })
+          if (isEdit) {
+            const newColumns = await store.structs.updateOption(
+              struct,
+              column.id,
+              option.id,
+              { name, color },
+            )
+            const newColumn = newColumns.find((c) => c.id === column.id)
+            propertyDrawer.setState({
+              isOpen: true,
+              column: newColumn!,
+            })
+          } else {
+            const { newColumns } = await store.structs.addOption(
+              struct,
+              column.id,
+              { name, color },
+            )
+
+            const newColumn = newColumns.find((c) => c.id === column.id)
+            propertyDrawer.setState({
+              isOpen: true,
+              column: newColumn!,
+            })
+          }
 
           setIsOpen(false)
         }}

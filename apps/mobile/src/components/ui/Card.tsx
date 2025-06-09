@@ -14,6 +14,9 @@ export function Card({ className, children }: Props) {
         // devicePixelRatio >= 3 ? 'divide-y' : 'divide-y-[0.5px]',
         className,
       )}
+      style={{
+        boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.05)',
+      }}
     >
       {children}
     </div>

@@ -1,35 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { isAndroid } from '@/lib/utils'
-import { Capacitor } from '@capacitor/core'
-import {
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonFooter,
-  IonHeader,
-  IonMenu,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react'
-import { Trans } from '@lingui/react/macro'
+import { IonContent, IonHeader, IonMenu, IonToolbar } from '@ionic/react'
 import { UserIcon } from 'lucide-react'
 import { AddWidgetButton } from '@penx/components/area-widgets/AddWidgetButton'
-import { AreaWidgets } from '@penx/components/area-widgets/AreaWidgets'
 import { MobileWidgetList } from '@penx/components/area-widgets/MobileWidgetList'
 import { AreasPopover } from '@penx/components/AreasPopover'
-import { LangSwitcher } from '@penx/components/LangSwitcher'
 import { appEmitter } from '@penx/emitter'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
-import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
-import { Button } from '@penx/uikit/ui/button'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
-import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
-import { AreaList } from './AreaList'
 import { EditWidgetButton } from './EditWidget/EditWidgetButton'
-import { MobileModeToggle } from './MobileModeToggle'
 import { useTheme } from './theme-provider'
 
 const Menu: React.FC = () => {

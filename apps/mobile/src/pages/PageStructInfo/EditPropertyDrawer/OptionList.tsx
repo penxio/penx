@@ -4,6 +4,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
 import { Card } from '@/components/ui/Card'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -41,6 +42,7 @@ import { store } from '@penx/store'
 import { AddOptionButton } from './AddOptionButton'
 import { OptionItem } from './OptionItem'
 import { SortableOptionItem } from './SortableOptionItem'
+import { useEditPropertyDrawer } from './useEditPropertyDrawer'
 
 const measuring: MeasuringConfiguration = {
   droppable: {
@@ -65,7 +67,7 @@ interface Props {
 export const OptionList = ({ struct, column }: Props) => {
   const options = column.options || []
 
-  console.log('=========options:', options)
+  const propertyDrawer = useEditPropertyDrawer()
 
   const [activeId, setActiveId] = useState<string | null>(null)
 
@@ -111,9 +113,16 @@ export const OptionList = ({ struct, column }: Props) => {
 
       const newOptions = arrayMove(options, oldIndex, newIndex)
 
+      // console.log('=====newOptions:', newOptions)
+
       const newColumns = produce(struct.columns, (draft) => {
         const index = draft.findIndex((c) => c.id === column.id)
         draft[index].options = newOptions
+      })
+
+      propertyDrawer.setState({
+        isOpen: true,
+        column: newColumns.find((c) => c.id === column.id)!,
       })
 
       store.structs.updateStructProps(struct, {
@@ -128,7 +137,13 @@ export const OptionList = ({ struct, column }: Props) => {
     setActiveId(null)
   }
 
+  const handleDragOver = async (event: DragOverEvent) => {
+    await Haptics.impact({ style: ImpactStyle.Medium })
+  }
+
   const activeItem = activeId ? options.find(({ id }) => id === activeId) : null
+
+  console.log('======activeId:', activeId)
 
   return (
     <Card className="text-foreground flex flex-col">
@@ -136,6 +151,7 @@ export const OptionList = ({ struct, column }: Props) => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onDragCancel={handleDragCancel}
+        onDragOver={handleDragOver}
         sensors={sensors}
         collisionDetection={closestCenter}
         measuring={measuring}
@@ -171,7 +187,7 @@ export const OptionList = ({ struct, column }: Props) => {
           document.body,
         )}
       </DndContext>
-      <AddOptionButton struct={struct} />
+      <AddOptionButton struct={struct} column={column} />
     </Card>
   )
 }

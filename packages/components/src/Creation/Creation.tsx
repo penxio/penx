@@ -29,6 +29,7 @@ import { AudioCreationUpload } from './AudioCreationUpload'
 import { Authors } from './Authors'
 import { ChangeType } from './ChangeType'
 import { CoverUpload } from './CoverUpload'
+import { CreationHeader } from './CreationHeader'
 import { DeleteCreationDialog } from './DeleteCreationDialog/DeleteCreationDialog'
 import { ImageCreationUpload } from './ImageCreationUpload'
 import { usePanelCreationContext } from './PanelCreationProvider'
@@ -89,82 +90,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
         }}
       >
         <div className={cn('mx-auto w-full max-w-2xl px-0')}>
-          {!hideTitle && (
-            <div className="mb-2 flex flex-col space-y-3 md:mb-5">
-              <div className="relative">
-                {/* {!isImage && !isMobileApp && (
-                  <CoverUpload
-                    creation={creation}
-                    isCover={isCover}
-                    onCoverUpdated={async (uri) => {
-                      updateCreationProps(creation.id, {
-                        image: uri,
-                      })
-                    }}
-                  />
-                )} */}
-                <div className="flex items-center gap-2">
-                  {struct?.type === StructType.TASK && (
-                    <Checkbox
-                      className="bg-foreground/10 size-6 border-none"
-                      checked={creation.checked}
-                      onCheckedChange={(v) => {
-                        updateCreationProps(creation.id, {
-                          checked: v as any,
-                        })
-                      }}
-                    />
-                  )}
-
-                  <TextareaAutosize
-                    className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
-                    placeholder="Title"
-                    defaultValue={creation.title || ''}
-                    // autoFocus={!isMobileApp}
-                    autoFocus
-                    onChange={(e) => {
-                      const title = e.target.value
-                      updateCreationProps(creation.id, { title })
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') {
-                        appEmitter.emit('FOCUS_EDITOR')
-                        e.preventDefault()
-                      }
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* <TextareaAutosize
-                  className="dark:placeholder-text-600 w-full resize-none border-none bg-transparent px-0 placeholder:text-stone-400 focus:outline-none focus:ring-0"
-                  placeholder="Description"
-                  defaultValue={creation.description}
-                  onChange={(e) => {
-                    updateCreation({
-                      id: creation.id,
-                      description: e.target.value,
-                    })
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault()
-                    }
-                  }}
-                /> */}
-            </div>
-          )}
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1">
-              <ChangeType creation={creation} />
-              <div className="text-foreground/60 text-lg">•</div>
-              <div className="flex items-center gap-2">
-                <Tags creation={creation} />
-                {/* <PostLocales /> */}
-              </div>
-            </div>
-          </div>
+          <CreationHeader />
 
           <PropList
             onUpdateProps={(newCells) => {

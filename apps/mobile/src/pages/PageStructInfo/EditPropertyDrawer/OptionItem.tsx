@@ -11,6 +11,7 @@ import { store } from '@penx/store'
 import { Option } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
+import { useEditPropertyDrawer } from './useEditPropertyDrawer'
 import { useOptionDrawer } from './useOptionDrawer'
 
 interface Props {
@@ -57,6 +58,7 @@ export const OptionItem = forwardRef<HTMLDivElement, Props>(function Item(
   } = props
 
   const { setState } = useOptionDrawer()
+  const propertyDrawer = useEditPropertyDrawer()
 
   if (!option) return null
 
@@ -96,7 +98,17 @@ export const OptionItem = forwardRef<HTMLDivElement, Props>(function Item(
               })
 
               if (value) {
-                // await store.structs.deleteColumn(struct, option.id)
+                const newColumns = await store.structs.deleteOption(
+                  struct,
+                  column.id,
+                  option.id,
+                )
+
+                const newColumn = newColumns.find((c) => c.id === column.id)
+                propertyDrawer.setState({
+                  isOpen: true,
+                  column: newColumn!,
+                })
               }
             }}
           ></span>

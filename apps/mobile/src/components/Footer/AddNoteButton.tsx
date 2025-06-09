@@ -23,6 +23,7 @@ export const AddNoteButton = ({ onAdd }: Props) => {
       whileTap={{ scale: 1.1 }}
       className=" relative  flex size-10 select-none items-center justify-center rounded-full"
       onClick={async () => {
+        await Haptics.impact({ style: ImpactStyle.Medium })
         onAdd()
       }}
     >
