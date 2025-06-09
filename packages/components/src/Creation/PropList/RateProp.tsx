@@ -1,5 +1,5 @@
 import { cn } from '@penx/utils'
-import { StarSVG } from '../StarSVG'
+import { StarSVG } from '../../StarSVG'
 
 interface Props {
   value: string[]

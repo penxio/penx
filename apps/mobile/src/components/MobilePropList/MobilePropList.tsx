@@ -1,19 +1,20 @@
+import { usePanelCreationContext } from '@penx/components/Creation/PanelCreationProvider'
 import { useStructs } from '@penx/hooks/useStructs'
-import { usePanelCreationContext } from './PanelCreationProvider'
+import { Card } from '../ui/Card'
 import { PropItem } from './PropItem'
 
 interface Props {
   onUpdateProps: (cells: any) => void
 }
 
-export const PropList = ({ onUpdateProps }: Props) => {
+export const MobilePropList = ({ onUpdateProps }: Props) => {
   const creation = usePanelCreationContext()
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)!
 
   if (struct.columns.length < 2) return null
   return (
-    <div className="mt-4 flex flex-col gap-1">
+    <Card className="mb-3 mt-4 flex flex-col">
       {struct.columns.map((column, i) => {
         return (
           <PropItem
@@ -23,6 +24,6 @@ export const PropList = ({ onUpdateProps }: Props) => {
           />
         )
       })}
-    </div>
+    </Card>
   )
 }

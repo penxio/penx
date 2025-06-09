@@ -1,18 +1,20 @@
+import { useState } from 'react'
+import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
-import { CalendarIcon } from 'lucide-react'
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { usePanelCreationContext } from '@penx/components/Creation/PanelCreationProvider'
+import { FieldIcon } from '@penx/components/FieldIcon'
+import { FileUpload } from '@penx/components/FileUpload'
 import { useStructs } from '@penx/hooks/useStructs'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Input } from '@penx/uikit/input'
-import { Button } from '@penx/uikit/ui/button'
-import { Calendar } from '@penx/uikit/ui/calendar'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
-import { FieldIcon } from '../FieldIcon'
-import { FileUpload } from '../FileUpload'
+import { MobileInput } from '../ui/MobileInput'
+import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
-import { usePanelCreationContext } from './PanelCreationProvider'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
 
@@ -25,6 +27,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
   const creation = usePanelCreationContext()
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)!
+  const [eyeOn, setEyeOn] = useState(false)
 
   if (!struct.columns.length) return null
   if (column.isPrimary) return null
@@ -32,22 +35,58 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
   const value = cells[column.id]
 
   return (
-    <div className="flex gap-2">
-      <div className="text-foreground/60 flex w-32 items-center gap-1">
+    <div className="flex h-12 gap-2 pl-3">
+      <div className="text-foreground/60 flex w-fit items-center gap-1">
         <div>
           <FieldIcon columnType={column.columnType} />
         </div>
-        <span className="text-sm">{column.name}</span>
+        <span className="text-foreground text-sm">{column.name}</span>
       </div>
       <div className="flex-1">
-        {[ColumnType.TEXT, ColumnType.PASSWORD].includes(column.columnType) && (
+        {[ColumnType.PASSWORD].includes(column.columnType) && (
+          <div className="flex h-full items-center gap-0 pr-3">
+            <Input
+              placeholder={t`Empty`}
+              variant="unstyled"
+              className="h-full text-right focus-visible:bg-transparent"
+              type={eyeOn ? 'text' : 'password'}
+              defaultValue={value}
+              onChange={(e) => {
+                onUpdateProps({
+                  ...cells,
+                  [column.id]: e.target.value,
+                })
+              }}
+            />
+            {!eyeOn && (
+              <EyeIcon
+                size={20}
+                className="text-foreground/80"
+                onClick={async () => {
+                  setEyeOn(true)
+                  await Haptics.impact({ style: ImpactStyle.Medium })
+                }}
+              />
+            )}
+            {eyeOn && (
+              <EyeOffIcon
+                size={20}
+                className="text-foreground/80"
+                onClick={async () => {
+                  setEyeOn(false)
+                  await Haptics.impact({ style: ImpactStyle.Medium })
+                }}
+              />
+            )}
+          </div>
+        )}
+
+        {[ColumnType.TEXT].includes(column.columnType) && (
           <Input
-            placeholder="Empty"
+            placeholder={t`Empty`}
             variant="unstyled"
-            className=""
-            type={
-              column.columnType === ColumnType.PASSWORD ? 'password' : 'text'
-            }
+            className="h-full text-right focus-visible:bg-transparent"
+            type="text"
             defaultValue={value}
             onChange={(e) => {
               onUpdateProps({
@@ -59,30 +98,15 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
         )}
 
         {[ColumnType.DATE].includes(column.columnType) && (
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="ghost" className={cn('flex items-center gap-1 px-3 text-foreground')}>
-                <CalendarIcon size={16} />
-                {value ? (
-                  format(new Date(value), 'PPP')
-                ) : (
-                  <span>Pick a date</span>
-                )}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
-              <Calendar
-                mode="single"
-                selected={new Date(value as string)}
-                onSelect={(date) => {
-                  onUpdateProps({
-                    ...cells,
-                    [column.id]: date,
-                  })
-                }}
-              />
-            </PopoverContent>
-          </Popover>
+          <DateProp
+            value={value}
+            onChange={(v) => {
+              onUpdateProps({
+                ...cells,
+                [column.id]: v,
+              })
+            }}
+          />
         )}
 
         {ColumnType.CREATED_AT === column.columnType && (
@@ -102,7 +126,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
             placeholder="Empty"
             variant="unstyled"
             precision={18}
-            className=""
+            className="h-full text-right focus-visible:bg-transparent"
             defaultValue={value}
             onChange={(v) => {
               onUpdateProps({
@@ -115,7 +139,8 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
         {column.columnType === ColumnType.URL && (
           <Input
             variant="unstyled"
-            placeholder="Empty"
+            placeholder="https://..."
+            className="h-full text-right focus-visible:bg-transparent"
             defaultValue={value}
             onChange={(e) => {
               onUpdateProps({
@@ -127,7 +152,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
         )}
         {column.columnType === ColumnType.IMAGE && (
           <FileUpload
-            className="size-20 ml-3"
+            className="ml-3 size-20"
             value={value}
             onChange={(v) => {
               onUpdateProps({

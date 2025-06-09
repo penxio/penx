@@ -35,7 +35,6 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
   const [color, setColor] = useState(option?.color || '')
 
   useEffect(() => {
-    if (!option) return setName('')
     if (name !== option?.name) setName(option?.name)
   }, [option, setName])
 
@@ -44,7 +43,7 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
     if (color !== option?.color) setColor(option?.color)
   }, [option, setColor])
 
-  const isEdit = !!option
+  const isEdit = !!option?.id
 
   return (
     <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight>

@@ -143,8 +143,6 @@ export const OptionList = ({ struct, column }: Props) => {
 
   const activeItem = activeId ? options.find(({ id }) => id === activeId) : null
 
-  console.log('======activeId:', activeId)
-
   return (
     <Card className="text-foreground flex flex-col">
       <DndContext

@@ -24,6 +24,7 @@ import { StructType } from '@penx/types'
 import { cn } from '@penx/utils'
 import { FixedToolbar } from './FixedToolbar'
 import { KeyboardPadding } from './KeyboardPadding'
+import { MobilePropList } from './MobilePropList/MobilePropList'
 
 interface Props {
   // creation: ICreation;
@@ -37,14 +38,13 @@ export function MobileCreation({ creationId }: Props) {
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)
   return (
-    <PanelCreationProvider creationId={creationId}>
+    <>
       <PublishDialog />
       <div className="flex min-h-full flex-col">
         <ErrorBoundary fallbackRender={fallbackRender}>
           <div
             className={cn(
-              'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 pt-14 md:px-8',
-              isMobileApp && 'px-3 pt-0',
+              'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden pb-40',
             )}
             onClick={(e: any) => {
               if (e.target?.className?.includes?.('creation-container')) {
@@ -54,6 +54,11 @@ export function MobileCreation({ creationId }: Props) {
           >
             <div className={cn('mx-auto w-full max-w-2xl px-0')}>
               <CreationHeader />
+              <MobilePropList
+                onUpdateProps={(newCells) => {
+                  updateCreationProps(creation.id, { cells: newCells })
+                }}
+              />
 
               {struct?.type === StructType.AUDIO && (
                 <div className="mt-6">
@@ -105,6 +110,6 @@ export function MobileCreation({ creationId }: Props) {
           </div>
         </ErrorBoundary>
       </div>
-    </PanelCreationProvider>
+    </>
   )
 }

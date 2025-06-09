@@ -7,11 +7,10 @@ import { getBgColor } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
 import { Option } from '@penx/types'
-import { Input } from '@penx/uikit/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
-import { OptionTag } from '../OptionTag'
-import { CommandGroup, CommandInput, CommandItem } from './command-components'
+import { OptionTag } from '../../OptionTag'
+import { CommandGroup, CommandInput, CommandItem } from '../command-components'
 
 interface Props {
   struct: Struct
@@ -19,7 +18,7 @@ interface Props {
   value: string[]
   onChange: (ids: string[]) => void
 }
-export const SingleSelectProp = ({
+export const MultipleSelectProp = ({
   column,
   struct,
   value = [],
@@ -46,14 +45,14 @@ export const SingleSelectProp = ({
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div className="hover:bg-foreground/5 flex h-10 w-full max-w-[600px] items-center rounded-lg px-3">
+        <div className="hover:bg-foreground/5 flex h-10 w-full max-w-[600px] items-center gap-2 rounded-lg px-3">
           {options.map((o) => {
             if (!value.includes(o.id)) return null
             return (
               <div
                 key={o.id}
                 className={cn(
-                  'rounded-full px-2 py-0.5 text-sm text-white',
+                  'rounded-full px-2 py-0.5 text-white',
                   getBgColor(o.color),
                 )}
               >
@@ -108,11 +107,20 @@ export const SingleSelectProp = ({
                         column.id,
                         { name: search },
                       )
-
                       newOption = res.newOption
                       id = newOption.id
                     }
-                    onChange([id])
+
+                    let newIds = value
+
+                    const existed = newIds.includes(id)
+                    if (!existed) {
+                      newIds = [...newIds, id]
+                    } else {
+                      newIds = newIds.filter((id2) => id2 !== id)
+                    }
+
+                    onChange(newIds)
                     setSearch('')
                     setOpen(false)
                   }}

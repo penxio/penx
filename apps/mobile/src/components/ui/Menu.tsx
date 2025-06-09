@@ -5,7 +5,7 @@ interface Props {
   children?: React.ReactNode
 }
 
-export function Menu({ className, children }: Props) {
+export function Menu({ className, children, onClick }: Props) {
   return (
     <div
       className={cn(

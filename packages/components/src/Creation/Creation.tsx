@@ -33,7 +33,7 @@ import { CreationHeader } from './CreationHeader'
 import { DeleteCreationDialog } from './DeleteCreationDialog/DeleteCreationDialog'
 import { ImageCreationUpload } from './ImageCreationUpload'
 import { usePanelCreationContext } from './PanelCreationProvider'
-import { PropList } from './PropList'
+import { PropList } from './PropList/PropList'
 import { Tags } from './Tags'
 
 interface Props {

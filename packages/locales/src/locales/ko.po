@@ -220,7 +220,7 @@ msgstr ""
 msgid "Delete tag"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:94
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:96
 msgid "Delete this option?"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 msgid "Deliver your newsletter"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:107
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:106
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
@@ -304,12 +304,14 @@ msgstr ""
 msgid "Favorites"
 msgstr ""
 
+#: apps/mobile/src/components/PropList/SingleSelectProp.tsx:88
+#: apps/mobile/src/components/PropList/MultipleSelectProp.tsx:87
 #: apps/extension/components/content/AddBookmark/Tags.tsx:69
 #: packages/components/src/cells/single-select-cell.tsx:178
 #: packages/components/src/cells/multiple-select-cell.tsx:174
 #: packages/components/src/Creation/Tags.tsx:116
-#: packages/components/src/Creation/SingleSelectProp.tsx:88
-#: packages/components/src/Creation/MultipleSelectProp.tsx:87
+#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:88
+#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:87
 msgid "Find or create option"
 msgstr ""
 
@@ -446,7 +448,7 @@ msgstr ""
 msgid "My Structs"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:102
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:101
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
@@ -457,7 +459,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:90
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:89
 msgid "New property"
 msgstr ""
 
@@ -473,11 +475,13 @@ msgstr ""
 msgid "No creation yet!"
 msgstr ""
 
+#: apps/mobile/src/components/PropList/SingleSelectProp.tsx:96
+#: apps/mobile/src/components/PropList/MultipleSelectProp.tsx:95
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
 #: packages/components/src/cells/single-select-cell.tsx:186
 #: packages/components/src/cells/multiple-select-cell.tsx:182
-#: packages/components/src/Creation/SingleSelectProp.tsx:96
-#: packages/components/src/Creation/MultipleSelectProp.tsx:95
+#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:96
+#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:95
 #: packages/components/src/CommandPanel/SearchCreationList.tsx:37
 #: packages/components/src/CommandPanel/CommandList.tsx:29
 msgid "No results found."
@@ -576,10 +580,6 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:80
 msgid "Properties"
-msgstr ""
-
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:83
-msgid "Property added successfully!"
 msgstr ""
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:251
@@ -735,7 +735,7 @@ msgid "Theme"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:93
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:95
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:97
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr ""
 

@@ -4,6 +4,7 @@ import { PlusIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { IColumn } from '@penx/model-type'
 import { useOptionDrawer } from './useOptionDrawer'
+import { Option } from '@penx/types'
 
 export function AddOptionButton({
   struct,
@@ -19,7 +20,7 @@ export function AddOptionButton({
       onClick={() =>
         setState({
           isOpen: true,
-          option: null as any,
+          option: { name: '', color: '' } as Option,
           column,
         })
       }

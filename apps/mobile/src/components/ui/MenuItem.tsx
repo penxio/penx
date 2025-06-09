@@ -11,7 +11,7 @@ interface ItemProps {
 export function MenuItem({ className, children, onClick, checked }: ItemProps) {
   return (
     <div
-      className={cn('flex items-center justify-between px-3 py-3', className)}
+      className={cn('flex h-12 items-center justify-between px-3', className)}
       onClick={() => {
         onClick && onClick()
       }}

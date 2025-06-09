@@ -15,6 +15,7 @@ import {
   IonModal,
   IonToolbar,
 } from '@ionic/react'
+import { PanelCreationProvider } from '@penx/components/Creation/PanelCreationProvider'
 
 const platform = Capacitor.getPlatform()
 
@@ -62,7 +63,9 @@ export const PageCreation = ({
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding content">
-        <MobileCreation creationId={creationId} />
+        <PanelCreationProvider creationId={creationId}>
+          <MobileCreation creationId={creationId} />
+        </PanelCreationProvider>
       </IonContent>
 
       {/* <IonFooter style={{}}>
