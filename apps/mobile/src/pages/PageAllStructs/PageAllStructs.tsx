@@ -11,11 +11,10 @@ import { useQuery } from '@tanstack/react-query'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { usePanels } from '@penx/hooks/usePanels'
 import { PanelType } from '@penx/types'
+import { CreateStructButton } from './CreateStructButton'
 import { StructList } from './StructList'
 import { StructMarketplace } from './StructMarketplace'
 import { NavType, StructNav } from './StructNav'
-
-const platform = Capacitor.getPlatform()
 
 export const PageAllStructs: React.FC = ({ nav }: any) => {
   return (
@@ -69,7 +68,12 @@ function Content() {
         }
       >
         <StructNav navType={navType} onSelect={(v) => setNavType(v)} />
-        {navType === NavType.MY_STRUCT && <StructList />}
+        {navType === NavType.MY_STRUCT && (
+          <div className="flex flex-col gap-4">
+            <CreateStructButton />
+            <StructList />
+          </div>
+        )}
         {navType === NavType.MARKETPLACE && <StructMarketplace />}
       </div>
     </IonContent>

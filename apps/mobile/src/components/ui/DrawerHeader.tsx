@@ -8,6 +8,7 @@ interface Props {
   showCancelButton?: boolean
   disabled?: boolean
   onConfirm?: () => void
+  onCancel?: () => void
 }
 
 export function DrawerHeader({
@@ -16,6 +17,7 @@ export function DrawerHeader({
   showCancelButton = false,
   disabled,
   onConfirm,
+  onCancel,
 }: Props) {
   const { setOpen } = useDrawerContext()
   return (
@@ -25,12 +27,13 @@ export function DrawerHeader({
         className,
       )}
     >
-      <div className="inline-flex">
+      <div className="inline-flex w-24">
         {showCancelButton && (
           <div
             className="text-foreground/60 font-light"
             onClick={() => {
               setOpen(false)
+              onCancel?.()
             }}
           >
             <Trans>Cancel</Trans>
@@ -40,7 +43,7 @@ export function DrawerHeader({
 
       {children}
 
-      <div className="inline-flex">
+      <div className="inline-flex w-24 justify-end">
         {onConfirm && (
           <div
             className={cn(

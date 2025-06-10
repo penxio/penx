@@ -1,4 +1,5 @@
 import React from 'react'
+import { ColorSelector } from '@/components/ColorSelector'
 import { useTheme } from '@/components/theme-provider'
 import { Card } from '@/components/ui/Card'
 import { MobileInput } from '@/components/ui/MobileInput'
@@ -14,13 +15,10 @@ import {
 } from '@ionic/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
-import { TextIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
-import { Input } from '@penx/uikit/ui/input'
 import { Textarea } from '@penx/uikit/ui/textarea'
-import { ColorSelector } from './ColorSelector'
 import { ColumnList } from './ColumnList'
 import { EditPropertyDrawer } from './EditPropertyDrawer/EditPropertyDrawer'
 import { OptionDrawer } from './EditPropertyDrawer/OptionDrawer'
@@ -61,7 +59,6 @@ export function PageStructInfo({ struct }: { struct: Struct }) {
 }
 
 function Content({ structId }: { structId: string }) {
-  const { theme, isDark } = useTheme()
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === structId)!
 

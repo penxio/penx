@@ -39,13 +39,13 @@ export class StructsStore {
     this.store.set(structsAtom, state)
   }
 
-  createStruct(name: string) {
+  createStruct(input: Partial<IStructNode['props']>) {
     const site = this.store.site.get()
     const area = this.store.area.get()
     const structs = this.get()
     const newStruct = generateStructNode({
-      type: name.toUpperCase(),
-      name,
+      type: uniqueId(),
+      ...input,
       areaId: area.id,
       siteId: site.id,
       userId: site.userId,

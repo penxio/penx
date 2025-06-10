@@ -32,7 +32,7 @@ export function CreateStructForm() {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    store.structs.createStruct(data.name)
+    store.structs.createStruct(data)
 
     setIsOpen(false)
   }

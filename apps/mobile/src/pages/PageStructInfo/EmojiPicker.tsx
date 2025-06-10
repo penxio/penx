@@ -22,7 +22,7 @@ export function EmojiPicker({ value = '1f435', color, onChange }: Props) {
     <>
       <div
         className={cn(
-          'size-18 shadow-card flex shrink-0 items-center justify-center rounded-lg bg-white dark:bg-neutral-800',
+          'size-18 flex shrink-0 items-center justify-center rounded-lg bg-white dark:bg-neutral-800',
           color && colorNameMaps[color],
         )}
         style={{

@@ -33,15 +33,23 @@ export function ColorSelector({ value, onChange }: ColorSelectorProps) {
         <div className="text-foreground/70 flex shrink-0 items-center gap-0.5">
           <Trans>Color</Trans>
         </div>
+
         <div className="flex items-center">
-          <div className="flex items-center gap-2">
-            <div
-              className={cn(
-                'size-7 cursor-pointer rounded-full transition-colors hover:scale-110',
-                getBgColor(value || 'teal'),
-              )}
-            ></div>
-          </div>
+          {value && (
+            <div className="flex items-center gap-2">
+              <div
+                className={cn(
+                  'size-7 cursor-pointer rounded-full transition-colors hover:scale-110',
+                  getBgColor(value || 'teal'),
+                )}
+              ></div>
+            </div>
+          )}
+          {!value && (
+            <div className="text-foreground/60">
+              <Trans>Select a color</Trans>
+            </div>
+          )}
 
           <ChevronRightIcon className="text-foreground/50 size-5" />
         </div>
@@ -53,7 +61,7 @@ export function ColorSelector({ value, onChange }: ColorSelectorProps) {
             <Trans>Select a color</Trans>
           </DrawerTitle>
         </DrawerHeader>
-        <div className="-mx-4 -mb-6 max-h-[50vh] flex-1 overflow-y-auto px-4 pb-6">
+        <div className="-mx-4 -mb-10 min-h-[50vh] flex-1 overflow-y-auto px-4 pb-6">
           <Menu>
             {colorEntries.map(([color, bg]) => (
               <MenuItem
