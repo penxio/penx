@@ -3,9 +3,11 @@ import _ky from 'ky'
 import {
   isDesktop,
   isMobileApp,
+  PublishStructInput,
   ROOT_HOST,
   TRANSCRIBE_URL,
 } from '@penx/constants'
+import { IStructNode } from '@penx/model-type'
 
 async function getHeaders() {
   if (isDesktop || isMobileApp) {
@@ -85,6 +87,20 @@ export const api = {
           phone,
           userId,
         },
+      })
+      .json()
+  },
+
+  async listStructTemplate() {
+    return ky
+      .get(`${ROOT_HOST}/api/struct-template/list`)
+      .json<(IStructNode['props'] & { id: string })[]>()
+  },
+
+  async publishStruct(input: PublishStructInput) {
+    return ky
+      .post(`${ROOT_HOST}/api/struct-template/publish`, {
+        json: input,
       })
       .json()
   },

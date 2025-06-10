@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatedJournalInput } from '@/components/AnimatedJournalInput'
-import { Footer } from '@/components/Footer/Footer'
+import { HomeFooter } from '@/components/HomeFooter/HomeFooter'
 import { HomeHeader } from '@/components/HomeHeader'
 import { GoogleLoginButton } from '@/components/Login/GoogleLoginButton'
 import { useMoreStructDrawer } from '@/components/MoreStructDrawer/useMoreStructDrawer'
@@ -10,7 +10,7 @@ import { mainBackgroundLight } from '@/lib/constants'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
-import { IonContent } from '@ionic/react'
+import { IonContent, IonPage } from '@ionic/react'
 import { useQuery } from '@tanstack/react-query'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { usePanels } from '@penx/hooks/usePanels'
@@ -94,7 +94,7 @@ const PageHome = ({ nav }: any) => {
         ></div>
       </IonContent>
 
-      <Footer
+      <HomeFooter
         open={open}
         onAdd={() => {
           // setState({

@@ -13,6 +13,7 @@ import {
   IonFooter,
   IonHeader,
   IonModal,
+  IonPage,
   IonToolbar,
 } from '@ionic/react'
 import { PanelCreationProvider } from '@penx/components/Creation/PanelCreationProvider'

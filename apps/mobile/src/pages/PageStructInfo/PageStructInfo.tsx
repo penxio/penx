@@ -1,24 +1,31 @@
 import React from 'react'
 import { useTheme } from '@/components/theme-provider'
+import { Card } from '@/components/ui/Card'
+import { MobileInput } from '@/components/ui/MobileInput'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
   IonButtons,
   IonContent,
   IonHeader,
+  IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
+import { TextIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Input } from '@penx/uikit/ui/input'
+import { Textarea } from '@penx/uikit/ui/textarea'
+import { ColorSelector } from './ColorSelector'
 import { ColumnList } from './ColumnList'
 import { EditPropertyDrawer } from './EditPropertyDrawer/EditPropertyDrawer'
 import { OptionDrawer } from './EditPropertyDrawer/OptionDrawer'
 import { EmojiPicker } from './EmojiPicker'
+import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 
 const platform = Capacitor.getPlatform()
 
@@ -46,9 +53,9 @@ export function PageStructInfo({ struct }: { struct: Struct }) {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="content ion-padding text-foreground">
-        <div id="portal" className="fixed left-0 top-0 z-[1000]" />
         <Content structId={struct.id} />
       </IonContent>
+      <StructInfoFooter structId={struct.id} />
     </>
   )
 }
@@ -60,8 +67,9 @@ function Content({ structId }: { structId: string }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex items-center gap-1">
+      <div className="flex justify-center">
         <EmojiPicker
+          color={struct.color}
           value={struct.emoji}
           onChange={(v) => {
             store.structs.updateStructProps(struct, {
@@ -69,11 +77,12 @@ function Content({ structId }: { structId: string }) {
             })
           }}
         />
-        <Input
-          size="lg"
-          defaultValue={struct.name}
-          variant="mobile"
+      </div>
+      <Card className="">
+        <MobileInput
+          label={<Trans>Name</Trans>}
           placeholder={t`Struct name`}
+          defaultValue={struct.name}
           onChange={(e) => {
             if (e.target.value.trim() !== '') {
               store.structs.updateStructProps(struct, {
@@ -82,8 +91,28 @@ function Content({ structId }: { structId: string }) {
             }
           }}
         />
-      </div>
+        <ColorSelector
+          value={struct.color}
+          onChange={(color) => {
+            store.structs.updateStructProps(struct, {
+              color,
+            })
+          }}
+        />
+      </Card>
 
+      <Card>
+        <Textarea
+          className="border-none bg-white shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
+          placeholder={t`Introduction`}
+          defaultValue={struct.description}
+          onChange={(e) => {
+            store.structs.updateStructProps(struct, {
+              description: e.target.value.trim(),
+            })
+          }}
+        ></Textarea>
+      </Card>
       <div className="space-y-2">
         <div className="text-foreground/60 text-sm">
           <Trans>Properties</Trans>

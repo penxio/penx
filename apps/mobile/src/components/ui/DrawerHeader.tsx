@@ -21,7 +21,7 @@ export function DrawerHeader({
   return (
     <div
       className={cn(
-        'text-foreground h-13 -mx-4 mb-2 flex items-center justify-between px-4 text-base font-semibold',
+        'text-foreground sticky top-0 -mx-4 mb-2 flex h-12 shrink-0 items-center justify-between bg-neutral-100 px-4  text-base font-semibold outline-none dark:bg-neutral-800',
         className,
       )}
     >

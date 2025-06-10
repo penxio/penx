@@ -19,6 +19,7 @@
   "dependencies": {
     "@penx/session": "workspace:*",
     "@penx/domain": "workspace:*",
+    "@penx/api": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/model-type": "workspace:*",

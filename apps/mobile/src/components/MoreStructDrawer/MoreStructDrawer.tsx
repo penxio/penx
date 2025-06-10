@@ -9,7 +9,6 @@ import { cn } from '@penx/utils'
 import { Drawer } from '../ui/Drawer'
 import { DrawerHeader } from '../ui/DrawerHeader'
 import { DrawerTitle } from '../ui/DrawerTitle'
-import { PublishedStructList } from './PublishedStructList'
 import { StructList } from './StructList'
 import { useMoreStructDrawer } from './useMoreStructDrawer'
 

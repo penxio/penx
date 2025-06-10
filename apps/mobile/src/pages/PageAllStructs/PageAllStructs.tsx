@@ -5,11 +5,15 @@ import { mainBackgroundLight } from '@/lib/constants'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { Capacitor } from '@capacitor/core'
 import { StatusBar, Style } from '@capacitor/status-bar'
-import { IonContent } from '@ionic/react'
+import { IonContent, IonPage } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { usePanels } from '@penx/hooks/usePanels'
 import { PanelType } from '@penx/types'
+import { StructList } from './StructList'
+import { StructMarketplace } from './StructMarketplace'
+import { NavType, StructNav } from './StructNav'
 
 const platform = Capacitor.getPlatform()
 
@@ -33,10 +37,12 @@ function Content() {
     },
   })
 
+  const [navType, setNavType] = useState(NavType.MY_STRUCT)
+
   return (
     <IonContent
       fullscreen
-      className="text-foreground content"
+      className="text-foreground content ion-padding"
       scrollEvents={true}
       onIonScroll={async (event) => {
         const scrollTop = event.detail.scrollTop
@@ -55,16 +61,16 @@ function Content() {
       }}
     >
       <div
-        className="text-foreground z-1 relative flex flex-col px-1"
+        className="text-foreground z-1 relative flex flex-col gap-3"
         style={
           {
             '--background': 'oklch(1 0 0)',
           } as any
         }
       >
-        <PanelList
-          panels={panels.filter((p) => p.type === PanelType.ALL_STRUCTS)}
-        />
+        <StructNav navType={navType} onSelect={(v) => setNavType(v)} />
+        {navType === NavType.MY_STRUCT && <StructList />}
+        {navType === NavType.MARKETPLACE && <StructMarketplace />}
       </div>
     </IonContent>
   )

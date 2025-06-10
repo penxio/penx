@@ -1,8 +1,13 @@
 import { useState } from 'react'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
+import { darken, transparentize } from '@fower/color-helper'
 import { ChevronRightIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
-import { getBgColor } from '@penx/libs/color-helper'
+import {
+  colorNameMaps,
+  getBgColor,
+  getTextColorByName,
+} from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { cn } from '@penx/utils'
 import { Drawer } from '../ui/Drawer'
@@ -33,7 +38,7 @@ export const SingleSelectProp = ({
       <div
         className="flex h-full w-full items-center justify-end pl-3 pr-1"
         onClick={async () => {
-          await Haptics.impact({ style: ImpactStyle.Medium })
+          impact()
           setOpen(true)
         }}
       >
@@ -45,18 +50,23 @@ export const SingleSelectProp = ({
                 key={o.id}
                 className={cn(
                   'rounded-full px-2 py-0.5 text-sm text-white',
-                  getBgColor(o.color),
+                  // getBgColor(o.color),
+                  // getTextColorByName(o.color),
                 )}
+                style={{
+                  color: darken(colorNameMaps[o.color], 5),
+                  background: transparentize(colorNameMaps[o.color], 80),
+                }}
               >
                 {o.name}
               </div>
             )
           })}
         </div>
-        <ChevronRightIcon className="text-foreground/50" />
+        <ChevronRightIcon className="text-foreground/50 size-5" />
       </div>
 
-      <Drawer open={open} setOpen={setOpen} className="" isFullHeight>
+      <Drawer open={open} setOpen={setOpen} className="">
         <DrawerHeader>
           <DrawerTitle>{column.name}</DrawerTitle>
         </DrawerHeader>
@@ -76,7 +86,7 @@ export const SingleSelectProp = ({
                   onChange([item.id])
                 }
                 setOpen(false)
-                await Haptics.impact({ style: ImpactStyle.Medium })
+                impact()
               }}
             >
               <OptionTag

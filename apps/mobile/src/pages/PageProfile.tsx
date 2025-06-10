@@ -1,6 +1,6 @@
 import React from 'react'
-import { LoginContent } from '@/components/Login/LoginContent'
 import { EmailLoginForm } from '@/components/Login/EmailLoginForm'
+import { LoginContent } from '@/components/Login/LoginContent'
 import { RegisterForm } from '@/components/Login/RegisterForm'
 import { Profile } from '@/components/Profile/Profile'
 import { Capacitor } from '@capacitor/core'
@@ -12,6 +12,7 @@ import {
   IonFooter,
   IonHeader,
   IonNavLink,
+  IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'

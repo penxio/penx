@@ -61,12 +61,12 @@ export function PanelStructs({ panel, index }: Props) {
             />
           </div>
 
-          {/* <div className="space-y-3">
+          <div className="space-y-3">
             <div className="text-foreground/50 text-base">
               <Trans>Struct marketplace</Trans>
             </div>
             <PublishedStructList />
-          </div> */}
+          </div>
         </div>
       </div>
     </>

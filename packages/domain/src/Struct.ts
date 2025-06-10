@@ -27,6 +27,10 @@ export class Struct {
     return this.raw.props.pluralName || this.name
   }
 
+  get description() {
+    return this.raw.props.description || ''
+  }
+
   get color() {
     return this.raw.props.color || ''
   }

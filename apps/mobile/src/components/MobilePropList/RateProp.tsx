@@ -1,4 +1,4 @@
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
 import { StarSVG } from '@penx/components/StarSVG'
 import { cn } from '@penx/utils'
 
@@ -20,7 +20,7 @@ export const RateProp = ({ value, onChange }: Props) => {
           )}
           onClick={async () => {
             onChange((index + 1).toString())
-            await Haptics.impact({ style: ImpactStyle.Medium })
+            impact()
           }}
         >
           <StarSVG />

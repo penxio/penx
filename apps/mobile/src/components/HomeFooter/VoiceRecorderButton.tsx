@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { checkAndRequestPermission } from '@/lib/checkAndRequestPermission'
+import { impact } from '@/lib/impact'
 import { isIOS } from '@/lib/utils'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'
 import { PluginListenerHandle } from '@capacitor/core'
 import { Device } from '@capacitor/device'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { VoiceRecorder } from 'capacitor-voice-recorder'
 import {
@@ -169,7 +169,7 @@ export const VoiceRecorderButton = ({}: Props) => {
             status !== 'init' && 'hidden',
           )}
           onClick={async (e) => {
-            await Haptics.impact({ style: ImpactStyle.Medium })
+            impact()
             // e.stopPropagation()
             const permissionGranted = await checkAndRequestPermission()
             if (!permissionGranted) {

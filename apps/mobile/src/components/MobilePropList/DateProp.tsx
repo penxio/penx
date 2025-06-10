@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
 import { format } from 'date-fns'
 import { MobileCalendar } from '@penx/uikit/ui/mobile-calendar'
 import { cn } from '@penx/utils'
@@ -18,8 +18,8 @@ export const DateProp = ({ value, onChange }: Props) => {
           'text-foreground flex h-full w-full items-center justify-end px-3',
         )}
         onClick={async () => {
+          impact()
           setOpen(true)
-          await Haptics.impact({ style: ImpactStyle.Medium })
         }}
       >
         {value ? (
@@ -37,7 +37,7 @@ export const DateProp = ({ value, onChange }: Props) => {
           onSelect={async (date) => {
             onChange(date)
             setOpen(false)
-            await Haptics.impact({ style: ImpactStyle.Medium })
+            impact()
           }}
         />
       </Drawer>

@@ -4,7 +4,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
 import { Card } from '@/components/ui/Card'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -138,7 +138,7 @@ export const OptionList = ({ struct, column }: Props) => {
   }
 
   const handleDragOver = async (event: DragOverEvent) => {
-    await Haptics.impact({ style: ImpactStyle.Medium })
+    impact()
   }
 
   const activeItem = activeId ? options.find(({ id }) => id === activeId) : null

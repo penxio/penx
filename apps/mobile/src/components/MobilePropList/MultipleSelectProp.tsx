@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
+import { darken, transparentize } from '@fower/color-helper'
 import { produce } from 'immer'
 import { ChevronRightIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
-import { getBgColor } from '@penx/libs/color-helper'
+import { colorNameMaps, getBgColor } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { cn } from '@penx/utils'
 import { Drawer } from '../ui/Drawer'
@@ -33,7 +34,7 @@ export const MultipleSelectProp = ({
       <div
         className="flex h-full w-full items-center justify-end pl-3 pr-1"
         onClick={async () => {
-          await Haptics.impact({ style: ImpactStyle.Medium })
+          impact()
           setOpen(true)
         }}
       >
@@ -45,18 +46,22 @@ export const MultipleSelectProp = ({
                 key={o.id}
                 className={cn(
                   'rounded-full px-2 py-0.5 text-sm text-white',
-                  getBgColor(o.color),
+                  // getBgColor(o.color),
                 )}
+                style={{
+                  color: darken(colorNameMaps[o.color], 10),
+                  background: transparentize(colorNameMaps[o.color], 80),
+                }}
               >
                 {o.name}
               </div>
             )
           })}
         </div>
-        <ChevronRightIcon className="text-foreground/50" />
+        <ChevronRightIcon className="text-foreground/50 size-5" />
       </div>
 
-      <Drawer open={open} setOpen={setOpen} className="" isFullHeight>
+      <Drawer open={open} setOpen={setOpen} className="">
         <DrawerHeader>
           <DrawerTitle>{column.name}</DrawerTitle>
         </DrawerHeader>
@@ -71,7 +76,7 @@ export const MultipleSelectProp = ({
               key={item.id}
               checked={value.includes(item.id)}
               onClick={async () => {
-                await Haptics.impact({ style: ImpactStyle.Medium })
+                impact()
                 const newIds = produce(value || [], (draft) => {
                   if (draft.includes(item.id)) {
                     draft.splice(draft.indexOf(item.id), 1)

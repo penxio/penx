@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
@@ -36,11 +36,14 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
 
   return (
     <div className="flex h-12 gap-2 pl-3">
-      <div className="text-foreground/60 flex w-fit items-center gap-1">
-        <div>
-          <FieldIcon columnType={column.columnType} />
+      <div className="text-foreground/60 flex w-fit items-center gap-2">
+        <div className="bg-foreground/8 flex size-7 items-center justify-center rounded-md">
+          <FieldIcon
+            columnType={column.columnType}
+            className="text-foreground"
+          />
         </div>
-        <span className="text-foreground text-sm">{column.name}</span>
+        <span className="text-foreground text-base">{column.name}</span>
       </div>
       <div className="flex-1">
         {[ColumnType.PASSWORD].includes(column.columnType) && (
@@ -64,7 +67,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
                 className="text-foreground/80"
                 onClick={async () => {
                   setEyeOn(true)
-                  await Haptics.impact({ style: ImpactStyle.Medium })
+                  impact()
                 }}
               />
             )}
@@ -74,7 +77,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
                 className="text-foreground/80"
                 onClick={async () => {
                   setEyeOn(false)
-                  await Haptics.impact({ style: ImpactStyle.Medium })
+                  impact()
                 }}
               />
             )}

@@ -11,6 +11,7 @@ import {
   IonFooter,
   IonHeader,
   IonNavLink,
+  IonPage,
   IonTitle,
   IonToolbar,
 } from '@ionic/react'

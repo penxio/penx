@@ -10,7 +10,7 @@ interface Props {
   onAdd: () => void
 }
 
-export const Footer = ({ open, onAdd }: Props) => {
+export const HomeFooter = ({ open, onAdd }: Props) => {
   return (
     <IonFab
       slot="fixed"

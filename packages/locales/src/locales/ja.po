@@ -50,8 +50,8 @@ msgstr ""
 msgid "Add navigation"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/AddOptionButton.tsx:29
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:85
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/AddOptionButton.tsx:30
 msgid "Add Option"
 msgstr ""
 
@@ -250,6 +250,7 @@ msgstr ""
 msgid "Due date"
 msgstr ""
 
+#: apps/mobile/src/pages/PageAllStructs/StructList.tsx:62
 #: packages/components/src/CreationCard/CreationCard.tsx:291
 msgid "Edit"
 msgstr ""
@@ -258,7 +259,7 @@ msgstr ""
 msgid "Edit navigation"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:85
 msgid "Edit Option"
 msgstr ""
 
@@ -290,9 +291,14 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: apps/mobile/src/pages/PageEmailLogin.tsx:42
+#: apps/mobile/src/pages/PageEmailLogin.tsx:43
 #: apps/mobile/src/components/Login/EmailLoginButton.tsx:17
 msgid "Email login"
+msgstr ""
+
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:52
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:89
+msgid "Empty"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:105
@@ -304,8 +310,6 @@ msgstr ""
 msgid "Favorites"
 msgstr ""
 
-#: apps/mobile/src/components/PropList/SingleSelectProp.tsx:88
-#: apps/mobile/src/components/PropList/MultipleSelectProp.tsx:87
 #: apps/extension/components/content/AddBookmark/Tags.tsx:69
 #: packages/components/src/cells/single-select-cell.tsx:178
 #: packages/components/src/cells/multiple-select-cell.tsx:174
@@ -343,6 +347,18 @@ msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:25
 msgid "Image"
+msgstr ""
+
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:97
+msgid "Install"
+msgstr ""
+
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:97
+msgid "Installed"
+msgstr ""
+
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:94
+msgid "Introduction"
 msgstr ""
 
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:35
@@ -398,7 +414,7 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: apps/mobile/src/pages/PageLogin.tsx:45
+#: apps/mobile/src/pages/PageLogin.tsx:46
 msgid "Login"
 msgstr ""
 
@@ -424,6 +440,10 @@ msgstr ""
 msgid "Manage tags"
 msgstr ""
 
+#: apps/mobile/src/pages/PageAllStructs/StructNav.tsx:19
+msgid "Marketplace"
+msgstr ""
+
 #: packages/libs/src/getDefaultStructs.ts:92
 msgid "Medium"
 msgstr ""
@@ -440,7 +460,8 @@ msgstr ""
 msgid "My Site"
 msgstr ""
 
-#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:25
+#: apps/mobile/src/pages/PageAllStructs/StructNav.tsx:18
+#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:24
 msgid "My structs"
 msgstr ""
 
@@ -449,7 +470,7 @@ msgid "My Structs"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:101
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:94
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
@@ -475,8 +496,11 @@ msgstr ""
 msgid "No creation yet!"
 msgstr ""
 
-#: apps/mobile/src/components/PropList/SingleSelectProp.tsx:96
-#: apps/mobile/src/components/PropList/MultipleSelectProp.tsx:95
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:68
+#: apps/mobile/src/pages/PageAllStructs/StructList.tsx:50
+msgid "No introduction for the struct"
+msgstr ""
+
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
 #: packages/components/src/cells/single-select-cell.tsx:186
 #: packages/components/src/cells/multiple-select-cell.tsx:182
@@ -536,7 +560,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: apps/mobile/src/pages/PagePhoneLogin.tsx:41
+#: apps/mobile/src/pages/PagePhoneLogin.tsx:42
 #: apps/mobile/src/components/Login/PhoneLoginButton.tsx:27
 msgid "Phone login"
 msgstr ""
@@ -549,7 +573,7 @@ msgstr ""
 msgid "Pick a date"
 msgstr ""
 
-#: apps/mobile/src/pages/PagePlan.tsx:44
+#: apps/mobile/src/pages/PagePlan.tsx:45
 msgid "Plan"
 msgstr ""
 
@@ -578,7 +602,7 @@ msgstr ""
 msgid "Privacy Policy"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:80
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:110
 msgid "Properties"
 msgstr ""
 
@@ -586,6 +610,7 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:67
 #: packages/components/src/database-ui/TableInfo.tsx:68
 msgid "Publish to marketplace"
 msgstr ""
@@ -641,7 +666,7 @@ msgstr ""
 msgid "Select Property type"
 msgstr ""
 
-#: apps/mobile/src/pages/PageProfile.tsx:46
+#: apps/mobile/src/pages/PageProfile.tsx:47
 #: packages/components/src/ProfileButton.tsx:204
 #: packages/components/src/Profile/ProfilePopover.tsx:125
 #: packages/components/src/AreasPopover/AreaMenu.tsx:84
@@ -677,8 +702,20 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:68
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:94
+msgid "Struct installed successfully!"
+msgstr ""
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:66
+msgid "Struct marketplace"
+msgstr ""
+
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:79
 msgid "Struct name"
+msgstr ""
+
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:57
+msgid "Struct published successfully!"
 msgstr ""
 
 #: apps/mobile/src/components/AllStructsHeader.tsx:40

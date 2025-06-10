@@ -1,5 +1,5 @@
 import React from 'react'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
 import { EllipsisIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { cn } from '@penx/utils'
@@ -15,7 +15,7 @@ export const AddMoreButton = ({}: Props) => {
       className="text-background flex size-9 items-center justify-center rounded-full"
       onClick={async (e) => {
         setIsOpen(true)
-        await Haptics.impact({ style: ImpactStyle.Medium })
+        await impact()
       }}
     >
       <EllipsisIcon size={20} className="text-foreground" />

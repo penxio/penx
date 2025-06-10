@@ -1,5 +1,5 @@
 import React from 'react'
-import { Haptics, ImpactStyle } from '@capacitor/haptics'
+import { impact } from '@/lib/impact'
 import { PlusIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useLongPress } from 'use-long-press'
@@ -14,7 +14,7 @@ export const AddNoteButton = ({ onAdd }: Props) => {
   // if (open) return null
   const handlers = useLongPress(async () => {
     setIsOpen(true)
-    await Haptics.impact({ style: ImpactStyle.Medium })
+    await impact()
   })
 
   return (
@@ -23,7 +23,7 @@ export const AddNoteButton = ({ onAdd }: Props) => {
       whileTap={{ scale: 1.1 }}
       className=" relative  flex size-10 select-none items-center justify-center rounded-full"
       onClick={async () => {
-        await Haptics.impact({ style: ImpactStyle.Medium })
+        impact()
         onAdd()
       }}
     >

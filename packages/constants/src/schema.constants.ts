@@ -70,3 +70,17 @@ export const createAreaInputSchema = z.object({
 })
 
 export type CreateAreaInput = z.infer<typeof createAreaInputSchema>
+
+export const publishStructInputSchema = z.object({
+  id: z.string().uuid(),
+  name: z.string().min(1, { message: 'Type name is required' }),
+  pluralName: z.string().min(1, { message: 'Type name is required' }),
+  type: z.string(),
+  locale: z.string(),
+  emoji: z.string().optional(),
+  color: z.string().optional(),
+  about: z.string().optional(),
+  columns: z.any(),
+})
+
+export type PublishStructInput = z.infer<typeof publishStructInputSchema>

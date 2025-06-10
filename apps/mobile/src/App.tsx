@@ -64,7 +64,7 @@ import {
   tryPersistWithoutPromptingUser,
 } from './lib/indexeddbHelder'
 import { initializeRevenueCat } from './lib/initializeRevenueCat'
-import { PageAllStructs } from './pages/PageAllStructs'
+import { PageAllStructs } from './pages/PageAllStructs/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { PageLogin } from './pages/PageLogin'
 import { PageProfile } from './pages/PageProfile'
