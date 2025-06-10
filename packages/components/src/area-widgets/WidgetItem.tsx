@@ -137,8 +137,7 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
             !isMobileApp && 'opacity-0 group-hover/widget:opacity-100',
           )}
         >
-          {((widget.type === WidgetType.STRUCT && !isMobileApp) ||
-            widget.type === WidgetType.ALL_STRUCTS) && (
+          {widget.type === WidgetType.STRUCT && !isMobileApp && (
             <AddCreationButton area={area} widget={widget} />
           )}
 

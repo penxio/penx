@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { ColorSelector } from '@/components/ColorSelector'
 import { Drawer } from '@/components/ui/Drawer'
 import { DrawerHeader } from '@/components/ui/DrawerHeader'
 import { DrawerTitle } from '@/components/ui/DrawerTitle'
@@ -10,7 +11,6 @@ import { ColumnTypeName } from '@penx/components/ColumnTypeName'
 import { Struct } from '@penx/domain'
 import { store } from '@penx/store'
 import { ColumnType } from '@penx/types'
-import { ColorSelector } from './ColorSelector'
 import { OptionList } from './OptionList'
 import { useEditPropertyDrawer } from './useEditPropertyDrawer'
 import { useOptionDrawer } from './useOptionDrawer'
@@ -48,6 +48,7 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
   return (
     <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight>
       <DrawerHeader
+        showCancelButton
         disabled={!name}
         onConfirm={async () => {
           if (!name) return null
@@ -82,7 +83,7 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
         }}
       >
         <DrawerTitle>
-          {option ? <Trans>Edit Option</Trans> : <Trans>Add Option</Trans>}
+          {option ? <Trans>Edit option</Trans> : <Trans>Add option</Trans>}
         </DrawerTitle>
       </DrawerHeader>
       <div className="space-y-2">
@@ -93,11 +94,8 @@ export function OptionDrawer({ struct }: { struct: Struct }) {
             onChange={(e) => setName(e.target.value)}
             label={<Trans>Name</Trans>}
           />
-        </Menu>
-
-        <div className="mt-6">
           <ColorSelector value={color} onChange={setColor} />
-        </div>
+        </Menu>
       </div>
     </Drawer>
   )

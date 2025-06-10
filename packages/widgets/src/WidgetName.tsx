@@ -19,7 +19,7 @@ export function WidgetName({ widget, structs }: Props) {
   }
 
   if (widget.type === WidgetType.ALL_STRUCTS) {
-    return <Trans>Structs</Trans>
+    return <Trans>My structs</Trans>
   }
 
   if (widget.type === WidgetType.COLLECTION) {

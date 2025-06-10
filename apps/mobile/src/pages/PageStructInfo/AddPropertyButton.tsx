@@ -73,6 +73,7 @@ export function AddPropertyButton({ struct }: { struct: Struct }) {
       <Drawer open={visible} setOpen={setVisible} isFullHeight>
         <DrawerHeader
           disabled={!name}
+          showCancelButton
           onConfirm={async () => {
             if (!name) return null
             await store.structs.addColumn(struct, {
