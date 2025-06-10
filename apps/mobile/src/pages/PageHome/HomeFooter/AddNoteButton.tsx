@@ -3,7 +3,7 @@ import { impact } from '@/lib/impact'
 import { PlusIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useLongPress } from 'use-long-press'
-import { useMoreStructDrawer } from '../MoreStructDrawer/useMoreStructDrawer'
+import { useMoreStructDrawer } from './MoreStructDrawer/useMoreStructDrawer'
 
 interface Props {
   onAdd: () => void

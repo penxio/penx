@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { Drawer } from '@/components/ui/Drawer'
 import { checkAndRequestPermission } from '@/lib/checkAndRequestPermission'
 import { impact } from '@/lib/impact'
 import { isIOS } from '@/lib/utils'
@@ -23,7 +24,6 @@ import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { stringToDoc } from '@penx/utils/editorHelper'
-import { Drawer } from '../ui/Drawer'
 
 interface Props {}
 

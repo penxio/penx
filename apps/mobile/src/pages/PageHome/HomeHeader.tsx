@@ -5,7 +5,7 @@ import { Capacitor } from '@capacitor/core'
 import { IonButtons, IonHeader, IonMenuToggle, IonToolbar } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
 import { cn } from '@penx/utils'
-import { useTheme } from './theme-provider'
+import { useTheme } from '../../components/theme-provider'
 
 interface Props {
   scrolled: boolean

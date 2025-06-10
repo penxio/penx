@@ -2,8 +2,7 @@ import React from 'react'
 import { impact } from '@/lib/impact'
 import { EllipsisIcon } from 'lucide-react'
 import { motion } from 'motion/react'
-import { cn } from '@penx/utils'
-import { useMoreStructDrawer } from '../MoreStructDrawer/useMoreStructDrawer'
+import { useMoreStructDrawer } from './MoreStructDrawer/useMoreStructDrawer'
 
 interface Props {}
 

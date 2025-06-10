@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatedJournalInput } from '@/components/AnimatedJournalInput'
-import { HomeFooter } from '@/components/HomeFooter/HomeFooter'
-import { HomeHeader } from '@/components/HomeHeader'
 import { GoogleLoginButton } from '@/components/Login/GoogleLoginButton'
-import { useMoreStructDrawer } from '@/components/MoreStructDrawer/useMoreStructDrawer'
 import { useTheme } from '@/components/theme-provider'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { mainBackgroundLight } from '@/lib/constants'
+import { useMoreStructDrawer } from '@/pages/PageHome/HomeFooter/MoreStructDrawer/useMoreStructDrawer'
+import { HomeHeader } from '@/pages/PageHome/HomeHeader'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
@@ -15,6 +14,7 @@ import { useQuery } from '@tanstack/react-query'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { usePanels } from '@penx/hooks/usePanels'
 import { PanelType } from '@penx/types'
+import { HomeFooter } from './HomeFooter/HomeFooter'
 
 const platform = Capacitor.getPlatform()
 
