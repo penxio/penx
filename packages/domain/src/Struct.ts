@@ -31,6 +31,10 @@ export class Struct {
     return this.raw.props.color || ''
   }
 
+  get emoji() {
+    return this.raw.props?.emoji || ''
+  }
+
   get activeViewId() {
     return this.raw.props.activeViewId || this.viewIds?.[0]
   }

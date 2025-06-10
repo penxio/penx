@@ -111,6 +111,7 @@ export interface IStructNode extends INode {
     pluralName: string
     description: string
     type: string
+    emoji?: string
     color: string
     about: string
     activeViewId: string

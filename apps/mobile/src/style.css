@@ -68,6 +68,10 @@
   display: none; /* Chrome, Safari, Opera */
 }
 
+.emoji-picker .epr-search {
+  display: none;
+}
+
 :root,
 :host {
   --main-background: #f4f4f4;

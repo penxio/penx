@@ -1,5 +1,4 @@
 import React from 'react'
-import { WidgetList } from '@/components/EditWidget/WidgetList'
 import { useTheme } from '@/components/theme-provider'
 import { Capacitor } from '@capacitor/core'
 import {
@@ -19,6 +18,7 @@ import { Input } from '@penx/uikit/ui/input'
 import { ColumnList } from './ColumnList'
 import { EditPropertyDrawer } from './EditPropertyDrawer/EditPropertyDrawer'
 import { OptionDrawer } from './EditPropertyDrawer/OptionDrawer'
+import { EmojiPicker } from './EmojiPicker'
 
 const platform = Capacitor.getPlatform()
 
@@ -60,7 +60,15 @@ function Content({ structId }: { structId: string }) {
 
   return (
     <div className="flex flex-col gap-5">
-      <div>
+      <div className="flex items-center gap-1">
+        <EmojiPicker
+          value={struct.emoji}
+          onChange={(v) => {
+            store.structs.updateStructProps(struct, {
+              emoji: v,
+            })
+          }}
+        />
         <Input
           size="lg"
           defaultValue={struct.name}
@@ -75,6 +83,7 @@ function Content({ structId }: { structId: string }) {
           }}
         />
       </div>
+
       <div className="space-y-2">
         <div className="text-foreground/60 text-sm">
           <Trans>Properties</Trans>
