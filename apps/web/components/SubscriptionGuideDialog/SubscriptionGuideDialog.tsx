@@ -25,7 +25,7 @@ export function SubscriptionGuideDialog({}: Props) {
           </DialogTitle>
           <DialogDescription>
             <Trans>
-              Subscribe to Penx to support us in building the best product and
+              Subscribe to PenX to support us in building the best product and
               enjoy the features:
             </Trans>
           </DialogDescription>

@@ -3,8 +3,8 @@ import { Trans } from '@lingui/react/macro'
 import { PlusIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { IColumn } from '@penx/model-type'
-import { useOptionDrawer } from './useOptionDrawer'
 import { Option } from '@penx/types'
+import { useOptionDrawer } from './useOptionDrawer'
 
 export function AddOptionButton({
   struct,
@@ -27,7 +27,7 @@ export function AddOptionButton({
     >
       <PlusIcon size={20} />
       <div>
-        <Trans>Add Option</Trans>
+        <Trans>Add option</Trans>
       </div>
     </div>
   )

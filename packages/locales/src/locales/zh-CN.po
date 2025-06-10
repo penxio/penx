@@ -50,12 +50,15 @@ msgstr "添加图片"
 msgid "Add navigation"
 msgstr "添加导航"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:85
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/AddOptionButton.tsx:30
-msgid "Add Option"
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/AddOptionButton.tsx:30
+msgid "Add option"
 msgstr "新增选项"
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:45
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:46
+#: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:46
 msgid "Add property"
 msgstr "新增属性"
 
@@ -115,15 +118,24 @@ msgstr "确定要永久删除吗？"
 msgid "Are you sure you want to log out?"
 msgstr "您确定要退出登录吗？"
 
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:53
+#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:53
+msgid "Are you sure you want to publish this struct to the marketplace?"
+msgstr "你确定要将这个结构体发布到市场吗？"
+
 #: packages/libs/src/getDefaultStructs.ts:276
 msgid "Bookmark"
 msgstr "书签"
+
+#: packages/components/src/ColumnTypeName.tsx:18
+msgid "Boolean"
+msgstr "开关"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
 msgid "Bubble"
 msgstr "气泡"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:36
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:39
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
@@ -143,9 +155,15 @@ msgstr "更改类型"
 msgid "Collection"
 msgstr "合集"
 
+#: apps/mobile/src/components/ColorSelector.tsx:40
 #: packages/components/src/StructDialog/EditStructForm.tsx:131
 msgid "Color"
 msgstr "颜色"
+
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
+#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
+msgid "Confirm Publishing"
+msgstr "确定发布？"
 
 #: packages/components/src/CreationCard/CreationCard.tsx:262
 msgid "Copy"
@@ -169,11 +187,13 @@ msgstr "创建领域"
 msgid "Create one"
 msgstr "创建账户"
 
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:53
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:75
 #: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr "创建结构体"
 
-#: packages/components/src/ColumnTypeName.tsx:27
+#: packages/components/src/ColumnTypeName.tsx:28
 msgid "Created At"
 msgstr "创建日期"
 
@@ -194,7 +214,7 @@ msgstr "深色"
 msgid "Dashboard"
 msgstr "仪表板"
 
-#: packages/components/src/ColumnTypeName.tsx:26
+#: packages/components/src/ColumnTypeName.tsx:27
 msgid "Date"
 msgstr "日期"
 
@@ -221,6 +241,7 @@ msgid "Delete tag"
 msgstr "删除标签"
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:96
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionItem.tsx:96
 msgid "Delete this option?"
 msgstr "删除这个选项？"
 
@@ -232,8 +253,10 @@ msgstr "删除这个选项？"
 msgid "Deliver your newsletter"
 msgstr "发送您的简报"
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:106
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:108
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
+#: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:108
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
 msgstr "描述"
@@ -250,7 +273,7 @@ msgstr "已完成"
 msgid "Due date"
 msgstr "截止日期"
 
-#: apps/mobile/src/pages/PageAllStructs/StructList.tsx:62
+#: apps/mobile/src/pages/PageAllStructs/StructList.tsx:54
 #: packages/components/src/CreationCard/CreationCard.tsx:291
 msgid "Edit"
 msgstr "编辑"
@@ -259,11 +282,13 @@ msgstr "编辑"
 msgid "Edit navigation"
 msgstr "编辑导航"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:85
-msgid "Edit Option"
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
+msgid "Edit option"
 msgstr "编辑选项"
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
 msgid "Edit property"
 msgstr "编辑属性"
 
@@ -296,10 +321,10 @@ msgstr "邮箱"
 msgid "Email login"
 msgstr "邮箱登录"
 
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:52
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:89
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:53
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:90
 msgid "Empty"
-msgstr ""
+msgstr "空白"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:105
 msgid "Failed to delete account. Please try again."
@@ -345,27 +370,28 @@ msgstr "高"
 msgid "Home"
 msgstr "首页"
 
-#: packages/components/src/ColumnTypeName.tsx:25
+#: packages/components/src/ColumnTypeName.tsx:26
 msgid "Image"
 msgstr "图片"
 
-#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:97
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:80
 msgid "Install"
-msgstr ""
+msgstr "安装"
 
-#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:97
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:80
 msgid "Installed"
-msgstr ""
+msgstr "已安装"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:94
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:107
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:108
 msgid "Introduction"
-msgstr ""
+msgstr "简介"
 
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:35
 msgid "Invalid phone number."
 msgstr "手机号码无效"
 
-#: apps/mobile/src/components/HomeHeader.tsx:43
+#: apps/mobile/src/pages/PageHome/HomeHeader.tsx:43
 msgid "Journal"
 msgstr "日记"
 
@@ -442,13 +468,13 @@ msgstr "管理标签"
 
 #: apps/mobile/src/pages/PageAllStructs/StructNav.tsx:19
 msgid "Marketplace"
-msgstr ""
+msgstr "市场"
 
 #: packages/libs/src/getDefaultStructs.ts:92
 msgid "Medium"
 msgstr "中"
 
-#: packages/components/src/ColumnTypeName.tsx:21
+#: packages/components/src/ColumnTypeName.tsx:22
 msgid "Multiple Select"
 msgstr "多选"
 
@@ -460,8 +486,9 @@ msgstr "我的领域"
 msgid "My Site"
 msgstr "我的站点"
 
+#: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer.tsx:24
 #: apps/mobile/src/pages/PageAllStructs/StructNav.tsx:18
-#: apps/mobile/src/components/MoreStructDrawer/MoreStructDrawer.tsx:24
+#: packages/widgets/src/WidgetName.tsx:22
 msgid "My structs"
 msgstr "我的结构体"
 
@@ -469,9 +496,15 @@ msgstr "我的结构体"
 msgid "My Structs"
 msgstr "我的结构体"
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:101
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:94
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:83
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:103
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:82
+#: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:103
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:90
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
@@ -480,7 +513,8 @@ msgstr "我的结构体"
 msgid "Name"
 msgstr "名称"
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:89
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:91
+#: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:91
 msgid "New property"
 msgstr "新建属性"
 
@@ -496,10 +530,11 @@ msgstr "暂无聊天记录！"
 msgid "No creation yet!"
 msgstr "暂无创作！"
 
-#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:68
-#: apps/mobile/src/pages/PageAllStructs/StructList.tsx:50
+#: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/StructList.tsx:54
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:58
+#: apps/mobile/src/pages/PageAllStructs/StructList.tsx:47
 msgid "No introduction for the struct"
-msgstr ""
+msgstr "该结构体暂无介绍！"
 
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
 #: packages/components/src/cells/single-select-cell.tsx:186
@@ -544,6 +579,7 @@ msgid "Operation"
 msgstr "操作"
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
 msgid "Options"
 msgstr "选项"
 
@@ -556,7 +592,7 @@ msgstr "页面"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:111
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
-#: packages/components/src/ColumnTypeName.tsx:24
+#: packages/components/src/ColumnTypeName.tsx:25
 msgid "Password"
 msgstr "密码"
 
@@ -602,7 +638,8 @@ msgstr "优先级"
 msgid "Privacy Policy"
 msgstr "隐私政策"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:110
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:118
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:119
 msgid "Properties"
 msgstr "属性"
 
@@ -610,7 +647,8 @@ msgstr "属性"
 msgid "Publish"
 msgstr "发布"
 
-#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:67
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:81
+#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:81
 #: packages/components/src/database-ui/TableInfo.tsx:68
 msgid "Publish to marketplace"
 msgstr "发布到应用市场"
@@ -619,7 +657,7 @@ msgstr "发布到应用市场"
 msgid "Publish your creation"
 msgstr "发布您的创作"
 
-#: packages/components/src/ColumnTypeName.tsx:23
+#: packages/components/src/ColumnTypeName.tsx:24
 msgid "Rate"
 msgstr "评分"
 
@@ -653,7 +691,7 @@ msgstr "重命名"
 msgid "Resend"
 msgstr "重新发送"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:54
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:57
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr "保存"
@@ -662,8 +700,14 @@ msgstr "保存"
 msgid "Search"
 msgstr "搜索"
 
-#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:51
-msgid "Select Property type"
+#: apps/mobile/src/components/ColorSelector.tsx:56
+#: apps/mobile/src/components/ColorSelector.tsx:67
+msgid "Select a color"
+msgstr "选择颜色"
+
+#: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:52
+#: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:52
+msgid "Select property type"
 msgstr "选择属性类型"
 
 #: apps/mobile/src/pages/PageProfile.tsx:47
@@ -681,7 +725,7 @@ msgstr "显示全部"
 msgid "Sign in"
 msgstr "登录"
 
-#: packages/components/src/ColumnTypeName.tsx:19
+#: packages/components/src/ColumnTypeName.tsx:20
 msgid "Single Select"
 msgstr "单选"
 
@@ -702,24 +746,26 @@ msgstr "收藏"
 msgid "Status"
 msgstr "状态"
 
-#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:94
+#: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:77
 msgid "Struct installed successfully!"
-msgstr ""
+msgstr "安装结构体成功！"
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:66
 msgid "Struct marketplace"
-msgstr ""
+msgstr "结构体市场"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:79
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:84
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:83
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:91
 msgid "Struct name"
 msgstr "结构体名称"
 
-#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:57
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
+#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
 msgid "Struct published successfully!"
-msgstr ""
+msgstr "发布结构体成功！"
 
 #: apps/mobile/src/components/AllStructsHeader.tsx:40
-#: packages/widgets/src/WidgetName.tsx:22
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:135
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
@@ -734,8 +780,8 @@ msgid "Subscribe to PenX"
 msgstr "订阅 PenX 会员"
 
 #: apps/web/components/SubscriptionGuideDialog/SubscriptionGuideDialog.tsx:27
-msgid "Subscribe to Penx to support us in building the best product and enjoy the features:"
-msgstr ""
+msgid "Subscribe to PenX to support us in building the best product and enjoy the features:"
+msgstr "订阅 PenX，支持我们打造最好的产品，并享受以下功能："
 
 #: apps/mobile/src/components/Profile/SubscriptionMenu.tsx:29
 msgid "Subscription"
@@ -773,6 +819,7 @@ msgstr "主题"
 
 #: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:93
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionItem.tsx:97
+#: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionItem.tsx:97
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr "该操作无法撤销，您确定要删除此属性吗？"
 
@@ -808,7 +855,7 @@ msgstr "更新领域"
 msgid "Update struct"
 msgstr "更新结构体"
 
-#: packages/components/src/ColumnTypeName.tsx:28
+#: packages/components/src/ColumnTypeName.tsx:29
 msgid "Updated At"
 msgstr "更新时间"
 
