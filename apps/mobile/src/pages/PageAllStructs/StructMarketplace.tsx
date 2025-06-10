@@ -1,22 +1,15 @@
-import { lighten, opacify, transparentize } from '@fower/color-helper'
-import { IonNavLink } from '@ionic/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
+import { ColorfulStructIcon } from '@penx/components/ColorfulStructIcon'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { useStructTemplates } from '@penx/hooks/useStructTemplates'
-import {
-  colorNameMaps,
-  getBgColor,
-  getBgColorDark,
-} from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { StructIcon } from '@penx/widgets/StructIcon'
 
 interface Props {
   onSelect?: (struct: Struct) => void
@@ -47,18 +40,7 @@ export function StructMarketplace({ onSelect }: Props) {
             )}
           >
             <div className="flex items-center gap-2">
-              <div
-                className={cn(
-                  // 'bg-foreground/5 flex size-7 items-center justify-center rounded-lg text-white',
-                  'flex size-7 items-center justify-center rounded-lg text-white',
-                )}
-                style={{
-                  background: transparentize(colorNameMaps[struct.color], 0),
-                  // color: colorNameMaps[struct.color],
-                }}
-              >
-                <StructIcon type={struct.type} />
-              </div>
+              <ColorfulStructIcon struct={struct as any} />
               <div className="flex-1 overflow-hidden">
                 <div className="text-foreground font-semibold">
                   {struct.name}

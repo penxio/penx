@@ -1,12 +1,11 @@
+import { Trans } from '@lingui/react/macro'
 import { ArrowRightIcon } from 'lucide-react'
 import { motion } from 'motion/react'
+import { ColorfulStructIcon } from '@penx/components/ColorfulStructIcon'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
-import { getBgColor } from '@penx/libs/color-helper'
 import { StructType } from '@penx/types'
 import { cn } from '@penx/utils'
-import { generateGradient } from '@penx/utils/generateGradient'
-import { StructIcon } from '@penx/widgets/StructIcon'
 import { useMoreStructDrawer } from './useMoreStructDrawer'
 
 interface Props {}
@@ -34,7 +33,7 @@ export function StructList({}: Props) {
               },
             }}
             className={cn(
-              'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer select-none items-center justify-between gap-2 rounded-lg py-2 text-lg font-bold',
+              'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer select-none items-center justify-between gap-2 rounded-lg py-1',
             )}
             onClick={() => {
               addCreation({
@@ -44,16 +43,18 @@ export function StructList({}: Props) {
             }}
           >
             <div className="flex items-center gap-2">
-              <div
-                className={cn(
-                  'flex size-6 items-center justify-center rounded-md text-white',
-                  // generateGradient(struct.color),
-                  getBgColor(struct.color),
-                )}
-              >
-                <StructIcon type={struct.type} className="" />
+              <ColorfulStructIcon struct={struct} />
+
+              <div className="flex-1 overflow-hidden">
+                <div className="text-foreground font-semibold">
+                  {struct.name}
+                </div>
+                <div className="text-foreground/50 max-w-[60vw] truncate text-xs">
+                  {struct.description || (
+                    <Trans>No introduction for the struct</Trans>
+                  )}
+                </div>
               </div>
-              <div>{struct.name}</div>
             </div>
             <ArrowRightIcon size={20} className="text-foreground/40" />
           </motion.div>

@@ -13,6 +13,7 @@ import {
 import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
+import { ColorfulStructIcon } from '../../ColorfulStructIcon'
 
 interface Props {
   onSelect: (struct: Struct) => void
@@ -28,11 +29,16 @@ export function StructList({ onSelect }: Props) {
         <div
           key={struct.id}
           className={cn(
-            'text-foreground hover:bg-foreground/5 group/struct flex cursor-pointer items-center justify-between rounded-md px-2 py-1 text-sm',
+            'text-foreground hover:bg-foreground/5 group/struct flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 text-sm',
             isMobileApp && 'px-0 text-base',
           )}
           onClick={() => onSelect(struct)}
         >
+          <ColorfulStructIcon
+            struct={struct}
+            className="size-6"
+            emojiSize={16}
+          />
           <div>{struct.name}</div>
 
           {/* <TooltipProvider>
