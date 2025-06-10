@@ -12,7 +12,7 @@ export class Struct {
   }
 
   get userId() {
-    return this.raw.siteId
+    return this.raw.userId
   }
 
   get type() {

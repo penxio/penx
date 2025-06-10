@@ -18,6 +18,7 @@ import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
+import { StructType } from '@penx/types'
 import { Textarea } from '@penx/uikit/ui/textarea'
 import { ColumnList } from './ColumnList'
 import { EditPropertyDrawer } from './EditPropertyDrawer/EditPropertyDrawer'
@@ -53,7 +54,9 @@ export function PageStructInfo({ struct }: { struct: Struct }) {
       <IonContent fullscreen class="content ion-padding text-foreground">
         <Content structId={struct.id} />
       </IonContent>
-      <StructInfoFooter structId={struct.id} />
+      {!Object.values(StructType).includes(struct.type as any) && (
+        <StructInfoFooter structId={struct.id} />
+      )}
     </>
   )
 }
