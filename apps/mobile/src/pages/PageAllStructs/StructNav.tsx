@@ -41,7 +41,7 @@ export function StructNav({ navType, onSelect }: Props) {
           <span
             className={cn(
               'relative z-20',
-              navType === item.id && 'text-foreground',
+              navType === item.id && 'text-foreground dark:text-black',
             )}
           >
             {item.label}

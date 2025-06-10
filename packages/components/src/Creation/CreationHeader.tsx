@@ -56,7 +56,7 @@ export function CreationHeader({}: Props) {
               )}
 
               <TextareaAutosize
-                className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
+                className="dark:placeholder-text-600 text-foreground placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
                 placeholder="Title"
                 defaultValue={creation.title || ''}
                 // autoFocus={!isMobileApp}

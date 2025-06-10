@@ -28,12 +28,13 @@ export function StructList({ onSelect }: Props) {
     <div className="flex flex-col gap-2 px-1 pb-2">
       {structs.map((struct) => {
         return (
-          <div
+          <IonNavLink
             key={struct.id}
+            routerDirection="forward"
             className={cn(
               'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer items-center justify-between gap-2 rounded-full py-2',
             )}
-            onClick={() => onSelect?.(struct)}
+            component={() => <PageStructInfo struct={struct} />}
           >
             <div className="flex items-center gap-2">
               <ColorfulStructIcon struct={struct} />
@@ -49,16 +50,10 @@ export function StructList({ onSelect }: Props) {
               </div>
             </div>
 
-            <IonNavLink
-              className="shrink-0"
-              routerDirection="forward"
-              component={() => <PageStructInfo struct={struct} />}
-            >
-              <Button className="shrink-0" size="sm">
-                <Trans>Edit</Trans>
-              </Button>
-            </IonNavLink>
-          </div>
+            <Button className="shrink-0" size="sm">
+              <Trans>Edit</Trans>
+            </Button>
+          </IonNavLink>
         )
       })}
     </div>

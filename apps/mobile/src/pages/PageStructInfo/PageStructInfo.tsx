@@ -103,7 +103,7 @@ function Content({ structId }: { structId: string }) {
 
       <Card>
         <Textarea
-          className="border-none bg-white shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
+          className="border-none bg-white text-base shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
           placeholder={t`Introduction`}
           defaultValue={struct.description}
           onChange={(e) => {

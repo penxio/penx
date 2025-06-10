@@ -13,19 +13,25 @@ import { bgColorMaps, getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
 
 interface ColorSelectorProps {
+  readOnly?: boolean
   value: string
   onChange: (value: string) => void
 }
 
-export function ColorSelector({ value, onChange }: ColorSelectorProps) {
+export function ColorSelector({
+  value,
+  onChange,
+  readOnly,
+}: ColorSelectorProps) {
   const colorEntries = Object.entries(bgColorMaps)
   const [open, setOpen] = useState(false)
 
   return (
     <>
       <div
-        className="flex h-12 items-center justify-between gap-3 rounded-xl bg-white pl-3 pr-2 dark:bg-neutral-700"
+        className="text-foreground flex h-12 items-center justify-between gap-3 pl-3 pr-2"
         onClick={async () => {
+          if (readOnly) return
           impact()
           setOpen(true)
         }}

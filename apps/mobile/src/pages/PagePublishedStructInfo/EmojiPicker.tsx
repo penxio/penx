@@ -11,10 +11,16 @@ import { cn } from '@penx/utils'
 interface Props {
   color?: string
   value: string
+  readonly?: boolean
   onChange: (unified: string) => void
 }
 
-export function EmojiPicker({ value = '1f435', color, onChange }: Props) {
+export function EmojiPicker({
+  value = '1f435',
+  color,
+  readonly = false,
+  onChange,
+}: Props) {
   const { theme, isDark } = useTheme()
   const [open, setOpen] = useState(false)
 
@@ -31,6 +37,7 @@ export function EmojiPicker({ value = '1f435', color, onChange }: Props) {
             : undefined,
         }}
         onClick={() => {
+          if (readonly) return
           setOpen(true)
         }}
       >

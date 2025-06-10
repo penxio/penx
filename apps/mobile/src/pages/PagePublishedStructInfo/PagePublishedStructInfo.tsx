@@ -28,7 +28,7 @@ import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 
 const platform = Capacitor.getPlatform()
 
-export function PageStructInfo({ struct }: { struct: Struct }) {
+export function PagePublishedStructInfo({ struct }: { struct: Struct }) {
   return (
     <>
       <IonHeader
@@ -54,9 +54,6 @@ export function PageStructInfo({ struct }: { struct: Struct }) {
       <IonContent fullscreen class="content ion-padding text-foreground">
         <Content structId={struct.id} />
       </IonContent>
-      {!isBuiltinStruct(struct.type) && (
-        <StructInfoFooter structId={struct.id} />
-      )}
     </>
   )
 }
@@ -69,6 +66,7 @@ function Content({ structId }: { structId: string }) {
     <div className="flex flex-col gap-5">
       <div className="flex justify-center">
         <EmojiPicker
+          readonly
           color={struct.color}
           value={struct.emoji}
           onChange={(v) => {
@@ -80,6 +78,7 @@ function Content({ structId }: { structId: string }) {
       </div>
       <Card className="">
         <MobileInput
+          readOnly
           label={<Trans>Name</Trans>}
           placeholder={t`Struct name`}
           defaultValue={struct.name}
@@ -92,6 +91,7 @@ function Content({ structId }: { structId: string }) {
           }}
         />
         <ColorSelector
+          readOnly
           value={struct.color}
           onChange={(color) => {
             store.structs.updateStructProps(struct, {
@@ -103,7 +103,8 @@ function Content({ structId }: { structId: string }) {
 
       <Card>
         <Textarea
-          className="border-none bg-white shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
+          readOnly
+          className="text-foreground border-none text-base shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
           placeholder={t`Introduction`}
           defaultValue={struct.description}
           onChange={(e) => {
@@ -118,8 +119,6 @@ function Content({ structId }: { structId: string }) {
           <Trans>Properties</Trans>
         </div>
         <ColumnList struct={struct} />
-        <EditPropertyDrawer struct={struct} />
-        <OptionDrawer struct={struct} />
       </div>
     </div>
   )

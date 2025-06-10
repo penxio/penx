@@ -1,3 +1,4 @@
+import { IonNavLink } from '@ionic/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
@@ -10,6 +11,7 @@ import { store } from '@penx/store'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
+import { PagePublishedStructInfo } from '../PagePublishedStructInfo/PagePublishedStructInfo'
 
 interface Props {
   onSelect?: (struct: Struct) => void
@@ -28,7 +30,7 @@ export function StructMarketplace({ onSelect }: Props) {
     )
   }
   return (
-    <div className="flex flex-col gap-2 px-1 pb-2">
+    <div className="flex flex-col gap-0.5 pb-2">
       {data.map((struct) => {
         const columns = struct.columns as any as IColumn[]
         const installed = structs.some((s) => s.type === struct.type)
@@ -36,10 +38,16 @@ export function StructMarketplace({ onSelect }: Props) {
           <div
             key={struct.id}
             className={cn(
-              'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer items-center justify-between gap-2 rounded-full py-2',
+              'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer items-center justify-between gap-2 rounded-full',
             )}
           >
-            <div className="flex items-center gap-2">
+            <IonNavLink
+              className="flex flex-1 items-center gap-2 py-2"
+              routerDirection="forward"
+              component={() => (
+                <PagePublishedStructInfo struct={struct as any} />
+              )}
+            >
               <ColorfulStructIcon struct={struct as any} />
               <div className="flex-1 overflow-hidden">
                 <div className="text-foreground font-semibold">
@@ -51,14 +59,7 @@ export function StructMarketplace({ onSelect }: Props) {
                   )}
                 </div>
               </div>
-            </div>
-
-            {/* <IonNavLink
-            className="shrink-0"
-            routerDirection="forward"
-            component={() => <PageStructInfo struct={struct} />}
-          >
-          </IonNavLink> */}
+            </IonNavLink>
 
             <Button
               size="sm"

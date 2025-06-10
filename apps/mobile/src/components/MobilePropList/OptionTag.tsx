@@ -2,6 +2,7 @@ import { darken, transparentize } from '@fower/color-helper'
 import { XIcon } from 'lucide-react'
 import { colorNameMaps, getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
+import { useTheme } from '../theme-provider'
 
 interface IOption {
   id: string
@@ -25,6 +26,7 @@ export function OptionTag({
   onDelete,
 }: Props) {
   const color = option?.color
+  const { isDark } = useTheme()
 
   return (
     <div
@@ -36,8 +38,12 @@ export function OptionTag({
         className,
       )}
       style={{
-        color: color ? '#444' : darken(colorNameMaps[color], 10),
-        background: transparentize(colorNameMaps[color], 80),
+        color: color
+          ? isDark
+            ? '#fff'
+            : '#444'
+          : darken(colorNameMaps[color], 10),
+        background: transparentize(colorNameMaps[color], isDark ? 10 : 80),
       }}
     >
       <div>{option ? option.name : ''}</div>
