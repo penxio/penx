@@ -15,6 +15,7 @@ export const ColumnTypeName = ({ columnType, className }: Props) => {
     if (columnType == ColumnType.TEXT) return <Trans>Text</Trans>
     if (columnType == ColumnType.NUMBER) return <Trans>Number</Trans>
     if (columnType == ColumnType.URL) return <Trans>URL</Trans>
+    if (columnType == ColumnType.BOOLEAN) return <Trans>Boolean</Trans>
     if (columnType == ColumnType.SINGLE_SELECT)
       return <Trans>Single Select</Trans>
     if (columnType == ColumnType.MULTIPLE_SELECT)

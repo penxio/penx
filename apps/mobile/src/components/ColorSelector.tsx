@@ -24,13 +24,13 @@ export function ColorSelector({ value, onChange }: ColorSelectorProps) {
   return (
     <>
       <div
-        className="flex h-12 items-center justify-between gap-3 rounded-xl bg-white px-2 dark:bg-neutral-700"
+        className="flex h-12 items-center justify-between gap-3 rounded-xl bg-white pl-3 pr-2 dark:bg-neutral-700"
         onClick={async () => {
           impact()
           setOpen(true)
         }}
       >
-        <div className="text-foreground/70 flex shrink-0 items-center gap-0.5">
+        <div className="flex shrink-0 items-center gap-0.5">
           <Trans>Color</Trans>
         </div>
 

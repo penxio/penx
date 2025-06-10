@@ -17,6 +17,7 @@ import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
+import { ToggleSwitch } from './ToogleSwitch'
 
 interface Props {
   column: IColumn
@@ -110,6 +111,21 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
               })
             }}
           />
+        )}
+
+        {ColumnType.BOOLEAN === column.columnType && (
+          <div className="flex h-full flex-1 items-center justify-end pr-2">
+            <ToggleSwitch
+              isOn={!!value}
+              onChange={(isOn) => {
+                impact()
+                onUpdateProps({
+                  ...cells,
+                  [column.id]: isOn,
+                })
+              }}
+            />
+          </div>
         )}
 
         {ColumnType.CREATED_AT === column.columnType && (

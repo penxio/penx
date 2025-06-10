@@ -24,7 +24,7 @@ export function OptionTag({
   deletable = false,
   onDelete,
 }: Props) {
-  const color = option.color
+  const color = option?.color
 
   return (
     <div
@@ -36,7 +36,7 @@ export function OptionTag({
         className,
       )}
       style={{
-        color: darken(colorNameMaps[color], 10),
+        color: color ? '#444' : darken(colorNameMaps[color], 10),
         background: transparentize(colorNameMaps[color], 80),
       }}
     >

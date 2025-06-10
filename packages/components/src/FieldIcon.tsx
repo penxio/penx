@@ -11,6 +11,7 @@ import {
   ListChecks,
   StarIcon,
   Text,
+  ToggleLeftIcon,
 } from 'lucide-react'
 import { ColumnType } from '@penx/types'
 import { cn } from '@penx/utils'
@@ -34,6 +35,7 @@ export const FieldIcon = ({
     [ColumnType.TEXT]: Text,
     [ColumnType.NUMBER]: Hash,
     [ColumnType.URL]: Link,
+    [ColumnType.BOOLEAN]: ToggleLeftIcon,
     [ColumnType.PASSWORD]: Key,
     [ColumnType.SINGLE_SELECT]: CheckCircle2,
     [ColumnType.MULTIPLE_SELECT]: ListChecks,

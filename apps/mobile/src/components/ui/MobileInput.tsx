@@ -9,7 +9,7 @@ interface Props extends InputProps {
 export function MobileInput({ label, isRequired, ...props }: Props) {
   return (
     <div className="flex h-11 items-center gap-2">
-      <div className="text-foreground/70 flex shrink-0 items-center gap-0.5 pl-2">
+      <div className="flex shrink-0 items-center gap-0.5 pl-3">
         {label}
         {isRequired && <span className="text-red-500">*</span>}
       </div>

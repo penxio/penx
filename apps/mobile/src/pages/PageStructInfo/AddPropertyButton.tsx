@@ -20,6 +20,7 @@ const types = [
   ColumnType.NUMBER,
   ColumnType.SINGLE_SELECT,
   ColumnType.MULTIPLE_SELECT,
+  ColumnType.BOOLEAN,
   ColumnType.RATE,
   ColumnType.URL,
   ColumnType.PASSWORD,
@@ -48,7 +49,7 @@ export function AddPropertyButton({ struct }: { struct: Struct }) {
       <Drawer open={open} setOpen={setOpen}>
         <DrawerHeader>
           <DrawerTitle>
-            <Trans>Select Property type</Trans>
+            <Trans>Select property type</Trans>
           </DrawerTitle>
         </DrawerHeader>
         <Menu>
