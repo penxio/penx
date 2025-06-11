@@ -20,8 +20,10 @@ export enum SubdomainType {
 
 export enum PlanType {
   FREE = 'FREE',
+  STANDARD = 'STANDARD',
   PRO = 'PRO',
-  BASIC = 'BASIC',
+  TEAM = 'TEAM',
+  BELIEVER = 'BELIEVER',
 }
 
 export type App = {

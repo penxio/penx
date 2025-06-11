@@ -1,42 +1,138 @@
 'use client'
 
 import { useState } from 'react'
+import { impact } from '@/lib/impact'
 import { Trans } from '@lingui/react/macro'
+import { Purchases, PurchasesOffering } from '@revenuecat/purchases-capacitor'
+import { useQuery } from '@tanstack/react-query'
 import { CheckIcon } from 'lucide-react'
+import { BillingCycle, PlanType } from '@penx/types'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
+import { AnimateToggleGroup } from '../AnimateToggleGroup'
+import { getPackage, SubscriptionType } from './lib/getPackage'
+import { purchasePackage } from './lib/purchasePackage'
 
-interface Props {}
+interface Props {
+  onSubscribeSuccess: () => void
+}
 
-export function UpgradeContent({}: Props) {
+export function UpgradeContent({ onSubscribeSuccess }: Props) {
   const [isMonthly, setIsMonthly] = useState(true)
+  const [type, setType] = useState(SubscriptionType.standard)
+  const isPro = type === SubscriptionType.pro
+  const [purchasing, setPurchasing] = useState(false)
+
+  const { isLoading, data } = useQuery({
+    queryKey: ['offerings'],
+    queryFn: async () => {
+      try {
+        const offerings = await Purchases.getOfferings()
+        // console.log(
+        //   '=========offerings:',
+        //   Object.keys(offerings.all),
+        //   offerings.all['pro'].monthly,
+        // )
+
+        return offerings.all
+      } catch (error) {
+        console.log('======error:', error)
+        return {} as Record<string, PurchasesOffering>
+      }
+    },
+  })
+
   return (
-    <div className="flex flex-1 flex-col gap-4">
+    <div className="flex flex-1 flex-col gap-4 pt-3">
       <div className="text-foreground flex items-center justify-center gap-2 text-3xl font-bold">
         <span>PenX</span>
-        <span className="bg-brand rounded-lg px-2 py-0.5 text-xl text-white">
-          PRO
+        <span className="bg-foreground rounded-lg px-2 py-0.5 text-lg text-white">
+          <Trans>Member</Trans>
         </span>
       </div>
-      <div className="flex-1 text-base"></div>
 
-      <div className="bg-foreground/5 flex flex-col gap-2 rounded-xl p-4">
-        <BenefitItem>Instant cloud sync</BenefitItem>
-        <BenefitItem>Unlimited number of notes</BenefitItem>
-        <BenefitItem>20GB storage</BenefitItem>
-        <BenefitItem>Unlimit devices</BenefitItem>
-        <BenefitItem>Create own digital garden</BenefitItem>
+      <AnimateToggleGroup
+        options={[
+          {
+            value: SubscriptionType.standard,
+            label: <Trans>Standard</Trans>,
+          },
+          {
+            value: SubscriptionType.pro,
+            label: (
+              <div className="flex items-center gap-1">
+                <span>
+                  <Trans>PRO</Trans>
+                </span>
+                <span className="bg-foreground text-background h-5 rounded-md px-2 text-sm">
+                  AI
+                </span>
+              </div>
+            ),
+          },
+        ]}
+        value={type}
+        onChange={(v) => setType(v)}
+      />
+
+      <div className="flex flex-1 flex-col justify-end">
+        <div className="bg-foreground/5 flex flex-col gap-2 rounded-xl p-4">
+          <BenefitItem>
+            <Trans>Instant cloud sync</Trans>
+          </BenefitItem>
+          <BenefitItem>
+            <Trans>Unlimited number of notes</Trans>
+          </BenefitItem>
+          <BenefitItem>
+            <Trans>Unlimited number of creation</Trans>
+          </BenefitItem>
+          <BenefitItem>
+            <Trans>Share note to friends</Trans>
+          </BenefitItem>
+          {isPro && (
+            <BenefitItem>
+              <Trans>1GB/month storage</Trans>
+            </BenefitItem>
+          )}
+          {!isPro && (
+            <BenefitItem>
+              <Trans>5GB/month storage</Trans>
+            </BenefitItem>
+          )}
+          <BenefitItem>
+            <Trans>Unlimit devices</Trans>
+          </BenefitItem>
+          {isPro && (
+            <BenefitItem>
+              <Trans>AI features for notes</Trans>
+            </BenefitItem>
+          )}
+          {isPro && (
+            <BenefitItem>
+              <Trans>AI transcription for voice</Trans>
+            </BenefitItem>
+          )}
+        </div>
       </div>
       <div
         className={cn(
           'border-foreground/20 flex items-center justify-between rounded-xl border-2 p-4',
           isMonthly && 'border-foreground',
         )}
-        onClick={() => setIsMonthly(true)}
+        onClick={() => {
+          impact()
+          setIsMonthly(true)
+        }}
       >
-        <div>Pro monthly</div>
+        <div>
+          {isPro ? <Trans>Pro monthly</Trans> : <Trans>Standard monthly</Trans>}
+        </div>
         <div className="flex items-center">
-          <span className="mr-1 text-3xl font-bold">$10</span>/ month
+          <span className="mr-1 text-3xl font-bold">
+            {isPro ? '$10' : '$5'}
+          </span>
+          / <Trans>month</Trans>
         </div>
       </div>
 
@@ -45,17 +141,50 @@ export function UpgradeContent({}: Props) {
           'border-foreground/20 flex items-center justify-between rounded-xl border-2 p-4',
           !isMonthly && 'border-foreground',
         )}
-        onClick={() => setIsMonthly(false)}
+        onClick={() => {
+          impact()
+          setIsMonthly(false)
+        }}
       >
-        <div>Pro yearly</div>
+        {isPro ? <Trans>Pro yearly</Trans> : <Trans>Standard yearly</Trans>}
         <div className="flex items-center">
-          <span className="mr-1 text-3xl font-bold">$90</span>/ year
+          <span className="mr-1 text-3xl font-bold">
+            {isPro ? '$80' : '$40'}
+          </span>
+          / <Trans>year</Trans>
         </div>
       </div>
 
       <div className="flex justify-center">
-        <Button size="lg" className="rounded-full">
-          <Trans>Subscribe now</Trans>
+        <Button
+          size="xl"
+          className="w-full"
+          disabled={isLoading || purchasing}
+          onClick={async () => {
+            impact()
+            setPurchasing(true)
+            try {
+              const pkg = getPackage(type, isMonthly, data!)
+              console.log('=======pkg:', pkg)
+              await purchasePackage(
+                type === SubscriptionType.standard
+                  ? PlanType.STANDARD
+                  : PlanType.PRO,
+                isMonthly ? BillingCycle.MONTHLY : BillingCycle.YEARLY,
+                pkg,
+              )
+              onSubscribeSuccess()
+            } catch (error) {
+              console.log('========error:', error)
+            }
+            setPurchasing(false)
+          }}
+        >
+          {purchasing ? (
+            <LoadingDots className="bg-background" />
+          ) : (
+            <Trans>Subscribe now</Trans>
+          )}
         </Button>
       </div>
     </div>
@@ -66,7 +195,7 @@ function BenefitItem({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex shrink-0 items-center gap-2">
       <CheckIcon className="text-green-500" size={16} />
-      <div className={cn('text-foreground/')}>{children}</div>
+      <div className={cn('text-foreground font-semibold')}>{children}</div>
     </div>
   )
 }

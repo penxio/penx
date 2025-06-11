@@ -60,7 +60,7 @@ export function GoogleLoginButton({}: Props) {
     setLoading(false)
   }
   return (
-    <Button onClick={onLogin} className="w-full" size="xl" variant="outline">
+    <Button onClick={onLogin} className="w-full" size="xl" variant="outline-solid">
       {loading && <LoadingDots className="bg-foreground" />}
       {!loading && (
         <>

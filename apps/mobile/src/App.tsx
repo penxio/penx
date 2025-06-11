@@ -55,7 +55,6 @@ import { useCreationId } from '@penx/hooks/useCreationId'
 import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { Widget } from '@penx/types'
-import { MoreStructDrawer } from './pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer'
 import { NavProvider } from './components/NavContext'
 import { ThemeProvider } from './components/theme-provider'
 import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
@@ -66,11 +65,13 @@ import {
 import { initializeRevenueCat } from './lib/initializeRevenueCat'
 import { PageAllStructs } from './pages/PageAllStructs/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
+import { MoreStructDrawer } from './pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer'
 import { PageLogin } from './pages/PageLogin'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
 import { PageWidget } from './pages/PageWidget'
+import { RevenueCatInitializer } from './RevenueCatInitializer'
 
 const platform = Capacitor.getPlatform()
 async function init() {
@@ -80,7 +81,6 @@ async function init() {
 
   const isDark = mode.dark
 
-  initializeRevenueCat()
   // showEstimatedQuota()
   const persist = await tryPersistWithoutPromptingUser()
   console.log('========persist:', persist)
@@ -265,6 +265,7 @@ const App: React.FC = () => {
           <DashboardProviders>
             <UpgradeDrawer />
             <MoreStructDrawer />
+            <RevenueCatInitializer />
             <IonReactRouter>
               <IonSplitPane contentId="main">
                 <Menu />

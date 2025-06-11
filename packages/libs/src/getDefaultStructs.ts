@@ -191,6 +191,7 @@ export function generateStructNode({
     id: props.id || uniqueId(),
     type: NodeType.STRUCT,
     props: {
+      ...props,
       name: props.name!,
       pluralName: `${name}s`,
       description: '',

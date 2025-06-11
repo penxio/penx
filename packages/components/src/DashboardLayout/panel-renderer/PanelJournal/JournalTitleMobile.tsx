@@ -82,7 +82,7 @@ export function JournalTitleMobile({ initialDate }: Props) {
           />
         </PopoverContent>
       </Popover>
-      {isMobileApp && <StructTypeSelect />}
+      {/* {isMobileApp && <StructTypeSelect />} */}
     </div>
   )
 }

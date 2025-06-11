@@ -69,6 +69,7 @@ export function CreateStructButton({}: Props) {
               emoji,
             })
             resetForm()
+            setOpen(false)
           }}
         >
           <DrawerTitle>

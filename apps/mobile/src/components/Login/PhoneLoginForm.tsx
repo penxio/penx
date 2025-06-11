@@ -83,6 +83,7 @@ export function PhoneLoginForm({}: Props) {
               <FormControl>
                 <Input
                   autoFocus
+                  type="number"
                   size="xl"
                   placeholder={t`Phone number`}
                   {...field}

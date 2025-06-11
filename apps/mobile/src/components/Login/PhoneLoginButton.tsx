@@ -17,7 +17,7 @@ export function PhoneLoginButton({}: Props) {
       <Button
         className="w-full"
         size="xl"
-        variant="outline"
+        variant="outline-solid"
         onClick={() => {
           setAuthStatus({ type: 'login' })
         }}

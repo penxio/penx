@@ -33,12 +33,12 @@ export function SubscriptionMenu({ children, className }: ItemProps) {
         </div>
       </div>
 
-      <Drawer
-        open={isOpen}
-        setOpen={setIsOpen}
-        className="bg-neutral-100 dark:bg-neutral-800"
-      >
-        <UpgradeContent />
+      <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight className="">
+        <UpgradeContent
+          onSubscribeSuccess={() => {
+            setIsOpen(false)
+          }}
+        />
       </Drawer>
     </>
   )

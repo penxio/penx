@@ -17,6 +17,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
+import { Card } from '../ui/Card'
 import { AboutMenu } from './AboutMenu'
 import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
@@ -72,8 +73,9 @@ export function Profile() {
           <Badge>{session?.planType || <Trans>Free</Trans>}</Badge>
         </div>
       )}
+      {/* <Card>PenX PRO</Card> */}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-1">
-        {/* <SubscriptionMenu /> */}
+        <SubscriptionMenu />
         <LocaleMenu />
         <ThemeMenu />
         <JournalLayoutMenu />

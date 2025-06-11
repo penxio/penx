@@ -112,7 +112,7 @@ export function useSession() {
 
     const isFree = planType === PlanType.FREE
     const isPro = planType === PlanType.PRO
-    const isBasic = planType === PlanType.BASIC
+    const isStandard = planType === PlanType.STANDARD
 
     const isSubscription = [BillingCycle.MONTHLY, BillingCycle.YEARLY].includes(
       session?.billingCycle as any,
@@ -134,7 +134,7 @@ export function useSession() {
       isBeliever,
       isSubscription,
       isPro,
-      isBasic,
+      isStandard,
     }
   }, [session])
 

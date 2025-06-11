@@ -13,7 +13,15 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:49
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:70
+msgid "1GB/month storage"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:75
+msgid "5GB/month storage"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:50
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
 msgid "A structured note-taking App"
 msgstr ""
@@ -71,12 +79,20 @@ msgstr ""
 msgid "AI chat"
 msgstr ""
 
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
+msgid "AI features for notes"
+msgstr ""
+
 #: packages/components/src/CreationCard/CreationCard.tsx:247
 msgid "AI transcribe"
 msgstr ""
 
 #: packages/components/src/CreationCard/CreationCard.tsx:173
 msgid "AI Transcribing"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:88
+msgid "AI transcription for voice"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
@@ -123,7 +139,7 @@ msgstr ""
 msgid "Are you sure you want to publish this struct to the marketplace?"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:276
+#: packages/libs/src/getDefaultStructs.ts:277
 msgid "Bookmark"
 msgstr ""
 
@@ -188,7 +204,7 @@ msgid "Create one"
 msgstr ""
 
 #: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:53
-#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:75
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:76
 #: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr ""
@@ -382,6 +398,10 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:57
+msgid "Instant cloud sync"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:107
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:108
 msgid "Introduction"
@@ -425,7 +445,7 @@ msgstr ""
 
 #: apps/mobile/src/components/Login/RegisterForm.tsx:142
 #: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:111
-#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:104
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:105
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
@@ -474,6 +494,14 @@ msgstr ""
 msgid "Medium"
 msgstr ""
 
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:26
+msgid "Member"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:107
+msgid "month"
+msgstr ""
+
 #: packages/components/src/ColumnTypeName.tsx:22
 msgid "Multiple Select"
 msgstr ""
@@ -504,7 +532,7 @@ msgstr ""
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
-#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:90
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:91
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
@@ -555,7 +583,7 @@ msgstr ""
 msgid "No voice data!"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:235
+#: packages/libs/src/getDefaultStructs.ts:236
 msgid "Note"
 msgstr ""
 
@@ -583,7 +611,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:218
+#: packages/libs/src/getDefaultStructs.ts:219
 msgid "Page"
 msgstr ""
 
@@ -601,7 +629,7 @@ msgstr ""
 msgid "Phone login"
 msgstr ""
 
-#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:87
+#: apps/mobile/src/components/Login/PhoneLoginForm.tsx:88
 msgid "Phone number"
 msgstr ""
 
@@ -636,6 +664,18 @@ msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:151
 msgid "Privacy Policy"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:41
+msgid "PRO"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:101
+msgid "Pro monthly"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:118
+msgid "Pro yearly"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:118
@@ -717,6 +757,10 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:66
+msgid "Share note to friends"
+msgstr ""
+
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:46
 msgid "Show all"
 msgstr ""
@@ -733,6 +777,18 @@ msgstr ""
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
 #: packages/components/src/AreaDialog/AreaForm.tsx:180
 msgid "Slug"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:34
+msgid "Standard"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:101
+msgid "Standard monthly"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:118
+msgid "Standard yearly"
 msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:87
@@ -756,7 +812,7 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:84
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:83
-#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:91
+#: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:92
 msgid "Struct name"
 msgstr ""
 
@@ -771,7 +827,7 @@ msgstr ""
 msgid "Structs"
 msgstr ""
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:58
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:129
 msgid "Subscribe now"
 msgstr ""
 
@@ -803,7 +859,7 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:264
+#: packages/libs/src/getDefaultStructs.ts:265
 msgid "Task"
 msgstr ""
 
@@ -837,6 +893,18 @@ msgstr ""
 
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:79
+msgid "Unlimit devices"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:63
+msgid "Unlimited number of creation"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
+msgid "Unlimited number of notes"
 msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:87
@@ -877,7 +945,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:270
+#: packages/libs/src/getDefaultStructs.ts:271
 msgid "Voice"
 msgstr ""
 
@@ -889,4 +957,8 @@ msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:40
 msgid "What's on your mind today?"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:123
+msgid "year"
 msgstr ""

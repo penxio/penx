@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { BillingCycle, PlanType } from '@penx/types'
 
 export const updateCreationInputSchema = z.object({
   id: z.string(),
@@ -84,3 +85,16 @@ export const publishStructInputSchema = z.object({
 })
 
 export type PublishStructInput = z.infer<typeof publishStructInputSchema>
+
+export const syncAppleSubscriptionInputSchema = z.object({
+  planType: z.nativeEnum(PlanType),
+  billingCycle: z.nativeEnum(BillingCycle),
+  customerId: z.string(),
+  subscriptionStatus: z.string(),
+  currentPeriodEnd: z.string(),
+  raw: z.any(),
+})
+
+export type SyncAppleSubscriptionInput = z.infer<
+  typeof syncAppleSubscriptionInputSchema
+>

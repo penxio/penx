@@ -2,8 +2,8 @@ import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
-import { Drawer } from '../ui/Drawer'
 import { useTheme } from '../theme-provider'
+import { Drawer } from '../ui/Drawer'
 
 interface ItemProps {
   className?: string
@@ -41,7 +41,8 @@ export function AboutMenu({ children, className }: ItemProps) {
         <div className="flex flex-1 items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-2">
             <img
-              src="assets/logo-dark.png"
+              // src="assets/logo-dark.png"
+              src="https://penx.io/logo.png"
               alt="logo"
               className="size-16 rounded-xl"
             />

@@ -55,6 +55,8 @@ export class StructsStore {
       draft.push(newStruct)
     })
 
+    console.log('======newStructs:', newStructs)
+
     this.set(newStructs)
     localDB.addStruct(newStruct)
   }

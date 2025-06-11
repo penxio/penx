@@ -5,6 +5,7 @@ import {
   isMobileApp,
   PublishStructInput,
   ROOT_HOST,
+  SyncAppleSubscriptionInput,
   TRANSCRIBE_URL,
 } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
@@ -100,6 +101,14 @@ export const api = {
   async publishStruct(input: PublishStructInput) {
     return ky
       .post(`${ROOT_HOST}/api/struct-template/publish`, {
+        json: input,
+      })
+      .json()
+  },
+
+  async syncAppleSubscription(input: SyncAppleSubscriptionInput) {
+    return ky
+      .post(`${ROOT_HOST}/api/subscription/sync-apple-subscription`, {
         json: input,
       })
       .json()
