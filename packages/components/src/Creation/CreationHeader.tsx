@@ -97,11 +97,10 @@ export function CreationHeader({}: Props) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1">
           <ChangeType creation={creation} />
-          <div className="text-foreground/60 text-lg">•</div>
+          {/* <div className="text-foreground/60 text-lg">•</div>
           <div className="flex items-center gap-2">
             <Tags creation={creation} />
-            {/* <PostLocales /> */}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

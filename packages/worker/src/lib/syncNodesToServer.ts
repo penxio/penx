@@ -1,7 +1,10 @@
 import { get, set } from 'idb-keyval'
+import { produce } from 'immer'
+import _ from 'lodash'
 import { api } from '@penx/api'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { localDB } from '@penx/local-db'
+import { IChange, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
 
 export async function syncNodesToServer() {
@@ -13,20 +16,86 @@ export async function syncNodesToServer() {
 
   if (!site) return
 
-  const changes = await localDB.change
-    .where({ siteId: session.siteId, synced: 0 })
-    .sortBy('id')
+  const getChanges = async () => {
+    const changes = await localDB.change
+      .where({ siteId: session.siteId, synced: 0 })
+      .sortBy('id')
 
-  for (const change of changes) {
-    if (change.synced) continue
+    return changes.filter((change) => {
+      if (
+        Reflect.has(change.data, 'userId') &&
+        change.data.userId !== session.userId
+      ) {
+        return false
+      }
+      if (change.synced) return false
+      return true
+    })
+  }
 
-    if (
-      Reflect.has(change.data, 'userId') &&
-      change.data.userId !== session.userId
-    ) {
-      continue
-    }
+  const changes = await getChanges()
 
+  const grouped = changes.reduce(
+    (acc, cur) => {
+      if (!acc[cur.key]) acc[cur.key] = []
+      acc[cur.key].push(cur)
+      return acc
+    },
+    {} as Record<string, IChange[]>,
+  )
+
+  const mergedChanges = Object.values(grouped)
+    .map((list) => {
+      const first = _.first(list) as IChange
+      const last = _.last(list) as IChange
+      const isAllUpdate = list.every(
+        (change) => change.operation === OperationType.UPDATE,
+      )
+      if (isAllUpdate) return last
+
+      if (
+        first?.operation === OperationType.CREATE &&
+        last?.operation === OperationType.DELETE
+      ) {
+        return null
+      }
+
+      if (last?.operation === OperationType.DELETE) {
+        return last as IChange
+      }
+
+      if (list[0].operation === OperationType.CREATE) {
+        if (list.length === 1) return first
+        return produce(first, (draft) => {
+          draft.createdAt = last.createdAt
+          draft.data.props = {
+            ...draft.data.props,
+            ...last.data,
+          }
+          draft.data.createdAt = last.data.createdAt
+          draft.data.updatedAt = last.data.updatedAt
+        })
+      }
+      return null
+    })
+    .filter((change) => !!change)
+
+  const mergedChangeIds = mergedChanges.map((change) => change.id)
+
+  const deleteChangeIds = changes
+    .filter((c) => !mergedChangeIds.includes(c.id))
+    .map((c) => c.id)
+
+  await localDB.change.where('id').anyOf(deleteChangeIds).delete()
+
+  for (const { id, ...rest } of mergedChanges) {
+    await localDB.change.update(id, rest)
+  }
+
+  const newChanges = await getChanges()
+
+  const errors: any = []
+  for (const change of newChanges) {
     const data = {
       operation: change.operation,
       siteId: change.siteId,
@@ -73,6 +142,11 @@ export async function syncNodesToServer() {
       await localDB.change.delete(change.id)
     } catch (error) {
       console.log('error syncing change:', error)
+      errors.push(error)
     }
+  }
+
+  if (errors.length > 0) {
+    throw new Error('Syncing changes failed')
   }
 }

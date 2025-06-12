@@ -21,6 +21,7 @@
     "@penx/constants": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/types": "workspace:*",
+    "@penx/model-type": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/api": "workspace:*",
     "@penx/local-db": "workspace:*",

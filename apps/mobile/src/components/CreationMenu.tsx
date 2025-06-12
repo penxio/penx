@@ -1,7 +1,6 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -12,12 +13,10 @@ import {
 import { Trans } from '@lingui/react/macro'
 import { cn } from '@penx/utils'
 
-const platform = Capacitor.getPlatform()
-
 export const AllStructsHeader: React.FC = () => {
   return (
     <IonHeader
-      className={cn(platform === 'android' ? 'safe-area' : '')}
+      className={cn(isAndroid ? 'safe-area' : '')}
       style={{
         boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
       }}
@@ -36,7 +35,7 @@ export const AllStructsHeader: React.FC = () => {
           <IonBackButton text=""></IonBackButton>
         </IonButtons>
 
-        <IonTitle slot="start" className="mx-1 text-foreground">
+        <IonTitle slot="start" className="text-foreground mx-1">
           <Trans>Structs</Trans>
         </IonTitle>
       </IonToolbar>

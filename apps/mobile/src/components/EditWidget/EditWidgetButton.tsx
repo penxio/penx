@@ -1,8 +1,8 @@
 'use client'
 
 import { ReactNode, useState } from 'react'
-import { isAndroid, isIOS } from 'react-device-detect'
 import { Trans } from '@lingui/react/macro'
+import { AddWidgetButton } from '@penx/components/area-widgets/AddWidgetButton'
 import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
 import { Drawer } from '../ui/Drawer'
@@ -20,7 +20,7 @@ export function EditWidgetButton({ className }: Props) {
   return (
     <>
       <Button
-        size="xs"
+        size="sm"
         variant="secondary"
         className="bg-foreground/8 hover:bg-foreground/10"
         onClick={() => {
@@ -36,6 +36,9 @@ export function EditWidgetButton({ className }: Props) {
           </DrawerTitle>
         </DrawerHeader>
         <WidgetList />
+        <div className="flex justify-center">
+          <AddWidgetButton />
+        </div>
       </Drawer>
     </>
   )

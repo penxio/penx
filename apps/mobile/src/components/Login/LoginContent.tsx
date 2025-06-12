@@ -37,7 +37,7 @@ export function LoginContent({}: Props) {
 
   return (
     <div className="text-foreground flex h-full flex-1 flex-col justify-center gap-3">
-      <div className="-mt-20 flex flex-col gap-2">
+      <div className="-mt-40 flex flex-col gap-2">
         <div className="mb-10 text-center text-2xl font-bold">
           <Trans>Welcome to PenX</Trans>
         </div>

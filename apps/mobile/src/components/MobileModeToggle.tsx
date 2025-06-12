@@ -23,7 +23,6 @@ interface Props {
     | 'secondary'
     | 'ghost'
     | 'link'
-    | 'farcaster'
     | 'outline-solid'
 }
 export function MobileModeToggle({ className, variant = 'ghost' }: Props) {

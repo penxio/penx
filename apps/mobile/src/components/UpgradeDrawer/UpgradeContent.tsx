@@ -80,13 +80,13 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
       <div className="flex flex-1 flex-col justify-end">
         <div className="bg-foreground/5 flex flex-col gap-2 rounded-xl p-4">
           <BenefitItem>
-            <Trans>Instant cloud sync</Trans>
+            <Trans>Cloud sync</Trans>
           </BenefitItem>
           <BenefitItem>
             <Trans>Unlimited number of notes</Trans>
           </BenefitItem>
           <BenefitItem>
-            <Trans>Unlimited number of creation</Trans>
+            <Trans>Unlimited number of areas</Trans>
           </BenefitItem>
           <BenefitItem>
             <Trans>Share note to friends</Trans>
@@ -98,7 +98,7 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
           )}
           {!isPro && (
             <BenefitItem>
-              <Trans>5GB/month storage</Trans>
+              <Trans>2GB/month storage</Trans>
             </BenefitItem>
           )}
           <BenefitItem>

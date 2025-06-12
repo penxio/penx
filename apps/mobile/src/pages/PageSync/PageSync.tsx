@@ -1,8 +1,6 @@
 import React from 'react'
-import { EmailLoginForm } from '@/components/Login/EmailLoginForm'
 import { LoginContent } from '@/components/Login/LoginContent'
 import { RegisterForm } from '@/components/Login/RegisterForm'
-import { Profile } from '@/components/Profile/Profile'
 import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
@@ -18,8 +16,9 @@ import {
   IonToolbar,
 } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
+import { SyncContent } from './SyncContent'
 
-export function PageProfile() {
+export function PageSync() {
   return (
     <>
       <IonHeader
@@ -38,17 +37,17 @@ export function PageProfile() {
           }}
         >
           <IonButtons slot="start">
-            <IonBackButton text=""></IonBackButton>
+            <IonBackButton className="" text=""></IonBackButton>
           </IonButtons>
           <IonTitle>
             <div className="text-foreground">
-              <Trans>Settings</Trans>
+              <Trans>Sync</Trans>
             </div>
           </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen class="ion-padding content">
-        <Profile></Profile>
+        <SyncContent />
       </IonContent>
     </>
   )

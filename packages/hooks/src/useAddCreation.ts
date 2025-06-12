@@ -94,7 +94,8 @@ export function useAddCreation() {
 
     store.creations.addCreation(newCreation)
 
-    await store.journals.addCreationToJournal(newCreation.id, journal.date)
+    // TODO: remove this feature now
+    // await store.journals.addCreationToJournal(newCreation.id, journal.date)
 
     updateCreationState(newCreation)
 

@@ -3,6 +3,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { CreationMenu } from '@/components/CreationMenu'
 import { MobileCreation } from '@/components/MobileCreation'
+import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -18,8 +19,6 @@ import {
 } from '@ionic/react'
 import { PanelCreationProvider } from '@penx/components/Creation/PanelCreationProvider'
 
-const platform = Capacitor.getPlatform()
-
 export const PageCreation = ({
   creationId,
   nav,
@@ -34,7 +33,7 @@ export const PageCreation = ({
   return (
     <>
       <IonHeader
-        className={platform === 'android' ? 'safe-area' : ''}
+        className={isAndroid ? 'safe-area' : ''}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
         }}

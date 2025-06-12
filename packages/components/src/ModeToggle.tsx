@@ -22,7 +22,6 @@ interface Props {
     | 'secondary'
     | 'ghost'
     | 'link'
-    | 'farcaster'
     | 'outline-solid'
 }
 export function ModeToggle({ className, variant = 'ghost' }: Props) {

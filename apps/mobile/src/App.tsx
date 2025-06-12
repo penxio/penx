@@ -55,6 +55,7 @@ import { useCreationId } from '@penx/hooks/useCreationId'
 import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { Widget } from '@penx/types'
+import { AppInitializer } from './AppInitializer'
 import { NavProvider } from './components/NavContext'
 import { ThemeProvider } from './components/theme-provider'
 import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
@@ -70,8 +71,8 @@ import { PageLogin } from './pages/PageLogin'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
+import { PageSync } from './pages/PageSync/PageSync'
 import { PageWidget } from './pages/PageWidget'
-import { AppInitializer } from './AppInitializer'
 
 const platform = Capacitor.getPlatform()
 async function init() {
@@ -237,6 +238,16 @@ const App: React.FC = () => {
   }, [])
 
   useEffect(() => {
+    function handle() {
+      nav.current?.push(PageSync)
+    }
+    appEmitter.on('ROUTE_TO_SYNC', handle)
+    return () => {
+      appEmitter.off('ROUTE_TO_SYNC', handle)
+    }
+  }, [])
+
+  useEffect(() => {
     SocialLogin.initialize(
       platform === 'ios'
         ? {
@@ -269,7 +280,6 @@ const App: React.FC = () => {
             <IonReactRouter>
               <IonSplitPane contentId="main">
                 <Menu />
-
                 <IonRouterOutlet id="main">
                   <Route path="/" exact={true}>
                     <Redirect to="/folder/area" />

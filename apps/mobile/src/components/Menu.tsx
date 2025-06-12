@@ -1,16 +1,29 @@
 import { useEffect, useRef } from 'react'
+import { impact } from '@/lib/impact'
 import { isAndroid } from '@/lib/utils'
-import { IonContent, IonHeader, IonMenu, IonToolbar } from '@ionic/react'
-import { UserIcon } from 'lucide-react'
+import { PageSync } from '@/pages/PageSync/PageSync'
+import {
+  IonContent,
+  IonFooter,
+  IonHeader,
+  IonMenu,
+  IonNavLink,
+  IonToolbar,
+} from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
+import { RefreshCwIcon, UserIcon } from 'lucide-react'
 import { AddWidgetButton } from '@penx/components/area-widgets/AddWidgetButton'
 import { MobileWidgetList } from '@penx/components/area-widgets/MobileWidgetList'
 import { AreasPopover } from '@penx/components/AreasPopover'
 import { appEmitter } from '@penx/emitter'
+import { useArea } from '@penx/hooks/useArea'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Button } from '@penx/uikit/ui/button'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
+import { AreasMenu } from './AreasMenu'
 import { EditWidgetButton } from './EditWidget/EditWidgetButton'
 import { useTheme } from './theme-provider'
 
@@ -20,6 +33,7 @@ const Menu: React.FC = () => {
   const menu = useRef<HTMLIonMenuElement>(null)
   const { session } = useSession()
   const { isDark } = useTheme()
+  const { area } = useArea()
 
   useEffect(() => {
     setMenu(menu)
@@ -45,41 +59,7 @@ const Menu: React.FC = () => {
             '--border-width': 0,
           }}
         >
-          <div className=" flex items-center justify-between gap-2">
-            <AreasPopover />
-            {!session && (
-              <Avatar
-                className="h-8 w-8 rounded-lg"
-                onClick={() => {
-                  appEmitter.emit('ROUTE_TO_PROFILE')
-                  menu.current?.close()
-                }}
-              >
-                <AvatarFallback className=" bg-foreground/10 rounded-lg">
-                  <UserIcon size={20} />
-                </AvatarFallback>
-              </Avatar>
-            )}
-            {session && (
-              <Avatar
-                className="h-8 w-8 rounded-lg"
-                onClick={() => {
-                  appEmitter.emit('ROUTE_TO_PROFILE')
-                  menu.current?.close()
-                }}
-              >
-                <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-                <AvatarFallback
-                  className={cn(
-                    'rounded-lg text-white',
-                    generateGradient(session.name),
-                  )}
-                >
-                  {session?.name.slice(0, 1)}
-                </AvatarFallback>
-              </Avatar>
-            )}
-          </div>
+          <AreasMenu />
         </IonToolbar>
       </IonHeader>
 
@@ -100,8 +80,7 @@ const Menu: React.FC = () => {
           <div className="relative z-10 flex flex-1 flex-col gap-2">
             <MobileWidgetList></MobileWidgetList>
 
-            <div className="flex items-center justify-center gap-2">
-              <AddWidgetButton />
+            <div className="flex items-center justify-start gap-2">
               <EditWidgetButton />
             </div>
           </div>
@@ -116,21 +95,63 @@ const Menu: React.FC = () => {
           </div>
         </div>
       </IonContent>
-      {/* <IonFooter>
-        <div className="p-2">
+      <IonFooter
+        style={{
+          boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
+        }}
+      >
+        <div className="flex items-center justify-between gap-2 px-2 pb-4">
           <Button
-            variant="secondary"
-            className="w-full"
+            variant="ghost"
+            className="text-foreground w-full justify-start gap-2 pl-2"
             onClick={async () => {
-              const changes = await localDB.change.toArray()
-              console.log('>>>>>>>>>>>>>>sync nodes to server', changes)
-              syncNodesToServer()
+              impact()
+              if (!session) {
+                appEmitter.emit('ROUTE_TO_LOGIN')
+                menu.current?.close()
+                return
+              }
+              appEmitter.emit('ROUTE_TO_SYNC')
+              menu.current?.close()
             }}
           >
+            <RefreshCwIcon size={18} />
             <Trans>Sync now</Trans>
           </Button>
+          {!session && (
+            <Avatar
+              className="h-8 w-8 rounded-lg"
+              onClick={() => {
+                appEmitter.emit('ROUTE_TO_PROFILE')
+                menu.current?.close()
+              }}
+            >
+              <AvatarFallback className=" bg-foreground/10 text-foreground rounded-lg">
+                <UserIcon size={20} />
+              </AvatarFallback>
+            </Avatar>
+          )}
+          {session && (
+            <Avatar
+              className="h-8 w-8 rounded-lg"
+              onClick={() => {
+                appEmitter.emit('ROUTE_TO_PROFILE')
+                menu.current?.close()
+              }}
+            >
+              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+              <AvatarFallback
+                className={cn(
+                  'rounded-lg text-white',
+                  generateGradient(session.name),
+                )}
+              >
+                {session?.name.slice(0, 1)}
+              </AvatarFallback>
+            </Avatar>
+          )}
         </div>
-      </IonFooter> */}
+      </IonFooter>
     </IonMenu>
   )
 }

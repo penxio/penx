@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -22,13 +23,11 @@ import { Widget } from '@penx/types'
 import { cn, mappedByKey } from '@penx/utils'
 import { WidgetName } from '@penx/widgets/WidgetName'
 
-const platform = Capacitor.getPlatform()
-
 export function PageWidget({ widget }: { widget: Widget }) {
   return (
     <>
       <IonHeader
-        className={platform === 'android' ? 'safe-area' : ''}
+        className={isAndroid ? 'safe-area' : ''}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
         }}

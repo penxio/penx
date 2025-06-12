@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
+import { isAndroid } from '@/lib/utils'
 import { PageStructInfo } from '@/pages/PageStructInfo/PageStructInfo'
 import { Capacitor } from '@capacitor/core'
 import {
@@ -21,8 +22,6 @@ import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 
-const platform = Capacitor.getPlatform()
-
 export const StructHeader: React.FC = () => {
   const { area } = useArea()
   const { panels } = usePanels()
@@ -35,7 +34,7 @@ export const StructHeader: React.FC = () => {
 
   return (
     <IonHeader
-      className={cn(platform === 'android' ? 'safe-area' : '')}
+      className={cn(isAndroid ? 'safe-area' : '')}
       style={{
         boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
       }}

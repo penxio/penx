@@ -17,7 +17,7 @@ import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
-import { ToggleSwitch } from './ToogleSwitch'
+import { ToggleSwitch } from './ToggleSwitch'
 
 interface Props {
   column: IColumn

@@ -16,7 +16,7 @@ export function SubscriptionMenu({ children, className }: ItemProps) {
   const { session } = useSession()
   const [isOpen, setIsOpen] = useState(false)
 
-  if (!session.isFree) return null
+  if (!session?.isFree) return null
 
   return (
     <>

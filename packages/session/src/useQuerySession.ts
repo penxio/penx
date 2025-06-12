@@ -201,6 +201,8 @@ export async function updateSession(data: Partial<SessionData>) {
 }
 
 export async function refreshSession() {
+  const localSession = await getSession()
+  if (!localSession) return
   const newSession = await api.getSession()
   queryClient.setQueryData(queryKey, newSession)
   await set(SESSION, newSession)

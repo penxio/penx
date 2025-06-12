@@ -13,7 +13,6 @@ import { IStructNode } from '@penx/model-type'
 async function getHeaders() {
   if (isDesktop || isMobileApp) {
     const session = await get('SESSION')
-    console.log('========session>>>>>:', session)
     if (session?.accessToken) {
       return {
         Authorization: `Bearer ${session.accessToken}`,

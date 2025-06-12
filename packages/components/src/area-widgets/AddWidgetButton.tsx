@@ -55,7 +55,7 @@ export function AddWidgetButton({ className }: Props) {
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
-            size="xs"
+            size="sm"
             variant="secondary"
             disabled={isLoading}
             className="bg-foreground/8 hover:bg-foreground/10"

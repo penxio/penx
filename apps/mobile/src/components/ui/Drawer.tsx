@@ -31,7 +31,7 @@ export function Drawer({
           <VaulDrawer.Overlay className="fixed inset-0 bg-black/40" />
           <VaulDrawer.Content
             className={cn(
-              'text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] flex-col overflow-hidden rounded-t-[10px] bg-neutral-100 px-4 pb-10 outline-none dark:bg-neutral-800',
+              'text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] flex-col overflow-hidden rounded-t-2xl bg-neutral-100 px-4 pb-10 outline-none dark:bg-neutral-800',
               platform === 'ios' && 'max-h-[80vh]',
               isFullHeight && (isIOS ? 'min-h-[90vh]' : 'min-h-[90vh]'),
               className,
@@ -41,7 +41,7 @@ export function Drawer({
               //   '0 -4px 12px rgba(0, 0, 0, 0.05),    0 -8px 25px rgba(0, 0, 0, 0.1),0 -16px 50px rgba(0, 0, 0, 0.1)',
               filter: isDark
                 ? 'drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.4))'
-                : 'drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.15))',
+                : 'drop-shadow(0 -8px 25px rgba(0, 0, 0, 0.18))',
             }}
           >
             {/* <div

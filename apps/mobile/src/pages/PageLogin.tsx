@@ -2,6 +2,7 @@ import React from 'react'
 import { EmailLoginForm } from '@/components/Login/EmailLoginForm'
 import { LoginContent } from '@/components/Login/LoginContent'
 import { RegisterForm } from '@/components/Login/RegisterForm'
+import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -18,13 +19,11 @@ import {
 import { Trans } from '@lingui/react/macro'
 import { ChevronLeft, ChevronLeftIcon } from 'lucide-react'
 
-const platform = Capacitor.getPlatform()
-
 export function PageLogin() {
   return (
     <>
       <IonHeader
-        className={platform === 'android' ? 'safe-area' : ''}
+        className={isAndroid ? 'safe-area' : ''}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
         }}

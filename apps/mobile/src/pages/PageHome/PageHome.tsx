@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatedJournalInput } from '@/components/AnimatedJournalInput'
 import { GoogleLoginButton } from '@/components/Login/GoogleLoginButton'
+import Menu from '@/components/Menu'
 import { useTheme } from '@/components/theme-provider'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { mainBackgroundLight } from '@/lib/constants'

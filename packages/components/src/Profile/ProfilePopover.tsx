@@ -1,7 +1,6 @@
 'use client'
 
 import { memo } from 'react'
-import { useSignIn } from '@farcaster/auth-kit'
 import { Trans } from '@lingui/react/macro'
 import {
   DatabaseBackup,
@@ -46,7 +45,6 @@ export const ProfilePopover = memo(function ProfilePopover({
 }: Props) {
   const { data, logout } = useSession()
   const { push } = useRouter()
-  const sigInState = useSignIn({})
   const pathname = usePathname()
 
   if (!data) return <div></div>
@@ -142,7 +140,6 @@ export const ProfilePopover = memo(function ProfilePopover({
           onClick={async () => {
             try {
               await logout()
-              sigInState?.signOut()
               push('/')
             } catch (error) {}
           }}

@@ -2,6 +2,7 @@ import React from 'react'
 import { ColorSelector } from '@/components/ColorSelector'
 import { Card } from '@/components/ui/Card'
 import { MobileInput } from '@/components/ui/MobileInput'
+import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
   IonBackButton,
@@ -26,13 +27,11 @@ import { OptionDrawer } from './EditPropertyDrawer/OptionDrawer'
 import { EmojiPicker } from './EmojiPicker'
 import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 
-const platform = Capacitor.getPlatform()
-
 export function PageStructInfo({ struct }: { struct: Struct }) {
   return (
     <>
       <IonHeader
-        className={platform === 'android' ? 'safe-area' : ''}
+        className={isAndroid ? 'safe-area' : ''}
         style={{
           boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
         }}
