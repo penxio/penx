@@ -4,6 +4,11 @@ export type SubscriptionInSession = {
   duration: number
 }
 
+export enum SubscriptionSource {
+  STRIPE = 'STRIPE',
+  APPLE = 'APPLE',
+}
+
 export interface SessionData {
   isLoggedIn: boolean
   uid: string
@@ -20,6 +25,7 @@ export interface SessionData {
   currentPeriodEnd: string
   billingCycle: string
   subscriptionStatus: string
+  subscriptionSource: string
   accessToken: string
   believerPeriodEnd: string
   credits: {

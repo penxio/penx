@@ -14,14 +14,14 @@ export async function purchasePackage(
 ): Promise<CustomerInfo | null> {
   console.log('====selectedPackage:', selectedPackage)
 
+  const result = await Purchases.purchasePackage({
+    aPackage: selectedPackage,
+  })
+  const { customerInfo, transaction } = result
+
+  console.log('>>>>>>>>>>=========result:', result.customerInfo)
+
   try {
-    const result = await Purchases.purchasePackage({
-      aPackage: selectedPackage,
-    })
-    const { customerInfo, transaction } = result
-
-    console.log('>>>>>>>>>>=========result:', result.customerInfo)
-
     await api.syncAppleSubscription({
       planType,
       billingCycle,
@@ -30,10 +30,10 @@ export async function purchasePackage(
       currentPeriodEnd: customerInfo.latestExpirationDate!,
       raw: customerInfo,
     })
-
-    return null
   } catch (err) {
     console.error('Purchase exception:', err)
     return null
   }
+
+  return null
 }

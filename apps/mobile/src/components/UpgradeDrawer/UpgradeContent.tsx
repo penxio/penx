@@ -6,7 +6,8 @@ import { Trans } from '@lingui/react/macro'
 import { Purchases, PurchasesOffering } from '@revenuecat/purchases-capacitor'
 import { useQuery } from '@tanstack/react-query'
 import { CheckIcon } from 'lucide-react'
-import { BillingCycle, PlanType } from '@penx/types'
+import { updateSession } from '@penx/session'
+import { BillingCycle, PlanType, SubscriptionSource } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
@@ -166,13 +167,23 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
             try {
               const pkg = getPackage(type, isMonthly, data!)
               console.log('=======pkg:', pkg)
-              await purchasePackage(
+              const planType =
                 type === SubscriptionType.standard
                   ? PlanType.STANDARD
-                  : PlanType.PRO,
-                isMonthly ? BillingCycle.MONTHLY : BillingCycle.YEARLY,
-                pkg,
-              )
+                  : PlanType.PRO
+              const billingCycle = isMonthly
+                ? BillingCycle.MONTHLY
+                : BillingCycle.YEARLY
+
+              await purchasePackage(planType, billingCycle, pkg)
+
+              await updateSession({
+                subscriptionSource: SubscriptionSource.APPLE,
+                planType,
+                billingCycle,
+                subscriptionStatus: 'active',
+              })
+
               onSubscribeSuccess()
             } catch (error) {
               console.log('========error:', error)

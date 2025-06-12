@@ -71,7 +71,7 @@ import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
 import { PageWidget } from './pages/PageWidget'
-import { RevenueCatInitializer } from './RevenueCatInitializer'
+import { AppInitializer } from './AppInitializer'
 
 const platform = Capacitor.getPlatform()
 async function init() {
@@ -265,7 +265,7 @@ const App: React.FC = () => {
           <DashboardProviders>
             <UpgradeDrawer />
             <MoreStructDrawer />
-            <RevenueCatInitializer />
+            <AppInitializer />
             <IonReactRouter>
               <IonSplitPane contentId="main">
                 <Menu />

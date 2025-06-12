@@ -43,6 +43,10 @@ type SyncInput = {
   data: any
 }
 export const api = {
+  async fetchSession() {
+    await ky.get(`${ROOT_HOST}/api/session`).json()
+  },
+
   async sync(input: SyncInput) {
     await ky
       .post(`${ROOT_HOST}/api/v1/sync`, {

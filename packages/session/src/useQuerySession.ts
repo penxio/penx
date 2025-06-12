@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
+import { api } from '@penx/api'
 import {
   isDesktop,
   isExtension,
@@ -12,7 +13,6 @@ import {
   PLATFORM,
   ROOT_HOST,
 } from '@penx/constants'
-import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import {
   BillingCycle,
@@ -20,6 +20,7 @@ import {
   LoginData,
   PlanType,
   SessionData,
+  SubscriptionSource,
   UpdateProps,
   UpdateSessionData,
 } from '@penx/types'
@@ -82,7 +83,6 @@ export function useQuerySession() {
 
   async function login(data: LoginData & { host?: string }) {
     console.log('=========sessionApiRoute:', sessionApiRoute)
-
     const res = await fetchJson<SessionData>(sessionApiRoute, {
       body: JSON.stringify({
         ...data,
@@ -127,11 +127,17 @@ export function useQuerySession() {
   const formattedSession = useMemo(() => {
     if (!session?.isLoggedIn) return undefined
     let planType = session.planType
+    const isApple = session.subscriptionSource === SubscriptionSource.APPLE
 
     if (
+      !isApple &&
       session.currentPeriodEnd &&
       Date.now() > new Date(session.currentPeriodEnd).getTime()
     ) {
+      planType = PlanType.FREE
+    }
+
+    if (isApple && session.subscriptionStatus !== 'active') {
       planType = PlanType.FREE
     }
 
@@ -190,6 +196,12 @@ export async function updateSession(data: Partial<SessionData>) {
   const session = queryClient.getQueryData(queryKey) || (await getSession())
   const newSession = { ...session, ...data }
   console.log('=======newSession:', newSession)
+  queryClient.setQueryData(queryKey, newSession)
+  await set(SESSION, newSession)
+}
+
+export async function refreshSession() {
+  const newSession = await api.getSession()
   queryClient.setQueryData(queryKey, newSession)
   await set(SESSION, newSession)
 }
