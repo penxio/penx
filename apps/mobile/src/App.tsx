@@ -2,6 +2,7 @@ import { Redirect, Route } from 'react-router-dom'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
+import { SplashScreen } from '@capacitor/splash-screen'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import {
   IonApp,
