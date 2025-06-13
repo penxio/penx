@@ -1,7 +1,7 @@
 import { isIOS } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
-import { Drawer as VaulDrawer } from 'vaul'
+import { Drawer as VaulDrawer } from '@penx/vaul'
 import { DialogHeader } from '@penx/uikit/ui/dialog'
 import { cn } from '@penx/utils'
 import { useTheme } from '../theme-provider'

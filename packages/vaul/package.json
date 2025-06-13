@@ -1,0 +1,45 @@
+{
+  "name": "@penx/vaul",
+  "version": "1.1.2",
+  "description": "Drawer component for React.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "style.css"
+  ],
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "build": "pnpm type-check && bunchee && pnpm copy-assets",
+    "copy-assets": "cp -r ./src/style.css ./style.css",
+    "dev": "bunchee --watch",
+    "dev:test": "turbo run dev --filter=test...",
+    "format": "prettier --write .",
+    "test": "playwright test"
+  },
+  "keywords": [
+    "react",
+    "drawer",
+    "dialog",
+    "modal"
+  ],
+  "author": "Emil Kowalski <e@emilkowal.ski>",
+  "license": "MIT",
+  "homepage": "https://vaul.emilkowal.ski/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emilkowalski/vaul.git"
+  },
+  "bugs": {
+    "url": "https://github.com/emilkowalski/vaul/issues"
+  },
+  "devDependencies": {
+
+    "@penx/eslint-config": "workspace:*",
+    "@penx/typescript-config": "workspace:*"
+  }
+}

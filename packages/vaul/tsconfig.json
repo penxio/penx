@@ -1,0 +1,15 @@
+{
+  "extends": "@penx/typescript-config/internal-package.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "bundler",
+    "declarationMap": false,
+    "declaration": false,
+    "strict": true,
+    "strictNullChecks": true,
+    "outDir": "dist"
+  },
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
+}

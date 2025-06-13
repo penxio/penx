@@ -176,6 +176,7 @@
     "@penx/worker": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "@penx/utils": "workspace:*"
+    "@penx/utils": "workspace:*",
+    "@penx/vaul": "workspace:*"
   }
 }

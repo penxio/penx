@@ -23,7 +23,6 @@ import {
   PlusIcon,
   UserIcon,
 } from 'lucide-react'
-import { Drawer } from 'vaul'
 import { useAreaDialog } from '@penx/components/useAreaDialog'
 import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'

@@ -11,7 +11,6 @@ import {
   XIcon,
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { Drawer } from 'vaul'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
