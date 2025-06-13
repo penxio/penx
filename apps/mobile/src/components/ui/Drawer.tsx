@@ -26,7 +26,7 @@ export function Drawer({
   const { isDark } = useTheme()
   return (
     <DrawerProvider open={open} setOpen={setOpen}>
-      <VaulDrawer.Root open={open} onOpenChange={setOpen}>
+      <VaulDrawer.Root open={open} onOpenChange={setOpen} shouldScaleBackground>
         <VaulDrawer.Portal>
           <VaulDrawer.Overlay className="fixed inset-0 bg-black/40" />
           <VaulDrawer.Content
