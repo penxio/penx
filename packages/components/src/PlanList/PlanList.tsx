@@ -33,7 +33,7 @@ export function PlanList() {
           monthlyPrice={5.12}
           annualPrice={46.08}
           name="Basic"
-          type={PlanType.BASIC}
+          type={PlanType.STANDARD}
           collaboratorCount={1}
           benefits={[
             { ok: true, text: '1 co-creators' },

@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, XIcon } from 'lucide-react'
+import { Check, CheckIcon, XIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
 import { UpgradeButton } from './UpgradeButton'
 import { useBillingCycle } from './useBillingCycle'
