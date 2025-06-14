@@ -9,7 +9,7 @@ export const CLOSE_THRESHOLD = 0.25;
 
 export const SCROLL_LOCK_TIMEOUT = 100;
 
-export const BORDER_RADIUS = 8;
+export const BORDER_RADIUS = 12;
 
 export const NESTED_DISPLACEMENT = 16;
 

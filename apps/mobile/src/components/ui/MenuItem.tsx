@@ -11,13 +11,15 @@ interface ItemProps {
 export function MenuItem({ className, children, onClick, checked }: ItemProps) {
   return (
     <div
-      className={cn('flex h-12 items-center justify-between px-3', className)}
+      className={cn('flex h-12 items-center px-3', className)}
       onClick={() => {
         onClick && onClick()
       }}
     >
-      <div>{children}</div>
-      {checked && <CheckIcon size={18} className="text-foreground/60" />}
+      {children}
+      {checked && (
+        <CheckIcon size={18} className="text-foreground/60 ml-auto" />
+      )}
     </div>
   )
 }

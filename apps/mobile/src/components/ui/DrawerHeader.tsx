@@ -1,3 +1,4 @@
+import { impact } from '@/lib/impact'
 import { Trans } from '@lingui/react/macro'
 import { cn } from '@penx/utils'
 import { useDrawerContext } from './DrawerContext'
@@ -51,6 +52,7 @@ export function DrawerHeader({
               disabled && 'cursor-not-allowed opacity-50',
             )}
             onClick={() => {
+              impact()
               onConfirm?.()
             }}
           >

@@ -1,7 +1,13 @@
 import React, { useMemo } from 'react'
 import { BORDER_RADIUS, TRANSITIONS, WINDOW_TOP_OFFSET } from './constants'
 import { useDrawerContext } from './context'
-import { assignStyle, chain, isVertical, reset } from './helpers'
+import {
+  assignStyle,
+  chain,
+  getSafePaddingTop,
+  isVertical,
+  reset,
+} from './helpers'
 
 const noop = () => () => {}
 
@@ -24,20 +30,11 @@ export function useScaleBackground() {
   }
 
   React.useEffect(() => {
-    console.log('========shouldScaleBackground00:', shouldScaleBackground)
-
     if (isOpen && shouldScaleBackground) {
-      console.log('========shouldScaleBackground11:', shouldScaleBackground)
-
-      // const selector = '[data-vaul-drawer-wrapper]'
-      const selector = '.ion-page'
-
       if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current)
       const wrapper =
-        (document.querySelector(selector) as HTMLElement) ||
+        (document.querySelector('[data-vaul-drawer-wrapper]') as HTMLElement) ||
         (document.querySelector('[vaul-drawer-wrapper]') as HTMLElement)
-
-      console.log('=====wrapper:', wrapper)
 
       if (!wrapper) return
 
@@ -53,15 +50,17 @@ export function useScaleBackground() {
         }),
       )
 
+      const safePadding = getSafePaddingTop()
+
       const wrapperStylesCleanup = assignStyle(wrapper, {
         borderRadius: `${BORDER_RADIUS}px`,
         overflow: 'hidden',
         ...(isVertical(direction)
           ? {
-              transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+              transform: `scale(${getScale()}) translate3d(0, calc(${safePadding} + 14px), 0)`,
             }
           : {
-              transform: `scale(${getScale()}) translate3d(calc(env(safe-area-inset-top) + 14px), 0, 0)`,
+              transform: `scale(${getScale()}) translate3d(${safePadding} + 14px), 0, 0)`,
             }),
       })
 

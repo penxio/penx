@@ -23,7 +23,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
-import { AreasMenu } from './AreasMenu'
+import { AreasMenu } from './AreasMenu/AreasMenu'
 import { EditWidgetButton } from './EditWidget/EditWidgetButton'
 import { useTheme } from './theme-provider'
 

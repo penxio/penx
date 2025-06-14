@@ -15,7 +15,14 @@ import {
   VELOCITY_THRESHOLD,
   WINDOW_TOP_OFFSET,
 } from './constants'
-import { dampenValue, getTranslate, isVertical, reset, set } from './helpers'
+import {
+  dampenValue,
+  getSafePaddingTop,
+  getTranslate,
+  isVertical,
+  reset,
+  set,
+} from './helpers'
 import { DrawerDirection } from './types'
 import { useComposedRefs } from './use-composed-refs'
 import { useControllableState } from './use-controllable-state'
@@ -409,10 +416,7 @@ export function Root({
       // We need to capture last time when drag with scroll was triggered and have a timeout between
       const absDraggedDistance = Math.abs(draggedDistance)
 
-
-      // const selector = '[data-vaul-drawer-wrapper]'
-      const selector = '.ion-page'
-      const wrapper = document.querySelector(selector)
+      const wrapper = document.querySelector('[data-vaul-drawer-wrapper]')
       const drawerDimension =
         direction === 'bottom' || direction === 'top'
           ? drawerHeightRef.current
@@ -460,11 +464,13 @@ export function Root({
 
         const translateValue =
           Math.min(dampenedDraggedDistance * -1, 0) * directionMultiplier
+
         set(drawerRef.current, {
           transform: isVertical(direction)
-            ? `translate3d(0, ${translateValue}px, 0)`
+            ? `translate3d(0,  ${translateValue}px, 0)`
             : `translate3d(${translateValue}px, 0, 0)`,
         })
+
         return
       }
 
@@ -492,16 +498,17 @@ export function Root({
           getScale() + percentageDragged * (1 - getScale()),
           1,
         )
-        const borderRadiusValue = 8 - percentageDragged * 8
+        const borderRadiusValue = BORDER_RADIUS - percentageDragged * 8
 
         const translateValue = Math.max(0, 14 - percentageDragged * 14)
+        const safePadding = getSafePaddingTop()
 
         set(
           wrapper,
           {
             borderRadius: `${borderRadiusValue}px`,
             transform: isVertical(direction)
-              ? `scale(${scaleValue}) translate3d(0, ${translateValue}px, 0)`
+              ? `scale(${scaleValue}) translate3d(0, calc(${safePadding} + ${translateValue}px) , 0)`
               : `scale(${scaleValue}) translate3d(${translateValue}px, 0, 0)`,
             transition: 'none',
           },
@@ -630,8 +637,6 @@ export function Root({
       opacity: '1',
     })
 
-    console.log('=====shouldScaleBackground0:', shouldScaleBackground)
-
     // Don't reset background if swiped upwards
     if (
       shouldScaleBackground &&
@@ -639,8 +644,7 @@ export function Root({
       currentSwipeAmount > 0 &&
       isOpen
     ) {
-      console.log('==========shouldScaleBackground:', shouldScaleBackground)
-
+      const safePadding = getSafePaddingTop()
       set(
         wrapper,
         {
@@ -648,11 +652,11 @@ export function Root({
           overflow: 'hidden',
           ...(isVertical(direction)
             ? {
-                transform: `scale(${getScale()}) translate3d(0, calc(env(safe-area-inset-top) + 14px), 0)`,
+                transform: `scale(${getScale()}) translate3d(0, calc(${safePadding} + 14px), 0)`,
                 transformOrigin: 'top',
               }
             : {
-                transform: `scale(${getScale()}) translate3d(calc(env(safe-area-inset-top) + 14px), 0, 0)`,
+                transform: `scale(${getScale()}) translate3d(calc(${safePadding} + 14px), 0, 0)`,
                 transformOrigin: 'left',
               }),
           transitionProperty: 'transform, border-radius',

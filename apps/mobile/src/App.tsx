@@ -271,7 +271,7 @@ const App: React.FC = () => {
   }, [])
 
   return (
-    <IonApp className="">
+    <IonApp className="" data-vaul-drawer-wrapper="">
       <LocaleProvider>
         <ThemeProvider>
           <DashboardProviders>

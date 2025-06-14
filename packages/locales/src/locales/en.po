@@ -163,6 +163,10 @@ msgstr "Are you sure you want to log out?"
 msgid "Are you sure you want to publish this struct to the marketplace?"
 msgstr "Are you sure you want to publish this struct to the marketplace?"
 
+#: apps/mobile/src/components/AreasMenu/AreasMenu.tsx:69
+msgid "Areas"
+msgstr "Areas"
+
 #: packages/libs/src/getDefaultStructs.ts:277
 msgid "Bookmark"
 msgstr "Bookmark"
@@ -175,7 +179,7 @@ msgstr "Boolean"
 msgid "Bubble"
 msgstr "Bubble"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:39
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:40
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
@@ -221,11 +225,16 @@ msgstr "Copy html"
 msgid "Create"
 msgstr "Create"
 
+#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:50
 #: packages/components/src/AreasPopover/AreasPopover.tsx:99
 #: packages/components/src/AreaDialog/AreaForm.tsx:321
 #: packages/components/src/AreaDialog/AreaDialog.tsx:36
 msgid "Create area"
 msgstr "Create area"
+
+#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:33
+msgid "Create new area"
+msgstr "Create new area"
 
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:131
 msgid "Create one"
@@ -561,6 +570,7 @@ msgstr "My Structs"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:91
+#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:57
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
@@ -767,7 +777,7 @@ msgstr "Rename"
 msgid "Resend"
 msgstr "Resend"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:57
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:59
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr "Save"
@@ -896,7 +906,7 @@ msgid "Sync interval"
 msgstr "Sync interval"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:58
-#: apps/mobile/src/components/Menu.tsx:118
+#: apps/mobile/src/components/Menu.tsx:119
 msgid "Sync now"
 msgstr "Sync now"
 
