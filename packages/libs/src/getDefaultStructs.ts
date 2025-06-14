@@ -237,17 +237,12 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
       ...input,
     }),
 
-    // {
-    //   id: uniqueId(),
-    //   name: 'Images',
-    //   description: '',
-    //   type: StructType.IMAGE,
-    //   props: [],
-    //   content: JSON.stringify(defaultEditorContent),
-    //   createdAt: new Date(),
-    //   updatedAt: new Date(),
-    //   ...input,
-    // },
+    generateStructNode({
+      type: StructType.IMAGE,
+      name: t`Image`,
+      ...input,
+    }),
+
     // {
     //   id: uniqueId(),
     //   name: 'Podcasts',

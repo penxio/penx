@@ -1,7 +1,6 @@
 'use client'
 
 import { Trans } from '@lingui/react/macro'
-import { create } from 'lodash'
 import { motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { useActiveStruct } from '@penx/hooks/useActiveStruct'
@@ -11,24 +10,34 @@ import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { cn, mappedByKey } from '@penx/utils'
 import { CreationCard } from '../../../CreationCard/CreationCard'
 import { JournalTitle } from './JournalTitle'
+import { JournalWidget } from './JournalWidget'
 
-interface Props {}
+interface Props {
+  date?: string
+  showJournalTitle?: boolean
+  journalTitle?: React.ReactNode
+}
 
-export function JournalContent({}: Props) {
+export function JournalContent(props: Props) {
   const { creations } = useCreations()
   const { struct } = useActiveStruct()
+  const { isCard, isList, isWidget } = useJournalLayout()
   const { journal } = useJournal()
-  const { isCard, isList } = useJournalLayout()
+  const date = journal.date
 
   // console.log('====journal:', journal)
-  const journalCreations = creations.filter((c) => c.date === journal.date)
+  const journalCreations = creations.filter((c) => c.date === date)
 
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-8">
-      <JournalTitle date={journal.date!} />
-      {/* <StructTypeSelect /> */}
+      {props.showJournalTitle &&
+        (props.journalTitle ? (
+          props.journalTitle
+        ) : (
+          <JournalTitle date={date} />
+        ))}
 
-      {!journalCreations.length && (
+      {/* {!journalCreations.length && (
         <div className="flex h-[50vh] flex-col items-center justify-center gap-4 pt-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -50,9 +59,11 @@ export function JournalContent({}: Props) {
             <Trans>A structured note-taking App</Trans>
           </motion.div>
         </div>
-      )}
+      )} */}
 
-      {!!journalCreations.length && (
+      <JournalWidget creations={journalCreations} />
+
+      {!!journalCreations.length && !isWidget && (
         <div
           className={cn(
             isCard ? 'columns-2 gap-x-2 align-top' : 'flex flex-col gap-4 ',

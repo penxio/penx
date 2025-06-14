@@ -16,6 +16,7 @@
     "build:verbose": "tauri build --verbose"
   },
   "dependencies": {
+    "@penx/vaul": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/content-render": "workspace:*",

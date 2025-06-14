@@ -48,7 +48,7 @@
   --sidebar: oklch(0.985 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
-  --brand: oklch(54.1% 0.281 293.009);
+  --brand: oklch(68.5% 0.169 237.323);
 
   --header-height: 10px;
 }
@@ -88,7 +88,7 @@
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
-  --brand: oklch(54.1% 0.281 293.009);
+  --brand: oklch(68.5% 0.169 237.323);
 }
 
 [data-registry='plate'] {
@@ -231,9 +231,11 @@ h4 {
 }
 
 .shadow-card {
-  box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 14px 28px -6px,
-    rgba(84, 72, 49, 0.08) 0px 0px 0px 1px;
+  /* box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 6px 10px -6px,
+    rgba(84, 72, 49, 0.08) 0px 0px 0px 0.5px; */
+
+  box-shadow: rgba(84, 72, 49, 0.08) 0px 0px 0px 0.5px;
 }
 
 .primary-cell .gdg-growing-entry {

@@ -1,4 +1,6 @@
 import { get } from 'idb-keyval'
+import { api } from '@penx/api'
+import { ACTIVE_SITE, STATIC_URL } from '@penx/constants'
 import { ISite } from '@penx/model-type/ISite'
 import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 
@@ -16,61 +18,63 @@ interface UploadOptions {
 }
 
 export async function uploadFile(file: File, opt = {} as UploadOptions) {
-  // const { isPublic = true, saveToDB = true } = opt
-  // const fileHash = await calculateSHA256FromFile(file)
-  // let data: UploadReturn = {}
-  // const site = (await get(ACTIVE_SITE)) as ISite
+  const { isPublic = true, saveToDB = true } = opt
+  const fileHash = await calculateSHA256FromFile(file)
+  let data: UploadReturn = {}
+  const site = (await get(ACTIVE_SITE)) as ISite
 
-  // let filename = fileHash
+  let filename = fileHash
 
-  // let prefix = ''
-  // let qs = ''
-  // let query = new URLSearchParams({})
-  // if (file.type === 'image/svg+xml') {
-  //   query.set('contentType', 'image/svg+xml')
-  //   qs = `?${query.toString()}`
-  // }
+  let prefix = ''
+  let qs = ''
+  let query = new URLSearchParams({})
+  if (file.type === 'image/svg+xml') {
+    query.set('contentType', 'image/svg+xml')
+    qs = `?${query.toString()}`
+  }
 
-  // if (file.type === 'audio/mpeg' && file.name.endsWith('.mp3')) {
-  //   query.set('contentType', 'audio/mpeg')
-  //   qs = `?${query.toString()}`
-  //   prefix = 'audios/'
-  //   filename = `${filename}.mp3`
-  // }
+  if (file.type === 'audio/mpeg' && file.name.endsWith('.mp3')) {
+    query.set('contentType', 'audio/mpeg')
+    qs = `?${query.toString()}`
+    prefix = 'audios/'
+    filename = `${filename}.mp3`
+  }
 
-  // const pathname = `${prefix}${filename}`
+  const pathname = `${prefix}${filename}`
 
-  // const url = `/${pathname}`
-  // const asset = await api.asset.getByUrl.query({ url })
+  const url = `/${pathname}`
+  console.log('start get asset from api-----')
 
-  // if (!asset) {
-  //   const res = await fetch(`${STATIC_URL}/${pathname}${qs}`, {
-  //     method: 'PUT',
-  //     body: file,
-  //   })
+  const asset = await api.getAsset(url)
 
-  //   if (!res.ok) {
-  //     throw new Error('Failed to upload file')
-  //   }
+  console.log('=======asset:', asset)
 
-  //   data = await res.json()
-  //   data = { ...data, url, hash: fileHash }
-  // } else {
-  //   data = { ...data, url: asset.url, hash: fileHash }
-  // }
+  if (!asset) {
+    const res = await fetch(`${STATIC_URL}/${pathname}${qs}`, {
+      method: 'PUT',
+      body: file,
+    })
 
-  // if (saveToDB) {
-  //   await api.asset.create.mutate({
-  //     siteId: site.id,
-  //     url,
-  //     filename: file.name,
-  //     contentType: file.type,
-  //     size: file.size,
-  //     isPublic,
-  //     createdAt: file.lastModified ? new Date(file.lastModified) : new Date(),
-  //   })
-  // }
+    if (!res.ok) {
+      throw new Error('Failed to upload file')
+    }
 
-  // return data as UploadReturn
-  return {} as UploadReturn
+    data = await res.json()
+    data = { ...data, url, hash: fileHash }
+  } else {
+    data = { ...data, url: asset.url, hash: fileHash }
+  }
+
+  if (saveToDB) {
+    await api.createAsset({
+      siteId: site.id,
+      url,
+      filename: file.name,
+      contentType: file.type,
+      size: file.size,
+      isPublic,
+    })
+  }
+
+  return data as UploadReturn
 }

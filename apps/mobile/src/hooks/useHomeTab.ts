@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import { atom, useAtom } from 'jotai'
 
 const homeTabAtom = atom<'HOME' | 'TASK' | 'NOTE' | 'PROFILE'>('HOME')

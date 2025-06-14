@@ -1,18 +1,8 @@
 import React from 'react'
 import { ColorSelector } from '@/components/ColorSelector'
+import { MobileContent } from '@/components/MobileContent'
 import { Card } from '@/components/ui/Card'
 import { MobileInput } from '@/components/ui/MobileInput'
-import { isAndroid } from '@/lib/utils'
-import { Capacitor } from '@capacitor/core'
-import {
-  IonBackButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
@@ -29,31 +19,9 @@ import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 
 export function PagePublishedStructInfo({ struct }: { struct: Struct }) {
   return (
-    <>
-      <IonHeader
-        className={isAndroid ? 'safe-area' : ''}
-        style={{
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        }}
-      >
-        <IonToolbar
-          className="toolbar text-foreground"
-          style={{
-            '--border-width': 0,
-          }}
-        >
-          <IonButtons slot="start">
-            <IonBackButton text=""></IonBackButton>
-          </IonButtons>
-          <IonTitle>
-            <div className="text-foreground">{struct.name}</div>
-          </IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen class="content ion-padding text-foreground">
-        <Content structId={struct.id} />
-      </IonContent>
-    </>
+    <MobileContent title={<div className="text-foreground">{struct.name}</div>}>
+      <Content structId={struct.id} />
+    </MobileContent>
   )
 }
 

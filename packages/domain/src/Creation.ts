@@ -100,6 +100,10 @@ export class Creation {
     return this.data?.url ? getUrl(this.data.url) : ''
   }
 
+  get imageUrl() {
+    return this.data?.url ? getUrl(this.data.url) : ''
+  }
+
   get isTask() {
     return this.type === StructType.TASK
   }

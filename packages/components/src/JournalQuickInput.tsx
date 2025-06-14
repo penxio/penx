@@ -9,16 +9,20 @@ import {
   useRef,
   useState,
 } from 'react'
+import { t } from '@lingui/core/macro'
 import { Editor } from '@tiptap/core'
+import Placeholder from '@tiptap/extension-placeholder'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import cx from 'classnames'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
 import { defaultEditorContent, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
+import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
 import { useStructs } from '@penx/hooks/useStructs'
 import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
+import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { cn } from '@penx/utils'
 import { docToString, stringToDoc } from '@penx/utils/editorHelper'
 import { JournalInputToolbar } from './JournalInputToolbar'
@@ -35,31 +39,45 @@ export function JournalQuickInput({
   onCancel?: () => void
   afterSubmit?: () => void
 }) {
+  const { isTask: initialTaskState } = useQuickInputOpen()
   const editorRef = useRef<Editor>(null)
   const [input, setInput] = useState('')
   const { structs } = useStructs()
   const noteStruct = structs.find((s) => s.type === StructType.NOTE)!
   const [struct, setStruct] = useState(noteStruct)
   const addCreation = useAddCreation()
+  const [isTask, setIsTask] = useState(initialTaskState)
 
   useImperativeHandle(ref, () => editorRef.current)
 
-  const editor = useEditor({
-    content: defaultEditorContent,
-    extensions: [StarterKit],
-    immediatelyRender: false,
-    onUpdate({ editor }) {
-      setInput(JSON.stringify(editor.getJSON()))
+  const editor = useEditor(
+    {
+      content: defaultEditorContent,
+      extensions: [
+        StarterKit,
+        Placeholder.configure({
+          placeholder: ({ node }) => {
+            return isTask ? t`Create a task` : t`What's on your mind?`
+          },
+        }),
+      ],
+      immediatelyRender: false,
+      onUpdate({ editor }) {
+        setInput(JSON.stringify(editor.getJSON()))
+      },
     },
-  })
+    [isTask],
+  )
 
-  const submitForm = useCallback(() => {
-    const isNote = struct.type === StructType.NOTE
+  const submitForm = useCallback(async () => {
+    // const isNote = struct.type === StructType.NOTE
+    const isNote = !isTask
     const title = isNote ? '' : docToString(JSON.parse(input))
     const content = isNote ? input : JSON.stringify(defaultEditorContent)
 
     addCreation({
-      type: struct.type,
+      // type: struct.type,
+      type: isTask ? StructType.TASK : StructType.NOTE,
       title: title,
       content: content,
       isAddPanel: false,
@@ -90,24 +108,26 @@ export function JournalQuickInput({
         }
       }}
     >
-      <EditorContent
-        className="focus-visible::outline-0 prose px-3 pb-10 pt-2 focus-visible:border-0"
-        editor={editor}
-        onKeyDown={(event) => {
-          if (
-            event.key === 'Enter' &&
-            (event.ctrlKey || event.metaKey) &&
-            !event.shiftKey &&
-            !event.nativeEvent.isComposing
-          ) {
-            event.preventDefault()
-            submitForm()
-          }
-        }}
-      />
+      <div className="">
+        <EditorContent
+          className="focus-visible::outline-0 prose px-3 pb-10 pt-2 focus-visible:border-0"
+          editor={editor}
+          onKeyDown={(event) => {
+            if (
+              event.key === 'Enter' &&
+              (event.ctrlKey || event.metaKey) &&
+              !event.shiftKey &&
+              !event.nativeEvent.isComposing
+            ) {
+              event.preventDefault()
+              submitForm()
+            }
+          }}
+        />
+      </div>
 
       <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
-        <StructTypeSelect
+        {/* <StructTypeSelect
           value={struct}
           setFocused={() => {
             editor.chain().focus().run()
@@ -116,9 +136,14 @@ export function JournalQuickInput({
             setStruct(s)
             editor.chain().focus().run()
           }}
-        />
+        /> */}
 
-        <JournalInputToolbar editor={editor} />
+        <Checkbox
+          className="border-foreground/40 size-5"
+          checked={isTask}
+          onCheckedChange={(v: boolean) => setIsTask(v)}
+        />
+        {/* <JournalInputToolbar editor={editor} /> */}
       </div>
 
       <div

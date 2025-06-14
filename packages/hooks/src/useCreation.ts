@@ -143,4 +143,5 @@ export async function updateCreationProps(
   queryClient.setQueryData(getQueryKey(id), newCreation)
   store.creations.updateCreationById(id, newCreation)
   await debouncedSaveCreation(id, input)
+  return newCreation
 }

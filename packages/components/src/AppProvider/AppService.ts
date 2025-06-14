@@ -1,7 +1,9 @@
+import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import { api } from '@penx/api'
 import { Node } from '@penx/domain'
+import { generateStructNode } from '@penx/libs/getDefaultStructs'
 import { localDB } from '@penx/local-db'
 import {
   IAreaNode,
@@ -18,7 +20,7 @@ import {
 } from '@penx/model-type'
 import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
-import { Panel, PanelType, SessionData, Widget } from '@penx/types'
+import { Panel, PanelType, SessionData, StructType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { initLocalSite } from './lib/initLocalSite'
 import { isRowsEqual } from './lib/isRowsEqual'
@@ -132,6 +134,19 @@ export class AppService {
     const areaNodes = nodes.filter((n) => n.areaId === area.id)
     const structs = areaNodes.filter((n) => isStructNode(n))
     let journals = areaNodes.filter((n) => isJournalNode(n))
+
+    const imageStruct = structs.find((s) => s.props.type === StructType.IMAGE)
+    if (!imageStruct) {
+      const newStruct = generateStructNode({
+        type: StructType.IMAGE,
+        name: t`Image`,
+        siteId: site.id,
+        userId: site.userId,
+        areaId: area.id,
+      })
+      await localDB.addStruct(newStruct)
+      structs.push(newStruct)
+    }
 
     // console.log('======journals:', journals)
 

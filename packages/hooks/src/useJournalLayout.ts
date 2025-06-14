@@ -6,6 +6,7 @@ export enum JournalLayout {
   BUBBLE = 'BUBBLE',
   LIST = 'LIST',
   CARD = 'CARD',
+  WIDGET = 'WIDGET',
 }
 
 const key = 'JOURNAL_LAYOUT'
@@ -15,7 +16,7 @@ export function useJournalLayout() {
     queryKey: [key],
     queryFn: async () => {
       const layout = await get(key)
-      return layout || JournalLayout.BUBBLE
+      return layout || JournalLayout.WIDGET
     },
     staleTime: 1000 * 60 * 60 * 24, // 1 day
   })
@@ -23,6 +24,7 @@ export function useJournalLayout() {
     data,
     layout: data!,
     isCard: data === JournalLayout.CARD,
+    isWidget: data === JournalLayout.WIDGET,
     isBubble: data === JournalLayout.BUBBLE,
     isList: data === JournalLayout.LIST,
     ...rest,

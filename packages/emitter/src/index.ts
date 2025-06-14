@@ -25,6 +25,9 @@ export type AppEvent = {
   ROUTE_TO_WIDGET: any
   ROUTE_TO_SYNC: any
   ROUTE_TO_STRUCT_INFO: any
+  ROUTE_TO_BACK: any
+
+  SELECT_DATE: Date
 }
 
 export const appEmitter = mitt<AppEvent>()

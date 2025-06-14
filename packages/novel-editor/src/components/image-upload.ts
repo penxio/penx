@@ -1,6 +1,6 @@
 import { createImageUpload } from 'novel'
 import { toast } from 'sonner'
-import { uploadFile } from '../lib/uploadFile'
+import { uploadFile } from '@penx/services/uploadFile'
 
 export const onUpload = (file: File) => {
   return new Promise<string>((resolve, reject) => {

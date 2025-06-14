@@ -1,6 +1,7 @@
 import { get } from 'idb-keyval'
 import _ky from 'ky'
 import {
+  CreateAssetInput,
   isDesktop,
   isMobileApp,
   PublishStructInput,
@@ -41,6 +42,12 @@ type SyncInput = {
   key: string
   data: any
 }
+
+type Asset = {
+  id: string
+  url: string
+}
+
 export const api = {
   async fetchSession() {
     await ky.get(`${ROOT_HOST}/api/session`).json()
@@ -70,6 +77,23 @@ export const api = {
 
   async getSession() {
     return ky.get(`${ROOT_HOST}/api/session`).json()
+  },
+
+  async getAsset(url: string) {
+    const { asset } = await ky
+      .post(`${ROOT_HOST}/api/asset/get-by-url`, {
+        json: { url },
+      })
+      .json<{ asset: Asset }>()
+    return asset
+  },
+
+  async createAsset(input: CreateAssetInput) {
+    return await ky
+      .post(`${ROOT_HOST}/api/asset/create`, {
+        json: input,
+      })
+      .json<{ success: boolean }>()
   },
 
   async transcribe(file: File, duration: number, hash: string) {

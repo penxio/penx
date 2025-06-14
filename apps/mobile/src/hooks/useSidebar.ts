@@ -9,7 +9,6 @@ export function useSidebar() {
     if (isOpen) return true
     return false
   }, [isOpen])
-  console.log('=====status:', status)
 
   return {
     status,

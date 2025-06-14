@@ -1,23 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { MobileContent } from '@/components/MobileContent'
 import { StructHeader } from '@/components/StructHeader'
 import { mainBackgroundLight } from '@/lib/constants'
 import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { Capacitor } from '@capacitor/core'
-import { StatusBar, Style } from '@capacitor/status-bar'
-import { IonContent, IonPage } from '@ionic/react'
+import { IonNavLink } from '@ionic/react'
+import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
 import { CreationCard } from '@penx/components/CreationCard/CreationCard'
 import { PanelList } from '@penx/components/DashboardLayout/PanelList'
 import { useCreations } from '@penx/hooks/useCreations'
 import { usePanels } from '@penx/hooks/usePanels'
 import { useStructId } from '@penx/hooks/useStructId'
+import { useStructs } from '@penx/hooks/useStructs'
 import { PanelType } from '@penx/types'
 import { cn } from '@penx/utils'
+import { PageStructInfo } from './PageStructInfo/PageStructInfo'
 
 export const PageStruct: React.FC = ({ nav }: any) => {
   return (
     <>
-      <StructHeader />
       <Content></Content>
     </>
   )
@@ -27,50 +29,33 @@ function Content() {
   const { creations } = useCreations()
   const { structId } = useStructId()
 
-  const { data: isDark } = useQuery({
-    queryKey: ['isDark'],
-    queryFn: async () => {
-      const mode = await DarkMode.isDarkMode()
-      return mode.dark
-    },
-  })
-  return (
-    <>
-      <IonContent
-        fullscreen
-        className="text-foreground content"
-        scrollEvents={true}
-        onIonScroll={async (event) => {
-          const scrollTop = event.detail.scrollTop
+  const { panels } = usePanels()
+  const { structs } = useStructs()
+  const struct = useMemo(() => {
+    const structPanels = panels.find((p) => p.type === PanelType.STRUCT)
+    const struct = structs.find((s) => s.id === structPanels?.structId)
+    return struct
+  }, [panels, structs])
 
-          if (Capacitor.getPlatform() === 'android') {
-            if (scrollTop > 0) {
-              await StatusBar.setBackgroundColor({
-                color: isDark ? '#222' : mainBackgroundLight,
-              })
-            } else {
-              await StatusBar.setBackgroundColor({
-                color: '#00000000',
-              })
-            }
-          }
-        }}
-      >
-        <div id="portal" className="fixed left-0 top-0 z-[10]" />
-        <div
-          className="text-foreground z-1 relative flex flex-col gap-3 px-3 pt-6"
-          style={
-            {
-              '--background': 'oklch(1 0 0)',
-            } as any
-          }
+  return (
+    <MobileContent
+      title={struct?.name}
+      backgroundColor="#f6f6f6"
+      rightSlot={
+        <IonNavLink
+          routerDirection="forward"
+          component={() => <PageStructInfo struct={struct!} />}
         >
-          {creations.map((creation) => {
-            if (creation.raw.props.structId !== structId) return null
-            return <CreationCard key={creation.id} creation={creation} />
-          })}
-        </div>
-      </IonContent>
-    </>
+          <div className="text-brand mr-2 flex h-8 items-center">
+            <Trans>Edit props</Trans>
+          </div>
+        </IonNavLink>
+      }
+    >
+      {creations.map((creation) => {
+        if (creation.raw.props.structId !== structId) return null
+        return <CreationCard key={creation.id} creation={creation} />
+      })}
+    </MobileContent>
   )
 }

@@ -2,11 +2,12 @@ import { forwardRef, useRef, useState } from 'react'
 import { ImageIcon, X } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from 'sonner'
+import { isMobileApp } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { uploadFile } from '@penx/services/uploadFile'
 import { LoadingDots } from '@penx/uikit/loading-dots'
-import { getUrl } from '@penx/utils'
+import { cn, getUrl } from '@penx/utils'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
 
 interface Props {
@@ -17,7 +18,7 @@ interface Props {
 
 export const ImageCreationUpload = forwardRef<HTMLDivElement, Props>(
   function ImageCreationUpload({ creation, onFileChange, onUploaded }, ref) {
-    const [value, setValue] = useState((creation.image as string) || '')
+    const [value, setValue] = useState((creation.imageUrl as string) || '')
     const inputRef = useRef<HTMLInputElement>(null)
     const [loading, setLoading] = useState(false)
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +48,7 @@ export const ImageCreationUpload = forwardRef<HTMLDivElement, Props>(
     async function removeImage() {
       setValue('')
       updateCreationProps(creation.id, {
-        content: '',
+        data: { url: '' },
       })
     }
 
@@ -58,7 +59,7 @@ export const ImageCreationUpload = forwardRef<HTMLDivElement, Props>(
             src={getUrl(value)}
             width={1000}
             height={1000}
-            className="absolute left-0 top-0 h-auto w-full cursor-pointer"
+            className="max-h-[100vw] w-full cursor-pointer"
             alt=""
           />
 
@@ -72,7 +73,12 @@ export const ImageCreationUpload = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div ref={ref}>
-        <div className="bg-accent relative flex h-[560px] w-full cursor-pointer items-center justify-center rounded-2xl">
+        <div
+          className={cn(
+            'bg-accent border-foreground/10 relative flex h-[560px] w-full cursor-pointer items-center justify-center rounded-2xl border',
+            isMobileApp && 'h-[80vw]',
+          )}
+        >
           <div className="z-1 text-foreground/40 absolute left-0 top-0 flex h-full w-full cursor-pointer items-center justify-center gap-1 text-sm">
             <ImageIcon size={18} />
             <div>Select image</div>

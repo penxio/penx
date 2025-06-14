@@ -18,6 +18,7 @@
     "@lingui/core": "5.3.1",
     "@lingui/react": "5.3.1",
     "@mozilla/readability": "^0.6.0",
+    "@penx/vaul": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/content-render": "workspace:*",

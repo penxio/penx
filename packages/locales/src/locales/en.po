@@ -13,6 +13,16 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: creations.length
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:95
+msgid "{0} creations"
+msgstr "{0} creations"
+
+#. placeholder {0}: tasks.length
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:92
+msgid "{doneCount}/{0} tasks"
+msgstr "{doneCount}/{0} tasks"
+
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:44
 msgid "1 hour"
 msgstr "1 hour"
@@ -46,7 +56,6 @@ msgid "5 minutes"
 msgstr "5 minutes"
 
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:50
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:50
 msgid "A structured note-taking App"
 msgstr "A structured note-taking App"
 
@@ -107,10 +116,12 @@ msgstr "AI chat"
 msgid "AI features for notes"
 msgstr "AI features for notes"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:248
 #: packages/components/src/CreationCard/CreationCard.tsx:247
 msgid "AI transcribe"
 msgstr "AI transcribe"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:174
 #: packages/components/src/CreationCard/CreationCard.tsx:173
 msgid "AI Transcribing"
 msgstr "AI Transcribing"
@@ -163,11 +174,11 @@ msgstr "Are you sure you want to log out?"
 msgid "Are you sure you want to publish this struct to the marketplace?"
 msgstr "Are you sure you want to publish this struct to the marketplace?"
 
-#: apps/mobile/src/components/AreasMenu/AreasMenu.tsx:69
+#: apps/mobile/src/components/AreasMenu/AreasMenu.tsx:70
 msgid "Areas"
 msgstr "Areas"
 
-#: packages/libs/src/getDefaultStructs.ts:277
+#: packages/libs/src/getDefaultStructs.ts:272
 msgid "Bookmark"
 msgstr "Bookmark"
 
@@ -175,7 +186,7 @@ msgstr "Bookmark"
 msgid "Boolean"
 msgstr "Boolean"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:66
 msgid "Bubble"
 msgstr "Bubble"
 
@@ -186,7 +197,7 @@ msgstr "Bubble"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:65
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:75
 msgid "Card"
 msgstr "Card"
 
@@ -213,6 +224,7 @@ msgstr "Color"
 msgid "Confirm Publishing"
 msgstr "Confirm Publishing"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:263
 #: packages/components/src/CreationCard/CreationCard.tsx:262
 msgid "Copy"
 msgstr "Copy"
@@ -225,14 +237,18 @@ msgstr "Copy html"
 msgid "Create"
 msgstr "Create"
 
-#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:50
+#: packages/components/src/JournalQuickInput.tsx:58
+msgid "Create a task"
+msgstr "Create a task"
+
+#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:52
 #: packages/components/src/AreasPopover/AreasPopover.tsx:99
 #: packages/components/src/AreaDialog/AreaForm.tsx:321
 #: packages/components/src/AreaDialog/AreaDialog.tsx:36
 msgid "Create area"
 msgstr "Create area"
 
-#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:33
+#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:34
 msgid "Create new area"
 msgstr "Create new area"
 
@@ -276,6 +292,7 @@ msgstr "Date"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:314
 #: packages/components/src/CreationCard/CreationCard.tsx:313
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
@@ -327,6 +344,7 @@ msgid "Due date"
 msgstr "Due date"
 
 #: apps/mobile/src/pages/PageAllStructs/StructList.tsx:54
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:292
 #: packages/components/src/CreationCard/CreationCard.tsx:291
 msgid "Edit"
 msgstr "Edit"
@@ -405,6 +423,10 @@ msgstr "Find or create option"
 msgid "Free"
 msgstr "Free"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:43
+msgid "Fri"
+msgstr "Fri"
+
 #: packages/libs/src/getDefaultStructs.ts:162
 msgid "Gallery"
 msgstr "Gallery"
@@ -427,7 +449,9 @@ msgstr "High"
 msgid "Home"
 msgstr "Home"
 
+#: packages/libs/src/getDefaultStructs.ts:242
 #: packages/components/src/ColumnTypeName.tsx:26
+#: packages/components/src/AppProvider/AppService.ts:142
 msgid "Image"
 msgstr "Image"
 
@@ -448,10 +472,6 @@ msgstr "Introduction"
 msgid "Invalid phone number."
 msgstr "Invalid phone number."
 
-#: apps/mobile/src/pages/PageHome/HomeHeader.tsx:43
-msgid "Journal"
-msgstr "Journal"
-
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:35
 msgid "Journal layout"
 msgstr "Journal layout"
@@ -471,7 +491,7 @@ msgstr "Language"
 msgid "Light"
 msgstr "Light"
 
-#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:74
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
 #: packages/libs/src/getDefaultStructs.ts:176
 msgid "List"
 msgstr "List"
@@ -535,6 +555,10 @@ msgstr "Medium"
 msgid "Member"
 msgstr "Member"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:39
+msgid "Mon"
+msgstr "Mon"
+
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:136
 msgid "month"
 msgstr "month"
@@ -570,7 +594,7 @@ msgstr "My Structs"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:91
-#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:57
+#: apps/mobile/src/components/AreasMenu/CreateArea.tsx:59
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
@@ -617,6 +641,7 @@ msgstr "No results found."
 msgid "No task yet."
 msgstr "No task yet."
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/VoiceContent.tsx:105
 #: packages/components/src/CreationCard/VoiceContent.tsx:105
 msgid "No voice data!"
 msgstr "No voice data!"
@@ -678,6 +703,11 @@ msgstr "Phone login"
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:88
 msgid "Phone number"
 msgstr "Phone number"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:75
+msgid "Photos"
+msgstr "Photos"
 
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
 msgid "Pick a date"
@@ -777,6 +807,10 @@ msgstr "Rename"
 msgid "Resend"
 msgstr "Resend"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:44
+msgid "Sat"
+msgstr "Sat"
+
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:59
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
@@ -796,7 +830,7 @@ msgstr "Select a color"
 msgid "Select property type"
 msgstr "Select property type"
 
-#: apps/mobile/src/pages/PageProfile.tsx:45
+#: apps/mobile/src/pages/PageProfile.tsx:47
 #: packages/components/src/ProfileButton.tsx:204
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:83
@@ -840,6 +874,7 @@ msgstr "Standard yearly"
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:281
 #: packages/components/src/CreationCard/CreationCard.tsx:280
 msgid "Star"
 msgstr "Star"
@@ -889,6 +924,10 @@ msgstr "Subscribe to PenX to support us in building the best product and enjoy t
 msgid "Subscription"
 msgstr "Subscription"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:38
+msgid "Sun"
+msgstr "Sun"
+
 #: packages/components/src/ProfileButton.tsx:232
 msgid "Support"
 msgstr "Support"
@@ -934,7 +973,7 @@ msgstr "Table"
 msgid "Tag"
 msgstr "Tag"
 
-#: packages/libs/src/getDefaultStructs.ts:265
+#: packages/libs/src/getDefaultStructs.ts:260
 msgid "Task"
 msgstr "Task"
 
@@ -954,6 +993,10 @@ msgstr "Theme"
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr "This action cannot be undone. Are you sure you want to delete this property?"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:42
+msgid "Thu"
+msgstr "Thu"
+
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:66
 msgid "Time interval"
 msgstr "Time interval"
@@ -966,9 +1009,14 @@ msgstr "Title"
 msgid "To Do"
 msgstr "To Do"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalShortcut.tsx:30
 msgid "Today"
 msgstr "Today"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:40
+msgid "Tue"
+msgstr "Tue"
 
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
@@ -989,6 +1037,7 @@ msgstr "Unlimited number of notes"
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:281
 #: packages/components/src/CreationCard/CreationCard.tsx:280
 msgid "Unstar"
 msgstr "Unstar"
@@ -1024,9 +1073,13 @@ msgstr "Upgrade to Pro"
 msgid "URL"
 msgstr "URL"
 
-#: packages/libs/src/getDefaultStructs.ts:271
+#: packages/libs/src/getDefaultStructs.ts:266
 msgid "Voice"
 msgstr "Voice"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:41
+msgid "Wed"
+msgstr "Wed"
 
 #: apps/mobile/src/components/Login/LoginContent.tsx:42
 #: apps/extension/components/Login.tsx:38
@@ -1034,9 +1087,13 @@ msgstr "Voice"
 msgid "Welcome to PenX"
 msgstr "Welcome to PenX"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalContent.tsx:40
-msgid "What's on your mind today?"
-msgstr "What's on your mind today?"
+#: packages/components/src/JournalQuickInput.tsx:58
+msgid "What's on your mind?"
+msgstr "What's on your mind?"
+
+#: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
+msgid "Widget"
+msgstr "Widget"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:155
 msgid "year"

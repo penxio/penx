@@ -1,5 +1,6 @@
 import React from 'react'
 import { ColorSelector } from '@/components/ColorSelector'
+import { MobileContent } from '@/components/MobileContent'
 import { Card } from '@/components/ui/Card'
 import { MobileInput } from '@/components/ui/MobileInput'
 import { isAndroid } from '@/lib/utils'
@@ -30,29 +31,13 @@ import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 export function PageStructInfo({ struct }: { struct: Struct }) {
   return (
     <>
-      <IonHeader
-        className={isAndroid ? 'safe-area' : ''}
-        style={{
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        }}
+      <MobileContent
+        backgroundColor="#f6f6f6"
+        title={<div className="text-foreground">{struct.name}</div>}
       >
-        <IonToolbar
-          className="toolbar text-foreground"
-          style={{
-            '--border-width': 0,
-          }}
-        >
-          <IonButtons slot="start">
-            <IonBackButton text=""></IonBackButton>
-          </IonButtons>
-          <IonTitle>
-            <div className="text-foreground">{struct.name}</div>
-          </IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen class="content ion-padding text-foreground">
         <Content structId={struct.id} />
-      </IonContent>
+      </MobileContent>
+
       {!isBuiltinStruct(struct.type) && (
         <StructInfoFooter structId={struct.id} />
       )}

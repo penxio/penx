@@ -52,7 +52,7 @@ export function MobileCreation({ creationId }: Props) {
               }
             }}
           >
-            <div className={cn('mx-auto w-full max-w-2xl px-0')}>
+            <div className={cn('relative mx-auto w-full max-w-2xl px-0')}>
               <CreationHeader />
               <MobilePropList
                 onUpdateProps={(newCells) => {
@@ -74,7 +74,15 @@ export function MobileCreation({ creationId }: Props) {
                     updateCreationProps(creation.id, { title })
                   }}
                   onUploaded={async (url) => {
-                    updateCreationProps(creation.id, { image: url })
+                    console.log('uploaded===url===>>>>:', url)
+
+                    const newC = await updateCreationProps(creation.id, {
+                      data: {
+                        ...creation.data,
+                        url: url,
+                      },
+                    })
+                    console.log('====newC:', newC)
                   }}
                 />
               )}

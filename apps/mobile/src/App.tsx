@@ -3,6 +3,7 @@ import { DarkMode } from '@aparajita/capacitor-dark-mode'
 import { SafeArea } from '@capacitor-community/safe-area'
 import { Capacitor } from '@capacitor/core'
 import { SplashScreen } from '@capacitor/splash-screen'
+import { NavigationBar } from '@capgo/capacitor-navigation-bar'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import {
   IonApp,
@@ -49,7 +50,7 @@ import '@ionic/react/css/palettes/dark.class.css'
 // import '@ionic/react/css/palettes/dark.system.css'
 /* Theme variables */
 import './theme/variables.css'
-import { useEffect, useRef } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
@@ -64,7 +65,6 @@ import {
   showEstimatedQuota,
   tryPersistWithoutPromptingUser,
 } from './lib/indexeddbHelder'
-import { initializeRevenueCat } from './lib/initializeRevenueCat'
 import { PageAllStructs } from './pages/PageAllStructs/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { MoreStructDrawer } from './pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer'
@@ -87,17 +87,21 @@ async function init() {
   const persist = await tryPersistWithoutPromptingUser()
   console.log('========persist:', persist)
 
-  if (['ios', 'android'].includes(platform)) {
-    SafeArea.enable({
-      config: {
-        customColorsForSystemBars: true,
-        statusBarColor: '#00000000', // transparent
-        statusBarContent: isDark ? 'light' : 'dark',
-        navigationBarColor: '#00000000', // transparent
-        navigationBarContent: isDark ? 'light' : 'dark',
-      },
-    })
+  SafeArea.enable({
+    config: {
+      customColorsForSystemBars: true,
+      statusBarColor: '#00000000', // transparent
+      statusBarContent: isDark ? 'light' : 'dark',
+      navigationBarColor: '#00000000', // transparent
+      navigationBarContent: isDark ? 'light' : 'dark',
+    },
+  })
 
+  NavigationBar.setNavigationBarColor({
+    color: '#00000000',
+  }) // transparent
+
+  if (['ios', 'android'].includes(platform)) {
     // if (mode.dark) {
     //   const html = document.documentElement
     //   html.classList.add('dark')
@@ -109,12 +113,10 @@ async function init() {
     //   const html = document.documentElement
     //   html.classList.remove('dark')
     //   html.classList.remove('ion-palette-dark')
-
     //   await StatusBar.setStyle({
     //     style: Style.Light,
     //   })
     // }
-
     // if (prefersDarkScheme.matches) {
     //   const html = document.documentElement
     //   html.classList.add('dark')
@@ -126,12 +128,10 @@ async function init() {
     //   const html = document.documentElement
     //   html.classList.remove('dark')
     //   html.classList.remove('ion-palette-dark')
-
     //   await StatusBar.setStyle({
     //     style: Style.Light,
     //   })
     // }
-
     // prefersDarkScheme.addEventListener('change', async (status) => {
     //   try {
     //     await StatusBar.setStyle({
@@ -148,130 +148,120 @@ init()
 
 setupIonicReact()
 
-const App: React.FC = () => {
-  const nav = useRef<HTMLIonNavElement>(null)
-  const { setNav } = useMobileNav()
+const AppContent = memo(
+  () => {
+    const nav = useRef<HTMLIonNavElement>(null)
+    const { setNav } = useMobileNav()
 
-  useEffect(() => {
-    setNav(nav)
-  }, [nav])
+    console.log('render-------apppp>>>>>>>>>>>>>>>')
 
-  useEffect(() => {
-    appEmitter.on('ON_LOGOUT_SUCCESS', () => {
-      nav.current?.popToRoot()
-    })
-  }, [])
+    useEffect(() => {
+      setNav(nav)
+    }, [nav])
 
-  useEffect(() => {
-    function handle(creation: ICreationNode) {
-      nav.current?.push(PageCreation, {
-        creationId: creation.id,
-        nav: nav.current,
+    useEffect(() => {
+      appEmitter.on('ON_LOGOUT_SUCCESS', () => {
+        nav.current?.popToRoot()
       })
-    }
+    }, [])
 
-    appEmitter.on('ROUTE_TO_CREATION', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_CREATION', handle)
-    }
-  }, [])
+    useEffect(() => {
+      function handle(creation: ICreationNode) {
+        nav.current?.push(PageCreation, {
+          creationId: creation.id,
+          nav: nav.current,
+        })
+      }
 
-  useEffect(() => {
-    function handle() {
-      nav.current?.push(PageStruct, {})
-    }
+      appEmitter.on('ROUTE_TO_CREATION', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_CREATION', handle)
+      }
+    }, [])
 
-    appEmitter.on('ROUTE_TO_STRUCT', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_STRUCT', handle)
-    }
-  }, [])
+    useEffect(() => {
+      function handle() {
+        nav.current?.push(PageStruct, {})
+      }
 
-  useEffect(() => {
-    function handle() {
-      nav.current?.push(PageLogin, {})
-    }
-    appEmitter.on('ROUTE_TO_LOGIN', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_LOGIN', handle)
-    }
-  }, [])
+      appEmitter.on('ROUTE_TO_STRUCT', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_STRUCT', handle)
+      }
+    }, [])
 
-  useEffect(() => {
-    function handle() {
-      nav.current?.push(PageAllStructs, {})
-    }
+    useEffect(() => {
+      function handle() {
+        nav.current?.push(PageLogin, {})
+      }
+      appEmitter.on('ROUTE_TO_LOGIN', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_LOGIN', handle)
+      }
+    }, [])
 
-    appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
-    }
-  }, [])
+    useEffect(() => {
+      function handle() {
+        nav.current?.push(PageAllStructs, {})
+      }
 
-  useEffect(() => {
-    function handle() {
-      nav.current?.push(PageProfile, {})
-    }
-    appEmitter.on('ROUTE_TO_PROFILE', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_PROFILE', handle)
-    }
-  }, [])
+      appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
+      }
+    }, [])
 
-  useEffect(() => {
-    function handle(widget: Widget) {
-      nav.current?.push(PageWidget, { widget })
-    }
-    appEmitter.on('ROUTE_TO_WIDGET', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_WIDGET', handle)
-    }
-  }, [])
+    useEffect(() => {
+      function handle() {
+        nav.current?.push(PageProfile, {})
+      }
+      appEmitter.on('ROUTE_TO_PROFILE', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_PROFILE', handle)
+      }
+    }, [])
 
-  useEffect(() => {
-    function handle(struct?: Struct) {
-      nav.current?.push(PageStructInfo, { struct })
-    }
-    appEmitter.on('ROUTE_TO_STRUCT_INFO', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_STRUCT_INFO', handle)
-    }
-  }, [])
+    useEffect(() => {
+      function handle(widget: Widget) {
+        nav.current?.push(PageWidget, { widget })
+      }
+      appEmitter.on('ROUTE_TO_WIDGET', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_WIDGET', handle)
+      }
+    }, [])
 
-  useEffect(() => {
-    function handle() {
-      nav.current?.push(PageSync)
-    }
-    appEmitter.on('ROUTE_TO_SYNC', handle)
-    return () => {
-      appEmitter.off('ROUTE_TO_SYNC', handle)
-    }
-  }, [])
+    useEffect(() => {
+      function handle(struct?: Struct) {
+        nav.current?.push(PageStructInfo, { struct })
+      }
+      appEmitter.on('ROUTE_TO_STRUCT_INFO', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_STRUCT_INFO', handle)
+      }
+    }, [])
 
-  useEffect(() => {
-    SocialLogin.initialize(
-      platform === 'ios'
-        ? {
-            apple: {
-              // clientId: '',
-            },
-          }
-        : {
-            google: {
-              iOSClientId:
-                '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
-              webClientId:
-                '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
+    useEffect(() => {
+      function handle() {
+        nav.current?.push(PageSync)
+      }
+      appEmitter.on('ROUTE_TO_SYNC', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_SYNC', handle)
+      }
+    }, [])
 
-              // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
-              // mode: 'online',
-            },
-          },
-    )
-  }, [])
+    useEffect(() => {
+      function handle() {
+        nav.current?.pop()
+      }
+      appEmitter.on('ROUTE_TO_BACK', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_BACK', handle)
+      }
+    }, [])
 
-  return (
-    <IonApp className="" data-vaul-drawer-wrapper="">
+    return (
       <LocaleProvider>
         <ThemeProvider>
           <DashboardProviders>
@@ -299,6 +289,39 @@ const App: React.FC = () => {
           </DashboardProviders>
         </ThemeProvider>
       </LocaleProvider>
+    )
+  },
+  () => {
+    return true
+  },
+)
+
+const App: React.FC = () => {
+  useEffect(() => {
+    SocialLogin.initialize(
+      platform === 'ios'
+        ? {
+            apple: {
+              // clientId: '',
+            },
+          }
+        : {
+            google: {
+              iOSClientId:
+                '864679274232-ijpm9pmvthvuhtoo77j387gudd1ibvii.apps.googleusercontent.com',
+              webClientId:
+                '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com',
+
+              // redirectUrl: GOOGLE_OAUTH_REDIRECT_URI,
+              // mode: 'online',
+            },
+          },
+    )
+  }, [])
+
+  return (
+    <IonApp className="" data-vaul-drawer-wrapper="">
+      <AppContent />
     </IonApp>
   )
 }

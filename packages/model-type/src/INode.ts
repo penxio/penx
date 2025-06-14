@@ -166,6 +166,13 @@ export function isCreationTagNode(n: any): n is ICreationTagNode {
   return n.type === NodeType.CREATION_TAG
 }
 
+export type ImageCreationData = {
+  url: string
+  uploaded: boolean
+  localUrl?: string
+  fileId?: string
+}
+
 export interface ICreationNode extends INode {
   type: NodeType.CREATION
   areaId: string

@@ -60,5 +60,11 @@
 		<string>PenX uses the microphone to create voice notes.</string>
 		<key>NSSpeechRecognitionUsageDescription</key>
 		<string>PenX needs to access the speech recognition to recognize voice notes.</string>
+		<key>NSCameraUsageDescription</key>
+		<string>We will access your camera when you take a photo, and embed it in your note.</string>
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>We will access your album when you choose a photo, and embed it in your note.</string>
+		<key>NSPhotoLibraryAddUsageDescription</key>
+		<string>We will access your album when you save a photo.</string>
 	</dict>
 </plist>

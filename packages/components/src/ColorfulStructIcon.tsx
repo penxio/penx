@@ -11,10 +11,12 @@ export function ColorfulStructIcon({
   className,
   struct,
   emojiSize = 20,
+  iconClassName = 'size-4',
 }: {
   emojiSize?: number
   struct: Struct
   className?: string
+  iconClassName?: string
 }) {
   const bg = useMemo(() => {
     if (struct.emoji) return transparentize(colorNameMaps[struct.color], 80)
@@ -23,7 +25,8 @@ export function ColorfulStructIcon({
 
   const icon = useMemo(() => {
     if (struct.emoji) return <Emoji unified={struct.emoji} size={emojiSize} />
-    if (isBuiltinStruct(struct.type)) return <StructIcon type={struct.type} />
+    if (isBuiltinStruct(struct.type))
+      return <StructIcon type={struct.type} className={cn(iconClassName)} />
     return null
   }, [struct])
   return (

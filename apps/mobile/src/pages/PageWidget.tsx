@@ -1,18 +1,5 @@
 import React, { useMemo } from 'react'
-import { isAndroid } from '@/lib/utils'
-import { Capacitor } from '@capacitor/core'
-import {
-  IonBackButton,
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonFooter,
-  IonHeader,
-  IonNavLink,
-  IonPage,
-  IonTitle,
-  IonToolbar,
-} from '@ionic/react'
+import { MobileContent } from '@/components/MobileContent'
 import { CreationCard } from '@penx/components/CreationCard/CreationCard'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
@@ -25,34 +12,9 @@ import { WidgetName } from '@penx/widgets/WidgetName'
 
 export function PageWidget({ widget }: { widget: Widget }) {
   return (
-    <>
-      <IonHeader
-        className={isAndroid ? 'safe-area' : ''}
-        style={{
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        }}
-      >
-        <IonToolbar
-          className="toolbar"
-          style={{
-            '--border-width': 0,
-            // borderBottom: scrolled ? '1px solid #eeee' : 'none',
-            // borderBottom: 'none',
-            // border: 'none',
-          }}
-        >
-          <IonButtons slot="start">
-            <IonBackButton text=""></IonBackButton>
-          </IonButtons>
-          <IonTitle>
-            <Title widget={widget} />
-          </IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen class="ion-padding content">
-        <Content widget={widget} />
-      </IonContent>
-    </>
+    <MobileContent title={<Title widget={widget} />}>
+      <Content widget={widget} />
+    </MobileContent>
   )
 }
 

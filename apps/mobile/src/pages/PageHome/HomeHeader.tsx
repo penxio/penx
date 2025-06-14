@@ -1,53 +1,85 @@
-import React, { useMemo } from 'react'
+import { useRef } from 'react'
 import { SearchButton } from '@/components/MobileSearch/SearchButton'
-import { isAndroid } from '@/lib/utils'
-import { Capacitor } from '@capacitor/core'
 import { IonButtons, IonHeader, IonMenuToggle, IonToolbar } from '@ionic/react'
-import { Trans } from '@lingui/react/macro'
-import { cn } from '@penx/utils'
-import { useTheme } from '../../components/theme-provider'
+import { UserIcon } from 'lucide-react'
+import { appEmitter } from '@penx/emitter'
+import { useArea } from '@penx/hooks/useArea'
+import { useSession } from '@penx/session'
+import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { cn, getUrl } from '@penx/utils'
+import { generateGradient } from '@penx/utils/generateGradient'
 
 interface Props {
-  scrolled: boolean
+  //
 }
 
-export const HomeHeader = ({ scrolled }: Props) => {
-  const { isDark } = useTheme()
-  const bg = isDark ? '#222' : '#fff'
-  const border = isDark ? '1px solid #222' : '1px solid #eeee'
+export const HomeHeader = ({}: Props) => {
+  const { area } = useArea()
+  const { session } = useSession()
+  const menu = useRef<HTMLIonMenuElement>(null)
   return (
-    <IonHeader
-      className={cn(isAndroid && 'safe-area')}
-      style={{ boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)' }}
-    >
-      <IonToolbar
-        className="text-foreground relative flex items-center p-0 px-3 transition-all duration-300 ease-in-out"
-        style={{
-          '--border-width': 0,
-          // '--background': 'transparent',
-          '--background': scrolled ? bg : 'transparent',
-        }}
-      >
-        <IonButtons slot="start">
-          <IonMenuToggle className="flex items-center">
-            <span className="icon-[heroicons-outline--menu-alt-2] size-6"></span>
-          </IonMenuToggle>
-        </IonButtons>
+    <div className="flex items-center justify-between">
+      {area && (
+        <div className="flex items-center gap-1">
+          <IonButtons slot="start">
+            <IonMenuToggle className="flex items-center">
+              <span className="icon-[heroicons-outline--menu-alt-2] size-6"></span>
+            </IonMenuToggle>
+          </IonButtons>
 
-        <div className="text-foreground/50 text-md h-ful scroll-container flex flex-1 items-center gap-1 overflow-auto px-2 ">
-          <div
-            className={cn(
-              'text-foreground flex shrink-0 cursor-pointer items-center justify-center px-1 font-bold',
-            )}
-          >
-            <Trans>Journal</Trans>
+          {/* <Avatar className="size-6 rounded-md">
+            <AvatarImage src={area.logo} alt="" />
+            <AvatarFallback
+              className={cn(
+                'rounded-md text-xs text-white',
+                generateGradient(area.name),
+              )}
+            >
+              {area.name.slice(0, 1)}
+            </AvatarFallback>
+          </Avatar> */}
+
+          <div className="grid flex-1 text-left text-lg">
+            <span className="truncate font-semibold">{area?.name}</span>
           </div>
         </div>
+      )}
 
-        <IonButtons slot="end" className="">
-          <SearchButton />
-        </IonButtons>
-      </IonToolbar>
-    </IonHeader>
+      <div className="flex items-center gap-2">
+        <SearchButton />
+        {!session && (
+          <Avatar
+            className="h-8 w-8 rounded-full"
+            onClick={() => {
+              appEmitter.emit('ROUTE_TO_PROFILE')
+              menu.current?.close()
+            }}
+          >
+            <AvatarFallback className=" bg-foreground/10 text-foreground rounded-lg">
+              <UserIcon size={20} />
+            </AvatarFallback>
+          </Avatar>
+        )}
+        {session && (
+          <Avatar
+            className="h-8 w-8 rounded-full"
+            onClick={() => {
+              appEmitter.emit('ROUTE_TO_PROFILE')
+              menu.current?.close()
+            }}
+          >
+            <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+            <AvatarFallback
+              className={cn(
+                'rounded-lg text-white',
+                generateGradient(session.name),
+              )}
+            >
+              {session?.name.slice(0, 1)}
+            </AvatarFallback>
+          </Avatar>
+        )}
+      </div>
+    </div>
   )
 }

@@ -24,14 +24,6 @@ import { cn } from '@penx/utils'
 
 export const StructHeader: React.FC = () => {
   const { area } = useArea()
-  const { panels } = usePanels()
-  const { structs } = useStructs()
-  const struct = useMemo(() => {
-    const structPanels = panels.find((p) => p.type === PanelType.STRUCT)
-    const struct = structs.find((s) => s.id === structPanels?.structId)
-    return struct
-  }, [panels, structs])
-
   return (
     <IonHeader
       className={cn(isAndroid ? 'safe-area' : '')}
@@ -53,20 +45,9 @@ export const StructHeader: React.FC = () => {
           <IonBackButton text=""></IonBackButton>
         </IonButtons>
 
-        <IonTitle slot="start" className="text-foreground mx-1">
-          {struct?.name}
-        </IonTitle>
+        <IonTitle slot="start" className="text-foreground mx-1"></IonTitle>
 
-        <IonButtons slot="end">
-          <IonNavLink
-            routerDirection="forward"
-            component={() => <PageStructInfo struct={struct!} />}
-          >
-            <div className="text-brand mr-2 flex h-8 items-center">
-              <Trans>Edit props</Trans>
-            </div>
-          </IonNavLink>
-        </IonButtons>
+        <IonButtons slot="end"></IonButtons>
       </IonToolbar>
     </IonHeader>
   )

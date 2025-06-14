@@ -91,12 +91,12 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
           <BenefitItem>
             <Trans>Share note to friends</Trans>
           </BenefitItem>
-          {isPro && (
+          {!isPro && (
             <BenefitItem>
               <Trans>1GB/month storage</Trans>
             </BenefitItem>
           )}
-          {!isPro && (
+          {isPro && (
             <BenefitItem>
               <Trans>2GB/month storage</Trans>
             </BenefitItem>

@@ -16,6 +16,8 @@ PODS:
     - CapacitorCordova
   - CapacitorApp (7.0.1):
     - Capacitor
+  - CapacitorCamera (7.0.1):
+    - Capacitor
   - CapacitorCommunitySafeArea (7.0.0-alpha.1):
     - Capacitor
   - CapacitorCommunitySpeechRecognition (7.0.0):
@@ -32,6 +34,8 @@ PODS:
     - OSInAppBrowserLib (~> 2.0)
   - CapacitorKeyboard (7.0.1):
     - Capacitor
+  - CapacitorShare (7.0.1):
+    - Capacitor
   - CapacitorSplashScreen (7.0.1):
     - Capacitor
   - CapacitorStatusBar (7.0.1):
@@ -39,6 +43,8 @@ PODS:
   - CapacitorToast (7.0.1):
     - Capacitor
   - CapacitorVoiceRecorder (7.0.5):
+    - Capacitor
+  - CapgoCapacitorNavigationBar (7.1.19):
     - Capacitor
   - CapgoCapacitorSocialLogin (7.5.9):
     - Alamofire (~> 5.10.2)
@@ -85,6 +91,7 @@ DEPENDENCIES:
   - "AparajitaCapacitorDarkMode (from `../../../../node_modules/.pnpm/@aparajita+capacitor-dark-mode@5.0.2/node_modules/@aparajita/capacitor-dark-mode`)"
   - "Capacitor (from `../../../../node_modules/.pnpm/@capacitor+ios@7.2.0_@capacitor+core@7.2.0/node_modules/@capacitor/ios`)"
   - "CapacitorApp (from `../../../../node_modules/.pnpm/@capacitor+app@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/app`)"
+  - "CapacitorCamera (from `../../../../node_modules/.pnpm/@capacitor+camera@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/camera`)"
   - "CapacitorCommunitySafeArea (from `../../../../node_modules/.pnpm/@capacitor-community+safe-area@7.0.0-alpha.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/safe-area`)"
   - "CapacitorCommunitySpeechRecognition (from `../../../../node_modules/.pnpm/@capacitor-community+speech-recognition@7.0.0_@capacitor+core@7.2.0/node_modules/@capacitor-community/speech-recognition`)"
   - "CapacitorCordova (from `../../../../node_modules/.pnpm/@capacitor+ios@7.2.0_@capacitor+core@7.2.0/node_modules/@capacitor/ios`)"
@@ -93,10 +100,12 @@ DEPENDENCIES:
   - "CapacitorHaptics (from `../../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics`)"
   - "CapacitorInappbrowser (from `../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser`)"
   - "CapacitorKeyboard (from `../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard`)"
+  - "CapacitorShare (from `../../../../node_modules/.pnpm/@capacitor+share@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/share`)"
   - "CapacitorSplashScreen (from `../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar`)"
   - "CapacitorToast (from `../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast`)"
   - "CapacitorVoiceRecorder (from `../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder`)"
+  - "CapgoCapacitorNavigationBar (from `../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar`)"
   - "CapgoCapacitorSocialLogin (from `../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login`)"
   - "RevenuecatPurchasesCapacitor (from `../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.4_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor`)"
 
@@ -125,6 +134,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+ios@7.2.0_@capacitor+core@7.2.0/node_modules/@capacitor/ios"
   CapacitorApp:
     :path: "../../../../node_modules/.pnpm/@capacitor+app@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/app"
+  CapacitorCamera:
+    :path: "../../../../node_modules/.pnpm/@capacitor+camera@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/camera"
   CapacitorCommunitySafeArea:
     :path: "../../../../node_modules/.pnpm/@capacitor-community+safe-area@7.0.0-alpha.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/safe-area"
   CapacitorCommunitySpeechRecognition:
@@ -141,6 +152,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser"
   CapacitorKeyboard:
     :path: "../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard"
+  CapacitorShare:
+    :path: "../../../../node_modules/.pnpm/@capacitor+share@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/share"
   CapacitorSplashScreen:
     :path: "../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen"
   CapacitorStatusBar:
@@ -149,6 +162,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast"
   CapacitorVoiceRecorder:
     :path: "../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder"
+  CapgoCapacitorNavigationBar:
+    :path: "../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar"
   CapgoCapacitorSocialLogin:
     :path: "../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login"
   RevenuecatPurchasesCapacitor:
@@ -161,6 +176,7 @@ SPEC CHECKSUMS:
   AppCheckCore: cc8fd0a3a230ddd401f326489c99990b013f0c4f
   Capacitor: 03bc7cbdde6a629a8b910a9d7d78c3cc7ed09ea7
   CapacitorApp: febecbb9582cb353aed037e18ec765141f880fe9
+  CapacitorCamera: 6e73f1fc6c629a672658705a02409b60854bc0f1
   CapacitorCommunitySafeArea: 3f049619072ab5d0da2529bcb05b358ff6c13dc1
   CapacitorCommunitySpeechRecognition: 68f49415c98181d13c0a5b49e14dfb8752f01975
   CapacitorCordova: 5967b9ba03915ef1d585469d6e31f31dc49be96f
@@ -169,10 +185,12 @@ SPEC CHECKSUMS:
   CapacitorHaptics: 1f1e17041f435d8ead9ff2a34edd592c6aa6a8d6
   CapacitorInappbrowser: b9b366f37561bf92da226df6353631ac01cc5b92
   CapacitorKeyboard: 09fd91dcde4f8a37313e7f11bde553ad1ed52036
+  CapacitorShare: e573823f511f260f598d0423c33b1e3d7bbe5fd1
   CapacitorSplashScreen: 1d67815a422a9b61539c94f283c08ed56667c0fc
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
   CapacitorToast: ddfc4b36080dbe3634c9faf510b20f6ddcff9330
   CapacitorVoiceRecorder: d971261c83b35475ab202c357ece2c0f83a83ee3
+  CapgoCapacitorNavigationBar: a7f7e08fa725f91d993750c7dca58d9f6c7841fb
   CapgoCapacitorSocialLogin: 981a9b3c980d90cca812f2a161678f6ca8f24096
   FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
   FBSDKCoreKit: 94d7461d0cecf441b1ba7c41acfff41daa8ccd41
@@ -188,6 +206,6 @@ SPEC CHECKSUMS:
   RevenueCat: 3fafcf295834118ed6e6ec9388a20a4c9092b1e6
   RevenuecatPurchasesCapacitor: a916cdf5a6c65ad3c7d6fc203f75e731a514bc89
 
-PODFILE CHECKSUM: f50d11ed5488d4cb397fe96e66e676fd7ce55a0e
+PODFILE CHECKSUM: 21275883917f06fd3aea8fb1a060b0769810cf3b
 
 COCOAPODS: 1.16.2

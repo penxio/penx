@@ -23,7 +23,7 @@ export const HomeFooter = ({ open, onAdd }: Props) => {
       <div
         className={cn('relative inline-flex items-center justify-center pb-6')}
       >
-        <div className="shadow-card bg-background dark:bg-brand relative inline-flex h-[52px] items-center gap-2 rounded-full px-2">
+        <div className="shadow-popover bg-background dark:bg-brand relative inline-flex h-[52px] items-center gap-2 rounded-full px-2">
           <VoiceRecorderButton />
           <AddNoteButton onAdd={onAdd} />
           <AddMoreButton />

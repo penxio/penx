@@ -21,6 +21,7 @@
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
+    "@penx/services": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/emitter": "workspace:*",
     "@penx/libs": "workspace:*",

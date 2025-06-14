@@ -20,6 +20,7 @@ export type Input = {
   content?: string
   title?: string
   data?: any
+  date?: any
 }
 
 export function useAddCreation() {
@@ -38,9 +39,10 @@ export function useAddCreation() {
     const addCreationInput: AddCreationInput = {
       slug: uniqueId(),
       siteId: site.id,
-      title: input.title || '',
       description: '',
       image: '',
+      ...input,
+      title: input.title || '',
       content: input.content || JSON.stringify(defaultEditorContent),
       data: input.data || {},
       type: struct.type,

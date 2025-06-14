@@ -112,7 +112,12 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
                 updateCreationProps(creation.id, { title })
               }}
               onUploaded={async (url) => {
-                updateCreationProps(creation.id, { image: url })
+                updateCreationProps(creation.id, {
+                  data: {
+                    ...creation.data,
+                    url: url,
+                  },
+                })
               }}
             />
           )}

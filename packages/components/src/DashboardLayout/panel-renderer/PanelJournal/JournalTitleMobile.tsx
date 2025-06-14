@@ -10,7 +10,6 @@ import { store } from '@penx/store'
 import { Calendar } from '@penx/uikit/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { JournalShortcut } from './JournalShortcut'
-import { StructTypeSelect } from './StructTypeSelect'
 
 interface Props {
   initialDate: Date
@@ -23,11 +22,11 @@ export function JournalTitleMobile({ initialDate }: Props) {
 
   const { journal } = useJournal()
 
-  useEffect(() => {
-    if (format(date, 'yyyy-MM-dd') !== journal.date) {
-      setDate(new Date(journal.date))
-    }
-  }, [journal.date])
+  // useEffect(() => {
+  //   if (format(date, 'yyyy-MM-dd') !== journal.date) {
+  //     setDate(new Date(journal.date))
+  //   }
+  // }, [journal.date])
 
   const daysWithNotes = creations
     .reduce<string[]>((acc, item) => {
@@ -42,7 +41,7 @@ export function JournalTitleMobile({ initialDate }: Props) {
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <div className="flex items-center gap-1">
-            <div className="text-3xl font-bold">
+            <div className="text-2xl font-bold">
               {format(new Date(date), 'LLL do')}
             </div>
             <span className="icon-[ion--caret-down] text-foreground/90 size-4" />

@@ -47,6 +47,16 @@ export function JournalLayoutMenu({ children, className }: ItemProps) {
         {layout && (
           <Menu>
             <MenuItem
+              checked={layout == JournalLayout.WIDGET}
+              onClick={() => {
+                updateJournalLayout(JournalLayout.WIDGET)
+                setOpen(false)
+              }}
+            >
+              <Trans>Widget</Trans>
+            </MenuItem>
+
+            <MenuItem
               checked={layout == JournalLayout.BUBBLE}
               onClick={() => {
                 updateJournalLayout(JournalLayout.BUBBLE)

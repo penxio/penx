@@ -27,6 +27,7 @@ export const addCreationInputSchema = z.object({
   image: z.string().optional(),
   content: z.string(),
   data: z.any(),
+  date: z.string().optional(),
   status: z.any().optional(),
   userId: z.string().optional(),
   structId: z.string().uuid(),
@@ -98,3 +99,14 @@ export const syncAppleSubscriptionInputSchema = z.object({
 export type SyncAppleSubscriptionInput = z.infer<
   typeof syncAppleSubscriptionInputSchema
 >
+
+export const createAssetInputSchema = z.object({
+  siteId: z.string(),
+  url: z.string(),
+  filename: z.string(),
+  contentType: z.string(),
+  size: z.number(),
+  isPublic: z.boolean(),
+})
+
+export type CreateAssetInput = z.infer<typeof createAssetInputSchema>

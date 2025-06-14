@@ -47,10 +47,10 @@ const Menu: React.FC = () => {
       contentId="main"
       type="overlay"
       // type="push"
-      className="bg-foreground/5 z-[1000]"
+      className="bg-foreground/5 z-[1000] pt-10"
     >
       <IonHeader
-        className={cn(isAndroid && 'safe-area')}
+        className={cn(isAndroid && 'safe-area pt-20')}
         style={{ boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)' }}
       >
         <IonToolbar
@@ -118,38 +118,6 @@ const Menu: React.FC = () => {
             <RefreshCwIcon size={18} />
             <Trans>Sync now</Trans>
           </Button>
-          {!session && (
-            <Avatar
-              className="h-8 w-8 rounded-lg"
-              onClick={() => {
-                appEmitter.emit('ROUTE_TO_PROFILE')
-                menu.current?.close()
-              }}
-            >
-              <AvatarFallback className=" bg-foreground/10 text-foreground rounded-lg">
-                <UserIcon size={20} />
-              </AvatarFallback>
-            </Avatar>
-          )}
-          {session && (
-            <Avatar
-              className="h-8 w-8 rounded-lg"
-              onClick={() => {
-                appEmitter.emit('ROUTE_TO_PROFILE')
-                menu.current?.close()
-              }}
-            >
-              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-              <AvatarFallback
-                className={cn(
-                  'rounded-lg text-white',
-                  generateGradient(session.name),
-                )}
-              >
-                {session?.name.slice(0, 1)}
-              </AvatarFallback>
-            </Avatar>
-          )}
         </div>
       </IonFooter>
     </IonMenu>
