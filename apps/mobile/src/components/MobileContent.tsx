@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, ReactNode } from 'react'
 import { IonContent } from '@ionic/react'
+import { cn } from '@penx/utils'
 import { MobileHeaderWrapper } from './MobileHeaderWrapper'
 import { useTheme } from './theme-provider'
 
@@ -8,6 +9,7 @@ interface Props {
   rightSlot?: ReactNode
   style?: React.CSSProperties
   backgroundColor?: string
+  className?: string
 }
 
 export const MobileContent = ({
@@ -15,6 +17,7 @@ export const MobileContent = ({
   rightSlot,
   backgroundColor,
   children,
+  className,
 }: PropsWithChildren<Props>) => {
   const { isDark } = useTheme()
   return (
@@ -32,7 +35,7 @@ export const MobileContent = ({
           rightSlot={rightSlot}
         ></MobileHeaderWrapper>
         <div
-          className="flex-1 overflow-auto px-3 pb-3"
+          className={cn('flex-1 overflow-auto px-3 pb-3', className)}
           style={{
             paddingTop: 'calc(var(--safe-area-inset-top) + 60px)',
           }}

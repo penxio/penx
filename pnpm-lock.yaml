@@ -197,6 +197,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.74.3
         version: 5.75.7(react@19.0.0)
+      '@tanstack/react-virtual':
+        specifier: ^3.13.10
+        version: 3.13.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tauri-apps/api':
         specifier: 2.5.0
         version: 2.5.0
@@ -6154,6 +6157,15 @@ packages:
     resolution: {integrity: sha512-JYcH1g5pNjKXNQcvvnCU/PueaYg05uKBDHlWIyApspv7r5C0BM12n6ysa2QF2T+1tlPnNXOob8vr8o96Nx0GxQ==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@tanstack/react-virtual@3.13.10':
+    resolution: {integrity: sha512-nvrzk4E9mWB4124YdJ7/yzwou7IfHxlSef6ugCFcBfRmsnsma3heciiiV97sBNxyc3VuwtZvmwXd0aB5BpucVw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@tanstack/virtual-core@3.13.10':
+    resolution: {integrity: sha512-sPEDhXREou5HyZYqSWIqdU580rsF6FGeN7vpzijmP3KTiOGjOMZASz4Y6+QKjiFQwhWrR58OP8izYaNGVxvViA==}
 
   '@tauri-apps/api@2.5.0':
     resolution: {integrity: sha512-Ldux4ip+HGAcPUmuLT8EIkk6yafl5vK0P0c0byzAKzxJh7vxelVtdPONjfgTm96PbN24yjZNESY8CKo8qniluA==}
@@ -20702,6 +20714,14 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.75.7
       react: 19.0.0
+
+  '@tanstack/react-virtual@3.13.10(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@tanstack/virtual-core': 3.13.10
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
+  '@tanstack/virtual-core@3.13.10': {}
 
   '@tauri-apps/api@2.5.0': {}
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import { MobileContent } from '@/components/MobileContent'
 import { Trans } from '@lingui/react/macro'
 import { CreateStructButton } from './CreateStructButton'
@@ -15,14 +15,16 @@ function Content() {
 
   return (
     <MobileContent title={<Trans>Structs</Trans>}>
-      <StructNav navType={navType} onSelect={(v) => setNavType(v)} />
-      {navType === NavType.MY_STRUCT && (
-        <div className="flex flex-col gap-4">
-          <CreateStructButton />
-          <StructList />
-        </div>
-      )}
-      {navType === NavType.MARKETPLACE && <StructMarketplace />}
+      <div className="space-y-2">
+        <StructNav navType={navType} onSelect={(v) => setNavType(v)} />
+        {navType === NavType.MY_STRUCT && (
+          <div className="flex flex-col gap-4">
+            <CreateStructButton />
+            <StructList />
+          </div>
+        )}
+        {navType === NavType.MARKETPLACE && <StructMarketplace />}
+      </div>
     </MobileContent>
   )
 }

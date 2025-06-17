@@ -3,7 +3,9 @@
 import { ReactNode, useState } from 'react'
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'
 import { CameraIcon } from 'lucide-react'
+import { motion } from 'motion/react'
 import { toast } from 'sonner'
+import { useLongPress } from 'use-long-press'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
@@ -22,11 +24,15 @@ interface Props {
 export function TakePhotoButton({ children }: Props) {
   const addCreation = useAddCreation()
 
-  const takePhoto = async () => {
+  const handlers = useLongPress(async () => {
+    takePhoto(false)
+  })
+
+  const takePhoto = async (isCamera = true) => {
     try {
       const image = await Camera.getPhoto({
         resultType: CameraResultType.Uri,
-        source: CameraSource.Camera,
+        source: isCamera ? CameraSource.Camera : CameraSource.Photos,
         // source: CameraSource.Photos,
         allowEditing: false,
         // saveToGallery: true,
@@ -61,7 +67,8 @@ export function TakePhotoButton({ children }: Props) {
   }
   if (children) {
     return (
-      <div
+      <motion.div
+        {...handlers()}
         className="inline-flex"
         onClick={(e) => {
           e.stopPropagation()
@@ -69,20 +76,20 @@ export function TakePhotoButton({ children }: Props) {
         }}
       >
         {children}
-      </div>
+      </motion.div>
     )
   }
   return (
-    <Button
-      className="size-6"
-      size="icon"
-      variant="secondary"
+    <motion.div
+      {...handlers()}
+      whileTap={{ scale: 1.1 }}
+      className="flex size-6 items-center justify-center"
       onClick={(e) => {
         e.stopPropagation()
         takePhoto()
       }}
     >
       <CameraIcon size={20}></CameraIcon>
-    </Button>
+    </motion.div>
   )
 }
