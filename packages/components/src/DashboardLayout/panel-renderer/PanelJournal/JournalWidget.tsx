@@ -2,7 +2,7 @@
 
 import { Trans } from '@lingui/react/macro'
 import { CameraIcon, PencilIcon, PlusIcon } from 'lucide-react'
-import { motion } from 'motion/react'
+import { LayoutGroup, motion } from 'motion/react'
 import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
@@ -53,31 +53,36 @@ export function JournalWidget({ creations }: Props) {
           return null
 
         return (
-          <div
-            key={struct.id}
-            className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <ColorfulStructIcon
-                  struct={struct!}
-                  className="size-6"
-                  emojiSize={12}
-                />
-                <div className="text-bae font-bold">
-                  <StructName struct={struct} />
+          <LayoutGroup>
+            <motion.div
+              layoutId={struct.id}
+              key={struct.id}
+              className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <ColorfulStructIcon
+                    struct={struct!}
+                    className="size-6"
+                    emojiSize={12}
+                  />
+                  <div className="text-bae font-bold">
+                    <StructName struct={struct} />
+                  </div>
                 </div>
+                <AddCreationButton struct={struct} />
               </div>
-              <AddCreationButton struct={struct} />
-            </div>
-            {structCreations.length > 0 && (
-              <div className="flex flex-col gap-2">
-                {structCreations.map((creation) => {
-                  return <CreationItem creation={creation} key={creation.id} />
-                })}
-              </div>
-            )}
-          </div>
+              {structCreations.length > 0 && (
+                <div className="flex flex-col gap-2">
+                  {structCreations.map((creation) => {
+                    return (
+                      <CreationItem creation={creation} key={creation.id} />
+                    )
+                  })}
+                </div>
+              )}
+            </motion.div>
+          </LayoutGroup>
         )
       })}
     </div>

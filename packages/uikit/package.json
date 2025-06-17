@@ -7,6 +7,7 @@
     "./tailwind.css": "./src/styles/tailwind.css",
     "./*": "./src/*.tsx",
     "./postcss.config": "./postcss.config.mjs",
+    "./Portal": "./src/components/Portal.tsx",
     "./AddNodeBtn": "./src/components/AddNodeBtn.tsx",
     "./FileUpload": "./src/components/FileUpload.tsx",
     "./Image": "./src/components/Image.tsx",

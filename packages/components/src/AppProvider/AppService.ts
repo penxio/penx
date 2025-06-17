@@ -2,6 +2,7 @@ import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import { api } from '@penx/api'
+import { isMobileApp } from '@penx/constants'
 import { Node } from '@penx/domain'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
 import { localDB } from '@penx/local-db'
@@ -190,7 +191,7 @@ export class AppService {
 
     const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)
 
-    if (!journalPanel) {
+    if (!journalPanel && !panels.length && isMobileApp) {
       const date = new Date()
       const dateStr = format(date, 'yyyy-MM-dd')
 

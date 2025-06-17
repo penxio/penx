@@ -55,15 +55,15 @@ export function PanelJournal({ panel, index }: Props) {
             </div>
           )}
 
-          {/* <div
+          <div
             className="absolute bottom-0 left-0 right-0 top-0 z-10 opacity-30 dark:opacity-0"
             style={{
               filter: 'blur(150px) saturate(150%)',
               transform: 'translateZ(0)',
               backgroundImage:
-                'radial-gradient(at 27% 37%, #3a8bfd 0, transparent 50%), radial-gradient(at 97% 21%, #9772fe 0, transparent 50%), radial-gradient(at 52% 99%, #fd3a4e 0, transparent 50%), radial-gradient(at 10% 29%, #5afc7d 0, transparent 50%), radial-gradient(at 97% 96%, #e4c795 0, transparent 50%), radial-gradient(at 33% 50%, #8ca8e8 0, transparent 50%), radial-gradient(at 79% 53%, #eea5ba 0, transparent 50%)',
+                'radial-gradient(at 27% 37%, #eea5ba 0, transparent 50%), radial-gradient(at 97% 21%, #fd3a4e 0, transparent 50%), radial-gradient(at 52% 99%, #e4c795 0, transparent 50%), radial-gradient(at 10% 29%, #5afc7d 0, transparent 50%), radial-gradient(at 97% 96%, #8ca8e8 0, transparent 50%), radial-gradient(at 33% 50%, #9772fe 0, transparent 50%), radial-gradient(at 79% 53%, #3a8bfd 0, transparent 50%)',
             }}
-          ></div> */}
+          ></div>
         </div>
       </div>
     </>
