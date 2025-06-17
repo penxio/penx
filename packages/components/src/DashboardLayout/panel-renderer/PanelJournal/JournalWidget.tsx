@@ -53,10 +53,9 @@ export function JournalWidget({ creations }: Props) {
           return null
 
         return (
-          <LayoutGroup>
+          <LayoutGroup key={struct.id}>
             <motion.div
               layoutId={struct.id}
-              key={struct.id}
               className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3"
             >
               <div className="flex items-center justify-between">

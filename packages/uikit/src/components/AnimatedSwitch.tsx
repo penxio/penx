@@ -1,26 +1,24 @@
 import React, { useState } from 'react'
-import { impact } from '@/lib/impact'
 import { motion } from 'motion/react'
 import { cn } from '@penx/utils'
 
-interface ToggleSwitchProps {
-  isOn: boolean
-  onChange: (isOn: boolean) => void
+interface Props {
+  checked: boolean
+  onChange: (checked: boolean) => void
 }
 
-export function ToggleSwitch({ isOn, onChange }: ToggleSwitchProps) {
+export function AnimatedSwitch({ checked, onChange }: Props) {
   return (
     <motion.div
       onClick={() => {
-        impact()
-        onChange(!isOn)
+        onChange(!checked)
       }}
       className={cn(
         'bg-brand flex h-8 w-14 items-center rounded-full px-[2px]',
-        !isOn && 'bg-foreground/10',
+        !checked && 'bg-foreground/10',
       )}
       style={{
-        justifyContent: !isOn ? 'flex-start' : 'flex-end',
+        justifyContent: !checked ? 'flex-start' : 'flex-end',
       }}
     >
       <motion.div

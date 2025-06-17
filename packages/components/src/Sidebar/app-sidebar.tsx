@@ -6,6 +6,7 @@ import {
   DatabaseBackupIcon,
   GlobeIcon,
   PaletteIcon,
+  RefreshCcwIcon,
   TagsIcon,
 } from 'lucide-react'
 import { ModeToggle } from '@penx/components/ModeToggle'
@@ -30,6 +31,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
+import { cn } from '@penx/utils'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { AddCreationButton } from '../AddCreationButton'
 import { AreaWidgets } from '../area-widgets'
@@ -38,6 +40,7 @@ import { LangSwitcher } from '../LangSwitcher'
 import { ProfileButton } from '../ProfileButton'
 import { ImportPostEntry } from './ImportPostEntry'
 import { QuickSearchTrigger } from './QuickSearchTrigger'
+import { SyncButton } from './SyncButton'
 import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -59,7 +62,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarFooter className="py-0">
         <div className="flex items-center justify-between">
-          <div className='flex items-center gap-1'>
+          <div className="flex items-center gap-1">
             {/* {session && <VisitSiteButton />} */}
 
             {/* <TooltipProvider>
@@ -133,7 +136,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </TooltipProvider>
             )} */}
             <ModeToggle className="hover:bg-foreground/8" />
-            <LangSwitcher />
+
+            <SyncButton />
+            {/* <LangSwitcher /> */}
           </div>
           <ProfileButton />
         </div>

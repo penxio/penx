@@ -51,14 +51,6 @@ export function JournalTitleWidget({ creations }: Props) {
     },
   })
 
-  console.log(
-    '=======floatingStyles:',
-    floatingStyles,
-    context.strategy,
-    context.x,
-    context.y,
-  )
-
   const weekdayAbbr = [
     <Trans>Sun</Trans>,
     <Trans>Mon</Trans>,

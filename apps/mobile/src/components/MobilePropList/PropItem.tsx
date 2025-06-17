@@ -9,15 +9,14 @@ import { FileUpload } from '@penx/components/FileUpload'
 import { useStructs } from '@penx/hooks/useStructs'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
+import { AnimatedSwitch } from '@penx/uikit/components/AnimatedSwitch'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Input } from '@penx/uikit/input'
 import { cn } from '@penx/utils'
-import { MobileInput } from '../ui/MobileInput'
 import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
-import { ToggleSwitch } from './ToggleSwitch'
 
 interface Props {
   column: IColumn
@@ -115,13 +114,13 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
 
         {ColumnType.BOOLEAN === column.columnType && (
           <div className="flex h-full flex-1 items-center justify-end pr-2">
-            <ToggleSwitch
-              isOn={!!value}
-              onChange={(isOn) => {
+            <AnimatedSwitch
+              checked={!!value}
+              onChange={(checked) => {
                 impact()
                 onUpdateProps({
                   ...cells,
-                  [column.id]: isOn,
+                  [column.id]: checked,
                 })
               }}
             />
