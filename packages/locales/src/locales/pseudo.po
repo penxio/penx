@@ -14,12 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: creations.length
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:95
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:166
 msgid "{0} creations"
 msgstr ""
 
 #. placeholder {0}: tasks.length
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:92
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:163
 msgid "{doneCount}/{0} tasks"
 msgstr ""
 
@@ -178,7 +178,7 @@ msgstr ""
 msgid "Areas"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:272
+#: packages/libs/src/getDefaultStructs.ts:284
 msgid "Bookmark"
 msgstr ""
 
@@ -195,6 +195,10 @@ msgstr ""
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
+msgstr ""
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:94
+msgid "Capture the beautiful moments"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:75
@@ -219,6 +223,10 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:161
+msgid "Confirm"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
@@ -235,10 +243,6 @@ msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 msgid "Create"
-msgstr ""
-
-#: packages/components/src/JournalQuickInput.tsx:58
-msgid "Create a task"
 msgstr ""
 
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:52
@@ -274,6 +278,7 @@ msgstr ""
 msgid "Creation counts"
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:46
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr ""
@@ -363,7 +368,8 @@ msgstr ""
 msgid "Edit property"
 msgstr ""
 
-#: apps/mobile/src/components/StructHeader.tsx:66
+#: apps/mobile/src/pages/PageStruct/PageStruct.tsx:54
+#: apps/mobile/src/pages/PageStruct/PageStruct.tsx:79
 msgid "Edit props"
 msgstr ""
 
@@ -387,13 +393,13 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: apps/mobile/src/pages/PageEmailLogin.tsx:43
+#: apps/mobile/src/pages/PageEmailLogin.tsx:25
 #: apps/mobile/src/components/Login/EmailLoginButton.tsx:17
 msgid "Email login"
 msgstr ""
 
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:53
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:90
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:52
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:89
 msgid "Empty"
 msgstr ""
 
@@ -423,11 +429,11 @@ msgstr ""
 msgid "Free"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:43
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:60
 msgid "Fri"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:162
+#: packages/libs/src/getDefaultStructs.ts:174
 msgid "Gallery"
 msgstr ""
 
@@ -449,9 +455,9 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:242
+#: packages/libs/src/getDefaultStructs.ts:254
 #: packages/components/src/ColumnTypeName.tsx:26
-#: packages/components/src/AppProvider/AppService.ts:142
+#: packages/components/src/AppProvider/AppService.ts:151
 msgid "Image"
 msgstr ""
 
@@ -463,8 +469,8 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:106
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:107
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:91
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:75
 msgid "Introduction"
 msgstr ""
 
@@ -487,12 +493,13 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:38
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
-#: packages/libs/src/getDefaultStructs.ts:176
+#: packages/libs/src/getDefaultStructs.ts:188
 msgid "List"
 msgstr ""
 
@@ -517,7 +524,7 @@ msgstr ""
 msgid "Log out"
 msgstr ""
 
-#: apps/mobile/src/pages/PageLogin.tsx:45
+#: apps/mobile/src/pages/PageLogin.tsx:11
 msgid "Login"
 msgstr ""
 
@@ -538,7 +545,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: packages/components/src/Sidebar/app-sidebar.tsx:107
+#: packages/components/src/Sidebar/app-sidebar.tsx:110
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:38
 msgid "Manage tags"
 msgstr ""
@@ -555,7 +562,7 @@ msgstr ""
 msgid "Member"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:39
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:56
 msgid "Mon"
 msgstr ""
 
@@ -585,11 +592,11 @@ msgstr ""
 msgid "My Structs"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:82
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:67
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:81
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:49
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
@@ -646,7 +653,7 @@ msgstr ""
 msgid "No voice data!"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:236
+#: packages/libs/src/getDefaultStructs.ts:248
 msgid "Note"
 msgstr ""
 
@@ -674,7 +681,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:219
+#: packages/libs/src/getDefaultStructs.ts:231
 msgid "Page"
 msgstr ""
 
@@ -688,14 +695,16 @@ msgid "Password"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:32
+#: packages/components/src/Sidebar/SyncButton.tsx:36
 msgid "PenX is a Local-first App, supporting offline use and multi-device sync."
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:29
+#: packages/components/src/Sidebar/SyncButton.tsx:33
 msgid "PenX Sync"
 msgstr ""
 
-#: apps/mobile/src/pages/PagePhoneLogin.tsx:42
+#: apps/mobile/src/pages/PagePhoneLogin.tsx:11
 #: apps/mobile/src/components/Login/PhoneLoginButton.tsx:27
 msgid "Phone login"
 msgstr ""
@@ -704,8 +713,8 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:38
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:75
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:42
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:88
 msgid "Photos"
 msgstr ""
 
@@ -713,7 +722,7 @@ msgstr ""
 msgid "Pick a date"
 msgstr ""
 
-#: apps/mobile/src/pages/PagePlan.tsx:44
+#: apps/mobile/src/pages/PagePlan.tsx:6
 msgid "Plan"
 msgstr ""
 
@@ -754,8 +763,8 @@ msgstr ""
 msgid "Pro yearly"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:117
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:118
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:102
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:86
 msgid "Properties"
 msgstr ""
 
@@ -799,6 +808,19 @@ msgstr ""
 msgid "Register to PenX"
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:119
+msgid "Remind me..."
+msgstr ""
+
+#: packages/libs/src/getDefaultStructs.ts:122
+#: packages/components/src/AppProvider/AppService.ts:171
+msgid "Reminder"
+msgstr ""
+
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:149
+msgid "Remove reminder"
+msgstr ""
+
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr ""
@@ -807,7 +829,7 @@ msgstr ""
 msgid "Resend"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:44
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:61
 msgid "Sat"
 msgstr ""
 
@@ -830,7 +852,7 @@ msgstr ""
 msgid "Select property type"
 msgstr ""
 
-#: apps/mobile/src/pages/PageProfile.tsx:47
+#: apps/mobile/src/pages/PageProfile.tsx:11
 #: packages/components/src/ProfileButton.tsx:204
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:83
@@ -891,8 +913,8 @@ msgstr ""
 msgid "Struct marketplace"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:83
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:82
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:68
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:50
 #: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:92
 msgid "Struct name"
 msgstr ""
@@ -902,7 +924,7 @@ msgstr ""
 msgid "Struct published successfully!"
 msgstr ""
 
-#: apps/mobile/src/components/AllStructsHeader.tsx:39
+#: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:17
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:135
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
@@ -924,7 +946,7 @@ msgstr ""
 msgid "Subscription"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:55
 msgid "Sun"
 msgstr ""
 
@@ -932,11 +954,12 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: apps/mobile/src/pages/PageSync/PageSync.tsx:44
+#: apps/mobile/src/pages/PageSync/PageSync.tsx:8
 msgid "Sync"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:52
+#: packages/components/src/Sidebar/SyncButton.tsx:55
 msgid "Sync failed, please try again."
 msgstr ""
 
@@ -946,6 +969,7 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:58
 #: apps/mobile/src/components/Menu.tsx:119
+#: packages/components/src/Sidebar/SyncButton.tsx:61
 msgid "Sync now"
 msgstr ""
 
@@ -954,18 +978,21 @@ msgid "Sync only over Wi-Fi"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:50
+#: packages/components/src/Sidebar/SyncButton.tsx:53
 msgid "Sync successful!"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:49
+#: packages/components/src/Sidebar/SyncButton.tsx:52
 msgid "Syncing..."
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:54
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:65
 msgid "System"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:148
+#: packages/libs/src/getDefaultStructs.ts:160
 msgid "Table"
 msgstr ""
 
@@ -973,7 +1000,7 @@ msgstr ""
 msgid "Tag"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:260
+#: packages/libs/src/getDefaultStructs.ts:272
 msgid "Task"
 msgstr ""
 
@@ -981,6 +1008,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:28
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:31
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43
@@ -993,7 +1021,7 @@ msgstr ""
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:42
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:59
 msgid "Thu"
 msgstr ""
 
@@ -1014,7 +1042,7 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:40
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:57
 msgid "Tue"
 msgstr ""
 
@@ -1068,16 +1096,16 @@ msgstr ""
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:127
+#: packages/libs/src/getDefaultStructs.ts:139
 #: packages/components/src/ColumnTypeName.tsx:17
 msgid "URL"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:266
+#: packages/libs/src/getDefaultStructs.ts:278
 msgid "Voice"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:41
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:58
 msgid "Wed"
 msgstr ""
 
@@ -1085,10 +1113,6 @@ msgstr ""
 #: apps/extension/components/Login.tsx:38
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"
-msgstr ""
-
-#: packages/components/src/JournalQuickInput.tsx:58
-msgid "What's on your mind?"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56

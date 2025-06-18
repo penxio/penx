@@ -202,7 +202,7 @@ export function CreationItem({ creation }: Props) {
 
             <div
               className={cn(
-                '',
+                creation.isTask && 'line-clamp-1',
                 !creation.isNote && !creation.isTask && 'font-bold',
               )}
             >

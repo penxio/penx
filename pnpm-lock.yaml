@@ -41,6 +41,9 @@ importers:
       '@capacitor/filesystem':
         specifier: ^7.1.1
         version: 7.1.1(@capacitor/core@7.2.0)
+      '@capacitor/keyboard':
+        specifier: 7.0.1
+        version: 7.0.1(@capacitor/core@7.2.0)
       '@codemirror/lang-javascript':
         specifier: ^6.2.2
         version: 6.2.3
@@ -326,6 +329,9 @@ importers:
       drizzle-orm:
         specifier: ^0.43.1
         version: 0.43.1(@opentelemetry/api@1.9.0)(@prisma/client@6.6.0(prisma@6.7.0(typescript@5.8.2))(typescript@5.8.2))(@types/pg@8.6.6)(postgres@3.4.5)(prisma@6.7.0(typescript@5.8.2))(sql.js@1.13.0)
+      embla-carousel:
+        specifier: ^8.6.0
+        version: 8.6.0
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.0.0)

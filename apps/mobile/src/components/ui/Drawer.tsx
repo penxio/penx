@@ -15,6 +15,7 @@ interface Props {
   children: React.ReactNode
   className?: string
   isFullHeight?: boolean
+  isModalStyle?: boolean
 }
 export function Drawer({
   open,
@@ -22,14 +23,25 @@ export function Drawer({
   children,
   className,
   isFullHeight = false,
+  isModalStyle,
 }: Props) {
   const { isDark } = useTheme()
+
+  const content = (
+    <>
+      <DialogHeader className="hidden">
+        <DialogTitle></DialogTitle>
+        <DialogDescription></DialogDescription>
+      </DialogHeader>
+      {children}
+    </>
+  )
   return (
     <DrawerProvider open={open} setOpen={setOpen}>
       <VaulDrawer.Root
         open={open}
         onOpenChange={setOpen}
-        shouldScaleBackground
+        shouldScaleBackground={!isModalStyle}
         repositionInputs={false}
       >
         <VaulDrawer.Portal>
@@ -39,7 +51,8 @@ export function Drawer({
               'text-foreground fixed bottom-0 left-0 right-0 mt-24 flex h-fit max-h-[90vh] flex-col overflow-hidden rounded-t-2xl bg-neutral-100 px-4 pb-10 outline-none dark:bg-neutral-800',
               platform === 'ios' && 'max-h-[80vh]',
               isFullHeight && (isIOS ? 'min-h-[90vh]' : 'min-h-[90vh]'),
-              className,
+              isModalStyle && 'bg-transparent pb-4',
+              !isModalStyle && className,
             )}
             style={{
               // boxShadow:
@@ -54,11 +67,18 @@ export function Drawer({
               className="bg-foreground/30 mx-auto mb-2 mt-2 h-1 w-10 shrink-0 rounded-full"
             /> */}
 
-            <DialogHeader className="hidden">
-              <DialogTitle></DialogTitle>
-              <DialogDescription></DialogDescription>
-            </DialogHeader>
-            {children}
+            {isModalStyle ? (
+              <div
+                className={cn(
+                  'rounded-2xl bg-white p-6 outline-none dark:bg-neutral-800',
+                  isModalStyle && className,
+                )}
+              >
+                {content}
+              </div>
+            ) : (
+              content
+            )}
           </VaulDrawer.Content>
         </VaulDrawer.Portal>
       </VaulDrawer.Root>

@@ -59,6 +59,10 @@ export class Creation {
     return this.props.title || ''
   }
 
+  get description(): string {
+    return this.props.description || ''
+  }
+
   get status() {
     return this.props.status
   }

@@ -220,3 +220,10 @@ export function mappedByKey<T>(items: T[] = [], key = 'id') {
     return { ...result, [i[key]]: i }
   }, {})
 }
+
+export function formatTime(time: string): string {
+  const [hour, minute] = time.split(':')
+  const formattedHour = hour.padStart(2, '0')
+  const formattedMinute = minute.padStart(2, '0')
+  return `${formattedHour}:${formattedMinute}`
+}

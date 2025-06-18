@@ -12,9 +12,17 @@ import { ChangeType } from './ChangeType'
 import { usePanelCreationContext } from './PanelCreationProvider'
 import { Tags } from './Tags'
 
-interface Props {}
+interface Props {
+  canChangeType?: boolean
+  showDescription?: boolean
+  className?: string
+}
 
-export function CreationHeader({}: Props) {
+export function CreationHeader({
+  canChangeType = true,
+  showDescription = false,
+  className,
+}: Props) {
   const creation = usePanelCreationContext()
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)
@@ -42,10 +50,10 @@ export function CreationHeader({}: Props) {
                     }}
                   />
                 )} */}
-            <div className="flex items-center gap-2">
+            <div className="flex gap-2">
               {struct?.type === StructType.TASK && (
                 <Checkbox
-                  className="bg-foreground/10 size-6 border-none"
+                  className="border-foreground mt-[6px] size-5"
                   checked={creation.checked}
                   onCheckedChange={(v) => {
                     updateCreationProps(creation.id, {
@@ -56,7 +64,7 @@ export function CreationHeader({}: Props) {
               )}
 
               <TextareaAutosize
-                className="dark:placeholder-text-600 text-foreground placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-3xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
+                className="dark:placeholder-text-600 text-foreground placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-2xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
                 placeholder="Title"
                 defaultValue={creation.title || ''}
                 // autoFocus={!isMobileApp}
@@ -75,34 +83,37 @@ export function CreationHeader({}: Props) {
             </div>
           </div>
 
-          {/* <TextareaAutosize
-                  className="dark:placeholder-text-600 w-full resize-none border-none bg-transparent px-0 placeholder:text-stone-400 focus:outline-none focus:ring-0"
-                  placeholder="Description"
-                  defaultValue={creation.description}
-                  onChange={(e) => {
-                    updateCreation({
-                      id: creation.id,
-                      description: e.target.value,
-                    })
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault()
-                    }
-                  }}
-                /> */}
+          {showDescription && (
+            <TextareaAutosize
+              className="dark:placeholder-text-600 w-full resize-none border-none bg-transparent px-0 placeholder:text-stone-400 focus:outline-none focus:ring-0"
+              placeholder="Remark"
+              defaultValue={creation.description}
+              onChange={(e) => {
+                updateCreationProps(creation.id, {
+                  description: e.target.value,
+                })
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault()
+                }
+              }}
+            />
+          )}
         </div>
       )}
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
-          <ChangeType creation={creation} />
-          {/* <div className="text-foreground/60 text-lg">•</div>
+      {canChangeType && (
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            <ChangeType creation={creation} />
+            {/* <div className="text-foreground/60 text-lg">•</div>
           <div className="flex items-center gap-2">
             <Tags creation={creation} />
           </div> */}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

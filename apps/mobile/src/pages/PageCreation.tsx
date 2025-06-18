@@ -5,73 +5,43 @@ import { CreationMenu } from '@/components/CreationMenu'
 import { MobileContent } from '@/components/MobileContent'
 import { MobileCreation } from '@/components/MobileCreation'
 import { MobileHeaderWrapper } from '@/components/MobileHeaderWrapper'
+import { TaskCreation } from '@/components/TaskCreation/TaskCreation'
 import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
-import { PanelCreationProvider } from '@penx/components/Creation/PanelCreationProvider'
+import {
+  PanelCreationProvider,
+  usePanelCreationContext,
+} from '@penx/components/Creation/PanelCreationProvider'
 
-export const PageCreation = ({
-  creationId,
-  nav,
-}: {
+interface Props {
   creationId: string
   nav: HTMLIonNavElement
-}) => {
-  // const { creationId, setCreationId } = useCreationId()
+}
 
-  // if (!creationId) return null
+export const PageCreation = ({ creationId, nav }: Props) => {
+  return (
+    <PanelCreationProvider creationId={creationId}>
+      <Content creationId={creationId} nav={nav} />
+    </PanelCreationProvider>
+  )
+}
+
+function Content({ creationId, nav }: Props) {
+  const creation = usePanelCreationContext()
 
   return (
-    <>
-      {/* <IonHeader
-        // className={isAndroid ? 'safe-area' : ''}
-        className={'safe-area'}
-        style={{
-          boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        }}
-      >
-        <IonToolbar
-          className="text-foreground toolbar"
-          style={{
-            '--border-width': 0,
+    <MobileContent
+      backgroundColor={creation.isTask ? '#fff' : '#f6f6f6'}
+      rightSlot={
+        <CreationMenu
+          creationId={creationId}
+          afterDelete={() => {
+            nav.pop()
           }}
-        >
-          <IonButtons slot="start">
-            <IonBackButton text=""></IonBackButton>
-          </IonButtons>
-          <IonButtons slot="end">
-            <CreationMenu
-              creationId={creationId}
-              afterDelete={() => {
-                // modal.current?.dismiss()
-                nav.pop()
-              }}
-            />
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader> */}
-      <MobileContent
-        backgroundColor="#f6f6f6"
-        rightSlot={
-          <CreationMenu
-            creationId={creationId}
-            afterDelete={() => {
-              // modal.current?.dismiss()
-              nav.pop()
-            }}
-          />
-        }
-      >
-        <PanelCreationProvider creationId={creationId}>
-          <MobileCreation creationId={creationId} />
-        </PanelCreationProvider>
-      </MobileContent>
-
-      {/* <IonFooter style={{}}>
-        <IonToolbar>
-          <IonButton>Bold</IonButton>
-          <IonButton>Italic</IonButton>
-        </IonToolbar> */}
-      {/* </IonFooter> */}
-    </>
+        />
+      }
+    >
+      {creation.isTask ? <TaskCreation /> : <MobileCreation />}
+    </MobileContent>
   )
 }

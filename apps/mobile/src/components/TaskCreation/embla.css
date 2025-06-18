@@ -1,0 +1,36 @@
+:root {
+  --background-site-rgb-value: 249, 249, 249;
+}
+
+.dark,
+.ion-palette-dark {
+  --background-site-rgb-value: 0, 0, 0;
+}
+
+.embla:before,
+.embla:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  content: '';
+  display: block;
+  height: calc(50% - 32px / 2);
+  z-index: 1;
+  pointer-events: none;
+}
+.embla:before {
+  top: -0.5px;
+  background: linear-gradient(
+    to top,
+    rgba(var(--background-site-rgb-value), 0.65) 0%,
+    rgba(var(--background-site-rgb-value), 1) 100%
+  );
+}
+.embla:after {
+  bottom: -0.5px;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--background-site-rgb-value), 0.65) 0%,
+    rgba(var(--background-site-rgb-value), 1) 100%
+  );
+}

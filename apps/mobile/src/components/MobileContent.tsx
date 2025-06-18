@@ -10,6 +10,7 @@ interface Props {
   style?: React.CSSProperties
   backgroundColor?: string
   className?: string
+  bordered?: boolean
 }
 
 export const MobileContent = ({
@@ -18,6 +19,7 @@ export const MobileContent = ({
   backgroundColor,
   children,
   className,
+  bordered = true,
 }: PropsWithChildren<Props>) => {
   const { isDark } = useTheme()
   return (

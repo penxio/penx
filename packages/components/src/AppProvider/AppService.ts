@@ -1,6 +1,7 @@
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
+import { produce } from 'immer'
 import { api } from '@penx/api'
 import { isMobileApp } from '@penx/constants'
 import { Node } from '@penx/domain'
@@ -21,7 +22,14 @@ import {
 } from '@penx/model-type'
 import { updateSession } from '@penx/session'
 import { store } from '@penx/store'
-import { Panel, PanelType, SessionData, StructType, Widget } from '@penx/types'
+import {
+  ColumnType,
+  Panel,
+  PanelType,
+  SessionData,
+  StructType,
+  Widget,
+} from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { initLocalSite } from './lib/initLocalSite'
 import { isRowsEqual } from './lib/isRowsEqual'
@@ -133,7 +141,7 @@ export class AppService {
     const visit = await store.visit.save({ activeAreaId: area.id })
 
     const areaNodes = nodes.filter((n) => n.areaId === area.id)
-    const structs = areaNodes.filter((n) => isStructNode(n))
+    let structs = areaNodes.filter((n) => isStructNode(n))
     let journals = areaNodes.filter((n) => isJournalNode(n))
 
     const imageStruct = structs.find((s) => s.props.type === StructType.IMAGE)
@@ -147,6 +155,35 @@ export class AppService {
       })
       await localDB.addStruct(newStruct)
       structs.push(newStruct)
+    }
+
+    // fallback to old data, remove it later
+    const taskStruct = structs.find((s) => s.props.type === StructType.TASK)
+    if (taskStruct) {
+      const reminderColumn = taskStruct.props.columns.find(
+        (c) => c.slug === 'reminder',
+      )
+      if (!reminderColumn) {
+        const newTaskStruct = produce(taskStruct, (draft) => {
+          draft.props.columns.push({
+            id: uniqueId(),
+            slug: 'reminder',
+            name: t`Reminder`,
+            description: '',
+            columnType: ColumnType.DATE,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          })
+        })
+
+        await localDB.updateStructProps(taskStruct.id, {
+          columns: newTaskStruct.props.columns,
+        })
+        structs = await localDB.listStructs(area.id)
+      }
     }
 
     // console.log('======journals:', journals)

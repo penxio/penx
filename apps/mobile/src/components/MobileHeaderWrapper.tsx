@@ -10,9 +10,15 @@ interface Props {
   className?: string
   title?: ReactNode
   rightSlot?: ReactNode
+  bordered?: boolean
 }
 
-export function MobileHeaderWrapper({ className, title, rightSlot }: Props) {
+export function MobileHeaderWrapper({
+  className,
+  title,
+  rightSlot,
+  bordered,
+}: Props) {
   const h = useMemo(() => {
     if (isAndroid) return 'calc(var(--safe-area-inset-top) + 50px)'
     return 'calc(var(--safe-area-inset-top) + 40px)'
@@ -20,7 +26,8 @@ export function MobileHeaderWrapper({ className, title, rightSlot }: Props) {
   return (
     <div
       className={cn(
-        'border-foreground/10 bg-background fixed left-0 right-0 top-0 z-[10000] flex items-center justify-between gap-2 border-b-[0.5px] pb-2 pl-0.5',
+        'bg-background fixed left-0 right-0 top-0 z-[10000] flex items-center justify-between gap-2 pb-2 pl-0.5',
+        bordered && 'border-foreground/10 border-b-[0.5px]',
       )}
       style={{
         paddingTop: 'var(--safe-area-inset-top)',

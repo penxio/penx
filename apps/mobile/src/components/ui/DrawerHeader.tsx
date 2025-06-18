@@ -8,6 +8,7 @@ interface Props {
   children?: React.ReactNode
   showCancelButton?: boolean
   disabled?: boolean
+  isModalStyle?: boolean
   onConfirm?: () => void
   onCancel?: () => void
 }
@@ -16,6 +17,7 @@ export function DrawerHeader({
   className,
   children,
   showCancelButton = false,
+  isModalStyle = false,
   disabled,
   onConfirm,
   onCancel,
@@ -24,14 +26,15 @@ export function DrawerHeader({
   return (
     <div
       className={cn(
-        'text-foreground sticky top-0 -mx-4 mb-2 flex h-12 shrink-0 items-center justify-between bg-neutral-100 px-4  text-base font-semibold outline-none dark:bg-neutral-800',
+        'text-foreground sticky top-0 mb-2 flex h-12 shrink-0 items-center justify-between bg-neutral-100 px-4  text-base font-semibold outline-none dark:bg-neutral-800',
+        !isModalStyle && '-mx-4',
         className,
       )}
     >
       <div className="inline-flex w-24">
         {showCancelButton && (
           <div
-            className="text-foreground/60 font-light"
+            className="text-foreground/60"
             onClick={() => {
               setOpen(false)
               onCancel?.()

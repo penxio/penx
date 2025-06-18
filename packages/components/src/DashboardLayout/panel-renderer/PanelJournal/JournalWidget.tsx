@@ -49,8 +49,11 @@ export function JournalWidget({ creations }: Props) {
           ![StructType.NOTE, StructType.TASK, StructType.VOICE].includes(
             struct.type as any,
           )
-        )
+        ) {
           return null
+        }
+
+        const isTask = struct.type === StructType.TASK
 
         return (
           <LayoutGroup key={struct.id}>
@@ -72,7 +75,7 @@ export function JournalWidget({ creations }: Props) {
                 <AddCreationButton struct={struct} />
               </div>
               {structCreations.length > 0 && (
-                <div className="flex flex-col gap-2">
+                <div className={cn('flex flex-col gap-2', isTask && 'gap-3')}>
                   {structCreations.map((creation) => {
                     return (
                       <CreationItem creation={creation} key={creation.id} />

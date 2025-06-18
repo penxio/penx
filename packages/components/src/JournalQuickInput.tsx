@@ -14,7 +14,6 @@ import { Editor } from '@tiptap/core'
 import Placeholder from '@tiptap/extension-placeholder'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import cx from 'classnames'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
 import { defaultEditorContent, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
@@ -42,9 +41,9 @@ export function JournalQuickInput({
   const { isTask: initialTaskState } = useQuickInputOpen()
   const editorRef = useRef<Editor>(null)
   const [input, setInput] = useState('')
-  const { structs } = useStructs()
-  const noteStruct = structs.find((s) => s.type === StructType.NOTE)!
-  const [struct, setStruct] = useState(noteStruct)
+  // const { structs } = useStructs()
+  // const noteStruct = structs.find((s) => s.type === StructType.NOTE)!
+  // const [struct, setStruct] = useState(noteStruct)
   const addCreation = useAddCreation()
   const [isTask, setIsTask] = useState(initialTaskState)
 
@@ -57,7 +56,7 @@ export function JournalQuickInput({
         StarterKit,
         Placeholder.configure({
           placeholder: ({ node }) => {
-            return isTask ? t`Create a task` : t`What's on your mind?`
+            return 'Writing something..'
           },
         }),
       ],
@@ -66,10 +65,10 @@ export function JournalQuickInput({
         setInput(JSON.stringify(editor.getJSON()))
       },
     },
-    [isTask],
+    [],
   )
 
-  const submitForm = useCallback(async () => {
+  const submitForm = async () => {
     // const isNote = struct.type === StructType.NOTE
     const isNote = !isTask
     const title = isNote ? '' : docToString(JSON.parse(input))
@@ -85,7 +84,7 @@ export function JournalQuickInput({
     editor?.commands.clearContent()
     afterSubmit?.()
     setInput('')
-  }, [input])
+  }
 
   useEffect(() => {
     if (editor) {
@@ -141,7 +140,11 @@ export function JournalQuickInput({
         <Checkbox
           className="border-foreground/40 size-5"
           checked={isTask}
-          onCheckedChange={(v: boolean) => setIsTask(v)}
+          onCheckedChange={(v: boolean) => {
+            editor.chain().focus().run()
+            console.log('=====v:', v)
+            setIsTask(v)
+          }}
         />
         {/* <JournalInputToolbar editor={editor} /> */}
       </div>
@@ -157,7 +160,7 @@ export function JournalQuickInput({
   )
 }
 
-function PureSendButton({
+function SendButton({
   submitForm,
   input,
 }: {
@@ -177,8 +180,3 @@ function PureSendButton({
     </Button>
   )
 }
-
-const SendButton = memo(PureSendButton, (prevProps, nextProps) => {
-  if (prevProps.input !== nextProps.input) return false
-  return true
-})

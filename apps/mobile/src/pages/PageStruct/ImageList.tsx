@@ -122,8 +122,8 @@ function CreationImage({ creation }: { creation: Creation }) {
         className="size-full object-cover"
         src={src!}
         onClick={(e) => {
-          // e.stopPropagation()
-          // appEmitter.emit('ROUTE_TO_CREATION', creation)
+          e.stopPropagation()
+          appEmitter.emit('ROUTE_TO_CREATION', creation)
         }}
       />
       {!creation.imageUrl && (

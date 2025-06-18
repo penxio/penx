@@ -14,12 +14,12 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. placeholder {0}: creations.length
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:95
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:166
 msgid "{0} creations"
 msgstr "{0} 个作品"
 
 #. placeholder {0}: tasks.length
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:92
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:163
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} 个待办"
 
@@ -178,7 +178,7 @@ msgstr "你确定要将这个结构体发布到市场吗？"
 msgid "Areas"
 msgstr "领域"
 
-#: packages/libs/src/getDefaultStructs.ts:272
+#: packages/libs/src/getDefaultStructs.ts:284
 msgid "Bookmark"
 msgstr "书签"
 
@@ -196,6 +196,10 @@ msgstr "气泡"
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
 msgstr "取消"
+
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:94
+msgid "Capture the beautiful moments"
+msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:75
 msgid "Card"
@@ -219,6 +223,10 @@ msgstr "合集"
 msgid "Color"
 msgstr "颜色"
 
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:161
+msgid "Confirm"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
@@ -236,10 +244,6 @@ msgstr "复制 HTML"
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 msgid "Create"
 msgstr "创建"
-
-#: packages/components/src/JournalQuickInput.tsx:58
-msgid "Create a task"
-msgstr "新建待办"
 
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:52
 #: packages/components/src/AreasPopover/AreasPopover.tsx:99
@@ -274,6 +278,7 @@ msgstr "创建日期"
 msgid "Creation counts"
 msgstr "创作数量"
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:46
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr "深色"
@@ -363,7 +368,8 @@ msgstr "编辑选项"
 msgid "Edit property"
 msgstr "编辑属性"
 
-#: apps/mobile/src/components/StructHeader.tsx:66
+#: apps/mobile/src/pages/PageStruct/PageStruct.tsx:54
+#: apps/mobile/src/pages/PageStruct/PageStruct.tsx:79
 msgid "Edit props"
 msgstr "编辑属性"
 
@@ -387,13 +393,13 @@ msgstr "编辑组件"
 msgid "Email"
 msgstr "邮箱"
 
-#: apps/mobile/src/pages/PageEmailLogin.tsx:43
+#: apps/mobile/src/pages/PageEmailLogin.tsx:25
 #: apps/mobile/src/components/Login/EmailLoginButton.tsx:17
 msgid "Email login"
 msgstr "邮箱登录"
 
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:53
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:90
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:52
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:89
 msgid "Empty"
 msgstr "空白"
 
@@ -423,11 +429,11 @@ msgstr "查找或创建选项"
 msgid "Free"
 msgstr "免费"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:43
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:60
 msgid "Fri"
 msgstr "周五"
 
-#: packages/libs/src/getDefaultStructs.ts:162
+#: packages/libs/src/getDefaultStructs.ts:174
 msgid "Gallery"
 msgstr "画廊"
 
@@ -449,9 +455,9 @@ msgstr "高"
 msgid "Home"
 msgstr "首页"
 
-#: packages/libs/src/getDefaultStructs.ts:242
+#: packages/libs/src/getDefaultStructs.ts:254
 #: packages/components/src/ColumnTypeName.tsx:26
-#: packages/components/src/AppProvider/AppService.ts:142
+#: packages/components/src/AppProvider/AppService.ts:151
 msgid "Image"
 msgstr "图片"
 
@@ -463,8 +469,8 @@ msgstr "安装"
 msgid "Installed"
 msgstr "已安装"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:106
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:107
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:91
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:75
 msgid "Introduction"
 msgstr "简介"
 
@@ -487,12 +493,13 @@ msgstr "日记"
 msgid "Language"
 msgstr "语言"
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:38
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
 msgstr "浅色"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
-#: packages/libs/src/getDefaultStructs.ts:176
+#: packages/libs/src/getDefaultStructs.ts:188
 msgid "List"
 msgstr "列表"
 
@@ -517,7 +524,7 @@ msgstr "登录"
 msgid "Log out"
 msgstr "退出登录"
 
-#: apps/mobile/src/pages/PageLogin.tsx:45
+#: apps/mobile/src/pages/PageLogin.tsx:11
 msgid "Login"
 msgstr "登录"
 
@@ -538,7 +545,7 @@ msgstr "图标"
 msgid "Low"
 msgstr "低"
 
-#: packages/components/src/Sidebar/app-sidebar.tsx:107
+#: packages/components/src/Sidebar/app-sidebar.tsx:110
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:38
 msgid "Manage tags"
 msgstr "管理标签"
@@ -555,7 +562,7 @@ msgstr "中"
 msgid "Member"
 msgstr "会员"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:39
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:56
 msgid "Mon"
 msgstr "周一"
 
@@ -585,11 +592,11 @@ msgstr "我的结构体"
 msgid "My Structs"
 msgstr "我的结构体"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:82
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:67
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:81
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:49
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
@@ -646,7 +653,7 @@ msgstr "暂无待办。"
 msgid "No voice data!"
 msgstr "暂无语音数据！"
 
-#: packages/libs/src/getDefaultStructs.ts:236
+#: packages/libs/src/getDefaultStructs.ts:248
 msgid "Note"
 msgstr "笔记"
 
@@ -674,7 +681,7 @@ msgstr "操作"
 msgid "Options"
 msgstr "选项"
 
-#: packages/libs/src/getDefaultStructs.ts:219
+#: packages/libs/src/getDefaultStructs.ts:231
 msgid "Page"
 msgstr "页面"
 
@@ -688,14 +695,16 @@ msgid "Password"
 msgstr "密码"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:32
+#: packages/components/src/Sidebar/SyncButton.tsx:36
 msgid "PenX is a Local-first App, supporting offline use and multi-device sync."
 msgstr "PenX 是一款以本地优先为设计理念的应用，支持离线使用和多设备同步。"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:29
+#: packages/components/src/Sidebar/SyncButton.tsx:33
 msgid "PenX Sync"
 msgstr "PenX 同步"
 
-#: apps/mobile/src/pages/PagePhoneLogin.tsx:42
+#: apps/mobile/src/pages/PagePhoneLogin.tsx:11
 #: apps/mobile/src/components/Login/PhoneLoginButton.tsx:27
 msgid "Phone login"
 msgstr "手机登录"
@@ -704,8 +713,8 @@ msgstr "手机登录"
 msgid "Phone number"
 msgstr "手机号码"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:38
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:75
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:42
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalPhotoWidget.tsx:88
 msgid "Photos"
 msgstr "照片"
 
@@ -713,7 +722,7 @@ msgstr "照片"
 msgid "Pick a date"
 msgstr "选择日期"
 
-#: apps/mobile/src/pages/PagePlan.tsx:44
+#: apps/mobile/src/pages/PagePlan.tsx:6
 msgid "Plan"
 msgstr "计划"
 
@@ -754,8 +763,8 @@ msgstr ""
 msgid "Pro yearly"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:117
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:118
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:102
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:86
 msgid "Properties"
 msgstr "属性"
 
@@ -799,6 +808,19 @@ msgstr "注册"
 msgid "Register to PenX"
 msgstr "注册 PenX"
 
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:119
+msgid "Remind me..."
+msgstr "提醒"
+
+#: packages/libs/src/getDefaultStructs.ts:122
+#: packages/components/src/AppProvider/AppService.ts:171
+msgid "Reminder"
+msgstr "提醒"
+
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:149
+msgid "Remove reminder"
+msgstr ""
+
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr "重命名"
@@ -807,7 +829,7 @@ msgstr "重命名"
 msgid "Resend"
 msgstr "重新发送"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:44
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:61
 msgid "Sat"
 msgstr "周六"
 
@@ -830,7 +852,7 @@ msgstr "选择颜色"
 msgid "Select property type"
 msgstr "选择属性类型"
 
-#: apps/mobile/src/pages/PageProfile.tsx:47
+#: apps/mobile/src/pages/PageProfile.tsx:11
 #: packages/components/src/ProfileButton.tsx:204
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:83
@@ -891,8 +913,8 @@ msgstr "安装结构体成功！"
 msgid "Struct marketplace"
 msgstr "结构体市场"
 
-#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:83
-#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:82
+#: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:68
+#: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:50
 #: apps/mobile/src/pages/PageAllStructs/CreateStructButton.tsx:92
 msgid "Struct name"
 msgstr "结构体名称"
@@ -902,7 +924,7 @@ msgstr "结构体名称"
 msgid "Struct published successfully!"
 msgstr "发布结构体成功！"
 
-#: apps/mobile/src/components/AllStructsHeader.tsx:39
+#: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:17
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:135
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
@@ -924,7 +946,7 @@ msgstr "订阅 PenX，支持我们打造最好的产品，并享受以下功能�
 msgid "Subscription"
 msgstr "订阅"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:55
 msgid "Sun"
 msgstr "周日"
 
@@ -932,11 +954,12 @@ msgstr "周日"
 msgid "Support"
 msgstr "支持"
 
-#: apps/mobile/src/pages/PageSync/PageSync.tsx:44
+#: apps/mobile/src/pages/PageSync/PageSync.tsx:8
 msgid "Sync"
 msgstr "同步"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:52
+#: packages/components/src/Sidebar/SyncButton.tsx:55
 msgid "Sync failed, please try again."
 msgstr "同步失败，请重试。"
 
@@ -946,6 +969,7 @@ msgstr "同步时间间隔"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:58
 #: apps/mobile/src/components/Menu.tsx:119
+#: packages/components/src/Sidebar/SyncButton.tsx:61
 msgid "Sync now"
 msgstr "立即同步"
 
@@ -954,18 +978,21 @@ msgid "Sync only over Wi-Fi"
 msgstr "只通过 Wi-Fi 同步"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:50
+#: packages/components/src/Sidebar/SyncButton.tsx:53
 msgid "Sync successful!"
 msgstr "同步成功!"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:49
+#: packages/components/src/Sidebar/SyncButton.tsx:52
 msgid "Syncing..."
 msgstr "同步中..."
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:54
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:65
 msgid "System"
 msgstr "跟随系统"
 
-#: packages/libs/src/getDefaultStructs.ts:148
+#: packages/libs/src/getDefaultStructs.ts:160
 msgid "Table"
 msgstr "表格"
 
@@ -973,7 +1000,7 @@ msgstr "表格"
 msgid "Tag"
 msgstr "标签"
 
-#: packages/libs/src/getDefaultStructs.ts:260
+#: packages/libs/src/getDefaultStructs.ts:272
 msgid "Task"
 msgstr "待办"
 
@@ -981,6 +1008,7 @@ msgstr "待办"
 msgid "Text"
 msgstr "文本"
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:28
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:31
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43
@@ -993,7 +1021,7 @@ msgstr "主题"
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr "该操作无法撤销，您确定要删除此属性吗？"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:42
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:59
 msgid "Thu"
 msgstr "周四"
 
@@ -1014,7 +1042,7 @@ msgstr "待办"
 msgid "Today"
 msgstr "今天"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:40
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:57
 msgid "Tue"
 msgstr "周二"
 
@@ -1068,16 +1096,16 @@ msgstr "升级"
 msgid "Upgrade to Pro"
 msgstr "升级到专业版"
 
-#: packages/libs/src/getDefaultStructs.ts:127
+#: packages/libs/src/getDefaultStructs.ts:139
 #: packages/components/src/ColumnTypeName.tsx:17
 msgid "URL"
 msgstr "网址"
 
-#: packages/libs/src/getDefaultStructs.ts:266
+#: packages/libs/src/getDefaultStructs.ts:278
 msgid "Voice"
 msgstr "语音"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:41
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:58
 msgid "Wed"
 msgstr "周三"
 
@@ -1086,10 +1114,6 @@ msgstr "周三"
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"
 msgstr "欢迎使用 PenX"
-
-#: packages/components/src/JournalQuickInput.tsx:58
-msgid "What's on your mind?"
-msgstr "你有什么想法？"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
 msgid "Widget"
