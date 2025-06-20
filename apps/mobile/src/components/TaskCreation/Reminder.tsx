@@ -17,6 +17,9 @@ import { AnimateChangeInHeight } from '../AnimateChangeInHeight'
 import { Drawer } from '../ui/Drawer'
 import { IosPickerItem } from './IosPickerItem'
 import './embla.css'
+import { removeNotification } from '@/lib/removeNotification'
+import { requestNotificationPermission } from '@/lib/requestPermission'
+import { upsertNotification } from '@/lib/upsertNotification'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { DrawerHeader } from '../ui/DrawerHeader'
 import { DrawerTitle } from '../ui/DrawerTitle'
@@ -33,31 +36,31 @@ export function Reminder({ className, struct, creation }: ItemProps) {
   const value = creation.cells[reminderColumn?.id!]
 
   const initialDate = useMemo(() => {
-    if (!value) return undefined
+    if (!value) return new Date()
     return new Date(value)
   }, [value])
 
   const initialTime = useMemo(() => {
-    if (!value) return ''
+    if (!value) return '00:00'
     return format(new Date(value), 'HH:mm')
   }, [value])
 
   const [isOpen, setIsOpen] = useState(false)
-  const [selected, setSelected] = useState(initialDate)
+  const [selected, setSelected] = useState<Date | undefined>(initialDate)
   const [timeValue, setTimeValue] = useState<string>(initialTime)
 
   useEffect(() => {
     const value = creation.cells[reminderColumn?.id!]
 
     if (!value) {
-      setTimeValue('')
-      setSelected(undefined)
+      setTimeValue('00:00')
+      setSelected(new Date())
       return
     }
     if (new Date(value).getTime() === selected?.getTime()) return
 
     const initialDate = useMemo(() => {
-      if (!value) return undefined
+      if (!value) return new Date()
       return new Date(value)
     }, [value])
 
@@ -101,8 +104,14 @@ export function Reminder({ className, struct, creation }: ItemProps) {
 
   return (
     <>
-      <div className="flex items-center gap-1 text-base">
-        <AlarmClockIcon size={20} onClick={() => setIsOpen(true)} />
+      <div
+        className="flex items-center gap-1 text-base"
+        onClick={async () => {
+          await requestNotificationPermission()
+          setIsOpen(true)
+        }}
+      >
+        <AlarmClockIcon size={20} />
         {value && format(new Date(value), 'MM/dd HH:mm')}
       </div>
 
@@ -116,69 +125,68 @@ export function Reminder({ className, struct, creation }: ItemProps) {
         isModalStyle
         className="overflow-hidden p-0"
       >
-        {isOpen && (
-          <AnimateChangeInHeight>
-            <DrawerHeader
-              isModalStyle
-              className="w-auto bg-white"
-              showCancelButton
-              onConfirm={async () => {
-                impact()
-                setIsOpen(false)
-                await updateCreationProps(creation.id, {
-                  cells: {
-                    ...creation.cells,
-                    [reminderColumn.id]: selected,
-                  },
-                })
-              }}
-            >
-              <DrawerTitle>
-                <Trans>Reminder</Trans>
-              </DrawerTitle>
-            </DrawerHeader>
-            <MobileCalendar
-              className="p-0 px-1"
-              mode="single"
-              selected={selected}
-              onSelect={async (date) => {
-                impact()
-                handleDaySelect(date)
-              }}
-            />
-            <Popover></Popover>
-            <ReminderTimePicker
-              value={timeValue}
-              onChange={(v) => {
-                console.log('picker v====:', v)
-                handleTimeChange(v)
-                // setTimeValue(v)
-              }}
-            />
+        <AnimateChangeInHeight>
+          <DrawerHeader
+            isModalStyle
+            className="w-auto bg-white"
+            showCancelButton
+            onConfirm={async () => {
+              impact()
+              setIsOpen(false)
+              const newCreation = await updateCreationProps(creation.id, {
+                cells: {
+                  ...creation.cells,
+                  [reminderColumn.id]: selected,
+                },
+              })
+              upsertNotification(struct, newCreation)
+            }}
+          >
+            <DrawerTitle>
+              <Trans>Reminder</Trans>
+            </DrawerTitle>
+          </DrawerHeader>
+          <MobileCalendar
+            className="p-0 px-1"
+            mode="single"
+            selected={selected}
+            onSelect={async (date) => {
+              impact()
+              handleDaySelect(date)
+            }}
+          />
+          <Popover></Popover>
+          <ReminderTimePicker
+            value={timeValue}
+            onChange={(v) => {
+              handleTimeChange(v)
+              // setTimeValue(v)
+            }}
+          />
 
-            {selected && timeValue && value && (
-              <div className="flex gap-2 p-3">
-                <Button
-                  className="flex-1"
-                  size="lg"
-                  variant="destructive"
-                  onClick={async () => {
-                    impact()
-                    setIsOpen(false)
-                    await updateCreationProps(creation.id, {
-                      cells: {
-                        ...creation.cells,
-                        [reminderColumn.id]: '',
-                      },
-                    })
-                  }}
-                >
-                  <Trans>Remove reminder</Trans>
-                </Button>
-              </div>
-            )}
-          </AnimateChangeInHeight>
-        )}
+          {selected && timeValue && value && (
+            <div className="flex gap-2 p-3">
+              <Button
+                className="flex-1"
+                size="lg"
+                variant="destructive"
+                onClick={async () => {
+                  impact()
+                  setIsOpen(false)
+                  await updateCreationProps(creation.id, {
+                    cells: {
+                      ...creation.cells,
+                      [reminderColumn.id]: '',
+                    },
+                  })
+                  removeNotification(creation.raw)
+                }}
+              >
+                <Trans>Remove reminder</Trans>
+              </Button>
+            </div>
+          )}
+        </AnimateChangeInHeight>
       </Drawer>
     </>
   )

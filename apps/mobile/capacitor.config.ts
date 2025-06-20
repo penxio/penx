@@ -17,6 +17,9 @@ const config: CapacitorConfig = {
       resize: 'none',
       resizeOnFullScreen: true,
     },
+    LocalNotifications: {
+      sound: 'bell.wav',
+    },
   },
 }
 

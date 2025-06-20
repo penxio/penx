@@ -1,6 +1,6 @@
 import { VoiceRecorder } from 'capacitor-voice-recorder'
 
-export const checkAndRequestPermission = async () => {
+export const checkAndRequestRecordPermission = async () => {
   const canRecord = await VoiceRecorder.canDeviceVoiceRecord()
   if (!canRecord.value) {
     return false

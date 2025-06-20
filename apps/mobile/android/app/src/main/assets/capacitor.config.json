@@ -12,6 +12,9 @@
 		"Keyboard": {
 			"resize": "none",
 			"resizeOnFullScreen": true
+		},
+		"LocalNotifications": {
+			"sound": "bell.wav"
 		}
 	}
 }

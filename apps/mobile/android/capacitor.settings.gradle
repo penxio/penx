@@ -32,6 +32,9 @@ project(':capacitor-inappbrowser').projectDir = new File('../node_modules/@capac
 include ':capacitor-keyboard'
 project(':capacitor-keyboard').projectDir = new File('../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard/android')
 
+include ':capacitor-local-notifications'
+project(':capacitor-local-notifications').projectDir = new File('../../../node_modules/.pnpm/@capacitor+local-notifications@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/local-notifications/android')
+
 include ':capacitor-share'
 project(':capacitor-share').projectDir = new File('../../../node_modules/.pnpm/@capacitor+share@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/share/android')
 

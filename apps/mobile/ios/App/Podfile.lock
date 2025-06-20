@@ -34,6 +34,8 @@ PODS:
     - OSInAppBrowserLib (~> 2.0)
   - CapacitorKeyboard (7.0.1):
     - Capacitor
+  - CapacitorLocalNotifications (7.0.1):
+    - Capacitor
   - CapacitorShare (7.0.1):
     - Capacitor
   - CapacitorSplashScreen (7.0.1):
@@ -100,6 +102,7 @@ DEPENDENCIES:
   - "CapacitorHaptics (from `../../../../node_modules/.pnpm/@capacitor+haptics@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/haptics`)"
   - "CapacitorInappbrowser (from `../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser`)"
   - "CapacitorKeyboard (from `../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard`)"
+  - "CapacitorLocalNotifications (from `../../../../node_modules/.pnpm/@capacitor+local-notifications@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/local-notifications`)"
   - "CapacitorShare (from `../../../../node_modules/.pnpm/@capacitor+share@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/share`)"
   - "CapacitorSplashScreen (from `../../../../node_modules/.pnpm/@capacitor+splash-screen@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar`)"
@@ -152,6 +155,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/@capacitor+inappbrowser@2.1.0_@capacitor+core@7.2.0/node_modules/@capacitor/inappbrowser"
   CapacitorKeyboard:
     :path: "../../../../node_modules/.pnpm/@capacitor+keyboard@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/keyboard"
+  CapacitorLocalNotifications:
+    :path: "../../../../node_modules/.pnpm/@capacitor+local-notifications@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/local-notifications"
   CapacitorShare:
     :path: "../../../../node_modules/.pnpm/@capacitor+share@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/share"
   CapacitorSplashScreen:
@@ -185,6 +190,7 @@ SPEC CHECKSUMS:
   CapacitorHaptics: 1f1e17041f435d8ead9ff2a34edd592c6aa6a8d6
   CapacitorInappbrowser: b9b366f37561bf92da226df6353631ac01cc5b92
   CapacitorKeyboard: 09fd91dcde4f8a37313e7f11bde553ad1ed52036
+  CapacitorLocalNotifications: c2212755b33d2513b8bb325096ce3a64d4039ae3
   CapacitorShare: e573823f511f260f598d0423c33b1e3d7bbe5fd1
   CapacitorSplashScreen: 1d67815a422a9b61539c94f283c08ed56667c0fc
   CapacitorStatusBar: 6e7af040d8fc4dd655999819625cae9c2d74c36f
@@ -206,6 +212,6 @@ SPEC CHECKSUMS:
   RevenueCat: 3fafcf295834118ed6e6ec9388a20a4c9092b1e6
   RevenuecatPurchasesCapacitor: a916cdf5a6c65ad3c7d6fc203f75e731a514bc89
 
-PODFILE CHECKSUM: 21275883917f06fd3aea8fb1a060b0769810cf3b
+PODFILE CHECKSUM: 904e05027b51054af0af24848125a75acbaf5e89
 
 COCOAPODS: 1.16.2

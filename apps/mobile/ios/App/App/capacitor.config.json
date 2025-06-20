@@ -12,6 +12,9 @@
 		"Keyboard": {
 			"resize": "none",
 			"resizeOnFullScreen": true
+		},
+		"LocalNotifications": {
+			"sound": "bell.wav"
 		}
 	},
 	"packageClassList": [
@@ -25,6 +28,7 @@
 		"HapticsPlugin",
 		"InAppBrowserPlugin",
 		"KeyboardPlugin",
+		"LocalNotificationsPlugin",
 		"SharePlugin",
 		"SplashScreenPlugin",
 		"StatusBarPlugin",

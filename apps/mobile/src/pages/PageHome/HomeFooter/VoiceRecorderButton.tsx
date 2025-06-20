@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Drawer } from '@/components/ui/Drawer'
-import { checkAndRequestPermission } from '@/lib/checkAndRequestPermission'
+import { checkAndRequestRecordPermission } from '@/lib/checkAndRequestPermission'
 import { impact } from '@/lib/impact'
 import { isIOS } from '@/lib/utils'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'
@@ -171,7 +171,7 @@ export const VoiceRecorderButton = ({}: Props) => {
           onClick={async (e) => {
             impact()
             // e.stopPropagation()
-            const permissionGranted = await checkAndRequestPermission()
+            const permissionGranted = await checkAndRequestRecordPermission()
             if (!permissionGranted) {
               return
             }

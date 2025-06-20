@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { impact } from '@/lib/impact'
 import { EmblaCarouselType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -141,6 +142,30 @@ export const IosPickerItem: React.FC<PropType> = (props) => {
     inactivateEmblaTransform(emblaApi)
     rotateWheel(emblaApi)
   }, [emblaApi, inactivateEmblaTransform, rotateWheel])
+
+  const prevInViewRef = useRef<number[]>([])
+  useEffect(() => {
+    if (!emblaApi) return
+
+    const onSlidesInView = () => {
+      const currentInView = emblaApi.slidesInView()
+      const prevInView = prevInViewRef.current
+
+      const newlyInView = currentInView.filter((i) => !prevInView.includes(i))
+
+      if (newlyInView.length > 0) {
+        impact()
+      }
+
+      prevInViewRef.current = currentInView
+    }
+
+    emblaApi.on('slidesInView', onSlidesInView)
+
+    return () => {
+      emblaApi.off('slidesInView', onSlidesInView)
+    }
+  }, [emblaApi])
 
   return (
     <div className="flex h-full min-w-[50%] items-center justify-center ">

@@ -57,6 +57,7 @@ import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { StructIcon } from '@penx/widgets/StructIcon'
 import { useDeleteCreationDialog } from '../../../../Creation/DeleteCreationDialog/useDeleteCreationDialog'
+import { CreationReminder } from './CreationReminder'
 import { getMotionConfig } from './lib/getMotionConfig'
 import { Link } from './Link'
 import { Tags } from './Tags'
@@ -207,6 +208,9 @@ export function CreationItem({ creation }: Props) {
               )}
             >
               {creation.title || 'untitled'}
+            </div>
+            <div className="ml-auto">
+              <CreationReminder struct={struct} creation={creation} />
             </div>
           </div>
         )}
