@@ -31,6 +31,7 @@ import {
   Widget,
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { fixStructs } from './fixStructs'
 import { initLocalSite } from './lib/initLocalSite'
 import { isRowsEqual } from './lib/isRowsEqual'
 import { syncNodesToLocal } from './lib/syncNodesToLocal'
@@ -49,7 +50,7 @@ export class AppService {
     try {
       const site = await this.getInitialSite(session)
 
-      // console.log('===========getInital=site:', site)
+      console.log('===========getInital=site:', site)
       await this.initStore(site)
     } catch (error) {
       console.log('init error=====>>>:', error)
@@ -85,6 +86,8 @@ export class AppService {
     if (session.siteId) {
       const sites = await localDB.listAllSiteByUserId(session.userId)
       const site = sites.find((s) => s.props.isRemote)
+
+      console.log('=======sites:', sites)
 
       if (site) {
         await syncNodesToLocal(site.id)
@@ -186,6 +189,8 @@ export class AppService {
       }
     }
 
+    structs = await fixStructs(area.id, structs)
+
     // console.log('======journals:', journals)
 
     // const mergedJournals = mergeJournals(journals)
@@ -228,7 +233,7 @@ export class AppService {
 
     const journalPanel = panels.find((p) => p.type === PanelType.JOURNAL)
 
-    if (!journalPanel && !panels.length && isMobileApp) {
+    if (!journalPanel && !panels.length) {
       const date = new Date()
       const dateStr = format(date, 'yyyy-MM-dd')
 
