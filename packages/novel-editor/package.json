@@ -29,6 +29,7 @@
     "@penx/session": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/icons": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
     "highlight.js": "^11.11.1"

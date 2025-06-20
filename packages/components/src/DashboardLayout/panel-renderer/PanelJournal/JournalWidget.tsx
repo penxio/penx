@@ -7,6 +7,7 @@ import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
 import { useStructs } from '@penx/hooks/useStructs'
+import { EditLine } from '@penx/icons'
 import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
@@ -23,6 +24,7 @@ interface Props {
 }
 
 const MotionPlus = motion.create(PlusIcon)
+const MotionEditLine = motion.create(EditLine)
 
 export function JournalWidget({ creations }: Props) {
   const { structs } = useStructs()
@@ -59,7 +61,7 @@ export function JournalWidget({ creations }: Props) {
           <LayoutGroup key={struct.id}>
             <motion.div
               layoutId={struct.id}
-              className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3"
+              className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3 dark:bg-neutral-700"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -97,7 +99,7 @@ function AddCreationButton({ struct }: { struct: Struct }) {
     return (
       <MotionPlus
         whileTap={{ scale: 1.2 }}
-        className="text-foreground/50"
+        className="text-foreground/80"
         onClick={() => {
           setState({ isTask: true, open: true })
         }}
@@ -108,7 +110,7 @@ function AddCreationButton({ struct }: { struct: Struct }) {
   if (struct.type === StructType.NOTE) {
     return (
       <motion.span
-        className={cn('text-foreground/60 icon-[mdi--feather] size-6')}
+        className={cn('text-foreground/80 icon-[mdi--feather] size-6')}
         whileTap={{ scale: 1.2 }}
         onClick={() => {
           setState({ isTask: false, open: true })

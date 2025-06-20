@@ -14,6 +14,7 @@ import { effect } from 'zod'
 import { appEmitter } from '@penx/emitter'
 import { useJournal } from '@penx/hooks/useJournal'
 import { cn } from '@penx/utils'
+import { GuideEntry } from './GuideEntry'
 import { HomeHeader } from './HomeHeader'
 
 const platform = Capacitor.getPlatform()
@@ -79,6 +80,7 @@ export const Journals = ({}: Props) => {
         }
       >
         <HomeHeader />
+        <GuideEntry />
         <JournalContent
           date={date}
           showJournalTitle={false}

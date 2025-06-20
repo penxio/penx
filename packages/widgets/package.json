@@ -39,6 +39,7 @@
     "@penx/query-client": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/icons": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/session": "workspace:*",
     "@penx/utils": "workspace:*",

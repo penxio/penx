@@ -45,7 +45,7 @@ export const StructInfoFooter = ({ structId }: Props) => {
         className={cn('relative inline-flex items-center justify-center pb-6')}
       >
         <div
-          className="shadow-card bg-brand dark:bg-brand relative inline-flex h-12 min-w-32 items-center justify-center gap-2 rounded-full px-3 text-center text-white"
+          className="shadow-popover bg-background text-foreground relative inline-flex h-12 min-w-32 items-center justify-center gap-2 rounded-full px-4 text-center font-bold"
           onClick={async () => {
             impact()
             const { value } = await Dialog.confirm({

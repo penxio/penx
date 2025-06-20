@@ -48,7 +48,7 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
     <div className="flex flex-1 flex-col gap-4 pt-3">
       <div className="text-foreground flex items-center justify-center gap-2 text-3xl font-bold">
         <span>PenX</span>
-        <span className="bg-foreground rounded-lg px-2 py-0.5 text-lg text-white">
+        <span className="bg-foreground text-background rounded-lg px-2 py-0.5 text-lg">
           <Trans>Member</Trans>
         </span>
       </div>
@@ -57,7 +57,7 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
         options={[
           {
             value: SubscriptionType.standard,
-            label: <Trans>Standard</Trans>,
+            label: <Trans>PRO</Trans>,
           },
           {
             value: SubscriptionType.pro,
@@ -66,7 +66,7 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
                 <span>
                   <Trans>PRO</Trans>
                 </span>
-                <span className="bg-foreground text-background h-5 rounded-md px-2 text-sm">
+                <span className="bg-foreground text-background h-5 rounded-md px-2 text-sm dark:bg-black dark:text-white">
                   AI
                 </span>
               </div>
@@ -127,7 +127,7 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
         }}
       >
         <div>
-          {isPro ? <Trans>Pro monthly</Trans> : <Trans>Standard monthly</Trans>}
+          {isPro ? <Trans>Pro + AI monthly</Trans> : <Trans>PRO monthly</Trans>}
         </div>
         <div className="flex items-center">
           <span className="mr-1 text-3xl font-bold">
@@ -147,7 +147,7 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
           setIsMonthly(false)
         }}
       >
-        {isPro ? <Trans>Pro yearly</Trans> : <Trans>Standard yearly</Trans>}
+        {isPro ? <Trans>Pro + AI yearly</Trans> : <Trans>PRO yearly</Trans>}
         <div className="flex items-center">
           <span className="mr-1 text-3xl font-bold">
             {isPro ? '$80' : '$40'}

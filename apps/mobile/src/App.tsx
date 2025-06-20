@@ -278,6 +278,7 @@ const AppContent = memo(
                   <Route path="/folder/:name" exact={true}>
                     <NavProvider nav={nav.current!}>
                       <IonNav
+                        className=""
                         ref={nav}
                         root={() => <PageHome nav={nav.current} />}
                       ></IonNav>

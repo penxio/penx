@@ -152,7 +152,7 @@ export function JournalTitleWidget({ creations }: Props) {
       <motion.div
         ref={refs.setReference}
         layoutId="title-card"
-        className="bg-background shadow-card relative flex h-auto flex-1 flex-col justify-between rounded-2xl p-3"
+        className="bg-background shadow-card relative flex h-auto flex-1 flex-col justify-between rounded-2xl p-3  dark:bg-neutral-700"
         onClick={() => {
           setOpen(true)
         }}
@@ -171,16 +171,18 @@ export function JournalTitleWidget({ creations }: Props) {
       {isMobileApp && (
         <AnimatePresence>
           {open && (
-            <motion.div
-              ref={refs.setFloating}
-              layoutId="title-card"
-              className="bg-background fixed bottom-0 left-0 right-0 top-0 z-[1000] flex justify-center"
-              style={{
-                paddingTop: 'calc(var(--safe-area-inset-top) + 6px)',
-              }}
-            >
-              {floatingJSX}
-            </motion.div>
+            <Portal>
+              <motion.div
+                ref={refs.setFloating}
+                layoutId="title-card"
+                className="bg-background fixed bottom-0 left-0 right-0 top-0 z-[1000] flex justify-center"
+                style={{
+                  paddingTop: 'calc(var(--safe-area-inset-top) + 6px)',
+                }}
+              >
+                {floatingJSX}
+              </motion.div>
+            </Portal>
           )}
         </AnimatePresence>
       )}

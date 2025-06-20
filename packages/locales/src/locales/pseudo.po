@@ -55,7 +55,7 @@ msgstr ""
 msgid "5 minutes"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:50
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:49
 msgid "A structured note-taking App"
 msgstr ""
 
@@ -67,11 +67,11 @@ msgstr ""
 msgid "Access control"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:105
+#: apps/mobile/src/components/Profile/Profile.tsx:136
 msgid "Account deleted successfully!"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:104
+#: apps/mobile/src/components/Profile/Profile.tsx:135
 msgid "Account deletion in progress..."
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "All structs"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:91
+#: apps/mobile/src/components/Profile/Profile.tsx:122
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr ""
 
@@ -156,6 +156,10 @@ msgstr ""
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr ""
 
+#: apps/mobile/src/pages/PageHome/GuideEntry.tsx:46
+msgid "An Introduction to PenX and How to Use It"
+msgstr ""
+
 #: packages/widgets/src/AppleOauthButton.tsx:79
 msgid "Apple login"
 msgstr ""
@@ -165,7 +169,7 @@ msgstr ""
 msgid "Are you sure delete it permanently?"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:124
+#: apps/mobile/src/components/Profile/Profile.tsx:155
 msgid "Are you sure you want to log out?"
 msgstr ""
 
@@ -176,6 +180,10 @@ msgstr ""
 
 #: apps/mobile/src/components/AreasMenu/AreasMenu.tsx:70
 msgid "Areas"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:39
+msgid "Believer"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:284
@@ -190,7 +198,7 @@ msgstr ""
 msgid "Bubble"
 msgstr ""
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:40
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:43
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
@@ -223,13 +231,13 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:161
-msgid "Confirm"
-msgstr ""
-
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
+msgstr ""
+
+#: apps/mobile/src/components/Profile/Profile.tsx:95
+msgid "Copied to clipboard"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:263
@@ -278,13 +286,12 @@ msgstr ""
 msgid "Creation counts"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:46
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr ""
 
 #: packages/components/src/Profile/ProfilePopover.tsx:106
-#: packages/components/src/Profile/Profile.tsx:58
+#: packages/components/src/Profile/Profile.tsx:56
 msgid "Dashboard"
 msgstr ""
 
@@ -306,8 +313,8 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:90
-#: apps/mobile/src/components/Profile/Profile.tsx:114
+#: apps/mobile/src/components/Profile/Profile.tsx:121
+#: apps/mobile/src/components/Profile/Profile.tsx:145
 msgid "Delete account"
 msgstr ""
 
@@ -407,7 +414,7 @@ msgstr ""
 msgid "End-to-end encryption"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:107
+#: apps/mobile/src/components/Profile/Profile.tsx:138
 msgid "Failed to delete account. Please try again."
 msgstr ""
 
@@ -425,7 +432,7 @@ msgstr ""
 msgid "Find or create option"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:73
+#: apps/mobile/src/components/Profile/Profile.tsx:40
 msgid "Free"
 msgstr ""
 
@@ -445,6 +452,11 @@ msgstr ""
 #: apps/extension/components/Login.tsx:51
 #: packages/widgets/src/GoogleOauthButton.tsx:70
 msgid "Google login"
+msgstr ""
+
+#: apps/mobile/src/pages/PageHome/GuideEntry.tsx:31
+#: apps/mobile/src/components/Profile/GuideEntryMenu.tsx:30
+msgid "Guide of PenX"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:98
@@ -493,7 +505,6 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:38
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
 msgstr ""
@@ -517,8 +528,8 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:123
-#: apps/mobile/src/components/Profile/Profile.tsx:133
+#: apps/mobile/src/components/Profile/Profile.tsx:154
+#: apps/mobile/src/components/Profile/Profile.tsx:164
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -533,7 +544,7 @@ msgstr ""
 msgid "Login code"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:46
+#: apps/mobile/src/components/Profile/Profile.tsx:61
 msgid "Login or Register"
 msgstr ""
 
@@ -743,24 +754,39 @@ msgstr ""
 msgid "Press Enter to add a tag."
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:40
 #: packages/libs/src/getDefaultStructs.ts:79
 msgid "Priority"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:153
+#: apps/mobile/src/components/Profile/Profile.tsx:184
 msgid "Privacy Policy"
 msgstr ""
 
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:67
+#: apps/mobile/src/components/Profile/Profile.tsx:37
 msgid "PRO"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/Profile.tsx:38
+msgid "PRO + AI"
+msgstr ""
+
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
-msgid "Pro monthly"
+msgid "Pro + AI monthly"
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
-msgid "Pro yearly"
+msgid "Pro + AI yearly"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
+msgid "PRO monthly"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
+msgid "PRO yearly"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:102
@@ -808,16 +834,17 @@ msgstr ""
 msgid "Register to PenX"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:119
+#: apps/mobile/src/components/TaskCreation/ReminderTimePicker.tsx:44
 msgid "Remind me..."
 msgstr ""
 
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:137
 #: packages/libs/src/getDefaultStructs.ts:122
 #: packages/components/src/AppProvider/AppService.ts:171
 msgid "Reminder"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:149
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:176
 msgid "Remove reminder"
 msgstr ""
 
@@ -833,7 +860,7 @@ msgstr ""
 msgid "Sat"
 msgstr ""
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:59
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:62
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr ""
@@ -879,18 +906,6 @@ msgstr ""
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
 #: packages/components/src/AreaDialog/AreaForm.tsx:180
 msgid "Slug"
-msgstr ""
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
-msgid "Standard"
-msgstr ""
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
-msgid "Standard monthly"
-msgstr ""
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
-msgid "Standard yearly"
 msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:86
@@ -987,7 +1002,6 @@ msgstr ""
 msgid "Syncing..."
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:54
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:65
 msgid "System"
 msgstr ""
@@ -1008,7 +1022,6 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:28
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:31
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43

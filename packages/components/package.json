@@ -171,6 +171,7 @@
     "@penx/contexts": "workspace:*",
     "@penx/hooks": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/icons": "workspace:*",
     "@penx/widgets": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/worker": "workspace:*",

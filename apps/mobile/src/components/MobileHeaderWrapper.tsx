@@ -36,7 +36,7 @@ export function MobileHeaderWrapper({
     >
       <div className="w-32">
         <ChevronLeftIcon
-          className=""
+          className="text-foreground"
           size={28}
           onClick={() => {
             appEmitter.emit('ROUTE_TO_BACK')

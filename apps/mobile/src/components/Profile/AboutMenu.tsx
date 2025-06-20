@@ -41,10 +41,9 @@ export function AboutMenu({ children, className }: ItemProps) {
         <div className="flex flex-1 items-center justify-center">
           <div className="flex flex-col items-center justify-center gap-2">
             <img
-              // src="assets/logo-dark.png"
-              src="https://penx.io/logo.png"
+              src="https://penx.io/images/logo.svg"
               alt="logo"
-              className="size-16 rounded-xl"
+              className="shadow-popover size-16 rounded-xl"
             />
             <div>
               <Trans>A structured note-taking App</Trans>

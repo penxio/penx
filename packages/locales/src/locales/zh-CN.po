@@ -55,7 +55,7 @@ msgstr "30分钟"
 msgid "5 minutes"
 msgstr "5分钟"
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:50
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:49
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
 
@@ -67,11 +67,11 @@ msgstr "关于"
 msgid "Access control"
 msgstr "访问控制"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:105
+#: apps/mobile/src/components/Profile/Profile.tsx:136
 msgid "Account deleted successfully!"
 msgstr "账户已成功删除！"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:104
+#: apps/mobile/src/components/Profile/Profile.tsx:135
 msgid "Account deletion in progress..."
 msgstr "账户删除处理中…"
 
@@ -143,7 +143,7 @@ msgstr "所有创作"
 msgid "All structs"
 msgstr "所有结构体"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:91
+#: apps/mobile/src/components/Profile/Profile.tsx:122
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr "所有数据将被删除，此操作无法撤销。您确定要删除您的账户吗？"
 
@@ -156,6 +156,10 @@ msgstr "已有账户"
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr "一个分享想法、故事和见解的空间。"
 
+#: apps/mobile/src/pages/PageHome/GuideEntry.tsx:46
+msgid "An Introduction to PenX and How to Use It"
+msgstr "PenX介绍与使用方法"
+
 #: packages/widgets/src/AppleOauthButton.tsx:79
 msgid "Apple login"
 msgstr "Apple 登录"
@@ -165,7 +169,7 @@ msgstr "Apple 登录"
 msgid "Are you sure delete it permanently?"
 msgstr "确定要永久删除吗？"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:124
+#: apps/mobile/src/components/Profile/Profile.tsx:155
 msgid "Are you sure you want to log out?"
 msgstr "您确定要退出登录吗？"
 
@@ -177,6 +181,10 @@ msgstr "你确定要将这个结构体发布到市场吗？"
 #: apps/mobile/src/components/AreasMenu/AreasMenu.tsx:70
 msgid "Areas"
 msgstr "领域"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:39
+msgid "Believer"
+msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:284
 msgid "Bookmark"
@@ -190,7 +198,7 @@ msgstr "开关"
 msgid "Bubble"
 msgstr "气泡"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:40
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:43
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
@@ -223,14 +231,14 @@ msgstr "合集"
 msgid "Color"
 msgstr "颜色"
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:161
-msgid "Confirm"
-msgstr ""
-
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
 msgstr "确定发布？"
+
+#: apps/mobile/src/components/Profile/Profile.tsx:95
+msgid "Copied to clipboard"
+msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:263
 #: packages/components/src/CreationCard/CreationCard.tsx:262
@@ -278,13 +286,12 @@ msgstr "创建日期"
 msgid "Creation counts"
 msgstr "创作数量"
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:46
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr "深色"
 
 #: packages/components/src/Profile/ProfilePopover.tsx:106
-#: packages/components/src/Profile/Profile.tsx:58
+#: packages/components/src/Profile/Profile.tsx:56
 msgid "Dashboard"
 msgstr "仪表板"
 
@@ -306,8 +313,8 @@ msgstr "日期"
 msgid "Delete"
 msgstr "删除"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:90
-#: apps/mobile/src/components/Profile/Profile.tsx:114
+#: apps/mobile/src/components/Profile/Profile.tsx:121
+#: apps/mobile/src/components/Profile/Profile.tsx:145
 msgid "Delete account"
 msgstr "删除账户"
 
@@ -407,7 +414,7 @@ msgstr "空白"
 msgid "End-to-end encryption"
 msgstr "端到端加密"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:107
+#: apps/mobile/src/components/Profile/Profile.tsx:138
 msgid "Failed to delete account. Please try again."
 msgstr "删除账户失败，请重试。"
 
@@ -425,7 +432,7 @@ msgstr "收藏"
 msgid "Find or create option"
 msgstr "查找或创建选项"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:73
+#: apps/mobile/src/components/Profile/Profile.tsx:40
 msgid "Free"
 msgstr "免费"
 
@@ -446,6 +453,11 @@ msgstr "设置这篇文章的访问权限，配置谁可以阅读这篇文章。
 #: packages/widgets/src/GoogleOauthButton.tsx:70
 msgid "Google login"
 msgstr "Google 登录"
+
+#: apps/mobile/src/pages/PageHome/GuideEntry.tsx:31
+#: apps/mobile/src/components/Profile/GuideEntryMenu.tsx:30
+msgid "Guide of PenX"
+msgstr "PenX 使用指南"
 
 #: packages/libs/src/getDefaultStructs.ts:98
 msgid "High"
@@ -493,7 +505,6 @@ msgstr "日记"
 msgid "Language"
 msgstr "语言"
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:38
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
 msgstr "浅色"
@@ -517,8 +528,8 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:123
-#: apps/mobile/src/components/Profile/Profile.tsx:133
+#: apps/mobile/src/components/Profile/Profile.tsx:154
+#: apps/mobile/src/components/Profile/Profile.tsx:164
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -533,7 +544,7 @@ msgstr "登录"
 msgid "Login code"
 msgstr "登录验证码"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:46
+#: apps/mobile/src/components/Profile/Profile.tsx:61
 msgid "Login or Register"
 msgstr "登录或注册"
 
@@ -743,24 +754,39 @@ msgstr "复数名称"
 msgid "Press Enter to add a tag."
 msgstr "按回车键添加标签。"
 
+#: apps/mobile/src/components/TaskCreation/Priority.tsx:40
 #: packages/libs/src/getDefaultStructs.ts:79
 msgid "Priority"
 msgstr "优先级"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:153
+#: apps/mobile/src/components/Profile/Profile.tsx:184
 msgid "Privacy Policy"
 msgstr "隐私政策"
 
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:67
+#: apps/mobile/src/components/Profile/Profile.tsx:37
 msgid "PRO"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/Profile.tsx:38
+msgid "PRO + AI"
+msgstr ""
+
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
-msgid "Pro monthly"
+msgid "Pro + AI monthly"
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
-msgid "Pro yearly"
+msgid "Pro + AI yearly"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
+msgid "PRO monthly"
+msgstr ""
+
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
+msgid "PRO yearly"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:102
@@ -808,18 +834,19 @@ msgstr "注册"
 msgid "Register to PenX"
 msgstr "注册 PenX"
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:119
+#: apps/mobile/src/components/TaskCreation/ReminderTimePicker.tsx:44
 msgid "Remind me..."
 msgstr "提醒"
 
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:137
 #: packages/libs/src/getDefaultStructs.ts:122
 #: packages/components/src/AppProvider/AppService.ts:171
 msgid "Reminder"
 msgstr "提醒"
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:149
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:176
 msgid "Remove reminder"
-msgstr ""
+msgstr "删除提醒"
 
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
@@ -833,7 +860,7 @@ msgstr "重新发送"
 msgid "Sat"
 msgstr "周六"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:59
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:62
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr "保存"
@@ -880,18 +907,6 @@ msgstr "单选"
 #: packages/components/src/AreaDialog/AreaForm.tsx:180
 msgid "Slug"
 msgstr "别名"
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
-msgid "Standard"
-msgstr ""
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
-msgid "Standard monthly"
-msgstr ""
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
-msgid "Standard yearly"
-msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
@@ -987,7 +1002,6 @@ msgstr "同步成功!"
 msgid "Syncing..."
 msgstr "同步中..."
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:54
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:65
 msgid "System"
 msgstr "跟随系统"
@@ -1008,7 +1022,6 @@ msgstr "待办"
 msgid "Text"
 msgstr "文本"
 
-#: apps/mobile/src/components/TaskCreation/Priority.tsx:28
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:31
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:39
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:43

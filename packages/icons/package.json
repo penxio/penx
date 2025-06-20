@@ -1,0 +1,19 @@
+{
+  "name": "@penx/icons",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.tsx"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@penx/types": "workspace:*"
+  }
+}

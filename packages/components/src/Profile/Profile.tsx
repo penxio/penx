@@ -2,7 +2,6 @@
 
 import { Trans } from '@lingui/react/macro'
 import { ROOT_DOMAIN } from '@penx/constants'
-import { useQuerySite } from '@penx/hooks/useQuerySite'
 import { useRouter } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback } from '@penx/uikit/avatar'
@@ -24,7 +23,6 @@ export function Profile({
   appearance = 'button',
 }: Props) {
   const { data, status } = useSession()
-  const { site } = useQuerySite()
   const { push } = useRouter()
 
   if (status === 'loading')

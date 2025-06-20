@@ -882,6 +882,9 @@ importers:
       '@penx/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -994,6 +997,9 @@ importers:
       '@penx/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1229,6 +1235,9 @@ importers:
       '@penx/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1440,6 +1449,9 @@ importers:
       '@penx/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1619,6 +1631,9 @@ importers:
       '@penx/hooks':
         specifier: workspace:*
         version: link:../hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -1690,6 +1705,9 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../contexts
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -1855,6 +1873,16 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
+  packages/icons:
+    dependencies:
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/libs:
     dependencies:
       '@penx/constants':
@@ -1961,6 +1989,9 @@ importers:
       '@penx/emitter':
         specifier: workspace:*
         version: link:../emitter
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2167,6 +2198,9 @@ importers:
       '@penx/hooks':
         specifier: workspace:*
         version: link:../hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs

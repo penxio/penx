@@ -63,6 +63,7 @@
     "@penx/store": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/icons": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/vaul": "workspace:*",

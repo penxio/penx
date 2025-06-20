@@ -100,7 +100,7 @@ const Menu: React.FC = () => {
           boxShadow: '0 0 0 rgba(0, 0, 0, 0.2)',
         }}
       >
-        <div className="flex items-center justify-between gap-2 px-2 pb-4">
+        <div className="bg-white dark:bg-[#333] flex items-center justify-between gap-2 px-2 pb-4">
           <Button
             variant="ghost"
             className="text-foreground w-full justify-start gap-2 pl-2"

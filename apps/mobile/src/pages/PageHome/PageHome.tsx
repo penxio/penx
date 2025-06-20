@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AnimatedJournalInput } from '@/components/AnimatedJournalInput'
 import Menu from '@/components/Menu'
 import { useTheme } from '@/components/theme-provider'
+import { useGuideEntryHidden } from '@/hooks/useGuideEntryHidden'
 import { useKeyboard, useKeyboardChange } from '@/hooks/useKeyboard'
 import { mainBackgroundLight } from '@/lib/constants'
 import { useMoreStructDrawer } from '@/pages/PageHome/HomeFooter/MoreStructDrawer/useMoreStructDrawer'
@@ -35,6 +36,9 @@ const PageHome = ({ nav }: any) => {
   useEffect(() => {
     if (!isShow && open) setOpen(false)
   }, [isShow])
+
+  const { isLoading } = useGuideEntryHidden()
+  if (isLoading) return null
 
   return (
     <>

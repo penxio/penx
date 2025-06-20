@@ -12,6 +12,7 @@ export enum SubscriptionSource {
 export interface SessionData {
   isLoggedIn: boolean
   uid: string
+  pid: string
   email: string
   name: string
   picture: string

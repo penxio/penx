@@ -31,7 +31,7 @@ export const MobileContent = ({
         boxShadow: '-10px 0 10px -5px rgba(0, 0, 0, 0.04)',
       }}
     >
-      <div className="flex h-screen flex-col overflow-hidden">
+      <div className="text-foreground flex h-screen flex-col overflow-hidden ">
         <MobileHeaderWrapper
           title={title}
           rightSlot={rightSlot}

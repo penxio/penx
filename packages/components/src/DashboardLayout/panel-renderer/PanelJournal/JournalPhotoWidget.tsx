@@ -24,7 +24,7 @@ export function JournalPhotoWidget({ creations }: Props) {
       <motion.div
         layoutId="photo-card"
         className={cn(
-          'bg-background shadow-card inline-flex h-auto  flex-col rounded-2xl p-3 font-bold',
+          'bg-background shadow-card inline-flex h-auto  flex-col rounded-2xl p-3 font-bold dark:bg-neutral-700',
           isMobileApp && 'min-w-[50vw]',
           !isMobileApp && 'flex-2',
         )}

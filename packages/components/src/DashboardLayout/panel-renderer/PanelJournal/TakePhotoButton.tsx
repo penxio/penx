@@ -6,10 +6,10 @@ import { CameraIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { toast } from 'sonner'
 import { useLongPress } from 'use-long-press'
-import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
+import { CameraLine } from '@penx/icons'
 import { localDB } from '@penx/local-db'
 import { ImageCreationData } from '@penx/model-type'
 import { useSession } from '@penx/session'
@@ -90,6 +90,7 @@ export function TakePhotoButton({ children }: Props) {
       }}
     >
       <CameraIcon size={20}></CameraIcon>
+      {/* <CameraLine className='size-5'> */}
     </motion.div>
   )
 }

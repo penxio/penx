@@ -8,6 +8,7 @@ import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
+import { BraceButton } from './BraceButton'
 
 interface Props {
   //
@@ -46,6 +47,7 @@ export const HomeHeader = ({}: Props) => {
       )}
 
       <div className="flex items-center gap-2">
+        <BraceButton />
         <SearchButton />
         {!session && (
           <Avatar

@@ -22,6 +22,7 @@
     "@penx/constants": "workspace:*",
     "@penx/contexts": "workspace:*",
     "@penx/uikit": "workspace:*",
+    "@penx/icons": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/unique-id": "workspace:*",

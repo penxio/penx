@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+import { impact } from '@/lib/impact'
 import { Dialog } from '@capacitor/dialog'
 import {
   DefaultSystemBrowserOptions,
@@ -6,19 +8,22 @@ import {
 } from '@capacitor/inappbrowser'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
-import { ChevronRightIcon, UserIcon } from 'lucide-react'
+import { ChevronRightIcon, CopyIcon, UserIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { api } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { useMobileNav } from '@penx/hooks/useMobileNav'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
+import { PlanType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { Card } from '../ui/Card'
 import { AboutMenu } from './AboutMenu'
+import { GuideEntryMenu } from './GuideEntryMenu'
 import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
@@ -26,6 +31,16 @@ import { ThemeMenu } from './ThemeMenu'
 
 export function Profile() {
   const { session, logout } = useSession()
+
+  const planType = useMemo(() => {
+    if (!session) return ''
+    if (session.planType === PlanType.STANDARD) return <Trans>PRO</Trans>
+    if (session.planType === PlanType.PRO) return <Trans>PRO + AI</Trans>
+    if (session.planType === PlanType.BELIEVER) return <Trans>Believer</Trans>
+    return <Trans>Free</Trans>
+  }, [session])
+
+  const { copy } = useCopyToClipboard()
 
   return (
     <div className="flex h-full flex-col">
@@ -52,7 +67,7 @@ export function Profile() {
         </div>
       )}
       {session && (
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-2">
           <div className="text-foreground flex items-center gap-2">
             <Avatar className="size-12 rounded-lg">
               <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
@@ -70,11 +85,27 @@ export function Profile() {
               <div className="text-foreground/60">{session?.email}</div>
             </div>
           </div>
-          <Badge>{session?.planType || <Trans>Free</Trans>}</Badge>
+          <div className="flex gap-2 text-lg">
+            <Badge
+              className="flex items-center gap-1 px-3"
+              variant="secondary"
+              onClick={() => {
+                impact()
+                copy(session.pid)
+                toast.success(t`Copied to clipboard`)
+              }}
+            >
+              PenX ID:{' '}
+              <span className="text-base font-bold">{session.pid}</span>{' '}
+              <CopyIcon size={16} />
+            </Badge>
+            <Badge variant="secondary">{planType}</Badge>
+          </div>
         </div>
       )}
       {/* <Card>PenX PRO</Card> */}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-1">
+        <GuideEntryMenu />
         <SubscriptionMenu />
         <LocaleMenu />
         <ThemeMenu />
