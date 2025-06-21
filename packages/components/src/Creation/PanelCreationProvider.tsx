@@ -75,7 +75,9 @@ export const PanelCreationProvider = ({
   }
 
   return (
-    <PanelCreationContext.Provider value={new Creation(data!)}>
+    <PanelCreationContext.Provider
+      value={data ? new Creation(data!) : (null as any)}
+    >
       {children}
     </PanelCreationContext.Provider>
   )

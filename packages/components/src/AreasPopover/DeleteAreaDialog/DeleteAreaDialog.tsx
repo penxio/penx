@@ -47,7 +47,7 @@ export function DeleteAreaDialog({}: Props) {
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
       <DialogContent closable={false} className="">
         <DialogHeader className="">
-          <DialogTitle className="">
+          <DialogTitle className="text-foreground">
             <Trans>Are you sure delete it permanently?</Trans>
           </DialogTitle>
           <DialogDescription>
@@ -57,7 +57,7 @@ export function DeleteAreaDialog({}: Props) {
 
         <DialogFooter className="flex flex-row gap-2">
           <DialogClose asChild>
-            <Button className="w-20" variant="outline">
+            <Button className="w-20 text-foreground" variant="outline">
               <Trans>Cancel</Trans>
             </Button>
           </DialogClose>

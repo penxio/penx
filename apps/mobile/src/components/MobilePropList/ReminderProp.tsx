@@ -19,6 +19,9 @@ export const ReminderProp = ({ value, column, creation, onChange }: Props) => {
       creation={creation}
       column={column}
       value={value}
+      onChange={(v) => {
+        onChange?.(v)
+      }}
     >
       {({ date }) => (
         <div

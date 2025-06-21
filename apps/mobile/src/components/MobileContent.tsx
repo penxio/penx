@@ -11,6 +11,7 @@ interface Props {
   backgroundColor?: string
   className?: string
   bordered?: boolean
+  onBack?: () => void
 }
 
 export const MobileContent = ({
@@ -20,6 +21,7 @@ export const MobileContent = ({
   children,
   className,
   bordered = true,
+  onBack,
 }: PropsWithChildren<Props>) => {
   const { isDark } = useTheme()
   return (
@@ -33,6 +35,7 @@ export const MobileContent = ({
     >
       <div className="text-foreground flex h-screen flex-col overflow-hidden ">
         <MobileHeaderWrapper
+          onBack={onBack}
           title={title}
           rightSlot={rightSlot}
         ></MobileHeaderWrapper>

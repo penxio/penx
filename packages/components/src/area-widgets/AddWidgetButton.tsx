@@ -52,7 +52,7 @@ export function AddWidgetButton({ className }: Props) {
 
   return (
     <div className={cn('flex justify-center')}>
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover >
         <PopoverTrigger asChild>
           <Button
             size="sm"
@@ -65,6 +65,7 @@ export function AddWidgetButton({ className }: Props) {
           </Button>
         </PopoverTrigger>
         <PopoverContent
+          isPortal
           align="center"
           className={cn('w-48 p-0', isMobileApp && 'max-h-60 overflow-auto')}
         >

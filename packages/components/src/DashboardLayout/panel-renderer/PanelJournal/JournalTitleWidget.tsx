@@ -175,7 +175,7 @@ export function JournalTitleWidget({ creations }: Props) {
               <motion.div
                 ref={refs.setFloating}
                 layoutId="title-card"
-                className="bg-background fixed bottom-0 left-0 right-0 top-0 z-[1000] flex justify-center"
+                className="bg-background text-foreground fixed bottom-0 left-0 right-0 top-0 z-[1000] flex justify-center"
                 style={{
                   paddingTop: 'calc(var(--safe-area-inset-top) + 6px)',
                 }}

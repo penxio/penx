@@ -11,6 +11,7 @@ interface Props {
   title?: ReactNode
   rightSlot?: ReactNode
   bordered?: boolean
+  onBack?: () => void
 }
 
 export function MobileHeaderWrapper({
@@ -18,6 +19,7 @@ export function MobileHeaderWrapper({
   title,
   rightSlot,
   bordered,
+  onBack,
 }: Props) {
   const h = useMemo(() => {
     if (isAndroid) return 'calc(var(--safe-area-inset-top) + 50px)'
@@ -40,6 +42,7 @@ export function MobileHeaderWrapper({
           size={28}
           onClick={() => {
             appEmitter.emit('ROUTE_TO_BACK')
+            onBack?.()
           }}
         />
       </div>

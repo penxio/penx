@@ -36,7 +36,7 @@ export function EditWidgetButton({ className }: Props) {
           </DrawerTitle>
         </DrawerHeader>
         <WidgetList />
-        <div className="flex justify-center">
+        <div className="mt-2 flex justify-center">
           <AddWidgetButton />
         </div>
       </Drawer>

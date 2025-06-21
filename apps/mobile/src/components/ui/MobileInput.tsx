@@ -15,7 +15,7 @@ export function MobileInput({ label, isRequired, ...props }: Props) {
       </div>
       <Input
         variant="unstyled"
-        className="text-right focus-visible:bg-transparent"
+        className="text-right hover:bg-transparent focus-visible:bg-transparent"
         {...props}
       />
     </div>

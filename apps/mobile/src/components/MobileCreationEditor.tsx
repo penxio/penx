@@ -9,31 +9,18 @@ import { NovelEditor } from '@penx/novel-editor/components/novel-editor'
 import { FixedToolbar } from './FixedToolbar'
 import { KeyboardPadding } from './KeyboardPadding'
 
-interface Props {}
+interface Props {
+  value: any[]
+  onChange: (value: any[]) => void
+}
 
-export function MobileCreationEditor({}: Props) {
-  const creation = usePanelCreationContext()
-
+export function MobileCreationEditor({ value, onChange }: Props) {
   return (
     <NovelEditor
       className=""
-      value={
-        creation.content ? JSON.parse(creation.content) : defaultEditorContent
-      }
+      value={value}
       onChange={(v: any[]) => {
-        const input = {
-          content: JSON.stringify(v),
-        } as ICreationNode['props']
-
-        // if (creation.type === StructType.NOTE) {
-        //   const title = v
-        //     .map((n) => Node.string(n))
-        //     .join(', ')
-        //     .slice(0, 20)
-        //   input.title = title
-        // }
-
-        updateCreationProps(creation.id, input)
+        onChange(v)
       }}
     >
       <FixedToolbar />

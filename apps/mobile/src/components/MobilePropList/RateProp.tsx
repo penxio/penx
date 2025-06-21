@@ -3,10 +3,10 @@ import { StarSVG } from '@penx/components/StarSVG'
 import { cn } from '@penx/utils'
 
 interface Props {
-  value: string[]
+  value: string
   onChange: (v: string) => void
 }
-export const RateProp = ({ value, onChange }: Props) => {
+export const RateProp = ({ value = '0', onChange }: Props) => {
   return (
     <div className="flex h-full items-center justify-end px-3">
       {[0, 1, 2, 3, 4].map((index) => (

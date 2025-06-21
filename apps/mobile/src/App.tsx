@@ -69,6 +69,7 @@ import { PageAllStructs } from './pages/PageAllStructs/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { MoreStructDrawer } from './pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer'
 import { PageLogin } from './pages/PageLogin'
+import { PageNewCreation } from './pages/PageNewCreation'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct/PageStruct'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
@@ -248,6 +249,16 @@ const AppContent = memo(
       appEmitter.on('ROUTE_TO_SYNC', handle)
       return () => {
         appEmitter.off('ROUTE_TO_SYNC', handle)
+      }
+    }, [])
+
+    useEffect(() => {
+      function handle(struct: any) {
+        nav.current?.push(PageNewCreation, { struct })
+      }
+      appEmitter.on('ROUTE_TO_NEW_CREATION', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_NEW_CREATION', handle)
       }
     }, [])
 

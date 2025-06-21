@@ -21,6 +21,7 @@ export type Input = {
   title?: string
   data?: any
   date?: any
+  cells?: any
 }
 
 export function useAddCreation() {

@@ -609,7 +609,7 @@ importers:
         specifier: ^10.0.0
         version: 10.0.1(react@19.0.0)
       react-textarea-autosize:
-        specifier: ^8.5.7
+        specifier: ^8.5.9
         version: 8.5.9(@types/react@19.0.10)(react@19.0.0)
       react-tweet:
         specifier: ^3.2.1

@@ -433,8 +433,8 @@ msgstr "Email"
 msgid "Email login"
 msgstr "Email login"
 
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:56
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:93
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:54
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:91
 msgid "Empty"
 msgstr "Empty"
 
@@ -674,7 +674,7 @@ msgstr "No chat history yet!"
 msgid "No creation yet!"
 msgstr "No creation yet!"
 
-#: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/StructList.tsx:54
+#: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/StructList.tsx:56
 #: apps/mobile/src/pages/PageAllStructs/StructMarketplace.tsx:58
 #: apps/mobile/src/pages/PageAllStructs/StructList.tsx:47
 msgid "No introduction for the struct"
@@ -888,7 +888,7 @@ msgstr "Remind me..."
 msgid "Reminder"
 msgstr "Reminder"
 
-#: apps/mobile/src/components/MobilePropList/ReminderDrawer.tsx:185
+#: apps/mobile/src/components/MobilePropList/ReminderDrawer.tsx:192
 msgid "Remove reminder"
 msgstr "Remove reminder"
 
@@ -908,6 +908,7 @@ msgstr "Resend"
 msgid "Sat"
 msgstr "Sat"
 
+#: apps/mobile/src/pages/PageNewCreation.tsx:95
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:62
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"

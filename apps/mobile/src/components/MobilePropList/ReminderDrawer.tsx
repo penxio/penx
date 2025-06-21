@@ -132,17 +132,21 @@ export const ReminderDrawer = ({
             onConfirm={async () => {
               impact()
               setOpen(false)
+              const newValue = {
+                date: selected,
+                repeat: RepeatTypes.NONE,
+              }
+              onChange?.(newValue)
 
-              const newCreation = await updateCreationProps(creation.id, {
-                cells: {
-                  ...creation.cells,
-                  [column.id]: {
-                    date: selected,
-                    repeat: RepeatTypes.NONE,
+              if (creation) {
+                const newCreation = await updateCreationProps(creation.id, {
+                  cells: {
+                    ...creation.cells,
+                    [column.id]: newValue,
                   },
-                },
-              })
-              upsertNotification(column, newCreation)
+                })
+                upsertNotification(column, newCreation)
+              }
             }}
           >
             <DrawerTitle>Reminder</DrawerTitle>
@@ -172,14 +176,17 @@ export const ReminderDrawer = ({
                 impact()
                 setOpen(false)
 
-                const newCreation = await updateCreationProps(creation.id, {
-                  cells: {
-                    ...creation.cells,
-                    [column.id]: '',
-                  },
-                })
+                onChange?.('' as any)
+                if (creation) {
+                  const newCreation = await updateCreationProps(creation.id, {
+                    cells: {
+                      ...creation.cells,
+                      [column.id]: '',
+                    },
+                  })
 
-                removeNotification(creation.raw)
+                  removeNotification(creation.raw)
+                }
               }}
             >
               <Trans>Remove reminder</Trans>

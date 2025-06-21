@@ -35,6 +35,7 @@ export function MobileCreation({}: Props) {
   const isImage = creation.type === StructType.IMAGE
   const { structs } = useStructs()
   const struct = structs.find((m) => m.id === creation.structId)
+  const cells = creation?.props?.cells || {}
   return (
     <>
       <PublishDialog />
@@ -53,6 +54,8 @@ export function MobileCreation({}: Props) {
             <div className={cn('relative mx-auto w-full max-w-2xl px-0')}>
               <CreationHeader />
               <MobilePropList
+                cells={cells}
+                struct={struct!}
                 onUpdateProps={(newCells) => {
                   updateCreationProps(creation.id, { cells: newCells })
                 }}
@@ -86,7 +89,28 @@ export function MobileCreation({}: Props) {
               )}
             </div>
             <div className={cn('mx-auto w-full max-w-2xl px-0')}>
-              <MobileCreationEditor />
+              <MobileCreationEditor
+                value={
+                  creation.content
+                    ? JSON.parse(creation.content)
+                    : defaultEditorContent
+                }
+                onChange={(v) => {
+                  const input = {
+                    content: JSON.stringify(v),
+                  } as ICreationNode['props']
+
+                  // if (creation.type === StructType.NOTE) {
+                  //   const title = v
+                  //     .map((n) => Node.string(n))
+                  //     .join(', ')
+                  //     .slice(0, 20)
+                  //   input.title = title
+                  // }
+
+                  updateCreationProps(creation.id, input)
+                }}
+              />
             </div>
           </div>
         </ErrorBoundary>

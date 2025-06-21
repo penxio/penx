@@ -7,6 +7,7 @@ import { usePanelCreationContext } from '@penx/components/Creation/PanelCreation
 import { FieldIcon } from '@penx/components/FieldIcon'
 import { FileUpload } from '@penx/components/FileUpload'
 import { RepeatTypes } from '@penx/constants'
+import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { isReminder } from '@penx/libs/isReminder'
 import { IColumn } from '@penx/model-type'
@@ -21,22 +22,19 @@ import { ReminderProp } from './ReminderProp'
 import { SingleSelectProp } from './SingleSelectProp'
 
 interface Props {
+  struct: Struct
+  cells: any
   column: IColumn
   onUpdateProps: (cells: any) => void
 }
 
-export const PropItem = ({ onUpdateProps, column }: Props) => {
-  const creation = usePanelCreationContext()
-  const { structs } = useStructs()
-  const struct = structs.find((m) => m.id === creation.structId)!
+export const PropItem = ({ cells, struct, onUpdateProps, column }: Props) => {
   const [eyeOn, setEyeOn] = useState(false)
+  const creation = usePanelCreationContext()
 
   if (!struct.columns.length) return null
   if (column.isPrimary) return null
-  const cells = creation.props.cells || {}
-  const value = cells[column.id]
-
-  console.log('=========cells:', cells, column.id, 'value:', value)
+  const value = cells?.[column.id]
 
   return (
     <div className="flex h-12 gap-2 pl-3">
@@ -55,7 +53,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
             <Input
               placeholder={t`Empty`}
               variant="unstyled"
-              className="h-full text-right focus-visible:bg-transparent"
+              className="h-full text-right hover:bg-transparent focus-visible:bg-transparent"
               type={eyeOn ? 'text' : 'password'}
               defaultValue={value}
               onChange={(e) => {
@@ -92,7 +90,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
           <Input
             placeholder={t`Empty`}
             variant="unstyled"
-            className="h-full text-right focus-visible:bg-transparent"
+            className="h-full text-right hover:bg-transparent  focus-visible:bg-transparent"
             type="text"
             defaultValue={value}
             onChange={(e) => {
@@ -118,19 +116,19 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
 
         {ColumnType.REMINDER === column.columnType && (
           <ReminderProp
-            creation={creation}
+            creation={Object.keys(creation).length ? creation : (null as any)}
             column={column}
             value={
               isReminder(value)
                 ? value
                 : { date: undefined, repeat: RepeatTypes.NONE }
             }
-            // onChange={(v) => {
-            //   onUpdateProps({
-            //     ...cells,
-            //     [column.id]: v,
-            //   })
-            // }}
+            onChange={(v) => {
+              onUpdateProps({
+                ...cells,
+                [column.id]: v,
+              })
+            }}
           />
         )}
 
@@ -166,7 +164,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
             placeholder="Empty"
             variant="unstyled"
             precision={18}
-            className="h-full text-right focus-visible:bg-transparent"
+            className="h-full text-right hover:bg-transparent  focus-visible:bg-transparent"
             defaultValue={value}
             onChange={(v) => {
               onUpdateProps({
@@ -180,7 +178,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
           <Input
             variant="unstyled"
             placeholder="https://..."
-            className="h-full text-right focus-visible:bg-transparent"
+            className="h-full text-right hover:bg-transparent  focus-visible:bg-transparent"
             defaultValue={value}
             onChange={(e) => {
               onUpdateProps({
