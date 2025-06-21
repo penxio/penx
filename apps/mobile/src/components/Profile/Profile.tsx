@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { impact } from '@/lib/impact'
+import { isIOS } from '@/lib/utils'
 import { Dialog } from '@capacitor/dialog'
 import {
   DefaultSystemBrowserOptions,
@@ -26,6 +27,7 @@ import { AboutMenu } from './AboutMenu'
 import { GuideEntryMenu } from './GuideEntryMenu'
 import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
+import { ReviewMenu } from './ReviewMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
 import { ThemeMenu } from './ThemeMenu'
 
@@ -112,6 +114,7 @@ export function Profile() {
         <JournalLayoutMenu />
 
         <AboutMenu />
+        {isIOS && <ReviewMenu />}
 
         {session && (
           <Item

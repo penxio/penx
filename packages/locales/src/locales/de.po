@@ -67,11 +67,11 @@ msgstr ""
 msgid "Access control"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:136
+#: apps/mobile/src/components/Profile/Profile.tsx:139
 msgid "Account deleted successfully!"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:135
+#: apps/mobile/src/components/Profile/Profile.tsx:138
 msgid "Account deletion in progress..."
 msgstr ""
 
@@ -116,12 +116,12 @@ msgstr ""
 msgid "AI features for notes"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:248
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:252
 #: packages/components/src/CreationCard/CreationCard.tsx:247
 msgid "AI transcribe"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:174
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:175
 #: packages/components/src/CreationCard/CreationCard.tsx:173
 msgid "AI Transcribing"
 msgstr ""
@@ -143,7 +143,7 @@ msgstr ""
 msgid "All structs"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:122
+#: apps/mobile/src/components/Profile/Profile.tsx:125
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Are you sure delete it permanently?"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:155
+#: apps/mobile/src/components/Profile/Profile.tsx:158
 msgid "Are you sure you want to log out?"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Areas"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:39
+#: apps/mobile/src/components/Profile/Profile.tsx:41
 msgid "Believer"
 msgstr ""
 
@@ -236,11 +236,11 @@ msgstr ""
 msgid "Confirm Publishing"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:95
+#: apps/mobile/src/components/Profile/Profile.tsx:97
 msgid "Copied to clipboard"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:263
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:267
 #: packages/components/src/CreationCard/CreationCard.tsx:262
 msgid "Copy"
 msgstr ""
@@ -304,7 +304,7 @@ msgstr ""
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:314
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:318
 #: packages/components/src/CreationCard/CreationCard.tsx:313
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
@@ -313,8 +313,8 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:121
-#: apps/mobile/src/components/Profile/Profile.tsx:145
+#: apps/mobile/src/components/Profile/Profile.tsx:124
+#: apps/mobile/src/components/Profile/Profile.tsx:148
 msgid "Delete account"
 msgstr ""
 
@@ -356,7 +356,7 @@ msgid "Due date"
 msgstr ""
 
 #: apps/mobile/src/pages/PageAllStructs/StructList.tsx:54
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:292
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:296
 #: packages/components/src/CreationCard/CreationCard.tsx:291
 msgid "Edit"
 msgstr ""
@@ -414,7 +414,7 @@ msgstr ""
 msgid "End-to-end encryption"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:138
+#: apps/mobile/src/components/Profile/Profile.tsx:141
 msgid "Failed to delete account. Please try again."
 msgstr ""
 
@@ -432,7 +432,7 @@ msgstr ""
 msgid "Find or create option"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:40
+#: apps/mobile/src/components/Profile/Profile.tsx:42
 msgid "Free"
 msgstr ""
 
@@ -469,7 +469,7 @@ msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:254
 #: packages/components/src/ColumnTypeName.tsx:26
-#: packages/components/src/AppProvider/AppService.ts:151
+#: packages/components/src/AppProvider/AppService.ts:154
 msgid "Image"
 msgstr ""
 
@@ -505,6 +505,10 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: apps/mobile/src/components/Profile/ReviewMenu.tsx:27
+msgid "Leave a review"
+msgstr ""
+
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
 msgstr ""
@@ -528,8 +532,8 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:154
-#: apps/mobile/src/components/Profile/Profile.tsx:164
+#: apps/mobile/src/components/Profile/Profile.tsx:157
+#: apps/mobile/src/components/Profile/Profile.tsx:167
 #: packages/components/src/ProfileButton.tsx:252
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -544,7 +548,7 @@ msgstr ""
 msgid "Login code"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:61
+#: apps/mobile/src/components/Profile/Profile.tsx:63
 msgid "Login or Register"
 msgstr ""
 
@@ -759,17 +763,17 @@ msgstr ""
 msgid "Priority"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:184
+#: apps/mobile/src/components/Profile/Profile.tsx:187
 msgid "Privacy Policy"
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:67
-#: apps/mobile/src/components/Profile/Profile.tsx:37
+#: apps/mobile/src/components/Profile/Profile.tsx:39
 msgid "PRO"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:38
+#: apps/mobile/src/components/Profile/Profile.tsx:40
 msgid "PRO + AI"
 msgstr ""
 
@@ -838,13 +842,13 @@ msgstr ""
 msgid "Remind me..."
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:137
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:146
 #: packages/libs/src/getDefaultStructs.ts:122
-#: packages/components/src/AppProvider/AppService.ts:171
+#: packages/components/src/AppProvider/AppService.ts:174
 msgid "Reminder"
 msgstr ""
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:176
+#: apps/mobile/src/components/TaskCreation/Reminder.tsx:185
 msgid "Remove reminder"
 msgstr ""
 
@@ -911,7 +915,7 @@ msgstr ""
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:281
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:285
 #: packages/components/src/CreationCard/CreationCard.tsx:280
 msgid "Star"
 msgstr ""
@@ -1078,7 +1082,7 @@ msgstr ""
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:281
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:285
 #: packages/components/src/CreationCard/CreationCard.tsx:280
 msgid "Unstar"
 msgstr ""

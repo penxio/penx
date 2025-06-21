@@ -1157,6 +1157,9 @@ importers:
       '@capacitor/assets':
         specifier: ^3.0.5
         version: 3.0.5(@swc/core@1.11.24)(@types/node@20.11.30)(encoding@0.1.13)(typescript@5.8.2)
+      '@capacitor/barcode-scanner':
+        specifier: ^2.0.3
+        version: 2.0.3(@capacitor/core@7.2.0)
       '@capacitor/camera':
         specifier: ^7.0.1
         version: 7.0.1(@capacitor/core@7.2.0)
@@ -1196,6 +1199,12 @@ importers:
       '@capacitor/toast':
         specifier: ^7.0.1
         version: 7.0.1(@capacitor/core@7.2.0)
+      '@capawesome/capacitor-app-review':
+        specifier: ^7.0.1
+        version: 7.0.1(@capacitor/core@7.2.0)
+      '@capawesome/capacitor-app-shortcuts':
+        specifier: ^7.5.0
+        version: 7.5.0(@capacitor/core@7.2.0)
       '@capgo/capacitor-navigation-bar':
         specifier: ^7.1.19
         version: 7.1.19(@capacitor/core@7.2.0)
@@ -3122,6 +3131,11 @@ packages:
     engines: {node: '>=10.3.0'}
     hasBin: true
 
+  '@capacitor/barcode-scanner@2.0.3':
+    resolution: {integrity: sha512-ZELdXMRR1fgCWDVbSJtmaEtQeWFknYq09hxJuFyyzqvd31OsexJLMKMFmlq9N+NMEW8jwHaWKa08GlEIxyjzOw==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
   '@capacitor/camera@7.0.1':
     resolution: {integrity: sha512-gDUFsYlhMra5VVOa4iJV6+MQRhp3VXpTLQY4JDATj7UvoZ8Hv4DG8qplPL9ufUFNoR3QbDDnf8+gbQOsKdkDjg==}
     peerDependencies:
@@ -3213,6 +3227,16 @@ packages:
 
   '@capacitor/toast@7.0.1':
     resolution: {integrity: sha512-3GFhejVwKqUjosYnpQVfq5eml7X6B97jcVpncY75lBDiTlCYJeRanj63OChZPuw1KWudkBTYZMcXdRYWguJdKw==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
+  '@capawesome/capacitor-app-review@7.0.1':
+    resolution: {integrity: sha512-J7SJPsazjG529t8+KHqbOXSWeLPaqquDln9SlnVAkhtKAQx71KZYYzkHyFWiNqnDjMBWuD0D45AhXZOKeJDQ8Q==}
+    peerDependencies:
+      '@capacitor/core': '>=7.0.0'
+
+  '@capawesome/capacitor-app-shortcuts@7.5.0':
+    resolution: {integrity: sha512-NteXOIhkx/R8m1+tuk8U/HDQzC/jPvF2+6Kz21mUiBnLNkxdzgQnoL3QAcIgnr6hflYdARRoQUWjW+h/eWdI9w==}
     peerDependencies:
       '@capacitor/core': '>=7.0.0'
 
@@ -10414,6 +10438,9 @@ packages:
     resolution: {integrity: sha512-fPU6BHNpsyIhr8yyMpTLLxAbkaK8ArIBcmZIRiBLiDhjeqvXolaEmDGmELFuX9I4xDcaKKcJl+TKZLqruBbmWA==}
     engines: {node: '>=8.0.0'}
 
+  html5-qrcode@2.3.8:
+    resolution: {integrity: sha512-jsr4vafJhwoLVEDW3n1KvPnCCXWaQfRng0/EEYk1vNcQGcG/htAdhJX0be8YyqMoSz7+hZvOZSTAepsabiuhiQ==}
+
   htmlparser2@10.0.0:
     resolution: {integrity: sha512-TwAZM+zE5Tq3lrEHvOlvwgj1XLWQCtaaibSN11Q+gGBAS7Y1uZSWwXXRe4iF6OXnaq1riyQAPFOBtYc77Mxq0g==}
 
@@ -17222,6 +17249,11 @@ snapshots:
       - supports-color
       - typescript
 
+  '@capacitor/barcode-scanner@2.0.3(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+      html5-qrcode: 2.3.8
+
   '@capacitor/camera@7.0.1(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
@@ -17334,6 +17366,14 @@ snapshots:
   '@capacitor/synapse@1.0.2': {}
 
   '@capacitor/toast@7.0.1(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+
+  '@capawesome/capacitor-app-review@7.0.1(@capacitor/core@7.2.0)':
+    dependencies:
+      '@capacitor/core': 7.2.0
+
+  '@capawesome/capacitor-app-shortcuts@7.5.0(@capacitor/core@7.2.0)':
     dependencies:
       '@capacitor/core': 7.2.0
 
@@ -25733,6 +25773,8 @@ snapshots:
     dependencies:
       css-line-break: 2.1.0
       text-segmentation: 1.0.3
+
+  html5-qrcode@2.3.8: {}
 
   htmlparser2@10.0.0:
     dependencies:
