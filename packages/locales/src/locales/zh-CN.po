@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:106
+msgid " 5 minutes early"
+msgstr "提前5分钟"
+
 #. placeholder {0}: creations.length
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:166
 msgid "{0} creations"
@@ -23,9 +27,21 @@ msgstr "{0} 个作品"
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} 个待办"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:118
+msgid "1 day early"
+msgstr "提前1天"
+
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:44
 msgid "1 hour"
 msgstr "1小时"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:114
+msgid "1 hour early"
+msgstr "提前1小时"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:122
+msgid "1 week early"
+msgstr "提前1周"
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:36
 msgid "10 minutes"
@@ -50,6 +66,10 @@ msgstr "2GB/每月存储空间"
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:40
 msgid "30 minutes"
 msgstr "30分钟"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:110
+msgid "30 minutes early"
+msgstr "提前30分钟"
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:32
 msgid "5 minutes"
@@ -231,6 +251,10 @@ msgstr "合集"
 msgid "Color"
 msgstr "颜色"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:96
+msgid "Config"
+msgstr "配置"
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
@@ -238,7 +262,7 @@ msgstr "确定发布？"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:97
 msgid "Copied to clipboard"
-msgstr ""
+msgstr "已复制到剪切板"
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:267
 #: packages/components/src/CreationCard/CreationCard.tsx:262
@@ -274,7 +298,7 @@ msgstr "创建账户"
 msgid "Create struct"
 msgstr "创建结构体"
 
-#: packages/components/src/ColumnTypeName.tsx:28
+#: packages/components/src/ColumnTypeName.tsx:29
 msgid "Created At"
 msgstr "创建日期"
 
@@ -286,6 +310,10 @@ msgstr "创建日期"
 msgid "Creation counts"
 msgstr "创作数量"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:143
+msgid "Daily"
+msgstr "每日"
+
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr "深色"
@@ -295,7 +323,7 @@ msgstr "深色"
 msgid "Dashboard"
 msgstr "仪表板"
 
-#: packages/components/src/ColumnTypeName.tsx:27
+#: packages/components/src/ColumnTypeName.tsx:28
 msgid "Date"
 msgstr "日期"
 
@@ -336,7 +364,7 @@ msgid "Deliver your newsletter"
 msgstr "发送您的简报"
 
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:108
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:78
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:108
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
@@ -370,7 +398,7 @@ msgstr "编辑导航"
 msgid "Edit option"
 msgstr "编辑选项"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:58
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
 msgid "Edit property"
 msgstr "编辑属性"
@@ -405,8 +433,8 @@ msgstr "邮箱"
 msgid "Email login"
 msgstr "邮箱登录"
 
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:52
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:89
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:56
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:93
 msgid "Empty"
 msgstr "空白"
 
@@ -468,7 +496,7 @@ msgid "Home"
 msgstr "首页"
 
 #: packages/libs/src/getDefaultStructs.ts:254
-#: packages/components/src/ColumnTypeName.tsx:26
+#: packages/components/src/ColumnTypeName.tsx:27
 #: packages/components/src/AppProvider/AppService.ts:154
 msgid "Image"
 msgstr "图片"
@@ -507,7 +535,7 @@ msgstr "语言"
 
 #: apps/mobile/src/components/Profile/ReviewMenu.tsx:27
 msgid "Leave a review"
-msgstr ""
+msgstr "评价 PenX"
 
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:49
 msgid "Light"
@@ -585,6 +613,10 @@ msgstr "周一"
 msgid "month"
 msgstr "月"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:151
+msgid "Monthly"
+msgstr ""
+
 #: packages/components/src/ColumnTypeName.tsx:22
 msgid "Multiple Select"
 msgstr "多选"
@@ -610,7 +642,7 @@ msgstr "我的结构体"
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:67
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:73
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:49
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
@@ -668,6 +700,10 @@ msgstr "暂无待办。"
 msgid "No voice data!"
 msgstr "暂无语音数据！"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:139
+msgid "None"
+msgstr "无"
+
 #: packages/libs/src/getDefaultStructs.ts:248
 msgid "Note"
 msgstr "笔记"
@@ -675,6 +711,10 @@ msgstr "笔记"
 #: packages/components/src/ColumnTypeName.tsx:16
 msgid "Number"
 msgstr "数值"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:102
+msgid "On time"
+msgstr "准时"
 
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:54
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:54
@@ -691,7 +731,7 @@ msgstr "在新面板中打开"
 msgid "Operation"
 msgstr "操作"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:87
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
 msgid "Options"
 msgstr "选项"
@@ -705,7 +745,7 @@ msgstr "页面"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:111
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
-#: packages/components/src/ColumnTypeName.tsx:25
+#: packages/components/src/ColumnTypeName.tsx:26
 msgid "Password"
 msgstr "密码"
 
@@ -838,23 +878,27 @@ msgstr "注册"
 msgid "Register to PenX"
 msgstr "注册 PenX"
 
-#: apps/mobile/src/components/TaskCreation/ReminderTimePicker.tsx:44
+#: apps/mobile/src/components/ReminderTimePicker/ReminderTimePicker.tsx:44
 msgid "Remind me..."
 msgstr "提醒"
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:146
 #: packages/libs/src/getDefaultStructs.ts:122
+#: packages/components/src/ColumnTypeName.tsx:25
 #: packages/components/src/AppProvider/AppService.ts:174
 msgid "Reminder"
 msgstr "提醒"
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:185
+#: apps/mobile/src/components/MobilePropList/ReminderDrawer.tsx:185
 msgid "Remove reminder"
 msgstr "删除提醒"
 
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr "重命名"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:159
+msgid "Repeat"
+msgstr "重复提醒"
 
 #: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:134
 msgid "Resend"
@@ -1096,7 +1140,7 @@ msgstr "更新领域"
 msgid "Update struct"
 msgstr "更新结构体"
 
-#: packages/components/src/ColumnTypeName.tsx:29
+#: packages/components/src/ColumnTypeName.tsx:30
 msgid "Updated At"
 msgstr "更新时间"
 
@@ -1126,11 +1170,19 @@ msgstr "语音"
 msgid "Wed"
 msgstr "周三"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:147
+msgid "Weekly"
+msgstr ""
+
 #: apps/mobile/src/components/Login/LoginContent.tsx:42
 #: apps/extension/components/Login.tsx:38
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"
 msgstr "欢迎使用 PenX"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:126
+msgid "when to remind?"
+msgstr "提醒时机"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
 msgid "Widget"
@@ -1139,3 +1191,7 @@ msgstr "小组件"
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:155
 msgid "year"
 msgstr "年"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:155
+msgid "Yearly"
+msgstr ""

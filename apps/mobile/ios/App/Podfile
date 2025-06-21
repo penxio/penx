@@ -28,6 +28,7 @@ def capacitor_pods
   pod 'CapacitorStatusBar', :path => '../../../../node_modules/.pnpm/@capacitor+status-bar@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/status-bar'
   pod 'CapacitorToast', :path => '../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast'
   pod 'CapawesomeCapacitorAppReview', :path => '../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@7.0.1_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-review'
+  pod 'CapawesomeCapacitorAppShortcuts', :path => '../../../../node_modules/.pnpm/@capawesome+capacitor-app-shortcuts@7.5.0_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-shortcuts'
   pod 'CapgoCapacitorNavigationBar', :path => '../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar'
   pod 'CapgoCapacitorSocialLogin', :path => '../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login'
   pod 'RevenuecatPurchasesCapacitor', :path => '../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.4_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor'

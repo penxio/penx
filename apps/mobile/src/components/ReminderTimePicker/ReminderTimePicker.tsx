@@ -3,9 +3,9 @@ import { impact } from '@/lib/impact'
 import { Trans } from '@lingui/react/macro'
 import { AlarmClockIcon, PlusIcon } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { formatTime } from '@penx/utils'
 import { IosPickerItem } from './IosPickerItem'
 import './embla.css'
-import { formatTime } from '@penx/utils'
 
 interface Props {
   value: string

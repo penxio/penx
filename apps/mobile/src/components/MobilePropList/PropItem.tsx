@@ -6,16 +6,18 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { usePanelCreationContext } from '@penx/components/Creation/PanelCreationProvider'
 import { FieldIcon } from '@penx/components/FieldIcon'
 import { FileUpload } from '@penx/components/FileUpload'
+import { RepeatTypes } from '@penx/constants'
 import { useStructs } from '@penx/hooks/useStructs'
+import { isReminder } from '@penx/libs/isReminder'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
 import { AnimatedSwitch } from '@penx/uikit/components/AnimatedSwitch'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Input } from '@penx/uikit/input'
-import { cn } from '@penx/utils'
 import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { RateProp } from './RateProp'
+import { ReminderProp } from './ReminderProp'
 import { SingleSelectProp } from './SingleSelectProp'
 
 interface Props {
@@ -33,6 +35,8 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
   if (column.isPrimary) return null
   const cells = creation.props.cells || {}
   const value = cells[column.id]
+
+  console.log('=========cells:', cells, column.id, 'value:', value)
 
   return (
     <div className="flex h-12 gap-2 pl-3">
@@ -109,6 +113,24 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
                 [column.id]: v,
               })
             }}
+          />
+        )}
+
+        {ColumnType.REMINDER === column.columnType && (
+          <ReminderProp
+            creation={creation}
+            column={column}
+            value={
+              isReminder(value)
+                ? value
+                : { date: undefined, repeat: RepeatTypes.NONE }
+            }
+            // onChange={(v) => {
+            //   onUpdateProps({
+            //     ...cells,
+            //     [column.id]: v,
+            //   })
+            // }}
           />
         )}
 

@@ -8,7 +8,6 @@ import { MobileInput } from '@/components/ui/MobileInput'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { PlusIcon } from 'lucide-react'
-import { toast } from 'sonner'
 import { ColumnTypeName } from '@penx/components/ColumnTypeName'
 import { FieldIcon } from '@penx/components/FieldIcon'
 import { Struct } from '@penx/domain'
@@ -21,6 +20,7 @@ const types = [
   ColumnType.SINGLE_SELECT,
   ColumnType.MULTIPLE_SELECT,
   ColumnType.BOOLEAN,
+  ColumnType.REMINDER,
   ColumnType.RATE,
   ColumnType.URL,
   ColumnType.PASSWORD,

@@ -51,6 +51,8 @@ PODS:
     - Capacitor
   - CapawesomeCapacitorAppReview (7.0.1):
     - Capacitor
+  - CapawesomeCapacitorAppShortcuts (7.5.0):
+    - Capacitor
   - CapgoCapacitorNavigationBar (7.1.19):
     - Capacitor
   - CapgoCapacitorSocialLogin (7.5.9):
@@ -116,6 +118,7 @@ DEPENDENCIES:
   - "CapacitorToast (from `../../../../node_modules/.pnpm/@capacitor+toast@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/toast`)"
   - "CapacitorVoiceRecorder (from `../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder`)"
   - "CapawesomeCapacitorAppReview (from `../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@7.0.1_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-review`)"
+  - "CapawesomeCapacitorAppShortcuts (from `../../../../node_modules/.pnpm/@capawesome+capacitor-app-shortcuts@7.5.0_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-shortcuts`)"
   - "CapgoCapacitorNavigationBar (from `../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar`)"
   - "CapgoCapacitorSocialLogin (from `../../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login`)"
   - "RevenuecatPurchasesCapacitor (from `../../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.4_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor`)"
@@ -180,6 +183,8 @@ EXTERNAL SOURCES:
     :path: "../../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder"
   CapawesomeCapacitorAppReview:
     :path: "../../../../node_modules/.pnpm/@capawesome+capacitor-app-review@7.0.1_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-review"
+  CapawesomeCapacitorAppShortcuts:
+    :path: "../../../../node_modules/.pnpm/@capawesome+capacitor-app-shortcuts@7.5.0_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-shortcuts"
   CapgoCapacitorNavigationBar:
     :path: "../../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar"
   CapgoCapacitorSocialLogin:
@@ -211,6 +216,7 @@ SPEC CHECKSUMS:
   CapacitorToast: ddfc4b36080dbe3634c9faf510b20f6ddcff9330
   CapacitorVoiceRecorder: d971261c83b35475ab202c357ece2c0f83a83ee3
   CapawesomeCapacitorAppReview: ee9cb9d34e59534efcdb120dbef4d7166421e2ee
+  CapawesomeCapacitorAppShortcuts: ba59ff3a9da01610ac0ffc96c07631bc817fb7b5
   CapgoCapacitorNavigationBar: a7f7e08fa725f91d993750c7dca58d9f6c7841fb
   CapgoCapacitorSocialLogin: 981a9b3c980d90cca812f2a161678f6ca8f24096
   FBAEMKit: 58cb5f302cdd715a56d4c1d0dfdd2e423ac1421a
@@ -228,6 +234,6 @@ SPEC CHECKSUMS:
   RevenueCat: 3fafcf295834118ed6e6ec9388a20a4c9092b1e6
   RevenuecatPurchasesCapacitor: a916cdf5a6c65ad3c7d6fc203f75e731a514bc89
 
-PODFILE CHECKSUM: bb0a8aa2fec8490698e7831ebd2c34e9dee72ea7
+PODFILE CHECKSUM: ae8e265e52f4c2f86c01feae8f0048c575545bb9
 
 COCOAPODS: 1.16.2

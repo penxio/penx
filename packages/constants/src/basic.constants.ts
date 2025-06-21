@@ -424,3 +424,11 @@ export const langMap: Map<string, string> = new Map(supportLanguages)
 export const langMapReverse = new Map(
   supportLanguages.map(([standardLang, lang]) => [lang, standardLang]),
 )
+
+export enum RepeatTypes {
+  NONE = 'NONE',
+  DAILY = 'DAILY',
+  WEEKLY = 'WEEKLY',
+  MONTHLY = 'MONTHLY',
+  YEARLY = 'YEARLY',
+}

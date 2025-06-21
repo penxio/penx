@@ -7,6 +7,7 @@ export enum ColumnType {
   URL = 'URL',
   IMAGE = 'IMAGE',
   RATE = 'RATE',
+  REMINDER = 'REMINDER',
 
   FILE = 'FILE',
 

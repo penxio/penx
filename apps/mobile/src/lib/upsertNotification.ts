@@ -1,20 +1,19 @@
 import { LocalNotifications } from '@capacitor/local-notifications'
-import { Creation, Struct } from '@penx/domain'
-import { ICreationNode } from '@penx/model-type'
+import { isDate } from 'date-fns'
+import { Creation } from '@penx/domain'
+import { IColumn, ICreationNode } from '@penx/model-type'
 
 export const upsertNotification = async (
-  struct: Struct,
+  column: IColumn,
   raw: ICreationNode,
 ) => {
-  const reminderColumn = struct.columns.find((c) => c.slug === 'reminder')
-
-  if (!reminderColumn) return
+  if (!column) return
   const creation = new Creation(raw)
-  const value = creation.cells[reminderColumn.id]
+  const value = creation.cells[column.id]
   if (!value) return
 
-  if (!(value instanceof Date)) return
-  if (value.getTime() <= Date.now()) return
+  if (!isDate(value?.date)) return
+  if (value.date.getTime() <= Date.now()) return
 
   const pending = await LocalNotifications.getPending()
 
@@ -37,7 +36,7 @@ export const upsertNotification = async (
         id,
         title: 'PenX',
         body: creation.title,
-        schedule: { at: value },
+        schedule: { at: value.date },
         sound: 'bell.wav',
         actionTypeId: '',
         extra: {

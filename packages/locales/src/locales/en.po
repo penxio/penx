@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:106
+msgid " 5 minutes early"
+msgstr " 5 minutes early"
+
 #. placeholder {0}: creations.length
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:166
 msgid "{0} creations"
@@ -23,9 +27,21 @@ msgstr "{0} creations"
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} tasks"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:118
+msgid "1 day early"
+msgstr "1 day early"
+
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:44
 msgid "1 hour"
 msgstr "1 hour"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:114
+msgid "1 hour early"
+msgstr "1 hour early"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:122
+msgid "1 week early"
+msgstr "1 week early"
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:36
 msgid "10 minutes"
@@ -50,6 +66,10 @@ msgstr "2GB/month storage"
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:40
 msgid "30 minutes"
 msgstr "30 minutes"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:110
+msgid "30 minutes early"
+msgstr "30 minutes early"
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:32
 msgid "5 minutes"
@@ -231,6 +251,10 @@ msgstr "Collection"
 msgid "Color"
 msgstr "Color"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:96
+msgid "Config"
+msgstr "Config"
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
@@ -274,7 +298,7 @@ msgstr "Create one"
 msgid "Create struct"
 msgstr "Create struct"
 
-#: packages/components/src/ColumnTypeName.tsx:28
+#: packages/components/src/ColumnTypeName.tsx:29
 msgid "Created At"
 msgstr "Created At"
 
@@ -286,6 +310,10 @@ msgstr "Created date"
 msgid "Creation counts"
 msgstr "Creation counts"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:143
+msgid "Daily"
+msgstr "Daily"
+
 #: apps/mobile/src/components/Profile/ThemeMenu.tsx:57
 msgid "Dark"
 msgstr "Dark"
@@ -295,7 +323,7 @@ msgstr "Dark"
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: packages/components/src/ColumnTypeName.tsx:27
+#: packages/components/src/ColumnTypeName.tsx:28
 msgid "Date"
 msgstr "Date"
 
@@ -336,7 +364,7 @@ msgid "Deliver your newsletter"
 msgstr "Deliver your newsletter"
 
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:108
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:78
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:108
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
@@ -370,7 +398,7 @@ msgstr "Edit navigation"
 msgid "Edit option"
 msgstr "Edit option"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:58
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
 msgid "Edit property"
 msgstr "Edit property"
@@ -405,8 +433,8 @@ msgstr "Email"
 msgid "Email login"
 msgstr "Email login"
 
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:52
-#: apps/mobile/src/components/MobilePropList/PropItem.tsx:89
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:56
+#: apps/mobile/src/components/MobilePropList/PropItem.tsx:93
 msgid "Empty"
 msgstr "Empty"
 
@@ -468,7 +496,7 @@ msgid "Home"
 msgstr "Home"
 
 #: packages/libs/src/getDefaultStructs.ts:254
-#: packages/components/src/ColumnTypeName.tsx:26
+#: packages/components/src/ColumnTypeName.tsx:27
 #: packages/components/src/AppProvider/AppService.ts:154
 msgid "Image"
 msgstr "Image"
@@ -585,6 +613,10 @@ msgstr "Mon"
 msgid "month"
 msgstr "month"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:151
+msgid "Monthly"
+msgstr "Monthly"
+
 #: packages/components/src/ColumnTypeName.tsx:22
 msgid "Multiple Select"
 msgstr "Multiple Select"
@@ -610,7 +642,7 @@ msgstr "My Structs"
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:67
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:73
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:49
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
@@ -668,6 +700,10 @@ msgstr "No task yet."
 msgid "No voice data!"
 msgstr "No voice data!"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:139
+msgid "None"
+msgstr "None"
+
 #: packages/libs/src/getDefaultStructs.ts:248
 msgid "Note"
 msgstr "Note"
@@ -675,6 +711,10 @@ msgstr "Note"
 #: packages/components/src/ColumnTypeName.tsx:16
 msgid "Number"
 msgstr "Number"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:102
+msgid "On time"
+msgstr "On time"
 
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:54
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:54
@@ -691,7 +731,7 @@ msgstr "Open in new panel"
 msgid "Operation"
 msgstr "Operation"
 
-#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:87
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
 msgid "Options"
 msgstr "Options"
@@ -705,7 +745,7 @@ msgstr "Page"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:111
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
-#: packages/components/src/ColumnTypeName.tsx:25
+#: packages/components/src/ColumnTypeName.tsx:26
 msgid "Password"
 msgstr "Password"
 
@@ -838,23 +878,27 @@ msgstr "Register"
 msgid "Register to PenX"
 msgstr "Register to PenX"
 
-#: apps/mobile/src/components/TaskCreation/ReminderTimePicker.tsx:44
+#: apps/mobile/src/components/ReminderTimePicker/ReminderTimePicker.tsx:44
 msgid "Remind me..."
 msgstr "Remind me..."
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:146
 #: packages/libs/src/getDefaultStructs.ts:122
+#: packages/components/src/ColumnTypeName.tsx:25
 #: packages/components/src/AppProvider/AppService.ts:174
 msgid "Reminder"
 msgstr "Reminder"
 
-#: apps/mobile/src/components/TaskCreation/Reminder.tsx:185
+#: apps/mobile/src/components/MobilePropList/ReminderDrawer.tsx:185
 msgid "Remove reminder"
 msgstr "Remove reminder"
 
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
 msgid "Rename"
 msgstr "Rename"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:159
+msgid "Repeat"
+msgstr "Repeat"
 
 #: apps/mobile/src/components/Login/PhonePinCodeForm.tsx:134
 msgid "Resend"
@@ -1096,7 +1140,7 @@ msgstr "Update area"
 msgid "Update struct"
 msgstr "Update struct"
 
-#: packages/components/src/ColumnTypeName.tsx:29
+#: packages/components/src/ColumnTypeName.tsx:30
 msgid "Updated At"
 msgstr "Updated At"
 
@@ -1126,11 +1170,19 @@ msgstr "Voice"
 msgid "Wed"
 msgstr "Wed"
 
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:147
+msgid "Weekly"
+msgstr "Weekly"
+
 #: apps/mobile/src/components/Login/LoginContent.tsx:42
 #: apps/extension/components/Login.tsx:38
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"
 msgstr "Welcome to PenX"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:126
+msgid "when to remind?"
+msgstr "when to remind?"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
 msgid "Widget"
@@ -1139,3 +1191,7 @@ msgstr "Widget"
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:155
 msgid "year"
 msgstr "year"
+
+#: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:155
+msgid "Yearly"
+msgstr "Yearly"

@@ -15,7 +15,7 @@ export function StructList({}: Props) {
   const { setIsOpen } = useMoreStructDrawer()
   const addCreation = useAddCreation()
   return (
-    <div className="flex flex-col gap-2 px-1 pb-2">
+    <div className="-mx-4 flex flex-1 flex-col gap-2 overflow-auto pb-4 px-4">
       {structs
         .filter(
           (struct) => ![StructType.VOICE].includes(struct.type as StructType),

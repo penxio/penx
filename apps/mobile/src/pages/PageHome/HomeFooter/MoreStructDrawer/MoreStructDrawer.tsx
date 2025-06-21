@@ -18,12 +18,14 @@ export function MoreStructDrawer({}: Props) {
   const { isOpen, setIsOpen } = useMoreStructDrawer()
 
   return (
-    <Drawer open={isOpen} setOpen={setIsOpen} className="">
+    <Drawer open={isOpen} setOpen={setIsOpen} className="pb-0" isFullHeight>
       <DrawerHeader>
         <DrawerTitle>
           <Trans>My structs</Trans>
         </DrawerTitle>
       </DrawerHeader>
+
+      <StructList />
       {/* <Button
             variant="default"
             size="xs"
@@ -35,8 +37,6 @@ export function MoreStructDrawer({}: Props) {
           >
             <Trans>Create</Trans>
           </Button> */}
-
-      <StructList />
     </Drawer>
   )
 }

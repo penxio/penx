@@ -35,6 +35,7 @@
 		"StatusBarPlugin",
 		"ToastPlugin",
 		"AppReviewPlugin",
+		"AppShortcutsPlugin",
 		"NavigationBarPlugin",
 		"SocialLoginPlugin",
 		"PurchasesPlugin",

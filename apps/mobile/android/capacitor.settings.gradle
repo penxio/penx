@@ -53,6 +53,9 @@ project(':capacitor-toast').projectDir = new File('../../../node_modules/.pnpm/@
 include ':capawesome-capacitor-app-review'
 project(':capawesome-capacitor-app-review').projectDir = new File('../../../node_modules/.pnpm/@capawesome+capacitor-app-review@7.0.1_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-review/android')
 
+include ':capawesome-capacitor-app-shortcuts'
+project(':capawesome-capacitor-app-shortcuts').projectDir = new File('../../../node_modules/.pnpm/@capawesome+capacitor-app-shortcuts@7.5.0_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-shortcuts/android')
+
 include ':capgo-capacitor-navigation-bar'
 project(':capgo-capacitor-navigation-bar').projectDir = new File('../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar/android')
 

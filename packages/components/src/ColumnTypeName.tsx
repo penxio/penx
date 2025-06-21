@@ -22,6 +22,7 @@ export const ColumnTypeName = ({ columnType, className }: Props) => {
       return <Trans>Multiple Select</Trans>
 
     if (columnType == ColumnType.RATE) return <Trans>Rate</Trans>
+    if (columnType == ColumnType.REMINDER) return <Trans>Reminder</Trans>
     if (columnType == ColumnType.PASSWORD) return <Trans>Password</Trans>
     if (columnType == ColumnType.IMAGE) return <Trans>Image</Trans>
     if (columnType == ColumnType.DATE) return <Trans>Date</Trans>

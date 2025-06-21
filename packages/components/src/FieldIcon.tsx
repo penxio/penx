@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  AlarmClockIcon,
   CalendarDays,
   CheckCircle2,
   Hash,
@@ -43,6 +44,7 @@ export const FieldIcon = ({
     [ColumnType.RATE]: StarIcon,
     [ColumnType.IMAGE]: Image,
     [ColumnType.DATE]: CalendarDays,
+    [ColumnType.REMINDER]: AlarmClockIcon,
     [ColumnType.CREATED_AT]: CalendarDays,
     [ColumnType.UPDATED_AT]: CalendarDays,
   }
