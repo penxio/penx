@@ -6,6 +6,7 @@ import { Trans } from '@lingui/react/macro'
 export function PageProfile() {
   return (
     <MobileContent
+      backgroundColor="#f6f6f6"
       title={
         <div className="text-foreground">
           <Trans>Settings</Trans>

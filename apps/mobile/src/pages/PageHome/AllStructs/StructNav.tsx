@@ -20,7 +20,7 @@ export function StructNav({ navType, onSelect }: Props) {
   ]
 
   return (
-    <div className="bg-foreground/8 relative flex h-12 rounded-xl">
+    <div className="bg-foreground/5 relative flex h-12 rounded-xl">
       {navs.map((item) => (
         <div
           key={item.id}

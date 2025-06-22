@@ -27,10 +27,8 @@ export const AddNoteButton = ({ onAdd }: Props) => {
         onAdd()
       }}
     >
-      {/* <span className="icon-[mdi--feather] size-6"></span> */}
-      <PlusIcon size={28} className="text-foreground" />
-      {/* <span className="icon-[ic--round-plus] size-8"></span> */}
-      {/* <span className="icon-[stash--plus-solid] size-8"></span> */}
+      <span className="icon-[mdi--feather] size-6"></span>
+      {/* <PlusIcon size={28} className="text-foreground" /> */}
     </motion.div>
   )
 }

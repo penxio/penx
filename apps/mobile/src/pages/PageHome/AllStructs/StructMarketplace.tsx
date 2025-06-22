@@ -1,3 +1,4 @@
+import { PagePublishedStructInfo } from '@/pages/PagePublishedStructInfo/PagePublishedStructInfo'
 import { IonNavLink } from '@ionic/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
@@ -11,7 +12,6 @@ import { store } from '@penx/store'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { PagePublishedStructInfo } from '../PagePublishedStructInfo/PagePublishedStructInfo'
 
 interface Props {
   onSelect?: (struct: Struct) => void

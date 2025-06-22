@@ -4,12 +4,9 @@ import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { defaultEditorContent, isMobileApp, WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
-import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
-import { useSession } from '@penx/session'
 import { store } from '@penx/store'
-import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import LoadingCircle from '@penx/uikit/loading-circle'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -52,7 +49,7 @@ export function AddWidgetButton({ className }: Props) {
 
   return (
     <div className={cn('flex justify-center')}>
-      <Popover >
+      <Popover>
         <PopoverTrigger asChild>
           <Button
             size="sm"

@@ -62,12 +62,12 @@ export const WidgetList = () => {
   const [activeId, setActiveId] = useState<string | null>(null)
 
   const sensors = useSensors(
-    useSensor(PointerSensor, {
-      activationConstraint: {
-        delay: isMobileApp ? 100 : 10,
-        tolerance: 5,
-      },
-    }),
+    // useSensor(PointerSensor, {
+    //   activationConstraint: {
+    //     delay: isMobileApp ? 100 : 10,
+    //     tolerance: 5,
+    //   },
+    // }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
@@ -123,7 +123,7 @@ export const WidgetList = () => {
   const activeItem = activeId ? widgets.find(({ id }) => id === activeId) : null
 
   return (
-    <Card className="text-foreground flex flex-col">
+    <Card className="text-foreground border-foreground/4 flex flex-col border-[0.5px]">
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}

@@ -92,8 +92,6 @@ export function AddCreationButton({ area, widget }: Props) {
         e.preventDefault()
 
         if (isMobileApp) {
-          store.panels.openAllStructs()
-          appEmitter.emit('ROUTE_TO_ALL_STRUCTS')
           close()
           return
         }

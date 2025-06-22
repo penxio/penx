@@ -10,7 +10,7 @@ interface ItemProps {
 export function CardItem({ className, children, onClick }: ItemProps) {
   return (
     <div
-      className={cn('flex h-12 items-center justify-between px-3', className)}
+      className={cn('flex h-12 items-center px-3', className)}
       onClick={() => {
         onClick && onClick()
       }}

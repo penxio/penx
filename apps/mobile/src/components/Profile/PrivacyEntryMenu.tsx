@@ -10,7 +10,7 @@ interface ItemProps {
   onClick?: () => void
 }
 
-export function GuideEntryMenu({ children, className }: ItemProps) {
+export function PrivacyEntryMenu({ children, className }: ItemProps) {
   const { i18n } = useLingui()
   return (
     <>
@@ -21,13 +21,13 @@ export function GuideEntryMenu({ children, className }: ItemProps) {
         )}
         onClick={async () => {
           await InAppBrowser.openInWebView({
-            url: `https://penx.io/guide/${i18n.locale}`,
+            url: 'https://penx.io/privacy',
             options: DefaultWebViewOptions,
           })
         }}
       >
         <div className="font-medium">
-          <Trans>Guide of PenX</Trans>
+          <Trans>Privacy Policy</Trans>
         </div>
         <div>
           <ChevronRightIcon className="text-foreground/50" />

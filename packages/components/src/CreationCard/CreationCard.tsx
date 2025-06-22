@@ -62,10 +62,11 @@ import { Tags } from './Tags'
 import { VoiceContent } from './VoiceContent'
 
 interface Props {
+  showType?: boolean
   creation: Creation
 }
 
-export function CreationCard({ creation }: Props) {
+export function CreationCard({ creation, showType = true }: Props) {
   const struct = useCreationStruct(creation)
   const [isOpen, setIsOpen] = useState(false)
   const [isTranscribing, setTranscribing] = useState(false)
@@ -332,13 +333,17 @@ export function CreationCard({ creation }: Props) {
           }}
         >
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              <StructIcon type={creation.type} className={cn('size-4')} />
+            {showType && (
+              <div className="flex items-center gap-1">
+                <StructIcon type={creation.type} className={cn('size-4')} />
 
-              <div className={cn('from-accent-foreground text-xs font-medium')}>
-                {struct.name}
+                <div
+                  className={cn('from-accent-foreground text-xs font-medium')}
+                >
+                  {struct.name}
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="text-foreground/50 text-[10px]">
               {creation.formattedTime}

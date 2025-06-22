@@ -6,6 +6,7 @@ import { DrawerHeader } from '@/components/ui/DrawerHeader'
 import { DrawerTitle } from '@/components/ui/DrawerTitle'
 import { MobileInput } from '@/components/ui/MobileInput'
 import { impact } from '@/lib/impact'
+import { EmojiPicker } from '@/pages/PageStructInfo/EmojiPicker'
 import { lighten, opacify, transparentize } from '@fower/color-helper'
 import { IonNavLink } from '@ionic/react'
 import { t } from '@lingui/core/macro'
@@ -23,8 +24,6 @@ import { Avatar, AvatarFallback } from '@penx/uikit/ui/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 import { StructIcon } from '@penx/widgets/StructIcon'
-import { EmojiPicker } from '../PageStructInfo/EmojiPicker'
-import { PageStructInfo } from '../PageStructInfo/PageStructInfo'
 
 interface Props {}
 

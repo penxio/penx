@@ -14,6 +14,8 @@ import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
 import { PanelType } from '@penx/types'
 import { HomeFooter } from './HomeFooter/HomeFooter'
 import { Journals } from './Journals'
+import { WidgetNav } from './WidgetNav'
+import { WidgetRender } from './WidgetRender'
 
 const PageHome = ({ nav }: any) => {
   const { open, setOpen } = useQuickInputOpen()
@@ -43,7 +45,9 @@ const PageHome = ({ nav }: any) => {
   return (
     <>
       <AnimatedJournalInput open={open} setOpen={setOpen} />
-      <Journals />
+      {/* <Journals /> */}
+      <WidgetNav />
+      <WidgetRender />
       <HomeFooter
         open={open}
         onAdd={() => {

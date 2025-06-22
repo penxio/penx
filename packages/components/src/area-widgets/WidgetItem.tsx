@@ -107,7 +107,6 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
 
             if (widget.type === WidgetType.ALL_STRUCTS) {
               store.panels.openAllStructs()
-              appEmitter.emit('ROUTE_TO_ALL_STRUCTS')
               close()
               return
             }

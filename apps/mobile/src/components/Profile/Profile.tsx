@@ -22,13 +22,19 @@ import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
+import { AreasMenu } from '../AreasMenu/AreasMenu'
 import { Card } from '../ui/Card'
+import { CardItem } from '../ui/CardItem'
+import { Menu } from '../ui/Menu'
+import { MenuItem } from '../ui/MenuItem'
 import { AboutMenu } from './AboutMenu'
 import { GuideEntryMenu } from './GuideEntryMenu'
 import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
+import { PrivacyEntryMenu } from './PrivacyEntryMenu'
 import { ReviewMenu } from './ReviewMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
+import { SyncMenu } from './SyncMenu'
 import { ThemeMenu } from './ThemeMenu'
 
 export function Profile() {
@@ -45,76 +51,114 @@ export function Profile() {
   const { copy } = useCopyToClipboard()
 
   return (
-    <div className="flex h-full flex-col">
-      {!session && (
-        <div
-          className={cn(
-            'text-foreground flex items-center justify-between py-2',
-          )}
-          onClick={() => {
-            appEmitter.emit('ROUTE_TO_LOGIN')
-          }}
-        >
-          <div className="flex items-center gap-1">
-            <div className="bg-foreground/10 flex size-12 items-center justify-center rounded-full">
-              <UserIcon size={24} />
+    <div className="flex flex-col pb-10">
+      <Card className="py-2 pl-2">
+        {!session && (
+          <div
+            className={cn('text-foreground flex items-center justify-between')}
+            onClick={() => {
+              appEmitter.emit('ROUTE_TO_LOGIN')
+            }}
+          >
+            <div className="flex items-center gap-1">
+              <div className="bg-foreground/10 flex size-12 items-center justify-center rounded-full">
+                <UserIcon size={24} />
+              </div>
+              <div className="font-medium">
+                <Trans>Login or Register</Trans>
+              </div>
             </div>
-            <div className="font-medium">
-              <Trans>Login or Register</Trans>
-            </div>
-          </div>
-          <div>
-            <ChevronRightIcon className="text-foreground/50" />
-          </div>
-        </div>
-      )}
-      {session && (
-        <div className="flex flex-col gap-2">
-          <div className="text-foreground flex items-center gap-2">
-            <Avatar className="size-12 rounded-lg">
-              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-              <AvatarFallback
-                className={cn(
-                  'rounded-lg text-white',
-                  generateGradient(session.name),
-                )}
-              >
-                {session?.name.slice(0, 1)}
-              </AvatarFallback>
-            </Avatar>
             <div>
-              <div className="text-lg font-bold">{session?.name}</div>
-              <div className="text-foreground/60">{session?.email}</div>
+              <ChevronRightIcon className="text-foreground/50" />
             </div>
           </div>
-          <div className="flex gap-2 text-lg">
-            <Badge
-              className="flex items-center gap-1 px-3"
-              variant="secondary"
-              onClick={() => {
-                impact()
-                copy(session.pid)
-                toast.success(t`Copied to clipboard`)
-              }}
-            >
-              PenX ID:{' '}
-              <span className="text-base font-bold">{session.pid}</span>{' '}
-              <CopyIcon size={16} />
-            </Badge>
-            <Badge variant="secondary">{planType}</Badge>
+        )}
+        {session && (
+          <div className="flex flex-col gap-2">
+            <div className="text-foreground flex items-center gap-2">
+              <Avatar className="size-12 rounded-lg">
+                <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+                <AvatarFallback
+                  className={cn(
+                    'rounded-lg text-white',
+                    generateGradient(session.name),
+                  )}
+                >
+                  {session?.name.slice(0, 1)}
+                </AvatarFallback>
+              </Avatar>
+              <div>
+                <div className="text-lg font-bold">{session?.name}</div>
+                <div className="text-foreground/60">{session?.email}</div>
+              </div>
+            </div>
+            <div className="flex gap-2 text-lg">
+              <Badge
+                className="flex items-center gap-1 px-3"
+                variant="secondary"
+                onClick={() => {
+                  impact()
+                  copy(session.pid)
+                  toast.success(t`Copied to clipboard`)
+                }}
+              >
+                PenX ID:{' '}
+                <span className="text-base font-bold">{session.pid}</span>{' '}
+                <CopyIcon size={16} />
+              </Badge>
+              <Badge variant="secondary">{planType}</Badge>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </Card>
       {/* <Card>PenX PRO</Card> */}
-      <div className="text-foreground mt-10 flex flex-1 flex-col gap-1">
-        <GuideEntryMenu />
-        <SubscriptionMenu />
-        <LocaleMenu />
-        <ThemeMenu />
-        <JournalLayoutMenu />
+      <div className="text-foreground mt-10 flex flex-1 flex-col gap-6">
+        {session?.isFree && (
 
-        <AboutMenu />
-        {isIOS && <ReviewMenu />}
+        <Card>
+          <CardItem className="pr-1">
+            <SubscriptionMenu />
+          </CardItem>
+        </Card>
+        )}
+
+        <AreasMenu />
+
+        <Card>
+          <CardItem className="pr-1">
+            <SyncMenu />
+          </CardItem>
+        </Card>
+
+        <Card title={<Trans>Appearance</Trans>}>
+          <CardItem className="pr-1">
+            <ThemeMenu />
+          </CardItem>
+          <CardItem className="pr-1">
+            <LocaleMenu />
+          </CardItem>
+          <CardItem className="pr-1">
+            <JournalLayoutMenu />
+          </CardItem>
+        </Card>
+
+        <Card title={<Trans>About</Trans>}>
+          <CardItem className="pr-1">
+            <AboutMenu />
+          </CardItem>
+          <CardItem className="pr-1">
+            <GuideEntryMenu />
+          </CardItem>
+
+          {isIOS && (
+            <CardItem className="pr-1">
+              <ReviewMenu />
+            </CardItem>
+          )}
+          <CardItem className="pr-1">
+            <PrivacyEntryMenu />
+          </CardItem>
+        </Card>
 
         {session && (
           <Item
@@ -167,25 +211,6 @@ export function Profile() {
             <Trans>Log out</Trans>
           </Item>
         )}
-      </div>
-      <div className="flex items-center justify-center">
-        <span
-          className="text-foreground/50 text-sm"
-          onClick={async (e) => {
-            e.preventDefault()
-
-            await InAppBrowser.openInWebView({
-              url: 'https://penx.io/privacy',
-              options: DefaultWebViewOptions,
-            })
-            // await InAppBrowser.openInSystemBrowser({
-            //   url: 'https://penx.io/privacy',
-            //   options: DefaultSystemBrowserOptions,
-            // })
-          }}
-        >
-          <Trans>Privacy Policy</Trans>
-        </span>
       </div>
     </div>
   )

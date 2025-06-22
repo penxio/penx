@@ -18,7 +18,7 @@ export function AboutMenu({ children, className }: ItemProps) {
     <>
       <div
         className={cn(
-          'border-foreground/5 text-foreground flex items-center justify-between border-b py-2',
+          'flex h-full w-full items-center justify-between',
           className,
         )}
         onClick={() => {

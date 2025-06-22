@@ -65,7 +65,6 @@ import {
   showEstimatedQuota,
   tryPersistWithoutPromptingUser,
 } from './lib/indexeddbHelder'
-import { PageAllStructs } from './pages/PageAllStructs/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { MoreStructDrawer } from './pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer'
 import { PageLogin } from './pages/PageLogin'
@@ -203,17 +202,6 @@ const AppContent = memo(
 
     useEffect(() => {
       function handle() {
-        nav.current?.push(PageAllStructs, {})
-      }
-
-      appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)
-      return () => {
-        appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
-      }
-    }, [])
-
-    useEffect(() => {
-      function handle() {
         nav.current?.push(PageProfile, {})
       }
       appEmitter.on('ROUTE_TO_PROFILE', handle)
@@ -280,23 +268,20 @@ const AppContent = memo(
             <MoreStructDrawer />
             <AppInitializer />
             <IonReactRouter>
-              <IonSplitPane contentId="main">
-                <Menu />
-                <IonRouterOutlet id="main">
-                  <Route path="/" exact={true}>
-                    <Redirect to="/folder/area" />
-                  </Route>
-                  <Route path="/folder/:name" exact={true}>
-                    <NavProvider nav={nav.current!}>
-                      <IonNav
-                        className=""
-                        ref={nav}
-                        root={() => <PageHome nav={nav.current} />}
-                      ></IonNav>
-                    </NavProvider>
-                  </Route>
-                </IonRouterOutlet>
-              </IonSplitPane>
+              <IonRouterOutlet id="main">
+                <Route path="/" exact={true}>
+                  <Redirect to="/folder/area" />
+                </Route>
+                <Route path="/folder/:name" exact={true}>
+                  <NavProvider nav={nav.current!}>
+                    <IonNav
+                      className=""
+                      ref={nav}
+                      root={() => <PageHome nav={nav.current} />}
+                    ></IonNav>
+                  </NavProvider>
+                </Route>
+              </IonRouterOutlet>
             </IonReactRouter>
           </DashboardProviders>
         </ThemeProvider>

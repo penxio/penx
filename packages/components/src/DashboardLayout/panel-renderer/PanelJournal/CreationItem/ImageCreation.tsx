@@ -56,7 +56,7 @@ export function ImageCreation({ creation, isDetailPanel = false }: Props) {
     >
       <img
         alt=""
-        className="h-auto w-full object-cover"
+        className="h-full w-full object-cover"
         src={src!}
         // fallbackSrc={creation.imageUrl}
         onClick={(e) => {

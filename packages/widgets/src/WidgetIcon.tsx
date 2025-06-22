@@ -18,7 +18,7 @@ interface Props {
 
 export function WidgetIcon({ type, structs }: Props) {
   if (type === WidgetType.ALL_STRUCTS) {
-    return <span className="icon-[mdi--shape-outline] size-5"></span>
+    return <span className="icon-[tabler--braces] size-5"></span>
   }
 
   if (type === WidgetType.JOURNAL) {

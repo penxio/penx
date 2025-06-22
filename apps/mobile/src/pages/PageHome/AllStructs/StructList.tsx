@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { PageStructInfo } from '@/pages/PageStructInfo/PageStructInfo'
 import { lighten, opacify, transparentize } from '@fower/color-helper'
 import { IonNavLink } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
@@ -16,7 +17,6 @@ import { Avatar, AvatarFallback } from '@penx/uikit/ui/avatar'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 import { StructIcon } from '@penx/widgets/StructIcon'
-import { PageStructInfo } from '../PageStructInfo/PageStructInfo'
 
 interface Props {
   onSelect?: (struct: Struct) => void

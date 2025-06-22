@@ -1,5 +1,5 @@
 import { Trans } from '@lingui/react/macro'
-import { ArrowRightIcon } from 'lucide-react'
+import { ArrowRightIcon, PlusIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { ColorfulStructIcon } from '@penx/components/ColorfulStructIcon'
 import { appEmitter } from '@penx/emitter'
@@ -60,7 +60,7 @@ export function StructList({}: Props) {
                 </div>
               </div>
             </div>
-            <ArrowRightIcon size={20} className="text-foreground/40" />
+            <PlusIcon size={20} className="text-foreground/40" />
           </motion.div>
         ))}
     </div>

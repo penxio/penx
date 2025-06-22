@@ -72,6 +72,18 @@
   display: none;
 }
 
+@layer utilities {
+  /* Chrome, Safari 和 Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* IE, Edge 和 Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE 和 Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
 :root {
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
 }

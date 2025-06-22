@@ -11,9 +11,9 @@ export function Favorites() {
   const { creations: data } = useCreations()
 
   const favorites = area.favorites || []
-  const postsMap = mappedByKey(data, 'id')
+  const creationsMap = mappedByKey(data, 'id')
 
-  const creations = favorites.map((id) => postsMap[id])
+  const creations = favorites.map((id) => creationsMap[id])
 
   if (!creations.length) return <NoCreationYet />
 

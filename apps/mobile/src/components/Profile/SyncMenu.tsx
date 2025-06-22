@@ -1,10 +1,10 @@
 import { ReactNode, useState } from 'react'
+import { impact } from '@/lib/impact'
 import { Trans, useLingui } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
+import { appEmitter } from '@penx/emitter'
 import { useSession } from '@penx/session'
 import { cn } from '@penx/utils'
-import { Drawer } from '../ui/Drawer'
-import { UpgradeContent } from '../UpgradeDrawer/UpgradeContent'
 
 interface ItemProps {
   className?: string
@@ -12,12 +12,9 @@ interface ItemProps {
   onClick?: () => void
 }
 
-export function SubscriptionMenu({ children, className }: ItemProps) {
+export function SyncMenu({ children, className }: ItemProps) {
+  const { i18n } = useLingui()
   const { session } = useSession()
-  const [isOpen, setIsOpen] = useState(false)
-
-  if (!session?.isFree) return null
-
   return (
     <>
       <div
@@ -25,25 +22,22 @@ export function SubscriptionMenu({ children, className }: ItemProps) {
           'flex h-full w-full items-center justify-between',
           className,
         )}
-        onClick={() => {
-          setIsOpen(!isOpen)
+        onClick={async () => {
+          impact()
+          if (!session) {
+            appEmitter.emit('ROUTE_TO_LOGIN')
+            return
+          }
+          appEmitter.emit('ROUTE_TO_SYNC')
         }}
       >
         <div className="font-medium">
-          <Trans>Subscription</Trans>
+          <Trans>Sync now</Trans>
         </div>
         <div>
           <ChevronRightIcon className="text-foreground/50" />
         </div>
       </div>
-
-      <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight className="">
-        <UpgradeContent
-          onSubscribeSuccess={() => {
-            setIsOpen(false)
-          }}
-        />
-      </Drawer>
     </>
   )
 }
