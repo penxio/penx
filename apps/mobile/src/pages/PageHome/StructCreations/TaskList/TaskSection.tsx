@@ -1,53 +1,45 @@
 import React, { ReactNode, useEffect, useMemo, useRef } from 'react'
 import { impact } from '@/lib/impact'
-import { sortTasks } from '@/lib/sortTasks'
 import { Trans } from '@lingui/react/macro'
 import { addDays, format } from 'date-fns'
 import { ChevronRightIcon, PlusIcon } from 'lucide-react'
 import { CreationItem } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem'
+import { TaskNav } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
-import { SectionType } from './utils'
+import { sortTasks } from '@penx/libs/sortTasks'
 
 interface TaskSectionProps {
-  sectionType: string
+  taskNav: string
   creations: Creation[]
 }
-export function TaskSection({ sectionType, creations }: TaskSectionProps) {
+export function TaskSection({ taskNav, creations }: TaskSectionProps) {
   const { setState } = useQuickInputOpen()
   const labelMaps = {
-    [SectionType.TODAY]: <Trans>Today</Trans>,
-    [SectionType.TOMORROW]: <Trans>Tomorrow</Trans>,
-    [SectionType.UPCOMING]: <Trans>Upcoming</Trans>,
-    [SectionType.ALL]: <Trans>All</Trans>,
+    [TaskNav.TODAY]: <Trans>Today</Trans>,
+    [TaskNav.TOMORROW]: <Trans>Tomorrow</Trans>,
+    [TaskNav.UPCOMING]: <Trans>Upcoming</Trans>,
+    [TaskNav.ALL]: <Trans>All</Trans>,
   }
   return (
     <div className="space-y-3">
       <Title
-        label={labelMaps[sectionType]}
-        canNav={[SectionType.UPCOMING, SectionType.ALL].includes(
-          sectionType as SectionType,
-        )}
+        label={labelMaps[taskNav]}
+        canNav={[TaskNav.UPCOMING, TaskNav.ALL].includes(taskNav as TaskNav)}
         onClick={() => {
-          if (
-            [SectionType.UPCOMING, SectionType.ALL].includes(
-              sectionType as SectionType,
-            )
-          ) {
+          if ([TaskNav.UPCOMING, TaskNav.ALL].includes(taskNav as TaskNav)) {
             appEmitter.emit('ROUTE_TO_TASKS', {
-              type: sectionType,
+              type: taskNav,
             })
 
             impact()
           }
         }}
-        canAdd={[SectionType.TODAY, SectionType.TOMORROW].includes(
-          sectionType as SectionType,
-        )}
+        canAdd={[TaskNav.TODAY, TaskNav.TOMORROW].includes(taskNav as TaskNav)}
         onAdd={() => {
           impact()
-          const add = sectionType === SectionType.TOMORROW ? 1 : 0
+          const add = taskNav === TaskNav.TOMORROW ? 1 : 0
           setState({
             isTask: true,
             open: true,
@@ -55,9 +47,7 @@ export function TaskSection({ sectionType, creations }: TaskSectionProps) {
           })
         }}
       />
-      {[SectionType.TODAY, SectionType.TOMORROW].includes(
-        sectionType as SectionType,
-      ) &&
+      {[TaskNav.TODAY, TaskNav.TOMORROW].includes(taskNav as TaskNav) &&
         creations.length > 0 && (
           <div className="flex flex-col gap-3">
             {sortTasks(creations).map((item) => (

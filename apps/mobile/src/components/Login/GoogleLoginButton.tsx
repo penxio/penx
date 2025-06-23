@@ -2,6 +2,7 @@
 
 import React, { useMemo, useState } from 'react'
 import { Capacitor } from '@capacitor/core'
+import { Dialog } from '@capacitor/dialog'
 import { SocialLogin } from '@capgo/capacitor-social-login'
 import { Trans } from '@lingui/react/macro'
 import { set } from 'idb-keyval'
@@ -53,6 +54,10 @@ export function GoogleLoginButton({}: Props) {
       appEmitter.emit('APP_LOGIN_SUCCESS', session)
     } catch (error) {
       console.log('=========error:', error)
+      // Dialog.alert({
+      //   title: 'error',
+      //   message: JSON.stringify(error),
+      // })
 
       setError(Object.keys(error))
     }
@@ -60,7 +65,12 @@ export function GoogleLoginButton({}: Props) {
     setLoading(false)
   }
   return (
-    <Button onClick={onLogin} className="w-full" size="xl" variant="outline-solid">
+    <Button
+      onClick={onLogin}
+      className="w-full"
+      size="xl"
+      variant="outline-solid"
+    >
       {loading && <LoadingDots className="bg-foreground" />}
       {!loading && (
         <>

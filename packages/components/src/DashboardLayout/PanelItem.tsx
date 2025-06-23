@@ -11,6 +11,7 @@ import { PanelCreation } from './panel-renderer/PanelCreation'
 import { PanelJournal } from './panel-renderer/PanelJournal/PanelJournal'
 import { PanelStruct } from './panel-renderer/PanelJournal/PanelStruct'
 import { PanelStructs } from './panel-renderer/PanelStructs/PanelStructs'
+import { PanelTasks } from './panel-renderer/PanelTasks/PanelTasks'
 import { PanelWidget } from './panel-renderer/PanelWidget'
 import { PanelWidgetHeader } from './panel-renderer/PanelWidgetHeader'
 
@@ -28,6 +29,10 @@ export function PanelItem({
 
   const renderJsx = (
     <>
+      {panel.type === PanelType.TASKS && (
+        <PanelTasks index={index} panel={panel} />
+      )}
+
       {panel.type === PanelType.CREATION && (
         <PanelCreation index={index} panel={panel} />
       )}

@@ -244,6 +244,54 @@ export class PanelsStore {
     await this.savePanels(newPanels)
   }
 
+  async openTaskList(data: Partial<Panel>) {
+    let panels = this.get()
+
+    const panel: Panel = {
+      ...data,
+      id: uniqueId(),
+      type: PanelType.TASKS,
+    }
+
+    panels = produce(panels, (draft) => {
+      const index = panels.findIndex((p) => p.type === PanelType.TASKS)
+      if (index > -1) {
+        draft[index] = panel
+      } else {
+        draft.push(panel)
+      }
+    })
+    await this.savePanels(panels)
+  }
+
+  async openTaskItem(creationId: string) {
+    let panels = this.get()
+
+    const panel: Panel = {
+      creationId,
+      id: uniqueId(),
+      type: PanelType.CREATION,
+    }
+
+    panels = produce(panels, (draft) => {
+      const index = panels.findIndex((p) => p.type === PanelType.TASKS)
+      const shouldPush = panels.length === index + 1
+
+      if (shouldPush) {
+        draft.push(panel)
+      } else {
+        draft[index + 1] = panel
+      }
+
+      const size = 100 / draft.length
+      for (const item of draft) {
+        item.size = size
+      }
+    })
+
+    await this.savePanels(panels)
+  }
+
   async closePanel(id: string) {
     let panels = this.get()
     const newPanels = panels.filter((p) => p.id !== id)

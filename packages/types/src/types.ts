@@ -208,6 +208,7 @@ export enum PanelType {
   LOCAL_BACKUP = 'LOCAL_BACKUP',
   AI_PROVIDERS = 'AI_PROVIDERS',
   AI_SETTING = 'AI_SETTING',
+  TASKS = 'TASKS',
 }
 
 export type Panel = {
@@ -219,6 +220,9 @@ export type Panel = {
   structId?: string
   widget?: Widget
   date?: string
+  taskNav?: string
+  column?: any
+  option?: Option
   // [key: string]: any
 }
 

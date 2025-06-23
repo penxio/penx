@@ -106,7 +106,7 @@ export function Profile() {
       </Card>
       {/* <Card>PenX PRO</Card> */}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-6">
-        {session?.isFree && (
+        {session?.isFree && isIOS && (
           <Card>
             <CardItem className="pr-1">
               <SubscriptionMenu />

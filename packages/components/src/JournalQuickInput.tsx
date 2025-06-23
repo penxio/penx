@@ -18,7 +18,6 @@ import { format } from 'date-fns'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
 import { defaultEditorContent, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
-import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
 import { useStructs } from '@penx/hooks/useStructs'
 import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -28,25 +27,38 @@ import { docToString, stringToDoc } from '@penx/utils/editorHelper'
 import { JournalInputToolbar } from './JournalInputToolbar'
 import { StructTypeSelect } from './StructTypeSelect'
 
+interface Props {
+  className?: string
+  ref?: any
+  isTask?: boolean
+  placeholder?: string
+  date?: string
+  cells?: any
+  onCancel?: () => void
+  afterSubmit?: () => void
+}
+
 export function JournalQuickInput({
   className,
   afterSubmit,
   onCancel,
   ref,
-}: {
-  className?: string
-  ref?: any
-  onCancel?: () => void
-  afterSubmit?: () => void
-}) {
-  const { isTask: initialTaskState, date, cells = {} } = useQuickInputOpen()
+  placeholder,
+  date,
+  cells,
+  ...props
+}: Props) {
   const editorRef = useRef<Editor>(null)
   const [input, setInput] = useState('')
   // const { structs } = useStructs()
   // const noteStruct = structs.find((s) => s.type === StructType.NOTE)!
   // const [struct, setStruct] = useState(noteStruct)
   const addCreation = useAddCreation()
-  const [isTask, setIsTask] = useState(initialTaskState)
+  const [isTask, setIsTask] = useState(props.isTask)
+
+  useEffect(() => {
+    if (isTask !== props.isTask) setIsTask(props.isTask)
+  }, [isTask, props.isTask])
 
   useImperativeHandle(ref, () => editorRef.current)
 
@@ -57,7 +69,7 @@ export function JournalQuickInput({
         StarterKit,
         Placeholder.configure({
           placeholder: ({ node }) => {
-            return 'Writing something..'
+            return placeholder || 'Writing something..'
           },
         }),
       ],

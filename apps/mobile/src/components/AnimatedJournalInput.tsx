@@ -17,7 +17,7 @@ export const AnimatedJournalInput = ({ ref }: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const { height } = useKeyboard()
 
-  const { open, setOpen } = useQuickInputOpen()
+  const { isTask, date, cells = {}, open, setOpen } = useQuickInputOpen()
 
   return (
     <>
@@ -72,6 +72,9 @@ export const AnimatedJournalInput = ({ ref }: Props) => {
               <div className="mx-auto w-[92vw] flex-1">
                 <JournalQuickInput
                   ref={inputRef}
+                  isTask={isTask}
+                  date={date}
+                  cells={cells}
                   onCancel={() => setOpen(false)}
                   afterSubmit={() => {
                     setOpen(false)

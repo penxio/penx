@@ -14,7 +14,7 @@ export function CreationReminder({ creation, struct }: Props) {
   const column = struct.columns.find((c) => c.slug === 'reminder')
   if (!column) return null
 
-  const value = creation.cells[column.id]
+  const value = creation?.cells?.[column.id]
   if (!value) return null
   if (!isReminder(value)) return null
 

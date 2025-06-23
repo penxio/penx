@@ -116,7 +116,6 @@ export const WidgetRender = ({}: Props) => {
 }
 
 function Content({ widget }: { widget: Widget }) {
-  const { structs } = useStructs()
   if (widget.type === EDIT_WIDGET.type) {
     return <EditWidget />
   }

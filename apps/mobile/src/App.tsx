@@ -37,7 +37,6 @@ import '@ionic/react/css/display.css'
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
 import 'react-datepicker/dist/react-datepicker.css'
-import '@glideapps/glide-data-grid/dist/index.css'
 /**
  * Ionic Dark Mode
  * -----------------------------------------------------

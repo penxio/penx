@@ -432,3 +432,10 @@ export enum RepeatTypes {
   MONTHLY = 'MONTHLY',
   YEARLY = 'YEARLY',
 }
+
+export enum TaskNav {
+  TODAY = 'TODAY',
+  TOMORROW = 'TOMORROW',
+  UPCOMING = 'UPCOMING',
+  ALL = 'ALL',
+}

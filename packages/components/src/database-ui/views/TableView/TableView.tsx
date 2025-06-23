@@ -21,6 +21,7 @@ import { useCellMenu } from './hooks/useCellMenu'
 import { useColumnMenu } from './hooks/useColumnMenu'
 import { useTableView } from './hooks/useTableView'
 import { useUndoRedo } from './use-undo-redo'
+import '@glideapps/glide-data-grid/dist/index.css'
 
 interface Props {
   width?: number | string

@@ -1900,6 +1900,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../domain
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type

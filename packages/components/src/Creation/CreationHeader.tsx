@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
+import { isMobileApp } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -53,7 +54,10 @@ export function CreationHeader({
             <div className="flex gap-2">
               {struct?.type === StructType.TASK && (
                 <Checkbox
-                  className="border-foreground mt-[6px] size-5"
+                  className={cn(
+                    'border-foreground mt-[6px] size-5',
+                    !isMobileApp && 'mt-3',
+                  )}
                   checked={creation.checked}
                   onCheckedChange={(v) => {
                     updateCreationProps(creation.id, {
