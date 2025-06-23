@@ -58,6 +58,7 @@ export const SyncIntervalSelect = ({}: Props) => {
   return (
     <>
       <CardItem
+        className="justify-between"
         onClick={() => {
           setOpen(true)
         }}

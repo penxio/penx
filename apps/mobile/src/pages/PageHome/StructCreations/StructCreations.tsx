@@ -12,6 +12,7 @@ import { PanelType, StructType } from '@penx/types'
 import { cn } from '@penx/utils'
 import { ImageList } from './ImageList'
 import { ImageListContainer } from './ImageListContainer'
+import { TaskList } from './TaskList/TaskList'
 
 interface Props {
   structId: string
@@ -21,7 +22,7 @@ export function StructCreations({ structId }: Props) {
   const { creations } = useCreations()
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === structId)!
-  const filterCreations = creations.filter((c) => c.structId === structId)
+  const filteredCreations = creations.filter((c) => c.structId === structId)
 
   if (struct?.type == StructType.IMAGE) {
     return (
@@ -29,16 +30,20 @@ export function StructCreations({ structId }: Props) {
         {({ containerWidth }) => (
           <ImageList
             containerWidth={containerWidth}
-            creations={filterCreations}
+            creations={filteredCreations}
           />
         )}
       </ImageListContainer>
     )
   }
 
+  if (struct?.type == StructType.TASK) {
+    return <TaskList creations={filteredCreations} />
+  }
+
   return (
     <div className="flex flex-col gap-4">
-      {filterCreations.map((creation) => {
+      {filteredCreations.map((creation) => {
         return (
           <CreationCard
             key={creation.id}

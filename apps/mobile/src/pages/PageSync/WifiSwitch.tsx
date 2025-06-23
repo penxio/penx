@@ -18,7 +18,7 @@ export const WifiSwitch = ({}: Props) => {
   })
 
   return (
-    <CardItem>
+    <CardItem className="justify-between">
       <span>
         <Trans>Sync only over Wi-Fi</Trans>
       </span>

@@ -16,17 +16,17 @@ interface ItemProps {
   onCreated?: () => void
 }
 export function CreateArea({ children, className, onCreated }: ItemProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   useEffect(() => {
-    if (isOpen) setName('')
-  }, [isOpen])
+    if (open) setName('')
+  }, [open])
   return (
     <>
       <MenuItem
         className="text-brand gap-2"
         onClick={() => {
-          setIsOpen(true)
+          setOpen(true)
         }}
       >
         <PlusIcon />
@@ -34,7 +34,7 @@ export function CreateArea({ children, className, onCreated }: ItemProps) {
           <Trans>Create new area</Trans>
         </span>
       </MenuItem>
-      <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight>
+      <Drawer open={open} setOpen={setOpen} isFullHeight>
         <DrawerHeader
           showCancelButton
           onConfirm={async () => {
@@ -44,7 +44,7 @@ export function CreateArea({ children, className, onCreated }: ItemProps) {
             store.structs.refetchStructs(area.id)
             store.visit.setAndSave({ activeAreaId: area.id })
             await store.panels.resetPanels()
-            setIsOpen(false)
+            setOpen(false)
             onCreated?.()
           }}
         >

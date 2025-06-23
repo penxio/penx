@@ -1,7 +1,6 @@
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
-import { produce } from 'immer'
 import { api } from '@penx/api'
 import { isMobileApp } from '@penx/constants'
 import { Node } from '@penx/domain'
@@ -31,10 +30,11 @@ import {
   Widget,
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
-import { fixStructs } from './fixStructs'
+import { fixStructsViews } from './fixStructsViews'
 import { initLocalSite } from './lib/initLocalSite'
 import { isRowsEqual } from './lib/isRowsEqual'
 import { syncNodesToLocal } from './lib/syncNodesToLocal'
+import { fixTaskStruct } from './fixTaskStruct'
 
 const PANELS = 'PANELS'
 
@@ -50,7 +50,7 @@ export class AppService {
     try {
       const site = await this.getInitialSite(session)
 
-      console.log('===========getInital=site:', site)
+      // console.log('===========getInital=site:', site)
       await this.initStore(site)
     } catch (error) {
       console.log('init error=====>>>:', error)
@@ -160,36 +160,9 @@ export class AppService {
       structs.push(newStruct)
     }
 
-    // fallback to old data, remove it later
-    const taskStruct = structs.find((s) => s.props.type === StructType.TASK)
-    if (taskStruct) {
-      const reminderColumn = taskStruct.props.columns.find(
-        (c) => c.slug === 'reminder',
-      )
-      if (!reminderColumn) {
-        const newTaskStruct = produce(taskStruct, (draft) => {
-          draft.props.columns.push({
-            id: uniqueId(),
-            slug: 'reminder',
-            name: t`Reminder`,
-            description: '',
-            columnType: ColumnType.DATE,
-            config: {},
-            options: [],
-            isPrimary: false,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-          })
-        })
 
-        await localDB.updateStructProps(taskStruct.id, {
-          columns: newTaskStruct.props.columns,
-        })
-        structs = await localDB.listStructs(area.id)
-      }
-    }
-
-    structs = await fixStructs(area.id, structs)
+    structs = await fixTaskStruct(area.id, structs)
+    structs = await fixStructsViews(area.id, structs)
 
     // console.log('======journals:', journals)
 

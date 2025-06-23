@@ -43,7 +43,7 @@ export class AreasStore {
       type: NodeType.AREA,
       props: {
         cover: '',
-        widgets: getInitialWidgets(),
+        widgets: [],
         // type: AreaType.SUBJECT,
         favorites: [],
         isGenesis: false,
@@ -67,6 +67,14 @@ export class AreasStore {
     for (const struct of structs) {
       await localDB.addStruct(struct)
     }
+
+    const widgets = getInitialWidgets(structs)
+    await localDB.node.update(area.id, {
+      props: {
+        ...area.props,
+        widgets,
+      },
+    })
 
     this.store.structs.refetchStructs(area.id)
     this.refetchAreas()

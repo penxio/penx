@@ -1,4 +1,5 @@
 import { IStructNode } from '@penx/model-type'
+import { StructType } from '@penx/types'
 
 export class Struct {
   constructor(public raw: IStructNode) {}
@@ -59,6 +60,10 @@ export class Struct {
     return (
       this.views.find((view) => view.id === this.activeViewId) || this.views[0]
     )
+  }
+
+  get isTask() {
+    return this.type === StructType.TASK
   }
 
   get createdAt() {

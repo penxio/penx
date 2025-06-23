@@ -65,9 +65,10 @@ import { VoiceContent } from './VoiceContent'
 
 interface Props {
   creation: Creation
+  onChecked?: () => void
 }
 
-export function CreationItem({ creation }: Props) {
+export function CreationItem({ creation, onChecked }: Props) {
   const struct = useCreationStruct(creation)
   const [isOpen, setIsOpen] = useState(false)
   const [isTranscribing, setTranscribing] = useState(false)
@@ -99,11 +100,13 @@ export function CreationItem({ creation }: Props) {
     },
   })
 
-  useClickAway(refs.floating as any, () => {
-    setIsOpen(false)
-  })
+  // useClickAway(refs.floating as any, () => {
+  //   setIsOpen(false)
+  // })
 
   function handleClick() {
+    console.log('is clieck....:', isOpen)
+
     if (isMobileApp) {
       if (creation.isVoice) return
       return appEmitter.emit('ROUTE_TO_CREATION', creation)
@@ -119,6 +122,7 @@ export function CreationItem({ creation }: Props) {
     (e: LongPressReactEvents) => {
       setIsOpen(true)
       console.log('Long press completed!')
+      appEmitter.emit('IMPACT')
     },
     {
       onStart: () => {
@@ -194,6 +198,8 @@ export function CreationItem({ creation }: Props) {
                 onClick={(e) => e.stopPropagation()}
                 defaultChecked={creation.checked}
                 onCheckedChange={(v) => {
+                  onChecked?.()
+                  appEmitter.emit('IMPACT')
                   updateCreationProps(creation.id, {
                     checked: v as any,
                   })
@@ -230,8 +236,20 @@ export function CreationItem({ creation }: Props) {
       {isOpen && (
         <AnimatePresence>
           <motion.div
+            className="fixed bottom-0 left-0 right-0 top-0 z-40 bg-white/10 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            onClick={(e) => {
+              e.stopPropagation()
+              setIsOpen(false)
+            }}
+          ></motion.div>
+
+          <motion.div
             ref={refs.setFloating}
-            className="shadow-popover z-[10] mt-1 flex w-48 flex-col gap-0 rounded-xl bg-white"
+            className="shadow-popover z-[50] mt-1 flex w-48 flex-col gap-0 rounded-xl bg-white"
             // style={floatingStyles}
             style={{
               position: context.strategy,
@@ -323,21 +341,37 @@ export function CreationItem({ creation }: Props) {
       )}
 
       <div className="flex flex-col gap-0">
-        <div
-          className="text-foreground line-clamp-2 flex flex-col text-[16px]"
+        <motion.div
+          className={cn(
+            'text-foreground line-clamp-2 flex flex-col text-[16px]',
+            isOpen && 'shadow-popover z-[60] rounded-lg bg-white px-3 py-3',
+          )}
+          // variants={{
+          //   open: {
+          //     zIndex: 60,
+          //     borderRadius: 4,
+          //     padding: 12,
+          //   },
+          //   closed: {
+          //     zIndex: 'inherit',
+          //     padding: 0,
+          //     borderRadius: 0,
+          //   },
+          // }}
+          // animate={isOpen ? 'open' : 'closed'}
           ref={refs.setReference}
           {...handlers()}
           onClick={() => {
             if (!isLongPressed.current) {
               console.log('Single click!')
               // setIsOpen(true)
-              handleClick()
+              if (!isOpen) handleClick()
             }
             isLongPressed.current = false
           }}
         >
           {content}
-        </div>
+        </motion.div>
 
         {!creation.isTask && (
           <div className="flex items-center gap-2">

@@ -3,7 +3,7 @@ import { Struct } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import { IStructNode } from '@penx/model-type'
 
-export async function fixStructs(areaId: string, structs: IStructNode[]) {
+export async function fixStructsViews(areaId: string, structs: IStructNode[]) {
   let needFixed = false
 
   for (const struct of structs) {

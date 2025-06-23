@@ -81,11 +81,11 @@ export const WidgetList = () => {
 
   const [items, setItems] = useState<string[]>(widgets.map((item) => item.id))
 
-  // useEffect(() => {
-  //   const newItems = widgets.map((item) => item.id)
-  //   if (isEqual(items, newItems)) return
-  //   setItems(newItems)
-  // }, [area])
+  useEffect(() => {
+    const newItems = widgets.map((item) => item.id)
+    if (isEqual(items, newItems)) return
+    setItems(newItems)
+  }, [area])
 
   function handleDragStart({ active }: DragStartEvent) {
     if (active) {

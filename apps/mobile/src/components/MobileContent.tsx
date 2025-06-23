@@ -24,7 +24,6 @@ export const MobileContent = ({
   onBack,
 }: PropsWithChildren<Props>) => {
   const { isDark } = useTheme()
-  console.log('=========backgroundColor:', backgroundColor)
 
   return (
     <IonContent

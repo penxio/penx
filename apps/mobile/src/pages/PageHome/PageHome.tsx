@@ -44,7 +44,7 @@ const PageHome = ({ nav }: any) => {
 
   return (
     <>
-      <AnimatedJournalInput open={open} setOpen={setOpen} />
+      {/* <AnimatedJournalInput open={open} setOpen={setOpen} /> */}
       {/* <Journals /> */}
       <WidgetNav />
       <WidgetRender />

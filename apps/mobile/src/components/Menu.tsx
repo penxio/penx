@@ -104,16 +104,6 @@ const Menu: React.FC = () => {
           <Button
             variant="ghost"
             className="text-foreground w-full justify-start gap-2 pl-2"
-            onClick={async () => {
-              impact()
-              if (!session) {
-                appEmitter.emit('ROUTE_TO_LOGIN')
-                menu.current?.close()
-                return
-              }
-              appEmitter.emit('ROUTE_TO_SYNC')
-              menu.current?.close()
-            }}
           >
             <RefreshCwIcon size={18} />
             <Trans>Sync now</Trans>

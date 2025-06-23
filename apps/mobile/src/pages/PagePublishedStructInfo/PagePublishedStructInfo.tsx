@@ -19,15 +19,17 @@ import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 
 export function PagePublishedStructInfo({ struct }: { struct: Struct }) {
   return (
-    <MobileContent title={<div className="text-foreground">{struct.name}</div>}>
-      <Content structId={struct.id} />
+    <MobileContent
+      backgroundColor="#f6f6f6"
+      title={<div className="text-foreground">{struct.name}</div>}
+    >
+      <Content struct={struct} />
     </MobileContent>
   )
 }
 
-function Content({ structId }: { structId: string }) {
-  const { structs } = useStructs()
-  const struct = structs.find((s) => s.id === structId)!
+function Content({ struct }: { struct: Struct }) {
+  if (!struct) return null
 
   return (
     <div className="flex flex-col gap-5">
@@ -71,7 +73,7 @@ function Content({ structId }: { structId: string }) {
       <Card>
         <Textarea
           readOnly
-          className="text-foreground border-none text-base shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
+          className="text-foreground border-none bg-white text-base shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60"
           placeholder={t`Introduction`}
           defaultValue={struct.description}
           onChange={(e) => {

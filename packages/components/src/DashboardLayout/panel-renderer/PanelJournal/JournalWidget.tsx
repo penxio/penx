@@ -42,9 +42,13 @@ export function JournalWidget({ creations }: Props) {
 
       {structs.map((struct) => {
         if (struct.type === StructType.IMAGE) return null
-        const structCreations = creations.filter(
-          (c) => c.structId === struct.id,
-        )
+        let structCreations = creations.filter((c) => c.structId === struct.id)
+
+        if (struct.isTask) {
+          structCreations = [...structCreations].sort(
+            (a, b) => Number(a.checked) - Number(b.checked),
+          )
+        }
 
         if (
           !structCreations.length &&

@@ -1,5 +1,7 @@
 import React from 'react'
+import { useWidget } from '@/hooks/useWidget'
 import { IonFab } from '@ionic/react'
+import { WidgetType } from '@penx/constants'
 import { cn } from '@penx/utils'
 import { AddMoreButton } from './AddMoreButton'
 import { AddNoteButton } from './AddNoteButton'
@@ -12,6 +14,9 @@ interface Props {
 }
 
 export const HomeFooter = ({ open, onAdd }: Props) => {
+  const { widget } = useWidget()
+
+  if (widget && widget?.type !== WidgetType.JOURNAL) return null
   return (
     <IonFab
       slot="fixed"

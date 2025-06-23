@@ -2,11 +2,6 @@ import { useMemo } from 'react'
 import { impact } from '@/lib/impact'
 import { isIOS } from '@/lib/utils'
 import { Dialog } from '@capacitor/dialog'
-import {
-  DefaultSystemBrowserOptions,
-  DefaultWebViewOptions,
-  InAppBrowser,
-} from '@capacitor/inappbrowser'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon, CopyIcon, UserIcon } from 'lucide-react'
@@ -14,7 +9,6 @@ import { toast } from 'sonner'
 import { api } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
-import { useMobileNav } from '@penx/hooks/useMobileNav'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 import { PlanType } from '@penx/types'
@@ -25,7 +19,6 @@ import { generateGradient } from '@penx/utils/generateGradient'
 import { AreasMenu } from '../AreasMenu/AreasMenu'
 import { Card } from '../ui/Card'
 import { CardItem } from '../ui/CardItem'
-import { Menu } from '../ui/Menu'
 import { MenuItem } from '../ui/MenuItem'
 import { AboutMenu } from './AboutMenu'
 import { GuideEntryMenu } from './GuideEntryMenu'
@@ -114,12 +107,11 @@ export function Profile() {
       {/* <Card>PenX PRO</Card> */}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-6">
         {session?.isFree && (
-
-        <Card>
-          <CardItem className="pr-1">
-            <SubscriptionMenu />
-          </CardItem>
-        </Card>
+          <Card>
+            <CardItem className="pr-1">
+              <SubscriptionMenu />
+            </CardItem>
+          </Card>
         )}
 
         <AreasMenu />
@@ -160,79 +152,59 @@ export function Profile() {
           </CardItem>
         </Card>
 
-        {session && (
-          <Item
-            className="text-red-500"
-            onClick={async () => {
-              const { value } = await Dialog.confirm({
-                title: t`Delete account`,
-                message: t`All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?`,
-              })
+        <Card>
+          {session && (
+            <CardItem
+              className="text-red-500"
+              onClick={async () => {
+                const { value } = await Dialog.confirm({
+                  title: t`Delete account`,
+                  message: t`All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?`,
+                })
 
-              if (value) {
-                toast.promise(
-                  async () => {
-                    await api.deleteAccount()
-                    await localDB.deleteAllSiteData(session.siteId)
-                    await logout()
-                    appEmitter.emit('ON_LOGOUT_SUCCESS')
-                    appEmitter.emit('DELETE_ACCOUNT')
-                  },
-                  {
-                    loading: t`Account deletion in progress...`,
-                    success: t`Account deleted successfully!`,
-                    error: () => {
-                      return t`Failed to delete account. Please try again.`
+                if (value) {
+                  toast.promise(
+                    async () => {
+                      await api.deleteAccount()
+                      await localDB.deleteAllSiteData(session.siteId)
+                      await logout()
+                      appEmitter.emit('ON_LOGOUT_SUCCESS')
+                      appEmitter.emit('DELETE_ACCOUNT')
                     },
-                  },
-                )
-              }
-            }}
-          >
-            <Trans>Delete account</Trans>
-          </Item>
-        )}
+                    {
+                      loading: t`Account deletion in progress...`,
+                      success: t`Account deleted successfully!`,
+                      error: () => {
+                        return t`Failed to delete account. Please try again.`
+                      },
+                    },
+                  )
+                }
+              }}
+            >
+              <Trans>Delete account</Trans>
+            </CardItem>
+          )}
 
-        {session && (
-          <Item
-            className="text-red-500"
-            onClick={async () => {
-              const { value } = await Dialog.confirm({
-                title: t`Log out`,
-                message: t`Are you sure you want to log out?`,
-              })
+          {session && (
+            <MenuItem
+              className="text-red-500"
+              onClick={async () => {
+                const { value } = await Dialog.confirm({
+                  title: t`Log out`,
+                  message: t`Are you sure you want to log out?`,
+                })
 
-              if (value) {
-                await logout()
-                appEmitter.emit('ON_LOGOUT_SUCCESS')
-              }
-            }}
-          >
-            <Trans>Log out</Trans>
-          </Item>
-        )}
-      </div>
-    </div>
-  )
-}
-
-interface ItemProps {
-  className?: string
-  children?: React.ReactNode
-  onClick?: () => void
-}
-function Item({ children, className, onClick }: ItemProps) {
-  return (
-    <div
-      className={cn(
-        'border-foreground/5 flex items-center justify-between border-b py-2',
-        className,
-      )}
-      onClick={() => onClick?.()}
-    >
-      <div className="font-medium">{children}</div>
-      <div>
-        <ChevronRightIcon className="text-foreground/50" />
+                if (value) {
+                  await logout()
+                  appEmitter.emit('ON_LOGOUT_SUCCESS')
+                }
+              }}
+            >
+              <Trans>Log out</Trans>
+            </MenuItem>
+          )}
+        </Card>
       </div>
     </div>
   )

@@ -60,7 +60,7 @@ export function SyncContent({}: Props) {
       <Card>
         <SyncIntervalSelect></SyncIntervalSelect>
         <WifiSwitch />
-        <CardItem>
+        <CardItem className="justify-between">
           <span>
             <Trans>End-to-end encryption</Trans>
           </span>

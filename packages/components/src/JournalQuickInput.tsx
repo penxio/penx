@@ -14,6 +14,7 @@ import { Editor } from '@tiptap/core'
 import Placeholder from '@tiptap/extension-placeholder'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import { format } from 'date-fns'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
 import { defaultEditorContent, isMobileApp } from '@penx/constants'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
@@ -38,7 +39,7 @@ export function JournalQuickInput({
   onCancel?: () => void
   afterSubmit?: () => void
 }) {
-  const { isTask: initialTaskState } = useQuickInputOpen()
+  const { isTask: initialTaskState, date, cells = {} } = useQuickInputOpen()
   const editorRef = useRef<Editor>(null)
   const [input, setInput] = useState('')
   // const { structs } = useStructs()
@@ -80,6 +81,8 @@ export function JournalQuickInput({
       title: title,
       content: content,
       isAddPanel: false,
+      date: date ? date : format(new Date(), 'yyyy-MM-dd'),
+      cells,
     })
     editor?.commands.clearContent()
     afterSubmit?.()

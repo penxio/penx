@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useScrolled } from '@/hooks/useScrolled'
 import { useWidget } from '@/hooks/useWidget'
 import { EDIT_WIDGET } from '@/lib/constants'
+import { impact } from '@/lib/impact'
 import { isAndroid, isIOS } from '@/lib/utils'
 import { Trans } from '@lingui/react/macro'
 import { WidgetType } from '@penx/constants'
@@ -35,14 +36,14 @@ export const WidgetNav = ({}: Props) => {
   return (
     <div
       className={cn(
-        'no-scrollbar gap-2overflow-hidden fixed left-0 right-0 top-0 z-[1000] flex w-full cursor-pointer items-center overflow-auto bg-transparent',
+        'no-scrollbar gap-2overflow-hidden fixed left-0 right-0 top-0 z-[30] flex w-full cursor-pointer items-center overflow-auto bg-transparent',
         scrolled && 'bg-background && border-foreground/10 border-b-[0.5px]',
       )}
       style={{
         paddingTop: pt,
       }}
     >
-      <div className="flex h-10 w-auto items-center gap-2 px-4">
+      <div className="flex h-10 w-auto items-center gap-2 pl-3">
         {widgets.map((item, index) => {
           const active = widget ? widget.id === item.id : index === 0
           return (
@@ -53,6 +54,7 @@ export const WidgetNav = ({}: Props) => {
                 active && 'text-foreground text-xl font-bold',
               )}
               onClick={() => {
+                impact()
                 // console.log('=====item:', item)
                 setWidget(item)
               }}
@@ -65,15 +67,17 @@ export const WidgetNav = ({}: Props) => {
           variant="outline-solid"
           size="xs"
           className={cn(
-            'h-7 rounded-full opacity-50',
+            'h-7 shrink-0 rounded-full opacity-50',
             isEditActive && 'bg-foreground text-background opacity-100',
           )}
           onClick={() => {
+            impact()
             setWidget(EDIT_WIDGET)
           }}
         >
           <Trans>Edit</Trans>
         </Button>
+        <div className="h-3 w-0.5 shrink-0"></div>
       </div>
     </div>
   )

@@ -65,7 +65,7 @@ export async function initLocalSite(uid?: string) {
         about: JSON.stringify(defaultEditorContent),
         logo: '',
         chargeMode: 'FREE',
-        widgets: getInitialWidgets(),
+        widgets: [],
         isGenesis: true,
         favorites: [],
       },
@@ -82,6 +82,17 @@ export async function initLocalSite(uid?: string) {
         areaId: areaId,
       }),
     )
+
+    const structs = await localDB.listStructs(areaId)
+    const widgets = getInitialWidgets(structs)
+    const area = await localDB.getNode(areaId)
+
+    await localDB.node.update(areaId, {
+      props: {
+        ...area.props,
+        widgets,
+      },
+    })
 
     await localDB.node.add({
       id: uniqueId(),

@@ -54,13 +54,16 @@ import { memo, useEffect, useRef } from 'react'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreationId } from '@penx/hooks/useCreationId'
+import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
 import { LocaleProvider } from '@penx/locales'
 import { ICreationNode } from '@penx/model-type'
 import { Widget } from '@penx/types'
 import { AppInitializer } from './AppInitializer'
+import { AnimatedJournalInput } from './components/AnimatedJournalInput'
 import { NavProvider } from './components/NavContext'
 import { ThemeProvider } from './components/theme-provider'
 import { UpgradeDrawer } from './components/UpgradeDrawer/UpgradeDrawer'
+import { impact } from './lib/impact'
 import {
   showEstimatedQuota,
   tryPersistWithoutPromptingUser,
@@ -73,6 +76,7 @@ import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct/PageStruct'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
 import { PageSync } from './pages/PageSync/PageSync'
+import { PageTasks } from './pages/PageTasks/PageTasks'
 import { PageWidget } from './pages/PageWidget'
 
 const platform = Capacitor.getPlatform()
@@ -152,8 +156,6 @@ const AppContent = memo(
   () => {
     const nav = useRef<HTMLIonNavElement>(null)
     const { setNav } = useMobileNav()
-
-    console.log('render-------apppp>>>>>>>>>>>>>>>')
 
     useEffect(() => {
       setNav(nav)
@@ -251,6 +253,16 @@ const AppContent = memo(
     }, [])
 
     useEffect(() => {
+      function handle(params: any) {
+        nav.current?.push(PageTasks, params)
+      }
+      appEmitter.on('ROUTE_TO_TASKS', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_TASKS', handle)
+      }
+    }, [])
+
+    useEffect(() => {
       function handle() {
         nav.current?.pop()
       }
@@ -260,12 +272,23 @@ const AppContent = memo(
       }
     }, [])
 
+    useEffect(() => {
+      function handle() {
+        impact()
+      }
+      appEmitter.on('IMPACT', handle)
+      return () => {
+        appEmitter.off('IMPACT', handle)
+      }
+    }, [])
+
     return (
       <LocaleProvider>
         <ThemeProvider>
           <DashboardProviders>
             <UpgradeDrawer />
             <MoreStructDrawer />
+            <AnimatedJournalInput />
             <AppInitializer />
             <IonReactRouter>
               <IonRouterOutlet id="main">

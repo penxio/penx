@@ -70,7 +70,10 @@ export function useAddCreation() {
       type: NodeType.CREATION,
       props: {
         icon: '',
-        cells: cells,
+        cells: {
+          ...cells,
+          ...input.cells,
+        },
         podcast: {},
         i18n: {},
         gateType: GateType.FREE,
