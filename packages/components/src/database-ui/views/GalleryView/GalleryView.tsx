@@ -32,6 +32,7 @@ interface GalleryItemProps {
 function GalleryItem({ record }: GalleryItemProps) {
   const { columns } = useDatabaseContext()
   const columnMaps = mappedByKey(columns, 'id')
+  if (!record.props.cells) return null
 
   return (
     <div className="border-foreground/10 text-foreground relative mb-5 flex w-full flex-col gap-1 rounded-md border p-4">

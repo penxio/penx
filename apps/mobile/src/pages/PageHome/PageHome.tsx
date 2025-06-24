@@ -8,6 +8,7 @@ import { mainBackgroundLight } from '@/lib/constants'
 import { useMoreStructDrawer } from '@/pages/PageHome/HomeFooter/MoreStructDrawer/useMoreStructDrawer'
 import { Capacitor } from '@capacitor/core'
 import { useQuery } from '@tanstack/react-query'
+import { api } from '@penx/api'
 // import { SafeArea } from '@capacitor-community/safe-area'
 import { usePanels } from '@penx/hooks/usePanels'
 import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
@@ -34,6 +35,14 @@ const PageHome = ({ nav }: any) => {
   //     return mode.dark
   //   },
   // })
+
+  // to enable mobile network
+  useQuery({
+    queryKey: ['mobile', 'session'],
+    queryFn: async () => {
+      return api.getSession()
+    },
+  })
 
   useEffect(() => {
     if (!isShow && open) setOpen(false)

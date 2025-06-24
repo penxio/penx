@@ -196,7 +196,7 @@ export function CreationItem({ creation, onChecked }: Props) {
             {creation.isTask && (
               <Checkbox
                 onClick={(e) => e.stopPropagation()}
-                defaultChecked={creation.checked}
+                checked={creation.checked}
                 onCheckedChange={(v) => {
                   onChecked?.()
                   appEmitter.emit('IMPACT')

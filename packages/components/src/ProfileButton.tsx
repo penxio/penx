@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react/macro'
+import { fetch } from '@tauri-apps/plugin-http'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import ky from 'ky'
 import {
@@ -59,12 +60,17 @@ export function ProfileButton({ loginButton }: Props) {
     const authToken = nanoid()
     openUrl(`${ROOT_HOST}/desktop-login?token=${authToken}`)
     while (true) {
+      fetch
       try {
-        const { status } = await ky
-          .get(`${ROOT_HOST}/api/get-desktop-login-status`, {
-            searchParams: { token: authToken },
-          })
-          .json<{ status: string }>()
+        // const { status } = await ky
+        //   .get(`${ROOT_HOST}/api/get-desktop-login-status`, {
+        //     searchParams: { token: authToken },
+        //   })
+        //   .json<{ status: string }>()
+
+        const { status } = await fetch(
+          `${ROOT_HOST}/api/get-desktop-login-status?token=${authToken}`,
+        ).then((r) => r.json())
 
         // console.log('=======status:', status)
         if (status === LoginStatus.CONFIRMED) {

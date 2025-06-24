@@ -17,7 +17,7 @@ import { CreationItem } from './CreationItem/CreationItem'
 import { ImageCreation } from './CreationItem/ImageCreation'
 import { JournalPhotoWidget } from './JournalPhotoWidget'
 import { JournalTitleWidget } from './JournalTitleWidget'
-import Face from './moods/grinning_face_with_big_eyes_color.svg?react'
+// import Face from './moods/grinning_face_with_big_eyes_color.svg?react'
 
 interface Props {
   creations: Creation[]
@@ -106,6 +106,7 @@ function AddCreationButton({ struct }: { struct: Struct }) {
         whileTap={{ scale: 1.2 }}
         className="text-foreground/80"
         onClick={() => {
+          appEmitter.emit('IMPACT')
           setState({ isTask: true, open: true, placeholder: 'Add task' })
         }}
       />
@@ -118,6 +119,7 @@ function AddCreationButton({ struct }: { struct: Struct }) {
         className={cn('text-foreground/80 icon-[mdi--feather] size-6')}
         whileTap={{ scale: 1.2 }}
         onClick={() => {
+          appEmitter.emit('IMPACT')
           setState({ isTask: false, open: true })
         }}
       />

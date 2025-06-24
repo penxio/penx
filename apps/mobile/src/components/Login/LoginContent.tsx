@@ -27,13 +27,6 @@ const platform = Capacitor.getPlatform()
 
 export function LoginContent({}: Props) {
   const { i18n } = useLingui()
-  // to enable mobile network
-  useQuery({
-    queryKey: ['mobile', 'session'],
-    queryFn: async () => {
-      return api.getSession()
-    },
-  })
 
   return (
     <div className="text-foreground flex h-full flex-1 flex-col justify-center gap-3">

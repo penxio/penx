@@ -29,6 +29,7 @@ export function TakePhotoButton({ children }: Props) {
   })
 
   const takePhoto = async (isCamera = true) => {
+    appEmitter.emit('IMPACT')
     try {
       const image = await Camera.getPhoto({
         resultType: CameraResultType.Uri,

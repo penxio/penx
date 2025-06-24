@@ -11,16 +11,17 @@ import { Checkbox } from '@penx/uikit/checkbox'
 import { cn } from '@penx/utils'
 
 interface PostItemProps {
+  containerId: string
   creation: Creation
 }
 
-export function TaskItem({ creation: creation }: PostItemProps) {
+export function TaskItem({ creation, containerId }: PostItemProps) {
   const completed = creation.checked
   return (
     <motion.div
-      className={cn('')}
+      className={cn('cursor-pointer')}
       // layout
-      layoutId={creation.id}
+      layoutId={`${containerId}-${creation.id}`}
       layout="position"
       transition={{ duration: 0.3 }}
       onClick={() => {

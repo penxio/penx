@@ -36,7 +36,7 @@ export const AreasMenu = ({ className = '' }: Props) => {
   return (
     <>
       <div
-        className="flex h-10 flex-1 cursor-pointer items-center gap-1"
+        className="flex h-10 cursor-pointer items-center gap-1"
         onClick={() => {
           impact()
           setOpen(true)

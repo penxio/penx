@@ -1,10 +1,11 @@
 'use client'
 
-import { PropsWithChildren, useMemo } from 'react'
+import { PropsWithChildren, ReactNode, useMemo } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { addDays, format } from 'date-fns'
-import { AnimatePresence } from 'motion/react'
+import { AnimatePresence, LayoutGroup, motion } from 'motion/react'
 import { TaskNav } from '@penx/constants'
+import { Creation } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { getTasksByTaskNav } from '@penx/libs/getTasksByTaskNav'
 import { sortTasks } from '@penx/libs/sortTasks'
@@ -60,7 +61,7 @@ export function PanelTasks({ panel, index }: Props) {
                 'relative flex w-full flex-1 flex-col overflow-auto pb-20 pt-6',
               )}
             >
-              <div className="mx-auto flex w-full max-w-xl flex-col gap-5">
+              <div className="mx-auto flex w-full max-w-xl flex-col gap-5 px-6">
                 <UpcomingTasks creations={creations} />
               </div>
             </div>
@@ -73,23 +74,11 @@ export function PanelTasks({ panel, index }: Props) {
       <>
         {headerJsx}
         <ContentContainer>
-          <div
-            className={cn(
-              'relative flex w-full flex-1 flex-col overflow-auto pb-20 pt-6',
-            )}
-          >
-            <div className="mx-auto flex w-full max-w-xl flex-col gap-5">
-              <div className="text-foreground text-2xl font-bold">{title}</div>
-
-              <div className="flex flex-col gap-3">
-                <AnimatePresence>
-                  {sortTasks(creations).map((item) => (
-                    <TaskItem key={item.id} creation={item} />
-                  ))}
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
+          <TaskListContainer
+            containerId={panel.taskNav}
+            title={title}
+            creations={creations}
+          />
           <div className="relative z-50 px-6 pb-6">
             <div className="sticky bottom-0 mx-auto flex w-full max-w-xl flex-col items-center justify-center gap-2">
               <JournalQuickInput
@@ -112,23 +101,11 @@ export function PanelTasks({ panel, index }: Props) {
       <>
         {headerJsx}
         <ContentContainer>
-          <div
-            className={cn(
-              'relative flex w-full flex-1 flex-col overflow-auto pb-20 pt-6',
-            )}
-          >
-            <div className="mx-auto flex w-full max-w-xl flex-col gap-5">
-              <div className="text-foreground text-2xl font-bold">{title}</div>
-
-              <div className="flex flex-col gap-3">
-                <AnimatePresence>
-                  {sortTasks(creations).map((item) => (
-                    <TaskItem key={item.id} creation={item} />
-                  ))}
-                </AnimatePresence>
-              </div>
-            </div>
-          </div>
+          <TaskListContainer
+            containerId={column.id}
+            title={title}
+            creations={creations}
+          />
           <div className="relative z-50 px-6 pb-6">
             <div className="sticky bottom-0 mx-auto flex w-full max-w-xl flex-col items-center justify-center gap-2">
               <JournalQuickInput
@@ -155,5 +132,39 @@ function ContentContainer({ children }: PropsWithChildren) {
         {children}
       </div>
     </div>
+  )
+}
+
+type TaskListProps = {
+  title: ReactNode
+  creations: Creation[]
+  containerId: string
+}
+
+function TaskListContainer({ title, creations, containerId }: TaskListProps) {
+  return (
+    <LayoutGroup>
+      <div
+        className={cn(
+          'relative flex w-full flex-1 flex-col overflow-auto pb-20 pt-6',
+        )}
+      >
+        <div className="mx-auto flex w-full max-w-xl flex-col gap-5 px-6">
+          <motion.div layout className="text-foreground text-2xl font-bold">
+            {title}
+          </motion.div>
+
+          <div className="flex flex-col gap-3">
+            {sortTasks(creations).map((item) => (
+              <TaskItem
+                key={item.id}
+                containerId={containerId}
+                creation={item}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </LayoutGroup>
   )
 }

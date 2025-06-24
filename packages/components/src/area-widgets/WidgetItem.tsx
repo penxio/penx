@@ -122,6 +122,11 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
               return
             }
 
+            if (widget.type === WidgetType.STRUCT) {
+              const struct = structs.find((s) => s.id === widget.structId)
+              if (struct?.isTask) return
+            }
+
             setVisible(!visible)
           }}
         >

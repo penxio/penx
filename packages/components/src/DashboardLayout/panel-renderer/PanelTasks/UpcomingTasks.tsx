@@ -10,6 +10,7 @@ import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
 import { sortTasks } from '@penx/libs/sortTasks'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { JournalQuickInput } from '../../../JournalQuickInput'
+import { TaskItem } from './TaskItem'
 
 export function UpcomingTasks({ creations }: { creations: Creation[] }) {
   const { setState } = useQuickInputOpen()
@@ -86,7 +87,7 @@ export function UpcomingTaskItem({ creations, day }: UpcomingTaskItemProps) {
       <div className="flex flex-col gap-3">
         <AnimatePresence>
           {sortTasks(list).map((item) => (
-            <CreationItem key={item.id} creation={item} />
+            <TaskItem containerId={day.date} key={item.id} creation={item} />
           ))}
         </AnimatePresence>
       </div>
