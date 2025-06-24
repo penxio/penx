@@ -2,7 +2,7 @@
 
 import { Trans } from '@lingui/react/macro'
 import { CameraIcon, PencilIcon, PlusIcon } from 'lucide-react'
-import { LayoutGroup, motion } from 'motion/react'
+import { AnimatePresence, LayoutGroup, motion } from 'motion/react'
 import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
@@ -82,11 +82,13 @@ export function JournalWidget({ creations }: Props) {
               </div>
               {structCreations.length > 0 && (
                 <div className={cn('flex flex-col gap-2', isTask && 'gap-3')}>
-                  {structCreations.map((creation) => {
-                    return (
-                      <CreationItem creation={creation} key={creation.id} />
-                    )
-                  })}
+                  <AnimatePresence>
+                    {structCreations.map((creation) => {
+                      return (
+                        <CreationItem creation={creation} key={creation.id} />
+                      )
+                    })}
+                  </AnimatePresence>
                 </div>
               )}
             </motion.div>

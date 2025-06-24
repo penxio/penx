@@ -3,6 +3,7 @@ import { impact } from '@/lib/impact'
 import { Trans } from '@lingui/react/macro'
 import { addDays, format } from 'date-fns'
 import { ChevronRightIcon, PlusIcon } from 'lucide-react'
+import { AnimatePresence } from 'motion/react'
 import { CreationItem } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem'
 import { TaskNav } from '@penx/constants'
 import { Creation } from '@penx/domain'
@@ -50,9 +51,11 @@ export function TaskSection({ taskNav, creations }: TaskSectionProps) {
       {[TaskNav.TODAY, TaskNav.TOMORROW].includes(taskNav as TaskNav) &&
         creations.length > 0 && (
           <div className="flex flex-col gap-3">
-            {sortTasks(creations).map((item) => (
-              <CreationItem key={item.id} creation={item} />
-            ))}
+            <AnimatePresence>
+              {sortTasks(creations).map((item) => (
+                <CreationItem key={item.id} creation={item} />
+              ))}
+            </AnimatePresence>
           </div>
         )}
     </div>

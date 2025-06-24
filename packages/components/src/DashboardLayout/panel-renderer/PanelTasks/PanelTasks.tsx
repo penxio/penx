@@ -3,6 +3,7 @@
 import { PropsWithChildren, useMemo } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { addDays, format } from 'date-fns'
+import { AnimatePresence } from 'motion/react'
 import { TaskNav } from '@penx/constants'
 import { useCreations } from '@penx/hooks/useCreations'
 import { getTasksByTaskNav } from '@penx/libs/getTasksByTaskNav'
@@ -81,9 +82,11 @@ export function PanelTasks({ panel, index }: Props) {
               <div className="text-foreground text-2xl font-bold">{title}</div>
 
               <div className="flex flex-col gap-3">
-                {sortTasks(creations).map((item) => (
-                  <TaskItem key={item.id} creation={item} />
-                ))}
+                <AnimatePresence>
+                  {sortTasks(creations).map((item) => (
+                    <TaskItem key={item.id} creation={item} />
+                  ))}
+                </AnimatePresence>
               </div>
             </div>
           </div>
@@ -118,9 +121,11 @@ export function PanelTasks({ panel, index }: Props) {
               <div className="text-foreground text-2xl font-bold">{title}</div>
 
               <div className="flex flex-col gap-3">
-                {sortTasks(creations).map((item) => (
-                  <TaskItem key={item.id} creation={item} />
-                ))}
+                <AnimatePresence>
+                  {sortTasks(creations).map((item) => (
+                    <TaskItem key={item.id} creation={item} />
+                  ))}
+                </AnimatePresence>
               </div>
             </div>
           </div>

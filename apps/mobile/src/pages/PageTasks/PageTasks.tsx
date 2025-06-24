@@ -3,6 +3,7 @@ import { MobileContent } from '@/components/MobileContent'
 import { Trans } from '@lingui/react/macro'
 import { addDays, format } from 'date-fns'
 import { PlusIcon } from 'lucide-react'
+import { AnimatePresence } from 'motion/react'
 import { CreationItem } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem'
 import { TaskNav } from '@penx/constants'
 import { Creation } from '@penx/domain'
@@ -43,9 +44,11 @@ export function Content({ option, column, type }: Props) {
     if (type === TaskNav.UPCOMING) return <Days creations={creations} />
     return (
       <div className="flex flex-col gap-3">
-        {sortTasks(creations).map((item) => (
-          <CreationItem key={item.id} creation={item} />
-        ))}
+        <AnimatePresence>
+          {sortTasks(creations).map((item) => (
+            <CreationItem key={item.id} creation={item} />
+          ))}
+        </AnimatePresence>
       </div>
     )
   }, [creations, type])
@@ -136,9 +139,11 @@ function Days({ creations }: { creations: Creation[] }) {
               />
             </div>
             <div className="flex flex-col gap-3">
-              {sortTasks(list).map((item) => (
-                <CreationItem key={item.id} creation={item} />
-              ))}
+              <AnimatePresence>
+                {sortTasks(list).map((item) => (
+                  <CreationItem key={item.id} creation={item} />
+                ))}
+              </AnimatePresence>
             </div>
           </div>
         )

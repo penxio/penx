@@ -2,6 +2,7 @@ import React, { ReactNode, useMemo, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { addDays, format } from 'date-fns'
 import { PlusIcon } from 'lucide-react'
+import { AnimatePresence } from 'motion/react'
 import { CreationItem } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem'
 import { TaskNav } from '@penx/constants'
 import { Creation } from '@penx/domain'
@@ -83,9 +84,11 @@ export function UpcomingTaskItem({ creations, day }: UpcomingTaskItemProps) {
         </Popover>
       </div>
       <div className="flex flex-col gap-3">
-        {sortTasks(list).map((item) => (
-          <CreationItem key={item.id} creation={item} />
-        ))}
+        <AnimatePresence>
+          {sortTasks(list).map((item) => (
+            <CreationItem key={item.id} creation={item} />
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   )

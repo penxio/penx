@@ -340,7 +340,12 @@ export function CreationItem({ creation, onChecked }: Props) {
         </AnimatePresence>
       )}
 
-      <div className="flex flex-col gap-0">
+      <motion.div
+        // layoutId={creation.id}
+        layout="position"
+        transition={{ duration: 0.3 }}
+        className="flex flex-col gap-0"
+      >
         <motion.div
           className={cn(
             'text-foreground line-clamp-2 flex flex-col text-[16px]',
@@ -381,7 +386,7 @@ export function CreationItem({ creation, onChecked }: Props) {
             <Tags creation={creation} />
           </div>
         )}
-      </div>
+      </motion.div>
     </>
   )
 }

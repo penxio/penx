@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { Drawer } from '@/components/ui/Drawer'
-import { checkAndRequestRecordPermission } from '@/lib/checkAndRequestPermission'
+import { checkAndRequestRecordPermission } from '@/lib/checkAndRequestRecordPermission'
 import { impact } from '@/lib/impact'
 import { isIOS } from '@/lib/utils'
 import { SpeechRecognition } from '@capacitor-community/speech-recognition'

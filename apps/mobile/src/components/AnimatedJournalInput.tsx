@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useKeyboard } from '@/hooks/useKeyboard'
+import { checkAndRequestNotificationPermissions } from '@/lib/checkAndRequestNotificationPermissions'
 import { Capacitor } from '@capacitor/core'
 import { AnimatePresence, motion } from 'motion/react'
 import { JournalQuickInput } from '@penx/components/JournalQuickInput'
@@ -77,6 +78,9 @@ export const AnimatedJournalInput = ({ ref }: Props) => {
                   cells={cells}
                   onCancel={() => setOpen(false)}
                   afterSubmit={() => {
+                    if (isTask) {
+                      checkAndRequestNotificationPermissions()
+                    }
                     setOpen(false)
                   }}
                 />
