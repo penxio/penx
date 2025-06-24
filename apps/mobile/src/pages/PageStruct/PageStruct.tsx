@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { MobileContent } from '@/components/MobileContent'
+import { mainBackgroundLight } from '@/lib/constants'
 import { IonNavLink } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
 import { CreationCard } from '@penx/components/CreationCard/CreationCard'
@@ -68,7 +69,7 @@ function Content() {
 
   return (
     <MobileContent
-      backgroundColor="#f6f6f6"
+      backgroundColor={mainBackgroundLight}
       title={struct?.name}
       rightSlot={
         <IonNavLink

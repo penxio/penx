@@ -17,8 +17,8 @@ export const AddMoreButton = ({}: Props) => {
         await impact()
       }}
     >
-      <PlusIcon size={24} className="text-foreground" />
-      {/* <EllipsisIcon size={20} className="text-foreground" /> */}
+      {/* <PlusIcon size={24} className="text-foreground" /> */}
+      <EllipsisIcon size={20} className="text-foreground" />
       {/* <span className="icon-[weui--more-filled] text-foreground size-6"></span> */}
     </motion.div>
   )

@@ -2,14 +2,18 @@ import { useEffect, useMemo, useRef } from 'react'
 import { EditWidget } from '@/components/EditWidget/EditWidget'
 import { useTheme } from '@/components/theme-provider'
 import { useScrolled } from '@/hooks/useScrolled'
-import { useWidget } from '@/hooks/useWidget'
-import { EDIT_WIDGET } from '@/lib/constants'
+import {
+  EDIT_WIDGET,
+  HEADER_HEIGHT,
+  mainBackgroundLight,
+} from '@/lib/constants'
 import { isAndroid, isIOS } from '@/lib/utils'
 import { IonContent } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
 import { WidgetType } from '@penx/constants'
 import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
+import { useWidget } from '@penx/hooks/useWidget'
 import { Widget } from '@penx/types'
 import { cn } from '@penx/utils'
 import { WidgetName } from '@penx/widgets/WidgetName'
@@ -32,7 +36,7 @@ export const WidgetRender = ({}: Props) => {
   const { isDark } = useTheme()
   const { scrolled, setScrolled } = useScrolled()
 
-  const navHeight = 40 + 10
+  const navHeight = HEADER_HEIGHT + 10
 
   const pt = useMemo(() => {
     if (isAndroid)
@@ -43,8 +47,8 @@ export const WidgetRender = ({}: Props) => {
 
   return (
     <>
-      {[...widgets, EDIT_WIDGET].map((item, index) => {
-        const active = widget ? widget.id === item.id : index === 0
+      {widgets.map((item, index) => {
+        const active = widget.id === item.id
         return (
           <IonContent
             key={item.id}
@@ -54,7 +58,7 @@ export const WidgetRender = ({}: Props) => {
               active && 'flex',
             )}
             style={{
-              '--background': isDark ? '#222' : '#f6f6f6',
+              '--background': isDark ? '#222' : mainBackgroundLight,
               boxShadow: '-10px 0 10px -5px rgba(0, 0, 0, 0.04)',
             }}
             // scrollEvents={true}

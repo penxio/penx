@@ -1,11 +1,10 @@
 import React from 'react'
-import { useWidget } from '@/hooks/useWidget'
 import { IonFab } from '@ionic/react'
 import { WidgetType } from '@penx/constants'
+import { useWidget } from '@penx/hooks/useWidget'
 import { cn } from '@penx/utils'
 import { AddMoreButton } from './AddMoreButton'
 import { AddNoteButton } from './AddNoteButton'
-import { MoreMenu } from './MoreMenu'
 import { VoiceRecorderButton } from './VoiceRecorderButton'
 
 interface Props {
@@ -30,10 +29,9 @@ export const HomeFooter = ({ open, onAdd }: Props) => {
         className={cn('relative inline-flex items-center justify-center pb-6')}
       >
         <div className="shadow-popover bg-background dark:bg-brand text-foreground relative inline-flex h-[52px] items-center gap-2 rounded-full px-2">
-          <AddNoteButton onAdd={onAdd} />
           <VoiceRecorderButton />
+          <AddNoteButton onAdd={onAdd} />
           <AddMoreButton />
-          <MoreMenu />
         </div>
       </div>
     </IonFab>

@@ -62,37 +62,36 @@ export function JournalWidget({ creations }: Props) {
         const isTask = struct.type === StructType.TASK
 
         return (
-          <LayoutGroup key={struct.id}>
-            <motion.div
-              layoutId={struct.id}
-              className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3 dark:bg-neutral-700"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <ColorfulStructIcon
-                    struct={struct!}
-                    className="size-6"
-                    emojiSize={12}
-                  />
-                  <div className="text-bae font-bold">
-                    <StructName struct={struct} />
-                  </div>
+          <motion.div
+            // layoutId={struct.id}
+            key={struct.id}
+            className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3 dark:bg-neutral-700"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <ColorfulStructIcon
+                  struct={struct!}
+                  className="size-6"
+                  emojiSize={12}
+                />
+                <div className="text-bae font-bold">
+                  <StructName struct={struct} />
                 </div>
-                <AddCreationButton struct={struct} />
               </div>
-              {structCreations.length > 0 && (
-                <div className={cn('flex flex-col gap-2', isTask && 'gap-3')}>
-                  <AnimatePresence>
-                    {structCreations.map((creation) => {
-                      return (
-                        <CreationItem creation={creation} key={creation.id} />
-                      )
-                    })}
-                  </AnimatePresence>
-                </div>
-              )}
-            </motion.div>
-          </LayoutGroup>
+              <AddCreationButton struct={struct} />
+            </div>
+            {structCreations.length > 0 && (
+              <div className={cn('flex flex-col gap-2', isTask && 'gap-3')}>
+                <AnimatePresence>
+                  {structCreations.map((creation) => {
+                    return (
+                      <CreationItem creation={creation} key={creation.id} />
+                    )
+                  })}
+                </AnimatePresence>
+              </div>
+            )}
+          </motion.div>
         )
       })}
     </div>
@@ -107,7 +106,7 @@ function AddCreationButton({ struct }: { struct: Struct }) {
         whileTap={{ scale: 1.2 }}
         className="text-foreground/80"
         onClick={() => {
-          setState({ isTask: true, open: true })
+          setState({ isTask: true, open: true, placeholder: 'Add task' })
         }}
       />
     )

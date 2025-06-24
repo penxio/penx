@@ -2,8 +2,8 @@ import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { get, set } from 'idb-keyval'
 import { api } from '@penx/api'
-import { isMobileApp } from '@penx/constants'
 import { Node } from '@penx/domain'
+import { widgetAtom } from '@penx/hooks/useWidget'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
 import { localDB } from '@penx/local-db'
 import {
@@ -31,10 +31,10 @@ import {
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { fixStructsViews } from './fixStructsViews'
+import { fixTaskStruct } from './fixTaskStruct'
 import { initLocalSite } from './lib/initLocalSite'
 import { isRowsEqual } from './lib/isRowsEqual'
 import { syncNodesToLocal } from './lib/syncNodesToLocal'
-import { fixTaskStruct } from './fixTaskStruct'
 
 const PANELS = 'PANELS'
 
@@ -160,7 +160,6 @@ export class AppService {
       structs.push(newStruct)
     }
 
-
     structs = await fixTaskStruct(area.id, structs)
     structs = await fixStructsViews(area.id, structs)
 
@@ -195,6 +194,7 @@ export class AppService {
     store.tags.set(tags)
     store.creationTags.set(creationTags)
     store.panels.set(panels)
+    store.set(widgetAtom, area.props.widgets[0])
     store.app.setAppLoading(false)
   }
 

@@ -20,6 +20,7 @@ export type AppEvent = {
   ROUTE_TO_STRUCT: any
   ROUTE_TO_LOGIN: any
   ROUTE_TO_UPGRADE: any
+  ROUTE_TO_ALL_STRUCTS: any
   ROUTE_TO_PROFILE: any
   ROUTE_TO_WIDGET: any
   ROUTE_TO_SYNC: any

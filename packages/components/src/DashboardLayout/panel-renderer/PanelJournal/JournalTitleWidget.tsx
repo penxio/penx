@@ -13,7 +13,12 @@ import {
 } from '@floating-ui/react'
 import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
-import { ArrowLeftIcon, ChevronDown, XIcon } from 'lucide-react'
+import {
+  ArrowLeftIcon,
+  ChevronDown,
+  CircleChevronDownIcon,
+  XIcon,
+} from 'lucide-react'
 import { AnimatePresence, LayoutGroup, motion } from 'motion/react'
 import { isMobileApp } from '@penx/constants'
 import { Creation } from '@penx/domain'
@@ -92,9 +97,7 @@ export function JournalTitleWidget({ creations }: Props) {
         {format(new Date(journal.date), 'MM/dd')}
       </div>
       <div className="mt-1 text-sm font-light">{weekdayAbbr[dayNum]}</div>
-      <div className="bg-foreground text-background mt-1 flex size-3 items-center justify-center rounded-full">
-        <ChevronDown />
-      </div>
+      <CircleChevronDownIcon size={14} className="mt-1" />
     </motion.div>
   )
 

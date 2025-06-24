@@ -5,6 +5,7 @@ type State = {
   isTask: boolean
   date?: string
   cells?: any
+  placeholder?: string
 }
 const inputAtom = atom<State>({
   open: false,

@@ -58,7 +58,7 @@ export function JournalQuickInput({
 
   useEffect(() => {
     if (isTask !== props.isTask) setIsTask(props.isTask)
-  }, [isTask, props.isTask])
+  }, [props.isTask])
 
   useImperativeHandle(ref, () => editorRef.current)
 

@@ -67,6 +67,7 @@ import {
   showEstimatedQuota,
   tryPersistWithoutPromptingUser,
 } from './lib/indexeddbHelder'
+import { PageAllStructs } from './pages/PageAllStructs/PageAllStructs'
 import { PageCreation } from './pages/PageCreation'
 import { MoreStructDrawer } from './pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer'
 import { PageLogin } from './pages/PageLogin'
@@ -258,6 +259,17 @@ const AppContent = memo(
       appEmitter.on('ROUTE_TO_TASKS', handle)
       return () => {
         appEmitter.off('ROUTE_TO_TASKS', handle)
+      }
+    }, [])
+
+    useEffect(() => {
+      function handle() {
+        nav.current?.push(PageAllStructs, {})
+      }
+
+      appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_ALL_STRUCTS', handle)
       }
     }, [])
 

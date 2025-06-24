@@ -18,7 +18,7 @@ export const GuideEntry = ({}: Props) => {
   if (data) return null
   return (
     <div
-      className="bg-background relative flex flex-col overflow-hidden rounded-xl p-3 dark:bg-neutral-700 mb-2"
+      className="shadow-card relative mb-2 flex flex-col overflow-hidden rounded-xl bg-white p-3 dark:bg-neutral-700"
       onClick={async () => {
         await InAppBrowser.openInWebView({
           url: `https://penx.io/guide/${i18n.locale}`,

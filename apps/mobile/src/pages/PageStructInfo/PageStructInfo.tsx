@@ -3,6 +3,7 @@ import { ColorSelector } from '@/components/ColorSelector'
 import { MobileContent } from '@/components/MobileContent'
 import { Card } from '@/components/ui/Card'
 import { MobileInput } from '@/components/ui/MobileInput'
+import { mainBackgroundLight } from '@/lib/constants'
 import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
@@ -32,7 +33,7 @@ export function PageStructInfo({ struct }: { struct: Struct }) {
   return (
     <>
       <MobileContent
-        backgroundColor="#f6f6f6"
+        backgroundColor={mainBackgroundLight}
         title={<div className="text-foreground">{struct.name}</div>}
       >
         <Content structId={struct.id} />

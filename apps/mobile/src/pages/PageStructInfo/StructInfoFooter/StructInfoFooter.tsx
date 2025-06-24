@@ -75,7 +75,7 @@ export const StructInfoFooter = ({ structId }: Props) => {
           }}
         >
           {isPending ? (
-            <LoadingDots className="bg-background" />
+            <LoadingDots className="bg-foreground" />
           ) : (
             <div>
               <Trans>Publish to marketplace</Trans>

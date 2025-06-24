@@ -12,13 +12,7 @@ interface Props {
 export function EditWidget({ className }: Props) {
   return (
     <div className={cn('flex flex-col gap-2', className)}>
-      <div className="text-2xl font-bold">
-        <Trans>Edit widget</Trans>
-      </div>
       <WidgetList />
-      <div className="mt-2 flex justify-center">
-        <AddWidgetButton />
-      </div>
     </div>
   )
 }

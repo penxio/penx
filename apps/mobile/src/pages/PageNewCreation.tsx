@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { MobileContent } from '@/components/MobileContent'
 import { MobileCreationEditor } from '@/components/MobileCreationEditor'
 import { MobilePropList } from '@/components/MobilePropList/MobilePropList'
+import { mainBackgroundLight } from '@/lib/constants'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Trans } from '@lingui/react/macro'
 import { z } from 'zod'
@@ -77,7 +78,7 @@ function Content({ struct }: Props) {
 
   return (
     <MobileContent
-      backgroundColor={isTask ? '#fff' : '#f6f6f6'}
+      backgroundColor={isTask ? '#fff' : mainBackgroundLight}
       onBack={() => {
         form.handleSubmit(onSubmit)()
       }}

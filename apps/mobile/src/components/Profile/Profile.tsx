@@ -16,7 +16,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Badge } from '@penx/uikit/ui/badge'
 import { cn, getUrl } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
-import { AreasMenu } from '../AreasMenu/AreasMenu'
+import { AddWidgetButton } from '../EditWidget/AddWidgetButton'
+import { EditWidget } from '../EditWidget/EditWidget'
 import { Card } from '../ui/Card'
 import { CardItem } from '../ui/CardItem'
 import { MenuItem } from '../ui/MenuItem'
@@ -45,65 +46,66 @@ export function Profile() {
 
   return (
     <div className="flex flex-col pb-10">
-      <Card className="py-2 pl-2">
-        {!session && (
-          <div
-            className={cn('text-foreground flex items-center justify-between')}
-            onClick={() => {
-              appEmitter.emit('ROUTE_TO_LOGIN')
-            }}
-          >
-            <div className="flex items-center gap-1">
-              <div className="bg-foreground/10 flex size-12 items-center justify-center rounded-full">
-                <UserIcon size={24} />
-              </div>
-              <div className="font-medium">
-                <Trans>Login or Register</Trans>
-              </div>
+      {!session && (
+        <div
+          className={cn('text-foreground flex items-center justify-between')}
+          onClick={() => {
+            appEmitter.emit('ROUTE_TO_LOGIN')
+          }}
+        >
+          <div className="flex items-center gap-1">
+            <div className="bg-foreground/10 flex size-12 items-center justify-center rounded-full">
+              <UserIcon size={24} />
             </div>
-            <div>
-              <ChevronRightIcon className="text-foreground/50" />
+            <div className="font-medium">
+              <Trans>Login or Register</Trans>
             </div>
           </div>
-        )}
-        {session && (
-          <div className="flex flex-col gap-2">
-            <div className="text-foreground flex items-center gap-2">
-              <Avatar className="size-12 rounded-lg">
-                <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-                <AvatarFallback
-                  className={cn(
-                    'rounded-lg text-white',
-                    generateGradient(session.name),
-                  )}
-                >
-                  {session?.name.slice(0, 1)}
-                </AvatarFallback>
-              </Avatar>
-              <div>
-                <div className="text-lg font-bold">{session?.name}</div>
-                <div className="text-foreground/60">{session?.email}</div>
-              </div>
-            </div>
-            <div className="flex gap-2 text-lg">
-              <Badge
-                className="flex items-center gap-1 px-3"
-                variant="secondary"
-                onClick={() => {
-                  impact()
-                  copy(session.pid)
-                  toast.success(t`Copied to clipboard`)
-                }}
+          <div>
+            <ChevronRightIcon className="text-foreground/50" />
+          </div>
+        </div>
+      )}
+      {session && (
+        <div className="flex flex-col gap-2">
+          <div className="text-foreground flex items-center gap-2">
+            <Avatar className="size-12 rounded-lg">
+              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+              <AvatarFallback
+                className={cn(
+                  'rounded-lg text-white',
+                  generateGradient(session.name),
+                )}
               >
-                PenX ID:{' '}
-                <span className="text-base font-bold">{session.pid}</span>{' '}
-                <CopyIcon size={16} />
-              </Badge>
-              <Badge variant="secondary">{planType}</Badge>
+                {session?.name.slice(0, 1)}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <div className="text-lg font-bold">{session?.name}</div>
+              <div className="text-foreground/60">{session?.email}</div>
             </div>
           </div>
-        )}
-      </Card>
+          <div className="flex gap-2 text-lg">
+            <Badge
+              className="bg-foreground/8 flex items-center gap-1 px-3"
+              variant="secondary"
+              onClick={() => {
+                impact()
+                copy(session.pid)
+                toast.success(t`Copied to clipboard`)
+              }}
+            >
+              PenX ID:{' '}
+              <span className="text-base font-bold">{session.pid}</span>{' '}
+              <CopyIcon size={16} />
+            </Badge>
+            <Badge variant="secondary" className="bg-foreground/8">
+              {planType}
+            </Badge>
+          </div>
+        </div>
+      )}
+
       {/* <Card>PenX PRO</Card> */}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-6">
         {session?.isFree && isIOS && (
@@ -114,13 +116,19 @@ export function Profile() {
           </Card>
         )}
 
-        <AreasMenu />
-
         <Card>
           <CardItem className="pr-1">
             <SyncMenu />
           </CardItem>
         </Card>
+
+        <div className="space-y-1">
+          <div className="flex items-center justify-between">
+            <div className="text-foreground/50 text-sm">Widgets</div>
+            <AddWidgetButton />
+          </div>
+          <EditWidget />
+        </div>
 
         <Card title={<Trans>Appearance</Trans>}>
           <CardItem className="pr-1">

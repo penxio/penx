@@ -3,6 +3,7 @@ import { ColorSelector } from '@/components/ColorSelector'
 import { MobileContent } from '@/components/MobileContent'
 import { Card } from '@/components/ui/Card'
 import { MobileInput } from '@/components/ui/MobileInput'
+import { mainBackgroundLight } from '@/lib/constants'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
@@ -20,7 +21,7 @@ import { StructInfoFooter } from './StructInfoFooter/StructInfoFooter'
 export function PagePublishedStructInfo({ struct }: { struct: Struct }) {
   return (
     <MobileContent
-      backgroundColor="#f6f6f6"
+      backgroundColor={mainBackgroundLight}
       title={<div className="text-foreground">{struct.name}</div>}
     >
       <Content struct={struct} />

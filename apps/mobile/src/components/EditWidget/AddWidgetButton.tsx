@@ -53,13 +53,13 @@ export function AddWidgetButton({ className }: Props) {
   return (
     <>
       <Button
-        size="lg"
+        size="xs"
         variant="default"
         disabled={isLoading}
-        className="w-full"
+        className="rounded-full"
         onClick={() => setOpen(true)}
       >
-        <Trans>Add widget</Trans>
+        <Trans>Add</Trans>
       </Button>
 
       <Drawer open={open} setOpen={setOpen} isFullHeight className="pb-0">

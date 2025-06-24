@@ -6,6 +6,7 @@ import { MobileContent } from '@/components/MobileContent'
 import { MobileCreation } from '@/components/MobileCreation'
 import { MobileHeaderWrapper } from '@/components/MobileHeaderWrapper'
 import { TaskCreation } from '@/components/TaskCreation/TaskCreation'
+import { mainBackgroundLight } from '@/lib/constants'
 import { isAndroid } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import {
@@ -31,7 +32,7 @@ function Content({ creationId, nav }: Props) {
 
   return (
     <MobileContent
-      backgroundColor={creation.isTask ? '#fff' : '#f6f6f6'}
+      backgroundColor={creation.isTask ? '#fff' : mainBackgroundLight}
       rightSlot={
         <CreationMenu
           creationId={creationId}
