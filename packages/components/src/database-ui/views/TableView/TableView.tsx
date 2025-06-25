@@ -81,6 +81,7 @@ export const TableView = ({ height, width }: Props) => {
       className="relative flex p-0"
       style={{
         height: (rowsNum + 2) * rowHeight + 2,
+        width: width,
         maxHeight: `calc(100vh - ${DATABASE_TOOLBAR_HEIGHT}px)`,
       }}
     >

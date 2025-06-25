@@ -192,7 +192,7 @@ export function CreationItem({ creation, onChecked }: Props) {
     return (
       <>
         {!creation.isNote && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 cursor-pointer">
             {creation.isTask && (
               <Checkbox
                 onClick={(e) => e.stopPropagation()}

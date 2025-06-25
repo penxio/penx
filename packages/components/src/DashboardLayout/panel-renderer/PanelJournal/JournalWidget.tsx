@@ -17,6 +17,7 @@ import { CreationItem } from './CreationItem/CreationItem'
 import { ImageCreation } from './CreationItem/ImageCreation'
 import { JournalPhotoWidget } from './JournalPhotoWidget'
 import { JournalTitleWidget } from './JournalTitleWidget'
+
 // import Face from './moods/grinning_face_with_big_eyes_color.svg?react'
 
 interface Props {
@@ -63,7 +64,7 @@ export function JournalWidget({ creations }: Props) {
 
         return (
           <motion.div
-            // layoutId={struct.id}
+            layoutId={struct.id}
             key={struct.id}
             className="bg-background shadow-card flex flex-col gap-2 rounded-2xl p-3 dark:bg-neutral-700"
           >
@@ -104,7 +105,7 @@ function AddCreationButton({ struct }: { struct: Struct }) {
     return (
       <MotionPlus
         whileTap={{ scale: 1.2 }}
-        className="text-foreground/80"
+        className="text-foreground/80 hover:text-foreground cursor-pointer focus:outline-none"
         onClick={() => {
           appEmitter.emit('IMPACT')
           setState({ isTask: true, open: true, placeholder: 'Add task' })
@@ -116,7 +117,9 @@ function AddCreationButton({ struct }: { struct: Struct }) {
   if (struct.type === StructType.NOTE) {
     return (
       <motion.span
-        className={cn('text-foreground/80 icon-[mdi--feather] size-6')}
+        className={cn(
+          'text-foreground/80 icon-[mdi--feather] hover:text-foreground size-6 cursor-pointer',
+        )}
         whileTap={{ scale: 1.2 }}
         onClick={() => {
           appEmitter.emit('IMPACT')
