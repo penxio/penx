@@ -59,7 +59,7 @@ export const ConfirmDialog = React.forwardRef<HTMLDivElement, Props>(
             </Tooltip>
           </TooltipProvider>
         </AlertDialogTrigger>
-        <AlertDialogContent ref={ref}>
+        <AlertDialogContent ref={ref} className="z-[100000]">
           <AlertDialogHeader>
             <AlertDialogTitle>{title}</AlertDialogTitle>
             <AlertDialogDescription>{content}</AlertDialogDescription>

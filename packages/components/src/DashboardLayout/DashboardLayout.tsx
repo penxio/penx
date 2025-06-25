@@ -20,6 +20,8 @@ import { cn } from '@penx/utils'
 import { DeleteStructDialog } from '../DeleteStructDialog/DeleteStructDialog'
 import { PlanListDialog } from '../PlanList/PlanListDialog'
 import { PublishStructDialog } from '../PublishStructDialog/PublishStructDialog'
+import { SettingsDialog } from '../SettingsDialog/SettingsDialog'
+import { SubscriptionGuideDialog } from '../SettingsDialog/SubscriptionGuideDialog'
 import { StructDialog } from '../StructDialog/StructDialog'
 import { PanelLayout } from './PanelLayout'
 import { SettingsLayout } from './SettingsLayout'
@@ -34,7 +36,6 @@ import { SettingsLayout } from './SettingsLayout'
 // }
 
 export function DashboardLayout({ children }: { children?: ReactNode }) {
-
   const pathname = usePathname()!
   const isSettings = pathname.includes('/~/settings')
   const isDesign =
@@ -57,10 +58,12 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
 
   return (
     <>
+      <SubscriptionGuideDialog />
       <CommandPanel />
       <PublishStructDialog />
       <PlanListDialog />
       <DeleteStructDialog />
+      <SettingsDialog />
       {isDesign && children}
       {!isDesign && <Layout>{children}</Layout>}
     </>

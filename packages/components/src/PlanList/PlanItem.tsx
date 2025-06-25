@@ -40,7 +40,7 @@ export function PlanItem({
   //   )
   // }
   return (
-    <div className="bg-background/40 border-foreground/10 flex w-full flex-col space-y-8 border-r border-t px-8 py-8 dark:border">
+    <div className="bg-background/40  shadow-popover flex w-full flex-col  space-y-8 rounded-xl px-8 py-8">
       <div className="flex flex-col items-center justify-center gap-8">
         <div className="text-xl font-bold">{name}</div>
         {isBeliever && (

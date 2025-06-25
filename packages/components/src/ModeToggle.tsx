@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { Trans } from '@lingui/react/macro'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { Button } from '@penx/uikit/button'
@@ -40,15 +41,15 @@ export function ModeToggle({ className, variant = 'ghost' }: Props) {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center">
+      <DropdownMenuContent align="center" className="z-[10000]">
         <DropdownMenuItem onClick={() => setTheme('light')}>
-          Light
+          <Trans>Light</Trans>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('dark')}>
-          Dark
+          <Trans>Dark</Trans>
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => setTheme('system')}>
-          System
+          <Trans>System</Trans>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

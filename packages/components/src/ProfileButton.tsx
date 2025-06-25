@@ -43,6 +43,7 @@ import { cn, getUrl, sleep } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { usePlanListDialog } from './PlanList/usePlanListDialog'
+import { useSettingsDialog } from './SettingsDialog/useSettingsDialog'
 
 interface Props {
   loginButton?: ReactNode
@@ -55,6 +56,7 @@ export function ProfileButton({ loginButton }: Props) {
   const isMobile = useIsMobile()
   const { setIsOpen } = usePlanListDialog()
   const loginDialog = useLoginDialog()
+  const settings = useSettingsDialog()
 
   async function desktopLogin() {
     const authToken = nanoid()
@@ -195,15 +197,16 @@ export function ProfileButton({ loginButton }: Props) {
           <DropdownMenuGroup>
             <DropdownMenuItem
               onClick={async () => {
-                if (isExtension) {
-                  window.open(`${ROOT_HOST}/~/settings`)
-                  return
-                }
-                if (isDesktop) {
-                  console.log('is desktop....')
-                  return
-                }
-                appEmitter.emit('ROUTE_TO_SETTINGS')
+                settings.setOpen(true)
+                // if (isExtension) {
+                //   window.open(`${ROOT_HOST}/~/settings`)
+                //   return
+                // }
+                // if (isDesktop) {
+                //   console.log('is desktop....')
+                //   return
+                // }
+                // appEmitter.emit('ROUTE_TO_SETTINGS')
               }}
             >
               <BadgeCheck />
@@ -217,12 +220,13 @@ export function ProfileButton({ loginButton }: Props) {
 
             <DropdownMenuItem
               onClick={async () => {
-                const path = `${ROOT_HOST}/~/settings/subscription`
-                if (isExtension) {
-                  window.open(path)
-                  return
-                }
-                location.href = path
+                settings.setOpen(true)
+                // const path = `${ROOT_HOST}/~/settings/subscription`
+                // if (isExtension) {
+                //   window.open(path)
+                //   return
+                // }
+                // location.href = path
               }}
             >
               <Sparkles />

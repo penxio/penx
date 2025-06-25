@@ -92,10 +92,7 @@ export default async function RootLayout({
               />
 
               <WatchAppEvent />
-              <DashboardLayout>
-                <SubscriptionGuideDialog />
-                {children}
-              </DashboardLayout>
+              <DashboardLayout>{children}</DashboardLayout>
             </ThemeProvider>
           </DashboardProviders>
         </LocaleProvider>

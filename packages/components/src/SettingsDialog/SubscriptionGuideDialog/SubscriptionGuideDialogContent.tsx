@@ -23,7 +23,7 @@ export function SubscriptionGuideDialogContent() {
           size="lg"
           className="h-12 px-8 font-bold"
           onClick={() => {
-            push('/~/settings/subscription')
+            // push('/~/settings/subscription')
             setIsOpen(false)
           }}
         >

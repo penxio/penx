@@ -9,6 +9,8 @@ export enum TierInterval {
 export enum BillingCycle {
   MONTHLY = 'MONTHLY',
   YEARLY = 'YEARLY',
+  BELIEVER = 'BELIEVER',
+  COUPON = 'COUPON',
 }
 
 export enum SubdomainType {

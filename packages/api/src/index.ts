@@ -1,6 +1,7 @@
 import { get } from 'idb-keyval'
 import _ky from 'ky'
 import {
+  CheckoutInput,
   CreateAssetInput,
   isDesktop,
   isMobileApp,
@@ -8,18 +9,19 @@ import {
   ROOT_HOST,
   SyncAppleSubscriptionInput,
   TRANSCRIBE_URL,
+  UpdatePasswordInput,
+  UpdateProfileInput,
 } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
 
 async function getHeaders() {
-  if (isDesktop || isMobileApp) {
-    const session = await get('SESSION')
-    if (session?.accessToken) {
-      return {
-        Authorization: `Bearer ${session.accessToken}`,
-      }
+  const session = await get('SESSION')
+  if (session?.accessToken) {
+    return {
+      Authorization: `Bearer ${session.accessToken}`,
     }
   }
+
   return {}
 }
 
@@ -31,6 +33,20 @@ export const ky = _ky.extend({
         Object.entries(headers).forEach(([key, value]) => {
           request.headers.set(key, value)
         })
+      },
+    ],
+    beforeError: [
+      async (error) => {
+        if (error.response) {
+          try {
+            const errorBody = await error.response.json()
+            return errorBody as any
+          } catch (parseError) {
+            return error
+          }
+        } else {
+          return error
+        }
       },
     ],
   },
@@ -46,6 +62,13 @@ type SyncInput = {
 type Asset = {
   id: string
   url: string
+}
+
+type Me = {
+  id: string
+  image: string
+  displayName: string
+  bio: string
 }
 
 export const api = {
@@ -75,8 +98,12 @@ export const api = {
     return ky.post(`${ROOT_HOST}/api/delete-account`).json()
   },
 
-  async getSession() {
-    return ky.get(`${ROOT_HOST}/api/session`).json()
+  async getSession(needRefresh = false) {
+    return ky
+      .get(`${ROOT_HOST}/api/session`, {
+        searchParams: needRefresh ? { needRefresh: 'true' } : {},
+      })
+      .json()
   },
 
   async getAsset(url: string) {
@@ -139,5 +166,45 @@ export const api = {
         json: input,
       })
       .json()
+  },
+
+  async updatePassword(input: UpdatePasswordInput) {
+    return ky
+      .post(`${ROOT_HOST}/api/auth/updatePassword`, {
+        json: input,
+      })
+      .json()
+  },
+
+  async getMe() {
+    return ky.post(`${ROOT_HOST}/api/user/getMe`).json<Me>()
+  },
+
+  async updateProfile(input: UpdateProfileInput) {
+    return ky
+      .post(`${ROOT_HOST}/api/user/updateProfile`, {
+        json: input,
+      })
+      .json()
+  },
+
+  async useCouponCode(code: string) {
+    return await ky
+      .post(`${ROOT_HOST}/api/coupon/useCouponCode`, {
+        json: { code },
+      })
+      .json()
+  },
+
+  async cancelSubscription() {
+    return ky.post(`${ROOT_HOST}/api/billing/cancel`).json()
+  },
+
+  async checkout(input: CheckoutInput) {
+    return ky
+      .post(`${ROOT_HOST}/api/billing/checkout`, {
+        json: input,
+      })
+      .json<{ success: boolean; url: string }>()
   },
 }

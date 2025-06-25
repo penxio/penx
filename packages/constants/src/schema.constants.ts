@@ -110,3 +110,28 @@ export const createAssetInputSchema = z.object({
 })
 
 export type CreateAssetInput = z.infer<typeof createAssetInputSchema>
+
+export const updatePasswordInputSchema = z.object({
+  password: z.string().min(6),
+  confirmPassword: z.string().min(6),
+})
+
+export type UpdatePasswordInput = z.infer<typeof updatePasswordInputSchema>
+
+export const updateProfileInputSchema = z.object({
+  image: z.string(),
+  name: z.string().optional(),
+  displayName: z.string().optional(),
+  bio: z.string().optional(),
+})
+
+export type UpdateProfileInput = z.infer<typeof updateProfileInputSchema>
+
+export const checkoutInputSchema = z.object({
+  planType: z.nativeEnum(PlanType),
+  billingCycle: z.nativeEnum(BillingCycle),
+  host: z.string(),
+  pathname: z.string(),
+})
+
+export type CheckoutInput = z.infer<typeof checkoutInputSchema>

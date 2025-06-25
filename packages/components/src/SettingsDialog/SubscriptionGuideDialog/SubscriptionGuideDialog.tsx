@@ -1,6 +1,5 @@
 'use client'
 
-import { Trans } from '@lingui/react/macro'
 import {
   Dialog,
   DialogContent,
@@ -20,14 +19,10 @@ export function SubscriptionGuideDialog({}: Props) {
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
       <DialogContent className="grid gap-4 sm:max-w-[600px]">
         <DialogHeader>
-          <DialogTitle className="">
-            <Trans>Subscribe to PenX</Trans>
-          </DialogTitle>
+          <DialogTitle className="">Subscribe to PenX</DialogTitle>
           <DialogDescription>
-            <Trans>
-              Subscribe to PenX to support us in building the best product and
-              enjoy the features:
-            </Trans>
+            Subscribe to Penx to support us in building the best product and
+            enjoy the features:
           </DialogDescription>
         </DialogHeader>
         <SubscriptionGuideDialogContent />

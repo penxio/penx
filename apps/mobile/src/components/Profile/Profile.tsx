@@ -7,6 +7,7 @@ import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon, CopyIcon, UserIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { api } from '@penx/api'
+import { ProfileBasicInfo } from '@penx/components/ProfileBasicInfo'
 import { appEmitter } from '@penx/emitter'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { localDB } from '@penx/local-db'
@@ -66,45 +67,8 @@ export function Profile() {
           </div>
         </div>
       )}
-      {session && (
-        <div className="flex flex-col gap-2">
-          <div className="text-foreground flex items-center gap-2">
-            <Avatar className="size-12 rounded-lg">
-              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-              <AvatarFallback
-                className={cn(
-                  'rounded-lg text-white',
-                  generateGradient(session.name),
-                )}
-              >
-                {session?.name.slice(0, 1)}
-              </AvatarFallback>
-            </Avatar>
-            <div>
-              <div className="text-lg font-bold">{session?.name}</div>
-              <div className="text-foreground/60">{session?.email}</div>
-            </div>
-          </div>
-          <div className="flex gap-2 text-lg">
-            <Badge
-              className="bg-foreground/8 flex items-center gap-1 px-3"
-              variant="secondary"
-              onClick={() => {
-                impact()
-                copy(session.pid)
-                toast.success(t`Copied to clipboard`)
-              }}
-            >
-              PenX ID:{' '}
-              <span className="text-base font-bold">{session.pid}</span>{' '}
-              <CopyIcon size={16} />
-            </Badge>
-            <Badge variant="secondary" className="bg-foreground/8">
-              {planType}
-            </Badge>
-          </div>
-        </div>
-      )}
+
+      {session && <ProfileBasicInfo />}
 
       {/* <Card>PenX PRO</Card> */}
       <div className="text-foreground mt-10 flex flex-1 flex-col gap-6">

@@ -49,7 +49,7 @@ function AlertDialogContent({
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content>) {
   return (
     <AlertDialogPortal>
-      <AlertDialogOverlay />
+      <AlertDialogOverlay className="z-[10000]" />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         className={cn(

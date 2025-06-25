@@ -131,6 +131,9 @@ export function useQuerySession() {
 
     if (
       !isApple &&
+      ![BillingCycle.COUPON, BillingCycle.BELIEVER].includes(
+        session.billingCycle as any,
+      ) &&
       session.currentPeriodEnd &&
       Date.now() > new Date(session.currentPeriodEnd).getTime()
     ) {
@@ -201,9 +204,9 @@ export async function updateSession(data: Partial<SessionData>) {
 }
 
 export async function refreshSession() {
-  const localSession = await getSession()
-  if (!localSession) return
-  const newSession = await api.getSession()
+  // const localSession = await getSession()
+  // if (!localSession) return
+  const newSession = await api.getSession(true)
   queryClient.setQueryData(queryKey, newSession)
   await set(SESSION, newSession)
 }

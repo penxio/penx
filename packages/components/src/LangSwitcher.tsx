@@ -54,7 +54,7 @@ export function LangSwitcher({
       >
         <SelectValue placeholder="Select a lang" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="z-[10000]">
         <SelectGroup>
           {locales.map((locale) => {
             return (

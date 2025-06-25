@@ -402,7 +402,7 @@ importers:
         specifier: ^5.0.1
         version: 5.1.0(undici@7.9.0)
       ky:
-        specifier: ^1.5.0
+        specifier: ^1.8.1
         version: 1.8.1
       lightweight-charts:
         specifier: ^4.2.0
