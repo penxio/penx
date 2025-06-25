@@ -23,7 +23,7 @@ export const FullPageDatabase = (props: Props) => {
     <DatabaseProvider {...props}>
       <div className="flex h-full flex-1 flex-col">
         <div
-          className="flex w-full items-center justify-between gap-8  px-3"
+          className="flex w-full items-center justify-between gap-8  px-3 shrink-0"
           style={{ height: DATABASE_TOOLBAR_HEIGHT }}
         >
           <div className="flex items-center gap-2">

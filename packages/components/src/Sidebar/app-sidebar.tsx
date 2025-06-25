@@ -35,6 +35,7 @@ import { cn } from '@penx/utils'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { AddCreationButton } from '../AddCreationButton'
 import { AreaWidgets } from '../area-widgets'
+import { AreaMenu } from '../AreasPopover/AreaMenu'
 import { AreasPopover } from '../AreasPopover/AreasPopover'
 import { LangSwitcher } from '../LangSwitcher'
 import { ProfileButton } from '../ProfileButton'
@@ -138,6 +139,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <ModeToggle className="hover:bg-foreground/8" />
 
             <SyncButton />
+            <AreaMenu />
             {/* <LangSwitcher /> */}
           </div>
           <ProfileButton />

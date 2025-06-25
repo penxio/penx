@@ -5,7 +5,7 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "../../packages/uikit/src/styles/globals.css",
+    "css": "../../packages/uikit/src/styles/tailwind.css",
     "baseColor": "neutral",
     "cssVariables": true
   },

@@ -56,8 +56,8 @@ export function AreaMenu({}: Props) {
             className="hover:bg-foreground/7 text-foreground/80 flex size-7 rounded-md"
             size="icon"
             onClick={async (e) => {
-              // e.stopPropagation()
-              // e.preventDefault()
+              e.stopPropagation()
+              e.preventDefault()
               // await store.panels.resetPanels()
             }}
           >
@@ -72,7 +72,9 @@ export function AreaMenu({}: Props) {
         >
           <DropdownMenuGroup>
             <DropdownMenuItem
-              onClick={async () => {
+              onClick={async (e) => {
+                e.stopPropagation()
+
                 areaDialog.setState({
                   isOpen: true,
                   area: area,
@@ -84,7 +86,8 @@ export function AreaMenu({}: Props) {
             </DropdownMenuItem>
 
             <DropdownMenuItem
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation()
                 deleteDialog.setState({
                   isOpen: true,
                   area: area,

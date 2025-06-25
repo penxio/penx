@@ -56,7 +56,6 @@ export const AreasPopover = ({ className = '' }: Props) => {
             </div>
             <ChevronsUpDown className="size-3" />
           </div>
-          <AreaMenu />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="z-[1000000] w-56 p-1">

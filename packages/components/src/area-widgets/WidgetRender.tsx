@@ -36,7 +36,6 @@ export function WidgetRender({ widget }: Props) {
 
   if (widget.type === WidgetType.STRUCT) {
     const struct = structs.find((s) => s.id === widget.structId)
-    console.log('======struct:', struct)
     if (struct?.isTask) {
       return <TaskNavWidget struct={struct} />
     }

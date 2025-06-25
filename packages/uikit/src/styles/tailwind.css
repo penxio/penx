@@ -232,8 +232,12 @@ h4 {
 
 .shadow-card {
   box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 6px 10px -6px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px -10px,
     rgba(84, 72, 49, 0.08) 0px 0px 0px 0.5px;
+
+  /* box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 6px 10px -6px,
+    rgba(84, 72, 49, 0.08) 0px 0px 0px 0.5px; */
 
   /* box-shadow: rgba(84, 72, 49, 0.08) 0px 0px 0px 0.5px; */
   /* border: 0.5px solid #ccc; */

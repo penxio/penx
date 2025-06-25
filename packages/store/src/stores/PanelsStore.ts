@@ -260,6 +260,11 @@ export class PanelsStore {
       } else {
         draft.push(panel)
       }
+
+      const size = 100 / draft.length
+      for (const item of draft) {
+        item.size = size
+      }
     })
     await this.savePanels(panels)
   }

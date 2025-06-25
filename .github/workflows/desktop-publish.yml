@@ -104,7 +104,7 @@ jobs:
 
       - name: Build Packages
         env:
-          NODE_OPTIONS: --max-old-space-size=4096
+          NODE_OPTIONS: --max-old-space-size=8192
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
           APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
@@ -122,6 +122,7 @@ jobs:
           echo "version=$(node -p "require('./apps/desktop/package.json').version")" >> $env:GITHUB_OUTPUT
       - uses: tauri-apps/tauri-action@v0
         env:
+          NODE_OPTIONS: --max-old-space-size=8192
           CI: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
