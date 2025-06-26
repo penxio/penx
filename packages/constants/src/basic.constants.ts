@@ -42,6 +42,9 @@ export const ACTIVE_SITE = 'ACTIVE_SITE'
 
 export const LOCALE = 'LOCALE'
 
+export const GOOGLE_DRIVE_FOLDER_NAME = 'penx-backup-site'
+export const GOOGLE_DRIVE_RECOVERY_PHRASE_FILE = 'recovery-phrase.json'
+
 export enum SubscriptionType {
   SUBSCRIBE = 'SUBSCRIBE',
   UNSUBSCRIBE = 'UNSUBSCRIBE',

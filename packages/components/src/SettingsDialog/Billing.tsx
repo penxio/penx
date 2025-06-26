@@ -30,7 +30,6 @@ export function Billing({}: Props) {
     return end >= now ? toReadableTime((end - now) / 1000) : ''
   }, [session])
 
-
   const planType = useMemo(() => {
     if (session.isFree) {
       return (

@@ -5,6 +5,7 @@ export enum SettingsNav {
   PROFILE = 'PROFILE',
   PASSWORD = 'PASSWORD',
   BILLING = 'BILLING',
+  RECOVER_PHRASE = 'RECOVER_PHRASE',
 }
 
 type State = {

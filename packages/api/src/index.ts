@@ -13,6 +13,7 @@ import {
   UpdateProfileInput,
 } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
+import { GoogleInfo } from '@penx/types'
 
 async function getHeaders() {
   const session = await get('SESSION')
@@ -214,5 +215,12 @@ export const api = {
         json: { publicKey },
       })
       .json<{ success: boolean }>()
+  },
+
+  async getGoogleDriveToken() {
+    const { data } = await ky
+      .post(`${ROOT_HOST}/api/google/getDriveToken`)
+      .json<{ success: boolean; data: GoogleInfo }>()
+    return data
   },
 }

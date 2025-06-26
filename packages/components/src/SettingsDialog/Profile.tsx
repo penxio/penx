@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react/macro'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -91,9 +92,11 @@ export function Profile() {
           name="displayName"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Name</FormLabel>
+              <FormLabel>
+                <Trans>Name</Trans>
+              </FormLabel>
               <FormDescription>
-                This is your public display name.
+                <Trans>This is your public display name.</Trans>
               </FormDescription>
               <FormControl>
                 <Input placeholder="" {...field} className="w-full" />
@@ -108,8 +111,12 @@ export function Profile() {
           name="bio"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Bio</FormLabel>
-              <FormDescription>A brief your introduction.</FormDescription>
+              <FormLabel>
+                <Trans>Bio</Trans>
+              </FormLabel>
+              <FormDescription>
+                <Trans>A brief your introduction.</Trans>
+              </FormDescription>
               <FormControl>
                 <Textarea placeholder="" {...field} className="w-full" />
               </FormControl>
@@ -120,7 +127,13 @@ export function Profile() {
 
         <div>
           <Button size="lg" type="submit" className="w-32">
-            {isPending ? <LoadingDots /> : <p>Save</p>}
+            {isPending ? (
+              <LoadingDots />
+            ) : (
+              <p>
+                <Trans>Save</Trans>
+              </p>
+            )}
           </Button>
         </div>
       </form>

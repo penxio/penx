@@ -164,6 +164,8 @@
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/session": "workspace:*",
+    "@penx/encryption": "workspace:*",
+    "@penx/google-drive": "workspace:*",
     "@penx/content-render": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/local-db": "workspace:*",

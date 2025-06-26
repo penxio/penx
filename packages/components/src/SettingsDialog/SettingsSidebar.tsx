@@ -34,6 +34,12 @@ export function SettingsSidebar() {
         <Item icon={<CreditCardIcon size={16} />} navName={SettingsNav.BILLING}>
           <Trans>Billing</Trans>
         </Item>
+        <Item
+          icon={<CreditCardIcon size={16} />}
+          navName={SettingsNav.RECOVER_PHRASE}
+        >
+          <Trans>Recovery phrase</Trans>
+        </Item>
       </div>
     </div>
   )

@@ -2,6 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Trans } from '@lingui/react/macro'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'sonner'
 import { z } from 'zod'
@@ -67,7 +68,9 @@ export function Password({}: Props) {
           name="password"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Password</FormLabel>
+              <FormLabel>
+                <Trans>Password</Trans>
+              </FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -86,7 +89,9 @@ export function Password({}: Props) {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem className="w-full">
-              <FormLabel>Confirm password</FormLabel>
+              <FormLabel>
+                <Trans>Confirm password</Trans>
+              </FormLabel>
               <FormControl>
                 <Input
                   type="password"
@@ -102,7 +107,13 @@ export function Password({}: Props) {
 
         <div>
           <Button size="lg" type="submit" className="w-20">
-            {isPending ? <LoadingDots /> : <p>Confirm</p>}
+            {isPending ? (
+              <LoadingDots />
+            ) : (
+              <p>
+                <Trans>Confirm</Trans>
+              </p>
+            )}
           </Button>
         </div>
       </form>
