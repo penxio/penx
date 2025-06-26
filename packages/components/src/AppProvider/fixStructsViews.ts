@@ -1,3 +1,4 @@
+import isEqual from 'react-fast-compare'
 import { produce } from 'immer'
 import { Struct } from '@penx/domain'
 import { localDB } from '@penx/local-db'
@@ -9,11 +10,17 @@ export async function fixStructsViews(areaId: string, structs: IStructNode[]) {
   for (const struct of structs) {
     const { columns, views } = struct.props
 
-    const some = views.some(
-      (view) => view.viewColumns.length !== columns.length,
-    )
+    const some = views.some((view) => {
+      if (view.viewColumns.length !== columns.length) return true
+      const columnIds1 = view.viewColumns.map((v) => v.columnId).sort()
+      const columnIds2 = columns.map((c) => c.id).sort()
+      return !isEqual(columnIds1, columnIds2)
+    })
+
     if (some) {
       needFixed = true
+      console.log('fix struct views............')
+
       const newViews = produce(views, (draft) => {
         for (const view of views) {
           view.viewColumns = columns.map((c) => ({

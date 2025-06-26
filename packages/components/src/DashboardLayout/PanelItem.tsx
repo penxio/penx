@@ -1,8 +1,12 @@
 'use client'
 
+import { ErrorBoundary } from 'react-error-boundary'
+import { set } from 'idb-keyval'
 import { isMobileApp } from '@penx/constants'
+import { useArea } from '@penx/hooks/useArea'
 import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
+import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 import { LocalBackup } from './panel-renderer/LocalBackup/LocalBackup'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
@@ -24,6 +28,7 @@ export function PanelItem({
   isLast: boolean
   index: number
 }) {
+  const { area } = useArea()
   const sizes: any = {}
   if (panel.size) sizes.defaultSize = panel.size
 
@@ -73,7 +78,27 @@ export function PanelItem({
   if (isMobileApp) return renderJsx
 
   return (
-    <>
+    <ErrorBoundary
+      fallbackRender={({ error, resetErrorBoundary }: any) => {
+        return (
+          <div className="flex h-[80vh] flex-col items-center justify-center gap-1 w-full">
+            <div className="text-foreground/60 text-lg">
+              ⚠️Something went wrong
+              {JSON.stringify(error, null, 2)}
+            </div>
+            <Button
+              onClick={async () => {
+                const key = `PANELS_${area.id}`
+                set(key, [])
+                window.location.reload()
+              }}
+            >
+              Reload App
+            </Button>
+          </div>
+        )
+      }}
+    >
       <ResizablePanel
         {...sizes}
         className={cn(
@@ -91,6 +116,6 @@ export function PanelItem({
         {renderJsx}
       </ResizablePanel>
       {!isLast && <ResizableHandle className="bg-transparent px-0.5" />}
-    </>
+    </ErrorBoundary>
   )
 }

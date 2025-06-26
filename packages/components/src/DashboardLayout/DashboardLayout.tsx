@@ -38,6 +38,7 @@ import { SubscriptionGuideDialog } from '../SettingsDialog/SubscriptionGuideDial
 import { StructDialog } from '../StructDialog/StructDialog'
 import { PanelLayout } from './PanelLayout'
 import { SettingsLayout } from './SettingsLayout'
+import 'react-datepicker/dist/react-datepicker.css'
 
 // let inited = false
 // if (!isServer) {

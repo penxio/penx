@@ -11,7 +11,7 @@ import {
   GridColumnIcon,
   Item,
 } from '@glideapps/glide-data-grid'
-import { format } from 'date-fns'
+import { format, isDate } from 'date-fns'
 import { produce } from 'immer'
 import { useDatabaseContext } from '@penx/components/database-ui'
 import { DateCell } from '@penx/components/date-cell'
@@ -52,6 +52,21 @@ function getCols(struct: Struct) {
         return GridColumnIcon.HeaderNumber
       }
       return GridColumnIcon.HeaderString
+    }
+    try {
+      const viewColumn = viewColumnsMapped[column.id]
+      return {
+        id: column.id,
+        title: column.name || '',
+        width: viewColumn?.width ?? 160,
+        icon: getIcon(),
+        hasMenu: true,
+        themeOverride: {
+          // bgHeader: ''
+        },
+      }
+    } catch (error) {
+      console.log('struct===>>>iiii:', struct, 'column:', column)
     }
 
     const viewColumn = viewColumnsMapped[column.id]
@@ -176,20 +191,26 @@ export function useTableView() {
       } as PrimaryCell
     }
 
-    if (column.columnType === ColumnType.DATE) {
-      // console.log('======cellData:', cellData, 'column:', column)
+    if ([ColumnType.DATE, ColumnType.REMINDER].includes(column.columnType)) {
+      const getDate = () => {
+        if (!cellData) return ''
+        if (typeof cellData === 'string') return new Date(cellData)
+        if (typeof cellData === 'object' && cellData.date) {
+          return new Date(cellData.date)
+        }
+        return ''
+      }
+      const date = getDate()
       return {
         kind: GridCellKind.Custom,
         allowOverlay: true,
-        copyData: cellData
-          ? format(new Date(cellData), 'yyyy-MM-dd HH:mm:ss')
-          : '',
+        copyData: date ? format(new Date(date), 'yyyy-MM-dd HH:mm:ss') : '',
         themeOverride: {
           //
         },
         data: {
           kind: 'date-cell',
-          data: cellData,
+          data: date,
         },
       } as DateCell
     }
