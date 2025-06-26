@@ -1,8 +1,16 @@
 'use client'
 
-import { ReactNode, useEffect, useMemo, useState } from 'react'
+import {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { set } from 'idb-keyval'
 import { useSearchParams } from 'next/navigation'
+import { api } from '@penx/api'
 import { AreaDialog } from '@penx/components/AreaDialog'
 import { CommandPanel } from '@penx/components/CommandPanel'
 import {
@@ -14,8 +22,13 @@ import {
 // import { runWorker } from '@/lib/worker'
 import { appEmitter } from '@penx/emitter'
 import { usePathname } from '@penx/libs/i18n'
+import {
+  getNewMnemonic,
+  getPublicKey,
+  setMnemonicToLocal,
+} from '@penx/mnemonic'
 import { queryClient } from '@penx/query-client'
-import { useSession } from '@penx/session'
+import { refreshSession, useSession } from '@penx/session'
 import { cn } from '@penx/utils'
 import { DeleteStructDialog } from '../DeleteStructDialog/DeleteStructDialog'
 import { PlanListDialog } from '../PlanList/PlanListDialog'
@@ -43,6 +56,8 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
 
   const Layout = isSettings ? SettingsLayout : PanelLayout
 
+  const { session } = useSession()
+
   // const Layout = PanelLayout
 
   // if (!areaCreations.data?.length) return null
@@ -55,6 +70,27 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
       location.reload()
     })
   }, [])
+
+  const doingRef = useRef(false)
+  const initMnemonic = useCallback(async () => {
+    try {
+      const mnemonic = await getNewMnemonic()
+      const publicKey = getPublicKey(mnemonic)
+      await api.updatePublicKey(publicKey)
+      await setMnemonicToLocal(session.siteId!, mnemonic)
+      // store.user.setMnemonic(mnemonic)
+      refreshSession()
+    } catch (error) {
+      console.log('=====error:', error)
+    }
+  }, [session])
+
+  useEffect(() => {
+    if (!session || session.publicKey || doingRef.current) return
+    console.log('init=======session:', session)
+    doingRef.current = true
+    initMnemonic()
+  }, [session])
 
   return (
     <>

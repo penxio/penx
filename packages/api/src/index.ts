@@ -207,4 +207,12 @@ export const api = {
       })
       .json<{ success: boolean; url: string }>()
   },
+
+  async updatePublicKey(publicKey: string) {
+    return ky
+      .post(`${ROOT_HOST}/api/site/updatePublicKey`, {
+        json: { publicKey },
+      })
+      .json<{ success: boolean }>()
+  },
 }

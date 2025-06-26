@@ -13,6 +13,7 @@ export interface SessionData {
   isLoggedIn: boolean
   uid: string
   pid: string
+  publicKey: string
   email: string
   name: string
   picture: string

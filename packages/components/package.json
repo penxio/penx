@@ -159,6 +159,7 @@
     "@penx/api": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/model-type": "workspace:*",
+    "@penx/mnemonic": "workspace:*",
     "@penx/domain": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/query-client": "workspace:*",

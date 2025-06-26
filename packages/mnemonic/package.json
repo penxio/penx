@@ -1,0 +1,27 @@
+{
+  "name": "@penx/mnemonic",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/typescript-config": "workspace:*",
+    "@types/hdkey": "^2.0.3"
+  },
+  "dependencies": {
+    "@penx/encryption": "workspace:*",
+    "bip39": "^3.1.0",
+    "eciesjs": "^0.4.15",
+    "ethereumjs-util": "^7.1.5",
+    "hdkey": "^2.1.0"
+  }
+}
