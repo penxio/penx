@@ -103,7 +103,7 @@ export function EditPropertyDrawer({ struct }: { struct: Struct }) {
                   value: 0,
                 },
                 {
-                  label: <Trans> 5 minutes early</Trans>,
+                  label: <Trans>5 minutes early</Trans>,
                   value: 1000 * 60 * 5,
                 },
                 {
