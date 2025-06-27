@@ -67,12 +67,12 @@ export async function syncNodesToServer() {
       if (list[0].operation === OperationType.CREATE) {
         if (list.length === 1) return first
         return produce(first, (draft) => {
-          draft.createdAt = last.createdAt
+          draft.createdAt = first.data.createdAt
           draft.data.props = {
             ...draft.data.props,
             ...last.data,
           }
-          draft.data.createdAt = last.data.createdAt
+          draft.data.createdAt = first.data.createdAt
           draft.data.updatedAt = last.data.updatedAt
         })
       }

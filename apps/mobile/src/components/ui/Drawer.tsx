@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { isIOS } from '@/lib/utils'
 import { Capacitor } from '@capacitor/core'
 import { DialogDescription, DialogTitle } from '@radix-ui/react-dialog'
@@ -16,6 +17,7 @@ interface Props {
   className?: string
   isFullHeight?: boolean
   isModalStyle?: boolean
+  shouldScaleBackground?: boolean
 }
 export function Drawer({
   open,
@@ -24,6 +26,7 @@ export function Drawer({
   className,
   isFullHeight = false,
   isModalStyle,
+  ...rest
 }: Props) {
   const { isDark } = useTheme()
 
@@ -36,12 +39,19 @@ export function Drawer({
       {children}
     </>
   )
+  const shouldScaleBackground = useMemo(() => {
+    if (typeof rest.shouldScaleBackground === 'boolean') {
+      return rest.shouldScaleBackground
+    }
+    return !isModalStyle
+  }, [isModalStyle, rest])
+
   return (
     <DrawerProvider open={open} setOpen={setOpen}>
       <VaulDrawer.Root
         open={open}
         onOpenChange={setOpen}
-        shouldScaleBackground={!isModalStyle}
+        shouldScaleBackground={shouldScaleBackground}
         repositionInputs={false}
       >
         <VaulDrawer.Portal>

@@ -38,7 +38,7 @@ export function DeleteStructDialog({}: Props) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(v) => setIsOpen(v)}>
-      <DialogContent closable={false} className="">
+      <DialogContent className="">
         <DialogHeader className="">
           <DialogTitle className="">
             Are you sure delete this struct permanently?

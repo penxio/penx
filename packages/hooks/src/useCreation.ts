@@ -34,20 +34,40 @@ export function getCreation(creationId: string) {
   return queryClient.getQueryData(getQueryKey(creationId)) as ICreationNode
 }
 
-export async function createTag(creation: Creation, tagName: string) {
+export async function createTag(
+  creation: Creation,
+  tagName: string,
+  color?: string,
+) {
   const tags = await localDB.listTags(creation.areaId)
   const tag = tags.find((t) => t.props.name === tagName)!
 
   let newTag: ITagNode
 
-  if (!tag) {
+  if (tag) {
+    const id = uniqueId()
+    const newCreationTag: ICreationTagNode = {
+      id,
+      type: NodeType.CREATION_TAG,
+      props: {
+        creationId: creation.id,
+        tagId: tag.id,
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      areaId: creation.areaId,
+      userId: creation.userId,
+      siteId: creation.siteId,
+    }
+    await localDB.addCreationTag(newCreationTag)
+  } else {
     const tagId = uniqueId()
     newTag = {
       id: tagId,
       type: NodeType.TAG,
       props: {
         name: tagName,
-        color: getRandomColorName(),
+        color: color || getRandomColorName(),
         creationCount: 0,
         hidden: false,
       },
@@ -74,10 +94,10 @@ export async function createTag(creation: Creation, tagName: string) {
       siteId: creation.siteId,
     }
     await localDB.addCreationTag(newCreationTag)
-
-    store.tags.refetchTags()
-    store.creationTags.refetchCreationTags()
   }
+
+  store.tags.refetchTags()
+  store.creationTags.refetchCreationTags()
 }
 
 export async function addCreationTag(creation: Creation, tag: Tag) {
@@ -100,8 +120,8 @@ export async function addCreationTag(creation: Creation, tag: Tag) {
   await store.tags.refetchTags()
 }
 
-export async function deleteCreationTag(postTag: ICreationTagNode) {
-  await localDB.deleteCreationTag(postTag.id)
+export async function deleteCreationTag(creationTag: ICreationTagNode) {
+  await localDB.deleteCreationTag(creationTag.id)
   await store.creationTags.refetchCreationTags()
   await store.tags.refetchTags()
 }

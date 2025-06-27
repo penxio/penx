@@ -26,6 +26,7 @@ import { FixedToolbar } from './FixedToolbar'
 import { KeyboardPadding } from './KeyboardPadding'
 import { MobileCreationEditor } from './MobileCreationEditor'
 import { MobilePropList } from './MobilePropList/MobilePropList'
+import { MobileTags } from './MobileTags/MobileTags'
 
 interface Props {}
 
@@ -52,7 +53,10 @@ export function MobileCreation({}: Props) {
             }}
           >
             <div className={cn('relative mx-auto w-full max-w-2xl px-0')}>
-              <CreationHeader />
+              <CreationHeader canChangeType={false} />
+              <div>
+                <MobileTags creation={creation} />
+              </div>
               <MobilePropList
                 cells={cells}
                 struct={struct!}

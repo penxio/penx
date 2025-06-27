@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { impact } from '@/lib/impact'
 import { Trans } from '@lingui/react/macro'
 import { cn } from '@penx/utils'
@@ -9,6 +10,7 @@ interface Props {
   showCancelButton?: boolean
   disabled?: boolean
   isModalStyle?: boolean
+  confirmButton?: ReactNode
   onConfirm?: () => void
   onCancel?: () => void
 }
@@ -19,6 +21,7 @@ export function DrawerHeader({
   showCancelButton = false,
   isModalStyle = false,
   disabled,
+  confirmButton,
   onConfirm,
   onCancel,
 }: Props) {
@@ -48,20 +51,22 @@ export function DrawerHeader({
       {children}
 
       <div className="inline-flex w-24 justify-end">
-        {onConfirm && (
-          <div
-            className={cn(
-              'text-brand font-semibold',
-              disabled && 'cursor-not-allowed opacity-50',
+        {confirmButton
+          ? confirmButton
+          : onConfirm && (
+              <div
+                className={cn(
+                  'text-brand font-semibold',
+                  disabled && 'cursor-not-allowed opacity-50',
+                )}
+                onClick={() => {
+                  impact()
+                  onConfirm?.()
+                }}
+              >
+                <Trans>Save</Trans>
+              </div>
             )}
-            onClick={() => {
-              impact()
-              onConfirm?.()
-            }}
-          >
-            <Trans>Save</Trans>
-          </div>
-        )}
       </div>
     </div>
   )
