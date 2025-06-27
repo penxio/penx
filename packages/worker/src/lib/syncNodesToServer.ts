@@ -51,7 +51,13 @@ export async function syncNodesToServer() {
       const isAllUpdate = list.every(
         (change) => change.operation === OperationType.UPDATE,
       )
-      if (isAllUpdate) return last
+      if (isAllUpdate) {
+        const data = list.reduce(
+          (acc, cur) => ({ ...acc, ...cur.data }),
+          {} as Record<string, any>,
+        )
+        return { ...last, data }
+      }
 
       if (
         first?.operation === OperationType.CREATE &&
@@ -66,11 +72,18 @@ export async function syncNodesToServer() {
 
       if (list[0].operation === OperationType.CREATE) {
         if (list.length === 1) return first
+        const [_, ...updateList] = list
+
+        const data = updateList.reduce(
+          (acc, cur) => ({ ...acc, ...cur.data }),
+          first.data.props,
+        )
+
         return produce(first, (draft) => {
           draft.createdAt = first.data.createdAt
           draft.data.props = {
             ...draft.data.props,
-            ...last.data,
+            ...data,
           }
           draft.data.createdAt = first.data.createdAt
           draft.data.updatedAt = last.data.updatedAt
