@@ -17,9 +17,7 @@ export function PanelWidgetHeader({ panel, index }: Props) {
 
   return (
     <PanelHeaderWrapper index={index}>
-      <div>
-        <WidgetName widget={widget} structs={structs} />
-      </div>
+      <div>{widget && <WidgetName widget={widget} structs={structs} />}</div>
       <ClosePanelButton panel={panel} />
     </PanelHeaderWrapper>
   )

@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, isDate } from 'date-fns'
 import { OptionTag } from '@penx/components/OptionTag'
 import { Creation } from '@penx/domain'
 import { ColumnType, Option } from '@penx/types'
@@ -50,7 +50,7 @@ function GalleryItem({ record }: GalleryItemProps) {
           }
 
           if (column.columnType === ColumnType.DATE) {
-            return value ? format(new Date(value), 'PPP') : ''
+            return isDate(value) ? format(new Date(value), 'PPP') : ''
           }
 
           if (

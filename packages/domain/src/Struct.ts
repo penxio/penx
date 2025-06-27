@@ -66,6 +66,10 @@ export class Struct {
     return this.type === StructType.TASK
   }
 
+  get isNote() {
+    return this.type === StructType.NOTE
+  }
+
   get createdAt() {
     return new Date(this.raw.createdAt)
   }

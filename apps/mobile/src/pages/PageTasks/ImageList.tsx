@@ -19,7 +19,7 @@ export const ImageList = ({ creations, containerWidth }: Props) => {
   const columns = 3
   const parentRef = React.useRef<HTMLDivElement>(null)
 
-  const itemSize = containerWidth / columns || 120 // 避免初始为0
+  const itemSize = containerWidth / columns || 120
   const rowCount = Math.ceil(creations.length / columns)
 
   const rowVirtualizer = useVirtualizer({
@@ -53,7 +53,7 @@ export const ImageList = ({ creations, containerWidth }: Props) => {
       >
         {rowVirtualizer.getVirtualItems().map((virtualRow) => {
           const baseIndex = virtualRow.index * columns
-          console.log('=====itemSize:', itemSize)
+          // console.log('=====itemSize:', itemSize)
 
           return (
             <React.Fragment key={virtualRow.key}>
