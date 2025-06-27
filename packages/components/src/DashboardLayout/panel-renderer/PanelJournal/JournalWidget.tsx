@@ -29,7 +29,7 @@ const MotionPlus = motion.create(PlusIcon)
 const MotionEditLine = motion.create(EditLine)
 
 export function JournalWidget({ creations }: Props) {
-  const { structs } = useStructs()
+  const { structs } = useStructs(true)
 
   return (
     <div className="flex flex-col gap-2">

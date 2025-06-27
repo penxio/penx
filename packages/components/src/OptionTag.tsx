@@ -1,5 +1,6 @@
+import { transparentize } from '@fower/color-helper'
 import { XIcon } from 'lucide-react'
-import { getBgColor } from '@penx/libs/color-helper'
+import { colorNameMaps, getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
 
 interface IOption {
@@ -29,10 +30,15 @@ export function OptionTag({
     <div
       key={option.id}
       className={cn(
-        'optionTag relative inline-flex cursor-pointer items-center justify-center gap-1 rounded-full px-2 py-1 text-sm font-medium text-white',
-        getBgColor(color),
+        'optionTag relative inline-flex cursor-pointer items-center justify-center gap-1 rounded-full px-2 py-1 text-xs font-medium text-white',
+        // getBgColor(color),
         className,
       )}
+      style={{
+        background: colorNameMaps[color]
+          ? transparentize(colorNameMaps[color], 10)
+          : '#aaa',
+      }}
     >
       <div>{option ? option.name : ''}</div>
       {deletable && (

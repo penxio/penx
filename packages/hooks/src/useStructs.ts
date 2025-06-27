@@ -1,14 +1,13 @@
 import { useAtomValue } from 'jotai'
+import { isMobileApp } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { structsAtom } from '@penx/store'
 import { StructType } from '@penx/types'
 
-export function useStructs() {
+export function useStructs(isTaskFirst = false) {
   const raw = useAtomValue(structsAtom)
 
-  const sortKeys = [
-    StructType.TASK,
-    StructType.NOTE,
+  const sortKeys: string[] = [
     StructType.VOICE,
     StructType.PAGE,
     StructType.ARTICLE,
@@ -18,6 +17,14 @@ export function useStructs() {
     StructType.FRIEND,
     StructType.PROJECT,
   ]
+
+  if (isTaskFirst) {
+    sortKeys.unshift(StructType.NOTE)
+    sortKeys.unshift(StructType.TASK)
+  } else {
+    sortKeys.unshift(StructType.TASK)
+    sortKeys.unshift(StructType.NOTE)
+  }
 
   return {
     raw,

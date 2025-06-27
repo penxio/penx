@@ -94,7 +94,7 @@ export function getRandomColorName(): string {
     'indigo',
     'violet',
     'purple',
-    'fuchsia',
+    // 'fuchsia',
     'pink',
     'rose',
   ]

@@ -31,7 +31,7 @@ export function ChangeType({ creation }: { creation: Creation }) {
           <StructName struct={struct!} />
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className="w-48 p-2">
+      <PopoverContent align="start" className="max-h-72 w-48 overflow-auto p-2">
         <div className="mb-1 pl-2 text-sm font-semibold">
           <Trans>Change type</Trans>
         </div>

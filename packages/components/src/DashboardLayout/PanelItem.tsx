@@ -8,6 +8,7 @@ import { Panel, PanelType } from '@penx/types'
 import { ResizableHandle, ResizablePanel } from '@penx/uikit/resizable'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
+import { ClosePanelButton } from './ClosePanelButton'
 import { LocalBackup } from './panel-renderer/LocalBackup/LocalBackup'
 import { ManageTags } from './panel-renderer/ManageTags/ManageTags'
 import { PanelAISetting } from './panel-renderer/PanelAISetting'
@@ -51,7 +52,10 @@ export function PanelItem({
       )}
 
       {panel.type === PanelType.STRUCT && (
-        <PanelStruct index={index} panel={panel} />
+        <>
+          <ClosePanelButton panel={panel} className="absolute right-1 top-2" />
+          <PanelStruct index={index} panel={panel} />
+        </>
       )}
 
       {panel.type === PanelType.AI_SETTING && (
@@ -81,7 +85,7 @@ export function PanelItem({
     <ErrorBoundary
       fallbackRender={({ error, resetErrorBoundary }: any) => {
         return (
-          <div className="flex h-[80vh] flex-col items-center justify-center gap-1 w-full">
+          <div className="flex h-[80vh] w-full flex-col items-center justify-center gap-1">
             <div className="text-foreground/60 text-lg">
               ⚠️Something went wrong
               {JSON.stringify(error, null, 2)}
@@ -102,7 +106,7 @@ export function PanelItem({
       <ResizablePanel
         {...sizes}
         className={cn(
-          'bg-background flex flex-col overflow-hidden rounded-md shadow-sm dark:bg-[#181818]',
+          'bg-background relative flex flex-col overflow-hidden rounded-md shadow-sm dark:bg-[#181818]',
           // panel.type === PanelType.HOME && 'bg-transparent',
           // panel.type === PanelType.TODAY && 'bg-yellow-50',
           isMobileApp && 'bg-transparent shadow-none dark:bg-transparent',

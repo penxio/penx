@@ -74,17 +74,14 @@ export async function syncNodesToServer() {
         if (list.length === 1) return first
         const [_, ...updateList] = list
 
-        const data = updateList.reduce(
+        const props = updateList.reduce(
           (acc, cur) => ({ ...acc, ...cur.data }),
           first.data.props,
         )
 
         return produce(first, (draft) => {
           draft.createdAt = first.data.createdAt
-          draft.data.props = {
-            ...draft.data.props,
-            ...data,
-          }
+          draft.data.props = props
           draft.data.createdAt = first.data.createdAt
           draft.data.updatedAt = last.data.updatedAt
         })
