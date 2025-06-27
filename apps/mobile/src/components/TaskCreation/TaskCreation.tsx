@@ -23,8 +23,10 @@ import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/ui/button'
 import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
+import { ChangeType } from '../ChangeType'
 import { MobileCreationEditor } from '../MobileCreationEditor'
 import { MobilePropList } from '../MobilePropList/MobilePropList'
+import { MobileTags } from '../MobileTags/MobileTags'
 import { Priority } from './Priority'
 import { Reminder } from './Reminder'
 
@@ -54,15 +56,22 @@ export function TaskCreation({}: Props) {
             <div className={cn('relative mx-auto w-full max-w-2xl px-0')}>
               <CreationHeader canChangeType={false} />
 
-              {/* <Separator className="bg-foreground/5 mt-1 h-0.5 w-full" /> */}
-              <div className="text-foreground/40 mt-auto flex items-center justify-end gap-4">
-                {/* <Trash2Icon size={18} /> */}
-                {/* <ListTreeIcon size={20} /> */}
-                {/* <TimerIcon /> */}
-                <Reminder struct={struct!} creation={creation} />
-                <Priority struct={struct!} creation={creation} />
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1">
+                  <ChangeType creation={creation} />
+                  <div className="text-foreground/60 text-lg">•</div>
+                  <MobileTags creation={creation} />
+                </div>
+
+                <div className="text-foreground/40 mt-auto flex items-center justify-end gap-4">
+                  {/* <Trash2Icon size={18} /> */}
+                  {/* <ListTreeIcon size={20} /> */}
+                  {/* <TimerIcon /> */}
+                  <Reminder struct={struct!} creation={creation} />
+                  <Priority struct={struct!} creation={creation} />
+                </div>
+                {/* <Separator className="bg-foreground/5 mt-1 h-0.5 w-full" /> */}
               </div>
-              {/* <Separator className="bg-foreground/5 mt-1 h-0.5 w-full" /> */}
             </div>
 
             <div className={cn('mx-auto w-full max-w-2xl px-0')}>

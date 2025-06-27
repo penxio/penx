@@ -22,6 +22,7 @@ import { ICreationNode } from '@penx/model-type'
 import { NovelEditor } from '@penx/novel-editor/components/novel-editor'
 import { StructType } from '@penx/types'
 import { cn } from '@penx/utils'
+import { ChangeType } from './ChangeType'
 import { FixedToolbar } from './FixedToolbar'
 import { KeyboardPadding } from './KeyboardPadding'
 import { MobileCreationEditor } from './MobileCreationEditor'
@@ -54,9 +55,12 @@ export function MobileCreation({}: Props) {
           >
             <div className={cn('relative mx-auto w-full max-w-2xl px-0')}>
               <CreationHeader canChangeType={false} />
-              <div>
+              <div className="flex items-center gap-1">
+                <ChangeType creation={creation} />
+                <div className="text-foreground/60 text-lg">•</div>
                 <MobileTags creation={creation} />
               </div>
+
               <MobilePropList
                 cells={cells}
                 struct={struct!}

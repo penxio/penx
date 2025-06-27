@@ -23,14 +23,14 @@ interface ItemProps {
 export function Priority({ children, struct, creation, className }: ItemProps) {
   const [isOpen, setIsOpen] = useState(false)
   const column = struct.columns.find((c) => c.slug === 'priority')!
-  const value = creation.cells[column?.id!]
+  const value = creation.cells?.[column?.id!]
   const option = column.options.find((o) => o.id === value)
 
   return (
     <>
       <FlagIcon
         className={cn(option?.color && getTextColorByName(option?.color))}
-        size={20}
+        size={16}
         onClick={() => setIsOpen(true)}
       />
 

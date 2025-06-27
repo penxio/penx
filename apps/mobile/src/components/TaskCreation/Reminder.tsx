@@ -14,7 +14,7 @@ interface ItemProps {
 
 export function Reminder({ struct, creation }: ItemProps) {
   const column = struct.columns.find((c) => c.slug === 'reminder')!
-  const value = creation.cells[column?.id!]
+  const value = creation.cells?.[column?.id!]
 
   return (
     <ReminderDrawer
@@ -29,7 +29,7 @@ export function Reminder({ struct, creation }: ItemProps) {
     >
       {({ date }) => (
         <div className="flex items-center gap-1 text-base">
-          <AlarmClockIcon size={20} />
+          <AlarmClockIcon size={16} />
           {date && format(new Date(date), 'MM/dd HH:mm')}
         </div>
       )}
