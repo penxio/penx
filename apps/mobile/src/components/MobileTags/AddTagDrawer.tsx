@@ -26,17 +26,20 @@ import { DrawerTitle } from '../ui/DrawerTitle'
 import { MobileInput } from '../ui/MobileInput'
 
 interface Props {
-  creation: Creation
+  creation?: Creation
 }
 
-export function AddTagButton({ creation }: Props) {
+export function AddTagDrawer({ creation }: Props) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [color, setColor] = useState('')
   const disabled = !name || !color
 
   async function handleCreateTag() {
-    await createTag(creation, name)
+    await createTag({
+      tagName: name,
+      creation,
+    })
     setOpen(false)
   }
 

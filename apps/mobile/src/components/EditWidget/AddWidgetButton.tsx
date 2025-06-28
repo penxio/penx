@@ -62,10 +62,16 @@ export function AddWidgetButton({ className }: Props) {
         <Trans>Add</Trans>
       </Button>
 
-      <Drawer open={open} setOpen={setOpen} isFullHeight className="pb-0">
+      <Drawer
+        open={open}
+        setOpen={setOpen}
+        isFullHeight
+        className="pb-0"
+        shouldScaleBackground={false}
+      >
         <DrawerHeader>
           <DrawerTitle>
-            <Trans>Edit widgets</Trans>
+            <Trans>Add</Trans>
           </DrawerTitle>
         </DrawerHeader>
 

@@ -6,8 +6,21 @@ import { StructList } from './StructList'
 import { StructMarketplace } from './StructMarketplace'
 import { NavType, StructNav } from './StructNav'
 
-export function AllStructs() {
+interface Props {
+  isStructManagement?: boolean
+}
+
+export function AllStructs({ isStructManagement = false }: Props) {
   const [navType, setNavType] = useState(NavType.MY_STRUCT)
+
+  if (isStructManagement) {
+    return (
+      <div className="flex flex-col gap-4">
+        <CreateStructButton />
+        <StructList isStructManagement={isStructManagement} />
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-2">

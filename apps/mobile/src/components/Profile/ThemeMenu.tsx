@@ -15,7 +15,7 @@ interface ItemProps {
   onClick?: () => void
 }
 export function ThemeMenu({ children, className }: ItemProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   return (
     <div
@@ -24,7 +24,7 @@ export function ThemeMenu({ children, className }: ItemProps) {
         className,
       )}
       onClick={() => {
-        setIsOpen(!isOpen)
+        setOpen(!open)
       }}
     >
       <div className="font-medium">
@@ -33,7 +33,7 @@ export function ThemeMenu({ children, className }: ItemProps) {
       <div>
         <ChevronRightIcon className="text-foreground/50" />
       </div>
-      <Drawer open={isOpen} setOpen={setIsOpen}>
+      <Drawer open={open} setOpen={setOpen}>
         <DrawerHeader>
           <DrawerTitle>
             <Trans>Theme</Trans>

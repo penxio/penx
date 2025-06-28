@@ -284,8 +284,8 @@ const AppContent = memo(
     }, [])
 
     useEffect(() => {
-      function handle() {
-        nav.current?.push(PageAllStructs, {})
+      function handle(isStructManagement: boolean) {
+        nav.current?.push(PageAllStructs, { isStructManagement })
       }
 
       appEmitter.on('ROUTE_TO_ALL_STRUCTS', handle)

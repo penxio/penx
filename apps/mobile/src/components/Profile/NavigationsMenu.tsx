@@ -2,15 +2,19 @@ import { ReactNode, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
 import { cn } from '@penx/utils'
+import { AddWidgetButton } from '../EditWidget/AddWidgetButton'
+import { EditWidget } from '../EditWidget/EditWidget'
 import { useTheme } from '../theme-provider'
 import { Drawer } from '../ui/Drawer'
+import { DrawerHeader } from '../ui/DrawerHeader'
+import { DrawerTitle } from '../ui/DrawerTitle'
 
 interface ItemProps {
   className?: string
   children?: React.ReactNode
   onClick?: () => void
 }
-export function AboutMenu({ children, className }: ItemProps) {
+export function NavigationsMenu({ children, className }: ItemProps) {
   const [open, setOpen] = useState(false)
 
   return (
@@ -25,30 +29,20 @@ export function AboutMenu({ children, className }: ItemProps) {
         }}
       >
         <div className="font-medium">
-          <Trans>About</Trans>
+          <Trans>Navigations</Trans>
         </div>
         <div>
           <ChevronRightIcon className="text-foreground/50" />
         </div>
       </div>
 
-      <Drawer
-        open={open}
-        setOpen={setOpen}
-        className="min-h-[70vh] bg-neutral-100 dark:bg-neutral-800"
-      >
-        <div className="flex flex-1 items-center justify-center">
-          <div className="flex flex-col items-center justify-center gap-2">
-            <img
-              src="https://penx.io/images/logo.svg"
-              alt="logo"
-              className="shadow-popover size-16 rounded-xl"
-            />
-            <div>
-              <Trans>A structured note-taking App</Trans>
-            </div>
-          </div>
-        </div>
+      <Drawer open={open} setOpen={setOpen} isFullHeight>
+        <DrawerHeader confirmButton={<AddWidgetButton />}>
+          <DrawerTitle>
+            <Trans>Navigations</Trans>
+          </DrawerTitle>
+        </DrawerHeader>
+        <EditWidget />
       </Drawer>
     </>
   )

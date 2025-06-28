@@ -9,7 +9,12 @@ import { MenuItem } from '@/components/ui/MenuItem'
 import { impact } from '@/lib/impact'
 import { Trans } from '@lingui/react/macro'
 import { ChevronRightIcon } from 'lucide-react'
-import { bgColorMaps, getBgColor } from '@penx/libs/color-helper'
+import {
+  bgColorMaps,
+  colorNameMaps,
+  colorNames,
+  getBgColor,
+} from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
 
 interface ColorSelectorProps {
@@ -69,7 +74,7 @@ export function ColorSelector({
         </DrawerHeader>
         <div className="-mx-4 -mb-10 min-h-[50vh] flex-1 overflow-y-auto px-4 pb-6">
           <Menu>
-            {colorEntries.map(([color, bg]) => (
+            {colorNames.map((color) => (
               <MenuItem
                 key={color}
                 checked={color === value}
@@ -83,7 +88,7 @@ export function ColorSelector({
                   <div
                     className={cn(
                       'size-8 cursor-pointer rounded-full transition-colors hover:scale-110',
-                      bg,
+                      getBgColor(color),
                       value === color && '',
                     )}
                   ></div>

@@ -14,7 +14,7 @@ interface ItemProps {
 
 export function SubscriptionMenu({ children, className }: ItemProps) {
   const { session } = useSession()
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
 
   if (!session?.isFree) return null
 
@@ -26,7 +26,7 @@ export function SubscriptionMenu({ children, className }: ItemProps) {
           className,
         )}
         onClick={() => {
-          setIsOpen(!isOpen)
+          setOpen(!open)
         }}
       >
         <div className="font-medium">
@@ -37,10 +37,10 @@ export function SubscriptionMenu({ children, className }: ItemProps) {
         </div>
       </div>
 
-      <Drawer open={isOpen} setOpen={setIsOpen} isFullHeight className="">
+      <Drawer open={open} setOpen={setOpen} isFullHeight className="">
         <UpgradeContent
           onSubscribeSuccess={() => {
-            setIsOpen(false)
+            setOpen(false)
           }}
         />
       </Drawer>

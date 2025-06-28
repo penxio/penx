@@ -130,7 +130,10 @@ export function Tags({ creation }: Props) {
                     key={item.id}
                     onSelect={async () => {
                       if (item.id === 'CREATE') {
-                        createTag(creation, search)
+                        createTag({
+                          tagName: search,
+                          creation,
+                        })
                         setIsOpen(false)
                         setSearch('')
                         return

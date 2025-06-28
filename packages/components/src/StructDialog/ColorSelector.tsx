@@ -1,6 +1,6 @@
 'use client'
 
-import { bgColorMaps } from '@penx/libs/color-helper'
+import { bgColorMaps, colorNames, getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
 
 interface ColorSelectorProps {
@@ -12,7 +12,7 @@ export function ColorSelector({ value, onChange }: ColorSelectorProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      {colorEntries.map(([color, bg]) => (
+      {colorNames.map((color) => (
         <div
           key={color}
           className={cn(
@@ -24,7 +24,7 @@ export function ColorSelector({ value, onChange }: ColorSelectorProps) {
           <div
             className={cn(
               'h-6 w-6 cursor-pointer rounded-full transition-colors hover:scale-110',
-              bg,
+              getBgColor(color),
               value === color && '',
             )}
           ></div>

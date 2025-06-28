@@ -34,12 +34,38 @@ export function getCreation(creationId: string) {
   return queryClient.getQueryData(getQueryKey(creationId)) as ICreationNode
 }
 
-export async function createTag(
-  creation: Creation,
-  tagName: string,
-  color?: string,
-) {
-  const tags = await localDB.listTags(creation.areaId)
+type CreateTagInput = {
+  tagName: string
+  creation?: Creation
+  color?: string
+}
+
+export async function createTag({ tagName, creation, color }: CreateTagInput) {
+  const tags = store.tags.get()
+  if (!creation) {
+    const tag = tags.find((t) => t.props.name === tagName)!
+    if (tag) return
+    const area = store.area.get()
+    const tagId = uniqueId()
+    const newTag: ITagNode = {
+      id: tagId,
+      type: NodeType.TAG,
+      props: {
+        name: tagName,
+        color: color || getRandomColorName(),
+        creationCount: 0,
+        hidden: false,
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      areaId: area.id,
+      userId: area.userId,
+      siteId: area.siteId,
+    }
+    await localDB.addTag(newTag)
+    store.tags.refetchTags()
+    return
+  }
   const tag = tags.find((t) => t.props.name === tagName)!
 
   let newTag: ITagNode

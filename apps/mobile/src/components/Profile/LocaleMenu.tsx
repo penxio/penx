@@ -17,7 +17,7 @@ interface ItemProps {
   onClick?: () => void
 }
 export function LocaleMenu({ children, className }: ItemProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const { i18n } = useLingui()
   const [locale, setLocale] = useState<LOCALES>(
     // pathname?.split('/')[1] as LOCALES,
@@ -40,7 +40,7 @@ export function LocaleMenu({ children, className }: ItemProps) {
           className,
         )}
         onClick={() => {
-          setIsOpen(!isOpen)
+          setOpen(!open)
         }}
       >
         <div className="font-medium">
@@ -51,7 +51,7 @@ export function LocaleMenu({ children, className }: ItemProps) {
         </div>
       </div>
 
-      <Drawer open={isOpen} setOpen={setIsOpen}>
+      <Drawer open={open} setOpen={setOpen}>
         <DrawerHeader>
           <DrawerTitle>
             <Trans>Language</Trans>

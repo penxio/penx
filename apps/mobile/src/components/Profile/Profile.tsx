@@ -26,10 +26,13 @@ import { AboutMenu } from './AboutMenu'
 import { GuideEntryMenu } from './GuideEntryMenu'
 import { JournalLayoutMenu } from './JournalLayoutMenu'
 import { LocaleMenu } from './LocaleMenu'
+import { NavigationsMenu } from './NavigationsMenu'
 import { PrivacyEntryMenu } from './PrivacyEntryMenu'
 import { ReviewMenu } from './ReviewMenu'
+import { StructsMenu } from './StructsMenu'
 import { SubscriptionMenu } from './SubscriptionMenu'
 import { SyncMenu } from './SyncMenu'
+import { TagsMenu } from './TagsMenu'
 import { ThemeMenu } from './ThemeMenu'
 
 export function Profile() {
@@ -86,13 +89,17 @@ export function Profile() {
           </CardItem>
         </Card>
 
-        <div className="space-y-1">
-          <div className="flex items-center justify-between">
-            <div className="text-foreground/50 text-sm">Widgets</div>
-            <AddWidgetButton />
-          </div>
-          <EditWidget />
-        </div>
+        <Card>
+          <CardItem className="pr-1">
+            <NavigationsMenu />
+          </CardItem>
+          <CardItem className="pr-1">
+            <StructsMenu />
+          </CardItem>
+          <CardItem className="pr-1">
+            <TagsMenu />
+          </CardItem>
+        </Card>
 
         <Card title={<Trans>Appearance</Trans>}>
           <CardItem className="pr-1">

@@ -3,14 +3,18 @@ import { MobileContent } from '@/components/MobileContent'
 import { Trans } from '@lingui/react/macro'
 import { AllStructs } from '../PageHome/AllStructs/AllStructs'
 
-export const PageAllStructs: React.FC = ({ nav }: any) => {
-  return <Content></Content>
+interface Props {
+  isStructManagement: boolean
 }
 
-function Content() {
+export const PageAllStructs: React.FC = (props: Props) => {
+  return <Content {...props}></Content>
+}
+
+function Content(props: Props) {
   return (
     <MobileContent title={<Trans>Structs</Trans>}>
-      <AllStructs />
+      <AllStructs {...props} />
     </MobileContent>
   )
 }

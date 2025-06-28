@@ -24,15 +24,13 @@ import { DrawerHeader } from '../ui/DrawerHeader'
 import { DrawerTitle } from '../ui/DrawerTitle'
 import { Menu } from '../ui/Menu'
 import { MenuItem } from '../ui/MenuItem'
-import { AddTagButton } from './AddTagButton'
+import { AddTagDrawer } from './AddTagDrawer'
 
 interface Props {
   creation: Creation
 }
 
 export function MobileTags({ creation }: Props) {
-  const [search, setSearch] = useState('')
-  const [q, setQ] = useState('')
   const [open, setOpen] = useState(false)
   const { tags } = useTags()
   const { queryByCreation } = useCreationTags()
@@ -73,7 +71,7 @@ export function MobileTags({ creation }: Props) {
       <Drawer open={open} setOpen={setOpen} isFullHeight>
         <DrawerHeader
           // showCancelButton
-          confirmButton={<AddTagButton creation={creation} />}
+          confirmButton={<AddTagDrawer creation={creation} />}
         >
           <DrawerTitle>
             <Trans>Tag</Trans>

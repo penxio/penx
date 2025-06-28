@@ -30,8 +30,8 @@ import { cn } from '@penx/utils'
 const FormSchema = z.object({
   checked: z.boolean().optional(),
   title: z.string().optional(),
-  cells: z.any(),
-  content: z.any(),
+  cells: z.any().optional(),
+  content: z.any().optional(),
 })
 
 interface Props {
@@ -77,28 +77,28 @@ function Content({ struct }: Props) {
   }
 
   return (
-    <MobileContent
-      backgroundColor={isTask ? '#fff' : mainBackgroundLight}
-      onBack={() => {
-        form.handleSubmit(onSubmit)()
-      }}
-      rightSlot={
-        <div className="p-2">
-          <Button
-            type="submit"
-            size="sm"
-            className="rounded-full"
-            onClick={() => {
-              form.handleSubmit(onSubmit)
-              appEmitter.emit('ROUTE_TO_BACK')
-            }}
-          >
-            <Trans>Save</Trans>
-          </Button>
-        </div>
-      }
-    >
-      <Form {...form}>
+    <Form {...form}>
+      <MobileContent
+        backgroundColor={isTask ? '#fff' : mainBackgroundLight}
+        onBack={() => {
+          form.handleSubmit(onSubmit)()
+        }}
+        rightSlot={
+          <div className="p-2">
+            <Button
+              type="submit"
+              size="sm"
+              className="rounded-full"
+              onClick={() => {
+                form.handleSubmit(onSubmit)()
+                appEmitter.emit('ROUTE_TO_BACK')
+              }}
+            >
+              <Trans>Save</Trans>
+            </Button>
+          </div>
+        }
+      >
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className="flex gap-2">
             {struct?.type === StructType.TASK && (
@@ -161,7 +161,7 @@ function Content({ struct }: Props) {
             />
           </div>
         </form>
-      </Form>
-    </MobileContent>
+      </MobileContent>
+    </Form>
   )
 }

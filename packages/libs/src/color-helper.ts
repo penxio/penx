@@ -78,26 +78,29 @@ export const colorNameMaps: Record<string, string> = {
   rose: '#f43f5e',
 }
 
+export const colorNames = [
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  // 'fuchsia',
+  'pink',
+  'rose',
+]
+
 export function getRandomColorName(): string {
-  const keys = [
-    'red',
-    'orange',
-    'amber',
-    'yellow',
-    'lime',
-    'green',
-    'emerald',
-    'teal',
-    'cyan',
-    'sky',
-    'blue',
-    'indigo',
-    'violet',
-    'purple',
-    // 'fuchsia',
-    'pink',
-    'rose',
-  ]
+  const keys = colorNames
+
   const index = Math.floor(Math.random() * keys.length)
 
   return keys[index]!
