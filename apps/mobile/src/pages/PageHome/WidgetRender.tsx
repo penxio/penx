@@ -24,6 +24,7 @@ import { Journals } from './Journals'
 import { RecentlyEdited } from './RecentlyEdited'
 import { RecentlyOpened } from './RecentlyOpened'
 import { StructCreations } from './StructCreations/StructCreations'
+import { TagList } from './TagList'
 
 interface Props {
   //
@@ -142,6 +143,10 @@ function Content({ widget }: { widget: Widget }) {
 
   if (widget.type === WidgetType.ALL_STRUCTS) {
     return <AllStructs />
+  }
+
+  if (widget.type === WidgetType.ALL_TAGS) {
+    return <TagList />
   }
 
   if (widget.type === WidgetType.RECENTLY_EDITED) {

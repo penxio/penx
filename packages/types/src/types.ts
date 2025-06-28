@@ -211,6 +211,7 @@ export enum PanelType {
   AI_PROVIDERS = 'AI_PROVIDERS',
   AI_SETTING = 'AI_SETTING',
   TASKS = 'TASKS',
+  TAG = 'TAG',
 }
 
 export type Panel = {
@@ -220,6 +221,7 @@ export type Panel = {
   size?: number
   creationId?: string
   structId?: string
+  tagId?: string
   widget?: Widget
   date?: string
   taskNav?: string

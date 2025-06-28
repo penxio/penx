@@ -66,9 +66,10 @@ import { VoiceContent } from './VoiceContent'
 interface Props {
   creation: Creation
   onChecked?: () => void
+  className?: string
 }
 
-export function CreationItem({ creation, onChecked }: Props) {
+export function CreationItem({ creation, onChecked, className }: Props) {
   const struct = useCreationStruct(creation)
   const [isOpen, setIsOpen] = useState(false)
   const [isTranscribing, setTranscribing] = useState(false)
@@ -192,7 +193,7 @@ export function CreationItem({ creation, onChecked }: Props) {
     return (
       <>
         {!creation.isNote && (
-          <div className="flex items-center gap-2 cursor-pointer">
+          <div className="flex cursor-pointer items-center gap-2">
             {creation.isTask && (
               <Checkbox
                 onClick={(e) => e.stopPropagation()}
@@ -344,7 +345,7 @@ export function CreationItem({ creation, onChecked }: Props) {
         // layoutId={creation.id}
         layout="position"
         transition={{ duration: 0.3 }}
-        className="flex flex-col gap-0"
+        className={cn('flex cursor-pointer flex-col gap-0', className)}
       >
         <motion.div
           className={cn(

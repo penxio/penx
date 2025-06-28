@@ -129,7 +129,7 @@ msgid "Add widget"
 msgstr "Add widget"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:114
-#: packages/widgets/src/WidgetName.tsx:36
+#: packages/widgets/src/WidgetName.tsx:38
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:109
 msgid "AI chat"
 msgstr "AI chat"
@@ -138,12 +138,12 @@ msgstr "AI chat"
 msgid "AI features for notes"
 msgstr "AI features for notes"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:270
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:271
 #: packages/components/src/CreationCard/CreationCard.tsx:248
 msgid "AI transcribe"
 msgstr "AI transcribe"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:179
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:180
 #: packages/components/src/CreationCard/CreationCard.tsx:174
 msgid "AI Transcribing"
 msgstr "AI Transcribing"
@@ -329,10 +329,11 @@ msgstr "Confirm Publishing"
 
 #: packages/components/src/ProfileBasicInfo.tsx:53
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:77
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:285
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:286
 #: packages/components/src/CreationCard/CreationCard.tsx:263
 msgid "Copy"
 msgstr "Copy"
@@ -340,10 +341,6 @@ msgstr "Copy"
 #: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr "Copy html"
-
-#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
-msgid "Copy to clipboard"
-msgstr "Copy to clipboard"
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:51
 msgid "Coupon code applied successfully"
@@ -415,7 +412,7 @@ msgstr "Date"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:336
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:337
 #: packages/components/src/CreationCard/CreationCard.tsx:314
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
@@ -467,7 +464,7 @@ msgid "Due date"
 msgstr "Due date"
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:54
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:314
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:315
 #: packages/components/src/CreationCard/CreationCard.tsx:292
 msgid "Edit"
 msgstr "Edit"
@@ -1005,13 +1002,13 @@ msgid "Rate"
 msgstr "Rate"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:111
-#: packages/widgets/src/WidgetName.tsx:33
+#: packages/widgets/src/WidgetName.tsx:34
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:106
 msgid "Recently edited"
 msgstr "Recently edited"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:117
-#: packages/widgets/src/WidgetName.tsx:39
+#: packages/widgets/src/WidgetName.tsx:46
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:112
 msgid "Recently opened"
 msgstr "Recently opened"
@@ -1134,7 +1131,7 @@ msgstr "Something went wrong. Please try again later."
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:303
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
 msgid "Star"
 msgstr "Star"
@@ -1164,9 +1161,9 @@ msgid "Struct published successfully!"
 msgstr "Struct published successfully!"
 
 #: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:12
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:139
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:142
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:133
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
 msgstr "Structs"
@@ -1245,6 +1242,12 @@ msgstr "Tag"
 #: apps/mobile/src/components/MobileTags/AddTagButton.tsx:72
 msgid "Tag name"
 msgstr "Tag name"
+
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
+#: packages/widgets/src/WidgetName.tsx:42
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:115
+msgid "Tags"
+msgstr "Tags"
 
 #: packages/libs/src/getDefaultStructs.ts:284
 msgid "Task"
@@ -1330,7 +1333,7 @@ msgstr "Unlimited number of notes"
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:303
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
 msgid "Unstar"
 msgstr "Unstar"

@@ -129,7 +129,7 @@ msgid "Add widget"
 msgstr "添加组件"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:114
-#: packages/widgets/src/WidgetName.tsx:36
+#: packages/widgets/src/WidgetName.tsx:38
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:109
 msgid "AI chat"
 msgstr "AI 聊天"
@@ -138,12 +138,12 @@ msgstr "AI 聊天"
 msgid "AI features for notes"
 msgstr "AI 笔记功能"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:270
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:271
 #: packages/components/src/CreationCard/CreationCard.tsx:248
 msgid "AI transcribe"
 msgstr "AI 转录"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:179
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:180
 #: packages/components/src/CreationCard/CreationCard.tsx:174
 msgid "AI Transcribing"
 msgstr "AI 转录中"
@@ -329,10 +329,11 @@ msgstr "确定发布？"
 
 #: packages/components/src/ProfileBasicInfo.tsx:53
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:77
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
 msgid "Copied to clipboard"
 msgstr "已复制到剪切板"
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:285
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:286
 #: packages/components/src/CreationCard/CreationCard.tsx:263
 msgid "Copy"
 msgstr "复制"
@@ -340,10 +341,6 @@ msgstr "复制"
 #: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr "复制 HTML"
-
-#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
-msgid "Copy to clipboard"
-msgstr ""
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:51
 msgid "Coupon code applied successfully"
@@ -383,7 +380,7 @@ msgstr "创建标签"
 #: packages/components/src/ColumnTypeName.tsx:29
 msgid "Created At"
 msgstr "创建日期"
- 
+
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:54
 msgid "Created date"
 msgstr "创建日期"
@@ -415,7 +412,7 @@ msgstr "日期"
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:56
 #: packages/components/src/area-widgets/CreationItem.tsx:121
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:336
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:337
 #: packages/components/src/CreationCard/CreationCard.tsx:314
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
@@ -467,7 +464,7 @@ msgid "Due date"
 msgstr "截止日期"
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:54
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:314
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:315
 #: packages/components/src/CreationCard/CreationCard.tsx:292
 msgid "Edit"
 msgstr "编辑"
@@ -1005,13 +1002,13 @@ msgid "Rate"
 msgstr "评分"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:111
-#: packages/widgets/src/WidgetName.tsx:33
+#: packages/widgets/src/WidgetName.tsx:34
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:106
 msgid "Recently edited"
 msgstr "最近编辑"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:117
-#: packages/widgets/src/WidgetName.tsx:39
+#: packages/widgets/src/WidgetName.tsx:46
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:112
 msgid "Recently opened"
 msgstr "最近打开"
@@ -1134,7 +1131,7 @@ msgstr ""
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:303
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
 msgid "Star"
 msgstr "收藏"
@@ -1164,9 +1161,9 @@ msgid "Struct published successfully!"
 msgstr "发布结构体成功！"
 
 #: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:12
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:139
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:142
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:133
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
 msgstr "结构体"
@@ -1245,6 +1242,12 @@ msgstr "标签"
 #: apps/mobile/src/components/MobileTags/AddTagButton.tsx:72
 msgid "Tag name"
 msgstr "标签名"
+
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
+#: packages/widgets/src/WidgetName.tsx:42
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:115
+msgid "Tags"
+msgstr "标签"
 
 #: packages/libs/src/getDefaultStructs.ts:284
 msgid "Task"
@@ -1330,7 +1333,7 @@ msgstr "无限创建笔记"
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:303
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
 msgid "Unstar"
 msgstr "取消收藏"

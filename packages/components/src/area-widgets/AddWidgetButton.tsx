@@ -111,6 +111,9 @@ export function AddWidgetButton({ className }: Props) {
                 if (item === WidgetType.RECENTLY_OPENED) {
                   return <Trans>Recently opened</Trans>
                 }
+                if (item === WidgetType.ALL_TAGS) {
+                  return <Trans>Tags</Trans>
+                }
                 return null
               }
               if (item === WidgetType.STRUCT) return null

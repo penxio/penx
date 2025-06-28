@@ -111,6 +111,10 @@ export const WidgetItem = forwardRef<HTMLDivElement, Props>(
               return
             }
 
+            if (widget.type === WidgetType.ALL_TAGS) {
+              return
+            }
+
             if (isMobileApp) {
               appEmitter.emit('ROUTE_TO_WIDGET', widget)
               close()

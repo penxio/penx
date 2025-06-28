@@ -16,6 +16,7 @@ import { PanelCreation } from './panel-renderer/PanelCreation'
 import { PanelJournal } from './panel-renderer/PanelJournal/PanelJournal'
 import { PanelStruct } from './panel-renderer/PanelJournal/PanelStruct'
 import { PanelStructs } from './panel-renderer/PanelStructs/PanelStructs'
+import { PanelTag } from './panel-renderer/PanelTag'
 import { PanelTasks } from './panel-renderer/PanelTasks/PanelTasks'
 import { PanelWidget } from './panel-renderer/PanelWidget'
 import { PanelWidgetHeader } from './panel-renderer/PanelWidgetHeader'
@@ -57,6 +58,8 @@ export function PanelItem({
           <PanelStruct index={index} panel={panel} />
         </>
       )}
+
+      {panel.type === PanelType.TAG && <PanelTag index={index} panel={panel} />}
 
       {panel.type === PanelType.AI_SETTING && (
         <PanelAISetting index={index} panel={panel} />

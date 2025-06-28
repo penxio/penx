@@ -75,6 +75,7 @@ import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct/PageStruct'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
 import { PageSync } from './pages/PageSync/PageSync'
+import { PageTagCreations } from './pages/PageTagCreations/PageTagCreations'
 import { PageTasks } from './pages/PageTasks/PageTasks'
 import { PageWidget } from './pages/PageWidget'
 
@@ -248,6 +249,16 @@ const AppContent = memo(
       appEmitter.on('ROUTE_TO_NEW_CREATION', handle)
       return () => {
         appEmitter.off('ROUTE_TO_NEW_CREATION', handle)
+      }
+    }, [])
+
+    useEffect(() => {
+      function handle(tag: any) {
+        nav.current?.push(PageTagCreations, { tag })
+      }
+      appEmitter.on('ROUTE_TO_TAG_CREATIONS', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_TAG_CREATIONS', handle)
       }
     }, [])
 

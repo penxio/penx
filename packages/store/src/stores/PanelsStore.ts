@@ -78,6 +78,7 @@ export class PanelsStore {
     let panels = this.get()
     let len = panels.length
     const structs = this.store.structs.get()
+    const tags = this.store.tags.get()
 
     let index = panels.findIndex((p) => p.type !== PanelType.WIDGET)
     if (index < 0) index = panels.length - 1
@@ -94,6 +95,12 @@ export class PanelsStore {
 
     if (noteIndex > -1) {
       index = noteIndex + 1
+    }
+
+    const tagIndex = panels.findIndex((p) => p.tagId)
+
+    if (tagIndex > -1) {
+      index = tagIndex + 1
     }
 
     if (panel.type === PanelType.CREATION) {
@@ -254,6 +261,37 @@ export class PanelsStore {
       }
     })
     await this.savePanels(newPanels)
+  }
+
+  async openTag(tagId: string) {
+    let panels = this.get()
+    const panel: Panel = {
+      id: uniqueId(),
+      type: PanelType.TAG,
+      tagId,
+    }
+
+    panels = produce(panels, (draft) => {
+      if (isMobileApp) {
+        const index = panels.findIndex((p) => p.type === PanelType.STRUCT)
+        if (index > -1) {
+          draft[index] = panel
+        } else {
+          draft.push(panel)
+        }
+      } else {
+        draft[0] = panel
+      }
+
+      const size = 100 / draft.length
+      for (const item of draft) {
+        item.size = size
+      }
+    })
+
+    setTimeout(() => {
+      this.savePanels(panels)
+    }, 0)
   }
 
   async openTaskList(data: Partial<Panel>) {

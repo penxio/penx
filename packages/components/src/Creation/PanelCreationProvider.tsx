@@ -11,7 +11,6 @@ import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreation } from '@penx/hooks/useCreation'
 import { ICreationNode } from '@penx/model-type'
-import { queryClient } from '@penx/query-client'
 import { Panel } from '@penx/types'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 

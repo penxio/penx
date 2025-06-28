@@ -7,6 +7,7 @@ import {
   PencilLineIcon,
   Rows4Icon,
   StarIcon,
+  TagsIcon,
 } from 'lucide-react'
 import { WidgetType } from '@penx/constants'
 import { Struct } from '@penx/domain'
@@ -27,6 +28,10 @@ export function WidgetIcon({ type, structs }: Props) {
 
   if (type === WidgetType.ALL_CREATIONS) {
     return <Rows4Icon size={16} />
+  }
+
+  if (type === WidgetType.ALL_TAGS) {
+    return <TagsIcon size={16} />
   }
 
   if (type === WidgetType.COLLECTION) {

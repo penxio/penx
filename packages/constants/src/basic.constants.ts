@@ -368,6 +368,7 @@ export enum WidgetType {
   COLLECTION = 'COLLECTION',
   FAVORITES = 'FAVORITES',
   ALL_STRUCTS = 'ALL_STRUCTS',
+  ALL_TAGS = 'ALL_TAGS',
   STRUCT = 'STRUCT',
 }
 

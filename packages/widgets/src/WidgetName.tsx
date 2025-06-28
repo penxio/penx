@@ -29,15 +29,23 @@ export function WidgetName({ widget, structs }: Props) {
   if (widget.type === WidgetType.FAVORITES) {
     return <Trans>Favorites</Trans>
   }
+
   if (widget.type === WidgetType.RECENTLY_EDITED) {
     return <Trans>Recently edited</Trans>
   }
+
   if (widget.type === WidgetType.AI_CHAT) {
     return <Trans>AI chat</Trans>
   }
+
+  if (widget.type === WidgetType.ALL_TAGS) {
+    return <Trans>Tags</Trans>
+  }
+
   if (widget.type === WidgetType.RECENTLY_OPENED) {
     return <Trans>Recently opened</Trans>
   }
+
   const struct = structs.find((m) => m.id === widget.structId)
   if (struct) return <StructName struct={struct!} />
   return null

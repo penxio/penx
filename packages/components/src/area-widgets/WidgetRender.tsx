@@ -7,6 +7,7 @@ import { CreationList } from './widgets/CreationList'
 import { Favorites } from './widgets/Favorites'
 import { RecentlyEdited } from './widgets/RecentlyEdited'
 import { RecentlyOpened } from './widgets/RecentlyOpened'
+import { TagList } from './widgets/TagList'
 import { TaskNavWidget } from './widgets/TaskNavWidget/TaskNavWidget'
 
 interface Props {
@@ -30,9 +31,9 @@ export function WidgetRender({ widget }: Props) {
     return <AllCreations />
   }
 
-  // if (widget.type === WidgetType.ALL_STRUCTS) {
-  //   return <AllStructs />
-  // }
+  if (widget.type === WidgetType.ALL_TAGS) {
+    return <TagList></TagList>
+  }
 
   if (widget.type === WidgetType.STRUCT) {
     const struct = structs.find((s) => s.id === widget.structId)
