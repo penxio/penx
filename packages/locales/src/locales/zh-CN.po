@@ -70,6 +70,10 @@ msgstr "5分钟"
 msgid "5 minutes early"
 msgstr "提前5分钟"
 
+#: packages/components/src/SettingsDialog/Profile.tsx:118
+msgid "A brief your introduction."
+msgstr "介绍一下你自己"
+
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:49
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
@@ -190,7 +194,7 @@ msgstr "PenX介绍与使用方法"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:97
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:26
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:17
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:16
 msgid "Appearance"
 msgstr "外观"
 
@@ -203,7 +207,7 @@ msgstr "Apple 登录"
 msgid "Are you sure delete it permanently?"
 msgstr "确定要永久删除吗？"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:95
+#: packages/components/src/SettingsDialog/Billing.tsx:94
 msgid "Are you sure you want to cancel subscription?"
 msgstr "你确定要取消订阅吗？"
 
@@ -220,14 +224,26 @@ msgstr "你确定要将这个结构体发布到市场吗？"
 msgid "Areas"
 msgstr "领域"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupDialog.tsx:44
+msgid "Backup to Google drive"
+msgstr "备份到 Google 云盘"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:90
+msgid "Backup to google drive successful!"
+msgstr ""
+
 #: apps/mobile/src/components/Profile/Profile.tsx:42
 #: packages/components/src/ProfileBasicInfo.tsx:22
 msgid "Believer"
 msgstr ""
 
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:35
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
 msgid "Billing"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/Profile.tsx:115
+msgid "Bio"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:296
@@ -242,22 +258,22 @@ msgstr "开关"
 msgid "Bubble"
 msgstr "气泡"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:43
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:46
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
 msgstr "取消"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:103
+#: packages/components/src/SettingsDialog/Billing.tsx:102
 msgid "Cancel subscription"
 msgstr "取消订阅"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:99
+#: packages/components/src/SettingsDialog/Billing.tsx:98
 msgid "Cancel subscription successfully"
 msgstr "订阅已成功取消"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:94
+#: packages/components/src/SettingsDialog/Billing.tsx:93
 msgid "Cancel subscription?"
 msgstr "取消订阅？"
 
@@ -269,10 +285,11 @@ msgstr ""
 msgid "Card"
 msgstr "卡片"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:84
+#: packages/components/src/SettingsDialog/Billing.tsx:83
 msgid "Change plan"
 msgstr "修改订阅计划"
 
+#: apps/mobile/src/components/ChangeType.tsx:44
 #: packages/components/src/Creation/ChangeType.tsx:36
 msgid "Change type"
 msgstr "更改类型"
@@ -296,12 +313,22 @@ msgstr "颜色"
 msgid "Config"
 msgstr "配置"
 
+#: packages/components/src/SettingsDialog/Password.tsx:114
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:139
+msgid "Confirm"
+msgstr "确认"
+
+#: packages/components/src/SettingsDialog/Password.tsx:93
+msgid "Confirm password"
+msgstr "确认密码"
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
 msgstr "确定发布？"
 
 #: packages/components/src/ProfileBasicInfo.tsx:53
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:77
 msgid "Copied to clipboard"
 msgstr "已复制到剪切板"
 
@@ -313,6 +340,10 @@ msgstr "复制"
 #: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr "复制 HTML"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
+msgid "Copy to clipboard"
+msgstr ""
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:51
 msgid "Coupon code applied successfully"
@@ -340,14 +371,19 @@ msgstr "创建账户"
 
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:52
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:75
+#: packages/components/src/AddCreationButton.tsx:108
 #: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr "创建结构体"
 
+#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:67
+msgid "Create Tag"
+msgstr "创建标签"
+
 #: packages/components/src/ColumnTypeName.tsx:29
 msgid "Created At"
 msgstr "创建日期"
-
+ 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:54
 msgid "Created date"
 msgstr "创建日期"
@@ -511,7 +547,7 @@ msgstr "查找或创建选项"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:43
 #: packages/components/src/ProfileBasicInfo.tsx:23
-#: packages/components/src/SettingsDialog/Billing.tsx:38
+#: packages/components/src/SettingsDialog/Billing.tsx:37
 msgid "Free"
 msgstr "免费"
 
@@ -529,6 +565,10 @@ msgstr "画廊"
 msgid "Gate this post, config who can read this post."
 msgstr "设置这篇文章的访问权限，配置谁可以阅读这篇文章。"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:46
+msgid "Google drive backup password"
+msgstr ""
+
 #: apps/mobile/src/components/Login/GoogleLoginButton.tsx:79
 #: apps/extension/components/Login.tsx:51
 #: packages/widgets/src/GoogleOauthButton.tsx:70
@@ -539,6 +579,10 @@ msgstr "Google 登录"
 #: apps/mobile/src/components/Profile/GuideEntryMenu.tsx:30
 msgid "Guide of PenX"
 msgstr "PenX 使用指南"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:68
+msgid "Hide recovery phrase"
+msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:98
 msgid "High"
@@ -705,6 +749,7 @@ msgstr "我的站点"
 #: apps/mobile/src/pages/PageHome/HomeFooter/NewCreationDrawer/MoreStructDrawer.tsx:24
 #: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer.tsx:24
 #: apps/mobile/src/pages/PageHome/AllStructs/StructNav.tsx:18
+#: packages/components/src/AddCreationButton.tsx:48
 msgid "My structs"
 msgstr "我的结构体"
 
@@ -721,10 +766,12 @@ msgstr "我的结构体"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:90
+#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:73
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
+#: packages/components/src/SettingsDialog/Profile.tsx:96
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
 #: packages/components/src/AreaDialog/AreaForm.tsx:163
@@ -788,6 +835,10 @@ msgstr "无"
 msgid "Note"
 msgstr "笔记"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelStruct.tsx:28
+msgid "Notes"
+msgstr "笔记"
+
 #: packages/components/src/ColumnTypeName.tsx:16
 msgid "Number"
 msgstr "数值"
@@ -827,8 +878,17 @@ msgstr "页面"
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:32
+#: packages/components/src/SettingsDialog/Password.tsx:72
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:93
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:108
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:124
 msgid "Password"
 msgstr "密码"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:86
+msgid "Passwords do not match"
+msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:32
 #: packages/components/src/Sidebar/SyncButton.tsx:36
@@ -917,7 +977,7 @@ msgid "PRO yearly"
 msgstr ""
 
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:29
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:17
 msgid "Profile"
 msgstr "个人信息"
 
@@ -955,6 +1015,14 @@ msgstr "最近编辑"
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:112
 msgid "Recently opened"
 msgstr "最近打开"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:79
+msgid "Recover failed"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
+msgid "Recovery phrase"
+msgstr ""
 
 #: apps/mobile/src/components/Login/RegisterForm.tsx:128
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:136
@@ -994,6 +1062,15 @@ msgstr "重复提醒"
 msgid "Resend"
 msgstr "重新发送"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:81
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:108
+msgid "Restore"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:28
+msgid "Restore from google drive"
+msgstr ""
+
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:102
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:32
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:66
@@ -1001,7 +1078,8 @@ msgid "Sat"
 msgstr "周六"
 
 #: apps/mobile/src/pages/PageNewCreation.tsx:96
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:62
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:67
+#: packages/components/src/SettingsDialog/Profile.tsx:134
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr "保存"
@@ -1049,6 +1127,10 @@ msgstr "单选"
 msgid "Slug"
 msgstr "别名"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:94
+msgid "Something went wrong. Please try again later."
+msgstr ""
+
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
@@ -1065,6 +1147,7 @@ msgstr "状态"
 msgid "Struct installed successfully!"
 msgstr "安装结构体成功！"
 
+#: packages/components/src/AddCreationButton.tsx:95
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:66
 msgid "Struct marketplace"
 msgstr "结构体市场"
@@ -1092,7 +1175,7 @@ msgstr "结构体"
 msgid "Subscribe now"
 msgstr "立即订阅"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:61
+#: packages/components/src/SettingsDialog/Billing.tsx:60
 msgid "Subscribe to PenX to support us in building the best product."
 msgstr ""
 
@@ -1153,9 +1236,15 @@ msgstr "跟随系统"
 msgid "Table"
 msgstr "表格"
 
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:69
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:79
 #: packages/components/src/Creation/Tags.tsx:94
 msgid "Tag"
 msgstr "标签"
+
+#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:72
+msgid "Tag name"
+msgstr "标签名"
 
 #: packages/libs/src/getDefaultStructs.ts:284
 msgid "Task"
@@ -1177,6 +1266,10 @@ msgstr "主题"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionItem.tsx:97
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr "该操作无法撤销，您确定要删除此属性吗？"
+
+#: packages/components/src/SettingsDialog/Profile.tsx:99
+msgid "This is your public display name."
+msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:100
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:30
@@ -1255,7 +1348,7 @@ msgstr "未来"
 msgid "Update area"
 msgstr "更新领域"
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
 msgid "Update password"
 msgstr "修改密码"
 
@@ -1271,7 +1364,7 @@ msgstr "更新时间"
 msgid "Updated successfully!"
 msgstr "更新成功！"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:86
+#: packages/components/src/SettingsDialog/Billing.tsx:85
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:143
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:149
 msgid "Upgrade"

@@ -70,6 +70,10 @@ msgstr "5 minutes"
 msgid "5 minutes early"
 msgstr "5 minutes early"
 
+#: packages/components/src/SettingsDialog/Profile.tsx:118
+msgid "A brief your introduction."
+msgstr "A brief your introduction."
+
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:49
 msgid "A structured note-taking App"
 msgstr "A structured note-taking App"
@@ -190,7 +194,7 @@ msgstr "An Introduction to PenX and How to Use It"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:97
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:26
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:17
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:16
 msgid "Appearance"
 msgstr "Appearance"
 
@@ -203,7 +207,7 @@ msgstr "Apple login"
 msgid "Are you sure delete it permanently?"
 msgstr "Are you sure delete it permanently?"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:95
+#: packages/components/src/SettingsDialog/Billing.tsx:94
 msgid "Are you sure you want to cancel subscription?"
 msgstr "Are you sure you want to cancel subscription?"
 
@@ -220,15 +224,27 @@ msgstr "Are you sure you want to publish this struct to the marketplace?"
 msgid "Areas"
 msgstr "Areas"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupDialog.tsx:44
+msgid "Backup to Google drive"
+msgstr "Backup to Google drive"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:90
+msgid "Backup to google drive successful!"
+msgstr "Backup to google drive successful!"
+
 #: apps/mobile/src/components/Profile/Profile.tsx:42
 #: packages/components/src/ProfileBasicInfo.tsx:22
 msgid "Believer"
 msgstr "Believer"
 
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:35
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
 msgid "Billing"
 msgstr "Billing"
+
+#: packages/components/src/SettingsDialog/Profile.tsx:115
+msgid "Bio"
+msgstr "Bio"
 
 #: packages/libs/src/getDefaultStructs.ts:296
 msgid "Bookmark"
@@ -242,22 +258,22 @@ msgstr "Boolean"
 msgid "Bubble"
 msgstr "Bubble"
 
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:43
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:46
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
 msgid "Cancel"
 msgstr "Cancel"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:103
+#: packages/components/src/SettingsDialog/Billing.tsx:102
 msgid "Cancel subscription"
 msgstr "Cancel subscription"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:99
+#: packages/components/src/SettingsDialog/Billing.tsx:98
 msgid "Cancel subscription successfully"
 msgstr "Cancel subscription successfully"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:94
+#: packages/components/src/SettingsDialog/Billing.tsx:93
 msgid "Cancel subscription?"
 msgstr "Cancel subscription?"
 
@@ -269,10 +285,11 @@ msgstr "Capture the beautiful moments"
 msgid "Card"
 msgstr "Card"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:84
+#: packages/components/src/SettingsDialog/Billing.tsx:83
 msgid "Change plan"
 msgstr "Change plan"
 
+#: apps/mobile/src/components/ChangeType.tsx:44
 #: packages/components/src/Creation/ChangeType.tsx:36
 msgid "Change type"
 msgstr "Change type"
@@ -296,12 +313,22 @@ msgstr "Color"
 msgid "Config"
 msgstr "Config"
 
+#: packages/components/src/SettingsDialog/Password.tsx:114
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:139
+msgid "Confirm"
+msgstr "Confirm"
+
+#: packages/components/src/SettingsDialog/Password.tsx:93
+msgid "Confirm password"
+msgstr "Confirm password"
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:52
 msgid "Confirm Publishing"
 msgstr "Confirm Publishing"
 
 #: packages/components/src/ProfileBasicInfo.tsx:53
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:77
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
@@ -313,6 +340,10 @@ msgstr "Copy"
 #: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr "Copy html"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
+msgid "Copy to clipboard"
+msgstr "Copy to clipboard"
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:51
 msgid "Coupon code applied successfully"
@@ -340,9 +371,14 @@ msgstr "Create one"
 
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:52
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:75
+#: packages/components/src/AddCreationButton.tsx:108
 #: packages/components/src/StructDialog/StructDialog.tsx:38
 msgid "Create struct"
 msgstr "Create struct"
+
+#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:67
+msgid "Create Tag"
+msgstr "Create Tag"
 
 #: packages/components/src/ColumnTypeName.tsx:29
 msgid "Created At"
@@ -511,7 +547,7 @@ msgstr "Find or create option"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:43
 #: packages/components/src/ProfileBasicInfo.tsx:23
-#: packages/components/src/SettingsDialog/Billing.tsx:38
+#: packages/components/src/SettingsDialog/Billing.tsx:37
 msgid "Free"
 msgstr "Free"
 
@@ -529,6 +565,10 @@ msgstr "Gallery"
 msgid "Gate this post, config who can read this post."
 msgstr "Gate this post, config who can read this post."
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:46
+msgid "Google drive backup password"
+msgstr "Google drive backup password"
+
 #: apps/mobile/src/components/Login/GoogleLoginButton.tsx:79
 #: apps/extension/components/Login.tsx:51
 #: packages/widgets/src/GoogleOauthButton.tsx:70
@@ -539,6 +579,10 @@ msgstr "Google login"
 #: apps/mobile/src/components/Profile/GuideEntryMenu.tsx:30
 msgid "Guide of PenX"
 msgstr "Guide of PenX"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:68
+msgid "Hide recovery phrase"
+msgstr "Hide recovery phrase"
 
 #: packages/libs/src/getDefaultStructs.ts:98
 msgid "High"
@@ -705,6 +749,7 @@ msgstr "My Site"
 #: apps/mobile/src/pages/PageHome/HomeFooter/NewCreationDrawer/MoreStructDrawer.tsx:24
 #: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/MoreStructDrawer.tsx:24
 #: apps/mobile/src/pages/PageHome/AllStructs/StructNav.tsx:18
+#: packages/components/src/AddCreationButton.tsx:48
 msgid "My structs"
 msgstr "My structs"
 
@@ -721,10 +766,12 @@ msgstr "My Structs"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:90
+#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:73
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
+#: packages/components/src/SettingsDialog/Profile.tsx:96
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
 #: packages/components/src/AreaDialog/AreaForm.tsx:163
@@ -788,6 +835,10 @@ msgstr "None"
 msgid "Note"
 msgstr "Note"
 
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelStruct.tsx:28
+msgid "Notes"
+msgstr "Notes"
+
 #: packages/components/src/ColumnTypeName.tsx:16
 msgid "Number"
 msgstr "Number"
@@ -827,8 +878,17 @@ msgstr "Page"
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:32
+#: packages/components/src/SettingsDialog/Password.tsx:72
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:93
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:108
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:124
 msgid "Password"
 msgstr "Password"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:86
+msgid "Passwords do not match"
+msgstr "Passwords do not match"
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:32
 #: packages/components/src/Sidebar/SyncButton.tsx:36
@@ -917,7 +977,7 @@ msgid "PRO yearly"
 msgstr "PRO yearly"
 
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:29
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:17
 msgid "Profile"
 msgstr "Profile"
 
@@ -955,6 +1015,14 @@ msgstr "Recently edited"
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:112
 msgid "Recently opened"
 msgstr "Recently opened"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:79
+msgid "Recover failed"
+msgstr "Recover failed"
+
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
+msgid "Recovery phrase"
+msgstr "Recovery phrase"
 
 #: apps/mobile/src/components/Login/RegisterForm.tsx:128
 #: apps/mobile/src/components/Login/PinCodeForm.tsx:136
@@ -994,6 +1062,15 @@ msgstr "Repeat"
 msgid "Resend"
 msgstr "Resend"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:81
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:108
+msgid "Restore"
+msgstr "Restore"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:28
+msgid "Restore from google drive"
+msgstr "Restore from google drive"
+
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:102
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:32
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:66
@@ -1001,7 +1078,8 @@ msgid "Sat"
 msgstr "Sat"
 
 #: apps/mobile/src/pages/PageNewCreation.tsx:96
-#: apps/mobile/src/components/ui/DrawerHeader.tsx:62
+#: apps/mobile/src/components/ui/DrawerHeader.tsx:67
+#: packages/components/src/SettingsDialog/Profile.tsx:134
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr "Save"
@@ -1049,6 +1127,10 @@ msgstr "Single Select"
 msgid "Slug"
 msgstr "Slug"
 
+#: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:94
+msgid "Something went wrong. Please try again later."
+msgstr "Something went wrong. Please try again later."
+
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
 #: packages/components/src/area-widgets/CreationItem.tsx:145
@@ -1065,6 +1147,7 @@ msgstr "Status"
 msgid "Struct installed successfully!"
 msgstr "Struct installed successfully!"
 
+#: packages/components/src/AddCreationButton.tsx:95
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:66
 msgid "Struct marketplace"
 msgstr "Struct marketplace"
@@ -1092,7 +1175,7 @@ msgstr "Structs"
 msgid "Subscribe now"
 msgstr "Subscribe now"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:61
+#: packages/components/src/SettingsDialog/Billing.tsx:60
 msgid "Subscribe to PenX to support us in building the best product."
 msgstr "Subscribe to PenX to support us in building the best product."
 
@@ -1153,9 +1236,15 @@ msgstr "System"
 msgid "Table"
 msgstr "Table"
 
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:69
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:79
 #: packages/components/src/Creation/Tags.tsx:94
 msgid "Tag"
 msgstr "Tag"
+
+#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:72
+msgid "Tag name"
+msgstr "Tag name"
 
 #: packages/libs/src/getDefaultStructs.ts:284
 msgid "Task"
@@ -1177,6 +1266,10 @@ msgstr "Theme"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionItem.tsx:97
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr "This action cannot be undone. Are you sure you want to delete this property?"
+
+#: packages/components/src/SettingsDialog/Profile.tsx:99
+msgid "This is your public display name."
+msgstr "This is your public display name."
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:100
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:30
@@ -1255,7 +1348,7 @@ msgstr "Upcoming"
 msgid "Update area"
 msgstr "Update area"
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
 msgid "Update password"
 msgstr "Update password"
 
@@ -1271,7 +1364,7 @@ msgstr "Updated At"
 msgid "Updated successfully!"
 msgstr "Updated successfully!"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:86
+#: packages/components/src/SettingsDialog/Billing.tsx:85
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:143
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:149
 msgid "Upgrade"

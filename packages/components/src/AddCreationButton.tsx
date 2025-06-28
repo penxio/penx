@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Trans } from '@lingui/react/macro'
-import { EllipsisIcon, PlusIcon } from 'lucide-react'
+import { EllipsisIcon, PlusIcon, StoreIcon } from 'lucide-react'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
@@ -83,6 +83,19 @@ export function AddCreationButton({ className }: Props) {
         </div>
 
         <div className="border-foreground/8 border-t p-1">
+          <MenuItem
+            className="h-9"
+            onClick={() => {
+              store.panels.openAllStructs()
+              setOpen(false)
+            }}
+          >
+            <StoreIcon size={18}></StoreIcon>
+            <div>
+              <Trans>Struct marketplace</Trans>
+            </div>
+          </MenuItem>
+
           <MenuItem
             className="h-9"
             onClick={() => {

@@ -79,7 +79,7 @@ export const RecoveryPhrase: FC<Props> = () => {
         >
           <Copy size={18}></Copy>
           <div>
-            <Trans>Copy to clipboard</Trans>
+            <Trans>Copied to clipboard</Trans>
           </div>
         </Button>
       </div>

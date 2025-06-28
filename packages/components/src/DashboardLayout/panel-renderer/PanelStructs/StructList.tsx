@@ -2,6 +2,7 @@ import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { getBgColor } from '@penx/libs/color-helper'
 import { cn } from '@penx/utils'
+import { ColorfulStructIcon } from '../../../ColorfulStructIcon'
 
 interface Props {
   onSelect: (struct: Struct) => void
@@ -19,9 +20,7 @@ export function StructList({ onSelect }: Props) {
           )}
           onClick={() => onSelect(struct)}
         >
-          <span
-            className={cn('size-2 rounded-full', getBgColor(struct.color))}
-          ></span>
+          <ColorfulStructIcon struct={struct} />
           <div>{struct.name}</div>
         </div>
       ))}
