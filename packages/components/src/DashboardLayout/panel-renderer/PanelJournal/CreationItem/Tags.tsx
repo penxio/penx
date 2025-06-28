@@ -29,7 +29,7 @@ export function Tags({ creation }: Props) {
               getTextColorByName(tag.color),
             )}
           >
-            <HashIcon size={12} className="inline-flex group-hover:hidden" />
+            <HashIcon size={12} className="inline-flex" />
             <div>{tag.name}</div>
           </div>
         )

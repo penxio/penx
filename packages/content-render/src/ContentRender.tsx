@@ -24,5 +24,5 @@ export function ContentRender({ content, className }: Props) {
     )
   }
 
-  return <NovelEditor className="px-3" value={content} />
+  return <NovelEditor className={cn('px-3', className)} value={content} />
 }

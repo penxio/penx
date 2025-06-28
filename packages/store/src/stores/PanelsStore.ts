@@ -6,7 +6,7 @@ import { atom } from 'jotai'
 import { isMobileApp, WidgetType } from '@penx/constants'
 import { localDB } from '@penx/local-db'
 import { NodeType } from '@penx/model-type'
-import { Panel, PanelType, Widget } from '@penx/types'
+import { Panel, PanelType, StructType, Widget } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
 
@@ -77,6 +77,7 @@ export class PanelsStore {
   async updateMainPanel(panel: Partial<Panel>) {
     let panels = this.get()
     let len = panels.length
+    const structs = this.store.structs.get()
 
     let index = panels.findIndex((p) => p.type !== PanelType.WIDGET)
     if (index < 0) index = panels.length - 1
@@ -85,6 +86,14 @@ export class PanelsStore {
 
     if (journalIndex > -1 && !isMobileApp) {
       index = journalIndex + 1
+    }
+
+    const noteStruct = structs.find((s) => s.props.type === StructType.NOTE)
+
+    const noteIndex = panels.findIndex((p) => p.structId === noteStruct?.id)
+
+    if (noteIndex > -1) {
+      index = noteIndex + 1
     }
 
     if (panel.type === PanelType.CREATION) {
@@ -162,7 +171,10 @@ export class PanelsStore {
         draft[0] = panel
       }
     })
-    await this.savePanels(panels)
+
+    setTimeout(() => {
+      this.savePanels(panels)
+    }, 0)
   }
 
   async openAllStructs() {

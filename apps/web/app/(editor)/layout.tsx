@@ -18,6 +18,7 @@ import { locales } from '@penx/constants'
 import { LocaleProvider } from '@penx/locales'
 import { cn } from '@penx/utils'
 import { LoginDialog } from '@penx/widgets/LoginDialog/LoginDialog'
+import { PanelNotes } from '../../../../packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelNotes'
 import { WatchAppEvent } from './WatchAppEvent'
 
 const roboto = Poppins({

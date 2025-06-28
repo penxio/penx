@@ -1,82 +1,66 @@
-import { useRef } from 'react'
-import { useVirtualizer } from '@tanstack/react-virtual'
-import './PanelNotes.css'
-import { useCreations } from '@penx/hooks/useCreations'
+'use client'
 
-const rows = new Array(10000)
-  .fill(true)
-  .map(() => 25 + Math.round(Math.random() * 100))
+import React, { memo, useState } from 'react'
+import { format } from 'date-fns'
+import { ContentRender } from '@penx/content-render'
+import { Creation } from '@penx/domain'
+import { useCreations } from '@penx/hooks/useCreations'
+import { store } from '@penx/store'
+import { PanelType } from '@penx/types'
+import { docToString } from '@penx/utils/editorHelper'
+import { Tags } from './CreationItem/Tags'
+import { CustomMasonry } from './CustomMasonry'
 
 interface Props {
-  height: number | string
-  width: number | string
+  height: number
+  width: number
 }
 
-export function PanelNotes({ height, width }: Props) {
+export const PanelNotes = (props: Props) => {
   const { creations } = useCreations()
   const notes = creations.filter((c) => c.isNote)
-
-  console.log('=notes.len:====:', notes.length)
-
-  const parentRef = useRef<HTMLDivElement>(null)
-
-  const rowVirtualizer = useVirtualizer({
-    // count: rows.length,
-    count: notes.length / 4,
-    getScrollElement: () => parentRef.current,
-    estimateSize: (i) => rows[i],
-    overscan: 5,
-    lanes: 4,
-  })
-
-  // console.log(
-  //   '======rowVirtualizer.getTotalSize():',
-  //   rowVirtualizer.getTotalSize(),
-  // )
-
   return (
-    <>
-      <div
-        ref={parentRef}
-        className="List bg-amber-200"
-        style={{
-          height: height,
-          width: width,
-          overflow: 'auto',
-        }}
-      >
-        <div
-          // className="bg-red-200"
-          style={{
-            height: `${rowVirtualizer.getTotalSize()}px`,
-            width: '100%',
-            position: 'relative',
-          }}
-        >
-          {rowVirtualizer.getVirtualItems().map((virtualRow) => {
-            console.log('=====>>>>>virtualRow:', virtualRow)
-
-            return (
-              <div
-                key={virtualRow.index}
-                className={
-                  virtualRow.index % 2 ? 'ListItemOdd' : 'ListItemEven'
-                }
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: `${virtualRow.lane * 25}%`,
-                  width: '25%',
-                  height: `${rows[virtualRow.index]}px`,
-                  transform: `translateY(${virtualRow.start}px)`,
-                }}
-              >
-                Row {virtualRow.index}
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </>
+    <CustomMasonry
+      className="p-4"
+      items={notes}
+      render={NoteCard}
+      overscanBy={10}
+      width={Number(props.width)}
+      height={Number(props.height)}
+    />
   )
 }
+
+interface ItemProps {
+  index: number
+  data: Creation
+  width: number
+}
+const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
+  return (
+    <div
+      className="shadow-card bg-background cursor-pointer rounded-xl p-3 text-base"
+      onClick={() => {
+        store.panels.updateMainPanel({
+          type: PanelType.CREATION,
+          creationId: creation.id,
+        })
+      }}
+    >
+      <div className="break-words">
+        {docToString(JSON.parse(creation.content))}
+      </div>
+      {/* <ContentRender
+        className="px-0 text-sm"
+        content={JSON.parse(creation.content)}
+      /> */}
+
+      <div className="flex items-center gap-2">
+        <div className="text-foreground/50 text-[10px]">
+          {format(creation.createdAt, 'HH:mm')}
+        </div>
+        <Tags creation={creation} />
+      </div>
+    </div>
+  )
+})

@@ -150,6 +150,7 @@
     "lodash.debounce": "^4.0.8",
     "lowlight": "^3.3.0",
     "lucide-react": "0.508.0",
+    "masonic": "^4.1.0",
     "mime": "^4.0.4",
     "mime-types": "^2.1.35",
     "mitt": "^3.0.1",
