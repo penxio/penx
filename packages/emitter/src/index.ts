@@ -28,6 +28,7 @@ export type AppEvent = {
   ROUTE_TO_NEW_CREATION: any
   ROUTE_TO_TASKS: any
   ROUTE_TO_TAG_CREATIONS: any
+  ROUTE_TO_STRUCT_CREATIONS: any
   ROUTE_TO_BACK: any
 
   SELECT_DATE: Date

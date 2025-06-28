@@ -73,6 +73,7 @@ import { PageLogin } from './pages/PageLogin'
 import { PageNewCreation } from './pages/PageNewCreation'
 import { PageProfile } from './pages/PageProfile'
 import { PageStruct } from './pages/PageStruct/PageStruct'
+import { PageStructCreations } from './pages/PageStructCreations/PageStructCreations'
 import { PageStructInfo } from './pages/PageStructInfo/PageStructInfo'
 import { PageSync } from './pages/PageSync/PageSync'
 import { PageTagCreations } from './pages/PageTagCreations/PageTagCreations'
@@ -259,6 +260,16 @@ const AppContent = memo(
       appEmitter.on('ROUTE_TO_TAG_CREATIONS', handle)
       return () => {
         appEmitter.off('ROUTE_TO_TAG_CREATIONS', handle)
+      }
+    }, [])
+
+    useEffect(() => {
+      function handle(struct: any) {
+        nav.current?.push(PageStructCreations, { struct })
+      }
+      appEmitter.on('ROUTE_TO_STRUCT_CREATIONS', handle)
+      return () => {
+        appEmitter.off('ROUTE_TO_STRUCT_CREATIONS', handle)
       }
     }, [])
 

@@ -1,9 +1,11 @@
 import { useMemo } from 'react'
+import { PageStructCreations } from '@/pages/PageStructCreations/PageStructCreations'
 import { PageStructInfo } from '@/pages/PageStructInfo/PageStructInfo'
 import { lighten, opacify, transparentize } from '@fower/color-helper'
 import { IonNavLink } from '@ionic/react'
 import { Trans } from '@lingui/react/macro'
 import { Emoji } from 'emoji-picker-react'
+import { ChevronRightIcon } from 'lucide-react'
 import { ColorfulStructIcon } from '@penx/components/ColorfulStructIcon'
 import { Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -18,11 +20,9 @@ import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
 import { StructIcon } from '@penx/widgets/StructIcon'
 
-interface Props {
-  onSelect?: (struct: Struct) => void
-}
+interface Props {}
 
-export function StructList({ onSelect }: Props) {
+export function StructList({}: Props) {
   const { structs } = useStructs()
   return (
     <div className="flex flex-col gap-2 px-1 pb-2">
@@ -34,7 +34,8 @@ export function StructList({ onSelect }: Props) {
             className={cn(
               'text-foreground hover:bg-foreground/5 inline-flex cursor-pointer items-center justify-between gap-2 rounded-full py-2',
             )}
-            component={() => <PageStructInfo struct={struct} />}
+            // component={() => <PageStructInfo struct={struct} />}
+            component={() => <PageStructCreations struct={struct} />}
           >
             <div className="flex items-center gap-2">
               <ColorfulStructIcon struct={struct} />
@@ -50,9 +51,10 @@ export function StructList({ onSelect }: Props) {
               </div>
             </div>
 
-            <Button className="shrink-0" size="sm">
-              <Trans>Edit</Trans>
-            </Button>
+            <ChevronRightIcon
+              size={24}
+              className="text-foreground/50 ml-auto"
+            />
           </IonNavLink>
         )
       })}

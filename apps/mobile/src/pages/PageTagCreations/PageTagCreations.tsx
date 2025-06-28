@@ -1,6 +1,6 @@
 import React from 'react'
 import { MobileContent } from '@/components/MobileContent'
-import { CreationItem } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem'
+import { CreationCard } from '@penx/components/CreationCard/CreationCard'
 import { Tag } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useCreationTags } from '@penx/hooks/useCreationTags'
@@ -20,11 +20,11 @@ function Content({ tag }: Props) {
   const list = creationTags.filter((i) => i.tagId === tag.id)
 
   return (
-    <MobileContent title={tag.name}>
+    <MobileContent title={tag.name} backgroundColor="#f6f6f6">
       <div className="mx-auto flex max-w-xl flex-col gap-4">
         {list.map((item) => {
           const creation = creationMap[item.creationId]
-          return <CreationItem key={item.id} className="" creation={creation} />
+          return <CreationCard key={item.id} creation={creation} />
         })}
       </div>
     </MobileContent>
