@@ -33,6 +33,9 @@ export type AppEvent = {
 
   SELECT_DATE: Date
   IMPACT: any
+
+  START_SYNC_NODES: any
+  STOP_SYNC_NODES: any
 }
 
 export const appEmitter = mitt<AppEvent>()

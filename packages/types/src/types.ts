@@ -349,6 +349,10 @@ export type Site = {
     appearance: AppearanceConfig
     features: Record<string, any>
   }
+  syncServer: {
+    host: string
+    enabled: boolean
+  }
   themeName: string
   themeConfig: Record<string, any>
   theme: {

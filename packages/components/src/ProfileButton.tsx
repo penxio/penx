@@ -8,6 +8,7 @@ import ky from 'ky'
 import {
   BadgeCheck,
   Bell,
+  CogIcon,
   LogOut,
   MessageCircleIcon,
   Moon,
@@ -209,7 +210,7 @@ export function ProfileButton({ loginButton }: Props) {
                 // appEmitter.emit('ROUTE_TO_SETTINGS')
               }}
             >
-              <BadgeCheck />
+              <CogIcon />
               <Trans>Settings</Trans>
             </DropdownMenuItem>
 

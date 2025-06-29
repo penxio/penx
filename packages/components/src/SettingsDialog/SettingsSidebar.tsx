@@ -4,12 +4,15 @@ import * as React from 'react'
 import { Trans } from '@lingui/react/macro'
 import {
   CreditCardIcon,
+  DatabaseBackupIcon,
   KeyRoundIcon,
   PaletteIcon,
+  ServerIcon,
   UserIcon,
 } from 'lucide-react'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
+import { Badge } from '@penx/uikit/ui/badge'
 import { cn } from '@penx/utils'
 import { ProfileBasicInfo } from '../ProfileBasicInfo'
 import { SettingsNav, useSettingsDialog } from './useSettingsDialog'
@@ -32,8 +35,19 @@ export function SettingsSidebar() {
           <Trans>Password</Trans>
         </Item>
         <Item icon={<CreditCardIcon size={16} />} navName={SettingsNav.BILLING}>
-          <Trans>Billing</Trans>
+          <Trans>Billing & Subscriptions</Trans>
         </Item>
+        <Item icon={<ServerIcon size={16} />} navName={SettingsNav.SYNC_SERVER}>
+          <Trans>Sync server</Trans>
+          <Badge
+            className="border-foreground/12 text-foreground/60 ml-2 h-6 rounded-full"
+            variant="outline"
+            size="sm"
+          >
+            Beta
+          </Badge>
+        </Item>
+
         {/* <Item
           icon={<CreditCardIcon size={16} />}
           navName={SettingsNav.RECOVER_PHRASE}

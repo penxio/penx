@@ -11,6 +11,7 @@ import {
   IJournalNode,
   IMessage,
   INode,
+  ISettingsNode,
   ISiteNode,
   IStructNode,
   ISuggestion,
@@ -358,6 +359,19 @@ class LocalDB extends Dexie {
     await this.updateTagProps(creationTag.props.tagId, {
       creationCount: count,
     })
+  }
+
+  getSettings = (siteId: string) => {
+    return this.node
+      .where({ type: NodeType.SETTINGS, siteId })
+      .first() as unknown as Promise<ISettingsNode>
+  }
+
+  updateSettingsProps = async (
+    id: string,
+    props: Partial<ISettingsNode['props']>,
+  ) => {
+    await this.updateNodeProps(id, props)
   }
 
   private async addChange(

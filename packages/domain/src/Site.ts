@@ -36,6 +36,10 @@ export class Site {
     return this.props.image ? getUrl(this.props.image) : ''
   }
 
+  get usingCustomSyncServer() {
+    return this.props.usingCustomSyncServer ?? false
+  }
+
   get config() {
     return this.props.config
   }

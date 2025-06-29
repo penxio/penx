@@ -74,12 +74,12 @@ msgstr "5 minutes early"
 msgid "A brief your introduction."
 msgstr "A brief your introduction."
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:49
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:48
 msgid "A structured note-taking App"
 msgstr "A structured note-taking App"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:109
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:29
+#: apps/mobile/src/components/Profile/Profile.tsx:116
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:28
 msgid "About"
 msgstr "About"
 
@@ -87,15 +87,16 @@ msgstr "About"
 msgid "Access control"
 msgstr "Access control"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:148
+#: apps/mobile/src/components/Profile/Profile.tsx:155
 msgid "Account deleted successfully!"
 msgstr "Account deleted successfully!"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:147
+#: apps/mobile/src/components/Profile/Profile.tsx:154
 msgid "Account deletion in progress..."
 msgstr "Account deletion in progress..."
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:62
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:74
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Add"
 msgstr "Add"
@@ -128,7 +129,7 @@ msgstr "Add property"
 msgid "Add widget"
 msgstr "Add widget"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:114
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
 #: packages/widgets/src/WidgetName.tsx:38
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:109
 msgid "AI chat"
@@ -152,20 +153,20 @@ msgstr "AI Transcribing"
 msgid "AI transcription for voice"
 msgstr "AI transcription for voice"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:24
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
 msgid "All"
 msgstr "All"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:96
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:102
 #: packages/widgets/src/WidgetName.tsx:18
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:91
 msgid "All creations"
 msgstr "All creations"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:99
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:105
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:94
 msgid "All structs"
 msgstr "All structs"
@@ -175,7 +176,7 @@ msgstr "All structs"
 msgid "All tasks"
 msgstr "All tasks"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:134
+#: apps/mobile/src/components/Profile/Profile.tsx:141
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 
@@ -192,7 +193,7 @@ msgstr "An area for sharing thoughts, stories, and insights."
 msgid "An Introduction to PenX and How to Use It"
 msgstr "An Introduction to PenX and How to Use It"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:97
+#: apps/mobile/src/components/Profile/Profile.tsx:104
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:26
 #: packages/components/src/SettingsDialog/SettingsContent.tsx:16
 msgid "Appearance"
@@ -211,7 +212,7 @@ msgstr "Are you sure delete it permanently?"
 msgid "Are you sure you want to cancel subscription?"
 msgstr "Are you sure you want to cancel subscription?"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:167
+#: apps/mobile/src/components/Profile/Profile.tsx:174
 msgid "Are you sure you want to log out?"
 msgstr "Are you sure you want to log out?"
 
@@ -232,7 +233,7 @@ msgstr "Backup to Google drive"
 msgid "Backup to google drive successful!"
 msgstr "Backup to google drive successful!"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:42
+#: apps/mobile/src/components/Profile/Profile.tsx:45
 #: packages/components/src/ProfileBasicInfo.tsx:22
 msgid "Believer"
 msgstr "Believer"
@@ -298,13 +299,13 @@ msgstr "Change type"
 msgid "Cloud sync"
 msgstr "Cloud sync"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:103
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:109
 #: packages/widgets/src/WidgetName.tsx:26
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:98
 msgid "Collection"
 msgstr "Collection"
 
-#: apps/mobile/src/components/ColorSelector.tsx:40
+#: apps/mobile/src/components/ColorSelector.tsx:45
 #: packages/components/src/StructDialog/EditStructForm.tsx:131
 msgid "Color"
 msgstr "Color"
@@ -373,7 +374,7 @@ msgstr "Create one"
 msgid "Create struct"
 msgstr "Create struct"
 
-#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:67
+#: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:70
 msgid "Create Tag"
 msgstr "Create Tag"
 
@@ -421,8 +422,8 @@ msgstr "Date"
 msgid "Delete"
 msgstr "Delete"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:133
-#: apps/mobile/src/components/Profile/Profile.tsx:157
+#: apps/mobile/src/components/Profile/Profile.tsx:140
+#: apps/mobile/src/components/Profile/Profile.tsx:164
 msgid "Delete account"
 msgstr "Delete account"
 
@@ -463,7 +464,8 @@ msgstr "Done"
 msgid "Due date"
 msgstr "Due date"
 
-#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:54
+#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:52
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:315
 #: packages/components/src/CreationCard/CreationCard.tsx:292
 msgid "Edit"
@@ -492,12 +494,15 @@ msgstr "Edit props"
 msgid "Edit struct"
 msgstr "Edit struct"
 
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:66
+msgid "Edit Tag"
+msgstr "Edit Tag"
+
 #: apps/mobile/src/components/EditWidget/EditWidgetButton.tsx:30
 msgid "Edit widget"
 msgstr "Edit widget"
 
 #: apps/mobile/src/components/EditWidget/EditWidgetButton.tsx:35
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:68
 msgid "Edit widgets"
 msgstr "Edit widgets"
 
@@ -523,11 +528,11 @@ msgstr "Empty"
 msgid "End-to-end encryption"
 msgstr "End-to-end encryption"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:150
+#: apps/mobile/src/components/Profile/Profile.tsx:157
 msgid "Failed to delete account. Please try again."
 msgstr "Failed to delete account. Please try again."
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:107
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:113
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:102
 msgid "Favorites"
@@ -542,7 +547,7 @@ msgstr "Favorites"
 msgid "Find or create option"
 msgstr "Find or create option"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:43
+#: apps/mobile/src/components/Profile/Profile.tsx:46
 #: packages/components/src/ProfileBasicInfo.tsx:23
 #: packages/components/src/SettingsDialog/Billing.tsx:37
 msgid "Free"
@@ -620,7 +625,7 @@ msgstr "Invalid phone number."
 msgid "Journal layout"
 msgstr "Journal layout"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:92
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:98
 #: packages/widgets/src/WidgetName.tsx:14
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:87
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
@@ -649,7 +654,7 @@ msgstr "Light"
 msgid "List"
 msgstr "List"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/AddMyListButton.tsx:50
+#: apps/mobile/src/components/StructCreations/TaskList/AddMyListButton.tsx:50
 msgid "List name"
 msgstr "List name"
 
@@ -667,8 +672,8 @@ msgstr "Local backup"
 msgid "Log in"
 msgstr "Log in"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:166
-#: apps/mobile/src/components/Profile/Profile.tsx:176
+#: apps/mobile/src/components/Profile/Profile.tsx:173
+#: apps/mobile/src/components/Profile/Profile.tsx:183
 #: packages/components/src/ProfileButton.tsx:262
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -683,7 +688,7 @@ msgstr "Login"
 msgid "Login code"
 msgstr "Login code"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:62
+#: apps/mobile/src/components/Profile/Profile.tsx:65
 msgid "Login or Register"
 msgstr "Login or Register"
 
@@ -734,7 +739,7 @@ msgstr "Multiple Select"
 msgid "My area"
 msgstr "My area"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskList.tsx:28
+#: apps/mobile/src/components/StructCreations/TaskList/TaskList.tsx:28
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:47
 msgid "My lists"
 msgstr "My lists"
@@ -763,7 +768,8 @@ msgstr "My Structs"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:90
-#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:73
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:72
+#: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
@@ -775,7 +781,12 @@ msgstr "My Structs"
 msgid "Name"
 msgstr "Name"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/AddMyListButton.tsx:43
+#: apps/mobile/src/components/Profile/NavigationsMenu.tsx:32
+#: apps/mobile/src/components/Profile/NavigationsMenu.tsx:42
+msgid "Navigations"
+msgstr "Navigations"
+
+#: apps/mobile/src/components/StructCreations/TaskList/AddMyListButton.tsx:43
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/AddMyListButton.tsx:41
 msgid "New list"
 msgstr "New list"
@@ -800,7 +811,7 @@ msgstr "No creation yet!"
 #: apps/mobile/src/pages/PageHome/HomeFooter/NewCreationDrawer/StructList.tsx:55
 #: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/StructList.tsx:58
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:58
-#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:47
+#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:44
 msgid "No introduction for the struct"
 msgstr "No introduction for the struct"
 
@@ -947,12 +958,12 @@ msgstr "Privacy Policy"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:67
-#: apps/mobile/src/components/Profile/Profile.tsx:40
+#: apps/mobile/src/components/Profile/Profile.tsx:43
 #: packages/components/src/ProfileBasicInfo.tsx:20
 msgid "PRO"
 msgstr "PRO"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:41
+#: apps/mobile/src/components/Profile/Profile.tsx:44
 #: packages/components/src/ProfileBasicInfo.tsx:21
 msgid "PRO + AI"
 msgstr "PRO + AI"
@@ -1001,13 +1012,13 @@ msgstr "Publish your creation"
 msgid "Rate"
 msgstr "Rate"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:111
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:117
 #: packages/widgets/src/WidgetName.tsx:34
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:106
 msgid "Recently edited"
 msgstr "Recently edited"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:117
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:123
 #: packages/widgets/src/WidgetName.tsx:46
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:112
 msgid "Recently opened"
@@ -1074,7 +1085,7 @@ msgstr "Restore from google drive"
 msgid "Sat"
 msgstr "Sat"
 
-#: apps/mobile/src/pages/PageNewCreation.tsx:96
+#: apps/mobile/src/pages/PageNewCreation.tsx:97
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:67
 #: packages/components/src/SettingsDialog/Profile.tsx:134
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
@@ -1085,8 +1096,8 @@ msgstr "Save"
 msgid "Search"
 msgstr "Search"
 
-#: apps/mobile/src/components/ColorSelector.tsx:56
-#: apps/mobile/src/components/ColorSelector.tsx:67
+#: apps/mobile/src/components/ColorSelector.tsx:61
+#: apps/mobile/src/components/ColorSelector.tsx:72
 msgid "Select a color"
 msgstr "Select a color"
 
@@ -1160,8 +1171,9 @@ msgstr "Struct name"
 msgid "Struct published successfully!"
 msgstr "Struct published successfully!"
 
-#: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:12
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:142
+#: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:16
+#: apps/mobile/src/components/Profile/StructsMenu.tsx:24
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
 #: packages/widgets/src/WidgetName.tsx:22
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
@@ -1233,17 +1245,20 @@ msgstr "System"
 msgid "Table"
 msgstr "Table"
 
-#: apps/mobile/src/components/MobileTags/MobileTags.tsx:69
-#: apps/mobile/src/components/MobileTags/MobileTags.tsx:79
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:67
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:77
 #: packages/components/src/Creation/Tags.tsx:94
 msgid "Tag"
 msgstr "Tag"
 
-#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:72
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:71
+#: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:75
 msgid "Tag name"
 msgstr "Tag name"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
+#: apps/mobile/src/components/Profile/TagsMenu.tsx:34
+#: apps/mobile/src/components/Profile/TagsMenu.tsx:44
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:126
 #: packages/widgets/src/WidgetName.tsx:42
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:115
 msgid "Tags"
@@ -1292,7 +1307,7 @@ msgstr "Title"
 msgid "To Do"
 msgstr "To Do"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:21
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:21
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
@@ -1301,7 +1316,7 @@ msgid "Today"
 msgstr "Today"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:22
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
@@ -1339,7 +1354,7 @@ msgid "Unstar"
 msgstr "Unstar"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:31
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:23
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:23
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:38

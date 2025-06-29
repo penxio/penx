@@ -74,12 +74,12 @@ msgstr "提前5分钟"
 msgid "A brief your introduction."
 msgstr "介绍一下你自己"
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:49
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:48
 msgid "A structured note-taking App"
 msgstr "一个结构化的笔记软件"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:109
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:29
+#: apps/mobile/src/components/Profile/Profile.tsx:116
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:28
 msgid "About"
 msgstr "关于"
 
@@ -87,15 +87,16 @@ msgstr "关于"
 msgid "Access control"
 msgstr "访问控制"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:148
+#: apps/mobile/src/components/Profile/Profile.tsx:155
 msgid "Account deleted successfully!"
 msgstr "账户已成功删除！"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:147
+#: apps/mobile/src/components/Profile/Profile.tsx:154
 msgid "Account deletion in progress..."
 msgstr "账户删除处理中…"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:62
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:74
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Add"
 msgstr "添加"
@@ -128,7 +129,7 @@ msgstr "新增属性"
 msgid "Add widget"
 msgstr "添加组件"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:114
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
 #: packages/widgets/src/WidgetName.tsx:38
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:109
 msgid "AI chat"
@@ -152,20 +153,20 @@ msgstr "AI 转录中"
 msgid "AI transcription for voice"
 msgstr "AI 语音转录"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:24
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
 msgid "All"
 msgstr "全部"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:96
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:102
 #: packages/widgets/src/WidgetName.tsx:18
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:91
 msgid "All creations"
 msgstr "所有创作"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:99
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:105
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:94
 msgid "All structs"
 msgstr "所有结构体"
@@ -175,7 +176,7 @@ msgstr "所有结构体"
 msgid "All tasks"
 msgstr "全部待办"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:134
+#: apps/mobile/src/components/Profile/Profile.tsx:141
 msgid "All your data will be deleted. This action cannot be undone. Are you sure you want to delete your account?"
 msgstr "所有数据将被删除，此操作无法撤销。您确定要删除您的账户吗？"
 
@@ -192,7 +193,7 @@ msgstr "一个分享想法、故事和见解的空间。"
 msgid "An Introduction to PenX and How to Use It"
 msgstr "PenX介绍与使用方法"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:97
+#: apps/mobile/src/components/Profile/Profile.tsx:104
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:26
 #: packages/components/src/SettingsDialog/SettingsContent.tsx:16
 msgid "Appearance"
@@ -211,7 +212,7 @@ msgstr "确定要永久删除吗？"
 msgid "Are you sure you want to cancel subscription?"
 msgstr "你确定要取消订阅吗？"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:167
+#: apps/mobile/src/components/Profile/Profile.tsx:174
 msgid "Are you sure you want to log out?"
 msgstr "您确定要退出登录吗？"
 
@@ -232,7 +233,7 @@ msgstr "备份到 Google 云盘"
 msgid "Backup to google drive successful!"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:42
+#: apps/mobile/src/components/Profile/Profile.tsx:45
 #: packages/components/src/ProfileBasicInfo.tsx:22
 msgid "Believer"
 msgstr ""
@@ -298,13 +299,13 @@ msgstr "更改类型"
 msgid "Cloud sync"
 msgstr "云端同步"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:103
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:109
 #: packages/widgets/src/WidgetName.tsx:26
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:98
 msgid "Collection"
 msgstr "合集"
 
-#: apps/mobile/src/components/ColorSelector.tsx:40
+#: apps/mobile/src/components/ColorSelector.tsx:45
 #: packages/components/src/StructDialog/EditStructForm.tsx:131
 msgid "Color"
 msgstr "颜色"
@@ -373,7 +374,7 @@ msgstr "创建账户"
 msgid "Create struct"
 msgstr "创建结构体"
 
-#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:67
+#: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:70
 msgid "Create Tag"
 msgstr "创建标签"
 
@@ -421,8 +422,8 @@ msgstr "日期"
 msgid "Delete"
 msgstr "删除"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:133
-#: apps/mobile/src/components/Profile/Profile.tsx:157
+#: apps/mobile/src/components/Profile/Profile.tsx:140
+#: apps/mobile/src/components/Profile/Profile.tsx:164
 msgid "Delete account"
 msgstr "删除账户"
 
@@ -463,7 +464,8 @@ msgstr "已完成"
 msgid "Due date"
 msgstr "截止日期"
 
-#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:54
+#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:52
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:315
 #: packages/components/src/CreationCard/CreationCard.tsx:292
 msgid "Edit"
@@ -492,12 +494,15 @@ msgstr "编辑属性"
 msgid "Edit struct"
 msgstr "编辑结构体"
 
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:66
+msgid "Edit Tag"
+msgstr "编辑标签"
+
 #: apps/mobile/src/components/EditWidget/EditWidgetButton.tsx:30
 msgid "Edit widget"
 msgstr "编辑组件"
 
 #: apps/mobile/src/components/EditWidget/EditWidgetButton.tsx:35
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:68
 msgid "Edit widgets"
 msgstr "编辑组件"
 
@@ -523,11 +528,11 @@ msgstr "空白"
 msgid "End-to-end encryption"
 msgstr "端到端加密"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:150
+#: apps/mobile/src/components/Profile/Profile.tsx:157
 msgid "Failed to delete account. Please try again."
 msgstr "删除账户失败，请重试。"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:107
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:113
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:102
 msgid "Favorites"
@@ -542,7 +547,7 @@ msgstr "收藏"
 msgid "Find or create option"
 msgstr "查找或创建选项"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:43
+#: apps/mobile/src/components/Profile/Profile.tsx:46
 #: packages/components/src/ProfileBasicInfo.tsx:23
 #: packages/components/src/SettingsDialog/Billing.tsx:37
 msgid "Free"
@@ -620,7 +625,7 @@ msgstr "手机号码无效"
 msgid "Journal layout"
 msgstr "日记布局"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:92
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:98
 #: packages/widgets/src/WidgetName.tsx:14
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:87
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
@@ -649,7 +654,7 @@ msgstr "浅色"
 msgid "List"
 msgstr "列表"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/AddMyListButton.tsx:50
+#: apps/mobile/src/components/StructCreations/TaskList/AddMyListButton.tsx:50
 msgid "List name"
 msgstr "列表名称"
 
@@ -667,8 +672,8 @@ msgstr "本地备份"
 msgid "Log in"
 msgstr "登录"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:166
-#: apps/mobile/src/components/Profile/Profile.tsx:176
+#: apps/mobile/src/components/Profile/Profile.tsx:173
+#: apps/mobile/src/components/Profile/Profile.tsx:183
 #: packages/components/src/ProfileButton.tsx:262
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -683,7 +688,7 @@ msgstr "登录"
 msgid "Login code"
 msgstr "登录验证码"
 
-#: apps/mobile/src/components/Profile/Profile.tsx:62
+#: apps/mobile/src/components/Profile/Profile.tsx:65
 msgid "Login or Register"
 msgstr "登录或注册"
 
@@ -734,7 +739,7 @@ msgstr "多选"
 msgid "My area"
 msgstr "我的领域"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskList.tsx:28
+#: apps/mobile/src/components/StructCreations/TaskList/TaskList.tsx:28
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:47
 msgid "My lists"
 msgstr "我的列表"
@@ -763,7 +768,8 @@ msgstr "我的结构体"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:95
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:72
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:90
-#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:73
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:72
+#: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
@@ -775,7 +781,12 @@ msgstr "我的结构体"
 msgid "Name"
 msgstr "名称"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/AddMyListButton.tsx:43
+#: apps/mobile/src/components/Profile/NavigationsMenu.tsx:32
+#: apps/mobile/src/components/Profile/NavigationsMenu.tsx:42
+msgid "Navigations"
+msgstr "导航"
+
+#: apps/mobile/src/components/StructCreations/TaskList/AddMyListButton.tsx:43
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/AddMyListButton.tsx:41
 msgid "New list"
 msgstr "创建列表"
@@ -800,7 +811,7 @@ msgstr "暂无创作！"
 #: apps/mobile/src/pages/PageHome/HomeFooter/NewCreationDrawer/StructList.tsx:55
 #: apps/mobile/src/pages/PageHome/HomeFooter/MoreStructDrawer/StructList.tsx:58
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:58
-#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:47
+#: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:44
 msgid "No introduction for the struct"
 msgstr "该结构体暂无介绍！"
 
@@ -947,12 +958,12 @@ msgstr "隐私政策"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:60
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:67
-#: apps/mobile/src/components/Profile/Profile.tsx:40
+#: apps/mobile/src/components/Profile/Profile.tsx:43
 #: packages/components/src/ProfileBasicInfo.tsx:20
 msgid "PRO"
 msgstr ""
 
-#: apps/mobile/src/components/Profile/Profile.tsx:41
+#: apps/mobile/src/components/Profile/Profile.tsx:44
 #: packages/components/src/ProfileBasicInfo.tsx:21
 msgid "PRO + AI"
 msgstr ""
@@ -1001,13 +1012,13 @@ msgstr "发布您的创作"
 msgid "Rate"
 msgstr "评分"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:111
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:117
 #: packages/widgets/src/WidgetName.tsx:34
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:106
 msgid "Recently edited"
 msgstr "最近编辑"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:117
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:123
 #: packages/widgets/src/WidgetName.tsx:46
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:112
 msgid "Recently opened"
@@ -1074,7 +1085,7 @@ msgstr ""
 msgid "Sat"
 msgstr "周六"
 
-#: apps/mobile/src/pages/PageNewCreation.tsx:96
+#: apps/mobile/src/pages/PageNewCreation.tsx:97
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:67
 #: packages/components/src/SettingsDialog/Profile.tsx:134
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
@@ -1085,8 +1096,8 @@ msgstr "保存"
 msgid "Search"
 msgstr "搜索"
 
-#: apps/mobile/src/components/ColorSelector.tsx:56
-#: apps/mobile/src/components/ColorSelector.tsx:67
+#: apps/mobile/src/components/ColorSelector.tsx:61
+#: apps/mobile/src/components/ColorSelector.tsx:72
 msgid "Select a color"
 msgstr "选择颜色"
 
@@ -1160,8 +1171,9 @@ msgstr "结构体名称"
 msgid "Struct published successfully!"
 msgstr "发布结构体成功！"
 
-#: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:12
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:142
+#: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:16
+#: apps/mobile/src/components/Profile/StructsMenu.tsx:24
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
 #: packages/widgets/src/WidgetName.tsx:22
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
@@ -1233,17 +1245,20 @@ msgstr "跟随系统"
 msgid "Table"
 msgstr "表格"
 
-#: apps/mobile/src/components/MobileTags/MobileTags.tsx:69
-#: apps/mobile/src/components/MobileTags/MobileTags.tsx:79
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:67
+#: apps/mobile/src/components/MobileTags/MobileTags.tsx:77
 #: packages/components/src/Creation/Tags.tsx:94
 msgid "Tag"
 msgstr "标签"
 
-#: apps/mobile/src/components/MobileTags/AddTagButton.tsx:72
+#: apps/mobile/src/components/Profile/EditTagDrawer.tsx:71
+#: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:75
 msgid "Tag name"
 msgstr "标签名"
 
-#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
+#: apps/mobile/src/components/Profile/TagsMenu.tsx:34
+#: apps/mobile/src/components/Profile/TagsMenu.tsx:44
+#: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:126
 #: packages/widgets/src/WidgetName.tsx:42
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:115
 msgid "Tags"
@@ -1292,7 +1307,7 @@ msgstr "标题"
 msgid "To Do"
 msgstr "待办"
 
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:21
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:21
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
@@ -1301,7 +1316,7 @@ msgid "Today"
 msgstr "今天"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:22
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
@@ -1339,7 +1354,7 @@ msgid "Unstar"
 msgstr "取消收藏"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:31
-#: apps/mobile/src/pages/PageHome/StructCreations/TaskList/TaskSection.tsx:23
+#: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:23
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:38

@@ -23,6 +23,9 @@ export function JournalContent(props: Props) {
   const { struct } = useActiveStruct()
   const { isCard, isList, isWidget } = useJournalLayout()
   const { journal } = useJournal()
+  // console.log('=========journal:', journal)
+  if (!journal) return null
+
   const date = journal.date
 
   // console.log('====journal:', journal)

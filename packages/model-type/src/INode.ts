@@ -22,6 +22,7 @@ export enum NodeType {
   FAVORITE = 'FAVORITE',
   JOURNAL = 'JOURNAL',
   CREATION = 'CREATION',
+  SETTINGS = 'SETTINGS',
 }
 
 export interface INode {
@@ -76,6 +77,7 @@ export interface ISiteNode extends INode {
     themeConfig: any
     memberCount: number
     isRemote: boolean
+    usingCustomSyncServer: boolean
     creationCount: number
   }
 }
@@ -210,4 +212,13 @@ export interface ICreationNode extends INode {
 
 export function isCreationNode(n: any): n is ICreationNode {
   return n.type === NodeType.CREATION
+}
+
+export interface ISettingsNode extends INode {
+  type: NodeType.SETTINGS
+  props: {}
+}
+
+export function isSettingsNode(n: any): n is ISettingsNode {
+  return n.type === NodeType.SETTINGS
 }

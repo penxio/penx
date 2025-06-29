@@ -136,16 +136,17 @@ export async function syncNodesToServer() {
       }
 
       // console.log('=======headers:', headers)
+      const url = await getSyncUrl()
 
-      const res = await fetch(`${ROOT_HOST}/api/v1/sync`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(data),
-      })
+      // const res = await fetch(url, {
+      //   method: 'POST',
+      //   headers,
+      //   body: JSON.stringify(data),
+      // })
 
-      const json = await res.json()
+      // const json = await res.json()
 
-      // await api.sync(data)
+      await api.sync(url, data)
       // console.log('>>>>>change synced:', change)
 
       // await localDB.change.update(change.id, { synced: 1 })
@@ -156,7 +157,19 @@ export async function syncNodesToServer() {
     }
   }
 
+  console.log('=========errors:', errors)
+
   if (errors.length > 0) {
     throw new Error('Syncing changes failed')
   }
+}
+
+async function getSyncUrl() {
+  const session = await get('SESSION')
+
+  if (session.syncServer?.host && session.syncServer?.enabled) {
+    return `${session.syncServer.host}/api/v1/sync`
+  }
+
+  return `${ROOT_HOST}/api/v1/sync`
 }

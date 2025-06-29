@@ -26,6 +26,7 @@ import {
   NodeType,
 } from '@penx/model-type'
 import { queryClient } from '@penx/query-client'
+import { getSession } from '@penx/session'
 import { store } from '@penx/store'
 import { AsyncQueue } from './AsyncQueue'
 import { isRowsEqual } from './isRowsEqual'
@@ -37,8 +38,20 @@ export async function syncNodesToLocal(siteId: string) {
   const { last_lsn, ...metadata } = await getElectricSyncState(siteId)
   console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
 
+  const getShapeUrl = async () => {
+    const session = await getSession()
+    if (session.syncServer?.host && session.syncServer?.enabled) {
+      return `${session.syncServer.host}/api/v1/shape`
+    }
+    return SHAPE_URL
+  }
+
+  const shapeUrl = await getShapeUrl()
+
+  console.log('======getShapeUrl:', shapeUrl)
+
   const stream = new ShapeStream({
-    url: SHAPE_URL,
+    url: shapeUrl,
     params: {
       table: 'node',
       where: `"siteId" = '${siteId}'`,
@@ -81,6 +94,10 @@ export async function syncNodesToLocal(siteId: string) {
 
   stream.subscribe(async (messages) => {
     queue.addTask(() => sync(siteId, stream, messages))
+  })
+
+  appEmitter.on('STOP_SYNC_NODES', () => {
+    stream.unsubscribeAll()
   })
 
   const site = await localDB.getSite(siteId)

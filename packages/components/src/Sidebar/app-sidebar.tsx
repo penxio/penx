@@ -61,7 +61,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent className="-mx-2 space-y-2">
         <AreaWidgets />
       </SidebarContent>
-      <SidebarFooter className="py-0">
+      <SidebarFooter className="p0-1 pb-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             {/* {session && <VisitSiteButton />} */}

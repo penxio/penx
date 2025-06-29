@@ -31,6 +31,7 @@ export interface ISite {
   themeConfig: any
   memberCount: number
   isRemote: boolean
+  usingCustomSyncServer: boolean
   creationCount: number
   createdAt: Date
   updatedAt: Date

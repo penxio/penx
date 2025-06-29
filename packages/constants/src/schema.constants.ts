@@ -1,6 +1,59 @@
 import { z } from 'zod'
 import { BillingCycle, PlanType } from '@penx/types'
 
+export const updateSiteInputSchema = z.object({
+  id: z.string(),
+  logo: z.string().optional(),
+  name: z.string().optional(),
+  description: z.string().optional(),
+  about: z.string().optional(),
+  themeName: z.string().optional(),
+  themeConfig: z.record(z.any()).optional(),
+  config: z.record(z.any()).optional(),
+  syncServer: z.record(z.any()).optional(),
+  navLinks: z
+    .array(
+      z.object({
+        title: z.string().optional(),
+        pathname: z.string().optional(),
+        type: z.string().optional(),
+        location: z.string().optional(),
+        visible: z.boolean().optional(),
+      }),
+    )
+    .optional(),
+  socials: z
+    .object({
+      farcaster: z.string().optional(),
+      x: z.string().optional(),
+      mastodon: z.string().optional(),
+      github: z.string().optional(),
+      facebook: z.string().optional(),
+      youtube: z.string().optional(),
+      linkedin: z.string().optional(),
+      threads: z.string().optional(),
+      instagram: z.string().optional(),
+      discord: z.string().optional(),
+      medium: z.string().optional(),
+      slack: z.string().optional(),
+      telegram: z.string().optional(),
+      bilibili: z.string().optional(),
+      email: z.string().optional(),
+    })
+    .optional(),
+  analytics: z
+    .object({
+      gaMeasurementId: z.string().optional(),
+      umamiHost: z.string().optional(),
+      umamiWebsiteId: z.string().optional(),
+    })
+    .optional(),
+  // catalogue: z.record(z.unknown()).optional(),
+  catalogue: z.string().optional(),
+})
+
+export type UpdateSiteInput = z.infer<typeof updateSiteInputSchema>
+
 export const updateCreationInputSchema = z.object({
   id: z.string(),
   title: z.string().optional(),

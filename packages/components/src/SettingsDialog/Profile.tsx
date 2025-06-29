@@ -38,9 +38,6 @@ export function Profile() {
     queryKey: ['me'],
     queryFn: api.getMe,
   })
-  const { update } = useSession()
-
-  console.log('------data:', data)
 
   const form = useForm<UpdateProfileInput>({
     resolver: zodResolver(updateProfileInputSchema),

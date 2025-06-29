@@ -11,9 +11,10 @@ import {
   TRANSCRIBE_URL,
   UpdatePasswordInput,
   UpdateProfileInput,
+  UpdateSiteInput,
 } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
-import { GoogleInfo } from '@penx/types'
+import { GoogleInfo, Site } from '@penx/types'
 
 async function getHeaders() {
   const session = await get('SESSION')
@@ -72,14 +73,35 @@ type Me = {
   bio: string
 }
 
+export interface ApiRes<T = any> {
+  success: boolean
+  data: T
+}
+
 export const api = {
   async fetchSession() {
     await ky.get(`${ROOT_HOST}/api/session`).json()
   },
 
-  async sync(input: SyncInput) {
+  async getSession(needRefresh = false) {
+    return ky
+      .get(`${ROOT_HOST}/api/session`, {
+        searchParams: needRefresh ? { needRefresh: 'true' } : {},
+      })
+      .json()
+  },
+
+  async updateSite(input: UpdateSiteInput) {
+    return await ky
+      .post(`${ROOT_HOST}/api/site/update`, {
+        json: input,
+      })
+      .json<Site>()
+  },
+
+  async sync(url: string, input: SyncInput) {
     await ky
-      .post(`${ROOT_HOST}/api/v1/sync`, {
+      .post(url, {
         json: input,
       })
       .json()
@@ -97,14 +119,6 @@ export const api = {
 
   async deleteAccount() {
     return ky.post(`${ROOT_HOST}/api/delete-account`).json()
-  },
-
-  async getSession(needRefresh = false) {
-    return ky
-      .get(`${ROOT_HOST}/api/session`, {
-        searchParams: needRefresh ? { needRefresh: 'true' } : {},
-      })
-      .json()
   },
 
   async getAsset(url: string) {

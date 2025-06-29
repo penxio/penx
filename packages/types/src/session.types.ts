@@ -38,6 +38,10 @@ export interface SessionData {
     domain: string
     isSubdomain: boolean
   }
+  syncServer: {
+    host: string
+    enabled: boolean
+  }
   message: string
   isFree: boolean
   isSubscription: boolean
