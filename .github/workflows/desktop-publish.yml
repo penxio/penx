@@ -67,11 +67,11 @@ jobs:
         if: matrix.settings.platform == 'windows-latest'
         run: |
           choco install protoc
-          choco install openssl
-          echo OPENSSL_DIR='C:\Program Files\OpenSSL' >> $env:GITHUB_ENV
-          echo OPENSSL_INCLUDE_DIR='C:\Program Files\OpenSSL\include' >> $env:GITHUB_ENV
-          echo OPENSSL_LIB_DIR='C:\Program Files\OpenSSL\lib\VC\x64\MDd' >> $env:GITHUB_ENV
-
+          $env:VCPKG_INSTALLATION_ROOT = "${{ runner.temp }}\vcpkg"
+          vcpkg install openssl:x64-windows-static-md
+          echo "OPENSSL_DIR=${{ runner.temp }}\vcpkg\installed\x64-windows-static-md" >> $env:GITHUB_ENV
+          echo "OPENSSL_INCLUDE_DIR=${{ runner.temp }}\vcpkg\installed\x64-windows-static-md\include" >> $env:GITHUB_ENV
+          echo "OPENSSL_LIB_DIR=${{ runner.temp }}\vcpkg\installed\x64-windows-static-md\lib" >> $env:GITHUB_ENV
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
         with:

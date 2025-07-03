@@ -1,9 +1,10 @@
 import { atom, useAtom } from 'jotai'
 import { ISettingsNode } from '@penx/model-type'
+import { SessionData } from '@penx/types'
 
 type State = {
   open: boolean
-  syncServer: ISettingsNode['props']['syncServer']
+  syncServer: SessionData['syncServer']
 }
 
 const syncServerDialogAtom = atom<State>({
