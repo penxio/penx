@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "PenX",
-  "version": "1.0.0",
-  "identifier": "com.penxio.app",
+  "version": "1.0.1",
+  "identifier": "io.penx.app",
   "build": {
     "beforeDevCommand": "pnpm vite:dev",
     "devUrl": "http://localhost:1420",
@@ -23,7 +23,9 @@
   },
   "plugins": {
     "updater": {
-      "endpoints": ["https://github.com/penxio/penx/releases/latest/download/latest.json"],
+      "endpoints": [
+        "https://github.com/penxio/penx/releases/latest/download/latest.json"
+      ],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDY2MEY5REFGQjdBM0JCMjEKUldRaHU2TzNyNTBQWm9Mb2pVcW1heU40NEY3a3E3UDhKUzdtZ3puMlpoWXFIVU4wU2pRQlBONXoK"
     }
   },
