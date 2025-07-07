@@ -77,7 +77,6 @@ export interface ISiteNode extends INode {
     themeConfig: any
     memberCount: number
     isRemote: boolean
-    usingCustomSyncServer: boolean
     creationCount: number
   }
 }
