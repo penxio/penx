@@ -1,5 +1,5 @@
 import { NetworkNames } from '@penx/constants'
-import { SyncService } from './SyncService'
+import { SyncService } from '@penx/services/SyncService'
 
 export async function syncSiteToHub(site: any) {
   // const token = await getTokenByInstallationId(site.installationId!)

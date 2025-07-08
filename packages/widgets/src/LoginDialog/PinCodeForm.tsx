@@ -28,7 +28,7 @@ import {
   InputOTPSlot,
 } from '@penx/uikit/ui/input-otp'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useLoginDialog } from './useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 const FormSchema = z.object({
   code: z.string(),

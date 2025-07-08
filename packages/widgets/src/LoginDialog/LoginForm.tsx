@@ -21,7 +21,7 @@ import {
 import { Input } from '@penx/uikit/input'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 import { extractErrorMessage } from '@penx/utils/extractErrorMessage'
-import { useLoginDialog } from './useLoginDialog'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 const FormSchema = z.object({
   name: z.string().min(4, {

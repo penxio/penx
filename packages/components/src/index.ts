@@ -1,1 +1,1 @@
-export * from './ThemeProvider'
+export * from '@penx/components/ThemeProvider'

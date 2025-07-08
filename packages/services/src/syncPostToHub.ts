@@ -1,5 +1,5 @@
 import { NetworkNames } from '@penx/constants'
-import { SyncService } from './SyncService'
+import { SyncService } from '@penx/services/SyncService'
 
 export async function syncPostToHub(site: any, creation: any, markdown = '') {
   // const token = await api.github.getGitHubToken.query({

@@ -1,1 +1,1 @@
-export * from './use-debounce'
+export * from '@penx/hooks/use-debounce'

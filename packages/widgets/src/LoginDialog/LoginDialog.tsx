@@ -9,10 +9,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@penx/uikit/dialog'
-import { LoginDialogContent } from './LoginDialogContent'
-import { PinCodeForm } from './PinCodeForm'
-import { RegisterForm } from './RegisterForm'
-import { useLoginDialog } from './useLoginDialog'
+import { LoginDialogContent } from '@penx/widgets/LoginDialog/LoginDialogContent'
+import { PinCodeForm } from '@penx/widgets/LoginDialog/PinCodeForm'
+import { RegisterForm } from '@penx/widgets/LoginDialog/RegisterForm'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 interface Props {}
 

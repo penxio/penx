@@ -1,6 +1,6 @@
-import { AISetting } from './IAISetting'
-import { IColumn } from './IColumn'
-import { IView } from './IView'
+import { AISetting } from '@penx/model-type/IAISetting'
+import { IColumn } from '@penx/model-type/IColumn'
+import { IView } from '@penx/model-type/IView'
 
 export type Widget = {
   id: string

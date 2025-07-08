@@ -4,10 +4,10 @@ import { Trans } from '@lingui/react/macro'
 import { useSearchParams } from 'next/navigation'
 import { toast } from 'sonner'
 import { useSession } from '@penx/session'
-import { AppleOauthButton } from '../AppleOauthButton'
-import { GoogleOauthButton } from '../GoogleOauthButton'
-import { LoginForm } from './LoginForm'
-import { useLoginDialog } from './useLoginDialog'
+import { AppleOauthButton } from '@penx/widgets/AppleOauthButton'
+import { GoogleOauthButton } from '@penx/widgets/GoogleOauthButton'
+import { LoginForm } from '@penx/widgets/LoginDialog/LoginForm'
+import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 
 export function LoginDialogContent() {
   return (
