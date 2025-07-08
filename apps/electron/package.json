@@ -28,6 +28,7 @@
     "@lingui/detect-locale": "^5.3.2",
     "@lingui/react": "^5.3.2",
     "@penx/vaul": "workspace:*",
+    "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/content-render": "workspace:*",

@@ -13,8 +13,8 @@ export function createWindow() {
   const barHeight = 28
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 750,
-    height: 460,
+    width: 1250,
+    height: 600,
     // width: 100,
     // height: barHeight,
     // show: true,
@@ -23,11 +23,11 @@ export function createWindow() {
     ...(process.platform === 'linux' ? { icon } : {}),
 
     // frame: false,
-    frame: true,
-    transparent: true,
+    // frame: true,
+    // transparent: true,
     // alwaysOnTop: true,
 
-    movable: true,
+    // movable: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       partition: 'persist:sharedPartition',
@@ -71,7 +71,7 @@ export function createWindow() {
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
     console.log('relad..........', __dirname)
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {

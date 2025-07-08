@@ -1,18 +1,50 @@
 {
-  "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": false,
+    "strictNullChecks": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "noUncheckedIndexedAccess": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "isolatedModules": true,
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "target": "es2022",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "incremental": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "pretty": true,
+    "preserveWatchOutput": true,
+    "jsx": "preserve",
+    "paths": {
+      // "@/*": ["./src/*"],
+      "@renderer/*": ["src/renderer/src/*"]
+    }
+  },
   "include": [
     "src/renderer/src/env.d.ts",
     "src/renderer/src/**/*",
     "src/renderer/src/**/*.tsx",
     "src/preload/*.d.ts"
   ],
-  "compilerOptions": {
-    "composite": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "bundler",
-    "baseUrl": ".",
-    "paths": {
-      "@renderer/*": ["src/renderer/src/*"]
-    }
-  }
+  "exclude": ["node_modules", "dist", "src-tauri"]
 }
