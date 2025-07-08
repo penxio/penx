@@ -59,7 +59,7 @@
     "@iconify/tailwind4": "^1.0.4",
     "@lingui/cli": "5.3.1",
     "@lingui/swc-plugin": "5.5.2",
-    "@lingui/vite-plugin": "^5.3.1",
+    "@lingui/vite-plugin": "^5.3.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "4.0.17",
     "@tailwindcss/typography": "^0.5.16",

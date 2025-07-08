@@ -70,7 +70,7 @@ msgstr ""
 msgid "5 minutes early"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/Profile.tsx:118
+#: packages/components/src/SettingsDialog/Profile.tsx:115
 msgid "A brief your introduction."
 msgstr ""
 
@@ -123,6 +123,10 @@ msgstr ""
 #: apps/mobile/src/pages/PageStructInfo/AddPropertyButton.tsx:46
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:46
 msgid "Add property"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:49
+msgid "Add sync server"
 msgstr ""
 
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:61
@@ -194,8 +198,8 @@ msgid "An Introduction to PenX and How to Use It"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:104
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:26
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:16
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:29
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
 msgid "Appearance"
 msgstr ""
 
@@ -238,12 +242,15 @@ msgstr ""
 msgid "Believer"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:35
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:21
 msgid "Billing"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/Profile.tsx:115
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:38
+msgid "Billing & Subscriptions"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/Profile.tsx:112
 msgid "Bio"
 msgstr ""
 
@@ -524,6 +531,14 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
+#: packages/components/src/SettingsDialog/SyncServer/EnableSyncServerButton.tsx:44
+msgid "Enable custom sync server"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:76
+msgid "Enabled"
+msgstr ""
+
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:65
 msgid "End-to-end encryption"
 msgstr ""
@@ -594,13 +609,17 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:61
+msgid "Host"
+msgstr ""
+
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:30
 msgid "I have a coupon code, apply it now."
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:266
 #: packages/components/src/ColumnTypeName.tsx:27
-#: packages/components/src/AppProvider/AppService.ts:154
+#: packages/components/src/AppProvider/AppService.ts:155
 msgid "Image"
 msgstr ""
 
@@ -650,7 +669,7 @@ msgstr ""
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
 #: packages/libs/src/getDefaultStructs.ts:134
 #: packages/libs/src/getDefaultStructs.ts:200
-#: packages/components/src/AppProvider/fixTaskStruct.ts:45
+#: packages/components/src/AppProvider/lib/fixTaskStruct.ts:45
 msgid "List"
 msgstr ""
 
@@ -668,13 +687,13 @@ msgstr ""
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:126
+#: packages/components/src/ProfileButton.tsx:127
 msgid "Log in"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:262
+#: packages/components/src/ProfileButton.tsx:263
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
 msgstr ""
@@ -774,7 +793,7 @@ msgstr ""
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
-#: packages/components/src/SettingsDialog/Profile.tsx:96
+#: packages/components/src/SettingsDialog/Profile.tsx:93
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
 #: packages/components/src/AreaDialog/AreaForm.tsx:163
@@ -839,6 +858,10 @@ msgstr ""
 msgid "None"
 msgstr ""
 
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:71
+msgid "Not enabled"
+msgstr ""
+
 #: packages/libs/src/getDefaultStructs.ts:260
 msgid "Note"
 msgstr ""
@@ -885,13 +908,18 @@ msgstr ""
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:32
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:35
 #: packages/components/src/SettingsDialog/Password.tsx:72
+#: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:93
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:108
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:124
 msgid "Password"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:116
+msgid "Password for sync server, password is stored locally only."
 msgstr ""
 
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:86
@@ -984,8 +1012,8 @@ msgstr ""
 msgid "PRO yearly"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:29
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:17
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:32
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
 msgid "Profile"
 msgstr ""
 
@@ -1028,7 +1056,7 @@ msgstr ""
 msgid "Recover failed"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:22
 msgid "Recovery phrase"
 msgstr ""
 
@@ -1050,7 +1078,7 @@ msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:122
 #: packages/components/src/ColumnTypeName.tsx:25
-#: packages/components/src/AppProvider/fixTaskStruct.ts:20
+#: packages/components/src/AppProvider/lib/fixTaskStruct.ts:20
 msgid "Reminder"
 msgstr ""
 
@@ -1087,7 +1115,8 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageNewCreation.tsx:97
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:67
-#: packages/components/src/SettingsDialog/Profile.tsx:134
+#: packages/components/src/SettingsDialog/Profile.tsx:131
+#: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:138
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr ""
@@ -1106,8 +1135,12 @@ msgstr ""
 msgid "Select property type"
 msgstr ""
 
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:84
+msgid "Set password"
+msgstr ""
+
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: packages/components/src/ProfileButton.tsx:213
+#: packages/components/src/ProfileButton.tsx:214
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
@@ -1145,6 +1178,10 @@ msgstr ""
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
 msgid "Star"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:67
+msgid "status"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:48
@@ -1198,12 +1235,16 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:242
+#: packages/components/src/ProfileButton.tsx:243
 msgid "Support"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/PageSync.tsx:8
 msgid "Sync"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:46
+msgid "Sync data using you own server"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:52
@@ -1224,6 +1265,15 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageSync/WifiSwitch.tsx:23
 msgid "Sync only over Wi-Fi"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:41
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:23
+msgid "Sync server"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:94
+msgid "Sync server host"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:50
@@ -1268,6 +1318,10 @@ msgstr ""
 msgid "Task"
 msgstr ""
 
+#: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:143
+msgid "Test connection"
+msgstr ""
+
 #: packages/components/src/ColumnTypeName.tsx:15
 msgid "Text"
 msgstr ""
@@ -1285,7 +1339,7 @@ msgstr ""
 msgid "This action cannot be undone. Are you sure you want to delete this property?"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/Profile.tsx:99
+#: packages/components/src/SettingsDialog/Profile.tsx:96
 msgid "This is your public display name."
 msgstr ""
 
@@ -1366,7 +1420,7 @@ msgstr ""
 msgid "Update area"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
 msgid "Update password"
 msgstr ""
 
@@ -1388,7 +1442,7 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:233
+#: packages/components/src/ProfileButton.tsx:234
 msgid "Upgrade to Pro"
 msgstr ""
 
@@ -1435,4 +1489,8 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:155
 msgid "Yearly"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:97
+msgid "Your sync server host, e.g. https://sync.penx.io"
 msgstr ""

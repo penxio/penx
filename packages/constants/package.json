@@ -2,7 +2,7 @@
   "name": "@penx/constants",
   "version": "0.0.0",
   "private": true,
-    "type": "module",
+  "type": "module",
   "module": "index.ts",
   "main": "index.ts",
   "types": "./src/index.ts",

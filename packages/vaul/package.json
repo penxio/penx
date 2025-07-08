@@ -36,7 +36,6 @@
     "url": "https://github.com/emilkowalski/vaul/issues"
   },
   "devDependencies": {
-    "@penx/eslint-config": "workspace:*",
     "@penx/typescript-config": "workspace:*"
   }
 }

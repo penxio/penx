@@ -50,6 +50,7 @@ export default defineConfig(async () => ({
   envPrefix: ['VITE_', 'TAURI_'],
   define: {
     'process.env': {},
+    global: {},
   },
   resolve: {
     alias: {

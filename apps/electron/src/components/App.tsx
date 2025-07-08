@@ -1,52 +1,33 @@
 import { useState } from 'react'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { tinykeys } from 'tinykeys'
+import { AppProvider } from '@penx/components/AppProvider'
+import { DashboardLayout } from '@penx/components/DashboardLayout'
+import { DashboardProviders } from '@penx/components/DashboardProviders'
+import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
+import { LoginStatus } from '@penx/constants'
+import { LocaleProvider } from '@penx/locales'
+import { queryClient } from '@penx/query-client'
+import { StoreProvider } from '@penx/store'
+import { SessionData } from '@penx/types'
+import { Button } from '@penx/uikit/button'
+import { Input } from '@penx/uikit/input'
+import { LoadingDots } from '@penx/uikit/loading-dots'
+import { sleep } from '@penx/utils'
+import { Footer } from './Footer'
 
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'F1') {
-    console.log('11111111......')
-  }
-})
-window.addEventListener('keyup', (e) => {
-  if (e.key === 'F1') {
-    console.log('2222222222222')
-  }
-})
-
-type Item = {
-  from: number
-  to: number
-  text: string
-}
-
-tinykeys(window, {
-  'Shift+D': () => {
-    alert("The 'Shift' and 'd' keys were pressed at the same time")
-  },
-  'y e e t': () => {
-    alert("The keys 'y', 'e', 'e', and 't' were pressed in order")
-  },
-  '$mod+([0-9])': (event) => {
-    event.preventDefault()
-    alert(`Either 'Control+${event.key}' or 'Meta+${event.key}' were pressed`)
-  },
-})
-
-function App(): React.JSX.Element {
-  const [result, setResult] = useState('')
-  const [loading, setLoading] = useState(false)
-
+export function App() {
   return (
-    <>
-      <div className="no-drag bg-green-100">
+    <DashboardProviders>
+      {/* <DashboardLayout></DashboardLayout> */}
+      <div className="no-drag fixed bottom-0 left-0 right-0 top-0 flex flex-col bg-neutral-50/80">
         {/* <button onClick={ipcHandle}>Transcribe</button> */}
-        foo
-        <div className="drag bg-red-200" style={{}}>
-          Footer
+        <div className="flex-1">
+          <Input />
         </div>
+        <Footer />
       </div>
-      {/* {loading && <div>Loading...</div>} */}
-      {/* {!loading && <div className="tip">{result}</div>} */}
-    </>
+    </DashboardProviders>
   )
 }
 

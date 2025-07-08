@@ -14,7 +14,8 @@
       {
         "title": "PenX",
         "width": 1120,
-        "height": 800
+        "height": 800,
+        "url": "index.html"
       }
     ],
     "security": {

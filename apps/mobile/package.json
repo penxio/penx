@@ -92,7 +92,7 @@
     "@lingui/cli": "5.3.1",
     "@lingui/loader": "5.3.1",
     "@lingui/swc-plugin": "5.5.2",
-    "@lingui/vite-plugin": "^5.3.1",
+    "@lingui/vite-plugin": "^5.3.2",
     "@penx/typescript-config": "workspace:*",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "4.0.17",

@@ -152,7 +152,6 @@
   },
   "directory": "./src",
   "devDependencies": {
-    "@penx/eslint-config": "workspace:*",
     "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {

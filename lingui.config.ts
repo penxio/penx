@@ -15,13 +15,17 @@ export default {
   locales: [...langs, 'pseudo'],
   pseudoLocale: 'pseudo',
   sourceLocale: 'en',
+
   fallbackLocales: {
     default: 'en',
   },
   catalogs: [
     {
       path: '<rootDir>/packages/locales/src/locales/{locale}',
-      include: ['<rootDir>/apps/**/*.{ts,tsx}', '<rootDir>/packages/**/*.{ts,tsx}'],
+      include: [
+        '<rootDir>/apps/**/*.{ts,tsx}',
+        '<rootDir>/packages/**/*.{ts,tsx}',
+      ],
       exclude: ['**/node_modules/**'],
     },
   ],

@@ -17,7 +17,7 @@ import { messages as ko } from './locales/ko.po'
 import { messages as ru } from './locales/ru.po'
 import { messages as zh_CN } from './locales/zh-CN.po'
 
-export function dynamicActivate(locale = '') {
+export  function dynamicActivate(locale = '') {
   // const { messages } = await import(`./locales/${locale}.po`)
 
   // i18n.load(locale, messages)

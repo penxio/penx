@@ -45,7 +45,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@lingui/vite-plugin": "^5.3.1",
+    "@lingui/vite-plugin": "^5.3.2",
     "@tailwindcss/vite": "^4.1.4",
     "@tauri-apps/cli": "^2",
     "@types/react": "^19.0.7",

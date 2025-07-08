@@ -38,8 +38,13 @@ const createWindow = () => {
     skipTaskbar: true,
     backgroundColor: '#00000000',
     webPreferences: {
-      // preload: path.join(__dirname, 'preload.js'),
+      partition: 'persist:sharedPartition',
+      preload: path.join(__dirname, 'preload.js'),
     },
+  })
+
+  mainWindow.setVisibleOnAllWorkspaces(true, {
+    visibleOnFullScreen: true,
   })
 
   // and load the index.html of the app.

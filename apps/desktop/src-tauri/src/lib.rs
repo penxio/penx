@@ -2,6 +2,7 @@ mod server;
 
 use rusqlite::{Connection, ParamsFromIter, Result, ToSql};
 use std::{path::PathBuf, thread};
+use tauri::Manager;
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
@@ -19,6 +20,9 @@ pub fn run() {
         .plugin(tauri_plugin_fs::init())
         .invoke_handler(tauri::generate_handler![greet])
         .setup(|mut app| {
+            let main_window = app.get_webview_window("main").unwrap();
+            main_window.set_visible_on_all_workspaces(true)?;
+
             app.handle()
                 .plugin(tauri_plugin_updater::Builder::new().build())?;
 
