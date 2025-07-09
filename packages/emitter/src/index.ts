@@ -36,6 +36,17 @@ export type AppEvent = {
 
   START_SYNC_NODES: any
   STOP_SYNC_NODES: any
+
+  // command panel
+  ON_ESCAPE_IN_COMMAND: undefined
+
+  ON_COMMAND_PALETTE_SEARCH_CHANGE: string
+
+  ON_COMMAND_PALETTE_FILTER_CHANGE: any
+
+  FOCUS_SEARCH_BAR_INPUT: undefined
+
+  ON_APPLICATION_DIR_CHANGE: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

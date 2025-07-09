@@ -35,7 +35,7 @@ export const AreasPopover = ({ className = '' }: Props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="hover:bg-foreground/8 bg-foreground/5 group/area flex h-10 w-full cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors">
+        <div className="hover:bg-foreground/8 bg-foreground/5 group/area no-drag flex h-10 w-full cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors">
           <div className="flex flex-1 cursor-pointer items-center gap-1">
             <div className="flex items-center gap-1">
               <Avatar className="size-5 rounded-md">

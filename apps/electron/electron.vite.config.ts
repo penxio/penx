@@ -17,10 +17,9 @@ export default defineConfig({
     },
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
+        '~': resolve('src/renderer/src')
       }
     },
-
     plugins: [
       react({
         babel: {
@@ -33,7 +32,7 @@ export default defineConfig({
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'src/renderer/index.html'),
-          second: resolve(__dirname, 'src/renderer/panel.html')
+          panel: resolve(__dirname, 'src/renderer/panel.html')
         }
       }
     }

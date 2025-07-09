@@ -31,7 +31,7 @@ export const GOOGLE_CLIENT_ID =
   '864679274232-niev1df1dak216q5natclfvg5fhtp7fg.apps.googleusercontent.com'
 
 export const GOOGLE_DRIVE_FOLDER_PREFIX = `penx-`
-export const GOOGLE_DRIVE_FOLDER = 'penx'
+export const GOOGLE_DRIVE_FOLDER = '@penx/extension-api'
 
 export const SECONDS_PER_MONTH = BigInt(24 * 60 * 60 * 30) // 30 days
 export const SECONDS_PER_DAY = BigInt(24 * 60 * 60) // 1 days

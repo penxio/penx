@@ -1,0 +1,25 @@
+{
+  "name": "@penx/extension-api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "main": "index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "brl": "barrelsby --delete -d ./src",
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@penx/typescript-config": "workspace:*"
+  },
+  "dependencies": {
+    "@penx/unique-id": "workspace:*",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "3.0.1"
+  }
+}

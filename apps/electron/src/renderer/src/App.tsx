@@ -10,6 +10,7 @@ function App(): React.JSX.Element {
       <DashboardProviders>
         <DashboardLayout></DashboardLayout>
       </DashboardProviders>
+      <div id="portal" className="fixed left-0 top-0 z-[100000000]" />
     </LocaleProvider>
   )
 }

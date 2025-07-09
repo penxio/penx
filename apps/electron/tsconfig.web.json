@@ -36,8 +36,7 @@
     "preserveWatchOutput": true,
     "jsx": "preserve",
     "paths": {
-      // "@/*": ["./src/*"],
-      "@renderer/*": ["src/renderer/src/*"]
+      "~/*": ["src/renderer/src/*"]
     }
   },
   "include": [
@@ -46,5 +45,5 @@
     "src/renderer/src/**/*.tsx",
     "src/preload/*.d.ts"
   ],
-  "exclude": ["node_modules", "dist", "src-tauri"]
+  "exclude": ["node_modules", "dist"]
 }

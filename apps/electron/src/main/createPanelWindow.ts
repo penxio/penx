@@ -20,19 +20,20 @@ export function createPanelWindow() {
     // show: true,
     // x: 100,
     // y: screenHeight - barHeight,
-    titleBarStyle: 'hidden',
-    show: false,
-    titleBarOverlay: {
-      // 启用窗口控件覆盖层
-      color: '#2f3241', // 背景色
-      symbolColor: '#74b1be', // 按钮图标颜色
-      height: 30 // 高度，单位 px
-    },
 
-    // frame: false,
-    // frame: true,
-    // transparent: true,
+    autoHideMenuBar: true,
+    // titleBarStyle: 'hidden',
+    show: false,
+    frame: false,
+    vibrancy: 'hud',
+    transparent: true,
     // alwaysOnTop: true,
+    skipTaskbar: true,
+    // resizable: false,
+    resizable: true,
+
+    movable: true,
+    // focusable: false,
 
     // movable: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -51,6 +52,9 @@ export function createPanelWindow() {
   //   mainWindow.show()
   //   mainWindow.webContents.openDevTools()
   // })
+  mainWindow.on('show', () => {
+    mainWindow.webContents.openDevTools()
+  })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)

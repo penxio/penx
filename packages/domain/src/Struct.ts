@@ -56,6 +56,10 @@ export class Struct {
     return this.raw.props.views
   }
 
+  get primaryColumn() {
+    return this.columns.find((c) => c.isPrimary)!
+  }
+
   get currentView() {
     return (
       this.views.find((view) => view.id === this.activeViewId) || this.views[0]
