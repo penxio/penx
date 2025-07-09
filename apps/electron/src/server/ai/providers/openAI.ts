@@ -16,6 +16,6 @@ export class OpenAIModelProvider extends AbstractProvider {
   }
 
   protected getLLM(): LanguageModelV1 {
-    return this.provider.languageModel(this.globalConfig.aiModel ?? 'gpt-4.1-mini')
+    return this.provider.languageModel(this.globalConfig.languageModel ?? 'gpt-4.1-mini')
   }
 }
