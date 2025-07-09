@@ -6,7 +6,7 @@ import icon from '../../resources/icon.png?asset'
 // const __filename = fileURLToPath(import.meta.url)
 // const __dirname = path.dirname(__filename)
 
-export function createWindow() {
+export function createMainWindow() {
   const primaryDisplay = screen.getPrimaryDisplay()
   // const { width, height: screenHeight } = primaryDisplay.workAreaSize
 
@@ -20,6 +20,13 @@ export function createWindow() {
     // show: true,
     // x: 100,
     // y: screenHeight - barHeight,
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      // 启用窗口控件覆盖层
+      color: '#2f3241', // 背景色
+      symbolColor: '#74b1be', // 按钮图标颜色
+      height: 30 // 高度，单位 px
+    },
     ...(process.platform === 'linux' ? { icon } : {}),
 
     // frame: false,

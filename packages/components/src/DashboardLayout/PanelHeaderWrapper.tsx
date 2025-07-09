@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import { isDesktop } from 'react-device-detect'
 import { isMobileApp } from '@penx/constants'
 import { SidebarTrigger } from '@penx/uikit/sidebar'
 import { cn } from '@penx/utils'
@@ -23,7 +24,7 @@ export function PanelHeaderWrapper({
           className,
         )}
       >
-        <SidebarTrigger className="" />
+        {!isDesktop && <SidebarTrigger className="" />}
         <div className="flex h-10 flex-1 items-center justify-between">
           {children}
         </div>

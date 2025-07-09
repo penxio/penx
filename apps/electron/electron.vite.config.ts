@@ -20,6 +20,7 @@ export default defineConfig({
         '@renderer': resolve('src/renderer/src')
       }
     },
+
     plugins: [
       react({
         babel: {
@@ -27,6 +28,14 @@ export default defineConfig({
         }
       }),
       lingui()
-    ]
+    ],
+    build: {
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, 'src/renderer/index.html'),
+          second: resolve(__dirname, 'src/renderer/panel.html')
+        }
+      }
+    }
   }
 })

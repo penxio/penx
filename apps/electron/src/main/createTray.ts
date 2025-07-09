@@ -1,6 +1,6 @@
 import { app, Menu, Tray, nativeImage } from 'electron'
 import { join } from 'path'
-import icon from '../../resources/tray.png?asset'
+import icon from '../../resources/tray-16.png?asset'
 
 export function createTray() {
   console.log('=======icon:', icon)

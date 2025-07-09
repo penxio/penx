@@ -24,6 +24,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarTrigger,
 } from '@penx/uikit/sidebar'
 import {
   Tooltip,
@@ -46,8 +47,13 @@ import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar variant="inset" {...props} className="">
       <SidebarHeader className="m-0 p-0 pb-1">
+        {isDesktop && (
+          <div className="drag -mx-2 -mt-2 ml-[70px] flex h-8 items-center">
+            {/* <SidebarTrigger className="text-foreground/60 size-4" /> */}
+          </div>
+        )}
         <SidebarMenu className="">
           <SidebarMenuItem className="">
             <AreasPopover />
