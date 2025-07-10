@@ -22,7 +22,6 @@
     "build:linux": "electron-vite build && electron-builder --linux"
   },
   "dependencies": {
-    "xxhash-wasm": "^1.1.0",
     "@electric-sql/pglite": "^0.3.4",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
@@ -30,6 +29,7 @@
     "@lingui/detect-locale": "^5.3.2",
     "@lingui/react": "^5.3.2",
     "@mastra/core": "^0.10.11",
+    "@mastra/rag": "^1.0.2",
     "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",
@@ -58,7 +58,8 @@
     "drizzle-kit": "^0.31.4",
     "electron-updater": "^6.3.9",
     "mastra": "^0.10.11",
-    "uiohook-napi": "^1.5.4"
+    "uiohook-napi": "^1.5.4",
+    "xxhash-wasm": "^1.1.0"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^3.0.0",
