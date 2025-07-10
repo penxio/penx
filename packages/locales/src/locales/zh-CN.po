@@ -109,10 +109,6 @@ msgstr "添加封面"
 msgid "Add image"
 msgstr "添加图片"
 
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:25
-msgid "Add navigation"
-msgstr "添加导航"
-
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/AddOptionButton.tsx:30
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
@@ -128,6 +124,10 @@ msgstr "新增属性"
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:49
 msgid "Add sync server"
 msgstr ""
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:24
+msgid "Add tag"
+msgstr "添加标签"
 
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:61
 msgid "Add widget"
@@ -158,9 +158,9 @@ msgid "AI transcription for voice"
 msgstr "AI 语音转录"
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 msgid "All"
 msgstr "全部"
 
@@ -314,6 +314,7 @@ msgstr "合集"
 
 #: apps/mobile/src/components/ColorSelector.tsx:45
 #: packages/components/src/StructDialog/EditStructForm.tsx:131
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:49
 msgid "Color"
 msgstr "颜色"
 
@@ -354,8 +355,8 @@ msgstr "复制 HTML"
 msgid "Coupon code applied successfully"
 msgstr "优惠码已成功使用"
 
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
 msgid "Create"
 msgstr "创建"
 
@@ -389,11 +390,11 @@ msgstr "创建标签"
 msgid "Created At"
 msgstr "创建日期"
 
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:54
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:58
 msgid "Created date"
 msgstr "创建日期"
 
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:51
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:55
 msgid "Creation counts"
 msgstr "创作数量"
 
@@ -418,14 +419,14 @@ msgstr "日期"
 #: apps/mobile/src/components/CreationMenu.tsx:98
 #: packages/components/src/database-ui/TableInfo.tsx:77
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
-#: packages/components/src/area-widgets/TitleContextMenu.tsx:56
-#: packages/components/src/area-widgets/CreationItem.tsx:121
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:337
 #: packages/components/src/CreationCard/CreationCard.tsx:314
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:98
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:73
+#: packages/components/src/area-widgets/TitleContextMenu.tsx:56
+#: packages/components/src/area-widgets/CreationItem.tsx:121
 msgid "Delete"
 msgstr "删除"
 
@@ -434,7 +435,7 @@ msgstr "删除"
 msgid "Delete account"
 msgstr "删除账户"
 
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:71
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:81
 msgid "Delete tag"
 msgstr "删除标签"
 
@@ -478,10 +479,6 @@ msgstr "截止日期"
 msgid "Edit"
 msgstr "编辑"
 
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:27
-msgid "Edit navigation"
-msgstr "编辑导航"
-
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 msgid "Edit option"
@@ -500,6 +497,10 @@ msgstr "编辑属性"
 #: packages/components/src/database-ui/TableInfo.tsx:58
 msgid "Edit struct"
 msgstr "编辑结构体"
+
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:24
+msgid "Edit tag"
+msgstr "编辑标签"
 
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:66
 msgid "Edit Tag"
@@ -554,11 +555,11 @@ msgid "Favorites"
 msgstr "收藏"
 
 #: apps/extension/components/content/AddBookmark/Tags.tsx:69
-#: packages/components/src/cells/single-select-cell.tsx:178
-#: packages/components/src/cells/multiple-select-cell.tsx:174
 #: packages/components/src/Creation/Tags.tsx:116
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:88
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:87
+#: packages/components/src/cells/single-select-cell.tsx:178
+#: packages/components/src/cells/multiple-select-cell.tsx:174
 msgid "Find or create option"
 msgstr "查找或创建选项"
 
@@ -646,8 +647,8 @@ msgstr "日记布局"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:98
 #: packages/widgets/src/WidgetName.tsx:14
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:87
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:87
 msgid "Journals"
 msgstr "日记"
 
@@ -720,7 +721,7 @@ msgid "Low"
 msgstr "低"
 
 #: packages/components/src/Sidebar/app-sidebar.tsx:111
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:38
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:39
 msgid "Manage tags"
 msgstr "管理标签"
 
@@ -790,13 +791,13 @@ msgstr "我的结构体"
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:72
 #: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/SettingsDialog/Profile.tsx:93
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:48
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:52
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
 #: packages/components/src/AreaDialog/AreaForm.tsx:163
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 msgid "Name"
 msgstr "名称"
 
@@ -835,12 +836,12 @@ msgid "No introduction for the struct"
 msgstr "该结构体暂无介绍！"
 
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
-#: packages/components/src/cells/single-select-cell.tsx:186
-#: packages/components/src/cells/multiple-select-cell.tsx:182
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:96
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:95
 #: packages/components/src/CommandPanel/SearchCreationList.tsx:37
 #: packages/components/src/CommandPanel/CommandList.tsx:29
+#: packages/components/src/cells/single-select-cell.tsx:186
+#: packages/components/src/cells/multiple-select-cell.tsx:182
 msgid "No results found."
 msgstr "未找到结果"
 
@@ -889,7 +890,7 @@ msgstr "删除后，您无法撤销此操作。"
 msgid "Open in new panel"
 msgstr "在新面板中打开"
 
-#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:57
+#: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:61
 msgid "Operation"
 msgstr "操作"
 
@@ -1174,9 +1175,9 @@ msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
-#: packages/components/src/area-widgets/CreationItem.tsx:145
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
+#: packages/components/src/area-widgets/CreationItem.tsx:145
 msgid "Star"
 msgstr "收藏"
 
@@ -1187,6 +1188,10 @@ msgstr ""
 #: packages/libs/src/getDefaultStructs.ts:48
 msgid "Status"
 msgstr "状态"
+
+#: apps/electron/src/renderer/src/components/Versions.tsx:7
+msgid "Stripe"
+msgstr ""
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:77
 msgid "Struct installed successfully!"
@@ -1212,8 +1217,8 @@ msgstr "发布结构体成功！"
 #: apps/mobile/src/components/Profile/StructsMenu.tsx:24
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 msgid "Structs"
 msgstr "结构体"
 
@@ -1362,18 +1367,18 @@ msgid "To Do"
 msgstr "待办"
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:21
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalShortcut.tsx:30
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 msgid "Today"
 msgstr "今天"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 msgid "Tomorrow"
 msgstr "明天"
 
@@ -1401,17 +1406,17 @@ msgstr "无限创建笔记"
 
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
-#: packages/components/src/area-widgets/CreationItem.tsx:145
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
+#: packages/components/src/area-widgets/CreationItem.tsx:145
 msgid "Unstar"
 msgstr "取消收藏"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:31
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:23
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:38
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 msgid "Upcoming"
 msgstr "未来"
 

@@ -169,7 +169,15 @@ export function Tags({ creation }: Props) {
                         </Button>
                       </>
                     ) : (
-                      item.name
+                      <div className="flex items-center gap-1">
+                        <div
+                          className="h-2 w-2 rounded-full"
+                          style={{
+                            backgroundColor: getColorByName(item.color),
+                          }}
+                        ></div>
+                        {item.name}
+                      </div>
                     )}
                   </CommandItem>
                 ))}

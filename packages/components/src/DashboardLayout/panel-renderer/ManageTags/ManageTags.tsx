@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { Edit3Icon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useTags } from '@penx/hooks/useTags'
+import { getColorByName } from '@penx/libs/color-helper'
 import { store } from '@penx/store'
 import { Panel } from '@penx/types'
 import { Skeleton } from '@penx/uikit/skeleton'
@@ -45,6 +46,9 @@ export function ManageTags({ panel, index }: Props) {
           <TableHeader>
             <TableRow>
               <TableHead>
+                <Trans>Color</Trans>
+              </TableHead>
+              <TableHead>
                 <Trans>Name</Trans>
               </TableHead>
               <TableHead>
@@ -61,6 +65,12 @@ export function ManageTags({ panel, index }: Props) {
           <TableBody>
             {tags.map((item, index) => (
               <TableRow key={index}>
+                <TableCell>
+                  <div
+                    className="h-3 w-5 rounded-2xl"
+                    style={{ backgroundColor: getColorByName(item.color) }}
+                  ></div>
+                </TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.creationCount}</TableCell>
                 <TableCell>{format(item.createdAt, 'yyyy/MM/dd')}</TableCell>

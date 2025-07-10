@@ -21,11 +21,7 @@ export function TagDialog() {
       <DialogContent className="sm:max-w-[480px]">
         <DialogHeader>
           <DialogTitle>
-            {!navLink ? (
-              <Trans>Add navigation</Trans>
-            ) : (
-              <Trans>Edit navigation</Trans>
-            )}
+            {!navLink ? <Trans>Add tag</Trans> : <Trans>Edit tag</Trans>}
           </DialogTitle>
         </DialogHeader>
         <TagForm />
