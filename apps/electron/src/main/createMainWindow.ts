@@ -22,10 +22,9 @@ export function createMainWindow() {
     // y: screenHeight - barHeight,
     titleBarStyle: 'hidden',
     titleBarOverlay: {
-      // 启用窗口控件覆盖层
-      color: '#2f3241', // 背景色
-      symbolColor: '#74b1be', // 按钮图标颜色
-      height: 30 // 高度，单位 px
+      color: '#2f3241',
+      symbolColor: '#74b1be',
+      height: 30
     },
     ...(process.platform === 'linux' ? { icon } : {}),
 
@@ -70,10 +69,6 @@ export function createMainWindow() {
   //     sandbox: false
   //   }
   // })
-
-  mainWindow.setVisibleOnAllWorkspaces(true, {
-    visibleOnFullScreen: true
-  })
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()

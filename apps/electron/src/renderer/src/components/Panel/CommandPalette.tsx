@@ -19,6 +19,7 @@ import { BackRootButton } from './SearchBar/BackRootButton'
 import { SearchBar } from './SearchBar/SearchBar'
 import { ICommandItem } from '~/lib/types'
 import { handleEscape } from '~/lib/handleEscape'
+import { appEmitter } from '@penx/emitter'
 
 const windowHeight = 470
 const searchBarHeight = 54
@@ -26,6 +27,9 @@ const footerHeight = 48
 
 function init() {
   handleEscape()
+  window.electron.ipcRenderer.on('main-window-show', () => {
+    appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
+  })
 }
 
 init()

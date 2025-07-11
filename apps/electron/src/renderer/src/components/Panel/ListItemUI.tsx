@@ -5,6 +5,7 @@ import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { StyledCommandItem } from './CommandComponents'
 import { ListItemIcon } from './ListItemIcon'
 import { ICommandItem } from '~/lib/types'
+import { cn } from '@penx/utils'
 
 interface ListItemUIProps extends Omit<FowerHTMLProps<'div'>, 'onSelect'> {
   index: number
@@ -24,6 +25,7 @@ export const ListItemUI = ({
   isListApp = false,
   showIcon = true,
   value,
+  className,
   ...rest
 }: ListItemUIProps) => {
   const { currentCommand } = useCurrentCommand()
@@ -53,7 +55,10 @@ export const ListItemUI = ({
 
   return (
     <StyledCommandItem
-      className="cursor-pointer flex items-center justify-between px-2 py-2 gap-4 rounded-lg text-foreground data-[selected='true']:bg-foreground/10"
+      className={cn(
+        "cursor-pointer flex items-center justify-between px-2 py-2 gap-4 rounded-lg text-foreground data-[selected='true']:bg-foreground/10",
+        className
+      )}
       value={value || title}
       keywords={keywords.filter(Boolean)}
       onSelect={() => {
@@ -73,7 +78,9 @@ export const ListItemUI = ({
           />
         )}
         <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
-          <Box text-14>{title}</Box>
+          <Box text-14 className="line-clamp-1">
+            {title}
+          </Box>
           <Box text-12 zinc400>
             {subtitle}
           </Box>

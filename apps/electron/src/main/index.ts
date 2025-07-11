@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain, globalShortcut } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, globalShortcut, screen } from 'electron'
 
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
@@ -40,6 +40,10 @@ app.whenReady().then(() => {
     panelWindow = undefined as any
   })
 
+  panelWindow.on('blur', () => {
+    panelWindow.hide()
+  })
+
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
@@ -49,25 +53,34 @@ app.whenReady().then(() => {
   })
 
   {
+    function show() {
+      const cursorPoint = screen.getCursorScreenPoint()
+      const display = screen.getDisplayNearestPoint(cursorPoint)
+      const { x, y, width, height } = display.workArea
+
+      const winBounds = panelWindow.getBounds()
+      const posX = x + Math.round((width - winBounds.width) / 2)
+      const posY = y + Math.round((height - winBounds.height) / 2)
+
+      panelWindow.setBounds({ x: posX, y: posY, width: winBounds.width, height: winBounds.height })
+
+      panelWindow.show()
+      panelWindow.webContents.send('main-window-show')
+    }
+
     function toggleSecondWindow() {
       try {
         if (!panelWindow) {
           panelWindow = createPanelWindow()
-          panelWindow.show()
+          show()
         } else if (panelWindow.isVisible()) {
-          console.log(
-            '=====panelWindow.isVisible():',
-            panelWindow.isVisible(),
-            panelWindow.isFocused()
-          )
-
           if (panelWindow.isFocused()) {
             panelWindow.hide()
           } else {
             panelWindow.focus()
           }
         } else {
-          panelWindow.show()
+          show()
           panelWindow.setAlwaysOnTop(true)
           panelWindow.focus()
           panelWindow.setAlwaysOnTop(false)
@@ -75,7 +88,7 @@ app.whenReady().then(() => {
       } catch (error) {
         console.log('======error:', error)
         panelWindow = createPanelWindow()
-        panelWindow.show()
+        show()
       }
     }
 
@@ -95,7 +108,14 @@ app.whenReady().then(() => {
         },
         { label: 'Item1', type: 'normal' },
         { label: 'Item1', type: 'normal' },
-        { label: 'Quit', click: () => app.quit() }
+        {
+          label: 'Quit',
+          click: () => {
+            mainWindow.removeAllListeners('close')
+            mainWindow.close()
+            app.quit()
+          }
+        }
       ])
       tray.setToolTip('PenX')
       tray.setContextMenu(contextMenu)

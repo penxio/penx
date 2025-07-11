@@ -10,6 +10,8 @@ import { ICommandItem } from '~/lib/types'
 import { mappedByKey } from '@penx/utils'
 import { useCreations } from '@penx/hooks/useCreations'
 import { Struct } from '@penx/domain'
+import { RowProps } from './RowProps'
+import { Trans } from '@lingui/react/macro'
 
 interface Props {
   text: string
@@ -27,68 +29,58 @@ export function DatabaseDetail(props: Props) {
   const struct = new Struct(props.struct)
   const rows = creations.filter((c) => c.structId === struct.id)
 
+  const currentView = struct.views[0]
+  const viewColumns = currentView.viewColumns
+  const columnMap = mappedByKey(struct.columns, 'id')
+  const sortedColumns = viewColumns.map(({ columnId }) => columnMap[columnId])
+
+  console.log('text-------:', text)
+
   const filteredRows = useMemo(() => {
-    return rows.map((item) => {
-      return {
-        //
-      } as ICommandItem
+    const t = text.toLowerCase()
+    if (!text) return rows.slice(0, 20)
+    return rows.filter((row) => {
+      if (row.title.toLowerCase().includes(t)) return true
+      const values: string[] = Object.values(row.cells)
+      console.log('====values:', values)
+
+      return values.some((v) => {
+        if (typeof v === 'string') {
+          return v.toLowerCase().includes(t)
+        }
+        return JSON.stringify(v).toLowerCase().includes(t)
+      })
     })
-  }, [rows])
+  }, [rows, text, sortedColumns])
 
-  // const { columns, rows, views, cells } = rest
-  // const currentView = views[0]
-  // const { viewColumns = [] } = currentView.props
-  // const columnMap = mappedByKey(columns, 'id')
-  // const sortedColumns = viewColumns.map(({ columnId }) => columnMap[columnId])
+  useEffect(() => {
+    if (!isUuidV4(value) && filteredRows.length) {
+      setValue(filteredRows[0].id)
+    }
+  }, [filteredRows, value, setValue])
 
-  // const filteredRows: Item[] = useMemo(() => {
-  //   const items = rows
-  //     .map((row) => {
-  //       const rowCells = cells.filter((cell) => cell.props.rowId === row.id)
+  // console.log('=======filteredRows:', filteredRows, 'value:', value)
+  const currentItem = filteredRows.find((item) => item.id === value)
 
-  //       if (!text) {
-  //         const cell = rowCells.find((cell) => cell.props.columnId === sortedColumns[0].id)!
-  //         return { row, rowCells, cell }
-  //       }
-
-  //       const cell = rowCells.find((cell) => {
-  //         // console.log('cell-----:', cell.props.data)
-  //         const data = String(cell.props?.data || '').toLowerCase()
-  //         return data.includes(text.toLowerCase())
-  //       })!
-  //       return { row, rowCells, cell }
-  //     })
-  //     .filter((item) => !!item.cell)
-  //     .slice(0, 20)
-  //   return items
-  // }, [rows, cells, text, sortedColumns])
-
-  // useEffect(() => {
-  //   if (!isUuidV4(value) && filteredRows.length) {
-  //     setValue(filteredRows[0].row.id)
-  //   }
-  // }, [filteredRows, value, setValue])
-
-  // // console.log('=======filteredRows:', filteredRows, 'value:', value)
-  // const currentItem = filteredRows.find((item) => item.row.id === value)
-
-  // if (!filteredRows.length)
-  //   return (
-  //     <StyledCommandGroup block--i>
-  //       <StyledCommandEmpty gray500>No results found.</StyledCommandEmpty>
-  //     </StyledCommandGroup>
-  //   )
-
-  console.log('struct======>>>>:', struct)
+  if (!filteredRows.length) {
+    return (
+      <div className="text-foreground/50 pl-1">
+        <Trans>No results found</Trans>
+      </div>
+    )
+    // return (
+    //   <StyledCommandGroup>
+    //     <StyledCommandEmpty>No results found.</StyledCommandEmpty>
+    //   </StyledCommandGroup>
+    // )
+  }
 
   return (
     <Box toLeft overflowHidden absolute top0 bottom0 left0 right0>
       <StyledCommandGroup p2 flex-2 overflowYAuto>
-        {rows.map((item, index) => {
-          console.log('====item:', item)
-
+        {filteredRows.map((item, index) => {
           const listItem = {
-            title: item.title
+            title: item.title || item.previewedContent
           } as ICommandItem
           return (
             <ListItemUI
@@ -104,13 +96,10 @@ export function DatabaseDetail(props: Props) {
 
       <Separator orientation="vertical" />
 
-      <Box flex-3 overflowAuto p3>
-        {/* {currentItem && (
-          <DatabaseProvider {...rest}>
-            <RowForm {...rest} rowId={currentItem.row.id} />
-          </DatabaseProvider>
-        )} */}
-        <div>Right</div>
+      <Box className="flex flex-col overflow-auto" flex-3>
+        {currentItem && (
+          <RowProps struct={struct} creation={currentItem} sortedColumns={sortedColumns} />
+        )}
       </Box>
     </Box>
   )

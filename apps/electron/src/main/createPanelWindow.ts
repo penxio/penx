@@ -27,7 +27,7 @@ export function createPanelWindow() {
     frame: false,
     vibrancy: 'hud',
     transparent: true,
-    // alwaysOnTop: true,
+    alwaysOnTop: true,
     skipTaskbar: true,
     // resizable: false,
     resizable: true,

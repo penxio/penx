@@ -18,11 +18,20 @@ export function useReset(setQ: (value: string) => void) {
       }
 
       const position = store.get(positionAtom)
+
+      console.log('=======position:', position)
+
       if (position === 'COMMAND_APP') {
-        store.set(positionAtom, 'ROOT')
-        store.set(currentCommandAtom, null as any)
-        store.set(commandUIAtom, {} as any)
+        const search = store.get(searchAtom)
+        console.log('===========search:', search)
+
         store.set(searchAtom, '')
+
+        if (!search) {
+          store.set(positionAtom, 'ROOT')
+          store.set(currentCommandAtom, null as any)
+          store.set(commandUIAtom, {} as any)
+        }
       }
 
       if (position === 'COMMAND_APP_DETAIL') {
