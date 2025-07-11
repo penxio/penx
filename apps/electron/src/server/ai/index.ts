@@ -1,1 +1,1 @@
-// Service for AI operations
+// entry point for ai server
