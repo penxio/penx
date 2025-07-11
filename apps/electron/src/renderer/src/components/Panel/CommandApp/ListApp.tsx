@@ -1,10 +1,8 @@
 import { memo, useEffect } from 'react'
 import { Box } from '@fower/react'
-import { getCurrent, WebviewWindow } from '@tauri-apps/api/webviewWindow'
 import { open } from '@tauri-apps/plugin-shell'
 import { ListJSON } from '@penx/extension-api'
-import clipboard from 'tauri-plugin-clipboard-api'
-import { Divider } from 'uikit'
+import { Separator } from '@penx/uikit/ui/separator'
 import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
 import { StyledCommandGroup } from '../CommandComponents'
@@ -55,11 +53,11 @@ export const ListApp = memo(function ListApp({ component }: ListAppProps) {
                 const defaultAction = item.actions?.[0]
                 if (defaultAction.type === 'OpenInBrowser') {
                   open(defaultAction.url)
-                  const appWindow = getCurrent()
-                  appWindow.hide()
                 }
                 if (defaultAction.type === 'CopyToClipboard') {
-                  await clipboard.writeText(defaultAction.content)
+                  window.customElectronApi.clipboard.writeText(
+                    defaultAction.content,
+                  )
                 }
               }
               console.log('list item:', item)
@@ -78,7 +76,7 @@ export const ListApp = memo(function ListApp({ component }: ListAppProps) {
       {listJSX}
       {isShowingDetail && (
         <>
-          <Divider orientation="vertical" />
+          <Separator orientation="vertical" />
           <Box className="command-app-list-detail" flex-3 overflowAuto p3>
             <Box text2XL fontBold mb2>
               Detail

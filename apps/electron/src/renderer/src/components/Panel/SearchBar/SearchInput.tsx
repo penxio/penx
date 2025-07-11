@@ -1,8 +1,8 @@
 import { KeyboardEventHandler, memo, useEffect, useRef } from 'react'
 import { Command } from 'cmdk'
 import { appEmitter } from '@penx/emitter'
-import { StyledCommandInput } from '../CommandComponents'
 import { cn } from '@penx/utils'
+import { StyledCommandInput } from '../CommandComponents'
 
 interface Props {
   className?: string
@@ -12,10 +12,14 @@ interface Props {
   onKeyDown: KeyboardEventHandler<HTMLInputElement>
 }
 export const SearchInput = memo(
-  function SearchInput({ search, searchBarHeight, onValueChange, onKeyDown, className }: Props) {
+  function SearchInput({
+    search,
+    searchBarHeight,
+    onValueChange,
+    onKeyDown,
+    className,
+  }: Props) {
     const ref = useRef<HTMLInputElement>(null)
-
-    console.log('======className:', className)
 
     useEffect(() => {
       const handleFocus = () => {
@@ -31,8 +35,8 @@ export const SearchInput = memo(
       <StyledCommandInput
         ref={ref as any}
         className={cn(
-          'no-drag flex-1 select-none flex items-center bg-transparent w-full placeholder:text-foreground/30',
-          className
+          'no-drag placeholder:text-foreground/30 flex w-full flex-1 select-none items-center bg-transparent',
+          className,
         )}
         id="searchBarInput"
         h={searchBarHeight}
@@ -40,7 +44,7 @@ export const SearchInput = memo(
         textBase
         outlineNone
         css={{
-          'caretColor--dark': 'white'
+          'caretColor--dark': 'white',
         }}
         placeholder="Search something..."
         autoFocus
@@ -51,6 +55,9 @@ export const SearchInput = memo(
     )
   },
   (prev, next) => {
-    return prev.searchBarHeight === next.searchBarHeight && prev.search === next.search
-  }
+    return (
+      prev.searchBarHeight === next.searchBarHeight &&
+      prev.search === next.search
+    )
+  },
 )

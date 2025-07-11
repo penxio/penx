@@ -1,17 +1,17 @@
 import { useEffect, useMemo } from 'react'
 import { Box } from '@fower/react'
-import { useValue } from '~/hooks/useValue'
-import { StyledCommandEmpty, StyledCommandGroup } from '../../CommandComponents'
-import { ListItemUI } from '../../ListItemUI'
-import { RowForm } from './RowForm'
+import { Trans } from '@lingui/react/macro'
+import { Struct } from '@penx/domain'
+import { useCreations } from '@penx/hooks/useCreations'
 import { IStructNode } from '@penx/model-type'
 import { Separator } from '@penx/uikit/ui/separator'
-import { ICommandItem } from '~/lib/types'
 import { mappedByKey } from '@penx/utils'
-import { useCreations } from '@penx/hooks/useCreations'
-import { Struct } from '@penx/domain'
+import { docToString } from '@penx/utils/editorHelper'
+import { useValue } from '~/hooks/useValue'
+import { ICommandItem } from '~/lib/types'
+import { StyledCommandEmpty, StyledCommandGroup } from '../../CommandComponents'
+import { ListItemUI } from '../../ListItemUI'
 import { RowProps } from './RowProps'
-import { Trans } from '@lingui/react/macro'
 
 interface Props {
   text: string
@@ -34,15 +34,19 @@ export function DatabaseDetail(props: Props) {
   const columnMap = mappedByKey(struct.columns, 'id')
   const sortedColumns = viewColumns.map(({ columnId }) => columnMap[columnId])
 
-  console.log('text-------:', text)
-
   const filteredRows = useMemo(() => {
     const t = text.toLowerCase()
     if (!text) return rows.slice(0, 20)
     return rows.filter((row) => {
       if (row.title.toLowerCase().includes(t)) return true
+
+      const contentStr = docToString(JSON.parse(row.content))
+      if (contentStr.toLowerCase().includes(t)) return true
+
+      if (!row.cells) {
+        return false
+      }
       const values: string[] = Object.values(row.cells)
-      console.log('====values:', values)
 
       return values.some((v) => {
         if (typeof v === 'string') {
@@ -80,7 +84,7 @@ export function DatabaseDetail(props: Props) {
       <StyledCommandGroup p2 flex-2 overflowYAuto>
         {filteredRows.map((item, index) => {
           const listItem = {
-            title: item.title || item.previewedContent
+            title: item.title || item.previewedContent,
           } as ICommandItem
           return (
             <ListItemUI
@@ -98,7 +102,11 @@ export function DatabaseDetail(props: Props) {
 
       <Box className="flex flex-col overflow-auto" flex-3>
         {currentItem && (
-          <RowProps struct={struct} creation={currentItem} sortedColumns={sortedColumns} />
+          <RowProps
+            struct={struct}
+            creation={currentItem}
+            sortedColumns={sortedColumns}
+          />
         )}
       </Box>
     </Box>
@@ -114,6 +122,7 @@ function dataToString(data: any) {
 }
 
 function isUuidV4(uuid: string): boolean {
-  const uuidV4Regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+  const uuidV4Regex =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
   return uuidV4Regex.test(uuid)
 }

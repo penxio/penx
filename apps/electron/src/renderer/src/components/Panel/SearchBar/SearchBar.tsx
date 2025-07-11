@@ -1,5 +1,6 @@
 import { Box } from '@fower/react'
 import { appEmitter } from '@penx/emitter'
+import { cn } from '@penx/utils'
 import { useCommandPosition } from '~/hooks/useCommandPosition'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
@@ -11,7 +12,6 @@ import { BackRootButton } from './BackRootButton'
 import { DatabaseName } from './DatabaseName'
 import { SearchBarFilter } from './SearchBarFilter'
 import { SearchInput } from './SearchInput'
-import { cn } from '@penx/utils'
 
 interface Props {
   searchBarHeight: number
@@ -21,20 +21,22 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   const { items, setItems } = useItems()
   const { commands } = useCommands()
   const { loading } = useLoading()
-  const { isCommandApp, isCommandAppDetail, backToRoot, backToCommandApp } = useCommandPosition()
+  const { isCommandApp, isCommandAppDetail, backToRoot, backToCommandApp } =
+    useCommandPosition()
   const handleSelect = useHandleSelect()
   const { currentCommand } = useCurrentCommand()
 
   const currentCommandName = currentCommand?.data?.commandName
-  const isMarketplaceDetail = currentCommandName === 'marketplace' && isCommandAppDetail
+  const isMarketplaceDetail =
+    currentCommandName === 'marketplace' && isCommandAppDetail
 
-  const isDatabaseApp = currentCommand?.data?.type === 'Database'
+  const isDatabaseApp = currentCommand?.data?.type === 'Struct'
 
   return (
     <div
-      className="drag flex items-center border-b border-foreground/10"
+      className="drag border-foreground/10 flex items-center border-b"
       style={{
-        height: searchBarHeight
+        height: searchBarHeight,
       }}
     >
       {isCommandApp && <BackRootButton pl3 mr--8 />}

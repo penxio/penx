@@ -18,14 +18,8 @@ export const AnimatedJournalInput = ({ ref }: Props) => {
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const { height } = useKeyboard()
 
-  const {
-    isTask,
-    date,
-    cells = {},
-    open,
-    setOpen,
-    placeholder,
-  } = useQuickInputOpen()
+  const { isTask, date, cells, open, setOpen, placeholder } =
+    useQuickInputOpen()
 
   return (
     <>

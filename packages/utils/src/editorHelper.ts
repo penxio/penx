@@ -1,4 +1,4 @@
-export function docToString(node: any) {
+export function docToString(node: any): string {
   if (!node) return ''
 
   if (node.type === 'text') {

@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { Trans } from '@lingui/react/macro'
-import { fetch } from '@tauri-apps/plugin-http'
+// import { fetch } from '@tauri-apps/plugin-http'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import ky from 'ky'
 import {
@@ -61,9 +61,13 @@ export function ProfileButton({ loginButton }: Props) {
 
   async function desktopLogin() {
     const authToken = nanoid()
-    openUrl(`${ROOT_HOST}/desktop-login?token=${authToken}`)
+    const url = `${ROOT_HOST}/desktop-login?token=${authToken}`
+    // openUrl()
+    console.log('1111111111111111')
+    window.electron.ipcRenderer.send('open-url', url)
+    console.log('2222222222222222')
+
     while (true) {
-      fetch
       try {
         // const { status } = await ky
         //   .get(`${ROOT_HOST}/api/get-desktop-login-status`, {

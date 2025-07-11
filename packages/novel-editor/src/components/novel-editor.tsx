@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import isEqual from 'react-fast-compare'
 import hljs from 'highlight.js'
 import {
   EditorCommand,
@@ -36,6 +37,7 @@ const extensions = [...defaultExtensions, slashCommand]
 
 interface Props {
   className?: string
+  editable?: boolean
   value?: JSONContent
   onChange?: (value: any) => void
   children?: React.ReactNode
@@ -44,6 +46,7 @@ interface Props {
 export const NovelEditor = ({
   value,
   onChange,
+  editable = true,
   className,
   children,
 }: Props) => {
@@ -98,6 +101,7 @@ export const NovelEditor = ({
             handleDOMEvents: {
               keydown: (_view, event) => handleCommandNavigation(event),
             },
+            editable: () => editable,
             handlePaste: (view, event) =>
               handleImagePaste(view, event, uploadFn),
             handleDrop: (view, event, _slice, moved) =>
@@ -110,7 +114,12 @@ export const NovelEditor = ({
             // debouncedUpdates(editor)
             onChange?.(editor.getJSON())
           }}
-          slotAfter={<ImageResizer />}
+          slotAfter={
+            <>
+              <ImageResizer />
+              <EditorValueUpdater value={value} />
+            </>
+          }
         >
           <EditorCommand className="border-muted bg-background z-50 h-auto max-h-[330px] overflow-y-auto rounded-md border px-1 py-2 shadow-md transition-all">
             <EditorCommandEmpty className="text-muted-foreground px-2">
@@ -157,4 +166,19 @@ export const NovelEditor = ({
       </EditorRoot>
     </div>
   )
+}
+
+function EditorValueUpdater({ value }: { value: any }) {
+  const { editor } = useEditor()
+  const [content, setContent] = useState<any>(value)
+
+  useEffect(() => {
+    if (!editor) return
+    if (!isEqual(value, content)) {
+      editor.commands.setContent(value)
+      setContent(value)
+    }
+  }, [value, editor])
+
+  return null
 }

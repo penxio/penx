@@ -1,7 +1,5 @@
 import SVG from 'react-inlinesvg'
 import { Box, css } from '@fower/react'
-import { Button } from 'uikit'
-import { Manifest } from '@penx/model'
 
 interface ItemIconProps {
   icon: string

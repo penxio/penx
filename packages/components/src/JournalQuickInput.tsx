@@ -94,7 +94,7 @@ export function JournalQuickInput({
       content: content,
       isAddPanel: false,
       date: date ? date : format(new Date(), 'yyyy-MM-dd'),
-      cells,
+      cells: cells,
     })
     editor?.commands.clearContent()
     afterSubmit?.()

@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
+// import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
 import { api } from '@penx/api'
 import {
@@ -25,7 +25,8 @@ import {
   UpdateSessionData,
 } from '@penx/types'
 
-const fetchClient = isDesktop ? tauriFetch : fetch
+// const fetchClient = isDesktop ? tauriFetch : fetch
+const fetchClient = fetch
 
 // @ts-ignore
 const sessionApiRoute = `${ROOT_HOST}/api/session`

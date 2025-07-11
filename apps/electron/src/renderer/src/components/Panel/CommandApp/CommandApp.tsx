@@ -2,13 +2,10 @@ import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { Box } from '@fower/react'
 import { IListItem, isListJSON, isMarkdownJSON } from '@penx/extension-api'
-import { Spinner } from 'uikit'
-import { Markdown } from '~/components/Markdown'
 import { CommandAppUI } from '~/hooks/useCommandAppUI'
 import { ClipboardHistoryApp } from './ClipboardHistoryApp'
 import { DatabaseApp } from './DatabaseApp/DatabaseApp'
 import { ListApp } from './ListApp'
-import { MarketplaceApp } from './MarketplaceApp/MarketplaceApp'
 import { TodayApp } from './TodayApp'
 
 interface CommandAppProps {
@@ -19,9 +16,9 @@ interface CommandAppProps {
 
 export const CommandApp = memo(
   function CommandApp({ loading, ui, currentCommand }: CommandAppProps) {
-    if (ui.type === 'marketplace') {
-      return <MarketplaceApp />
-    }
+    // if (ui.type === 'marketplace') {
+    //   return <MarketplaceApp />
+    // }
 
     // if (ui.type === 'today') {
     //   return <TodayApp />
@@ -42,11 +39,12 @@ export const CommandApp = memo(
 
     if (
       // prev.loading === next.loading &&
-      prev.currentCommand?.data?.commandName === next.currentCommand?.data?.commandName &&
+      prev.currentCommand?.data?.commandName ===
+        next.currentCommand?.data?.commandName &&
       isEqual(prev.ui, next.ui)
     ) {
       return true
     }
     return false
-  }
+  },
 )

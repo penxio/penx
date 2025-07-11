@@ -1,8 +1,11 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
+import { clipboard, contextBridge, ipcRenderer } from 'electron'
 
 declare global {
   interface Window {
     electron: ElectronAPI
-    api: unknown
+    customElectronApi: {
+      clipboard: Electron.Clipboard
+    }
   }
 }
