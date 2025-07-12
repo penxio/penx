@@ -1152,10 +1152,10 @@ importers:
         specifier: ^3.5.3
         version: 3.6.2
       react:
-        specifier: ^19.1.0
+        specifier: ^19.0.0
         version: 19.1.0
       react-dom:
-        specifier: ^19.1.0
+        specifier: ^19.0.0
         version: 19.1.0(react@19.1.0)
       sass-embedded:
         specifier: ^1.89.2
