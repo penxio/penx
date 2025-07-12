@@ -2,144 +2,104 @@ name: "Desktop App Publish"
 
 on:
   push:
-    # tags:
-    #   - "v*"
+    tags:
+      - "v*"
     branches:
       - desktop
       - release
   workflow_dispatch:
 
+permissions:
+  contents: write 
+
 jobs:
-  publish-tauri:
-    permissions:
-      contents: write
+  release:
+    runs-on: ${{ matrix.os }}
+
     strategy:
-      fail-fast: false
       matrix:
-        settings:
-          - platform: "macos-14" # for Arm based macs (M1 and above).
-            args: "--target aarch64-apple-darwin --verbose"
-          - platform: "macos-13" # for Intel based macs.
-            args: "--target x86_64-apple-darwin --verbose"
-          # Universal Build no longer supported after adding openssl, which is not cross-compilable.
-          - platform: "macos-14" # for Both Arm and Intel based macs.
-            args: "--target universal-apple-darwin --verbose"
-          - platform: "ubuntu-22.04" # for Tauri v1 you could replace this with ubuntu-20.04.
-            args: "--verbose"
-          - platform: "windows-latest"
-            args: "--verbose"
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
-    runs-on: ${{ matrix.settings.platform }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: "true"
+      - name: Check out Git repository
+        uses: actions/checkout@v3
 
-      - name: Install Dependencies (ubuntu only)
-        if: matrix.settings.platform == 'ubuntu-22.04' # This must match the platform value defined above.
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libxdo-dev
-        # You can remove the one that doesn't apply to your app to speed up the workflow a bit.
-      - name: Install protobuf (Mac)
-        if: startsWith(matrix.settings.platform, 'macos')
-        run: |
-          brew install protobuf
-          brew install openssl
-      - name: Install Protobuf (Ubuntu)
-        if: matrix.settings.platform == 'ubuntu-22.04'
-        run: |
-          sudo apt install -y protobuf-compiler
       - uses: pnpm/action-setup@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           version: 9.2.0
           node-version: lts/*
-          cache: "pnpm" # Set this to npm, yarn or pnpm.
+          cache: pnpm
           cache-dependency-path: ./pnpm-lock.yaml
-      # - uses: pnpm/action-setup@v4
-      #   with:
-      #     version: 9.2.0
+
+      # macOS：安装独立 Python 3.11，避免系统 Python 限制
+      - name: Setup Python (macOS)
+        if: matrix.os == 'macos-latest'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install setuptools (macOS)
+        if: matrix.os == 'macos-latest'
+        run: python -m pip install setuptools
+
+      # Ubuntu：安装 Python 3.11，确保有完整 distutils 支持
+      - name: Setup Python 3.11 (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Ensure pip and setuptools (Ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          python -m ensurepip --upgrade
+          python -m pip install --upgrade pip setuptools wheel
+
       - name: Check pnpm version
         run: pnpm -v
-      - name: Install protoc and openssl for windows
-        if: matrix.settings.platform == 'windows-latest'
-        run: |
-          choco install protoc
-          $env:VCPKG_INSTALLATION_ROOT = "${{ runner.temp }}\vcpkg"
-          vcpkg install openssl:x64-windows-static-md
-          echo "OPENSSL_DIR=${{ runner.temp }}\vcpkg\installed\x64-windows-static-md" >> $env:GITHUB_ENV
-          echo "OPENSSL_INCLUDE_DIR=${{ runner.temp }}\vcpkg\installed\x64-windows-static-md\include" >> $env:GITHUB_ENV
-          echo "OPENSSL_LIB_DIR=${{ runner.temp }}\vcpkg\installed\x64-windows-static-md\lib" >> $env:GITHUB_ENV
-      - name: Install Rust stable
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          # Those targets are only used on macos runners so it's in an `if` to slightly speed up windows and linux builds.
-          targets: ${{ matrix.settings.platform == 'macos-14' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
-      - name: Add rust target (macos only)
-        if: matrix.settings.platform == 'macos-14'
-        run: |
-          rustup target add aarch64-apple-darwin
-          rustup target add x86_64-apple-darwin
-      - name: Rust Cache
-        uses: swatinem/rust-cache@v2
-        with:
-          workspaces: ". -> target"
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-      - name: Print key info for debugging
-        run: |
-          echo "Private key length: ${#TAURI_SIGNING_PRIVATE_KEY}"
-          echo "Private key starts with: ${TAURI_SIGNING_PRIVATE_KEY:0:10}..."
-          echo "Password length: ${#TAURI_SIGNING_PRIVATE_KEY_PASSWORD}"
-          echo "Private key starts with: ${TAURI_SIGNING_PRIVATE_KEY_PASSWORD:0:8}..."
-        env:
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
 
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Build Packages
+      - name: build-linux
+        if: matrix.os == 'ubuntu-latest'
         env:
           NODE_OPTIONS: --max-old-space-size=8192
-          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
-          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
-        run: pnpm build:desktop
+        run: pnpm run build:linux
 
-      - name: Get App Version
-        if: matrix.settings.platform == 'windows-latest'
-        id: appversion
-        run: |
-          echo "version=$(node -p "require('./apps/desktop/package.json').version")" >> $env:GITHUB_OUTPUT
-      - uses: tauri-apps/tauri-action@v0
+      - name: build-mac
+        if: matrix.os == 'macos-latest'
         env:
           NODE_OPTIONS: --max-old-space-size=8192
-          CI: false
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
-          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-          APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        run: pnpm run build:mac
 
+      - name: build-win
+        if: matrix.os == 'windows-latest'
+        env:
+          NODE_OPTIONS: --max-old-space-size=8192
+        run: pnpm run build:win
+
+      - name: List dist directory
+        run: ls -l apps/electron/dist
+
+      - name: release
+        uses: softprops/action-gh-release@v1
         with:
-          tagName: PenX-v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version.
-          releaseName: "PenX v__VERSION__"
-          releaseBody: "See the assets to download this version and install."
-          releaseDraft: true
-          includeUpdaterJson: true
-          prerelease: false
-          args: ${{ matrix.settings.args }} ${{ contains(steps.appversion.outputs.version, 'beta') && matrix.settings.platform == 'windows-latest' && '-b nsis' || '' }}
-          projectPath: "./apps/desktop"
+          draft: true
+          body: "See the assets to download this version and install."
+          files: |
+            apps/electron/dist/*.exe
+            apps/electron/dist/*.zip
+            apps/electron/dist/*.dmg
+            apps/electron/dist/*.AppImage
+            apps/electron/dist/*.snap
+            apps/electron/dist/*.deb
+            apps/electron/dist/*.rpm
+            apps/electron/dist/*.tar.gz
+            apps/electron/dist/*.yml
+            apps/electron/dist/*.blockmap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

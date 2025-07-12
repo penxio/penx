@@ -1,9 +1,9 @@
 {
-  "name": "penx-electron",
+  "name": "penx",
   "version": "1.0.0",
-  "description": "An Electron application with React and TypeScript",
+  "description": "PenX App",
   "main": "./out/main/index.js",
-  "author": "example.com",
+  "author": "",
   "homepage": "https://electron-vite.org",
   "scripts": {
     "format": "prettier --write .",
@@ -19,6 +19,7 @@
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
+    "builder:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux"
   },
   "dependencies": {
@@ -83,8 +84,8 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "prettier": "^3.5.3",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "sass-embedded": "^1.89.2",
     "typescript": "^5.8.3",
     "vite": "^6.2.6"
