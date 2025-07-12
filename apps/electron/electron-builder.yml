@@ -20,7 +20,10 @@ nsis:
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
 mac:
+  entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
+  hardenedRuntime: true
+  gatekeeperAssess: false
   extendInfo:
     - NSCameraUsageDescription: Application requests access to the device's camera.
     - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
@@ -29,18 +32,21 @@ mac:
   notarize: false
 dmg:
   artifactName: ${name}-${version}.${ext}
+afterSign: build/notarize.js
+
 linux:
   target:
     - AppImage
     - snap
     - deb
-  maintainer: electronjs.org
+  maintainer: penx.io
   category: Utility
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
-publish:
-  provider: generic
-  url: https://example.com/auto-updates
+# publish:       
+#   provider: "github"
+#   owner: "penxio"
+#   repo: "penx"
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/

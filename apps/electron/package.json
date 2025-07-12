@@ -17,10 +17,10 @@
     "build": "npm run typecheck && electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
-    "build:win": "npm run build && electron-builder --win",
-    "build:mac": "electron-vite build && electron-builder --mac",
-    "builder:mac": "electron-vite build && electron-builder --mac",
-    "build:linux": "electron-vite build && electron-builder --linux"
+    "build:win": "npm run build && electron-builder --win --config",
+    "build:mac": "electron-vite build && electron-builder --mac --config",
+    "builder:mac": "electron-vite build && electron-builder --mac --config electron-builder.yml",
+    "build:linux": "electron-vite build && electron-builder --linux --config"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.3.4",
@@ -76,8 +76,9 @@
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.3.4",
+    "dotenv": "^17.2.0",
     "electron": "37.2.0",
-    "electron-builder": "^25.1.8",
+    "electron-builder": "25.1.8",
     "electron-vite": "^4.0.0",
     "eslint": "^9.24.0",
     "eslint-plugin-react": "^7.37.5",
