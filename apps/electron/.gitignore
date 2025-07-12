@@ -6,3 +6,6 @@ out
 *.log*
 
 tsconfig.web.tsbuildinfo
+
+!build
+!.env

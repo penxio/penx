@@ -121,6 +121,10 @@ msgstr ""
 msgid "Add property"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/AddRowButton.tsx:25
+msgid "Add Row"
+msgstr ""
+
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:49
 msgid "Add sync server"
 msgstr ""
@@ -158,9 +162,9 @@ msgid "AI transcription for voice"
 msgstr ""
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 msgid "All"
 msgstr ""
 
@@ -355,8 +359,8 @@ msgstr ""
 msgid "Coupon code applied successfully"
 msgstr ""
 
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 msgid "Create"
 msgstr ""
 
@@ -419,14 +423,14 @@ msgstr ""
 #: apps/mobile/src/components/CreationMenu.tsx:98
 #: packages/components/src/database-ui/TableInfo.tsx:77
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
+#: packages/components/src/area-widgets/TitleContextMenu.tsx:56
+#: packages/components/src/area-widgets/CreationItem.tsx:121
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:337
 #: packages/components/src/CreationCard/CreationCard.tsx:314
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:98
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:73
-#: packages/components/src/area-widgets/TitleContextMenu.tsx:56
-#: packages/components/src/area-widgets/CreationItem.tsx:121
 msgid "Delete"
 msgstr ""
 
@@ -555,11 +559,11 @@ msgid "Favorites"
 msgstr ""
 
 #: apps/extension/components/content/AddBookmark/Tags.tsx:69
+#: packages/components/src/cells/single-select-cell.tsx:178
+#: packages/components/src/cells/multiple-select-cell.tsx:174
 #: packages/components/src/Creation/Tags.tsx:116
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:88
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:87
-#: packages/components/src/cells/single-select-cell.tsx:178
-#: packages/components/src/cells/multiple-select-cell.tsx:174
 msgid "Find or create option"
 msgstr ""
 
@@ -647,8 +651,8 @@ msgstr ""
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:98
 #: packages/widgets/src/WidgetName.tsx:14
-#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:87
+#: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
 msgid "Journals"
 msgstr ""
 
@@ -688,13 +692,13 @@ msgstr ""
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:127
+#: packages/components/src/ProfileButton.tsx:131
 msgid "Log in"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:263
+#: packages/components/src/ProfileButton.tsx:267
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
 msgstr ""
@@ -720,7 +724,7 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: packages/components/src/Sidebar/app-sidebar.tsx:111
+#: packages/components/src/Sidebar/app-sidebar.tsx:117
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:39
 msgid "Manage tags"
 msgstr ""
@@ -791,13 +795,13 @@ msgstr ""
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:72
 #: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/SettingsDialog/Profile.tsx:93
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:52
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
 #: packages/components/src/AreaDialog/AreaForm.tsx:163
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 msgid "Name"
 msgstr ""
 
@@ -835,13 +839,17 @@ msgstr ""
 msgid "No introduction for the struct"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:72
+msgid "No results found"
+msgstr ""
+
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
+#: packages/components/src/cells/single-select-cell.tsx:186
+#: packages/components/src/cells/multiple-select-cell.tsx:182
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:96
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:95
 #: packages/components/src/CommandPanel/SearchCreationList.tsx:37
 #: packages/components/src/CommandPanel/CommandList.tsx:29
-#: packages/components/src/cells/single-select-cell.tsx:186
-#: packages/components/src/cells/multiple-select-cell.tsx:182
 msgid "No results found."
 msgstr ""
 
@@ -1141,7 +1149,7 @@ msgid "Set password"
 msgstr ""
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: packages/components/src/ProfileButton.tsx:214
+#: packages/components/src/ProfileButton.tsx:218
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
@@ -1175,9 +1183,9 @@ msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
+#: packages/components/src/area-widgets/CreationItem.tsx:145
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
-#: packages/components/src/area-widgets/CreationItem.tsx:145
 msgid "Star"
 msgstr ""
 
@@ -1187,10 +1195,6 @@ msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:48
 msgid "Status"
-msgstr ""
-
-#: apps/electron/src/renderer/src/components/Versions.tsx:7
-msgid "Stripe"
 msgstr ""
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:77
@@ -1217,8 +1221,8 @@ msgstr ""
 #: apps/mobile/src/components/Profile/StructsMenu.tsx:24
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:136
+#: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
 msgstr ""
 
@@ -1240,7 +1244,7 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:243
+#: packages/components/src/ProfileButton.tsx:247
 msgid "Support"
 msgstr ""
 
@@ -1367,18 +1371,18 @@ msgid "To Do"
 msgstr ""
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:21
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalShortcut.tsx:30
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 msgid "Today"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 msgid "Tomorrow"
 msgstr ""
 
@@ -1406,17 +1410,17 @@ msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:86
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
+#: packages/components/src/area-widgets/CreationItem.tsx:145
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
-#: packages/components/src/area-widgets/CreationItem.tsx:145
 msgid "Unstar"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:31
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:23
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:38
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 msgid "Upcoming"
 msgstr ""
 
@@ -1447,7 +1451,7 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:234
+#: packages/components/src/ProfileButton.tsx:238
 msgid "Upgrade to Pro"
 msgstr ""
 

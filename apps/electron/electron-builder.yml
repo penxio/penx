@@ -1,5 +1,5 @@
-appId: com.electron.app
-productName: electron-app
+appId: io.penx.app
+productName: PenX
 directories:
   buildResources: build
 files:
@@ -13,7 +13,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: electron-app
+  executableName: penx
 nsis:
   artifactName: ${name}-${version}-setup.${ext}
   shortcutName: ${productName}
