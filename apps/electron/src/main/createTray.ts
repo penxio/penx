@@ -4,25 +4,36 @@ import { Windows } from './types'
 
 export function createTray(windows: Windows) {
   const mainWindow = windows.mainWindow!
-  console.log('=======icon:', icon)
+  const panelWindow = windows.panelWindow!
   const trayIcon = nativeImage.createFromPath(icon)
 
   const tray = new Tray(trayIcon)
   const contextMenu = Menu.buildFromTemplate([
     {
-      label: 'Open PenX',
+      label: 'Open PenX Editor',
       type: 'normal',
       click: () => {
         mainWindow.show()
       },
     },
-    { label: 'Item1', type: 'normal' },
-    { label: 'Item1', type: 'normal' },
+    {
+      label: 'Open PenX Panel',
+      type: 'normal',
+      click: () => {
+        panelWindow.show()
+      },
+    },
     {
       label: 'Quit',
       click: () => {
-        mainWindow.removeAllListeners('close')
-        mainWindow.close()
+        if (mainWindow) {
+          mainWindow.removeAllListeners('close')
+          mainWindow.close()
+        }
+        if (panelWindow) {
+          panelWindow.removeAllListeners('close')
+          panelWindow.close()
+        }
         app.quit()
       },
     },

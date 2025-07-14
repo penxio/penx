@@ -53,7 +53,7 @@ export function createPanelWindow() {
   //   mainWindow.webContents.openDevTools()
   // })
   mainWindow.on('show', () => {
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {

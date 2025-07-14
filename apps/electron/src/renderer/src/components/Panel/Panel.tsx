@@ -1,7 +1,6 @@
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LocaleProvider } from '@penx/locales'
-import { SearchBar } from './SearchBar/SearchBar'
 import { CommandPalette } from './CommandPalette'
 
 const windowHeight = 470

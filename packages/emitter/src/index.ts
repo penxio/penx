@@ -47,6 +47,8 @@ export type AppEvent = {
   FOCUS_SEARCH_BAR_INPUT: undefined
 
   ON_APPLICATION_DIR_CHANGE: undefined
+
+  ON_AREA_SELECTED: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

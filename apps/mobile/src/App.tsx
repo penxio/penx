@@ -13,7 +13,6 @@ import {
   setupIonicReact,
 } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
-import { i18n } from '@lingui/core'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants'

@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { atom, useAtom, useSetAtom } from 'jotai'
-import { appEmitter } from '@penx/emitter'
-import { useSearch } from './useSearch'
-import { ICommandItem } from '~/lib/types'
-import { store } from '@penx/store'
 import { Struct } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
+import { store } from '@penx/store'
+import { ICommandItem } from '~/lib/types'
+import { useSearch } from './useSearch'
 
 const isDeveloping = (item: ICommandItem) => item.data?.isDeveloping
 const isProduction = (item: ICommandItem) => !item.data?.isDeveloping
@@ -25,7 +25,7 @@ export function useItems() {
     commandItems: items,
     databaseItems: [],
     applicationItems: items,
-    setItems
+    setItems,
   }
 }
 
@@ -58,13 +58,13 @@ export function useLoadCommands() {
             extensionIcon: '',
             isDeveloping: false,
             applicationPath: '',
-            isApplication: false
-          }
+            isApplication: false,
+          },
         }
       })
 
       return [...structCommands] as ICommandItem[]
-    }
+    },
   })
 }
 
@@ -77,6 +77,13 @@ export function useQueryCommands() {
     appEmitter.on('ON_APPLICATION_DIR_CHANGE', refetch)
     return () => {
       appEmitter.off('ON_APPLICATION_DIR_CHANGE', refetch)
+    }
+  }, [])
+
+  useEffect(() => {
+    appEmitter.on('ON_AREA_SELECTED', refetch)
+    return () => {
+      appEmitter.off('ON_AREA_SELECTED', refetch)
     }
   }, [])
 

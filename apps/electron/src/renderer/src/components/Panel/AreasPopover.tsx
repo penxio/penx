@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { ChevronsUpDown, PlusIcon } from 'lucide-react'
+import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useAreas } from '@penx/hooks/useAreas'
 import { useMobileMenu } from '@penx/hooks/useMobileMenu'
@@ -18,12 +20,13 @@ interface Props {
 export const AreasPopover = ({ className = '' }: Props) => {
   const { areas = [] } = useAreas()
   const { close } = useMobileMenu()
+  const [open, setOpen] = useState(false)
   const { area } = useArea()
 
   if (!area) return null
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <div className="hover:bg-foreground/8 group/area no-drag flex h-8 w-full cursor-pointer items-center justify-between rounded-lg px-2 py-2 transition-colors">
           <div className="flex flex-1 cursor-pointer items-center gap-1">
@@ -31,7 +34,10 @@ export const AreasPopover = ({ className = '' }: Props) => {
               <Avatar className="size-5 rounded-md">
                 <AvatarImage src={area.logo} alt="" />
                 <AvatarFallback
-                  className={cn('rounded-md text-xs text-white', generateGradient(area.name))}
+                  className={cn(
+                    'rounded-md text-xs text-white',
+                    generateGradient(area.name),
+                  )}
                 >
                   {area.name.slice(0, 1)}
                 </AvatarFallback>
@@ -45,22 +51,37 @@ export const AreasPopover = ({ className = '' }: Props) => {
           </div>
         </div>
       </PopoverTrigger>
-      <PopoverContent className="z-[1000000] w-56 p-1 dark:bg-neutral-800" align="start">
+      <PopoverContent
+        className="z-[1000000] w-56 p-1 dark:bg-neutral-800"
+        align="start"
+      >
         {areas.map((item) => (
           <div
             key={item.id}
             className="flex cursor-pointer items-center gap-2 py-2"
             onClick={async () => {
               store.area.set(item.raw)
+
               store.creations.refetchCreations(item.id)
               store.structs.refetchStructs(item.id)
               store.visit.setAndSave({ activeAreaId: item.id })
               store.panels.resetPanels()
+
+              setTimeout(() => {
+                appEmitter.emit('ON_AREA_SELECTED')
+              }, 100)
+
+              setOpen(false)
             }}
           >
             <Avatar className="size-6 rounded-md">
               <AvatarImage src={getUrl(item.logo!)} alt="" />
-              <AvatarFallback className={cn('rounded-md text-white', generateGradient(item.name))}>
+              <AvatarFallback
+                className={cn(
+                  'rounded-md text-white',
+                  generateGradient(item.name),
+                )}
+              >
                 {item.name.slice(0, 1)}
               </AvatarFallback>
             </Avatar>

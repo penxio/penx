@@ -1,6 +1,6 @@
-import { shell, BrowserWindow, screen } from 'electron'
 import { join } from 'path'
 import { is } from '@electron-toolkit/utils'
+import { BrowserWindow, screen, shell } from 'electron'
 import icon from '../../resources/icon.png?asset'
 
 // const __filename = fileURLToPath(import.meta.url)
@@ -24,7 +24,7 @@ export function createMainWindow() {
     titleBarOverlay: {
       color: '#2f3241',
       symbolColor: '#74b1be',
-      height: 30
+      height: 30,
     },
     ...(process.platform === 'linux' ? { icon } : {}),
 
@@ -38,8 +38,8 @@ export function createMainWindow() {
     webPreferences: {
       partition: 'persist:sharedPartition',
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
-    }
+      sandbox: false,
+    },
   })
 
   // const mainWindow = new BrowserWindow({
@@ -72,8 +72,7 @@ export function createMainWindow() {
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
-    console.log('relad..........', __dirname)
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
   })
 
   mainWindow.webContents.setWindowOpenHandler((details) => {

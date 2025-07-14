@@ -93,7 +93,9 @@ export class ElectronApp {
       })
 
       this.panelWindow.on('blur', () => {
-        this.panelWindow.hide()
+        if (!is.dev) {
+          this.panelWindow.hide()
+        }
       })
 
       this.setupIPC()
