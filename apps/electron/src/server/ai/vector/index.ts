@@ -12,7 +12,7 @@ import type {
   QueryResult,
   QueryVectorParams,
   UpdateVectorParams,
-  UpsertVectorParams
+  UpsertVectorParams,
 } from '@mastra/core/vector'
 import { Mutex } from 'async-mutex'
 import xxhash from 'xxhash-wasm'
@@ -80,7 +80,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
        * Schema name for tables
        */
       schemaName?: string
-    } = {}
+    } = {},
   ) {
     if (!config.dataDir) {
       throw new Error('PgLiteVector: dataDir is required')
@@ -88,13 +88,15 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
 
     super()
 
-    this.schema = config.schemaName
+    // PGlite works best with the default public schema
+    // Custom schemas can cause transaction issues
+    this.schema = undefined // Force use of public schema
 
     // Initialize PGlite
     this.db = new PGlite(config.dataDir, {
       extensions: {
-        vector
-      }
+        vector,
+      },
     })
 
     void (async () => {
@@ -106,7 +108,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           indexName,
           metric: info.metric,
           dimension: info.dimension,
-          type: info.type
+          type: info.type,
         })
         this.createdIndexes.set(indexName, key)
       })
@@ -114,7 +116,8 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
   }
 
   private getMutexByName(indexName: string) {
-    if (!this.mutexesByName.has(indexName)) this.mutexesByName.set(indexName, new Mutex())
+    if (!this.mutexesByName.has(indexName))
+      this.mutexesByName.set(indexName, new Mutex())
     return this.mutexesByName.get(indexName)!
   }
 
@@ -124,13 +127,17 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     const quotedSchemaName = this.getSchemaName()
     const quotedVectorName = `"${parsedIndexName}_vector_idx"`
     return {
-      tableName: quotedSchemaName ? `${quotedSchemaName}.${quotedIndexName}` : quotedIndexName,
-      vectorIndexName: quotedVectorName
+      tableName: quotedSchemaName
+        ? `${quotedSchemaName}.${quotedIndexName}`
+        : quotedIndexName,
+      vectorIndexName: quotedVectorName,
     }
   }
 
   private getSchemaName() {
-    return this.schema ? `"${parseSqlIdentifier(this.schema, 'schema name')}"` : undefined
+    return this.schema
+      ? `"${parseSqlIdentifier(this.schema, 'schema name')}"`
+      : undefined
   }
 
   transformFilter(filter?: PGVectorFilter) {
@@ -138,9 +145,14 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     return translator.translate(filter)
   }
 
-  async getIndexInfo({ indexName }: DescribeIndexParams): Promise<PGIndexStats> {
+  async getIndexInfo({
+    indexName,
+  }: DescribeIndexParams): Promise<PGIndexStats> {
     if (!this.describeIndexCache.has(indexName)) {
-      this.describeIndexCache.set(indexName, await this.describeIndex({ indexName }))
+      this.describeIndexCache.set(
+        indexName,
+        await this.describeIndex({ indexName }),
+      )
     }
     return this.describeIndexCache.get(indexName)!
   }
@@ -153,7 +165,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     includeVector = false,
     minScore = 0,
     ef,
-    probes
+    probes,
   }: PgQueryVectorParams): Promise<QueryResult[]> {
     try {
       if (!Number.isInteger(topK) || topK <= 0) {
@@ -172,10 +184,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.USER,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -188,7 +200,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
       const { sql: filterQuery, values: filterValues } = buildFilterQuery(
         translatedFilter,
         minScore,
-        topK
+        topK,
       )
 
       // Get index type and configuration
@@ -197,7 +209,8 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
       // Set HNSW search parameter if applicable
       if (indexInfo.type === 'hnsw') {
         // Calculate ef and clamp between 1 and 1000
-        const calculatedEf = ef ?? Math.max(topK, (indexInfo?.config?.m ?? 16) * topK)
+        const calculatedEf =
+          ef ?? Math.max(topK, (indexInfo?.config?.m ?? 16) * topK)
         const searchEf = Math.min(1000, Math.max(1, calculatedEf))
         await client.query(`SET LOCAL hnsw.ef_search = ${searchEf}`)
       }
@@ -223,14 +236,21 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
         WHERE score > $1
         ORDER BY score DESC
         LIMIT $2`
-      const result = await client.query(query, filterValues)
+      const result = (await client.query(query, filterValues)) as {
+        rows: {
+          id: string
+          score: number
+          metadata: Record<string, any>
+          embedding: string
+        }[]
+      }
 
       return result.rows.map(
         ({
           id,
           score,
           metadata,
-          embedding
+          embedding,
         }: {
           id: string
           score: number
@@ -240,8 +260,8 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           id,
           score,
           metadata,
-          ...(includeVector && embedding && { vector: JSON.parse(embedding) })
-        })
+          ...(includeVector && embedding && { vector: JSON.parse(embedding) }),
+        }),
       )
     } catch (error) {
       const mastraError = new MastraError(
@@ -250,17 +270,22 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.THIRD_PARTY,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
     }
   }
 
-  async upsert({ indexName, vectors, metadata, ids }: UpsertVectorParams): Promise<string[]> {
+  async upsert({
+    indexName,
+    vectors,
+    metadata,
+    ids,
+  }: UpsertVectorParams): Promise<string[]> {
     const { tableName } = this.getTableName(indexName)
 
     // Start a transaction
@@ -283,7 +308,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
         await client.query(query, [
           vectorIds[i],
           `[${vectors[i]?.join(',')}]`,
-          JSON.stringify(metadata?.[i] || {})
+          JSON.stringify(metadata?.[i] || {}),
         ])
       }
 
@@ -296,7 +321,9 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
         error.message?.includes('expected') &&
         error.message?.includes('dimensions')
       ) {
-        const match = error.message.match(/expected (\d+) dimensions, not (\d+)/)
+        const match = error.message.match(
+          /expected (\d+) dimensions, not (\d+)/,
+        )
         if (match) {
           const [, expected, actual] = match
           const mastraError = new MastraError(
@@ -310,10 +337,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
               details: {
                 indexName,
                 expected: expected ?? '',
-                actual: actual ?? ''
-              }
+                actual: actual ?? '',
+              },
             },
-            error
+            error,
           )
           this.logger?.trackException(mastraError)
           throw mastraError
@@ -326,10 +353,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.THIRD_PARTY,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -341,7 +368,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     indexName,
     dimension,
     metric,
-    type
+    type,
   }: CreateIndexParams & { type: IndexType | undefined }) {
     const input = indexName + dimension + metric + (type || 'ivfflat') // ivfflat is default
     return (await this.hasher).h32(input)
@@ -351,56 +378,9 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     return existingIndexCacheKey && existingIndexCacheKey === newKey
   }
   private async setupSchema(client: PGlite) {
-    if (!this.schema || this.schemaSetupComplete) {
-      return
-    }
-
-    if (!this.setupSchemaPromise) {
-      this.setupSchemaPromise = (async () => {
-        try {
-          // First check if schema exists and we have usage permission
-          const schemaCheck = await client.query(
-            `
-            SELECT EXISTS (
-              SELECT 1 FROM information_schema.schemata 
-              WHERE schema_name = $1
-            )
-          `,
-            [this.schema]
-          )
-
-          const schemaExists = (schemaCheck.rows[0] as { exists: boolean }).exists
-
-          if (!schemaExists) {
-            try {
-              await client.query(`CREATE SCHEMA IF NOT EXISTS ${this.getSchemaName()}`)
-              this.logger.info(`Schema "${this.schema}" created successfully`)
-            } catch (error) {
-              this.logger.error(`Failed to create schema "${this.schema}"`, {
-                error
-              })
-              throw new Error(
-                `Unable to create schema "${this.schema}". This requires CREATE privilege on the database. ` +
-                  `Either create the schema manually or grant CREATE privilege to the user.`
-              )
-            }
-          }
-
-          // If we got here, schema exists and we can use it
-          this.schemaSetupComplete = true
-          this.logger.debug(`Schema "${this.schema}" is ready for use`)
-        } catch (error) {
-          // Reset flags so we can retry
-          this.schemaSetupComplete = undefined
-          this.setupSchemaPromise = null
-          throw error
-        } finally {
-          this.setupSchemaPromise = null
-        }
-      })()
-    }
-
-    await this.setupSchemaPromise
+    // Always use public schema with PGlite to avoid transaction issues
+    // No setup needed for public schema
+    return
   }
 
   async createIndex({
@@ -408,7 +388,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     dimension,
     metric = 'cosine',
     indexConfig = {},
-    buildIndex = true
+    buildIndex = true,
   }: PgCreateIndexParams): Promise<void> {
     const { tableName } = this.getTableName(indexName)
 
@@ -427,10 +407,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.USER,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -440,9 +420,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
       indexName,
       dimension,
       type: indexConfig.type,
-      metric
+      metric,
     })
     if (this.cachedIndexExists(indexName, indexCacheKey)) {
+      console.log('index already exists', indexName)
       // we already saw this index get created since the process started, no need to recreate it
       return
     }
@@ -489,10 +470,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
             domain: ErrorDomain.MASTRA_VECTOR,
             category: ErrorCategory.THIRD_PARTY,
             details: {
-              indexName
-            }
+              indexName,
+            },
           },
-          error
+          error,
         )
         this.logger?.trackException(mastraError)
         throw mastraError
@@ -502,7 +483,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
   async buildIndex({
     indexName,
     metric = 'cosine',
-    indexConfig
+    indexConfig,
   }: PgDefineIndexParams): Promise<void> {
     const client = this.db
     try {
@@ -514,10 +495,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.THIRD_PARTY,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -526,7 +507,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
 
   private async setupIndex(
     { indexName, metric, indexConfig }: PgDefineIndexParams,
-    client: PGlite
+    client: PGlite,
   ) {
     const mutex = this.getMutexByName(`build-${indexName}`)
     // Use async-mutex instead of advisory lock for perf (over 2x as fast)
@@ -618,13 +599,15 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
             } catch {
               this.logger.warn(
                 'Could not install vector extension. This requires superuser privileges. ' +
-                  'If the extension is already installed globally, you can ignore this warning.'
+                  'If the extension is already installed globally, you can ignore this warning.',
               )
               // Don't set vectorExtensionInstalled to false here since we're not sure if it failed
               // due to permissions or if it's already installed globally
             }
           } else {
-            this.logger.debug('Vector extension already installed, skipping installation')
+            this.logger.debug(
+              'Vector extension already installed, skipping installation',
+            )
           }
         } catch (error) {
           this.logger.error('Error checking vector extension status', { error })
@@ -653,16 +636,20 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
             WHERE table_schema = $1
             AND udt_name = 'vector';
         `
-      const vectorTables = await client.query(vectorTablesQuery, [this.schema || 'public'])
-      return vectorTables.rows.map((row: { table_name: string }) => row.table_name)
+      const vectorTables = (await client.query(vectorTablesQuery, [
+        this.schema || 'public',
+      ])) as { rows: { table_name: string }[] }
+      return vectorTables.rows.map(
+        (row: { table_name: string }) => row.table_name,
+      )
     } catch (e) {
       const mastraError = new MastraError(
         {
           id: 'MASTRA_STORAGE_PG_VECTOR_LIST_INDEXES_FAILED',
           domain: ErrorDomain.MASTRA_VECTOR,
-          category: ErrorCategory.THIRD_PARTY
+          category: ErrorCategory.THIRD_PARTY,
         },
-        e
+        e,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -675,7 +662,9 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
    * @param {string} indexName - The name of the index to describe
    * @returns A promise that resolves to the index statistics including dimension, count and metric
    */
-  async describeIndex({ indexName }: DescribeIndexParams): Promise<PGIndexStats> {
+  async describeIndex({
+    indexName,
+  }: DescribeIndexParams): Promise<PGIndexStats> {
     const client = this.db
     try {
       const { tableName } = this.getTableName(indexName)
@@ -689,7 +678,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           AND udt_name = 'vector'
         LIMIT 1;
       `
-      const tableExists = await client.query(tableExistsQuery, [this.schema || 'public', indexName])
+      const tableExists = await client.query(tableExistsQuery, [
+        this.schema || 'public',
+        indexName,
+      ])
 
       if (tableExists.rows.length === 0) {
         throw new Error(`Vector table ${tableName} does not exist`)
@@ -727,17 +719,21 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
       const [dimResult, countResult, indexResult] = await Promise.all([
         client.query(dimensionQuery, [tableName]),
         client.query(countQuery),
-        client.query(indexQuery, [`${indexName}_vector_idx`, this.schema || 'public'])
+        client.query(indexQuery, [
+          `${indexName}_vector_idx`,
+          this.schema || 'public',
+        ]),
       ])
 
-      const { index_method, index_def, operator_class } = (indexResult.rows[0] as {
+      const { index_method, index_def, operator_class } = (indexResult
+        .rows[0] as {
         index_method: string
         index_def: string
         operator_class: string
       }) || {
         index_method: 'flat',
         index_def: '',
-        operator_class: 'cosine'
+        operator_class: 'cosine',
       }
 
       // Convert pg_vector index method to our metric type
@@ -752,7 +748,9 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
 
       if (index_method === 'hnsw') {
         const m = index_def.match(/m\s*=\s*'?(\d+)'?/)?.[1]
-        const efConstruction = index_def.match(/ef_construction\s*=\s*'?(\d+)'?/)?.[1]
+        const efConstruction = index_def.match(
+          /ef_construction\s*=\s*'?(\d+)'?/,
+        )?.[1]
         if (m) config.m = parseInt(m)
         if (efConstruction) config.efConstruction = parseInt(efConstruction)
       } else if (index_method === 'ivfflat') {
@@ -765,7 +763,7 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
         count: parseInt((countResult.rows[0] as { count: string }).count),
         metric,
         type: index_method as 'flat' | 'hnsw' | 'ivfflat',
-        config
+        config,
       }
     } catch (e: any) {
       await client.query('ROLLBACK')
@@ -775,10 +773,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.THIRD_PARTY,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        e
+        e,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -800,10 +798,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.THIRD_PARTY,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -823,10 +821,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           domain: ErrorDomain.MASTRA_VECTOR,
           category: ErrorCategory.THIRD_PARTY,
           details: {
-            indexName
-          }
+            indexName,
+          },
         },
-        e
+        e,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -847,7 +845,11 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
    * @returns A promise that resolves when the update is complete.
    * @throws Will throw an error if no updates are provided or if the update operation fails.
    */
-  async updateVector({ indexName, id, update }: UpdateVectorParams): Promise<void> {
+  async updateVector({
+    indexName,
+    id,
+    update,
+  }: UpdateVectorParams): Promise<void> {
     let client
     try {
       if (!update.vector && !update.metadata) {
@@ -893,10 +895,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           category: ErrorCategory.THIRD_PARTY,
           details: {
             indexName,
-            id
-          }
+            id,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError
@@ -930,10 +932,10 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
           category: ErrorCategory.THIRD_PARTY,
           details: {
             indexName,
-            id
-          }
+            id,
+          },
         },
-        error
+        error,
       )
       this.logger?.trackException(mastraError)
       throw mastraError

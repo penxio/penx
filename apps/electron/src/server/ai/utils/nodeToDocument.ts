@@ -7,7 +7,7 @@
  *
  */
 import { MDocument } from '@mastra/rag'
-import { INode, NodeType, isCreationNode } from '@penx/model-type'
+import { INode, isCreationNode, NodeType } from '@penx/model-type'
 import { TiptapToMarkdown } from './tiptapToMarkdown'
 
 // Configuration options for processing nodes
@@ -22,7 +22,10 @@ export interface ProcessingOptions {
  * @param options - Processing options containing filter criteria
  * @returns Filtered array of INodes
  */
-export function filterNodes(nodes: INode[], options?: ProcessingOptions): INode[] {
+export function filterNodes(
+  nodes: INode[],
+  options?: ProcessingOptions,
+): INode[] {
   if (!options) {
     return nodes
   }
@@ -59,7 +62,7 @@ export function extractMetadata(node: INode): Record<string, any> {
     userId: node.userId,
     siteId: node.siteId,
     areaId: node.areaId,
-    updatedAt: node.updatedAt
+    updatedAt: node.updatedAt,
   }
 
   // Add creation-specific metadata if it's a creation node
@@ -69,7 +72,7 @@ export function extractMetadata(node: INode): Record<string, any> {
       creationTitle: node.props.title,
       creationType: node.props.type,
       creationStatus: node.props.status,
-      creationSlug: node.props.slug
+      creationSlug: node.props.slug,
     }
   }
 
@@ -86,7 +89,7 @@ let converter: TiptapToMarkdown | null = null
 function getConverter(): TiptapToMarkdown {
   if (!converter) {
     converter = new TiptapToMarkdown({
-      bulletListMarker: '-'
+      bulletListMarker: '-',
     })
   }
   return converter
@@ -100,9 +103,25 @@ function getConverter(): TiptapToMarkdown {
 export function convertToText(node: INode): string {
   // Extract content from node properties
   const props = node.props.content
-  // Convert TipTap JSON format to markdown text using lazy-loaded converter
-  const text = getConverter().convert(props)
-  return text
+
+  // Handle different content formats
+  if (typeof props === 'string') {
+    try {
+      // If props is a JSON string, use convertFromJson
+      const text = getConverter().convertFromJson(props)
+      return text
+    } catch (error) {
+      // If JSON parsing fails, return the string as-is
+      return props
+    }
+  } else if (props && typeof props === 'object') {
+    // If props is already an object, use the regular convert method
+    const text = getConverter().convert(props)
+    return text
+  }
+
+  // Fallback for null/undefined/other types
+  return ''
 }
 
 /**
@@ -110,7 +129,10 @@ export function convertToText(node: INode): string {
  * @param node - The INode to process
  * @returns Object containing text content and metadata
  */
-export function createDoc(node: INode): { text: string; metadata?: Record<string, any> } {
+export function createDoc(node: INode): {
+  text: string
+  metadata?: Record<string, any>
+} {
   const metadata = extractMetadata(node)
   const text = convertToText(node)
   return { text, metadata }
@@ -124,7 +146,7 @@ export function createDoc(node: INode): { text: string; metadata?: Record<string
  */
 export function convertNodesToDocs(
   nodes: INode[],
-  options?: ProcessingOptions
+  options?: ProcessingOptions,
 ): { text: string; metadata?: Record<string, any> }[] {
   // Filter nodes based on options
   const filteredNodes = filterNodes(nodes, options)
@@ -147,13 +169,11 @@ export function convertNodesToDocs(
  */
 export async function buildMDocument(
   nodes: INode[],
-  options?: ProcessingOptions
+  options?: ProcessingOptions,
 ): Promise<MDocument> {
   // Convert nodes to document format with filtering
-  const docs: { text: string; metadata?: Record<string, any> }[] = convertNodesToDocs(
-    nodes,
-    options
-  )
+  const docs: { text: string; metadata?: Record<string, any> }[] =
+    convertNodesToDocs(nodes, options)
   // Create Mastra document with markdown type for RAG
   const mDocument = new MDocument({ docs, type: 'markdown' })
   return mDocument

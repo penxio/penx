@@ -1,6 +1,6 @@
-import { GlobalConfig } from '../type'
 import { createOpenAI } from '@ai-sdk/openai'
 import { EmbeddingModelV1, LanguageModelV1, ProviderV1 } from '@ai-sdk/provider'
+import { GlobalConfig } from '../type'
 
 export abstract class AbstractProvider {
   globalConfig: GlobalConfig
@@ -62,15 +62,15 @@ export abstract class AbstractProvider {
     try {
       const config = {
         apiKey: this.globalConfig.embeddingApiKey,
-        baseURL: this.globalConfig.embeddingApiEndpoint || undefined
+        baseURL: this.globalConfig.embeddingApiEndpoint || undefined,
       }
       if (this.globalConfig.embeddingApiKey) {
         return createOpenAI(config).textEmbeddingModel(
-          this.globalConfig.embeddingModel ?? 'text-embedding-3-small'
+          this.globalConfig.embeddingModel ?? 'text-embedding-3-small',
         )
       }
       return this.provider.textEmbeddingModel(
-        this.globalConfig.embeddingModel ?? 'text-embedding-3-small'
+        this.globalConfig.embeddingModel ?? 'text-embedding-3-small',
       )
     } catch (error) {
       console.log(error, 'ERROR Create Embedding model')

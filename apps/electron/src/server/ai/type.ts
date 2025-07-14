@@ -7,6 +7,13 @@
 
 import { z } from 'zod'
 
+export enum ProviderType {
+  OPENAI = 'openai',
+  ANTHROPIC = 'anthropic',
+  GEMINI = 'gemini',
+  LOCAL = 'local',
+}
+
 /**
  * AI Server Configuration Schema
  * Defines the structure and validation for AI-related settings
@@ -15,12 +22,14 @@ export const ConfigSchema = z.object({
   // Vector Database
   dbPath: z.string(), // Path to the database file
 
-  // Language Model API
+  // Language Model Configuration
+  llmProvider: z.string().optional(), // Provider for language model (openai, anthropic, etc.)
   aiApiKey: z.string().optional(), // API key for language model
   aiApiEndpoint: z.string().optional(), // API endpoint for language model
   languageModel: z.string().optional(), // Language model identifier
 
-  // Embedding Model
+  // Embedding Model Configuration (can be different provider)
+  embeddingProvider: z.string().optional(), // Provider for embedding model
   embeddingModel: z.string().optional(), // Embedding model identifier
   embeddingDimensions: z.number().optional(), // Vector dimensions (e.g., 1536)
   embeddingApiEndpoint: z.string().optional(), // Embedding API endpoint
@@ -30,7 +39,7 @@ export const ConfigSchema = z.object({
   rerankModel: z.string().optional(), // Rerank model identifier
   rerankTopK: z.number().optional(), // Number of top results to rerank
   rerankScore: z.number().optional(), // Minimum rerank score threshold
-  rerankUseEembbingEndpoint: z.boolean().optional() // Use embedding endpoint for rerank
+  rerankUseEembbingEndpoint: z.boolean().optional(), // Use embedding endpoint for rerank
 })
 
 /**
