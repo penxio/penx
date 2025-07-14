@@ -9,6 +9,7 @@ import {
   screen,
   shell,
 } from 'electron'
+import { createInputWindow } from './createInputWindow'
 import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
 import { createTray } from './createTray'
@@ -30,6 +31,10 @@ export class ElectronApp {
 
   private get panelWindow() {
     return this.windows.panelWindow!
+  }
+
+  private get inputWindow() {
+    return this.windows.inputWindow!
   }
 
   constructor() {
@@ -67,9 +72,11 @@ export class ElectronApp {
     try {
       this.windows.mainWindow = createMainWindow()
       this.windows.panelWindow = createPanelWindow()
+      this.windows.inputWindow = createInputWindow()
 
       createTray(this.windows)
-      this.registerShortcut()
+      this.registerPanelShortcut()
+      this.registerInputShortcut()
       // registerShortcut({
       //   windows: this.windows,
       //   onCreateWindow: () => {
@@ -112,6 +119,12 @@ export class ElectronApp {
       dialog.showErrorBox('Start failed', `App start failed: ${error}`)
       app.quit()
     }
+
+    app.on('will-quit', () => {
+      globalShortcut.unregister('CmdOrCtrl+D')
+      globalShortcut.unregister('CmdOrCtrl+I')
+      globalShortcut.unregisterAll()
+    })
   }
 
   private async startServer() {
@@ -133,7 +146,7 @@ export class ElectronApp {
     }
   }
 
-  private registerShortcut() {
+  private registerPanelShortcut() {
     const panelWindow = this.windows.panelWindow!
     function show() {
       const cursorPoint = screen.getCursorScreenPoint()
@@ -155,7 +168,7 @@ export class ElectronApp {
       panelWindow.webContents.send('main-window-show')
     }
 
-    const toggleSecondWindow = () => {
+    const togglePanelWindow = () => {
       try {
         if (!panelWindow) {
           this.windows.panelWindow = createPanelWindow()
@@ -180,7 +193,7 @@ export class ElectronApp {
     }
 
     const ret = globalShortcut.register('CmdOrCtrl+D', () => {
-      toggleSecondWindow()
+      togglePanelWindow()
     })
 
     if (!ret) {
@@ -188,11 +201,60 @@ export class ElectronApp {
     }
 
     console.log('isRegistered====', globalShortcut.isRegistered('CmdOrCtrl+D'))
+  }
 
-    app.on('will-quit', () => {
-      globalShortcut.unregister('CmdOrCtrl+D')
-      globalShortcut.unregisterAll()
+  private registerInputShortcut() {
+    const inputWindow = this.windows.inputWindow!
+    function show() {
+      const cursorPoint = screen.getCursorScreenPoint()
+      const display = screen.getDisplayNearestPoint(cursorPoint)
+      const { x, y, width, height } = display.workArea
+
+      const winBounds = inputWindow.getBounds()
+      const posX = x + Math.round((width - winBounds.width) / 2)
+      const posY = y + Math.round((height - winBounds.height) / 2)
+
+      inputWindow.setBounds({
+        x: posX,
+        y: posY,
+        width: winBounds.width,
+        height: winBounds.height,
+      })
+
+      inputWindow.show()
+    }
+
+    const toggleInputWindow = () => {
+      try {
+        if (!inputWindow) {
+          this.windows.inputWindow = createInputWindow()
+          show()
+        } else if (inputWindow.isVisible()) {
+          if (inputWindow.isFocused()) {
+            inputWindow.hide()
+          } else {
+            inputWindow.focus()
+          }
+        } else {
+          show()
+          inputWindow.setAlwaysOnTop(true)
+          inputWindow.focus()
+          inputWindow.setAlwaysOnTop(false)
+        }
+      } catch (error) {
+        console.log('======error:', error)
+        this.windows.inputWindow = createInputWindow()
+        show()
+      }
+    }
+
+    const ret = globalShortcut.register('CmdOrCtrl+I', () => {
+      toggleInputWindow()
     })
+
+    if (!ret) {
+      console.log('register shortcut fail')
+    }
   }
 
   private setupIPC() {
@@ -220,6 +282,15 @@ export class ElectronApp {
 
     ipcMain.on('close', () => {
       this.panelWindow.close()
+    })
+
+    ipcMain.on('close-input-window', () => {
+      this.inputWindow.hide()
+    })
+
+    ipcMain.on('quick-input-success', () => {
+      this.mainWindow.webContents.send('quick-input-success')
+      this.panelWindow.webContents.send('quick-input-success')
     })
 
     ipcMain.on('open-url', async (_, url: string) => {

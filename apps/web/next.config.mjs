@@ -1,6 +1,5 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { PrismaPlugin } from '@prisma/nextjs-monorepo-workaround-plugin'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
 const isProd = process.env.NODE_ENV === 'production'
@@ -104,10 +103,6 @@ const nextConfig = {
         },
         type: 'javascript/auto',
       })
-    }
-
-    if (isServer) {
-      config.plugins = [...config.plugins, new PrismaPlugin()]
     }
 
     return config

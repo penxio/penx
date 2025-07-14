@@ -11,6 +11,7 @@ type Props = {
   locale?: string
 }
 
+
 export const LocaleProvider = ({ children, locale }: Props) => {
   useEffect(() => {
     dynamicActivate(locale)

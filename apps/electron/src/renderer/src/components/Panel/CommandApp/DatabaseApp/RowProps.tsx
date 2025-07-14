@@ -43,6 +43,7 @@ export function Item({ column, creation }: ItemProps) {
       column.columnType === ColumnType.MULTIPLE_SELECT
     ) {
       const arr = v as string[]
+      if (!arr) return null
       return (
         <div className="flex items-center gap-1">
           {arr.map((i) => {

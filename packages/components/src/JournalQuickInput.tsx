@@ -113,7 +113,7 @@ export function JournalQuickInput({
     <div
       id="journal-quick-input"
       className={cn(
-        'bg-background text-foreground shadow-popover penx-editor relative flex max-h-[calc(75dvh)] min-h-[36px] w-full flex-col rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0 dark:bg-neutral-800',
+        'bg-background text-foreground shadow-popover penx-editor no-drag relative flex max-h-[calc(75dvh)] min-h-[36px] w-full flex-col rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0 dark:bg-neutral-800',
         className,
       )}
       onClick={(e: any) => {
@@ -187,6 +187,8 @@ function SendButton({
       size="sm"
       className={cn('h-7', isMobileApp && 'h-8 px-3')}
       onClick={(event) => {
+        console.log('send...eheh')
+
         event.preventDefault()
         submitForm()
       }}

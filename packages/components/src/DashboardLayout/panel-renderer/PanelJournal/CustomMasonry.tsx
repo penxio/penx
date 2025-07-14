@@ -37,7 +37,7 @@ export const CustomMasonry = ({
       columnWidth: 240,
       columnGutter: 16,
     },
-    [width],
+    [width, items.length],
   )
 
   const resizeObserver = useResizeObserver(positioner)
@@ -66,14 +66,11 @@ export const CustomMasonry = ({
       setContainerHeight(scrollContainer.offsetHeight)
     }
 
-    // 监听滚动事件
     scrollContainer.addEventListener('scroll', handleScroll)
 
-    // 监听容器大小变化
     const resizeObserver = new ResizeObserver(handleResize)
     resizeObserver.observe(scrollContainer)
 
-    // 初始化容器高度
     setContainerHeight(scrollContainer.offsetHeight)
 
     return () => {
@@ -94,7 +91,7 @@ export const CustomMasonry = ({
     >
       {useMasonry({
         items,
-        render,
+        render: render,
         // scrollTop,
         isScrolling,
         height: containerHeight,

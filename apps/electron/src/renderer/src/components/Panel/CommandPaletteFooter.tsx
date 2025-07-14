@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Box } from '@fower/react'
 import { appEmitter } from '@penx/emitter'
+import { useAreas } from '@penx/hooks/useAreas'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
+import { AreasPopover } from '../AreasPopover'
 import { ListItemIcon } from './ListItemIcon'
 import { ActionPopover } from './SearchBar/ActionPopover'
-import { useAreas } from '@penx/hooks/useAreas'
-import { AreasPopover } from './AreasPopover'
 
 interface Props {
   footerHeight: number
@@ -15,7 +15,7 @@ export const CommandPaletteFooter = ({ footerHeight }: Props) => {
   const { currentCommand } = useCurrentCommand()
   return (
     <Box
-      className="border-t border-foreground/10 bg-foreground/5"
+      className="border-foreground/10 bg-foreground/5 border-t"
       h={footerHeight}
       toCenterY
       px3

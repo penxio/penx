@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Trans } from '@lingui/react/macro'
 import { ChevronsUpDown, PlusIcon } from 'lucide-react'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
@@ -61,7 +60,6 @@ export const AreasPopover = ({ className = '' }: Props) => {
             className="flex cursor-pointer items-center gap-2 py-2"
             onClick={async () => {
               store.area.set(item.raw)
-
               store.creations.refetchCreations(item.id)
               store.structs.refetchStructs(item.id)
               store.visit.setAndSave({ activeAreaId: item.id })

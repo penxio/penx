@@ -89,9 +89,6 @@
     "@capacitor/cli": "7.2.0",
     "@iconify/json": "^2.2.311",
     "@iconify/tailwind4": "^1.0.4",
-    "@lingui/cli": "5.3.1",
-    "@lingui/loader": "5.3.1",
-    "@lingui/swc-plugin": "5.5.2",
     "@lingui/vite-plugin": "^5.3.2",
     "@penx/typescript-config": "workspace:*",
     "@tailwindcss/forms": "^0.5.10",
@@ -120,7 +117,7 @@
     "style-loader": "^4.0.0",
     "tailwindcss": "^4.1.4",
     "terser": "^5.4.0",
-    "vite": "^6.0.3",
+    "vite": "^6.3.5",
     "vitest": "^0.34.6"
   }
 }

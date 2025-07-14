@@ -40,7 +40,6 @@
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*",
     "@penx/widgets": "workspace:*",
-    "@prisma/nextjs-monorepo-workaround-plugin": "^6.6.0",
     "@upstash/ratelimit": "^0.4.4",
     "@vanilla-extract/css": "^1.16.1",
     "@vercel/blob": "^0.15.0",
@@ -52,9 +51,6 @@
   "devDependencies": {
     "@iconify/json": "^2.2.311",
     "@iconify/tailwind4": "^1.0.4",
-    "@lingui/cli": "5.3.1",
-    "@lingui/loader": "5.3.1",
-    "@lingui/swc-plugin": "5.5.2",
     "@penx/typescript-config": "workspace:*",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "4.0.17",

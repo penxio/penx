@@ -1,6 +1,7 @@
-import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
+import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { LocaleProvider } from '@penx/locales'
+import { WatchEvent } from '../WatchEvent'
 import { CommandPalette } from './CommandPalette'
 
 const windowHeight = 470
@@ -12,9 +13,15 @@ export function Panel() {
 
   return (
     <LocaleProvider>
-      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
         <DashboardProviders>
           <CommandPalette />
+          <WatchEvent />
         </DashboardProviders>
       </ThemeProvider>
     </LocaleProvider>
