@@ -1,6 +1,5 @@
 import { memo, useEffect } from 'react'
 import { Box } from '@fower/react'
-import { open } from '@tauri-apps/plugin-shell'
 import { ListJSON } from '@penx/extension-api'
 import { Separator } from '@penx/uikit/ui/separator'
 import { useSearch } from '~/hooks/useSearch'

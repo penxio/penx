@@ -12,10 +12,10 @@
     "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
     "typecheck": "npm run typecheck:node && npm run typecheck:web",
     "start": "electron-vite preview",
-    "dev": "electron-vite dev",
+    "dev": "pnpm install-app-deps && electron-vite dev",
     "lingui": "lingui extract --clean",
     "build": "npm run typecheck && electron-vite build",
-    "postinstall": "electron-builder install-app-deps",
+    "install-app-deps": "electron-builder install-app-deps",
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win --config",
     "build:mac": "electron-vite build && electron-builder --mac --config",
@@ -23,6 +23,7 @@
     "build:linux": "electron-vite build && electron-builder --linux --config"
   },
   "dependencies": {
+    "@ai-sdk/provider": "^1.1.3",
     "@electric-sql/pglite": "^0.3.4",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
@@ -56,8 +57,12 @@
     "@penx/utils": "workspace:*",
     "@penx/vaul": "workspace:*",
     "@penx/widgets": "workspace:*",
+    "async-mutex": "^0.5.0",
+    "clsx": "^2.1.1",
     "drizzle-kit": "^0.31.4",
     "electron-updater": "^6.3.9",
+    "hono": "^4.8.5",
+    "lru-cache": "^11.1.0",
     "mastra": "^0.10.11",
     "uiohook-napi": "^1.5.4",
     "xxhash-wasm": "^1.1.0"

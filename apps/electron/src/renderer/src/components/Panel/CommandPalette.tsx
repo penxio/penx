@@ -1,6 +1,5 @@
 import { ReactNode, useEffect } from 'react'
 import { Box } from '@fower/react'
-import { Command as ShellCmd } from '@tauri-apps/plugin-shell'
 import { Command } from 'cmdk'
 import { store } from '@penx/store'
 import { useCommandAppLoading } from '~/hooks/useCommandAppLoading'

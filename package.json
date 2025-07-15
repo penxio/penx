@@ -8,6 +8,7 @@
     "build:mac": "npm run lingui && turbo run build:mac -F penx...",
     "build:win": "npm run lingui && turbo run build:win -F penx...",
     "build:linux": "npm run lingui && turbo run build:linux -F penx...",
+    "install-app-deps": "turbo run install-app-deps -F penx...",
     "dev": "turbo run dev",
     "dev:web": "turbo run dev -F web...",
     "lingui": "lingui extract --clean",

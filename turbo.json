@@ -1,0 +1,103 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalEnv": [
+    "NODE_ENV",
+    "REVALIDATE_TIME",
+    "NEXTAUTH_URL",
+    "GITHUB_APP_ID",
+    "GITHUB_CLIENT_SECRET",
+    "GITHUB_PRIVATE_KEY",
+    "DEPLOY_CI_HOST",
+    "NEXTAUTH_SECRET",
+    "AWS_SES_FROM_DOMAIN",
+    "AWS_SES_REGION",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "SESSION_PASSWORD",
+    "TAURI_SIGNING_PRIVATE_KEY",
+    "TAURI_SIGNING_PRIVATE_KEY_PASSWORD",
+    "STRIPE_API_KEY",
+    "STRIPE_WEBHOOK_SECRET",
+    "PERPLEXITY_API_KEY",
+    "DEEPSEEK_API_KEY",
+    "OPENAI_API_KEY",
+    "ANTHROPIC_API_KEY",
+    "GOOGLE_AI_API_KEY",
+    "CONNECTED_STRIPE_WEBHOOK_SECRET",
+    "NEXT_PUBLIC_STRIPE_BASIC_MONTHLY_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_BASIC_YEARLY_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_STANDARD_YEARLY_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_STANDARD_MONTHLY_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_BELIEVER_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_PRO_YEARLY_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID",
+    "NEXT_PUBLIC_API_PROVIDER",
+    "NEXT_PUBLIC_STRIPE_REDIRECT_URI",
+    "NEXT_PUBLIC_STRIPE_OAUTH_CLIENT_ID",
+    "NEXT_PUBLIC_STRIPE_TEAM_MONTHLY_PRICE_ID",
+    "NEXT_PUBLIC_STRIPE_TEAM_YEARLY_PRICE_ID",
+    "REDIS_URL",
+    "NEXT_PUBLIC_UMAMIC_WEBSITE_ID",
+    "GITHUB_PRIVATE_KEY",
+    "NEXT_PUBLIC_INSTALL_APP_REDIRECT_URI",
+    "NEXT_PUBLIC_GITHUB_APP_NAME",
+    "NEXT_PUBLIC_GITHUB_CLIENT_ID",
+    "NEXT_PUBLIC_GOOGLE_CLIENT_ID",
+    "DATABASE_URL",
+    "NEXT_PUBLIC_ROOT_DOMAIN",
+    "GOOGLE_CLIENT_SECRET",
+    "CONNECTED_STRIPE_WEBHOOK_SECRET",
+    "ELECTRIC_HOST",
+    "ELECTRIC_SECRET",
+    "APPLE_PRIVATE_KEY",
+    "APPLE_TEAM_ID",
+    "NEXT_PUBLIC_APPLE_CLIENT_ID",
+    "APPLE_KEY_ID",
+    "NEXT_PUBLIC_SYNC_SERVICE_HOST",
+    "BASE_PATH"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build", "^db:generate"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build:mac": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "build:win": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "build:linux": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "install-app-deps": {
+      "dependsOn": []
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "dependsOn": ["^db:generate"],
+      "cache": false,
+      "persistent": true
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:migrate": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:deploy": {
+      "cache": false
+    }
+  }
+}

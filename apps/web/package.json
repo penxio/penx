@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm with-env next dev --turbopack",
-    "build": "pnpm with-env next build",
+    "dev": "next dev --turbopack",
+    "build": "next build",
     "lint": "next lint",
     "lint:fix": "next lint --fix && prettier --write . --log-level warn",
     "preview": "next build && next start",
     "format:write": "prettier --write \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "format": "prettier \"**/*.{css,js,json,jsx,ts,tsx}\"",
     "start": "next start -p 4000",
-    "typecheck": "tsc --noEmit",
-    "with-env": "dotenv -e ../../.env --"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@penx/vaul": "workspace:*",

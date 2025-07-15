@@ -6,19 +6,6 @@ import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { FieldIcon } from '../../../FieldIcon'
 import { useFieldTypeSelectPopover } from './hooks/useFieldTypeSelectPopover'
 
-const textMap: Record<string, string> = {
-  [ColumnType.TEXT]: t`Text`,
-  [ColumnType.NUMBER]: t`Number`,
-  [ColumnType.PASSWORD]: t`Password`,
-  [ColumnType.URL]: t`URL`,
-  [ColumnType.RATE]: t`Rate`,
-  [ColumnType.SINGLE_SELECT]: t`Single select`,
-  [ColumnType.MULTIPLE_SELECT]: t`Multiple select`,
-  [ColumnType.DATE]: t`Date`,
-  [ColumnType.CREATED_AT]: t`Created At`,
-  [ColumnType.UPDATED_AT]: t`Updated At`,
-}
-
 interface Props {
   value: ColumnType
   onChange: (value: ColumnType) => void
@@ -26,6 +13,18 @@ interface Props {
 
 export const FieldSelectPopover = forwardRef<HTMLDivElement, Props>(
   function FieldSelectPopover({ value, onChange }, ref) {
+    const textMap: Record<string, string> = {
+      [ColumnType.TEXT]: t`Text`,
+      [ColumnType.NUMBER]: t`Number`,
+      [ColumnType.PASSWORD]: t`Password`,
+      [ColumnType.URL]: t`URL`,
+      [ColumnType.RATE]: t`Rate`,
+      [ColumnType.SINGLE_SELECT]: t`Single select`,
+      [ColumnType.MULTIPLE_SELECT]: t`Multiple select`,
+      [ColumnType.DATE]: t`Date`,
+      [ColumnType.CREATED_AT]: t`Created At`,
+      [ColumnType.UPDATED_AT]: t`Updated At`,
+    }
     const { isOpen, setIsOpen } = useFieldTypeSelectPopover()
     return (
       <Popover open={isOpen} onOpenChange={setIsOpen}>

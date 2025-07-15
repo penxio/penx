@@ -97,6 +97,7 @@ msgstr "账户删除处理中…"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:62
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:74
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/AddRowButton.tsx:25
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Add"
 msgstr "添加"
@@ -120,10 +121,6 @@ msgstr "新增选项"
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:46
 msgid "Add property"
 msgstr "新增属性"
-
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/AddRowButton.tsx:25
-msgid "Add Row"
-msgstr ""
 
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:49
 msgid "Add sync server"
@@ -271,6 +268,7 @@ msgid "Bubble"
 msgstr "气泡"
 
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:46
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:81
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
@@ -391,12 +389,17 @@ msgid "Create Tag"
 msgstr "创建标签"
 
 #: packages/components/src/ColumnTypeName.tsx:29
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:18
 msgid "Created At"
 msgstr "创建日期"
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:58
 msgid "Created date"
 msgstr "创建日期"
+
+#: apps/electron/src/renderer/src/components/QuickInputApp/QuickInputApp.tsx:48
+msgid "Created successfully"
+msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:55
 msgid "Creation counts"
@@ -417,6 +420,7 @@ msgid "Dashboard"
 msgstr "仪表板"
 
 #: packages/components/src/ColumnTypeName.tsx:28
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:17
 msgid "Date"
 msgstr "日期"
 
@@ -463,6 +467,11 @@ msgstr "发送您的简报"
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
 msgstr "描述"
+
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:35
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/ColumnMenu.tsx:68
+msgid "Display name"
+msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:61
 msgid "Doing"
@@ -755,6 +764,10 @@ msgstr "月"
 msgid "Monthly"
 msgstr ""
 
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:16
+msgid "Multiple select"
+msgstr ""
+
 #: packages/components/src/ColumnTypeName.tsx:22
 msgid "Multiple Select"
 msgstr "多选"
@@ -880,6 +893,7 @@ msgid "Notes"
 msgstr "笔记"
 
 #: packages/components/src/ColumnTypeName.tsx:16
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:11
 msgid "Number"
 msgstr "数值"
 
@@ -917,6 +931,7 @@ msgstr "页面"
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:12
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:35
 #: packages/components/src/SettingsDialog/Password.tsx:72
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
@@ -1026,6 +1041,10 @@ msgstr ""
 msgid "Profile"
 msgstr "个人信息"
 
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:55
+msgid "Prop type"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:89
 msgid "Properties"
@@ -1046,6 +1065,7 @@ msgid "Publish your creation"
 msgstr "发布您的创作"
 
 #: packages/components/src/ColumnTypeName.tsx:24
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:14
 msgid "Rate"
 msgstr "评分"
 
@@ -1124,6 +1144,7 @@ msgstr "周六"
 
 #: apps/mobile/src/pages/PageNewCreation.tsx:97
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:67
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:84
 #: packages/components/src/SettingsDialog/Profile.tsx:131
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:138
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
@@ -1167,11 +1188,15 @@ msgstr "显示全部"
 msgid "Sign in"
 msgstr "登录"
 
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:15
+msgid "Single select"
+msgstr ""
+
 #: packages/components/src/ColumnTypeName.tsx:20
 msgid "Single Select"
 msgstr "单选"
 
-#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:43
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:45
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:93
 #: packages/components/src/AreaDialog/AreaForm.tsx:180
 msgid "Slug"
@@ -1332,6 +1357,7 @@ msgid "Test connection"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:15
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:10
 msgid "Text"
 msgstr "文本"
 
@@ -1438,6 +1464,7 @@ msgid "Update struct"
 msgstr "更新结构体"
 
 #: packages/components/src/ColumnTypeName.tsx:30
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
 msgid "Updated At"
 msgstr "更新时间"
 
@@ -1457,6 +1484,7 @@ msgstr "升级到专业版"
 
 #: packages/libs/src/getDefaultStructs.ts:151
 #: packages/components/src/ColumnTypeName.tsx:17
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:13
 msgid "URL"
 msgstr "网址"
 

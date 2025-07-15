@@ -59,7 +59,9 @@ jobs:
         run: pnpm -v
 
       - name: Install Dependencies
-        run: pnpm install
+        run: |
+          pnpm install
+          pnpm run install-app-deps
 
       - name: Import Apple Developer Certificate
         if: matrix.os == 'macos-latest'
