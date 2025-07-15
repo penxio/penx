@@ -32,7 +32,7 @@ import { localDB } from '@penx/local-db'
 import { queryClient } from '@penx/query-client'
 import { store } from '@penx/store'
 import { ColumnType, Option, ViewColumn } from '@penx/types'
-import { mappedByKey } from '@penx/utils'
+import { isNumber, mappedByKey } from '@penx/utils'
 
 function getCols(struct: Struct) {
   const sortedColumns = struct.currentView.viewColumns
@@ -147,8 +147,21 @@ export function useTableView() {
 
       if (!cellData) return ''
 
-      if (column.columnType === ColumnType.NUMBER) {
+      if (
+        column.columnType === ColumnType.NUMBER ||
+        column.columnType === ColumnType.PASSWORD ||
+        column.columnType === ColumnType.URL ||
+        column.columnType === ColumnType.TEXT
+      ) {
         cellData = cellData?.toString()
+      }
+
+      if (column.columnType === ColumnType.NUMBER) {
+        if (!isNumber(cellData)) cellData = ''
+      }
+
+      if (column.columnType === ColumnType.DATE) {
+        // console.log('======>>>>>>>cellData:', cellData)
       }
 
       return cellData
@@ -198,7 +211,12 @@ export function useTableView() {
         if (typeof cellData === 'object' && cellData.date) {
           return new Date(cellData.date)
         }
-        return ''
+
+        try {
+          return new Date(cellData)
+        } catch (error) {
+          return ''
+        }
       }
       const date = getDate()
       return {

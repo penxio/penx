@@ -36,12 +36,6 @@ type UpdateDatabaseInput = Partial<IStructNode['props']>
 
 type UpdateViewColumnInput = Partial<ViewColumn>
 
-type UpdateColumnInput = {
-  name?: string
-  displayName?: string
-  columnType?: string
-}
-
 export interface IDatabaseContext {
   theme?: string
   struct: Struct
@@ -95,7 +89,7 @@ export interface IDatabaseContext {
   ): Promise<void>
 
   updateColumnName(columnId: string, name: string): Promise<void>
-  updateColumn(columnId: string, input: UpdateColumnInput): Promise<void>
+  updateColumn(columnId: string, input: Partial<IColumn>): Promise<void>
   updateColumnWidth(columnId: string, width: number): Promise<void>
   addOption(
     columnId: string,
@@ -293,22 +287,8 @@ export function DatabaseProvider({
     })
   }
 
-  async function updateColumn(columnId: string, data: UpdateColumnInput) {
-    // const newDatabase = produce(database, (draft) => {
-    //   for (const field of draft.columns) {
-    //     if (field.id === columnId) {
-    //       if (data.displayName) field.displayName = data.displayName
-    //       if (data.name) field.name = data.name
-    //       if (data.columnType) field.columnType = data.columnType
-    //       break
-    //     }
-    //   }
-    // })
-    // reloadDatabase(newDatabase)
-    // await api.database.updateColumn.mutate({
-    //   columnId,
-    //   ...data,
-    // })
+  async function updateColumn(columnId: string, data: Partial<IColumn>) {
+    store.structs.updateColumn(struct, columnId, data)
   }
 
   async function addOption(columnId: string, name: string) {

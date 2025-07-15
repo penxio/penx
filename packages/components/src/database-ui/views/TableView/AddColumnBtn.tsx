@@ -54,7 +54,7 @@ function Content({ setIsOpen }: PopoverStateProps) {
   return (
     <div className="p-2">
       {types.map((type) => (
-        <Item key={type} fieldType={ColumnType.TEXT} setIsOpen={setIsOpen}>
+        <Item key={type} fieldType={type} setIsOpen={setIsOpen}>
           <FieldIcon columnType={type} />
           <ColumnTypeName columnType={type} />
         </Item>

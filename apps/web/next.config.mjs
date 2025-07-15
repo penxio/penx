@@ -114,7 +114,7 @@ const __dirname = path.dirname(__filename)
 
 if (process.env.NODE_ENV === 'development') {
   // console.log('======oo:', path.join(__dirname, '../../'))
-  nextConfig.outputFileTracingRoot = path.join(__dirname, '../../')
+  // nextConfig.outputFileTracingRoot = path.join(__dirname, '../../')
 }
 
 export default withVanillaExtract(nextConfig)

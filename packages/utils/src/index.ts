@@ -227,3 +227,8 @@ export function formatTime(time: string): string {
   const formattedMinute = minute.padStart(2, '0')
   return `${formattedHour}:${formattedMinute}`
 }
+
+export function isNumber(str: string): boolean {
+  const numberRegex = /^-?\d+(\.\d+)?$/
+  return numberRegex.test(str)
+}

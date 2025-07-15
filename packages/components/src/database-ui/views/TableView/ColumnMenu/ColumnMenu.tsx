@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import {
   ArrowDown,
   ArrowLeft,
@@ -63,7 +64,9 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
   return (
     <div>
       <div className="p-2">
-        <div className="text-foreground/40 mb-1 text-sm">Display name</div>
+        <div className="text-foreground/40 mb-1 text-sm">
+          <Trans>Display name</Trans>
+        </div>
         <Input
           size="sm"
           value={name}
