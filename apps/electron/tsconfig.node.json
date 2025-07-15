@@ -4,6 +4,7 @@
   "compilerOptions": {
     "composite": true,
     "noUnusedLocals": false,
+    "strictPropertyInitialization": false,
     "noUnusedParameters": false,
     "moduleResolution": "bundler",
     "types": ["electron-vite/node"]

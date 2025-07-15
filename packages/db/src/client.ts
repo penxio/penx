@@ -1,6 +1,10 @@
-import { PGlite } from '@electric-sql/pglite';
-import { drizzle } from 'drizzle-orm/pglite';
+import { join } from 'path'
+import { PGlite } from '@electric-sql/pglite'
+import { drizzle } from 'drizzle-orm/pglite'
+import { app } from 'electron'
 
-const pg = new PGlite();
-export const client = drizzle({ client: pg });
+const dbPath = join(app.getPath('userData'), 'penx-db')
 
+const pg = new PGlite(dbPath)
+
+export const client = drizzle({ client: pg })

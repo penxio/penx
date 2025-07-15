@@ -9,6 +9,7 @@ import {
   screen,
   shell,
 } from 'electron'
+import { Conf } from 'electron-conf/main'
 import { createInputWindow } from './createInputWindow'
 import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
@@ -24,6 +25,8 @@ export class ElectronApp {
 
   private honoServer: HonoServer | null = null
   private readonly isDev = !app.isPackaged
+
+  private conf: Conf
 
   private get mainWindow() {
     return this.windows.mainWindow!
@@ -84,6 +87,9 @@ export class ElectronApp {
       //   },
       // })
       await this.startServer()
+
+      this.conf = new Conf()
+      this.conf.registerRendererListener()
 
       this.mainWindow.on('close', (e) => {
         e.preventDefault()
@@ -205,26 +211,29 @@ export class ElectronApp {
 
   private registerInputShortcut() {
     const inputWindow = this.windows.inputWindow!
-    function show() {
+    const show = async () => {
       const cursorPoint = screen.getCursorScreenPoint()
       const display = screen.getDisplayNearestPoint(cursorPoint)
-      const { x, y, width, height } = display.workArea
+      // const { x, y, width, height } = display.workArea
 
-      const winBounds = inputWindow.getBounds()
-      const posX = x + Math.round((width - winBounds.width) / 2)
-      const posY = y + Math.round((height - winBounds.height) / 2)
+      // const winBounds = inputWindow.getBounds()
+      // const posX = x + Math.round((width - winBounds.width) / 2)
+      // const posY = y + Math.round((height - winBounds.height) / 2)
 
-      inputWindow.setBounds({
-        x: posX,
-        y: posY,
-        width: winBounds.width,
-        height: winBounds.height,
-      })
+      // inputWindow.setBounds({
+      //   x: posX,
+      //   y: posY,
+      //   width: winBounds.width,
+      //   height: winBounds.height,
+      // })
 
       inputWindow.show()
+
+      const pinned = await this.conf.get('pinned')
+      inputWindow.setAlwaysOnTop(!!pinned)
     }
 
-    const toggleInputWindow = () => {
+    const toggleInputWindow = async () => {
       try {
         if (!inputWindow) {
           this.windows.inputWindow = createInputWindow()
@@ -237,9 +246,12 @@ export class ElectronApp {
           }
         } else {
           show()
+
           inputWindow.setAlwaysOnTop(true)
           inputWindow.focus()
-          inputWindow.setAlwaysOnTop(false)
+
+          const pinned = await this.conf.get('pinned')
+          inputWindow.setAlwaysOnTop(!!pinned)
         }
       } catch (error) {
         console.log('======error:', error)
@@ -291,6 +303,10 @@ export class ElectronApp {
     ipcMain.on('quick-input-success', () => {
       this.mainWindow.webContents.send('quick-input-success')
       this.panelWindow.webContents.send('quick-input-success')
+    })
+
+    ipcMain.on('pinned', (_, pinned) => {
+      this.inputWindow.setAlwaysOnTop(pinned)
     })
 
     ipcMain.on('open-url', async (_, url: string) => {

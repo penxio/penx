@@ -10,6 +10,10 @@
     ".": "./src/index.ts"
   },
   "scripts": {
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:push": "drizzle-kit push",
+    "drizzle:migrate": "drizzle-kit migrate",
+    "drizzle:introspect": "drizzle-kit introspect",
     "lint": "eslint . --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
@@ -21,6 +25,7 @@
     "@penx/model-type": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
-    "drizzle-zod":"^0.8.2"
+    "drizzle-zod": "^0.8.2",
+    "electron": "37.2.0"
   }
 }
