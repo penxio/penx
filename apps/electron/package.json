@@ -23,6 +23,7 @@
     "build:linux": "electron-vite build && electron-builder --linux --config"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.3.4",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
     "@fower/react": "^2.1.3",
