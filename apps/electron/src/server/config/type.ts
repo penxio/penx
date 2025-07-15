@@ -19,13 +19,12 @@ export enum ProviderType {
  * Defines the structure and validation for AI-related settings
  */
 export const ConfigSchema = z.object({
-  // Vector Database
-  dbPath: z.string(), // Path to the database file
+  enable: z.boolean().optional(),
 
   // Language Model Configuration
   llmProvider: z.string().optional(), // Provider for language model (openai, anthropic, etc.)
-  aiApiKey: z.string().optional(), // API key for language model
-  aiApiEndpoint: z.string().optional(), // API endpoint for language model
+  llmApiKey: z.string().optional(), // API key for language model
+  llmApiEndpoint: z.string().optional(), // API endpoint for language model
   languageModel: z.string().optional(), // Language model identifier
 
   // Embedding Model Configuration (can be different provider)
@@ -46,4 +45,4 @@ export const ConfigSchema = z.object({
  * Global AI Configuration Type
  * Inferred from ConfigSchema for type safety
  */
-export type GlobalConfig = z.infer<typeof ConfigSchema>
+export type AICustomConfig = z.infer<typeof ConfigSchema>

@@ -1,13 +1,13 @@
 import { createOpenAI } from '@ai-sdk/openai'
 import { EmbeddingModelV1, LanguageModelV1, ProviderV1 } from '@ai-sdk/provider'
-import { GlobalConfig } from '../type'
+import { AICustomConfig } from '../../config/type'
 
 export abstract class AbstractProvider {
-  globalConfig: GlobalConfig
+  globalConfig: AICustomConfig
   provider!: ProviderV1
   protected ready: Promise<void>
 
-  constructor(globalConfig: GlobalConfig) {
+  constructor(globalConfig: AICustomConfig) {
     this.globalConfig = globalConfig
 
     // Create and store the initialization promise

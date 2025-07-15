@@ -1,5 +1,4 @@
 import { PGlite } from '@electric-sql/pglite'
-import { vector } from '@electric-sql/pglite/vector'
 import { ErrorCategory, ErrorDomain, MastraError } from '@mastra/core/error'
 import { parseSqlIdentifier } from '@mastra/core/utils'
 import { MastraVector } from '@mastra/core/vector'
@@ -62,28 +61,12 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
   private createdIndexes = new Map<string, number>()
   private mutexesByName = new Map<string, Mutex>()
   private schema?: string
-  private setupSchemaPromise: Promise<void> | null = null
   private installVectorExtensionPromise: Promise<void> | null = null
   private vectorExtensionInstalled: boolean | undefined = undefined
-  private schemaSetupComplete: boolean | undefined = undefined
 
-  constructor(
-    config: {
-      /**
-       * PGlite storage location:
-       * - undefined or ":memory:" for in-memory database
-       * - "idb://name" for IndexedDB storage (browser)
-       * - "./path/to/data" for file system storage (Node/Bun/Deno)
-       */
-      dataDir?: string
-      /**
-       * Schema name for tables
-       */
-      schemaName?: string
-    } = {},
-  ) {
-    if (!config.dataDir) {
-      throw new Error('PgLiteVector: dataDir is required')
+  constructor(db: PGlite) {
+    if (!db) {
+      throw new Error('PgLiteVector: PGlite instance is required')
     }
 
     super()
@@ -92,12 +75,8 @@ export class PgLiteVector extends MastraVector<PGVectorFilter> {
     // Custom schemas can cause transaction issues
     this.schema = undefined // Force use of public schema
 
-    // Initialize PGlite
-    this.db = new PGlite(config.dataDir, {
-      extensions: {
-        vector,
-      },
-    })
+    // Use the provided PGlite instance
+    this.db = db
 
     void (async () => {
       // warm the created indexes cache so we don't need to check if indexes exist every time

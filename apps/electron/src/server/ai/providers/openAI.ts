@@ -1,17 +1,17 @@
 import { createOpenAI } from '@ai-sdk/openai'
 import { LanguageModelV1 } from '@ai-sdk/provider'
-import { GlobalConfig } from '../type'
+import { AICustomConfig } from '../../config/type'
 import { AbstractProvider } from './abstractProvider'
 
 export class OpenAIModelProvider extends AbstractProvider {
-  constructor(globalConfig: GlobalConfig) {
+  constructor(globalConfig: AICustomConfig) {
     super(globalConfig)
   }
 
   createProvider() {
     return createOpenAI({
-      apiKey: this.globalConfig.aiApiKey,
-      baseURL: this.globalConfig.aiApiEndpoint || undefined,
+      apiKey: this.globalConfig.llmApiKey,
+      baseURL: this.globalConfig.llmApiEndpoint || undefined,
     })
   }
 

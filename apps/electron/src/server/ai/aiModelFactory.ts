@@ -1,25 +1,23 @@
 import { EmbeddingModelV1, LanguageModelV1 } from '@ai-sdk/provider'
+import { AICustomConfig, ProviderType } from '../config/type'
 import { AbstractProvider } from './providers/abstractProvider'
 import { OpenAIModelProvider } from './providers/openAI'
-import { GlobalConfig, ProviderType } from './type'
-import { PgLiteVector } from './vector'
 
 export class AIModelFactory {
   private static instance: AIModelFactory
   private llmProviderCache = new Map<string, AbstractProvider>()
   private embeddingProviderCache = new Map<string, AbstractProvider>()
-  private vectorInstance?: PgLiteVector
-  private globalConfig: GlobalConfig
+  private config: AICustomConfig
 
-  private constructor(config: GlobalConfig) {
-    this.globalConfig = config
+  private constructor(config: AICustomConfig) {
+    this.config = config
   }
 
   /**
    * Initialize the singleton instance with configuration
    * This should be called once at app startup
    */
-  static initialize(config: GlobalConfig): AIModelFactory {
+  static initialize(config: AICustomConfig): AIModelFactory {
     AIModelFactory.instance = new AIModelFactory(config)
     return AIModelFactory.instance
   }
@@ -47,15 +45,15 @@ export class AIModelFactory {
   /**
    * Get current configuration
    */
-  getConfig(): GlobalConfig {
-    return this.globalConfig
+  getConfig(): AICustomConfig {
+    return this.config
   }
 
   /**
    * Update configuration and clear caches
    */
-  updateConfig(config: GlobalConfig): void {
-    this.globalConfig = config
+  updateConfig(config: AICustomConfig): void {
+    this.config = config
     this.clearCache()
   }
 
@@ -64,7 +62,7 @@ export class AIModelFactory {
    */
   private createProvider(
     type: ProviderType,
-    config: GlobalConfig,
+    config: AICustomConfig,
   ): AbstractProvider {
     switch (type) {
       case ProviderType.OPENAI:
@@ -78,17 +76,17 @@ export class AIModelFactory {
    * Get or create a LLM provider instance with caching
    */
   async getLLMProvider(): Promise<AbstractProvider> {
-    const providerType = this.globalConfig.llmProvider || 'openai'
+    const providerType = this.config.llmProvider || 'openai'
     const cacheKey = `llm-${providerType}-${JSON.stringify({
-      apiKey: this.globalConfig.aiApiKey,
-      apiEndpoint: this.globalConfig.aiApiEndpoint,
-      model: this.globalConfig.languageModel,
+      apiKey: this.config.llmApiKey,
+      apiEndpoint: this.config.llmApiEndpoint,
+      model: this.config.languageModel,
     })}`
 
     if (!this.llmProviderCache.has(cacheKey)) {
       const provider = this.createProvider(
         providerType as ProviderType,
-        this.globalConfig,
+        this.config,
       )
       this.llmProviderCache.set(cacheKey, provider)
     }
@@ -100,22 +98,19 @@ export class AIModelFactory {
    * Get or create an embedding provider instance with caching
    */
   async getEmbeddingProvider(): Promise<AbstractProvider> {
-    const providerType = this.globalConfig.embeddingProvider || 'openai'
+    const providerType = this.config.embeddingProvider || 'openai'
     const cacheKey = `embedding-${providerType}-${JSON.stringify({
-      apiKey: this.globalConfig.embeddingApiKey,
-      apiEndpoint: this.globalConfig.embeddingApiEndpoint,
-      model: this.globalConfig.embeddingModel,
+      apiKey: this.config.embeddingApiKey,
+      apiEndpoint: this.config.embeddingApiEndpoint,
+      model: this.config.embeddingModel,
     })}`
 
     if (!this.embeddingProviderCache.has(cacheKey)) {
       // Create a config specifically for embedding provider
-      const embeddingConfig: GlobalConfig = {
-        ...this.globalConfig,
-        aiApiKey:
-          this.globalConfig.embeddingApiKey || this.globalConfig.aiApiKey,
-        aiApiEndpoint:
-          this.globalConfig.embeddingApiEndpoint ||
-          this.globalConfig.aiApiEndpoint,
+      const embeddingConfig: AICustomConfig = {
+        ...this.config,
+        embeddingApiKey: this.config.embeddingApiKey,
+        embeddingApiEndpoint: this.config.embeddingApiEndpoint,
       }
 
       const provider = this.createProvider(
@@ -145,26 +140,11 @@ export class AIModelFactory {
   }
 
   /**
-   * Facade method: Get vector database instance
-   */
-  async getVectorDatabase(): Promise<PgLiteVector> {
-    if (!this.vectorInstance) {
-      this.vectorInstance = new PgLiteVector({
-        dataDir: this.globalConfig.dbPath,
-        schemaName: this.globalConfig.vectorSchemaName,
-      })
-    }
-
-    return this.vectorInstance
-  }
-
-  /**
    * Clear provider cache
    */
   clearCache(): void {
     this.llmProviderCache.clear()
     this.embeddingProviderCache.clear()
-    this.vectorInstance = undefined
   }
 
   /**
@@ -176,7 +156,7 @@ export class AIModelFactory {
 }
 
 // Convenience functions for easy access
-export function initializeAI(config: GlobalConfig): AIModelFactory {
+export function initializeAI(config: AICustomConfig): AIModelFactory {
   return AIModelFactory.initialize(config)
 }
 
@@ -185,7 +165,7 @@ export function getAI(): AIModelFactory {
 }
 
 // Legacy function - now just delegates to getInstance
-export function createAIModelFactory(config: GlobalConfig): AIModelFactory {
+export function createAIModelFactory(config: AICustomConfig): AIModelFactory {
   if (AIModelFactory.isInitialized()) {
     const factory = AIModelFactory.getInstance()
     factory.updateConfig(config)
@@ -201,8 +181,4 @@ export async function getLanguageModel(): Promise<LanguageModelV1> {
 
 export async function getEmbeddingModel(): Promise<EmbeddingModelV1<string>> {
   return AIModelFactory.getInstance().getEmbeddingModel()
-}
-
-export async function getVectorDatabase(): Promise<PgLiteVector> {
-  return AIModelFactory.getInstance().getVectorDatabase()
 }
