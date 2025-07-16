@@ -117,7 +117,7 @@ export const NovelEditor = ({
           slotAfter={
             <>
               <ImageResizer />
-              <EditorValueUpdater value={value} />
+              {!editable && <EditorValueUpdater value={value} />}
             </>
           }
         >
