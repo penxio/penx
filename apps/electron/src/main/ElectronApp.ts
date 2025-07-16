@@ -11,10 +11,12 @@ import {
   shell,
 } from 'electron'
 import { Conf } from 'electron-conf/main'
+import { autoUpdater } from 'electron-updater'
 import { SHORTCUT_LIST } from '@penx/constants'
 import { Shortcut, ShortcutType } from '@penx/types'
 import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
+import { AppUpdater } from './AppUpdater'
 import { createInputWindow } from './createInputWindow'
 import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
@@ -140,6 +142,19 @@ export class ElectronApp {
     app.on('will-quit', () => {
       globalShortcut.unregisterAll()
     })
+
+    const appUpdater = new AppUpdater()
+
+    setTimeout(() => {
+      appUpdater.checkForUpdates()
+    }, 3000)
+
+    setInterval(
+      () => {
+        appUpdater.checkForUpdates()
+      },
+      2 * 60 * 60 * 1000,
+    )
   }
 
   private async startServer() {
