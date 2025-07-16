@@ -33,6 +33,7 @@ export const ConfigSchema = z.object({
   embeddingDimensions: z.number().optional(), // Vector dimensions (e.g., 1536)
   embeddingApiEndpoint: z.string().optional(), // Embedding API endpoint
   embeddingApiKey: z.string().optional(), // Embedding API key
+  embeddingTopK: z.number().optional(), // Number of top results to return
 
   // Rerank Settings
   rerankModel: z.string().optional(), // Rerank model identifier
@@ -46,3 +47,5 @@ export const ConfigSchema = z.object({
  * Inferred from ConfigSchema for type safety
  */
 export type AICustomConfig = z.infer<typeof ConfigSchema>
+
+export const PENX_EMBEDDING_INDEX_NAME = 'penx_embedding'

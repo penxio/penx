@@ -1,7 +1,10 @@
 import { QueryResult } from '@mastra/core'
 import { embed, embedMany } from 'ai'
 import { INode } from '@penx/model-type'
+import { AICustomConfig, PENX_EMBEDDING_INDEX_NAME } from '../config/type'
 import { VectorService } from '../db/vectorService'
+import getChatAgent from './agent/chatAgent'
+import getRagChatAgent from './agent/ragChatAgent'
 import { AIModelFactory } from './aiModelFactory'
 import { buildMDocument, ProcessingOptions } from './utils/nodeToDocument'
 
@@ -13,12 +16,25 @@ import { buildMDocument, ProcessingOptions } from './utils/nodeToDocument'
  * - Process business data (INode) into AI-ready format
  */
 export class AIService {
+  // Rebuild vector index
+  static async rebuildVectorIndex() {
+    const vectorService = VectorService.getInstance()
+    const config: AICustomConfig = AIModelFactory.getInstance().getConfig()
+    const embeddingDimension: number = config.embeddingDimensions ?? 1536
+    await vectorService.clearEmbeddingIndex(PENX_EMBEDDING_INDEX_NAME)
+    await vectorService.deleteVectorIndex(PENX_EMBEDDING_INDEX_NAME)
+    await vectorService.ensureEmbeddingIndex(
+      PENX_EMBEDDING_INDEX_NAME,
+      embeddingDimension,
+    )
+  }
+
   /**
    * Clear all embeddings from the index
    */
-  static async embeddingDeleteAll(indexName: string = 'penx_embedding') {
+  static async embeddingDeleteAll() {
     const vectorService = VectorService.getInstance()
-    await vectorService.clearEmbeddingIndex(indexName)
+    await vectorService.clearEmbeddingIndex(PENX_EMBEDDING_INDEX_NAME)
   }
 
   /**
@@ -88,55 +104,26 @@ export class AIService {
   }
 
   /**
-   * Search embeddings with creation-specific filtering
-   */
-  static async embeddingSearchCreations(
-    query: string,
-    filters?: {
-      creationType?: string
-      creationStatus?: string
-      userId?: string
-      siteId?: string
-      featured?: boolean
-    },
-    topK: number = 10,
-  ): Promise<QueryResult[]> {
-    // 1. Get AI services
-    const embeddingModel =
-      await AIModelFactory.getInstance().getEmbeddingModel()
-    const vectorService = VectorService.getInstance()
-    const vectorStore = await vectorService.getVectorStore()
-
-    // 2. Generate query embedding
-    const { embedding } = await embed({
-      value: query,
-      model: embeddingModel,
-    })
-
-    // 3. Build filter with creation-specific constraints
-    const searchFilter = filters
-      ? {
-          ...filters,
-          nodeType: 'CREATION', // Ensure we only get creation nodes
-        }
-      : { nodeType: 'CREATION' }
-
-    // 4. Search vectors with filters
-    const results = await vectorStore.query({
-      indexName: 'penx_embedding',
-      queryVector: embedding,
-      topK,
-      filter: searchFilter,
-    })
-
-    return results
-  }
-
-  /**
    * Get embedding index statistics
    */
   static async getEmbeddingStats(indexName: string = 'penx_embedding') {
     const vectorService = VectorService.getInstance()
     return await vectorService.getIndexStats(indexName)
+  }
+
+  static async chat(message: string) {
+    const model = await AIModelFactory.getInstance().getLanguageModel()
+    const agent = getChatAgent({
+      model,
+    })
+    return await agent.generate(message)
+  }
+
+  static async ragChat(message: string) {
+    const model = await AIModelFactory.getInstance().getLanguageModel()
+    const agent = getRagChatAgent({
+      model,
+    })
+    return await agent.generate(message)
   }
 }

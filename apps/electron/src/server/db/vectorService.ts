@@ -48,8 +48,8 @@ export class VectorService {
    * Create embedding index if not exists
    */
   public async ensureEmbeddingIndex(
-    indexName: string = 'penx_embedding',
-    dimension: number = 1536,
+    indexName: string,
+    dimension: number,
   ): Promise<void> {
     const vectorStore = await this.getVectorStore()
     await vectorStore.createIndex({
@@ -61,9 +61,7 @@ export class VectorService {
   /**
    * Clear all data from embedding index
    */
-  public async clearEmbeddingIndex(
-    indexName: string = 'penx_embedding',
-  ): Promise<void> {
+  public async clearEmbeddingIndex(indexName: string): Promise<void> {
     const vectorStore = await this.getVectorStore()
     await vectorStore.truncateIndex({ indexName })
   }
@@ -71,9 +69,14 @@ export class VectorService {
   /**
    * Get vector store statistics
    */
-  public async getIndexStats(indexName: string = 'penx_embedding') {
+  public async getIndexStats(indexName: string) {
     const vectorStore = await this.getVectorStore()
     return await vectorStore.describeIndex({ indexName })
+  }
+
+  public async deleteVectorIndex(indexName: string) {
+    const vectorStore = await this.getVectorStore()
+    await vectorStore.deleteIndex({ indexName })
   }
 }
 
