@@ -443,3 +443,5 @@ export enum TaskNav {
   UPCOMING = 'UPCOMING',
   ALL = 'ALL',
 }
+
+export const SHORTCUT_LIST = 'SHORTCUT_LIST'

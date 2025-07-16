@@ -63,8 +63,6 @@ export class HonoServer {
   }
 
   private setupRoutes() {
-    console.log('=====>>>>>>>>>>>>L>>>>>>')
-
     this.app.get('/health', (c) =>
       c.json({
         status: 'ok',

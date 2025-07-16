@@ -6,6 +6,14 @@ declare global {
     electron: ElectronAPI
     customElectronApi: {
       clipboard: Electron.Clipboard
+      toggleMainWindow: () => void
+      togglePanelWindow: () => void
+      toggleInputWindow: () => void
+      shortcut: {
+        register: (shortcut: Shortcut) => any
+        unregister: (shortcut: Shortcut) => any
+        onPressed: (callback: (acc: string) => void) => void
+      }
     }
   }
 }

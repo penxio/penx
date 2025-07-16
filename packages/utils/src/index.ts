@@ -232,3 +232,12 @@ export function isNumber(str: string): boolean {
   const numberRegex = /^-?\d+(\.\d+)?$/
   return numberRegex.test(str)
 }
+
+export function convertKeysToHotkey(keys: string[]) {
+  return keys
+    .map((k) => {
+      if (k === 'Meta') return 'Command'
+      return k
+    })
+    .join('+')
+}

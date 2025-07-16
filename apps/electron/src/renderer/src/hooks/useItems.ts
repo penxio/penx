@@ -41,6 +41,7 @@ export function useLoadCommands() {
     queryKey: ['commands'],
     queryFn: () => {
       const structs = store.structs.get()
+      
       const structCommands = structs.map<ICommandItem>((item) => {
         const struct = new Struct(item)
         return {

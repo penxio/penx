@@ -7,6 +7,7 @@ export enum SettingsNav {
   BILLING = 'BILLING',
   RECOVER_PHRASE = 'RECOVER_PHRASE',
   SYNC_SERVER = 'SYNC_SERVER',
+  EDIT_SHORTCUTS = 'EDIT_SHORTCUTS',
 }
 
 type State = {

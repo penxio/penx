@@ -522,3 +522,14 @@ export interface Features {
   page: boolean
   database: boolean
 }
+
+export enum ShortcutType {
+  TOGGLE_MAIN_WINDOW = 'TOGGLE_MAIN_WINDOW',
+  TOGGLE_INPUT_WINDOW = 'TOGGLE_INPUT_WINDOW',
+  TOGGLE_PANEL_WINDOW = 'TOGGLE_PANEL_WINDOW',
+}
+
+export interface Shortcut {
+  key: string[]
+  type: ShortcutType
+}

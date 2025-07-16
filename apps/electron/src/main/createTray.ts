@@ -1,4 +1,4 @@
-import { app, Menu, nativeImage, Tray } from 'electron'
+import { app, ipcMain, Menu, nativeImage, Tray } from 'electron'
 import icon from '../../resources/tray-16.png?asset'
 import { Windows } from './types'
 
@@ -21,6 +21,14 @@ export function createTray(windows: Windows) {
       type: 'normal',
       click: () => {
         panelWindow.show()
+      },
+    },
+    {
+      label: 'Edit Shortcuts',
+      type: 'normal',
+      click: () => {
+        mainWindow.show()
+        mainWindow.webContents.send('edit-shortcuts')
       },
     },
     {

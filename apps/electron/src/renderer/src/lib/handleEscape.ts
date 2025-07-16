@@ -10,7 +10,7 @@ export async function handleEscape() {
     if (event.key === 'Escape') {
       const position = store.get(positionAtom)
       if (position === 'ROOT') {
-        window.electron.ipcRenderer.send('close')
+        window.electron.ipcRenderer.send('close-panel-window')
       } else {
         appEmitter.emit('ON_ESCAPE_IN_COMMAND')
       }

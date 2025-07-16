@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import { useEffect } from 'react'
 import {
   Bell,
   Check,
@@ -27,11 +27,21 @@ import {
 import { ProfileBasicInfo } from '../ProfileBasicInfo'
 import { SettingsContent } from './SettingsContent'
 import { SettingsSidebar } from './SettingsSidebar'
-import { useSettingsDialog } from './useSettingsDialog'
+import { SettingsNav, useSettingsDialog } from './useSettingsDialog'
 
 export function SettingsDialog() {
-  const { open, setOpen } = useSettingsDialog()
+  const { open, setOpen, setState } = useSettingsDialog()
   const { session } = useSession()
+
+  useEffect(() => {
+    window.electron.ipcRenderer.on('edit-shortcuts', () => {
+      console.log('edit short')
+      setState({
+        open: true,
+        navName: SettingsNav.EDIT_SHORTCUTS,
+      })
+    })
+  }, [])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

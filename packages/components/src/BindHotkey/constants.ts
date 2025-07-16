@@ -1,0 +1,1 @@
+export const SHORTCUT_LIST = 'SHORTCUT_LIST'

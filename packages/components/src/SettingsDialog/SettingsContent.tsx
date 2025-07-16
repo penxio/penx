@@ -4,6 +4,7 @@ import { Trans } from '@lingui/react/macro'
 import { Separator } from '@penx/uikit/ui/separator'
 import { Appearance } from './Appearance'
 import { Billing } from './Billing'
+import { EditShortcuts } from './EditShortcuts'
 import { Password } from './Password'
 import { Profile } from './Profile'
 import { RecoveryPhrase } from './RecoveryPhrase/RecoveryPhrase'
@@ -20,6 +21,7 @@ export function SettingsContent() {
     [SettingsNav.PASSWORD]: <Trans>Update password</Trans>,
     [SettingsNav.BILLING]: <Trans>Billing</Trans>,
     [SettingsNav.RECOVER_PHRASE]: <Trans>Recovery phrase</Trans>,
+    [SettingsNav.EDIT_SHORTCUTS]: <Trans>Shortcuts</Trans>,
     [SettingsNav.SYNC_SERVER]: <Trans>Sync server</Trans>,
   }
 
@@ -34,6 +36,7 @@ export function SettingsContent() {
           {navName === SettingsNav.PROFILE && <Profile />}
           {navName === SettingsNav.PASSWORD && <Password />}
           {navName === SettingsNav.BILLING && <Billing />}
+          {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
           {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
           {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
         </div>

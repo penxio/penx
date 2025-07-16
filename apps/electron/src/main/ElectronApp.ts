@@ -1,15 +1,20 @@
 import { join } from 'path'
-import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { electronApp, is, optimizer, platform } from '@electron-toolkit/utils'
 import {
   app,
   BrowserWindow,
   dialog,
   globalShortcut,
   ipcMain,
+  nativeImage,
   screen,
   shell,
 } from 'electron'
 import { Conf } from 'electron-conf/main'
+import { SHORTCUT_LIST } from '@penx/constants'
+import { Shortcut, ShortcutType } from '@penx/types'
+import { convertKeysToHotkey } from '@penx/utils'
+import icon from '../../resources/icon.png?asset'
 import { createInputWindow } from './createInputWindow'
 import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
@@ -77,9 +82,13 @@ export class ElectronApp {
       this.windows.panelWindow = createPanelWindow()
       this.windows.inputWindow = createInputWindow()
 
+      if (process.platform === 'darwin') {
+        console.log('set doc icon>>>>>>>>>>>>>>:', icon)
+        const image = nativeImage.createFromPath(icon)
+        app.dock?.setIcon(image)
+      }
+
       createTray(this.windows)
-      this.registerPanelShortcut()
-      this.registerInputShortcut()
       // registerShortcut({
       //   windows: this.windows,
       //   onCreateWindow: () => {
@@ -90,6 +99,8 @@ export class ElectronApp {
 
       this.conf = new Conf()
       this.conf.registerRendererListener()
+
+      this.registerShortcut()
 
       this.mainWindow.on('close', (e) => {
         e.preventDefault()
@@ -127,8 +138,6 @@ export class ElectronApp {
     }
 
     app.on('will-quit', () => {
-      globalShortcut.unregister('CmdOrCtrl+D')
-      globalShortcut.unregister('CmdOrCtrl+I')
       globalShortcut.unregisterAll()
     })
   }
@@ -152,7 +161,35 @@ export class ElectronApp {
     }
   }
 
-  private registerPanelShortcut() {
+  private async toggleMainWindow() {
+    const mainWindow = this.windows.mainWindow!
+    const show = async () => {
+      mainWindow.show()
+    }
+    try {
+      if (!mainWindow) {
+        this.windows.mainWindow = createMainWindow()
+        show()
+      } else if (mainWindow.isVisible()) {
+        if (mainWindow.isFocused()) {
+          mainWindow.hide()
+        } else {
+          mainWindow.focus()
+        }
+      } else {
+        show()
+        mainWindow.setAlwaysOnTop(true)
+        mainWindow.focus()
+        mainWindow.setAlwaysOnTop(false)
+      }
+    } catch (error) {
+      console.log('======error:', error)
+      this.windows.mainWindow = createMainWindow()
+      show()
+    }
+  }
+
+  private togglePanelWindow() {
     const panelWindow = this.windows.panelWindow!
     function show() {
       const cursorPoint = screen.getCursorScreenPoint()
@@ -174,98 +211,105 @@ export class ElectronApp {
       panelWindow.webContents.send('main-window-show')
     }
 
-    const togglePanelWindow = () => {
-      try {
-        if (!panelWindow) {
-          this.windows.panelWindow = createPanelWindow()
-          show()
-        } else if (panelWindow.isVisible()) {
-          if (panelWindow.isFocused()) {
-            panelWindow.hide()
-          } else {
-            panelWindow.focus()
-          }
-        } else {
-          show()
-          panelWindow.setAlwaysOnTop(true)
-          panelWindow.focus()
-          panelWindow.setAlwaysOnTop(false)
-        }
-      } catch (error) {
-        console.log('======error:', error)
+    try {
+      if (!panelWindow) {
         this.windows.panelWindow = createPanelWindow()
         show()
+      } else if (panelWindow.isVisible()) {
+        if (panelWindow.isFocused()) {
+          panelWindow.hide()
+        } else {
+          panelWindow.focus()
+        }
+      } else {
+        show()
+        panelWindow.setAlwaysOnTop(true)
+        panelWindow.focus()
+        panelWindow.setAlwaysOnTop(false)
       }
+    } catch (error) {
+      console.log('======error:', error)
+      this.windows.panelWindow = createPanelWindow()
+      show()
     }
-
-    const ret = globalShortcut.register('CmdOrCtrl+D', () => {
-      togglePanelWindow()
-    })
-
-    if (!ret) {
-      console.log('register shortcut fail')
-    }
-
-    console.log('isRegistered====', globalShortcut.isRegistered('CmdOrCtrl+D'))
   }
 
-  private registerInputShortcut() {
+  private async toggleInputWindow() {
     const inputWindow = this.windows.inputWindow!
     const show = async () => {
-      const cursorPoint = screen.getCursorScreenPoint()
-      const display = screen.getDisplayNearestPoint(cursorPoint)
-      // const { x, y, width, height } = display.workArea
-
-      // const winBounds = inputWindow.getBounds()
-      // const posX = x + Math.round((width - winBounds.width) / 2)
-      // const posY = y + Math.round((height - winBounds.height) / 2)
-
-      // inputWindow.setBounds({
-      //   x: posX,
-      //   y: posY,
-      //   width: winBounds.width,
-      //   height: winBounds.height,
-      // })
-
       inputWindow.show()
 
       const pinned = await this.conf.get('pinned')
       inputWindow.setAlwaysOnTop(!!pinned)
     }
-
-    const toggleInputWindow = async () => {
-      try {
-        if (!inputWindow) {
-          this.windows.inputWindow = createInputWindow()
-          show()
-        } else if (inputWindow.isVisible()) {
-          if (inputWindow.isFocused()) {
-            inputWindow.hide()
-          } else {
-            inputWindow.focus()
-          }
-        } else {
-          show()
-
-          inputWindow.setAlwaysOnTop(true)
-          inputWindow.focus()
-
-          const pinned = await this.conf.get('pinned')
-          inputWindow.setAlwaysOnTop(!!pinned)
-        }
-      } catch (error) {
-        console.log('======error:', error)
+    try {
+      if (!inputWindow) {
         this.windows.inputWindow = createInputWindow()
         show()
+      } else if (inputWindow.isVisible()) {
+        if (inputWindow.isFocused()) {
+          inputWindow.hide()
+        } else {
+          inputWindow.focus()
+        }
+      } else {
+        show()
+
+        inputWindow.setAlwaysOnTop(true)
+        inputWindow.focus()
+
+        const pinned = await this.conf.get('pinned')
+        inputWindow.setAlwaysOnTop(!!pinned)
       }
+    } catch (error) {
+      console.log('======error:', error)
+      this.windows.inputWindow = createInputWindow()
+      show()
+    }
+  }
+
+  private async registerShortcut() {
+    // let shortcuts = (await this.conf.get(SHORTCUT_LIST)) as Shortcut[]
+    let shortcuts: Shortcut[] = null as any
+
+    if (!shortcuts) {
+      shortcuts = [
+        {
+          key: platform.isMacOS
+            ? ['Command', 'Shift', 'Space']
+            : ['Ctrl', 'Shift', 'Space'],
+          type: ShortcutType.TOGGLE_MAIN_WINDOW,
+        },
+        {
+          key: ['Alt', 'S'],
+          type: ShortcutType.TOGGLE_PANEL_WINDOW,
+        },
+        {
+          key: ['Alt', 'I'],
+          type: ShortcutType.TOGGLE_INPUT_WINDOW,
+        },
+      ]
+      this.conf.set(SHORTCUT_LIST, shortcuts)
     }
 
-    const ret = globalShortcut.register('CmdOrCtrl+I', () => {
-      toggleInputWindow()
-    })
+    console.log('=======shortcuts:', shortcuts)
 
-    if (!ret) {
-      console.log('register shortcut fail')
+    for (const shortcut of shortcuts) {
+      const acc = convertKeysToHotkey(shortcut.key)
+      const ret = globalShortcut.register(acc, () => {
+        if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
+          this.toggleMainWindow()
+        }
+        if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
+          this.togglePanelWindow()
+        }
+        if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
+          this.toggleInputWindow()
+        }
+      })
+      if (!ret) {
+        console.log('register shortcut fail:', shortcut.key)
+      }
     }
   }
 
@@ -292,12 +336,53 @@ export class ElectronApp {
       app.exit()
     })
 
-    ipcMain.on('close', () => {
+    ipcMain.on('close-panel-window', () => {
       this.panelWindow.close()
     })
 
     ipcMain.on('close-input-window', () => {
       this.inputWindow.hide()
+    })
+
+    ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
+      const key = convertKeysToHotkey(shortcut.key)
+      const ret = globalShortcut.register(key, () => {
+        event.sender.send('shortcut-pressed')
+
+        if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
+          this.toggleMainWindow()
+        }
+        if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
+          this.togglePanelWindow()
+        }
+        if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
+          this.toggleInputWindow()
+        }
+      })
+
+      if (!ret) {
+        console.log('register shortcut fail')
+      }
+    })
+
+    ipcMain.handle('unregister-shortcut', (_, shortcut: Shortcut) => {
+      console.log(
+        '=======unregister-shortcut:',
+        convertKeysToHotkey(shortcut.key),
+      )
+      globalShortcut.unregister(convertKeysToHotkey(shortcut.key))
+    })
+
+    ipcMain.on('toggle-main-window', () => {
+      this.toggleMainWindow()
+    })
+
+    ipcMain.on('toggle-panel-window', () => {
+      this.togglePanelWindow()
+    })
+
+    ipcMain.on('toggle-input-window', () => {
+      this.toggleInputWindow()
     })
 
     ipcMain.on('quick-input-success', () => {
@@ -308,6 +393,10 @@ export class ElectronApp {
     ipcMain.on('pinned', (_, pinned) => {
       this.inputWindow.setAlwaysOnTop(pinned)
     })
+
+    // ipcMain.on('pinned', (_, pinned) => {
+    //   this.inputWindow.setAlwaysOnTop(pinned)
+    // })
 
     ipcMain.on('open-url', async (_, url: string) => {
       try {

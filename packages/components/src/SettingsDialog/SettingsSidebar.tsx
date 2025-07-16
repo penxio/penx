@@ -5,11 +5,13 @@ import { Trans } from '@lingui/react/macro'
 import {
   CreditCardIcon,
   DatabaseBackupIcon,
+  KeyboardIcon,
   KeyRoundIcon,
   PaletteIcon,
   ServerIcon,
   UserIcon,
 } from 'lucide-react'
+import { isDesktop } from '@penx/constants'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import { Badge } from '@penx/uikit/ui/badge'
@@ -31,6 +33,14 @@ export function SettingsSidebar() {
         <Item icon={<UserIcon size={16} />} navName={SettingsNav.PROFILE}>
           <Trans>Profile</Trans>
         </Item>
+        {isDesktop && (
+          <Item
+            icon={<KeyboardIcon size={16} />}
+            navName={SettingsNav.EDIT_SHORTCUTS}
+          >
+            <Trans>Shortcuts</Trans>
+          </Item>
+        )}
         <Item icon={<KeyRoundIcon size={16} />} navName={SettingsNav.PASSWORD}>
           <Trans>Password</Trans>
         </Item>
