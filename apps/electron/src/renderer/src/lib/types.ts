@@ -12,7 +12,7 @@ export interface ICommandItem extends IListItem {
   data: {
     type: 'Struct' | 'Command' | 'Application'
     alias: string
-    struct: Struct
+    struct?: Struct
     assets: Record<string, string>
     filters: Record<string, FilterItem[]>
     runtime: 'worker' | 'iframe'

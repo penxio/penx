@@ -32,7 +32,7 @@ export function useHandleSelect() {
       console.log('======item.data:', item.data)
 
       setSearch('')
-      setStruct(item.data.struct.raw)
+      setStruct(item.data.struct!.raw)
       setCurrentCommand(item)
       setUI({ type: 'database' })
       setPosition('COMMAND_APP')

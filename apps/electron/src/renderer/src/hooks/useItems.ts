@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { t } from '@lingui/core/macro'
 import { useQuery } from '@tanstack/react-query'
 import { atom, useAtom, useSetAtom } from 'jotai'
 import { Struct } from '@penx/domain'
@@ -41,7 +42,7 @@ export function useLoadCommands() {
     queryKey: ['commands'],
     queryFn: () => {
       const structs = store.structs.get()
-      
+
       const structCommands = structs.map<ICommandItem>((item) => {
         const struct = new Struct(item)
         return {
@@ -64,7 +65,25 @@ export function useLoadCommands() {
         }
       })
 
-      return [...structCommands] as ICommandItem[]
+      const quickInput: ICommandItem = {
+        title: t`Quick input`,
+        keywords: ['Quick', 'Input', 'Quick input'],
+        data: {
+          type: 'Command',
+          alias: '',
+          assets: {},
+          filters: {},
+          runtime: 'worker',
+          commandName: 'quick_input',
+          extensionSlug: '',
+          extensionIcon: '',
+          isDeveloping: false,
+          applicationPath: '',
+          isApplication: false,
+        },
+      }
+
+      return [quickInput, ...structCommands] as ICommandItem[]
     },
   })
 }
