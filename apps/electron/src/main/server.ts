@@ -7,10 +7,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
-import aiHonoServer from '../server/ai'
 import { Windows } from './types'
-
-const port = 14158
 
 export interface ServerConfig {
   port: number
@@ -80,8 +77,6 @@ export class HonoServer {
     })
 
     const api = this.app.basePath('/api')
-
-    api.route('/ai', aiHonoServer)
 
     api.get('/users', async (c) => {
       return c.json({
