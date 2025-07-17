@@ -33,6 +33,11 @@ export interface ObjectIcon {
   bg?: string
 }
 
+export interface IconifyIcon {
+  name: string
+  className?: string
+}
+
 export interface IListItem {
   id?: string
 
@@ -52,7 +57,7 @@ export interface IListItem {
         tooltip?: string | null
       }
 
-  icon?: ImageLike | ObjectIcon
+  icon?: ImageLike | ObjectIcon | IconifyIcon
 
   actions?: ListItemAction[]
 

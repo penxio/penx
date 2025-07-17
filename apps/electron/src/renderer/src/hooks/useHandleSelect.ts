@@ -1,12 +1,12 @@
 import { invoke } from '@tauri-apps/api/core'
 import { appEmitter } from '@penx/emitter'
+import { ICommandItem } from '~/lib/types'
 import { useCommandAppLoading } from './useCommandAppLoading'
 import { useCommandAppUI } from './useCommandAppUI'
 import { useCommandPosition } from './useCommandPosition'
 import { useCurrentCommand } from './useCurrentCommand'
 import { useCurrentStruct } from './useCurrentStruct'
 import { useSearch } from './useSearch'
-import { ICommandItem } from '~/lib/types'
 
 export function useHandleSelect() {
   const { setUI } = useCommandAppUI()
@@ -17,6 +17,11 @@ export function useHandleSelect() {
   const { setSearch } = useSearch()
 
   return async (item: ICommandItem, input = '') => {
+    if (item.data.commandName === 'quick_input') {
+      window.customElectronApi.toggleInputWindow()
+      return
+    }
+
     if (item.data.commandName === 'marketplace') {
       setSearch('')
       setCurrentCommand(item)
@@ -26,11 +31,8 @@ export function useHandleSelect() {
       appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
       return
     }
-    console.log('======item.data?.type:', item.data?.type)
 
     if (item.data?.type === 'Struct') {
-      console.log('======item.data:', item.data)
-
       setSearch('')
       setStruct(item.data.struct!.raw)
       setCurrentCommand(item)

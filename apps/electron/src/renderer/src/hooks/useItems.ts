@@ -68,6 +68,11 @@ export function useLoadCommands() {
       const quickInput: ICommandItem = {
         title: t`Quick input`,
         keywords: ['Quick', 'Input', 'Quick input'],
+        icon: {
+          // name: 'solar:pen-bold',
+          name: 'lucide:pen-line',
+          className: 'bg-linear-to-r from-cyan-500 to-blue-500',
+        },
         data: {
           type: 'Command',
           alias: '',

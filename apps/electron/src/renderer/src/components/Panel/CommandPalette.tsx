@@ -1,24 +1,27 @@
 import { ReactNode, useEffect } from 'react'
 import { Box } from '@fower/react'
 import { Command } from 'cmdk'
+import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { useCommandAppLoading } from '~/hooks/useCommandAppLoading'
 import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { positionAtom, useCommandPosition } from '~/hooks/useCommandPosition'
-import { currentCommandAtom, useCurrentCommand } from '~/hooks/useCurrentCommand'
+import {
+  currentCommandAtom,
+  useCurrentCommand,
+} from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems, useQueryCommands } from '~/hooks/useItems'
 import { useReset } from '~/hooks/useReset'
 import { useValue } from '~/hooks/useValue'
+import { handleEscape } from '~/lib/handleEscape'
+import { ICommandItem } from '~/lib/types'
 import { CommandApp } from './CommandApp/CommandApp'
 import { StyledCommand, StyledCommandList } from './CommandComponents'
 import { CommandPaletteFooter } from './CommandPaletteFooter'
 import { ListItemUI } from './ListItemUI'
 import { BackRootButton } from './SearchBar/BackRootButton'
 import { SearchBar } from './SearchBar/SearchBar'
-import { ICommandItem } from '~/lib/types'
-import { handleEscape } from '~/lib/handleEscape'
-import { appEmitter } from '@penx/emitter'
 
 const windowHeight = 470
 const searchBarHeight = 54
@@ -26,7 +29,7 @@ const footerHeight = 48
 
 function init() {
   handleEscape()
-  window.electron.ipcRenderer.on('main-window-show', () => {
+  window.electron.ipcRenderer.on('panel-window-show', () => {
     appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
   })
 }
@@ -58,14 +61,16 @@ export const CommandPalette = () => {
   useReset(setValue)
   const isIframe = isCommandApp && currentCommand?.data?.runtime === 'iframe'
 
-  const bodyHeight = isIframe ? windowHeight : windowHeight - searchBarHeight - footerHeight
+  const bodyHeight = isIframe
+    ? windowHeight
+    : windowHeight - searchBarHeight - footerHeight
 
   return (
     <StyledCommand
       id="command-palette"
       label="Command Menu"
       // className="command-panel bg-neutral-50/90 dark:bg-neutral-950/80"
-      className="command-panel bg-neutral-50/80 dark:bg-neutral-900/80 absolute top-0 left-0 right-0 bottom-0 text-foreground/80 z-[10000] flex flex-col w-full"
+      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-[10000] flex w-full flex-col bg-neutral-50/80 dark:bg-neutral-900/80"
       // loop
       value={value}
       onValueChange={(v) => {
@@ -106,7 +111,7 @@ export const CommandPalette = () => {
         relative
         style={{
           overscrollBehavior: 'contain',
-          scrollPaddingBlockEnd: 40
+          scrollPaddingBlockEnd: 40,
         }}
       >
         {isCommandApp &&
@@ -128,12 +133,20 @@ export const CommandPalette = () => {
             </Box>
           ) : (
             <StyledCommandList className="p-2">
-              <CommandApp loading={loading} ui={ui} currentCommand={currentCommand} />
+              <CommandApp
+                loading={loading}
+                ui={ui}
+                currentCommand={currentCommand}
+              />
             </StyledCommandList>
           ))}
         {isRoot && (
           <StyledCommandList className="p-2">
-            <ListGroup heading={''} items={commandItems} onSelect={(item) => handleSelect(item)} />
+            <ListGroup
+              heading={''}
+              items={commandItems}
+              onSelect={(item) => handleSelect(item)}
+            />
             {/* Support databases in future  */}
             {/* 
             <ListGroup

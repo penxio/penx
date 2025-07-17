@@ -69,7 +69,7 @@ export function JournalQuickInput({
         StarterKit,
         Placeholder.configure({
           placeholder: ({ node }) => {
-            return placeholder || 'Writing something..'
+            return placeholder || 'Writing something...'
           },
         }),
       ],
@@ -104,6 +104,14 @@ export function JournalQuickInput({
   useEffect(() => {
     if (editor) {
       editor.chain().focus().run()
+    }
+  }, [editor])
+
+  useEffect(() => {
+    if (editor && window.electron) {
+      window.electron.ipcRenderer.on('input-window-show', () => {
+        editor.chain().focus().run()
+      })
     }
   }, [editor])
 

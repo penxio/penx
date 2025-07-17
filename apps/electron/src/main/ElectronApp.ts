@@ -6,21 +6,22 @@ import {
   dialog,
   globalShortcut,
   ipcMain,
+  Menu,
   nativeImage,
   screen,
   shell,
+  Tray,
 } from 'electron'
 import { Conf } from 'electron-conf/main'
-import { autoUpdater } from 'electron-updater'
 import { SHORTCUT_LIST } from '@penx/constants'
 import { Shortcut, ShortcutType } from '@penx/types'
 import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
+import trayIcon from '../../resources/tray-16.png?asset'
 import { AppUpdater } from './AppUpdater'
 import { createInputWindow } from './createInputWindow'
 import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
-import { createTray } from './createTray'
 import { isPortInUse, killPort } from './port-killer'
 import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
@@ -84,13 +85,17 @@ export class ElectronApp {
       this.windows.panelWindow = createPanelWindow()
       this.windows.inputWindow = createInputWindow()
 
+      setTimeout(() => {
+        app.dock?.show()
+      }, 100)
+
       if (process.platform === 'darwin') {
         console.log('set doc icon>>>>>>>>>>>>>>:', icon)
         const image = nativeImage.createFromPath(icon)
         app.dock?.setIcon(image)
       }
 
-      createTray(this.windows)
+      this.createTray()
       // registerShortcut({
       //   windows: this.windows,
       //   onCreateWindow: () => {
@@ -105,17 +110,19 @@ export class ElectronApp {
       this.registerShortcut()
 
       this.mainWindow.on('close', (e) => {
-        e.preventDefault()
-        this.mainWindow.hide()
+        // e.preventDefault()
+        // this.mainWindow.hide()
+        this.windows.mainWindow = null as any
       })
 
       this.panelWindow.on('close', (e) => {
-        e.preventDefault()
-        this.panelWindow.hide()
+        // e.preventDefault()
+        // this.panelWindow.hide()
+        this.windows.panelWindow = null as any
       })
 
-      this.panelWindow.on('closed', () => {
-        this.windows.panelWindow = null as any
+      this.inputWindow.on('closed', () => {
+        this.windows.inputWindow = null as any
       })
 
       this.panelWindow.on('blur', () => {
@@ -223,7 +230,7 @@ export class ElectronApp {
       })
 
       panelWindow.show()
-      panelWindow.webContents.send('main-window-show')
+      panelWindow.webContents.send('panel-window-show')
     }
 
     try {
@@ -256,6 +263,8 @@ export class ElectronApp {
 
       const pinned = await this.conf.get('pinned')
       inputWindow.setAlwaysOnTop(!!pinned)
+
+      inputWindow.webContents.send('input-window-show')
     }
     try {
       if (!inputWindow) {
@@ -422,5 +431,60 @@ export class ElectronApp {
         return { success: false, error: error.message }
       }
     })
+  }
+
+  private createTray() {
+    const mainWindow = this.mainWindow!
+    const panelWindow = this.panelWindow!
+    const nativeTrayIcon = nativeImage.createFromPath(trayIcon)
+
+    const tray = new Tray(nativeTrayIcon)
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: 'Open PenX Editor',
+        type: 'normal',
+        click: () => {
+          this.toggleMainWindow()
+        },
+      },
+      {
+        label: 'Open Search Panel',
+        type: 'normal',
+        click: () => {
+          this.togglePanelWindow()
+        },
+      },
+      {
+        label: 'Open Quick Input',
+        type: 'normal',
+        click: () => {
+          this.toggleInputWindow()
+        },
+      },
+      {
+        label: 'Edit Shortcuts',
+        type: 'normal',
+        click: () => {
+          mainWindow.show()
+          mainWindow.webContents.send('edit-shortcuts')
+        },
+      },
+      {
+        label: 'Quit',
+        click: () => {
+          if (mainWindow) {
+            mainWindow.removeAllListeners('close')
+            mainWindow.close()
+          }
+          if (panelWindow) {
+            panelWindow.removeAllListeners('close')
+            panelWindow.close()
+          }
+          app.quit()
+        },
+      },
+    ])
+    tray.setToolTip('PenX')
+    tray.setContextMenu(contextMenu)
   }
 }
