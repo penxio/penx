@@ -63,9 +63,7 @@ export function ProfileButton({ loginButton }: Props) {
     const authToken = nanoid()
     const url = `${ROOT_HOST}/desktop-login?token=${authToken}`
     // openUrl()
-    console.log('1111111111111111')
     window.electron.ipcRenderer.send('open-url', url)
-    console.log('2222222222222222')
 
     while (true) {
       try {

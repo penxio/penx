@@ -93,25 +93,20 @@ jobs:
           CSC_KEY_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           CSC_NAME: ${{ secrets.CSC_NAME }}
           APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE__ID: ${{ secrets.APPLE_ID }}
-          APPLE_TEST: FOOOO 
           APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }} 
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run build:mac
 
       - name: build-linux
         if: matrix.os == 'ubuntu-latest'
         env:
           NODE_OPTIONS: --max-old-space-size=8192
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run build:linux
 
       - name: build-win
         if: matrix.os == 'windows-latest'
         env:
           NODE_OPTIONS: --max-old-space-size=8192
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm run build:win
 
       - name: List dist directory

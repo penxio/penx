@@ -34,6 +34,7 @@ export function SettingsDialog() {
   const { session } = useSession()
 
   useEffect(() => {
+    if (!window.electron) return
     window.electron.ipcRenderer.on('edit-shortcuts', () => {
       console.log('edit short')
       setState({

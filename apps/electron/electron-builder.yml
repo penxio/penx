@@ -44,9 +44,5 @@ linux:
 appImage:
   artifactName: ${name}-${version}.${ext}
 npmRebuild: false
-publish:       
-  provider: "github"
-  owner: "penxio"
-  repo: "penx"
 electronDownload:
   mirror: https://npmmirror.com/mirrors/electron/
