@@ -36,7 +36,7 @@ export function useHandleSelect() {
       setSearch('')
       setStruct(item.data.struct!.raw)
       setCurrentCommand(item)
-      setUI({ type: 'database' })
+      setUI({ type: 'struct' })
       setPosition('COMMAND_APP')
 
       appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')

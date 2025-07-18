@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Box, FowerHTMLProps } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
 import {
+  BracesIcon,
   DoorOpenIcon,
   EditIcon,
   EyeOffIcon,
@@ -13,6 +14,7 @@ import {
 import { toast } from 'sonner'
 import { Kbd } from '@penx/components/Kbd'
 import { appEmitter } from '@penx/emitter'
+import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
@@ -56,7 +58,9 @@ export const ActionPopover = ({}: Props) => {
   const { items } = useItems()
   const { isRoot, isCommandApp } = useCommandPosition()
 
-  const selectItem = items.find((item) => item.data.commandName === value)
+  const selectItem = items.find((item) => {
+    return item.data?.struct?.id === value || item.data.commandName === value
+  })
 
   useOnCmdK(() => {
     setTimeout(() => {
@@ -136,6 +140,7 @@ export const ActionPopover = ({}: Props) => {
               {isRoot && (
                 <RootActions
                   onOpenCommand={() => {
+                    console.log('=x=x3333:', selectItem)
                     selectItem && handleSelect(selectItem)
                     setOpen(false)
                   }}
@@ -199,6 +204,10 @@ interface RootActionsProps {
   onOpenCommand: () => void
 }
 function RootActions({ onOpenCommand }: RootActionsProps) {
+  const { value } = useValue()
+  const { structs } = useStructs()
+  const struct = structs.find((s) => s.id === value)
+
   return (
     <>
       <MenuItem
@@ -216,8 +225,24 @@ function RootActions({ onOpenCommand }: RootActionsProps) {
           </div>
         </Box>
       </MenuItem>
-      {/* <MenuItem shortcut="⌘ ↵">Show in Finder</MenuItem> */}
-      <MenuItem shortcut="⌘ ⇧ F">
+      {!!struct && (
+        <MenuItem
+          shortcut=""
+          onSelect={() => {
+            //
+          }}
+        >
+          <Box toCenterY gap2 inlineFlex>
+            <div className="">
+              <BracesIcon size={16} />
+            </div>
+            <div>
+              <Trans>Edit Properties</Trans>
+            </div>
+          </Box>
+        </MenuItem>
+      )}
+      {/* <MenuItem shortcut="">
         <Box toCenterY gap2 inlineFlex>
           <div>
             <Star size={16} />
@@ -226,7 +251,7 @@ function RootActions({ onOpenCommand }: RootActionsProps) {
             <Trans>Add to Favorites</Trans>
           </div>
         </Box>
-      </MenuItem>
+      </MenuItem> */}
     </>
   )
 }

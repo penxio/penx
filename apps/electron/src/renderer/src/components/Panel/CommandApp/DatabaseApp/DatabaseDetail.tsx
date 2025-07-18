@@ -57,10 +57,10 @@ export function DatabaseDetail(props: Props) {
   }, [rows, text, sortedColumns])
 
   useEffect(() => {
-    if (!isUuidV4(value) && filteredRows.length) {
+    if (filteredRows.length) {
       setValue(filteredRows[0].id)
     }
-  }, [filteredRows, value, setValue])
+  }, [])
 
   useEffect(() => {
     const handle = (id: string) => {

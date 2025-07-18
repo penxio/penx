@@ -13,8 +13,8 @@ type TodayUI = {
   type: 'today'
 }
 
-type DatabaseUI = {
-  type: 'database'
+type StructUI = {
+  type: 'struct'
 }
 
 type LoadingUI = {
@@ -43,7 +43,7 @@ export type CommandAppUI =
   | LoadingUI
   | MarketplaceUI
   | TodayUI
-  | DatabaseUI
+  | StructUI
   | ClipboardHistoryUI
   | RenderUI
 
@@ -55,6 +55,6 @@ export function useCommandAppUI() {
   return {
     ui,
     isList: ui.type === 'list',
-    setUI
+    setUI,
   }
 }

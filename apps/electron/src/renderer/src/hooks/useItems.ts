@@ -23,7 +23,20 @@ export function useItems() {
   return {
     items,
     developingItems: [],
-    commandItems: items,
+    commandItems: items.filter((item) => {
+      if (!search) return true
+      const s = search.toLowerCase()
+      if (item.data?.alias) {
+        if (item.data?.alias.toLowerCase().includes(s)) {
+          return true
+        }
+      }
+      if (item.title.toString().toLowerCase().includes(s)) {
+        return true
+      }
+
+      return item.keywords.some((k) => k.toLowerCase().includes(s))
+    }),
     databaseItems: [],
     applicationItems: items,
     setItems,
@@ -47,7 +60,7 @@ export function useLoadCommands() {
         const struct = new Struct(item)
         return {
           title: struct.name,
-          keywords: [struct.name],
+          keywords: [struct.type],
           data: {
             type: 'Struct',
             alias: '',

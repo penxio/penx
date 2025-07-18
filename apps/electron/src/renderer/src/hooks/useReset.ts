@@ -19,11 +19,10 @@ export function useReset(setQ: (value: string) => void) {
 
       const position = store.get(positionAtom)
 
-      console.log('=======position:', position)
+      // console.log('=======position:', position)
 
       if (position === 'COMMAND_APP') {
         const search = store.get(searchAtom)
-        console.log('===========search:', search)
 
         store.set(searchAtom, '')
 

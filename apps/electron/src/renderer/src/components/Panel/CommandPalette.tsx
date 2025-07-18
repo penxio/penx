@@ -1,4 +1,5 @@
 import { ReactNode, useEffect } from 'react'
+
 import { Box } from '@fower/react'
 import { Command } from 'cmdk'
 import { appEmitter } from '@penx/emitter'
@@ -6,13 +7,11 @@ import { store } from '@penx/store'
 import { useCommandAppLoading } from '~/hooks/useCommandAppLoading'
 import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { positionAtom, useCommandPosition } from '~/hooks/useCommandPosition'
-import {
-  currentCommandAtom,
-  useCurrentCommand,
-} from '~/hooks/useCurrentCommand'
+import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems, useQueryCommands } from '~/hooks/useItems'
 import { useReset } from '~/hooks/useReset'
+import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
 import { handleEscape } from '~/lib/handleEscape'
 import { ICommandItem } from '~/lib/types'
@@ -38,7 +37,6 @@ init()
 
 export const CommandPalette = () => {
   const { value, setValue } = useValue()
-
   const { commandItems } = useItems()
 
   // console.log('========items:', items)
@@ -167,7 +165,7 @@ function ListGroup({ heading, items, onSelect }: ListGroupProps) {
           <ListItemUI
             key={index}
             index={index}
-            value={item.data.commandName}
+            value={item.data?.struct?.id || item.data.commandName}
             item={item}
             onSelect={onSelect}
           />

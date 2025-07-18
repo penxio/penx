@@ -24,7 +24,7 @@ export const CommandApp = memo(
     //   return <TodayApp />
     // }
 
-    if (ui.type === 'database') {
+    if (ui.type === 'struct') {
       return <DatabaseApp />
     }
 
