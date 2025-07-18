@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { Box } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
 import { useCreations } from '@penx/hooks/useCreations'
 import { IStructNode } from '@penx/model-type'
 import { store } from '@penx/store'
@@ -60,6 +61,24 @@ export function DatabaseDetail(props: Props) {
       setValue(filteredRows[0].id)
     }
   }, [filteredRows, value, setValue])
+
+  useEffect(() => {
+    const handle = (id: string) => {
+      if (filteredRows.length) {
+        const newValue =
+          filteredRows[0].id === id ? filteredRows[1].id : filteredRows[0].id
+        setValue(newValue)
+
+        appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
+      }
+    }
+
+    appEmitter.on('DELETE_CREATION_SUCCESS', handle)
+
+    return () => {
+      appEmitter.off('DELETE_CREATION_SUCCESS', handle)
+    }
+  }, [filteredRows])
 
   // console.log('=======filteredRows:', filteredRows, 'value:', value)
   const currentItem = filteredRows.find((item) => item.id === value)

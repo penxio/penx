@@ -51,6 +51,8 @@ export type AppEvent = {
   ON_AREA_SELECTED: undefined
 
   CLOSE_ACTION_POPOVER: undefined
+
+  DELETE_CREATION_SUCCESS: string
 }
 
 export const appEmitter = mitt<AppEvent>()

@@ -13,6 +13,7 @@ import {
 import { toast } from 'sonner'
 import { Kbd } from '@penx/components/Kbd'
 import { appEmitter } from '@penx/emitter'
+import { store } from '@penx/store'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
 import { useActionPopover } from '~/hooks/useActionPopover'
@@ -237,6 +238,7 @@ interface StructActionsProps {
 
 function StructActions({ onOpenCommand, close }: StructActionsProps) {
   const { setPosition } = useCommandPosition()
+  const { value } = useValue()
   return (
     <>
       <MenuItem
@@ -271,7 +273,19 @@ function StructActions({ onOpenCommand, close }: StructActionsProps) {
           </div>
         </Box>
       </MenuItem>
-      <MenuItem shortcut="" className="text-red-500">
+      <MenuItem
+        shortcut=""
+        className="text-red-500"
+        onSelect={() => {
+          const creations = store.creations.get()
+          const creation = creations.find((c) => c.id === value)!
+          store.creations.deleteCreation(creation)
+          close()
+          setTimeout(() => {
+            appEmitter.emit('DELETE_CREATION_SUCCESS', creation.id)
+          }, 0)
+        }}
+      >
         <Box toCenterY gap2 inlineFlex>
           <div>
             <Trash2Icon size={16} />
