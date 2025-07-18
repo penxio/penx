@@ -49,6 +49,8 @@ export type AppEvent = {
   ON_APPLICATION_DIR_CHANGE: undefined
 
   ON_AREA_SELECTED: undefined
+
+  CLOSE_ACTION_POPOVER: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

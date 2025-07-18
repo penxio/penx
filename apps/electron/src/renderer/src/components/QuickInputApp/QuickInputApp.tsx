@@ -44,7 +44,7 @@ export function QuickInputApp() {
           <XIcon
             className="no-drag size-4 cursor-pointer"
             onClick={() => {
-              window.electron.ipcRenderer.send('close-input-window')
+              window.electron.ipcRenderer.send('hide-input-window')
             }}
           />
         </div>

@@ -1,8 +1,21 @@
 import { useEffect, useState } from 'react'
 import { Box, FowerHTMLProps } from '@fower/react'
-import { DoorOpenIcon, EyeOffIcon, Star } from 'lucide-react'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { Trans } from '@lingui/react/macro'
+import {
+  DoorOpenIcon,
+  EditIcon,
+  EyeOffIcon,
+  ShareIcon,
+  Star,
+  Trash2Icon,
+  TrashIcon,
+} from 'lucide-react'
+import { toast } from 'sonner'
+import { Kbd } from '@penx/components/Kbd'
 import { appEmitter } from '@penx/emitter'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { cn } from '@penx/utils'
+import { useActionPopover } from '~/hooks/useActionPopover'
 import { useCommandPosition } from '~/hooks/useCommandPosition'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
@@ -13,11 +26,10 @@ import {
   StyledCommandGroup,
   StyledCommandInput,
   StyledCommandItem,
-  StyledCommandList
+  StyledCommandList,
 } from './../CommandComponents'
-import { Kbd } from '@penx/components/Kbd'
 
-function useOnCmdK(fn: () => void) {
+function useOnCmdK(fn: () => void, open: boolean) {
   useEffect(() => {
     function listener(e: KeyboardEvent) {
       if (e.key === 'k' && e.metaKey) {
@@ -31,27 +43,26 @@ function useOnCmdK(fn: () => void) {
     return () => {
       document.removeEventListener('keydown', listener)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [open])
 }
 
 interface Props {}
 
 export const ActionPopover = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()
-  const [open, setOpen] = useState(false)
+  const { open, setOpen } = useActionPopover()
   const { value } = useValue()
   const { items } = useItems()
-  const { isRoot } = useCommandPosition()
+  const { isRoot, isCommandApp } = useCommandPosition()
 
   const selectItem = items.find((item) => item.data.commandName === value)
 
   useOnCmdK(() => {
-    setOpen((o) => {
-      if (o) appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
-      return !o
-    })
-  })
+    setTimeout(() => {
+      if (!open) appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
+      setOpen(!open)
+    }, 0)
+  }, open)
 
   const handleSelect = useHandleSelect()
 
@@ -59,6 +70,7 @@ export const ActionPopover = ({}: Props) => {
     <Popover
       open={open}
       onOpenChange={(v) => {
+        console.log('======v:', open)
         setOpen(v)
         if (!v) {
           appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
@@ -66,79 +78,67 @@ export const ActionPopover = ({}: Props) => {
       }}
     >
       <PopoverTrigger asChild>
-        <Box
-          className="no-drag"
-          textSM
-          cursorPointer
-          neutral600
-          bgNeutral200--T60={open}
-          py-4
-          pr-4
-          pl2
-          rounded-6
-          toCenterY
-          gap2
-          onClick={() => {
-            setOpen((o) => !o)
-          }}
+        <div
+          className={cn(
+            'no-drag text-foreground/60 flex cursor-pointer items-center gap-2 rounded-md py-1 pl-3 pr-1 text-sm',
+            open && 'bg-foreground/10',
+          )}
+          // onClick={() => {
+          //   setOpen((o) => !o)
+          // }}
         >
-          <Box>Actions</Box>
+          <div>
+            <Trans>Actions</Trans>
+          </div>
           <Box toCenterY gap1>
             <Kbd>⌘</Kbd>
             <Kbd>K</Kbd>
           </Box>
-        </Box>
+        </div>
       </PopoverTrigger>
-      <PopoverContent className="action-menu shadow-popover p-0" align="end" sideOffset={20}>
+      <PopoverContent
+        className="action-menu p-0"
+        align="end"
+        sideOffset={20}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            e.stopPropagation()
+          }
+        }}
+      >
         <StyledCommand className="w-full p-0">
           <StyledCommandList
-            className="pt-0 px-2 pb-2 overflow-auto"
+            className="overflow-auto px-2 pb-2 pt-0"
             style={{
               overscrollBehavior: 'contain',
               transition: '100ms ease',
-              transitionProperty: 'height'
+              transitionProperty: 'height',
             }}
           >
             <StyledCommandGroup
               heading={
-                currentCommand?.data?.commandName || (selectItem?.title as string) || 'Actions'
+                currentCommand?.data?.commandName ||
+                (selectItem?.title as string) ||
+                'Actions'
               }
             >
-              {isRoot && (
-                <>
-                  <MenuItem
-                    shortcut="↵"
-                    onSelect={() => {
-                      selectItem && handleSelect(selectItem)
-                      setOpen(false)
-                    }}
-                  >
-                    <Box toCenterY gap2 inlineFlex>
-                      <Box gray800>
-                        <DoorOpenIcon size={16} />
-                      </Box>
-                      <Box>Open Command</Box>
-                    </Box>
-                  </MenuItem>
-                  {/* <MenuItem shortcut="⌘ ↵">Show in Finder</MenuItem> */}
-                  <MenuItem shortcut="⌘ ⇧ F">
-                    <Box toCenterY gap2 inlineFlex>
-                      <Box gray800>
-                        <Star size={16} />
-                      </Box>
-                      <Box>Add to Favorites</Box>
-                    </Box>
-                  </MenuItem>
+              {!!currentCommand?.data?.struct && (
+                <StructActions
+                  close={() => setOpen(false)}
+                  onOpenCommand={() => {
+                    selectItem && handleSelect(selectItem)
+                    setOpen(false)
+                  }}
+                />
+              )}
 
-                  <MenuItem shortcut="">
-                    <Box toCenterY gap2>
-                      <Box gray800 inlineFlex>
-                        <EyeOffIcon size={16} />
-                      </Box>
-                      <Box>Disable Command</Box>
-                    </Box>
-                  </MenuItem>
-                </>
+              {isRoot && (
+                <RootActions
+                  onOpenCommand={() => {
+                    selectItem && handleSelect(selectItem)
+                    setOpen(false)
+                  }}
+                />
               )}
             </StyledCommandGroup>
           </StyledCommandList>
@@ -153,10 +153,19 @@ interface MenuItemProps extends Omit<FowerHTMLProps<'div'>, 'onSelect'> {
   shortcut: string
   onSelect?: () => void
 }
-function MenuItem({ children, shortcut, onSelect, ...rest }: MenuItemProps) {
+function MenuItem({
+  children,
+  shortcut,
+  onSelect,
+  className,
+  ...rest
+}: MenuItemProps) {
   return (
     <StyledCommandItem
-      className="flex h-10 cursor-pointer text-sm rounded-md gap-2 px-2 items-center transition-normal data-[selected='true']:bg-foreground/10"
+      className={cn(
+        "transition-normal data-[selected='true']:bg-foreground/10 text-foreground/80 flex h-10 cursor-pointer items-center gap-2 rounded-md px-2 text-sm",
+        className,
+      )}
       onSelect={() => {
         onSelect?.()
       }}
@@ -165,21 +174,113 @@ function MenuItem({ children, shortcut, onSelect, ...rest }: MenuItemProps) {
       }}
       css={{
         "&[aria-selected='true']": {
-          bgNeutral100: true
+          bgNeutral100: true,
         },
 
         "&[aria-disabled='true']": {
-          cursorNotAllowed: true
-        }
+          cursorNotAllowed: true,
+        },
       }}
       {...rest}
     >
       {children}
       <Box toBetween toCenterY ml-auto gap1>
-        {shortcut.split(' ').map((key) => {
-          return <Kbd key={key}>{key}</Kbd>
-        })}
+        {shortcut &&
+          shortcut.split(' ').map((key) => {
+            return <Kbd key={key}>{key}</Kbd>
+          })}
       </Box>
     </StyledCommandItem>
+  )
+}
+
+interface RootActionsProps {
+  onOpenCommand: () => void
+}
+function RootActions({ onOpenCommand }: RootActionsProps) {
+  return (
+    <>
+      <MenuItem
+        shortcut="↵"
+        onSelect={() => {
+          onOpenCommand?.()
+        }}
+      >
+        <Box toCenterY gap2 inlineFlex>
+          <div className="">
+            <DoorOpenIcon size={16} />
+          </div>
+          <div>
+            <Trans>Open Command</Trans>
+          </div>
+        </Box>
+      </MenuItem>
+      {/* <MenuItem shortcut="⌘ ↵">Show in Finder</MenuItem> */}
+      <MenuItem shortcut="⌘ ⇧ F">
+        <Box toCenterY gap2 inlineFlex>
+          <div>
+            <Star size={16} />
+          </div>
+          <div>
+            <Trans>Add to Favorites</Trans>
+          </div>
+        </Box>
+      </MenuItem>
+    </>
+  )
+}
+
+interface StructActionsProps {
+  onOpenCommand: () => void
+  close: () => void
+}
+
+function StructActions({ onOpenCommand, close }: StructActionsProps) {
+  const { setPosition } = useCommandPosition()
+  return (
+    <>
+      <MenuItem
+        shortcut=""
+        onSelect={() => {
+          setPosition('COMMAND_APP_DETAIL')
+          close()
+        }}
+      >
+        <Box toCenterY gap2 inlineFlex>
+          <div className="">
+            <EditIcon size={16} />
+          </div>
+          <div>
+            <Trans>Edit content</Trans>
+          </div>
+        </Box>
+      </MenuItem>
+      <MenuItem
+        shortcut=""
+        onSelect={() => {
+          toast.info('Coming soon~')
+          close()
+        }}
+      >
+        <Box toCenterY gap2 inlineFlex>
+          <div>
+            <ShareIcon size={16} />
+          </div>
+          <div>
+            <Trans>Share</Trans>
+          </div>
+        </Box>
+      </MenuItem>
+      <MenuItem shortcut="" className="text-red-500">
+        <Box toCenterY gap2 inlineFlex>
+          <div>
+            <Trash2Icon size={16} />
+          </div>
+          <div>
+            <Trans>Delete record</Trans>
+          </div>
+        </Box>
+      </MenuItem>
+    </>
   )
 }

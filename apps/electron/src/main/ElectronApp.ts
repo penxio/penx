@@ -365,11 +365,11 @@ export class ElectronApp {
       app.exit()
     })
 
-    ipcMain.on('close-panel-window', () => {
-      this.panelWindow.close()
+    ipcMain.on('hide-panel-window', () => {
+      this.panelWindow.hide()
     })
 
-    ipcMain.on('close-input-window', () => {
+    ipcMain.on('hide-input-window', () => {
       this.inputWindow.hide()
     })
 

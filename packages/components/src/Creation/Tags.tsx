@@ -82,7 +82,7 @@ export function Tags({ creation }: Props) {
         )
       })}
 
-      <Popover open={isOpen} onOpenChange={setIsOpen} modal>
+      <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild className="gap-0">
           <Button
             size="xs"

@@ -1,8 +1,10 @@
 import { Box } from '@fower/react'
+import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { cn } from '@penx/utils'
 import { useCommandPosition } from '~/hooks/useCommandPosition'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
+import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useCommands, useItems } from '~/hooks/useItems'
 import { useLoading } from '~/hooks/useLoading'
@@ -25,10 +27,13 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
     useCommandPosition()
   const handleSelect = useHandleSelect()
   const { currentCommand } = useCurrentCommand()
+  const { struct } = useCurrentStruct()
 
   const currentCommandName = currentCommand?.data?.commandName
   const isMarketplaceDetail =
     currentCommandName === 'marketplace' && isCommandAppDetail
+
+  const isCreationDetail = !!currentCommand?.data?.struct && isCommandAppDetail
 
   const isDatabaseApp = currentCommand?.data?.type === 'Struct'
 
@@ -39,12 +44,13 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
         height: searchBarHeight,
       }}
     >
-      {isCommandApp && <BackRootButton pl3 mr--8 />}
+      {isCommandApp && <BackRootButton className="-mr-2 ml-3" />}
+      {isDatabaseApp && !isCreationDetail && <DatabaseName />}
+      {isDatabaseApp && !isCreationDetail && (
+        <AddRowButton struct={new Struct(struct)} />
+      )}
 
-      {isDatabaseApp && <DatabaseName />}
-      {isDatabaseApp && <AddRowButton />}
-
-      {!isMarketplaceDetail && (
+      {!isMarketplaceDetail && !isCreationDetail && (
         <SearchInput
           search={search}
           className={cn(!search && 'w-20')}

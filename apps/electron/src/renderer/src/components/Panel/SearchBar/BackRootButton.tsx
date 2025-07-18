@@ -1,21 +1,27 @@
-import { Box, FowerHTMLProps } from '@fower/react'
 import { ArrowLeft } from 'lucide-react'
+import { Button } from '@penx/uikit/ui/button'
+import { cn } from '@penx/utils'
 import { useCommandPosition } from '~/hooks/useCommandPosition'
 import { useSearch } from '~/hooks/useSearch'
 
-interface Props extends FowerHTMLProps<'div'> {}
+interface Props {
+  className?: string
+}
 
-export const BackRootButton = ({ ...rest }: Props) => {
+export const BackRootButton = ({ className }: Props) => {
   const { setSearch } = useSearch()
-  const { isCommandAppDetail, backToRoot, backToCommandApp } = useCommandPosition()
+  const { isCommandAppDetail, backToRoot, backToCommandApp } =
+    useCommandPosition()
 
   return (
-    <Box
-      className="text-foreground/90 flex items-center justify-center cursor-pointer no-drag"
-      {...rest}
+    <Button
+      size="icon"
+      variant="ghost"
+      className={cn(
+        'text-foreground/90 no-drag hover:bg-foreground/10 flex size-7 items-center justify-center rounded-md',
+        className,
+      )}
       onClick={() => {
-        console.log('=====name.....:', isCommandAppDetail)
-
         if (isCommandAppDetail) {
           backToCommandApp()
         } else {
@@ -25,6 +31,6 @@ export const BackRootButton = ({ ...rest }: Props) => {
       }}
     >
       <ArrowLeft size={16}></ArrowLeft>
-    </Box>
+    </Button>
   )
 }

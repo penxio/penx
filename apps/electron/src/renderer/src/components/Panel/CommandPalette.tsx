@@ -84,7 +84,6 @@ export const CommandPalette = () => {
     >
       {isIframe && (
         <Box
-          data-tauri-drag-region
           absolute
           top0
           left0
@@ -94,21 +93,13 @@ export const CommandPalette = () => {
           h={searchBarHeight}
           zIndex-10000
         >
-          <BackRootButton
-            data-tauri-drag-region
-            zIndex-100
-            square6
-            roundedXL
-            bgNeutral900--T94
-            bgNeutral900--T94--hover
-          />
+          <BackRootButton className="z-[100]" />
         </Box>
       )}
       {!isIframe && <SearchBar searchBarHeight={searchBarHeight} />}
-      <Box
-        h={bodyHeight}
-        overflowAuto
-        relative
+      <div
+        className="relative flex-1 overflow-auto"
+        // h={bodyHeight}
         style={{
           overscrollBehavior: 'contain',
           scrollPaddingBlockEnd: 40,
@@ -132,7 +123,7 @@ export const CommandPalette = () => {
               />
             </Box>
           ) : (
-            <StyledCommandList className="p-2">
+            <StyledCommandList className="p-2 outline-none">
               <CommandApp
                 loading={loading}
                 ui={ui}
@@ -156,7 +147,7 @@ export const CommandPalette = () => {
             /> */}
           </StyledCommandList>
         )}
-      </Box>
+      </div>
       {!isIframe && <CommandPaletteFooter footerHeight={footerHeight} />}
     </StyledCommand>
   )

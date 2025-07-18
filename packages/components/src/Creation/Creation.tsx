@@ -79,7 +79,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
     <ErrorBoundary fallbackRender={fallbackRender}>
       <div
         className={cn(
-          'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 pt-14 md:px-8',
+          'creation-container relative z-0 flex-1 flex-col overflow-y-auto overflow-x-hidden px-3 pb-40 pt-14 outline-none md:px-8',
           isMobileApp && 'px-3 pt-0',
           className,
         )}
@@ -93,7 +93,9 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
           <CreationHeader />
 
           <PropList
+            struct={struct!}
             onUpdateProps={(newCells) => {
+              console.log('=======newCells:', newCells)
               updateCreationProps(creation.id, { cells: newCells })
             }}
           />

@@ -4,9 +4,11 @@ import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { IStructNode } from '@penx/model-type'
+import { store } from '@penx/store'
 import { Separator } from '@penx/uikit/ui/separator'
 import { mappedByKey } from '@penx/utils'
 import { docToString } from '@penx/utils/editorHelper'
+import { currentCreationAtom } from '~/hooks/useCurrentCreation'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import { StyledCommandEmpty, StyledCommandGroup } from '../../CommandComponents'
@@ -15,10 +17,6 @@ import { RowProps } from './RowProps'
 
 interface Props {
   text: string
-  struct: IStructNode
-}
-
-interface Item {
   struct: IStructNode
 }
 
@@ -65,6 +63,10 @@ export function DatabaseDetail(props: Props) {
 
   // console.log('=======filteredRows:', filteredRows, 'value:', value)
   const currentItem = filteredRows.find((item) => item.id === value)
+
+  if (currentItem) {
+    store.set(currentCreationAtom, currentItem.raw)
+  }
 
   if (!filteredRows.length) {
     return (

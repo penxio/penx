@@ -26,6 +26,7 @@ export function CreationHeader({
 }: Props) {
   const creation = usePanelCreationContext()
   const { structs } = useStructs()
+
   const struct = structs.find((m) => m.id === creation.structId)
 
   const hideTitle = useMemo(() => {
