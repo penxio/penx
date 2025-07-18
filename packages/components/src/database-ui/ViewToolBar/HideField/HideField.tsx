@@ -3,7 +3,7 @@
 import React, { FC } from 'react'
 import { Eye, EyeOff, HomeIcon } from 'lucide-react'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 import { ToolbarBtn } from '../ToolbarBtn'
 import { HideFieldOverlay } from './HideFieldOverlay'
 

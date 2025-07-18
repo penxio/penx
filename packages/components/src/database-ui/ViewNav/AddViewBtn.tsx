@@ -6,7 +6,7 @@ import { ViewType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { useDatabaseContext } from '../DatabaseProvider'
+import { useDatabaseContext } from '../../DatabaseProvider'
 import { ViewIcon } from './ViewIcon'
 
 interface ItemProps extends PropsWithChildren {

@@ -1,7 +1,6 @@
 'use client'
 
 import { Sort } from '@penx/types'
-import { useDatabaseContext } from '../../DatabaseProvider'
 
 interface Props {
   sort: Sort

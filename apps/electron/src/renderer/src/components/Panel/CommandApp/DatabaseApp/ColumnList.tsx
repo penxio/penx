@@ -3,8 +3,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import isEqual from 'react-fast-compare'
-import { Card } from '@/components/ui/Card'
-import { impact } from '@/lib/impact'
 import {
   closestCenter,
   defaultDropAnimation,
@@ -37,7 +35,6 @@ import {
 import { isMobileApp } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { store } from '@penx/store'
-import { AddPropertyButton } from './AddPropertyButton'
 import { ColumnItem } from './ColumnItem'
 import { SortableColumnItem } from './SortableColumnItem'
 
@@ -66,12 +63,12 @@ export const ColumnList = ({ struct }: Props) => {
   const [activeId, setActiveId] = useState<string | null>(null)
 
   const sensors = useSensors(
-    // useSensor(PointerSensor, {
-    //   activationConstraint: {
-    //     delay: isMobileApp ? 100 : 10,
-    //     tolerance: 5,
-    //   },
-    // }),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        delay: isMobileApp ? 100 : 10,
+        tolerance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
@@ -119,14 +116,12 @@ export const ColumnList = ({ struct }: Props) => {
     setActiveId(null)
   }
 
-  const handleDragOver = async (event: DragOverEvent) => {
-    impact()
-  }
+  const handleDragOver = async (event: DragOverEvent) => {}
 
   const activeItem = activeId ? columns.find(({ id }) => id === activeId) : null
 
   return (
-    <Card className="text-foreground flex flex-col">
+    <div className="text-foreground flex flex-col">
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
@@ -151,7 +146,7 @@ export const ColumnList = ({ struct }: Props) => {
           })}
         </SortableContext>
 
-        {/* {createPortal(
+        {createPortal(
           <DragOverlay adjustScale={false} dropAnimation={dropAnimationConfig}>
             {activeId && activeItem && (
               <ColumnItem
@@ -162,10 +157,10 @@ export const ColumnList = ({ struct }: Props) => {
               />
             )}
           </DragOverlay>,
-          document.body,
-        )} */}
+          // document.body,
+          document.querySelector('#command-palette')!,
+        )}
       </DndContext>
-      <AddPropertyButton struct={struct} />
-    </Card>
+    </div>
   )
 }

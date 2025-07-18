@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 import { Creation } from '@penx/domain'
 import { MenuItem } from '@penx/uikit/menu'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 import { EditField } from './ColumnMenu/EditField'
 
 interface ColumnMenuProps {

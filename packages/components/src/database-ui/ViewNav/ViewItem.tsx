@@ -12,7 +12,7 @@ import {
 } from '@penx/uikit/ui/context-menu'
 import { Input } from '@penx/uikit/ui/input'
 import { cn, mappedByKey } from '@penx/utils'
-import { useDatabaseContext } from '../DatabaseProvider'
+import { useDatabaseContext } from '../../DatabaseProvider'
 import { ViewIcon } from './ViewIcon'
 
 interface Props {

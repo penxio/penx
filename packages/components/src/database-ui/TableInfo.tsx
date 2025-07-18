@@ -23,7 +23,7 @@ import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { useDeleteStructDialog } from '../DeleteStructDialog/useDeleteStructDialog'
 import { usePublishStructDialog } from '../PublishStructDialog/usePublishStructDialog'
 import { useStructDialog } from '../StructDialog/useStructDialog'
-import { useDatabaseContext } from './DatabaseProvider'
+import { useDatabaseContext } from '../DatabaseProvider'
 
 export const TableInfo = ({ struct }: { struct: Struct }) => {
   const structDialog = useStructDialog()

@@ -1,7 +1,7 @@
 'use client'
 
 import { cn, mappedByKey } from '@penx/utils'
-import { useDatabaseContext } from '../DatabaseProvider'
+import { useDatabaseContext } from '../../DatabaseProvider'
 import { ViewItem } from './ViewItem'
 
 export const ViewList = () => {

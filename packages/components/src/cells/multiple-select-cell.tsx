@@ -13,7 +13,7 @@ import { Command } from 'cmdk'
 import { getColorByName } from '@penx/libs/color-helper'
 import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
-import { useDatabaseContext } from '../database-ui/DatabaseProvider'
+import { useDatabaseContext } from '../DatabaseProvider'
 import { OptionTag } from '../OptionTag'
 import { roundedRect } from './draw-fns'
 import {

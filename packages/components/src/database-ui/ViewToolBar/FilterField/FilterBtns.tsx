@@ -3,7 +3,7 @@
 import { Plus } from 'lucide-react'
 import { Filter } from '@penx/types'
 import { Button } from '@penx/uikit/button'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 
 interface IFilterBtns {
   filters: Filter[]

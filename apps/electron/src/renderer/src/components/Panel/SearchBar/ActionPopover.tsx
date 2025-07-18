@@ -24,6 +24,7 @@ import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems } from '~/hooks/useItems'
 import { useValue } from '~/hooks/useValue'
+import { ICommandItem } from '~/lib/types'
 import {
   StyledCommand,
   StyledCommandGroup,
@@ -139,11 +140,8 @@ export const ActionPopover = ({}: Props) => {
 
               {isRoot && (
                 <RootActions
-                  onOpenCommand={() => {
-                    console.log('=x=x3333:', selectItem)
-                    selectItem && handleSelect(selectItem)
-                    setOpen(false)
-                  }}
+                  command={selectItem!}
+                  close={() => setOpen(false)}
                 />
               )}
             </StyledCommandGroup>
@@ -201,19 +199,22 @@ function MenuItem({
 }
 
 interface RootActionsProps {
-  onOpenCommand: () => void
+  close: () => void
+  command: ICommandItem
 }
-function RootActions({ onOpenCommand }: RootActionsProps) {
+function RootActions({ command, close }: RootActionsProps) {
   const { value } = useValue()
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === value)
+  const handleSelect = useHandleSelect()
 
   return (
     <>
       <MenuItem
         shortcut="↵"
         onSelect={() => {
-          onOpenCommand?.()
+          command && handleSelect(command)
+          close()
         }}
       >
         <Box toCenterY gap2 inlineFlex>
@@ -229,7 +230,8 @@ function RootActions({ onOpenCommand }: RootActionsProps) {
         <MenuItem
           shortcut=""
           onSelect={() => {
-            //
+            command && handleSelect(command, { isEditStructProp: true })
+            close()
           }}
         >
           <Box toCenterY gap2 inlineFlex>

@@ -4,7 +4,7 @@ import { Creation } from '@penx/domain'
 import { ColumnType, Option } from '@penx/types'
 import { mappedByKey } from '@penx/utils'
 import { FieldIcon } from '../../../FieldIcon'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 
 interface Tag {
   text: string

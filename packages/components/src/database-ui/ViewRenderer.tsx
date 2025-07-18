@@ -1,7 +1,7 @@
 import { DATABASE_TOOLBAR_HEIGHT, WORKBENCH_NAV_HEIGHT } from '@penx/constants'
 import { StructType, ViewType } from '@penx/types'
 import { WithSize } from '../WithSize'
-import { useDatabaseContext } from './DatabaseProvider'
+import { useDatabaseContext } from '../DatabaseProvider'
 import { GalleryView } from './views/GalleryView/GalleryView'
 import { NoteGalleryView } from './views/GalleryView/Notes/NoteGalleryView'
 import { ListView } from './views/ListView/ListView'

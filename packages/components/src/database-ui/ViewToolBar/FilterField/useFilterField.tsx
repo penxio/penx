@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { ConjunctionType, Filter, OperatorType } from '@penx/types'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 
 export function useFilterField() {
   // const { currentView } = useDatabaseContext()

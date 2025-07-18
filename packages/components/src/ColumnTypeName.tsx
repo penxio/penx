@@ -28,7 +28,7 @@ export const ColumnTypeName = ({ columnType, className }: Props) => {
     if (columnType == ColumnType.DATE) return <Trans>Date</Trans>
     if (columnType == ColumnType.CREATED_AT) return <Trans>Created At</Trans>
     if (columnType == ColumnType.UPDATED_AT) return <Trans>Updated At</Trans>
-    return ''
+    return <Trans>Text</Trans>
   }, [columnType])
   return <div className={cn('', className)}>{name}</div>
 }

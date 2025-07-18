@@ -6,7 +6,7 @@ import {
   WORKBENCH_NAV_HEIGHT,
 } from '@penx/constants'
 import { Struct } from '@penx/domain'
-import { DatabaseProvider } from './DatabaseProvider'
+import { DatabaseProvider } from '../DatabaseProvider'
 import { TableInfo } from './TableInfo'
 import { AddViewBtn } from './ViewNav/AddViewBtn'
 import { ViewList } from './ViewNav/ViewList'

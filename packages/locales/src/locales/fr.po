@@ -95,9 +95,13 @@ msgstr ""
 msgid "Account deletion in progress..."
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:97
+msgid "Actions"
+msgstr ""
+
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:62
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:74
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/AddRowButton.tsx:25
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/AddRowButton.tsx:32
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Add"
 msgstr ""
@@ -199,8 +203,8 @@ msgid "An Introduction to PenX and How to Use It"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:104
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:29
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:18
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:31
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
 msgid "Appearance"
 msgstr ""
 
@@ -243,11 +247,11 @@ msgstr ""
 msgid "Believer"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:21
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:22
 msgid "Billing"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:38
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:48
 msgid "Billing & Subscriptions"
 msgstr ""
 
@@ -389,7 +393,7 @@ msgid "Create Tag"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:29
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:18
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:25
 msgid "Created At"
 msgstr ""
 
@@ -397,7 +401,7 @@ msgstr ""
 msgid "Created date"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/QuickInputApp/QuickInputApp.tsx:48
+#: apps/electron/src/renderer/src/components/QuickInputApp/QuickInputApp.tsx:58
 msgid "Created successfully"
 msgstr ""
 
@@ -420,7 +424,7 @@ msgid "Dashboard"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:28
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:17
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:24
 msgid "Date"
 msgstr ""
 
@@ -441,6 +445,10 @@ msgstr ""
 #: apps/mobile/src/components/Profile/Profile.tsx:140
 #: apps/mobile/src/components/Profile/Profile.tsx:164
 msgid "Delete account"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:321
+msgid "Delete record"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:81
@@ -492,9 +500,17 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:283
+msgid "Edit content"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 msgid "Edit option"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:242
+msgid "Edit Properties"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:58
@@ -701,13 +717,13 @@ msgstr ""
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:131
+#: packages/components/src/ProfileButton.tsx:129
 msgid "Log in"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:267
+#: packages/components/src/ProfileButton.tsx:265
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
 msgstr ""
@@ -764,7 +780,7 @@ msgstr ""
 msgid "Monthly"
 msgstr ""
 
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:16
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:23
 msgid "Multiple select"
 msgstr ""
 
@@ -852,7 +868,7 @@ msgstr ""
 msgid "No introduction for the struct"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:72
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:93
 msgid "No results found"
 msgstr ""
 
@@ -893,7 +909,7 @@ msgid "Notes"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:16
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:11
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:18
 msgid "Number"
 msgstr ""
 
@@ -906,10 +922,26 @@ msgstr ""
 msgid "Once deleted, You can't undo this action."
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:225
+msgid "Open Command"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/EditShortcuts.tsx:14
+msgid "Open Editor"
+msgstr ""
+
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:112
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:34
 #: packages/components/src/area-widgets/CreationItem.tsx:113
 msgid "Open in new panel"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/EditShortcuts.tsx:30
+msgid "Open Quick Input"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/EditShortcuts.tsx:22
+msgid "Open Search Panel"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:61
@@ -931,8 +963,8 @@ msgstr ""
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:12
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:35
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:45
 #: packages/components/src/SettingsDialog/Password.tsx:72
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
@@ -1036,8 +1068,8 @@ msgstr ""
 msgid "PRO yearly"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:32
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:19
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:34
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
 msgid "Profile"
 msgstr ""
 
@@ -1047,6 +1079,7 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:89
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/StructInfo.tsx:15
 msgid "Properties"
 msgstr ""
 
@@ -1064,8 +1097,12 @@ msgstr ""
 msgid "Publish your creation"
 msgstr ""
 
+#: apps/electron/src/renderer/src/hooks/useItems.ts:82
+msgid "Quick input"
+msgstr ""
+
 #: packages/components/src/ColumnTypeName.tsx:24
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:14
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:21
 msgid "Rate"
 msgstr ""
 
@@ -1081,11 +1118,15 @@ msgstr ""
 msgid "Recently opened"
 msgstr ""
 
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:124
+msgid "Recording..."
+msgstr ""
+
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:79
 msgid "Recover failed"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:22
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:23
 msgid "Recovery phrase"
 msgstr ""
 
@@ -1170,14 +1211,23 @@ msgid "Set password"
 msgstr ""
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: packages/components/src/ProfileButton.tsx:218
+#: packages/components/src/ProfileButton.tsx:216
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:299
+msgid "Share"
+msgstr ""
+
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:92
 msgid "Share note to friends"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:41
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:24
+msgid "Shortcuts"
 msgstr ""
 
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:46
@@ -1188,7 +1238,7 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:15
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:22
 msgid "Single select"
 msgstr ""
 
@@ -1269,7 +1319,7 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:247
+#: packages/components/src/ProfileButton.tsx:245
 msgid "Support"
 msgstr ""
 
@@ -1301,8 +1351,8 @@ msgstr ""
 msgid "Sync only over Wi-Fi"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:41
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:23
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:51
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:25
 msgid "Sync server"
 msgstr ""
 
@@ -1357,7 +1407,7 @@ msgid "Test connection"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:15
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:10
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:17
 msgid "Text"
 msgstr ""
 
@@ -1455,7 +1505,7 @@ msgstr ""
 msgid "Update area"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:20
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:21
 msgid "Update password"
 msgstr ""
 
@@ -1464,7 +1514,7 @@ msgid "Update struct"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:30
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:26
 msgid "Updated At"
 msgstr ""
 
@@ -1478,13 +1528,13 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:238
+#: packages/components/src/ProfileButton.tsx:236
 msgid "Upgrade to Pro"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:151
 #: packages/components/src/ColumnTypeName.tsx:17
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:13
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:20
 msgid "URL"
 msgstr ""
 

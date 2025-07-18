@@ -2,7 +2,7 @@
 
 import { Group } from '@penx/types'
 import { Switch } from '@penx/uikit/switch'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 
 interface Props {
   group: Group

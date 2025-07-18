@@ -1,6 +1,6 @@
 'use client'
 
-import { useDatabaseContext } from '../DatabaseProvider'
+import { useDatabaseContext } from '../../DatabaseProvider'
 import { FilterField } from './FilterField'
 import { GroupField } from './GroupField'
 import { HideField } from './HideField/HideField'

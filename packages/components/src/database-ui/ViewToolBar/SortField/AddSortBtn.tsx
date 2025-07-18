@@ -6,7 +6,7 @@ import { IColumn } from '@penx/model-type'
 import { Sort } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 import { FieldIcon } from '../../../FieldIcon'
 
 export const AddSortBtn = () => {

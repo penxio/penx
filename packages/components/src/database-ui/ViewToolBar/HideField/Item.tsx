@@ -6,7 +6,7 @@ import { GripVerticalIcon } from 'lucide-react'
 import { ViewColumn } from '@penx/types'
 import { Switch } from '@penx/uikit/switch'
 import { cn } from '@penx/utils'
-import { useDatabaseContext } from '../../DatabaseProvider'
+import { useDatabaseContext } from '../../../DatabaseProvider'
 import { FieldIcon } from '../../../FieldIcon'
 
 interface Props {

@@ -3,7 +3,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { IColumn } from '@penx/model-type'
 import { Option } from '@penx/types'
-import { useDatabaseContext } from '../../../DatabaseProvider'
 
 export type EditFieldValues = {
   name: string
@@ -13,7 +12,6 @@ export type EditFieldValues = {
 }
 
 export function useEditColumnForm(column: IColumn) {
-  const ctx = useDatabaseContext()
   const columnOptions = (column.options as any as Option[]) || []
 
   const form = useForm<EditFieldValues>({
@@ -31,7 +29,7 @@ export function useEditColumnForm(column: IColumn) {
 
   const onSubmit: SubmitHandler<EditFieldValues> = async (data) => {
     console.log('data', data)
-    await ctx.updateColumn(column.id, data)
+    // await ctx.updateColumn(column.id, data)
   }
 
   return { ...form, onSubmit: form.handleSubmit(onSubmit) }

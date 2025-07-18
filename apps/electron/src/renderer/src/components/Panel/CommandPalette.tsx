@@ -1,5 +1,4 @@
 import { ReactNode, useEffect } from 'react'
-
 import { Box } from '@fower/react'
 import { Command } from 'cmdk'
 import { appEmitter } from '@penx/emitter'
@@ -67,8 +66,7 @@ export const CommandPalette = () => {
     <StyledCommand
       id="command-palette"
       label="Command Menu"
-      // className="command-panel bg-neutral-50/90 dark:bg-neutral-950/80"
-      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-[10000] flex w-full flex-col bg-neutral-50/80 dark:bg-neutral-900/80"
+      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-neutral-50/80 dark:bg-neutral-900/80"
       // loop
       value={value}
       onValueChange={(v) => {

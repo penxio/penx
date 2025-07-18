@@ -1,30 +1,34 @@
 'use client'
 
 import React, { FC, PropsWithChildren, useState } from 'react'
-import { Plus } from 'lucide-react'
+import { Plus, PlusIcon } from 'lucide-react'
+import { ColumnTypeName } from '@penx/components/ColumnTypeName'
+import { FieldIcon } from '@penx/components/FieldIcon'
+import { Struct } from '@penx/domain'
+import { store } from '@penx/store'
 import { ColumnType } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { ColumnTypeName } from '../../../ColumnTypeName'
-import { FieldIcon } from '../../../FieldIcon'
-import { useDatabaseContext } from '../../../DatabaseProvider'
+import { Button } from '@penx/uikit/ui/button'
 
 interface PopoverStateProps {
+  struct: Struct
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 interface ItemProps extends PopoverStateProps {
-  fieldType: ColumnType
+  columnType: ColumnType
+  struct: Struct
 }
 
 function Item({
   children,
   setIsOpen,
-  fieldType,
+  columnType,
+  struct,
   ...rest
 }: PropsWithChildren<ItemProps>) {
-  const ctx = useDatabaseContext()
   async function addColumn() {
     setIsOpen(false)
-    await ctx.addColumn(fieldType)
+    store.structs.addColumn(struct, { columnType })
   }
 
   return (
@@ -38,7 +42,7 @@ function Item({
   )
 }
 
-function Content({ setIsOpen }: PopoverStateProps) {
+function Content({ setIsOpen, struct }: PopoverStateProps) {
   const types = [
     ColumnType.TEXT,
     ColumnType.NUMBER,
@@ -54,7 +58,12 @@ function Content({ setIsOpen }: PopoverStateProps) {
   return (
     <div className="p-2">
       {types.map((type) => (
-        <Item key={type} fieldType={type} setIsOpen={setIsOpen}>
+        <Item
+          key={type}
+          columnType={type}
+          setIsOpen={setIsOpen}
+          struct={struct}
+        >
           <FieldIcon columnType={type} />
           <ColumnTypeName columnType={type} />
         </Item>
@@ -63,20 +72,31 @@ function Content({ setIsOpen }: PopoverStateProps) {
   )
 }
 
-interface Props {}
+interface Props {
+  struct: Struct
+}
 
-export const AddColumnBtn: FC<Props> = ({}) => {
+export const AddColumnBtn: FC<Props> = ({ struct }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="flex h-9 w-9 shrink-0 items-center justify-center">
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
-          <div className="text-foreground/50 flex h-full w-full cursor-pointer items-center justify-center">
-            <Plus size={20} />
-          </div>
+          <Button
+            variant="ghost"
+            className=" hover:bg-foreground/10 size-7 rounded-md"
+            size="icon"
+          >
+            <PlusIcon className="text-foreground/40" />
+          </Button>
         </PopoverTrigger>
-        <PopoverContent isPortal className="p-0" align="end" alignOffset={10}>
-          <Content setIsOpen={setIsOpen} />
+        <PopoverContent
+          isPortal
+          className="z-50 max-h-[320px] overflow-auto p-0"
+          align="end"
+          alignOffset={10}
+        >
+          <Content setIsOpen={setIsOpen} struct={struct} />
         </PopoverContent>
       </Popover>
     </div>
