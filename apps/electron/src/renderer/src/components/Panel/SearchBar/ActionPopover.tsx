@@ -17,6 +17,7 @@ import { appEmitter } from '@penx/emitter'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { DialogOverlay } from '@penx/uikit/ui/dialog'
 import { cn } from '@penx/utils'
 import { useActionPopover } from '~/hooks/useActionPopover'
 import { useCommandPosition } from '~/hooks/useCommandPosition'
@@ -102,8 +103,14 @@ export const ActionPopover = ({}: Props) => {
           </Box>
         </div>
       </PopoverTrigger>
+      {open && (
+        <div
+          className="fixed inset-0 z-10 bg-transparent"
+          onClick={() => setOpen(false)}
+        />
+      )}
       <PopoverContent
-        className="action-menu p-0"
+        className="action-menu p-0 z-50"
         align="end"
         sideOffset={20}
         onKeyDown={(e) => {

@@ -1,3 +1,4 @@
+import { useCallback } from 'react'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -13,6 +14,7 @@ import { FieldIcon } from '../../FieldIcon'
 import { FileUpload } from '../../FileUpload'
 import { usePanelCreationContext } from '../PanelCreationProvider'
 import { MultipleSelectProp } from './MultipleSelectProp'
+import { PasswordProp } from './PasswordProp'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
 
@@ -31,34 +33,33 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
   const cells = creation.props.cells || {}
   const value = cells[column.id]
 
-  return (
-    <div className="flex gap-2">
-      <div className="text-foreground/60 flex w-32 items-center gap-1">
-        <div>
-          <FieldIcon columnType={column.columnType} />
-        </div>
-        <span className="text-sm">{column.name}</span>
-      </div>
-      <div className="flex-1">
-        {[ColumnType.TEXT, ColumnType.PASSWORD].includes(column.columnType) && (
+  const handleChange = useCallback(
+    (v: any) => {
+      onUpdateProps({
+        ...cells,
+        [column.id]: v,
+      })
+    },
+    [cells, column.id, onUpdateProps],
+  )
+
+  const renderInput = () => {
+    switch (column.columnType) {
+      case ColumnType.TEXT:
+        return (
           <Input
-            placeholder="Empty"
+            placeholder=""
             variant="unstyled"
             className=""
-            type={
-              column.columnType === ColumnType.PASSWORD ? 'password' : 'text'
-            }
-            defaultValue={value}
-            onChange={(e) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: e.target.value,
-              })
-            }}
+            type="text"
+            value={value ?? ''}
+            onChange={(e) => handleChange(e.target.value)}
           />
-        )}
-
-        {[ColumnType.DATE].includes(column.columnType) && (
+        )
+      case ColumnType.PASSWORD:
+        return <PasswordProp value={value ?? ''} onChange={handleChange} />
+      case ColumnType.DATE:
+        return (
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -76,110 +77,86 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
             <PopoverContent className="w-auto p-0" align="start">
               <Calendar
                 mode="single"
-                selected={new Date(value as string)}
-                onSelect={(date) => {
-                  onUpdateProps({
-                    ...cells,
-                    [column.id]: date,
-                  })
-                }}
+                selected={value ? new Date(value as string) : undefined}
+                onSelect={(date) => handleChange(date)}
               />
             </PopoverContent>
           </Popover>
-        )}
-
-        {ColumnType.CREATED_AT === column.columnType && (
+        )
+      case ColumnType.CREATED_AT:
+        return (
           <div className="px-3 text-sm">
             {format(new Date(creation.createdAt), 'PPP')}
           </div>
-        )}
-
-        {ColumnType.UPDATED_AT === column.columnType && (
+        )
+      case ColumnType.UPDATED_AT:
+        return (
           <div className="px-3 text-sm">
             {format(new Date(creation.updatedAt), 'PPP')}
           </div>
-        )}
-
-        {column.columnType === ColumnType.NUMBER && (
+        )
+      case ColumnType.NUMBER:
+        return (
           <NumberInput
-            placeholder="Empty"
+            placeholder=""
             variant="unstyled"
             precision={18}
             className=""
-            defaultValue={value}
-            onChange={(v) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: v,
-              })
-            }}
+            value={value ?? ''}
+            onChange={handleChange}
           />
-        )}
-        {column.columnType === ColumnType.URL && (
+        )
+      case ColumnType.URL:
+        return (
           <Input
             variant="unstyled"
-            placeholder="Empty"
-            defaultValue={value}
-            onChange={(e) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: e.target.value,
-              })
-            }}
+            placeholder=""
+            value={value ?? ''}
+            onChange={(e) => handleChange(e.target.value)}
           />
-        )}
-        {column.columnType === ColumnType.IMAGE && (
+        )
+      case ColumnType.IMAGE:
+        return (
           <FileUpload
             className="ml-3 size-20"
             value={value}
-            onChange={(v) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: v,
-              })
-            }}
+            onChange={handleChange}
           />
-        )}
-        {column.columnType === ColumnType.SINGLE_SELECT && (
+        )
+      case ColumnType.SINGLE_SELECT:
+        return (
           <SingleSelectProp
             struct={struct}
             column={column}
             value={value}
-            onChange={(v) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: v,
-              })
-            }}
+            onChange={handleChange}
           />
-        )}
-
-        {column.columnType === ColumnType.MULTIPLE_SELECT && (
+        )
+      case ColumnType.MULTIPLE_SELECT:
+        return (
           <MultipleSelectProp
             struct={struct}
             column={column}
             value={value}
-            onChange={(v) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: v,
-              })
-            }}
+            onChange={handleChange}
           />
-        )}
+        )
+      case ColumnType.RATE:
+        return <RateProp value={value} onChange={handleChange} />
+      default:
+        return null
+    }
+  }
 
-        {column.columnType === ColumnType.RATE && (
-          <RateProp
-            value={value}
-            onChange={(v) => {
-              onUpdateProps({
-                ...cells,
-                [column.id]: v,
-              })
-            }}
-          />
-        )}
+  return (
+    <div className="flex gap-2">
+      <div className="text-foreground/60 flex w-32 items-center gap-1">
+        <div>
+          <FieldIcon columnType={column.columnType} />
+        </div>
+        <span className="text-sm">{column.name}</span>
       </div>
+      <div className="flex-1">{renderInput()}</div>
     </div>
   )
 }

@@ -23,13 +23,7 @@ export function StructPropDrawer({}: Props) {
             { '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties
           }
         >
-          <div className="bg-background shadow-popover flex h-full w-full grow flex-col rounded-[16px]">
-            <div className="border-foreground/8 border-b px-4 pt-4">
-              <Drawer.Title className="mb-2 font-medium text-zinc-900">
-                {column?.name}
-              </Drawer.Title>
-              <Drawer.Description className="hidden"></Drawer.Description>
-            </div>
+          <div className="bg-background shadow-popover flex h-full w-full grow flex-col overflow-hidden rounded-[16px]">
             <ColumnMenu
               index={index}
               column={column}

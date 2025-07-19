@@ -17,9 +17,9 @@ import {
 import { Input } from '@penx/uikit/input'
 import { Menu, MenuItem } from '@penx/uikit/menu'
 import { Button } from '@penx/uikit/ui/button'
+import { Drawer } from '@penx/vaul'
 import { FieldSelectPopover } from './FieldSelectPopover'
 import { OptionListField } from './OptionListField'
-import { useEditColumnForm } from './useEditColumnForm'
 
 interface ColumnMenuProps {
   index?: number
@@ -59,9 +59,14 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
   return (
     <Form {...form}>
       <form
-        className="flex flex-1 flex-col"
+        className="flex h-full flex-1 flex-col"
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <div className="border-foreground/8 border-b px-4 py-2">
+          <Drawer.Title className="font-medium ">{column?.name}</Drawer.Title>
+          <Drawer.Description className="hidden"></Drawer.Description>
+        </div>
+
         <div className="flex flex-1 flex-col gap-5 overflow-auto p-3">
           <FormField
             control={form.control}
@@ -116,7 +121,7 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
               control={form.control}
               name="options"
               render={({ field }) => (
-                <FormItem className="max-h-[200px] w-full overflow-y-auto py-1">
+                <FormItem className="w-fullpy-1">
                   <FormLabel className="text-foreground/50 text-xs">
                     <Trans>Options</Trans>
                   </FormLabel>
@@ -130,7 +135,7 @@ export function ColumnMenu({ index = 0, column, close }: ColumnMenuProps) {
           )}
         </div>
 
-        <div className="flex w-full items-center justify-end gap-2 p-4">
+        <div className="flex w-full items-center justify-end gap-2 px-4 pb-2 pt-1">
           <Button
             variant="outline"
             className="flex-1"

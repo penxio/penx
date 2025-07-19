@@ -3,6 +3,7 @@ import { Box } from '@fower/react'
 import { Command } from 'cmdk'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
+import { useActionPopover } from '~/hooks/useActionPopover'
 import { useCommandAppLoading } from '~/hooks/useCommandAppLoading'
 import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { positionAtom, useCommandPosition } from '~/hooks/useCommandPosition'
@@ -66,7 +67,7 @@ export const CommandPalette = () => {
     <StyledCommand
       id="command-palette"
       label="Command Menu"
-      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-neutral-50/80 dark:bg-neutral-900/80"
+      className="command-panel text-foreground/80 bg-background/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col dark:bg-neutral-900/80"
       // loop
       value={value}
       onValueChange={(v) => {
@@ -156,6 +157,7 @@ interface ListGroupProps {
 }
 
 function ListGroup({ heading, items, onSelect }: ListGroupProps) {
+  const { setOpen } = useActionPopover()
   return (
     <Command.Group heading={heading}>
       {items.map((item, index) => {
@@ -166,6 +168,9 @@ function ListGroup({ heading, items, onSelect }: ListGroupProps) {
             value={item.data?.struct?.id || item.data.commandName}
             item={item}
             onSelect={onSelect}
+            onContextMenu={() => {
+              setOpen(true)
+            }}
           />
         )
       })}
