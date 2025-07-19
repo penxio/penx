@@ -2,7 +2,7 @@ import { ReactNode, useMemo } from 'react'
 import { Box, css, FowerHTMLProps } from '@fower/react'
 import { IAccessory, isAccessoryObjectText } from '~/lib/penx'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { StyledCommandItem } from './CommandComponents'
+import { CommandItem } from './CommandComponents'
 import { ListItemIcon } from './ListItemIcon'
 import { ICommandItem } from '~/lib/types'
 import { cn } from '@penx/utils'
@@ -54,7 +54,7 @@ export const ListItemUI = ({
   }
 
   return (
-    <StyledCommandItem
+    <CommandItem
       className={cn(
         "cursor-pointer flex items-center justify-between px-2 py-2 gap-4 rounded-lg text-foreground data-[selected='true']:bg-foreground/10",
         className
@@ -103,7 +103,7 @@ export const ListItemUI = ({
           ))}
         </Box>
       )}
-    </StyledCommandItem>
+    </CommandItem>
   )
 }
 

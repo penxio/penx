@@ -4,9 +4,8 @@ import { Creation, Struct } from '@penx/domain'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/ui/button'
-import { useCommandPosition } from '~/hooks/useCommandPosition'
-import { currentCommandAtom } from '~/hooks/useCurrentCommand'
 import { currentCreationAtom } from '~/hooks/useCurrentCreation'
+import { useNavigations } from '~/hooks/useNavigations'
 
 interface Props {
   struct: Struct
@@ -14,7 +13,7 @@ interface Props {
 
 export const AddRowButton = ({ struct }: Props) => {
   const addCreation = useAddCreation()
-  const { setPosition } = useCommandPosition()
+  const { push } = useNavigations()
   return (
     <Button
       size="sm"
@@ -25,7 +24,7 @@ export const AddRowButton = ({ struct }: Props) => {
           type: struct.type,
         })
         store.set(currentCreationAtom, creation)
-        setPosition('COMMAND_APP_DETAIL')
+        push({ path: '/edit-creation' })
       }}
     >
       <Plus size={16}></Plus>

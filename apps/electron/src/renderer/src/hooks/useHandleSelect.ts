@@ -4,7 +4,6 @@ import { ICommandItem } from '~/lib/types'
 import { useCommandAppLoading } from './useCommandAppLoading'
 import { useCommandAppUI } from './useCommandAppUI'
 import { CommandOptions, useCommandOptions } from './useCommandOptions'
-import { useCommandPosition } from './useCommandPosition'
 import { useCurrentCommand } from './useCurrentCommand'
 import { useCurrentStruct } from './useCurrentStruct'
 import { useSearch } from './useSearch'
@@ -12,7 +11,6 @@ import { useSearch } from './useSearch'
 export function useHandleSelect() {
   const { setUI } = useCommandAppUI()
   const { setOptions } = useCommandOptions()
-  const { setPosition } = useCommandPosition()
   const { setCurrentCommand } = useCurrentCommand()
   const { setStruct } = useCurrentStruct()
   const { setLoading } = useCommandAppLoading()
@@ -29,7 +27,6 @@ export function useHandleSelect() {
     if (item.data.commandName === 'marketplace') {
       setCurrentCommand(item)
       setUI({ type: 'marketplace' })
-      setPosition('COMMAND_APP')
 
       appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
       return
@@ -39,7 +36,6 @@ export function useHandleSelect() {
       setStruct(item.data.struct!.raw)
       setCurrentCommand(item)
       setUI({ type: 'struct' })
-      setPosition('COMMAND_APP')
 
       appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
       return

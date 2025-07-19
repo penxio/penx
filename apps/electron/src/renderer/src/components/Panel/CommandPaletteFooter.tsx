@@ -7,11 +7,11 @@ import { AreasPopover } from '../AreasPopover'
 import { ListItemIcon } from './ListItemIcon'
 import { ActionPopover } from './SearchBar/ActionPopover'
 
-interface Props {
-  footerHeight: number
-}
+interface Props {}
 
-export const CommandPaletteFooter = ({ footerHeight }: Props) => {
+const footerHeight = 48
+
+export const CommandPaletteFooter = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()
   return (
     <Box

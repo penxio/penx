@@ -2,7 +2,7 @@ import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { actionPopoverAtom } from '~/hooks/useActionPopover'
 import { appModeAtom } from '~/hooks/useAppMode'
-import { positionAtom } from '~/hooks/useCommandPosition'
+import { navigation } from '~/hooks/useNavigations'
 
 export async function handleEscape() {
   document.addEventListener('keydown', async (event) => {
@@ -16,15 +16,23 @@ export async function handleEscape() {
         return
       }
 
-      const position = store.get(positionAtom)
+      const navigations = navigation.getNavigations()
 
-      console.log('======position:', position)
-
-      if (position === 'ROOT') {
+      if (navigations.length === 1) {
         window.electron.ipcRenderer.send('hide-panel-window')
       } else {
-        appEmitter.emit('ON_ESCAPE_IN_COMMAND')
+        navigation.pop()
       }
+
+      // const position = store.get(positionAtom)
+
+      // console.log('======position:', position)
+
+      // if (position === 'ROOT') {
+      //   window.electron.ipcRenderer.send('hide-panel-window')
+      // } else {
+      //   appEmitter.emit('ON_ESCAPE_IN_COMMAND')
+      // }
     }
   })
 

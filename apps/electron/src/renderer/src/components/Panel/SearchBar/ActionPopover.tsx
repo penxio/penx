@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Box, FowerHTMLProps } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
 import {
@@ -17,21 +17,21 @@ import { appEmitter } from '@penx/emitter'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
-import { DialogOverlay } from '@penx/uikit/ui/dialog'
 import { cn } from '@penx/utils'
 import { useActionPopover } from '~/hooks/useActionPopover'
-import { useCommandPosition } from '~/hooks/useCommandPosition'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
+import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems } from '~/hooks/useItems'
+import { useNavigations } from '~/hooks/useNavigations'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import {
-  StyledCommand,
+  Command,
+  CommandItem,
+  CommandList,
   StyledCommandGroup,
   StyledCommandInput,
-  StyledCommandItem,
-  StyledCommandList,
 } from './../CommandComponents'
 
 function useOnCmdK(fn: () => void, open: boolean) {
@@ -58,7 +58,6 @@ export const ActionPopover = ({}: Props) => {
   const { open, setOpen } = useActionPopover()
   const { value } = useValue()
   const { items } = useItems()
-  const { isRoot, isCommandApp } = useCommandPosition()
 
   const selectItem = items.find((item) => {
     return item.data?.struct?.id === value || item.data.commandName === value
@@ -71,7 +70,18 @@ export const ActionPopover = ({}: Props) => {
     }, 0)
   }, open)
 
-  const handleSelect = useHandleSelect()
+  const { current } = useNavigations()
+
+  const actionList = useMemo(() => {
+    if (current.path === '/root') {
+      return <RootActions command={selectItem!} close={() => setOpen(false)} />
+    }
+
+    if (current.path === '/struct-creations') {
+      return <StructActions close={() => setOpen(false)} />
+    }
+    return null
+  }, [current, selectItem])
 
   return (
     <Popover
@@ -110,7 +120,7 @@ export const ActionPopover = ({}: Props) => {
         />
       )}
       <PopoverContent
-        className="action-menu p-0 z-50"
+        className="action-menu z-50 p-0"
         align="end"
         sideOffset={20}
         onKeyDown={(e) => {
@@ -119,8 +129,8 @@ export const ActionPopover = ({}: Props) => {
           }
         }}
       >
-        <StyledCommand className="w-full p-0">
-          <StyledCommandList
+        <Command className="w-full p-0">
+          <CommandList
             className="overflow-auto px-2 pb-2 pt-0"
             style={{
               overscrollBehavior: 'contain',
@@ -135,26 +145,11 @@ export const ActionPopover = ({}: Props) => {
                 'Actions'
               }
             >
-              {!!currentCommand?.data?.struct && (
-                <StructActions
-                  close={() => setOpen(false)}
-                  onOpenCommand={() => {
-                    selectItem && handleSelect(selectItem)
-                    setOpen(false)
-                  }}
-                />
-              )}
-
-              {isRoot && (
-                <RootActions
-                  command={selectItem!}
-                  close={() => setOpen(false)}
-                />
-              )}
+              {actionList}
             </StyledCommandGroup>
-          </StyledCommandList>
+          </CommandList>
           <StyledCommandInput placeholder="Search for actions..." />
-        </StyledCommand>
+        </Command>
       </PopoverContent>
     </Popover>
   )
@@ -172,7 +167,7 @@ function MenuItem({
   ...rest
 }: MenuItemProps) {
   return (
-    <StyledCommandItem
+    <CommandItem
       className={cn(
         "transition-normal data-[selected='true']:bg-foreground/10 text-foreground/80 flex h-10 cursor-pointer items-center gap-2 rounded-md px-2 text-sm",
         className,
@@ -201,7 +196,7 @@ function MenuItem({
             return <Kbd key={key}>{key}</Kbd>
           })}
       </Box>
-    </StyledCommandItem>
+    </CommandItem>
   )
 }
 
@@ -214,6 +209,8 @@ function RootActions({ command, close }: RootActionsProps) {
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === value)
   const handleSelect = useHandleSelect()
+  const { push } = useNavigations()
+  const { setStruct } = useCurrentStruct()
 
   return (
     <>
@@ -237,7 +234,8 @@ function RootActions({ command, close }: RootActionsProps) {
         <MenuItem
           shortcut=""
           onSelect={() => {
-            command && handleSelect(command, { isEditStructProp: true })
+            push({ path: '/edit-struct' })
+            setStruct(struct.raw)
             close()
           }}
         >
@@ -266,19 +264,18 @@ function RootActions({ command, close }: RootActionsProps) {
 }
 
 interface StructActionsProps {
-  onOpenCommand: () => void
   close: () => void
 }
 
-function StructActions({ onOpenCommand, close }: StructActionsProps) {
-  const { setPosition } = useCommandPosition()
+function StructActions({ close }: StructActionsProps) {
   const { value } = useValue()
+  const { push } = useNavigations()
   return (
     <>
       <MenuItem
         shortcut=""
         onSelect={() => {
-          setPosition('COMMAND_APP_DETAIL')
+          push({ path: '/edit-creation' })
           close()
         }}
       >

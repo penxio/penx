@@ -1,14 +1,14 @@
 import { styled } from '@fower/react'
-import { Command } from 'cmdk'
+import { Command as CmdkCommand } from 'cmdk'
 
-export const StyledCommand = Command
+export const Command = CmdkCommand
 
-export const StyledCommandItem = Command.Item
+export const CommandItem = CmdkCommand.Item
 
-export const StyledCommandInput = styled(Command.Input)
+export const StyledCommandInput = styled(CmdkCommand.Input)
 
-export const StyledCommandList = Command.List
+export const CommandList = CmdkCommand.List
 
-export const StyledCommandGroup = styled(Command.Group)
+export const StyledCommandGroup = styled(CmdkCommand.Group)
 
-export const StyledCommandEmpty = styled(Command.Empty)
+export const StyledCommandEmpty = styled(CmdkCommand.Empty)

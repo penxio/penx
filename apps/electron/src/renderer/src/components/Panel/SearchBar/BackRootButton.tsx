@@ -1,7 +1,7 @@
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { useCommandPosition } from '~/hooks/useCommandPosition'
+import { useNavigations } from '~/hooks/useNavigations'
 import { useSearch } from '~/hooks/useSearch'
 
 interface Props {
@@ -9,9 +9,7 @@ interface Props {
 }
 
 export const BackRootButton = ({ className }: Props) => {
-  const { setSearch } = useSearch()
-  const { isCommandAppDetail, backToRoot, backToCommandApp } =
-    useCommandPosition()
+  const { pop } = useNavigations()
 
   return (
     <Button
@@ -22,12 +20,7 @@ export const BackRootButton = ({ className }: Props) => {
         className,
       )}
       onClick={() => {
-        if (isCommandAppDetail) {
-          backToCommandApp()
-        } else {
-          backToRoot()
-          setSearch('')
-        }
+        pop()
       }}
     >
       <ArrowLeft size={16}></ArrowLeft>

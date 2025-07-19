@@ -1,24 +1,27 @@
-import { ReactNode, useEffect } from 'react'
+import { ReactNode, useEffect, useMemo } from 'react'
 import { Box } from '@fower/react'
-import { Command } from 'cmdk'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { useActionPopover } from '~/hooks/useActionPopover'
 import { useCommandAppLoading } from '~/hooks/useCommandAppLoading'
 import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
-import { positionAtom, useCommandPosition } from '~/hooks/useCommandPosition'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems, useQueryCommands } from '~/hooks/useItems'
+import { useNavigations } from '~/hooks/useNavigations'
 import { useReset } from '~/hooks/useReset'
 import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
 import { handleEscape } from '~/lib/handleEscape'
 import { ICommandItem } from '~/lib/types'
 import { CommandApp } from './CommandApp/CommandApp'
-import { StyledCommand, StyledCommandList } from './CommandComponents'
+import { Command, CommandList } from './CommandComponents'
 import { CommandPaletteFooter } from './CommandPaletteFooter'
 import { ListItemUI } from './ListItemUI'
+import { PageEditCreation } from './pages/PageEditCreation'
+import { PageEditStruct } from './pages/PageEditStruct'
+import { PageRoot } from './pages/PageRoot'
+import { PageStructCreations } from './pages/PageStructCreations'
 import { BackRootButton } from './SearchBar/BackRootButton'
 import { SearchBar } from './SearchBar/SearchBar'
 
@@ -37,7 +40,6 @@ init()
 
 export const CommandPalette = () => {
   const { value, setValue } = useValue()
-  const { commandItems } = useItems()
 
   // console.log('========items:', items)
 
@@ -47,24 +49,60 @@ export const CommandPalette = () => {
   //   commandItems,
   // )
 
-  const { isRoot, isCommandApp } = useCommandPosition()
   const { currentCommand } = useCurrentCommand()
   const { ui } = useCommandAppUI()
   const { loading } = useCommandAppLoading()
 
-  const handleSelect = useHandleSelect()
-
   useQueryCommands()
 
   useReset(setValue)
-  const isIframe = isCommandApp && currentCommand?.data?.runtime === 'iframe'
+  const isIframe = currentCommand?.data?.runtime === 'iframe'
 
   const bodyHeight = isIframe
     ? windowHeight
     : windowHeight - searchBarHeight - footerHeight
 
+  const { current } = useNavigations()
+
+  const header = useMemo(() => {
+    return (
+      <div
+        className="drag border-foreground/10 flex items-center border-b"
+        style={{
+          height: searchBarHeight,
+        }}
+      >
+        <SearchBar searchBarHeight={searchBarHeight} />
+      </div>
+    )
+  }, [current])
+
+  const body = useMemo(() => {
+    if (current.path === '/root') {
+      return <PageRoot />
+    }
+
+    if (current.path === '/edit-struct') {
+      return <PageEditStruct />
+    }
+
+    if (current.path === '/struct-creations') {
+      return <PageStructCreations />
+    }
+
+    if (current.path === '/edit-creation') {
+      return <PageEditCreation />
+    }
+
+    return current.component?.()
+  }, [current])
+
+  const footer = useMemo(() => {
+    return <CommandPaletteFooter />
+  }, [current])
+
   return (
-    <StyledCommand
+    <Command
       id="command-palette"
       label="Command Menu"
       className="command-panel text-foreground/80 bg-background/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col dark:bg-neutral-900/80"
@@ -79,21 +117,8 @@ export const CommandPalette = () => {
         return 1
       }}
     >
-      {isIframe && (
-        <Box
-          absolute
-          top0
-          left0
-          toCenterY
-          toRight
-          w={searchBarHeight - 16}
-          h={searchBarHeight}
-          zIndex-10000
-        >
-          <BackRootButton className="z-[100]" />
-        </Box>
-      )}
-      {!isIframe && <SearchBar searchBarHeight={searchBarHeight} />}
+      {header}
+
       <div
         className="relative flex-1 overflow-auto"
         // h={bodyHeight}
@@ -102,78 +127,9 @@ export const CommandPalette = () => {
           scrollPaddingBlockEnd: 40,
         }}
       >
-        {isCommandApp &&
-          currentCommand &&
-          (currentCommand.data.runtime === 'iframe' ? (
-            <Box relative h-100p>
-              <Box
-                as="iframe"
-                id="command-app-iframe"
-                width="100%"
-                height="100%"
-                p0
-                m0
-                absolute
-                top0
-                zIndex-99
-                // src='https://penx.io'
-              />
-            </Box>
-          ) : (
-            <StyledCommandList className="p-2 outline-none">
-              <CommandApp
-                loading={loading}
-                ui={ui}
-                currentCommand={currentCommand}
-              />
-            </StyledCommandList>
-          ))}
-        {isRoot && (
-          <StyledCommandList className="p-2">
-            <ListGroup
-              heading={''}
-              items={commandItems}
-              onSelect={(item) => handleSelect(item)}
-            />
-            {/* Support databases in future  */}
-            {/* 
-            <ListGroup
-              heading="Databases"
-              items={databaseItems}
-              onSelect={(item) => handleSelect(item)}
-            /> */}
-          </StyledCommandList>
-        )}
+        {body}
       </div>
-      {!isIframe && <CommandPaletteFooter footerHeight={footerHeight} />}
-    </StyledCommand>
-  )
-}
-
-interface ListGroupProps {
-  heading: ReactNode
-  items: ICommandItem[]
-  onSelect?: (item: ICommandItem) => void
-}
-
-function ListGroup({ heading, items, onSelect }: ListGroupProps) {
-  const { setOpen } = useActionPopover()
-  return (
-    <Command.Group heading={heading}>
-      {items.map((item, index) => {
-        return (
-          <ListItemUI
-            key={index}
-            index={index}
-            value={item.data?.struct?.id || item.data.commandName}
-            item={item}
-            onSelect={onSelect}
-            onContextMenu={() => {
-              setOpen(true)
-            }}
-          />
-        )
-      })}
-    </Command.Group>
+      {footer}
+    </Command>
   )
 }
