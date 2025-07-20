@@ -78,7 +78,12 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
     />
   )
   if (isRoot) {
-    return searchInput
+    return (
+      <>
+        {searchInput}
+        {!search && <div className="h-full flex-1"></div>}
+      </>
+    )
   }
 
   if (current.path === '/struct-creations') {

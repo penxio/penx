@@ -20,8 +20,14 @@ import icon from '../../resources/icon.png?asset'
 import trayIcon from '../../resources/tray-16.png?asset'
 import { AppUpdater } from './AppUpdater'
 import { createInputWindow } from './createInputWindow'
-import { createMainWindow } from './createMainWindow'
+// import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
+import {
+  activateVisualFocus,
+  FrontAppMeta,
+  getCurrentFrontAppAndWindow,
+  restoreInputFocus,
+} from './NativeFocusManager'
 import { isPortInUse, killPort } from './port-killer'
 import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
@@ -47,6 +53,9 @@ export class ElectronApp {
   private get inputWindow() {
     return this.windows.inputWindow!
   }
+
+  isOverlayVisible = false
+  frontAppMeta: FrontAppMeta | null = null
 
   constructor() {
     this.setupApp()
@@ -81,9 +90,9 @@ export class ElectronApp {
 
   private async initialize() {
     try {
-      this.windows.mainWindow = createMainWindow()
+      // this.windows.mainWindow = createMainWindow()
       this.windows.panelWindow = createPanelWindow()
-      this.windows.inputWindow = createInputWindow()
+      // this.windows.inputWindow = createInputWindow()
 
       setTimeout(() => {
         app.dock?.show()
@@ -94,6 +103,8 @@ export class ElectronApp {
         const image = nativeImage.createFromPath(icon)
         app.dock?.setIcon(image)
       }
+
+      app.setAccessibilitySupportEnabled(true)
 
       this.createTray()
       // registerShortcut({
@@ -109,11 +120,11 @@ export class ElectronApp {
 
       this.registerShortcut()
 
-      this.mainWindow.on('close', (e) => {
-        // e.preventDefault()
-        // this.mainWindow.hide()
-        this.windows.mainWindow = null as any
-      })
+      // this.mainWindow.on('close', (e) => {
+      //   // e.preventDefault()
+      //   // this.mainWindow.hide()
+      //   this.windows.mainWindow = null as any
+      // })
 
       this.panelWindow.on('close', (e) => {
         // e.preventDefault()
@@ -121,14 +132,17 @@ export class ElectronApp {
         this.windows.panelWindow = null as any
       })
 
-      this.inputWindow.on('closed', () => {
-        this.windows.inputWindow = null as any
-      })
+      // this.inputWindow.on('closed', () => {
+      //   this.windows.inputWindow = null as any
+      // })
 
       this.panelWindow.on('blur', () => {
+        console.log('blur panel..........isDev:', is.dev)
+
         if (!is.dev) {
           this.panelWindow.hide()
         }
+        // this.panelWindow.hide()
       })
 
       this.setupIPC()
@@ -189,36 +203,36 @@ export class ElectronApp {
   }
 
   private async toggleMainWindow() {
-    const mainWindow = this.windows.mainWindow!
-    const show = async () => {
-      mainWindow.show()
-    }
-    try {
-      if (!mainWindow) {
-        this.windows.mainWindow = createMainWindow()
-        show()
-      } else if (mainWindow.isVisible()) {
-        if (mainWindow.isFocused()) {
-          mainWindow.hide()
-        } else {
-          mainWindow.focus()
-        }
-      } else {
-        show()
-        mainWindow.setAlwaysOnTop(true)
-        mainWindow.focus()
-        mainWindow.setAlwaysOnTop(false)
-      }
-    } catch (error) {
-      console.log('======error:', error)
-      this.windows.mainWindow = createMainWindow()
-      show()
-    }
+    // const mainWindow = this.windows.mainWindow!
+    // const show = async () => {
+    //   mainWindow.show()
+    // }
+    // try {
+    //   if (!mainWindow) {
+    //     this.windows.mainWindow = createMainWindow()
+    //     show()
+    //   } else if (mainWindow.isVisible()) {
+    //     if (mainWindow.isFocused()) {
+    //       mainWindow.hide()
+    //     } else {
+    //       // mainWindow.focus()
+    //     }
+    //   } else {
+    //     show()
+    //     mainWindow.setAlwaysOnTop(true)
+    //     // mainWindow.focus()
+    //     mainWindow.setAlwaysOnTop(false)
+    //   }
+    // } catch (error) {
+    //   console.log('======error:', error)
+    //   this.windows.mainWindow = createMainWindow()
+    //   show()
+    // }
   }
 
   private togglePanelWindow() {
     const panelWindow = this.windows.panelWindow!
-    function show() {
+    const setWindowPos = () => {
       const cursorPoint = screen.getCursorScreenPoint()
       const display = screen.getDisplayNearestPoint(cursorPoint)
       const { x, y, width, height } = display.workArea
@@ -233,32 +247,111 @@ export class ElectronApp {
         width: winBounds.width,
         height: winBounds.height,
       })
-
-      panelWindow.show()
-      panelWindow.webContents.send('panel-window-show')
     }
 
-    try {
-      if (!panelWindow) {
-        this.windows.panelWindow = createPanelWindow()
-        show()
-      } else if (panelWindow.isVisible()) {
-        if (panelWindow.isFocused()) {
-          panelWindow.hide()
-        } else {
-          panelWindow.focus()
-        }
+    // const toggle = async () => {
+    //   if (isVisibleAndFocused()) {
+    //     const { frontAppMeta } = this
+    //     this.panelWindow.hide()
+    //     if (frontAppMeta) {
+    //       await restoreInputFocus(frontAppMeta.appName, frontAppMeta.windowName)
+    //     }
+    //   } else {
+    //     this.frontAppMeta = await getCurrentFrontAppAndWindow()
+    //     const { frontAppMeta } = this
+    //     if (!frontAppMeta) return
+    //     this.panelWindow.showInactive()
+    //     await activateVisualFocus(frontAppMeta.appName, frontAppMeta.windowName)
+    //     this.panelWindow.webContents.send('focus-search-input')
+    //   }
+    // }
+
+    const toggle = async () => {
+      if (isVisibleAndFocused()) {
+        hide()
       } else {
-        show()
-        panelWindow.setAlwaysOnTop(true)
-        panelWindow.focus()
-        panelWindow.setAlwaysOnTop(false)
+        setWindowPos()
+        showAndFocus()
+        panelWindow.webContents.send('panel-window-show')
       }
-    } catch (error) {
-      console.log('======error:', error)
-      this.windows.panelWindow = createPanelWindow()
-      show()
     }
+
+    const isVisibleAndFocused = () => {
+      return this.panelWindow.isVisible() && this.panelWindow.isFocused()
+    }
+
+    const hide = () => {
+      if (platform.isMacOS) {
+        app.hide()
+      }
+
+      // In order to restore focus correctly to the previously focused window, we need to minimize the window on
+      // Windows.
+      if (platform.isWindows) {
+        this.panelWindow.minimize()
+      }
+
+      this.panelWindow.hide()
+    }
+
+    const showAndFocus = () => {
+      if (typeof app.show === 'function') {
+        app.show()
+      }
+
+      this.panelWindow.show()
+
+      // Because the window is minimized on Windows when hidden, we need to restore it before focusing it.
+      if (platform.isWindows) {
+        this.panelWindow.restore()
+      }
+
+      this.panelWindow.focus()
+    }
+
+    toggle()
+
+    {
+      // const showOverlay = () => {
+      //   this.panelWindow.showInactive()
+      //   // this.panelWindow.focus()
+      //   this.isOverlayVisible = true
+      // }
+      // const hideOverlay = () => {
+      //   this.panelWindow.hide()
+      //   app.hide()
+      //   this.isOverlayVisible = false
+      // }
+      // if (this.isOverlayVisible) {
+      //   hideOverlay()
+      // } else {
+      //   showOverlay()
+      // }
+    }
+
+    return
+
+    // try {
+    //   if (!panelWindow) {
+    //     this.windows.panelWindow = createPanelWindow()
+    //     show()
+    //   } else if (panelWindow.isVisible()) {
+    //     if (panelWindow.isFocused()) {
+    //       panelWindow.hide()
+    //     } else {
+    //       panelWindow.focus()
+    //     }
+    //   } else {
+    //     show()
+    //     panelWindow.setAlwaysOnTop(true)
+    //     panelWindow.focus()
+    //     panelWindow.setAlwaysOnTop(false)
+    //   }
+    // } catch (error) {
+    //   console.log('======error:', error)
+    //   this.windows.panelWindow = createPanelWindow()
+    //   show()
+    // }
   }
 
   private async toggleInputWindow() {
@@ -310,7 +403,7 @@ export class ElectronApp {
           type: ShortcutType.TOGGLE_MAIN_WINDOW,
         },
         {
-          key: ['Alt', 'S'],
+          key: ['Alt', 'Space'],
           type: ShortcutType.TOGGLE_PANEL_WINDOW,
         },
         {
@@ -326,15 +419,15 @@ export class ElectronApp {
     for (const shortcut of shortcuts) {
       const acc = convertKeysToHotkey(shortcut.key)
       const ret = globalShortcut.register(acc, () => {
-        if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
-          this.toggleMainWindow()
-        }
+        // if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
+        //   this.toggleMainWindow()
+        // }
         if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
           this.togglePanelWindow()
         }
-        if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
-          this.toggleInputWindow()
-        }
+        // if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
+        //   this.toggleInputWindow()
+        // }
       })
       if (!ret) {
         console.log('register shortcut fail:', shortcut.key)
@@ -366,27 +459,27 @@ export class ElectronApp {
     })
 
     ipcMain.on('hide-panel-window', () => {
-      this.panelWindow.hide()
+      this.togglePanelWindow()
     })
 
-    ipcMain.on('hide-input-window', () => {
-      this.inputWindow.hide()
-    })
+    // ipcMain.on('hide-input-window', () => {
+    //   this.inputWindow.hide()
+    // })
 
     ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
       const key = convertKeysToHotkey(shortcut.key)
       const ret = globalShortcut.register(key, () => {
         event.sender.send('shortcut-pressed')
 
-        if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
-          this.toggleMainWindow()
-        }
+        // if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
+        //   this.toggleMainWindow()
+        // }
         if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
           this.togglePanelWindow()
         }
-        if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
-          this.toggleInputWindow()
-        }
+        // if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
+        //   this.toggleInputWindow()
+        // }
       })
 
       if (!ret) {
@@ -402,17 +495,17 @@ export class ElectronApp {
       globalShortcut.unregister(convertKeysToHotkey(shortcut.key))
     })
 
-    ipcMain.on('toggle-main-window', () => {
-      this.toggleMainWindow()
-    })
+    // ipcMain.on('toggle-main-window', () => {
+    //   this.toggleMainWindow()
+    // })
 
     ipcMain.on('toggle-panel-window', () => {
       this.togglePanelWindow()
     })
 
-    ipcMain.on('toggle-input-window', () => {
-      this.toggleInputWindow()
-    })
+    // ipcMain.on('toggle-input-window', () => {
+    //   this.toggleInputWindow()
+    // })
 
     ipcMain.on('quick-input-success', () => {
       this.mainWindow.webContents.send('quick-input-success')

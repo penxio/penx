@@ -34,6 +34,13 @@ function init() {
   window.electron.ipcRenderer.on('panel-window-show', () => {
     appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
   })
+
+  window.electron.ipcRenderer.on('focus-search-input', () => {
+    console.log('focus-search-input')
+    setTimeout(() => {
+      appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
+    }, 1000)
+  })
 }
 
 init()
