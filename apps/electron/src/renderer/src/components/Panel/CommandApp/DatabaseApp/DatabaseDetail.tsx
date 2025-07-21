@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from 'react'
-import { Box } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
@@ -12,9 +11,9 @@ import { docToString } from '@penx/utils/editorHelper'
 import { currentCreationAtom } from '~/hooks/useCurrentCreation'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
-import { StyledCommandEmpty, StyledCommandGroup } from '../../CommandComponents'
+import { CommandEmpty, CommandGroup } from '../../CommandComponents'
+import { CreationDetail } from '../../CreationDetail'
 import { ListItemUI } from '../../ListItemUI'
-import { RowProps } from './RowProps'
 
 interface Props {
   text: string
@@ -27,11 +26,6 @@ export function DatabaseDetail(props: Props) {
   const { text } = props
   const struct = new Struct(props.struct)
   const rows = creations.filter((c) => c.structId === struct.id)
-
-  const currentView = struct.views[0]
-  const viewColumns = currentView.viewColumns
-  const columnMap = mappedByKey(struct.columns, 'id')
-  const sortedColumns = viewColumns.map(({ columnId }) => columnMap[columnId])
 
   const filteredRows = useMemo(() => {
     const t = text.toLowerCase()
@@ -54,7 +48,7 @@ export function DatabaseDetail(props: Props) {
         return JSON.stringify(v).toLowerCase().includes(t)
       })
     })
-  }, [rows, text, sortedColumns])
+  }, [rows, text])
 
   useEffect(() => {
     if (filteredRows.length) {
@@ -101,8 +95,8 @@ export function DatabaseDetail(props: Props) {
   }
 
   return (
-    <Box toLeft overflowHidden absolute top0 bottom0 left0 right0>
-      <StyledCommandGroup p2 flex-2 overflowYAuto>
+    <div className="absolute inset-0 flex overflow-hidden">
+      <CommandGroup className="flex-[2] overflow-auto p-2">
         {filteredRows.map((item, index) => {
           const listItem = {
             title: item.title || item.previewedContent,
@@ -117,33 +111,13 @@ export function DatabaseDetail(props: Props) {
             />
           )
         })}
-      </StyledCommandGroup>
+      </CommandGroup>
 
       <Separator orientation="vertical" />
 
-      <Box className="flex flex-col overflow-auto" flex-3>
-        {currentItem && (
-          <RowProps
-            struct={struct}
-            creation={currentItem}
-            sortedColumns={sortedColumns}
-          />
-        )}
-      </Box>
-    </Box>
+      <div className="flex flex-[3] flex-col overflow-auto">
+        {currentItem && <CreationDetail creation={currentItem} />}
+      </div>
+    </div>
   )
-}
-
-function dataToString(data: any) {
-  if (!data) return 'Untitled'
-  if (typeof data === 'string') return data
-  if (typeof data === 'number') return data.toString()
-  if (Array.isArray(data)) return data.join(',')
-  return JSON.stringify(data, null)
-}
-
-function isUuidV4(uuid: string): boolean {
-  const uuidV4Regex =
-    /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
-  return uuidV4Regex.test(uuid)
 }

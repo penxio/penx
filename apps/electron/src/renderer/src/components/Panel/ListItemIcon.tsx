@@ -15,7 +15,6 @@ interface ListItemIconProps extends FowerHTMLProps<'div'> {
   icon?: any
   size?: number
   bg?: string
-  isApplication?: boolean
   item?: ICommandItem
 }
 
@@ -23,7 +22,6 @@ export const ListItemIcon = memo(
   function ListItemIcon({
     icon,
     bg,
-    isApplication,
     size = 20,
     item,
     ...rest
@@ -46,10 +44,6 @@ export const ListItemIcon = memo(
 
     if (isIconify(icon)) {
       return <IconifyIcon {...icon} />
-    }
-
-    if (isApplication) {
-      return <AppIcon size={size} icon={icon as string} />
     }
 
     if (typeof icon === 'number') {
@@ -133,32 +127,6 @@ export const ListItemIcon = memo(
     return prev.icon === next.icon
   },
 )
-
-function AppIcon({ icon, size = 20 }: { icon: string; size: number }) {
-  const { isLoading, data = '' } = useQuery({
-    queryKey: [icon],
-    queryFn: async () => {
-      return getIcon(icon)
-    },
-  })
-
-  if (isLoading) {
-    return <Box flexShrink-0 square={size} bgNeutral300 rounded-6></Box>
-  }
-
-  // console.log('===============appIcon:', data)
-
-  return (
-    <Box
-      as="img"
-      src={data}
-      alt=""
-      width={size}
-      height={size}
-      style={{ borderRadius: 6 }}
-    />
-  )
-}
 
 function IconifyIcon(icon: IconifyIconType) {
   return (

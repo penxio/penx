@@ -6,6 +6,7 @@ type Navigation = {
   showHeader?: boolean
   path:
     | '/root'
+    | '/login'
     | '/extension'
     | '/struct-creations'
     | '/edit-creation'
@@ -23,29 +24,29 @@ export const navigationAtom = atom<Navigation[]>([
 ] as Navigation[])
 
 export function useNavigation() {
-  const [navigations, setNavigations] = useAtom(navigationAtom)
+  const [navigation, setNavigation] = useAtom(navigationAtom)
 
-  const current = navigations[navigations.length - 1]!
+  const current = navigation[navigation.length - 1]!
   return {
-    navigations,
+    navigation,
     current,
     isRoot: current?.path === '/root',
-    setNavigations,
+    setNavigation,
     push(nav: Navigation) {
-      setNavigations([...navigations, nav])
+      setNavigation([...navigation, nav])
     },
     pop() {
-      setNavigations(navigations.slice(0, -1))
+      setNavigation(navigation.slice(0, -1))
     },
   }
 }
 
 export const navigation = {
-  getNavigations() {
+  getNavigation() {
     return store.get(navigationAtom)
   },
   pop() {
-    const navigations = this.getNavigations()
-    store.set(navigationAtom, navigations.slice(0, -1))
+    const navigationList = store.get(navigationAtom)
+    store.set(navigationAtom, navigationList.slice(0, -1))
   },
 }

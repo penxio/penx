@@ -6,6 +6,7 @@ import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
+import { structToCommand } from '~/lib/structToCommand'
 import { ICommandItem } from '~/lib/types'
 import { useSearch } from './useSearch'
 
@@ -59,24 +60,7 @@ export function useLoadCommands() {
 
       const structCommands = structs.map<ICommandItem>((item) => {
         const struct = new Struct(item)
-        return {
-          title: struct.name,
-          keywords: [struct.type],
-          data: {
-            type: 'Struct',
-            alias: '',
-            struct: struct,
-            assets: {},
-            filters: {},
-            runtime: 'worker',
-            commandName: struct.name,
-            extensionSlug: '',
-            extensionIcon: '',
-            isDeveloping: false,
-            applicationPath: '',
-            isApplication: false,
-          },
-        }
+        return structToCommand(struct)
       })
 
       const quickInput: ICommandItem = {

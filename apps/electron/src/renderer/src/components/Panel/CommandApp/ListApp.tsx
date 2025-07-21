@@ -4,7 +4,7 @@ import { ListJSON } from '@penx/extension-api'
 import { Separator } from '@penx/uikit/ui/separator'
 import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
-import { StyledCommandGroup } from '../CommandComponents'
+import { CommandGroup } from '../CommandComponents'
 import { ListItemUI } from '../ListItemUI'
 import { DataListItem } from './DataListItem'
 
@@ -37,7 +37,7 @@ export const ListApp = memo(function ListApp({ component }: ListAppProps) {
   }, [component, value, setValue])
 
   const listJSX = (
-    <StyledCommandGroup flex-2>
+    <CommandGroup className="flex-[2]">
       {filteredItems.sort().map((item, index) => {
         return (
           <ListItemUI
@@ -64,7 +64,7 @@ export const ListApp = memo(function ListApp({ component }: ListAppProps) {
           />
         )
       })}
-    </StyledCommandGroup>
+    </CommandGroup>
   )
 
   if (!isShowingDetail) {

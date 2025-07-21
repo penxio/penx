@@ -16,7 +16,7 @@ export async function handleEscape() {
         return
       }
 
-      const navigations = navigation.getNavigations()
+      const navigations = navigation.getNavigation()
 
       if (navigations.length === 1) {
         window.electron.ipcRenderer.send('hide-panel-window')

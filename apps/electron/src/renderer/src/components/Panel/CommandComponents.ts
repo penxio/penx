@@ -9,6 +9,6 @@ export const CommandInput = CmdkCommand.Input
 
 export const CommandList = CmdkCommand.List
 
-export const StyledCommandGroup = styled(CmdkCommand.Group)
+export const CommandGroup = CmdkCommand.Group
 
-export const StyledCommandEmpty = styled(CmdkCommand.Empty)
+export const CommandEmpty = CmdkCommand.Empty

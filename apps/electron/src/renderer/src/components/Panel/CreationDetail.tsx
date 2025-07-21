@@ -1,17 +1,22 @@
-import { useMemo } from 'react'
-import { Creation, Struct } from '@penx/domain'
+import { Creation } from '@penx/domain'
+import { useStructs } from '@penx/hooks/useStructs'
 import { IColumn } from '@penx/model-type'
 import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { ColumnType } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
+import { mappedByKey } from '@penx/utils'
 
 interface Props {
-  struct: Struct
   creation: Creation
-  sortedColumns: IColumn[]
 }
 
-export function RowProps({ struct, creation, sortedColumns }: Props) {
+export function CreationDetail({ creation }: Props) {
+  const { structs } = useStructs()
+  const struct = structs.find((s) => s.id === creation.structId)!
+  const currentView = struct.views[0]
+  const viewColumns = currentView.viewColumns
+  const columnMap = mappedByKey(struct.columns, 'id')
+  const sortedColumns = viewColumns.map(({ columnId }) => columnMap[columnId])
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 p-2">

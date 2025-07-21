@@ -28,10 +28,10 @@ import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import {
   Command,
+  CommandGroup,
+  CommandInput,
   CommandItem,
   CommandList,
-  StyledCommandGroup,
-  CommandInput,
 } from './../CommandComponents'
 
 function useOnCmdK(fn: () => void, open: boolean) {
@@ -138,7 +138,7 @@ export const ActionPopover = ({}: Props) => {
               transitionProperty: 'height',
             }}
           >
-            <StyledCommandGroup
+            <CommandGroup
               heading={
                 currentCommand?.data?.commandName ||
                 (selectItem?.title as string) ||
@@ -146,7 +146,7 @@ export const ActionPopover = ({}: Props) => {
               }
             >
               {actionList}
-            </StyledCommandGroup>
+            </CommandGroup>
           </CommandList>
           <CommandInput placeholder="Search for actions..." />
         </Command>

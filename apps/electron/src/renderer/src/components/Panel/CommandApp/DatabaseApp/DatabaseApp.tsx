@@ -10,7 +10,6 @@ export function DatabaseApp() {
   } = useCurrentStruct()
   const { structs } = useStructs()
   const { search } = useSearch()
-  const { options } = useCommandOptions()
 
   const struct = structs.find((s) => s.id === id)!
 
