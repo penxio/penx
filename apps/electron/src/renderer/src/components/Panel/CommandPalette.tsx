@@ -8,7 +8,7 @@ import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems, useQueryCommands } from '~/hooks/useItems'
-import { useNavigations } from '~/hooks/useNavigations'
+import { useNavigation } from '~/hooks/useNavigation'
 import { useReset } from '~/hooks/useReset'
 import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
@@ -66,11 +66,7 @@ export const CommandPalette = () => {
   useReset(setValue)
   const isIframe = currentCommand?.data?.runtime === 'iframe'
 
-  const bodyHeight = isIframe
-    ? windowHeight
-    : windowHeight - searchBarHeight - footerHeight
-
-  const { current } = useNavigations()
+  const { current } = useNavigation()
 
   const header = useMemo(() => {
     return (

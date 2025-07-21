@@ -15,15 +15,15 @@ type Navigation = {
   data?: Record<string, any>
 }
 
-export const navigationsAtom = atom<Navigation[]>([
+export const navigationAtom = atom<Navigation[]>([
   {
     showHeader: true,
     path: '/root',
   },
 ] as Navigation[])
 
-export function useNavigations() {
-  const [navigations, setNavigations] = useAtom(navigationsAtom)
+export function useNavigation() {
+  const [navigations, setNavigations] = useAtom(navigationAtom)
 
   const current = navigations[navigations.length - 1]!
   return {
@@ -42,10 +42,10 @@ export function useNavigations() {
 
 export const navigation = {
   getNavigations() {
-    return store.get(navigationsAtom)
+    return store.get(navigationAtom)
   },
   pop() {
     const navigations = this.getNavigations()
-    store.set(navigationsAtom, navigations.slice(0, -1))
+    store.set(navigationAtom, navigations.slice(0, -1))
   },
 }

@@ -6,10 +6,10 @@ import { ActionPanel } from '~/components/ExtensionApp/ActionPanel'
 import { Action } from '~/components/ExtensionApp/actions/Action'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useNavigations } from '~/hooks/useNavigations'
+import { useNavigation } from '~/hooks/useNavigation'
 
 export function PageQuickInput() {
-  const { pop } = useNavigations()
+  const { pop } = useNavigation()
   const { currentCommand } = useCurrentCommand()
   return (
     <DetailApp

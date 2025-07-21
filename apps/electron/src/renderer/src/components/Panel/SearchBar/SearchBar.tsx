@@ -9,7 +9,7 @@ import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useCommands, useItems } from '~/hooks/useItems'
 import { useLoading } from '~/hooks/useLoading'
-import { useNavigations } from '~/hooks/useNavigations'
+import { useNavigation } from '~/hooks/useNavigation'
 import { useSearch } from '~/hooks/useSearch'
 import { AddRowButton } from './AddRowButton'
 import { BackRootButton } from './BackRootButton'
@@ -49,7 +49,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   const isCreationDetail = !!currentCommand?.data?.struct
 
   const isDatabaseApp = currentCommand?.data?.type === 'Struct'
-  const { current, isRoot } = useNavigations()
+  const { current, isRoot } = useNavigation()
   const searchInput = (
     <SearchInput
       search={search}

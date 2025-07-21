@@ -23,7 +23,7 @@ import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems } from '~/hooks/useItems'
-import { useNavigations } from '~/hooks/useNavigations'
+import { useNavigation } from '~/hooks/useNavigation'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import {
@@ -70,7 +70,7 @@ export const ActionPopover = ({}: Props) => {
     }, 0)
   }, open)
 
-  const { current } = useNavigations()
+  const { current } = useNavigation()
 
   const actionList = useMemo(() => {
     if (current.path === '/root') {
@@ -209,7 +209,7 @@ function RootActions({ command, close }: RootActionsProps) {
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === value)
   const handleSelect = useHandleSelect()
-  const { push } = useNavigations()
+  const { push } = useNavigation()
   const { setStruct } = useCurrentStruct()
 
   return (
@@ -269,7 +269,7 @@ interface StructActionsProps {
 
 function StructActions({ close }: StructActionsProps) {
   const { value } = useValue()
-  const { push } = useNavigations()
+  const { push } = useNavigation()
   return (
     <>
       <MenuItem

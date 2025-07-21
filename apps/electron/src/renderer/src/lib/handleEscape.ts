@@ -2,7 +2,7 @@ import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { actionPopoverAtom } from '~/hooks/useActionPopover'
 import { appModeAtom } from '~/hooks/useAppMode'
-import { navigation } from '~/hooks/useNavigations'
+import { navigation } from '~/hooks/useNavigation'
 
 export async function handleEscape() {
   document.addEventListener('keydown', async (event) => {

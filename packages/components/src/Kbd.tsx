@@ -23,7 +23,6 @@ const map: Record<string, string> = {
   Command: '⌘',
   Shift: '⇧',
   Alt: '⌥',
-
   ctrl: '⌃',
   meta: '⌘',
   cmd: '⌘',

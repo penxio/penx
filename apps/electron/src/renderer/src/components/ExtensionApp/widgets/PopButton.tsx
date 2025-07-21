@@ -1,14 +1,14 @@
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { useNavigations } from '~/hooks/useNavigations'
+import { useNavigation } from '~/hooks/useNavigation'
 
 interface Props {
   className?: string
 }
 
 export const PopButton = ({ className }: Props) => {
-  const { pop } = useNavigations()
+  const { pop } = useNavigation()
 
   return (
     <Button

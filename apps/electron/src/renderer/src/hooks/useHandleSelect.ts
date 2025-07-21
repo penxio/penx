@@ -6,7 +6,7 @@ import { useCommandAppUI } from './useCommandAppUI'
 import { CommandOptions, useCommandOptions } from './useCommandOptions'
 import { useCurrentCommand } from './useCurrentCommand'
 import { useCurrentStruct } from './useCurrentStruct'
-import { useNavigations } from './useNavigations'
+import { useNavigation } from './useNavigation'
 import { useSearch } from './useSearch'
 
 export function useHandleSelect() {
@@ -16,7 +16,7 @@ export function useHandleSelect() {
   const { setStruct } = useCurrentStruct()
   const { setLoading } = useCommandAppLoading()
   const { setSearch } = useSearch()
-  const { push } = useNavigations()
+  const { push } = useNavigation()
 
   return async (item: ICommandItem, opt = {} as CommandOptions) => {
     setSearch('')

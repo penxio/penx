@@ -536,34 +536,22 @@ export class ElectronApp {
     const tray = new Tray(nativeTrayIcon)
     const contextMenu = Menu.buildFromTemplate([
       {
-        label: 'Open PenX Editor',
+        label: 'Open PenX',
         type: 'normal',
-        click: () => {
-          this.toggleMainWindow()
-        },
-      },
-      {
-        label: 'Open Search Panel',
-        type: 'normal',
+        // accelerator: '⌥+s',
+        accelerator: 'Alt+S',
         click: () => {
           this.togglePanelWindow()
         },
       },
-      {
-        label: 'Open Quick Input',
-        type: 'normal',
-        click: () => {
-          this.toggleInputWindow()
-        },
-      },
-      {
-        label: 'Edit Shortcuts',
-        type: 'normal',
-        click: () => {
-          mainWindow.show()
-          mainWindow.webContents.send('edit-shortcuts')
-        },
-      },
+      // {
+      //   label: 'Edit Shortcuts',
+      //   type: 'normal',
+      //   click: () => {
+      //     mainWindow.show()
+      //     mainWindow.webContents.send('edit-shortcuts')
+      //   },
+      // },
       {
         label: 'Quit',
         click: () => {
