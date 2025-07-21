@@ -75,7 +75,7 @@ export const CommandPalette = () => {
   const header = useMemo(() => {
     return (
       <div
-        className="drag border-foreground/10 flex items-center border-b"
+        className="drag border-foreground/10 flex items-center justify-between border-b pr-3"
         style={{
           height: searchBarHeight,
         }}

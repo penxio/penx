@@ -2,7 +2,7 @@ import { KeyboardEventHandler, memo, useEffect, useRef } from 'react'
 import { Command } from 'cmdk'
 import { appEmitter } from '@penx/emitter'
 import { cn } from '@penx/utils'
-import { StyledCommandInput } from '../CommandComponents'
+import { CommandInput } from '../CommandComponents'
 
 interface Props {
   className?: string
@@ -32,19 +32,15 @@ export const SearchInput = memo(
     }, [])
 
     return (
-      <StyledCommandInput
+      <CommandInput
         ref={ref as any}
         className={cn(
-          'no-drag placeholder:text-foreground/30 flex w-full flex-1 select-none items-center bg-transparent',
+          'no-drag placeholder:text-foreground/30 flex w-full flex-1 select-none items-center bg-transparent px-3 text-base outline-none dark:caret-white',
           className,
         )}
         id="searchBarInput"
-        h={searchBarHeight}
-        px3
-        textBase
-        outlineNone
-        css={{
-          'caretColor--dark': 'white',
+        style={{
+          height: searchBarHeight,
         }}
         placeholder="Search something..."
         autoFocus

@@ -5,7 +5,7 @@ export const Command = CmdkCommand
 
 export const CommandItem = CmdkCommand.Item
 
-export const StyledCommandInput = styled(CmdkCommand.Input)
+export const CommandInput = CmdkCommand.Input
 
 export const CommandList = CmdkCommand.List
 

@@ -31,7 +31,7 @@ import {
   CommandItem,
   CommandList,
   StyledCommandGroup,
-  StyledCommandInput,
+  CommandInput,
 } from './../CommandComponents'
 
 function useOnCmdK(fn: () => void, open: boolean) {
@@ -148,7 +148,7 @@ export const ActionPopover = ({}: Props) => {
               {actionList}
             </StyledCommandGroup>
           </CommandList>
-          <StyledCommandInput placeholder="Search for actions..." />
+          <CommandInput placeholder="Search for actions..." />
         </Command>
       </PopoverContent>
     </Popover>

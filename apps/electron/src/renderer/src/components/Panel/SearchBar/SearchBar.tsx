@@ -1,4 +1,6 @@
-import { Box } from '@fower/react'
+import { useQuery } from '@tanstack/react-query'
+import { Conf } from 'electron-conf/renderer'
+import { PinIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { cn } from '@penx/utils'
@@ -15,6 +17,8 @@ import { DatabaseName } from './DatabaseName'
 import { SearchBarFilter } from './SearchBarFilter'
 import { SearchInput } from './SearchInput'
 
+const conf = new Conf()
+
 interface Props {
   searchBarHeight: number
 }
@@ -27,6 +31,19 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   const { currentCommand } = useCurrentCommand()
   const { struct } = useCurrentStruct()
 
+  const { data: pinned, refetch } = useQuery({
+    queryKey: ['input-window-pinned'],
+    queryFn: async () => {
+      const pinned = await conf.get('pinned')
+      return !!pinned
+    },
+  })
+  async function pinWindow() {
+    await conf.set('pinned', !pinned)
+    window.electron.ipcRenderer.send('pinned', !pinned)
+    refetch()
+  }
+
   const currentCommandName = currentCommand?.data?.commandName
 
   const isCreationDetail = !!currentCommand?.data?.struct
@@ -37,7 +54,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
     <SearchInput
       search={search}
       className={cn(!search && 'w-20')}
-      searchBarHeight={searchBarHeight}
+      searchBarHeight={searchBarHeight * 0.6}
       onValueChange={(v) => {
         appEmitter.emit('ON_COMMAND_PALETTE_SEARCH_CHANGE', v)
 
@@ -82,6 +99,15 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
       <>
         {searchInput}
         {!search && <div className="h-full flex-1"></div>}
+        <PinIcon
+          className={cn(
+            'no-drag size-4 cursor-pointer',
+            pinned && 'text-brand',
+          )}
+          onClick={() => {
+            pinWindow()
+          }}
+        />
       </>
     )
   }

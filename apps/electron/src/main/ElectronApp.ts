@@ -136,10 +136,11 @@ export class ElectronApp {
       //   this.windows.inputWindow = null as any
       // })
 
-      this.panelWindow.on('blur', () => {
+      this.panelWindow.on('blur', async () => {
         console.log('blur panel..........isDev:', is.dev)
 
-        if (!is.dev) {
+        const pinned = await this.conf.get('pinned')
+        if (!is.dev && !pinned) {
           this.panelWindow.hide()
         }
         // this.panelWindow.hide()
@@ -513,12 +514,8 @@ export class ElectronApp {
     })
 
     ipcMain.on('pinned', (_, pinned) => {
-      this.inputWindow.setAlwaysOnTop(pinned)
+      this.panelWindow.setAlwaysOnTop(pinned)
     })
-
-    // ipcMain.on('pinned', (_, pinned) => {
-    //   this.inputWindow.setAlwaysOnTop(pinned)
-    // })
 
     ipcMain.on('open-url', async (_, url: string) => {
       try {
