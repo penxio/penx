@@ -5,6 +5,7 @@ import { atom, useAtom, useSetAtom } from 'jotai'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
+import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
 import { ICommandItem } from '~/lib/types'
 import { useSearch } from './useSearch'
 
@@ -88,11 +89,12 @@ export function useLoadCommands() {
         },
         data: {
           type: 'Command',
+          component: PageQuickInput,
           alias: '',
           assets: {},
           filters: {},
           runtime: 'worker',
-          commandName: 'quick_input',
+          commandName: 'quick-input',
           extensionSlug: '',
           extensionIcon: '',
           isDeveloping: false,

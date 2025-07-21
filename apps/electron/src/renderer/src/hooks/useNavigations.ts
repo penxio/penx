@@ -4,7 +4,13 @@ import { store } from '@penx/store'
 
 type Navigation = {
   showHeader?: boolean
-  path: '/root' | '/struct-creations' | '/edit-creation' | '/edit-struct'
+  path:
+    | '/root'
+    | '/extension'
+    | '/struct-creations'
+    | '/edit-creation'
+    | '/edit-struct'
+    | '/quick-input'
   component?: (() => ReactNode) | (() => JSX.Element)
   data?: Record<string, any>
 }

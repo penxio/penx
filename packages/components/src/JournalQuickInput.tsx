@@ -17,6 +17,7 @@ import StarterKit from '@tiptap/starter-kit'
 import { format } from 'date-fns'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
 import { defaultEditorContent, isMobileApp } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { StructType } from '@penx/types'
@@ -35,6 +36,7 @@ interface Props {
   date?: string
   cells?: any
   onCancel?: () => void
+  showFooter?: boolean
   afterSubmit?: () => void
 }
 
@@ -46,6 +48,7 @@ export function JournalQuickInput({
   placeholder,
   date,
   cells,
+  showFooter = true,
   ...props
 }: Props) {
   const editorRef = useRef<Editor>(null)
@@ -115,13 +118,21 @@ export function JournalQuickInput({
     }
   }, [editor])
 
+  useEffect(() => {
+    appEmitter.on('SUBMIT_QUICK_INPUT', submitForm)
+    return () => {
+      appEmitter.off('SUBMIT_QUICK_INPUT', submitForm)
+    }
+  }, [submitForm])
+
   if (!editor) return null
 
   return (
     <div
       id="journal-quick-input"
       className={cn(
-        'bg-background text-foreground shadow-popover penx-editor no-drag relative flex max-h-[calc(75dvh)] min-h-[36px] w-full flex-col rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0 dark:bg-neutral-800',
+        'bg-background text-foreground shadow-popover no-drag relative flex max-h-[calc(75dvh)] min-h-[36px] w-full max-w-full flex-col rounded-xl border-0 pb-12 !text-base ring-0 focus-visible:ring-0 dark:bg-neutral-800',
+        'penx-editor',
         className,
       )}
       onClick={(e: any) => {
@@ -130,55 +141,46 @@ export function JournalQuickInput({
         }
       }}
     >
-      <div className="">
-        <EditorContent
-          className="focus-visible::outline-0 prose px-3 pb-10 pt-2 focus-visible:border-0"
-          editor={editor}
-          onKeyDown={(event) => {
-            if (
-              event.key === 'Enter' &&
-              (event.ctrlKey || event.metaKey) &&
-              !event.shiftKey &&
-              !event.nativeEvent.isComposing
-            ) {
-              event.preventDefault()
-              submitForm()
-            }
-          }}
-        />
-      </div>
+      <EditorContent
+        className="focus-visible::outline-0 prose px-3 pb-10 pt-2 focus-visible:border-0"
+        editor={editor}
+        onKeyDown={(event) => {
+          if (
+            event.key === 'Enter' &&
+            (event.ctrlKey || event.metaKey) &&
+            !event.shiftKey &&
+            !event.nativeEvent.isComposing
+          ) {
+            event.preventDefault()
+            submitForm()
+          }
+        }}
+      />
 
-      <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
-        {/* <StructTypeSelect
-          value={struct}
-          setFocused={() => {
-            editor.chain().focus().run()
-          }}
-          onChange={(s) => {
-            setStruct(s)
-            editor.chain().focus().run()
-          }}
-        /> */}
+      {showFooter && (
+        <div className="text-foreground/60 absolute bottom-2 flex w-fit flex-row items-center justify-start gap-0.5 py-0 pl-2">
+          <Checkbox
+            className="border-foreground/40 size-5"
+            checked={isTask}
+            onCheckedChange={(v: boolean) => {
+              editor.chain().focus().run()
+              console.log('=====v:', v)
+              setIsTask(v)
+            }}
+          />
+          {/* <JournalInputToolbar editor={editor} /> */}
+        </div>
+      )}
 
-        <Checkbox
-          className="border-foreground/40 size-5"
-          checked={isTask}
-          onCheckedChange={(v: boolean) => {
-            editor.chain().focus().run()
-            console.log('=====v:', v)
-            setIsTask(v)
-          }}
-        />
-        {/* <JournalInputToolbar editor={editor} /> */}
-      </div>
-
-      <div
-        className={cn(
-          'absolute bottom-0 right-0 flex w-fit flex-row justify-end gap-1 p-2',
-        )}
-      >
-        <SendButton input={input} submitForm={submitForm} />
-      </div>
+      {showFooter && (
+        <div
+          className={cn(
+            'absolute bottom-0 right-0 flex w-fit flex-row justify-end gap-1 p-2',
+          )}
+        >
+          <SendButton input={input} submitForm={submitForm} />
+        </div>
+      )}
     </div>
   )
 }

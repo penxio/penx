@@ -1,5 +1,4 @@
 import React, { forwardRef, ReactNode, useState } from 'react'
-import { Dialog } from '@capacitor/dialog'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { t } from '@lingui/core/macro'
 import { EllipsisIcon, GripVerticalIcon } from 'lucide-react'
@@ -9,9 +8,7 @@ import { Struct } from '@penx/domain'
 import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
-import { ColumnMenu } from './ColumnMenu/ColumnMenu'
 import { useStructPropDrawer } from './useStructPropDrawer'
 
 interface Props {

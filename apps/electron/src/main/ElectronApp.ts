@@ -403,7 +403,7 @@ export class ElectronApp {
           type: ShortcutType.TOGGLE_MAIN_WINDOW,
         },
         {
-          key: ['Alt', 'Space'],
+          key: ['Alt', 'S'],
           type: ShortcutType.TOGGLE_PANEL_WINDOW,
         },
         {

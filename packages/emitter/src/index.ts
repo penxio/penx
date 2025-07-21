@@ -53,6 +53,8 @@ export type AppEvent = {
   CLOSE_ACTION_POPOVER: undefined
 
   DELETE_CREATION_SUCCESS: string
+
+  SUBMIT_QUICK_INPUT: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

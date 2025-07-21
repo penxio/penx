@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import { Struct } from '@penx/domain'
 import { IListItem } from '@penx/extension-api'
 
@@ -11,6 +12,7 @@ export interface ICommandItem extends IListItem {
   keywords: string[]
   data: {
     type: 'Struct' | 'Command' | 'Application'
+    component?: () => JSX.Element
     alias: string
     struct?: Struct
     assets: Record<string, string>
