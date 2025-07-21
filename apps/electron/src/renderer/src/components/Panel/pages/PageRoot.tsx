@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Command } from 'cmdk'
 import { useActionPopover } from '~/hooks/useActionPopover'
+import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems } from '~/hooks/useItems'
 import { useSelectStruct } from '~/hooks/useSelectStruct'
 import { ICommandItem } from '~/lib/types'
@@ -10,12 +11,19 @@ import { ListItemUI } from '../ListItemUI'
 export function PageRoot() {
   const { commandItems } = useItems()
   const selectStruct = useSelectStruct()
+  const handleSelect = useHandleSelect()
   return (
     <CommandList className="p-2 outline-none">
       <ListGroup
         heading={''}
         items={commandItems}
-        onSelect={(item) => selectStruct(item)}
+        onSelect={(item) => {
+          if (!!item.data?.struct) {
+            selectStruct(item)
+          } else {
+            handleSelect(item)
+          }
+        }}
       />
     </CommandList>
   )

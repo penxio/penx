@@ -20,6 +20,7 @@ import { CommandPaletteFooter } from './CommandPaletteFooter'
 import { ListItemUI } from './ListItemUI'
 import { PageEditCreation } from './pages/PageEditCreation'
 import { PageEditStruct } from './pages/PageEditStruct'
+import { PageQuickInput } from './pages/PageQuickInput'
 import { PageRoot } from './pages/PageRoot'
 import { PageStructCreations } from './pages/PageStructCreations'
 import { BackRootButton } from './SearchBar/BackRootButton'
@@ -101,6 +102,10 @@ export const CommandPalette = () => {
       return <PageEditCreation />
     }
 
+    if (current.path === '/quick-input') {
+      return <PageQuickInput />
+    }
+
     return current.component?.()
   }, [current])
 
@@ -108,11 +113,37 @@ export const CommandPalette = () => {
     return <CommandPaletteFooter />
   }, [current])
 
+  const ExtensionComponent = currentCommand?.data?.component!
+  const isExtension = current.path === '/extension'
+
+  const content = useMemo(() => {
+    if (isExtension) {
+      if (!currentCommand) return null
+      return <ExtensionComponent />
+    }
+    return (
+      <>
+        {header}
+        <div
+          className="relative flex-1 overflow-auto"
+          // h={bodyHeight}
+          style={{
+            overscrollBehavior: 'contain',
+            scrollPaddingBlockEnd: 40,
+          }}
+        >
+          {body}
+        </div>
+        {footer}
+      </>
+    )
+  }, [isExtension, header, body, footer])
+
   return (
     <Command
       id="command-palette"
       label="Command Menu"
-      className="command-panel text-foreground/80 bg-background/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col dark:bg-neutral-900/80"
+      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/90 dark:bg-neutral-900/80"
       // loop
       value={value}
       onValueChange={(v) => {
@@ -124,19 +155,7 @@ export const CommandPalette = () => {
         return 1
       }}
     >
-      {header}
-
-      <div
-        className="relative flex-1 overflow-auto"
-        // h={bodyHeight}
-        style={{
-          overscrollBehavior: 'contain',
-          scrollPaddingBlockEnd: 40,
-        }}
-      >
-        {body}
-      </div>
-      {footer}
+      {content}
     </Command>
   )
 }

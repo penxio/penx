@@ -1,3 +1,4 @@
+;
 /**
  * ⌥ -> lef option
  * ⎇ -> right option
@@ -8,8 +9,9 @@
  * ⌦ -> delete
  */
 
-import { PropsWithChildren } from 'react'
-import { cn } from '@penx/utils'
+import { PropsWithChildren } from 'react';
+import { cn } from '@penx/utils';
+
 
 interface Props {
   className?: string
@@ -28,6 +30,7 @@ const map: Record<string, string> = {
   shift: '⇧',
   alt: '⌥',
   enter: '↵',
+  $mod: '⌘',
 }
 
 export const Kbd = ({
@@ -39,7 +42,7 @@ export const Kbd = ({
   return (
     <kbd
       className={cn(
-        'bg-foreground/20 text-foreground/60 flex h-5 min-w-5 items-center justify-center rounded px-1 text-xs',
+        'bg-foreground/15 text-foreground/60 flex h-5 min-w-5 items-center justify-center rounded px-1 text-xs',
         className,
       )}
       style={{
