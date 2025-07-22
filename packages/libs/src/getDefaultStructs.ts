@@ -158,6 +158,99 @@ export function generateStructNode({
         updatedAt: new Date(),
       })
     }
+
+    if (type === StructType.PROMPT) {
+      columns.push(
+        ...[
+          {
+            id: uniqueId(),
+            slug: 'instruction',
+            name: t`Instruction`,
+            description: '',
+            columnType: ColumnType.TEXT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'model',
+            name: t`Model`,
+            description: '',
+            columnType: ColumnType.SINGLE_SELECT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+      )
+    }
+
+    if (type === StructType.SNIPPET) {
+      columns.push(
+        ...[
+          {
+            id: uniqueId(),
+            slug: 'content',
+            name: t`Content`,
+            description: '',
+            columnType: ColumnType.TEXT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'keyword',
+            name: t`Keyword`,
+            description: '',
+            columnType: ColumnType.TEXT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+      )
+    }
+
+    if (type === StructType.QUICK_LINK) {
+      columns.push(
+        ...[
+          {
+            id: uniqueId(),
+            slug: 'link',
+            name: t`Link`,
+            description: '',
+            columnType: ColumnType.URL,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'open_with',
+            name: t`Open with`,
+            description: '',
+            columnType: ColumnType.TEXT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+      )
+    }
   }
 
   const viewColumns: ViewColumn[] = columns.map((column) => ({
@@ -288,6 +381,21 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     generateStructNode({
       type: StructType.VOICE,
       name: t`Voice`,
+      ...input,
+    }),
+    generateStructNode({
+      type: StructType.SNIPPET,
+      name: t`Snippet`,
+      ...input,
+    }),
+    generateStructNode({
+      type: StructType.QUICK_LINK,
+      name: t`Quicklink`,
+      ...input,
+    }),
+    generateStructNode({
+      type: StructType.PROMPT,
+      name: t`Prompt`,
       ...input,
     }),
 

@@ -161,6 +161,50 @@ export class AppService {
       structs.push(newStruct)
     }
 
+    const snippetStruct = structs.find(
+      (s) => s.props.type === StructType.SNIPPET,
+    )
+
+    if (!snippetStruct) {
+      const newStruct = generateStructNode({
+        type: StructType.SNIPPET,
+        name: t`Snippet`,
+        siteId: site.id,
+        userId: site.userId,
+        areaId: area.id,
+      })
+      await localDB.addStruct(newStruct)
+      structs.push(newStruct)
+    }
+
+    const promptStruct = structs.find((s) => s.props.type === StructType.PROMPT)
+    if (!promptStruct) {
+      const newStruct = generateStructNode({
+        type: StructType.PROMPT,
+        name: t`Prompt`,
+        siteId: site.id,
+        userId: site.userId,
+        areaId: area.id,
+      })
+      await localDB.addStruct(newStruct)
+      structs.push(newStruct)
+    }
+
+    const quicklinkStruct = structs.find(
+      (s) => s.props.type === StructType.QUICK_LINK,
+    )
+    if (!quicklinkStruct) {
+      const newStruct = generateStructNode({
+        type: StructType.QUICK_LINK,
+        name: t`Quicklink`,
+        siteId: site.id,
+        userId: site.userId,
+        areaId: area.id,
+      })
+      await localDB.addStruct(newStruct)
+      structs.push(newStruct)
+    }
+
     structs = await fixTaskStruct(area.id, structs)
     structs = await fixStructsViews(area.id, structs)
 

@@ -5,6 +5,7 @@ import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { ColumnType } from '@penx/types'
 import { Badge } from '@penx/uikit/ui/badge'
 import { mappedByKey } from '@penx/utils'
+import { CreationImage } from './CreationImage'
 
 interface Props {
   creation: Creation
@@ -20,7 +21,11 @@ export function CreationDetail({ creation }: Props) {
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 p-2">
-        <NovelEditor editable={false} value={JSON.parse(creation.content)} />
+        {struct.isImage ? (
+          <CreationImage creation={creation} />
+        ) : (
+          <NovelEditor editable={false} value={JSON.parse(creation.content)} />
+        )}
       </div>
       <div className="border-foreground/6 divide-foreground/5 flex flex-col gap-2 divide-y border-t px-2 py-2">
         {sortedColumns.map((column) => (

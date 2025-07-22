@@ -70,6 +70,10 @@ export class Struct {
     return this.type === StructType.TASK
   }
 
+  get isImage() {
+    return this.type === StructType.IMAGE
+  }
+
   get isNote() {
     return this.type === StructType.NOTE
   }

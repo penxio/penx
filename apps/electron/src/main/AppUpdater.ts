@@ -60,7 +60,7 @@ export class AppUpdater {
     // Update error
     autoUpdater.on('error', (error: Error) => {
       log.error('Update error:', error)
-      this.showErrorDialog(error)
+      // this.showErrorDialog(error)
     })
   }
 

@@ -91,15 +91,14 @@ export class ElectronApp {
       // this.windows.mainWindow = createMainWindow()
       this.windows.panelWindow = createPanelWindow()
 
-      setTimeout(() => {
-        app.dock?.show()
-      }, 100)
+      // setTimeout(() => {
+      //   app.dock?.show()
+      // }, 100)
 
-      if (process.platform === 'darwin') {
-        console.log('set doc icon>>>>>>>>>>>>>>:', icon)
-        const image = nativeImage.createFromPath(icon)
-        app.dock?.setIcon(image)
-      }
+      // if (process.platform === 'darwin') {
+      //   const image = nativeImage.createFromPath(icon)
+      //   app.dock?.setIcon(image)
+      // }
 
       app.setAccessibilitySupportEnabled(true)
 

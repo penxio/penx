@@ -249,6 +249,9 @@ export enum StructType {
   AUDIO = 'AUDIO',
   VOICE = 'VOICE',
   BOOKMARK = 'BOOKMARK',
+  SNIPPET = 'SNIPPET',
+  QUICK_LINK = 'QUICK_LINK',
+  PROMPT = 'PROMPT',
   FRIEND = 'FRIEND',
   PROJECT = 'PROJECT',
 }
