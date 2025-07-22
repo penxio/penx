@@ -34,6 +34,7 @@ export default defineConfig({
           '@penx/utils',
           '@penx/vaul',
           '@penx/widgets',
+          '@penx/worker',
         ],
       }),
     ],

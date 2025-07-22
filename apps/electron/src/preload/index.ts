@@ -15,7 +15,6 @@ const api = {
   },
   toggleMainWindow: () => ipcRenderer.send('toggle-main-window'),
   togglePanelWindow: () => ipcRenderer.send('toggle-panel-window'),
-  toggleInputWindow: () => ipcRenderer.send('toggle-input-window'),
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to
