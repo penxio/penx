@@ -5,6 +5,7 @@ import { atom, useAtom, useSetAtom } from 'jotai'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
+import { PageAIChat } from '~/components/Panel/pages/PageAIChat'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
 import { getBuiltinCommands } from '~/lib/getBuiltinCommands'
 import { structToCommand } from '~/lib/structToCommand'
@@ -64,23 +65,22 @@ export function useLoadCommands() {
         return structToCommand(struct)
       })
 
-
       const aiChat: ICommandItem = {
         title: t`AI Chat`,
         keywords: ['ai', 'chat'],
         icon: {
           // name: 'solar:pen-bold',
-          name: 'lucide:pen-line',
-          className: 'bg-linear-to-r from-cyan-500 to-blue-500',
+          name: 'mingcute:ai-fill',
+          className: 'bg-linear-to-r from-red-500 to-orange-500',
         },
         data: {
           type: 'Command',
-          component: PageQuickInput,
+          component: PageAIChat,
           alias: '',
           assets: {},
           filters: {},
           runtime: 'worker',
-          commandName: 'quick-input',
+          commandName: 'ai-chat',
           extensionSlug: '',
           extensionIcon: '',
           isDeveloping: false,
@@ -93,7 +93,6 @@ export function useLoadCommands() {
         title: t`Quick input`,
         keywords: ['Quick', 'Input', 'Quick input'],
         icon: {
-          // name: 'solar:pen-bold',
           name: 'lucide:pen-line',
           className: 'bg-linear-to-r from-cyan-500 to-blue-500',
         },
@@ -116,6 +115,7 @@ export function useLoadCommands() {
       const builtinCommands = getBuiltinCommands()
 
       return [
+        aiChat,
         quickInput,
         ...structCommands,
         ...builtinCommands,

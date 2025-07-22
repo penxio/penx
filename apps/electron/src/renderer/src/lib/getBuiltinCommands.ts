@@ -1,6 +1,6 @@
 import { t } from '@lingui/core/macro'
+import { PageAIChat } from '~/components/Panel/pages/PageAIChat'
 import { PageLogin } from '~/components/Panel/pages/PageLogin'
-import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
 import { PageSettings } from '~/components/Panel/pages/PageSettings'
 import { ICommandItem } from '~/lib/types'
 
@@ -15,7 +15,7 @@ export function getBuiltinCommands() {
       },
       data: {
         type: 'Command',
-        component: PageQuickInput,
+        component: PageAIChat,
         alias: '',
         assets: {},
         filters: {},
