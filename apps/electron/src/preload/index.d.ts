@@ -8,7 +8,6 @@ declare global {
       clipboard: Electron.Clipboard
       toggleMainWindow: () => void
       togglePanelWindow: () => void
-      toggleInputWindow: () => void
       shortcut: {
         register: (shortcut: Shortcut) => any
         unregister: (shortcut: Shortcut) => any

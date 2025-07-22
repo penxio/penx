@@ -19,7 +19,6 @@ import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
 import trayIcon from '../../resources/tray-16.png?asset'
 import { AppUpdater } from './AppUpdater'
-import { createInputWindow } from './createInputWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
 import {
@@ -50,12 +49,11 @@ export class ElectronApp {
     return this.windows.panelWindow!
   }
 
-  private get inputWindow() {
-    return this.windows.inputWindow!
-  }
+  private isOverlayVisible = false
+  private frontAppMeta: FrontAppMeta | null = null
 
-  isOverlayVisible = false
-  frontAppMeta: FrontAppMeta | null = null
+  private lastBounds: Electron.Rectangle | null = null
+  private lastOffset: { offsetX: number; offsetY: number } | null = null
 
   constructor() {
     this.setupApp()
@@ -92,7 +90,6 @@ export class ElectronApp {
     try {
       // this.windows.mainWindow = createMainWindow()
       this.windows.panelWindow = createPanelWindow()
-      // this.windows.inputWindow = createInputWindow()
 
       setTimeout(() => {
         app.dock?.show()
@@ -131,10 +128,6 @@ export class ElectronApp {
         // this.panelWindow.hide()
         this.windows.panelWindow = null as any
       })
-
-      // this.inputWindow.on('closed', () => {
-      //   this.windows.inputWindow = null as any
-      // })
 
       this.panelWindow.on('blur', async () => {
         console.log('blur panel..........isDev:', is.dev)
@@ -242,33 +235,27 @@ export class ElectronApp {
       const posX = x + Math.round((width - winBounds.width) / 2)
       const posY = y + Math.round((height - winBounds.height) / 2)
 
-      panelWindow.setBounds({
-        x: posX,
-        y: posY,
-        width: winBounds.width,
-        height: winBounds.height,
-      })
+      if (this.lastBounds && this.lastOffset) {
+        panelWindow.setBounds({
+          x: x + this.lastOffset.offsetX,
+          y: y + this.lastOffset.offsetY,
+          width: winBounds.width,
+          height: winBounds.height,
+        })
+      } else {
+        panelWindow.setBounds({
+          x: posX,
+          y: posY,
+          width: winBounds.width,
+          height: winBounds.height,
+        })
+      }
     }
-
-    // const toggle = async () => {
-    //   if (isVisibleAndFocused()) {
-    //     const { frontAppMeta } = this
-    //     this.panelWindow.hide()
-    //     if (frontAppMeta) {
-    //       await restoreInputFocus(frontAppMeta.appName, frontAppMeta.windowName)
-    //     }
-    //   } else {
-    //     this.frontAppMeta = await getCurrentFrontAppAndWindow()
-    //     const { frontAppMeta } = this
-    //     if (!frontAppMeta) return
-    //     this.panelWindow.showInactive()
-    //     await activateVisualFocus(frontAppMeta.appName, frontAppMeta.windowName)
-    //     this.panelWindow.webContents.send('focus-search-input')
-    //   }
-    // }
 
     const toggle = async () => {
       if (isVisibleAndFocused()) {
+        this.lastBounds = panelWindow.getBounds()
+        this.saveLastOffset()
         hide()
       } else {
         setWindowPos()
@@ -312,83 +299,14 @@ export class ElectronApp {
 
     toggle()
 
-    {
-      // const showOverlay = () => {
-      //   this.panelWindow.showInactive()
-      //   // this.panelWindow.focus()
-      //   this.isOverlayVisible = true
-      // }
-      // const hideOverlay = () => {
-      //   this.panelWindow.hide()
-      //   app.hide()
-      //   this.isOverlayVisible = false
-      // }
-      // if (this.isOverlayVisible) {
-      //   hideOverlay()
-      // } else {
-      //   showOverlay()
-      // }
-    }
-
     return
-
-    // try {
-    //   if (!panelWindow) {
-    //     this.windows.panelWindow = createPanelWindow()
-    //     show()
-    //   } else if (panelWindow.isVisible()) {
-    //     if (panelWindow.isFocused()) {
-    //       panelWindow.hide()
-    //     } else {
-    //       panelWindow.focus()
-    //     }
-    //   } else {
-    //     show()
-    //     panelWindow.setAlwaysOnTop(true)
-    //     panelWindow.focus()
-    //     panelWindow.setAlwaysOnTop(false)
-    //   }
-    // } catch (error) {
-    //   console.log('======error:', error)
-    //   this.windows.panelWindow = createPanelWindow()
-    //   show()
-    // }
   }
-
-  private async toggleInputWindow() {
-    const inputWindow = this.windows.inputWindow!
-    const show = async () => {
-      inputWindow.show()
-
-      const pinned = await this.conf.get('pinned')
-      inputWindow.setAlwaysOnTop(!!pinned)
-
-      inputWindow.webContents.send('input-window-show')
-    }
-    try {
-      if (!inputWindow) {
-        this.windows.inputWindow = createInputWindow()
-        show()
-      } else if (inputWindow.isVisible()) {
-        if (inputWindow.isFocused()) {
-          inputWindow.hide()
-        } else {
-          inputWindow.focus()
-        }
-      } else {
-        show()
-
-        inputWindow.setAlwaysOnTop(true)
-        inputWindow.focus()
-
-        const pinned = await this.conf.get('pinned')
-        inputWindow.setAlwaysOnTop(!!pinned)
-      }
-    } catch (error) {
-      console.log('======error:', error)
-      this.windows.inputWindow = createInputWindow()
-      show()
-    }
+  private saveLastOffset() {
+    const cursorPoint = screen.getCursorScreenPoint()
+    const display = screen.getDisplayNearestPoint(cursorPoint)
+    const { x, y } = display.workArea
+    const winBounds = this.panelWindow.getBounds()
+    this.lastOffset = { offsetX: winBounds.x - x, offsetY: winBounds.y - y }
   }
 
   private async registerShortcut() {
@@ -426,9 +344,6 @@ export class ElectronApp {
         if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
           this.togglePanelWindow()
         }
-        // if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
-        //   this.toggleInputWindow()
-        // }
       })
       if (!ret) {
         console.log('register shortcut fail:', shortcut.key)
@@ -463,10 +378,6 @@ export class ElectronApp {
       this.togglePanelWindow()
     })
 
-    // ipcMain.on('hide-input-window', () => {
-    //   this.inputWindow.hide()
-    // })
-
     ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
       const key = convertKeysToHotkey(shortcut.key)
       const ret = globalShortcut.register(key, () => {
@@ -478,9 +389,6 @@ export class ElectronApp {
         if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
           this.togglePanelWindow()
         }
-        // if (shortcut.type === ShortcutType.TOGGLE_INPUT_WINDOW) {
-        //   this.toggleInputWindow()
-        // }
       })
 
       if (!ret) {
@@ -503,10 +411,6 @@ export class ElectronApp {
     ipcMain.on('toggle-panel-window', () => {
       this.togglePanelWindow()
     })
-
-    // ipcMain.on('toggle-input-window', () => {
-    //   this.toggleInputWindow()
-    // })
 
     ipcMain.on('quick-input-success', () => {
       this.mainWindow.webContents.send('quick-input-success')
