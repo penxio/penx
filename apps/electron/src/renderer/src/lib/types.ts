@@ -23,8 +23,8 @@ export interface ICommandItem extends IListItem {
     extensionSlug: string
     extensionIcon: string
     isDeveloping?: boolean
-    applicationPath: string
-    isApplication: boolean
+    applicationPath?: string
+    isApplication?: boolean
     appIconPath?: string
   }
 }

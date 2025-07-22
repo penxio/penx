@@ -6,7 +6,7 @@ interface Props {
 export function Logo({ className }: Props) {
   return (
     <Image
-      src="https://penx.io/logo.png"
+      src="https://penx.io/images/logo.svg"
       alt=""
       width={80}
       height={80}

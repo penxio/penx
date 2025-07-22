@@ -6,6 +6,7 @@ import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
+import { getBuiltinCommands } from '~/lib/getBuiltinCommands'
 import { structToCommand } from '~/lib/structToCommand'
 import { ICommandItem } from '~/lib/types'
 import { useSearch } from './useSearch'
@@ -87,7 +88,13 @@ export function useLoadCommands() {
         },
       }
 
-      return [quickInput, ...structCommands] as ICommandItem[]
+      const builtinCommands = getBuiltinCommands()
+
+      return [
+        quickInput,
+        ...structCommands,
+        ...builtinCommands,
+      ] as ICommandItem[]
     },
   })
 }

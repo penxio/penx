@@ -1,6 +1,7 @@
 import { PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
 import { tinykeys } from 'tinykeys'
 import { Kbd } from '@penx/components/Kbd'
+import { cn } from '@penx/utils'
 import { ICommandItem } from '~/lib/types'
 import { ListItemIcon } from '../Panel/ListItemIcon'
 import { ShortcutKey, ShortcutModifier } from './types'
@@ -19,16 +20,22 @@ interface IConfirm {
 }
 
 interface Props {
+  className?: string
   command: ICommandItem
   actions?: ReactNode
   confirm?: IConfirm
+  hideFooter?: boolean
+  headerBordered?: boolean
 }
 
 export function DetailApp({
+  className,
   children,
   command,
   actions,
   confirm,
+  hideFooter = false,
+  headerBordered = true,
 }: PropsWithChildren<Props>) {
   const itemIcon = useMemo(() => {
     const assets = command?.data?.assets || {}
@@ -36,9 +43,12 @@ export function DetailApp({
   }, [command])
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className={cn('flex h-full w-full flex-col', className)}>
       <div
-        className="drag border-foreground/10 flex items-center border-b"
+        className={cn(
+          'drag flex items-center',
+          headerBordered && ' border-foreground/10 border-b',
+        )}
         style={{
           height: searchBarHeight,
         }}
@@ -55,21 +65,23 @@ export function DetailApp({
         {children}
       </div>
 
-      <div
-        className="border-foreground/10 bg-foreground/5 flex items-center justify-between border-t px-3"
-        style={{
-          height: footerHeight,
-        }}
-      >
-        <div className="flex items-center gap-1">
-          <ListItemIcon icon={itemIcon} />
-          <div className="text-foreground/80 text-sm">
-            {command.title.toString()}
+      {!hideFooter && (
+        <div
+          className="border-foreground/10 bg-foreground/5 flex items-center justify-between border-t px-3"
+          style={{
+            height: footerHeight,
+          }}
+        >
+          <div className="flex items-center gap-1">
+            <ListItemIcon icon={itemIcon} />
+            <div className="text-foreground/80 text-sm">
+              {command.title.toString()}
+            </div>
           </div>
+          {actions}
+          {confirm && <Confirm confirm={confirm} />}
         </div>
-        {actions}
-        {confirm && <Confirm confirm={confirm} />}
-      </div>
+      )}
     </div>
   )
 }

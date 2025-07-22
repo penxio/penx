@@ -3,10 +3,11 @@ import { store } from '@penx/store'
 import { actionPopoverAtom } from '~/hooks/useActionPopover'
 import { appModeAtom } from '~/hooks/useAppMode'
 import { navigation } from '~/hooks/useNavigation'
+import { searchAtom } from '~/hooks/useSearch'
 
 export async function handleEscape() {
   document.addEventListener('keydown', async (event) => {
-    const mode = store.get(appModeAtom)
+    const search = store.get(searchAtom)
 
     if (event.key === 'Escape') {
       const isActionPopoverOpen = store.get(actionPopoverAtom)
@@ -19,7 +20,11 @@ export async function handleEscape() {
       const navigations = navigation.getNavigation()
 
       if (navigations.length === 1) {
-        window.electron.ipcRenderer.send('hide-panel-window')
+        if (search.length) {
+          store.set(searchAtom, '')
+        } else {
+          window.electron.ipcRenderer.send('hide-panel-window')
+        }
       } else {
         navigation.pop()
       }

@@ -4,6 +4,7 @@ import { PinIcon } from 'lucide-react'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { cn } from '@penx/utils'
+import { PopButton } from '~/components/ExtensionApp/widgets/PopButton'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
@@ -12,7 +13,6 @@ import { useLoading } from '~/hooks/useLoading'
 import { useNavigation } from '~/hooks/useNavigation'
 import { useSearch } from '~/hooks/useSearch'
 import { AddRowButton } from './AddRowButton'
-import { BackRootButton } from './BackRootButton'
 import { DatabaseName } from './DatabaseName'
 import { SearchBarFilter } from './SearchBarFilter'
 import { SearchInput } from './SearchInput'
@@ -115,7 +115,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   if (current.path === '/struct-creations') {
     return (
       <>
-        <BackRootButton className="-mr-2 ml-3" />
+        <PopButton className="-mr-2 ml-3" />
         <DatabaseName />
         {searchInput}
         {!search && <div className="h-full flex-1"></div>}
@@ -127,7 +127,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   if (current.path === '/edit-creation') {
     return (
       <>
-        <BackRootButton className="-mr-2 ml-3" />
+        <PopButton className="-mr-2 ml-3" />
         <DatabaseName />
         {!search && <div className="h-full flex-1"></div>}
       </>
@@ -137,7 +137,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   if (current.path === '/edit-struct') {
     return (
       <>
-        <BackRootButton className="-mr-2 ml-3" />
+        <PopButton className="-mr-2 ml-3" />
         <DatabaseName />
         {!search && <div className="h-full flex-1"></div>}
       </>
@@ -146,7 +146,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
 
   return (
     <>
-      <BackRootButton className="-mr-2 ml-3" />
+      <PopButton className="-mr-2 ml-3" />
       {isDatabaseApp && !isCreationDetail && <DatabaseName />}
       {isDatabaseApp && !isCreationDetail && (
         <AddRowButton struct={new Struct(struct)} />

@@ -97,6 +97,8 @@ export function ProfileButton({ loginButton }: Props) {
       type: 'desktop-login',
       authToken,
     })
+    console.log('desktop ====session:', session)
+
     appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
   }
 

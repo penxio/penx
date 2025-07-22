@@ -98,10 +98,6 @@ export const CommandPalette = () => {
       return <PageEditCreation />
     }
 
-    if (current.path === '/quick-input') {
-      return <PageQuickInput />
-    }
-
     return current.component?.()
   }, [current])
 
