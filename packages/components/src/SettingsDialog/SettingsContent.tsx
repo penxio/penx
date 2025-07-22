@@ -2,6 +2,7 @@
 
 import { Trans } from '@lingui/react/macro'
 import { Separator } from '@penx/uikit/ui/separator'
+import { cn } from '@penx/utils'
 import { Appearance } from './Appearance'
 import { Billing } from './Billing'
 import { EditShortcuts } from './EditShortcuts'
@@ -12,7 +13,10 @@ import { SyncServer } from './SyncServer/SyncServer'
 import { SyncServerDialog } from './SyncServer/SyncServerDialog'
 import { SettingsNav, useSettingsDialog } from './useSettingsDialog'
 
-export function SettingsContent() {
+interface Props {
+  className?: string
+}
+export function SettingsContent({ className }: Props) {
   const { navName } = useSettingsDialog()
 
   const titleNames: Record<string, any> = {
@@ -28,18 +32,21 @@ export function SettingsContent() {
   return (
     <>
       <SyncServerDialog />
-      <div className="flex flex-1 flex-col px-10 py-6">
+      <div
+        className={cn(
+          'bg-background flex flex-1 flex-col px-10 py-6 dark:bg-neutral-800',
+          className,
+        )}
+      >
         <div className="font-bold">{titleNames[navName]}</div>
         <Separator className="my-4" />
-        <div className="flex-1">
-          {navName === SettingsNav.APPEARANCE && <Appearance />}
-          {navName === SettingsNav.PROFILE && <Profile />}
-          {navName === SettingsNav.PASSWORD && <Password />}
-          {navName === SettingsNav.BILLING && <Billing />}
-          {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
-          {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
-          {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
-        </div>
+        {navName === SettingsNav.APPEARANCE && <Appearance />}
+        {navName === SettingsNav.PROFILE && <Profile />}
+        {navName === SettingsNav.PASSWORD && <Password />}
+        {navName === SettingsNav.BILLING && <Billing />}
+        {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
+        {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
+        {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
       </div>
     </>
   )

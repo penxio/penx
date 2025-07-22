@@ -64,6 +64,31 @@ export function useLoadCommands() {
         return structToCommand(struct)
       })
 
+
+      const aiChat: ICommandItem = {
+        title: t`AI Chat`,
+        keywords: ['ai', 'chat'],
+        icon: {
+          // name: 'solar:pen-bold',
+          name: 'lucide:pen-line',
+          className: 'bg-linear-to-r from-cyan-500 to-blue-500',
+        },
+        data: {
+          type: 'Command',
+          component: PageQuickInput,
+          alias: '',
+          assets: {},
+          filters: {},
+          runtime: 'worker',
+          commandName: 'quick-input',
+          extensionSlug: '',
+          extensionIcon: '',
+          isDeveloping: false,
+          applicationPath: '',
+          isApplication: false,
+        },
+      }
+
       const quickInput: ICommandItem = {
         title: t`Quick input`,
         keywords: ['Quick', 'Input', 'Quick input'],

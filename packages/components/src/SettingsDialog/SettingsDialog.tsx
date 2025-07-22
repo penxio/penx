@@ -33,16 +33,15 @@ export function SettingsDialog() {
   const { open, setOpen, setState } = useSettingsDialog()
   const { session } = useSession()
 
-  useEffect(() => {
-    if (!window.electron) return
-    window.electron.ipcRenderer.on('edit-shortcuts', () => {
-      console.log('edit short')
-      setState({
-        open: true,
-        navName: SettingsNav.EDIT_SHORTCUTS,
-      })
-    })
-  }, [])
+  // useEffect(() => {
+  //   if (!window.electron) return
+  //   window.electron.ipcRenderer.on('edit-shortcuts', () => {
+  //     setState({
+  //       open: true,
+  //       navName: SettingsNav.EDIT_SHORTCUTS,
+  //     })
+  //   })
+  // }, [])
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

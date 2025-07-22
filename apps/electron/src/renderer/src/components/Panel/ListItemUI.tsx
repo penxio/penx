@@ -72,7 +72,6 @@ export const ListItemUI = ({
       <Box toCenterY gap2>
         {showIcon && (
           <ListItemIcon
-            isApplication={item.data?.isApplication}
             icon={itemIcon as string}
             item={item}
           />

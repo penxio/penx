@@ -21,19 +21,23 @@ interface IConfirm {
 
 interface Props {
   className?: string
+  bodyClassName?: string
   command: ICommandItem
   actions?: ReactNode
   confirm?: IConfirm
+  hideHeader?: boolean
   hideFooter?: boolean
   headerBordered?: boolean
 }
 
 export function DetailApp({
   className,
+  bodyClassName,
   children,
   command,
   actions,
   confirm,
+  hideHeader = false,
   hideFooter = false,
   headerBordered = true,
 }: PropsWithChildren<Props>) {
@@ -44,19 +48,21 @@ export function DetailApp({
 
   return (
     <div className={cn('flex h-full w-full flex-col', className)}>
+      {!hideHeader && (
+        <div
+          className={cn(
+            'drag flex items-center',
+            headerBordered && ' border-foreground/10 border-b',
+          )}
+          style={{
+            height: searchBarHeight,
+          }}
+        >
+          <PopButton className="ml-3" />
+        </div>
+      )}
       <div
-        className={cn(
-          'drag flex items-center',
-          headerBordered && ' border-foreground/10 border-b',
-        )}
-        style={{
-          height: searchBarHeight,
-        }}
-      >
-        <PopButton className="ml-3" />
-      </div>
-      <div
-        className="relative flex-1 overflow-auto"
+        className={cn('relative flex-1 overflow-auto', bodyClassName)}
         style={{
           overscrollBehavior: 'contain',
           scrollPaddingBlockEnd: 40,

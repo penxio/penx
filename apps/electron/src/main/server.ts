@@ -69,8 +69,8 @@ export class HonoServer {
     )
 
     this.app.get('/open-window', (c) => {
-      this.windows.mainWindow?.show()
-      this.windows.mainWindow?.focus()
+      this.windows.panelWindow?.show()
+      this.windows.panelWindow?.focus()
       return c.json({
         status: 'ok',
       })

@@ -62,7 +62,7 @@ export const FileUpload = forwardRef<HTMLDivElement, Props>(function FileUpload(
       >
         {!value && <CloudUploadIcon size={18} className="text-foreground/50" />}
         {value && (
-          <Image
+          <img
             src={getUrl(value)}
             width={width}
             height={height}

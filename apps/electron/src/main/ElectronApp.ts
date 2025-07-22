@@ -544,14 +544,14 @@ export class ElectronApp {
           this.togglePanelWindow()
         },
       },
-      // {
-      //   label: 'Edit Shortcuts',
-      //   type: 'normal',
-      //   click: () => {
-      //     mainWindow.show()
-      //     mainWindow.webContents.send('edit-shortcuts')
-      //   },
-      // },
+      {
+        label: 'Edit Shortcuts',
+        type: 'normal',
+        click: () => {
+          mainWindow.show()
+          mainWindow.webContents.send('edit-shortcuts')
+        },
+      },
       {
         label: 'Quit',
         click: () => {

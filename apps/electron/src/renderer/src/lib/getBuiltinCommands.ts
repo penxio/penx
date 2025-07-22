@@ -1,6 +1,7 @@
 import { t } from '@lingui/core/macro'
 import { PageLogin } from '~/components/Panel/pages/PageLogin'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
+import { PageSettings } from '~/components/Panel/pages/PageSettings'
 import { ICommandItem } from '~/lib/types'
 
 export function getBuiltinCommands() {
@@ -33,7 +34,7 @@ export function getBuiltinCommands() {
       },
       data: {
         type: 'Command',
-        component: PageQuickInput,
+        component: PageSettings,
         alias: '',
         assets: {},
         filters: {},
