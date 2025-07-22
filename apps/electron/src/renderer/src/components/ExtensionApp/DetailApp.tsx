@@ -24,6 +24,7 @@ interface Props {
   command: ICommandItem
   actions?: ReactNode
   confirm?: IConfirm
+  hideHeader?: boolean
   hideFooter?: boolean
   headerBordered?: boolean
 }
@@ -34,6 +35,7 @@ export function DetailApp({
   command,
   actions,
   confirm,
+  hideHeader = false,
   hideFooter = false,
   headerBordered = true,
 }: PropsWithChildren<Props>) {
@@ -44,17 +46,19 @@ export function DetailApp({
 
   return (
     <div className={cn('flex h-full w-full flex-col', className)}>
-      <div
-        className={cn(
-          'drag flex items-center',
-          headerBordered && ' border-foreground/10 border-b',
-        )}
-        style={{
-          height: searchBarHeight,
-        }}
-      >
-        <PopButton className="ml-3" />
-      </div>
+      {!hideHeader && (
+        <div
+          className={cn(
+            'drag flex items-center',
+            headerBordered && ' border-foreground/10 border-b',
+          )}
+          style={{
+            height: searchBarHeight,
+          }}
+        >
+          <PopButton className="ml-3" />
+        </div>
+      )}
       <div
         className="relative flex-1 overflow-auto"
         style={{

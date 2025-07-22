@@ -19,12 +19,17 @@ import { cn } from '@penx/utils'
 import { ProfileBasicInfo } from '../ProfileBasicInfo'
 import { SettingsNav, useSettingsDialog } from './useSettingsDialog'
 
-export function SettingsSidebar() {
-  const { open, setOpen } = useSettingsDialog()
-  const { session } = useSession()
-
+interface Props {
+  className?: string
+}
+export function SettingsSidebar({ className }: Props) {
   return (
-    <div className="bg-foreground/5 flex w-[250px] flex-col gap-5 p-5">
+    <div
+      className={cn(
+        'bg-foreground/5 flex w-[250px] flex-col gap-5 p-5',
+        className,
+      )}
+    >
       <ProfileBasicInfo />
       <div className="flex flex-col gap-1">
         <Item icon={<PaletteIcon size={16} />} navName={SettingsNav.APPEARANCE}>
@@ -69,14 +74,14 @@ export function SettingsSidebar() {
   )
 }
 
-interface Props {
+interface ItemProps {
   icon: React.ReactNode
   children?: React.ReactNode
   active?: boolean
   navName: SettingsNav
 }
 
-function Item({ icon, children, active, navName }: Props) {
+function Item({ icon, children, active, navName }: ItemProps) {
   const { setNavName, navName: currentNavName } = useSettingsDialog()
   return (
     <div
