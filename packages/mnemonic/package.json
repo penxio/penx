@@ -21,9 +21,6 @@
     "@penx/encryption": "workspace:*",
     "@scure/bip32": "^1.7.0",
     "@scure/bip39": "^1.6.0",
-    "bip39": "^3.1.0",
-    "eciesjs": "^0.4.15",
-    "ethereumjs-util": "^7.1.5",
-    "hdkey": "^2.1.0"
+    "eciesjs": "^0.4.15"
   }
 }

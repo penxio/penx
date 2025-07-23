@@ -1,13 +1,15 @@
-import { generateMnemonic, mnemonicToSeed, mnemonicToSeedSync } from 'bip39'
 import { decrypt, encrypt } from 'eciesjs'
-import { privateToPublic } from 'ethereumjs-util'
-import hdkey from 'hdkey'
 import { get, set } from 'idb-keyval'
 import {
   calculateSHA256FromString,
   decryptString,
   encryptString,
 } from '@penx/encryption'
+import {
+  generateMnemonic,
+  getPrivateKeyFromMnemonic,
+  getPublicKeyFromMnemonic,
+} from './mnemonic'
 
 export async function getNewMnemonic() {
   const mnemonic = generateMnemonic()
@@ -34,10 +36,7 @@ export async function getMnemonicFromLocal(siteId: string) {
 }
 
 export function getPublicKey(mnemonic: string) {
-  const seed = mnemonicToSeedSync(mnemonic)
-  const root = hdkey.fromMasterSeed(seed)
-  const publicKey = privateToPublic(root.privateKey!).toString('hex')
-  return publicKey
+  return getPublicKeyFromMnemonic(mnemonic)
 }
 
 export function encryptByPublicKey(plainText: string, publicKey: string) {
@@ -49,9 +48,7 @@ export function encryptByPublicKey(plainText: string, publicKey: string) {
 
 export function decryptByMnemonic(base64String: string, mnemonic: string) {
   const buffer = base64ToBuffer(base64String)
-  const seed = mnemonicToSeedSync(mnemonic)
-  const root = hdkey.fromMasterSeed(seed)
-  const privateKey = root.privateKey!.toString('hex')
+  const privateKey = getPrivateKeyFromMnemonic(mnemonic)
   return decrypt(privateKey, buffer).toString()
 }
 
