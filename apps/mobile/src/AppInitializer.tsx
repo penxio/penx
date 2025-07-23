@@ -9,7 +9,7 @@ export const AppInitializer = () => {
   const { session } = useSession()
 
   async function init() {
-    await initializeRevenueCat(session.siteId!)
+    await initializeRevenueCat(session.spaceId!)
 
     // checkSubscriptionStatus('standard')
     // checkSubscriptionStatus('pro')
@@ -26,7 +26,7 @@ export const AppInitializer = () => {
 
   useEffect(() => {
     function handleInit(session: any) {
-      initializeRevenueCat(session.siteId!)
+      initializeRevenueCat(session.spaceId!)
     }
     appEmitter.on('APP_LOGIN_SUCCESS', handleInit)
     return () => {

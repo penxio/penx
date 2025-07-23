@@ -56,7 +56,7 @@ export const ky = _ky.extend({
 
 type SyncInput = {
   operation: any
-  siteId: string
+  spaceId: string
   key: string
   data: any
 }
@@ -114,7 +114,7 @@ export const api = {
           nodes,
         },
       })
-      .json<{ ok: boolean; existed: boolean; siteId: string }>()
+      .json<{ ok: boolean; existed: boolean; spaceId: string }>()
   },
 
   async deleteAccount() {

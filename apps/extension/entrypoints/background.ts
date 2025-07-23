@@ -98,23 +98,22 @@ export default defineBackground(() => {
 
 async function queryAreas() {
   const session = await get('SESSION')
-  if (session?.siteId) {
-    return localDB.listAreas(session.siteId)
+  if (session?.spaceId) {
+    return localDB.listAreas(session.spaceId)
   }
-  const sites = await localDB.listAllSites()
-  const site = sites.find((site) => site.props.isRemote) || sites[0]
-  return localDB.listAreas(site.id)
+  const spaces = await localDB.listAllSpaces()
+  const space = spaces.find((item) => item.props.isRemote) || spaces[0]
+  return localDB.listAreas(space.id)
 }
 
 async function addNote(content: string, area: IAreaNode) {
-  const site = await localDB.getSite(area.siteId)
+  const site = await localDB.getSpace(area.spaceId)
   const structs = await localDB.listStructs(area.id)
   const struct = structs.find(
     (struct) => struct.props.type === StructType.NOTE,
   )!
 
-  const creation: ICreationNode = {
-  } as any
+  const creation: ICreationNode = {} as any
 
   // await localDB.addCreation(creation)
 }

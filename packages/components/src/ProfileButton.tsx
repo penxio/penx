@@ -26,7 +26,7 @@ import {
   ROOT_HOST,
 } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
@@ -52,7 +52,6 @@ interface Props {
 
 export function ProfileButton({ loginButton }: Props) {
   const { login } = useSession()
-  // const { data: sites = [], error } = useMySites()
   const { session, data, logout, update } = useSession()
   const isMobile = useIsMobile()
   const { setIsOpen } = usePlanListDialog()
@@ -118,7 +117,7 @@ export function ProfileButton({ loginButton }: Props) {
   //   // window.__SITE_ID__ = site.id
   //   update({
   //     type: 'update-props',
-  //     activeSiteId: site.id,
+  //     activeSpaceId: site.id,
   //   })
 
   //   await store.panels.resetPanels()
@@ -191,7 +190,7 @@ export function ProfileButton({ loginButton }: Props) {
               </Avatar>
               <div>{site.name}</div>
               <div className="ml-auto">
-                {session?.activeSiteId === site.id && <CheckIcon />}
+                {session?.activeSpaceId === site.id && <CheckIcon />}
               </div>
             </DropdownMenuItem>
           ))}

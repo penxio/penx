@@ -49,7 +49,7 @@ export function RecoverManually({ onSubmitSuccess }: Props) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const { siteId } = session
+    const { spaceId } = session
     setLoading(true)
     setLoading(false)
   }

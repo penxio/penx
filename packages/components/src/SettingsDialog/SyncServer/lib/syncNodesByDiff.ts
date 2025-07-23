@@ -13,7 +13,7 @@ interface Snapshot {
   hash: string
 }
 
-export async function syncNodesByDiff(siteId: string) {
+export async function syncNodesByDiff(spaceId: string) {
   const session = await getSession()
   const host = session.syncServer?.host || ''
 
@@ -23,7 +23,7 @@ export async function syncNodesByDiff(siteId: string) {
 
   const { data = [] } = await ky
     .get(`${host}/api/v1/snapshot`, {
-      searchParams: { siteId },
+      searchParams: { spaceId },
     })
     .json<ApiRes<Snapshot[]>>()
 
@@ -32,7 +32,7 @@ export async function syncNodesByDiff(siteId: string) {
   let createdNodes: any[] = []
   let deletedNodes: any[] = []
 
-  const nodes = await localDB.listSiteNodes(siteId)
+  const nodes = await localDB.listSpaceNodes(spaceId)
 
   console.log('====nodes:', nodes)
 
@@ -75,7 +75,7 @@ export async function syncNodesByDiff(siteId: string) {
   // console.log('url===========url:', host, 'nodes:', nodes)
   await ky.post(`${host}/api/v1/syncByDiff`, {
     json: {
-      siteId,
+      spaceId,
       updatedNodes,
       createdNodes,
       deletedNodes,
@@ -83,6 +83,6 @@ export async function syncNodesByDiff(siteId: string) {
   })
 
   appEmitter.emit('STOP_SYNC_NODES')
-  await setElectricSyncState(siteId, {} as any)
-  await syncNodesToLocal(siteId)
+  await setElectricSyncState(spaceId, {} as any)
+  await syncNodesToLocal(spaceId)
 }

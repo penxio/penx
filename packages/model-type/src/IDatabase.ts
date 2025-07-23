@@ -1,7 +1,7 @@
 export interface IDatabase {
   id: string
   userId: string
-  siteId: string
+  spaceId: string
   parentId: string
   parentType: string
   activeViewId: string

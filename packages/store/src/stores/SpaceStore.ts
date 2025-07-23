@@ -1,31 +1,31 @@
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
 import { atom } from 'jotai'
-import { ACTIVE_SITE } from '@penx/constants'
+import { ACTIVE_SPACE } from '@penx/constants'
 import { localDB } from '@penx/local-db'
-import { AIProvider, AISetting, ISiteNode } from '@penx/model-type'
+import { AIProvider, AISetting, ISpaceNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
-export const siteAtom = atom<ISiteNode>(null as unknown as ISiteNode)
+export const spaceAtom = atom<ISpaceNode>(null as unknown as ISpaceNode)
 
-export class SiteStore {
+export class SpaceStore {
   constructor(private store: StoreType) {}
 
   get() {
-    return this.store.get(siteAtom)
+    return this.store.get(spaceAtom)
   }
 
-  set(state: ISiteNode) {
-    this.store.set(siteAtom, state)
+  set(state: ISpaceNode) {
+    this.store.set(spaceAtom, state)
   }
 
   async fetch() {
-    const site = await get(ACTIVE_SITE)
-    return site as ISiteNode
+    const site = await get(ACTIVE_SPACE)
+    return site as ISpaceNode
   }
 
-  async save(site: ISiteNode) {
-    await set(ACTIVE_SITE, site)
+  async save(space: ISpaceNode) {
+    await set(ACTIVE_SPACE, space)
   }
 
   async updateAIProvider(data: Partial<AIProvider>) {
@@ -45,7 +45,7 @@ export class SiteStore {
     const newSite = produce(site, (draft) => {
       // Initialize aiSetting if it doesn't exist
       if (!draft.props) {
-        draft.props = {} as ISiteNode['props']
+        draft.props = {} as ISpaceNode['props']
       }
 
       if (!draft.props.aiSetting) {
@@ -86,7 +86,7 @@ export class SiteStore {
     this.set(newSite)
     await this.save(newSite)
 
-    await localDB.updateSiteProps(newSite.id, {
+    await localDB.updateSpaceProps(newSite.id, {
       ...site.props,
       aiSetting: newSite.props.aiSetting,
     })
@@ -109,7 +109,7 @@ export class SiteStore {
     this.set(newSite)
     await this.save(newSite)
 
-    await localDB.updateSiteProps(newSite.id, {
+    await localDB.updateSpaceProps(newSite.id, {
       ...site.props,
       aiSetting: newSite.props.aiSetting,
     })

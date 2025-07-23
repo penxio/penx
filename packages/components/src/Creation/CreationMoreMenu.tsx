@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 import { defaultEditorContent } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { Button } from '@penx/uikit/button'
 import { MenuItem } from '@penx/uikit/menu'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -16,10 +16,10 @@ import { usePublishDialog } from './PublishDialog/usePublishDialog'
 
 export function CreationMoreMenu({ creation }: { creation: Creation }) {
   const [isOpen, setIsOpen] = useState(false)
-  const { site } = useMySite()
+  const { space } = useMySpace()
   const publishDialog = usePublishDialog()
   const deletePostDialog = useDeleteCreationDialog()
-  const { locales = [] } = (site.config || {}) as {
+  const { locales = [] } = (space.config || {}) as {
     locales: string[]
   }
 

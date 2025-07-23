@@ -5,8 +5,8 @@ import { penxDB } from '../penx-db'
 export class NodeDomain {
   constructor(private n: Table<INode, string>) {}
 
-  listNodesBySiteId = (siteId: string) => {
-    return this.n.where({ spaceId: siteId }).toArray()
+  listNodesBySiteId = (spaceId: string) => {
+    return this.n.where({ spaceId: spaceId }).toArray()
   }
 
   listNodesByIds = (nodeIds: string[]) => {

@@ -35,7 +35,7 @@ export async function addCreation(input: AddCreationInput) {
 }
 
 interface CreateTagInput {
-  siteId: string
+  spaceId: string
   name: string
 }
 
@@ -47,7 +47,7 @@ export async function createTag(input: CreateTagInput) {
 
 export const addCreationTagInputSchema = z.object({
   tagId: z.string(),
-  siteId: z.string(),
+  spaceId: z.string(),
   postId: z.string(),
 })
 

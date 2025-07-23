@@ -18,8 +18,8 @@ export const RecoveryPhrase: FC<Props> = () => {
   const { data } = useSession()
   const { copy } = useCopyToClipboard()
   const { isLoading, data: mnemonic } = useQuery({
-    queryKey: ['Mnemonic', data?.siteId],
-    queryFn: () => getMnemonicFromLocal(data?.siteId!),
+    queryKey: ['Mnemonic', data?.spaceId],
+    queryFn: () => getMnemonicFromLocal(data?.spaceId!),
   })
 
   if (isLoading) return null

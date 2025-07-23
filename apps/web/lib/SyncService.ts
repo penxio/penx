@@ -38,7 +38,7 @@ export class SyncService {
 
   private baseBranchSha: string
 
-  private site: any
+  private space: any
   private creation: any
 
   filesTree: Content[]
@@ -60,9 +60,9 @@ export class SyncService {
     this.params = sharedParams
   }
 
-  static async init(token: string, site: Site) {
+  static async init(token: string, space: any) {
     const s = new SyncService()
-    const [owner, repo] = (site.repo || '').split('/')
+    const [owner, repo] = (space.repo || '').split('/')
     s.setSharedParams(owner, repo)
     s.app = new Octokit({ auth: token })
     return s
@@ -113,10 +113,10 @@ export class SyncService {
   async getSiteTree() {
     let tree: TreeItem[] = []
     const item = {
-      path: `sites/${this.site.id}.json`,
+      path: `sites/${this.space.id}.json`,
       mode: '100644',
       type: 'blob',
-      content: JSON.stringify(this.site, null, 2),
+      content: JSON.stringify(this.space, null, 2),
     } as TreeItem
 
     tree.push(item)
@@ -144,8 +144,8 @@ export class SyncService {
     return tree
   }
 
-  async pushSite(site: any) {
-    this.site = site
+  async pushSpace(space: any) {
+    this.space = space
     let tree: TreeItem[] = []
     tree = await this.getSiteTree()
     await this.pushTree(tree)

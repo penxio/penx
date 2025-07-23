@@ -60,7 +60,7 @@ export async function createTag({ tagName, creation, color }: CreateTagInput) {
       updatedAt: new Date(),
       areaId: area.id,
       userId: area.userId,
-      siteId: area.siteId,
+      spaceId: area.spaceId,
     }
     await localDB.addTag(newTag)
     store.tags.refetchTags()
@@ -83,7 +83,7 @@ export async function createTag({ tagName, creation, color }: CreateTagInput) {
       updatedAt: new Date(),
       areaId: creation.areaId,
       userId: creation.userId,
-      siteId: creation.siteId,
+      spaceId: creation.spaceId,
     }
     await localDB.addCreationTag(newCreationTag)
   } else {
@@ -101,7 +101,7 @@ export async function createTag({ tagName, creation, color }: CreateTagInput) {
       updatedAt: new Date(),
       areaId: creation.areaId,
       userId: creation.userId,
-      siteId: creation.siteId,
+      spaceId: creation.spaceId,
     }
     await localDB.addTag(newTag)
 
@@ -117,7 +117,7 @@ export async function createTag({ tagName, creation, color }: CreateTagInput) {
       updatedAt: new Date(),
       areaId: creation.areaId,
       userId: creation.userId,
-      siteId: creation.siteId,
+      spaceId: creation.spaceId,
     }
     await localDB.addCreationTag(newCreationTag)
   }
@@ -137,7 +137,7 @@ export async function addCreationTag(creation: Creation, tag: Tag) {
     createdAt: new Date(),
     updatedAt: new Date(),
     areaId: creation.areaId,
-    siteId: creation.siteId,
+    spaceId: creation.spaceId,
     userId: creation.userId,
   }
   await localDB.addCreationTag(newCreationTag)

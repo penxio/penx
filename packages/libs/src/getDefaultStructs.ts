@@ -7,13 +7,13 @@ import { getRandomColorName } from './color-helper'
 
 type MetaInfo = {
   id?: string
-  siteId: string
+  spaceId: string
   userId: string
   areaId: string
 }
 
 export function generateStructNode({
-  siteId,
+  spaceId,
   userId,
   areaId,
   ...props
@@ -324,7 +324,7 @@ export function generateStructNode({
     updatedAt: new Date(),
     areaId: areaId,
     userId,
-    siteId,
+    spaceId,
   }
   return struct
 }

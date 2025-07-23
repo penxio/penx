@@ -45,7 +45,7 @@ export const updateSiteInputSchema = z.object({
     .object({
       gaMeasurementId: z.string().optional(),
       umamiHost: z.string().optional(),
-      umamiWebsiteId: z.string().optional(),
+      umamiWebspaceId: z.string().optional(),
     })
     .optional(),
   // catalogue: z.record(z.unknown()).optional(),
@@ -73,7 +73,7 @@ export type UpdateCreationInput = z.infer<typeof updateCreationInputSchema>
 export const addCreationInputSchema = z.object({
   id: z.string().optional(),
   slug: z.string().optional(),
-  siteId: z.string(),
+  spaceId: z.string(),
   type: z.string(),
   title: z.string(),
   description: z.string().optional(),
@@ -154,7 +154,7 @@ export type SyncAppleSubscriptionInput = z.infer<
 >
 
 export const createAssetInputSchema = z.object({
-  siteId: z.string(),
+  spaceId: z.string(),
   url: z.string(),
   filename: z.string(),
   contentType: z.string(),

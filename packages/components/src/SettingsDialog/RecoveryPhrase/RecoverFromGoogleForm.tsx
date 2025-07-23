@@ -48,11 +48,11 @@ export function RecoverFromGoogleForm({ onSubmitSuccess }: Props) {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const { siteId } = session
+    const { spaceId } = session
     setLoading(true)
     try {
       const drive = new GoogleDrive(token!.access_token)
-      const folderName = `${GOOGLE_DRIVE_FOLDER_NAME}-${siteId}`
+      const folderName = `${GOOGLE_DRIVE_FOLDER_NAME}-${spaceId}`
       const fileName = GOOGLE_DRIVE_RECOVERY_PHRASE_FILE
 
       const folderId = await drive.getOrCreateFolder(folderName)
@@ -61,7 +61,7 @@ export function RecoverFromGoogleForm({ onSubmitSuccess }: Props) {
       if (file) {
         const decrypted = decryptString(
           file!.encryptedMnemonic,
-          data.password + siteId,
+          data.password + spaceId,
         )
 
         if (!decrypted) {

@@ -4,6 +4,6 @@ export interface IDocument {
   content: string
   kind: 'text' | 'code' | 'image' | 'sheet'
   userId: string
-  siteId: string
+  spaceId: string
   createdAt: Date
 }

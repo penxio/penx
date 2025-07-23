@@ -61,14 +61,14 @@ export function SyncServerForm() {
       console.log('==========res:', res, 'settings:', settings)
 
       await api.updateSite({
-        id: session.siteId,
+        id: session.spaceId,
         syncServer: {
           host: data.host,
           enabled: false,
         },
       })
 
-      await setSyncServerPassword(session.siteId, data.password)
+      await setSyncServerPassword(session.spaceId, data.password)
       await refreshSession()
 
       setOpen(false)

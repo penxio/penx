@@ -8,7 +8,7 @@ import { CreationsStore } from './stores/CreationsStore'
 import { CreationTagsStore } from './stores/CreationTagsStore'
 import { JournalsStore } from './stores/JournalsStore'
 import { PanelsStore } from './stores/PanelsStore'
-import { SiteStore } from './stores/SiteStore'
+import { SpaceStore } from './stores/SpaceStore'
 import { StructsStore } from './stores/StructsStore'
 import { TagsStore } from './stores/TagsStore'
 import { VisitStore } from './stores/VisitStore'
@@ -27,8 +27,8 @@ export const store = Object.assign(baseStore, {
     return new VisitStore(this)
   },
 
-  get site(): SiteStore {
-    return new SiteStore(this)
+  get space(): SpaceStore {
+    return new SpaceStore(this)
   },
 
   get journals(): JournalsStore {

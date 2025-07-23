@@ -4,5 +4,5 @@ export interface IDomain {
   isSubdomain: boolean
   subdomainType: any
   disabled: boolean
-  siteId: string
+  spaceId: string
 }

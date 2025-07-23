@@ -26,7 +26,7 @@ export interface ImportPostData {
 export interface ImportTask {
   id: string
   url: string
-  siteId: string
+  spaceId: string
   status: ImportTaskStatus
   progress: number
   error?: string
@@ -187,7 +187,7 @@ export function useImportTask() {
     try {
       // Submit URL to start import task with abort signal
       // const task = await api.creationImport.createImportTask.mutate(
-      //   { siteId: site.id, url },
+      //   { spaceId: site.id, url },
       //   { signal: abortControllerRef.current.signal },
       // )
 

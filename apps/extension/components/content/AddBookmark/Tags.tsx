@@ -77,7 +77,7 @@ export function Tags({ value: tags, onChange: setTags }: Props) {
                     if (!search.trim()) return
                     setAdding(true)
                     const tag = await createTag({
-                      siteId: session.siteId,
+                      spaceId: session.spaceId,
                       name: search.trim(),
                     })
 
@@ -126,7 +126,7 @@ export function Tags({ value: tags, onChange: setTags }: Props) {
                       setIsOpen(false)
                       try {
                         // const postTag = await addTag({
-                        //   siteId: post.siteId,
+                        //   spaceId: post.spaceId,
                         //   postId: post.id,
                         //   tagId: item.id,
                         // })

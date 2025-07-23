@@ -1,13 +1,13 @@
 import { get, set } from 'idb-keyval'
 import { atom } from 'jotai'
-import { ACTIVE_SITE, CreateAreaInput, WidgetType } from '@penx/constants'
+import { ACTIVE_SPACE, CreateAreaInput, WidgetType } from '@penx/constants'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {
   IAreaNode,
   IChange,
-  ISiteNode,
+  ISpaceNode,
   NodeType,
   OperationType,
 } from '@penx/model-type'
@@ -29,14 +29,14 @@ export class AreasStore {
   }
 
   async refetchAreas() {
-    const site = this.store.site.get()
+    const site = this.store.space.get()
     const areas = await localDB.listAreas(site.id)
     this.set(areas)
     return areas
   }
 
   async addArea(input: CreateAreaInput) {
-    const site = this.store.site.get()
+    const site = this.store.space.get()
     const id = uniqueId()
     const area: IAreaNode = {
       id,
@@ -53,7 +53,7 @@ export class AreasStore {
       createdAt: new Date(),
       updatedAt: new Date(),
       userId: site.userId,
-      siteId: site.id,
+      spaceId: site.id,
     }
 
     await localDB.addArea(area)
@@ -61,7 +61,7 @@ export class AreasStore {
     const structs = getDefaultStructs({
       areaId: area.id,
       userId: site.userId,
-      siteId: site.id,
+      spaceId: site.id,
     })
 
     for (const struct of structs) {
@@ -97,11 +97,11 @@ export class AreasStore {
       await localDB.node.where('id').anyOf(creationIds).delete()
       await localDB.node.delete(area.id)
 
-      const site = (await get(ACTIVE_SITE)) as ISiteNode
+      const site = (await get(ACTIVE_SPACE)) as ISpaceNode
       if (site.props.isRemote) {
         await localDB.change.add({
           operation: OperationType.DELETE,
-          siteId: site.id,
+          spaceId: site.id,
           synced: 0,
           createdAt: new Date(),
           key: area.id,

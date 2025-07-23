@@ -8,7 +8,7 @@ import useSWR, { useSWRConfig } from 'swr'
 import { unstable_serialize } from 'swr/infinite'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
@@ -37,9 +37,9 @@ export function Chat({
   isReadonly: boolean
   session: SessionData
 }) {
-  const { site } = useMySite()
+  const { space } = useMySpace()
 
-  const provider = site?.props?.aiSetting?.providers?.[0]
+  const provider = space?.props?.aiSetting?.providers?.[0]
 
   // Track the selected provider and model
   const [selectedProvider, setSelectedProvider] = useState(provider?.type || '')
@@ -75,7 +75,7 @@ export function Chat({
     generateId: uniqueId,
     experimental_prepareRequestBody: (body) => {
       // Find the current provider based on selected type
-      const currentProvider = site?.props?.aiSetting?.providers?.find(
+      const currentProvider = space?.props?.aiSetting?.providers?.find(
         (p) => p.type === selectedProviderRef.current,
       )
 
@@ -95,7 +95,7 @@ export function Chat({
         chatId: id,
         role: 'user',
         parts: [{ type: 'text', text: input }],
-        siteId: session.siteId,
+        spaceId: session.spaceId,
         createdAt: new Date(),
       })
 
@@ -104,7 +104,7 @@ export function Chat({
         chatId: id,
         role: message.role,
         parts: message.parts,
-        siteId: session.siteId,
+        spaceId: session.spaceId,
         createdAt: new Date(),
       })
     },
@@ -120,7 +120,7 @@ export function Chat({
           type: PanelType.AI_SETTING,
         })
 
-        const messages = await queryMessages(session.siteId)
+        const messages = await queryMessages(session.spaceId)
         setTimeout(() => {
           setMessages(messages)
         }, 2000)

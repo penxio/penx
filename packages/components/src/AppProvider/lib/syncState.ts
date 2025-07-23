@@ -21,14 +21,14 @@ export interface ElectricSyncState {
   last_lsn: Lsn
 }
 
-export async function getElectricSyncState(siteId: string) {
-  const state = await get(`electric-sync-state-${siteId}`)
+export async function getElectricSyncState(spaceId: string) {
+  const state = await get(`electric-sync-state-${spaceId}`)
   return (state || {}) as ElectricSyncState
 }
 
 export async function setElectricSyncState(
-  siteId: string,
+  spaceId: string,
   state: ElectricSyncState,
 ) {
-  await set(`electric-sync-state-${siteId}`, state)
+  await set(`electric-sync-state-${spaceId}`, state)
 }

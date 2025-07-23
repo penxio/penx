@@ -6,7 +6,7 @@ import { Plus, XIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { Creation } from '@penx/domain'
 import { updateCreationState } from '@penx/hooks/useCreation'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { Button } from '@penx/uikit/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import {
@@ -125,7 +125,7 @@ export function Authors({ creation }: { creation: Creation }) {
   //                         //     id: authorId,
   //                         //     creationId: creation.id,
   //                         //     userId: item.userId,
-  //                         //     siteId: site.id,
+  //                         //     spaceId: site.id,
   //                         //     user: item.user,
   //                         //     // } as AuthorWithUser,
   //                         //   } as any,

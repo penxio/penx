@@ -1,7 +1,7 @@
 import { get } from 'idb-keyval'
 import { api } from '@penx/api'
-import { ACTIVE_SITE, STATIC_URL } from '@penx/constants'
-import { ISite } from '@penx/model-type/ISite'
+import { ACTIVE_SPACE, STATIC_URL } from '@penx/constants'
+import { ISpace } from '@penx/model-type/ISpace'
 import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 
 type UploadReturn = {
@@ -21,7 +21,7 @@ export async function uploadFile(file: File, opt = {} as UploadOptions) {
   const { isPublic = true, saveToDB = true } = opt
   const fileHash = await calculateSHA256FromFile(file)
   let data: UploadReturn = {}
-  const site = (await get(ACTIVE_SITE)) as ISite
+  const site = (await get(ACTIVE_SPACE)) as ISpace
 
   let filename = fileHash
 
@@ -67,7 +67,7 @@ export async function uploadFile(file: File, opt = {} as UploadOptions) {
 
   if (saveToDB) {
     await api.createAsset({
-      siteId: site.id,
+      spaceId: site.id,
       url,
       filename: file.name,
       contentType: file.type,

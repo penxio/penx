@@ -8,16 +8,16 @@ const key = 'SYNC_SERVER_PASSWORD'
 export function useSyncServerPassword() {
   const { session } = useSession()
   return useQuery({
-    queryKey: [key, session.siteId],
+    queryKey: [key, session.spaceId],
     queryFn: async () => {
-      let password = await get(`${key}_${session.siteId}`)
+      let password = await get(`${key}_${session.spaceId}`)
       return (password as string) || ''
     },
-    enabled: !!session?.siteId,
+    enabled: !!session?.spaceId,
   })
 }
 
-export async function setSyncServerPassword(siteId: string, password: string) {
-  await set(`${key}_${siteId}`, password)
-  queryClient.setQueryData([key, siteId], password)
+export async function setSyncServerPassword(spaceId: string, password: string) {
+  await set(`${key}_${spaceId}`, password)
+  queryClient.setQueryData([key, spaceId], password)
 }

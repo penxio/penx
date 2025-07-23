@@ -24,13 +24,13 @@ export class VisitStore {
   }
 
   async fetch() {
-    const site = await this.store.site.fetch()
-    const visit = await get(`${VISIT}_${site.id}`)
+    const space = await this.store.space.fetch()
+    const visit = await get(`${VISIT}_${space.id}`)
     return (visit || {}) as VisitState
   }
 
   async save(data: Partial<VisitState>) {
-    const site = await this.store.site.fetch()
+    const site = await this.store.space.fetch()
     const visit = this.fetch()
     const newVisit = { ...visit, ...data }
     await set(`${VISIT}_${site.id}`, newVisit)

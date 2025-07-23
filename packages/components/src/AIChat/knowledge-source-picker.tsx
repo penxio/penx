@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { BookOpen, Check, ChevronDown, Database, Search, X } from 'lucide-react'
 import { Area } from '@penx/domain'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { localDB } from '@penx/local-db'
 import { Button } from '@penx/uikit/button'
 import {
@@ -27,7 +27,7 @@ export const KnowledgeSourcePicker = ({
   onSourceChange,
   className,
 }: KnowledgeSourcePickerProps) => {
-  const { site } = useMySite()
+  const { space } = useMySpace()
   const [areas, setAreas] = useState<Area[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedArea, setSelectedArea] = useState<string | null>(null)
@@ -40,7 +40,7 @@ export const KnowledgeSourcePicker = ({
     const fetchAreas = async () => {
       try {
         setLoading(true)
-        const areasData = await localDB.listAreas(site.id)
+        const areasData = await localDB.listAreas(space.id)
         const areas = areasData.map((i) => new Area(i))
         setAreas(areas)
         setFilteredAreas(areas)

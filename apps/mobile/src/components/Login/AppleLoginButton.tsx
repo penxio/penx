@@ -36,7 +36,7 @@ export function AppleLoginButton({}: Props) {
       // handle the response. popoutStore is specific to my app
       console.log('======res:', res)
 
-      const sites = await localDB.listAllSites()
+      const sites = await localDB.listAllSpaces()
       const site = sites.find((s) => !s.props.isRemote)
 
       const session = await login({

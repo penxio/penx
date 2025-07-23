@@ -16,16 +16,16 @@ export async function getNewMnemonic() {
   return mnemonic
 }
 
-export async function setMnemonicToLocal(siteId: string, mnemonic: string) {
-  const key = calculateSHA256FromString(siteId)
+export async function setMnemonicToLocal(spaceId: string, mnemonic: string) {
+  const key = calculateSHA256FromString(spaceId)
   const encryptedMnemonic = encryptString(mnemonic, key)
   await set(key, encryptedMnemonic)
   return mnemonic
 }
 
-export async function getMnemonicFromLocal(siteId: string) {
+export async function getMnemonicFromLocal(spaceId: string) {
   try {
-    const key = calculateSHA256FromString(siteId)
+    const key = calculateSHA256FromString(spaceId)
     const encryptedMnemonic = await get(key)
     if (!encryptedMnemonic) return ''
     const mnemonic = decryptString(encryptedMnemonic, key)

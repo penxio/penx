@@ -11,6 +11,7 @@ import {
   ShapeStream,
   ShapeStreamOptions,
 } from '@electric-sql/client'
+import { get } from 'idb-keyval'
 import { SHAPE_URL } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { localDB } from '@penx/local-db'
@@ -34,8 +35,8 @@ import { getElectricSyncState, setElectricSyncState } from './syncState'
 
 const queue = new AsyncQueue()
 
-export async function syncNodesToLocal(siteId: string) {
-  const { last_lsn, ...metadata } = await getElectricSyncState(siteId)
+export async function syncNodesToLocal(spaceId: string) {
+  const { last_lsn, ...metadata } = await getElectricSyncState(spaceId)
   console.log('========last_lsn:', last_lsn, 'metadata:', metadata)
 
   const getShapeUrl = async () => {
@@ -49,25 +50,30 @@ export async function syncNodesToLocal(siteId: string) {
   const shapeUrl = await getShapeUrl()
 
   console.log('======getShapeUrl:', shapeUrl)
+  const session = await get('SESSION')
 
   const stream = new ShapeStream({
     url: shapeUrl,
+    headers: {
+      Authorization: `Bearer ${session.accessToken}`,
+    },
+
     params: {
       table: 'node',
-      where: `"siteId" = '${siteId}'`,
+      where: `"spaceId" = '${spaceId}'`,
     },
     ...metadata,
   })
 
   /** init data (first time) */
   {
-    const nodes = await localDB.listSiteNodes(siteId)
-    const site = nodes.find((n) => n.type === NodeType.SITE)
+    const nodes = await localDB.listSpaceNodes(spaceId)
+    const site = nodes.find((n) => n.type === NodeType.SPACE)
 
     // console.log('=====nodes:', nodes, 'site:', site)
 
     if (!nodes?.length || !site) {
-      // await localDB.node.where({ siteId }).delete()
+      // await localDB.node.where({ spaceId }).delete()
 
       console.log('First time sync......')
 
@@ -93,19 +99,19 @@ export async function syncNodesToLocal(siteId: string) {
   // })
 
   stream.subscribe(async (messages) => {
-    queue.addTask(() => sync(siteId, stream, messages))
+    queue.addTask(() => sync(spaceId, stream, messages))
   })
 
   appEmitter.on('STOP_SYNC_NODES', () => {
     stream.unsubscribeAll()
   })
 
-  const site = await localDB.getSite(siteId)
+  const site = await localDB.getSpace(spaceId)
   return site
 }
 
 async function sync(
-  siteId: string,
+  spaceId: string,
   stream: ShapeStream<Row<never>>,
   messages: Message<Row<never>>[],
 ) {
@@ -114,7 +120,7 @@ async function sync(
 
   console.log('========changes:', changes)
   if (!changes.length) return
-  const state = await getElectricSyncState(siteId)
+  const state = await getElectricSyncState(spaceId)
 
   if (lsn && state?.last_lsn && BigInt(lsn) <= BigInt(state.last_lsn)) {
     return
@@ -123,7 +129,7 @@ async function sync(
   const changeNodes: INode[] = []
 
   let updated = false
-  const nodes = await localDB.listSiteNodes(siteId)
+  const nodes = await localDB.listSpaceNodes(spaceId)
 
   const isInsertedOrUpdate = !changes.some(
     (c) => c.headers.operation === 'delete',
@@ -202,14 +208,14 @@ async function sync(
   // console.log('synced:', updated, '=====changeNodes:', changeNodes)
   // console.log('======>>>>>>>>equal1:', changeNodes)
 
-  await setElectricSyncState(siteId, {
+  await setElectricSyncState(spaceId, {
     handle: stream.shapeHandle!,
     offset: stream.lastOffset,
     last_lsn: lsn,
   })
 
   // {
-  //   const nodes = await localDB.listSiteNodes(siteId)
+  //   const nodes = await localDB.listSiteNodes(spaceId)
 
   //   // console.log('=====creations:', creations, store.creations.get())
 

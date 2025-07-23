@@ -7,6 +7,6 @@ export interface ISuggestion {
   isResolved: boolean
   userId: string
   documentCreatedAt: Date
-  siteId: string
+  spaceId: string
   createdAt: Date
 }

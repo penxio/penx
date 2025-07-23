@@ -51,20 +51,20 @@ export function CloudBackupForm({ onBackupSuccess }: Props) {
   })
 
   async function uploadEncryptedRecoveryPhrase(password: string) {
-    const { siteId } = session
+    const { spaceId } = session
 
     const accessToken = token?.access_token as string
     const drive = new GoogleDrive(accessToken)
-    const folderName = `${GOOGLE_DRIVE_FOLDER_NAME}-${siteId}`
+    const folderName = `${GOOGLE_DRIVE_FOLDER_NAME}-${spaceId}`
     const parentId = await drive.getOrCreateFolder(folderName)
 
     const fileName = GOOGLE_DRIVE_RECOVERY_PHRASE_FILE
 
     let files = await drive.listByName(fileName)
 
-    const mnemonic = await getMnemonicFromLocal(siteId)
+    const mnemonic = await getMnemonicFromLocal(spaceId)
 
-    const encryptedMnemonic = encryptString(mnemonic, password + siteId)
+    const encryptedMnemonic = encryptString(mnemonic, password + spaceId)
 
     if (files.length) {
       await drive.updateJsonContent(files[0].id, {

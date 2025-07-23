@@ -11,8 +11,8 @@ export class Journal {
     return this.raw?.id || ''
   }
 
-  get siteId(): string {
-    return this.raw.siteId
+  get spaceId(): string {
+    return this.raw.spaceId
   }
 
   get userId(): string {

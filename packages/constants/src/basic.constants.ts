@@ -38,11 +38,11 @@ export const SECONDS_PER_DAY = BigInt(24 * 60 * 60) // 1 days
 
 export const SITE_MODE = 'SITE_MODE'
 
-export const ACTIVE_SITE = 'ACTIVE_SITE'
+export const ACTIVE_SPACE = 'ACTIVE_SPACE'
 
 export const LOCALE = 'LOCALE'
 
-export const GOOGLE_DRIVE_FOLDER_NAME = 'penx-backup-site'
+export const GOOGLE_DRIVE_FOLDER_NAME = 'penx-backup-space'
 export const GOOGLE_DRIVE_RECOVERY_PHRASE_FILE = 'recovery-phrase.json'
 
 export enum SubscriptionType {

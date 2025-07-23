@@ -34,7 +34,7 @@ export function usePublishPost() {
       let creationId: number | undefined
       // try {
       //   await api.creation.publish.mutate({
-      //     siteId: id,
+      //     spaceId: id,
       //     creationId: creation?.id,
       //     ...opt,
       //     slug,

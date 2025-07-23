@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { EditIcon, TrashIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { AIProvider } from '@penx/model-type'
 import { store } from '@penx/store'
 import { LLMProviderType } from '@penx/types'
@@ -15,8 +15,8 @@ import { ProviderDropdownMenu } from './provider-dropdown-menu'
 import { ProviderEditorDialog } from './provider-editor-dialog'
 
 export function ProviderSetting() {
-  const { site } = useMySite()
-  const providers = site?.props?.aiSetting?.providers || []
+  const { space } = useMySpace()
+  const providers = space?.props?.aiSetting?.providers || []
 
   // Track provider editing
   const [isEditing, setIsEditing] = useState(false)
@@ -35,7 +35,7 @@ export function ProviderSetting() {
           (p: AIProvider) => p.type === providerType,
         )
         if (providerToRemove) {
-          await store.site.deleteAIProvider(providerType)
+          await store.space.deleteAIProvider(providerType)
           toast.success(`${providerType} provider deleted successfully`)
         }
       } catch (error) {

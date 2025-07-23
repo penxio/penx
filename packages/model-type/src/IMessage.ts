@@ -4,6 +4,6 @@ export interface IMessage {
   role: 'system' | 'user' | 'assistant' | 'data'
   parts: any
   attachments?: any
-  siteId: string
+  spaceId: string
   createdAt: Date
 }

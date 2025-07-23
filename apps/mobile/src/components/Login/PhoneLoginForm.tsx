@@ -51,7 +51,7 @@ export function PhoneLoginForm({}: Props) {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
       setLoading(true)
-      const sites = await localDB.listAllSites()
+      const sites = await localDB.listAllSpaces()
       const site = sites.find((s) => !s.props.isRemote)
 
       await api.sendSmsCode(data.phone, site?.userId!)

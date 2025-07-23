@@ -145,7 +145,7 @@ export function Profile() {
                   toast.promise(
                     async () => {
                       await api.deleteAccount()
-                      await localDB.deleteAllSiteData(session.siteId)
+                      await localDB.deleteAllSpaceData(session.spaceId)
                       await logout()
                       appEmitter.emit('ON_LOGOUT_SUCCESS')
                       appEmitter.emit('DELETE_ACCOUNT')

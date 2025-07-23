@@ -3,6 +3,6 @@ export interface IChat {
   title: string
   userId: string
   visibility: 'public' | 'private'
-  siteId: string
+  spaceId: string
   createdAt: Date
 }

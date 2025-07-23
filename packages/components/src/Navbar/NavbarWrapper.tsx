@@ -2,7 +2,7 @@
 
 import React, { HTMLAttributes, PropsWithChildren, useMemo } from 'react'
 import { Merienda } from 'next/font/google'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { Link, usePathname } from '@penx/libs/i18n'
 import { useSession } from '@penx/session'
 import { cn } from '@penx/utils'
@@ -22,7 +22,7 @@ export function NavbarWrapper({
   const pathname = usePathname()!
   const { data: session } = useSession()
   const isPost = pathname.startsWith(`/~/post/`)
-  const { site } = useMySite()
+  const { space } = useMySpace()
 
   const topRightJSX = useMemo(() => {
     if (isPost) return null
@@ -42,7 +42,7 @@ export function NavbarWrapper({
     >
       <div>
         <Link href="/" className={cn('text-2xl font-bold', merienda.className)}>
-          {site.name}
+          {space.name}
         </Link>
       </div>
       <div className="flex-1"></div>

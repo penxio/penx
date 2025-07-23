@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { TrashIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { fetchAvailableModels } from '@penx/libs/ai/helper'
 import { AIProvider } from '@penx/model-type'
 import { store } from '@penx/store'
@@ -39,7 +39,6 @@ export function ProviderEditorDialog({
   providerType,
   existingProvider = null,
 }: ProviderDialogProps) {
-  const { site } = useMySite()
   const [apiKey, setApiKey] = useState('')
   const [baseURL, setBaseURL] = useState('')
   const [selectedModels, setSelectedModels] = useState<string[]>([])
@@ -79,7 +78,7 @@ export function ProviderEditorDialog({
       )
     ) {
       try {
-        await store.site.deleteAIProvider(effectiveProviderType)
+        await store.space.deleteAIProvider(effectiveProviderType)
         toast.success(
           `${LLM_PROVIDER_INFO[effectiveProviderType]?.name} provider deleted successfully`,
         )
@@ -207,7 +206,7 @@ export function ProviderEditorDialog({
       })
     }
 
-    store.site.updateAIProvider(provider)
+    store.space.updateAIProvider(provider)
     onOpenChange(false)
     resetForm()
 

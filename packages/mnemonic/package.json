@@ -14,8 +14,7 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@penx/typescript-config": "workspace:*",
-    "@types/hdkey": "^2.0.3"
+    "@penx/typescript-config": "workspace:*"
   },
   "dependencies": {
     "@penx/encryption": "workspace:*",

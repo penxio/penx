@@ -15,10 +15,10 @@ export default async function handler(
     return res.status(405).json({ error: 'Only POST method is allowed' })
   }
 
-  const body = req.body as { siteId: string; version: string }
+  const body = req.body as { spaceId: string; version: string }
 
   // await prisma.hostedSite.update({
-  //   where: { id: body.siteId },
+  //   where: { id: body.spaceId },
   //   data: {
   //     version: body.version,
   //   },

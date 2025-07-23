@@ -34,8 +34,10 @@ export const SYNC_SERVICE_HOST =
   ''
 
 export const SHAPE_URL = SYNC_SERVICE_HOST
-  ? `${SYNC_SERVICE_HOST}/api/shape-proxy`
-  : 'https://sync.penx.io/api/shape-proxy'
+  ? `${SYNC_SERVICE_HOST}/api/v1/shape`
+  : 'https://sync.penx.io/api/v1/shape'
+
+// export const SHAPE_URL = `http://localhost:3001/api/v1/shape`
 
 export const TRANSCRIBE_URL = SYNC_SERVICE_HOST
   ? `${SYNC_SERVICE_HOST}/api/transcribe`

@@ -21,7 +21,7 @@ export function usePostImport() {
 
     // try {
     //   await api.creation.importPosts.mutate({
-    //     siteId: site.id,
+    //     spaceId: site.id,
     //     creations: creation,
     //     creationStatus: CreationStatus.PUBLISHED,
     //   })

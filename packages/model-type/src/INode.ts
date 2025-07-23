@@ -12,7 +12,7 @@ export type Widget = {
 }
 
 export enum NodeType {
-  SITE = 'SITE',
+  SPACE = 'SPACE',
   AREA = 'AREA',
   STRUCT = 'STRUCT',
   TAG = 'TAG',
@@ -39,11 +39,11 @@ export interface INode {
 
   areaId?: string
   userId: string
-  siteId: string
+  spaceId: string
 }
 
-export interface ISiteNode extends INode {
-  type: NodeType.SITE
+export interface ISpaceNode extends INode {
+  type: NodeType.SPACE
   props: {
     name: string
     description: string

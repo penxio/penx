@@ -8,8 +8,8 @@ export class Struct {
     return this.raw?.id || ''
   }
 
-  get siteId() {
-    return this.raw.siteId
+  get spaceId() {
+    return this.raw.spaceId
   }
 
   get userId() {

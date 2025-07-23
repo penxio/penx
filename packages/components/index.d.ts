@@ -1,5 +1,5 @@
-import { ElectronAPI } from '@electron-toolkit/preload'
-import { clipboard, contextBridge, ipcRenderer } from 'electron'
+import type { ElectronAPI } from '@electron-toolkit/preload'
+import type Electron from 'electron'
 import { Shortcut } from '@penx/types'
 
 /// <reference types="vite-plugin-svgr/client" />

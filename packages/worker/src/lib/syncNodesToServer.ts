@@ -10,15 +10,15 @@ import { SessionData } from '@penx/types'
 export async function syncNodesToServer() {
   const session = (await get('SESSION')) as SessionData
 
-  if (!session || !session?.siteId) return
+  if (!session || !session?.spaceId) return
 
-  const site = await localDB.getSite(session.siteId)
+  const site = await localDB.getSpace(session.spaceId)
 
   if (!site) return
 
   const getChanges = async () => {
     const changes = await localDB.change
-      .where({ siteId: session.siteId, synced: 0 })
+      .where({ spaceId: session.spaceId, synced: 0 })
       .sortBy('id')
 
     return changes.filter((change) => {
@@ -108,7 +108,7 @@ export async function syncNodesToServer() {
   for (const change of newChanges) {
     const data = {
       operation: change.operation,
-      siteId: change.siteId,
+      spaceId: change.spaceId,
       key: change.key,
       data: change.data,
     }

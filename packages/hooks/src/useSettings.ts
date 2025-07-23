@@ -7,9 +7,9 @@ import { uniqueId } from '@penx/unique-id'
 export function useSettings() {
   const { session } = useSession()
   return useQuery({
-    queryKey: ['settings', session.siteId],
+    queryKey: ['settings', session.spaceId],
     queryFn: async () => {
-      let settings = await localDB.getSettings(session.siteId)
+      let settings = await localDB.getSettings(session.spaceId)
       if (!settings) {
         settings = await localDB.addNode<ISettingsNode>({
           id: uniqueId(),
@@ -23,11 +23,11 @@ export function useSettings() {
           createdAt: new Date(),
           updatedAt: new Date(),
           userId: session.userId,
-          siteId: session.siteId,
+          spaceId: session.spaceId,
         })
       }
       return settings
     },
-    enabled: !!session?.siteId,
+    enabled: !!session?.spaceId,
   })
 }

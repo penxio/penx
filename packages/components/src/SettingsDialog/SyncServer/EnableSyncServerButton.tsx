@@ -23,14 +23,14 @@ export function EnableSyncServerButton() {
         setLoading(true)
         try {
           await api.updateSite({
-            id: session.siteId,
+            id: session.spaceId,
             syncServer: {
               ...session.syncServer,
               enabled: true,
             },
           })
           await refreshSession()
-          await syncNodesByDiff(session.siteId)
+          await syncNodesByDiff(session.spaceId)
           toast.success('Enable successfully')
         } catch (error) {
           toast.error(extractErrorMessage(error))

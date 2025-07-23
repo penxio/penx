@@ -40,7 +40,7 @@ export interface Socials {
 export interface Analytics {
   gaMeasurementId: string
   umamiHost: string
-  umamiWebsiteId: string
+  umamiWebspaceId: string
 }
 
 export enum NavLinkType {
@@ -180,7 +180,7 @@ export type Creation = {
   createdAt: Date
   updatedAt: Date
   userId: string
-  siteId: string
+  spaceId: string
   creationTags: CreationTag[]
   struct: any
   authors: any[]

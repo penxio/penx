@@ -38,7 +38,7 @@ export function GoogleLoginButton({}: Props) {
 
       setJson(res)
 
-      const sites = await localDB.listAllSites()
+      const sites = await localDB.listAllSpaces()
       const site = sites.find((s) => !s.props.isRemote)
 
       const session = await login({

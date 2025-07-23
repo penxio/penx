@@ -1,4 +1,4 @@
-export interface ISite {
+export interface ISpace {
   id: string
   name: string
   description: string

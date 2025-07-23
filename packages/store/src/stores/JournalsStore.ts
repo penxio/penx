@@ -63,7 +63,7 @@ export class JournalsStore {
 
   async checkTodayJournal() {
     try {
-      const site = this.store.site.get()
+      const site = this.store.space.get()
       if (!site) return
       const todayJournal = this.getTodayJournal()
 
@@ -118,7 +118,7 @@ export class JournalsStore {
       },
       createdAt: new Date(),
       updatedAt: new Date(),
-      siteId: area.siteId,
+      spaceId: area.spaceId,
       userId: area.userId,
       areaId: area.id,
     }

@@ -6,7 +6,7 @@ import { CreationsStore } from './stores/CreationsStore'
 import { CreationTagsStore } from './stores/CreationTagsStore'
 import { JournalsStore } from './stores/JournalsStore'
 import { PanelsStore } from './stores/PanelsStore'
-import { SiteStore } from './stores/SiteStore'
+import { SpaceStore } from './stores/SpaceStore'
 import { StructsStore } from './stores/StructsStore'
 import { TagsStore } from './stores/TagsStore'
 import { VisitStore } from './stores/VisitStore'
@@ -20,7 +20,7 @@ export type StoreType = {
 
   app: AppStore
   visit: VisitStore
-  site: SiteStore
+  space: SpaceStore
   panels: PanelsStore
   structs: StructsStore
   tags: TagsStore

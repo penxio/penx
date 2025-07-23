@@ -2,7 +2,7 @@
 
 import { Struct } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { useTags } from '@penx/hooks/useTags'
 import { getTextColorByName } from '@penx/libs/color-helper'
 import { Panel } from '@penx/types'

@@ -12,7 +12,7 @@ import { store } from '@penx/store'
 import { ColumnType, CreationStatus, GateType, PanelType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { useJournal } from './useJournal'
-import { useMySite } from './useMySite'
+import { useMySpace } from './useMySpace'
 
 export type Input = {
   type: string
@@ -26,7 +26,7 @@ export type Input = {
 
 export function useAddCreation() {
   const { structs } = useStructs()
-  const { site } = useMySite()
+  const { space } = useMySpace()
   const { journal } = useJournal()
 
   return async (input: Input) => {
@@ -39,7 +39,7 @@ export function useAddCreation() {
     const id = uniqueId()
     const addCreationInput: AddCreationInput = {
       slug: uniqueId(),
-      siteId: site.id,
+      spaceId: space.id,
       description: '',
       image: '',
       ...input,
@@ -94,8 +94,8 @@ export function useAddCreation() {
       createdAt: new Date(),
       updatedAt: new Date(),
       areaId: area.id,
-      siteId: struct.siteId,
-      userId: site.userId,
+      spaceId: struct.spaceId,
+      userId: space.userId,
     }
 
     store.creations.addCreation(newCreation)

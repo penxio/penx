@@ -3,7 +3,7 @@
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
 import { api } from '@penx/api'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { useSettings } from '@penx/hooks/useSettings'
 import { useSyncServerPassword } from '@penx/hooks/useSyncServerPassword'
 import { localDB } from '@penx/local-db'
@@ -22,7 +22,6 @@ export function SyncServer() {
   const { data: password = '', isLoading: isPasswordLoading } =
     useSyncServerPassword()
   const { session } = useSession()
-  const { site } = useMySite()
 
   const { data: settings, isLoading } = useSettings()
 

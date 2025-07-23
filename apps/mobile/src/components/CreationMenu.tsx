@@ -28,7 +28,6 @@ import {
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useCreation } from '@penx/hooks/useCreation'
-import { useMySite } from '@penx/hooks/useMySite'
 import { useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'

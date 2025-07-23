@@ -14,8 +14,8 @@ import {
   isAreaNode,
   isCreationNode,
   isCreationTagNode,
-  ISiteNode,
   isJournalNode,
+  ISpaceNode,
   isStructNode,
   isTagNode,
   NodeType,
@@ -33,7 +33,7 @@ import {
 import { uniqueId } from '@penx/unique-id'
 import { fixStructsViews } from './lib/fixStructsViews'
 import { fixTaskStruct } from './lib/fixTaskStruct'
-import { initLocalSite } from './lib/initLocalSite'
+import { initLocalSpace } from './lib/initLocalSpace'
 import { isRowsEqual } from './lib/isRowsEqual'
 import { syncNodesToLocal } from './lib/syncNodesToLocal'
 
@@ -48,11 +48,12 @@ export class AppService {
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return
-    try {
-      const site = await this.getInitialSite(session)
 
-      // console.log('===========getInital=site:', site)
-      await this.initStore(site)
+    try {
+      const space = await this.getInitialSpace(session)
+
+      // console.log('===========getInital=space:', space)
+      await this.initStore(space)
     } catch (error) {
       console.log('init error=====>>>:', error)
       store.app.setAppError('App init error: ' + error.message)
@@ -62,51 +63,51 @@ export class AppService {
     this.inited = true
   }
 
-  private async getInitialSite(session: SessionData): Promise<ISiteNode> {
+  private async getInitialSpace(session: SessionData): Promise<ISpaceNode> {
     if (!session) {
-      const sites = await localDB.listAllSites()
-      const site = sites.find((s) => s.props.isRemote) || sites?.[0]
-      if (site) return site
-      return initLocalSite()
+      const spaces = await localDB.listAllSpaces()
+      const space = spaces.find((s) => s.props.isRemote) || spaces?.[0]
+      if (space) return space
+      return initLocalSpace()
     }
 
     if (!navigator.onLine) {
-      if (!session.siteId) {
-        const sites = await localDB.listAllSites()
-        if (sites) return sites[0]
-        return initLocalSite()
+      if (!session.spaceId) {
+        const spaces = await localDB.listAllSpaces()
+        if (spaces) return spaces[0]
+        return initLocalSpace()
       }
 
-      const site = await localDB.getSite(session.siteId)
-      if (site) return site
-      return initLocalSite()
+      const space = await localDB.getSpace(session.spaceId)
+      if (space) return space
+      return initLocalSpace()
     }
 
-    // console.log('========session.siteId:', session.siteId)
+    // console.log('========session.spaceId:', session.spaceId)
 
-    if (session.siteId) {
-      const sites = await localDB.listAllSiteByUserId(session.userId)
-      const site = sites.find((s) => s.props.isRemote)
+    if (session.spaceId) {
+      const spaces = await localDB.listAllSpaceByUserId(session.userId)
+      const space = spaces.find((s) => s.props.isRemote)
 
-      console.log('=======sites:', sites)
+      console.log('=======spaces:', spaces)
 
-      if (site) {
-        await syncNodesToLocal(site.id)
-        return site
+      if (space) {
+        await syncNodesToLocal(space.id)
+        return space
       }
 
-      const remoteSite = await syncNodesToLocal(session.siteId)
+      const remoteSite = await syncNodesToLocal(session.spaceId)
 
       return remoteSite
     }
 
-    let site = await localDB.getSiteByUserId(session.userId)
+    let space = await localDB.getSpaceByUserId(session.userId)
 
-    if (!site) {
-      site = await initLocalSite(session.userId)
+    if (!space) {
+      space = await initLocalSpace(session.userId)
     }
 
-    const nodes = await localDB.listSiteNodes(site.id)
+    const nodes = await localDB.listSpaceNodes(space.id)
 
     await api.syncInitialNodes(
       nodes.map((n) => ({
@@ -116,22 +117,21 @@ export class AppService {
       })),
     )
 
-    await localDB.updateSiteProps(site.id, { isRemote: true })
-    await syncNodesToLocal(site.id)
+    await localDB.updateSpaceProps(space.id, { isRemote: true })
+    await syncNodesToLocal(space.id)
 
     await updateSession({
-      activeSiteId: site.id,
-      siteId: site.id,
+      activeSpaceId: space.id,
+      spaceId: space.id,
     })
 
-    return site
+    return space
   }
 
-  private async initStore(site: ISiteNode) {
-    // console.log('=============site..:', site)
-    await store.site.save(site)
+  private async initStore(space: ISpaceNode) {
+    await store.space.save(space)
 
-    const nodes = await localDB.listSiteNodes(site.id)
+    const nodes = await localDB.listSpaceNodes(space.id)
 
     const areas = nodes.filter((n) => isAreaNode(n))
 
@@ -153,8 +153,8 @@ export class AppService {
       const newStruct = generateStructNode({
         type: StructType.IMAGE,
         name: t`Image`,
-        siteId: site.id,
-        userId: site.userId,
+        spaceId: space.id,
+        userId: space.userId,
         areaId: area.id,
       })
       await localDB.addStruct(newStruct)
@@ -169,8 +169,8 @@ export class AppService {
       const newStruct = generateStructNode({
         type: StructType.SNIPPET,
         name: t`Snippet`,
-        siteId: site.id,
-        userId: site.userId,
+        spaceId: space.id,
+        userId: space.userId,
         areaId: area.id,
       })
       await localDB.addStruct(newStruct)
@@ -182,8 +182,8 @@ export class AppService {
       const newStruct = generateStructNode({
         type: StructType.PROMPT,
         name: t`Prompt`,
-        siteId: site.id,
-        userId: site.userId,
+        spaceId: space.id,
+        userId: space.userId,
         areaId: area.id,
       })
       await localDB.addStruct(newStruct)
@@ -197,8 +197,8 @@ export class AppService {
       const newStruct = generateStructNode({
         type: StructType.QUICK_LINK,
         name: t`Quicklink`,
-        siteId: site.id,
-        userId: site.userId,
+        spaceId: space.id,
+        userId: space.userId,
         areaId: area.id,
       })
       await localDB.addStruct(newStruct)
@@ -229,7 +229,7 @@ export class AppService {
 
     const panels = await this.getPanels(area)
 
-    store.site.set(site)
+    store.space.set(space)
     store.creations.set(creations)
     store.visit.set(visit)
     store.area.set(area)
@@ -268,7 +268,7 @@ export class AppService {
           },
           createdAt: new Date(),
           updatedAt: new Date(),
-          siteId: area.siteId,
+          spaceId: area.spaceId,
           userId: area.userId,
           areaId: area.id,
         }

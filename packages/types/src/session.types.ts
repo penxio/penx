@@ -21,8 +21,8 @@ export interface SessionData {
   userId: string
   ensName: string | null
   role: string
-  siteId: string
-  activeSiteId: string
+  spaceId: string
+  activeSpaceId: string
   planType: string
   currentPeriodEnd: string
   billingCycle: string
@@ -161,7 +161,7 @@ export type UpdateSessionData =
 
 export type UpdateProps = {
   type: 'update-props'
-  activeSiteId?: string
+  activeSpaceId?: string
   [key: string]: any
 }
 
@@ -190,7 +190,7 @@ export function isUseCoupon(value: any): value is UseCouponData {
 
 export type CancelSubscriptionData = {
   type: 'cancel-subscription'
-  siteId: string
+  spaceId: string
 }
 
 export function isCancelSubscription(

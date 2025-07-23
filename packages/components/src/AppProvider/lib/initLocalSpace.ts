@@ -6,24 +6,24 @@ import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {
   IJournalNode,
-  ISiteNode,
+  ISpaceNode,
   IStructNode,
   NodeType,
 } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
-export async function initLocalSite(uid?: string) {
+export async function initLocalSpace(uid?: string) {
   return await localDB.transaction('rw', localDB.node, async () => {
-    const siteId = uniqueId()
+    const spaceId = uniqueId()
     const userId = uid || uniqueId()
-    console.log('========siteId:', siteId, 'uid:', uid)
+    console.log('========spaceId:', spaceId, 'uid:', uid)
 
-    const newSite: ISiteNode = {
-      id: siteId,
-      type: NodeType.SITE,
-      siteId: siteId,
+    const newSpace: ISpaceNode = {
+      id: spaceId,
+      type: NodeType.SPACE,
+      spaceId: spaceId,
       props: {
-        name: t`My Site`,
+        name: t`My Space`,
         description: '',
         about: JSON.stringify(defaultEditorContent),
         logo: '',
@@ -53,7 +53,7 @@ export async function initLocalSite(uid?: string) {
       updatedAt: new Date(),
       userId,
     }
-    await localDB.node.add(newSite)
+    await localDB.node.add(newSpace)
 
     const areaId = await localDB.node.add({
       id: uniqueId(),
@@ -71,13 +71,13 @@ export async function initLocalSite(uid?: string) {
       },
       createdAt: new Date(),
       updatedAt: new Date(),
-      siteId,
+      spaceId,
       userId,
     })
 
     await localDB.node.bulkPut(
       getDefaultStructs({
-        siteId: siteId,
+        spaceId: spaceId,
         userId,
         areaId: areaId,
       }),
@@ -103,17 +103,17 @@ export async function initLocalSite(uid?: string) {
       },
       createdAt: new Date(),
       updatedAt: new Date(),
-      siteId: siteId,
+      spaceId: spaceId,
       userId,
       areaId,
     } as IJournalNode)
 
     // const structs = (await localDB.node
-    //   .where({ type: NodeType.STRUCT, siteId })
+    //   .where({ type: NodeType.STRUCT, spaceId })
     //   .toArray()) as unknown as IStructNode[]
 
-    const site = await localDB.node.get(siteId)
+    const site = await localDB.node.get(spaceId)
     console.log('init local site!!!')
-    return site as ISiteNode
+    return site as ISpaceNode
   })
 }

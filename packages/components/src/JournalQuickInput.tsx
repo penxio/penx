@@ -111,8 +111,8 @@ export function JournalQuickInput({
   }, [editor])
 
   useEffect(() => {
-    if (editor && window.electron) {
-      window.electron.ipcRenderer.on('input-window-show', () => {
+    if (editor && (window as any).electron) {
+      ;(window as any).electron.ipcRenderer.on('input-window-show', () => {
         editor.chain().focus().run()
       })
     }

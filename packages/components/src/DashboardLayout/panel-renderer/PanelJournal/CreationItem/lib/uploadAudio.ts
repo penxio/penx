@@ -1,5 +1,5 @@
 import { get } from 'idb-keyval'
-import { ACTIVE_SITE, STATIC_URL } from '@penx/constants'
+import { ACTIVE_SPACE, STATIC_URL } from '@penx/constants'
 import { calculateSHA256FromFile } from '@penx/utils/calculateSHA256FromFile'
 
 type UploadReturn = {

@@ -376,7 +376,7 @@ export class PanelsStore {
         },
         createdAt: new Date(),
         updatedAt: new Date(),
-        siteId: area.siteId,
+        spaceId: area.spaceId,
         userId: area.userId,
         areaId: area.id,
       }

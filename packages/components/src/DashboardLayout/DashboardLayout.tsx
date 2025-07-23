@@ -78,7 +78,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
       const mnemonic = await getNewMnemonic()
       const publicKey = getPublicKey(mnemonic)
       await api.updatePublicKey(publicKey)
-      await setMnemonicToLocal(session.siteId!, mnemonic)
+      await setMnemonicToLocal(session.spaceId!, mnemonic)
       // store.user.setMnemonic(mnemonic)
       refreshSession()
     } catch (error) {

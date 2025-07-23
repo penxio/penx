@@ -5,9 +5,9 @@ interface Features {
   database: boolean
 }
 
-export function getDashboardPath(site: any) {
-  if (!site) return '/~/creations?type=ARTICLE'
-  const { features } = (site.config || {}) as any as {
+export function getDashboardPath(space: any) {
+  if (!space) return '/~/creations?type=ARTICLE'
+  const { features } = (space.config || {}) as any as {
     features: Features
   }
 

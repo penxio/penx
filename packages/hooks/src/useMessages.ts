@@ -5,8 +5,8 @@ import { getSession, useSession } from '@penx/session'
 
 const queryKey = ['messages']
 
-export async function queryMessages(siteId: string) {
-  const list = await localDB.message.where({ siteId }).toArray()
+export async function queryMessages(spaceId: string) {
+  const list = await localDB.message.where({ spaceId }).toArray()
 
   return list
     .toSorted((a, b) => {
@@ -20,14 +20,14 @@ export function useMessages() {
   return useQuery({
     queryKey,
     queryFn: async () => {
-      return queryMessages(session.siteId)
+      return queryMessages(session.spaceId)
     },
   })
 }
 
 export async function refetchMessages() {
   const session = await getSession()
-  const messages = await queryMessages(session.siteId)
+  const messages = await queryMessages(session.spaceId)
   queryClient.setQueryData(queryKey, messages)
   return messages
 }

@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import Dexie, { Table } from 'dexie'
 import { get } from 'idb-keyval'
-import { ACTIVE_SITE } from '@penx/constants'
+import { ACTIVE_SPACE } from '@penx/constants'
 import {
   IAreaNode,
   IChat,
@@ -12,7 +12,7 @@ import {
   IMessage,
   INode,
   ISettingsNode,
-  ISiteNode,
+  ISpaceNode,
   IStructNode,
   ISuggestion,
   ITagNode,
@@ -39,15 +39,15 @@ class LocalDB extends Dexie {
     super('penx-local')
     this.version(20).stores({
       // Primary key and indexed props
-      node: 'id, siteId, userId, areaId, type, date, [userId+type], [siteId+type], [areaId+type], [siteId+type+structType]',
+      node: 'id, spaceId, userId, areaId, type, date, [userId+type], [spaceId+type], [areaId+type], [spaceId+type+structType]',
       file: 'id, hash',
       voice: 'id, hash',
-      asset: 'id, siteId, url, isPublic, isTrashed',
-      chat: 'id, siteId',
-      message: 'id, siteId',
-      document: 'id, siteId',
-      suggestion: 'id, siteId',
-      change: '++id, table, siteId, [siteId+synced]',
+      asset: 'id, spaceId, url, isPublic, isTrashed',
+      chat: 'id, spaceId',
+      message: 'id, spaceId',
+      document: 'id, spaceId',
+      suggestion: 'id, spaceId',
+      change: '++id, table, spaceId, [spaceId+synced]',
     })
   }
 
@@ -63,8 +63,8 @@ class LocalDB extends Dexie {
     return this.node.get(id) as any as Promise<T>
   }
 
-  listSiteNodes = (siteId: string) => {
-    return this.node.where({ siteId }).toArray() as unknown as Promise<INode[]>
+  listSpaceNodes = (spaceId: string) => {
+    return this.node.where({ spaceId }).toArray() as unknown as Promise<INode[]>
   }
 
   listAreaNodes = (areaId: string) => {
@@ -101,49 +101,52 @@ class LocalDB extends Dexie {
     })
   }
 
-  getSite = (id: string) => {
-    return this.node.get(id) as any as Promise<ISiteNode>
+  getSpace = (id: string) => {
+    return this.node.get(id) as any as Promise<ISpaceNode>
   }
 
-  getSiteByUserId = (userId: string) => {
+  getSpaceByUserId = (userId: string) => {
     return this.node
-      .where({ type: NodeType.SITE, userId })
-      .first() as unknown as Promise<ISiteNode>
+      .where({ type: NodeType.SPACE, userId })
+      .first() as unknown as Promise<ISpaceNode>
   }
 
-  listAllSites = () => {
+  listAllSpaces = () => {
     return this.node
-      .where({ type: NodeType.SITE })
-      .toArray() as unknown as Promise<ISiteNode[]>
+      .where({ type: NodeType.SPACE })
+      .toArray() as unknown as Promise<ISpaceNode[]>
   }
 
-  listAllSiteByUserId = (userId: string) => {
+  listAllSpaceByUserId = (userId: string) => {
     return this.node
       .where({
-        type: NodeType.SITE,
+        type: NodeType.SPACE,
         userId,
       })
-      .toArray() as unknown as Promise<ISiteNode[]>
+      .toArray() as unknown as Promise<ISpaceNode[]>
   }
 
-  addSite = async <T extends ISiteNode>(data: Partial<T>) => {
-    const site = await this.addNode({
+  addSpace = async <T extends ISpaceNode>(data: Partial<T>) => {
+    const space = await this.addNode({
       id: uniqueId(),
-      type: NodeType.SITE,
+      type: NodeType.SPACE,
       ...data,
-    } as ISiteNode)
+    } as ISpaceNode)
 
-    return site as T
+    return space as T
   }
 
-  updateSiteProps = async (id: string, props: Partial<ISiteNode['props']>) => {
+  updateSpaceProps = async (
+    id: string,
+    props: Partial<ISpaceNode['props']>,
+  ) => {
     await this.updateNodeProps(id, props)
   }
 
-  listAreas = (siteId?: string) => {
-    const condition = siteId
-      ? { type: NodeType.AREA, siteId }
-      : { type: NodeType.SITE }
+  listAreas = (spaceId?: string) => {
+    const condition = spaceId
+      ? { type: NodeType.AREA, spaceId }
+      : { type: NodeType.SPACE }
 
     return this.node.where(condition).toArray() as unknown as Promise<
       IAreaNode[]
@@ -361,9 +364,9 @@ class LocalDB extends Dexie {
     })
   }
 
-  getSettings = (siteId: string) => {
+  getSettings = (spaceId: string) => {
     return this.node
-      .where({ type: NodeType.SETTINGS, siteId })
+      .where({ type: NodeType.SETTINGS, spaceId })
       .first() as unknown as Promise<ISettingsNode>
   }
 
@@ -379,11 +382,11 @@ class LocalDB extends Dexie {
     op: OperationType,
     data = {} as Record<string, any>,
   ) {
-    const site = (await get(ACTIVE_SITE)) as ISiteNode
-    if (site?.props.isRemote) {
+    const space = (await get(ACTIVE_SPACE)) as ISpaceNode
+    if (space?.props.isRemote) {
       const change = {
         operation: op,
-        siteId: site.id,
+        spaceId: space.id,
         synced: 0,
         createdAt: new Date(),
         key: id,
@@ -393,8 +396,8 @@ class LocalDB extends Dexie {
     }
   }
 
-  deleteAllSiteData = (siteId: string) => {
-    return this.node.where('siteId').anyOf(siteId).delete()
+  deleteAllSpaceData = (spaceId: string) => {
+    return this.node.where('spaceId').anyOf(spaceId).delete()
   }
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { AIProvider } from '@penx/model-type'
 import { LLMProviderType, LLMProviderTypeEnum } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -32,8 +32,8 @@ export function ProviderSelector({
   initialProvider = '',
   initialModel = '',
 }: ProviderSelectorProps) {
-  const { site } = useMySite()
-  const providers = site?.props?.aiSetting?.providers || []
+  const { space } = useMySpace()
+  const providers = space?.props?.aiSetting?.providers || []
 
   // Use initialProvider/initialModel if provided, otherwise use first provider/model
   const [selectedProvider, setSelectedProvider] = useState<

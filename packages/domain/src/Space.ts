@@ -1,10 +1,10 @@
-import { IAreaNode, INode, ISiteNode, NodeType } from '@penx/model-type'
+import { IAreaNode, INode, ISpaceNode, NodeType } from '@penx/model-type'
 import { getUrl } from '@penx/utils'
 
-export class Site {
-  props: ISiteNode['props']
+export class Space {
+  props: ISpaceNode['props']
 
-  constructor(public raw: ISiteNode) {
+  constructor(public raw: ISpaceNode) {
     this.props = this.raw?.props || {}
   }
 
@@ -12,8 +12,8 @@ export class Site {
     return this.raw?.id || ''
   }
 
-  get siteId(): string {
-    return this.raw.siteId
+  get spaceId(): string {
+    return this.raw.spaceId
   }
 
   get userId(): string {

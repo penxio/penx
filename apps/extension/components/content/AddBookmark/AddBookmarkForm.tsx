@@ -14,7 +14,7 @@ import { defaultEditorContent } from '@penx/constants'
 import { useAreas } from '@penx/hooks/useAreas'
 import { localDB } from '@penx/local-db'
 import { ICreationNode } from '@penx/model-type'
-import { siteAtom, store } from '@penx/store'
+import { spaceAtom, store } from '@penx/store'
 import { CreationStatus, GateType, StructType } from '@penx/types'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
@@ -73,7 +73,7 @@ export function AddBookmarkForm() {
   })
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const site = store.site.get()
+    const site = store.space.get()
     const structs = store.structs.get()
     const struct = structs.find(
       (struct) => struct.props.type === StructType.BOOKMARK,

@@ -40,14 +40,14 @@ export class StructsStore {
   }
 
   createStruct(input: Partial<IStructNode['props']>) {
-    const site = this.store.site.get()
+    const site = this.store.space.get()
     const area = this.store.area.get()
     const structs = this.get()
     const newStruct = generateStructNode({
       type: uniqueId(),
       ...input,
       areaId: area.id,
-      siteId: site.id,
+      spaceId: site.id,
       userId: site.userId,
     })
 
@@ -62,13 +62,13 @@ export class StructsStore {
   }
 
   installStruct(input: InstallStructInput) {
-    const site = this.store.site.get()
+    const site = this.store.space.get()
     const structs = this.get()
     const area = this.store.area.get()
     const newStruct = generateStructNode({
       ...input,
       areaId: area.id,
-      siteId: site.id,
+      spaceId: site.id,
       userId: site.userId,
     })
 

@@ -5,7 +5,7 @@ import { Player } from 'shikwasa'
 import { toast } from 'sonner'
 import { Creation } from '@penx/domain'
 import { updateCreationProps } from '@penx/hooks/useCreation'
-import { useMySite } from '@penx/hooks/useMySite'
+import { useMySpace } from '@penx/hooks/useMySpace'
 import { uploadFile } from '@penx/services/uploadFile'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
@@ -22,7 +22,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
     const inputRef = useRef<HTMLInputElement>(null)
     const [loading, setLoading] = useState(false)
     const playerRef = useRef<any>(null)
-    const { site } = useMySite()
+    const { space } = useMySpace()
 
     // TODO: hack
     const [mounted, setMounted] = useState(true)
@@ -48,7 +48,7 @@ export const AudioCreationUpload = forwardRef<HTMLDivElement, Props>(
           //   '',
           cover: creation.image
             ? getUrl(creation.image || '')
-            : getUrl(site.logo || site.image || ''),
+            : getUrl(space.logo || space.image || ''),
           // src: 'https://r2.penx.me/8283074160_460535.mp3',
           // src: 'https://v.typlog.com/sspai/8267989755_658478.mp3'
           src: getUrl(value),
