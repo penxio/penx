@@ -45,6 +45,12 @@ export const navigation = {
   getNavigation() {
     return store.get(navigationAtom)
   },
+
+  push(nav: Navigation) {
+    const navigationList = store.get(navigationAtom)
+    store.set(navigationAtom, [...navigationList, nav])
+  },
+
   pop() {
     const navigationList = store.get(navigationAtom)
     store.set(navigationAtom, navigationList.slice(0, -1))

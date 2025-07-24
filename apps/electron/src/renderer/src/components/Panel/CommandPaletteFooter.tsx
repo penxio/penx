@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Box } from '@fower/react'
+import { ProfileButton } from '@penx/components/ProfileButton'
 import { appEmitter } from '@penx/emitter'
 import { useAreas } from '@penx/hooks/useAreas'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
+import { openCommand } from '~/lib/openCommand'
 import { AreasPopover } from '../AreasPopover'
 import { ListItemIcon } from './ListItemIcon'
 import { ActionPopover } from './SearchBar/ActionPopover'
@@ -25,7 +27,14 @@ export const CommandPaletteFooter = ({}: Props) => {
         <ListItemIcon icon={currentCommand.data.extensionIcon} />
       ) : (
         <div className="inline-flex">
-          <AreasPopover />
+          {/* <AreasPopover /> */}
+          <ProfileButton
+            size="xs"
+            className="text-sm"
+            onOpenSettings={() => {
+              openCommand({ name: 'settings' })
+            }}
+          />
         </div>
       )}
       {/* <Box

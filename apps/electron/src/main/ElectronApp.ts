@@ -252,6 +252,14 @@ export class ElectronApp {
     }
 
     const toggle = async () => {
+      if (!this.panelWindow) {
+        this.windows.panelWindow = createPanelWindow()
+        setWindowPos()
+        showAndFocus()
+        panelWindow.webContents.send('panel-window-show')
+        return
+      }
+
       if (isVisibleAndFocused()) {
         this.lastBounds = panelWindow.getBounds()
         this.saveLastOffset()

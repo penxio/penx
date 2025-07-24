@@ -54,11 +54,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {/* <SidebarTrigger className="text-foreground/60 size-4" /> */}
           </div>
         )}
-        <SidebarMenu className="">
+        {/* <SidebarMenu className="">
           <SidebarMenuItem className="">
             <AreasPopover />
           </SidebarMenuItem>
-        </SidebarMenu>
+        </SidebarMenu> */}
         <div className="mb-1 flex items-center justify-between gap-1">
           <QuickSearchTrigger />
           {!isMobileApp && <AddCreationButton></AddCreationButton>}
@@ -145,7 +145,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <ModeToggle className="hover:bg-foreground/8" />
 
             <SyncButton />
-            <AreaMenu />
+            {/* <AreaMenu /> */}
             {/* <LangSwitcher /> */}
           </div>
           <ProfileButton />

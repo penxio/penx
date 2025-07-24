@@ -29,7 +29,7 @@ import { appEmitter } from '@penx/emitter'
 import { useMySpace } from '@penx/hooks/useMySpace'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
-import { Button } from '@penx/uikit/button'
+import { Button, ButtonProps } from '@penx/uikit/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -46,11 +46,12 @@ import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { usePlanListDialog } from './PlanList/usePlanListDialog'
 import { useSettingsDialog } from './SettingsDialog/useSettingsDialog'
 
-interface Props {
+interface Props extends ButtonProps {
   loginButton?: ReactNode
+  onOpenSettings?: () => void
 }
 
-export function ProfileButton({ loginButton }: Props) {
+export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
   const { login } = useSession()
   const { session, data, logout, update } = useSession()
   const isMobile = useIsMobile()
@@ -126,7 +127,7 @@ export function ProfileButton({ loginButton }: Props) {
   if (!session) {
     if (loginButton) return loginButton
     return (
-      <Button size="sm" onClick={handleLogin}>
+      <Button size="sm" onClick={handleLogin} {...rest}>
         <Trans>Log in</Trans>
       </Button>
     )
@@ -149,9 +150,9 @@ export function ProfileButton({ loginButton }: Props) {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-        side={isMobile ? 'bottom' : 'right'}
-        align="end"
-        sideOffset={4}
+        side={isMobile ? 'bottom' : 'top'}
+        align="start"
+        sideOffset={16}
       >
         <DropdownMenuLabel className="p-0 font-normal">
           <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
@@ -201,6 +202,9 @@ export function ProfileButton({ loginButton }: Props) {
           <DropdownMenuGroup>
             <DropdownMenuItem
               onClick={async () => {
+                if (typeof onOpenSettings === 'function') {
+                  return onOpenSettings()
+                }
                 settings.setOpen(true)
                 // if (isExtension) {
                 //   window.open(`${ROOT_HOST}/~/settings`)
