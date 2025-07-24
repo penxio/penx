@@ -6,6 +6,7 @@ import type { Attachment, UIMessage } from 'ai'
 import { useSearchParams } from 'next/navigation'
 import useSWR, { useSWRConfig } from 'swr'
 import { unstable_serialize } from 'swr/infinite'
+import { isDesktop } from '@penx/constants'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
 import { useMySpace } from '@penx/hooks/useMySpace'
@@ -15,11 +16,10 @@ import { store } from '@penx/store'
 import { PanelType, SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { Artifact } from './artifact'
+import { DesktopInput } from './desktop-input'
 import { Messages } from './messages'
 import { MultimodalInput } from './multimodal-input'
-import { getChatHistoryPaginationKey } from './sidebar-history'
 import { toast } from './toast'
-import type { VisibilityType } from './visibility-selector'
 
 interface ApplicationError extends Error {
   info: string
@@ -142,7 +142,7 @@ export function Chat({
 
   return (
     <>
-      <div className="flex h-full min-w-0 flex-col">
+      <div className="flex h-full w-full min-w-0 flex-col">
         <Messages
           chatId={id}
           status={status}
@@ -153,7 +153,7 @@ export function Chat({
           isArtifactVisible={isArtifactVisible}
         />
 
-        <form className="gap-2px-4 mx-auto flex w-full  pb-6 md:max-w-3xl">
+        <form className="mx-auto flex w-full gap-2 px-4  pb-6 md:max-w-3xl">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}
@@ -167,10 +167,6 @@ export function Chat({
               messages={messages}
               setMessages={setMessages}
               append={append}
-              selectedProvider={selectedProvider}
-              selectedModel={selectedModel}
-              onProviderChange={handleProviderChange}
-              onModelChange={handleModelChange}
             />
           )}
         </form>

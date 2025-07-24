@@ -18,14 +18,13 @@ import equal from 'fast-deep-equal'
 import { CogIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
+import { isDesktop } from '@penx/constants'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
-import { KnowledgeSourcePicker } from './knowledge-source-picker'
 import { PreviewAttachment } from './preview-attachment'
-import { ProviderSelector } from './provider-selector'
 
 function PureMultimodalInput({
   chatId,
@@ -40,10 +39,6 @@ function PureMultimodalInput({
   append,
   handleSubmit,
   className,
-  selectedProvider,
-  selectedModel,
-  onProviderChange,
-  onModelChange,
 }: {
   chatId: string
   input: UseChatHelpers['input']
@@ -57,22 +52,9 @@ function PureMultimodalInput({
   append: UseChatHelpers['append']
   handleSubmit: UseChatHelpers['handleSubmit']
   className?: string
-  selectedProvider?: string
-  selectedModel?: string
-  onProviderChange?: (providerType: string) => void
-  onModelChange?: (modelId: string) => void
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const { width } = useWindowSize()
-
-  const handleProviderChange = (providerType: string) => {
-    onProviderChange?.(providerType)
-  }
-
-  const handleModelChange = (modelId: string) => {
-    onModelChange?.(modelId)
-    console.log('Selected model:', modelId)
-  }
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -124,12 +106,7 @@ function PureMultimodalInput({
     handleSubmit(undefined, {
       experimental_attachments: attachments,
       // @ts-ignore TODO:
-      data: selectedProvider
-        ? {
-            provider: selectedProvider,
-            model: selectedModel,
-          }
-        : undefined,
+      data: undefined,
     })
 
     setAttachments([])
@@ -146,8 +123,6 @@ function PureMultimodalInput({
     setLocalStorageInput,
     width,
     chatId,
-    selectedProvider,
-    selectedModel,
   ])
 
   const uploadFile = async (file: File) => {
@@ -202,6 +177,55 @@ function PureMultimodalInput({
     },
     [setAttachments],
   )
+
+  if (isDesktop) {
+    return (
+      <div className="relative flex w-full flex-col gap-4">
+        <Textarea
+          data-testid="multimodal-input"
+          ref={textareaRef}
+          placeholder="Send a message..."
+          value={input}
+          onChange={handleInput}
+          className={cx(
+            'bg-muted  text-normal overflow-hidden rounded-2xl dark:border-zinc-700',
+            className,
+          )}
+          rows={1}
+          autoFocus
+          onKeyDown={(event) => {
+            if (
+              event.key === 'Enter' &&
+              !event.shiftKey &&
+              !event.nativeEvent.isComposing
+            ) {
+              event.preventDefault()
+
+              if (status !== 'ready') {
+                toast.error('Please wait for the model to finish its response!')
+              } else {
+                submitWithModel()
+              }
+            }
+          }}
+        />
+
+        <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
+          <div>
+            {status === 'submitted' ? (
+              <StopButton stop={stop} setMessages={setMessages} />
+            ) : (
+              <SendButton
+                input={input}
+                submitForm={submitWithModel}
+                uploadQueue={uploadQueue}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="relative flex w-full flex-col gap-4">
@@ -278,13 +302,8 @@ function PureMultimodalInput({
         >
           <CogIcon size={16} />
         </Button>
-        <ProviderSelector
-          onProviderChange={onProviderChange}
-          onModelChange={onModelChange}
-        />
       </div>
       <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
-        <KnowledgeSourcePicker />
         <div>
           {status === 'submitted' ? (
             <StopButton stop={stop} setMessages={setMessages} />

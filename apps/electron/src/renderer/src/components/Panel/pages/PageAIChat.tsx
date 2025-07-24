@@ -1,4 +1,5 @@
 import { Trans } from '@lingui/react/macro'
+import { Chat } from '@penx/components/AIChat/chat'
 import { ProfileButton } from '@penx/components/ProfileButton'
 import { appEmitter } from '@penx/emitter'
 import { useSession } from '@penx/session'
@@ -14,6 +15,9 @@ export function PageAIChat() {
   const { pop } = useNavigation()
   const { currentCommand } = useCurrentCommand()
 
+  const { session } = useSession()
+  console.log('======session:', session)
+
   return (
     <DetailApp
       className=""
@@ -21,8 +25,13 @@ export function PageAIChat() {
       headerBordered={false}
       command={currentCommand}
     >
-      <div className="flex h-full flex-col items-center justify-center">
-        <div>AI chat, Coming...</div>
+      <div className="flex h-full w-full items-center justify-center p-3">
+        <Chat
+          id="ai-chat"
+          initialMessages={[]}
+          isReadonly={false}
+          session={session}
+        />
       </div>
     </DetailApp>
   )
