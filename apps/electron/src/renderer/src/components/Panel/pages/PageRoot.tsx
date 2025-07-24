@@ -14,41 +14,12 @@ import { ListItemUI } from '../ListItemUI'
 
 export function PageRoot() {
   const { commandItems } = useItems()
-  const { value, setValue } = useValue()
+  const { value } = useValue()
   const selectStruct = useSelectStruct()
-  const { search } = useSearch()
   const handleSelect = useHandleSelect()
-  const { creations } = useCreations()
   const { setOpen } = useActionPopover()
 
-  const filteredCreations = creations
-    .filter((row) => {
-      if (!search) return false
-      const t = search.toLowerCase()
-
-      if (row.title.toLowerCase().includes(t)) return true
-      const contentStr = docToString(JSON.parse(row.content))
-      if (contentStr.toLowerCase().includes(t)) return true
-
-      if (!row.cells) {
-        return false
-      }
-
-      const values: string[] = Object.values(row.cells)
-
-      return values.some((v) => {
-        if (typeof v === 'string') {
-          return v.toLowerCase().includes(t)
-        }
-        return JSON.stringify(v).toLowerCase().includes(t)
-      })
-    })
-    .slice(0, 20)
-
-  const creationCommands = filteredCreations.map((c) => creationToCommand(c))
-
-  const lists = [...commandItems, ...creationCommands]
-  const currentItem = lists.find(
+  const currentItem = commandItems.find(
     (item) => item.id === value && item.data.type === 'Creation',
   )
 
@@ -56,7 +27,7 @@ export function PageRoot() {
     <CommandList className="absolute inset-0 flex overflow-hidden p-2 outline-none">
       <div className="absolute inset-0 flex overflow-hidden">
         <CommandGroup heading={''} className="flex-[2] overflow-auto p-2">
-          {lists.map((item, index) => {
+          {commandItems.map((item, index) => {
             return (
               <ListItemUI
                 key={index}

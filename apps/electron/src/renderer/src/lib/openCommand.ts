@@ -7,10 +7,13 @@ import { searchAtom } from '~/hooks/useSearch'
 
 type Params = {
   name?: string
+  id?: string
 }
 export const openCommand = (params: Params) => {
   const commands = store.get(itemsAtom)
-  const command = commands.find((c) => c.data.commandName === params.name)!
+  const command = commands.find(
+    (c) => c.data.commandName === params.name || c.id === params.id,
+  )!
   store.set(currentCommandAtom, command)
 
   store.set(searchAtom, '')

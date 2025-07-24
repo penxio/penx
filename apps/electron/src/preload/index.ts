@@ -1,20 +1,21 @@
 import { electronAPI } from '@electron-toolkit/preload'
 import { clipboard, contextBridge, ipcRenderer } from 'electron'
-import { ShortcutType } from '@penx/types'
+import { Shortcut } from '@penx/model-type'
 
 // Custom APIs for renderer
 const api = {
   clipboard: clipboard,
   shortcut: {
-    register: (shortcut: ShortcutType) =>
+    register: (shortcut: Shortcut) =>
       ipcRenderer.invoke('register-shortcut', shortcut),
-    unregister: (shortcut: ShortcutType) =>
+    unregister: (shortcut: Shortcut) =>
       ipcRenderer.invoke('unregister-shortcut', shortcut),
-    onPressed: (callback: (acc: string) => void) =>
+    onPressed: (callback: (acc: Shortcut) => void) =>
       ipcRenderer.on('shortcut-pressed', (_event, acc) => callback(acc)),
   },
   toggleMainWindow: () => ipcRenderer.send('toggle-main-window'),
   togglePanelWindow: () => ipcRenderer.send('toggle-panel-window'),
+  openPanelWindow: () => ipcRenderer.send('open-panel-window'),
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

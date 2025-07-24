@@ -11,6 +11,7 @@ type Navigation = {
     | '/struct-creations'
     | '/edit-creation'
     | '/edit-struct'
+    | '/configure-shortcut'
     | '/quick-input'
   component?: (() => ReactNode) | (() => JSX.Element)
   data?: Record<string, any>

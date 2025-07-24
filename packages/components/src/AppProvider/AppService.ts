@@ -14,8 +14,10 @@ import {
   isAreaNode,
   isCreationNode,
   isCreationTagNode,
+  IShortcutNode,
   isJournalNode,
   ISpaceNode,
+  isShortcutNode,
   isStructNode,
   isTagNode,
   NodeType,
@@ -148,6 +150,22 @@ export class AppService {
     let structs = areaNodes.filter((n) => isStructNode(n))
     let journals = areaNodes.filter((n) => isJournalNode(n))
 
+    let shortcut = areaNodes.find((n) => isShortcutNode(n))
+    if (!shortcut) {
+      shortcut = await localDB.addNode({
+        id: uniqueId(),
+        type: NodeType.SHORTCUT,
+        props: {
+          shortcuts: [],
+        },
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        spaceId: area.spaceId,
+        userId: area.userId,
+        areaId: area.id,
+      } as IShortcutNode)
+    }
+
     const imageStruct = structs.find((s) => s.props.type === StructType.IMAGE)
     if (!imageStruct) {
       const newStruct = generateStructNode({
@@ -230,6 +248,7 @@ export class AppService {
     const panels = await this.getPanels(area)
 
     store.space.set(space)
+    store.app.setShortcut(shortcut)
     store.creations.set(creations)
     store.visit.set(visit)
     store.area.set(area)

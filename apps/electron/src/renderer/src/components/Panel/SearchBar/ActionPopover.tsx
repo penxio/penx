@@ -6,6 +6,7 @@ import {
   DoorOpenIcon,
   EditIcon,
   EyeOffIcon,
+  KeyboardIcon,
   ShareIcon,
   Star,
   Trash2Icon,
@@ -207,10 +208,16 @@ interface RootActionsProps {
 function RootActions({ command, close }: RootActionsProps) {
   const { value } = useValue()
   const { structs } = useStructs()
+  const { commandItems } = useItems()
   const struct = structs.find((s) => s.id === value)
   const handleSelect = useHandleSelect()
   const { push } = useNavigation()
   const { setStruct } = useCurrentStruct()
+  const { setCurrentCommand } = useCurrentCommand()
+
+  const currentItem = commandItems.find(
+    (item) => item.id === value || item.data?.commandName === value,
+  )
 
   return (
     <>
@@ -249,6 +256,25 @@ function RootActions({ command, close }: RootActionsProps) {
           </Box>
         </MenuItem>
       )}
+
+      <MenuItem
+        shortcut=""
+        onSelect={() => {
+          push({ path: '/configure-shortcut' })
+          setCurrentCommand(currentItem!)
+          close()
+        }}
+      >
+        <Box toCenterY gap2 inlineFlex>
+          <div className="">
+            <KeyboardIcon size={16} />
+          </div>
+          <div>
+            <Trans>Configure Shortcut</Trans>
+          </div>
+        </Box>
+      </MenuItem>
+
       {/* <MenuItem shortcut="">
         <Box toCenterY gap2 inlineFlex>
           <div>

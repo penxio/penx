@@ -11,7 +11,7 @@ import { ActionPopover } from './SearchBar/ActionPopover'
 
 interface Props {}
 
-const footerHeight = 48
+const footerHeight = 40
 
 export const CommandPaletteFooter = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()

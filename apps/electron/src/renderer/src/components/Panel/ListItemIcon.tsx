@@ -29,7 +29,7 @@ export const ListItemIcon = memo(
         <ColorfulStructIcon
           struct={item.data.struct}
           iconClassName="size-4"
-          className="size-5 rounded-sm p-0"
+          className="size-5 rounded-sm p-0 shadow-md"
         />
       )
     }
@@ -73,6 +73,7 @@ export const ListItemIcon = memo(
       if (icon.value === '#') {
         return (
           <Box
+            className="shadow-md"
             square={size}
             flexShrink-0
             rounded-6
@@ -107,7 +108,7 @@ export const ListItemIcon = memo(
         <SVG
           width={size}
           height={size}
-          className={css({ rounded: 6 })}
+          className={'rounded-[6px] shadow-md'}
           src={icon as string}
         />
       )
@@ -130,7 +131,7 @@ function IconifyIcon(icon: IconifyIconType) {
   return (
     <Box
       className={cn(
-        'flex size-5 items-center justify-center rounded-[6px] p-[3px] text-sm text-white',
+        'flex size-5 items-center justify-center rounded-[6px] p-[3px] text-sm text-white shadow-md',
         icon.className,
       )}
     >

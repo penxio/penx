@@ -1,5 +1,6 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
 import { clipboard, contextBridge, ipcRenderer } from 'electron'
+import type { Shortcut } from '@penx/model-type'
 
 declare global {
   interface Window {
@@ -8,10 +9,11 @@ declare global {
       clipboard: Electron.Clipboard
       toggleMainWindow: () => void
       togglePanelWindow: () => void
+      openPanelWindow: () => void
       shortcut: {
         register: (shortcut: Shortcut) => any
         unregister: (shortcut: Shortcut) => any
-        onPressed: (callback: (acc: string) => void) => void
+        onPressed: (callback: (acc: Shortcut) => void) => void
       }
     }
   }

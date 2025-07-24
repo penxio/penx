@@ -1,7 +1,7 @@
 'use client'
 
 import { Trans } from '@lingui/react/macro'
-import { ShortcutType } from '@penx/types'
+import { ShortcutType } from '@penx/model-type'
 import { BindHotkey } from '../BindHotkey'
 
 interface Props {}

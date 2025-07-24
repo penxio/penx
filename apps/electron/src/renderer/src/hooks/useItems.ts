@@ -4,9 +4,12 @@ import { useQuery } from '@tanstack/react-query'
 import { atom, useAtom, useSetAtom } from 'jotai'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
+import { useCreations } from '@penx/hooks/useCreations'
 import { store } from '@penx/store'
+import { docToString } from '@penx/utils/editorHelper'
 import { PageAIChat } from '~/components/Panel/pages/PageAIChat'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
+import { creationToCommand } from '~/lib/creationToCommand'
 import { getBuiltinCommands } from '~/lib/getBuiltinCommands'
 import { structToCommand } from '~/lib/structToCommand'
 import { ICommandItem } from '~/lib/types'
@@ -24,23 +27,53 @@ export const itemsAtom = atom<ICommandItem[]>([])
 export function useItems() {
   const { search } = useSearch()
   const [items, setItems] = useAtom(itemsAtom)
+  const { creations } = useCreations()
+
+  const filteredItems = items.filter((item) => {
+    if (!search) return true
+    const s = search.toLowerCase()
+    if (item.data?.alias) {
+      if (item.data?.alias.toLowerCase().includes(s)) {
+        return true
+      }
+    }
+    if (item.title.toString().toLowerCase().includes(s)) {
+      return true
+    }
+
+    return item.keywords.some((k) => k.toLowerCase().includes(s))
+  })
+
+  const filteredCreations = creations
+    .filter((row) => {
+      if (!search) return false
+      const t = search.toLowerCase()
+
+      if (row.title.toLowerCase().includes(t)) return true
+      const contentStr = docToString(JSON.parse(row.content))
+      if (contentStr.toLowerCase().includes(t)) return true
+
+      if (!row.cells) {
+        return false
+      }
+
+      const values: string[] = Object.values(row.cells)
+
+      return values.some((v) => {
+        if (typeof v === 'string') {
+          return v.toLowerCase().includes(t)
+        }
+        return JSON.stringify(v).toLowerCase().includes(t)
+      })
+    })
+    .slice(0, 20)
+
+  const creationCommands = filteredCreations.map((c) => creationToCommand(c))
+
   return {
     items,
     developingItems: [],
-    commandItems: items.filter((item) => {
-      if (!search) return true
-      const s = search.toLowerCase()
-      if (item.data?.alias) {
-        if (item.data?.alias.toLowerCase().includes(s)) {
-          return true
-        }
-      }
-      if (item.title.toString().toLowerCase().includes(s)) {
-        return true
-      }
-
-      return item.keywords.some((k) => k.toLowerCase().includes(s))
-    }),
+    commandItems: [...filteredItems, ...creationCommands],
     databaseItems: [],
     applicationItems: items,
     setItems,
@@ -66,6 +99,7 @@ export function useLoadCommands() {
       })
 
       const aiChat: ICommandItem = {
+        id: 'ai-chat',
         title: t`AI Chat`,
         keywords: ['ai', 'chat'],
         icon: {
@@ -90,6 +124,7 @@ export function useLoadCommands() {
       }
 
       const quickInput: ICommandItem = {
+        id: 'quick-input',
         title: t`Quick input`,
         keywords: ['Quick', 'Input', 'Quick input'],
         icon: {

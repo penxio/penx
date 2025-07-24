@@ -6,6 +6,7 @@ import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {
   IJournalNode,
+  IShortcutNode,
   ISpaceNode,
   IStructNode,
   NodeType,
@@ -107,6 +108,19 @@ export async function initLocalSpace(uid?: string) {
       userId,
       areaId,
     } as IJournalNode)
+
+    await localDB.node.add({
+      id: uniqueId(),
+      type: NodeType.SHORTCUT,
+      props: {
+        shortcuts: [],
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      spaceId: spaceId,
+      userId,
+      areaId,
+    } as IShortcutNode)
 
     // const structs = (await localDB.node
     //   .where({ type: NodeType.STRUCT, spaceId })

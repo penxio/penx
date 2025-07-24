@@ -7,6 +7,7 @@ import { ICommandItem } from '~/lib/types'
 export function getBuiltinCommands() {
   const commands: ICommandItem[] = [
     {
+      id: 'account',
       title: t`PenX Account`,
       keywords: ['account'],
       icon: {
@@ -26,6 +27,7 @@ export function getBuiltinCommands() {
       },
     },
     {
+      id: 'cloud-sync',
       title: t`Cloud sync`,
       keywords: ['sync'],
       icon: {
@@ -45,6 +47,7 @@ export function getBuiltinCommands() {
       },
     },
     {
+      id: 'settings',
       title: t`Settings`,
       keywords: ['Settings'],
       icon: {

@@ -11,7 +11,7 @@ const searchBarHeight = 54
 const footerHeight = 48
 
 interface IConfirm {
-  title: ReactNode
+  title?: ReactNode
   shortcut?: {
     modifiers: ShortcutModifier[]
     key: ShortcutKey
@@ -28,6 +28,7 @@ interface Props {
   hideHeader?: boolean
   hideFooter?: boolean
   headerBordered?: boolean
+  title?: ReactNode
 }
 
 export function DetailApp({
@@ -40,6 +41,7 @@ export function DetailApp({
   hideHeader = false,
   hideFooter = false,
   headerBordered = true,
+  title,
 }: PropsWithChildren<Props>) {
   const itemIcon = useMemo(() => {
     const assets = command?.data?.assets || {}
@@ -51,7 +53,7 @@ export function DetailApp({
       {!hideHeader && (
         <div
           className={cn(
-            'drag flex items-center',
+            'drag flex items-center gap-2',
             headerBordered && ' border-foreground/10 border-b',
           )}
           style={{
@@ -59,6 +61,7 @@ export function DetailApp({
           }}
         >
           <PopButton className="ml-3" />
+          <div className="font-medium">{title}</div>
         </div>
       )}
       <div

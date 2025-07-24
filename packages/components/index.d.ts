@@ -1,6 +1,6 @@
 import type { ElectronAPI } from '@electron-toolkit/preload'
 import type Electron from 'electron'
-import { Shortcut } from '@penx/types'
+import type { Shortcut } from '@penx/types'
 
 /// <reference types="vite-plugin-svgr/client" />
 declare module 'shikwasa'
@@ -12,10 +12,11 @@ declare global {
       clipboard: Electron.Clipboard
       toggleMainWindow: () => void
       togglePanelWindow: () => void
+      openPanelWindow: () => void
       shortcut: {
         register: (shortcut: Shortcut) => any
         unregister: (shortcut: Shortcut) => any
-        onPressed: (callback: (acc: string) => void) => void
+        onPressed: (callback: (acc: Shortcut) => void) => void
       }
     }
     __SITE__: any

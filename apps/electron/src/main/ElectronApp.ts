@@ -14,7 +14,7 @@ import {
 } from 'electron'
 import { Conf } from 'electron-conf/main'
 import { SHORTCUT_LIST } from '@penx/constants'
-import { Shortcut, ShortcutType } from '@penx/types'
+import { Shortcut, ShortcutType } from '@penx/model-type'
 import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
 import trayIcon from '../../resources/tray-16.png?asset'
@@ -223,7 +223,7 @@ export class ElectronApp {
     // }
   }
 
-  private togglePanelWindow() {
+  private togglePanelWindow(openOnly = false) {
     const panelWindow = this.windows.panelWindow!
     const setWindowPos = () => {
       const cursorPoint = screen.getCursorScreenPoint()
@@ -260,7 +260,7 @@ export class ElectronApp {
         return
       }
 
-      if (isVisibleAndFocused()) {
+      if (isVisibleAndFocused() && !openOnly) {
         this.lastBounds = panelWindow.getBounds()
         this.saveLastOffset()
         hide()
@@ -323,18 +323,14 @@ export class ElectronApp {
     if (!shortcuts) {
       shortcuts = [
         {
-          key: platform.isMacOS
+          keys: platform.isMacOS
             ? ['Command', 'Shift', 'Space']
             : ['Ctrl', 'Shift', 'Space'],
           type: ShortcutType.TOGGLE_MAIN_WINDOW,
         },
         {
-          key: ['Alt', 'S'],
+          keys: ['Alt', 'S'],
           type: ShortcutType.TOGGLE_PANEL_WINDOW,
-        },
-        {
-          key: ['Alt', 'I'],
-          type: ShortcutType.TOGGLE_INPUT_WINDOW,
         },
       ]
       this.conf.set(SHORTCUT_LIST, shortcuts)
@@ -343,7 +339,7 @@ export class ElectronApp {
     console.log('=======shortcuts:', shortcuts)
 
     for (const shortcut of shortcuts) {
-      const acc = convertKeysToHotkey(shortcut.key)
+      const acc = convertKeysToHotkey(shortcut.keys)
       const ret = globalShortcut.register(acc, () => {
         // if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
         //   this.toggleMainWindow()
@@ -353,7 +349,7 @@ export class ElectronApp {
         }
       })
       if (!ret) {
-        console.log('register shortcut fail:', shortcut.key)
+        console.log('register shortcut fail:', shortcut.keys)
       }
     }
   }
@@ -386,9 +382,9 @@ export class ElectronApp {
     })
 
     ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
-      const key = convertKeysToHotkey(shortcut.key)
+      const key = convertKeysToHotkey(shortcut.keys)
       const ret = globalShortcut.register(key, () => {
-        event.sender.send('shortcut-pressed')
+        event.sender.send('shortcut-pressed', shortcut)
 
         // if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
         //   this.toggleMainWindow()
@@ -406,9 +402,9 @@ export class ElectronApp {
     ipcMain.handle('unregister-shortcut', (_, shortcut: Shortcut) => {
       console.log(
         '=======unregister-shortcut:',
-        convertKeysToHotkey(shortcut.key),
+        convertKeysToHotkey(shortcut.keys),
       )
-      globalShortcut.unregister(convertKeysToHotkey(shortcut.key))
+      globalShortcut.unregister(convertKeysToHotkey(shortcut.keys))
     })
 
     // ipcMain.on('toggle-main-window', () => {
@@ -417,6 +413,10 @@ export class ElectronApp {
 
     ipcMain.on('toggle-panel-window', () => {
       this.togglePanelWindow()
+    })
+
+    ipcMain.on('open-panel-window', () => {
+      this.togglePanelWindow(true)
     })
 
     ipcMain.on('quick-input-success', () => {

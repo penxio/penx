@@ -1,16 +1,9 @@
 import { Conf } from 'electron-conf/renderer'
 import { produce } from 'immer'
-import { Shortcut } from '@penx/types'
+import { Shortcut } from '@penx/model-type'
 import { SHORTCUT_LIST } from './constants'
 
 const conf = new Conf()
-
-// window.customElectronApi.shortcut.onPressed((key) => {
-//   if (key === hotkey) {
-//     window.customElectronApi.toggleMainWindow()
-//     // document.getElementById('searchBarInput')?.focus()
-//   }
-// })
 
 export async function getShortcutList(): Promise<Shortcut[]> {
   const list = (await conf.get(SHORTCUT_LIST)) as Shortcut[]

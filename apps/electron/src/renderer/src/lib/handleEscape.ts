@@ -19,10 +19,14 @@ export async function handleEscape() {
 
       const navigations = navigation.getNavigation()
 
+      console.log('=======navigations:', navigations)
+
       if (navigations.length === 1) {
         if (search.length) {
           store.set(searchAtom, '')
         } else {
+          console.log('hidel.......')
+
           window.electron.ipcRenderer.send('hide-panel-window')
         }
       } else {

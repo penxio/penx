@@ -1,8 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Box } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
+import { useAppShortcuts } from '@penx/hooks/useAppShortcuts'
+import { store } from '@penx/store'
 import { Shortcut, ShortcutType } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { cn } from '@penx/utils'
 import { Kbd } from '../../Kbd'
 import { useShortcuts } from '../hooks/useShortcuts'
 import {
@@ -24,15 +27,76 @@ const modifierCodes = [
   'AltRight',
 ]
 
+interface Props {
+  type: ShortcutType
+  commandId?: string
+}
+export const BindHotkey = ({ type, commandId }: Props) => {
+  const [open, setOpen] = useState(false)
+  const { data = [], isLoading } = useShortcuts()
+  const { shortcuts } = useAppShortcuts()
+  let keys: string[] = []
+
+  if (isLoading) return null
+
+  const commandShortcut = shortcuts.find((s) => s.commandId === commandId)
+
+  console.log(
+    '==========commandShortcut:',
+    commandShortcut,
+    'shortcuts;',
+    shortcuts,
+    'commandId:',
+    commandId,
+  )
+
+  if (commandShortcut) {
+    keys = commandShortcut.keys
+  }
+
+  const shortcut = data.find((i) => i.type === type)
+  console.log('======shortcut:', shortcut)
+
+  if (shortcut) {
+    keys = shortcut.keys
+  }
+
+  // if (!shortcut) return null
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Box className="bg-foreground/10 flex h-10 w-[160px] cursor-pointer items-center justify-center rounded-full">
+          <Box toCenterY gap1>
+            {keys.length > 0 &&
+              keys.map((item) => <Kbd key={item}>{item}</Kbd>)}
+            {keys.length === 0 && (
+              <div className="text-foreground/60 text-sm">
+                <Trans>Record shortcut</Trans>
+              </div>
+            )}
+          </Box>
+        </Box>
+      </PopoverTrigger>
+      <PopoverContent className="flex h-[100px] w-[200px] flex-col justify-center p-4">
+        <Content setOpen={setOpen} shortcut={undefined} commandId={commandId} />
+      </PopoverContent>
+    </Popover>
+  )
+}
+
 function Content({
   setOpen,
   shortcut,
+  commandId,
 }: {
   setOpen: Dispatch<SetStateAction<boolean>>
-  shortcut: Shortcut
+  shortcut?: Shortcut
+  commandId?: string
 }) {
   const { refetch } = useShortcuts()
   const [keys, setKeys] = useState<string[]>([])
+  const [ok, setOk] = useState(false)
 
   useEffect(() => {
     // let unlisten: UnlistenFn
@@ -56,12 +120,14 @@ function Content({
       if (event.code === 'Space') {
         keys.push('Space')
       } else {
-        console.log('=========event.key:', event.key, event)
+        // const key = event.code.startsWith('Key')
+        //   ? event.code.slice(-1)
+        //   : event.key.toUpperCase()
+        // keys.push(key)
 
-        const key = event.code.startsWith('Key')
-          ? event.code.slice(-1)
-          : event.key.toUpperCase()
-        keys.push(key)
+        if (event.code.startsWith('Key')) {
+          keys.push(event.code.slice(-1))
+        }
       }
 
       console.log('key=====ss:', keys)
@@ -74,26 +140,57 @@ function Content({
       keys = keys.filter((key) => !modifierCodes.includes(key))
 
       if (!isModifierKey) {
-        await unregisterHotkey(shortcut)
+        shortcut && (await unregisterHotkey(shortcut))
 
         const newShortcut = {
           ...shortcut,
           key: keys,
         }
-        await unregisterHotkey(newShortcut)
-        await registerHotkey(newShortcut)
-        await upsertShortcut(newShortcut)
-        await refetch()
-        setOpen(false)
+
+        console.log(
+          '========newShortcut:',
+          newShortcut,
+          'commandId:',
+          commandId,
+        )
+
+        // await unregisterHotkey(newShortcut)
+        // await registerHotkey(newShortcut)
+        // await upsertShortcut(newShortcut)
+        // await refetch()
+
+        setKeys(keys)
+        setOk(true)
+
+        if (commandId) {
+          store.app.upsertShortcut({
+            commandId,
+            keys,
+          })
+        }
+
+        setTimeout(() => {
+          setOpen(false)
+          setTimeout(() => {
+            setOk(false)
+          }, 500)
+        }, 1000)
       } else {
         setKeys(keys)
       }
     }
 
+    function handleKeyUp() {
+      //
+    }
+
     document.addEventListener('keydown', handler)
+
+    document.addEventListener('keyup', handleKeyUp)
 
     return () => {
       document.removeEventListener('keydown', handler)
+      document.removeEventListener('keyup', handleKeyUp)
       // unlisten?.()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,7 +213,9 @@ function Content({
       {keys.length > 0 && (
         <Box toCenterY gap1>
           {keys.map((key) => (
-            <Kbd key={key}>{key}</Kbd>
+            <Kbd className={cn(ok && 'bg-green-100 text-green-700')} key={key}>
+              {key}
+            </Kbd>
           ))}
         </Box>
       )}
@@ -124,36 +223,5 @@ function Content({
         <Trans>Recording...</Trans>
       </Box>
     </Box>
-  )
-}
-
-interface Props {
-  type: ShortcutType
-}
-export const BindHotkey = ({ type }: Props) => {
-  const [open, setOpen] = useState(false)
-  const { data = [], isLoading } = useShortcuts()
-
-  if (isLoading) return null
-
-  const shortcut = data.find((i) => i.type === type)
-
-  if (!shortcut) return null
-
-  return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Box className="bg-foreground/10 flex h-10 w-[200px] cursor-pointer items-center justify-center rounded-full">
-          <Box toCenterY gap1>
-            {shortcut.key.map((item) => (
-              <Kbd key={item}>{item}</Kbd>
-            ))}
-          </Box>
-        </Box>
-      </PopoverTrigger>
-      <PopoverContent className="flex h-[100px] w-[200px] flex-col justify-center p-4">
-        <Content setOpen={setOpen} shortcut={shortcut} />
-      </PopoverContent>
-    </Popover>
   )
 }

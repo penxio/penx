@@ -23,6 +23,7 @@ export enum NodeType {
   JOURNAL = 'JOURNAL',
   CREATION = 'CREATION',
   SETTINGS = 'SETTINGS',
+  SHORTCUT = 'SHORTCUT',
 }
 
 export interface INode {
@@ -220,4 +221,29 @@ export interface ISettingsNode extends INode {
 
 export function isSettingsNode(n: any): n is ISettingsNode {
   return n.type === NodeType.SETTINGS
+}
+
+export enum ShortcutType {
+  TOGGLE_MAIN_WINDOW = 'TOGGLE_MAIN_WINDOW',
+  TOGGLE_INPUT_WINDOW = 'TOGGLE_INPUT_WINDOW',
+  TOGGLE_PANEL_WINDOW = 'TOGGLE_PANEL_WINDOW',
+  COMMAND = 'COMMAND',
+}
+
+export type Shortcut = {
+  type: ShortcutType
+  commandId?: string
+  keys: string[]
+}
+
+export interface IShortcutNode extends INode {
+  type: NodeType.SHORTCUT
+  areaId: string
+  props: {
+    shortcuts: Shortcut[]
+  }
+}
+
+export function isShortcutNode(n: any): n is IShortcutNode {
+  return n.type === NodeType.SHORTCUT
 }

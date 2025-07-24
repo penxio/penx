@@ -377,6 +377,13 @@ class LocalDB extends Dexie {
     await this.updateNodeProps(id, props)
   }
 
+  upsertShortcutConfig = async (
+    id: string,
+    props: Partial<ISettingsNode['props']>,
+  ) => {
+    await this.updateNodeProps(id, props)
+  }
+
   private async addChange(
     id: string,
     op: OperationType,

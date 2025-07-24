@@ -17,6 +17,7 @@ import { ICommandItem } from '~/lib/types'
 import { Command, CommandList } from './CommandComponents'
 import { CommandPaletteFooter } from './CommandPaletteFooter'
 import { ListItemUI } from './ListItemUI'
+import { PageConfigureShortcut } from './pages/PageConfigureShortcut'
 import { PageEditCreation } from './pages/PageEditCreation'
 import { PageEditStruct } from './pages/PageEditStruct'
 import { PageQuickInput } from './pages/PageQuickInput'
@@ -89,6 +90,10 @@ export const CommandPalette = () => {
       return <PageEditStruct />
     }
 
+    if (current.path === '/configure-shortcut') {
+      return <PageConfigureShortcut />
+    }
+
     if (current.path === '/struct-creations') {
       return <PageStructCreations />
     }
@@ -112,6 +117,9 @@ export const CommandPalette = () => {
       if (!currentCommand) return null
       return <ExtensionComponent />
     }
+    if (current.path === '/configure-shortcut') {
+      return <PageConfigureShortcut />
+    }
     return (
       <>
         {header}
@@ -134,7 +142,7 @@ export const CommandPalette = () => {
     <Command
       id="command-palette"
       label="Command Menu"
-      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/90 dark:bg-neutral-900/80"
+      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/65 dark:bg-neutral-900/80"
       // loop
       value={value}
       onValueChange={(v) => {

@@ -1,6 +1,6 @@
 import { isMacOs } from 'react-device-detect'
 import { useQuery } from '@tanstack/react-query'
-import { Shortcut, ShortcutType } from '@penx/types'
+import { Shortcut, ShortcutType } from '@penx/model-type'
 import { SHORTCUT_LIST } from '../constants'
 import { getShortcutList, saveShortcutList } from '../utils'
 
