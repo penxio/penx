@@ -11,6 +11,7 @@ import {
   TRANSCRIBE_URL,
   UpdatePasswordInput,
   UpdateProfileInput,
+  UpdatePublicKeyInput,
   UpdateSiteInput,
 } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
@@ -223,10 +224,10 @@ export const api = {
       .json<{ success: boolean; url: string }>()
   },
 
-  async updatePublicKey(publicKey: string) {
+  async updatePublicKey(input: UpdatePublicKeyInput) {
     return ky
-      .post(`${ROOT_HOST}/api/site/updatePublicKey`, {
-        json: { publicKey },
+      .post(`${ROOT_HOST}/api/user/updatePublicKey`, {
+        json: input,
       })
       .json<{ success: boolean }>()
   },

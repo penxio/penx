@@ -184,11 +184,11 @@ export interface ICreationNode extends INode {
     description: string
     icon: string
     image: string
-    content: string
     podcast: any
+    content: any
     data?: any // for any data
+    cells: any
     i18n: any
-    cells: Record<string, any>
     cid: string
     type: string
     gateType: string

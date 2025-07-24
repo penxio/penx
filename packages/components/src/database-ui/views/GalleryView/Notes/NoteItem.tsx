@@ -37,7 +37,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
   const [readonly, setReadonly] = useState(true)
   // const host = isSubdomain ? `${domain}.${ROOT_DOMAIN}` : domain
   // const creationUrl = `${location.protocol}//${host}/creations/${creation.slug}`
-  const [content, setContent] = useState(JSON.parse(creation.content))
+  const [content, setContent] = useState(creation.content)
 
   return (
     <div
@@ -114,7 +114,7 @@ export function NoteItem({ creation: _creation }: PostItemProps) {
               onClick={async () => {
                 setReadonly(true)
                 await localDB.updateCreationProps(creation.id, {
-                  content: JSON.stringify(content),
+                  content: content,
                 })
                 await store.creations.refetchCreations()
               }}

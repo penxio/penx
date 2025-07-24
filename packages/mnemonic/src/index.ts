@@ -1,5 +1,6 @@
 import { decrypt, encrypt } from 'eciesjs'
 import { get, set } from 'idb-keyval'
+import { privateKeyToAccount } from 'viem/accounts'
 import {
   calculateSHA256FromString,
   decryptString,
@@ -16,16 +17,16 @@ export async function getNewMnemonic() {
   return mnemonic
 }
 
-export async function setMnemonicToLocal(spaceId: string, mnemonic: string) {
-  const key = calculateSHA256FromString(spaceId)
+export async function setMnemonicToLocal(userId: string, mnemonic: string) {
+  const key = calculateSHA256FromString(userId)
   const encryptedMnemonic = encryptString(mnemonic, key)
   await set(key, encryptedMnemonic)
   return mnemonic
 }
 
-export async function getMnemonicFromLocal(spaceId: string) {
+export async function getMnemonicFromLocal(userId: string) {
   try {
-    const key = calculateSHA256FromString(spaceId)
+    const key = calculateSHA256FromString(userId)
     const encryptedMnemonic = await get(key)
     if (!encryptedMnemonic) return ''
     const mnemonic = decryptString(encryptedMnemonic, key)
@@ -37,6 +38,16 @@ export async function getMnemonicFromLocal(spaceId: string) {
 
 export function getPublicKey(mnemonic: string) {
   return getPublicKeyFromMnemonic(mnemonic)
+}
+
+export function getPrivateKey(mnemonic: string) {
+  return getPrivateKeyFromMnemonic(mnemonic)
+}
+
+export function getAddress(mnemonic: string) {
+  const privateKey = getPrivateKeyFromMnemonic(mnemonic)
+  const account = privateKeyToAccount(privateKey as any)
+  return account.address
 }
 
 export function encryptByPublicKey(plainText: string, publicKey: string) {

@@ -57,6 +57,7 @@
     "@penx/vaul": "workspace:*",
     "@penx/widgets": "workspace:*",
     "@penx/worker": "workspace:*",
+    "@penx/mnemonic": "workspace:*",
     "async-mutex": "^0.5.0",
     "clsx": "^2.1.1",
     "drizzle-kit": "^0.31.4",

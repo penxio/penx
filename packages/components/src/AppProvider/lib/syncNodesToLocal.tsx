@@ -159,6 +159,7 @@ async function sync(
   await localDB.transaction('rw', localDB.node, async () => {
     for (const message of changes) {
       const value = message.value as any
+
       const operation = message.headers.operation
       if (operation === 'insert') {
         // console.log('insert:', message)
@@ -191,7 +192,9 @@ async function sync(
 
         await localDB.node.update(value.id, {
           ...value,
-          updatedAt: new Date(Number(value.updatedAt.toString())),
+          ...(value?.updatedAt
+            ? { updatedAt: new Date(Number(value.updatedAt.toString())) }
+            : {}),
         })
       }
       if (operation === 'delete') {

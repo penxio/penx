@@ -10,8 +10,8 @@ import { FixedToolbar } from './FixedToolbar'
 import { KeyboardPadding } from './KeyboardPadding'
 
 interface Props {
-  value: any[]
-  onChange: (value: any[]) => void
+  value: any
+  onChange: (value: any) => void
 }
 
 export function MobileCreationEditor({ value, onChange }: Props) {
@@ -19,7 +19,7 @@ export function MobileCreationEditor({ value, onChange }: Props) {
     <NovelEditor
       className=""
       value={value}
-      onChange={(v: any[]) => {
+      onChange={(v: any) => {
         onChange(v)
       }}
     >

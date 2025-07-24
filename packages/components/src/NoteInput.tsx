@@ -52,7 +52,7 @@ export function NoteInput({ className, onSubmit }: Props) {
     const value = stringToDoc(input)
     addCreation({
       type: StructType.NOTE,
-      content: JSON.stringify(value),
+      content: value,
       isAddPanel: false,
     })
     onSubmit?.()

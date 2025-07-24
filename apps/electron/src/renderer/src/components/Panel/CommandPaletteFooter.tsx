@@ -11,7 +11,7 @@ import { ActionPopover } from './SearchBar/ActionPopover'
 
 interface Props {}
 
-const footerHeight = 40
+const footerHeight = 44
 
 export const CommandPaletteFooter = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()
@@ -29,6 +29,7 @@ export const CommandPaletteFooter = ({}: Props) => {
         <div className="inline-flex">
           {/* <AreasPopover /> */}
           <ProfileButton
+            // variant="outline-solid"
             size="xs"
             className="text-sm"
             onOpenSettings={() => {

@@ -88,7 +88,7 @@ export function JournalQuickInput({
     // const isNote = struct.type === StructType.NOTE
     const isNote = !isTask
     const title = isNote ? '' : docToString(JSON.parse(input))
-    const content = isNote ? input : JSON.stringify(defaultEditorContent)
+    const content = isNote ? stringToDoc(input) : defaultEditorContent
 
     addCreation({
       // type: struct.type,

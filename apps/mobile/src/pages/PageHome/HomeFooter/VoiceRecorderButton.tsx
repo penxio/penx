@@ -121,9 +121,7 @@ export const VoiceRecorderButton = ({}: Props) => {
 
     await addCreation({
       type: StructType.VOICE,
-      content: text
-        ? JSON.stringify(stringToDoc(text))
-        : JSON.stringify(defaultEditorContent),
+      content: text ? stringToDoc(text) : defaultEditorContent,
       data: {
         voiceId: id,
         duration: recordingData.value.msDuration,

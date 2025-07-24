@@ -77,13 +77,11 @@ export function TaskCreation({}: Props) {
             <div className={cn('mx-auto w-full max-w-2xl px-0')}>
               <MobileCreationEditor
                 value={
-                  creation.content
-                    ? JSON.parse(creation.content)
-                    : defaultEditorContent
+                  creation.content ? creation.content : defaultEditorContent
                 }
-                onChange={(v) => {
+                onChange={(v: any) => {
                   const input = {
-                    content: JSON.stringify(v),
+                    content: v,
                   } as ICreationNode['props']
 
                   // if (creation.type === StructType.NOTE) {

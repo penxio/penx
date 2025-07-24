@@ -98,14 +98,10 @@ export function MobileCreation({}: Props) {
             </div>
             <div className={cn('mx-auto w-full max-w-2xl px-0')}>
               <MobileCreationEditor
-                value={
-                  creation.content
-                    ? JSON.parse(creation.content)
-                    : defaultEditorContent
-                }
+                value={creation.content || defaultEditorContent}
                 onChange={(v) => {
                   const input = {
-                    content: JSON.stringify(v),
+                    content: v,
                   } as ICreationNode['props']
 
                   // if (creation.type === StructType.NOTE) {

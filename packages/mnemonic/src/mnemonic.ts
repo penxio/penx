@@ -48,7 +48,7 @@ export function getPrivateKeyFromMnemonic(
 
   if (!node.privateKey) throw new Error('Private key not found')
 
-  return '0x' + Buffer.from(node.privateKey).toString('hex')
+  return '0x' + bytesToHex(new Uint8Array(node.privateKey))
 }
 
 export function getPublicKeyFromMnemonic(
@@ -66,7 +66,13 @@ export function getPublicKeyFromMnemonic(
 
   if (!node.publicKey) throw new Error('Public key not found')
 
-  return '0x' + Buffer.from(node.publicKey).toString('hex')
+  return '0x' + bytesToHex(new Uint8Array(node.publicKey))
+}
+
+function bytesToHex(bytes: Uint8Array): string {
+  return Array.from(bytes)
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
 }
 
 // async function main() {

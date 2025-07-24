@@ -84,7 +84,7 @@ export class Creation {
   }
 
   get previewedContent() {
-    const content = JSON.parse(this.content)
+    const content = this.content
     return this.transcribedText || docToString(content)
   }
 

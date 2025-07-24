@@ -78,7 +78,7 @@ export const addCreationInputSchema = z.object({
   title: z.string(),
   description: z.string().optional(),
   image: z.string().optional(),
-  content: z.string(),
+  content: z.any(),
   data: z.any(),
   date: z.string().optional(),
   status: z.any().optional(),
@@ -188,3 +188,11 @@ export const checkoutInputSchema = z.object({
 })
 
 export type CheckoutInput = z.infer<typeof checkoutInputSchema>
+
+export const updatePublicKeyInputSchema = z.object({
+  publicKey: z.string(),
+  address: z.string(),
+  mnemonic: z.string(),
+})
+
+export type UpdatePublicKeyInput = z.infer<typeof updatePublicKeyInputSchema>

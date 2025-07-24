@@ -70,7 +70,7 @@ function Content({ struct }: Props) {
       await addCreation({
         type: struct.type,
         ...data,
-        content: JSON.stringify(content),
+        content: content,
       })
       appEmitter.emit('ROUTE_TO_BACK')
     }

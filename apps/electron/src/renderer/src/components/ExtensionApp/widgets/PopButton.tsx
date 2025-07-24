@@ -19,6 +19,8 @@ export const PopButton = ({ className }: Props) => {
         className,
       )}
       onClick={() => {
+        console.log('back........')
+
         pop()
       }}
     >

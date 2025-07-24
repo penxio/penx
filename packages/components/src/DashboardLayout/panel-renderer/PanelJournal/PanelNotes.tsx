@@ -47,9 +47,7 @@ const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
         })
       }}
     >
-      <div className="break-words">
-        {docToString(JSON.parse(creation.content))}
-      </div>
+      <div className="break-words">{docToString(creation.content)}</div>
       {/* <ContentRender
         className="px-0 text-sm"
         content={JSON.parse(creation.content)}

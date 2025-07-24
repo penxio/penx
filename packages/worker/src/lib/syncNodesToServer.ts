@@ -3,14 +3,15 @@ import { produce } from 'immer'
 import _ from 'lodash'
 import { api } from '@penx/api'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
+import { encryptString } from '@penx/encryption'
 import { localDB } from '@penx/local-db'
-import { IChange, OperationType } from '@penx/model-type'
+import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
 
 export async function syncNodesToServer() {
   const session = (await get('SESSION')) as SessionData
 
-  if (!session || !session?.spaceId) return
+  if (!session || !session?.spaceId || !session.publicKey) return
 
   const site = await localDB.getSpace(session.spaceId)
 
@@ -106,7 +107,7 @@ export async function syncNodesToServer() {
 
   const errors: any = []
   for (const change of newChanges) {
-    const data = {
+    const input = {
       operation: change.operation,
       spaceId: change.spaceId,
       key: change.key,
@@ -114,13 +115,13 @@ export async function syncNodesToServer() {
     }
 
     if (change.data?.createdAt) {
-      data.data.createdAt = new Date(change.data?.createdAt)
+      input.data.createdAt = new Date(change.data?.createdAt)
         .getTime()
         .toString()
     }
 
     if (change.data?.updatedAt) {
-      data.data.updatedAt = new Date(change.data?.updatedAt)
+      input.data.updatedAt = new Date(change.data?.updatedAt)
         .getTime()
         .toString()
     }
@@ -146,10 +147,36 @@ export async function syncNodesToServer() {
 
       // const json = await res.json()
 
-      await api.sync(url, data)
-      // console.log('>>>>>change synced:', change)
+      console.log('=====input:', input)
+      const encryptedInput = produce(input, (draft) => {
+        const props =
+          change.operation === OperationType.CREATE
+            ? (draft.data.props as ICreationNode['props'])
+            : (draft.data as ICreationNode['props'])
+        if (props.content) {
+          props.content = encryptString(
+            JSON.stringify(props.content),
+            session.publicKey,
+          )
+        }
+        if (props.cells) {
+          props.cells = encryptString(
+            JSON.stringify(props.cells),
+            session.publicKey,
+          )
+        }
+        if (props.data) {
+          props.data = encryptString(
+            JSON.stringify(props.data),
+            session.publicKey,
+          )
+        }
+      })
 
-      // await localDB.change.update(change.id, { synced: 1 })
+      console.log('======encryptedInput:', encryptedInput)
+
+      // console.log('>>>>>change synced:', change)
+      await api.sync(url, encryptedInput)
       await localDB.change.delete(change.id)
     } catch (error) {
       console.log('error syncing change:', error)

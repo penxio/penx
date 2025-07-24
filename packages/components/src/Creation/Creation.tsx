@@ -127,14 +127,10 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
         <div className={cn('mx-auto w-full max-w-2xl px-0')}>
           <NovelEditor
             className=""
-            value={
-              creation.content
-                ? JSON.parse(creation.content)
-                : defaultEditorContent
-            }
-            onChange={(v: any[]) => {
+            value={creation.content ? creation.content : defaultEditorContent}
+            onChange={(v: any) => {
               const input = {
-                content: JSON.stringify(v),
+                content: v,
               } as ICreationNode['props']
 
               // if (creation.type === StructType.NOTE) {

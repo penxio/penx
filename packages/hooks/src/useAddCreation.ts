@@ -17,7 +17,7 @@ import { useMySpace } from './useMySpace'
 export type Input = {
   type: string
   isAddPanel?: boolean
-  content?: string
+  content?: Record<string, any>
   title?: string
   data?: any
   date?: any
@@ -44,7 +44,7 @@ export function useAddCreation() {
       image: '',
       ...input,
       title: input.title || '',
-      content: input.content || JSON.stringify(defaultEditorContent),
+      content: input.content || defaultEditorContent,
       data: input.data || {},
       type: struct.type,
       structId: struct.id,

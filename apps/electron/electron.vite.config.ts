@@ -35,6 +35,7 @@ export default defineConfig({
           '@penx/vaul',
           '@penx/widgets',
           '@penx/worker',
+          '"@penx/mnemonic"',
         ],
       }),
     ],

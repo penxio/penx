@@ -23,6 +23,7 @@ import {
 import { appEmitter } from '@penx/emitter'
 import { usePathname } from '@penx/libs/i18n'
 import {
+  getAddress,
   getNewMnemonic,
   getPublicKey,
   setMnemonicToLocal,
@@ -77,7 +78,12 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
     try {
       const mnemonic = await getNewMnemonic()
       const publicKey = getPublicKey(mnemonic)
-      await api.updatePublicKey(publicKey)
+      const address = getAddress(mnemonic)
+      await api.updatePublicKey({
+        mnemonic,
+        publicKey,
+        address,
+      })
       await setMnemonicToLocal(session.spaceId!, mnemonic)
       // store.user.setMnemonic(mnemonic)
       refreshSession()
