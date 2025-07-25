@@ -11,11 +11,12 @@ import {
   type Dispatch,
   type SetStateAction,
 } from 'react'
+import { text } from 'stream/consumers'
 import type { UseChatHelpers } from '@ai-sdk/react'
 import type { Attachment, UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
-import { CogIcon } from 'lucide-react'
+import { AtSign, CogIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 import { isDesktop } from '@penx/constants'
@@ -102,11 +103,10 @@ function PureMultimodalInput({
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [uploadQueue, setUploadQueue] = useState<Array<string>>([])
 
-  const submitWithModel = useCallback(() => {
+  const submit = useCallback(() => {
     handleSubmit(undefined, {
+      body: { text: input },
       experimental_attachments: attachments,
-      // @ts-ignore TODO:
-      data: undefined,
     })
 
     setAttachments([])
@@ -180,44 +180,48 @@ function PureMultimodalInput({
 
   if (isDesktop) {
     return (
-      <div className="relative flex w-full flex-col gap-4">
-        <Textarea
-          data-testid="multimodal-input"
-          ref={textareaRef}
-          placeholder="Send a message..."
-          value={input}
-          onChange={handleInput}
+      <div className="relative flex h-full w-full gap-4">
+        <div
           className={cx(
-            'bg-muted  text-normal overflow-hidden rounded-2xl dark:border-zinc-700',
-            className,
+            'shadow- flex w-full flex-col gap-2 rounded-3xl border bg-white p-4  dark:border-zinc-700 dark:bg-zinc-900',
           )}
-          rows={1}
-          autoFocus
-          onKeyDown={(event) => {
-            if (
-              event.key === 'Enter' &&
-              !event.shiftKey &&
-              !event.nativeEvent.isComposing
-            ) {
-              event.preventDefault()
-
-              if (status !== 'ready') {
-                toast.error('Please wait for the model to finish its response!')
-              } else {
-                submitWithModel()
+        >
+          <textarea
+            ref={textareaRef}
+            data-testid="multimodal-input"
+            placeholder="Send a message..."
+            value={input}
+            autoFocus
+            onChange={handleInput}
+            className={cx(
+              'max-h-[calc(25dvh)] w-full resize-none overflow-y-auto border-none bg-transparent text-sm outline-none',
+            )}
+            rows={1}
+            onKeyDown={(event) => {
+              if (
+                event.key === 'Enter' &&
+                !event.shiftKey &&
+                !event.nativeEvent.isComposing
+              ) {
+                event.preventDefault()
+                if (status !== 'ready') {
+                  toast.error(
+                    'Please wait for the model to finish its response!',
+                  )
+                } else {
+                  submit()
+                }
               }
-            }
-          }}
-        />
-
-        <div className="absolute bottom-0 right-0 flex w-fit flex-row justify-end p-2">
-          <div>
+            }}
+          />
+          <div className="flex w-full items-center justify-end gap-3">
+            <KnowledgeSelectButton />
             {status === 'submitted' ? (
               <StopButton stop={stop} setMessages={setMessages} />
             ) : (
               <SendButton
                 input={input}
-                submitForm={submitWithModel}
+                submitForm={submit}
                 uploadQueue={uploadQueue}
               />
             )}
@@ -282,7 +286,7 @@ function PureMultimodalInput({
             if (status !== 'ready') {
               toast.error('Please wait for the model to finish its response!')
             } else {
-              submitWithModel()
+              submit()
             }
           }
         }}
@@ -310,7 +314,7 @@ function PureMultimodalInput({
           ) : (
             <SendButton
               input={input}
-              submitForm={submitWithModel}
+              submitForm={submit}
               uploadQueue={uploadQueue}
             />
           )}
@@ -367,7 +371,7 @@ function PureStopButton({
   return (
     <Button
       data-testid="stop-button"
-      className="h-fit rounded-full border p-1.5 dark:border-zinc-600"
+      className="h-fit cursor-pointer rounded-full border p-1.5"
       onClick={(event) => {
         event.preventDefault()
         stop()
@@ -393,7 +397,7 @@ function PureSendButton({
   return (
     <Button
       data-testid="send-button"
-      className="h-fit rounded-full border p-1.5 dark:border-zinc-600"
+      className="disabled:bg-primary/30 h-fit rounded-full p-1.5"
       onClick={(event) => {
         event.preventDefault()
         submitForm()
@@ -411,3 +415,19 @@ const SendButton = memo(PureSendButton, (prevProps, nextProps) => {
   if (prevProps.input !== nextProps.input) return false
   return true
 })
+
+function PureKnowledgeSelectButton() {
+  return (
+    <Button
+      data-testid="knowledge-select-button"
+      className="text-primary/70 hover:bg-primary/30 h-fit cursor-pointer rounded-full border border-none bg-transparent p-1.5"
+      onClick={(event) => {
+        event.preventDefault()
+      }}
+    >
+      <AtSign size={14} />
+    </Button>
+  )
+}
+
+const KnowledgeSelectButton = memo(PureKnowledgeSelectButton)

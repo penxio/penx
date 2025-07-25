@@ -67,27 +67,13 @@ export function Chat({
     stop,
     reload,
   } = useChat({
+    api: 'http://localhost:4000/api/ai/chat',
     id,
     initialMessages,
     experimental_throttle: 100,
     sendExtraMessageFields: true,
     generateId: uniqueId,
-    experimental_prepareRequestBody: (body) => {
-      // Find the current provider based on selected type
-      const currentProvider = space?.props?.aiSetting?.providers?.find(
-        (p) => p.type === selectedProviderRef.current,
-      )
-
-      return {
-        id,
-        message: body.messages.at(-1),
-        selectedChatModel:
-          selectedModelRef.current || currentProvider?.defaultModel,
-        provider: selectedProviderRef.current || provider?.type,
-        apiKey: currentProvider?.apiKey || provider?.apiKey,
-        baseURL: currentProvider?.baseURL || provider?.baseURL,
-      }
-    },
+    experimental_prepareRequestBody: (body) => {},
     onFinish: async (message, options) => {
       await localDB.message.add({
         id: uniqueId(),
@@ -130,29 +116,22 @@ export function Chat({
   const [attachments, setAttachments] = useState<Array<Attachment>>([])
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible)
 
-  // Handle provider and model selection
-  const handleProviderChange = (providerType: string) => {
-    setSelectedProvider(providerType)
-  }
-
-  const handleModelChange = (modelId: string) => {
-    setSelectedModel(modelId)
-  }
-
   return (
     <>
       <div className="flex h-full w-full min-w-0 flex-col">
-        <Messages
-          chatId={id}
-          status={status}
-          messages={messages}
-          setMessages={setMessages}
-          reload={reload}
-          isReadonly={isReadonly}
-          isArtifactVisible={isArtifactVisible}
-        />
+        <div className="w-full flex-1">
+          <Messages
+            chatId={id}
+            status={status}
+            messages={messages}
+            setMessages={setMessages}
+            reload={reload}
+            isReadonly={isReadonly}
+            isArtifactVisible={isArtifactVisible}
+          />
+        </div>
 
-        <form className="mx-auto flex w-full gap-2 px-4  pb-6 md:max-w-3xl">
+        <form className="mx-auto flex w-full gap-2 p-2 md:max-w-3xl">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}
