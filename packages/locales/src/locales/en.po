@@ -101,7 +101,7 @@ msgstr "Account deleted successfully!"
 msgid "Account deletion in progress..."
 msgstr "Account deletion in progress..."
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:108
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:109
 msgid "Actions"
 msgstr "Actions"
 
@@ -151,7 +151,7 @@ msgstr "Add widget"
 msgid "AI chat"
 msgstr "AI chat"
 
-#: apps/electron/src/renderer/src/hooks/useItems.ts:69
+#: apps/electron/src/renderer/src/hooks/useItems.ts:103
 msgid "AI Chat"
 msgstr "AI Chat"
 
@@ -205,7 +205,7 @@ msgstr "All your data will be deleted. This action cannot be undone. Are you sur
 msgid "Already have an account"
 msgstr "Already have an account"
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:64
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:65
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr "An area for sharing thoughts, stories, and insights."
 
@@ -321,7 +321,7 @@ msgid "Change type"
 msgstr "Change type"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:29
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:31
 msgid "Cloud sync"
 msgstr "Cloud sync"
 
@@ -341,12 +341,21 @@ msgstr "Color"
 msgid "Config"
 msgstr "Config"
 
-#: packages/components/src/SettingsDialog/Password.tsx:114
+#: apps/electron/src/renderer/src/components/Panel/pages/PageConfigureShortcut.tsx:19
+msgid "Configure shortcut"
+msgstr "Configure shortcut"
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:273
+msgid "Configure Shortcut"
+msgstr "Configure Shortcut"
+
+#: packages/components/src/RecoverPassword.tsx:72
+#: packages/components/src/SettingsDialog/Password.tsx:127
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:139
 msgid "Confirm"
 msgstr "Confirm"
 
-#: packages/components/src/SettingsDialog/Password.tsx:93
+#: packages/components/src/SettingsDialog/Password.tsx:106
 msgid "Confirm password"
 msgstr "Confirm password"
 
@@ -470,7 +479,7 @@ msgstr "Delete"
 msgid "Delete account"
 msgstr "Delete account"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:325
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:351
 msgid "Delete record"
 msgstr "Delete record"
 
@@ -524,7 +533,7 @@ msgstr "Due date"
 msgid "Edit"
 msgstr "Edit"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:287
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:313
 msgid "Edit content"
 msgstr "Edit content"
 
@@ -533,7 +542,7 @@ msgstr "Edit content"
 msgid "Edit option"
 msgstr "Edit option"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:247
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:254
 msgid "Edit Properties"
 msgstr "Edit Properties"
 
@@ -673,9 +682,13 @@ msgstr "I have a coupon code, apply it now."
 
 #: packages/libs/src/getDefaultStructs.ts:359
 #: packages/components/src/ColumnTypeName.tsx:27
-#: packages/components/src/AppProvider/AppService.ts:155
+#: packages/components/src/AppProvider/AppService.ts:188
 msgid "Image"
 msgstr "Image"
+
+#: packages/components/src/RecoverPassword.tsx:57
+msgid "Input your recovery password to sync your data."
+msgstr "Input your recovery password to sync your data."
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:80
 msgid "Install"
@@ -697,6 +710,11 @@ msgstr "Introduction"
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:35
 msgid "Invalid phone number."
 msgstr "Invalid phone number."
+
+#: packages/components/src/RecoverPassword.tsx:32
+#: packages/components/src/RecoverPassword.tsx:38
+msgid "Invalid recovery password!"
+msgstr "Invalid recovery password!"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:35
 msgid "Journal layout"
@@ -753,13 +771,13 @@ msgstr "Local backup"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:130
+#: packages/components/src/ProfileButton.tsx:131
 msgid "Log in"
 msgstr "Log in"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:266
+#: packages/components/src/ProfileButton.tsx:270
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:88
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -830,7 +848,7 @@ msgstr "Multiple select"
 msgid "Multiple Select"
 msgstr "Multiple Select"
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:63
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:64
 msgid "My area"
 msgstr "My area"
 
@@ -839,7 +857,7 @@ msgstr "My area"
 msgid "My lists"
 msgstr "My lists"
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:26
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:27
 msgid "My Space"
 msgstr "My Space"
 
@@ -965,7 +983,7 @@ msgstr "On time"
 msgid "Once deleted, You can't undo this action."
 msgstr "Once deleted, You can't undo this action."
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:229
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:236
 msgid "Open Command"
 msgstr "Open Command"
 
@@ -1006,7 +1024,7 @@ msgstr "Page"
 #: packages/components/src/ColumnTypeName.tsx:26
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:54
-#: packages/components/src/SettingsDialog/Password.tsx:72
+#: packages/components/src/SettingsDialog/Password.tsx:85
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:93
@@ -1023,7 +1041,7 @@ msgstr "Password for sync server, password is stored locally only."
 msgid "Passwords do not match"
 msgstr "Passwords do not match"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:10
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:11
 msgid "PenX Account"
 msgstr "PenX Account"
 
@@ -1121,7 +1139,7 @@ msgid "Profile"
 msgstr "Profile"
 
 #: packages/libs/src/getDefaultStructs.ts:398
-#: packages/components/src/AppProvider/AppService.ts:184
+#: packages/components/src/AppProvider/AppService.ts:217
 msgid "Prompt"
 msgstr "Prompt"
 
@@ -1150,12 +1168,12 @@ msgstr "Publish to marketplace"
 msgid "Publish your creation"
 msgstr "Publish your creation"
 
-#: apps/electron/src/renderer/src/hooks/useItems.ts:93
+#: apps/electron/src/renderer/src/hooks/useItems.ts:128
 msgid "Quick input"
 msgstr "Quick input"
 
 #: packages/libs/src/getDefaultStructs.ts:393
-#: packages/components/src/AppProvider/AppService.ts:199
+#: packages/components/src/AppProvider/AppService.ts:232
 msgid "Quicklink"
 msgstr "Quicklink"
 
@@ -1177,13 +1195,22 @@ msgstr "Recently edited"
 msgid "Recently opened"
 msgstr "Recently opened"
 
-#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:124
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:75
+msgid "Record shortcut"
+msgstr "Record shortcut"
+
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:223
 msgid "Recording..."
 msgstr "Recording..."
 
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:79
 msgid "Recover failed"
 msgstr "Recover failed"
+
+#: packages/components/src/RecoverPassword.tsx:54
+#: packages/components/src/RecoverPassword.tsx:61
+msgid "Recovery password"
+msgstr "Recovery password"
 
 #: packages/components/src/SettingsDialog/SettingsContent.tsx:27
 msgid "Recovery phrase"
@@ -1271,14 +1298,14 @@ msgid "Set password"
 msgstr "Set password"
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:48
-#: packages/components/src/ProfileButton.tsx:217
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:51
+#: packages/components/src/ProfileButton.tsx:221
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr "Settings"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:303
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:329
 msgid "Share"
 msgstr "Share"
 
@@ -1319,7 +1346,7 @@ msgid "Slug"
 msgstr "Slug"
 
 #: packages/libs/src/getDefaultStructs.ts:388
-#: packages/components/src/AppProvider/AppService.ts:171
+#: packages/components/src/AppProvider/AppService.ts:204
 msgid "Snippet"
 msgstr "Snippet"
 
@@ -1390,7 +1417,7 @@ msgstr "Subscription"
 msgid "Sun"
 msgstr "Sun"
 
-#: packages/components/src/ProfileButton.tsx:246
+#: packages/components/src/ProfileButton.tsx:250
 msgid "Support"
 msgstr "Support"
 
@@ -1608,7 +1635,7 @@ msgstr "Updated successfully!"
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: packages/components/src/ProfileButton.tsx:237
+#: packages/components/src/ProfileButton.tsx:241
 msgid "Upgrade to Pro"
 msgstr "Upgrade to Pro"
 

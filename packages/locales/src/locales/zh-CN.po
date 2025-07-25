@@ -101,7 +101,7 @@ msgstr "账户已成功删除！"
 msgid "Account deletion in progress..."
 msgstr "账户删除处理中…"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:108
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:109
 msgid "Actions"
 msgstr ""
 
@@ -151,7 +151,7 @@ msgstr "添加组件"
 msgid "AI chat"
 msgstr "AI 聊天"
 
-#: apps/electron/src/renderer/src/hooks/useItems.ts:69
+#: apps/electron/src/renderer/src/hooks/useItems.ts:103
 msgid "AI Chat"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr "所有数据将被删除，此操作无法撤销。您确定要删除您
 msgid "Already have an account"
 msgstr "已有账户"
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:64
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:65
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr "一个分享想法、故事和见解的空间。"
 
@@ -321,7 +321,7 @@ msgid "Change type"
 msgstr "更改类型"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:29
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:31
 msgid "Cloud sync"
 msgstr "云端同步"
 
@@ -341,12 +341,21 @@ msgstr "颜色"
 msgid "Config"
 msgstr "配置"
 
-#: packages/components/src/SettingsDialog/Password.tsx:114
+#: apps/electron/src/renderer/src/components/Panel/pages/PageConfigureShortcut.tsx:19
+msgid "Configure shortcut"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:273
+msgid "Configure Shortcut"
+msgstr ""
+
+#: packages/components/src/RecoverPassword.tsx:72
+#: packages/components/src/SettingsDialog/Password.tsx:127
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:139
 msgid "Confirm"
 msgstr "确认"
 
-#: packages/components/src/SettingsDialog/Password.tsx:93
+#: packages/components/src/SettingsDialog/Password.tsx:106
 msgid "Confirm password"
 msgstr "确认密码"
 
@@ -470,7 +479,7 @@ msgstr "删除"
 msgid "Delete account"
 msgstr "删除账户"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:325
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:351
 msgid "Delete record"
 msgstr ""
 
@@ -524,7 +533,7 @@ msgstr "截止日期"
 msgid "Edit"
 msgstr "编辑"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:287
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:313
 msgid "Edit content"
 msgstr ""
 
@@ -533,7 +542,7 @@ msgstr ""
 msgid "Edit option"
 msgstr "编辑选项"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:247
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:254
 msgid "Edit Properties"
 msgstr ""
 
@@ -673,9 +682,13 @@ msgstr "我有优惠码，现在去使用。"
 
 #: packages/libs/src/getDefaultStructs.ts:359
 #: packages/components/src/ColumnTypeName.tsx:27
-#: packages/components/src/AppProvider/AppService.ts:155
+#: packages/components/src/AppProvider/AppService.ts:188
 msgid "Image"
 msgstr "图片"
+
+#: packages/components/src/RecoverPassword.tsx:57
+msgid "Input your recovery password to sync your data."
+msgstr ""
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:80
 msgid "Install"
@@ -697,6 +710,11 @@ msgstr "简介"
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:35
 msgid "Invalid phone number."
 msgstr "手机号码无效"
+
+#: packages/components/src/RecoverPassword.tsx:32
+#: packages/components/src/RecoverPassword.tsx:38
+msgid "Invalid recovery password!"
+msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:35
 msgid "Journal layout"
@@ -753,13 +771,13 @@ msgstr "本地备份"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:130
+#: packages/components/src/ProfileButton.tsx:131
 msgid "Log in"
 msgstr "登录"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:266
+#: packages/components/src/ProfileButton.tsx:270
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:88
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -830,7 +848,7 @@ msgstr ""
 msgid "Multiple Select"
 msgstr "多选"
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:63
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:64
 msgid "My area"
 msgstr "我的领域"
 
@@ -839,7 +857,7 @@ msgstr "我的领域"
 msgid "My lists"
 msgstr "我的列表"
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:26
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:27
 msgid "My Space"
 msgstr ""
 
@@ -965,7 +983,7 @@ msgstr "准时"
 msgid "Once deleted, You can't undo this action."
 msgstr "删除后，您无法撤销此操作。"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:229
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:236
 msgid "Open Command"
 msgstr ""
 
@@ -1006,7 +1024,7 @@ msgstr "页面"
 #: packages/components/src/ColumnTypeName.tsx:26
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:54
-#: packages/components/src/SettingsDialog/Password.tsx:72
+#: packages/components/src/SettingsDialog/Password.tsx:85
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:93
@@ -1023,7 +1041,7 @@ msgstr ""
 msgid "Passwords do not match"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:10
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:11
 msgid "PenX Account"
 msgstr ""
 
@@ -1121,7 +1139,7 @@ msgid "Profile"
 msgstr "个人信息"
 
 #: packages/libs/src/getDefaultStructs.ts:398
-#: packages/components/src/AppProvider/AppService.ts:184
+#: packages/components/src/AppProvider/AppService.ts:217
 msgid "Prompt"
 msgstr ""
 
@@ -1150,12 +1168,12 @@ msgstr "发布到应用市场"
 msgid "Publish your creation"
 msgstr "发布您的创作"
 
-#: apps/electron/src/renderer/src/hooks/useItems.ts:93
+#: apps/electron/src/renderer/src/hooks/useItems.ts:128
 msgid "Quick input"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:393
-#: packages/components/src/AppProvider/AppService.ts:199
+#: packages/components/src/AppProvider/AppService.ts:232
 msgid "Quicklink"
 msgstr ""
 
@@ -1177,12 +1195,21 @@ msgstr "最近编辑"
 msgid "Recently opened"
 msgstr "最近打开"
 
-#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:124
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:75
+msgid "Record shortcut"
+msgstr ""
+
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:223
 msgid "Recording..."
 msgstr ""
 
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:79
 msgid "Recover failed"
+msgstr ""
+
+#: packages/components/src/RecoverPassword.tsx:54
+#: packages/components/src/RecoverPassword.tsx:61
+msgid "Recovery password"
 msgstr ""
 
 #: packages/components/src/SettingsDialog/SettingsContent.tsx:27
@@ -1271,14 +1298,14 @@ msgid "Set password"
 msgstr ""
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:48
-#: packages/components/src/ProfileButton.tsx:217
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:51
+#: packages/components/src/ProfileButton.tsx:221
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr "设置"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:303
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:329
 msgid "Share"
 msgstr ""
 
@@ -1319,7 +1346,7 @@ msgid "Slug"
 msgstr "别名"
 
 #: packages/libs/src/getDefaultStructs.ts:388
-#: packages/components/src/AppProvider/AppService.ts:171
+#: packages/components/src/AppProvider/AppService.ts:204
 msgid "Snippet"
 msgstr ""
 
@@ -1390,7 +1417,7 @@ msgstr "订阅"
 msgid "Sun"
 msgstr "周日"
 
-#: packages/components/src/ProfileButton.tsx:246
+#: packages/components/src/ProfileButton.tsx:250
 msgid "Support"
 msgstr "支持"
 
@@ -1608,7 +1635,7 @@ msgstr "更新成功！"
 msgid "Upgrade"
 msgstr "升级"
 
-#: packages/components/src/ProfileButton.tsx:237
+#: packages/components/src/ProfileButton.tsx:241
 msgid "Upgrade to Pro"
 msgstr "升级到专业版"
 
