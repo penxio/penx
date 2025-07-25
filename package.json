@@ -113,6 +113,7 @@
     "bcrypt-edge": "^0.1.0",
     "bcrypt-ts": "^6.0.0",
     "big.js": "^6.2.1",
+    "buffer": "^6.0.3",
     "cheerio": "^1.0.0",
     "class-variance-authority": "0.7.1",
     "classnames": "^2.5.1",

@@ -90,7 +90,7 @@ export async function syncNodesToLocal(spaceId: string) {
 
       await localDB.node.bulkPut(
         rows.map((row) => {
-          return produce(row as any as INode, (draft) => {
+          const node = produce(row as any as INode, (draft) => {
             draft.createdAt = new Date(Number(draft.createdAt?.toString()))
             draft.updatedAt = new Date(Number(draft.updatedAt?.toString()))
             if (draft.type === NodeType.CREATION) {
@@ -101,6 +101,10 @@ export async function syncNodesToLocal(spaceId: string) {
               props.data = decrypt(props.data, mnemonic)
             }
           })
+          if (node.type === NodeType.CREATION) {
+            console.log('node=====:', node)
+          }
+          return node
         }),
       )
     }
@@ -372,6 +376,7 @@ function decrypt(base64String: string, mnemonic: string, shouldParse = true) {
     if (shouldParse) return JSON.parse(result)
     return result
   } catch (error) {
+    console.log('======error:', error)
     return base64String
   }
 }

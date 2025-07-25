@@ -24,7 +24,7 @@ export function CreationDetail({ creation }: Props) {
         {struct.isImage ? (
           <CreationImage creation={creation} />
         ) : (
-          <NovelEditor editable={false} value={JSON.parse(creation.content)} />
+          <NovelEditor editable={false} value={creation.content} />
         )}
       </div>
       <div className="border-foreground/6 divide-foreground/5 flex flex-col gap-2 divide-y border-t px-2 py-2">
