@@ -23,7 +23,10 @@ import {
 import { appEmitter } from '@penx/emitter'
 import { usePathname } from '@penx/libs/i18n'
 import {
+  decryptByMnemonic,
+  encryptByPublicKey,
   getAddress,
+  getMnemonicFromLocal,
   getNewMnemonic,
   getPublicKey,
   setMnemonicToLocal,
@@ -40,6 +43,7 @@ import { StructDialog } from '../StructDialog/StructDialog'
 import { PanelLayout } from './PanelLayout'
 import { SettingsLayout } from './SettingsLayout'
 import 'react-datepicker/dist/react-datepicker.css'
+import { encryptString } from '@penx/encryption'
 
 // let inited = false
 // if (!isServer) {
@@ -98,6 +102,20 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
     doingRef.current = true
     initMnemonic()
   }, [session])
+
+  // useEffect(() => {
+  //   if (!session) return
+  //   async function run() {
+  //     const mnemonic = await getMnemonicFromLocal(session.userId)
+  //     console.log('========>>>>>>>>:', mnemonic)
+  //     const str = 'hello world'
+  //     const s = encryptByPublicKey(str, session.publicKey)
+  //     console.log('========>>>>>>>>:s', s)
+  //     const d = decryptByMnemonic(s, mnemonic)
+  //     console.log('========>>>>>>>>:d', d)
+  //   }
+  //   run()
+  // }, [session])
 
   return (
     <>

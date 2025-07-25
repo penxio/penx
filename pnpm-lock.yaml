@@ -2537,6 +2537,9 @@ importers:
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
+      '@penx/mnemonic':
+        specifier: workspace:*
+        version: link:../mnemonic
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type

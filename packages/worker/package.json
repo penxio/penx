@@ -20,6 +20,7 @@
   "dependencies": {
     "@penx/constants": "workspace:*",
     "@penx/encryption": "workspace:*",
+    "@penx/mnemonic": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/model-type": "workspace:*",

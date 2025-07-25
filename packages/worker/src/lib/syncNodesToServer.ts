@@ -3,9 +3,9 @@ import { produce } from 'immer'
 import _ from 'lodash'
 import { api } from '@penx/api'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
-import { encryptString } from '@penx/encryption'
 import { checkMnemonic } from '@penx/libs/checkMnemonic'
 import { localDB } from '@penx/local-db'
+import { encryptByPublicKey } from '@penx/mnemonic'
 import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
 
@@ -162,23 +162,23 @@ export async function syncNodesToServer() {
             : (draft.data as ICreationNode['props'])
 
         if (props.title) {
-          props.title = encryptString(props.title, session.publicKey)
+          props.title = encryptByPublicKey(props.title, session.publicKey)
         }
 
         if (props.content) {
-          props.content = encryptString(
+          props.content = encryptByPublicKey(
             JSON.stringify(props.content),
             session.publicKey,
           )
         }
         if (props.cells) {
-          props.cells = encryptString(
+          props.cells = encryptByPublicKey(
             JSON.stringify(props.cells),
             session.publicKey,
           )
         }
         if (props.data) {
-          props.data = encryptString(
+          props.data = encryptByPublicKey(
             JSON.stringify(props.data),
             session.publicKey,
           )

@@ -56,6 +56,7 @@ export async function syncNodesToLocal(spaceId: string) {
   const session = await get('SESSION')
 
   const mnemonic = await checkMnemonic(session)
+  console.log('=====mnemonic:', mnemonic)
 
   const stream = new ShapeStream({
     url: shapeUrl,
@@ -85,6 +86,7 @@ export async function syncNodesToLocal(spaceId: string) {
       const shape = new Shape(stream)
       const rows = await shape.rows
       console.log('=======rows:', rows)
+      console.log('======>>>>>>mnemonic:', mnemonic)
 
       await localDB.node.bulkPut(
         rows.map((row) => {
@@ -93,7 +95,7 @@ export async function syncNodesToLocal(spaceId: string) {
             draft.updatedAt = new Date(Number(draft.updatedAt?.toString()))
             if (draft.type === NodeType.CREATION) {
               const props = draft.props as ICreationNode['props']
-              props.title = decrypt(props.title, mnemonic)
+              props.title = decrypt(props.title, mnemonic, false)
               props.content = decrypt(props.content, mnemonic)
               props.cells = decrypt(props.cells, mnemonic)
               props.data = decrypt(props.data, mnemonic)
@@ -167,7 +169,7 @@ async function sync(
     if (localLatestUpdated >= changesLatestUpdated) return
   }
 
-  const getDecryptNode = (value: INode) => {
+  const getDecryptedNode = (value: INode) => {
     return produce(value, (draft) => {
       if (value.createdAt) {
         draft.createdAt = new Date(Number(value.createdAt.toString()))
@@ -176,9 +178,11 @@ async function sync(
         draft.updatedAt = new Date(Number(value.updatedAt.toString()))
       }
 
-      if (draft.type === NodeType.CREATION) {
+      const node = nodes.find((n) => n.id === value.id)
+
+      if (node?.type === NodeType.CREATION) {
         const props = draft.props as ICreationNode['props']
-        if (props.title) props.title = decrypt(props.title, mnemonic)
+        if (props.title) props.title = decrypt(props.title, mnemonic, false)
         if (props.content) props.content = decrypt(props.content, mnemonic)
         if (props.cells) props.cells = decrypt(props.cells, mnemonic)
         if (props.data) props.data = decrypt(props.data, mnemonic)
@@ -194,7 +198,7 @@ async function sync(
       if (operation === 'insert') {
         // console.log('insert:', message)
 
-        await localDB.node.put(getDecryptNode(value))
+        await localDB.node.put(getDecryptedNode(value))
 
         const newNode = await localDB.node.get(value.id)
         newNode && changeNodes.push(newNode)
@@ -216,8 +220,10 @@ async function sync(
           node && changeNodes.push(node)
         }
 
+        console.log('======getDecryptedNode(value):', getDecryptedNode(value))
+
         await localDB.node.update(value.id, {
-          ...getDecryptNode(value),
+          ...getDecryptedNode(value),
         })
       }
       if (operation === 'delete') {
@@ -359,10 +365,13 @@ function isEqual(localArr: INode[], storeArr: INode[]): boolean {
   return fastCompare(p1, p2)
 }
 
-function decrypt(base64String: string, mnemonic: string) {
+function decrypt(base64String: string, mnemonic: string, shouldParse = true) {
   try {
-    return decryptByMnemonic(base64String, mnemonic)
-  } catch {
+    const result = decryptByMnemonic(base64String, mnemonic)
+    // console.log('result======:', result)
+    if (shouldParse) return JSON.parse(result)
+    return result
+  } catch (error) {
     return base64String
   }
 }

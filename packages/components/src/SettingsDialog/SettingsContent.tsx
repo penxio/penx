@@ -34,7 +34,7 @@ export function SettingsContent({ className }: Props) {
       <SyncServerDialog />
       <div
         className={cn(
-          'bg-background flex flex-1 flex-col px-10 py-6 dark:bg-neutral-800',
+          'bg-background flex flex-1 flex-col rounded-3xl px-10 py-6 dark:bg-neutral-800',
           className,
         )}
       >

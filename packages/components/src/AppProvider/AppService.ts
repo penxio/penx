@@ -5,8 +5,10 @@ import { api } from '@penx/api'
 import { Node } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { widgetAtom } from '@penx/hooks/useWidget'
+import { checkMnemonic } from '@penx/libs/checkMnemonic'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
 import { localDB } from '@penx/local-db'
+import { getMnemonicFromLocal } from '@penx/mnemonic'
 import {
   IAreaNode,
   ICreationNode,
@@ -50,6 +52,10 @@ export class AppService {
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return
+
+    if (session) {
+      await checkMnemonic(session)
+    }
 
     try {
       const space = await this.getInitialSpace(session)
