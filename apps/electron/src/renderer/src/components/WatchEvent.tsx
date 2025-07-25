@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react'
+import { t } from '@lingui/core/macro'
 import { set } from 'idb-keyval'
+import { toast } from 'sonner'
 import { api } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { useAppShortcuts } from '@penx/hooks/useAppShortcuts'
@@ -25,6 +27,12 @@ export function WatchEvent() {
   useEffect(() => {
     window.electron.ipcRenderer.on('quick-input-success', () => {
       store.creations.refetchCreations()
+    })
+  }, [])
+
+  useEffect(() => {
+    window.electron.ipcRenderer.on('quit-and-install', () => {
+      toast.loading(t`New version available, restarting to update...`)
     })
   }, [])
 

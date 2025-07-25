@@ -1,6 +1,7 @@
 import { app, dialog, MessageBoxReturnValue, shell } from 'electron'
 import log from 'electron-log'
 import { autoUpdater, ProgressInfo, UpdateInfo } from 'electron-updater'
+import { Windows } from './types'
 
 interface ReleaseNotesInfo extends UpdateInfo {
   releaseNotesUrl?: string
@@ -10,7 +11,7 @@ export class AppUpdater {
   // Optionally maintain progress listeners or UI references here
   // private progressWindow?: BrowserWindow;
 
-  constructor() {
+  constructor(private windows: Windows) {
     // Configure logging
     log.transports.file.level = 'info'
     autoUpdater.logger = log
@@ -32,7 +33,8 @@ export class AppUpdater {
     // Update available
     autoUpdater.on('update-available', (info: UpdateInfo) => {
       log.info('Update available:', info)
-      this.showUpdateDialog(info as ReleaseNotesInfo)
+      // this.showUpdateDialog(info as ReleaseNotesInfo)
+      autoUpdater.downloadUpdate()
     })
 
     // No updates available
@@ -54,7 +56,11 @@ export class AppUpdater {
     // Update downloaded
     autoUpdater.on('update-downloaded', (info: UpdateInfo) => {
       log.info('Update downloaded:', info)
-      this.showInstallDialog(info)
+      // this.showInstallDialog(info)
+      this.windows.panelWindow?.webContents.send('quit-and-install')
+      setTimeout(() => {
+        autoUpdater.quitAndInstall()
+      }, 1500)
     })
 
     // Update error
