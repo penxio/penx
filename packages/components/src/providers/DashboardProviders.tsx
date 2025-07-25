@@ -1,5 +1,6 @@
 'use client'
 
+import { Buffer } from 'buffer'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'sonner'
 import { queryClient } from '@penx/query-client'
@@ -9,6 +10,10 @@ import { AppProvider } from '../AppProvider/AppProvider'
 import { AreaDialog } from '../AreaDialog/AreaDialog'
 import { DeleteCreationDialog } from '../Creation/DeleteCreationDialog/DeleteCreationDialog'
 import { StructDialog } from '../StructDialog/StructDialog'
+
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer
+}
 
 export function DashboardProviders({
   children,

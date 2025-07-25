@@ -50,6 +50,7 @@ export default defineConfig({
     },
     resolve: {
       alias: {
+        buffer: 'buffer',
         '~': resolve('src/renderer/src'),
       },
     },

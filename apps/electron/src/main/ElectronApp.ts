@@ -172,7 +172,7 @@ export class ElectronApp {
       () => {
         appUpdater.checkForUpdates()
       },
-      2 * 60 * 60 * 1000,
+      60 * 60 * 1000,
     )
   }
 

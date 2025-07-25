@@ -50,7 +50,7 @@ export function useItems() {
       const t = search.toLowerCase()
 
       if (row.title.toLowerCase().includes(t)) return true
-      const contentStr = docToString(JSON.parse(row.content))
+      const contentStr = docToString(row.content)
       if (contentStr.toLowerCase().includes(t)) return true
 
       if (!row.cells) {

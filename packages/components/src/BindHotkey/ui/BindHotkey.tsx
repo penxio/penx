@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Box } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
 import { useAppShortcuts } from '@penx/hooks/useAppShortcuts'
+import { Shortcut, ShortcutType } from '@penx/model-type'
 import { store } from '@penx/store'
-import { Shortcut, ShortcutType } from '@penx/types'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
 import { Kbd } from '../../Kbd'
@@ -164,6 +164,7 @@ function Content({
 
         if (commandId) {
           store.app.upsertShortcut({
+            type: ShortcutType.COMMAND,
             commandId,
             keys,
           })
