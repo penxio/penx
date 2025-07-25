@@ -4,10 +4,16 @@ import { isBrowser, isServer } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { useSession } from '@penx/session'
-import { appErrorAtom, appLoadingAtom, store } from '@penx/store'
+import {
+  appErrorAtom,
+  appLoadingAtom,
+  appPasswordNeededAtom,
+  store,
+} from '@penx/store'
 import { Button } from '@penx/uikit/ui/button'
 import { LogoSpinner } from '@penx/widgets/LogoSpinner'
 import { runWorker } from '@penx/worker'
+import { RecoverPassword } from '../RecoverPassword'
 import { AppService } from './AppService'
 
 if (!isServer) {
@@ -21,6 +27,7 @@ export const appContext = createContext({} as { app: AppService })
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   const { session, isLoading } = useSession()
   const loading = useAtomValue(appLoadingAtom)
+  const passwordNeed = useAtomValue(appPasswordNeededAtom)
   const error = useAtomValue(appErrorAtom)
   const appRef = useRef(new AppService())
   const { Provider } = appContext
@@ -63,6 +70,10 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
         </div>
       </div>
     )
+  }
+
+  if (passwordNeed) {
+    return <RecoverPassword />
   }
 
   if (loading || journalLayout.isLoading) {

@@ -1,10 +1,11 @@
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { localDB } from '@penx/local-db'
-import { Shortcut, IShortcutNode } from '@penx/model-type'
+import { IShortcutNode, Shortcut } from '@penx/model-type'
 import { StoreType } from '../store-types'
 
 export const appLoadingAtom = atom(true)
+export const appPasswordNeededAtom = atom(false)
 export const appErrorAtom = atom('')
 export const appShortcutAtom = atom<IShortcutNode>(null as any as IShortcutNode)
 
@@ -21,6 +22,14 @@ export class AppStore {
 
   setAppLoading(loading: boolean) {
     return this.store.set(appLoadingAtom, loading)
+  }
+
+  getPasswordNeeded() {
+    return this.store.get(appPasswordNeededAtom)
+  }
+
+  setPasswordNeeded(need: boolean) {
+    return this.store.set(appPasswordNeededAtom, need)
   }
 
   getShortcut() {

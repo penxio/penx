@@ -8,6 +8,9 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { api } from '@penx/api'
 import { UpdatePasswordInput } from '@penx/constants'
+import { encryptString } from '@penx/encryption'
+import { getMnemonicFromLocal } from '@penx/mnemonic'
+import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/button'
 import {
   Form,
@@ -30,10 +33,20 @@ const FormSchema = z.object({
 interface Props {}
 
 export function Password({}: Props) {
+  const { session } = useSession()
   const { isPending, mutateAsync } = useMutation({
     mutationKey: ['updatePassword'],
-    mutationFn: (input: UpdatePasswordInput) => {
-      return api.updatePassword(input)
+    mutationFn: async (input: UpdatePasswordInput) => {
+      const mnemonic = await getMnemonicFromLocal(session.userId)
+      await api.updatePassword(input)
+      await api.updateMnemonicInfo({
+        mnemonic: '',
+        encryptedMnemonic: encryptString(
+          mnemonic,
+          `${session.userId}.${input.password}`,
+        ),
+      })
+      return null
     },
   })
 

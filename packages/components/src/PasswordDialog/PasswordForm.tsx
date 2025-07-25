@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 import { z } from 'zod'
-import { useMyAccounts } from '@penx/hooks/useMyAccounts'
 import { Button } from '@penx/uikit/button'
 import {
   Form,

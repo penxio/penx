@@ -10,6 +10,9 @@ export async function checkMnemonic(session: SessionData): Promise<string> {
   if (info.mnemonic) {
     await setMnemonicToLocal(session.userId, info.mnemonic)
   } else {
+    if (info.encryptedMnemonic) {
+      throw new Error('DECRYPT_MNEMONIC_NEEDED')
+    }
     throw new Error('No Mnemonic')
   }
 

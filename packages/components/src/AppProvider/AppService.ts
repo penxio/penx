@@ -54,7 +54,16 @@ export class AppService {
     // return
 
     if (session) {
-      await checkMnemonic(session)
+      try {
+        await checkMnemonic(session)
+      } catch (error) {
+        if (error.message === 'DECRYPT_MNEMONIC_NEEDED') {
+          store.app.setPasswordNeeded(true)
+          return
+        }
+        console.log('====error.message:')
+        //
+      }
     }
 
     try {
