@@ -758,7 +758,7 @@ importers:
         version: 5.3.1(typescript@5.8.2)
       '@lingui/loader':
         specifier: 5.3.1
-        version: 5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14))
       '@lingui/swc-plugin':
         specifier: 5.5.2
         version: 5.5.2(@lingui/core@5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(@swc/core@1.12.14)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -845,7 +845,7 @@ importers:
         version: 1.0.11
       '@vanilla-extract/next-plugin':
         specifier: ^2.4.10
-        version: 2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14))
       electron-vite:
         specifier: ^4.0.0
         version: 4.0.0(@swc/core@1.12.14)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
@@ -963,7 +963,7 @@ importers:
     devDependencies:
       '@lingui/vite-plugin':
         specifier: ^5.3.2
-        version: 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.8.2)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+        version: 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.8.3)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
       '@tailwindcss/vite':
         specifier: ^4.1.4
         version: 4.1.11(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
@@ -1614,7 +1614,7 @@ importers:
         version: 10.4.18(postcss@8.5.6)
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14))
       cypress:
         specifier: ^13.5.0
         version: 13.17.0
@@ -1635,7 +1635,7 @@ importers:
         version: 5.1.0
       style-loader:
         specifier: ^4.0.0
-        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14))
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.11
@@ -1777,7 +1777,7 @@ importers:
         version: 10.4.21(postcss@8.5.6)
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14))
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.4.4
@@ -1789,7 +1789,7 @@ importers:
         version: 8.5.6
       style-loader:
         specifier: ^4.0.0
-        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14))
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.11
@@ -2138,12 +2138,18 @@ importers:
 
   packages/libs:
     dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../api
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
+      '@penx/mnemonic':
+        specifier: workspace:*
+        version: link:../mnemonic
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
@@ -22338,12 +22344,12 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/loader@5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))':
+  '@lingui/loader@5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14))':
     dependencies:
       '@babel/runtime': 7.27.6
       '@lingui/cli': 5.3.1(typescript@5.8.2)
       '@lingui/conf': 5.3.1(typescript@5.8.2)
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -27676,9 +27682,9 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@vanilla-extract/next-plugin@2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))':
+  '@vanilla-extract/next-plugin@2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14))':
     dependencies:
-      '@vanilla-extract/webpack-plugin': 2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+      '@vanilla-extract/webpack-plugin': 2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14))
       next: 15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -27687,13 +27693,13 @@ snapshots:
 
   '@vanilla-extract/private@1.0.9': {}
 
-  '@vanilla-extract/webpack-plugin@2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))':
+  '@vanilla-extract/webpack-plugin@2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14))':
     dependencies:
       '@vanilla-extract/integration': 8.0.4(babel-plugin-macros@3.1.0)
       debug: 4.4.1(supports-color@8.1.1)
       loader-utils: 2.0.4
       picocolors: 1.1.1
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -29444,7 +29450,7 @@ snapshots:
     dependencies:
       utrie: 1.0.2
 
-  css-loader@7.1.2(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)):
+  css-loader@7.1.2(webpack@5.100.1(@swc/core@1.12.14)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.6)
       postcss: 8.5.6
@@ -29455,7 +29461,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.7.2
     optionalDependencies:
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
 
   css-mediaquery@0.1.2: {}
 
@@ -38129,9 +38135,9 @@ snapshots:
 
   stubborn-fs@1.2.5: {}
 
-  style-loader@4.0.0(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)):
+  style-loader@4.0.0(webpack@5.100.1(@swc/core@1.12.14)):
     dependencies:
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
 
   style-mod@4.1.2: {}
 
@@ -38302,17 +38308,16 @@ snapshots:
       type-fest: 0.16.0
       unique-string: 2.0.0
 
-  terser-webpack-plugin@5.3.14(@swc/core@1.12.14)(esbuild@0.25.6)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)):
+  terser-webpack-plugin@5.3.14(@swc/core@1.12.14)(webpack@5.100.1(@swc/core@1.12.14)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.29
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.43.1
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
     optionalDependencies:
       '@swc/core': 1.12.14(@swc/helpers@0.5.17)
-      esbuild: 0.25.6
 
   terser@5.43.1:
     dependencies:
@@ -39373,7 +39378,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6):
+  webpack@5.100.1(@swc/core@1.12.14):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -39397,7 +39402,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.2
       tapable: 2.2.2
-      terser-webpack-plugin: 5.3.14(@swc/core@1.12.14)(esbuild@0.25.6)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+      terser-webpack-plugin: 5.3.14(@swc/core@1.12.14)(webpack@5.100.1(@swc/core@1.12.14))
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:

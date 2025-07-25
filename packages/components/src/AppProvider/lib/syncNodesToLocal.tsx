@@ -12,9 +12,12 @@ import {
   ShapeStreamOptions,
 } from '@electric-sql/client'
 import { get } from 'idb-keyval'
+import { produce } from 'immer'
 import { SHAPE_URL } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
+import { checkMnemonic } from '@penx/libs/checkMnemonic'
 import { localDB } from '@penx/local-db'
+import { decryptByMnemonic } from '@penx/mnemonic'
 import {
   ICreationNode,
   IJournalNode,
@@ -52,6 +55,8 @@ export async function syncNodesToLocal(spaceId: string) {
   console.log('======getShapeUrl:', shapeUrl)
   const session = await get('SESSION')
 
+  const mnemonic = await checkMnemonic(session)
+
   const stream = new ShapeStream({
     url: shapeUrl,
     headers: {
@@ -82,14 +87,19 @@ export async function syncNodesToLocal(spaceId: string) {
       console.log('=======rows:', rows)
 
       await localDB.node.bulkPut(
-        rows.map(
-          (row) =>
-            ({
-              ...row,
-              createdAt: new Date(Number(row.createdAt?.toString())),
-              updatedAt: new Date(Number(row.updatedAt?.toString())),
-            }) as any,
-        ),
+        rows.map((row) => {
+          return produce(row as any as INode, (draft) => {
+            draft.createdAt = new Date(Number(draft.createdAt?.toString()))
+            draft.updatedAt = new Date(Number(draft.updatedAt?.toString()))
+            if (draft.type === NodeType.CREATION) {
+              const props = draft.props as ICreationNode['props']
+              props.title = decrypt(props.title, mnemonic)
+              props.content = decrypt(props.content, mnemonic)
+              props.cells = decrypt(props.cells, mnemonic)
+              props.data = decrypt(props.data, mnemonic)
+            }
+          })
+        }),
       )
     }
   }
@@ -99,7 +109,7 @@ export async function syncNodesToLocal(spaceId: string) {
   // })
 
   stream.subscribe(async (messages) => {
-    queue.addTask(() => sync(spaceId, stream, messages))
+    queue.addTask(() => sync(spaceId, stream, messages, mnemonic))
   })
 
   appEmitter.on('STOP_SYNC_NODES', () => {
@@ -114,6 +124,7 @@ async function sync(
   spaceId: string,
   stream: ShapeStream<Row<never>>,
   messages: Message<Row<never>>[],
+  mnemonic: string,
 ) {
   // console.log('=======>>>>>>messages:', messages)
   const { changes, lsn } = handleMessages(messages)
@@ -156,6 +167,25 @@ async function sync(
     if (localLatestUpdated >= changesLatestUpdated) return
   }
 
+  const getDecryptNode = (value: INode) => {
+    return produce(value, (draft) => {
+      if (value.createdAt) {
+        draft.createdAt = new Date(Number(value.createdAt.toString()))
+      }
+      if (value.updatedAt) {
+        draft.updatedAt = new Date(Number(value.updatedAt.toString()))
+      }
+
+      if (draft.type === NodeType.CREATION) {
+        const props = draft.props as ICreationNode['props']
+        if (props.title) props.title = decrypt(props.title, mnemonic)
+        if (props.content) props.content = decrypt(props.content, mnemonic)
+        if (props.cells) props.cells = decrypt(props.cells, mnemonic)
+        if (props.data) props.data = decrypt(props.data, mnemonic)
+      }
+    })
+  }
+
   await localDB.transaction('rw', localDB.node, async () => {
     for (const message of changes) {
       const value = message.value as any
@@ -164,11 +194,7 @@ async function sync(
       if (operation === 'insert') {
         // console.log('insert:', message)
 
-        await localDB.node.put({
-          ...value,
-          createdAt: new Date(Number(value.createdAt.toString())),
-          updatedAt: new Date(Number(value.updatedAt.toString())),
-        })
+        await localDB.node.put(getDecryptNode(value))
 
         const newNode = await localDB.node.get(value.id)
         newNode && changeNodes.push(newNode)
@@ -191,10 +217,7 @@ async function sync(
         }
 
         await localDB.node.update(value.id, {
-          ...value,
-          ...(value?.updatedAt
-            ? { updatedAt: new Date(Number(value.updatedAt.toString())) }
-            : {}),
+          ...getDecryptNode(value),
         })
       }
       if (operation === 'delete') {
@@ -334,4 +357,12 @@ function isEqual(localArr: INode[], storeArr: INode[]): boolean {
   const p1 = formatList(localArr)
   const p2 = formatList(storeArr)
   return fastCompare(p1, p2)
+}
+
+function decrypt(base64String: string, mnemonic: string) {
+  try {
+    return decryptByMnemonic(base64String, mnemonic)
+  } catch {
+    return base64String
+  }
 }

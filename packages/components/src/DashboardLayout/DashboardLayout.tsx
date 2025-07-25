@@ -79,7 +79,7 @@ export function DashboardLayout({ children }: { children?: ReactNode }) {
       const mnemonic = await getNewMnemonic()
       const publicKey = getPublicKey(mnemonic)
       const address = getAddress(mnemonic)
-      await api.updatePublicKey({
+      await api.updateMnemonicInfo({
         mnemonic,
         publicKey,
         address,

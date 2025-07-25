@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { api } from '@penx/api'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
 import { encryptString } from '@penx/encryption'
+import { checkMnemonic } from '@penx/libs/checkMnemonic'
 import { localDB } from '@penx/local-db'
 import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
@@ -16,6 +17,8 @@ export async function syncNodesToServer() {
   const site = await localDB.getSpace(session.spaceId)
 
   if (!site) return
+
+  await checkMnemonic(session)
 
   const getChanges = async () => {
     const changes = await localDB.change
@@ -106,6 +109,9 @@ export async function syncNodesToServer() {
   const newChanges = await getChanges()
 
   const errors: any = []
+
+  // const mnemonic = await getMnemonicFromLocal
+
   for (const change of newChanges) {
     const input = {
       operation: change.operation,
@@ -148,11 +154,17 @@ export async function syncNodesToServer() {
       // const json = await res.json()
 
       console.log('=====input:', input)
+
       const encryptedInput = produce(input, (draft) => {
         const props =
           change.operation === OperationType.CREATE
             ? (draft.data.props as ICreationNode['props'])
             : (draft.data as ICreationNode['props'])
+
+        if (props.title) {
+          props.title = encryptString(props.title, session.publicKey)
+        }
+
         if (props.content) {
           props.content = encryptString(
             JSON.stringify(props.content),

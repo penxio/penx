@@ -189,10 +189,13 @@ export const checkoutInputSchema = z.object({
 
 export type CheckoutInput = z.infer<typeof checkoutInputSchema>
 
-export const updatePublicKeyInputSchema = z.object({
-  publicKey: z.string(),
-  address: z.string(),
-  mnemonic: z.string(),
+export const updateMnemonicInfoInputSchema = z.object({
+  publicKey: z.string().optional(),
+  address: z.string().optional(),
+  mnemonic: z.string().optional(),
+  encryptedMnemonic: z.string().optional(),
 })
 
-export type UpdatePublicKeyInput = z.infer<typeof updatePublicKeyInputSchema>
+export type UpdateMnemonicInfoInput = z.infer<
+  typeof updateMnemonicInfoInputSchema
+>

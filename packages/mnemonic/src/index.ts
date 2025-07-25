@@ -51,26 +51,34 @@ export function getAddress(mnemonic: string) {
 }
 
 export function encryptByPublicKey(plainText: string, publicKey: string) {
-  const data = Buffer.from(plainText)
+  const encoder = new TextEncoder()
+  const data = encoder.encode(plainText)
   const encrypted = encrypt(publicKey, data)
-  const base64String = encrypted.toString('base64')
-  return base64String
+  return uint8ArrayToBase64(encrypted as any)
 }
 
 export function decryptByMnemonic(base64String: string, mnemonic: string) {
-  const buffer = base64ToBuffer(base64String)
+  const encryptedData = base64ToUint8Array(base64String)
   const privateKey = getPrivateKeyFromMnemonic(mnemonic)
-  return decrypt(privateKey, buffer).toString()
+  const decrypted = decrypt(privateKey, encryptedData)
+  const decoder = new TextDecoder()
+  return decoder.decode(decrypted)
 }
 
-function base64ToBuffer(data: string) {
-  const binaryData = atob(data)
-  const arrayBuffer = new ArrayBuffer(binaryData.length)
-  const uint8Array = new Uint8Array(arrayBuffer)
-  for (let i = 0; i < binaryData.length; i++) {
-    uint8Array[i] = binaryData.charCodeAt(i)
+function base64ToUint8Array(base64: string): Uint8Array {
+  const binaryStr = atob(base64)
+  const len = binaryStr.length
+  const bytes = new Uint8Array(len)
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binaryStr.charCodeAt(i)
   }
+  return bytes
+}
 
-  const buffer = Buffer.from(uint8Array)
-  return buffer
+function uint8ArrayToBase64(bytes: Uint8Array): string {
+  let binary = ''
+  for (let i = 0; i < bytes.byteLength; i++) {
+    binary += String.fromCharCode(bytes[i])
+  }
+  return btoa(binary)
 }

@@ -9,9 +9,9 @@ import {
   ROOT_HOST,
   SyncAppleSubscriptionInput,
   TRANSCRIBE_URL,
+  UpdateMnemonicInfoInput,
   UpdatePasswordInput,
   UpdateProfileInput,
-  UpdatePublicKeyInput,
   UpdateSiteInput,
 } from '@penx/constants'
 import { IStructNode } from '@penx/model-type'
@@ -224,12 +224,21 @@ export const api = {
       .json<{ success: boolean; url: string }>()
   },
 
-  async updatePublicKey(input: UpdatePublicKeyInput) {
+  async updateMnemonicInfo(input: UpdateMnemonicInfoInput) {
     return ky
-      .post(`${ROOT_HOST}/api/user/updatePublicKey`, {
+      .post(`${ROOT_HOST}/api/user/updateMnemonicInfo`, {
         json: input,
       })
       .json<{ success: boolean }>()
+  },
+
+  async getMnemonicInfo() {
+    return ky.get(`${ROOT_HOST}/api/user/getMnemonicInfo`).json<{
+      publicKey: string
+      address: string
+      mnemonic: string
+      encryptedMnemonic: string
+    }>()
   },
 
   async getGoogleDriveToken() {
