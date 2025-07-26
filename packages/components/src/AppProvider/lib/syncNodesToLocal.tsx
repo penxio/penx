@@ -173,7 +173,7 @@ async function sync(
     if (localLatestUpdated >= changesLatestUpdated) return
   }
 
-  const getDecryptedNode = (value: INode) => {
+  const getDecryptedNode = (value: INode, isInsert = false) => {
     return produce(value, (draft) => {
       if (value.createdAt) {
         draft.createdAt = new Date(Number(value.createdAt.toString()))
@@ -184,7 +184,7 @@ async function sync(
 
       const node = nodes.find((n) => n.id === value.id)
 
-      if (node?.type === NodeType.CREATION) {
+      if (node?.type === NodeType.CREATION || isInsert) {
         const props = draft.props as ICreationNode['props']
         if (props.title) props.title = decrypt(props.title, mnemonic, false)
         if (props.content) props.content = decrypt(props.content, mnemonic)
@@ -202,7 +202,7 @@ async function sync(
       if (operation === 'insert') {
         // console.log('insert:', message)
 
-        await localDB.node.put(getDecryptedNode(value))
+        await localDB.node.put(getDecryptedNode(value, true))
 
         const newNode = await localDB.node.get(value.id)
         newNode && changeNodes.push(newNode)
