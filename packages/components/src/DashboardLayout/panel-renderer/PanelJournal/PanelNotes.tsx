@@ -8,6 +8,8 @@ import { useCreations } from '@penx/hooks/useCreations'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { docToString } from '@penx/utils/editorHelper'
+import { tiptapToMarkdown } from '@penx/utils/tiptapToMarkdown'
+import { Markdown } from '../../../AIChat/markdown'
 import { Tags } from './CreationItem/Tags'
 import { CustomMasonry } from './CustomMasonry'
 
@@ -47,13 +49,10 @@ const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
         })
       }}
     >
-      <div className="break-words">{docToString(creation.content)}</div>
-      {/* <ContentRender
-        className="px-0 text-sm"
-        content={JSON.parse(creation.content)}
-      /> */}
+      {/* <ContentRender className="px-0 text-sm" content={creation.content} /> */}
+      <Markdown>{tiptapToMarkdown(creation.content)}</Markdown>
 
-      <div className="flex items-center gap-2">
+      <div className="mt-2 flex items-center gap-2">
         <div className="text-foreground/50 text-[10px]">
           {format(creation.createdAt, 'HH:mm')}
         </div>

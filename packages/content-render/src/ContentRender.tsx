@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { NovelEditor } from '@penx/novel-editor/NovelEditor'
 import { cn, getUrl } from '@penx/utils'
+import { tiptapToMarkdown } from '@penx/utils/tiptapToMarkdown'
 
 interface Props {
   content: any
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export function ContentRender({ content, className }: Props) {
+  console.log('==========content:', tiptapToMarkdown(content), content)
+
   if (typeof content === 'string' && content.startsWith('/')) {
     return (
       <div>

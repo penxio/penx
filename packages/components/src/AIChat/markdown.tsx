@@ -2,12 +2,15 @@ import React, { memo } from 'react'
 import ReactMarkdown, { type Components } from 'react-markdown'
 import Link from 'next/link'
 import remarkGfm from 'remark-gfm'
+import { cn } from '@penx/utils'
 import { CodeBlock } from './code-block'
 
 const components: Partial<Components> = {
   // @ts-ignore
   code: CodeBlock,
-  pre: ({ children }) => <>{children}</>,
+  pre: ({ children, className }) => {
+    return <div className={cn('mt-2', className)}> {children}</div>
+  },
   ol: ({ node, children, ...props }) => {
     return (
       <ol className="ml-4 list-outside list-decimal" {...props}>
@@ -15,16 +18,25 @@ const components: Partial<Components> = {
       </ol>
     )
   },
-  li: ({ node, children, ...props }) => {
+  li: ({ node, children, className, ...props }) => {
+    console.log('=======props:', props)
     return (
-      <li className="py-1" {...props}>
+      <li className={cn('py-1', className)} {...props}>
         {children}
       </li>
     )
   },
-  ul: ({ node, children, ...props }) => {
+  ul: ({ node, children, className, ...props }) => {
+    const isTaskList = className?.includes('contains-task-list')
     return (
-      <ul className="ml-4 list-outside list-decimal" {...props}>
+      <ul
+        className={cn(
+          'mt-2',
+          !isTaskList && 'ml-4 list-outside list-decimal',
+          className,
+        )}
+        {...props}
+      >
         {children}
       </ul>
     )

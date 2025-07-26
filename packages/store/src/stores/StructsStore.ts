@@ -238,7 +238,7 @@ export class StructsStore {
     const newCreations = produce(creations, (draft) => {
       for (const item of draft) {
         if (item.props.structId !== struct.id) continue
-        delete item.props.cells[columnId]
+        if (item.props.cells) delete item.props.cells[columnId]
       }
     })
 
@@ -256,7 +256,7 @@ export class StructsStore {
 
     for (const item of records) {
       const newProps = produce(item.props, (draft) => {
-        delete draft.cells[columnId]
+        if (draft.cells) delete draft.cells[columnId]
       })
       await localDB.updateCreationProps(item.id, {
         cells: newProps.cells,
