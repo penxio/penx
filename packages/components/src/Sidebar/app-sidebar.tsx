@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { useCompletion } from '@ai-sdk/react'
 import { Trans } from '@lingui/react/macro'
 import { usePollinationsText } from '@pollinations/react'
 import {
@@ -33,6 +34,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@penx/uikit/tooltip'
+import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { useLoginDialog } from '@penx/widgets/LoginDialog/useLoginDialog'
 import { AddCreationButton } from '../AddCreationButton'
@@ -47,13 +49,6 @@ import { SyncButton } from './SyncButton'
 import { VisitSiteButton } from './VisitSiteButton'
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const text = usePollinationsText('珠海是广东省的城市吗？', {
-    seed: 42,
-    model: 'mistral',
-    systemPrompt: 'You are a poetic AI assistant.',
-  })
-  console.log('======  text:', text)
-
   return (
     <Sidebar variant="inset" {...props} className="">
       <SidebarHeader className="m-0 p-0 pb-1">
@@ -70,13 +65,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <div className="mb-1 flex items-center justify-between gap-1">
           <QuickSearchTrigger />
           {!isMobileApp && <AddCreationButton></AddCreationButton>}
-          <Button
-            onClick={() => {
-              alert('hello')
-            }}
-          >
-            Send
-          </Button>
         </div>
       </SidebarHeader>
       <SidebarContent className="-mx-2 space-y-2">

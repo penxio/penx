@@ -1,10 +1,13 @@
 'use client'
 
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { format } from 'date-fns'
+import OpenAI from 'openai'
+import { ROOT_HOST } from '@penx/constants'
 import { ContentRender } from '@penx/content-render'
 import { Creation } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
+import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { docToString } from '@penx/utils/editorHelper'
@@ -12,6 +15,13 @@ import { tiptapToMarkdown } from '@penx/utils/tiptapToMarkdown'
 import { Markdown } from '../../../AIChat/markdown'
 import { Tags } from './CreationItem/Tags'
 import { CustomMasonry } from './CustomMasonry'
+
+const client = new OpenAI({
+  apiKey: 'sk-xxx',
+  // baseURL: 'http://localhost:4000/api/ai',
+  baseURL: `${ROOT_HOST}/api/ai`,
+  dangerouslyAllowBrowser: true,
+})
 
 interface Props {
   height: number
@@ -39,6 +49,56 @@ interface ItemProps {
   width: number
 }
 const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
+  const inited = useRef(false)
+  useEffect(() => {
+    async function run() {
+      const stream = await client.chat.completions.create({
+        model: 'openai',
+        messages: [
+          {
+            role: 'system',
+            content: '请把输入的文本生成不超过12个字的标题',
+          },
+          {
+            role: 'user',
+            content: tiptapToMarkdown(creation.content),
+          },
+        ],
+        stream: true,
+      })
+
+      let fullText = ''
+      for await (const chunk of stream) {
+        try {
+          const content = chunk.choices[0].delta?.content
+
+          if (content) {
+            fullText += content
+          }
+        } catch (error) {
+          // console.log('=======error:', error)
+        }
+      }
+      // console.log('======fullText:', fullText)
+
+      store.creations.updateCreationById(creation.id, {
+        props: {
+          ...creation.props,
+          title: fullText,
+        },
+      })
+      await localDB.updateCreationProps(creation.id, {
+        title: fullText,
+      })
+    }
+
+    if (creation.title) return
+    if (inited.current) return
+    inited.current = true
+
+    run()
+  }, [creation])
+
   return (
     <div
       className="shadow-card bg-background cursor-pointer rounded-xl p-3 text-base"
@@ -50,6 +110,9 @@ const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
       }}
     >
       {/* <ContentRender className="px-0 text-sm" content={creation.content} /> */}
+      {creation.title && (
+        <div className="text-lg font-bold">{creation.title}</div>
+      )}
       <Markdown>{tiptapToMarkdown(creation.content)}</Markdown>
 
       <div className="mt-2 flex items-center gap-2">

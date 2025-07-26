@@ -30,9 +30,9 @@ export function CreationHeader({
   const struct = structs.find((m) => m.id === creation.structId)
 
   const hideTitle = useMemo(() => {
-    if (struct?.type === StructType.NOTE) {
-      return true
-    }
+    // if (struct?.type === StructType.NOTE) {
+    //   return true
+    // }
     return false
   }, [struct])
 
