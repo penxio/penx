@@ -95,6 +95,7 @@ export interface IAreaNode extends INode {
     chargeMode: string
     // type: string
     favorites: string[]
+    favorCommands: string[]
     isGenesis: boolean
     deletedAt?: Date
     productId?: string

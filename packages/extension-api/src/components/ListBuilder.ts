@@ -39,7 +39,7 @@ export interface IconifyIcon {
 }
 
 export interface IListItem {
-  id?: string
+  id: string
 
   type?: 'list-item' | 'list-heading'
 

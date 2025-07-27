@@ -45,29 +45,28 @@ export function useItems() {
     return item.keywords.some((k) => k.toLowerCase().includes(s))
   })
 
-  const filteredCreations = creations
-    .filter((row) => {
-      if (!search) return false
-      const t = search.toLowerCase()
+  const filteredCreations = creations.filter((row) => {
+    if (!search) return true
+    const t = search.toLowerCase()
 
-      if (row.title.toLowerCase().includes(t)) return true
-      const contentStr = docToString(row.content)
-      if (contentStr.toLowerCase().includes(t)) return true
+    if (row.title.toLowerCase().includes(t)) return true
+    const contentStr = docToString(row.content)
+    if (contentStr.toLowerCase().includes(t)) return true
 
-      if (!row.cells) {
-        return false
+    if (!row.cells) {
+      return false
+    }
+
+    const values: string[] = Object.values(row.cells)
+
+    return values.some((v) => {
+      if (typeof v === 'string') {
+        return v.toLowerCase().includes(t)
       }
-
-      const values: string[] = Object.values(row.cells)
-
-      return values.some((v) => {
-        if (typeof v === 'string') {
-          return v.toLowerCase().includes(t)
-        }
-        return JSON.stringify(v).toLowerCase().includes(t)
-      })
+      return JSON.stringify(v).toLowerCase().includes(t)
     })
-    .slice(0, 20)
+  })
+  // .slice(0, 20)
 
   const creationCommands = filteredCreations.map((c) => creationToCommand(c))
 

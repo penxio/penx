@@ -14,7 +14,7 @@ export function createPanelWindow() {
   // Create the browser window.
   const panelWindow = new BrowserWindow({
     width: 750,
-    height: 460,
+    height: 500,
     // width: 100,
     // height: barHeight,
     // show: true,

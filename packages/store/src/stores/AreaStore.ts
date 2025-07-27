@@ -103,6 +103,39 @@ export class AreaStore {
     })
   }
 
+  async addCommandToFavorites(commandId: string) {
+    const area = this.get()
+    const newArea = produce(area, (draft) => {
+      if (!Array.isArray(draft.props.favorCommands)) {
+        draft.props.favorCommands = []
+      }
+      draft.props.favorCommands.push(commandId)
+    })
+
+    this.set(newArea)
+
+    await this.persistArea({
+      id: area.id,
+      widgets: newArea.props.widgets,
+    })
+  }
+
+  async removeCommandFromFavorites(commandId: string) {
+    const area = this.get()
+    const newArea = produce(area, (draft) => {
+      draft.props.favorCommands = draft.props.favorCommands.filter(
+        (i) => i !== commandId,
+      )
+    })
+
+    this.set(newArea)
+
+    await this.persistArea({
+      id: area.id,
+      widgets: newArea.props.widgets,
+    })
+  }
+
   async updateArea(input: UpdateAreaInput) {
     const { id, ...data } = input
     const area = this.get()

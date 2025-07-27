@@ -55,6 +55,10 @@ export class Area {
     return this.props.favorites || []
   }
 
+  get favorCommands() {
+    return this.props.favorCommands || []
+  }
+
   get createdAt() {
     return new Date(this.raw.createdAt)
   }

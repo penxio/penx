@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Box, FowerHTMLProps } from '@fower/react'
+import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import {
   BracesIcon,
@@ -9,12 +10,15 @@ import {
   KeyboardIcon,
   ShareIcon,
   Star,
+  StarIcon,
+  StarOffIcon,
   Trash2Icon,
   TrashIcon,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Kbd } from '@penx/components/Kbd'
 import { appEmitter } from '@penx/emitter'
+import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
 import { store } from '@penx/store'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
@@ -214,10 +218,10 @@ function RootActions({ command, close }: RootActionsProps) {
   const { push } = useNavigation()
   const { setStruct } = useCurrentStruct()
   const { setCurrentCommand } = useCurrentCommand()
+  const currentItem = commandItems.find((item) => item.id === value)!
 
-  const currentItem = commandItems.find(
-    (item) => item.id === value || item.data?.commandName === value,
-  )
+  const { area } = useArea()
+  const isFavor = area.favorCommands?.includes(currentItem.id!)
 
   return (
     <>
@@ -275,16 +279,33 @@ function RootActions({ command, close }: RootActionsProps) {
         </Box>
       </MenuItem>
 
-      {/* <MenuItem shortcut="">
+      <MenuItem
+        shortcut=""
+        onSelect={() => {
+          if (isFavor) {
+            store.area.removeCommandFromFavorites(currentItem.id!)
+            toast.info(t`Added to Favorites`)
+          } else {
+            store.area.addCommandToFavorites(currentItem.id!)
+            toast.info(t`Removed from Favorites`)
+          }
+          close()
+        }}
+      >
         <Box toCenterY gap2 inlineFlex>
           <div>
-            <Star size={16} />
+            {isFavor && <StarOffIcon size={16} />}
+            {!isFavor && <StarIcon size={16} />}
           </div>
           <div>
-            <Trans>Add to Favorites</Trans>
+            {isFavor ? (
+              <Trans>Remove from Favorites</Trans>
+            ) : (
+              <Trans>Add to Favorites</Trans>
+            )}
           </div>
         </Box>
-      </MenuItem> */}
+      </MenuItem>
     </>
   )
 }
