@@ -46,6 +46,7 @@ export class AreasStore {
         widgets: [],
         // type: AreaType.SUBJECT,
         favorites: [],
+        favorCommands: [],
         isGenesis: false,
         slug: uniqueId(),
         ...input,

@@ -25,6 +25,8 @@ export const ListItemIcon = memo(
     ...rest
   }: ListItemIconProps) {
     if (item?.data?.struct) {
+      // console.log('=====item?.data?.struct:', item.title, item?.data?.struct)
+
       return (
         <ColorfulStructIcon
           struct={item.data.struct}
@@ -35,8 +37,30 @@ export const ListItemIcon = memo(
     }
 
     if (!icon) {
+      // console.log('item>>>>>>>>>>>:', icon)
+
+      const colorName = getRandomColor('500')
+
+      const arr = [
+        colorName.replace('500', '400'),
+        colorName,
+        colorName.replace('500', '600'),
+      ]
+
       return (
-        <Box flexShrink-0 square={size} bgNeutral300 rounded-6 {...rest}></Box>
+        <Box
+          flexShrink-0
+          square={size}
+          bgNeutral300
+          rounded-6
+          toCenter
+          textXS
+          uppercase
+          bgGradientX={arr}
+          {...rest}
+        >
+          {item?.title?.toString().slice(0, 1)}
+        </Box>
       )
     }
 

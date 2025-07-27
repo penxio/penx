@@ -2,8 +2,9 @@ import { useEffect } from 'react'
 import { t } from '@lingui/core/macro'
 import { useQuery } from '@tanstack/react-query'
 import { atom, useAtom, useSetAtom } from 'jotai'
-import { Struct } from '@penx/domain'
+import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
+import { useArea } from '@penx/hooks/useArea'
 import { useCreations } from '@penx/hooks/useCreations'
 import { store } from '@penx/store'
 import { docToString } from '@penx/utils/editorHelper'
@@ -29,8 +30,9 @@ export function useItems() {
   const { search } = useSearch()
   const [items, setItems] = useAtom(itemsAtom)
   const { creations } = useCreations()
+  const { area } = useArea()
 
-  const filteredItems = items.filter((item) => {
+  const filterCommandBySearch = (item: ICommandItem) => {
     if (!search) return true
     const s = search.toLowerCase()
     if (item.data?.alias) {
@@ -43,21 +45,21 @@ export function useItems() {
     }
 
     return item.keywords.some((k) => k.toLowerCase().includes(s))
-  })
+  }
 
-  const filteredCreations = creations.filter((row) => {
+  const filterCreationBySearch = (item: Creation) => {
     if (!search) return true
     const t = search.toLowerCase()
 
-    if (row.title.toLowerCase().includes(t)) return true
-    const contentStr = docToString(row.content)
+    if (item.title.toLowerCase().includes(t)) return true
+    const contentStr = docToString(item.content)
     if (contentStr.toLowerCase().includes(t)) return true
 
-    if (!row.cells) {
+    if (!item.cells) {
       return false
     }
 
-    const values: string[] = Object.values(row.cells)
+    const values: string[] = Object.values(item.cells)
 
     return values.some((v) => {
       if (typeof v === 'string') {
@@ -65,17 +67,35 @@ export function useItems() {
       }
       return JSON.stringify(v).toLowerCase().includes(t)
     })
-  })
-  // .slice(0, 20)
+  }
 
-  const creationCommands = filteredCreations.map((c) => creationToCommand(c))
+  const isFavor = (item: ICommandItem) => area.favorCommands.includes(item.id)
 
   return {
     items,
+    favorItems: items.filter(
+      (item) => isFavor(item) && filterCommandBySearch(item),
+    ),
+    commandItems: items.filter(
+      (item) =>
+        item.data.type === 'Command' &&
+        !isFavor(item) &&
+        filterCommandBySearch(item),
+    ),
+    creationItems: items.filter(
+      (item) =>
+        item.data.type === 'Creation' &&
+        !isFavor(item) &&
+        filterCreationBySearch(item.data.creation!),
+    ),
+    structItems: items.filter(
+      (item) =>
+        item.data.type === 'Struct' &&
+        !isFavor(item) &&
+        filterCommandBySearch(item),
+    ),
     developingItems: [],
-    commandItems: [...filteredItems, ...creationCommands],
-    databaseItems: [],
-    applicationItems: items,
+    applicationItems: [],
     setItems,
   }
 }
@@ -92,71 +112,23 @@ export function useLoadCommands() {
     queryKey: ['commands'],
     queryFn: () => {
       const structs = store.structs.get()
+      const creations = store.creations.get()
 
       const structCommands = structs.map<ICommandItem>((item) => {
         const struct = new Struct(item)
         return structToCommand(struct)
       })
 
-      const aiChat: ICommandItem = {
-        id: 'ai-chat',
-        title: t`AI Chat`,
-        keywords: ['ai', 'chat'],
-        icon: {
-          // name: 'solar:pen-bold',
-          name: 'mingcute:ai-fill',
-          className: 'bg-linear-to-r from-red-500 to-orange-500',
-        },
-        data: {
-          type: 'Command',
-          component: PageAIChat,
-          alias: '',
-          assets: {},
-          filters: {},
-          runtime: 'worker',
-          commandName: 'ai-chat',
-          extensionSlug: '',
-          extensionIcon: '',
-          isDeveloping: false,
-          applicationPath: '',
-          isApplication: false,
-        },
-      }
-
-      const quickInput: ICommandItem = {
-        id: 'quick-input',
-        title: t`Quick input`,
-        keywords: ['Quick', 'Input', 'Quick input'],
-        icon: {
-          name: 'lucide:pen-line',
-          className: 'bg-linear-to-r from-cyan-500 to-blue-500',
-        },
-        data: {
-          type: 'Command',
-          component: PageQuickInput,
-          afterOpen() {
-            pinWindow()
-          },
-          alias: '',
-          assets: {},
-          filters: {},
-          runtime: 'worker',
-          commandName: 'quick-input',
-          extensionSlug: '',
-          extensionIcon: '',
-          isDeveloping: false,
-          applicationPath: '',
-          isApplication: false,
-        },
-      }
-
       const builtinCommands = getBuiltinCommands()
 
+      const creationCommands = creations.map((c) =>
+        creationToCommand(new Creation(c)),
+      )
+
       return [
-        aiChat,
-        quickInput,
         ...structCommands,
         ...builtinCommands,
+        ...creationCommands,
       ] as ICommandItem[]
     },
   })

@@ -108,6 +108,7 @@ export const updateAreaInputSchema = z.object({
   catalogue: z.any().optional(),
   widgets: z.any().optional(),
   favorites: z.any().optional(),
+  favorCommands: z.any().optional(),
 })
 
 export type UpdateAreaInput = z.infer<typeof updateAreaInputSchema>

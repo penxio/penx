@@ -1,11 +1,11 @@
 import { ReactNode, useMemo } from 'react'
 import { Box, css, FowerHTMLProps } from '@fower/react'
-import { IAccessory, isAccessoryObjectText } from '~/lib/penx'
+import { cn } from '@penx/utils'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
+import { IAccessory, isAccessoryObjectText } from '~/lib/penx'
+import { ICommandItem } from '~/lib/types'
 import { CommandItem } from './CommandComponents'
 import { ListItemIcon } from './ListItemIcon'
-import { ICommandItem } from '~/lib/types'
-import { cn } from '@penx/utils'
 
 interface ListItemUIProps extends Omit<FowerHTMLProps<'div'>, 'onSelect'> {
   index: number
@@ -31,22 +31,14 @@ export const ListItemUI = ({
   const { currentCommand } = useCurrentCommand()
 
   const itemIcon = useMemo(() => {
-    if (!isListApp) return item.icon
     const assets = currentCommand?.data?.assets || {}
     return assets[item.icon as string] || item.icon
-  }, [isListApp, item, currentCommand])
+  }, [item, currentCommand])
 
   const title = typeof item.title === 'string' ? item.title : item.title.value
 
-  const subtitle = typeof item.subtitle === 'string' ? item.subtitle : item.subtitle?.value
-
-  if (item.type === 'list-heading') {
-    return (
-      <Box textXS gray400 pl-10 mb-2 mt2={index > 0}>
-        {title}
-      </Box>
-    )
-  }
+  const subtitle =
+    typeof item.subtitle === 'string' ? item.subtitle : item.subtitle?.value
 
   const keywords = [title, subtitle] as string[]
   if (item?.data?.alias) {
@@ -56,8 +48,8 @@ export const ListItemUI = ({
   return (
     <CommandItem
       className={cn(
-        "cursor-pointer flex items-center justify-between px-2 py-2 gap-4 rounded-lg text-foreground data-[selected='true']:bg-foreground/10",
-        className
+        "text-foreground data-[selected='true']:bg-foreground/10 flex h-[38px] cursor-pointer items-center justify-between gap-4 rounded-lg px-2",
+        className,
       )}
       value={value || title}
       keywords={keywords.filter(Boolean)}
@@ -70,12 +62,7 @@ export const ListItemUI = ({
       {...rest}
     >
       <Box toCenterY gap2>
-        {showIcon && (
-          <ListItemIcon
-            icon={itemIcon as string}
-            item={item}
-          />
-        )}
+        {showIcon && <ListItemIcon icon={itemIcon as string} item={item} />}
         <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
           <Box text-14 className="line-clamp-1">
             {title}
@@ -84,7 +71,7 @@ export const ListItemUI = ({
             {subtitle}
           </Box>
           {item?.data?.alias && (
-            <div className="rounded text-xs border border-foreground/8 text-foreground/40 h-5 px-[6px] flex items-center">
+            <div className="border-foreground/8 text-foreground/40 flex h-5 items-center rounded border px-[6px] text-xs">
               {item.data.alias}
             </div>
           )}
@@ -118,7 +105,9 @@ function Accessory({ item }: AccessoryProps) {
       return <Box>{item.text}</Box>
     }
     if (isAccessoryObjectText(item.text)) {
-      return <Box color={item.text.color || 'gray600'}>{item.text?.value || ''}</Box>
+      return (
+        <Box color={item.text.color || 'gray600'}>{item.text?.value || ''}</Box>
+      )
     }
     return null
   }, [item.text])
@@ -128,7 +117,9 @@ function Accessory({ item }: AccessoryProps) {
     </Box>
   ) : null
 
-  let icon: ReactNode = item.icon ? <ListItemIcon roundedFull icon={assets[item.icon]} /> : null
+  let icon: ReactNode = item.icon ? (
+    <ListItemIcon roundedFull icon={assets[item.icon]} />
+  ) : null
 
   return (
     <Box toCenterY gap1>

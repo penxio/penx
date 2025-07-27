@@ -5,6 +5,7 @@ import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {
+  IAreaNode,
   IJournalNode,
   IShortcutNode,
   ISpaceNode,
@@ -69,12 +70,13 @@ export async function initLocalSpace(uid?: string) {
         widgets: [],
         isGenesis: true,
         favorites: [],
+        favorCommands: [],
       },
       createdAt: new Date(),
       updatedAt: new Date(),
       spaceId,
       userId,
-    })
+    } as IAreaNode)
 
     await localDB.node.bulkPut(
       getDefaultStructs({

@@ -84,6 +84,7 @@ export class AreaStore {
     await this.persistArea({
       id: area.id,
       widgets: newArea.props.widgets,
+      favorites: newArea.props.favorites,
     })
   }
 
@@ -100,6 +101,7 @@ export class AreaStore {
     await this.persistArea({
       id: area.id,
       widgets: newArea.props.widgets,
+      favorites: newArea.props.favorites,
     })
   }
 
@@ -117,6 +119,7 @@ export class AreaStore {
     await this.persistArea({
       id: area.id,
       widgets: newArea.props.widgets,
+      favorCommands: newArea.props.favorCommands,
     })
   }
 
@@ -133,6 +136,7 @@ export class AreaStore {
     await this.persistArea({
       id: area.id,
       widgets: newArea.props.widgets,
+      favorCommands: newArea.props.favorCommands,
     })
   }
 

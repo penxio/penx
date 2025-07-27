@@ -153,7 +153,7 @@ export const ActionPopover = ({}: Props) => {
               {actionList}
             </CommandGroup>
           </CommandList>
-          <CommandInput placeholder="Search for actions..." />
+          <CommandInput placeholder={t`Search for actions...`} />
         </Command>
       </PopoverContent>
     </Popover>
@@ -179,9 +179,11 @@ function MenuItem({
       )}
       onSelect={() => {
         onSelect?.()
+        appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
       }}
       onClick={() => {
         onSelect?.()
+        appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
       }}
       css={{
         "&[aria-selected='true']": {
@@ -212,16 +214,16 @@ interface RootActionsProps {
 function RootActions({ command, close }: RootActionsProps) {
   const { value } = useValue()
   const { structs } = useStructs()
-  const { commandItems } = useItems()
+  const { items } = useItems()
   const struct = structs.find((s) => s.id === value)
   const handleSelect = useHandleSelect()
   const { push } = useNavigation()
   const { setStruct } = useCurrentStruct()
   const { setCurrentCommand } = useCurrentCommand()
-  const currentItem = commandItems.find((item) => item.id === value)!
-
+  const currentItem = items.find((item) => item.id === value)!
   const { area } = useArea()
-  const isFavor = area.favorCommands?.includes(currentItem.id!)
+
+  const isFavor = area.favorCommands?.includes(currentItem?.id!)
 
   return (
     <>
@@ -284,10 +286,10 @@ function RootActions({ command, close }: RootActionsProps) {
         onSelect={() => {
           if (isFavor) {
             store.area.removeCommandFromFavorites(currentItem.id!)
-            toast.info(t`Added to Favorites`)
+            toast.info(t`Removed from Favorites`)
           } else {
             store.area.addCommandToFavorites(currentItem.id!)
-            toast.info(t`Removed from Favorites`)
+            toast.info(t`Added to Favorites`)
           }
           close()
         }}
