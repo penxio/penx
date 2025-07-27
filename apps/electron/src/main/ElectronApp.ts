@@ -132,13 +132,13 @@ export class ElectronApp {
         console.log('blur panel..........isDev:', is.dev)
 
         const pinned = await this.conf.get('pinned')
-        // if (!is.dev && !pinned) {
-        //   this.panelWindow.hide()
-        // }
-
-        if (!pinned) {
+        if (!is.dev && !pinned) {
           this.panelWindow.hide()
         }
+
+        // if (!pinned) {
+        //   this.panelWindow.hide()
+        // }
       })
 
       this.setupIPC()

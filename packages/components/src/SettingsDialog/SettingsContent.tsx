@@ -3,6 +3,7 @@
 import { Trans } from '@lingui/react/macro'
 import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
+import { About } from './About'
 import { Appearance } from './Appearance'
 import { Billing } from './Billing'
 import { EditShortcuts } from './EditShortcuts'
@@ -27,6 +28,7 @@ export function SettingsContent({ className }: Props) {
     [SettingsNav.RECOVER_PHRASE]: <Trans>Recovery phrase</Trans>,
     [SettingsNav.EDIT_SHORTCUTS]: <Trans>Shortcuts</Trans>,
     [SettingsNav.SYNC_SERVER]: <Trans>Sync server</Trans>,
+    [SettingsNav.ABOUT]: <Trans>About</Trans>,
   }
 
   return (
@@ -34,7 +36,7 @@ export function SettingsContent({ className }: Props) {
       <SyncServerDialog />
       <div
         className={cn(
-          'bg-background flex flex-1 flex-col rounded-3xl px-10 py-6 dark:bg-neutral-800',
+          'bg-background flex flex-1 flex-col rounded-l-2xl px-10 py-6 dark:bg-neutral-800',
           className,
         )}
       >
@@ -47,6 +49,7 @@ export function SettingsContent({ className }: Props) {
         {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
         {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
         {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
+        {navName === SettingsNav.ABOUT && <About />}
       </div>
     </>
   )

@@ -10,6 +10,9 @@ declare global {
       toggleMainWindow: () => void
       togglePanelWindow: () => void
       openPanelWindow: () => void
+      getAppInfo: {
+        version: string
+      }
       shortcut: {
         register: (shortcut: Shortcut) => any
         unregister: (shortcut: Shortcut) => any

@@ -1,6 +1,8 @@
 import { electronAPI } from '@electron-toolkit/preload'
-import { clipboard, contextBridge, ipcRenderer } from 'electron'
+import { app, clipboard, contextBridge, ipcRenderer } from 'electron'
+import { autoUpdater } from 'electron-updater'
 import { Shortcut } from '@penx/model-type'
+import pkg from '../../package.json'
 
 // Custom APIs for renderer
 const api = {
@@ -16,6 +18,9 @@ const api = {
   toggleMainWindow: () => ipcRenderer.send('toggle-main-window'),
   togglePanelWindow: () => ipcRenderer.send('toggle-panel-window'),
   openPanelWindow: () => ipcRenderer.send('open-panel-window'),
+  getAppInfo: {
+    version: pkg?.version,
+  },
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

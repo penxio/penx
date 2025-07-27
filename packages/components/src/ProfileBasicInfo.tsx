@@ -25,7 +25,7 @@ export function ProfileBasicInfo() {
 
   const { copy } = useCopyToClipboard()
   return (
-    <div className="flex flex-col gap-2">
+    <div className="no-drag flex flex-col gap-2">
       <div className="text-foreground flex items-center gap-2">
         <Avatar className="size-10 rounded-lg">
           <AvatarImage src={getUrl(session?.image)} alt={session?.name} />

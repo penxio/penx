@@ -5,6 +5,7 @@ import { Trans } from '@lingui/react/macro'
 import {
   CreditCardIcon,
   DatabaseBackupIcon,
+  InfoIcon,
   KeyboardIcon,
   KeyRoundIcon,
   LogOut,
@@ -30,12 +31,13 @@ export function SettingsSidebar({ className }: Props) {
   return (
     <div
       className={cn(
-        'bg-foreground/5 flex w-[250px] flex-col gap-5 p-5 dark:bg-neutral-800/50',
+        'bg-foreground/5 drag flex w-[250px] flex-col gap-5 p-5 dark:bg-neutral-800/50',
         className,
       )}
     >
-      <ProfileBasicInfo />
-      <div className="flex flex-1 flex-col gap-1">
+      {!isDesktop && <ProfileBasicInfo />}
+
+      <div className="no-drag flex flex-1 flex-col gap-1">
         <Item icon={<PaletteIcon size={16} />} navName={SettingsNav.APPEARANCE}>
           <Trans>Appearance</Trans>
         </Item>
@@ -65,6 +67,10 @@ export function SettingsSidebar({ className }: Props) {
           >
             Beta
           </Badge>
+        </Item>
+
+        <Item icon={<InfoIcon size={16} />} navName={SettingsNav.ABOUT}>
+          <Trans>About</Trans>
         </Item>
 
         {/* <Item

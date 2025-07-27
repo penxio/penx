@@ -8,6 +8,7 @@ export enum SettingsNav {
   RECOVER_PHRASE = 'RECOVER_PHRASE',
   SYNC_SERVER = 'SYNC_SERVER',
   EDIT_SHORTCUTS = 'EDIT_SHORTCUTS',
+  ABOUT = 'ABOUT',
 }
 
 type State = {
