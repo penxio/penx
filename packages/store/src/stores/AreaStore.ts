@@ -1,3 +1,4 @@
+import { arrayMoveImmutable } from 'array-move'
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import { UpdateAreaInput } from '@penx/constants'
@@ -138,6 +139,48 @@ export class AreaStore {
       widgets: newArea.props.widgets,
       favorCommands: newArea.props.favorCommands,
     })
+  }
+
+  async moveCommandFavorUp(commandId: string) {
+    const area = this.get()
+    const index = area.props.favorCommands.findIndex((id) => id === commandId)
+    if (index > 0) {
+      const newFavorCommands = arrayMoveImmutable(
+        area.props.favorCommands,
+        index,
+        index - 1,
+      )
+      const newArea = produce(area, (draft) => {
+        draft.props.favorCommands = newFavorCommands
+      })
+      this.set(newArea)
+      await this.persistArea({
+        id: area.id,
+        widgets: newArea.props.widgets,
+        favorCommands: newArea.props.favorCommands,
+      })
+    }
+  }
+
+  async moveCommandFavorDown(commandId: string) {
+    const area = this.get()
+    const index = area.props.favorCommands.findIndex((id) => id === commandId)
+    if (index > -1 && index < area.props.favorCommands.length - 1) {
+      const newFavorCommands = arrayMoveImmutable(
+        area.props.favorCommands,
+        index,
+        index + 1,
+      )
+      const newArea = produce(area, (draft) => {
+        draft.props.favorCommands = newFavorCommands
+      })
+      this.set(newArea)
+      await this.persistArea({
+        id: area.id,
+        widgets: newArea.props.widgets,
+        favorCommands: newArea.props.favorCommands,
+      })
+    }
   }
 
   async updateArea(input: UpdateAreaInput) {

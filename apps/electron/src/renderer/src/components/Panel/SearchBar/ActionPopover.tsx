@@ -8,6 +8,8 @@ import {
   EditIcon,
   EyeOffIcon,
   KeyboardIcon,
+  MoveDownIcon,
+  MoveUp,
   ShareIcon,
   Star,
   StarIcon,
@@ -262,7 +264,6 @@ function RootActions({ command, close }: RootActionsProps) {
           </Box>
         </MenuItem>
       )}
-
       <MenuItem
         shortcut=""
         onSelect={() => {
@@ -280,6 +281,52 @@ function RootActions({ command, close }: RootActionsProps) {
           </div>
         </Box>
       </MenuItem>
+      {isFavor && (
+        <>
+          <MenuItem
+            shortcut=""
+            onSelect={async () => {
+              const idx = area.favorCommands.indexOf(currentItem.id!)
+              if (idx > 0) {
+                await store.area.moveCommandFavorUp(currentItem.id!)
+                toast.success(t`Moved up in Favorites`)
+              }
+              close()
+            }}
+            aria-disabled={area.favorCommands.indexOf(currentItem.id!) === 0}
+          >
+            <Box toCenterY gap2 inlineFlex>
+              <div>
+                <MoveUp size={16} />
+              </div>
+              <div>
+                <Trans>Move Up in Favorites</Trans>
+              </div>
+            </Box>
+          </MenuItem>
+          <MenuItem
+            shortcut=""
+            onSelect={async () => {
+              const idx = area.favorCommands.indexOf(currentItem.id!)
+              if (idx > -1 && idx < area.favorCommands.length - 1) {
+                await store.area.moveCommandFavorDown(currentItem.id!)
+                toast.success(t`Moved down in Favorites`)
+              }
+              close()
+            }}
+            aria-disabled={area.favorCommands.indexOf(currentItem.id!) === area.favorCommands.length - 1}
+          >
+            <Box toCenterY gap2 inlineFlex>
+              <div>
+                <MoveDownIcon size={16} />
+              </div>
+              <div>
+                <Trans>Move Down in Favorites</Trans>
+              </div>
+            </Box>
+          </MenuItem>
+        </>
+      )}
 
       <MenuItem
         shortcut=""

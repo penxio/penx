@@ -73,9 +73,9 @@ export function useItems() {
 
   return {
     items,
-    favorItems: items.filter(
-      (item) => isFavor(item) && filterCommandBySearch(item),
-    ),
+    favorItems: area.favorCommands
+      .map((id) => items.find((item) => item.id === id))
+      .filter((item): item is ICommandItem => !!item && filterCommandBySearch(item)),
     commandItems: items.filter(
       (item) =>
         item.data.type === 'Command' &&
