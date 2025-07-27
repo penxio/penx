@@ -132,10 +132,13 @@ export class ElectronApp {
         console.log('blur panel..........isDev:', is.dev)
 
         const pinned = await this.conf.get('pinned')
-        if (!is.dev && !pinned) {
+        // if (!is.dev && !pinned) {
+        //   this.panelWindow.hide()
+        // }
+
+        if (!pinned) {
           this.panelWindow.hide()
         }
-        // this.panelWindow.hide()
       })
 
       this.setupIPC()
@@ -162,7 +165,7 @@ export class ElectronApp {
       globalShortcut.unregisterAll()
     })
 
-    const appUpdater = new AppUpdater()
+    const appUpdater = new AppUpdater(this.windows)
 
     setTimeout(() => {
       appUpdater.checkForUpdates()

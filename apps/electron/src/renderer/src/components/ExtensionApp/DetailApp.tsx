@@ -4,6 +4,7 @@ import { Kbd } from '@penx/components/Kbd'
 import { cn } from '@penx/utils'
 import { ICommandItem } from '~/lib/types'
 import { ListItemIcon } from '../Panel/ListItemIcon'
+import { PinnedButton } from '../PinnedButton'
 import { ShortcutKey, ShortcutModifier } from './types'
 import { PopButton } from './widgets/PopButton'
 
@@ -53,7 +54,7 @@ export function DetailApp({
       {!hideHeader && (
         <div
           className={cn(
-            'drag flex items-center gap-2',
+            'drag flex items-center gap-2 pr-3',
             headerBordered && ' border-foreground/10 border-b',
           )}
           style={{
@@ -62,6 +63,7 @@ export function DetailApp({
         >
           <PopButton className="ml-3" />
           <div className="font-medium">{title}</div>
+          <PinnedButton className='ml-auto' />
         </div>
       )}
       <div

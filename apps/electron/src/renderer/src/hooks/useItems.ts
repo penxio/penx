@@ -11,6 +11,7 @@ import { PageAIChat } from '~/components/Panel/pages/PageAIChat'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
 import { creationToCommand } from '~/lib/creationToCommand'
 import { getBuiltinCommands } from '~/lib/getBuiltinCommands'
+import { pinWindow } from '~/lib/pinned'
 import { structToCommand } from '~/lib/structToCommand'
 import { ICommandItem } from '~/lib/types'
 import { useSearch } from './useSearch'
@@ -134,6 +135,9 @@ export function useLoadCommands() {
         data: {
           type: 'Command',
           component: PageQuickInput,
+          afterOpen() {
+            pinWindow()
+          },
           alias: '',
           assets: {},
           filters: {},

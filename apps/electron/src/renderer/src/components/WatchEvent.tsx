@@ -18,6 +18,8 @@ import { openCommand } from '~/lib/openCommand'
 
 window.customElectronApi.shortcut.onPressed((shortcut) => {
   window.customElectronApi.togglePanelWindow()
+  console.log('=========shortcut:', shortcut)
+
   openCommand({
     id: shortcut.commandId,
   })

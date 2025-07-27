@@ -13,6 +13,7 @@ export interface ICommandItem extends IListItem {
   data: {
     type: 'Struct' | 'Creation' | 'Command' | 'Application'
     component?: () => JSX.Element
+    afterOpen?: () => void
     alias: string
     struct?: Struct
     creation?: Creation

@@ -5,6 +5,7 @@ import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { cn } from '@penx/utils'
 import { PopButton } from '~/components/ExtensionApp/widgets/PopButton'
+import { PinnedButton } from '~/components/PinnedButton'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
@@ -30,19 +31,6 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
   const handleSelect = useHandleSelect()
   const { currentCommand } = useCurrentCommand()
   const { struct } = useCurrentStruct()
-
-  const { data: pinned, refetch } = useQuery({
-    queryKey: ['input-window-pinned'],
-    queryFn: async () => {
-      const pinned = await conf.get('pinned')
-      return !!pinned
-    },
-  })
-  async function pinWindow() {
-    await conf.set('pinned', !pinned)
-    window.electron.ipcRenderer.send('pinned', !pinned)
-    refetch()
-  }
 
   const currentCommandName = currentCommand?.data?.commandName
 
@@ -99,15 +87,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
       <>
         {searchInput}
         {!search && <div className="h-full flex-1"></div>}
-        <PinIcon
-          className={cn(
-            'no-drag size-4 cursor-pointer',
-            pinned && 'text-brand',
-          )}
-          onClick={() => {
-            pinWindow()
-          }}
-        />
+        <PinnedButton />
       </>
     )
   }

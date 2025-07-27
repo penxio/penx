@@ -26,7 +26,7 @@ export function useHandleSelect() {
       push({
         path: '/extension',
       })
-
+      item.data?.afterOpen?.()
       appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
       return
     }
