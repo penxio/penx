@@ -74,6 +74,10 @@ export class Struct {
     return this.type === StructType.IMAGE
   }
 
+  get isQuicklink() {
+    return this.type === StructType.QUICK_LINK
+  }
+
   get isNote() {
     return this.type === StructType.NOTE
   }

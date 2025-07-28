@@ -21,17 +21,26 @@ export function useHandleSelect() {
   const { structs } = useStructs()
 
   return async (item: ICommandItem, opt = {} as CommandOptions) => {
-    setSearch('')
     setOptions(opt)
     setCurrentCommand(item)
 
     if (item.data.type === 'Creation') {
       const struct = structs.find((s) => s.id === item.data.creation?.structId)
-      if (struct) {
-        alert(`alert: ${struct.name}`)
+      if (struct?.isQuicklink) {
+        const linkColumn = struct.columns.find((c) => c.slug === 'link')
+        const link = item.data.creation?.cells?.[linkColumn?.id!]
+        if (link) {
+          window.electron.ipcRenderer.send('open-url', link)
+        }
+        setSearch('')
+        window.customElectronApi.togglePanelWindow()
+      } else {
+        push({ path: '/edit-creation' })
       }
       return
     }
+
+    // setSearch('')
 
     if (item.data.type === 'Command') {
       push({
