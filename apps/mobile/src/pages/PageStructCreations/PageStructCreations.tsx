@@ -2,6 +2,7 @@ import React from 'react'
 import { MobileContent } from '@/components/MobileContent'
 import { StructCreations } from '@/components/StructCreations/StructCreations'
 import { Struct } from '@penx/domain'
+import { PageTasks } from '../PageTasks/PageTasks'
 
 interface Props {
   struct: Struct

@@ -1,19 +1,18 @@
 import { useEffect, useMemo } from 'react'
-import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreations } from '@penx/hooks/useCreations'
 import { IStructNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { Separator } from '@penx/uikit/ui/separator'
-import { mappedByKey } from '@penx/utils'
+import { cn } from '@penx/utils'
 import { docToString } from '@penx/utils/editorHelper'
 import { currentCreationAtom } from '~/hooks/useCurrentCreation'
 import { useValue } from '~/hooks/useValue'
-import { ICommandItem } from '~/lib/types'
 import { CommandEmpty, CommandGroup } from '../../CommandComponents'
 import { CreationDetail } from '../../CreationDetail'
-import { ListItemUI } from '../../ListItemUI'
+import { StructCommandList } from './StructCommandList'
+import { TaskCommandList } from './TaskCommandList'
 
 interface Props {
   text: string
@@ -82,40 +81,30 @@ export function DatabaseDetail(props: Props) {
   }
 
   if (!filteredRows.length) {
-    return (
-      <div className="text-foreground/50 pl-1">
-        <Trans>No results found</Trans>
-      </div>
-    )
     // return (
-    //   <StyledCommandGroup>
-    //     <StyledCommandEmpty>No results found.</StyledCommandEmpty>
-    //   </StyledCommandGroup>
+    //   <div className="text-foreground/50 pl-1">
+    //     <Trans>No results found</Trans>
+    //   </div>
     // )
+    return (
+      <CommandGroup>
+        <CommandEmpty>No results found.</CommandEmpty>
+      </CommandGroup>
+    )
   }
 
   return (
     <div className="absolute inset-0 flex overflow-hidden">
-      <CommandGroup className="flex-[2] overflow-auto p-2">
-        {filteredRows.map((item, index) => {
-          const listItem = {
-            title: item.title || item.previewedContent,
-          } as ICommandItem
-          return (
-            <ListItemUI
-              key={index}
-              index={index}
-              showIcon={false}
-              value={item.id}
-              item={listItem}
-            />
-          )
-        })}
-      </CommandGroup>
+      <StructCommandList creations={filteredRows} struct={struct} />
 
       <Separator orientation="vertical" />
 
-      <div className="flex flex-[3] flex-col overflow-auto">
+      <div
+        className={cn(
+          'flex flex-[3] flex-col overflow-auto',
+          struct.isTask && 'flex-1',
+        )}
+      >
         {currentItem && <CreationDetail creation={currentItem} />}
       </div>
     </div>

@@ -30,8 +30,6 @@ export const DatabaseName = () => {
       roundedFull
       px3
       toCenter
-      mr--8
-      ml3
       white
       textXS
     >

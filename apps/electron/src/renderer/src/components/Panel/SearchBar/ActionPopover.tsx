@@ -157,7 +157,10 @@ export const ActionPopover = ({}: Props) => {
               {actionList}
             </CommandGroup>
           </CommandList>
-          <CommandInput placeholder={t`Search for actions...`} />
+          <CommandInput
+            className="border-foreground/10 border-t px-3 py-3"
+            placeholder={t`Search for actions...`}
+          />
         </Command>
       </PopoverContent>
     </Popover>
@@ -188,15 +191,6 @@ function MenuItem({
       onClick={() => {
         onSelect?.()
         appEmitter.emit('FOCUS_SEARCH_BAR_INPUT')
-      }}
-      css={{
-        "&[aria-selected='true']": {
-          bgNeutral100: true,
-        },
-
-        "&[aria-disabled='true']": {
-          cursorNotAllowed: true,
-        },
       }}
       {...rest}
     >

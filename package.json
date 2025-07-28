@@ -120,7 +120,7 @@
     "classnames": "^2.5.1",
     "cloudflare": "^3.5.0",
     "clsx": "^2.1.1",
-    "cmdk": "^1.0.4",
+    "cmdk": "^1.1.1",
     "codemirror": "^6.0.1",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",

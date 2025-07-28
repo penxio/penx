@@ -20,7 +20,6 @@ export function useSelectStruct() {
     setOptions(opt)
     setStruct(item.data.struct!.raw)
     setCurrentCommand(item)
-    setUI({ type: 'struct' })
 
     push({
       path: '/struct-creations',

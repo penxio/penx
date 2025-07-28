@@ -41,7 +41,7 @@ export const AddRowButton = ({ struct }: Props) => {
     <Button
       size="sm"
       variant="outline"
-      className="no-drag bg-foreground/8 hover:bg-foreground/12 absolute right-2 flex cursor-pointer items-center gap-1 rounded-full"
+      className="no-drag bg-foreground/8 hover:bg-foreground/12  flex cursor-pointer items-center gap-1 rounded-full"
       onClick={async () => {
         add()
       }}

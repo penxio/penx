@@ -150,13 +150,7 @@
   }
 
   [cmdk-input] {
-    padding: 12px;
-    font-family: var(--font-sans);
-    border: 0;
-    border-top: 1px solid var(--gray6);
     font-size: 13px;
-    background: transparent;
-    margin-top: auto;
     width: 100%;
     outline: 0;
     border-radius: 0;
@@ -198,7 +192,12 @@
     width: 50%;
     height: 1px;
     position: absolute;
-    background: linear-gradient(90deg, transparent 0%, #888 40%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #888 40%,
+      transparent 100%
+    );
     top: -1px;
     opacity: 0;
     animation-duration: 1.5s;

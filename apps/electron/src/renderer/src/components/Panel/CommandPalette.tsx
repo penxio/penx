@@ -94,10 +94,6 @@ export const CommandPalette = () => {
       return <PageConfigureShortcut />
     }
 
-    if (current.path === '/struct-creations') {
-      return <PageStructCreations />
-    }
-
     if (current.path === '/edit-creation') {
       return <PageEditCreation />
     }
@@ -115,11 +111,17 @@ export const CommandPalette = () => {
   const content = useMemo(() => {
     if (isExtension) {
       if (!currentCommand) return null
+
       return <ExtensionComponent />
     }
     if (current.path === '/configure-shortcut') {
       return <PageConfigureShortcut />
     }
+
+    if (current.path === '/struct-creations') {
+      return <PageStructCreations />
+    }
+
     return (
       <>
         {header}
@@ -143,9 +145,10 @@ export const CommandPalette = () => {
       id="command-palette"
       label="Command Menu"
       className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/65 dark:bg-neutral-900/80"
-      // loop
+      // loop={false}
       value={value}
       onValueChange={(v) => {
+        // console.log('============v:', v)
         setValue(v)
       }}
       // shouldFilter={false}

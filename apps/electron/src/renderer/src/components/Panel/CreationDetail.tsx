@@ -28,7 +28,7 @@ export function CreationDetail({ creation }: Props) {
           <NovelEditor editable={false} value={creation.content} />
         )}
       </div>
-      <div className="border-foreground/6 divide-foreground/5 flex flex-col gap-2 divide-y border-t px-2 py-2">
+      <div className="border-foreground/6 divide-foreground/5 flex flex-col divide-y border-t px-2">
         {sortedColumns.map((column) => (
           <Item key={column.id} column={column} creation={creation} />
         ))}
@@ -53,6 +53,7 @@ export function Item({ column, creation }: ItemProps) {
       column.columnType === ColumnType.SINGLE_SELECT ||
       column.columnType === ColumnType.MULTIPLE_SELECT
     ) {
+      if (!v) return null
       const arr: string[] = Array.isArray(v) ? v : [v]
       if (!arr) return null
       return (
@@ -68,8 +69,11 @@ export function Item({ column, creation }: ItemProps) {
   }
 
   return (
-    <div key={column.id} className="flex h-6 items-center justify-between">
-      <div className="text-foreground/60 text-xs font-semibold">
+    <div
+      key={column.id}
+      className="bg-gre flex h-9 items-center justify-between gap-2"
+    >
+      <div className="text-foreground/60 lean shrink-0 text-xs font-semibold">
         {column.name}
       </div>
       {getValue()}

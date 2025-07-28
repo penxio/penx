@@ -9,8 +9,10 @@ import { ICommandItem } from '~/lib/types'
 import { CommandItem } from './CommandComponents'
 import { ListItemIcon } from './ListItemIcon'
 
-interface ListItemUIProps extends Omit<FowerHTMLProps<'div'>, 'onSelect'> {
+interface ListItemUIProps
+  extends Omit<FowerHTMLProps<'div'>, 'onSelect' | 'prefix'> {
   index: number
+  prefix?: ReactNode
   value?: any
   item: ICommandItem
   isListApp?: boolean
@@ -21,6 +23,7 @@ interface ListItemUIProps extends Omit<FowerHTMLProps<'div'>, 'onSelect'> {
 
 export const ListItemUI = ({
   item,
+  prefix,
   onSelect,
   index,
   titleLayout = 'row',
@@ -75,6 +78,7 @@ export const ListItemUI = ({
       {...rest}
     >
       <Box toCenterY gap2>
+        {prefix}
         {showIcon && <ListItemIcon icon={itemIcon as string} item={item} />}
         <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
           <Box
