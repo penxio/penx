@@ -1,5 +1,6 @@
 import { ReactNode, useMemo } from 'react'
 import { Box, css, FowerHTMLProps } from '@fower/react'
+import { Trans } from '@lingui/react/macro'
 import { cn } from '@penx/utils'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { IAccessory, isAccessoryObjectText } from '~/lib/penx'
@@ -64,12 +65,17 @@ export const ListItemUI = ({
       <Box toCenterY gap2>
         {showIcon && <ListItemIcon icon={itemIcon as string} item={item} />}
         <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
-          <Box text-14 className="line-clamp-1">
-            {title}
+          <Box
+            text-14
+            className={cn('line-clamp-1', !title && 'text-foreground/50')}
+          >
+            {title || <Trans>Untitled</Trans>}
           </Box>
-          <Box text-12 zinc400>
-            {subtitle}
-          </Box>
+          {subtitle && (
+            <Box text-12 zinc400>
+              {subtitle}
+            </Box>
+          )}
           {item?.data?.alias && (
             <div className="border-foreground/8 text-foreground/40 flex h-5 items-center rounded border px-[6px] text-xs">
               {item.data.alias}

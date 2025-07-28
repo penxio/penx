@@ -31,6 +31,7 @@ import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems } from '~/hooks/useItems'
 import { useNavigation } from '~/hooks/useNavigation'
+import { useSelectStruct } from '~/hooks/useSelectStruct'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import {
@@ -219,6 +220,7 @@ function RootActions({ command, close }: RootActionsProps) {
   const { items } = useItems()
   const struct = structs.find((s) => s.id === value)
   const handleSelect = useHandleSelect()
+  const selectStruct = useSelectStruct()
   const { push } = useNavigation()
   const { setStruct } = useCurrentStruct()
   const { setCurrentCommand } = useCurrentCommand()
@@ -232,7 +234,14 @@ function RootActions({ command, close }: RootActionsProps) {
       <MenuItem
         shortcut="↵"
         onSelect={() => {
-          command && handleSelect(command)
+          if (command) {
+            if (command.data.struct) {
+              selectStruct(command)
+            } else {
+              handleSelect(command)
+            }
+          }
+
           close()
         }}
       >
@@ -314,7 +323,10 @@ function RootActions({ command, close }: RootActionsProps) {
               }
               close()
             }}
-            aria-disabled={area.favorCommands.indexOf(currentItem.id!) === area.favorCommands.length - 1}
+            aria-disabled={
+              area.favorCommands.indexOf(currentItem.id!) ===
+              area.favorCommands.length - 1
+            }
           >
             <Box toCenterY gap2 inlineFlex>
               <div>

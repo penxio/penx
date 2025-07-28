@@ -1,4 +1,5 @@
 import { useCallback } from 'react'
+import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -110,7 +111,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
         return (
           <Input
             variant="unstyled"
-            placeholder=""
+            placeholder={t`Empty`}
             value={value ?? ''}
             onChange={(e) => handleChange(e.target.value)}
           />
@@ -151,9 +152,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
   return (
     <div className="flex gap-2">
       <div className="text-foreground/60 flex w-32 items-center gap-1">
-        <div>
-          <FieldIcon columnType={column.columnType} />
-        </div>
+        <FieldIcon columnType={column.columnType} />
         <span className="text-sm">{column.name}</span>
       </div>
       <div className="flex-1">{renderInput()}</div>

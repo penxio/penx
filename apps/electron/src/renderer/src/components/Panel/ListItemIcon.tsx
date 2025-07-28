@@ -56,6 +56,8 @@ export const ListItemIcon = memo(
           toCenter
           textXS
           uppercase
+          white
+          shadowSM
           bgGradientX={arr}
           {...rest}
         >
