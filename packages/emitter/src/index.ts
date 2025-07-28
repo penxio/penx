@@ -54,7 +54,7 @@ export type AppEvent = {
 
   DELETE_CREATION_SUCCESS: string
 
-  DELETE_STRUCT_SUCCESS: any
+  REFRESH_COMMANDS: any
 
   SUBMIT_QUICK_INPUT: undefined
 }

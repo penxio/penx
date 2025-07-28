@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Kbd } from '@penx/components/Kbd'
+import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
@@ -229,6 +230,7 @@ function RootActions({ command, close }: RootActionsProps) {
 
   const isFavor = area.favorCommands?.includes(currentItem?.id!)
   const isCreation = !!currentItem?.data?.creation
+  const isStruct = !!struct
 
   return (
     <>
@@ -389,30 +391,64 @@ function RootActions({ command, close }: RootActionsProps) {
         </Box>
       </MenuItem>
 
-      <MenuItem
-        shortcut=""
-        onSelect={async () => {
-          if (!struct) return
+      {isCreation && (
+        <MenuItem
+          shortcut=""
+          onSelect={async () => {
+            if (!currentItem.data.creation) return
+            try {
+              await store.creations.deleteCreation(
+                currentItem.data.creation.raw,
+              )
+              toast.success(t`Creation deleted successfully`)
+              setTimeout(() => {
+                appEmitter.emit('REFRESH_COMMANDS')
+              }, 10)
+            } catch (error) {
+              toast.error(t`Failed to delete`)
+            }
+            close()
+          }}
+        >
+          <Box toCenterY gap2 inlineFlex className="text-red-500">
+            <div>
+              <Trash2Icon />
+            </div>
+            <div>
+              <Trans>Delete Creation</Trans>
+            </div>
+          </Box>
+        </MenuItem>
+      )}
 
-          try {
-            await store.structs.deleteStruct(struct.id)
-            toast.success(t`Struct deleted successfully`)
-            appEmitter.emit('DELETE_STRUCT_SUCCESS', struct.id)
-          } catch (error) {
-            toast.error(t`Failed to delete`)
-          }
-          close()
-        }}
-      >
-        <Box toCenterY gap2 inlineFlex className="text-red-500">
-          <div>
-            <Trash2Icon />
-          </div>
-          <div>
-            <Trans>Delete Struct</Trans>
-          </div>
-        </Box>
-      </MenuItem>
+      {isStruct && (
+        <MenuItem
+          shortcut=""
+          onSelect={async () => {
+            if (!struct) return
+
+            try {
+              await store.structs.deleteStruct(struct.id)
+              toast.success(t`Struct deleted successfully`)
+              setTimeout(() => {
+                appEmitter.emit('REFRESH_COMMANDS', struct.id)
+              }, 10)
+            } catch (error) {
+              toast.error(t`Failed to delete`)
+            }
+            close()
+          }}
+        >
+          <Box toCenterY gap2 inlineFlex className="text-red-500">
+            <div>
+              <Trash2Icon />
+            </div>
+            <div>
+              <Trans>Delete Struct</Trans>
+            </div>
+          </Box>
+        </MenuItem>
+      )}
     </>
   )
 }

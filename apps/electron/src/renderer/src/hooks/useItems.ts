@@ -149,9 +149,9 @@ export function useQueryCommands() {
   }, [])
 
   useEffect(() => {
-    appEmitter.on('DELETE_STRUCT_SUCCESS', refetch)
+    appEmitter.on('REFRESH_COMMANDS', refetch)
     return () => {
-      appEmitter.off('DELETE_STRUCT_SUCCESS', refetch)
+      appEmitter.off('REFRESH_COMMANDS', refetch)
     }
   }, [])
 

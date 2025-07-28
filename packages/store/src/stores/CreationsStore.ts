@@ -59,7 +59,7 @@ export class CreationsStore {
 
   async deleteCreation(creation: ICreationNode) {
     await localDB.deleteCreation(creation.id)
-    this.refetchCreations()
+    await this.refetchCreations()
   }
 
   async refetchCreations(areaId?: string) {
