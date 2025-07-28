@@ -83,9 +83,9 @@ export const RecoveryPhrase: FC<Props> = () => {
           </div>
         </Button>
       </div>
-      <div className="mt-3 flex items-center">
+      {/* <div className="mt-3 flex items-center">
         <CloudBackup />
-      </div>
+      </div> */}
     </div>
   )
 }

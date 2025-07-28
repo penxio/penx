@@ -55,6 +55,12 @@ export function SettingsSidebar({ className }: Props) {
         <Item icon={<KeyRoundIcon size={16} />} navName={SettingsNav.PASSWORD}>
           <Trans>Password</Trans>
         </Item>
+        <Item
+          icon={<CreditCardIcon size={16} />}
+          navName={SettingsNav.RECOVER_PHRASE}
+        >
+          <Trans>Recovery phrase</Trans>
+        </Item>
         <Item icon={<CreditCardIcon size={16} />} navName={SettingsNav.BILLING}>
           <Trans>Billing & Subscriptions</Trans>
         </Item>
@@ -72,13 +78,6 @@ export function SettingsSidebar({ className }: Props) {
         <Item icon={<InfoIcon size={16} />} navName={SettingsNav.ABOUT}>
           <Trans>About</Trans>
         </Item>
-
-        {/* <Item
-          icon={<CreditCardIcon size={16} />}
-          navName={SettingsNav.RECOVER_PHRASE}
-        >
-          <Trans>Recovery phrase</Trans>
-        </Item> */}
 
         {session && (
           <div
