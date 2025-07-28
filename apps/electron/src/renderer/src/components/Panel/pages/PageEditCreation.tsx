@@ -10,7 +10,7 @@ export function PageEditCreation() {
   const { currentCommand } = useCurrentCommand()
   const creationId = useMemo(() => {
     if (creation) return creation.id
-    if (currentCommand.data.creation) {
+    if (currentCommand?.data?.creation) {
       return currentCommand.data.creation.id
     }
   }, [creation, currentCommand])

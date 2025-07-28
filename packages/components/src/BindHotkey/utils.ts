@@ -46,6 +46,8 @@ export function convertKeysToHotkey(keys: string[]) {
 }
 
 export async function registerHotkey(shortcut: Shortcut) {
-  await window.customElectronApi.shortcut.unregister(shortcut)
+  try {
+    await window.customElectronApi.shortcut.unregister(shortcut)
+  } catch (error) {}
   await window.customElectronApi.shortcut.register(shortcut)
 }

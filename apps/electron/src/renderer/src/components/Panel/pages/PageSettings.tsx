@@ -14,8 +14,10 @@ import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useNavigation } from '~/hooks/useNavigation'
 
 export function PageSettings() {
-  const { pop } = useNavigation()
+  const { pop, current } = useNavigation()
   const { currentCommand } = useCurrentCommand()
+
+  console.log('=======current:', current)
 
   return (
     <DetailApp
@@ -42,10 +44,10 @@ export function PageSettings() {
         },
       }}
     >
-      <PopButton className="fixed left-4 top-4 z-[10]" />
       <div className="fixed left-0 h-screen w-[250px] overflow-hidden">
         <SettingsSidebar className="min-h-screen overflow-auto p-4 pt-14" />
       </div>
+      <PopButton className="fixed left-4 top-4" />
       <SettingsContent className="bg-background z-10 min-h-full px-6" />
     </DetailApp>
   )

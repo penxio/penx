@@ -15,12 +15,11 @@ export const PopButton = ({ className }: Props) => {
       size="icon"
       variant="secondary"
       className={cn(
-        'text-foreground/90 no-drag bg-foreground/8 hover:bg-foreground/12 flex size-7 items-center justify-center rounded-md',
+        'text-foreground/90 no-drag bg-foreground/8 hover:bg-foreground/12 flex size-7 items-center justify-center rounded-md z-30',
         className,
       )}
       onClick={() => {
         console.log('back........')
-
         pop()
       }}
     >

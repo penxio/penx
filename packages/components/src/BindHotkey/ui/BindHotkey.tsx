@@ -29,9 +29,10 @@ const modifierCodes = [
 
 interface Props {
   type: ShortcutType
+  shortcut?: Shortcut
   commandId?: string
 }
-export const BindHotkey = ({ type, commandId }: Props) => {
+export const BindHotkey = ({ type, commandId, ...rest }: Props) => {
   const [open, setOpen] = useState(false)
   const { data = [], isLoading } = useShortcuts()
   const { shortcuts } = useAppShortcuts()
@@ -54,7 +55,7 @@ export const BindHotkey = ({ type, commandId }: Props) => {
     keys = commandShortcut.keys
   }
 
-  const shortcut = data.find((i) => i.type === type)
+  const shortcut = rest.shortcut || data.find((i) => i.type === type)
   console.log('======shortcut:', shortcut)
 
   if (shortcut) {
@@ -79,7 +80,7 @@ export const BindHotkey = ({ type, commandId }: Props) => {
         </Box>
       </PopoverTrigger>
       <PopoverContent className="flex h-[100px] w-[200px] flex-col justify-center p-4">
-        <Content setOpen={setOpen} shortcut={undefined} commandId={commandId} />
+        <Content setOpen={setOpen} shortcut={shortcut} commandId={commandId} />
       </PopoverContent>
     </Popover>
   )
@@ -142,23 +143,6 @@ function Content({
       if (!isModifierKey) {
         shortcut && (await unregisterHotkey(shortcut))
 
-        const newShortcut = {
-          ...shortcut,
-          key: keys,
-        }
-
-        console.log(
-          '========newShortcut:',
-          newShortcut,
-          'commandId:',
-          commandId,
-        )
-
-        // await unregisterHotkey(newShortcut)
-        // await registerHotkey(newShortcut)
-        // await upsertShortcut(newShortcut)
-        // await refetch()
-
         setKeys(keys)
         setOk(true)
 
@@ -168,6 +152,17 @@ function Content({
             commandId,
             keys,
           })
+        } else {
+          console.log('======old==shortcut:', shortcut)
+
+          await unregisterHotkey(shortcut!)
+          const newShortcut = {
+            ...shortcut,
+            keys: keys,
+          } as Shortcut
+          await registerHotkey(newShortcut)
+          await upsertShortcut(newShortcut)
+          await refetch()
         }
 
         setTimeout(() => {

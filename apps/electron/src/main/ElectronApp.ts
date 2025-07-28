@@ -227,6 +227,8 @@ export class ElectronApp {
   }
 
   private togglePanelWindow(openOnly = false) {
+    console.log('toggle......')
+
     const panelWindow = this.windows.panelWindow!
     const setWindowPos = () => {
       const cursorPoint = screen.getCursorScreenPoint()
@@ -403,6 +405,8 @@ export class ElectronApp {
     })
 
     ipcMain.handle('unregister-shortcut', (_, shortcut: Shortcut) => {
+      console.log('=====unregister=shortcut:', shortcut)
+
       console.log(
         '=======unregister-shortcut:',
         convertKeysToHotkey(shortcut.keys),
@@ -462,8 +466,8 @@ export class ElectronApp {
         label: 'Edit Shortcuts',
         type: 'normal',
         click: () => {
-          mainWindow.show()
-          mainWindow.webContents.send('edit-shortcuts')
+          panelWindow.show()
+          panelWindow.webContents.send('edit-shortcuts')
         },
       },
       {

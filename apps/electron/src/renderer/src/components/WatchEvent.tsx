@@ -3,6 +3,10 @@ import { t } from '@lingui/core/macro'
 import { set } from 'idb-keyval'
 import { toast } from 'sonner'
 import { api } from '@penx/api'
+import {
+  settingsAtom,
+  SettingsNav,
+} from '@penx/components/SettingsDialog/useSettingsDialog'
 import { appEmitter } from '@penx/emitter'
 import { useAppShortcuts } from '@penx/hooks/useAppShortcuts'
 import {
@@ -17,11 +21,24 @@ import { store } from '@penx/store'
 import { openCommand } from '~/lib/openCommand'
 
 window.customElectronApi.shortcut.onPressed((shortcut) => {
-  window.customElectronApi.togglePanelWindow()
-  console.log('=========shortcut:', shortcut)
+  // console.log('=========shortcut:', shortcut)
 
+  if (shortcut.commandId) {
+    window.customElectronApi.togglePanelWindow()
+    openCommand({
+      id: shortcut.commandId,
+    })
+  }
+})
+
+window.electron.ipcRenderer.on('edit-shortcuts', () => {
   openCommand({
-    id: shortcut.commandId,
+    id: 'settings',
+  })
+
+  store.set(settingsAtom, {
+    open: true,
+    navName: SettingsNav.EDIT_SHORTCUTS,
   })
 })
 

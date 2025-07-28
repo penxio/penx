@@ -16,7 +16,7 @@ type State = {
   navName: string
 }
 
-const settingsAtom = atom<State>({
+export const settingsAtom = atom<State>({
   open: false,
   navName: SettingsNav.APPEARANCE,
 } as State)
