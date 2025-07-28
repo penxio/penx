@@ -228,32 +228,53 @@ function RootActions({ command, close }: RootActionsProps) {
   const { area } = useArea()
 
   const isFavor = area.favorCommands?.includes(currentItem?.id!)
+  const isCreation = !!currentItem.data?.creation
 
   return (
     <>
-      <MenuItem
-        shortcut="↵"
-        onSelect={() => {
-          if (command) {
-            if (command.data.struct) {
-              selectStruct(command)
-            } else {
-              handleSelect(command)
+      {isCreation && (
+        <MenuItem
+          shortcut=""
+          onSelect={() => {
+            push({ path: '/edit-creation' })
+            close()
+          }}
+        >
+          <Box toCenterY gap2 inlineFlex>
+            <div className="">
+              <EditIcon size={16} />
+            </div>
+            <div>
+              <Trans>Edit content</Trans>
+            </div>
+          </Box>
+        </MenuItem>
+      )}
+      {!isCreation && (
+        <MenuItem
+          shortcut="↵"
+          onSelect={() => {
+            if (command) {
+              if (command.data.struct) {
+                selectStruct(command)
+              } else {
+                handleSelect(command)
+              }
             }
-          }
 
-          close()
-        }}
-      >
-        <Box toCenterY gap2 inlineFlex>
-          <div className="">
-            <DoorOpenIcon size={16} />
-          </div>
-          <div>
-            <Trans>Open Command</Trans>
-          </div>
-        </Box>
-      </MenuItem>
+            close()
+          }}
+        >
+          <Box toCenterY gap2 inlineFlex>
+            <div className="">
+              <DoorOpenIcon size={16} />
+            </div>
+            <div>
+              <Trans>Open Command</Trans>
+            </div>
+          </Box>
+        </MenuItem>
+      )}
       {!!struct && (
         <MenuItem
           shortcut=""

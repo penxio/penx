@@ -34,6 +34,8 @@ export const TableView = ({ height, width }: Props) => {
   const records = creationsByStruct(struct.id)
   const { resolvedTheme } = useTheme()
 
+  console.log('======records:', records)
+
   const {
     gridRef,
     rowsNum,

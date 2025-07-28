@@ -85,8 +85,7 @@ export async function syncNodesToLocal(spaceId: string) {
 
       const shape = new Shape(stream)
       const rows = await shape.rows
-      console.log('=======rows:', rows)
-      console.log('======>>>>>>mnemonic:', mnemonic)
+      // console.log('======>>>>>>mnemonic:', mnemonic)
 
       await localDB.node.bulkPut(
         rows.map((row) => {
@@ -101,9 +100,9 @@ export async function syncNodesToLocal(spaceId: string) {
               props.data = decrypt(props.data, mnemonic)
             }
           })
-          if (node.type === NodeType.CREATION) {
-            console.log('node=====:', node)
-          }
+          // if (node.type === NodeType.CREATION) {
+          //   console.log('node=====:', node)
+          // }
           return node
         }),
       )
@@ -175,14 +174,14 @@ async function sync(
 
   const getDecryptedNode = (value: INode, isInsert = false) => {
     return produce(value, (draft) => {
-      if (value.createdAt) {
-        draft.createdAt = new Date(Number(value.createdAt.toString()))
+      if (draft.createdAt) {
+        draft.createdAt = new Date(Number(draft.createdAt.toString()))
       }
-      if (value.updatedAt) {
-        draft.updatedAt = new Date(Number(value.updatedAt.toString()))
+      if (draft.updatedAt) {
+        draft.updatedAt = new Date(Number(draft.updatedAt.toString()))
       }
 
-      const node = nodes.find((n) => n.id === value.id)
+      const node = nodes.find((n) => n.id === draft.id)
 
       if (node?.type === NodeType.CREATION || isInsert) {
         const props = draft.props as ICreationNode['props']
@@ -224,11 +223,13 @@ async function sync(
           node && changeNodes.push(node)
         }
 
-        console.log('======getDecryptedNode(value):', getDecryptedNode(value))
+        // console.log('======getDecryptedNode(value):', getDecryptedNode(value))
 
-        await localDB.node.update(value.id, {
-          ...getDecryptedNode(value),
-        })
+        if (value?.props) {
+          await localDB.node.update(value.id, {
+            ...getDecryptedNode(value),
+          })
+        }
       }
       if (operation === 'delete') {
         const node = nodes.find((c) => c.id === value.id)
@@ -370,13 +371,24 @@ function isEqual(localArr: INode[], storeArr: INode[]): boolean {
 }
 
 function decrypt(base64String: string, mnemonic: string, shouldParse = true) {
+  if (typeof base64String !== 'string') return base64String
+  if (!base64String) return base64String
   try {
     const result = decryptByMnemonic(base64String, mnemonic)
+    console.log('==========result:', result)
+
     // console.log('result======:', result)
     if (shouldParse) return JSON.parse(result)
     return result
   } catch (error) {
-    console.log('======error:', error)
+    console.log(
+      '======errord ecrypt:',
+      error,
+      'base64String:',
+      base64String,
+      'mnemonic:',
+      mnemonic,
+    )
     return base64String
   }
 }

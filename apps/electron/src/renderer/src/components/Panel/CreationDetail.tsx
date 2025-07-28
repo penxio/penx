@@ -14,6 +14,7 @@ interface Props {
 export function CreationDetail({ creation }: Props) {
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === creation.structId)!
+  if (!struct) return null
   const currentView = struct.views[0]
   const viewColumns = currentView.viewColumns
   const columnMap = mappedByKey(struct.columns, 'id')
@@ -52,7 +53,7 @@ export function Item({ column, creation }: ItemProps) {
       column.columnType === ColumnType.SINGLE_SELECT ||
       column.columnType === ColumnType.MULTIPLE_SELECT
     ) {
-      const arr = v as string[]
+      const arr: string[] = Array.isArray(v) ? v : [v]
       if (!arr) return null
       return (
         <div className="flex items-center gap-1">

@@ -1,6 +1,7 @@
 import { ReactNode, useMemo } from 'react'
 import { Box, css, FowerHTMLProps } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
+import { useStructs } from '@penx/hooks/useStructs'
 import { cn } from '@penx/utils'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { IAccessory, isAccessoryObjectText } from '~/lib/penx'
@@ -30,6 +31,7 @@ export const ListItemUI = ({
   ...rest
 }: ListItemUIProps) => {
   const { currentCommand } = useCurrentCommand()
+  const { structs } = useStructs()
 
   const itemIcon = useMemo(() => {
     const assets = currentCommand?.data?.assets || {}
@@ -45,6 +47,16 @@ export const ListItemUI = ({
   if (item?.data?.alias) {
     keywords.push(item.data.alias)
   }
+
+  const type = useMemo(() => {
+    if (item.data?.type === 'Creation') {
+      const struct = structs.find((s) => s.id === item.data.creation?.structId)
+      if (struct) {
+        return struct.name
+      }
+    }
+    return item.data?.type
+  }, [item])
 
   return (
     <CommandItem
@@ -83,11 +95,7 @@ export const ListItemUI = ({
           )}
         </Box>
       </Box>
-      {!!item.data?.type && (
-        <Box textXS gray400>
-          {item.data?.type}
-        </Box>
-      )}
+      {!!type && <div className="text-foreground/50 text-xs">{type}</div>}
       {item?.extra && (
         <Box toCenterY gap2 textXS gray600>
           {item.extra.map((extra, index) => (

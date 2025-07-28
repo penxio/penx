@@ -93,7 +93,7 @@ export function PageRoot() {
       <div className="absolute inset-0 flex overflow-hidden">
         <div
           ref={parentRef}
-          className="flex-[2] overflow-auto p-2"
+          className="flex-[2] overflow-auto px-2 pb-2"
           style={{
             overscrollBehavior: 'contain',
             scrollPaddingBlockStart: 8,

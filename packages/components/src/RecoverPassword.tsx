@@ -41,7 +41,7 @@ export function RecoverPassword({ className }: Props) {
   return (
     <div
       className={cn(
-        'drag flex h-screen w-full items-center justify-center',
+        'drag bg-background/80 flex h-screen w-full items-center justify-center',
         className,
       )}
     >
@@ -62,12 +62,22 @@ export function RecoverPassword({ className }: Props) {
           className="no-drag dark:border-foreground/80 mt-3 w-full text-center"
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && value && !isLoading) {
+              confirm()
+            }
+          }}
         />
         <Button
           size="xl"
           className="no-drag mt-2 w-full"
           disabled={!value || isLoading}
           onClick={confirm}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && value && !isLoading) {
+              confirm()
+            }
+          }}
         >
           <Trans>Confirm</Trans>
         </Button>

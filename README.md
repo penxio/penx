@@ -53,5 +53,3 @@ pnpm dev
 ```
 
 ## ⚖️ License
-
-# Use -N for streaming
