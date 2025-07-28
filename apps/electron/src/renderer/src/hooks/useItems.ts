@@ -75,7 +75,9 @@ export function useItems() {
     items,
     favorItems: area.favorCommands
       .map((id) => items.find((item) => item.id === id))
-      .filter((item): item is ICommandItem => !!item && filterCommandBySearch(item)),
+      .filter(
+        (item): item is ICommandItem => !!item && filterCommandBySearch(item),
+      ),
     commandItems: items.filter(
       (item) =>
         item.data.type === 'Command' &&
@@ -143,6 +145,13 @@ export function useQueryCommands() {
     appEmitter.on('ON_APPLICATION_DIR_CHANGE', refetch)
     return () => {
       appEmitter.off('ON_APPLICATION_DIR_CHANGE', refetch)
+    }
+  }, [])
+
+  useEffect(() => {
+    appEmitter.on('DELETE_STRUCT_SUCCESS', refetch)
+    return () => {
+      appEmitter.off('DELETE_STRUCT_SUCCESS', refetch)
     }
   }, [])
 

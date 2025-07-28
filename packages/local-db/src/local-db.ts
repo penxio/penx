@@ -261,9 +261,6 @@ class LocalDB extends Dexie {
 
   // TODO: need  improve
   deleteStruct = async (id: string) => {
-    const struct = await this.getNode<IStructNode>(id)
-    console.log('====struct:', struct)
-
     const nodes = (await this.node
       .where({
         // areaId: struct.areaId,
@@ -277,6 +274,9 @@ class LocalDB extends Dexie {
 
     await this.deleteNodeByIds(ids)
     await this.node.delete(id)
+    for (const id of ids) {
+      await this.addChange(id, OperationType.DELETE)
+    }
     await this.addChange(id, OperationType.DELETE)
   }
 

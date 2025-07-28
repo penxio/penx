@@ -228,7 +228,7 @@ function RootActions({ command, close }: RootActionsProps) {
   const { area } = useArea()
 
   const isFavor = area.favorCommands?.includes(currentItem?.id!)
-  const isCreation = !!currentItem.data?.creation
+  const isCreation = !!currentItem?.data?.creation
 
   return (
     <>
@@ -385,6 +385,31 @@ function RootActions({ command, close }: RootActionsProps) {
             ) : (
               <Trans>Add to Favorites</Trans>
             )}
+          </div>
+        </Box>
+      </MenuItem>
+
+      <MenuItem
+        shortcut=""
+        onSelect={async () => {
+          if (!struct) return
+
+          try {
+            await store.structs.deleteStruct(struct.id)
+            toast.success(t`Struct deleted successfully`)
+            appEmitter.emit('DELETE_STRUCT_SUCCESS', struct.id)
+          } catch (error) {
+            toast.error(t`Failed to delete`)
+          }
+          close()
+        }}
+      >
+        <Box toCenterY gap2 inlineFlex className="text-red-500">
+          <div>
+            <Trash2Icon />
+          </div>
+          <div>
+            <Trans>Delete Struct</Trans>
           </div>
         </Box>
       </MenuItem>

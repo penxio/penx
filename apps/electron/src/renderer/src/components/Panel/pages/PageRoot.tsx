@@ -76,7 +76,7 @@ export function PageRoot() {
     count: flatList.length,
     getScrollElement: () => parentRef.current,
     estimateSize: (i) => (flatList[i].type === 'header' ? 28 : 38),
-    overscan: 5,
+    overscan: 10,
   })
 
   useEffect(() => {

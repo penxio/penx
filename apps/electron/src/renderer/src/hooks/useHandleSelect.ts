@@ -1,5 +1,6 @@
 // import { invoke } from '@tauri-apps/api/core'
 import { appEmitter } from '@penx/emitter'
+import { useStructs } from '@penx/hooks/useStructs'
 import { ICommandItem } from '~/lib/types'
 import { useCommandAppLoading } from './useCommandAppLoading'
 import { useCommandAppUI } from './useCommandAppUI'
@@ -17,11 +18,21 @@ export function useHandleSelect() {
   const { setLoading } = useCommandAppLoading()
   const { setSearch } = useSearch()
   const { push } = useNavigation()
+  const { structs } = useStructs()
 
   return async (item: ICommandItem, opt = {} as CommandOptions) => {
     setSearch('')
     setOptions(opt)
     setCurrentCommand(item)
+
+    if (item.data.type === 'Creation') {
+      const struct = structs.find((s) => s.id === item.data.creation?.structId)
+      if (struct) {
+        alert(`alert: ${struct.name}`)
+      }
+      return
+    }
+
     if (item.data.type === 'Command') {
       push({
         path: '/extension',
