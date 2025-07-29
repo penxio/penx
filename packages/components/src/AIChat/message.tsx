@@ -34,6 +34,7 @@ const PurePreviewMessage = ({
   isReadonly: boolean
 }) => {
   const [mode, setMode] = useState<'view' | 'edit'>('view')
+  console.log('=====message:', message)
 
   return (
     <AnimatePresence>
@@ -142,10 +143,61 @@ const PurePreviewMessage = ({
                 }
               }
 
-              // Hide tool-invocation parts to only show final text content
+              // Show tool-invocation as thinking process UI
               if (type === 'tool-invocation') {
-                // Return null to hide tool calls and only show final text results
-                return null
+                const { toolInvocation } = part
+                const { toolName, toolCallId, state } = toolInvocation
+
+                if (state === 'call') {
+                  const { args } = toolInvocation
+
+                  return (
+                    <div
+                      key={toolCallId}
+                      className="bg-muted/50 text-muted-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm"
+                    >
+                      <div className="size-4 animate-spin">
+                        <SparklesIcon size={14} />
+                      </div>
+                      <span>
+                        {toolName === 'vectorQuery'
+                          ? 'Searching knowledge base...'
+                          : toolName === 'getWeather'
+                            ? 'Getting weather information...'
+                            : toolName === 'createDocument'
+                              ? 'Creating document...'
+                              : toolName === 'updateDocument'
+                                ? 'Updating document...'
+                                : `Using ${toolName}...`}
+                      </span>
+                    </div>
+                  )
+                }
+
+                if (state === 'result') {
+                  // Show completion indicator for tool results
+                  return (
+                    <div
+                      key={toolCallId}
+                      className="flex items-center gap-2 rounded-lg bg-green-50 px-3 py-2 text-sm text-green-700 dark:bg-green-900/20 dark:text-green-300"
+                    >
+                      <div className="size-4">
+                        <SparklesIcon size={14} />
+                      </div>
+                      <span>
+                        {toolName === 'vectorQuery'
+                          ? 'Knowledge search completed'
+                          : toolName === 'getWeather'
+                            ? 'Weather information retrieved'
+                            : toolName === 'createDocument'
+                              ? 'Document created'
+                              : toolName === 'updateDocument'
+                                ? 'Document updated'
+                                : `${toolName} completed`}
+                      </span>
+                    </div>
+                  )
+                }
               }
 
               // Keep other part types as before if any exist
