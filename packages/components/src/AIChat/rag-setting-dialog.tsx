@@ -3,6 +3,7 @@ import { Database, Loader2, Settings } from 'lucide-react'
 import { toast } from 'sonner'
 import { ROOT_HOST } from '@penx/constants'
 import { useCreations } from '@penx/hooks/useCreations'
+import { useStructs } from '@penx/hooks/useStructs'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
 import {
@@ -24,7 +25,7 @@ interface Props {
 export function RagSettingDialog({ className }: Props) {
   const { session } = useSession()
   const { creations } = useCreations()
-  console.log(creations)
+  const { structs } = useStructs()
   const [isBuilding, setIsBuilding] = useState(false)
   const [builtNodeIds, setBuiltNodeIds] = useState<string[]>([])
   const [isOpen, setIsOpen] = useState(false)
@@ -73,24 +74,26 @@ export function RagSettingDialog({ className }: Props) {
 
   // Calculate knowledge base statistics
   const totalCreations = creations?.length || 0
-  const creationIds = creations?.map((creation) => creation.id) || []
+  const totalNodes = totalCreations
 
-  // Calculate intersection between built node IDs and creation IDs
-  const creationsWithKnowledgeBase = creationIds.filter((id) =>
+  const creationIds = creations?.map((creation) => creation.raw.id) || []
+  const structIds = structs?.map((struct) => struct.raw.id) || []
+  const allNodeIds = [...creationIds, ...structIds]
+
+  // Calculate intersection between built node IDs and all node IDs (creations + structs)
+  const nodesWithKnowledgeBase = allNodeIds.filter((id) =>
     builtNodeIds.includes(id),
   ).length
 
   const percentage =
-    totalCreations > 0
-      ? Math.round((creationsWithKnowledgeBase / totalCreations) * 100)
-      : 0
+    totalNodes > 0 ? Math.round((nodesWithKnowledgeBase / totalNodes) * 100) : 0
 
   // Handle bulk knowledge base building
   const handleBuildKnowledgeBase = async () => {
     setIsBuilding(true)
     try {
-      // Call the embeddings API to build knowledge base for all creations
-      const url = ROOT_HOST + '/api/ai/embadding/all'
+      // Call the embeddings API to build knowledge base for all creations and structs
+      const url = ROOT_HOST + '/api/ai/embed/upload'
 
       // Prepare headers with authentication
       const headers: Record<string, string> = {
@@ -102,11 +105,18 @@ export function RagSettingDialog({ className }: Props) {
         headers['Authorization'] = `Bearer ${session.accessToken}`
       }
 
+      // Combine creations and structs as nodes
+      // Extract the 'raw' field from each creation and struct object
+      const nodes = [
+        ...(creations?.map((creation) => creation.raw) || []),
+        ...(structs?.map((struct) => struct.raw) || []),
+      ]
+
       const response = await fetch(url, {
         method: 'POST',
         headers,
         body: JSON.stringify({
-          creationIds: creationIds,
+          nodes: nodes,
         }),
       })
 
@@ -115,9 +125,10 @@ export function RagSettingDialog({ className }: Props) {
       }
 
       const result = await response.json()
-      console.log(result)
 
-      toast.success('Knowledge base built successfully!')
+      toast.success(
+        `Knowledge base built successfully! Processed ${result.processedCount} items.`,
+      )
 
       // Refresh built node IDs after building
       try {
@@ -189,15 +200,14 @@ export function RagSettingDialog({ className }: Props) {
                     Knowledge Base Status
                   </span>
                   <span className="text-muted-foreground text-sm">
-                    {creationsWithKnowledgeBase}/{totalCreations} ({percentage}%
-                    built)
+                    {nodesWithKnowledgeBase}/{totalNodes} ({percentage}% built)
                   </span>
                 </div>
                 <Progress value={percentage} className="h-2" />
                 <p className="text-muted-foreground text-xs">
                   {percentage === 0
                     ? 'No knowledge base built yet'
-                    : `${percentage}% of creations have knowledge base built`}
+                    : `${percentage}% of nodes have knowledge base built`}
                 </p>
               </div>
             </div>
@@ -207,7 +217,7 @@ export function RagSettingDialog({ className }: Props) {
           <div className="flex items-center gap-2">
             <Button
               onClick={handleBuildKnowledgeBase}
-              disabled={isBuilding || totalCreations === 0 || isLoading}
+              disabled={isBuilding || totalNodes === 0 || isLoading}
               className="flex-1"
               variant="outline"
             >
@@ -227,7 +237,7 @@ export function RagSettingDialog({ className }: Props) {
             </Button>
           </div>
 
-          {totalCreations === 0 && !isLoading && (
+          {totalNodes === 0 && !isLoading && (
             <p className="text-muted-foreground py-2 text-center text-xs">
               No content available. Please create content first to build
               knowledge base.
