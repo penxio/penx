@@ -49,13 +49,13 @@ export function OptionTag({
             onDelete?.()
           }}
         >
-          <XIcon size={10}></XIcon>
+          <XIcon size={8}></XIcon>
         </div>
       )}
 
       {showClose && (
         <div className="inline-flex">
-          <XIcon size={10}></XIcon>
+          <XIcon size={8}></XIcon>
         </div>
       )}
     </div>

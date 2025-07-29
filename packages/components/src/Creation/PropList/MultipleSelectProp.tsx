@@ -16,12 +16,14 @@ interface Props {
   struct: Struct
   column: IColumn
   value: string[]
+  isPanel?: boolean
   onChange: (ids: string[]) => void
 }
 export const MultipleSelectProp = ({
   column,
   struct,
   value = [],
+  isPanel,
   onChange,
 }: Props) => {
   const [open, setOpen] = useState(false)
@@ -42,18 +44,30 @@ export const MultipleSelectProp = ({
     } as Option)
   }
 
+  const currentOptions = options.filter((o) => value.includes(o.id))
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div className="hover:bg-foreground/5 flex h-10 w-full max-w-[600px] items-center gap-2 rounded-lg px-3">
-          {options.map((o) => {
-            if (!value.includes(o.id)) return null
+        <div
+          className={cn(
+            'hover:bg-foreground/5 flex h-10 w-full max-w-[600px] items-center gap-1 rounded-lg px-3 cursor-pointer',
+            isPanel && 'h-8 w-auto rounded-md',
+          )}
+        >
+          {!currentOptions.length && (
+            <span className="text-foreground/40">
+              <Trans>Empty</Trans>
+            </span>
+          )}
+          {currentOptions.map((o) => {
             return (
               <div
                 key={o.id}
                 className={cn(
-                  'rounded-full px-2 py-0.5 text-white',
+                  'cursor-pointer rounded-full px-2 py-0.5 text-sm text-white flex items-center',
                   getBgColor(o.color),
+                  isPanel && 'text-xs h-6',
                 )}
               >
                 {o.name}
@@ -63,8 +77,12 @@ export const MultipleSelectProp = ({
         </div>
       </PopoverTrigger>
       <PopoverContent
-        className="w-[var(--radix-popover-trigger-width)] p-0 "
-        align="start"
+        className={cn(
+          'p-0',
+          !isPanel && 'w-[var(--radix-popover-trigger-width)]',
+          isPanel && 'w-40',
+        )}
+        side={isPanel ? 'left' : undefined}
       >
         <Command
           label=""
@@ -135,7 +153,7 @@ export const MultipleSelectProp = ({
                       name: item?.name,
                       color: item?.color,
                     }}
-                    showClose={currentIds.includes(item.id)}
+                    // showClose={currentIds.includes(item.id)}
                   />
                 </CommandItem>
               ))}

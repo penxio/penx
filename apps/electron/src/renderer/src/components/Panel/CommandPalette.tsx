@@ -82,6 +82,7 @@ export const CommandPalette = () => {
   }, [current])
 
   const body = useMemo(() => {
+    if (!current) return null
     if (current.path === '/root') {
       return <PageRoot />
     }
@@ -106,9 +107,10 @@ export const CommandPalette = () => {
   }, [current])
 
   const ExtensionComponent = currentCommand?.data?.component!
-  const isExtension = current.path === '/extension'
+  const isExtension = current?.path === '/extension'
 
   const content = useMemo(() => {
+    if (!current) return null
     if (isExtension) {
       if (!currentCommand) return null
 

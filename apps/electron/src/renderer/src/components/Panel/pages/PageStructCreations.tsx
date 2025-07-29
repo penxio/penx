@@ -21,14 +21,16 @@ export function PageStructCreations() {
   return (
     <>
       <div
-        className="drag border-foreground/10 flex items-center justify-between border-b pr-3"
+        className="drag border-foreground/10 flex items-center justify-between border-b pr-3 gap-1"
         style={{
           height: searchBarHeight,
         }}
       >
         <PopButton className="-mr-2 ml-3" />
         <SearchInput searchBarHeight={searchBarHeight} />
-        <FilterPopover />
+
+        {new Struct(struct).isTask && <FilterPopover />}
+        <AddRowButton struct={new Struct(struct)} />
       </div>
 
       <div
@@ -50,8 +52,9 @@ export function PageStructCreations() {
         px3
         toBetween
       >
-        {/* <DatabaseName /> */}
-        <AddRowButton struct={new Struct(struct)} />
+        <Box toCenterY gap1>
+          <DatabaseName />
+        </Box>
         <ActionPopover />
       </Box>
     </>

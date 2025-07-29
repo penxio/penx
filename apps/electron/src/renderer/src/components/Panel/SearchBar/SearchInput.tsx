@@ -3,6 +3,7 @@ import { appEmitter } from '@penx/emitter'
 import { cn } from '@penx/utils'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useCommands, useItems } from '~/hooks/useItems'
+import { useNavigation } from '~/hooks/useNavigation'
 import { useSearch } from '~/hooks/useSearch'
 import { CommandInput } from '../CommandComponents'
 
@@ -70,6 +71,7 @@ export const SearchInput = ({ searchBarHeight }: Props) => {
   const { items, setItems } = useItems()
   const { commands } = useCommands()
   const handleSelect = useHandleSelect()
+  const { pop, navigation } = useNavigation()
 
   return (
     <SearchInputMemo
@@ -97,13 +99,14 @@ export const SearchInput = ({ searchBarHeight }: Props) => {
       }}
       onKeyDown={(e) => {
         if (e.key === 'Backspace' || e.key === 'delete') {
-          // if (!search && isCommandApp) {
-          //   if (isCommandAppDetail) {
-          //     backToCommandApp()
-          //   } else {
-          //     backToRoot()
-          //   }
-          // }
+          if (!search) {
+            // if (isCommandAppDetail) {
+            //   backToCommandApp()
+            // } else {
+            //   backToRoot()
+            // }
+            navigation.length > 1 && pop()
+          }
         }
         if (e.key === 'Enter') {
           // const [a, b = ''] = splitStringByFirstSpace(q)

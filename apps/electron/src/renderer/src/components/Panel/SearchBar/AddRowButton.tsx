@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Trans } from '@lingui/react/macro'
-import { Plus } from 'lucide-react'
+import { Plus, PlusIcon } from 'lucide-react'
 import { tinykeys } from 'tinykeys'
 import { Kbd } from '@penx/components/Kbd'
 import { Creation, Struct } from '@penx/domain'
@@ -41,13 +41,14 @@ export const AddRowButton = ({ struct }: Props) => {
     <Button
       size="sm"
       variant="outline"
-      className="no-drag bg-foreground/8 hover:bg-foreground/12  flex cursor-pointer items-center gap-1 rounded-full"
+      className="no-drag bg-foreground/8 hover:bg-foreground/12  flex cursor-pointer items-center gap-1"
       onClick={async () => {
         add()
       }}
     >
       <div className="mr-1">
-        <Trans>Add</Trans>
+        {/* <Trans>Add</Trans> */}
+        <PlusIcon size={20} />
       </div>
       <Kbd className="">⌘</Kbd>
       <Kbd className="">N</Kbd>

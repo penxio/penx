@@ -25,7 +25,7 @@ export const DateProp = ({ value, onChange }: Props) => {
         {value ? (
           format(new Date(value), 'yyyy-MM-dd')
         ) : (
-          <span>Pick a date</span>
+          <Trans>Pick a date</Trans>
         )}
       </div>
 

@@ -1,56 +1,72 @@
-import React, { ReactNode, useMemo } from 'react'
-import { Trans } from '@lingui/react/macro'
+import { useMemo, useState } from 'react'
 import { addDays, format } from 'date-fns'
 import { PlusIcon } from 'lucide-react'
-import { AnimatePresence } from 'motion/react'
-import { CreationItem } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem'
+import { JournalQuickInput } from '@penx/components/JournalQuickInput'
 import { TaskNav } from '@penx/constants'
-import { Creation } from '@penx/domain'
+import { Creation, Struct } from '@penx/domain'
 import { updateCreationProps } from '@penx/hooks/useCreation'
-import { useCreations } from '@penx/hooks/useCreations'
-import { useQuickInputOpen } from '@penx/hooks/useQuickInputOpen'
-import { sortTasks } from '@penx/libs/sortTasks'
-import { IColumn, IStructNode } from '@penx/model-type'
-import { Option } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
+import { useFilterPopover } from '~/hooks/useFilterPopover'
 import { creationToCommand } from '~/lib/creationToCommand'
 import { CommandGroup } from '../../CommandComponents'
+import { getLabel } from '../../FilterPopover'
 import { ListItemUI } from '../../ListItemUI'
 
 interface Props {
+  struct: Struct
   creations: Creation[]
 }
 
-export function TaskCommandList({ creations }: Props) {
-  const { setState } = useQuickInputOpen()
-  const days = Array(7)
-    .fill(null)
-    .map((_, index) => {
-      const date = format(addDays(new Date(), index + 1), 'yyyy-MM-dd')
-      let label: ReactNode = format(new Date(date), 'MM/dd')
-      // if (index === 0) label = <Trans>Today</Trans>
-      if (index === 0) label = <Trans>Tomorrow</Trans>
+export function TaskCommandList({ creations, struct }: Props) {
+  const { value } = useFilterPopover()
+  const [open, setOpen] = useState(false)
+  const heading = useMemo(() => {
+    if (!struct.isTask) return undefined
+    const canAdd = [TaskNav.TODAY, TaskNav.TOMORROW].includes(value)
+    const dateDelta = value === TaskNav.TODAY ? 0 : 1
+    const date = format(addDays(new Date(), dateDelta), 'yyyy-MM-dd')
+    return (
+      <div className="mt-2 flex h-6 items-center gap-1 px-2">
+        <div>{getLabel(value)}</div>
+        {/* {canAdd && (
+          <PlusIcon
+            size={18}
+            className="text-foreground/60 cursor-pointer"
+            onClick={(e) => {
+              alert('eer')
+              setOpen(true)
+              // e.stopPropagation()
+            }}
+          />
+        )} */}
+      </div>
+    )
+  }, [struct, value])
 
-      const weekdayAbbr = [
-        <Trans>Sun</Trans>,
-        <Trans>Mon</Trans>,
-        <Trans>Tue</Trans>,
-        <Trans>Wed</Trans>,
-        <Trans>Thu</Trans>,
-        <Trans>Fri</Trans>,
-        <Trans>Sat</Trans>,
-      ]
-      const dayNum = new Date(date).getDay()
-      return {
-        date,
-        label,
-        weekDay: weekdayAbbr[dayNum],
-      }
-    })
+  const filteredCreations = useMemo(() => {
+    if (value === TaskNav.TODAY) {
+      return creations.filter(
+        (c) => c.date === format(new Date(), 'yyyy-MM-dd'),
+      )
+    }
+    if (value === TaskNav.TOMORROW) {
+      return creations.filter(
+        (c) => c.date === format(addDays(new Date(), 1), 'yyyy-MM-dd'),
+      )
+    }
+    return creations
+  }, [creations, value])
+
   return (
-    <div
-      className={cn('flex-[2] overflow-auto p-2')}
+    <CommandGroup
+      heading={heading}
+      className={cn(
+        'm-0 flex-[2] overflow-auto px-2 pb-2 pt-0',
+        !struct.isTask && 'mt-2',
+      )}
       style={{
         overscrollBehavior: 'contain',
         scrollPaddingBlockStart: 8,
@@ -58,111 +74,30 @@ export function TaskCommandList({ creations }: Props) {
         position: 'relative',
       }}
     >
-      {days.map((day) => {
-        const list = creations.filter((c) => c.date === day.date)
+      {filteredCreations.map((item, index) => {
         return (
-          <CommandGroup
-            heading={
-              <div
-                className="flex h-10 items-center justify-between"
-                onClick={() => {
-                  //
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <div className="text-xs font-bold">{day.label}</div>
-                  <div className="mt-1 text-xs font-light">{day.weekDay}</div>
-                </div>
-                <PlusIcon
-                  size={16}
-                  className="text-foreground/60"
-                  onClick={(e) => {
-                    e.stopPropagation()
-
-                    setState({
-                      isTask: true,
-                      open: true,
-                      date: day.date,
+          <ListItemUI
+            key={index}
+            prefix={
+              item.isTask ? (
+                <Checkbox
+                  onClick={(e) => e.stopPropagation()}
+                  checked={item.checked}
+                  onCheckedChange={(v) => {
+                    updateCreationProps(item.id, {
+                      checked: v as any,
                     })
                   }}
                 />
-              </div>
+              ) : null
             }
-          >
-            {list.map((item, index) => {
-              return (
-                <ListItemUI
-                  key={index}
-                  prefix={
-                    <Checkbox
-                      onClick={(e) => e.stopPropagation()}
-                      checked={item.checked}
-                      onCheckedChange={(v) => {
-                        updateCreationProps(item.id, {
-                          checked: v as any,
-                        })
-                      }}
-                    />
-                  }
-                  index={index}
-                  showIcon={false}
-                  value={item.id}
-                  item={creationToCommand(item)}
-                />
-              )
-            })}
-          </CommandGroup>
-        )
-        return (
-          <div key={day.date} className="flex flex-col gap-2">
-            <div className="flex flex-col gap-3">
-              <AnimatePresence>
-                {sortTasks(list).map((item) => (
-                  <CreationItem key={item.id} creation={item} />
-                ))}
-              </AnimatePresence>
-            </div>
-          </div>
+            index={index}
+            showIcon={false}
+            value={item.id}
+            item={creationToCommand(item)}
+          />
         )
       })}
-    </div>
+    </CommandGroup>
   )
-
-  // return (
-  //   <CommandGroup
-  //     className={cn(
-  //       'flex-[2] overflow-auto p-2',
-  //       // struct.isTask && 'flex-[2]',
-  //     )}
-  //     style={{
-  //       overscrollBehavior: 'contain',
-  //       scrollPaddingBlockStart: 8,
-  //       scrollPaddingBlockEnd: 8,
-  //       position: 'relative',
-  //     }}
-  //   >
-  //     {creations.map((item, index) => {
-  //       return (
-  //         <ListItemUI
-  //           key={index}
-  //           prefix={
-  //             <Checkbox
-  //               onClick={(e) => e.stopPropagation()}
-  //               checked={item.checked}
-  //               onCheckedChange={(v) => {
-  //                 updateCreationProps(item.id, {
-  //                   checked: v as any,
-  //                 })
-  //               }}
-  //             />
-  //           }
-  //           index={index}
-  //           showIcon={false}
-  //           value={item.id}
-  //           item={creationToCommand(item)}
-  //         />
-  //       )
-  //     })}
-  //   </CommandGroup>
-  // )
 }

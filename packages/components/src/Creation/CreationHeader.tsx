@@ -57,7 +57,7 @@ export function CreationHeader({
                 <Checkbox
                   className={cn(
                     'border-foreground mt-[6px] size-5',
-                    // !isMobileApp && 'mt-3',
+                    !isMobileApp && 'mt-3',
                   )}
                   checked={creation.checked}
                   onCheckedChange={(v) => {

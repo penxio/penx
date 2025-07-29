@@ -24,6 +24,7 @@ export const MultipleSelectProp = ({
   column,
   struct,
   value = [],
+  isPanel,
   onChange,
 }: Props) => {
   const [open, setOpen] = useState(false)

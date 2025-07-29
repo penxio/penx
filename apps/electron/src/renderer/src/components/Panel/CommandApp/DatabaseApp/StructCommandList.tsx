@@ -1,4 +1,7 @@
+import { useMemo } from 'react'
+import { addDays, format } from 'date-fns'
 import { PlusIcon } from 'lucide-react'
+import { TaskNav } from '@penx/constants'
 import { Creation, Struct } from '@penx/domain'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { Button } from '@penx/uikit/ui/button'
@@ -15,26 +18,14 @@ interface Props {
   creations: Creation[]
 }
 
-export function StructCommandList({ creations }: Props) {
+export function StructCommandList({ creations, struct }: Props) {
   const { value } = useFilterPopover()
 
   return (
     <CommandGroup
-      heading={
-        <div className="mt-1 flex h-6 items-center gap-1">
-          <div>{getLabel(value)}</div>
-          <PlusIcon
-            size={18}
-            className="text-foreground/60 cursor-pointer"
-            onClick={(e) => {
-              e.stopPropagation()
-            }}
-          />
-        </div>
-      }
       className={cn(
         'm-0 flex-[2] overflow-auto px-2 pb-2 pt-0',
-        // struct.isTask && 'flex-[2]',
+        !struct.isTask && 'mt-2',
       )}
       style={{
         overscrollBehavior: 'contain',

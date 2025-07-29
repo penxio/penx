@@ -1,7 +1,9 @@
 import { useCallback } from 'react'
 import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
+import { Creation, Struct } from '@penx/domain'
 import { useStructs } from '@penx/hooks/useStructs'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
@@ -21,13 +23,20 @@ import { SingleSelectProp } from './SingleSelectProp'
 
 interface Props {
   column: IColumn
+  struct: Struct
+  creation?: Creation
+  isPanel?: boolean
   onUpdateProps: (cells: any) => void
 }
 
-export const PropItem = ({ onUpdateProps, column }: Props) => {
-  const creation = usePanelCreationContext()
-  const { structs } = useStructs()
-  const struct = structs.find((m) => m.id === creation.structId)!
+export const PropItem = ({
+  onUpdateProps,
+  struct,
+  column,
+  isPanel,
+  ...rest
+}: Props) => {
+  const creation = rest.creation ?? usePanelCreationContext()
 
   if (!struct.columns.length) return null
   if (column.isPrimary) return null
@@ -49,33 +58,44 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
       case ColumnType.TEXT:
         return (
           <Input
-            placeholder=""
-            variant="unstyled"
+            placeholder={t`Empty`}
+            variant={isPanel ? 'panel' : 'unstyled'}
             className=""
             type="text"
-            value={value ?? ''}
+            // value={value ?? ''}
+            defaultValue={value ?? ''}
             onChange={(e) => handleChange(e.target.value)}
           />
         )
       case ColumnType.PASSWORD:
-        return <PasswordProp value={value ?? ''} onChange={handleChange} />
+        return (
+          <PasswordProp
+            variant={isPanel ? 'panel' : 'unstyled'}
+            value={value ?? ''}
+            onChange={handleChange}
+          />
+        )
       case ColumnType.DATE:
         return (
           <Popover>
             <PopoverTrigger asChild>
               <Button
+                size={isPanel ? 'xs' : 'default'}
                 variant="ghost"
                 className={cn('text-foreground flex items-center gap-1 px-3')}
               >
-                <CalendarIcon size={16} />
+                <CalendarIcon size={isPanel ? 14 : 16} />
                 {value ? (
                   format(new Date(value), 'PPP')
                 ) : (
-                  <span>Pick a date</span>
+                  <Trans>Pick a date</Trans>
                 )}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent
+              className="w-auto p-0"
+              align={isPanel ? 'end' : undefined}
+            >
               <Calendar
                 mode="single"
                 selected={value ? new Date(value as string) : undefined}
@@ -99,18 +119,18 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
       case ColumnType.NUMBER:
         return (
           <NumberInput
-            placeholder=""
+            placeholder={t`Empty`}
             variant="unstyled"
             precision={18}
             className=""
-            value={value ?? ''}
+            defaultValue={value ?? ''}
             onChange={handleChange}
           />
         )
       case ColumnType.URL:
         return (
           <Input
-            variant="unstyled"
+            variant={isPanel ? 'panel' : 'unstyled'}
             placeholder={t`Empty`}
             value={value ?? ''}
             onChange={(e) => handleChange(e.target.value)}
@@ -129,6 +149,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
           <SingleSelectProp
             struct={struct}
             column={column}
+            isPanel={isPanel}
             value={value}
             onChange={handleChange}
           />
@@ -137,6 +158,7 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
         return (
           <MultipleSelectProp
             struct={struct}
+            isPanel={isPanel}
             column={column}
             value={value}
             onChange={handleChange}
@@ -150,12 +172,19 @@ export const PropItem = ({ onUpdateProps, column }: Props) => {
   }
 
   return (
-    <div className="flex gap-2">
+    <div
+      className={cn(
+        'flex items-center gap-2',
+        isPanel && 'h-9 justify-between px-2',
+      )}
+    >
       <div className="text-foreground/60 flex w-32 items-center gap-1">
-        <FieldIcon columnType={column.columnType} />
-        <span className="text-sm">{column.name}</span>
+        {!isPanel && <FieldIcon columnType={column.columnType} />}
+        <span className="">{column.name}</span>
       </div>
-      <div className="flex-1">{renderInput()}</div>
+      <div className={cn('flex flex-1', isPanel && 'justify-end')}>
+        {renderInput()}
+      </div>
     </div>
   )
 }

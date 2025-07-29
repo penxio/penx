@@ -1,4 +1,8 @@
+import { Trans } from '@lingui/react/macro'
+import { format } from 'date-fns'
+import { PropList } from '@penx/components/Creation/PropList/PropList'
 import { Creation } from '@penx/domain'
+import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { IColumn } from '@penx/model-type'
 import { NovelEditor } from '@penx/novel-editor/NovelEditor'
@@ -18,7 +22,6 @@ export function CreationDetail({ creation }: Props) {
   const currentView = struct.views[0]
   const viewColumns = currentView.viewColumns
   const columnMap = mappedByKey(struct.columns, 'id')
-  const sortedColumns = viewColumns.map(({ columnId }) => columnMap[columnId])
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 p-2">
@@ -28,55 +31,16 @@ export function CreationDetail({ creation }: Props) {
           <NovelEditor editable={false} value={creation.content} />
         )}
       </div>
-      <div className="border-foreground/6 divide-foreground/5 flex flex-col divide-y border-t px-2">
-        {sortedColumns.map((column) => (
-          <Item key={column.id} column={column} creation={creation} />
-        ))}
-      </div>
-    </div>
-  )
-}
 
-interface ItemProps {
-  creation: Creation
-  column: IColumn
-}
-
-export function Item({ column, creation }: ItemProps) {
-  const getValue = () => {
-    if (!creation.cells) return null
-    const v = creation.cells[column.id]
-
-    if (column.isPrimary) return <div className="text-sm">{creation.title}</div>
-
-    if (
-      column.columnType === ColumnType.SINGLE_SELECT ||
-      column.columnType === ColumnType.MULTIPLE_SELECT
-    ) {
-      if (!v) return null
-      const arr: string[] = Array.isArray(v) ? v : [v]
-      if (!arr) return null
-      return (
-        <div className="flex items-center gap-1">
-          {arr.map((i) => {
-            const option = column.options.find((o) => o.id === i)
-            return <Badge key={i}>{option?.name}</Badge>
-          })}
-        </div>
-      )
-    }
-    return <div className="text-sm">{v}</div>
-  }
-
-  return (
-    <div
-      key={column.id}
-      className="bg-gre flex h-9 items-center justify-between gap-2"
-    >
-      <div className="text-foreground/60 lean shrink-0 text-xs font-semibold">
-        {column.name}
-      </div>
-      {getValue()}
+      <PropList
+        className="divide-foreground/5 border-foreground/6 flex flex-col divide-y border-t text-xs gap-0"
+        isPanel
+        struct={struct}
+        creation={creation}
+        onUpdateProps={(newCells) => {
+          updateCreationProps(creation.id, { cells: newCells })
+        }}
+      />
     </div>
   )
 }

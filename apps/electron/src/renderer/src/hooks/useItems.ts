@@ -62,6 +62,8 @@ export function useItems() {
     const values: string[] = Object.values(item.cells)
 
     return values.some((v) => {
+      if (!v) return false
+
       if (typeof v === 'string') {
         return v.toLowerCase().includes(t)
       }

@@ -37,6 +37,27 @@ export class CreationsStore {
     this.set(newCreations)
   }
 
+  async updateCreationProps(
+    creationId: string,
+    input: Partial<ICreationNode['props']>,
+  ) {
+    const creations = this.get()
+
+    const newCreations = produce(creations, (draft) => {
+      const index = draft.findIndex((p) => p.id === creationId)
+      draft[index].props = {
+        ...draft[index].props,
+        ...input,
+      }
+    })
+
+    this.set(newCreations)
+
+    await localDB.updateCreationProps(creationId, {
+      ...input,
+    })
+  }
+
   async updateCreationDataById(creationId: string, data: any) {
     const creations = this.get()
 

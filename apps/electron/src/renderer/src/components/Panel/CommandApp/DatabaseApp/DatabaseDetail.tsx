@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreations } from '@penx/hooks/useCreations'
@@ -81,27 +82,32 @@ export function DatabaseDetail(props: Props) {
   }
 
   if (!filteredRows.length) {
-    // return (
-    //   <div className="text-foreground/50 pl-1">
-    //     <Trans>No results found</Trans>
-    //   </div>
-    // )
     return (
-      <CommandGroup>
-        <CommandEmpty>No results found.</CommandEmpty>
-      </CommandGroup>
+      <div className="text-foreground/50 pl-3 pt-2">
+        <Trans>No results found</Trans>
+      </div>
     )
+    // return (
+    //   <CommandGroup>
+    //     <CommandEmpty>No results found.</CommandEmpty>
+    //   </CommandGroup>
+    // )
   }
 
   return (
     <div className="absolute inset-0 flex overflow-hidden">
-      <StructCommandList creations={filteredRows} struct={struct} />
+      {struct.isTask ? (
+        <TaskCommandList creations={filteredRows} struct={struct} />
+      ) : (
+        <StructCommandList creations={filteredRows} struct={struct} />
+      )}
+
       <Separator orientation="vertical" />
 
       <div
         className={cn(
           'flex flex-[3] flex-col overflow-auto',
-          struct.isTask && 'flex-1',
+          struct.isTask && 'flex-2',
         )}
       >
         {currentItem && <CreationDetail creation={currentItem} />}

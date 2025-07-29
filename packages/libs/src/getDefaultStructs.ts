@@ -106,8 +106,8 @@ export function generateStructNode({
           },
           {
             id: uniqueId(),
-            slug: 'dueDate',
-            name: t`Due date`,
+            slug: 'date',
+            name: t`Date`,
             description: '',
             columnType: ColumnType.DATE,
             config: {},

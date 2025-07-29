@@ -16,6 +16,8 @@ const inputVariants = cva('', {
         'border-none bg-white shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-neutral-700/60',
       unstyled:
         'focus-visible:bg-foreground/5 hover:bg-foreground/5 border-none shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-transparent',
+      panel:
+        'border-none shadow-none focus-visible:border-none focus-visible:ring-0 dark:bg-transparent h-9 text-right',
       filled:
         'bg-foreground/5 border-none shadow-none focus-visible:border-none focus-visible:ring-0',
     },

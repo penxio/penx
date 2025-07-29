@@ -93,9 +93,10 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
           <CreationHeader />
 
           <PropList
+            className="text-sm"
             struct={struct!}
+            creation={creation}
             onUpdateProps={(newCells) => {
-              console.log('=======newCells:', newCells)
               updateCreationProps(creation.id, { cells: newCells })
             }}
           />
