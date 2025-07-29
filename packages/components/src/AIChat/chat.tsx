@@ -52,6 +52,9 @@ export function Chat({
     initialMessages,
     experimental_throttle: 100,
     sendExtraMessageFields: true,
+    headers: {
+      Authorization: `Bearer ${session.accessToken}`,
+    },
     generateId: uniqueId,
     experimental_prepareRequestBody: (body) => {},
     onFinish: async (message, options) => {
