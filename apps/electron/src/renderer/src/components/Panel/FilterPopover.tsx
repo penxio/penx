@@ -22,6 +22,16 @@ export enum TaskNav {
   ALL = 'ALL',
 }
 
+export function getLabel(key: any) {
+  const labelMaps: Record<string, any> = {
+    [TaskNav.TODAY]: <Trans>Today</Trans>,
+    [TaskNav.TOMORROW]: <Trans>Tomorrow</Trans>,
+    [TaskNav.UPCOMING]: <Trans>Upcoming</Trans>,
+    [TaskNav.ALL]: <Trans>All</Trans>,
+  }
+  return labelMaps[key || TaskNav.TODAY]
+}
+
 function useOnCmdK(fn: () => void, open: boolean) {
   useEffect(() => {
     function listener(e: KeyboardEvent) {
@@ -42,12 +52,6 @@ function useOnCmdK(fn: () => void, open: boolean) {
 interface Props {}
 
 export const FilterPopover = ({}: Props) => {
-  const labelMaps: Record<string, any> = {
-    [TaskNav.TODAY]: <Trans>Today</Trans>,
-    [TaskNav.TOMORROW]: <Trans>Tomorrow</Trans>,
-    [TaskNav.UPCOMING]: <Trans>Upcoming</Trans>,
-    [TaskNav.ALL]: <Trans>All</Trans>,
-  }
   const { open, value, state, setOpen, setState } = useFilterPopover()
 
   useOnCmdK(() => {
@@ -76,7 +80,7 @@ export const FilterPopover = ({}: Props) => {
           )}
         >
           <div>
-            <div>{labelMaps[value || TaskNav.TODAY]}</div>
+            <div>{getLabel(value || TaskNav.TODAY)}</div>
           </div>
           <Box toCenterY gap1>
             <Kbd>⌘</Kbd>
@@ -164,12 +168,6 @@ interface StructActionsProps {}
 function StructActions({}: StructActionsProps) {
   const { setState, setOpen, setValue } = useFilterPopover()
 
-  const labelMaps: Record<string, any> = {
-    [TaskNav.TODAY]: <Trans>Today</Trans>,
-    [TaskNav.TOMORROW]: <Trans>Tomorrow</Trans>,
-    [TaskNav.UPCOMING]: <Trans>Upcoming</Trans>,
-    [TaskNav.ALL]: <Trans>All</Trans>,
-  }
   return (
     <>
       {Object.values(TaskNav).map((key) => (
@@ -184,7 +182,7 @@ function StructActions({}: StructActionsProps) {
           }}
         >
           <Box toCenterY gap2 inlineFlex>
-            <div>{labelMaps[key]}</div>
+            <div>{getLabel(key)}</div>
           </Box>
         </MenuItem>
       ))}

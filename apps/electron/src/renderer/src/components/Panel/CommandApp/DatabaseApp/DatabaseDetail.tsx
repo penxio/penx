@@ -96,7 +96,6 @@ export function DatabaseDetail(props: Props) {
   return (
     <div className="absolute inset-0 flex overflow-hidden">
       <StructCommandList creations={filteredRows} struct={struct} />
-
       <Separator orientation="vertical" />
 
       <div

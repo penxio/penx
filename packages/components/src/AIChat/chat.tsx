@@ -1,24 +1,25 @@
-'use client'
+'use client';
 
-import { useEffect, useRef, useState } from 'react'
-import { useChat } from '@ai-sdk/react'
-import type { Attachment, UIMessage } from 'ai'
-import { useSearchParams } from 'next/navigation'
-import useSWR, { useSWRConfig } from 'swr'
-import { unstable_serialize } from 'swr/infinite'
-import { isDesktop, ROOT_HOST } from '@penx/constants'
-import { useArtifactSelector } from '@penx/hooks/use-artifact'
-import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
-import { useMySpace } from '@penx/hooks/useMySpace'
-import { localDB } from '@penx/local-db'
-import { useSession } from '@penx/session'
-import { store } from '@penx/store'
-import { PanelType, SessionData } from '@penx/types'
-import { uniqueId } from '@penx/unique-id'
-import { Artifact } from './artifact'
-import { Messages } from './messages'
-import { MultimodalInput } from './multimodal-input'
-import { toast } from './toast'
+import { useEffect, useRef, useState } from 'react';
+import { useChat } from '@ai-sdk/react';
+import type { Attachment, UIMessage } from 'ai';
+import { useSearchParams } from 'next/navigation';
+import useSWR, { useSWRConfig } from 'swr';
+import { unstable_serialize } from 'swr/infinite';
+import { isDesktop, ROOT_HOST } from '@penx/constants';
+import { useArtifactSelector } from '@penx/hooks/use-artifact';
+import { queryMessages, refetchMessages } from '@penx/hooks/useMessages';
+import { useMySpace } from '@penx/hooks/useMySpace';
+import { localDB } from '@penx/local-db';
+import { useSession } from '@penx/session';
+import { store } from '@penx/store';
+import { PanelType, SessionData } from '@penx/types';
+import { uniqueId } from '@penx/unique-id';
+import { Artifact } from './artifact';
+import { Messages } from './messages';
+import { MultimodalInput } from './multimodal-input';
+import { toast } from './toast';
+
 
 interface ApplicationError extends Error {
   info: string

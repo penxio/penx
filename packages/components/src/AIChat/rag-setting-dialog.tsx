@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Database, Loader2, Settings } from 'lucide-react'
 import { toast } from 'sonner'
-import { ROOT_HOST } from '@penx/constants'
+import { AI_SERVICE_HOST, ROOT_HOST } from '@penx/constants'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
 import { useSession } from '@penx/session'
@@ -47,7 +47,7 @@ export function RagSettingDialog({ className }: Props) {
         }
 
         const response = await fetch(
-          `${ROOT_HOST}/api/ai/knowledge-base/nodes`,
+          `${AI_SERVICE_HOST}/api/ai/knowledge-base/nodes`,
           {
             method: 'GET',
             headers,
@@ -93,7 +93,7 @@ export function RagSettingDialog({ className }: Props) {
     setIsBuilding(true)
     try {
       // Call the embeddings API to build knowledge base for all creations and structs
-      const url = ROOT_HOST + '/api/ai/embed/upload'
+      const url = AI_SERVICE_HOST + '/api/ai/embed/upload'
 
       // Prepare headers with authentication
       const headers: Record<string, string> = {
@@ -133,7 +133,7 @@ export function RagSettingDialog({ className }: Props) {
       // Refresh built node IDs after building
       try {
         const nodeResponse = await fetch(
-          `${ROOT_HOST}/api/ai/knowledge-base/nodes`,
+          `${AI_SERVICE_HOST}/api/ai/knowledge-base/nodes`,
           {
             method: 'GET',
             headers,

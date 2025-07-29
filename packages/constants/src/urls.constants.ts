@@ -42,3 +42,5 @@ export const SHAPE_URL = SYNC_SERVICE_HOST
 export const TRANSCRIBE_URL = SYNC_SERVICE_HOST
   ? `${SYNC_SERVICE_HOST}/api/transcribe`
   : 'https://sync.penx.io/api/transcribe'
+
+export const AI_SERVICE_HOST = 'https://ai.penx.io'
