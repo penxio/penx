@@ -6,7 +6,7 @@ import type { Attachment, UIMessage } from 'ai'
 import { useSearchParams } from 'next/navigation'
 import useSWR, { useSWRConfig } from 'swr'
 import { unstable_serialize } from 'swr/infinite'
-import { isDesktop } from '@penx/constants'
+import { isDesktop, ROOT_HOST } from '@penx/constants'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { queryMessages, refetchMessages } from '@penx/hooks/useMessages'
 import { useMySpace } from '@penx/hooks/useMySpace'
@@ -47,7 +47,7 @@ export function Chat({
     stop,
     reload,
   } = useChat({
-    api: 'http://localhost:4000/api/ai/chat',
+    api: ROOT_HOST + '/api/ai/chat',
     id,
     initialMessages,
     experimental_throttle: 100,
@@ -89,7 +89,7 @@ export function Chat({
   return (
     <>
       <div className="flex h-full w-full min-w-0 flex-col">
-        <div className="w-full flex-1 overflow-hidden">
+        <div className="min-h-0 w-full flex-1">
           <Messages
             chatId={id}
             status={status}
