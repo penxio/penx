@@ -1,6 +1,7 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
+import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 // import { fetch } from '@tauri-apps/plugin-http'
 import { openUrl } from '@tauri-apps/plugin-opener'
@@ -30,6 +31,7 @@ import { useMySpace } from '@penx/hooks/useMySpace'
 import { useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button, ButtonProps } from '@penx/uikit/button'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -58,6 +60,7 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
   const { setIsOpen } = usePlanListDialog()
   const loginDialog = useLoginDialog()
   const settings = useSettingsDialog()
+  const [loading, setLoading] = useState(false)
 
   async function desktopLogin() {
     const authToken = nanoid()
@@ -65,6 +68,11 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
     // openUrl()
     window.electron.ipcRenderer.send('open-url', url)
 
+    setLoading(true)
+
+    setTimeout(() => {
+      setLoading(false)
+    }, 30 * 1000)
     while (true) {
       try {
         // const { status } = await ky
@@ -82,10 +90,11 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
           break
         }
         if (status === LoginStatus.CANCELED) {
+          setLoading(false)
           return
           // break
         }
-        await sleep(1000)
+        await sleep(300)
       } catch (error) {
         console.log('error:', error)
         toast.error('please try again')
@@ -93,13 +102,18 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
       }
     }
 
-    const session = await login({
-      type: 'desktop-login',
-      authToken,
-    })
-    console.log('desktop ====session:', session)
+    try {
+      const session = await login({
+        type: 'desktop-login',
+        authToken,
+      })
+      console.log('desktop ====session:', session)
 
-    appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
+      appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
+    } catch (error) {
+      toast.error(t`Log in failed`)
+    }
+    setLoading(false)
   }
 
   async function handleLogin() {
@@ -127,8 +141,9 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
   if (!session) {
     if (loginButton) return loginButton
     return (
-      <Button size="sm" onClick={handleLogin} {...rest}>
+      <Button size="sm" disabled={loading} onClick={handleLogin} {...rest}>
         <Trans>Log in</Trans>
+        {loading && <LoadingDots className="text-background" />}
       </Button>
     )
   }

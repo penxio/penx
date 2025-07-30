@@ -8,6 +8,7 @@ import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useNavigation } from '~/hooks/useNavigation'
 
+// 我正在开发 PenX 快速输入功能，预计下周可以开发完
 export function PageQuickInput() {
   const { pop } = useNavigation()
   const { currentCommand } = useCurrentCommand()

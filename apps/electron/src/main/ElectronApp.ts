@@ -1,4 +1,4 @@
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { electronApp, is, optimizer, platform } from '@electron-toolkit/utils'
 import {
   app,
@@ -115,6 +115,22 @@ export class ElectronApp {
       this.conf.registerRendererListener()
 
       this.registerShortcut()
+
+      const schemeName = 'penx'
+      if (is.dev) {
+        app.setAsDefaultProtocolClient(schemeName, process.execPath, [
+          resolve(process.argv[1]),
+        ])
+      } else {
+        app.setAsDefaultProtocolClient(schemeName)
+      }
+
+      app.on('open-url', (event, url) => {
+        event.preventDefault()
+        console.log('scheme url...........', url)
+        this.panelWindow.show()
+        this.panelWindow.focus()
+      })
 
       // this.mainWindow.on('close', (e) => {
       //   // e.preventDefault()

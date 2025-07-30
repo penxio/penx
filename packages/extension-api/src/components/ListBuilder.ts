@@ -43,12 +43,11 @@ export interface IListItem {
 
   type?: 'list-item' | 'list-heading'
 
-  title:
-    | string
-    | {
-        value: string
-        tooltip?: string | null
-      }
+  title: string
+  // | {
+  //     value: string
+  //     tooltip?: string | null
+  //   }
 
   subtitle?:
     | string

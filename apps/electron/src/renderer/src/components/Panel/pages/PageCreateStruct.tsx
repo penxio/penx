@@ -13,6 +13,9 @@ export function PageCreateStruct() {
     <DetailApp
       command={currentCommand}
       bodyClassName="flex items-center justify-center"
+      headerBordered={false}
+      title={currentCommand.title}
+      hideFooter
       className=""
       // actions={
       //   <ActionPanel>
@@ -33,7 +36,7 @@ export function PageCreateStruct() {
       //   },
       // }}
     >
-      <div className="w-[360px]">
+      <div className="-mt-10 w-[360px]">
         <CreateStructForm
           onSubmitSuccess={(struct) => {
             replace({ path: '/edit-struct' })

@@ -3,11 +3,11 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
 import { format } from 'date-fns'
 import OpenAI from 'openai'
-import { ROOT_HOST } from '@penx/constants'
-import { ContentRender } from '@penx/content-render'
+import { Prompt, ROOT_HOST } from '@penx/constants'
 import { Creation } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { localDB } from '@penx/local-db'
+import { getSession } from '@penx/session'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { docToString } from '@penx/utils/editorHelper'
@@ -52,20 +52,29 @@ const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
   const inited = useRef(false)
   useEffect(() => {
     async function run() {
-      const stream = await client.chat.completions.create({
-        model: 'openai',
-        messages: [
-          {
-            role: 'system',
-            content: '请把输入的文本生成不超过12个字的标题',
+      const session = await getSession()
+      if (!session.accessToken) return
+      const stream = await client.chat.completions.create(
+        {
+          model: 'openai',
+          messages: [
+            {
+              role: 'system',
+              content: Prompt.TITLE_GENERATOR,
+            },
+            {
+              role: 'user',
+              content: tiptapToMarkdown(creation.content),
+            },
+          ],
+          stream: true,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${session.accessToken}`,
           },
-          {
-            role: 'user',
-            content: tiptapToMarkdown(creation.content),
-          },
-        ],
-        stream: true,
-      })
+        },
+      )
 
       let fullText = ''
       for await (const chunk of stream) {
@@ -96,7 +105,9 @@ const NoteCard = memo(({ index, data: creation, width }: ItemProps) => {
     if (inited.current) return
     inited.current = true
 
-    run()
+    setTimeout(() => {
+      run()
+    }, 5000)
   }, [creation])
 
   return (

@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useRef } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { useVirtualizer } from '@tanstack/react-virtual'
+import { useArea } from '@penx/hooks/useArea'
 import { Separator } from '@penx/uikit/ui/separator'
 import { useActionPopover } from '~/hooks/useActionPopover'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
@@ -21,6 +22,7 @@ export function PageRoot() {
   const selectStruct = useSelectStruct()
   const handleSelect = useHandleSelect()
   const { setOpen } = useActionPopover()
+  const { area } = useArea()
 
   const currentItem = items.find(
     (item) => item.id === value && item.data.type === 'Creation',
@@ -122,7 +124,6 @@ export function PageRoot() {
           >
             {rowVirtualizer.getVirtualItems().map((virtualRow) => {
               const row = flatList[virtualRow.index]
-
               const group = groupConfigs[row.groupIdx]
               return (
                 <ListItemUI
@@ -137,6 +138,7 @@ export function PageRoot() {
                   }}
                   index={row.itemIdx}
                   value={row.item.id}
+                  isFavorite={area.favorCommands.includes(row.item.id)}
                   item={row.item}
                   onSelect={group.onSelect}
                   onContextMenu={() => setOpen(true)}

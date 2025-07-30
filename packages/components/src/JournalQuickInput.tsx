@@ -16,17 +16,25 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { format } from 'date-fns'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
-import { defaultEditorContent, isMobileApp } from '@penx/constants'
+import OpenAI from 'openai'
+import {
+  defaultEditorContent,
+  isMobileApp,
+  Prompt,
+  ROOT_HOST,
+} from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
+import { getSession } from '@penx/session'
+import { store } from '@penx/store'
 import { StructType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { cn } from '@penx/utils'
 import { docToString, stringToDoc } from '@penx/utils/editorHelper'
+import { tiptapToMarkdown } from '@penx/utils/tiptapToMarkdown'
 import { JournalInputToolbar } from './JournalInputToolbar'
-import { StructTypeSelect } from './StructTypeSelect'
 
 interface Props {
   className?: string
@@ -38,6 +46,40 @@ interface Props {
   onCancel?: () => void
   showFooter?: boolean
   afterSubmit?: () => void
+}
+
+const client = new OpenAI({
+  apiKey: 'sk-xxx',
+  // baseURL: 'http://localhost:4000/api/ai',
+  baseURL: `${ROOT_HOST}/api/ai`,
+  dangerouslyAllowBrowser: true,
+})
+
+async function generateTitle(title: string) {
+  const session = await getSession()
+  if (!session.accessToken) return ''
+  const stream = await client.chat.completions.create(
+    {
+      model: 'openai',
+      messages: [
+        {
+          role: 'system',
+          content: Prompt.TITLE_GENERATOR,
+        },
+        {
+          role: 'user',
+          content: title,
+        },
+      ],
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${session.accessToken}`,
+      },
+    },
+  )
+
+  return stream?.choices?.[0]?.message?.content || ''
 }
 
 export function JournalQuickInput({
@@ -86,11 +128,13 @@ export function JournalQuickInput({
 
   const submitForm = async () => {
     // const isNote = struct.type === StructType.NOTE
+    const doc = JSON.parse(input)
+    const md = tiptapToMarkdown(doc)
     const isNote = !isTask
-    const title = isNote ? '' : docToString(JSON.parse(input))
-    const content = isNote ? stringToDoc(input) : defaultEditorContent
+    const title = isNote ? '' : md
+    const content = isNote ? doc : defaultEditorContent
 
-    addCreation({
+    const creation = await addCreation({
       // type: struct.type,
       type: isTask ? StructType.TASK : StructType.NOTE,
       title: title,
@@ -102,6 +146,14 @@ export function JournalQuickInput({
     editor?.commands.clearContent()
     afterSubmit?.()
     setInput('')
+
+    setTimeout(async () => {
+      if (!isNote) return
+      const noteTitle = await generateTitle(md)
+      store.creations.updateCreationProps(creation.id, {
+        title: noteTitle,
+      })
+    }, 0)
   }
 
   useEffect(() => {

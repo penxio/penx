@@ -25,14 +25,14 @@ export function TaskDate({ creation, isPanel }: TaskDateProps) {
           <Trans>Date</Trans>
         </span>
       </div>
-      <div className="flex-1 justify-end">
+      <div className={cn('flex-1 justify-start', isPanel && 'justify-end')}>
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
               variant="ghost"
               size={isPanel ? 'xs' : 'default'}
               className={cn(
-                'text-foreground ml-auto flex items-center gap-1 px-3',
+                'text-foreground flex items-center gap-1 px-3',
               )}
             >
               <CalendarIcon

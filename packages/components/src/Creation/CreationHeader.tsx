@@ -57,7 +57,7 @@ export function CreationHeader({
                 <Checkbox
                   className={cn(
                     'border-foreground mt-[6px] size-5',
-                    !isMobileApp && 'mt-3',
+                    // !isMobileApp && 'mt-3',
                   )}
                   checked={creation.checked}
                   onCheckedChange={(v) => {
@@ -72,7 +72,7 @@ export function CreationHeader({
                 className="dark:placeholder-text-600 text-foreground placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-2xl font-bold focus:outline-none focus:ring-0 md:text-4xl"
                 placeholder="Title"
                 defaultValue={creation.title || ''}
-                // autoFocus={!isMobileApp}
+                autoFocus={!isMobileApp}
                 // autoFocus
                 onChange={(e) => {
                   const title = e.target.value

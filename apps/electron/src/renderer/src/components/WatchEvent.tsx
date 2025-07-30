@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from 'react'
 import { t } from '@lingui/core/macro'
 import { set } from 'idb-keyval'
 import { toast } from 'sonner'
+import { tinykeys } from 'tinykeys'
 import { api } from '@penx/api'
 import {
   settingsAtom,
@@ -18,7 +19,26 @@ import {
 import { queryClient } from '@penx/query-client'
 import { refreshSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
+import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
 import { openCommand } from '~/lib/openCommand'
+
+tinykeys(window, {
+  '$mod+Alt+KeyS': (event) => {
+    event.preventDefault()
+    toast.promise(
+      async () => {
+        await syncNodesToServer()
+      },
+      {
+        loading: t`Syncing...`,
+        success: t`Sync successful!`,
+        error: () => {
+          return t`Sync failed, please try again.`
+        },
+      },
+    )
+  },
+})
 
 window.customElectronApi.shortcut.onPressed((shortcut) => {
   // console.log('=========shortcut:', shortcut)

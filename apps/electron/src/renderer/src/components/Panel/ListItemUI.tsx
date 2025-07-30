@@ -16,6 +16,7 @@ interface ListItemUIProps
   value?: any
   item: ICommandItem
   isListApp?: boolean
+  isFavorite?: boolean
   titleLayout?: 'column' | 'row'
   showIcon?: boolean
   onSelect?: (item: ICommandItem) => void
@@ -29,6 +30,7 @@ export const ListItemUI = ({
   titleLayout = 'row',
   isListApp = false,
   showIcon = true,
+  isFavorite = false,
   value,
   className,
   ...rest
@@ -41,7 +43,10 @@ export const ListItemUI = ({
     return assets[item.icon as string] || item.icon
   }, [item, currentCommand])
 
-  const title = typeof item.title === 'string' ? item.title : item.title.value
+  const title = useMemo(() => {
+    if (item.title) return item.title
+    return item.data?.creation?.previewedContent
+  }, [item])
 
   const subtitle =
     typeof item.subtitle === 'string' ? item.subtitle : item.subtitle?.value
@@ -92,6 +97,11 @@ export const ListItemUI = ({
               {subtitle}
             </Box>
           )}
+
+          {isFavorite && (
+            <span className="icon-[material-symbols--star-rounded] size-4 text-yellow-500 opacity-80" />
+          )}
+
           {item?.data?.alias && (
             <div className="border-foreground/8 text-foreground/40 flex h-5 items-center rounded border px-[6px] text-xs">
               {item.data.alias}
@@ -99,14 +109,18 @@ export const ListItemUI = ({
           )}
         </Box>
       </Box>
-      {!!type && <div className="text-foreground/50 text-xs">{type}</div>}
-      {item?.extra && (
-        <Box toCenterY gap2 textXS gray600>
-          {item.extra.map((extra, index) => (
-            <Accessory key={index} item={extra} />
-          ))}
-        </Box>
-      )}
+      <div className="flex items-center gap-1">
+        {!!type && (
+          <div className="text-foreground/50 shrink-0 text-xs">{type}</div>
+        )}
+        {item?.extra && (
+          <Box toCenterY gap2 textXS gray600>
+            {item.extra.map((extra, index) => (
+              <Accessory key={index} item={extra} />
+            ))}
+          </Box>
+        )}
+      </div>
     </CommandItem>
   )
 }
