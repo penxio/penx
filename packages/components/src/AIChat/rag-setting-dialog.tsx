@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Database, Loader2, Settings } from 'lucide-react'
 import { toast } from 'sonner'
-import { AI_SERVICE_HOST, ROOT_HOST } from '@penx/constants'
+import { AI_SERVICE_HOST } from '@penx/constants'
+import { Creation } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
 import { useSession } from '@penx/session'
@@ -14,7 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@penx/uikit/ui/dialog'
-import { Progress } from '@penx/uikit/ui/progress'
+import { ScrollArea } from '@penx/uikit/ui/scroll-area'
 import { Skeleton } from '@penx/uikit/ui/skeleton'
 import { cn } from '@penx/utils'
 
@@ -27,133 +28,252 @@ export function RagSettingDialog({ className }: Props) {
   const { creations } = useCreations()
   const { structs } = useStructs()
   const [isBuilding, setIsBuilding] = useState(false)
+  const [isRemoving, setIsRemoving] = useState(false)
   const [builtNodeIds, setBuiltNodeIds] = useState<string[]>([])
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  // Fetch built knowledge base node IDs only when dialog opens
-  useEffect(() => {
-    const fetchBuiltNodeIds = async () => {
-      if (!session?.accessToken || !isOpen) return
+  // Transfer box states
+  const [leftItems, setLeftItems] = useState<Set<string>>(new Set()) // Not to build
+  const [rightItems, setRightItems] = useState<Set<string>>(new Set()) // To build
+  const [toDeleteItems, setToDeleteItems] = useState<Set<string>>(new Set()) // Built items to delete
 
-      setIsLoading(true)
-      try {
-        const headers: Record<string, string> = {
-          'Content-Type': 'application/json',
+  // Group creations by struct - memoized to avoid recalculation
+  const creationsGroupByStruct = useMemo(() => {
+    return creations?.reduce(
+      (acc, creation) => {
+        const structId = creation.props?.structId || 'unknown'
+        if (!acc[structId]) {
+          acc[structId] = []
         }
+        acc[structId].push(creation)
+        return acc
+      },
+      {} as Record<string, Creation[]>,
+    )
+  }, [creations])
 
-        if (session.accessToken) {
-          headers['Authorization'] = `Bearer ${session.accessToken}`
-        }
+  const fetchBuiltNodeIds = useCallback(async () => {
+    if (!session?.accessToken) return
 
-        const response = await fetch(
-          `${AI_SERVICE_HOST}/api/ai/knowledge-base/nodes`,
-          {
-            method: 'GET',
-            headers,
-          },
-        )
-
-        if (response.ok) {
-          const result = await response.json()
-          if (result.success && result.nodeIds) {
-            setBuiltNodeIds(result.nodeIds)
-          }
-        }
-      } catch (error) {
-        console.error('Failed to fetch built node IDs:', error)
-      } finally {
-        setIsLoading(false)
+    setIsLoading(true)
+    try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        ...(session.accessToken && {
+          Authorization: `Bearer ${session.accessToken}`,
+        }),
       }
+
+      const response = await fetch(
+        `${AI_SERVICE_HOST}/api/ai/knowledge-base/nodes`,
+        {
+          method: 'GET',
+          headers,
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+
+      const result = await response.json()
+      if (result.success && result.nodeIds) {
+        setBuiltNodeIds(result.nodeIds)
+      }
+    } catch (error) {
+      console.error('Failed to fetch built node IDs:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }, [session?.accessToken])
+
+  useEffect(() => {
+    fetchBuiltNodeIds()
+    initializeTransferStates()
+  }, [session, isOpen])
+
+  const initializeTransferStates = useCallback(() => {
+    if (!creations) return
+
+    const allCreationIds = creations.map((c) => c.raw.id)
+    const builtCreationIds = allCreationIds.filter((id) =>
+      builtNodeIds.includes(id),
+    )
+    const unbuiltIds = allCreationIds.filter((id) => !builtNodeIds.includes(id))
+
+    // Initially: built items go to right, unbuilt items stay in left
+    setRightItems(new Set(builtCreationIds))
+    setLeftItems(new Set(unbuiltIds))
+    setToDeleteItems(new Set()) // No items marked for deletion initially
+  }, [creations, builtNodeIds])
+
+  // Transfer operations - memoized to prevent unnecessary re-renders
+  const moveItemToRight = useCallback((itemId: string) => {
+    setLeftItems((prev) => {
+      const newSet = new Set(prev)
+      newSet.delete(itemId)
+      return newSet
+    })
+    setRightItems((prev) => new Set([...prev, itemId]))
+    setToDeleteItems((prev) => {
+      const newSet = new Set(prev)
+      newSet.delete(itemId) // Remove from delete list if it was there
+      return newSet
+    })
+  }, [])
+
+  const moveItemToLeft = useCallback(
+    (itemId: string) => {
+      setRightItems((prev) => {
+        const newSet = new Set(prev)
+        newSet.delete(itemId)
+        return newSet
+      })
+      setLeftItems((prev) => new Set([...prev, itemId]))
+
+      // If it's a built item, mark it for deletion
+      if (builtNodeIds.includes(itemId)) {
+        setToDeleteItems((prev) => new Set([...prev, itemId]))
+      }
+    },
+    [builtNodeIds],
+  )
+
+  // Group operations - memoized to prevent unnecessary re-renders
+  const moveStructToRight = useCallback(
+    (structId: string) => {
+      const structCreations = creationsGroupByStruct?.[structId] || []
+      structCreations.forEach((creation) => {
+        moveItemToRight(creation.raw.id)
+      })
+    },
+    [creationsGroupByStruct, moveItemToRight],
+  )
+
+  const moveStructToLeft = useCallback(
+    (structId: string) => {
+      const structCreations = creationsGroupByStruct?.[structId] || []
+      structCreations.forEach((creation) => {
+        moveItemToLeft(creation.raw.id)
+      })
+    },
+    [creationsGroupByStruct, moveItemToLeft],
+  )
+
+  // Calculate statistics - memoized to avoid recalculation
+  const totalNodes = useMemo(
+    () => (creations?.length || 0) + (structs?.length || 0),
+    [creations?.length, structs?.length],
+  )
+
+  const nodesWithKnowledgeBase = builtNodeIds.length
+
+  // Memoized calculations for button state
+  const actualToBuildCount = useMemo(
+    () =>
+      Array.from(rightItems).filter((id) => !builtNodeIds.includes(id)).length,
+    [rightItems, builtNodeIds],
+  )
+
+  // Execute changes - build and remove based on transfer states
+  const executeChanges = async () => {
+    const toBuildIds = Array.from(rightItems)
+    const toRemoveIds = Array.from(toDeleteItems)
+
+    // Filter out already built nodes from toBuildIds
+    const actualToBuildIds = toBuildIds.filter(
+      (id) => !builtNodeIds.includes(id),
+    )
+
+    if (actualToBuildIds.length === 0 && toRemoveIds.length === 0) {
+      toast.info('No changes to execute')
+      return
     }
 
-    console.log('fetching built node ids')
-
-    fetchBuiltNodeIds()
-  }, [session, isOpen]) // Added isOpen as dependency
-
-  // Calculate knowledge base statistics
-  const totalCreations = creations?.length || 0
-  const totalNodes = totalCreations
-
-  const creationIds = creations?.map((creation) => creation.raw.id) || []
-  const structIds = structs?.map((struct) => struct.raw.id) || []
-  const allNodeIds = [...creationIds, ...structIds]
-
-  // Calculate intersection between built node IDs and all node IDs (creations + structs)
-  const nodesWithKnowledgeBase = allNodeIds.filter((id) =>
-    builtNodeIds.includes(id),
-  ).length
-
-  const percentage =
-    totalNodes > 0 ? Math.round((nodesWithKnowledgeBase / totalNodes) * 100) : 0
-
-  // Handle bulk knowledge base building
-  const handleBuildKnowledgeBase = async () => {
     setIsBuilding(true)
-    try {
-      // Call the embeddings API to build knowledge base for all creations and structs
-      const url = AI_SERVICE_HOST + '/api/ai/embed/upload'
+    setIsRemoving(true)
 
-      // Prepare headers with authentication
+    try {
       const headers: Record<string, string> = {
         'Content-Type': 'application/json',
       }
-
-      // Add Authorization header if session has accessToken
       if (session?.accessToken) {
         headers['Authorization'] = `Bearer ${session.accessToken}`
       }
 
-      // Combine creations and structs as nodes
-      // Extract the 'raw' field from each creation and struct object
-      const nodes = [
-        ...(creations?.map((creation) => creation.raw) || []),
-        ...(structs?.map((struct) => struct.raw) || []),
-      ]
+      const results = []
 
-      const response = await fetch(url, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          nodes: nodes,
-        }),
-      })
-
-      if (!response.ok) {
-        throw new Error(`API request failed with status ${response.status}`)
-      }
-
-      const result = await response.json()
-
-      toast.success(
-        `Knowledge base built successfully! Processed ${result.processedCount} items.`,
-      )
-
-      // Refresh built node IDs after building
-      try {
-        const nodeResponse = await fetch(
-          `${AI_SERVICE_HOST}/api/ai/knowledge-base/nodes`,
+      // Handle deletion first if needed
+      if (toRemoveIds.length > 0) {
+        const deleteResponse = await fetch(
+          `${AI_SERVICE_HOST}/api/ai/knowledge-base/nodes/delete`,
           {
-            method: 'GET',
+            method: 'POST',
             headers,
+            body: JSON.stringify({
+              nodeIds: toRemoveIds,
+            }),
           },
         )
 
-        if (nodeResponse.ok) {
-          const nodeResult = await nodeResponse.json()
-          if (nodeResult.success && nodeResult.nodeIds) {
-            setBuiltNodeIds(nodeResult.nodeIds)
-          }
+        if (!deleteResponse.ok) {
+          throw new Error(
+            `Delete request failed with status ${deleteResponse.status}`,
+          )
         }
-      } catch (nodeError) {
-        console.error('Failed to refresh node IDs:', nodeError)
+
+        const deleteResult = await deleteResponse.json()
+        if (deleteResult.success) {
+          results.push(`Removed ${deleteResult.deletedCount} items`)
+        }
       }
+
+      // Handle building if needed
+      if (actualToBuildIds.length > 0) {
+        // Prepare nodes to build - only include unbuilt nodes
+        const nodesToBuild = [
+          ...actualToBuildIds
+            .map((id) => creations?.find((c) => c.raw.id === id)?.raw)
+            .filter(Boolean),
+          ...(structs?.map((struct) => struct.raw) || []),
+        ]
+
+        const buildResponse = await fetch(
+          `${AI_SERVICE_HOST}/api/ai/embed/upload`,
+          {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              nodes: nodesToBuild,
+            }),
+          },
+        )
+
+        if (!buildResponse.ok) {
+          throw new Error(
+            `Build request failed with status ${buildResponse.status}`,
+          )
+        }
+
+        const buildResult = await buildResponse.json()
+        if (buildResult.success) {
+          results.push(`Built ${actualToBuildIds.length} items`)
+        }
+      }
+
+      const message = `Successfully ${results.join(' and ')}.`
+      toast.success(message)
+      await fetchBuiltNodeIds()
+
+      // Clear the toDeleteItems after successful execution
+      setToDeleteItems(new Set())
     } catch (error) {
-      console.error('Failed to build knowledge base:', error)
-      toast.error('Failed to build knowledge base. Please try again.')
+      console.error('Failed to execute changes:', error)
+      toast.error('Failed to execute changes. Please try again.')
     } finally {
       setIsBuilding(false)
+      setIsRemoving(false)
     }
   }
 
@@ -173,14 +293,14 @@ export function RagSettingDialog({ className }: Props) {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="max-w-md">
+      <DialogContent className="h-[75vh] max-w-2xl">
         <DialogHeader>
           <DialogTitle>Setting</DialogTitle>
           <DialogDescription>Manage your knowledge base</DialogDescription>
         </DialogHeader>
 
         {/* Knowledge Base Statistics */}
-        <div className="space-y-4">
+        <div className="h-full w-full">
           {isLoading ? (
             // Loading skeleton
             <div className="space-y-3">
@@ -193,49 +313,202 @@ export function RagSettingDialog({ className }: Props) {
             </div>
           ) : (
             // Actual content
-            <div className="flex items-center justify-between">
-              <div className="flex-1 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">
-                    Knowledge Base Status
-                  </span>
-                  <span className="text-muted-foreground text-sm">
-                    {nodesWithKnowledgeBase}/{totalNodes} ({percentage}% built)
-                  </span>
+            <div className="flex h-full w-full flex-col">
+              {/* Transfer Box */}
+              <div className="h-58 grid grid-cols-2 gap-2">
+                {/* Left Side - Not to Build */}
+                <div className="rounded-lg border">
+                  <div className="bg-muted/30 border-b p-2">
+                    <h4 className="text-sm font-medium">
+                      Available ({leftItems.size})
+                    </h4>
+                  </div>
+                  <ScrollArea className="h-46 p-2">
+                    <div className="space-y-3">
+                      {Object.entries(creationsGroupByStruct || {}).map(
+                        ([structId, structCreations]) => {
+                          const struct = structs?.find(
+                            (s) => s.raw.id === structId,
+                          )
+                          const leftItemsInStruct = structCreations.filter(
+                            (c) => leftItems.has(c.raw.id),
+                          )
+
+                          if (leftItemsInStruct.length === 0) return null
+
+                          return (
+                            <div key={structId} className="space-y-1">
+                              {/* Struct Header */}
+                              <div className="bg-muted/50 flex items-center justify-between rounded p-2">
+                                <span className="text-muted-foreground text-xs font-medium">
+                                  {struct?.name || 'Unknown Struct'} (
+                                  {leftItemsInStruct.length})
+                                </span>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 px-2 text-xs"
+                                  onClick={() => moveStructToRight(structId)}
+                                >
+                                  →
+                                </Button>
+                              </div>
+
+                              {/* Struct Items */}
+                              <div className="space-y-1 pl-2">
+                                {leftItemsInStruct.map((creation) => {
+                                  const isBuilt = builtNodeIds.includes(
+                                    creation.raw.id,
+                                  )
+                                  const isToDelete = toDeleteItems.has(
+                                    creation.raw.id,
+                                  )
+
+                                  return (
+                                    <div
+                                      key={creation.raw.id}
+                                      className={cn(
+                                        'hover:bg-muted/50 flex cursor-pointer items-center gap-2 rounded p-1 text-xs transition-colors',
+                                        isToDelete &&
+                                          'bg-red-50 dark:bg-red-900/20',
+                                      )}
+                                      onClick={() =>
+                                        moveItemToRight(creation.raw.id)
+                                      }
+                                    >
+                                      <div
+                                        className={cn(
+                                          'h-2 w-2 rounded-full',
+                                          isBuilt
+                                            ? 'bg-green-500'
+                                            : 'bg-gray-300',
+                                        )}
+                                      />
+                                      <span
+                                        className={cn(
+                                          'flex-1 truncate',
+                                          isToDelete &&
+                                            'text-red-600 line-through dark:text-red-400',
+                                        )}
+                                      >
+                                        {creation.title || 'Untitled'}
+                                      </span>
+                                    </div>
+                                  )
+                                })}
+                              </div>
+                            </div>
+                          )
+                        },
+                      )}
+                    </div>
+                  </ScrollArea>
                 </div>
-                <Progress value={percentage} className="h-2" />
-                <p className="text-muted-foreground text-xs">
-                  {percentage === 0
-                    ? 'No knowledge base built yet'
-                    : `${percentage}% of nodes have knowledge base built`}
-                </p>
+
+                {/* Right Side - To Build */}
+                <div className="rounded-lg border">
+                  <div className="bg-muted/30 border-b p-2">
+                    <h4 className="text-sm font-medium">
+                      Knowledge Base ({rightItems.size})
+                    </h4>
+                  </div>
+                  <ScrollArea className="h-48 p-2">
+                    <div className="space-y-3">
+                      {Object.entries(creationsGroupByStruct || {}).map(
+                        ([structId, structCreations]) => {
+                          const struct = structs?.find(
+                            (s) => s.raw.id === structId,
+                          )
+                          const rightItemsInStruct = structCreations.filter(
+                            (c) => rightItems.has(c.raw.id),
+                          )
+
+                          if (rightItemsInStruct.length === 0) return null
+
+                          return (
+                            <div key={structId} className="space-y-1">
+                              {/* Struct Header */}
+                              <div className="bg-muted/50 flex items-center justify-between rounded p-2">
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 px-2 text-xs"
+                                  onClick={() => moveStructToLeft(structId)}
+                                >
+                                  ←
+                                </Button>
+                                <span className="text-muted-foreground text-xs font-medium">
+                                  {struct?.name || 'Unknown Struct'} (
+                                  {rightItemsInStruct.length})
+                                </span>
+                              </div>
+
+                              {/* Struct Items */}
+                              <div className="space-y-1 pl-2">
+                                {rightItemsInStruct.map((creation) => {
+                                  const isBuilt = builtNodeIds.includes(
+                                    creation.raw.id,
+                                  )
+
+                                  return (
+                                    <div
+                                      key={creation.raw.id}
+                                      className="hover:bg-muted/50 flex cursor-pointer items-center gap-2 rounded p-1 text-xs transition-colors"
+                                      onClick={() =>
+                                        moveItemToLeft(creation.raw.id)
+                                      }
+                                    >
+                                      <div
+                                        className={cn(
+                                          'h-2 w-2 rounded-full',
+                                          isBuilt
+                                            ? 'bg-green-500'
+                                            : 'bg-gray-300',
+                                        )}
+                                      />
+                                      <span className="flex-1 truncate">
+                                        {creation.title || 'Untitled'}
+                                      </span>
+                                    </div>
+                                  )
+                                })}
+                              </div>
+                            </div>
+                          )
+                        },
+                      )}
+                    </div>
+                  </ScrollArea>
+                </div>
+              </div>
+
+              <div className="mt-2 w-full flex-1 ">
+                <Button
+                  size="xs"
+                  onClick={executeChanges}
+                  disabled={
+                    isBuilding ||
+                    isRemoving ||
+                    (actualToBuildCount === 0 && toDeleteItems.size === 0)
+                  }
+                  className="w-full"
+                >
+                  {isBuilding || isRemoving ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <Database className="mr-2 h-4 w-4" />
+                      Execute Changes ({actualToBuildCount} build,{' '}
+                      {toDeleteItems.size} remove)
+                    </>
+                  )}
+                </Button>
               </div>
             </div>
           )}
-
-          {/* One-click Build Button */}
-          <div className="flex items-center gap-2">
-            <Button
-              onClick={handleBuildKnowledgeBase}
-              disabled={isBuilding || totalNodes === 0 || isLoading}
-              className="flex-1"
-              variant="outline"
-            >
-              {isBuilding ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Building Knowledge Base...
-                </>
-              ) : (
-                <>
-                  <Database className="mr-2 h-4 w-4" />
-                  {percentage === 0
-                    ? 'Build Knowledge Base'
-                    : 'Rebuild Knowledge Base'}
-                </>
-              )}
-            </Button>
-          </div>
 
           {totalNodes === 0 && !isLoading && (
             <p className="text-muted-foreground py-2 text-center text-xs">

@@ -6,17 +6,13 @@ import type { UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
 import { AnimatePresence, motion } from 'motion/react'
-import { Button } from '@penx/uikit/button'
 import { cn } from '@penx/utils'
-import { DocumentToolCall, DocumentToolResult } from './document'
-import { DocumentPreview } from './document-preview'
-import { PencilEditIcon, SparklesIcon } from './icons'
+import { SparklesIcon } from './icons'
 import { Markdown } from './markdown'
 import { MessageActions } from './message-actions'
 import { MessageEditor } from './message-editor'
 import { MessageReasoning } from './message-reasoning'
 import { PreviewAttachment } from './preview-attachment'
-import { Weather } from './weather'
 
 const PurePreviewMessage = ({
   chatId,
@@ -34,7 +30,6 @@ const PurePreviewMessage = ({
   isReadonly: boolean
 }) => {
   const [mode, setMode] = useState<'view' | 'edit'>('view')
-  console.log('=====message:', message)
 
   return (
     <AnimatePresence>
