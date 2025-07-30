@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { useQuery } from '@tanstack/react-query'
@@ -16,11 +16,37 @@ interface Props {}
 export const RecoveryPhrase: FC<Props> = () => {
   const [blur, setBlur] = useState(true)
   const { data } = useSession()
-  const { copy } = useCopyToClipboard()
+  const { copy, copiedText } = useCopyToClipboard()
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   const { isLoading, data: mnemonic } = useQuery({
     queryKey: ['Mnemonic', data?.spaceId],
     queryFn: () => getMnemonicFromLocal(data?.userId!),
   })
+
+  // Clear timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
+  const handleCopy = async () => {
+    if (!mnemonic) return
+    const success = await copy(mnemonic)
+    if (success) {
+      toast.info(t`Copied to clipboard`)
+      // Set timeout to clear copiedText after 2 seconds
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      timeoutRef.current = setTimeout(() => {
+        // Reset copiedText by copying empty string
+        copy('')
+      }, 2000)
+    }
+  }
 
   if (isLoading) return null
   if (!mnemonic) return <Recover />
@@ -61,25 +87,26 @@ export const RecoveryPhrase: FC<Props> = () => {
         <Button
           className="flex gap-1"
           variant="ghost"
-          onClick={() => setBlur(true)}
+          onClick={() => setBlur(!blur)}
         >
           <Eye size={18}></Eye>
           <div>
-            <Trans>Hide recovery phrase</Trans>
+            {blur ? (
+              <Trans>Show recovery phrase</Trans>
+            ) : (
+              <Trans>Hide recovery phrase</Trans>
+            )}
           </div>
         </Button>
 
-        <Button
-          className="flex gap-2"
-          variant="ghost"
-          onClick={() => {
-            copy(mnemonic)
-            toast.info(t`Copied to clipboard`)
-          }}
-        >
+        <Button className="flex gap-2" variant="ghost" onClick={handleCopy}>
           <Copy size={18}></Copy>
           <div>
-            <Trans>Copied to clipboard</Trans>
+            {copiedText ? (
+              <Trans>Copied to clipboard</Trans>
+            ) : (
+              <Trans>Copy to clipboard</Trans>
+            )}
           </div>
         </Button>
       </div>

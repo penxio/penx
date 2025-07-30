@@ -110,7 +110,6 @@ msgstr "Actions"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:62
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:74
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/AddRowButton.tsx:50
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Add"
 msgstr "Add"
@@ -398,8 +397,8 @@ msgid "Content"
 msgstr "Content"
 
 #: packages/components/src/ProfileBasicInfo.tsx:53
-#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:77
-#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:82
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:39
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:106
 msgid "Copied to clipboard"
 msgstr "Copied to clipboard"
 
@@ -411,6 +410,10 @@ msgstr "Copy"
 #: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr "Copy html"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:108
+msgid "Copy to clipboard"
+msgstr "Copy to clipboard"
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:51
 msgid "Coupon code applied successfully"
@@ -494,8 +497,10 @@ msgid "Dashboard"
 msgstr "Dashboard"
 
 #: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:24
+#: packages/libs/src/getDefaultStructs.ts:110
 #: packages/components/src/ColumnTypeName.tsx:28
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:24
+#: packages/components/src/Creation/PropList/TaskDate.tsx:25
 msgid "Date"
 msgstr "Date"
 
@@ -569,10 +574,6 @@ msgstr "Doing"
 msgid "Done"
 msgstr "Done"
 
-#: packages/libs/src/getDefaultStructs.ts:110
-msgid "Due date"
-msgstr "Due date"
-
 #: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:52
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:315
@@ -639,7 +640,12 @@ msgstr "Email login"
 
 #: apps/mobile/src/components/MobilePropList/PropItem.tsx:54
 #: apps/mobile/src/components/MobilePropList/PropItem.tsx:91
-#: packages/components/src/Creation/PropList/PropItem.tsx:114
+#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:61
+#: packages/components/src/Creation/PropList/PropItem.tsx:57
+#: packages/components/src/Creation/PropList/PropItem.tsx:99
+#: packages/components/src/Creation/PropList/PropItem.tsx:111
+#: packages/components/src/Creation/PropList/PasswordProp.tsx:13
+#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:60
 msgid "Empty"
 msgstr "Empty"
 
@@ -681,8 +687,8 @@ msgstr "Favorites"
 
 #: apps/extension/components/content/AddBookmark/Tags.tsx:69
 #: packages/components/src/Creation/Tags.tsx:116
-#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:88
-#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:87
+#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:106
+#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:105
 #: packages/components/src/cells/single-select-cell.tsx:178
 #: packages/components/src/cells/multiple-select-cell.tsx:174
 msgid "Find or create option"
@@ -695,7 +701,6 @@ msgid "Free"
 msgstr "Free"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:101
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:41
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:31
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:65
 msgid "Fri"
@@ -728,7 +733,7 @@ msgstr "Guide of PenX"
 msgid "Hello there!"
 msgstr "Hello there!"
 
-#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:68
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:97
 msgid "Hide recovery phrase"
 msgstr "Hide recovery phrase"
 
@@ -829,7 +834,7 @@ msgstr "Link"
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
 #: packages/libs/src/getDefaultStructs.ts:134
 #: packages/libs/src/getDefaultStructs.ts:293
-#: packages/components/src/AppProvider/lib/fixTaskStruct.ts:45
+#: packages/components/src/AppProvider/lib/fixTaskStruct.ts:70
 msgid "List"
 msgstr "List"
 
@@ -906,7 +911,6 @@ msgid "Model"
 msgstr "Model"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:97
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:37
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:61
 msgid "Mon"
@@ -1037,9 +1041,13 @@ msgstr "No creation yet!"
 msgid "No introduction for the struct"
 msgstr "No introduction for the struct"
 
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:87
+msgid "No results found"
+msgstr "No results found"
+
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
-#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:96
-#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:95
+#: packages/components/src/Creation/PropList/SingleSelectProp.tsx:114
+#: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:113
 #: packages/components/src/CommandPanel/SearchCreationList.tsx:37
 #: packages/components/src/CommandPanel/CommandList.tsx:29
 #: packages/components/src/cells/single-select-cell.tsx:186
@@ -1176,7 +1184,10 @@ msgstr "Phone number"
 msgid "Photos"
 msgstr "Photos"
 
+#: apps/mobile/src/components/MobilePropList/DateProp.tsx:30
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:199
+#: packages/components/src/Creation/PropList/TaskDate.tsx:46
+#: packages/components/src/Creation/PropList/DateProp.tsx:45
 msgid "Pick a date"
 msgstr "Pick a date"
 
@@ -1391,7 +1402,6 @@ msgid "Restore from google drive"
 msgstr "Restore from google drive"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:102
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:42
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:32
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:66
 msgid "Sat"
@@ -1466,6 +1476,10 @@ msgstr "Shortcuts"
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:46
 msgid "Show all"
 msgstr "Show all"
+
+#: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:95
+msgid "Show recovery phrase"
+msgstr "Show recovery phrase"
 
 #: packages/components/src/LoginButton.tsx:28
 msgid "Sign in"
@@ -1567,7 +1581,6 @@ msgid "Successfully {0}."
 msgstr "Successfully {0}."
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:96
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:36
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:26
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:60
 msgid "Sun"
@@ -1690,7 +1703,6 @@ msgid "This is your public display name."
 msgstr "This is your public display name."
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:100
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:40
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:64
 msgid "Thu"
@@ -1721,7 +1733,6 @@ msgstr "Today"
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
 #: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:28
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:33
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
@@ -1729,7 +1740,6 @@ msgid "Tomorrow"
 msgstr "Tomorrow"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:98
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:38
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:28
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:62
 msgid "Tue"
@@ -1825,7 +1835,6 @@ msgid "Voice"
 msgstr "Voice"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:99
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:39
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:63
 msgid "Wed"
