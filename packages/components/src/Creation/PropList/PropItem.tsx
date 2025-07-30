@@ -1,21 +1,17 @@
 import { useCallback } from 'react'
 import { t } from '@lingui/core/macro'
-import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
-import { CalendarIcon } from 'lucide-react'
 import { Creation, Struct } from '@penx/domain'
-import { useStructs } from '@penx/hooks/useStructs'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
 import { NumberInput } from '@penx/uikit/components/NumberInput'
 import { Input } from '@penx/uikit/input'
-import { Button } from '@penx/uikit/ui/button'
-import { Calendar } from '@penx/uikit/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
 import { FieldIcon } from '../../FieldIcon'
 import { FileUpload } from '../../FileUpload'
 import { usePanelCreationContext } from '../PanelCreationProvider'
+import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { PasswordProp } from './PasswordProp'
 import { RateProp } from './RateProp'
@@ -77,32 +73,13 @@ export const PropItem = ({
         )
       case ColumnType.DATE:
         return (
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                size={isPanel ? 'xs' : 'default'}
-                variant="ghost"
-                className={cn('text-foreground flex items-center gap-1 px-3')}
-              >
-                <CalendarIcon size={isPanel ? 14 : 16} />
-                {value ? (
-                  format(new Date(value), 'PPP')
-                ) : (
-                  <Trans>Pick a date</Trans>
-                )}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent
-              className="w-auto p-0"
-              align={isPanel ? 'end' : undefined}
-            >
-              <Calendar
-                mode="single"
-                selected={value ? new Date(value as string) : undefined}
-                onSelect={(date) => handleChange(date)}
-              />
-            </PopoverContent>
-          </Popover>
+          <DateProp
+            struct={struct}
+            column={column}
+            isPanel={isPanel}
+            value={value}
+            onChange={handleChange}
+          />
         )
       case ColumnType.CREATED_AT:
         return (

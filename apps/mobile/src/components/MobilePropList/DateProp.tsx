@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { impact } from '@/lib/impact'
+import { Trans } from '@lingui/react/macro'
 import { format } from 'date-fns'
 import { MobileCalendar } from '@penx/uikit/ui/mobile-calendar'
 import { cn } from '@penx/utils'
@@ -25,7 +26,9 @@ export const DateProp = ({ value, onChange }: Props) => {
         {value ? (
           format(new Date(value), 'yyyy-MM-dd')
         ) : (
-          <Trans>Pick a date</Trans>
+          <span className="text-foreground/40">
+            <Trans>Pick a date</Trans>
+          </span>
         )}
       </div>
 
