@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import { Database, Loader2, Settings } from 'lucide-react'
 import { toast } from 'sonner'
 import { AI_SERVICE_HOST } from '@penx/constants'
@@ -187,7 +189,7 @@ export function RagSettingDialog({ className }: Props) {
     )
 
     if (actualToBuildIds.length === 0 && toRemoveIds.length === 0) {
-      toast.info('No changes to execute')
+      toast.info(t`No changes to execute`)
       return
     }
 
@@ -225,7 +227,7 @@ export function RagSettingDialog({ className }: Props) {
 
         const deleteResult = await deleteResponse.json()
         if (deleteResult.success) {
-          results.push(`Removed ${deleteResult.deletedCount} items`)
+          results.push(t`Removed ${deleteResult.deletedCount} items`)
         }
       }
 
@@ -258,11 +260,11 @@ export function RagSettingDialog({ className }: Props) {
 
         const buildResult = await buildResponse.json()
         if (buildResult.success) {
-          results.push(`Built ${actualToBuildIds.length} items`)
+          results.push(t`Built ${actualToBuildIds.length} items`)
         }
       }
 
-      const message = `Successfully ${results.join(' and ')}.`
+      const message = t`Successfully ${results.join(' and ')}.`
       toast.success(message)
       await fetchBuiltNodeIds()
 
@@ -270,7 +272,7 @@ export function RagSettingDialog({ className }: Props) {
       setToDeleteItems(new Set())
     } catch (error) {
       console.error('Failed to execute changes:', error)
-      toast.error('Failed to execute changes. Please try again.')
+      toast.error(t`Failed to execute changes. Please try again.`)
     } finally {
       setIsBuilding(false)
       setIsRemoving(false)
@@ -295,8 +297,12 @@ export function RagSettingDialog({ className }: Props) {
 
       <DialogContent className="h-[75vh] max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Setting</DialogTitle>
-          <DialogDescription>Manage your knowledge base</DialogDescription>
+          <DialogTitle>
+            <Trans>Setting</Trans>
+          </DialogTitle>
+          <DialogDescription>
+            <Trans>Manage your knowledge base</Trans>
+          </DialogDescription>
         </DialogHeader>
 
         {/* Knowledge Base Statistics */}
@@ -320,7 +326,7 @@ export function RagSettingDialog({ className }: Props) {
                 <div className="rounded-lg border">
                   <div className="bg-muted/30 border-b p-2">
                     <h4 className="text-sm font-medium">
-                      Available ({leftItems.size})
+                      <Trans>Available</Trans> ({leftItems.size})
                     </h4>
                   </div>
                   <ScrollArea className="h-46 p-2">
@@ -341,7 +347,7 @@ export function RagSettingDialog({ className }: Props) {
                               {/* Struct Header */}
                               <div className="bg-muted/50 flex items-center justify-between rounded p-2">
                                 <span className="text-muted-foreground text-xs font-medium">
-                                  {struct?.name || 'Unknown Struct'} (
+                                  {struct?.name || t`Unknown Struct`} (
                                   {leftItemsInStruct.length})
                                 </span>
                                 <Button
@@ -409,7 +415,7 @@ export function RagSettingDialog({ className }: Props) {
                 <div className="rounded-lg border">
                   <div className="bg-muted/30 border-b p-2">
                     <h4 className="text-sm font-medium">
-                      Knowledge Base ({rightItems.size})
+                      <Trans>Knowledge Base</Trans> ({rightItems.size})
                     </h4>
                   </div>
                   <ScrollArea className="h-48 p-2">
@@ -496,13 +502,14 @@ export function RagSettingDialog({ className }: Props) {
                   {isBuilding || isRemoving ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Processing...
+                      <Trans>Processing...</Trans>
                     </>
                   ) : (
                     <>
                       <Database className="mr-2 h-4 w-4" />
-                      Execute Changes ({actualToBuildCount} build,{' '}
-                      {toDeleteItems.size} remove)
+                      <Trans>Execute Changes</Trans> ({actualToBuildCount}{' '}
+                      <Trans>build</Trans>, {toDeleteItems.size}{' '}
+                      <Trans>remove</Trans>)
                     </>
                   )}
                 </Button>
@@ -512,8 +519,10 @@ export function RagSettingDialog({ className }: Props) {
 
           {totalNodes === 0 && !isLoading && (
             <p className="text-muted-foreground py-2 text-center text-xs">
-              No content available. Please create content first to build
-              knowledge base.
+              <Trans>
+                No content available. Please create content first to build
+                knowledge base.
+              </Trans>
             </p>
           )}
         </div>

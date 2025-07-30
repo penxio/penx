@@ -13,6 +13,8 @@ import {
 } from 'react'
 import { text } from 'stream/consumers'
 import type { UseChatHelpers } from '@ai-sdk/react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import type { Attachment, UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
@@ -186,7 +188,7 @@ function PureMultimodalInput({
           <textarea
             ref={textareaRef}
             data-testid="multimodal-input"
-            placeholder="Send a message..."
+            placeholder={t`Send a message...`}
             value={input}
             autoFocus
             onChange={handleInput}
@@ -263,7 +265,7 @@ function PureMultimodalInput({
       <Textarea
         data-testid="multimodal-input"
         ref={textareaRef}
-        placeholder="Send a message..."
+        placeholder={t`Send a message...`}
         value={input}
         onChange={handleInput}
         className={cx(

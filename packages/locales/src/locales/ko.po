@@ -81,11 +81,14 @@ msgid "A brief your introduction."
 msgstr ""
 
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:48
+#: packages/components/src/SettingsDialog/About.tsx:18
 msgid "A structured note-taking App"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:116
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:28
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:79
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:31
 msgid "About"
 msgstr ""
 
@@ -101,7 +104,7 @@ msgstr ""
 msgid "Account deletion in progress..."
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:109
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:117
 msgid "Actions"
 msgstr ""
 
@@ -141,8 +144,16 @@ msgstr ""
 msgid "Add tag"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:382
+msgid "Add to Favorites"
+msgstr ""
+
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:61
 msgid "Add widget"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:368
+msgid "Added to Favorites"
 msgstr ""
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:120
@@ -151,7 +162,7 @@ msgstr ""
 msgid "AI chat"
 msgstr ""
 
-#: apps/electron/src/renderer/src/hooks/useItems.ts:103
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:40
 msgid "AI Chat"
 msgstr ""
 
@@ -174,9 +185,10 @@ msgid "AI transcription for voice"
 msgstr ""
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
+#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 msgid "All"
 msgstr ""
 
@@ -205,7 +217,7 @@ msgstr ""
 msgid "Already have an account"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:65
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:66
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr ""
 
@@ -214,8 +226,8 @@ msgid "An Introduction to PenX and How to Use It"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:104
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:40
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:23
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:42
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:24
 msgid "Appearance"
 msgstr ""
 
@@ -245,6 +257,10 @@ msgstr ""
 msgid "Areas"
 msgstr ""
 
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:329
+msgid "Available"
+msgstr ""
+
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupDialog.tsx:44
 msgid "Backup to Google drive"
 msgstr ""
@@ -258,11 +274,11 @@ msgstr ""
 msgid "Believer"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:26
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:27
 msgid "Billing"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:57
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:65
 msgid "Billing & Subscriptions"
 msgstr ""
 
@@ -280,6 +296,15 @@ msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:66
 msgid "Bubble"
+msgstr ""
+
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:511
+msgid "build"
+msgstr ""
+
+#. placeholder {0}: actualToBuildIds.length
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:263
+msgid "Built {0} items"
 msgstr ""
 
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:46
@@ -321,7 +346,7 @@ msgid "Change type"
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:31
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:108
 msgid "Cloud sync"
 msgstr ""
 
@@ -337,6 +362,10 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:49
+msgid "Commands"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:96
 msgid "Config"
 msgstr ""
@@ -345,11 +374,11 @@ msgstr ""
 msgid "Configure shortcut"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:273
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:306
 msgid "Configure Shortcut"
 msgstr ""
 
-#: packages/components/src/RecoverPassword.tsx:72
+#: packages/components/src/RecoverPassword.tsx:82
 #: packages/components/src/SettingsDialog/Password.tsx:127
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:139
 msgid "Confirm"
@@ -387,11 +416,12 @@ msgstr ""
 msgid "Coupon code applied successfully"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSettings.tsx:34
+#: apps/electron/src/renderer/src/components/Panel/pages/PageSettings.tsx:36
 #: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:23
 #: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:29
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
+#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
 msgid "Create"
 msgstr ""
 
@@ -433,11 +463,20 @@ msgstr ""
 
 #: apps/electron/src/renderer/src/components/QuickInputApp/QuickInputApp.tsx:58
 #: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:41
+#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:41
 msgid "Created successfully"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:55
 msgid "Creation counts"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:397
+msgid "Creation deleted successfully"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:54
+msgid "Creations"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:143
@@ -463,14 +502,14 @@ msgstr ""
 #: apps/mobile/src/components/CreationMenu.tsx:97
 #: packages/components/src/database-ui/TableInfo.tsx:77
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:120
-#: packages/components/src/area-widgets/TitleContextMenu.tsx:56
-#: packages/components/src/area-widgets/CreationItem.tsx:121
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:337
 #: packages/components/src/CreationCard/CreationCard.tsx:314
 #: packages/components/src/Creation/CreationMoreMenu.tsx:102
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:78
 #: packages/components/src/AreasPopover/AreaMenu.tsx:98
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:73
+#: packages/components/src/area-widgets/TitleContextMenu.tsx:56
+#: packages/components/src/area-widgets/CreationItem.tsx:121
 msgid "Delete"
 msgstr ""
 
@@ -479,8 +518,16 @@ msgstr ""
 msgid "Delete account"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:351
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:412
+msgid "Delete Creation"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:509
 msgid "Delete record"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:441
+msgid "Delete Struct"
 msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:81
@@ -533,7 +580,8 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:313
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:244
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:471
 msgid "Edit content"
 msgstr ""
 
@@ -542,7 +590,7 @@ msgstr ""
 msgid "Edit option"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:254
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:288
 msgid "Edit Properties"
 msgstr ""
 
@@ -591,6 +639,7 @@ msgstr ""
 
 #: apps/mobile/src/components/MobilePropList/PropItem.tsx:54
 #: apps/mobile/src/components/MobilePropList/PropItem.tsx:91
+#: packages/components/src/Creation/PropList/PropItem.tsx:114
 msgid "Empty"
 msgstr ""
 
@@ -606,22 +655,36 @@ msgstr ""
 msgid "End-to-end encryption"
 msgstr ""
 
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:510
+msgid "Execute Changes"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:402
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:431
+msgid "Failed to delete"
+msgstr ""
+
 #: apps/mobile/src/components/Profile/Profile.tsx:157
 msgid "Failed to delete account. Please try again."
 msgstr ""
 
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:275
+msgid "Failed to execute changes. Please try again."
+msgstr ""
+
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:113
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:33
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:102
 msgid "Favorites"
 msgstr ""
 
 #: apps/extension/components/content/AddBookmark/Tags.tsx:69
-#: packages/components/src/cells/single-select-cell.tsx:178
-#: packages/components/src/cells/multiple-select-cell.tsx:174
 #: packages/components/src/Creation/Tags.tsx:116
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:88
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:87
+#: packages/components/src/cells/single-select-cell.tsx:178
+#: packages/components/src/cells/multiple-select-cell.tsx:174
 msgid "Find or create option"
 msgstr ""
 
@@ -632,6 +695,7 @@ msgid "Free"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:101
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:41
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:31
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:65
 msgid "Fri"
@@ -660,6 +724,10 @@ msgstr ""
 msgid "Guide of PenX"
 msgstr ""
 
+#: packages/components/src/AIChat/greeting.tsx:17
+msgid "Hello there!"
+msgstr ""
+
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:68
 msgid "Hide recovery phrase"
 msgstr ""
@@ -674,6 +742,10 @@ msgstr ""
 
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:60
 msgid "Host"
+msgstr ""
+
+#: packages/components/src/AIChat/greeting.tsx:26
+msgid "How can I help you today?"
 msgstr ""
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:30
@@ -722,13 +794,17 @@ msgstr ""
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:98
 #: packages/widgets/src/WidgetName.tsx:14
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:87
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelJournal.tsx:36
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:87
 msgid "Journals"
 msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:211
 msgid "Keyword"
+msgstr ""
+
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:418
+msgid "Knowledge Base"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/LocaleMenu.tsx:47
@@ -778,7 +854,7 @@ msgstr ""
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
 #: packages/components/src/ProfileButton.tsx:270
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:88
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:93
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
 msgstr ""
@@ -804,9 +880,13 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: packages/components/src/Sidebar/app-sidebar.tsx:117
+#: packages/components/src/Sidebar/app-sidebar.tsx:120
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:39
 msgid "Manage tags"
+msgstr ""
+
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:304
+msgid "Manage your knowledge base"
 msgstr ""
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructNav.tsx:19
@@ -826,6 +906,7 @@ msgid "Model"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:97
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:37
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:61
 msgid "Mon"
@@ -839,6 +920,22 @@ msgstr ""
 msgid "Monthly"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:353
+msgid "Move Down in Favorites"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:329
+msgid "Move Up in Favorites"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:339
+msgid "Moved down in Favorites"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:318
+msgid "Moved up in Favorites"
+msgstr ""
+
 #: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:23
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:23
 msgid "Multiple select"
@@ -848,7 +945,7 @@ msgstr ""
 msgid "Multiple Select"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:64
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:65
 msgid "My area"
 msgstr ""
 
@@ -857,7 +954,7 @@ msgstr ""
 msgid "My lists"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:27
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:28
 msgid "My Space"
 msgstr ""
 
@@ -884,13 +981,13 @@ msgstr ""
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:72
 #: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 #: packages/components/src/StructDialog/EditStructForm.tsx:83
 #: packages/components/src/StructDialog/CreateStructForm.tsx:49
 #: packages/components/src/SettingsDialog/Profile.tsx:93
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:52
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
 #: packages/components/src/AreaDialog/AreaForm.tsx:163
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
 msgid "Name"
 msgstr ""
 
@@ -909,12 +1006,24 @@ msgstr ""
 msgid "New property"
 msgstr ""
 
+#: apps/electron/src/renderer/src/components/WatchEvent.tsx:54
+msgid "New version available, restarting to update..."
+msgstr ""
+
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:125
 msgid "No account"
 msgstr ""
 
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:192
+msgid "No changes to execute"
+msgstr ""
+
 #: packages/components/src/area-widgets/widgets/AIChatHistorys.tsx:7
 msgid "No chat history yet!"
+msgstr ""
+
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:522
+msgid "No content available. Please create content first to build knowledge base."
 msgstr ""
 
 #: packages/components/src/area-widgets/components/NoCreationYet.tsx:7
@@ -928,17 +1037,13 @@ msgstr ""
 msgid "No introduction for the struct"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:89
-msgid "No results found"
-msgstr ""
-
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
-#: packages/components/src/cells/single-select-cell.tsx:186
-#: packages/components/src/cells/multiple-select-cell.tsx:182
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:96
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:95
 #: packages/components/src/CommandPanel/SearchCreationList.tsx:37
 #: packages/components/src/CommandPanel/CommandList.tsx:29
+#: packages/components/src/cells/single-select-cell.tsx:186
+#: packages/components/src/cells/multiple-select-cell.tsx:182
 msgid "No results found."
 msgstr ""
 
@@ -983,7 +1088,7 @@ msgstr ""
 msgid "Once deleted, You can't undo this action."
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:236
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:269
 msgid "Open Command"
 msgstr ""
 
@@ -993,7 +1098,7 @@ msgstr ""
 msgid "Open in new panel"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/EditShortcuts.tsx:17
+#: packages/components/src/SettingsDialog/EditShortcuts.tsx:24
 msgid "Open Search Panel"
 msgstr ""
 
@@ -1022,14 +1127,14 @@ msgstr ""
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
-#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:54
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:56
 #: packages/components/src/SettingsDialog/Password.tsx:85
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleForm.tsx:93
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:108
 #: packages/components/src/SettingsDialog/RecoveryPhrase/CloudBackupForm.tsx:124
+#: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
 msgid "Password"
 msgstr ""
 
@@ -1041,7 +1146,7 @@ msgstr ""
 msgid "Passwords do not match"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:11
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:88
 msgid "PenX Account"
 msgstr ""
 
@@ -1133,8 +1238,12 @@ msgstr ""
 msgid "PRO yearly"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:43
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:24
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:505
+msgid "Processing..."
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:45
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:25
 msgid "Profile"
 msgstr ""
 
@@ -1168,7 +1277,7 @@ msgstr ""
 msgid "Publish your creation"
 msgstr ""
 
-#: apps/electron/src/renderer/src/hooks/useItems.ts:128
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:14
 msgid "Quick input"
 msgstr ""
 
@@ -1195,11 +1304,11 @@ msgstr ""
 msgid "Recently opened"
 msgstr ""
 
-#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:75
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:76
 msgid "Record shortcut"
 msgstr ""
 
-#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:223
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:219
 msgid "Recording..."
 msgstr ""
 
@@ -1212,7 +1321,8 @@ msgstr ""
 msgid "Recovery password"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:27
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:62
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:28
 msgid "Recovery phrase"
 msgstr ""
 
@@ -1238,8 +1348,25 @@ msgstr ""
 msgid "Reminder"
 msgstr ""
 
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:512
+msgid "remove"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:380
+msgid "Remove from Favorites"
+msgstr ""
+
 #: apps/mobile/src/components/MobilePropList/ReminderDrawer.tsx:192
 msgid "Remove reminder"
+msgstr ""
+
+#. placeholder {0}: deleteResult.deletedCount
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:230
+msgid "Removed {0} items"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:365
+msgid "Removed from Favorites"
 msgstr ""
 
 #: packages/components/src/area-widgets/TitleContextMenu.tsx:62
@@ -1264,6 +1391,7 @@ msgid "Restore from google drive"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:102
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:42
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:32
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:66
 msgid "Sat"
@@ -1272,15 +1400,23 @@ msgstr ""
 #: apps/mobile/src/pages/PageNewCreation.tsx:97
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:67
 #: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:151
-#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:84
 #: packages/components/src/SettingsDialog/Profile.tsx:131
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:138
+#: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:84
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:90
 msgid "Save"
 msgstr ""
 
 #: packages/components/src/Sidebar/QuickSearchTrigger.tsx:23
 msgid "Search"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:162
+msgid "Search for actions..."
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:110
+msgid "Search..."
 msgstr ""
 
 #: apps/mobile/src/components/ColorSelector.tsx:61
@@ -1293,19 +1429,28 @@ msgstr ""
 msgid "Select property type"
 msgstr ""
 
+#: packages/components/src/AIChat/multimodal-input.tsx:191
+#: packages/components/src/AIChat/multimodal-input.tsx:268
+msgid "Send a message..."
+msgstr ""
+
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:83
 msgid "Set password"
 msgstr ""
 
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:301
+msgid "Setting"
+msgstr ""
+
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:51
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:128
 #: packages/components/src/ProfileButton.tsx:221
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:329
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:487
 msgid "Share"
 msgstr ""
 
@@ -1313,8 +1458,8 @@ msgstr ""
 msgid "Share note to friends"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:50
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:28
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:52
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:29
 msgid "Shortcuts"
 msgstr ""
 
@@ -1356,9 +1501,9 @@ msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:85
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
-#: packages/components/src/area-widgets/CreationItem.tsx:145
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
+#: packages/components/src/area-widgets/CreationItem.tsx:145
 msgid "Star"
 msgstr ""
 
@@ -1368,6 +1513,10 @@ msgstr ""
 
 #: packages/libs/src/getDefaultStructs.ts:48
 msgid "Status"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:426
+msgid "Struct deleted successfully"
 msgstr ""
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:77
@@ -1393,9 +1542,10 @@ msgstr ""
 #: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:16
 #: apps/mobile/src/components/Profile/StructsMenu.tsx:24
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:44
 #: packages/widgets/src/WidgetName.tsx:22
-#: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
+#: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 msgid "Structs"
 msgstr ""
 
@@ -1411,7 +1561,13 @@ msgstr ""
 msgid "Subscription"
 msgstr ""
 
+#. placeholder {0}: results.join(' and ')
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:267
+msgid "Successfully {0}."
+msgstr ""
+
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:96
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:36
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:26
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:60
 msgid "Sun"
@@ -1452,8 +1608,8 @@ msgstr ""
 msgid "Sync only over Wi-Fi"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:60
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:29
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:68
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:30
 msgid "Sync server"
 msgstr ""
 
@@ -1534,6 +1690,7 @@ msgid "This is your public display name."
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:100
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:40
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:64
 msgid "Thu"
@@ -1553,22 +1710,26 @@ msgid "To Do"
 msgstr ""
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:21
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
+#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalShortcut.tsx:30
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 msgid "Today"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
+#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:28
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:33
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 msgid "Tomorrow"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:98
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:38
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:28
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:62
 msgid "Tue"
@@ -1576,6 +1737,10 @@ msgstr ""
 
 #: packages/components/src/StructDialog/EditStructForm.tsx:115
 msgid "Unique code"
+msgstr ""
+
+#: packages/components/src/AIChat/rag-setting-dialog.tsx:350
+msgid "Unknown Struct"
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:105
@@ -1592,17 +1757,22 @@ msgstr ""
 
 #: apps/mobile/src/components/CreationMenu.tsx:85
 #: packages/components/src/database-ui/views/ListView/CreationItem.tsx:144
-#: packages/components/src/area-widgets/CreationItem.tsx:145
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:304
 #: packages/components/src/CreationCard/CreationCard.tsx:281
+#: packages/components/src/area-widgets/CreationItem.tsx:145
 msgid "Unstar"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/ListItemUI.tsx:88
+msgid "Untitled"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:31
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:23
-#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
+#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:38
+#: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 msgid "Upcoming"
 msgstr ""
 
@@ -1611,7 +1781,7 @@ msgstr ""
 msgid "Update area"
 msgstr ""
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:25
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:26
 msgid "Update password"
 msgstr ""
 
@@ -1655,6 +1825,7 @@ msgid "Voice"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:99
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/TaskCommandList.tsx:39
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:63
 msgid "Wed"
