@@ -59,6 +59,7 @@ export class StructsStore {
 
     this.set(newStructs)
     localDB.addStruct(newStruct)
+    return newStruct
   }
 
   installStruct(input: InstallStructInput) {

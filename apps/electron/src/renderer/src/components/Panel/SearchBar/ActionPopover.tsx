@@ -214,9 +214,11 @@ function RootActions({ command, close }: RootActionsProps) {
   const { structs } = useStructs()
   const { items } = useItems()
   const struct = structs.find((s) => s.id === value)
+  console.log('=========struct:', struct)
+
   const handleSelect = useHandleSelect()
   const selectStruct = useSelectStruct()
-  const { push } = useNavigation()
+  const { push, reset } = useNavigation()
   const { setStruct } = useCurrentStruct()
   const { setCurrentCommand } = useCurrentCommand()
   const currentItem = items.find((item) => item.id === value)!
@@ -285,7 +287,7 @@ function RootActions({ command, close }: RootActionsProps) {
               <BracesIcon size={16} />
             </div>
             <div>
-              <Trans>Edit Properties</Trans>
+              <Trans>Edit Struct</Trans>
             </div>
           </Box>
         </MenuItem>
@@ -426,6 +428,7 @@ function RootActions({ command, close }: RootActionsProps) {
               toast.success(t`Struct deleted successfully`)
               setTimeout(() => {
                 appEmitter.emit('REFRESH_COMMANDS', struct.id)
+                reset()
               }, 10)
             } catch (error) {
               toast.error(t`Failed to delete`)

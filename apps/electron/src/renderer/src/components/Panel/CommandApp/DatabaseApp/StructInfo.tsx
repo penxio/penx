@@ -12,7 +12,7 @@ interface Props {
 
 export function StructInfo({ struct }: Props) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-1 flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="px-3 font-bold">
           <Trans>Properties</Trans>

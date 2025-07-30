@@ -57,6 +57,7 @@ export type AppEvent = {
   REFRESH_COMMANDS: any
 
   SUBMIT_QUICK_INPUT: undefined
+  SUBMIT_CREATE_STRUCT: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

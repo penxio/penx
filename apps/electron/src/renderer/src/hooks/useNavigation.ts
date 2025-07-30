@@ -1,6 +1,8 @@
 import { JSX, ReactNode } from 'react'
+import { produce } from 'immer'
 import { atom, useAtom } from 'jotai'
 import { store } from '@penx/store'
+import { searchAtom } from './useSearch'
 
 type Navigation = {
   showHeader?: boolean
@@ -36,8 +38,24 @@ export function useNavigation() {
     push(nav: Navigation) {
       setNavigation([...navigation, nav])
     },
+    replace(nav: Navigation) {
+      setNavigation(
+        produce(navigation, (draft) => {
+          navigation[navigation.length - 1] = nav
+        }),
+      )
+    },
     pop() {
       setNavigation(navigation.slice(0, -1))
+    },
+    reset() {
+      setNavigation([
+        {
+          showHeader: true,
+          path: '/root',
+        },
+      ])
+      store.set(searchAtom, '')
     },
   }
 }

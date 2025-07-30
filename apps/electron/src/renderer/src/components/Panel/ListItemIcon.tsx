@@ -27,6 +27,7 @@ export const ListItemIcon = memo(
     if (item?.data?.struct) {
       // console.log('=====item?.data?.struct:', item.title, item?.data?.struct)
 
+      
       return (
         <ColorfulStructIcon
           struct={item.data.struct}

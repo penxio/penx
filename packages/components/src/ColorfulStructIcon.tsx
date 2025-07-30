@@ -40,7 +40,7 @@ export function ColorfulStructIcon({
         // color: colorNameMaps[struct.color],
       }}
     >
-      {icon}
+      {icon || struct.name.slice(0, 1)}
     </div>
   )
 }

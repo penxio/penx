@@ -3,10 +3,12 @@
 import { useEffect } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Trans } from '@lingui/react/macro'
+import { t } from '@lingui/core/macro'
+import { Trans, useLingui } from '@lingui/react/macro'
 import { produce } from 'immer'
 import { toast } from 'sonner'
 import { z } from 'zod'
+import { Struct } from '@penx/domain'
 import { bgColorMaps } from '@penx/libs/color-helper'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
@@ -31,8 +33,13 @@ const FormSchema = z.object({
   color: z.string().optional(),
 })
 
-export function EditStructForm() {
-  const { struct, setIsOpen } = useStructDialog()
+interface Props {
+  struct?: Struct
+}
+export function EditStructForm(props: Props) {
+  const structDialog = useStructDialog()
+  const { setIsOpen } = structDialog
+  const struct = props.struct || structDialog.struct
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -67,46 +74,50 @@ export function EditStructForm() {
 
     store.structs.updateStruct(struct.id, newStruct)
     await localDB.updateStructProps(struct.id, data)
-
+    toast.info(t`Update struct successfully`)
     setIsOpen(false)
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>
-                <Trans>Name</Trans>
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="" {...field} className="w-full" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex min-h-full flex-1 flex-col space-y-4"
+      >
+        <div className="flex-1 space-y-4">
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-xs">
+                  <Trans>Name</Trans>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="" {...field} className="w-full" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
-          control={form.control}
-          name="pluralName"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>
-                <Trans>Plural name</Trans>
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="" {...field} className="w-full" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="pluralName"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-xs">
+                  <Trans>Plural name</Trans>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="" {...field} className="w-full" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <FormField
+          {/* <FormField
           control={form.control}
           name="type"
           render={({ field }) => (
@@ -120,30 +131,31 @@ export function EditStructForm() {
               <FormMessage />
             </FormItem>
           )}
-        />
+        /> */}
 
-        <FormField
-          control={form.control}
-          name="color"
-          render={({ field }) => (
-            <FormItem className="w-full">
-              <FormLabel>
-                <Trans>Color</Trans>
-              </FormLabel>
-              <FormControl>
-                <ColorSelector
-                  value={field.value || ''}
-                  onChange={field.onChange}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          <FormField
+            control={form.control}
+            name="color"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel className="text-xs">
+                  <Trans>Color</Trans>
+                </FormLabel>
+                <FormControl>
+                  <ColorSelector
+                    value={field.value || ''}
+                    onChange={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
-        <div>
-          <Button size="sm" type="submit" className="px-4">
-            Update
+        <div className="mt-auto">
+          <Button type="submit" className="w-full px-4">
+            <Trans>Update</Trans>
           </Button>
         </div>
       </form>
