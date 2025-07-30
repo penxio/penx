@@ -18,6 +18,10 @@ msgstr ""
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} 个待办"
 
+#: packages/components/src/AIChat/message.tsx:166
+msgid "{toolName} completed"
+msgstr "{toolName} 调用已完成"
+
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:118
 msgid "1 day early"
 msgstr "提前1天"
@@ -143,7 +147,7 @@ msgstr "添加同步服务器"
 msgid "Add tag"
 msgstr "添加标签"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:382
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:384
 msgid "Add to Favorites"
 msgstr "添加到收藏"
 
@@ -151,7 +155,7 @@ msgstr "添加到收藏"
 msgid "Add widget"
 msgstr "添加组件"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:368
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:370
 msgid "Added to Favorites"
 msgstr "已添加到收藏"
 
@@ -161,7 +165,7 @@ msgstr "已添加到收藏"
 msgid "AI chat"
 msgstr "AI 聊天"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:40
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:41
 msgid "AI Chat"
 msgstr "AI 聊天"
 
@@ -345,7 +349,7 @@ msgid "Change type"
 msgstr "更改类型"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:108
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:134
 msgid "Cloud sync"
 msgstr "云端同步"
 
@@ -356,7 +360,7 @@ msgid "Collection"
 msgstr "合集"
 
 #: apps/mobile/src/components/ColorSelector.tsx:45
-#: packages/components/src/StructDialog/EditStructForm.tsx:131
+#: packages/components/src/StructDialog/EditStructForm.tsx:142
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:49
 msgid "Color"
 msgstr "颜色"
@@ -373,7 +377,7 @@ msgstr "配置"
 msgid "Configure shortcut"
 msgstr "配置快捷键"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:306
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:308
 msgid "Configure Shortcut"
 msgstr "配置快捷键"
 
@@ -423,6 +427,7 @@ msgstr "优惠码已成功使用"
 #: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:23
 #: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:29
 #: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:23
+#: packages/components/src/StructDialog/CreateStructForm.tsx:82
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
 msgid "Create"
@@ -450,6 +455,10 @@ msgstr "创建账户"
 msgid "Create struct"
 msgstr "创建结构体"
 
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:66
+msgid "Create Struct"
+msgstr "创建结构体"
+
 #: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:70
 msgid "Create Tag"
 msgstr "创建标签"
@@ -474,7 +483,7 @@ msgstr "创建成功"
 msgid "Creation counts"
 msgstr "创作数量"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:397
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:399
 msgid "Creation deleted successfully"
 msgstr "创作删除成功"
 
@@ -523,15 +532,15 @@ msgstr "删除"
 msgid "Delete account"
 msgstr "删除账户"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:412
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:414
 msgid "Delete Creation"
 msgstr "删除创作"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:509
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:512
 msgid "Delete record"
 msgstr "删除记录"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:441
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:444
 msgid "Delete Struct"
 msgstr "删除结构体"
 
@@ -581,8 +590,8 @@ msgstr "已完成"
 msgid "Edit"
 msgstr "编辑"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:244
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:471
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:246
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:474
 msgid "Edit content"
 msgstr "编辑内容"
 
@@ -590,10 +599,6 @@ msgstr "编辑内容"
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 msgid "Edit option"
 msgstr "编辑选项"
-
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:288
-msgid "Edit Properties"
-msgstr "编辑属性"
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:58
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:60
@@ -607,6 +612,10 @@ msgstr "编辑属性"
 
 #: packages/components/src/database-ui/TableInfo.tsx:58
 msgid "Edit struct"
+msgstr "编辑结构体"
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:290
+msgid "Edit Struct"
 msgstr "编辑结构体"
 
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagDialog.tsx:24
@@ -665,8 +674,8 @@ msgstr "端到端加密"
 msgid "Execute Changes"
 msgstr "执行更改"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:402
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:431
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:404
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:434
 msgid "Failed to delete"
 msgstr "删除失败"
 
@@ -741,6 +750,10 @@ msgstr "隐藏恢复短语"
 msgid "High"
 msgstr "高"
 
+#: packages/components/src/AIChat/message.tsx:228
+msgid "Hmm..."
+msgstr "让我想想……"
+
 #: packages/components/src/Profile/ProfilePopover.tsx:88
 msgid "Home"
 msgstr "首页"
@@ -811,6 +824,10 @@ msgstr "关键词"
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:418
 msgid "Knowledge Base"
 msgstr "知识库"
+
+#: packages/components/src/AIChat/message.tsx:164
+msgid "Knowledge search completed"
+msgstr "知识库检索已完成"
 
 #: apps/mobile/src/components/Profile/LocaleMenu.tsx:47
 #: apps/mobile/src/components/Profile/LocaleMenu.tsx:57
@@ -924,19 +941,19 @@ msgstr "月"
 msgid "Monthly"
 msgstr "每月"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:353
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:355
 msgid "Move Down in Favorites"
 msgstr "在收藏中下移"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:329
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:331
 msgid "Move Up in Favorites"
 msgstr "在收藏中上移"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:339
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:341
 msgid "Moved down in Favorites"
 msgstr "已在收藏中下移"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:318
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:320
 msgid "Moved up in Favorites"
 msgstr "已在收藏中上移"
 
@@ -985,8 +1002,8 @@ msgstr "我的结构体"
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:72
 #: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
-#: packages/components/src/StructDialog/EditStructForm.tsx:83
-#: packages/components/src/StructDialog/CreateStructForm.tsx:49
+#: packages/components/src/StructDialog/EditStructForm.tsx:94
+#: packages/components/src/StructDialog/CreateStructForm.tsx:65
 #: packages/components/src/SettingsDialog/Profile.tsx:93
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:52
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/TagDialog/TagForm.tsx:71
@@ -1043,7 +1060,7 @@ msgstr "该结构体暂无介绍！"
 
 #: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:87
 msgid "No results found"
-msgstr ""
+msgstr "未找到结果"
 
 #: apps/mobile/src/components/MobileSearch/SearchPanel.tsx:45
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:114
@@ -1096,7 +1113,7 @@ msgstr "准时"
 msgid "Once deleted, You can't undo this action."
 msgstr "删除后，您无法撤销此操作。"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:269
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:271
 msgid "Open Command"
 msgstr "打开命令"
 
@@ -1154,7 +1171,7 @@ msgstr "同步服务器密码，密码仅本地存储。"
 msgid "Passwords do not match"
 msgstr "密码不匹配"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:88
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:114
 msgid "PenX Account"
 msgstr "PenX 账户"
 
@@ -1204,7 +1221,11 @@ msgstr "请查看您的邮箱获取验证码。"
 msgid "Please enter the verification code."
 msgstr "请输入验证码"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:99
+#: packages/components/src/AIChat/multimodal-input.tsx:156
+msgid "Please wait for the model to finish its response!"
+msgstr "请等待模型完成回复！"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:110
 msgid "Plural name"
 msgstr "复数名称"
 
@@ -1288,7 +1309,7 @@ msgstr "发布到应用市场"
 msgid "Publish your creation"
 msgstr "发布您的创作"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:14
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:15
 msgid "Quick input"
 msgstr "快速输入"
 
@@ -1363,7 +1384,7 @@ msgstr "提醒"
 msgid "remove"
 msgstr "移除"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:380
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:382
 msgid "Remove from Favorites"
 msgstr "从收藏中移除"
 
@@ -1376,7 +1397,7 @@ msgstr "删除提醒"
 msgid "Removed {0} items"
 msgstr "已移除 {0} 项"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:365
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:367
 msgid "Removed from Favorites"
 msgstr "已从收藏中移除"
 
@@ -1429,6 +1450,10 @@ msgstr "搜索操作..."
 msgid "Search..."
 msgstr "搜索..."
 
+#: packages/components/src/AIChat/message.tsx:143
+msgid "Searching knowledge base..."
+msgstr "正在搜索知识库…"
+
 #: apps/mobile/src/components/ColorSelector.tsx:61
 #: apps/mobile/src/components/ColorSelector.tsx:72
 msgid "Select a color"
@@ -1439,8 +1464,7 @@ msgstr "选择颜色"
 msgid "Select property type"
 msgstr "选择属性类型"
 
-#: packages/components/src/AIChat/multimodal-input.tsx:191
-#: packages/components/src/AIChat/multimodal-input.tsx:268
+#: packages/components/src/AIChat/multimodal-input.tsx:138
 msgid "Send a message..."
 msgstr "发送消息..."
 
@@ -1453,14 +1477,14 @@ msgid "Setting"
 msgstr "设置"
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:128
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:154
 #: packages/components/src/ProfileButton.tsx:221
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr "设置"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:487
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:490
 msgid "Share"
 msgstr "分享"
 
@@ -1529,7 +1553,7 @@ msgstr "状态"
 msgid "Status"
 msgstr "状态"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:426
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:428
 msgid "Struct deleted successfully"
 msgstr "结构体删除成功"
 
@@ -1545,6 +1569,7 @@ msgstr "结构体市场"
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:69
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:53
 #: apps/mobile/src/pages/PageHome/AllStructs/CreateStructButton.tsx:91
+#: packages/components/src/StructDialog/CreateStructForm.tsx:70
 msgid "Struct name"
 msgstr "结构体名称"
 
@@ -1745,10 +1770,6 @@ msgstr "明天"
 msgid "Tue"
 msgstr "周二"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:115
-msgid "Unique code"
-msgstr "唯一代码"
-
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:350
 msgid "Unknown Struct"
 msgstr "未知结构体"
@@ -1786,6 +1807,10 @@ msgstr "无标题"
 msgid "Upcoming"
 msgstr "未来"
 
+#: packages/components/src/StructDialog/EditStructForm.tsx:158
+msgid "Update"
+msgstr "更新"
+
 #: packages/components/src/AreaDialog/AreaForm.tsx:319
 #: packages/components/src/AreaDialog/AreaDialog.tsx:34
 msgid "Update area"
@@ -1798,6 +1823,10 @@ msgstr "修改密码"
 #: packages/components/src/StructDialog/StructDialog.tsx:36
 msgid "Update struct"
 msgstr "更新结构体"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:77
+msgid "Update struct successfully"
+msgstr "结构体更新成功"
 
 #: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:26
 #: packages/components/src/ColumnTypeName.tsx:30
@@ -1825,6 +1854,10 @@ msgstr "升级到专业版"
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:20
 msgid "URL"
 msgstr "网址"
+
+#: packages/components/src/AIChat/message.tsx:145
+msgid "Using {toolName}..."
+msgstr "正在调用{toolName}..."
 
 #: packages/components/src/SettingsDialog/UseCouponCode.tsx:27
 msgid "Using coupon code"

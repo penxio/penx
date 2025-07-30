@@ -39,6 +39,7 @@
     "./checkbox": "./src/ui/checkbox.tsx",
     "./collapsible": "./src/ui/collapsible.tsx",
     "./context-menu": "./src/ui/context-menu.tsx",
+    "./command": "./src/ui/command.tsx",
     "./dialog": "./src/ui/dialog.tsx",
     "./dropdown-menu": "./src/ui/dropdown-menu.tsx",
     "./form": "./src/ui/form.tsx",

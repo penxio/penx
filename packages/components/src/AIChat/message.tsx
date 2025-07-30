@@ -2,6 +2,8 @@
 
 import { memo, useState } from 'react'
 import { UseChatHelpers } from '@ai-sdk/react'
+import { t } from '@lingui/core/macro'
+import { Trans } from '@lingui/react/macro'
 import type { UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
@@ -90,24 +92,6 @@ const PurePreviewMessage = ({
                 if (mode === 'view') {
                   return (
                     <div key={key} className="flex flex-row items-start gap-2">
-                      {/* {message.role === 'user' && !isReadonly && (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              data-testid="message-edit-button"
-                              variant="ghost"
-                              className="text-muted-foreground h-fit rounded-full px-2 opacity-0 group-hover/message:opacity-100"
-                              onClick={() => {
-                                setMode('edit')
-                              }}
-                            >
-                              <PencilEditIcon />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>Edit message</TooltipContent>
-                        </Tooltip>
-                      )} */}
-
                       <div
                         data-testid="message-content"
                         className={cn('flex flex-col gap-4', {
@@ -155,15 +139,11 @@ const PurePreviewMessage = ({
                         <SparklesIcon size={14} />
                       </div>
                       <span>
-                        {toolName === 'vectorQuery'
-                          ? 'Searching knowledge base...'
-                          : toolName === 'getWeather'
-                            ? 'Getting weather information...'
-                            : toolName === 'createDocument'
-                              ? 'Creating document...'
-                              : toolName === 'updateDocument'
-                                ? 'Updating document...'
-                                : `Using ${toolName}...`}
+                        {toolName === 'vectorQuery' ? (
+                          <Trans>Searching knowledge base...</Trans>
+                        ) : (
+                          <Trans>Using {toolName}...</Trans>
+                        )}
                       </span>
                     </div>
                   )
@@ -180,15 +160,11 @@ const PurePreviewMessage = ({
                         <SparklesIcon size={14} />
                       </div>
                       <span>
-                        {toolName === 'vectorQuery'
-                          ? 'Knowledge search completed'
-                          : toolName === 'getWeather'
-                            ? 'Weather information retrieved'
-                            : toolName === 'createDocument'
-                              ? 'Document created'
-                              : toolName === 'updateDocument'
-                                ? 'Document updated'
-                                : `${toolName} completed`}
+                        {toolName === 'vectorQuery' ? (
+                          <Trans>Knowledge search completed</Trans>
+                        ) : (
+                          <Trans>{toolName} completed</Trans>
+                        )}
                       </span>
                     </div>
                   )
@@ -249,7 +225,7 @@ export const ThinkingMessage = () => {
 
         <div className="flex w-full flex-col gap-2">
           <div className="text-muted-foreground flex flex-col gap-4">
-            Hmm...
+            <Trans>Hmm...</Trans>
           </div>
         </div>
       </div>
