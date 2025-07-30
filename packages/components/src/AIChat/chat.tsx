@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 import { useChat } from '@ai-sdk/react'
-import { UIMessage } from 'ai'
-import { unstable_serialize } from 'swr/infinite'
+import { Attachment, UIMessage } from 'ai'
 import { AI_SERVICE_HOST, isDesktop, ROOT_HOST } from '@penx/constants'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { localDB } from '@penx/local-db'

@@ -204,7 +204,7 @@ export function RagSettingDialog({ className }: Props) {
         headers['Authorization'] = `Bearer ${session.accessToken}`
       }
 
-      const results = []
+      const results: string[] = []
 
       // Handle deletion first if needed
       if (toRemoveIds.length > 0) {
