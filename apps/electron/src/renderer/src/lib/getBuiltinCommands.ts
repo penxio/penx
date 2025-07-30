@@ -6,6 +6,7 @@ import { PageSettings } from '~/components/Panel/pages/PageSettings'
 import { PageSync } from '~/components/Panel/pages/PageSync/PageSync'
 import { ICommandItem } from '~/lib/types'
 import { pinWindow } from './pinned'
+import { PageCreateStruct } from '~/components/Panel/pages/PageCreateStruct'
 
 export function getBuiltinCommands() {
   const commands: ICommandItem[] = [
@@ -59,6 +60,31 @@ export function getBuiltinCommands() {
         isApplication: false,
       },
     },
+
+    {
+      id: 'create-struct',
+      title: t`Create Struct`,
+      keywords: ['create struct', 'struct', 'create'],
+      icon: {
+        name: 'tabler:braces',
+        className: 'bg-linear-to-r from-green-500 to-blue-500',
+      },
+      data: {
+        type: 'Command',
+        component: PageCreateStruct,
+        alias: '',
+        assets: {},
+        filters: {},
+        runtime: 'worker',
+        commandName: 'create-struct',
+        extensionSlug: '',
+        extensionIcon: '',
+        isDeveloping: false,
+        applicationPath: '',
+        isApplication: false,
+      },
+    },
+
     // {
     //   id: 'create-quicklink',
     //   title: t`Create quicklink`,

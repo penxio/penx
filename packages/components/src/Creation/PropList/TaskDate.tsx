@@ -37,7 +37,7 @@ export function TaskDate({ creation, isPanel }: TaskDateProps) {
             >
               <CalendarIcon
                 size={isPanel ? 14 : 16}
-                className={cn(!value && 'text-foreground/40')}
+                className={cn(!creation.date && 'text-foreground/40')}
               />
               {creation.date ? (
                 format(new Date(creation.date), 'PPP')
