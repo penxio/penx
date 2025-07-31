@@ -104,10 +104,15 @@ export function RagSettingDialog({ className }: Props) {
     )
     const unbuiltIds = allCreationIds.filter((id) => !builtNodeIds.includes(id))
 
+    // Detect orphaned nodes (exist in vector store but not in local creations)
+    const orphanedNodeIds = builtNodeIds.filter(
+      (id) => !allCreationIds.includes(id),
+    )
+
     // Initially: built items go to right, unbuilt items stay in left
     setRightItems(new Set(builtCreationIds))
     setLeftItems(new Set(unbuiltIds))
-    setToDeleteItems(new Set()) // No items marked for deletion initially
+    setToDeleteItems(new Set(orphanedNodeIds))
   }, [creations, builtNodeIds])
 
   // Transfer operations - memoized to prevent unnecessary re-renders
