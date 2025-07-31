@@ -16,16 +16,11 @@ import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import { format } from 'date-fns'
 import { SendHorizonalIcon, SquareCheckIcon } from 'lucide-react'
-import OpenAI from 'openai'
-import {
-  defaultEditorContent,
-  isMobileApp,
-  Prompt,
-  ROOT_HOST,
-} from '@penx/constants'
+import { defaultEditorContent, isMobileApp, Prompt } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
+import { getOpenAIClient } from '@penx/libs/getOpenAIClient'
 import { getSession } from '@penx/session'
 import { store } from '@penx/store'
 import { StructType } from '@penx/types'
@@ -48,12 +43,7 @@ interface Props {
   afterSubmit?: () => void
 }
 
-const client = new OpenAI({
-  apiKey: 'sk-xxx',
-  // baseURL: 'http://localhost:4000/api/ai',
-  baseURL: `${ROOT_HOST}/api/ai`,
-  dangerouslyAllowBrowser: true,
-})
+const client = getOpenAIClient()
 
 async function generateTitle(title: string) {
   const session = await getSession()

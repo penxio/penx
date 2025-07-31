@@ -13,6 +13,7 @@ import {
   Tray,
 } from 'electron'
 import { Conf } from 'electron-conf/main'
+import { checkAccessibilityPermissions, getSelection } from 'node-selection'
 import { SHORTCUT_LIST } from '@penx/constants'
 import { Shortcut, ShortcutType } from '@penx/model-type'
 import { convertKeysToHotkey } from '@penx/utils'
@@ -86,6 +87,15 @@ export class ElectronApp {
     })
   }
 
+  private async watchSelection() {
+    if (!(await checkAccessibilityPermissions({ prompt: true }))) {
+      console.log('grant accessibility permissions and restart this program')
+      process.exit(1)
+    }
+    const selection = await getSelection()
+    console.log('current selection:', selection)
+  }
+
   private async initialize() {
     try {
       // this.windows.mainWindow = createMainWindow()
@@ -115,6 +125,8 @@ export class ElectronApp {
       this.conf.registerRendererListener()
 
       this.registerShortcut()
+
+      this.watchSelection()
 
       const schemeName = 'penx'
       if (is.dev) {
@@ -372,6 +384,14 @@ export class ElectronApp {
       if (!ret) {
         console.log('register shortcut fail:', shortcut.keys)
       }
+    }
+
+    {
+      globalShortcut.register('Alt+T', async () => {
+        const selection = await getSelection()
+        console.log('=====selection:', selection)
+        this.panelWindow.webContents.send('translate', selection.text)
+      })
     }
   }
 

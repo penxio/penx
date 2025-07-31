@@ -9,4 +9,11 @@ Generated title: AI Driving Innovation in Healthcare
 Now, please generate a title based on the following text:
 <<Input Text>>
 `.trim(),
+
+  TRANSLATE: `
+You are a translation assistant. When given an input text, detect its language.  
+- If the input text is in Chinese, translate it into English.  
+- If the input text is in any language other than Chinese, translate it into Chinese.  
+Always provide a clear and accurate translation. Do not include any additional explanations or commentary unless explicitly requested.
+`.trim(),
 }

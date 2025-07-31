@@ -1,12 +1,13 @@
 import { t } from '@lingui/core/macro'
 import { PageAIChat } from '~/components/Panel/pages/PageAIChat'
+import { PageCreateStruct } from '~/components/Panel/pages/PageCreateStruct'
 import { PageLogin } from '~/components/Panel/pages/PageLogin'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
 import { PageSettings } from '~/components/Panel/pages/PageSettings'
 import { PageSync } from '~/components/Panel/pages/PageSync/PageSync'
 import { ICommandItem } from '~/lib/types'
 import { pinWindow } from './pinned'
-import { PageCreateStruct } from '~/components/Panel/pages/PageCreateStruct'
+import { PageTranslate } from '~/components/Panel/pages/PageTranslate'
 
 export function getBuiltinCommands() {
   const commands: ICommandItem[] = [
@@ -109,6 +110,46 @@ export function getBuiltinCommands() {
     //     isApplication: false,
     //   },
     // },
+    {
+      id: 'struct-marketplace',
+      title: t`Struct Marketplace`,
+      keywords: ['marketplace'],
+      icon: {
+        name: 'mdi:marketplace',
+        className: 'bg-linear-to-r from-rose-500 to-red-500',
+      },
+      data: {
+        type: 'Command',
+        component: PageLogin,
+        alias: '',
+        assets: {},
+        filters: {},
+        runtime: 'worker',
+        commandName: 'struct-marketplace',
+        extensionSlug: '',
+        extensionIcon: '',
+      },
+    },
+    {
+      id: 'translate',
+      title: t`Translate`,
+      keywords: ['translate'],
+      icon: {
+        name: 'cuida:translate-outline',
+        className: 'bg-sky-500',
+      },
+      data: {
+        type: 'Command',
+        component: PageTranslate,
+        alias: '',
+        assets: {},
+        filters: {},
+        runtime: 'worker',
+        commandName: 'translate',
+        extensionSlug: '',
+        extensionIcon: '',
+      },
+    },
     {
       id: 'account',
       title: t`PenX Account`,

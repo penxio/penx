@@ -16,7 +16,7 @@ interface TaskDateProps {
 export function TaskDate({ creation, isPanel }: TaskDateProps) {
   const [open, setOpen] = useState(false)
   return (
-    <div className={cn('flex gap-2', isPanel && 'h-8 px-2')}>
+    <div className={cn('flex gap-2', isPanel && 'h-9 px-2')}>
       <div className={cn('text-foreground/60 flex w-32 items-center gap-1')}>
         {!isPanel && (
           <CalendarDaysIcon className="text-foreground/70 inline-flex size-4" />
@@ -25,15 +25,15 @@ export function TaskDate({ creation, isPanel }: TaskDateProps) {
           <Trans>Date</Trans>
         </span>
       </div>
-      <div className={cn('flex-1 justify-start', isPanel && 'justify-end')}>
+      <div
+        className={cn('flex flex-1 justify-start', isPanel && 'justify-end')}
+      >
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
               variant="ghost"
               size={isPanel ? 'xs' : 'default'}
-              className={cn(
-                'text-foreground flex items-center gap-1 px-3',
-              )}
+              className={cn('text-foreground flex items-center gap-1 px-3')}
             >
               <CalendarIcon
                 size={isPanel ? 14 : 16}

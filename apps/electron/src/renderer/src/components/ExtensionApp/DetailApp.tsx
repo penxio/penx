@@ -1,12 +1,13 @@
-import { PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
-import { tinykeys } from 'tinykeys'
-import { Kbd } from '@penx/components/Kbd'
-import { cn } from '@penx/utils'
-import { ICommandItem } from '~/lib/types'
-import { ListItemIcon } from '../Panel/ListItemIcon'
-import { PinnedButton } from '../PinnedButton'
-import { ShortcutKey, ShortcutModifier } from './types'
-import { PopButton } from './widgets/PopButton'
+import { PropsWithChildren, ReactNode, useEffect, useMemo } from 'react';
+import { tinykeys } from 'tinykeys';
+import { Kbd } from '@penx/components/Kbd';
+import { cn } from '@penx/utils';
+import { ICommandItem } from '~/lib/types';
+import { ListItemIcon } from '../Panel/ListItemIcon';
+import { PinnedButton } from '../PinnedButton';
+import { ShortcutKey, ShortcutModifier } from './types';
+import { PopButton } from './widgets/PopButton';
+
 
 const searchBarHeight = 54
 const footerHeight = 48

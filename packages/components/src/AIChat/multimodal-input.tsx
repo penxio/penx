@@ -27,7 +27,6 @@ import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
-import { KnowledgebaseSelector } from './knowledgebase-selector'
 import { PreviewAttachment } from './preview-attachment'
 
 function PureMultimodalInput({

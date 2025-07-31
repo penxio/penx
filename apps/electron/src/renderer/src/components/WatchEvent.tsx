@@ -23,21 +23,21 @@ import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
 import { openCommand } from '~/lib/openCommand'
 
 tinykeys(window, {
-  '$mod+Alt+KeyS': (event) => {
-    event.preventDefault()
-    toast.promise(
-      async () => {
-        await syncNodesToServer()
-      },
-      {
-        loading: t`Syncing...`,
-        success: t`Sync successful!`,
-        error: () => {
-          return t`Sync failed, please try again.`
-        },
-      },
-    )
-  },
+  // '$mod+Alt+KeyS': (event) => {
+  //   event.preventDefault()
+  //   toast.promise(
+  //     async () => {
+  //       await syncNodesToServer()
+  //     },
+  //     {
+  //       loading: t`Syncing...`,
+  //       success: t`Sync successful!`,
+  //       error: () => {
+  //         return t`Sync failed, please try again.`
+  //       },
+  //     },
+  //   )
+  // },
 })
 
 window.customElectronApi.shortcut.onPressed((shortcut) => {
@@ -59,6 +59,17 @@ window.electron.ipcRenderer.on('edit-shortcuts', () => {
   store.set(settingsAtom, {
     open: true,
     navName: SettingsNav.EDIT_SHORTCUTS,
+  })
+})
+
+window.electron.ipcRenderer.on('translate', (_, text) => {
+  if (!text) return
+  window.customElectronApi.openPanelWindow()
+  openCommand({
+    id: 'translate',
+    data: {
+      text,
+    },
   })
 })
 

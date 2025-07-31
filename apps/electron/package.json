@@ -44,6 +44,7 @@
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/locales": "workspace:*",
+    "@penx/mnemonic": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/novel-editor": "workspace:*",
     "@penx/query-client": "workspace:*",
@@ -57,7 +58,6 @@
     "@penx/vaul": "workspace:*",
     "@penx/widgets": "workspace:*",
     "@penx/worker": "workspace:*",
-    "@penx/mnemonic": "workspace:*",
     "async-mutex": "^0.5.0",
     "clsx": "^2.1.1",
     "drizzle-kit": "^0.31.4",
@@ -68,6 +68,7 @@
     "lru-cache": "^11.1.0",
     "mastra": "^0.10.11",
     "node-mac-permissions": "^2.5.0",
+    "node-selection": "0.2.0-alpha.1",
     "run-applescript": "^7.0.0",
     "uiohook-napi": "^1.5.4",
     "xxhash-wasm": "^1.1.0"
