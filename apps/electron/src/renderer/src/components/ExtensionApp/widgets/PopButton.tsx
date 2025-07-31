@@ -1,15 +1,13 @@
 import { ArrowLeft } from 'lucide-react'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation } from '~/hooks/useNavigation'
 
 interface Props {
   className?: string
 }
 
 export const PopButton = ({ className }: Props) => {
-  const { pop, navigation } = useNavigation()
-
   return (
     <Button
       size="icon"
@@ -20,7 +18,7 @@ export const PopButton = ({ className }: Props) => {
       )}
       onClick={() => {
         console.log('back........')
-        pop()
+        navigation.pop()
       }}
     >
       <ArrowLeft size={16}></ArrowLeft>

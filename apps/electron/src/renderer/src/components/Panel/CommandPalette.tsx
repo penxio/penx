@@ -2,20 +2,16 @@ import { ReactNode, useEffect, useMemo } from 'react'
 import { Box } from '@fower/react'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
-import { useActionPopover } from '~/hooks/useActionPopover'
 import { useCommandAppLoading } from '~/hooks/useCommandAppLoading'
 import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems, useQueryCommands } from '~/hooks/useItems'
 import { useQueryNavigations } from '~/hooks/useNavigation'
-import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
 import { handleEscape } from '~/lib/handleEscape'
 import { ICommandItem } from '~/lib/types'
 import { Command, CommandList } from './CommandComponents'
 import { CommandPaletteFooter } from './CommandPaletteFooter'
-import { ListItemUI } from './ListItemUI'
 import { PageConfigureShortcut } from './pages/PageConfigureShortcut'
 import { PageEditCreation } from './pages/PageEditCreation'
 import { PageEditStruct } from './pages/PageEditStruct'
@@ -106,8 +102,6 @@ export const CommandPalette = () => {
 
   const ExtensionComponent = currentCommand?.data?.component!
   const isExtension = current?.path === '/extension'
-
-  console.log('current========:', current)
 
   const content = useMemo(() => {
     if (!current) return null

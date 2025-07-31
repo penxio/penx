@@ -11,10 +11,10 @@ import { Action } from '~/components/ExtensionApp/actions/Action'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { PopButton } from '~/components/ExtensionApp/widgets/PopButton'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation, useQueryNavigations } from '~/hooks/useNavigation'
 
 export function PageSettings() {
-  const { pop, current } = useNavigation()
+  const { current } = useQueryNavigations()
   const { currentCommand } = useCurrentCommand()
 
   console.log('=======current:', current)
@@ -39,7 +39,7 @@ export function PageSettings() {
           key: 'enter',
         },
         onConfirm: () => {
-          pop()
+          navigation.pop()
           appEmitter.emit('SUBMIT_QUICK_INPUT')
         },
       }}

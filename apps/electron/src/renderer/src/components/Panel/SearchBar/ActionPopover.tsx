@@ -31,7 +31,7 @@ import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCurrentStruct } from '~/hooks/useCurrentStruct'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems } from '~/hooks/useItems'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation, useQueryNavigations } from '~/hooks/useNavigation'
 import { useSelectStruct } from '~/hooks/useSelectStruct'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
@@ -79,7 +79,7 @@ export const ActionPopover = ({}: Props) => {
     }, 0)
   }, open)
 
-  const { current } = useNavigation()
+  const { current } = useQueryNavigations()
 
   const actionList = useMemo(() => {
     if (current.path === '/root') {
@@ -218,7 +218,7 @@ function RootActions({ command, close }: RootActionsProps) {
 
   const handleSelect = useHandleSelect()
   const selectStruct = useSelectStruct()
-  const { push, reset } = useNavigation()
+  const { push, reset } = navigation
   const { setStruct } = useCurrentStruct()
   const { setCurrentCommand } = useCurrentCommand()
   const currentItem = items.find((item) => item.id === value)!
@@ -456,13 +456,12 @@ interface StructActionsProps {
 
 function StructActions({ close }: StructActionsProps) {
   const { value } = useValue()
-  const { push } = useNavigation()
   return (
     <>
       <MenuItem
         shortcut=""
         onSelect={() => {
-          push({ path: '/edit-creation' })
+          navigation.push({ path: '/edit-creation' })
           close()
         }}
       >

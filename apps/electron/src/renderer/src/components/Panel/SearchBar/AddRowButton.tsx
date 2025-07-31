@@ -8,7 +8,7 @@ import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/ui/button'
 import { currentCreationAtom } from '~/hooks/useCurrentCreation'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation } from '~/hooks/useNavigation'
 
 interface Props {
   struct: Struct
@@ -16,7 +16,7 @@ interface Props {
 
 export const AddRowButton = ({ struct }: Props) => {
   const addCreation = useAddCreation()
-  const { push } = useNavigation()
+  const { push } = navigation
 
   async function add() {
     const creation = await addCreation({

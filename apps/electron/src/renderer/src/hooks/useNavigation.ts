@@ -2,8 +2,7 @@ import { JSX, ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
 import { atom, useAtom } from 'jotai'
-import { store } from '@penx/store'
-import { searchAtom } from './useSearch'
+import { queryClient } from '@penx/query-client'
 
 type Navigation = {
   showHeader?: boolean
@@ -20,89 +19,70 @@ type Navigation = {
   data?: Record<string, any>
 }
 
-export const navigationAtom = atom<Navigation[]>([
-  {
-    showHeader: true,
-    path: '/root',
-  },
-] as Navigation[])
+const queryKey = ['navigation']
+function getNavigations() {
+  return (queryClient.getQueryData(queryKey) as Navigation[]) || []
+}
 
-export function useNavigation() {
-  const [navigation, setNavigation] = useAtom(navigationAtom)
-
-  const current = navigation[navigation.length - 1]!
-  return {
-    navigation,
-    current,
-    isRoot: current?.path === '/root',
-    setNavigation,
-    push(nav: Navigation) {
-      setNavigation([...navigation, nav])
-    },
-    replace(nav: Navigation) {
-      setNavigation(
-        produce(navigation, (draft) => {
-          navigation[navigation.length - 1] = nav
-        }),
-      )
-    },
-    pop() {
-      if (navigation.length === 1) {
-        setNavigation([
-          {
-            showHeader: true,
-            path: '/root',
-          },
-        ])
-        return
-      }
-      setNavigation(navigation.slice(0, -1))
-    },
-    reset() {
-      setNavigation([
-        {
-          showHeader: true,
-          path: '/root',
-        },
-      ])
-      store.set(searchAtom, '')
-    },
-  }
+export function setNavigations(list: Navigation[]) {
+  queryClient.setQueryData(queryKey, list)
+  window.navigations = list
 }
 
 export const navigation = {
-  getNavigation() {
-    return store.get(navigationAtom)
+  getNavigations() {
+    return getNavigations()
   },
 
   push(nav: Navigation) {
-    const navigationList = store.get(navigationAtom)
-    store.set(navigationAtom, [...navigationList, nav])
+    const navigations = getNavigations()
+    const newNav = produce(navigations, (draft) => {
+      draft.push(nav)
+    })
+    console.log('push==newNav:', newNav)
+
+    setNavigations(newNav)
   },
 
   replace(nav: Navigation) {
-    const navigation = store.get(navigationAtom)
-    store.set(
-      navigationAtom,
-      produce(navigation, (draft) => {
-        navigation[navigation.length - 1] = nav
+    const navigations = getNavigations()
+    setNavigations(
+      produce(navigations, (draft) => {
+        draft[draft.length - 1] = nav
       }),
     )
   },
 
   pop() {
-    const navigationList = store.get(navigationAtom)
-    store.set(navigationAtom, navigationList.slice(0, -1))
+    const navigations = getNavigations()
+    const navNav = produce(navigations, (draft) => {
+      draft.pop()
+    })
+
+    console.log('pop=====navNav:', navNav)
+
+    setNavigations(navNav)
+  },
+
+  reset() {
+    setNavigations([
+      {
+        showHeader: true,
+        path: '/root',
+      },
+    ])
   },
 }
 
 export function useQueryNavigations() {
   const { data = [], ...rest } = useQuery({
-    queryKey: ['navigation'],
-    queryFn: () => {
-      if (Array.isArray(window.navigations)) {
+    queryKey,
+    queryFn: async () => {
+      console.log('query.....xxxxxxx:', window.navigations)
+      if (Array.isArray(window.navigations) && window.navigations.length) {
         return window.navigations as Navigation[]
       }
+
       const navigations: Navigation[] = [
         {
           showHeader: true,
@@ -117,6 +97,7 @@ export function useQueryNavigations() {
     data,
     navigations: data,
     current: data[data.length - 1]!,
+    isRoot: data.length === 1,
     ...rest,
   }
 }

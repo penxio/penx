@@ -482,6 +482,9 @@ export class ElectronApp {
   }
 
   private openQuickInputCommand() {
+    // this.panelWindow.close()
+    // this.windows.panelWindow = createPanelWindow()
+    // this.togglePanelWindow()
     this.panelWindow.webContents.send('open-quick-input')
   }
 

@@ -20,6 +20,7 @@ import { queryClient } from '@penx/query-client'
 import { refreshSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
+import { navigation, setNavigations } from '~/hooks/useNavigation'
 import { openCommand } from '~/lib/openCommand'
 
 tinykeys(window, {
@@ -74,12 +75,13 @@ window.electron.ipcRenderer.on('translate', (_, text) => {
 })
 
 window.electron.ipcRenderer.on('open-quick-input', () => {
-  console.log('open quick input.........')
-
   openCommand({
     id: 'quick-input',
   })
-  window.customElectronApi.openPanelWindow()
+
+  setTimeout(() => {
+    window.customElectronApi.openPanelWindow()
+  }, 0)
 })
 
 export function WatchEvent() {

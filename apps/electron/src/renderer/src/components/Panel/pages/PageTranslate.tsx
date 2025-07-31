@@ -16,13 +16,13 @@ import { Textarea } from '@penx/uikit/ui/textarea'
 import { Logo } from '@penx/widgets/Logo'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation, useQueryNavigations } from '~/hooks/useNavigation'
 
 const client = getOpenAIClient()
 
 export function PageTranslate() {
   // return <NovelEditor></NovelEditor>
-  const { pop, current } = useNavigation()
+  const { current } = useQueryNavigations()
   const { currentCommand } = useCurrentCommand()
   const [input, setInput] = useState('')
   const [result, setResult] = useState('')

@@ -39,6 +39,16 @@ body {
   -webkit-app-region: no-drag;
 }
 
+#panel-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: red;
+  z-index: 10000;
+}
+
 :root,
 :host {
   --font-sans: var(--font-inter), system-ui;

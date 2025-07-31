@@ -7,7 +7,7 @@ import { useCommandAppUI } from './useCommandAppUI'
 import { CommandOptions, useCommandOptions } from './useCommandOptions'
 import { useCurrentCommand } from './useCurrentCommand'
 import { useCurrentStruct } from './useCurrentStruct'
-import { useNavigation } from './useNavigation'
+import { navigation } from './useNavigation'
 import { useSearch } from './useSearch'
 
 export function useHandleSelect() {
@@ -17,7 +17,6 @@ export function useHandleSelect() {
   const { setStruct } = useCurrentStruct()
   const { setLoading } = useCommandAppLoading()
   const { setSearch } = useSearch()
-  const { push } = useNavigation()
   const { structs } = useStructs()
 
   return async (item: ICommandItem, opt = {} as CommandOptions) => {
@@ -35,7 +34,7 @@ export function useHandleSelect() {
         setSearch('')
         window.customElectronApi.togglePanelWindow()
       } else {
-        push({ path: '/edit-creation' })
+        navigation.push({ path: '/edit-creation' })
       }
       return
     }
@@ -43,7 +42,7 @@ export function useHandleSelect() {
     // setSearch('')
 
     if (item.data.type === 'Command') {
-      push({
+      navigation.push({
         path: '/extension',
       })
       item.data?.afterOpen?.()

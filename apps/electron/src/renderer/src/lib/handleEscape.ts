@@ -20,7 +20,7 @@ export async function handleEscape() {
         return
       }
 
-      const navigations = navigation.getNavigation()
+      const navigations = navigation.getNavigations()
 
       console.log('=======navigations:', navigations)
 
@@ -39,16 +39,6 @@ export async function handleEscape() {
 
         navigation.pop()
       }
-
-      // const position = store.get(positionAtom)
-
-      // console.log('======position:', position)
-
-      // if (position === 'ROOT') {
-      //   window.electron.ipcRenderer.send('hide-panel-window')
-      // } else {
-      //   appEmitter.emit('ON_ESCAPE_IN_COMMAND')
-      // }
     }
   })
 

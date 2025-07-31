@@ -4,10 +4,9 @@ import { appEmitter } from '@penx/emitter'
 import { ShortcutType } from '@penx/model-type'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation } from '~/hooks/useNavigation'
 
 export function PageConfigureShortcut() {
-  const { pop } = useNavigation()
   const { currentCommand } = useCurrentCommand()
   console.log('========currentCommand:', currentCommand)
 
@@ -30,7 +29,7 @@ export function PageConfigureShortcut() {
           key: 'enter',
         },
         onConfirm: () => {
-          pop()
+          navigation.pop()
         },
       }}
     >

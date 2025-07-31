@@ -4,10 +4,9 @@ import { appEmitter } from '@penx/emitter'
 import { Logo } from '@penx/widgets/Logo'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation } from '~/hooks/useNavigation'
 
 export function PageLogin() {
-  const { pop } = useNavigation()
   const { currentCommand } = useCurrentCommand()
 
   return (
@@ -28,7 +27,7 @@ export function PageLogin() {
           key: 'enter',
         },
         onConfirm: () => {
-          pop()
+          navigation.pop()
           appEmitter.emit('SUBMIT_QUICK_INPUT')
         },
       }}

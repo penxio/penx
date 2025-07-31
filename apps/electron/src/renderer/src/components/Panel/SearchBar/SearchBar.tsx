@@ -5,7 +5,7 @@ import { PopButton } from '~/components/ExtensionApp/widgets/PopButton'
 import { PinnedButton } from '~/components/PinnedButton'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCurrentStruct } from '~/hooks/useCurrentStruct'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation, useQueryNavigations } from '~/hooks/useNavigation'
 import { useSearch } from '~/hooks/useSearch'
 import { AddRowButton } from './AddRowButton'
 import { SearchInput } from './SearchInput'
@@ -15,7 +15,7 @@ interface Props {
 }
 export const SearchBar = ({ searchBarHeight }: Props) => {
   const { search } = useSearch()
-  const { current, isRoot } = useNavigation()
+  const { current, isRoot } = useQueryNavigations()
 
   if (isRoot) {
     return (

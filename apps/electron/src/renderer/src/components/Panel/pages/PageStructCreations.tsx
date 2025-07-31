@@ -21,7 +21,7 @@ export function PageStructCreations() {
   return (
     <>
       <div
-        className="drag border-foreground/10 flex items-center justify-between border-b pr-3 gap-1"
+        className="drag border-foreground/10 flex items-center justify-between gap-1 border-b pr-3"
         style={{
           height: searchBarHeight,
         }}

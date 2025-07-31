@@ -6,10 +6,9 @@ import { ActionPanel } from '~/components/ExtensionApp/ActionPanel'
 import { Action } from '~/components/ExtensionApp/actions/Action'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation } from '~/hooks/useNavigation'
 
 export function PageQuickInput() {
-  const { pop } = useNavigation()
   const { currentCommand } = useCurrentCommand()
   return (
     <DetailApp
@@ -27,7 +26,7 @@ export function PageQuickInput() {
           key: 'enter',
         },
         onConfirm: () => {
-          pop()
+          navigation.pop()
           appEmitter.emit('SUBMIT_QUICK_INPUT')
         },
       }}
@@ -36,7 +35,7 @@ export function PageQuickInput() {
         showFooter={false}
         className="max-h-auto shadow-0 prose:px-0  prose:mx-0 m-0 h-full w-full flex-1 rounded-none !bg-transparent"
         afterSubmit={() => {
-          pop()
+          navigation.pop()
           toast.success(
             <div className="bg-background shadow-popover inline-flex rounded-lg px-3 py-2 text-sm">
               <Trans>Created successfully</Trans>

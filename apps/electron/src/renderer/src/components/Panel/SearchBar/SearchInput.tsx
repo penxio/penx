@@ -1,12 +1,13 @@
-import { KeyboardEventHandler, memo, useEffect, useRef } from 'react'
-import { appEmitter } from '@penx/emitter'
-import { cn } from '@penx/utils'
-import { useHandleSelect } from '~/hooks/useHandleSelect'
-import { useCommands, useItems } from '~/hooks/useItems'
-import { useNavigation } from '~/hooks/useNavigation'
-import { useSearch } from '~/hooks/useSearch'
-import { openCommand } from '~/lib/openCommand'
-import { CommandInput } from '../CommandComponents'
+import { KeyboardEventHandler, memo, useEffect, useRef } from 'react';
+import { appEmitter } from '@penx/emitter';
+import { cn } from '@penx/utils';
+import { useHandleSelect } from '~/hooks/useHandleSelect';
+import { useCommands, useItems } from '~/hooks/useItems';
+import { navigation, useQueryNavigations } from '~/hooks/useNavigation';
+import { useSearch } from '~/hooks/useSearch';
+import { openCommand } from '~/lib/openCommand';
+import { CommandInput } from '../CommandComponents';
+
 
 interface SearchInputProps {
   className?: string
@@ -75,7 +76,7 @@ export const SearchInput = ({ searchBarHeight, placeholder }: Props) => {
   const { items, setItems } = useItems()
   const { commands } = useCommands()
   const handleSelect = useHandleSelect()
-  const { pop, navigation } = useNavigation()
+  const { navigations } = useQueryNavigations()
 
   return (
     <SearchInputMemo
@@ -110,13 +111,13 @@ export const SearchInput = ({ searchBarHeight, placeholder }: Props) => {
             // } else {
             //   backToRoot()
             // }
-            navigation.length > 1 && pop()
+            navigations.length > 1 && navigation.pop()
           }
         }
 
         if (e.key === 'Tab') {
           e.preventDefault()
-          if (navigation.length === 1) {
+          if (navigations.length === 1) {
             openCommand({
               id: 'ai-chat',
             })

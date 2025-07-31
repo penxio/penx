@@ -3,10 +3,9 @@ import { appEmitter } from '@penx/emitter'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useCurrentStruct } from '~/hooks/useCurrentStruct'
-import { useNavigation } from '~/hooks/useNavigation'
+import { navigation } from '~/hooks/useNavigation'
 
 export function PageCreateStruct() {
-  const { pop, replace } = useNavigation()
   const { setStruct } = useCurrentStruct()
   const { currentCommand } = useCurrentCommand()
   return (
@@ -39,7 +38,7 @@ export function PageCreateStruct() {
       <div className="-mt-10 w-[360px]">
         <CreateStructForm
           onSubmitSuccess={(struct) => {
-            replace({ path: '/edit-struct' })
+           navigation.replace({ path: '/edit-struct' })
             setStruct(struct)
             appEmitter.emit('REFRESH_COMMANDS')
           }}
