@@ -42,6 +42,10 @@ export class ElectronApp {
 
   private conf: Conf
 
+  private lastBounds: Electron.Rectangle | null = null
+  private lastOffset: { offsetX: number; offsetY: number } | null = null
+  private tray: Tray | null = null
+
   private get mainWindow() {
     return this.windows.mainWindow!
   }
@@ -49,12 +53,6 @@ export class ElectronApp {
   private get panelWindow() {
     return this.windows.panelWindow!
   }
-
-  private isOverlayVisible = false
-  private frontAppMeta: FrontAppMeta | null = null
-
-  private lastBounds: Electron.Rectangle | null = null
-  private lastOffset: { offsetX: number; offsetY: number } | null = null
 
   constructor() {
     this.setupApp()
@@ -87,13 +85,10 @@ export class ElectronApp {
     })
   }
 
-  private async watchSelection() {
+  private async initSelection() {
     if (!(await checkAccessibilityPermissions({ prompt: true }))) {
       console.log('grant accessibility permissions and restart this program')
-      process.exit(1)
     }
-    const selection = await getSelection()
-    console.log('current selection:', selection)
   }
 
   private async initialize() {
@@ -112,7 +107,6 @@ export class ElectronApp {
 
       app.setAccessibilitySupportEnabled(true)
 
-      this.createTray()
       // registerShortcut({
       //   windows: this.windows,
       //   onCreateWindow: () => {
@@ -124,9 +118,10 @@ export class ElectronApp {
       this.conf = new Conf()
       this.conf.registerRendererListener()
 
+      this.createTray()
       this.registerShortcut()
 
-      this.watchSelection()
+      this.initSelection()
 
       const schemeName = 'penx'
       if (is.dev) {
@@ -203,7 +198,7 @@ export class ElectronApp {
       () => {
         appUpdater.checkForUpdates()
       },
-      60 * 60 * 1000,
+      10 * 60 * 1000,
     )
   }
 
@@ -350,8 +345,7 @@ export class ElectronApp {
   }
 
   private async registerShortcut() {
-    // let shortcuts = (await this.conf.get(SHORTCUT_LIST)) as Shortcut[]
-    let shortcuts: Shortcut[] = null as any
+    let shortcuts = (await this.conf.get(SHORTCUT_LIST)) as Shortcut[]
 
     if (!shortcuts) {
       shortcuts = [
@@ -369,7 +363,7 @@ export class ElectronApp {
       this.conf.set(SHORTCUT_LIST, shortcuts)
     }
 
-    console.log('=======shortcuts:', shortcuts)
+    // console.log('=======shortcuts:', shortcuts)
 
     for (const shortcut of shortcuts) {
       const acc = convertKeysToHotkey(shortcut.keys)
@@ -430,8 +424,10 @@ export class ElectronApp {
         // if (shortcut.type === ShortcutType.TOGGLE_MAIN_WINDOW) {
         //   this.toggleMainWindow()
         // }
+
         if (shortcut.type === ShortcutType.TOGGLE_PANEL_WINDOW) {
           this.togglePanelWindow()
+          this.updateTrayMenu()
         }
       })
 
@@ -482,18 +478,32 @@ export class ElectronApp {
     })
   }
 
-  private createTray() {
+  private async createTray() {
+    const nativeTrayIcon = nativeImage.createFromPath(trayIcon)
+    this.tray = new Tray(nativeTrayIcon)
+    this.tray.setToolTip('PenX')
+    await this.updateTrayMenu()
+  }
+
+  private async updateTrayMenu() {
+    if (!this.tray) return
+
     const mainWindow = this.mainWindow!
     const panelWindow = this.panelWindow!
-    const nativeTrayIcon = nativeImage.createFromPath(trayIcon)
+    let shortcuts = (await this.conf.get(SHORTCUT_LIST)) as Shortcut[]
 
-    const tray = new Tray(nativeTrayIcon)
+    const shortcut = shortcuts.find(
+      (s) => s.type === ShortcutType.TOGGLE_PANEL_WINDOW,
+    )
+
+    console.log('======tray=shortcut:', shortcut)
+
     const contextMenu = Menu.buildFromTemplate([
       {
         label: 'Open PenX',
         type: 'normal',
         // accelerator: '⌥+s',
-        accelerator: 'Alt+S',
+        accelerator: shortcut ? shortcut.keys.join('+') : 'Alt+S',
         click: () => {
           this.togglePanelWindow()
         },
@@ -504,6 +514,14 @@ export class ElectronApp {
         click: () => {
           panelWindow.show()
           panelWindow.webContents.send('edit-shortcuts')
+        },
+      },
+      {
+        label: 'Open DevTools',
+        type: 'normal',
+        click: () => {
+          panelWindow.show()
+          this.panelWindow.webContents.openDevTools()
         },
       },
       {
@@ -521,7 +539,6 @@ export class ElectronApp {
         },
       },
     ])
-    tray.setToolTip('PenX')
-    tray.setContextMenu(contextMenu)
+    this.tray.setContextMenu(contextMenu)
   }
 }
