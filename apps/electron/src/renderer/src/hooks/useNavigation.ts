@@ -78,7 +78,6 @@ export function useQueryNavigations() {
   const { data = [], ...rest } = useQuery({
     queryKey,
     queryFn: async () => {
-      console.log('query.....xxxxxxx:', window.navigations)
       if (Array.isArray(window.navigations) && window.navigations.length) {
         return window.navigations as Navigation[]
       }

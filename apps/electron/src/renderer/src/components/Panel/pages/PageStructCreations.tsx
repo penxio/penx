@@ -33,14 +33,7 @@ export function PageStructCreations() {
         <AddRowButton struct={new Struct(struct)} />
       </div>
 
-      <div
-        className="relative flex-1 overflow-auto"
-        // h={bodyHeight}
-        style={{
-          overscrollBehavior: 'contain',
-          scrollPaddingBlockEnd: 40,
-        }}
-      >
+      <div className="relative flex-1">
         <CommandList className="outline-none">
           <DatabaseApp />
         </CommandList>

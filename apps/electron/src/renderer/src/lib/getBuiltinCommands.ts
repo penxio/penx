@@ -4,10 +4,11 @@ import { PageCreateStruct } from '~/components/Panel/pages/PageCreateStruct'
 import { PageLogin } from '~/components/Panel/pages/PageLogin'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'
 import { PageSettings } from '~/components/Panel/pages/PageSettings'
+import { PageStructMarketplace } from '~/components/Panel/pages/PageStructMarketplace'
 import { PageSync } from '~/components/Panel/pages/PageSync/PageSync'
+import { PageTranslate } from '~/components/Panel/pages/PageTranslate'
 import { ICommandItem } from '~/lib/types'
 import { pinWindow } from './pinned'
-import { PageTranslate } from '~/components/Panel/pages/PageTranslate'
 
 export function getBuiltinCommands() {
   const commands: ICommandItem[] = [
@@ -120,7 +121,7 @@ export function getBuiltinCommands() {
       },
       data: {
         type: 'Command',
-        component: PageLogin,
+        component: PageStructMarketplace,
         alias: '',
         assets: {},
         filters: {},

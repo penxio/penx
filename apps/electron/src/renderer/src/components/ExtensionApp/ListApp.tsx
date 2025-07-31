@@ -1,11 +1,22 @@
-import { PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
+import {
+  PropsWithChildren,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
+import { Command } from 'cmdk'
 import { tinykeys } from 'tinykeys'
 import { Kbd } from '@penx/components/Kbd'
+import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
+import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import { ListItemIcon } from '../Panel/ListItemIcon'
 import { SearchInput } from '../Panel/SearchBar/SearchInput'
 import { PinnedButton } from '../PinnedButton'
+import { loaderStyle } from './common/constants'
+import { detailMap } from './common/store'
 import { ShortcutKey, ShortcutModifier } from './types'
 import { PopButton } from './widgets/PopButton'
 
@@ -25,27 +36,23 @@ interface Props {
   className?: string
   bodyClassName?: string
   command: ICommandItem
-  actions?: ReactNode
   confirm?: IConfirm
-  hideHeader?: boolean
   hideFooter?: boolean
   headerBordered?: boolean
-  title?: ReactNode
-  showSearch?: boolean
+  isLoading?: boolean
+  isDetailVisible?: boolean
 }
 
-export function DetailApp({
+export function ListApp({
   className,
+  isLoading,
   bodyClassName,
   children,
   command,
-  actions,
   confirm,
-  hideHeader = false,
   hideFooter = false,
   headerBordered = true,
-  showSearch = false,
-  title,
+  isDetailVisible,
 }: PropsWithChildren<Props>) {
   const itemIcon = useMemo(() => {
     const assets = command?.data?.assets || {}
@@ -53,51 +60,55 @@ export function DetailApp({
   }, [command])
 
   return (
-    <div className={cn('flex h-full w-full flex-col', className)}>
-      {!hideHeader && (
-        <div
-          className={cn(
-            'drag flex items-center gap-2 pr-3',
-            headerBordered && ' border-foreground/10 border-b',
-          )}
-          style={{
-            height: searchBarHeight,
-          }}
-        >
-          <PopButton className="ml-3" />
-          {showSearch && <SearchInput searchBarHeight={searchBarHeight} />}
-          <div className="font-medium">{title}</div>
-          <PinnedButton className="ml-auto" />
-        </div>
-      )}
+    <>
+      <style>{loaderStyle}</style>
       <div
-        className={cn('relative flex-1 overflow-auto', bodyClassName)}
+        className={cn(
+          'drag relative flex items-center gap-2 pr-3',
+          headerBordered && ' border-foreground/10 border-b',
+        )}
         style={{
-          overscrollBehavior: 'contain',
-          scrollPaddingBlockEnd: 40,
+          height: searchBarHeight,
         }}
       >
-        {children}
+        <PopButton className="ml-3" />
+        <SearchInput searchBarHeight={searchBarHeight} />
+        {isLoading && <hr list-app-loader="" />}
+      </div>
+      <div className="relative flex-1">
+        <Command.List>
+          <div className="absolute inset-0 flex overflow-hidden outline-none">
+            <Command.Group className="m-0 flex-1 overflow-auto p-2">
+              {children}
+            </Command.Group>
+            {/* {isDetailVisible && (
+            <>
+              <Separator orientation="vertical" />
+              <Detail />
+            </>
+          )} */}
+
+            <Separator orientation="vertical" />
+            <Detail />
+          </div>
+        </Command.List>
       </div>
 
-      {!hideFooter && (
-        <div
-          className="border-foreground/10 bg-foreground/5 flex items-center justify-between border-t px-3"
-          style={{
-            height: footerHeight,
-          }}
-        >
-          <div className="flex items-center gap-1">
-            <ListItemIcon icon={itemIcon} />
-            <div className="text-foreground/80 text-sm">
-              {command.title.toString()}
-            </div>
+      <div
+        className="border-foreground/10 bg-foreground/5 flex items-center justify-between border-t px-3"
+        style={{
+          height: footerHeight,
+        }}
+      >
+        <div className="flex items-center gap-1">
+          <ListItemIcon icon={itemIcon} />
+          <div className="text-foreground/80 text-sm">
+            {command.title.toString()}
           </div>
-          {actions}
-          {confirm && <Confirm confirm={confirm} />}
         </div>
-      )}
-    </div>
+        {confirm && <Confirm confirm={confirm} />}
+      </div>
+    </>
   )
 }
 
@@ -135,4 +146,14 @@ function Confirm({ confirm }: { confirm: IConfirm }) {
       )}
     </div>
   )
+}
+
+function Detail() {
+  const { value } = useValue()
+  const [content, setContent] = useState<any>()
+  useEffect(() => {
+    setContent(detailMap.get(value))
+  }, [value])
+
+  return <div className="flex-1 overflow-auto p-2">{content}</div>
 }
