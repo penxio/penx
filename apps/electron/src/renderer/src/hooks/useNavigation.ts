@@ -1,4 +1,5 @@
 import { JSX, ReactNode } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { produce } from 'immer'
 import { atom, useAtom } from 'jotai'
 import { store } from '@penx/store'
@@ -46,6 +47,15 @@ export function useNavigation() {
       )
     },
     pop() {
+      if (navigation.length === 1) {
+        setNavigation([
+          {
+            showHeader: true,
+            path: '/root',
+          },
+        ])
+        return
+      }
       setNavigation(navigation.slice(0, -1))
     },
     reset() {
@@ -70,8 +80,43 @@ export const navigation = {
     store.set(navigationAtom, [...navigationList, nav])
   },
 
+  replace(nav: Navigation) {
+    const navigation = store.get(navigationAtom)
+    store.set(
+      navigationAtom,
+      produce(navigation, (draft) => {
+        navigation[navigation.length - 1] = nav
+      }),
+    )
+  },
+
   pop() {
     const navigationList = store.get(navigationAtom)
     store.set(navigationAtom, navigationList.slice(0, -1))
   },
+}
+
+export function useQueryNavigations() {
+  const { data = [], ...rest } = useQuery({
+    queryKey: ['navigation'],
+    queryFn: () => {
+      if (Array.isArray(window.navigations)) {
+        return window.navigations as Navigation[]
+      }
+      const navigations: Navigation[] = [
+        {
+          showHeader: true,
+          path: '/root',
+        },
+      ]
+      window.navigations = navigations
+      return navigations
+    },
+  })
+  return {
+    data,
+    navigations: data,
+    current: data[data.length - 1]!,
+    ...rest,
+  }
 }

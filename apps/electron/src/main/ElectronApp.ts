@@ -14,6 +14,7 @@ import {
 } from 'electron'
 import { Conf } from 'electron-conf/main'
 import { checkAccessibilityPermissions, getSelection } from 'node-selection'
+import { uIOhook, UiohookKey } from 'uiohook-napi'
 import { SHORTCUT_LIST } from '@penx/constants'
 import { Shortcut, ShortcutType } from '@penx/model-type'
 import { convertKeysToHotkey } from '@penx/utils'
@@ -122,6 +123,8 @@ export class ElectronApp {
       this.registerShortcut()
 
       this.initSelection()
+
+      this.runIOHook()
 
       const schemeName = 'penx'
       if (is.dev) {
@@ -250,7 +253,7 @@ export class ElectronApp {
   }
 
   private togglePanelWindow(openOnly = false) {
-    console.log('toggle......')
+    console.log(openOnly ? 'open....' : 'toggle......')
 
     const panelWindow = this.windows.panelWindow!
     const setWindowPos = () => {
@@ -476,6 +479,27 @@ export class ElectronApp {
         return { success: false, error: error.message }
       }
     })
+  }
+
+  private openQuickInputCommand() {
+    this.panelWindow.webContents.send('open-quick-input')
+  }
+
+  private runIOHook() {
+    let lastCmdDownTime = 0
+    const doubleClickThreshold = 300
+    uIOhook.on('keydown', (event) => {
+      if (event.keycode === UiohookKey.Meta) {
+        let now = Date.now()
+        if (now - lastCmdDownTime < doubleClickThreshold) {
+          console.log('Cmd key double clicked')
+          this.openQuickInputCommand()
+        }
+        lastCmdDownTime = now
+      }
+    })
+
+    uIOhook.start()
   }
 
   private async createTray() {

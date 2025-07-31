@@ -73,6 +73,15 @@ window.electron.ipcRenderer.on('translate', (_, text) => {
   })
 })
 
+window.electron.ipcRenderer.on('open-quick-input', () => {
+  console.log('open quick input.........')
+
+  openCommand({
+    id: 'quick-input',
+  })
+  window.customElectronApi.openPanelWindow()
+})
+
 export function WatchEvent() {
   useEffect(() => {
     window.electron.ipcRenderer.on('quick-input-success', () => {

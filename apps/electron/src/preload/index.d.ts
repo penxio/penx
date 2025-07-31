@@ -2,8 +2,16 @@ import { ElectronAPI } from '@electron-toolkit/preload'
 import { clipboard, contextBridge, ipcRenderer } from 'electron'
 import type { Shortcut } from '@penx/model-type'
 
+type Navigation = {
+  showHeader?: boolean
+  path: string
+  component?: (() => ReactNode) | (() => JSX.Element)
+  data?: Record<string, any>
+}
+
 declare global {
   interface Window {
+    navigations: Navigation[]
     electron: ElectronAPI
     customElectronApi: {
       clipboard: Electron.Clipboard

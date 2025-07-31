@@ -8,8 +8,7 @@ import { commandUIAtom, useCommandAppUI } from '~/hooks/useCommandAppUI'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
 import { useItems, useQueryCommands } from '~/hooks/useItems'
-import { useNavigation } from '~/hooks/useNavigation'
-import { useReset } from '~/hooks/useReset'
+import { useQueryNavigations } from '~/hooks/useNavigation'
 import { useSearch } from '~/hooks/useSearch'
 import { useValue } from '~/hooks/useValue'
 import { handleEscape } from '~/lib/handleEscape'
@@ -63,10 +62,9 @@ export const CommandPalette = () => {
 
   useQueryCommands()
 
-  useReset(setValue)
-  const isIframe = currentCommand?.data?.runtime === 'iframe'
+  const { current, isLoading } = useQueryNavigations()
 
-  const { current } = useNavigation()
+  const isIframe = currentCommand?.data?.runtime === 'iframe'
 
   const header = useMemo(() => {
     return (
@@ -109,6 +107,8 @@ export const CommandPalette = () => {
   const ExtensionComponent = currentCommand?.data?.component!
   const isExtension = current?.path === '/extension'
 
+  console.log('current========:', current)
+
   const content = useMemo(() => {
     if (!current) return null
     if (isExtension) {
@@ -141,6 +141,8 @@ export const CommandPalette = () => {
       </>
     )
   }, [isExtension, header, body, footer])
+
+  if (isLoading) return null
 
   return (
     <Command

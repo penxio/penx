@@ -25,11 +25,11 @@ export async function handleEscape() {
       console.log('=======navigations:', navigations)
 
       if (navigations.length === 1) {
+        console.log('=======navigations:', navigations)
+
         if (search.length) {
           store.set(searchAtom, '')
         } else {
-          console.log('hidel.......')
-
           window.electron.ipcRenderer.send('hide-panel-window')
         }
       } else {
