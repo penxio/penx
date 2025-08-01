@@ -23,6 +23,7 @@ import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useStructs } from '@penx/hooks/useStructs'
+import { isBuiltinStruct } from '@penx/libs/isBuiltinStruct'
 import { store } from '@penx/store'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { cn } from '@penx/utils'
@@ -417,7 +418,7 @@ function RootActions({ command, close }: RootActionsProps) {
         </MenuItem>
       )}
 
-      {isStruct && (
+      {isStruct && !isBuiltinStruct(struct.type) && (
         <MenuItem
           shortcut=""
           onSelect={async () => {

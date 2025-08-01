@@ -16,6 +16,7 @@ import { Conf } from 'electron-conf/main'
 import { checkAccessibilityPermissions, getSelection } from 'node-selection'
 import { uIOhook, UiohookKey } from 'uiohook-napi'
 import { SHORTCUT_LIST } from '@penx/constants'
+import { client } from '@penx/db'
 import { Shortcut, ShortcutType } from '@penx/model-type'
 import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
@@ -33,6 +34,7 @@ import {
 import { isPortInUse, killPort } from './port-killer'
 import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
+import { initPGLite } from './initPGLite'
 
 const port = 14158
 
@@ -121,6 +123,7 @@ export class ElectronApp {
       //   },
       // })
       await this.startServer()
+      await this.initPGLite()
 
       this.conf = new Conf()
       this.conf.registerRendererListener()
@@ -209,6 +212,10 @@ export class ElectronApp {
       },
       10 * 60 * 1000,
     )
+  }
+
+  private async initPGLite() {
+    await initPGLite()
   }
 
   private async startServer() {

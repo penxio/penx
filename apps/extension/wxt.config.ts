@@ -27,5 +27,6 @@ export default defineConfig({
     name: 'PenX',
     description: 'A structured note-taking App',
     host_permissions: ['<all_urls>'],
+    permissions: ['bookmarks', 'tabs'],
   },
 })

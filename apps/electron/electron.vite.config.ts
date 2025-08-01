@@ -20,6 +20,7 @@ export default defineConfig({
           '@penx/hooks',
           '@penx/icons',
           '@penx/libs',
+          '@penx/db',
           '@penx/local-db',
           '@penx/locales',
           '@penx/model-type',

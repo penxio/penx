@@ -145,18 +145,34 @@ export function generateStructNode({
     }
 
     if (type === StructType.BOOKMARK) {
-      columns.push({
-        id: uniqueId(),
-        slug: 'url',
-        name: t`URL`,
-        description: '',
-        columnType: ColumnType.URL,
-        config: {},
-        options: [],
-        isPrimary: false,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      })
+      columns.push(
+        ...[
+          {
+            id: uniqueId(),
+            slug: 'icon',
+            name: t`Icon`,
+            description: '',
+            columnType: ColumnType.URL,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'url',
+            name: t`Bookmark`,
+            description: '',
+            columnType: ColumnType.URL,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+      )
     }
 
     if (type === StructType.PROMPT) {

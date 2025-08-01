@@ -64,7 +64,7 @@ export const ConfirmDialog = React.forwardRef<HTMLDivElement, Props>(
             <AlertDialogTitle>{title}</AlertDialogTitle>
             <AlertDialogDescription>{content}</AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter>
+          <AlertDialogFooter className='mt-4'>
             <AlertDialogCancel
               className="w-24"
               onClick={() => setIsOpen(false)}

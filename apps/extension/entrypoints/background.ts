@@ -9,6 +9,7 @@ import {
   type TabInfo,
 } from '@/lib/helper'
 import { parsePreparedContent } from '@/lib/parser'
+import { syncBookmarks } from '@/lib/syncBookmarks'
 import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
 import { localDB } from '@penx/local-db'
@@ -20,6 +21,8 @@ import { stringToDoc } from '@penx/utils/editorHelper'
 const storage = new Storage()
 
 export default defineBackground(() => {
+  syncBookmarks()
+
   //
   /**
    * Receive and process events from each page

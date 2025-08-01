@@ -7,6 +7,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
+import bookmarkRouter from './routers/bookmark'
 import { Windows } from './types'
 
 export interface ServerConfig {
@@ -77,6 +78,8 @@ export class HonoServer {
     })
 
     const api = this.app.basePath('/api')
+
+    api.route('bookmark', bookmarkRouter)
 
     api.get('/users', async (c) => {
       return c.json({

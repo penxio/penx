@@ -1,2 +1,1 @@
-export { users } from './schema/users'
-export { posts } from './schema/posts'
+export { nodes } from './schema/nodes'

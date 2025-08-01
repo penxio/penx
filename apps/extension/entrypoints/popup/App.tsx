@@ -5,6 +5,7 @@ import { PopupContent } from '@/components/popup/PopupContent'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { useSession } from '@/hooks/useSession'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
+import { LocaleProvider } from '@penx/locales'
 import { Button } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/loading-dots'
 
@@ -27,11 +28,13 @@ function IndexPopupContent() {
 
 function App() {
   return (
-    <ThemeProvider className="flex min-h-80 w-80 flex-col">
-      <DashboardProviders>
-        <IndexPopupContent />
-      </DashboardProviders>
-    </ThemeProvider>
+    <LocaleProvider>
+      <ThemeProvider className="flex min-h-80 w-80 flex-col">
+        <DashboardProviders>
+          <IndexPopupContent />
+        </DashboardProviders>
+      </ThemeProvider>
+    </LocaleProvider>
   )
 }
 

@@ -35,6 +35,7 @@ import {
   Widget,
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { fixBookmarkStruct } from './lib/fixBookmarkStruct'
 import { fixStructsViews } from './lib/fixStructsViews'
 import { fixTaskStruct } from './lib/fixTaskStruct'
 import { initLocalSpace } from './lib/initLocalSpace'
@@ -239,6 +240,7 @@ export class AppService {
     }
 
     structs = await fixTaskStruct(area.id, structs)
+    structs = await fixBookmarkStruct(area.id, structs)
     structs = await fixStructsViews(area.id, structs)
 
     // console.log('======journals:', journals)

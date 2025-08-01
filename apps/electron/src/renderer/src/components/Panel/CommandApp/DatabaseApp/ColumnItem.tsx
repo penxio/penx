@@ -1,7 +1,8 @@
 import React, { forwardRef, ReactNode, useState } from 'react'
 import { DraggableSyntheticListeners } from '@dnd-kit/core'
 import { t } from '@lingui/core/macro'
-import { EllipsisIcon, GripVerticalIcon } from 'lucide-react'
+import { Trans } from '@lingui/react/macro'
+import { EllipsisIcon, GripVerticalIcon, Trash2Icon } from 'lucide-react'
 import { ColumnTypeName } from '@penx/components/ColumnTypeName'
 import { FieldIcon } from '@penx/components/FieldIcon'
 import { Struct } from '@penx/domain'
@@ -9,6 +10,7 @@ import { IColumn } from '@penx/model-type'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/ui/button'
 import { cn } from '@penx/utils'
+import { ConfirmDialog } from '@penx/widgets/ConfirmDialog'
 import { useStructPropDrawer } from './useStructPropDrawer'
 
 interface Props {
@@ -94,20 +96,40 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
         </div>
         {/* <ColumnMenuPopover column={column} index={index!} /> */}
 
-        <Button
-          variant="ghost"
-          className=" hover:bg-foreground/10 size-7 rounded-md"
-          size="icon"
-          onClick={() => {
-            setState({
-              index: index!,
-              open: true,
-              column,
-            })
-          }}
-        >
-          <EllipsisIcon className="text-foreground/40 size-5" />
-        </Button>
+        <div>
+          <ConfirmDialog
+            title={<Trans>Delete this property?</Trans>}
+            content={
+              <Trans>Are you sure you want to delete this property?</Trans>
+            }
+            tooltipContent={<Trans>Delete this property</Trans>}
+            onConfirm={async () => {
+              store.structs.deleteColumn(struct, column.id)
+            }}
+          >
+            <Button
+              variant="ghost"
+              className=" hover:bg-foreground/10 size-7 rounded-md text-red-500/60 hover:text-red-500"
+              size="icon"
+            >
+              <Trash2Icon className="size-4" />
+            </Button>
+          </ConfirmDialog>
+          <Button
+            variant="ghost"
+            className="hover:bg-foreground/10 size-7 rounded-md"
+            size="icon"
+            onClick={() => {
+              setState({
+                index: index!,
+                open: true,
+                column,
+              })
+            }}
+          >
+            <EllipsisIcon className="text-foreground/40 size-5" />
+          </Button>
+        </div>
       </div>
     </div>
   )
