@@ -17,6 +17,7 @@ const api = {
   },
   toggleMainWindow: () => ipcRenderer.send('toggle-main-window'),
   togglePanelWindow: () => ipcRenderer.send('toggle-panel-window'),
+  toggleAICommandWindow: () => ipcRenderer.send('toggle-ai-command-window'),
   openPanelWindow: () => ipcRenderer.send('open-panel-window'),
   getAppInfo: {
     version: pkg?.version,

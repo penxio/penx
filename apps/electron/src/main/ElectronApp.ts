@@ -21,6 +21,7 @@ import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
 import trayIcon from '../../resources/tray-16.png?asset'
 import { AppUpdater } from './AppUpdater'
+import { createAICommandWindow } from './createAICommandWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
 import {
@@ -53,6 +54,10 @@ export class ElectronApp {
 
   private get panelWindow() {
     return this.windows.panelWindow!
+  }
+
+  private get aiCommandWindow() {
+    return this.windows.aiCommandWindow!
   }
 
   constructor() {
@@ -96,6 +101,7 @@ export class ElectronApp {
     try {
       // this.windows.mainWindow = createMainWindow()
       this.windows.panelWindow = createPanelWindow()
+      this.windows.aiCommandWindow = createAICommandWindow()
 
       // setTimeout(() => {
       //   app.dock?.show()
@@ -347,6 +353,93 @@ export class ElectronApp {
     this.lastOffset = { offsetX: winBounds.x - x, offsetY: winBounds.y - y }
   }
 
+  private toggleAICommandWindow(openOnly = false) {
+    console.log(openOnly ? 'open....' : 'toggle......')
+    const win = this.windows.aiCommandWindow!
+    const setWindowPos = () => {
+      const cursorPoint = screen.getCursorScreenPoint()
+      const display = screen.getDisplayNearestPoint(cursorPoint)
+      const { x, y, width, height } = display.workArea
+
+      const winBounds = win.getBounds()
+      const posX = x + Math.round((width - winBounds.width) / 2)
+      const posY = y + Math.round((height - winBounds.height) / 2)
+
+      if (this.lastBounds && this.lastOffset) {
+        win.setBounds({
+          x: x + this.lastOffset.offsetX,
+          y: y + this.lastOffset.offsetY,
+          width: winBounds.width,
+          height: winBounds.height,
+        })
+      } else {
+        win.setBounds({
+          x: posX,
+          y: posY,
+          width: winBounds.width,
+          height: winBounds.height,
+        })
+      }
+    }
+
+    const toggle = async () => {
+      if (!this.aiCommandWindow) {
+        this.windows.aiCommandWindow = createAICommandWindow()
+        setWindowPos()
+        showAndFocus()
+        win.webContents.send('ai-command-window-show')
+        return
+      }
+
+      if (isVisibleAndFocused() && !openOnly) {
+        this.lastBounds = win.getBounds()
+        this.saveLastOffset()
+        hide()
+      } else {
+        setWindowPos()
+        showAndFocus()
+        win.webContents.send('ai-command-window-show')
+      }
+    }
+
+    const isVisibleAndFocused = () => {
+      return (
+        this.aiCommandWindow.isVisible() && this.aiCommandWindow.isFocused()
+      )
+    }
+
+    const hide = () => {
+      if (platform.isMacOS) {
+        app.hide()
+      }
+
+      // In order to restore focus correctly to the previously focused window, we need to minimize the window on
+      // Windows.
+      if (platform.isWindows) {
+        this.aiCommandWindow.minimize()
+      }
+
+      this.aiCommandWindow.hide()
+    }
+
+    const showAndFocus = () => {
+      if (typeof app.show === 'function') {
+        app.show()
+      }
+
+      this.aiCommandWindow.show()
+
+      // Because the window is minimized on Windows when hidden, we need to restore it before focusing it.
+      if (platform.isWindows) {
+        this.aiCommandWindow.restore()
+      }
+
+      this.aiCommandWindow.focus()
+    }
+
+    toggle()
+  }
+
   private async registerShortcut() {
     let shortcuts = (await this.conf.get(SHORTCUT_LIST)) as Shortcut[]
 
@@ -419,6 +512,10 @@ export class ElectronApp {
       this.togglePanelWindow()
     })
 
+    ipcMain.on('hide-ai-command-window', () => {
+      this.toggleAICommandWindow()
+    })
+
     ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
       const key = convertKeysToHotkey(shortcut.keys)
       const ret = globalShortcut.register(key, () => {
@@ -461,6 +558,14 @@ export class ElectronApp {
       this.togglePanelWindow(true)
     })
 
+    ipcMain.on('toggle-ai-command-window', () => {
+      this.toggleAICommandWindow()
+    })
+
+    ipcMain.on('open-ai-command-window', () => {
+      this.toggleAICommandWindow()
+    })
+
     ipcMain.on('quick-input-success', () => {
       this.mainWindow.webContents.send('quick-input-success')
       this.panelWindow.webContents.send('quick-input-success')
@@ -491,7 +596,8 @@ export class ElectronApp {
   private runIOHook() {
     let lastCmdDownTime = 0
     const doubleClickThreshold = 300
-    uIOhook.on('keydown', (event) => {
+
+    uIOhook.on('keydown', async (event) => {
       if (event.keycode === UiohookKey.Meta) {
         let now = Date.now()
         if (now - lastCmdDownTime < doubleClickThreshold) {
@@ -499,6 +605,14 @@ export class ElectronApp {
           this.openQuickInputCommand()
         }
         lastCmdDownTime = now
+      }
+
+      if (event.keycode === UiohookKey.Alt) {
+        const selection = await getSelection()
+        console.log('alt..... selection:', selection)
+        if (selection?.text) {
+          this.toggleAICommandWindow()
+        }
       }
     })
 

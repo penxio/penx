@@ -68,6 +68,7 @@ export default defineConfig({
           main: resolve(__dirname, 'src/renderer/index.html'),
           panel: resolve(__dirname, 'src/renderer/panel.html'),
           input: resolve(__dirname, 'src/renderer/input.html'),
+          'ai-command': resolve(__dirname, 'src/renderer/ai-command.html'),
         },
       },
     },
