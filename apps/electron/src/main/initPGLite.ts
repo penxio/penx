@@ -1,5 +1,6 @@
 import { sql } from 'drizzle-orm'
-import { client, nodes } from '@penx/db'
+import { client } from '@penx/db/client'
+import { nodes } from '@penx/db/schema/nodes'
 
 export async function initPGLite() {
   try {

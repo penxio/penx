@@ -7,6 +7,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
+import { client, pg } from '@penx/db/client'
 import bookmarkRouter from './routers/bookmark'
 import { Windows } from './types'
 
@@ -80,6 +81,49 @@ export class HonoServer {
     const api = this.app.basePath('/api')
 
     api.route('bookmark', bookmarkRouter)
+
+    // Drizzle Proxy endpoint
+    api.post('/query', async (c) => {
+      try {
+        const { sql, params, method } = await c.req.json()
+
+        // Prevent multiple queries
+        const sqlBody = sql.replace(/;/g, '')
+
+        console.log(
+          '>>>>>>>>sqlBody:',
+          sqlBody,
+          'params:',
+          params,
+          'method:',
+          method,
+        )
+        if (method === 'get') {
+          const result = await pg.query(sql, params)
+          return c.json({ rows: Object.values(result.rows[0] || {}) })
+        } else {
+          const result = await pg.query(sql, params)
+          return c.json({
+            rows: result.rows.map((row) => Object.values(row as any)),
+          })
+        }
+
+        // Execute the query using the database client
+        // const result = await client.execute(sqlBody)
+
+        // console.log('========result:', result)
+
+        // // Return the appropriate format based on method
+        // if (method === 'get') {
+        //   return c.json({ rows: result[0] || [] })
+        // } else {
+        //   return c.json({ rows: result.rows })
+        // }
+      } catch (error: any) {
+        console.error('Database query error:', error)
+        return c.json({ error: error.message }, 500)
+      }
+    })
 
     api.get('/users', async (c) => {
       return c.json({

@@ -7,7 +7,8 @@
   "main": "index.ts",
   "types": "./src/index.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
   },
   "scripts": {
     "drizzle:generate": "drizzle-kit generate",
@@ -25,6 +26,7 @@
     "@penx/model-type": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
+    "drizzle-orm": "^0.44.4",
     "drizzle-zod": "^0.8.2",
     "electron": "37.2.0"
   }

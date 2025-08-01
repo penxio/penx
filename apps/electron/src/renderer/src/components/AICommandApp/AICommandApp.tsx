@@ -6,6 +6,7 @@ import { toast } from 'sonner'
 import { JournalQuickInput } from '@penx/components/JournalQuickInput'
 import { cn } from '@penx/utils'
 import { AreasPopover } from '../AreasPopover'
+import { DatabaseExample } from '../DatabaseExample'
 
 const conf = new Conf()
 export function AICommandApp() {
@@ -47,6 +48,8 @@ export function AICommandApp() {
         </div>
         <div className="no-drag">AI command</div>
       </div>
+
+      <DatabaseExample />
     </div>
   )
 }
