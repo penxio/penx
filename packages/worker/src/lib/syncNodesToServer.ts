@@ -3,8 +3,8 @@ import { produce } from 'immer'
 import _ from 'lodash'
 import { api } from '@penx/api'
 import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
+import { idb } from '@penx/indexeddb'
 import { checkMnemonic } from '@penx/libs/checkMnemonic'
-import { localDB } from '@penx/local-db'
 import { encryptByPublicKey } from '@penx/mnemonic'
 import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
@@ -14,14 +14,14 @@ export async function syncNodesToServer() {
 
   if (!session || !session?.spaceId || !session.publicKey) return
 
-  const site = await localDB.getSpace(session.spaceId)
+  // const site = await localDB.getSpace(session.spaceId)
 
-  if (!site) return
+  // if (!site) return
 
   await checkMnemonic(session)
 
   const getChanges = async () => {
-    const changes = await localDB.change
+    const changes = await idb.change
       .where({ spaceId: session.spaceId, synced: 0 })
       .sortBy('id')
 
@@ -100,10 +100,10 @@ export async function syncNodesToServer() {
     .filter((c) => !mergedChangeIds.includes(c.id))
     .map((c) => c.id)
 
-  await localDB.change.where('id').anyOf(deleteChangeIds).delete()
+  await idb.change.where('id').anyOf(deleteChangeIds).delete()
 
   for (const { id, ...rest } of mergedChanges) {
-    await localDB.change.update(id, rest)
+    await idb.change.update(id, rest)
   }
 
   const newChanges = await getChanges()
@@ -189,7 +189,7 @@ export async function syncNodesToServer() {
 
       // console.log('>>>>>change synced:', change)
       await api.sync(url, encryptedInput)
-      await localDB.change.delete(change.id)
+      await idb.change.delete(change.id)
     } catch (error) {
       console.log('error syncing change:', error)
       errors.push(error)

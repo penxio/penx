@@ -5,6 +5,7 @@ import { useChat } from '@ai-sdk/react'
 import { Attachment, UIMessage } from 'ai'
 import { AI_SERVICE_HOST, isDesktop, ROOT_HOST } from '@penx/constants'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
+import { idb } from '@penx/indexeddb'
 import { localDB } from '@penx/local-db'
 import { PanelType, SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
@@ -50,7 +51,7 @@ export function Chat({
     generateId: uniqueId,
     experimental_prepareRequestBody: (body) => {},
     onFinish: async (message, options) => {
-      await localDB.message.add({
+      await idb.message.add({
         id: uniqueId(),
         chatId: id,
         role: 'user',
@@ -59,7 +60,7 @@ export function Chat({
         createdAt: new Date(),
       })
 
-      await localDB.message.add({
+      await idb.message.add({
         id: uniqueId(),
         chatId: id,
         role: message.role,

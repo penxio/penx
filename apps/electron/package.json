@@ -46,6 +46,7 @@
     "@penx/libs": "workspace:*",
     "@penx/db": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/locales": "workspace:*",
     "@penx/mnemonic": "workspace:*",
     "@penx/model-type": "workspace:*",

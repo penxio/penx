@@ -1,5 +1,6 @@
 import { relaunch } from '@tauri-apps/plugin-process'
 import { check } from '@tauri-apps/plugin-updater'
+import { toast } from 'sonner'
 
 export async function checkUpdateAndInstall({ beta }: { beta?: boolean } = {}) {
   const update = await check({

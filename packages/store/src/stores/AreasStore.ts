@@ -1,6 +1,7 @@
 import { get, set } from 'idb-keyval'
 import { atom } from 'jotai'
 import { ACTIVE_SPACE, CreateAreaInput, WidgetType } from '@penx/constants'
+import { idb } from '@penx/indexeddb'
 import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
@@ -83,33 +84,31 @@ export class AreasStore {
   }
 
   async deleteArea(area: IAreaNode) {
-    await localDB.transaction('rw', localDB.node, localDB.change, async () => {
-      if (area.props.isGenesis) {
-        throw new Error('Cannot delete last area')
-      }
+    if (area.props.isGenesis) {
+      throw new Error('Cannot delete last area')
+    }
 
-      const creations = await localDB.listCreationsByArea(area.id)
-      const creationIds = creations.map((c) => c.id)
+    const creations = await localDB.listCreationsByArea(area.id)
+    const creationIds = creations.map((c) => c.id)
 
-      const creationTags = await localDB.listCreationTagsByArea(area.id)
-      const creationTagsIds = creationTags.map((c) => c.id)
+    const creationTags = await localDB.listCreationTagsByArea(area.id)
+    const creationTagsIds = creationTags.map((c) => c.id)
 
-      await localDB.node.where('id').anyOf(creationTagsIds).delete()
-      await localDB.node.where('id').anyOf(creationIds).delete()
-      await localDB.node.delete(area.id)
+    await localDB.node.deleteNodeByIds([...creationTagsIds, ...creationIds])
+    await localDB.node.delete(area.id)
 
-      const site = (await get(ACTIVE_SPACE)) as ISpaceNode
-      if (site.props.isRemote) {
-        await localDB.change.add({
-          operation: OperationType.DELETE,
-          spaceId: site.id,
-          synced: 0,
-          createdAt: new Date(),
-          key: area.id,
-          data: { id: area.id },
-        } as IChange)
-      }
-    })
+    const site = (await get(ACTIVE_SPACE)) as ISpaceNode
+    if (site.props.isRemote) {
+      await idb.change.add({
+        operation: OperationType.DELETE,
+        spaceId: site.id,
+        synced: 0,
+        createdAt: new Date(),
+        key: area.id,
+        data: { id: area.id },
+      } as IChange)
+    }
+
     const areas = await this.refetchAreas()
     return areas
   }

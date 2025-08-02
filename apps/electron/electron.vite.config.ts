@@ -22,6 +22,7 @@ export default defineConfig({
           '@penx/libs',
           '@penx/db',
           '@penx/local-db',
+          '@penx/indexeddb',
           '@penx/locales',
           '@penx/model-type',
           '@penx/novel-editor',

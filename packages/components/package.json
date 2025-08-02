@@ -169,6 +169,7 @@
     "@penx/icons": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/mnemonic": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/novel-editor": "workspace:*",

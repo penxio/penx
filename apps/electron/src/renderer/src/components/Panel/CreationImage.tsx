@@ -4,6 +4,7 @@ import { CloudAlertIcon } from 'lucide-react'
 import { tryToUploadImage } from '@penx/components/DashboardLayout/panel-renderer/PanelJournal/CreationItem/lib/tryToUploadImage'
 import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
+import { idb } from '@penx/indexeddb'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 
@@ -24,7 +25,7 @@ export function CreationImage({ creation }: { creation: Creation }) {
     queryKey: ['creation', 'image', creation.id],
     queryFn: async () => {
       if (creation.data?.fileId) {
-        const item = await localDB.file.get(creation.data.fileId)
+        const item = await idb.file.get(creation.data.fileId)
         if (item) return URL.createObjectURL(item.file)
       }
       return creation.imageUrl

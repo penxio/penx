@@ -29,7 +29,7 @@ export class TagsStore {
       .filter((ct) => ct.props.tagId === tag.id)
       .map((ct) => ct.id)
 
-    await localDB.node.where('id').anyOf(ids).delete()
+    await localDB.node.deleteNodeByIds(ids)
     await localDB.node.delete(tag.id)
     await this.refetchTags()
   }

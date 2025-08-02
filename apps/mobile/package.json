@@ -58,6 +58,7 @@
     "@penx/icons": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/locales": "workspace:*",
     "@penx/math": "workspace:*",
     "@penx/model-type": "workspace:*",

@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { AudioLinesIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { Creation } from '@penx/domain'
+import { idb } from '@penx/indexeddb'
 import { localDB } from '@penx/local-db'
 import { IVoice } from '@penx/model-type'
 import { useSession } from '@penx/session'
@@ -25,7 +26,7 @@ export const VoiceContent = ({ creation }: Props) => {
   const { isLoading, data: voice } = useQuery({
     queryKey: ['voice', creation.id],
     queryFn: async () => {
-      const result = await localDB.voice.get(creation.data['voiceId'])
+      const result = await idb.voice.get(creation.data['voiceId'])
       return result ? result : null
     },
   })

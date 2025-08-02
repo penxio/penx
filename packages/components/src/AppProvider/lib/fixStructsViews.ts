@@ -1,6 +1,5 @@
 import isEqual from 'react-fast-compare'
 import { produce } from 'immer'
-import { Struct } from '@penx/domain'
 import { localDB } from '@penx/local-db'
 import { IStructNode } from '@penx/model-type'
 
@@ -22,7 +21,7 @@ export async function fixStructsViews(areaId: string, structs: IStructNode[]) {
       console.log('fix struct views............')
 
       const newViews = produce(views, (draft) => {
-        for (const view of views) {
+        for (const view of draft) {
           view.viewColumns = columns.map((c) => ({
             columnId: c.id,
             visible: true,

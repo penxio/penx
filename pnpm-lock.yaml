@@ -912,6 +912,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../../packages/icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../../packages/indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1057,6 +1060,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../../packages/icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../../packages/indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1250,6 +1256,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../../packages/icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../../packages/indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1491,6 +1500,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../../packages/icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../../packages/indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1696,6 +1708,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../../packages/icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../../packages/indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../../packages/libs
@@ -1872,6 +1887,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2115,6 +2133,9 @@ importers:
       '@penx/emitter':
         specifier: workspace:*
         version: link:../emitter
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2157,6 +2178,28 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
+  packages/indexeddb:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+    devDependencies:
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/libs:
     dependencies:
       '@penx/api':
@@ -2193,6 +2236,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/model-type':
         specifier: workspace:*
         version: link:../model-type
@@ -2368,6 +2414,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/local-db':
         specifier: workspace:*
         version: link:../local-db
@@ -2390,6 +2439,9 @@ importers:
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2503,6 +2555,9 @@ importers:
       '@penx/icons':
         specifier: workspace:*
         version: link:../icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs
@@ -2552,6 +2607,9 @@ importers:
       '@penx/encryption':
         specifier: workspace:*
         version: link:../encryption
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
       '@penx/libs':
         specifier: workspace:*
         version: link:../libs

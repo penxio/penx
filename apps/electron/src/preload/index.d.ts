@@ -1,5 +1,6 @@
 import { ElectronAPI } from '@electron-toolkit/preload'
 import { clipboard, contextBridge, ipcRenderer } from 'electron'
+import type { NodeModelApi } from '@penx/local-db'
 import type { Shortcut } from '@penx/model-type'
 
 type Navigation = {
@@ -11,6 +12,7 @@ type Navigation = {
 
 declare global {
   interface Window {
+    nodeModelApi: NodeModelApi
     navigations: Navigation[]
     electron: ElectronAPI
     customElectronApi: {

@@ -20,6 +20,7 @@
     "@penx/constants": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/model-type": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*"
   }

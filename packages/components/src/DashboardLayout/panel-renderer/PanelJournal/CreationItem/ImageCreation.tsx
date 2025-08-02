@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { motion } from 'motion/react'
 import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
-import { localDB } from '@penx/local-db'
+import { idb } from '@penx/indexeddb'
 import { useSession } from '@penx/session'
 import { ColumnType } from '@penx/types'
 import { ProgressiveImage } from '@penx/uikit/components/ProgressiveImage'
@@ -34,7 +34,7 @@ export function ImageCreation({ creation, isDetailPanel = false }: Props) {
     queryKey: ['creation', 'image', creation.id],
     queryFn: async () => {
       if (creation.data?.fileId) {
-        const item = await localDB.file.get(creation.data.fileId)
+        const item = await idb.file.get(creation.data.fileId)
         if (item) return URL.createObjectURL(item.file)
       }
       return creation.imageUrl

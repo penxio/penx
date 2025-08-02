@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-import { localDB } from '@penx/local-db'
+import { idb } from '@penx/indexeddb'
 import { queryClient } from '@penx/query-client'
 import { getSession, useSession } from '@penx/session'
 
 const queryKey = ['messages']
 
 export async function queryMessages(spaceId: string) {
-  const list = await localDB.message.where({ spaceId }).toArray()
+  const list = await idb.message.where({ spaceId }).toArray()
 
   return list
     .toSorted((a, b) => {

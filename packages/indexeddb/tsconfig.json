@@ -1,0 +1,10 @@
+{
+  "extends": "@penx/typescript-config/base.json",
+  "compilerOptions": {
+    "declarationMap": false,
+    "declaration": false,
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

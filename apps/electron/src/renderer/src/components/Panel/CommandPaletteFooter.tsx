@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { Box } from '@fower/react'
 import { ProfileButton } from '@penx/components/ProfileButton'
+import { isProd } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useAreas } from '@penx/hooks/useAreas'
+import { localDB } from '@penx/local-db'
+import { Button } from '@penx/uikit/ui/button'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { openCommand } from '~/lib/openCommand'
 import { AreasPopover } from '../AreasPopover'
@@ -37,6 +40,16 @@ export const CommandPaletteFooter = ({}: Props) => {
             }}
           />
         </div>
+      )}
+      {!isProd && (
+        <Button
+          onClick={async () => {
+            const nodes = await localDB.node.findMany({})
+            await localDB.node.deleteNodeByIds(nodes.map((n) => n.id))
+          }}
+        >
+          Clear DB (dev only)
+        </Button>
       )}
       {/* <Box
         className="drag flex-1 h-full"

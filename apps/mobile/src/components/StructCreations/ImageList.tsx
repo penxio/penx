@@ -9,6 +9,7 @@ import { appEmitter } from '@penx/emitter'
 import { localDB } from '@penx/local-db'
 import { useSession } from '@penx/session'
 import { sleep } from '@penx/utils'
+import { idb } from '../../../../../packages/indexeddb/src'
 
 interface Props {
   containerWidth: number
@@ -103,7 +104,7 @@ function CreationImage({ creation }: { creation: Creation }) {
     queryKey: ['creation', 'image', creation.id],
     queryFn: async () => {
       if (creation.data?.fileId) {
-        const item = await localDB.file.get(creation.data.fileId)
+        const item = await idb.file.get(creation.data.fileId)
         if (item) return URL.createObjectURL(item.file)
       }
       return creation.imageUrl

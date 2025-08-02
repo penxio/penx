@@ -49,7 +49,19 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
-    console.log('=======app=session:', session)
+    console.log('=======app=session:')
+
+    // const nodes = await localDB.node.findMany({})
+    // await localDB.node.deleteNodeByIds(nodes.map((n) => n.id))
+    // return
+
+    // const nodes = await localDB.node.findMany({})
+    // console.log(
+    //   '=========nodes:',
+    //   nodes.map((n) => format(n.createdAt, 'yyyy-MM-dd HH:mm:ss')),
+    // )
+    // return
+
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return

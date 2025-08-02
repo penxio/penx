@@ -13,11 +13,12 @@ import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { GoogleOauthDialog } from '@penx/components/GoogleOauthDialog'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
-import { locales } from '@penx/constants'
+import { isServer, locales } from '@penx/constants'
 import { LocaleProvider } from '@penx/locales'
 import { cn } from '@penx/utils'
 import { LoginDialog } from '@penx/widgets/LoginDialog/LoginDialog'
 import { PanelNotes } from '../../../../packages/components/src/DashboardLayout/panel-renderer/PanelJournal/PanelNotes'
+import { NodeModelApiInjector } from './NodeModelApiInjector'
 import { WatchAppEvent } from './WatchAppEvent'
 
 const roboto = Poppins({
@@ -73,27 +74,29 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={cn('bg-background min-h-screen font-sans antialiased')}>
         <LocaleProvider locale={locale}>
-          <DashboardProviders cookies={cookies}>
-            <GoogleOauthDialog />
-            <LoginDialog />
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <NextTopLoader
-                color="#000"
-                // crawlSpeed={0.08}
-                height={2}
-                showSpinner={false}
-                template='<div class="bar" role="bar"><div class="peg"></div></div>'
-              />
+          <NodeModelApiInjector>
+            <DashboardProviders cookies={cookies}>
+              <GoogleOauthDialog />
+              <LoginDialog />
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <NextTopLoader
+                  color="#000"
+                  // crawlSpeed={0.08}
+                  height={2}
+                  showSpinner={false}
+                  template='<div class="bar" role="bar"><div class="peg"></div></div>'
+                />
 
-              <WatchAppEvent />
-              <DashboardLayout>{children}</DashboardLayout>
-            </ThemeProvider>
-          </DashboardProviders>
+                <WatchAppEvent />
+                <DashboardLayout>{children}</DashboardLayout>
+              </ThemeProvider>
+            </DashboardProviders>
+          </NodeModelApiInjector>
         </LocaleProvider>
 
         <div id="portal" className="fixed left-0 top-0 z-[100000000]" />

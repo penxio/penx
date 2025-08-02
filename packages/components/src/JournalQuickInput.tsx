@@ -47,7 +47,7 @@ const client = getOpenAIClient()
 
 async function generateTitle(title: string) {
   const session = await getSession()
-  if (!session.accessToken) return ''
+  if (!session?.accessToken) return ''
   const stream = await client.chat.completions.create(
     {
       model: 'openai',

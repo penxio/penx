@@ -87,7 +87,7 @@ export async function syncNodesToLocal(spaceId: string) {
       const rows = await shape.rows
       // console.log('======>>>>>>mnemonic:', mnemonic)
 
-      await localDB.node.bulkPut(
+      await localDB.node.insertMany(
         rows.map((row) => {
           const node = produce(row as any as INode, (draft) => {
             draft.createdAt = new Date(Number(draft.createdAt?.toString()))
@@ -193,54 +193,52 @@ async function sync(
     })
   }
 
-  await localDB.transaction('rw', localDB.node, async () => {
-    for (const message of changes) {
-      const value = message.value as any
+  for (const message of changes) {
+    const value = message.value as any
 
-      const operation = message.headers.operation
-      if (operation === 'insert') {
-        // console.log('insert:', message)
+    const operation = message.headers.operation
+    if (operation === 'insert') {
+      // console.log('insert:', message)
 
-        await localDB.node.put(getDecryptedNode(value, true))
+      await localDB.node.insert(getDecryptedNode(value, true))
 
-        const newNode = await localDB.node.get(value.id)
-        newNode && changeNodes.push(newNode)
-        updated = true // TODO:
-      }
-      if (operation === 'update') {
-        const node = nodes.find((c) => c.id === value.id)
-        const changed = Object.keys(value)
-          .filter((k) => k !== 'updatedAt')
-          .some((key) => {
-            if (!node) return true
-            // console.log('=====value[key]:', value[key], creation[key])
-            return !fastCompare(value[key], (node as any)[key])
-          })
+      const newNode = await localDB.node.get(value.id)
+      newNode && changeNodes.push(newNode)
+      updated = true // TODO:
+    }
+    if (operation === 'update') {
+      const node = nodes.find((c) => c.id === value.id)
+      const changed = Object.keys(value)
+        .filter((k) => k !== 'updatedAt')
+        .some((key) => {
+          if (!node) return true
+          // console.log('=====value[key]:', value[key], creation[key])
+          return !fastCompare(value[key], (node as any)[key])
+        })
 
-        // console.log('=====changed:', changed)
+      // console.log('=====changed:', changed)
 
-        if (changed) {
-          node && changeNodes.push(node)
-        }
-
-        // console.log('======getDecryptedNode(value):', getDecryptedNode(value))
-
-        if (value?.props) {
-          await localDB.node.update(value.id, {
-            ...getDecryptedNode(value),
-          })
-        }
-      }
-      if (operation === 'delete') {
-        const node = nodes.find((c) => c.id === value.id)
+      if (changed) {
         node && changeNodes.push(node)
+      }
 
-        // console.log('message delete:', message)
-        await localDB.node.delete(value.id)
-        updated = true // TODO:
+      // console.log('======getDecryptedNode(value):', getDecryptedNode(value))
+
+      if (value?.props) {
+        await localDB.node.update(value.id, {
+          ...getDecryptedNode(value),
+        })
       }
     }
-  })
+    if (operation === 'delete') {
+      const node = nodes.find((c) => c.id === value.id)
+      node && changeNodes.push(node)
+
+      // console.log('message delete:', message)
+      await localDB.node.delete(value.id)
+      updated = true // TODO:
+    }
+  }
 
   // console.log('synced:', updated, '=====changeNodes:', changeNodes)
   // console.log('======>>>>>>>>equal1:', changeNodes)
@@ -375,20 +373,20 @@ function decrypt(base64String: string, mnemonic: string, shouldParse = true) {
   if (!base64String) return base64String
   try {
     const result = decryptByMnemonic(base64String, mnemonic)
-    console.log('==========result:', result)
+    // console.log('==========result:', result)
 
     // console.log('result======:', result)
     if (shouldParse) return JSON.parse(result)
     return result
   } catch (error) {
-    console.log(
-      '======errord ecrypt:',
-      error,
-      'base64String:',
-      base64String,
-      'mnemonic:',
-      mnemonic,
-    )
+    // console.log(
+    //   '======errord ecrypt:',
+    //   error,
+    //   'base64String:',
+    //   base64String,
+    //   'mnemonic:',
+    //   mnemonic,
+    // )
     return base64String
   }
 }

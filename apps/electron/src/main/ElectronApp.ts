@@ -24,6 +24,7 @@ import { AppUpdater } from './AppUpdater'
 import { createAICommandWindow } from './createAICommandWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
+import { initPGLite } from './initPGLite'
 import {
   activateVisualFocus,
   FrontAppMeta,
@@ -33,7 +34,6 @@ import {
 import { isPortInUse, killPort } from './port-killer'
 import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
-import { initPGLite } from './initPGLite'
 
 const port = 14158
 
@@ -604,7 +604,7 @@ export class ElectronApp {
     const doubleClickThreshold = 300
 
     uIOhook.on('keydown', async (event) => {
-      if (event.keycode === UiohookKey.Meta) {
+      if (event.keycode === UiohookKey.Alt) {
         let now = Date.now()
         if (now - lastCmdDownTime < doubleClickThreshold) {
           console.log('Cmd key double clicked')
@@ -617,7 +617,7 @@ export class ElectronApp {
         const selection = await getSelection()
         console.log('alt..... selection:', selection)
         if (selection?.text) {
-          this.toggleAICommandWindow()
+          // this.toggleAICommandWindow()
         }
       }
     })

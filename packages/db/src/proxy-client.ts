@@ -1,5 +1,5 @@
 import { drizzle } from 'drizzle-orm/pg-proxy'
-import { nodes } from './schema/nodes'
+import { produce } from 'immer'
 
 // Create a proxy client for renderer usage
 export const createProxyClient = (
@@ -20,15 +20,26 @@ export const createProxyClient = (
       }
 
       const result = await response.json()
-      console.log('========result:', result)
 
-      return result
+      return {
+        ...result,
+        rows: result.rows.map((row: any[]) => {
+          return produce(row, (draft) => {
+            for (let i = 0; i < draft.length; i++) {
+              // isDate
+              if (
+                result.fields[i].name === 'created_at' ||
+                result.fields[i].name === 'updated_at'
+              ) {
+                draft[i] = new Date(draft[i])
+              }
+            }
+          })
+        }),
+      }
     } catch (error: any) {
       console.error('Error from pg proxy server:', error)
       return { rows: [] }
     }
   })
 }
-
-// Export the schema for use in renderer
-export { nodes }

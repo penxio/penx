@@ -1,92 +1,61 @@
-import { format } from 'date-fns'
-import Dexie, { Table } from 'dexie'
 import { get } from 'idb-keyval'
 import { ACTIVE_SPACE } from '@penx/constants'
+import { idb } from '@penx/indexeddb'
 import {
   IAreaNode,
-  IChat,
   ICreationNode,
   ICreationTagNode,
-  IDocument,
   IJournalNode,
-  IMessage,
   INode,
   ISettingsNode,
   ISpaceNode,
   IStructNode,
-  ISuggestion,
   ITagNode,
-  IVoice,
   NodeType,
 } from '@penx/model-type'
-import { IAsset } from '@penx/model-type/IAsset'
 import { IChange, OperationType } from '@penx/model-type/IChange'
-import { IFile } from '@penx/model-type/IFile'
 import { uniqueId } from '@penx/unique-id'
+import { NodeModelApi } from './types'
 
-class LocalDB extends Dexie {
-  node!: Table<INode, string>
-  file!: Table<IFile, string>
-  voice!: Table<IVoice, string>
-  asset!: Table<IAsset, string>
-  change!: Table<IChange, number>
-  chat!: Table<IChat, string>
-  message!: Table<IMessage, string>
-  document!: Table<IDocument, string>
-  suggestion!: Table<ISuggestion, string>
+class LocalDB {
+  node: NodeModelApi
 
-  constructor() {
-    super('penx-local')
-    this.version(20).stores({
-      // Primary key and indexed props
-      node: 'id, spaceId, userId, areaId, type, date, [userId+type], [spaceId+type], [areaId+type], [spaceId+type+structType]',
-      file: 'id, hash',
-      voice: 'id, hash',
-      asset: 'id, spaceId, url, isPublic, isTrashed',
-      chat: 'id, spaceId',
-      message: 'id, spaceId',
-      document: 'id, spaceId',
-      suggestion: 'id, spaceId',
-      change: '++id, table, spaceId, [spaceId+synced]',
-    })
-  }
-
-  async addFile(hash: string, file: File) {
-    return this.file.add({
-      id: uniqueId(),
-      hash,
-      file,
-    })
-  }
-
-  getNode = <T extends INode>(id: string) => {
-    return this.node.get(id) as any as Promise<T>
+  getNode = <T extends INode>(id: string): Promise<T> => {
+    return this.node.get(id)
   }
 
   listSpaceNodes = (spaceId: string) => {
-    return this.node.where({ spaceId }).toArray() as unknown as Promise<INode[]>
+    return this.node.findMany({ spaceId })
   }
 
   listAreaNodes = (areaId: string) => {
-    return this.node.where({ areaId }).toArray() as unknown as Promise<INode[]>
+    return this.node.findMany({ areaId })
   }
 
-  addNode = async <T extends INode>(data: Partial<T>): Promise<T> => {
-    const newNodeId = await this.node.add({
-      id: uniqueId(),
-      ...data,
-    } as T)
-    const node = (await this.node.get(newNodeId)) as any as T
-    await this.addChange(node.id, OperationType.CREATE, node)
+  addNode = async <T extends INode>(
+    data: Partial<T>,
+    changed = true,
+  ): Promise<T> => {
+    const node = await this.node.insert(data)
+    console.log('======add==node:', data, 'node:', node)
+
+    if (changed) {
+      await this.addChange(node.id, OperationType.CREATE, node)
+    }
     return node
   }
-  deleteNodeByIds = (nodeIds: string[]) => {
-    return this.node.where('id').anyOf(nodeIds).delete()
+
+  deleteNodeByIds = async (ids: string[]) => {
+    await this.deleteNodeByIds(ids)
   }
 
-  updateNodeProps = async <T extends any>(id: string, input: Partial<T>) => {
+  updateNodeProps = async <T extends INode>(
+    id: string,
+    input: Partial<T['props']>,
+  ) => {
     const node = await this.getNode(id)
     const updatedAt = new Date()
+
     await this.node.update(id, {
       updatedAt,
       props: {
@@ -102,38 +71,33 @@ class LocalDB extends Dexie {
   }
 
   getSpace = (id: string) => {
-    return this.node.get(id) as any as Promise<ISpaceNode>
+    return this.node.get<ISpaceNode>(id)
   }
 
-  getSpaceByUserId = (userId: string) => {
-    return this.node
-      .where({ type: NodeType.SPACE, userId })
-      .first() as unknown as Promise<ISpaceNode>
+  getSpaceByUserId = async (userId: string) => {
+    const spaces = await this.node.findMany({
+      type: NodeType.SPACE,
+      userId,
+    })
+
+    return spaces[0] as ISpaceNode
   }
 
   listAllSpaces = () => {
-    return this.node
-      .where({ type: NodeType.SPACE })
-      .toArray() as unknown as Promise<ISpaceNode[]>
+    return this.node.findMany<ISpaceNode>({
+      type: NodeType.SPACE,
+    })
   }
 
   listAllSpaceByUserId = (userId: string) => {
-    return this.node
-      .where({
-        type: NodeType.SPACE,
-        userId,
-      })
-      .toArray() as unknown as Promise<ISpaceNode[]>
+    return this.node.findMany<ISpaceNode>({
+      type: NodeType.SPACE,
+      userId,
+    })
   }
 
   addSpace = async <T extends ISpaceNode>(data: Partial<T>) => {
-    const space = await this.addNode({
-      id: uniqueId(),
-      type: NodeType.SPACE,
-      ...data,
-    } as ISpaceNode)
-
-    return space as T
+    return this.addNode(data)
   }
 
   updateSpaceProps = async (
@@ -148,23 +112,18 @@ class LocalDB extends Dexie {
       ? { type: NodeType.AREA, spaceId }
       : { type: NodeType.SPACE }
 
-    return this.node.where(condition).toArray() as unknown as Promise<
-      IAreaNode[]
-    >
+    return this.node.findMany<IAreaNode>(condition)
   }
 
   addAreaNode = async <T extends IAreaNode>(node: Partial<T>): Promise<T> => {
-    const newNodeId = await this.addNode({
-      type: NodeType.AREA,
-      ...node,
-    } as T)
-    return this.node.get(newNodeId) as any as Promise<T>
+    return this.addNode(node)
   }
 
   listStructs = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.STRUCT, areaId })
-      .toArray() as unknown as Promise<IStructNode[]>
+    return this.node.findMany<IStructNode>({
+      type: NodeType.STRUCT,
+      areaId,
+    })
   }
 
   getTag = (id: string) => {
@@ -172,21 +131,24 @@ class LocalDB extends Dexie {
   }
 
   listTags = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.TAG, areaId })
-      .toArray() as unknown as Promise<ITagNode[]>
+    return this.node.findMany<ITagNode>({
+      type: NodeType.TAG,
+      areaId,
+    })
   }
 
   listCreationTags = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.CREATION_TAG, areaId })
-      .toArray() as unknown as Promise<ICreationTagNode[]>
+    return this.node.findMany<ICreationTagNode>({
+      type: NodeType.CREATION_TAG,
+      areaId,
+    })
   }
 
   listCreationTagsByArea = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.CREATION_TAG, areaId })
-      .toArray() as unknown as Promise<ICreationTagNode[]>
+    return this.node.findMany<ICreationTagNode>({
+      type: NodeType.CREATION_TAG,
+      areaId,
+    })
   }
 
   getCreationTag = (id: string) => {
@@ -198,26 +160,27 @@ class LocalDB extends Dexie {
   }
 
   listCreations = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.CREATION, areaId })
-      .toArray() as unknown as Promise<ICreationNode[]>
+    return this.node.findMany<ICreationNode>({
+      type: NodeType.CREATION,
+      areaId,
+    })
   }
 
   listCreationsByArea = (areaId: string) => {
-    return this.node
-      .where({ type: NodeType.CREATION, areaId })
-      .toArray() as unknown as Promise<ICreationNode[]>
+    return this.node.findMany<ICreationNode>({
+      type: NodeType.CREATION,
+      areaId,
+    })
   }
 
   addCreation = async <T extends ICreationNode>(
     node: Partial<T>,
   ): Promise<T> => {
-    const newNodeId = await this.addNode({
+    const newNode = await this.addNode<ICreationNode>({
       type: NodeType.CREATION,
       ...node,
     } as T)
-
-    return this.node.get(newNodeId) as any as Promise<T>
+    return newNode as T
   }
 
   updateCreationProps = async (
@@ -261,12 +224,9 @@ class LocalDB extends Dexie {
 
   // TODO: need  improve
   deleteStruct = async (id: string) => {
-    const nodes = (await this.node
-      .where({
-        // areaId: struct.areaId,
-        type: NodeType.CREATION,
-      })
-      .toArray()) as ICreationNode[]
+    const nodes = await this.node.findMany<ICreationNode>({
+      type: NodeType.CREATION,
+    })
 
     const ids = nodes
       .filter((node) => node.props.structId === id)
@@ -285,9 +245,7 @@ class LocalDB extends Dexie {
       ? { type: NodeType.JOURNAL, areaId }
       : { type: NodeType.JOURNAL }
 
-    return this.node.where(condition).toArray() as unknown as Promise<
-      IJournalNode[]
-    >
+    return this.node.findMany<IJournalNode>(condition)
   }
 
   addJournal = async (data: Partial<IJournalNode>) => {
@@ -328,9 +286,9 @@ class LocalDB extends Dexie {
       ...data,
     } as ICreationTagNode)
 
-    const creationTags = (await this.node
-      .where({ type: NodeType.CREATION_TAG })
-      .toArray()) as ICreationTagNode[]
+    const creationTags = await this.node.findMany<ICreationTagNode>({
+      type: NodeType.CREATION_TAG,
+    })
 
     const count = creationTags.filter(
       (i) => i.props.tagId === creationTag.props.tagId,
@@ -349,14 +307,14 @@ class LocalDB extends Dexie {
   }
 
   deleteCreationTag = async (id: string) => {
-    const creationTag = (await this.node.get(id))!
+    const creationTag = await this.getNode<ICreationTagNode>(id)
     const tagId = creationTag.props.tagId
     await this.addChange(id, OperationType.DELETE)
     await this.node.delete(id)
 
-    const creationTags = (await this.node
-      .where({ type: NodeType.CREATION_TAG })
-      .toArray()) as ICreationTagNode[]
+    const creationTags = await this.node.findMany<ICreationTagNode>({
+      type: NodeType.CREATION_TAG,
+    })
 
     const count = creationTags.filter((i) => i.props.tagId === tagId).length
     await this.updateTagProps(creationTag.props.tagId, {
@@ -364,10 +322,12 @@ class LocalDB extends Dexie {
     })
   }
 
-  getSettings = (spaceId: string) => {
-    return this.node
-      .where({ type: NodeType.SETTINGS, spaceId })
-      .first() as unknown as Promise<ISettingsNode>
+  getSettings = async (spaceId: string) => {
+    const lists = await this.node.findMany<ISettingsNode>({
+      type: NodeType.SETTINGS,
+      spaceId,
+    })
+    return lists[0] as ISettingsNode
   }
 
   updateSettingsProps = async (
@@ -399,12 +359,12 @@ class LocalDB extends Dexie {
         key: id,
         data,
       } as IChange
-      await this.change.add(change)
+      await idb.change.add(change)
     }
   }
 
   deleteAllSpaceData = (spaceId: string) => {
-    return this.node.where('spaceId').anyOf(spaceId).delete()
+    return this.node.deleteMany({ spaceId })
   }
 }
 

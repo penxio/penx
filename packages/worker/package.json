@@ -27,6 +27,7 @@
     "@penx/libs": "workspace:*",
     "@penx/api": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "@penx/utils": "workspace:*"
   }

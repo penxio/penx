@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@penx/local-db": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/domain": "workspace:*",

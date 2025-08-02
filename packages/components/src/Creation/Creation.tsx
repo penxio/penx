@@ -47,6 +47,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
   // const { mutateAsync } = trpc.creation.update.useMutation()
   const { setPostSaving } = usePostSaving()
   const creation = usePanelCreationContext()
+
   const isImage = creation.type === StructType.IMAGE
   const { structs } = useStructs()
 

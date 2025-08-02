@@ -10,6 +10,7 @@ import { appEmitter } from '@penx/emitter'
 import { useAddCreation } from '@penx/hooks/useAddCreation'
 import { useStructs } from '@penx/hooks/useStructs'
 import { CameraLine } from '@penx/icons'
+import { idb } from '@penx/indexeddb'
 import { localDB } from '@penx/local-db'
 import { ImageCreationData } from '@penx/model-type'
 import { useSession } from '@penx/session'
@@ -50,7 +51,7 @@ export function TakePhotoButton({ children }: Props) {
       })
 
       const hash = await calculateSHA256FromFile(file)
-      const fileId = await localDB.addFile(hash, file)
+      const fileId = await idb.addFile(hash, file)
 
       await addCreation({
         type: StructType.IMAGE,

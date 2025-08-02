@@ -24,6 +24,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { cn } from '@penx/utils'
 import { stringToDoc } from '@penx/utils/editorHelper'
+import { idb } from '@penx/indexeddb'
 
 interface Props {}
 
@@ -113,7 +114,7 @@ export const VoiceRecorderButton = ({}: Props) => {
     // console.log('======result:', recordingData.value)
 
     const id = uniqueId()
-    await localDB.voice.add({
+    await idb.voice.add({
       id,
       ...recordingData.value,
       uploaded: false,

@@ -42,6 +42,7 @@ import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { updateCreationProps } from '@penx/hooks/useCreation'
 import { useCreationStruct } from '@penx/hooks/useCreationStruct'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
+import { idb } from '@penx/indexeddb'
 import { getBgColor, getTextColorByName } from '@penx/libs/color-helper'
 import { getCreationIcon } from '@penx/libs/getCreationIcon'
 import { localDB } from '@penx/local-db'
@@ -83,7 +84,7 @@ export function CreationItem({ creation, onChecked, className }: Props) {
   const { data: voice } = useQuery({
     queryKey: ['voice', creation.id],
     queryFn: async () => {
-      const result = await localDB.voice.get(creation.data['voiceId'])
+      const result = await idb.voice.get(creation.data['voiceId'])
       return result ? result : null
     },
   })

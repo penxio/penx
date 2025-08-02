@@ -32,12 +32,6 @@ We successfully implemented the functionality to directly use Drizzle ORM in the
 - Includes complete field definitions and indexes
 - Supports UUID, JSON, timestamp and other data types
 
-### 4. Usage Examples
-
-**Files**: 
-- `apps/electron/src/renderer/db-example.ts` - Basic usage example
-- `apps/electron/src/renderer/hooks/useDatabase.ts` - React Hook
-- `apps/electron/src/renderer/components/DatabaseHookExample.tsx` - React component example
 
 ## Architecture Diagram
 
@@ -82,33 +76,6 @@ await db.insert(nodes).values({
 })
 ```
 
-### React Hook Usage
-
-```typescript
-import { useDatabase } from './hooks/useDatabase'
-
-const MyComponent = () => {
-  const { loading, error, getAllNodes, insertNode } = useDatabase()
-  
-  const handleAddNode = async () => {
-    await insertNode({
-      type: 'text',
-      props: { title: 'New Node' },
-      userId: 'user-id',
-      spaceId: 'space-id',
-    })
-  }
-  
-  return (
-    <div>
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error}</div>}
-      <button onClick={handleAddNode}>Add Node</button>
-    </div>
-  )
-}
-```
-
 ## Technical Features
 
 ### 1. Type Safety
@@ -148,11 +115,7 @@ apps/electron/
 │   ├── main/
 │   │   └── server.ts          # Hono server (includes query endpoint)
 │   └── renderer/
-│       ├── db-example.ts      # Basic usage example
-│       ├── hooks/
-│       │   └── useDatabase.ts # React Hook
-│       └── components/
-│           └── DatabaseHookExample.tsx # React component example
+│       ├── panel.tsx
 ```
 
 ## Testing and Verification
