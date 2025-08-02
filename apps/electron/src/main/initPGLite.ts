@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm'
-import { client } from '@penx/db/client'
+import { db } from '@penx/db/client'
 import { nodes } from '@penx/db/schema/nodes'
 
 export async function initPGLite() {
@@ -9,7 +9,7 @@ export async function initPGLite() {
 
     try {
       // Try to query the table to see if it exists
-      await client.select().from(nodes).limit(1)
+      await db.select().from(nodes).limit(1)
       tableExists = true
       console.log('Node table exists, skipping creation')
     } catch (error: any) {
@@ -27,7 +27,7 @@ export async function initPGLite() {
 
     try {
       // Create table
-      await client.execute(sql`
+      await db.execute(sql`
         CREATE TABLE "node" (
           "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
           "type" text NOT NULL,
@@ -42,16 +42,16 @@ export async function initPGLite() {
       console.log('Created node table')
 
       // Create indexes
-      await client.execute(
+      await db.execute(
         sql`CREATE INDEX "idx_node_space" ON "node" USING btree ("space_id")`,
       )
-      await client.execute(
+      await db.execute(
         sql`CREATE INDEX "idx_node_area" ON "node" USING btree ("area_id")`,
       )
-      await client.execute(
+      await db.execute(
         sql`CREATE INDEX "idx_node_space_area" ON "node" USING btree ("space_id","area_id")`,
       )
-      await client.execute(
+      await db.execute(
         sql`CREATE INDEX "idx_node_space_type" ON "node" USING btree ("space_id","type")`,
       )
       console.log('Created all indexes')

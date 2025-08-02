@@ -3,7 +3,7 @@ import { eq } from 'drizzle-orm'
 import { Hono } from 'hono'
 import { z } from 'zod'
 import { createAssetInputSchema } from '@penx/constants'
-import { client } from '@penx/db/client'
+import { db } from '@penx/db/client'
 import { nodes } from '@penx/db/schema/nodes'
 
 const app = new Hono()
@@ -19,7 +19,7 @@ app.get(
   async (c) => {
     // const { url } = c.req.valid('json')
     // const result = await client.select().from(nodes).where(eq(nodes, 'STRUCT'))
-    const result = await client
+    const result = await db
       .select()
       .from(nodes)
       .where(eq(nodes.type, 'STRUCT'))

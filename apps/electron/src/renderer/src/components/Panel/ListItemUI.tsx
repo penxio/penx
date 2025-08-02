@@ -18,7 +18,9 @@ interface ListItemUIProps
   isListApp?: boolean
   isFavorite?: boolean
   titleLayout?: 'column' | 'row'
+  icon?: ReactNode
   showIcon?: boolean
+  showType?: boolean
   onSelect?: (item: ICommandItem) => void
 }
 
@@ -29,8 +31,10 @@ export const ListItemUI = ({
   index,
   titleLayout = 'row',
   isListApp = false,
+  icon,
   showIcon = true,
   isFavorite = false,
+  showType = true,
   value,
   className,
   ...rest
@@ -84,7 +88,8 @@ export const ListItemUI = ({
     >
       <Box toCenterY gap2>
         {prefix}
-        {showIcon && <ListItemIcon icon={itemIcon as string} item={item} />}
+        {showIcon &&
+          (icon ?? <ListItemIcon icon={itemIcon as string} item={item} />)}
         <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
           <Box
             text-14
@@ -110,7 +115,7 @@ export const ListItemUI = ({
         </Box>
       </Box>
       <div className="flex items-center gap-1">
-        {!!type && (
+        {showType && !!type && (
           <div className="text-foreground/50 shrink-0 text-xs">{type}</div>
         )}
         {item?.extra && (

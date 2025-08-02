@@ -19,9 +19,9 @@ export function CreationDetail({ creation }: Props) {
   const { structs } = useStructs()
   const struct = structs.find((s) => s.id === creation.structId)!
   if (!struct) return null
-  const currentView = struct.views[0]
-  const viewColumns = currentView.viewColumns
-  const columnMap = mappedByKey(struct.columns, 'id')
+
+  console.log('========creation:', creation)
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex-1 p-2">
@@ -33,7 +33,7 @@ export function CreationDetail({ creation }: Props) {
       </div>
 
       <PropList
-        className="divide-foreground/5 border-foreground/6 flex flex-col divide-y border-t text-xs gap-0"
+        className="divide-foreground/5 border-foreground/6 flex flex-col gap-0 divide-y border-t text-xs"
         isPanel
         struct={struct}
         creation={creation}

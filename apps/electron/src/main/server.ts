@@ -7,7 +7,7 @@ import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
-import { client, pg } from '@penx/db/client'
+import { db, pg } from '@penx/db/client'
 import bookmarkRouter from './routers/bookmark'
 import nodeRouter from './routers/node'
 import { Windows } from './types'
@@ -92,50 +92,24 @@ export class HonoServer {
         // Prevent multiple queries
         const sqlBody = sql.replace(/;/g, '')
 
-        console.log(
-          '>>>>>>>>sqlBody:',
-          sqlBody,
-          'params:',
-          params,
-          'method:',
-          method,
-        )
+        // console.log(
+        //   '>>>>>>>>sqlBody:',
+        //   sqlBody,
+        //   'params:',
+        //   params,
+        //   'method:',
+        //   method,
+        // )
 
         const result = await pg.query(sql, params, {
           rowMode: method === 'all' ? 'array' : undefined,
         })
 
-        console.log('======result:', result)
+        // console.log('======result:', result)
 
         // Return raw data from database, let client handle date processing
         // return c.json({ rows: result.rows })
         return c.json(result)
-
-        // if (method === 'get') {
-        //   const result = await pg.query(sql, params, {
-        //     rowMode: method === 'all' ? 'array' : undefined,
-        //   })
-        //   console.log('======result:', result)
-
-        //   return c.json({ rows: Object.values(result.rows[0] || {}) })
-        // } else {
-        //   const result = await pg.query(sql, params)
-        //   return c.json({
-        //     rows: result.rows.map((row) => Object.values(row as any)),
-        //   })
-        // }
-
-        // Execute the query using the database client
-        // const result = await client.execute(sqlBody)
-
-        // console.log('========result:', result)
-
-        // // Return the appropriate format based on method
-        // if (method === 'get') {
-        //   return c.json({ rows: result[0] || [] })
-        // } else {
-        //   return c.json({ rows: result.rows })
-        // }
       } catch (error: any) {
         console.error('Database query error:', error)
         return c.json({ error: error.message }, 500)

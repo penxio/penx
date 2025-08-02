@@ -25,8 +25,14 @@ export default defineConfig({
   },
   manifest: {
     name: 'PenX',
-    description: 'A structured note-taking App',
+    description: 'AI Powered Personal Data Hub',
     host_permissions: ['<all_urls>'],
-    permissions: ['bookmarks', 'tabs'],
+    permissions: ['bookmarks', 'tabs', 'activeTab', 'favicon'],
+    web_accessible_resources: [
+      {
+        resources: ['_favicon/*'],
+        matches: ['<all_urls>'],
+      },
+    ],
   },
 })

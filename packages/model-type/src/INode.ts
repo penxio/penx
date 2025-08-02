@@ -206,7 +206,6 @@ export interface ICreationNode extends INode {
     publishedAt?: Date
     archivedAt?: Date
     openedAt: Date
-    areaId: string
     structId: string
   }
 }

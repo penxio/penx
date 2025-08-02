@@ -1,7 +1,7 @@
 'use client'
 
 import { PropsWithChildren, useEffect, useMemo } from 'react'
-import { initNodeModelApi } from '@/lib/initNodeModelApi'
+import { initNodeModelApi } from '@penx/libs/initNodeModelApi'
 
 export function NodeModelApiInjector({ children }: PropsWithChildren) {
   useMemo(() => {

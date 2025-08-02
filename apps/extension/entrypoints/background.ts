@@ -10,17 +10,18 @@ import {
 } from '@/lib/helper'
 import { parsePreparedContent } from '@/lib/parser'
 import { syncBookmarks } from '@/lib/syncBookmarks'
+import { syncTabs } from '@/lib/syncTabs'
 import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
 import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
-import { uniqueId } from '@penx/unique-id'
 import { stringToDoc } from '@penx/utils/editorHelper'
 
 const storage = new Storage()
 
 export default defineBackground(() => {
+  syncTabs()
   syncBookmarks()
 
   //

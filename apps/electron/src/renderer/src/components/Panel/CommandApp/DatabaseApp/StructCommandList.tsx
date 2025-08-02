@@ -9,9 +9,13 @@ import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { cn } from '@penx/utils'
 import { useFilterPopover } from '~/hooks/useFilterPopover'
 import { creationToCommand } from '~/lib/creationToCommand'
+import { getBookmarkIcon } from '~/lib/getBookmarkIcon'
+import { getBookmarkUrl } from '~/lib/getBookmarkUrl'
+import { hidePanelWindow } from '~/lib/hidePanelWindow'
 import { CommandGroup } from '../../CommandComponents'
 import { getLabel } from '../../FilterPopover'
 import { ListItemUI } from '../../ListItemUI'
+import { BookmarkIcon } from './BookmarkIcon'
 
 interface Props {
   struct: Struct
@@ -19,8 +23,6 @@ interface Props {
 }
 
 export function StructCommandList({ creations, struct }: Props) {
-  const { value } = useFilterPopover()
-
   return (
     <CommandGroup
       className={cn(
@@ -35,9 +37,19 @@ export function StructCommandList({ creations, struct }: Props) {
       }}
     >
       {creations.map((item, index) => {
+        // console.log('========item:', item)
+
         return (
           <ListItemUI
             key={index}
+            showType={false}
+            onSelect={() => {
+              if (struct.isBookmark) {
+                const url = getBookmarkUrl(struct, item)
+                window.electron.ipcRenderer.send('open-url', url)
+                hidePanelWindow()
+              }
+            }}
             prefix={
               item.isTask ? (
                 <Checkbox
@@ -52,7 +64,11 @@ export function StructCommandList({ creations, struct }: Props) {
               ) : null
             }
             index={index}
-            showIcon={false}
+            icon={
+              struct.isBookmark ? (
+                <BookmarkIcon struct={struct} creation={item} />
+              ) : undefined
+            }
             value={item.id}
             item={creationToCommand(item)}
           />

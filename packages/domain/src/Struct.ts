@@ -78,6 +78,10 @@ export class Struct {
     return this.type === StructType.QUICK_LINK
   }
 
+  get isBookmark() {
+    return this.type === StructType.BOOKMARK
+  }
+
   get isNote() {
     return this.type === StructType.NOTE
   }

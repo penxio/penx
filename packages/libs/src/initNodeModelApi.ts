@@ -4,7 +4,7 @@ import { INode } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 
 export const initNodeModelApi = () => {
-  window.nodeModelApi = {
+  const nodeModelApi = {
     async get(id: string) {
       return idb.node.get(id) as any
     },
@@ -14,8 +14,6 @@ export const initNodeModelApi = () => {
     },
 
     async findMany<T = INode>(where: Partial<INode>): Promise<T[]> {
-      console.log('=====where:', where)
-
       return idb.node.where(where).toArray() as any
     },
 
@@ -55,5 +53,5 @@ export const initNodeModelApi = () => {
     },
   }
 
-  localDB.node = window.nodeModelApi
+  localDB.node = nodeModelApi
 }

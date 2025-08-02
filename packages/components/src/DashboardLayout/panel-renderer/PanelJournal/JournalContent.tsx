@@ -59,7 +59,7 @@ export function JournalContent(props: Props) {
             transition={{ delay: 0.2 }}
             className="text-foreground/40 text-xs"
           >
-            <Trans>A structured note-taking App</Trans>
+            <Trans>AI Powered Personal Data Hub</Trans>
           </motion.div>
         </div>
       )} */}

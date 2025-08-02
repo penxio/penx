@@ -45,7 +45,7 @@ export function AboutMenu({ children, className }: ItemProps) {
               className="shadow-popover size-16 rounded-xl"
             />
             <div>
-              <Trans>A structured note-taking App</Trans>
+              <Trans>AI Powered Personal Data Hub</Trans>
             </div>
           </div>
         </div>

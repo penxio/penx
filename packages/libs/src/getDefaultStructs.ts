@@ -162,7 +162,7 @@ export function generateStructNode({
           {
             id: uniqueId(),
             slug: 'url',
-            name: t`Bookmark`,
+            name: t`URL`,
             description: '',
             columnType: ColumnType.URL,
             config: {},

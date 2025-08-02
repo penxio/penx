@@ -1,9 +1,9 @@
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
+import { Conf } from 'electron-conf/renderer'
 import { get, set } from 'idb-keyval'
 import { api } from '@penx/api'
-import { Node } from '@penx/domain'
-import { appEmitter } from '@penx/emitter'
+import { isDesktop } from '@penx/constants'
 import { widgetAtom } from '@penx/hooks/useWidget'
 import { checkMnemonic } from '@penx/libs/checkMnemonic'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
@@ -44,31 +44,23 @@ import { syncNodesToLocal } from './lib/syncNodesToLocal'
 
 const PANELS = 'PANELS'
 
+const conf = isDesktop ? new Conf() : ({} as any)
+
 export class AppService {
   constructor() {}
   inited = false
 
   async init(session: SessionData) {
-    console.log('=======app=session:')
-
-    // const nodes = await localDB.node.findMany({})
-    // await localDB.node.deleteNodeByIds(nodes.map((n) => n.id))
-    // return
-
-    // const nodes = await localDB.node.findMany({})
-    // console.log(
-    //   '=========nodes:',
-    //   nodes.map((n) => format(n.createdAt, 'yyyy-MM-dd HH:mm:ss')),
-    // )
-    // return
-
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
-    // return
+    // return: data
 
     if (session) {
       try {
         await checkMnemonic(session)
+        if (isDesktop) {
+          conf.set('session', session)
+        }
       } catch (error) {
         if (error.message === 'DECRYPT_MNEMONIC_NEEDED') {
           store.app.setPasswordNeeded(true)
@@ -171,6 +163,11 @@ export class AppService {
       areas.find(
         (a) => a.id === localVisit.activeAreaId || a.props.isGenesis,
       ) || areas[0]
+
+    // for electron main
+    if (isDesktop) {
+      conf.set('areaId', area.id)
+    }
 
     const visit = await store.visit.save({ activeAreaId: area.id })
 

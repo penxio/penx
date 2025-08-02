@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { t } from '@lingui/core/macro'
 import { Input, InputProps } from '@penx/uikit/ui/input'
 
@@ -6,9 +6,7 @@ interface Props extends Omit<InputProps, 'onChange'> {
   value: string
   onChange: (v: string) => void
 }
-export const PasswordProp = ({ value = '', onChange, ...rest }: Props) => {
-  const [show, setShow] = useState(false)
-
+export const UrlInputProp = ({ value = '', onChange, ...rest }: Props) => {
   const ref = useRef<HTMLInputElement>(null)
   useEffect(() => {
     if (!ref.current) return
@@ -16,24 +14,16 @@ export const PasswordProp = ({ value = '', onChange, ...rest }: Props) => {
       ref.current!.value = value
     }
   }, [value])
+
   return (
     <Input
       ref={ref}
       placeholder={t`Empty`}
-      variant="unstyled"
       className=""
-      type={show ? 'text' : 'password'}
-      defaultValue={value}
+      type="text"
+      defaultValue={value ?? ''}
+      onChange={(e) => onChange(e.target.value)}
       {...rest}
-      onFocus={() => {
-        setShow(true)
-      }}
-      onBlur={() => {
-        setShow(false)
-      }}
-      onChange={(e) => {
-        onChange(e.target.value)
-      }}
     />
   )
 }

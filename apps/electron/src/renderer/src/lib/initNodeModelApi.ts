@@ -8,7 +8,7 @@ import { uniqueId } from '@penx/unique-id'
 export const initNodeModelApi = () => {
   const db = createProxyClient()
 
-  window.nodeModelApi = {
+  const nodeModelApi = {
     async get(id: string) {
       const rows = await db.select().from(nodes).where(eq(nodes.id, id))
       return rows?.[0] as any
@@ -79,5 +79,5 @@ export const initNodeModelApi = () => {
     },
   }
 
-  localDB.node = window.nodeModelApi
+  localDB.node = nodeModelApi
 }

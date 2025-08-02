@@ -4,18 +4,18 @@ import { format } from 'date-fns'
 import { Creation, Struct } from '@penx/domain'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
-import { NumberInput } from '@penx/uikit/components/NumberInput'
-import { Input } from '@penx/uikit/input'
-import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 import { cn } from '@penx/utils'
 import { FieldIcon } from '../../FieldIcon'
 import { FileUpload } from '../../FileUpload'
 import { usePanelCreationContext } from '../PanelCreationProvider'
 import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
+import { NumberInputProp } from './NumberInputProp'
 import { PasswordProp } from './PasswordProp'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
+import { TextInputProp } from './TextInputProp'
+import { UrlInputProp } from './UrlInputProp'
 
 interface Props {
   column: IColumn
@@ -53,14 +53,10 @@ export const PropItem = ({
     switch (column.columnType) {
       case ColumnType.TEXT:
         return (
-          <Input
-            placeholder={t`Empty`}
+          <TextInputProp
             variant={isPanel ? 'panel' : 'unstyled'}
-            className=""
-            type="text"
-            // value={value ?? ''}
-            defaultValue={value ?? ''}
-            onChange={(e) => handleChange(e.target.value)}
+            value={value}
+            onChange={handleChange}
           />
         )
       case ColumnType.PASSWORD:
@@ -68,6 +64,25 @@ export const PropItem = ({
           <PasswordProp
             variant={isPanel ? 'panel' : 'unstyled'}
             value={value ?? ''}
+            onChange={handleChange}
+          />
+        )
+
+      case ColumnType.NUMBER:
+        return (
+          <NumberInputProp
+            placeholder={t`Empty`}
+            variant="unstyled"
+            value={value ?? ''}
+            onChange={handleChange}
+          />
+        )
+      case ColumnType.URL:
+        return (
+          <UrlInputProp
+            variant={isPanel ? 'panel' : 'unstyled'}
+            placeholder={t`Empty`}
+            value={value}
             onChange={handleChange}
           />
         )
@@ -92,26 +107,6 @@ export const PropItem = ({
           <div className="px-3 text-sm">
             {format(new Date(creation.updatedAt), 'PPP')}
           </div>
-        )
-      case ColumnType.NUMBER:
-        return (
-          <NumberInput
-            placeholder={t`Empty`}
-            variant="unstyled"
-            precision={18}
-            className=""
-            defaultValue={value ?? ''}
-            onChange={handleChange}
-          />
-        )
-      case ColumnType.URL:
-        return (
-          <Input
-            variant={isPanel ? 'panel' : 'unstyled'}
-            placeholder={t`Empty`}
-            value={value ?? ''}
-            onChange={(e) => handleChange(e.target.value)}
-          />
         )
       case ColumnType.IMAGE:
         return (

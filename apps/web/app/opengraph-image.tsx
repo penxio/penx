@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'A structured note-taking App'
+export const alt = 'AI Powered Personal Data Hub'
 
 export const revalidate = 60
 
@@ -26,7 +26,7 @@ export default async function Image() {
       >
         <h1 tw="text-8xl -mt-6 leading-none">PenX</h1>
         <div tw="text-3xl leading-none">
-          A structured note-taking App
+          AI Powered Personal Data Hub
         </div>
       </div>
     ),
