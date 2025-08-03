@@ -5,7 +5,7 @@
 
 <h1 style="border-bottom: none">
     <b>PenX</b><br />
-    A structured note-taking App.
+    AI Powered Personal Data Hub
     <br>
 </h1>
 
@@ -15,7 +15,7 @@
 
 ## Introduction
 
-An elegant App designed to help you capture, organize, and store your thoughts, tasks, ideas, and information
+A Local-first, Privacy-first place to store structure data.
 
 ## Features
 
@@ -24,7 +24,7 @@ An elegant App designed to help you capture, organize, and store your thoughts, 
 - Open source
 - Cross platform
 - Realtime sync
-- Creator friendly
+- AI-driven
 
 ## Primary tech stack
 
@@ -32,8 +32,7 @@ An elegant App designed to help you capture, organize, and store your thoughts, 
 - TypeScript
 - tRPC
 - Prisma
-- Slate.js
-- IndexedDB
+- PGLite
 
 ## Development
 
