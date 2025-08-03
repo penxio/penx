@@ -74,6 +74,7 @@
     "mastra": "^0.10.11",
     "node-mac-permissions": "^2.5.0",
     "node-selection": "0.2.0-alpha.1",
+    "node-window-manager": "^2.2.4",
     "run-applescript": "^7.0.0",
     "uiohook-napi": "^1.5.4",
     "xxhash-wasm": "^1.1.0"

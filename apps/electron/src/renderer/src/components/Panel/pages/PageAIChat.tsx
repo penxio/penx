@@ -8,7 +8,6 @@ import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 
 export function PageAIChat() {
   const { currentCommand } = useCurrentCommand()
-
   const { session } = useSession()
 
   return (

@@ -1150,6 +1150,9 @@ importers:
       node-selection:
         specifier: 0.2.0-alpha.1
         version: 0.2.0-alpha.1
+      node-window-manager:
+        specifier: ^2.2.4
+        version: 2.2.4
       run-applescript:
         specifier: ^7.0.0
         version: 7.0.0
@@ -11987,6 +11990,9 @@ packages:
     resolution: {integrity: sha512-hMQ4CX1p1izmuLYyZqLMO/qGNw10wSv9QDCPfzXfyFrOaCSSoRfqE1Kf1s5an66J5JZC62NewG+mK49jOCtQew==}
     engines: {node: '>=4'}
 
+  extract-file-icon@0.3.2:
+    resolution: {integrity: sha512-We5/HaMDlioOx3c9zDjit8RtKWEvT94sJF8jTujaKVOyWL8Kkqu4QGnwDr5fID6XsbKvWT0JJNuWuV2Tmr7yiw==}
+
   extract-zip@2.0.1:
     resolution: {integrity: sha512-GDhU9ntwuKyGXdZBUgTIe+vXnWj0fppUEtMDL0+idd5Sta8TGpHssn/eusA9mrPr9qNDym6SxAYZjNvCn/9RBg==}
     engines: {node: '>= 10.17.0'}
@@ -15020,8 +15026,14 @@ packages:
     resolution: {integrity: sha512-OhYaY5sDsIka7H7AtijtI9jwGYLyl29eQn/W623DiN/MIv5sUqc4g7BIDThX+gb7di9f6xK02nkp8sdfFWZLTg==}
     engines: {node: '>=10'}
 
+  node-addon-api@1.7.1:
+    resolution: {integrity: sha512-2+DuKodWvwRTrCfKOeR24KIc5unKjOh8mz17NCzVnHWfjAdDqbfbjqh7gUT+BkXBRQM52+xCHciKWonJ3CbJMQ==}
+
   node-addon-api@1.7.2:
     resolution: {integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==}
+
+  node-addon-api@2.0.0:
+    resolution: {integrity: sha512-ASCL5U13as7HhOExbT6OlWJJUV/lLzL2voOSP1UVehpRD8FbSrSDjfScK/KwAvVTI5AS6r4VwbOMlIqtvRidnA==}
 
   node-addon-api@6.1.0:
     resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
@@ -15084,6 +15096,9 @@ packages:
 
   node-selection@0.2.0-alpha.1:
     resolution: {integrity: sha512-3pc7kY2XpATQ1+ABBeyApcj8kEyCsKqb8Suo611PN15qpqBuOP3Rm8Pg9l86e3EfiWkBeOJC8Ufzel0N3VWuyQ==}
+
+  node-window-manager@2.2.4:
+    resolution: {integrity: sha512-Dgq9a7qx6+Gi+BifWM79leteNz76QUtwSsdiqEe7SjvoJsc8TYQsRl1IA5uxqz5iSLeHS1iA/8YI/snoq0DblA==}
 
   nodemailer@6.10.1:
     resolution: {integrity: sha512-Z+iLaBGVaSjbIzQ4pX6XV41HrooLsQ10ZWPUehGmuantvzWoDVBnmsdUcOIDM1t+yPor5pDhVlDESgOMEGxhHA==}
@@ -31184,6 +31199,10 @@ snapshots:
       iconv-lite: 0.4.24
       tmp: 0.0.33
 
+  extract-file-icon@0.3.2:
+    dependencies:
+      node-addon-api: 1.7.1
+
   extract-zip@2.0.1(supports-color@8.1.1):
     dependencies:
       debug: 4.4.1(supports-color@8.1.1)
@@ -35039,8 +35058,12 @@ snapshots:
     dependencies:
       semver: 7.7.2
 
+  node-addon-api@1.7.1: {}
+
   node-addon-api@1.7.2:
     optional: true
+
+  node-addon-api@2.0.0: {}
 
   node-addon-api@6.1.0: {}
 
@@ -35111,6 +35134,12 @@ snapshots:
   node-selection@0.2.0-alpha.1:
     dependencies:
       node-addon-api: 8.5.0
+      node-gyp-build: 4.8.4
+
+  node-window-manager@2.2.4:
+    dependencies:
+      extract-file-icon: 0.3.2
+      node-addon-api: 2.0.0
       node-gyp-build: 4.8.4
 
   nodemailer@6.10.1: {}

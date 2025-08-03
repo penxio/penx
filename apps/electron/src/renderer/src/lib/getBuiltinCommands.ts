@@ -64,6 +64,31 @@ export function getBuiltinCommands() {
     },
 
     {
+      id: 'chat-to-browser',
+      title: t`Chat to browser`,
+      keywords: ['ai', 'chat'],
+      icon: {
+        // name: 'solar:pen-bold',
+        name: 'mingcute:ai-fill',
+        className: 'bg-linear-to-r from-red-500 to-orange-500',
+      },
+      data: {
+        type: 'Command',
+        component: PageAIChat,
+        alias: '',
+        assets: {},
+        filters: {},
+        runtime: 'worker',
+        commandName: 'chat-to-browser',
+        extensionSlug: '',
+        extensionIcon: '',
+        isDeveloping: false,
+        applicationPath: '',
+        isApplication: false,
+      },
+    },
+
+    {
       id: 'create-struct',
       title: t`Create Struct`,
       keywords: ['create struct', 'struct', 'create'],

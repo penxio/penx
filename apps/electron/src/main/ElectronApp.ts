@@ -14,6 +14,7 @@ import {
 } from 'electron'
 import { Conf } from 'electron-conf/main'
 import { checkAccessibilityPermissions, getSelection } from 'node-selection'
+import { windowManager } from 'node-window-manager'
 import { uIOhook, UiohookKey } from 'uiohook-napi'
 import { SHORTCUT_LIST } from '@penx/constants'
 import { Shortcut, ShortcutType } from '@penx/model-type'
@@ -36,6 +37,11 @@ import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
 
 const port = 14158
+
+interface ToggleWindowOptions {
+  openOnly?: boolean
+  bounds?: Electron.Rectangle
+}
 
 export class ElectronApp {
   private windows = {} as Windows
@@ -264,7 +270,8 @@ export class ElectronApp {
     // }
   }
 
-  private togglePanelWindow(openOnly = false) {
+  private togglePanelWindow(opt?: ToggleWindowOptions) {
+    const { openOnly = false, bounds } = opt || {}
     console.log(openOnly ? 'open....' : 'toggle......')
 
     const panelWindow = this.windows.panelWindow!
@@ -276,6 +283,11 @@ export class ElectronApp {
       const winBounds = panelWindow.getBounds()
       const posX = x + Math.round((width - winBounds.width) / 2)
       const posY = y + Math.round((height - winBounds.height) / 2)
+
+      if (bounds) {
+        panelWindow.setBounds(bounds)
+        return
+      }
 
       if (this.lastBounds && this.lastOffset) {
         panelWindow.setBounds({
@@ -561,7 +573,7 @@ export class ElectronApp {
     })
 
     ipcMain.on('open-panel-window', () => {
-      this.togglePanelWindow(true)
+      this.togglePanelWindow({ openOnly: true })
     })
 
     ipcMain.on('toggle-ai-command-window', () => {
@@ -600,17 +612,18 @@ export class ElectronApp {
   }
 
   private runIOHook() {
+    let lastAltDownTime = 0
     let lastCmdDownTime = 0
     const doubleClickThreshold = 300
 
     uIOhook.on('keydown', async (event) => {
       if (event.keycode === UiohookKey.Alt) {
         let now = Date.now()
-        if (now - lastCmdDownTime < doubleClickThreshold) {
+        if (now - lastAltDownTime < doubleClickThreshold) {
           console.log('Cmd key double clicked')
           this.openQuickInputCommand()
         }
-        lastCmdDownTime = now
+        lastAltDownTime = now
       }
 
       if (event.keycode === UiohookKey.Alt) {
@@ -619,6 +632,65 @@ export class ElectronApp {
         if (selection?.text) {
           // this.toggleAICommandWindow()
         }
+      }
+
+      if (event.keycode === UiohookKey.Meta) {
+        console.log('Cmd key clicked')
+
+        let now = Date.now()
+        if (now - lastAltDownTime < doubleClickThreshold) {
+          const window = windowManager.getActiveWindow()
+
+          if (!window.path.includes('Chrome')) return
+          console.log('get======window:', window)
+
+          // Prints the currently focused window bounds.
+          console.log(window.getBounds())
+
+          // This method has to be called on macOS before changing the window's bounds, otherwise it will throw an error.
+          // It will prompt an accessibility permission request dialog, if needed.
+          windowManager.requestAccessibility()
+
+          // Sets the active window's bounds.
+
+          const cursorPoint = screen.getCursorScreenPoint()
+          const display = screen.getDisplayNearestPoint(cursorPoint)
+          const { x, y, width, height } = display.workArea
+          const panelWidth = 380
+          const gap = 4
+
+          const openPanelWindow = () => {
+            this.togglePanelWindow({
+              openOnly: true,
+              bounds: {
+                x: x + (width - panelWidth + gap),
+                y: y,
+                width: panelWidth - gap,
+                height: height,
+              },
+            })
+
+            this.panelWindow.webContents.send('open-chat-to-browser')
+          }
+
+          if (window.getBounds().width === width - panelWidth) {
+            console.log('isEqual.....')
+            openPanelWindow()
+            return
+          }
+
+          // window.setBounds({
+          //   x: 0,
+          //   y: 0,
+          //   width: width - panelWidth,
+          //   // height: height,
+          //   height: display.bounds.height,
+          // })
+
+          window.bringToTop()
+          openPanelWindow()
+        }
+        lastAltDownTime = now
       }
     })
 
