@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { EditIcon, TrashIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useMySpace } from '@penx/hooks/useMySpace'
@@ -52,16 +53,17 @@ export function ProviderSetting() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-foreground flex items-center gap-2">
-          Your Providers
-          <div className="ml-auto">
-            <ProviderDropdownMenu />
-          </div>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+    <div className="">
+      <div className="text-foreground flex items-center gap-2">
+        <div className="font-semibold">
+          <Trans>Your Providers</Trans>
+        </div>
+        <div className="ml-auto">
+          <ProviderDropdownMenu />
+        </div>
+      </div>
+
+      <div>
         {providers.length === 0 ? (
           <div className="text-muted-foreground py-4 text-center">
             No providers added yet.
@@ -104,7 +106,7 @@ export function ProviderSetting() {
             ))}
           </div>
         )}
-      </CardContent>
+      </div>
 
       {/* Edit dialog */}
       {editingProvider && (
@@ -115,6 +117,6 @@ export function ProviderSetting() {
           existingProvider={editingProvider}
         />
       )}
-    </Card>
+    </div>
   )
 }

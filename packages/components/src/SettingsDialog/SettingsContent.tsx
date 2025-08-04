@@ -3,6 +3,7 @@
 import { Trans } from '@lingui/react/macro'
 import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
+import { ProviderSetting } from '../AISetting/provider-setting'
 import { About } from './About'
 import { Appearance } from './Appearance'
 import { Billing } from './Billing'
@@ -25,6 +26,7 @@ export function SettingsContent({ className }: Props) {
     [SettingsNav.PROFILE]: <Trans>Profile</Trans>,
     [SettingsNav.PASSWORD]: <Trans>Update password</Trans>,
     [SettingsNav.BILLING]: <Trans>Billing</Trans>,
+    [SettingsNav.AI_PROVIDER]: <Trans>Custom AI Provider</Trans>,
     [SettingsNav.RECOVER_PHRASE]: <Trans>Recovery phrase</Trans>,
     [SettingsNav.EDIT_SHORTCUTS]: <Trans>Shortcuts</Trans>,
     [SettingsNav.SYNC_SERVER]: <Trans>Sync server</Trans>,
@@ -47,6 +49,7 @@ export function SettingsContent({ className }: Props) {
         {navName === SettingsNav.PASSWORD && <Password />}
         {navName === SettingsNav.BILLING && <Billing />}
         {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
+        {navName === SettingsNav.AI_PROVIDER && <ProviderSetting />}
         {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
         {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
         {navName === SettingsNav.ABOUT && <About />}

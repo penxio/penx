@@ -3,11 +3,13 @@
 import * as React from 'react'
 import { Trans } from '@lingui/react/macro'
 import {
+  CpuIcon,
   CreditCardIcon,
   DatabaseBackupIcon,
   InfoIcon,
   KeyboardIcon,
   KeyRoundIcon,
+  LockIcon,
   LogOut,
   PaletteIcon,
   ServerIcon,
@@ -52,11 +54,14 @@ export function SettingsSidebar({ className }: Props) {
             <Trans>Shortcuts</Trans>
           </Item>
         )}
+        <Item icon={<CpuIcon size={16} />} navName={SettingsNav.AI_PROVIDER}>
+          <Trans>Custom AI Provider</Trans>
+        </Item>
         <Item icon={<KeyRoundIcon size={16} />} navName={SettingsNav.PASSWORD}>
-          <Trans>Password</Trans>
+          <Trans>Recovery Password</Trans>
         </Item>
         <Item
-          icon={<CreditCardIcon size={16} />}
+          icon={<LockIcon size={16} />}
           navName={SettingsNav.RECOVER_PHRASE}
         >
           <Trans>Recovery phrase</Trans>

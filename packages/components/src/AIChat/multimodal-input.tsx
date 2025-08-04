@@ -26,6 +26,7 @@ import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
 import { Textarea } from '@penx/uikit/textarea'
+import { ChatType, ChatTypeSelect } from './ChatTypeSelect'
 import { ArrowUpIcon, PaperclipIcon, StopIcon } from './icons'
 import { PreviewAttachment } from './preview-attachment'
 
@@ -58,6 +59,7 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const { width } = useWindowSize()
+  const [chatType, setChatType] = useState(ChatType.CHAT)
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -104,7 +106,10 @@ function PureMultimodalInput({
 
   const submit = useCallback(() => {
     handleSubmit(undefined, {
-      body: { text: input },
+      body: {
+        text: input,
+        isAgent: chatType === ChatType.DATAHUB,
+      },
       experimental_attachments: attachments,
     })
 
@@ -128,7 +133,7 @@ function PureMultimodalInput({
     <div className="relative flex h-full w-full gap-4">
       <div
         className={cx(
-          'shadow- flex w-full flex-col gap-2 rounded-3xl border bg-white p-4  dark:border-zinc-700 dark:bg-zinc-900',
+          'shadow-popover flex w-full flex-col gap-2 rounded-xl bg-white p-3',
         )}
       >
         <textarea
@@ -141,8 +146,11 @@ function PureMultimodalInput({
           className={cx(
             'max-h-[calc(25dvh)] w-full resize-none overflow-y-auto border-none bg-transparent text-sm outline-none',
           )}
-          rows={1}
+          rows={2}
           onKeyDown={(event) => {
+            if (event.key !== 'Escape') {
+              event.stopPropagation()
+            }
             if (
               event.key === 'Enter' &&
               !event.shiftKey &&
@@ -160,7 +168,8 @@ function PureMultimodalInput({
             }
           }}
         />
-        <div className="flex w-full items-center justify-end gap-3">
+        <div className="flex w-full items-center justify-between gap-3">
+          <ChatTypeSelect value={chatType} onSelect={setChatType} />
           {status === 'submitted' ? (
             <StopButton stop={stop} setMessages={setMessages} />
           ) : (

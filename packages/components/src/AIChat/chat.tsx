@@ -41,6 +41,7 @@ export function Chat({
     reload,
   } = useChat({
     api: AI_SERVICE_HOST + '/api/ai/chat',
+    // api: 'http://localhost:4000' + '/api/ai/chat',
     id,
     initialMessages,
     experimental_throttle: 100,
@@ -97,7 +98,7 @@ export function Chat({
           />
         </div>
 
-        <form className="mx-auto flex w-full gap-2 p-2 md:max-w-3xl">
+        <form className="bg-am mx-auto flex w-full gap-2 md:max-w-3xl">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}

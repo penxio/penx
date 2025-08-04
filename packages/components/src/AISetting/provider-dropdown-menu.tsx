@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import {
   ALL_PROVIDERS,
   LLM_PROVIDER_INFO,
@@ -31,9 +32,11 @@ export function ProviderDropdownMenu() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">
+          <Button size="sm" variant="outline">
             <span className="icon-[mdi--plus] mr-1 size-4"></span>
-            <span>Add Provider</span>
+            <span>
+              <Trans>Add Provider</Trans>
+            </span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

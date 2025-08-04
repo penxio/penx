@@ -24,7 +24,7 @@ export class Creation {
   }
 
   get areaId(): string {
-    return this.raw.props.areaId || ''
+    return this.raw.areaId || ''
   }
 
   get slug(): string {
