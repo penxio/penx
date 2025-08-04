@@ -133,7 +133,7 @@ function PureMultimodalInput({
     <div className="relative flex h-full w-full gap-4">
       <div
         className={cx(
-          'shadow-popover flex w-full flex-col gap-2 rounded-xl bg-white p-3',
+          'shadow-popover bg-background flex w-full flex-col gap-2 rounded-xl p-3',
         )}
       >
         <textarea
@@ -158,7 +158,7 @@ function PureMultimodalInput({
             ) {
               event.preventDefault()
 
-              if (status !== 'ready') {
+              if (status !== 'ready' && status !== 'error') {
                 toast.error(
                   t`Please wait for the model to finish its response!`,
                 )

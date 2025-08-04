@@ -44,3 +44,5 @@ export const TRANSCRIBE_URL = SYNC_SERVICE_HOST
   : 'https://sync.penx.io/api/transcribe'
 
 export const AI_SERVICE_HOST = 'https://ai.penx.io'
+
+export const APP_LOCAL_HOST = 'http://localhost:14158'

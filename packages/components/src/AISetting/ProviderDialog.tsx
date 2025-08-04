@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { Trans } from '@lingui/react/macro'
 import { TrashIcon } from 'lucide-react'
 import { toast } from 'sonner'
-import { useMySpace } from '@penx/hooks/useMySpace'
 import { fetchAvailableModels } from '@penx/libs/ai/helper'
 import { AIProvider } from '@penx/model-type'
 import { store } from '@penx/store'
@@ -23,28 +23,21 @@ import {
 } from '@penx/uikit/dialog'
 import { Input } from '@penx/uikit/input'
 import { Label } from '@penx/uikit/label'
+import { PasswordInput } from '@penx/uikit/PasswordInput'
 import { ProviderIcon } from './icons'
 import { ModelSelector } from './model-selector'
+import { useProviderDialog } from './useProviderDialog'
 
-interface ProviderDialogProps {
-  open: boolean
-  onOpenChange: (open: boolean) => void
-  providerType: LLMProviderType | null
-  existingProvider?: AIProvider | null // Add parameter for existing provider
-}
+interface ProviderDialogProps {}
 
-export function ProviderEditorDialog({
-  open,
-  onOpenChange,
-  providerType,
-  existingProvider = null,
-}: ProviderDialogProps) {
+export function ProviderDialog({}: ProviderDialogProps) {
   const [apiKey, setApiKey] = useState('')
   const [baseURL, setBaseURL] = useState('')
   const [selectedModels, setSelectedModels] = useState<string[]>([])
   const [availableModels, setAvailableModels] = useState<string[]>([])
   const [isLoadingModels, setIsLoadingModels] = useState(false)
   const [modelError, setModelError] = useState('')
+  const { open, provider, providerType, setOpen } = useProviderDialog()
 
   // Use ref to prevent fetching models multiple times
   const modelsLoaded = useRef(false)
@@ -52,10 +45,10 @@ export function ProviderEditorDialog({
   const baseURLRef = useRef('')
 
   // Determine if we're in edit mode
-  const isEditMode = Boolean(existingProvider)
+  const isEditMode = !!provider
 
   // Get effective provider type (from existing provider or from prop)
-  const effectiveProviderType = existingProvider?.type || providerType
+  const effectiveProviderType = providerType || provider?.type
 
   const resetForm = () => {
     setApiKey('')
@@ -68,53 +61,28 @@ export function ProviderEditorDialog({
     baseURLRef.current = ''
   }
 
-  // Handle provider deletion
-  const handleDeleteProvider = async () => {
-    if (!effectiveProviderType) return
-
-    if (
-      confirm(
-        `Are you sure you want to delete the ${LLM_PROVIDER_INFO[effectiveProviderType]?.name} provider?`,
-      )
-    ) {
-      try {
-        await store.space.deleteAIProvider(effectiveProviderType)
-        toast.success(
-          `${LLM_PROVIDER_INFO[effectiveProviderType]?.name} provider deleted successfully`,
-        )
-        onOpenChange(false)
-      } catch (error) {
-        console.error('Failed to delete provider:', error)
-        toast.error('Failed to delete provider')
-      }
-    }
-  }
-
   // Initialize form with existing provider data when in edit mode
   useEffect(() => {
     if (open) {
-      if (existingProvider) {
+      if (provider) {
         // Edit mode - load existing data
-        setApiKey(existingProvider.apiKey || '')
-        setBaseURL(existingProvider.baseURL || '')
-        setSelectedModels(existingProvider.availableModels || [])
-        if (
-          existingProvider.availableModels &&
-          existingProvider.availableModels.length > 0
-        ) {
-          setAvailableModels(existingProvider.availableModels)
+        setApiKey(provider.apiKey || '')
+        setBaseURL(provider.baseURL || '')
+        setSelectedModels(provider.availableModels || [])
+        if (provider.availableModels && provider.availableModels.length > 0) {
+          setAvailableModels(provider.availableModels)
           modelsLoaded.current = true
         } else {
           modelsLoaded.current = false
         }
-        apiKeyRef.current = existingProvider.apiKey || ''
-        baseURLRef.current = existingProvider.baseURL || ''
+        apiKeyRef.current = provider.apiKey || ''
+        baseURLRef.current = provider.baseURL || ''
       } else {
         // Add mode - reset form
         resetForm()
       }
     }
-  }, [open, existingProvider])
+  }, [open, provider])
 
   // Fetch models when API key or baseURL changes
   useEffect(() => {
@@ -190,9 +158,9 @@ export function ProviderEditorDialog({
     }
 
     // If in edit mode, preserve any fields we're not editing
-    if (isEditMode && existingProvider) {
+    if (isEditMode && provider) {
       // Preserve any properties that we're not changing
-      Object.keys(existingProvider).forEach((key) => {
+      Object.keys(provider).forEach((key) => {
         if (
           key !== 'type' &&
           key !== 'apiKey' &&
@@ -201,13 +169,13 @@ export function ProviderEditorDialog({
           key !== 'availableModels' &&
           !(key in provider)
         ) {
-          provider[key] = existingProvider[key]
+          provider[key] = provider[key]
         }
       })
     }
 
     store.space.updateAIProvider(provider)
-    onOpenChange(false)
+    setOpen(false)
     resetForm()
 
     toast.success(
@@ -225,7 +193,7 @@ export function ProviderEditorDialog({
     effectiveProviderType === LLMProviderTypeEnum.OPENAI_COMPATIBLE
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-lg font-medium">
@@ -252,19 +220,18 @@ export function ProviderEditorDialog({
             <Label htmlFor="apiKey" className="font-medium">
               API Key
             </Label>
-            <Input
+            <PasswordInput
               id="apiKey"
-              type="password"
               value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              className="h-10 w-full"
+              onChange={(v) => setApiKey(v)}
+              className="w-full"
               placeholder="Enter API key"
               autoComplete="off"
             />
             {showBaseUrlField && (
               <>
                 <Label htmlFor="baseURL" className="font-medium">
-                  Base URL
+                  <Trans>Base URL</Trans>
                 </Label>
                 <Input
                   id="baseURL"
@@ -290,24 +257,12 @@ export function ProviderEditorDialog({
         </div>
         <DialogFooter className="flex justify-between gap-2">
           <div className="flex gap-2">
-            {isEditMode && (
-              <Button
-                variant="destructive"
-                onClick={handleDeleteProvider}
-                className="w-full sm:w-auto"
-              >
-                <TrashIcon className="mr-1 h-4 w-4" />
-                Delete
-              </Button>
-            )}
-          </div>
-          <div className="flex gap-2">
             <Button
               variant="outline"
-              onClick={() => onOpenChange(false)}
+              onClick={() => setOpen(false)}
               className="w-full sm:w-auto"
             >
-              Cancel
+              <Trans>Cancel</Trans>
             </Button>
             <Button
               type="submit"

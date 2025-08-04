@@ -8,7 +8,7 @@ const key = 'SYNC_SERVER_PASSWORD'
 export function useSyncServerPassword() {
   const { session } = useSession()
   return useQuery({
-    queryKey: [key, session.spaceId],
+    queryKey: [key, session?.spaceId],
     queryFn: async () => {
       let password = await get(`${key}_${session.spaceId}`)
       return (password as string) || ''

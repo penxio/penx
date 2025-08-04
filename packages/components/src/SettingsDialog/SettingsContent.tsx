@@ -38,21 +38,25 @@ export function SettingsContent({ className }: Props) {
       <SyncServerDialog />
       <div
         className={cn(
-          'bg-background flex flex-1 flex-col rounded-l-2xl px-10 py-6 dark:bg-neutral-800',
+          'bg-background flex flex-1 flex-col rounded-r-2xl px-10 py-6 dark:bg-neutral-800',
           className,
         )}
       >
-        <div className="font-bold">{titleNames[navName]}</div>
+        <div className="">
+          <span className="no-drag font-bold">{titleNames[navName]}</span>
+        </div>
         <Separator className="my-4" />
-        {navName === SettingsNav.APPEARANCE && <Appearance />}
-        {navName === SettingsNav.PROFILE && <Profile />}
-        {navName === SettingsNav.PASSWORD && <Password />}
-        {navName === SettingsNav.BILLING && <Billing />}
-        {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
-        {navName === SettingsNav.AI_PROVIDER && <ProviderSetting />}
-        {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
-        {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
-        {navName === SettingsNav.ABOUT && <About />}
+        <div className="no-drag">
+          {navName === SettingsNav.APPEARANCE && <Appearance />}
+          {navName === SettingsNav.PROFILE && <Profile />}
+          {navName === SettingsNav.PASSWORD && <Password />}
+          {navName === SettingsNav.BILLING && <Billing />}
+          {navName === SettingsNav.EDIT_SHORTCUTS && <EditShortcuts />}
+          {navName === SettingsNav.AI_PROVIDER && <ProviderSetting />}
+          {navName === SettingsNav.RECOVER_PHRASE && <RecoveryPhrase />}
+          {navName === SettingsNav.SYNC_SERVER && <SyncServer />}
+          {navName === SettingsNav.ABOUT && <About />}
+        </div>
       </div>
     </>
   )

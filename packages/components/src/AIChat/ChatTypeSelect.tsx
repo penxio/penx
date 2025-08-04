@@ -19,7 +19,7 @@ interface Props {
 export function ChatTypeSelect({ value, onSelect }: Props) {
   return (
     <Select value={value} onValueChange={(v) => onSelect(v as ChatType)}>
-      <SelectTrigger className="h-7 w-[100px] cursor-pointer rounded-full py-0">
+      <SelectTrigger className="h-7 w-[100px] cursor-pointer rounded-lg py-0">
         <SelectValue placeholder="" />
       </SelectTrigger>
       <SelectContent>

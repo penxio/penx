@@ -13,17 +13,12 @@ import { Button } from '@penx/uikit/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@penx/uikit/card'
 import { ProviderIcon } from './icons'
 import { ProviderDropdownMenu } from './provider-dropdown-menu'
-import { ProviderEditorDialog } from './provider-editor-dialog'
+import { ProviderDialog } from './ProviderDialog'
+import { ProviderItem } from './ProviderItem'
 
 export function ProviderSetting() {
   const { space } = useMySpace()
   const providers = space?.props?.aiSetting?.providers || []
-
-  // Track provider editing
-  const [isEditing, setIsEditing] = useState(false)
-  const [editingProvider, setEditingProvider] = useState<AIProvider | null>(
-    null,
-  )
 
   // Handle provider deletion
   const handleDeleteProvider = async (providerType: string) => {
@@ -46,14 +41,8 @@ export function ProviderSetting() {
     }
   }
 
-  // Handle edit provider
-  const handleEditProvider = (provider: AIProvider) => {
-    setEditingProvider(provider)
-    setIsEditing(true)
-  }
-
   return (
-    <div className="">
+    <div className="space-y-2">
       <div className="text-foreground flex items-center gap-2">
         <div className="font-semibold">
           <Trans>Your Providers</Trans>
@@ -69,54 +58,15 @@ export function ProviderSetting() {
             No providers added yet.
           </div>
         ) : (
-          <div className="space-y-2">
-            {providers.map((provider: AIProvider) => (
-              <div
-                key={provider.type}
-                className="hover:bg-muted flex cursor-pointer flex-col rounded-md p-2"
-                onClick={() => handleEditProvider(provider)}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <ProviderIcon
-                      llmProviderType={provider.type as LLMProviderType}
-                      className="mr-2"
-                    />
-                    <div className="flex flex-col">
-                      <span>{provider.name || provider.type}</span>
-                    </div>
-                  </div>
-
-                  {provider.availableModels &&
-                    provider.availableModels.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {provider.availableModels.map((model: string) => (
-                          <Badge
-                            key={model}
-                            variant="outline"
-                            className={` text-xs`}
-                          >
-                            {model}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                </div>
-              </div>
+          <div className="">
+            {providers.map((provider) => (
+              <ProviderItem provider={provider} />
             ))}
           </div>
         )}
       </div>
 
-      {/* Edit dialog */}
-      {editingProvider && (
-        <ProviderEditorDialog
-          open={isEditing}
-          onOpenChange={setIsEditing}
-          providerType={editingProvider.type as LLMProviderType}
-          existingProvider={editingProvider}
-        />
-      )}
+      <ProviderDialog />
     </div>
   )
 }

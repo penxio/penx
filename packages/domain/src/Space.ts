@@ -36,6 +36,10 @@ export class Space {
     return this.props.image ? getUrl(this.props.image) : ''
   }
 
+  get aiProviders() {
+    return this.props.aiSetting.providers
+  }
+
   get config() {
     return this.props.config
   }

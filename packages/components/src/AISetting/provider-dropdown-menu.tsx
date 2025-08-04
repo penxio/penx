@@ -16,16 +16,17 @@ import {
   DropdownMenuTrigger,
 } from '@penx/uikit/dropdown-menu'
 import { ProviderIcon } from './icons'
-import { ProviderEditorDialog } from './provider-editor-dialog'
+import { ProviderDialog } from './ProviderDialog'
+import { useProviderDialog } from './useProviderDialog'
 
 export function ProviderDropdownMenu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [selectedProviderType, setSelectedProviderType] =
-    useState<LLMProviderType | null>(null)
+  const { setState } = useProviderDialog()
 
   const handleSelect = (providerType: LLMProviderType) => {
-    setSelectedProviderType(providerType)
-    setIsOpen(true)
+    setState({
+      open: true,
+      providerType: providerType,
+    })
   }
 
   return (
@@ -52,11 +53,7 @@ export function ProviderDropdownMenu() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <ProviderEditorDialog
-        open={isOpen}
-        onOpenChange={setIsOpen}
-        providerType={selectedProviderType}
-      />
+      <ProviderDialog />
     </>
   )
 }

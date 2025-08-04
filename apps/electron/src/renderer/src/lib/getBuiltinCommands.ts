@@ -1,5 +1,5 @@
 import { t } from '@lingui/core/macro'
-import { PageAIChat } from '~/components/Panel/pages/PageAIChat'
+import { PageAIChat } from '~/components/Panel/pages/PageAIChat/PageAIChat'
 import { PageCreateStruct } from '~/components/Panel/pages/PageCreateStruct'
 import { PageLogin } from '~/components/Panel/pages/PageLogin'
 import { PageQuickInput } from '~/components/Panel/pages/PageQuickInput'

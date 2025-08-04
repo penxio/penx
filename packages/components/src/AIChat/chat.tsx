@@ -3,11 +3,15 @@
 import { useState } from 'react'
 import { useChat } from '@ai-sdk/react'
 import { Attachment, UIMessage } from 'ai'
-import { AI_SERVICE_HOST, isDesktop, ROOT_HOST } from '@penx/constants'
+import {
+  AI_SERVICE_HOST,
+  APP_LOCAL_HOST,
+  isDesktop,
+  ROOT_HOST,
+} from '@penx/constants'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { idb } from '@penx/indexeddb'
-import { localDB } from '@penx/local-db'
-import { PanelType, SessionData } from '@penx/types'
+import { LLMProviderType, PanelType, SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { Messages } from './messages'
 import { MultimodalInput } from './multimodal-input'
@@ -18,17 +22,26 @@ interface ApplicationError extends Error {
   status: number
 }
 
+interface Props {
+  id: string
+  initialMessages: Array<UIMessage>
+  isReadonly: boolean
+  session: SessionData
+  provider: {
+    type: any
+    model: string
+    apiKey?: string
+  }
+}
+
 export function Chat({
   id,
   initialMessages,
   isReadonly,
   session,
-}: {
-  id: string
-  initialMessages: Array<UIMessage>
-  isReadonly: boolean
-  session: SessionData
-}) {
+  provider,
+}: Props) {
+  const host = provider.type === 'PENX' ? AI_SERVICE_HOST : APP_LOCAL_HOST
   const {
     messages,
     setMessages,
@@ -40,7 +53,7 @@ export function Chat({
     stop,
     reload,
   } = useChat({
-    api: AI_SERVICE_HOST + '/api/ai/chat',
+    api: host + '/api/ai/chat',
     // api: 'http://localhost:4000' + '/api/ai/chat',
     id,
     initialMessages,
@@ -50,7 +63,13 @@ export function Chat({
       Authorization: `Bearer ${session.accessToken}`,
     },
     generateId: uniqueId,
-    experimental_prepareRequestBody: (body) => {},
+    experimental_prepareRequestBody: (body) => {
+      //
+      return {
+        ...body,
+        ...provider,
+      }
+    },
     onFinish: async (message, options) => {
       await idb.message.add({
         id: uniqueId(),
