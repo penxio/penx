@@ -8,6 +8,7 @@ import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
 import { db, pg } from '@penx/db/client'
+import aiRouter from './routers/ai'
 import bookmarkRouter from './routers/bookmark'
 import nodeRouter from './routers/node'
 import { Windows } from './types'
@@ -83,6 +84,7 @@ export class HonoServer {
 
     api.route('/bookmark', bookmarkRouter)
     api.route('/node', nodeRouter)
+    api.route('/ai', aiRouter)
 
     // Drizzle Proxy endpoint
     api.post('/query', async (c) => {
@@ -114,26 +116,6 @@ export class HonoServer {
         console.error('Database query error:', error)
         return c.json({ error: error.message }, 500)
       }
-    })
-
-    api.get('/users', async (c) => {
-      return c.json({
-        users: [
-          { id: 1, name: 'John Doe', email: 'john@example.com' },
-          { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-        ],
-      })
-    })
-
-    api.post('/users', async (c) => {
-      const body = await c.req.json()
-      return c.json(
-        {
-          message: 'User created successfully',
-          user: body,
-        },
-        201,
-      )
     })
 
     api.get('/files', async (c) => {
