@@ -104,16 +104,20 @@ export function DatabaseDetail(props: Props) {
         <StructCommandList creations={filteredRows} struct={struct} />
       )}
 
-      <Separator orientation="vertical" />
+      {struct.showDetail && (
+        <>
+          <Separator orientation="vertical" />
 
-      <div
-        className={cn(
-          'flex flex-[3] flex-col overflow-auto',
-          struct.isTask && 'flex-2',
-        )}
-      >
-        {currentItem && <CreationDetail creation={currentItem} />}
-      </div>
+          <div
+            className={cn(
+              'flex flex-[3] flex-col overflow-auto',
+              struct.isTask && 'flex-2',
+            )}
+          >
+            {currentItem && <CreationDetail creation={currentItem} />}
+          </div>
+        </>
+      )}
     </div>
   )
 }

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Chat } from '@penx/components/AIChat/chat'
 import { RagSettingDialog } from '@penx/components/AIChat/rag-setting-dialog'
+import { AIModelSelect, ModelProvider } from '@penx/components/AIModelSelect'
 import { useSession } from '@penx/session'
 import { uniqueId } from '@penx/unique-id'
 import { DetailApp } from '~/components/ExtensionApp/DetailApp'
 import { PopButton } from '~/components/ExtensionApp/widgets/PopButton'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
-import { AIModelSelect, ModelProvider } from './AIModelSelect'
 
 export function PageAIChat() {
   const { currentCommand } = useCurrentCommand()
@@ -34,7 +34,7 @@ export function PageAIChat() {
           <RagSettingDialog />
         </div>
 
-        <div className="flex min-h-0 w-full flex-1 p-3">
+        <div className="flex min-h-0 w-full flex-1">
           <Chat
             id={uniqueId()}
             initialMessages={[]}

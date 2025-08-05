@@ -16,7 +16,6 @@ const searchBarHeight = 54
 const footerHeight = 44
 
 export function PageStructCreations() {
-  const { currentCommand } = useCurrentCommand()
   const { struct } = useCurrentStruct()
   return (
     <>

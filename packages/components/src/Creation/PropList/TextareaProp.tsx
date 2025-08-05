@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { t } from '@lingui/core/macro'
-import { Input, InputProps } from '@penx/uikit/ui/input'
+import { Textarea, TextareaProps } from '@penx/uikit/ui/textarea'
 
-interface Props extends Omit<InputProps, 'onChange'> {
+interface Props extends Omit<TextareaProps, 'onChange'> {
   value: string
   onChange: (v: string) => void
 }
-export const TextInputProp = ({ value = '', onChange, ...rest }: Props) => {
-  const ref = useRef<HTMLInputElement>(null)
+export const TextareaProp = ({ value = '', onChange, ...rest }: Props) => {
+  const ref = useRef<HTMLTextAreaElement>(null)
   useEffect(() => {
     if (!ref.current) return
     if (value !== ref.current?.value) {
@@ -15,11 +15,10 @@ export const TextInputProp = ({ value = '', onChange, ...rest }: Props) => {
     }
   }, [value])
   return (
-    <Input
+    <Textarea
       ref={ref}
       placeholder={t`Empty`}
-      className=""
-      type="text"
+      className="bg-transparent"
       defaultValue={value ?? ''}
       onChange={(e) => onChange(e.target.value)}
       {...rest}

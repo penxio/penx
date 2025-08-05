@@ -416,6 +416,7 @@ export class ElectronApp {
       } else {
         setWindowPos()
         showAndFocus()
+
         win.webContents.send('ai-command-window-show')
       }
     }
@@ -580,10 +581,6 @@ export class ElectronApp {
       this.toggleAICommandWindow()
     })
 
-    ipcMain.on('open-ai-command-window', () => {
-      this.toggleAICommandWindow()
-    })
-
     ipcMain.on('quick-input-success', () => {
       this.mainWindow.webContents.send('quick-input-success')
       this.panelWindow.webContents.send('quick-input-success')
@@ -602,6 +599,14 @@ export class ElectronApp {
         return { success: false, error: error.message }
       }
     })
+
+    ipcMain.on(
+      'open-ai-command',
+      async (_, data: { creationId: string; selection: Selection }) => {
+        console.log('>>>>>>>>open-ai-command', data)
+        this.panelWindow.webContents.send('open-ai-command', data)
+      },
+    )
   }
 
   private openQuickInputCommand() {
@@ -617,6 +622,8 @@ export class ElectronApp {
     const doubleClickThreshold = 300
 
     uIOhook.on('keydown', async (event) => {
+      console.log('======event.keycode:', event.keycode)
+
       if (event.keycode === UiohookKey.Alt) {
         let now = Date.now()
         if (now - lastAltDownTime < doubleClickThreshold) {
@@ -630,7 +637,13 @@ export class ElectronApp {
         const selection = await getSelection()
         console.log('alt..... selection:', selection)
         if (selection?.text) {
-          // this.toggleAICommandWindow()
+          this.toggleAICommandWindow()
+          setTimeout(() => {
+            this.aiCommandWindow.webContents.send(
+              'on-text-selection',
+              selection,
+            )
+          }, 10)
         }
       }
 

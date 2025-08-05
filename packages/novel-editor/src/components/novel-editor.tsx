@@ -100,9 +100,9 @@ export const NovelEditor = ({
           editorProps={{
             handleDOMEvents: {
               keydown: (_view, event) => {
-                if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
-                  event.stopPropagation()
-                }
+                // if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+                //   event.stopPropagation()
+                // }
 
                 return handleCommandNavigation(event)
               },

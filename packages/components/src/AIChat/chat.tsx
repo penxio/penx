@@ -1,8 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useChat } from '@ai-sdk/react'
 import { Attachment, UIMessage } from 'ai'
+import { rest } from 'lodash'
+import { useLocalStorage } from 'usehooks-ts'
 import {
   AI_SERVICE_HOST,
   APP_LOCAL_HOST,
@@ -13,6 +15,7 @@ import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { idb } from '@penx/indexeddb'
 import { AIModel } from '@penx/model-type'
 import { LLMProviderType, PanelType, SessionData } from '@penx/types'
+import { Button } from '@penx/uikit/ui/button'
 import { uniqueId } from '@penx/unique-id'
 import { Messages } from './messages'
 import { MultimodalInput } from './multimodal-input'
@@ -23,11 +26,25 @@ interface ApplicationError extends Error {
   status: number
 }
 
+interface Selection {
+  text?: string
+  process?: ProcessInfo
+}
+
+interface ProcessInfo {
+  pid?: number
+  name?: string
+  bundleIdentifier?: string
+}
+
 interface Props {
   id: string
   initialMessages: Array<UIMessage>
   isReadonly: boolean
   session: SessionData
+  isAICommand?: boolean
+  selection?: Selection
+  systemPrompt?: string
   provider?: {
     type: any
     model: AIModel
@@ -38,11 +55,15 @@ interface Props {
 export function Chat({
   id,
   initialMessages,
+  isAICommand,
+  systemPrompt,
+  selection,
   isReadonly,
   session,
   provider,
 }: Props) {
-  const host = provider?.type === 'PENX' ? AI_SERVICE_HOST : APP_LOCAL_HOST
+  // const host = provider?.type === 'PENX' ? AI_SERVICE_HOST : APP_LOCAL_HOST
+  const host = APP_LOCAL_HOST
   const {
     messages,
     setMessages,
@@ -53,6 +74,7 @@ export function Chat({
     status,
     stop,
     reload,
+    ...rest
   } = useChat({
     api: host + '/api/ai/chat',
     // api: 'http://localhost:4000' + '/api/ai/chat',
@@ -65,10 +87,20 @@ export function Chat({
     },
     generateId: uniqueId,
     experimental_prepareRequestBody: (body) => {
-      //
+      console.log('body............>>>>>')
+
       return {
         ...body,
         ...provider,
+        messages: [
+          {
+            id: uniqueId(),
+            content: systemPrompt,
+            role: 'system',
+          },
+          body.messages[body.messages.length - 1],
+        ],
+        model: provider?.model.id,
       }
     },
     onFinish: async (message, options) => {
@@ -102,6 +134,28 @@ export function Chat({
 
   const [attachments, setAttachments] = useState<Array<Attachment>>([])
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible)
+  const [localStorageInput, setLocalStorageInput] = useLocalStorage('input', '')
+
+  const submitted = useRef(false)
+  useEffect(() => {
+    setTimeout(() => {
+      handleSubmit()
+    }, 0)
+  }, [])
+
+  useEffect(() => {
+    if (!selection) return
+    if (submitted.current) return
+    submitted.current = true
+
+    append({
+      id: uniqueId(),
+      role: 'user',
+      content: selection.text!,
+    }).then(() => {
+      submitted.current = false
+    })
+  }, [selection])
 
   return (
     <>
@@ -118,10 +172,11 @@ export function Chat({
           />
         </div>
 
-        <form className="bg-am mx-auto flex w-full gap-2 md:max-w-3xl">
+        <form className="mx-auto flex w-full gap-2 px-2 pb-2 md:max-w-3xl">
           {!isReadonly && (
             <MultimodalInput
               chatId={id}
+              isAICommand={isAICommand}
               input={input}
               setInput={setInput}
               handleSubmit={handleSubmit}

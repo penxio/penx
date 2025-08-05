@@ -1,5 +1,6 @@
 export enum ColumnType {
   TEXT = 'TEXT',
+  LONG_TEXT = 'LONG_TEXT',
   NUMBER = 'NUMBER',
   PASSWORD = 'PASSWORD',
   BOOLEAN = 'BOOLEAN',
@@ -18,6 +19,9 @@ export enum ColumnType {
   SINGLE_SELECT = 'SINGLE_SELECT',
 
   MULTIPLE_SELECT = 'MULTIPLE_SELECT',
+
+  MODEL_SELECT = 'MODEL_SELECT',
+
   DATE = 'DATE',
   CREATED_AT = 'CREATED_AT',
   UPDATED_AT = 'UPDATED_AT',

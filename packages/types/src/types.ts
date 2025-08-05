@@ -252,6 +252,7 @@ export enum StructType {
   SNIPPET = 'SNIPPET',
   QUICK_LINK = 'QUICK_LINK',
   PROMPT = 'PROMPT',
+  AI_COMMAND = 'AI_COMMAND',
   FRIEND = 'FRIEND',
   PROJECT = 'PROJECT',
 }

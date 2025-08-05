@@ -1,7 +1,8 @@
-import { ReactNode, useEffect, useRef } from 'react'
+import { ReactNode, useEffect, useMemo, useRef } from 'react'
 import { Trans } from '@lingui/react/macro'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import { useArea } from '@penx/hooks/useArea'
+import { useStructs } from '@penx/hooks/useStructs'
 import { Separator } from '@penx/uikit/ui/separator'
 import { useActionPopover } from '~/hooks/useActionPopover'
 import { useHandleSelect } from '~/hooks/useHandleSelect'
@@ -23,10 +24,19 @@ export function PageRoot() {
   const handleSelect = useHandleSelect()
   const { setOpen } = useActionPopover()
   const { area } = useArea()
+  const { structs } = useStructs()
 
   const currentItem = items.find(
     (item) => item.id === value && item.data.type === 'Creation',
   )
+
+  const struct = useMemo(() => {
+    if (!currentItem?.data?.creation) return null
+    const item = structs.find(
+      (s) => s.id === currentItem?.data.creation?.structId,
+    )
+    return item
+  }, [currentItem?.data?.creation, structs])
 
   const parentRef = useRef<HTMLDivElement>(null)
 
@@ -148,7 +158,7 @@ export function PageRoot() {
           </CommandGroup>
         </div>
 
-        {currentItem?.data?.creation && (
+        {currentItem?.data?.creation && struct?.showDetail && (
           <>
             <Separator orientation="vertical" />
             <div className="flex flex-[3] flex-col overflow-auto">

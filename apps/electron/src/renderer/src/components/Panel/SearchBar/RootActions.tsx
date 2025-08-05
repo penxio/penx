@@ -258,6 +258,8 @@ export function RootActions({ command, close }: RootActionsProps) {
                 reset()
               }, 10)
             } catch (error) {
+              console.log('========error:', error)
+
               toast.error(t`Failed to delete`)
             }
             close()

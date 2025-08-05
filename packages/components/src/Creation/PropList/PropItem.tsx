@@ -5,15 +5,18 @@ import { Creation, Struct } from '@penx/domain'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
 import { cn } from '@penx/utils'
+import { AIModelSelect } from '../../AIModelSelect'
 import { FieldIcon } from '../../FieldIcon'
 import { FileUpload } from '../../FileUpload'
 import { usePanelCreationContext } from '../PanelCreationProvider'
+import { AIModelSelectProp } from './AIModelSelectProp'
 import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { NumberInputProp } from './NumberInputProp'
 import { PasswordProp } from './PasswordProp'
 import { RateProp } from './RateProp'
 import { SingleSelectProp } from './SingleSelectProp'
+import { TextareaProp } from './TextareaProp'
 import { TextInputProp } from './TextInputProp'
 import { UrlInputProp } from './UrlInputProp'
 
@@ -86,6 +89,14 @@ export const PropItem = ({
             onChange={handleChange}
           />
         )
+      case ColumnType.LONG_TEXT:
+        return (
+          <TextareaProp
+            placeholder={t`Empty`}
+            value={value}
+            onChange={handleChange}
+          />
+        )
       case ColumnType.DATE:
         return (
           <DateProp
@@ -136,6 +147,24 @@ export const PropItem = ({
             onChange={handleChange}
           />
         )
+      case ColumnType.MULTIPLE_SELECT:
+        return (
+          <MultipleSelectProp
+            struct={struct}
+            isPanel={isPanel}
+            column={column}
+            value={value}
+            onChange={handleChange}
+          />
+        )
+      case ColumnType.MODEL_SELECT:
+        return (
+          <AIModelSelectProp
+            isPanel={isPanel}
+            value={value}
+            onChange={handleChange}
+          />
+        )
       case ColumnType.RATE:
         return <RateProp value={value} onChange={handleChange} />
       default:
@@ -148,6 +177,7 @@ export const PropItem = ({
       className={cn(
         'flex items-center gap-2',
         isPanel && 'h-9 justify-between px-2',
+        column.columnType === ColumnType.LONG_TEXT && 'items-start',
       )}
     >
       <div className="text-foreground/60 flex w-32 items-center gap-1">

@@ -22,6 +22,7 @@ import {
   FormMessage,
 } from '@penx/uikit/form'
 import { Input } from '@penx/uikit/input'
+import { Switch } from '@penx/uikit/ui/switch'
 import { cn } from '@penx/utils'
 import { ColorSelector } from './ColorSelector'
 import { useStructDialog } from './useStructDialog'
@@ -30,6 +31,7 @@ const FormSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
   pluralName: z.string().min(1, { message: 'Plural name is required' }),
   type: z.string().min(1, { message: 'Unique code is required' }),
+  showDetail: z.boolean().optional(),
   color: z.string().optional(),
 })
 
@@ -47,6 +49,7 @@ export function EditStructForm(props: Props) {
       name: struct?.name || '',
       pluralName: struct?.pluralName || '',
       type: struct?.type || '',
+      showDetail: struct?.showDetail,
       color: struct?.color || '',
     },
   })
@@ -145,6 +148,25 @@ export function EditStructForm(props: Props) {
                   <ColorSelector
                     value={field.value || ''}
                     onChange={field.onChange}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="showDetail"
+            render={({ field }) => (
+              <FormItem className="flex w-full items-center justify-between">
+                <FormLabel className="text-xs">
+                  <Trans>Show detail panel</Trans>
+                </FormLabel>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={(v) => field.onChange(v)}
                   />
                 </FormControl>
                 <FormMessage />

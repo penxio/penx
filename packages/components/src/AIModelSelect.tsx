@@ -15,6 +15,7 @@ import {
   CommandShortcut,
 } from '@penx/uikit/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
+import { cn } from '@penx/utils'
 
 export type ModelProvider = {
   type: LLMProviderType
@@ -23,10 +24,19 @@ export type ModelProvider = {
 }
 
 interface Props {
+  className?: string
+  contentClassName?: string
+  commandClassName?: string
   value: ModelProvider
   onChange: (v: ModelProvider) => any
 }
-export function AIModelSelect({ value, onChange }: Props) {
+export function AIModelSelect({
+  value,
+  onChange,
+  className,
+  contentClassName,
+  commandClassName,
+}: Props) {
   const { space } = useMySpace()
   const [open, setOpen] = useState(false)
   const { aiProviders = [] } = space
@@ -34,13 +44,17 @@ export function AIModelSelect({ value, onChange }: Props) {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className="" asChild>
-        <div className="no-drag flex cursor-pointer items-center">
-          <div>{value.model.id === 'PENX' ? 'PenX AI' : value.model.label}</div>
+        <div
+          className={cn('no-drag flex cursor-pointer items-center', className)}
+        >
+          <div>
+            {value?.model?.id === 'PENX' ? 'PenX AI' : value?.model?.label}
+          </div>
           <ChevronRightIcon size={16} />
         </div>
       </PopoverTrigger>
-      <PopoverContent className="p-0" align="start">
-        <Command className="no-drag">
+      <PopoverContent className={cn('p-0', contentClassName)} align="start">
+        <Command className={cn('no-drag max-h-[100px]', commandClassName)}>
           <CommandInput placeholder="Search model" />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
@@ -68,7 +82,8 @@ export function AIModelSelect({ value, onChange }: Props) {
                 >
                   {provider.availableModels?.map((item) => (
                     <CommandItem
-                      key={`${provider.type}_${item}`}
+                      key={`${provider.type}_${item.id}`}
+                      className="cursor-pointer"
                       onSelect={() => {
                         onChange({
                           type: provider.type!,

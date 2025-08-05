@@ -233,6 +233,23 @@ export class AppService {
       structs.push(newStruct)
     }
 
+    {
+      const aiCommandStruct = structs.find(
+        (s) => s.props.type === StructType.AI_COMMAND,
+      )
+      if (!aiCommandStruct) {
+        const newStruct = generateStructNode({
+          type: StructType.AI_COMMAND,
+          name: t`AI Command`,
+          spaceId: space.id,
+          userId: space.userId,
+          areaId: area.id,
+        })
+        await localDB.addStruct(newStruct)
+        structs.push(newStruct)
+      }
+    }
+
     const quicklinkStruct = structs.find(
       (s) => s.props.type === StructType.QUICK_LINK,
     )

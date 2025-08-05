@@ -23,7 +23,7 @@ export function createPanelWindow() {
 
     autoHideMenuBar: true,
     // titleBarStyle: 'hidden',
-    show: false,
+    show: true,
     frame: false,
     vibrancy: process.platform === 'darwin' ? 'hud' : undefined,
     transparent: process.platform === 'darwin',

@@ -45,7 +45,7 @@ class LocalDB {
   }
 
   deleteNodeByIds = async (ids: string[]) => {
-    await this.deleteNodeByIds(ids)
+    await this.node.deleteNodeByIds(ids)
   }
 
   updateNodeProps = async <T extends INode>(

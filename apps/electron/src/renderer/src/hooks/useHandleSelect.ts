@@ -6,6 +6,7 @@ import { useCommandAppLoading } from './useCommandAppLoading'
 import { useCommandAppUI } from './useCommandAppUI'
 import { CommandOptions, useCommandOptions } from './useCommandOptions'
 import { useCurrentCommand } from './useCurrentCommand'
+import { useCurrentCreation } from './useCurrentCreation'
 import { useCurrentStruct } from './useCurrentStruct'
 import { navigation } from './useNavigation'
 import { useSearch } from './useSearch'
@@ -18,12 +19,14 @@ export function useHandleSelect() {
   const { setLoading } = useCommandAppLoading()
   const { setSearch } = useSearch()
   const { structs } = useStructs()
+  const { setCreation } = useCurrentCreation()
 
   return async (item: ICommandItem, opt = {} as CommandOptions) => {
     setOptions(opt)
     setCurrentCommand(item)
 
     if (item.data.type === 'Creation') {
+      setCreation(item.data.creation?.raw!)
       const struct = structs.find((s) => s.id === item.data.creation?.structId)
       if (struct?.isQuicklink) {
         const linkColumn = struct.columns.find((c) => c.slug === 'link')
@@ -33,9 +36,16 @@ export function useHandleSelect() {
         }
         setSearch('')
         window.customElectronApi.togglePanelWindow()
-      } else {
-        navigation.push({ path: '/edit-creation' })
+        return
       }
+
+      if (struct?.isAICommand) {
+        navigation.push({ path: '/ai-command' })
+        return
+      }
+
+      // alert('name.....')
+      navigation.push({ path: '/edit-creation' })
       return
     }
 

@@ -1,7 +1,8 @@
-import { join } from 'path'
-import { is } from '@electron-toolkit/utils'
-import { BrowserWindow, screen, shell } from 'electron'
-import icon from '../../resources/icon.png?asset'
+import { join } from 'path';
+import { is } from '@electron-toolkit/utils';
+import { BrowserWindow, screen, shell } from 'electron';
+import icon from '../../resources/icon.png?asset';
+
 
 export function createMainWindow() {
   const primaryDisplay = screen.getPrimaryDisplay()

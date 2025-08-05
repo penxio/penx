@@ -121,6 +121,7 @@ export interface IStructNode extends INode {
     viewIds: string[]
     columns: IColumn[]
     views: IView[]
+    showDetail?: boolean
   }
 }
 

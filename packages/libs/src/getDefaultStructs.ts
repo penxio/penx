@@ -206,6 +206,37 @@ export function generateStructNode({
       )
     }
 
+    if (type === StructType.AI_COMMAND) {
+      columns.push(
+        ...[
+          {
+            id: uniqueId(),
+            slug: 'prompt',
+            name: t`Prompt`,
+            description: '',
+            columnType: ColumnType.LONG_TEXT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+          {
+            id: uniqueId(),
+            slug: 'model',
+            name: t`Model select`,
+            description: '',
+            columnType: ColumnType.MODEL_SELECT,
+            config: {},
+            options: [],
+            isPrimary: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+      )
+    }
+
     if (type === StructType.SNIPPET) {
       columns.push(
         ...[
@@ -367,11 +398,13 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     generateStructNode({
       type: StructType.NOTE,
       name: t`Note`,
+      showDetail: true,
       ...input,
     }),
 
     generateStructNode({
       type: StructType.IMAGE,
+      showDetail: true,
       name: t`Image`,
       ...input,
     }),
@@ -391,6 +424,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     generateStructNode({
       type: StructType.TASK,
       name: t`Task`,
+      showDetail: true,
       ...input,
     }),
 
@@ -401,6 +435,7 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     }),
     generateStructNode({
       type: StructType.SNIPPET,
+      showDetail: true,
       name: t`Snippet`,
       ...input,
     }),
@@ -409,9 +444,16 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
       name: t`Quicklink`,
       ...input,
     }),
+
     generateStructNode({
       type: StructType.PROMPT,
       name: t`Prompt`,
+      ...input,
+    }),
+
+    generateStructNode({
+      type: StructType.AI_COMMAND,
+      name: t`AI Command`,
       ...input,
     }),
 

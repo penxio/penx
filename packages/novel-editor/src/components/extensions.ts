@@ -32,7 +32,8 @@ import { getUrl } from '@penx/utils'
 const aiHighlight = AIHighlight
 //You can overwrite the placeholder with your own configuration
 const placeholder = Placeholder.configure({
-  placeholder: isMobileApp ? 'Write something...' : `Press '/' for commands`,
+  // placeholder: isMobileApp ? 'Write something...' : `Press '/' for commands`,
+  placeholder: 'Write something...',
 })
 const tiptapLink = TiptapLink.configure({
   HTMLAttributes: {

@@ -12,6 +12,7 @@ import { handleEscape } from '~/lib/handleEscape'
 import { ICommandItem } from '~/lib/types'
 import { Command, CommandList } from './CommandComponents'
 import { CommandPaletteFooter } from './CommandPaletteFooter'
+import { PageAICommand } from './pages/PageAICommand'
 import { PageConfigureShortcut } from './pages/PageConfigureShortcut'
 import { PageEditCreation } from './pages/PageEditCreation'
 import { PageEditStruct } from './pages/PageEditStruct'
@@ -89,10 +90,6 @@ export const CommandPalette = () => {
       return <PageConfigureShortcut />
     }
 
-    if (current.path === '/edit-creation') {
-      return <PageEditCreation />
-    }
-
     return current.component?.()
   }, [current])
 
@@ -110,12 +107,17 @@ export const CommandPalette = () => {
 
       return <ExtensionComponent />
     }
+
     if (current.path === '/configure-shortcut') {
       return <PageConfigureShortcut />
     }
 
     if (current.path === '/struct-creations') {
       return <PageStructCreations />
+    }
+
+    if (current.path === '/ai-command') {
+      return <PageAICommand />
     }
 
     return (
@@ -137,6 +139,10 @@ export const CommandPalette = () => {
   }, [isExtension, header, body, footer])
 
   if (isLoading) return null
+
+  if (current.path === '/edit-creation') {
+    return <PageEditCreation />
+  }
 
   return (
     <Command

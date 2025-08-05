@@ -36,6 +36,10 @@ export class Struct {
     return this.raw.props.color || ''
   }
 
+  get showDetail() {
+    return this.raw.props.showDetail ?? false
+  }
+
   get emoji() {
     return this.raw.props?.emoji || ''
   }
@@ -84,6 +88,10 @@ export class Struct {
 
   get isNote() {
     return this.type === StructType.NOTE
+  }
+
+  get isAICommand() {
+    return this.type === StructType.AI_COMMAND
   }
 
   get createdAt() {

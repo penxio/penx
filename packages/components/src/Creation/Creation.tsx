@@ -126,7 +126,7 @@ export function Creation({ panel, className, ref, editorFooter }: Props) {
             />
           )}
         </div>
-        <div className={cn('mx-auto w-full max-w-2xl px-0')}>
+        <div className={cn('mx-auto w-full max-w-2xl px-0 mt-4')}>
           <NovelEditor
             className=""
             value={creation.content ? creation.content : defaultEditorContent}

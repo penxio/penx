@@ -80,5 +80,9 @@ export function StructIcon({ type, className = 'size-4' }: Props) {
     return <span className={cn('icon-[fluent--prompt-16-filled]', className)} />
   }
 
+  if (type === StructType.AI_COMMAND) {
+    return <span className={cn('icon-[mingcute--ai-fill]', className)} />
+  }
+
   return null
 }

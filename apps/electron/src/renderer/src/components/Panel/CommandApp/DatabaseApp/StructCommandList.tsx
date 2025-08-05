@@ -8,6 +8,7 @@ import { Button } from '@penx/uikit/ui/button'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { cn } from '@penx/utils'
 import { useFilterPopover } from '~/hooks/useFilterPopover'
+import { navigation } from '~/hooks/useNavigation'
 import { creationToCommand } from '~/lib/creationToCommand'
 import { getBookmarkIcon } from '~/lib/getBookmarkIcon'
 import { getBookmarkUrl } from '~/lib/getBookmarkUrl'
@@ -48,7 +49,15 @@ export function StructCommandList({ creations, struct }: Props) {
                 const url = getBookmarkUrl(struct, item)
                 window.electron.ipcRenderer.send('open-url', url)
                 hidePanelWindow()
+                return
               }
+
+              if (struct.isAICommand) {
+                navigation.push({ path: '/ai-command' })
+                return
+              }
+
+              navigation.push({ path: '/edit-creation' })
             }}
             prefix={
               item.isTask ? (

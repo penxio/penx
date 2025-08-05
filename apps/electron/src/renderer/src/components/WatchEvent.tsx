@@ -8,8 +8,10 @@ import {
   settingsAtom,
   SettingsNav,
 } from '@penx/components/SettingsDialog/useSettingsDialog'
+import { Creation } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useAppShortcuts } from '@penx/hooks/useAppShortcuts'
+import { localDB } from '@penx/local-db'
 import {
   getAddress,
   getNewMnemonic,
@@ -20,7 +22,11 @@ import { queryClient } from '@penx/query-client'
 import { refreshSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
+import { currentCommandAtom } from '~/hooks/useCurrentCommand'
+import { currentCreationAtom } from '~/hooks/useCurrentCreation'
 import { navigation, setNavigations } from '~/hooks/useNavigation'
+import { Selection } from '~/hooks/useSelection'
+import { creationToCommand } from '~/lib/creationToCommand'
 import { openCommand } from '~/lib/openCommand'
 
 tinykeys(window, {
@@ -90,6 +96,27 @@ window.electron.ipcRenderer.on('open-quick-input', () => {
     window.customElectronApi.openPanelWindow()
   }, 0)
 })
+
+window.electron.ipcRenderer.on(
+  'open-ai-command',
+  async (
+    _,
+    { creationId, selection }: { creationId: string; selection: Selection },
+  ) => {
+    const creation = await localDB.getCreation(creationId)
+
+    store.set(currentCreationAtom, creation)
+    store.set(currentCommandAtom, creationToCommand(new Creation(creation)))
+    navigation.push({
+      path: '/ai-command',
+      data: selection,
+    })
+
+    setTimeout(() => {
+      window.customElectronApi.openPanelWindow()
+    }, 0)
+  },
+)
 
 export function WatchEvent() {
   useEffect(() => {

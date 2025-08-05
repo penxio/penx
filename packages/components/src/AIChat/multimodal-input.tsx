@@ -5,6 +5,7 @@ import {
   memo,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type ChangeEvent,
@@ -40,11 +41,13 @@ function PureMultimodalInput({
   setAttachments,
   messages,
   setMessages,
+  isAICommand,
   append,
   handleSubmit,
   className,
 }: {
   chatId: string
+  isAICommand?: boolean
   input: UseChatHelpers['input']
   setInput: UseChatHelpers['setInput']
   status: UseChatHelpers['status']
@@ -104,12 +107,16 @@ function PureMultimodalInput({
     adjustHeight()
   }
 
+  const isAgent = useMemo(() => {
+    if (isAICommand) return false
+    return chatType === ChatType.DATAHUB
+  }, [chatType, isAICommand])
+
   const submit = useCallback(() => {
     handleSubmit(undefined, {
       body: {
         text: input,
-        // isAgent: chatType === ChatType.DATAHUB,
-        isAgent: false,
+        isAgent,
       },
       experimental_attachments: attachments,
     })
@@ -134,7 +141,7 @@ function PureMultimodalInput({
     <div className="relative flex h-full w-full gap-4">
       <div
         className={cx(
-          'shadow-popover bg-background flex w-full flex-col gap-2 rounded-xl p-3',
+          'shadow-popover bg-background flex w-full flex-col gap-2 rounded-xl p-3 dark:bg-neutral-800',
         )}
       >
         <textarea
@@ -170,7 +177,11 @@ function PureMultimodalInput({
           }}
         />
         <div className="flex w-full items-center justify-between gap-3">
-          <ChatTypeSelect value={chatType} onSelect={setChatType} />
+          <div>
+            {!isAICommand && (
+              <ChatTypeSelect value={chatType} onSelect={setChatType} />
+            )}
+          </div>
           {status === 'submitted' ? (
             <StopButton stop={stop} setMessages={setMessages} />
           ) : (
