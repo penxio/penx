@@ -19,8 +19,9 @@
     "build:unpack": "npm run build && electron-builder --dir",
     "build:win": "npm run build && electron-builder --win --config --publish=never",
     "build:mac": "electron-vite build && electron-builder --mac --universal --config --publish=never",
-    "build:mac-x64": "electron-vite build && electron-builder --mac  --x64 --config --publish=never",
+    "build:mac-x64": "electron-vite build && electron-builder --mac --x64 --config --publish=never",
     "build:mac-arm64": "electron-vite build && electron-builder --mac --arm64 --config --publish=never",
+    "build:mac-all": "pnpm run build:mac && pnpm run build:mac-x64 && pnpm run build:mac-arm64",
     "build:linux": "electron-vite build && electron-builder --linux --config --publish=never"
   },
   "dependencies": {

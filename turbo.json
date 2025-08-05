@@ -67,6 +67,18 @@
       "dependsOn": [],
       "outputs": ["dist/**"]
     },
+    "build:mac-x64": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "build:mac-arm64": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
+    "build:mac-all": {
+      "dependsOn": [],
+      "outputs": ["dist/**"]
+    },
     "build:win": {
       "dependsOn": [],
       "outputs": ["dist/**"]
