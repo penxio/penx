@@ -99,7 +99,13 @@ export const NovelEditor = ({
           className="penx-editor relative"
           editorProps={{
             handleDOMEvents: {
-              keydown: (_view, event) => handleCommandNavigation(event),
+              keydown: (_view, event) => {
+                if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+                  event.stopPropagation()
+                }
+
+                return handleCommandNavigation(event)
+              },
             },
             editable: () => editable,
             handlePaste: (view, event) =>

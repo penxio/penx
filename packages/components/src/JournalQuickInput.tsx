@@ -110,6 +110,8 @@ export function JournalQuickInput({
       ],
       immediatelyRender: false,
       onUpdate({ editor }) {
+        console.log('========editor.getJSON():', editor.getJSON())
+
         setInput(JSON.stringify(editor.getJSON()))
       },
     },
@@ -118,6 +120,8 @@ export function JournalQuickInput({
 
   const submitForm = async () => {
     // const isNote = struct.type === StructType.NOTE
+    if (!input) return
+
     const doc = JSON.parse(input)
     const md = tiptapToMarkdown(doc)
     const isNote = !isTask
@@ -187,6 +191,10 @@ export function JournalQuickInput({
         className="focus-visible::outline-0 prose px-3 pb-10 pt-2 focus-visible:border-0"
         editor={editor}
         onKeyDown={(event) => {
+          if (['ArrowUp', 'ArrowDown'].includes(event.key)) {
+            event.stopPropagation()
+          }
+
           if (
             event.key === 'Enter' &&
             (event.ctrlKey || event.metaKey) &&

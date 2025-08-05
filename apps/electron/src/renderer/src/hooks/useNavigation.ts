@@ -55,11 +55,12 @@ export const navigation = {
 
   pop() {
     const navigations = getNavigations()
+
+    if (navigations.length === 1) return
+
     const navNav = produce(navigations, (draft) => {
       draft.pop()
     })
-
-    console.log('pop=====navNav:', navNav)
 
     setNavigations(navNav)
   },

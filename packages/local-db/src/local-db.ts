@@ -37,7 +37,6 @@ class LocalDB {
     changed = true,
   ): Promise<T> => {
     const node = await this.node.insert(data)
-    console.log('======add==node:', data, 'node:', node)
 
     if (changed) {
       await this.addChange(node.id, OperationType.CREATE, node)
