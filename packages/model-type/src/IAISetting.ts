@@ -1,12 +1,16 @@
-import { LLMProviderType } from '@penx/types';
+import { LLMProviderType } from '@penx/types'
 
+export type AIModel = {
+  id: string
+  label: string
+}
 
 export type AIProvider = {
   name?: string
   type: LLMProviderType
   apiKey?: string
   baseURL?: string
-  availableModels?: string[]
+  availableModels?: AIModel[]
   [key: string]: any
 }
 

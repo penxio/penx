@@ -5,9 +5,15 @@ import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 
 export default defineConfig({
   main: {
+    // build: {
+    //   rollupOptions: {
+    //     external: [''],
+    //   },
+    // },
     plugins: [
       externalizeDepsPlugin({
         exclude: [
+          '@electric-sql/pglite',
           '@penx/api',
           '@penx/components',
           '@penx/constants',

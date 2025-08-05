@@ -108,7 +108,8 @@ function PureMultimodalInput({
     handleSubmit(undefined, {
       body: {
         text: input,
-        isAgent: chatType === ChatType.DATAHUB,
+        // isAgent: chatType === ChatType.DATAHUB,
+        isAgent: false,
       },
       experimental_attachments: attachments,
     })

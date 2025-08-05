@@ -11,6 +11,7 @@ import {
 } from '@penx/constants'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { idb } from '@penx/indexeddb'
+import { AIModel } from '@penx/model-type'
 import { LLMProviderType, PanelType, SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { Messages } from './messages'
@@ -27,9 +28,9 @@ interface Props {
   initialMessages: Array<UIMessage>
   isReadonly: boolean
   session: SessionData
-  provider: {
+  provider?: {
     type: any
-    model: string
+    model: AIModel
     apiKey?: string
   }
 }
@@ -41,7 +42,7 @@ export function Chat({
   session,
   provider,
 }: Props) {
-  const host = provider.type === 'PENX' ? AI_SERVICE_HOST : APP_LOCAL_HOST
+  const host = provider?.type === 'PENX' ? AI_SERVICE_HOST : APP_LOCAL_HOST
   const {
     messages,
     setMessages,

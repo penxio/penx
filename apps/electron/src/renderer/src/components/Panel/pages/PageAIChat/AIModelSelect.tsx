@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronRightIcon } from 'lucide-react'
 import { useMySpace } from '@penx/hooks/useMySpace'
+import { AIModel } from '@penx/model-type'
 import { LLMProviderType, LLMProviderTypeEnum } from '@penx/types'
 import {
   Command,
@@ -17,7 +18,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 
 export type ModelProvider = {
   type: LLMProviderType
-  model: string
+  model: AIModel
   apiKey?: string
 }
 
@@ -34,7 +35,7 @@ export function AIModelSelect({ value, onChange }: Props) {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className="" asChild>
         <div className="no-drag flex cursor-pointer items-center">
-          <div>{value.model === 'PENX' ? 'PenX AI' : value.model}</div>
+          <div>{value.model.id === 'PENX' ? 'PenX AI' : value.model.label}</div>
           <ChevronRightIcon size={16} />
         </div>
       </PopoverTrigger>
@@ -77,7 +78,7 @@ export function AIModelSelect({ value, onChange }: Props) {
                         setOpen(false)
                       }}
                     >
-                      {item}
+                      {item.label}
                     </CommandItem>
                   ))}
                 </CommandGroup>

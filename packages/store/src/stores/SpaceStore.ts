@@ -41,8 +41,8 @@ export class SpaceStore {
       return
     }
 
-    const site = this.get()
-    const newSite = produce(site, (draft) => {
+    const space = this.get()
+    const newSpace = produce(space, (draft) => {
       // Initialize aiSetting if it doesn't exist
       if (!draft.props) {
         draft.props = {} as ISpaceNode['props']
@@ -83,12 +83,12 @@ export class SpaceStore {
       }
     })
 
-    this.set(newSite)
-    await this.save(newSite)
+    this.set(newSpace)
+    await this.save(newSpace)
 
-    await localDB.updateSpaceProps(newSite.id, {
-      ...site.props,
-      aiSetting: newSite.props.aiSetting,
+    await localDB.updateSpaceProps(newSpace.id, {
+      ...space.props,
+      aiSetting: newSpace.props.aiSetting,
     })
   }
 

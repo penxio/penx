@@ -85,6 +85,10 @@ jobs:
           echo "APPLE_APP_SPECIFIC_PASSWORD=${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}" >> apps/electron/.env.apple
           echo "APPLE_TEAM_ID=${{ secrets.APPLE_TEAM_ID }}" >> apps/electron/.env.apple
 
+      - name: Clean dist directory 
+        if: matrix.os == 'macos-latest'
+        run: rm -rf apps/electron/dist/*
+
       - name: build-mac
         if: matrix.os == 'macos-latest'
         env:

@@ -1,37 +1,38 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { getAvailableModels } from '@penx/libs/ai/helper'
+import { AIModel } from '@penx/model-type'
+import { LLMProviderType } from '@penx/types'
 import { Label } from '@penx/uikit/label'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/ui/popover'
 
 interface ModelSelectorProps {
-  selectedModels: string[]
-  onChange: (models: string[]) => void
-  availableModels: string[]
-  isLoadingModels: boolean
-  modelError: string
+  providerType: LLMProviderType
+  selectedModels: AIModel[]
+  onChange: (models: AIModel[]) => void
 }
 
 export function ModelSelector({
   selectedModels,
+  providerType,
   onChange,
-  availableModels,
-  isLoadingModels,
-  modelError,
 }: ModelSelectorProps) {
   const [open, setOpen] = useState(false)
   const modelDropdownRef = useRef<HTMLDivElement>(null)
+  const models = getAvailableModels(providerType)
 
-  const toggleModel = (model: string) => {
+  const toggleModel = (model: AIModel) => {
     onChange(
-      selectedModels.includes(model)
-        ? selectedModels.filter((m) => m !== model)
+      selectedModels.some((m) => m.id === model.id)
+        ? selectedModels.filter((m) => m.id !== model.id)
         : [...selectedModels, model],
     )
   }
 
-  const removeModel = (model: string) => {
-    onChange(selectedModels.filter((m) => m !== model))
+  const removeModel = (model: AIModel) => {
+    onChange(selectedModels.filter((m) => m.id !== model.id))
   }
 
   return (
@@ -46,10 +47,10 @@ export function ModelSelector({
             {selectedModels.length > 0 ? (
               selectedModels.map((model) => (
                 <div
-                  key={model}
+                  key={model.id}
                   className="bg-muted/50 border-muted-foreground/20 flex items-center rounded-md border py-1 pl-2 pr-1 text-sm"
                 >
-                  <span className="max-w-[200px] truncate">{model}</span>
+                  <span className="max-w-[200px] truncate">{model.label}</span>
                   <button
                     type="button"
                     className="text-muted-foreground hover:text-foreground hover:bg-muted ml-1 rounded-full"
@@ -68,42 +69,25 @@ export function ModelSelector({
           </div>
         </PopoverTrigger>
         <PopoverContent className="max-h-[260px] w-[var(--radix-popover-trigger-width)] overflow-y-auto p-1">
-          {isLoadingModels ? (
-            <div className="flex flex-col items-center justify-center gap-2 p-6 text-sm">
-              <span className="icon-[mdi--loading] text-primary size-5 animate-spin"></span>
-              <span className="text-muted-foreground">Loading models...</span>
-            </div>
-          ) : modelError ? (
-            <div className="flex flex-col items-center p-6 text-sm text-red-500">
-              <span className="icon-[mdi--alert-circle-outline] mb-2 size-5"></span>
-              {modelError}
-            </div>
-          ) : availableModels.length > 0 ? (
-            <>
-              {availableModels.map((model) => (
-                <div
-                  key={model}
-                  className="hover:bg-foreground/10  flex cursor-pointer cursor-pointer items-center justify-between rounded-md p-2"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleModel(model)
-                  }}
-                >
-                  <span className="text-sm">{model}</span>
-                  <div className="mr-2 flex h-5 w-5 items-center justify-center">
-                    {selectedModels.includes(model) && (
-                      <span className="icon-[mdi--check] text-primary ml-auto size-4"></span>
-                    )}
-                  </div>
+          <>
+            {models.map((model) => (
+              <div
+                key={model.id}
+                className="hover:bg-foreground/10  flex cursor-pointer items-center justify-between rounded-md p-2"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  toggleModel(model)
+                }}
+              >
+                <span className="text-sm">{model.label}</span>
+                <div className="mr-2 flex h-5 w-5 items-center justify-center">
+                  {selectedModels.some((m) => m.id === model.id) && (
+                    <span className="icon-[mdi--check] text-primary ml-auto size-4"></span>
+                  )}
                 </div>
-              ))}
-            </>
-          ) : (
-            <div className="text-muted-foreground flex flex-col items-center p-6 text-center text-sm">
-              <span className="icon-[mdi--information-outline] mb-2 size-5"></span>
-              No models available
-            </div>
-          )}
+              </div>
+            ))}
+          </>
         </PopoverContent>
       </Popover>
     </div>
