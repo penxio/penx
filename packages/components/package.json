@@ -154,7 +154,7 @@
   "devDependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@penx/typescript-config": "workspace:*",
-    "electron": "37.2.0"
+    "electron": "37.2.5"
   },
   "dependencies": {
     "@penx/api": "workspace:*",

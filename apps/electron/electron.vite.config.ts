@@ -13,7 +13,6 @@ export default defineConfig({
     plugins: [
       externalizeDepsPlugin({
         exclude: [
-          '@electric-sql/pglite',
           '@penx/api',
           '@penx/components',
           '@penx/constants',

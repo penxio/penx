@@ -1005,10 +1005,10 @@ importers:
         version: 0.3.6
       '@electron-toolkit/preload':
         specifier: ^3.0.1
-        version: 3.0.2(electron@37.2.0)
+        version: 3.0.2(electron@37.2.5)
       '@electron-toolkit/utils':
         specifier: ^4.0.0
-        version: 4.0.0(electron@37.2.0)
+        version: 4.0.0(electron@37.2.5)
       '@fower/react':
         specifier: ^2.1.3
         version: 2.1.3
@@ -1128,7 +1128,7 @@ importers:
         version: 0.31.4
       electron-conf:
         specifier: ^1.3.0
-        version: 1.3.0(electron@37.2.0)
+        version: 1.3.0(electron@37.2.5)
       electron-log:
         specifier: ^5.4.1
         version: 5.4.1
@@ -1194,8 +1194,8 @@ importers:
         specifier: ^17.2.0
         version: 17.2.0
       electron:
-        specifier: 37.2.0
-        version: 37.2.0
+        specifier: 37.2.5
+        version: 37.2.5
       electron-builder:
         specifier: 25.1.8
         version: 25.1.8(electron-builder-squirrel-windows@25.1.8(dmg-builder@25.1.8))
@@ -1946,17 +1946,17 @@ importers:
         version: link:../worker
       electron-conf:
         specifier: ^1.3.0
-        version: 1.3.0(electron@37.2.0)
+        version: 1.3.0(electron@37.2.5)
     devDependencies:
       '@electron-toolkit/preload':
         specifier: ^3.0.1
-        version: 3.0.2(electron@37.2.0)
+        version: 3.0.2(electron@37.2.5)
       '@penx/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       electron:
-        specifier: 37.2.0
-        version: 37.2.0
+        specifier: 37.2.5
+        version: 37.2.5
 
   packages/constants:
     dependencies:
@@ -2041,13 +2041,13 @@ importers:
       drizzle-zod:
         specifier: ^0.8.2
         version: 0.8.2(drizzle-orm@0.44.4(@electric-sql/pglite@0.3.6)(@opentelemetry/api@1.9.0)(@prisma/client@6.11.1(typescript@5.8.2))(@types/pg@8.15.4)(@upstash/redis@1.35.1)(postgres@3.4.7))(zod@3.25.76)
-      electron:
-        specifier: 37.2.0
-        version: 37.2.0
     devDependencies:
       '@penx/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+      electron:
+        specifier: 37.2.5
+        version: 37.2.5
 
   packages/domain:
     dependencies:
@@ -11480,8 +11480,8 @@ packages:
       '@swc/core':
         optional: true
 
-  electron@37.2.0:
-    resolution: {integrity: sha512-dE6+qeg6SBUVd5d8CD2+GH82kh+gF1v40+hs+U+UOno681NMSGmBtgqwldQRpbvtnQDD7V2M9Cpfr3+Abw7aBg==}
+  electron@37.2.5:
+    resolution: {integrity: sha512-719ZqEp43rj6xDJMICm4CIXl8keFFgvVNO9Ix6OtjNjrh9HtYlP/1WiYeRohnXj06aLyGx5NCzrHbG7j3BxO9w==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
 
@@ -21072,17 +21072,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@electron-toolkit/preload@3.0.2(electron@37.2.0)':
+  '@electron-toolkit/preload@3.0.2(electron@37.2.5)':
     dependencies:
-      electron: 37.2.0
+      electron: 37.2.5
 
   '@electron-toolkit/tsconfig@1.0.1(@types/node@22.16.4)':
     dependencies:
       '@types/node': 22.16.4
 
-  '@electron-toolkit/utils@4.0.0(electron@37.2.0)':
+  '@electron-toolkit/utils@4.0.0(electron@37.2.5)':
     dependencies:
-      electron: 37.2.0
+      electron: 37.2.5
 
   '@electron/asar@3.4.1':
     dependencies:
@@ -30370,10 +30370,10 @@ snapshots:
       - electron-builder-squirrel-windows
       - supports-color
 
-  electron-conf@1.3.0(electron@37.2.0):
+  electron-conf@1.3.0(electron@37.2.5):
     dependencies:
       ajv: 8.17.1
-      electron: 37.2.0
+      electron: 37.2.5
 
   electron-fetch@1.9.1:
     dependencies:
@@ -30422,7 +30422,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  electron@37.2.0:
+  electron@37.2.5:
     dependencies:
       '@electron/get': 2.0.3
       '@types/node': 22.16.4

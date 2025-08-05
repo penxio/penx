@@ -19,7 +19,8 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@penx/typescript-config": "workspace:*"
+    "@penx/typescript-config": "workspace:*",
+    "electron": "37.2.5"
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
@@ -27,7 +28,6 @@
     "@penx/types": "workspace:*",
     "@penx/unique-id": "workspace:*",
     "drizzle-orm": "^0.44.4",
-    "drizzle-zod": "^0.8.2",
-    "electron": "37.2.0"
+    "drizzle-zod": "^0.8.2"
   }
 }
