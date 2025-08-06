@@ -371,6 +371,20 @@ export class ElectronApp {
     this.lastOffset = { offsetX: winBounds.x - x, offsetY: winBounds.y - y }
   }
 
+  private hideAICommandWindow() {
+    if (platform.isMacOS) {
+      app.hide()
+    }
+
+    // In order to restore focus correctly to the previously focused window, we need to minimize the window on
+    // Windows.
+    if (platform.isWindows) {
+      this.aiCommandWindow.minimize()
+    }
+
+    this.aiCommandWindow.hide()
+  }
+
   private toggleAICommandWindow(openOnly = false) {
     console.log(openOnly ? 'open....' : 'toggle......')
     const win = this.windows.aiCommandWindow!
@@ -379,25 +393,17 @@ export class ElectronApp {
       const display = screen.getDisplayNearestPoint(cursorPoint)
       const { x, y, width, height } = display.workArea
 
-      const winBounds = win.getBounds()
-      const posX = x + Math.round((width - winBounds.width) / 2)
-      const posY = y + Math.round((height - winBounds.height) / 2)
+      const panelWidth = 280
+      const padding = 60
 
-      if (this.lastBounds && this.lastOffset) {
-        win.setBounds({
-          x: x + this.lastOffset.offsetX,
-          y: y + this.lastOffset.offsetY,
-          width: winBounds.width,
-          height: winBounds.height,
-        })
-      } else {
-        win.setBounds({
-          x: posX,
-          y: posY,
-          width: winBounds.width,
-          height: winBounds.height,
-        })
+      const bounds = {
+        x: x + (width - panelWidth),
+        y: y + padding,
+        width: panelWidth,
+        height: height - padding * 2,
       }
+
+      win.setBounds(bounds)
     }
 
     const toggle = async () => {
@@ -412,7 +418,7 @@ export class ElectronApp {
       if (isVisibleAndFocused() && !openOnly) {
         this.lastBounds = win.getBounds()
         this.saveLastOffset()
-        hide()
+        this.hideAICommandWindow()
       } else {
         setWindowPos()
         showAndFocus()
@@ -425,20 +431,6 @@ export class ElectronApp {
       return (
         this.aiCommandWindow.isVisible() && this.aiCommandWindow.isFocused()
       )
-    }
-
-    const hide = () => {
-      if (platform.isMacOS) {
-        app.hide()
-      }
-
-      // In order to restore focus correctly to the previously focused window, we need to minimize the window on
-      // Windows.
-      if (platform.isWindows) {
-        this.aiCommandWindow.minimize()
-      }
-
-      this.aiCommandWindow.hide()
     }
 
     const showAndFocus = () => {
@@ -532,7 +524,7 @@ export class ElectronApp {
     })
 
     ipcMain.on('hide-ai-command-window', () => {
-      this.toggleAICommandWindow()
+      this.hideAICommandWindow()
     })
 
     ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
@@ -605,6 +597,7 @@ export class ElectronApp {
       async (_, data: { creationId: string; selection: Selection }) => {
         console.log('>>>>>>>>open-ai-command', data)
         this.panelWindow.webContents.send('open-ai-command', data)
+        this.hideAICommandWindow()
       },
     )
   }
@@ -647,63 +640,71 @@ export class ElectronApp {
         }
       }
 
-      if (event.keycode === UiohookKey.Meta) {
-        console.log('Cmd key clicked')
+      // if (event.keycode === UiohookKey.Meta) {
+      //   console.log('Cmd key clicked')
 
-        let now = Date.now()
-        if (now - lastAltDownTime < doubleClickThreshold) {
-          const window = windowManager.getActiveWindow()
+      //   let now = Date.now()
+      //   if (now - lastAltDownTime < doubleClickThreshold) {
+      //     const window = windowManager.getActiveWindow()
 
-          if (!window.path.includes('Chrome')) return
-          console.log('get======window:', window)
+      //     if (!window.path.includes('Chrome')) return
+      //     console.log('get======window:', window)
 
-          // Prints the currently focused window bounds.
-          console.log(window.getBounds())
+      //     // Prints the currently focused window bounds.
+      //     console.log(window.getBounds())
 
-          // This method has to be called on macOS before changing the window's bounds, otherwise it will throw an error.
-          // It will prompt an accessibility permission request dialog, if needed.
-          windowManager.requestAccessibility()
+      //     // This method has to be called on macOS before changing the window's bounds, otherwise it will throw an error.
+      //     // It will prompt an accessibility permission request dialog, if needed.
+      //     windowManager.requestAccessibility()
 
-          // Sets the active window's bounds.
+      //     // Sets the active window's bounds.
 
-          const cursorPoint = screen.getCursorScreenPoint()
-          const display = screen.getDisplayNearestPoint(cursorPoint)
-          const { x, y, width, height } = display.workArea
-          const panelWidth = 380
-          const gap = 4
+      //     const cursorPoint = screen.getCursorScreenPoint()
+      //     const display = screen.getDisplayNearestPoint(cursorPoint)
+      //     const { x, y, width, height } = display.workArea
+      //     const panelWidth = 380
+      //     const gap = 4
 
-          const openPanelWindow = () => {
-            this.togglePanelWindow({
-              openOnly: true,
-              bounds: {
-                x: x + (width - panelWidth + gap),
-                y: y,
-                width: panelWidth - gap,
-                height: height,
-              },
-            })
+      //     const openPanelWindow = () => {
+      //       this.togglePanelWindow({
+      //         openOnly: true,
+      //         bounds: {
+      //           x: x + (width - panelWidth + gap),
+      //           y: y,
+      //           width: panelWidth - gap,
+      //           height: height,
+      //         },
+      //       })
 
-            this.panelWindow.webContents.send('open-chat-to-browser')
-          }
+      //       this.panelWindow.webContents.send('open-chat-to-browser')
+      //     }
 
-          if (window.getBounds().width === width - panelWidth) {
-            console.log('isEqual.....')
-            openPanelWindow()
-            return
-          }
+      //     if (window.getBounds().width === width - panelWidth) {
+      //       console.log('isEqual.....')
+      //       openPanelWindow()
+      //       return
+      //     }
 
-          // window.setBounds({
-          //   x: 0,
-          //   y: 0,
-          //   width: width - panelWidth,
-          //   // height: height,
-          //   height: display.bounds.height,
-          // })
+      //     // window.setBounds({
+      //     //   x: 0,
+      //     //   y: 0,
+      //     //   width: width - panelWidth,
+      //     //   // height: height,
+      //     //   height: display.bounds.height,
+      //     // })
 
-          window.bringToTop()
-          openPanelWindow()
-        }
-        lastAltDownTime = now
+      //     window.bringToTop()
+      //     openPanelWindow()
+      //   }
+      //   lastAltDownTime = now
+      // }
+    })
+
+    uIOhook.on('keyup', async (event) => {
+      if (event.keycode === UiohookKey.Alt) {
+        setTimeout(() => {
+          this.hideAICommandWindow()
+        }, 100)
       }
     })
 

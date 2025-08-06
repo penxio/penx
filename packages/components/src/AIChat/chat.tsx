@@ -11,6 +11,7 @@ import {
   isDesktop,
   ROOT_HOST,
 } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { useArtifactSelector } from '@penx/hooks/use-artifact'
 import { idb } from '@penx/indexeddb'
 import { AIModel } from '@penx/model-type'
@@ -143,18 +144,49 @@ export function Chat({
     }, 0)
   }, [])
 
+  // useEffect(() => {
+  //   if (!selection) return
+  //   if (submitted.current) return
+  //   submitted.current = true
+
+  //   console.log('=======selection.text!:', selection.text!)
+
+  //   setInput(selection.text!)
+  // }, [selection])
+
+  // useEffect(() => {
+  //   console.log('input === selection?.text:', input === selection?.text, input)
+
+  //   // if (!submitted.current) return
+  //   if (input === selection?.text) {
+  //     handleSubmit(undefined)
+  //   }
+  // }, [input])
+
   useEffect(() => {
     if (!selection) return
-    if (submitted.current) return
-    submitted.current = true
 
-    append({
-      id: uniqueId(),
-      role: 'user',
-      content: selection.text!,
-    }).then(() => {
-      submitted.current = false
-    })
+    setInput(selection.text!)
+    // if (submitted.current) return
+    // submitted.current = true
+    // const run = async () => {
+    //   setInput(selection.text!)
+    //   await new Promise((r) => setTimeout(r, 0))
+    //   handleSubmit()
+    // }
+    // run()
+
+    setTimeout(() => {
+      appEmitter.emit('SUBMIT_AI_CHAT')
+    }, 100)
+
+    // append({
+    //   id: uniqueId(),
+    //   role: 'user',
+    //   content: selection.text!,
+    // }).then(() => {
+    //   submitted.current = false
+    // })
   }, [selection])
 
   return (

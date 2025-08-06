@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Message, UIMessage } from 'ai'
 import { Chat } from '@penx/components/AIChat/chat'
 import { RagSettingDialog } from '@penx/components/AIChat/rag-setting-dialog'
 import { AIModelSelect, ModelProvider } from '@penx/components/AIModelSelect'

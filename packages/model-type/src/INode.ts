@@ -24,6 +24,8 @@ export enum NodeType {
   CREATION = 'CREATION',
   SETTINGS = 'SETTINGS',
   SHORTCUT = 'SHORTCUT',
+  CHAT = 'CHAT',
+  MESSAGE = 'MESSAGE',
 }
 
 export interface INode {
@@ -247,4 +249,33 @@ export interface IShortcutNode extends INode {
 
 export function isShortcutNode(n: any): n is IShortcutNode {
   return n.type === NodeType.SHORTCUT
+}
+
+export interface IChatNode extends INode {
+  type: NodeType.CREATION
+  areaId: string
+  props: {
+    title: string
+    visibility: 'public' | 'private'
+    commandId?: string
+  }
+}
+
+export function isChatNode(n: any): n is IChatNode {
+  return n.type === NodeType.CHAT
+}
+
+export interface IMessageNode extends INode {
+  type: NodeType.MESSAGE
+  areaId: string
+  props: {
+    chatId: string
+    role: 'system' | 'user' | 'assistant' | 'data'
+    parts: any
+    attachments?: any
+  }
+}
+
+export function isMessageNode(n: any): n is IMessageNode {
+  return n.type === NodeType.MESSAGE
 }

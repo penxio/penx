@@ -23,6 +23,7 @@ import { AtSign, CogIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import { useLocalStorage, useWindowSize } from 'usehooks-ts'
 import { isDesktop } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
 import { PanelType } from '@penx/types'
 import { Button } from '@penx/uikit/button'
@@ -136,6 +137,11 @@ function PureMultimodalInput({
     width,
     chatId,
   ])
+
+  useEffect(() => {
+    appEmitter.on('SUBMIT_AI_CHAT', submit)
+    return () => appEmitter.off('SUBMIT_AI_CHAT', submit)
+  }, [submit])
 
   return (
     <div className="relative flex h-full w-full gap-4">
