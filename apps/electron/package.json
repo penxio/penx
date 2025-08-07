@@ -35,6 +35,7 @@
     "@iconify/react": "^6.0.0",
     "@mastra/core": "^0.10.11",
     "@mastra/rag": "^1.0.2",
+    "node-fn-listener": "workspace:*",
     "@penx/api": "workspace:*",
     "@penx/components": "workspace:*",
     "@penx/constants": "workspace:*",

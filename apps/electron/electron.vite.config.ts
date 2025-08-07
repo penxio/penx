@@ -5,14 +5,15 @@ import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 
 export default defineConfig({
   main: {
-    // build: {
-    //   rollupOptions: {
-    //     external: [''],
-    //   },
-    // },
+    build: {
+      rollupOptions: {
+        // external: ['node-fn-listener'],
+      },
+    },
     plugins: [
       externalizeDepsPlugin({
         exclude: [
+          // "node-fn-listener",
           '@penx/api',
           '@penx/components',
           '@penx/constants',

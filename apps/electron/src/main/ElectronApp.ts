@@ -13,6 +13,7 @@ import {
   Tray,
 } from 'electron'
 import { Conf } from 'electron-conf/main'
+import NodeFnListener, { FnCallback, FnEvent } from 'node-fn-listener'
 import { checkAccessibilityPermissions, getSelection } from 'node-selection'
 import { windowManager } from 'node-window-manager'
 import { uIOhook, UiohookKey } from 'uiohook-napi'
@@ -217,6 +218,46 @@ export class ElectronApp {
       },
       10 * 60 * 1000,
     )
+
+    this.initFnListener()
+  }
+
+  private async initFnListener() {
+    const fnListener = new NodeFnListener()
+
+    console.log('Fn Key Code:', fnListener.fnKeyCode)
+    console.log('Permission status:', fnListener.checkPermission())
+
+    // 定义回调函数
+    const callback: FnCallback = (message: string) => {
+      console.log('Fn key event:', message)
+
+      // 解析事件
+      const event: FnEvent | null = NodeFnListener.parseEvent(message)
+      if (event) {
+        console.log('Parsed event:', {
+          type: event.event_type,
+          timestamp: event.timestamp,
+          isPressed: event.is_pressed,
+          keyCode: event.key_code,
+        })
+
+        if (event.event_type === 'keydown') {
+          console.log('Fn key pressed!')
+        } else if (event.event_type === 'keyup') {
+          console.log('Fn key released!')
+        }
+      }
+    }
+
+    // 开始监听 fn 键
+    const success: boolean = await fnListener.start(callback)
+
+    if (success) {
+      console.log('Started listening for fn key events')
+    } else {
+      console.error('Failed to start listening')
+    }
   }
 
   private async initPGLite() {
@@ -615,7 +656,7 @@ export class ElectronApp {
     const doubleClickThreshold = 300
 
     uIOhook.on('keydown', async (event) => {
-      console.log('======event.keycode:', event.keycode)
+      // console.log('======event.keycode:', event.keycode)
 
       if (event.keycode === UiohookKey.Alt) {
         let now = Date.now()

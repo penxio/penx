@@ -9,3 +9,8 @@ tsconfig.web.tsbuildinfo
 
 !build
 !.env
+
+# Native module build outputs
+libfn_listener.a
+build/
+*.node
