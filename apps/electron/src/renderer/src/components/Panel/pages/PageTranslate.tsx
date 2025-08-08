@@ -91,7 +91,6 @@ export function PageTranslate() {
   return (
     <DetailApp
       className=""
-      command={currentCommand}
       // actions={
       //   <ActionPanel>
       //     <Action.Item title={<Trans>Create</Trans>} />

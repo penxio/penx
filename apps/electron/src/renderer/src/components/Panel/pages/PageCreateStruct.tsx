@@ -10,7 +10,6 @@ export function PageCreateStruct() {
   const { currentCommand } = useCurrentCommand()
   return (
     <DetailApp
-      command={currentCommand}
       bodyClassName="flex items-center justify-center"
       headerBordered={false}
       title={currentCommand.title}
@@ -38,7 +37,7 @@ export function PageCreateStruct() {
       <div className="-mt-10 w-[360px]">
         <CreateStructForm
           onSubmitSuccess={(struct) => {
-           navigation.replace({ path: '/edit-struct' })
+            navigation.replace({ path: '/edit-struct' })
             setStruct(struct)
             appEmitter.emit('REFRESH_COMMANDS')
           }}

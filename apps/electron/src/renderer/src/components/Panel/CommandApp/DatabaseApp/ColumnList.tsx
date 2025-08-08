@@ -157,8 +157,7 @@ export const ColumnList = ({ struct }: Props) => {
               />
             )}
           </DragOverlay>,
-          // document.body,
-          document.querySelector('#command-palette')!,
+          document.body,
         )}
       </DndContext>
     </div>

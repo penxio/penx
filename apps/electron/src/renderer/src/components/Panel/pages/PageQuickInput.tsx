@@ -12,7 +12,6 @@ export function PageQuickInput() {
   const { currentCommand } = useCurrentCommand()
   return (
     <DetailApp
-      command={currentCommand}
       headerBordered={false}
       // actions={
       //   <ActionPanel>

@@ -114,6 +114,8 @@ export function useLoadCommands() {
     queryKey: ['commands'],
     queryFn: () => {
       const structs = store.structs.get()
+      console.log('=========structs:', structs)
+
       const creations = store.creations.get()
 
       const structCommands = structs.map<ICommandItem>((item) => {

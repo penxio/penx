@@ -105,6 +105,7 @@ export function RootActions({ command, close }: RootActionsProps) {
           shortcut=""
           onSelect={() => {
             push({ path: '/edit-struct' })
+            setCurrentCommand(currentItem!)
             setStruct(struct.raw)
             close()
           }}

@@ -23,7 +23,6 @@ export function PageAIChat() {
       hideHeader
       hideFooter
       headerBordered={false}
-      command={currentCommand}
     >
       <div className="flex h-full w-full flex-col">
         <div className="drag z-[10] flex w-full shrink-0 cursor-move items-center justify-between px-4 pt-4">

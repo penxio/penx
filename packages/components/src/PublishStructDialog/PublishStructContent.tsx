@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { t } from '@lingui/core/macro'
 import { useLingui } from '@lingui/react/macro'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { toast } from 'sonner'
@@ -18,18 +19,27 @@ import { usePublishStructDialog } from './usePublishStructDialog'
 export function PublishStructContent() {
   const { isOpen, setIsOpen, struct } = usePublishStructDialog()
   const { isPending, mutateAsync } = useMutation({
-    mutationKey: ['structTemplates'],
+    mutationKey: ['publishStruct'],
     mutationFn: api.publishStruct,
   })
   const { i18n } = useLingui()
   const [type, setType] = useState(struct.type)
-  const { refetch } = useStructTemplates()
+  const { refetch, data: structTemplates, isLoading } = useStructTemplates()
 
-  if (!struct) return null
+  const publishedStruct = structTemplates?.find(
+    (item) => item.type === struct.type,
+  )
+
+  if (!struct || isLoading)
+    return (
+      <div className="flex h-20 items-center justify-center">
+        <LoadingDots className="bg-foreground" />
+      </div>
+    )
 
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      {/* <div className="space-y-2">
         {struct.columns.map((column, index) => (
           <div key={column.id} className="flex items-center justify-between">
             <div className="flex items-center gap-1">
@@ -43,43 +53,47 @@ export function PublishStructContent() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div className="space-y-1">
-        <div className="text-foreground text-sm">Unique code</div>
+        <div className="text-foreground text-sm">Unique ID</div>
         <Input
-          placeholder="Unique code"
+          placeholder="Unique ID"
           value={type}
+          disabled={!!publishedStruct}
           onChange={(e) =>
             setType(
               e.target.value
-                .toUpperCase()
+                .toLowerCase()
                 .trim()
-                .replace(/[^(A-Z|0-9)]/g, ''),
+                .replace(/[^(a-z|0-9|\-)]/g, ''),
             )
           }
         />
       </div>
 
       <Button
+        size="lg"
+        className="w-full"
         disabled={isPending}
         onClick={async () => {
           if (!type) {
-            return toast.error('Please struct unique code is required')
+            return toast.error(t`Unique ID is required`)
           }
           try {
             await mutateAsync({
-              id: struct.id,
               name: struct.name,
               pluralName: struct.pluralName,
               emoji: struct.emoji,
               locale: i18n.locale,
-              type: struct.type,
+              type: type,
               color: struct.color,
               about: '',
               columns: struct.columns,
             })
-            toast.success('Struct published successfully!')
+            toast.success(t`Struct published successfully!`)
+
+            console.log('========type:', type)
 
             store.structs.updateStruct(struct.id, {
               ...struct.raw,
@@ -92,6 +106,7 @@ export function PublishStructContent() {
             await localDB.updateStructProps(struct.id, {
               type,
             })
+
             refetch()
             setIsOpen(false)
           } catch (error) {

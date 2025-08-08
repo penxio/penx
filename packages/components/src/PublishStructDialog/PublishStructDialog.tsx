@@ -25,11 +25,15 @@ export function PublishStructDialog() {
         }}
       >
         <DialogHeader>
-          <DialogTitle>Publish struct</DialogTitle>
+          <DialogTitle>
+            <Trans>Publish struct</Trans>
+          </DialogTitle>
           <DialogDescription>
-            Publish{' '}
-            <span className="text-foreground font-bold">{struct?.name}</span> to
-            marketplace
+            <Trans>
+              Publish{' '}
+              <span className="text-foreground font-bold">{struct?.name}</span>{' '}
+              to marketplace
+            </Trans>
           </DialogDescription>
         </DialogHeader>
         <PublishStructContent />

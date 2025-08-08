@@ -26,7 +26,7 @@ export default {
         '<rootDir>/apps/**/*.{ts,tsx}',
         '<rootDir>/packages/**/*.{ts,tsx}',
       ],
-      exclude: ['**/node_modules/**'],
+      exclude: ['**/node_modules/**', '**/*.d.ts'],
     },
   ],
 }

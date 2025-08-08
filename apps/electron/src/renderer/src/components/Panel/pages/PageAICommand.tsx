@@ -37,7 +37,6 @@ export function PageAICommand() {
       title={creation.title}
       hideFooter
       headerBordered={false}
-      command={currentCommand}
     >
       <div className="flex h-full w-full flex-col">
         <Chat

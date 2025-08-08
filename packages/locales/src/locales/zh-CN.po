@@ -18,6 +18,10 @@ msgstr ""
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} 个待办"
 
+#: packages/components/src/StructDialog/EditStructForm.tsx:160
+msgid "{label}"
+msgstr ""
+
 #: packages/components/src/AIChat/message.tsx:166
 msgid "{toolName} completed"
 msgstr "{toolName} 调用已完成"
@@ -84,15 +88,10 @@ msgstr "提前5分钟"
 msgid "A brief your introduction."
 msgstr "介绍一下你自己"
 
-#: apps/mobile/src/components/Profile/AboutMenu.tsx:48
-#: packages/components/src/SettingsDialog/About.tsx:18
-msgid "A structured note-taking App"
-msgstr "一个结构化的笔记软件"
-
 #: apps/mobile/src/components/Profile/Profile.tsx:116
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:28
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:79
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:31
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:84
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:33
 msgid "About"
 msgstr "关于"
 
@@ -108,7 +107,7 @@ msgstr "账户已成功删除！"
 msgid "Account deletion in progress..."
 msgstr "账户删除处理中…"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:104
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:96
 msgid "Actions"
 msgstr "操作"
 
@@ -139,6 +138,10 @@ msgstr "新增选项"
 msgid "Add property"
 msgstr "新增属性"
 
+#: packages/components/src/AISetting/provider-dropdown-menu.tsx:39
+msgid "Add Provider"
+msgstr ""
+
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:48
 msgid "Add sync server"
 msgstr "添加同步服务器"
@@ -147,7 +150,7 @@ msgstr "添加同步服务器"
 msgid "Add tag"
 msgstr "添加标签"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:211
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:212
 msgid "Add to Favorites"
 msgstr "添加到收藏"
 
@@ -155,7 +158,7 @@ msgstr "添加到收藏"
 msgid "Add widget"
 msgstr "添加组件"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:197
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:198
 msgid "Added to Favorites"
 msgstr "已添加到收藏"
 
@@ -169,9 +172,18 @@ msgstr "AI 聊天"
 msgid "AI Chat"
 msgstr "AI 聊天"
 
+#: packages/libs/src/getDefaultStructs.ts:456
+msgid "AI Command"
+msgstr ""
+
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:109
 msgid "AI features for notes"
 msgstr "AI 笔记功能"
+
+#: apps/mobile/src/components/Profile/AboutMenu.tsx:48
+#: packages/components/src/SettingsDialog/About.tsx:18
+msgid "AI Powered Personal Data Hub"
+msgstr ""
 
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:272
 #: packages/components/src/CreationCard/CreationCard.tsx:249
@@ -229,8 +241,8 @@ msgid "An Introduction to PenX and How to Use It"
 msgstr "PenX介绍与使用方法"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:104
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:42
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:24
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:44
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:25
 msgid "Appearance"
 msgstr "外观"
 
@@ -276,16 +288,20 @@ msgstr "备份到 Google 云盘"
 msgid "Backup to google drive successful!"
 msgstr "备份到 Google 云盘成功！"
 
+#: packages/components/src/AISetting/ProviderDialog.tsx:156
+msgid "Base URL"
+msgstr ""
+
 #: apps/mobile/src/components/Profile/Profile.tsx:45
 #: packages/components/src/ProfileBasicInfo.tsx:22
 msgid "Believer"
 msgstr "信徒"
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:27
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:28
 msgid "Billing"
 msgstr "账单"
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:65
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:70
 msgid "Billing & Subscriptions"
 msgstr "账单与订阅"
 
@@ -293,7 +309,7 @@ msgstr "账单与订阅"
 msgid "Bio"
 msgstr "个人简介"
 
-#: packages/libs/src/getDefaultStructs.ts:420
+#: packages/libs/src/getDefaultStructs.ts:462
 msgid "Bookmark"
 msgstr "书签"
 
@@ -320,6 +336,7 @@ msgstr "已构建 {0} 项"
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
 #: packages/components/src/AreasPopover/DeleteAreaDialog/DeleteAreaDialog.tsx:61
+#: packages/components/src/AISetting/ProviderDialog.tsx:185
 msgid "Cancel"
 msgstr "取消"
 
@@ -353,7 +370,7 @@ msgid "Change type"
 msgstr "更改类型"
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:176
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:175
 msgid "Cloud sync"
 msgstr "云端同步"
 
@@ -364,12 +381,11 @@ msgid "Collection"
 msgstr "合集"
 
 #: apps/mobile/src/components/ColorSelector.tsx:45
-#: packages/components/src/StructDialog/EditStructForm.tsx:142
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:49
 msgid "Color"
 msgstr "颜色"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:51
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:61
 msgid "Commands"
 msgstr "命令"
 
@@ -381,7 +397,7 @@ msgstr "配置"
 msgid "Configure shortcut"
 msgstr "配置快捷键"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:135
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:136
 msgid "Configure Shortcut"
 msgstr "配置快捷键"
 
@@ -400,11 +416,11 @@ msgstr "确认密码"
 msgid "Confirm Publishing"
 msgstr "确定发布？"
 
-#: packages/libs/src/getDefaultStructs.ts:215
+#: packages/libs/src/getDefaultStructs.ts:246
 msgid "Content"
 msgstr "内容"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:138
+#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:137
 #: packages/components/src/ProfileBasicInfo.tsx:53
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:39
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:106
@@ -428,10 +444,10 @@ msgstr "复制到剪切板"
 msgid "Coupon code applied successfully"
 msgstr "优惠码已成功使用"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSettings.tsx:36
-#: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:23
-#: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:24
-#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:22
+#: apps/electron/src/renderer/src/components/Panel/pages/PageSettings.tsx:35
+#: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:22
+#: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:23
+#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:21
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
 #: packages/components/src/StructDialog/CreateStructForm.tsx:82
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
@@ -460,7 +476,7 @@ msgstr "创建账户"
 msgid "Create struct"
 msgstr "创建结构体"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:68
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:67
 msgid "Create Struct"
 msgstr "创建结构体"
 
@@ -479,8 +495,8 @@ msgid "Created date"
 msgstr "创建日期"
 
 #: apps/electron/src/renderer/src/components/QuickInputApp/QuickInputApp.tsx:58
-#: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:41
-#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:40
+#: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:40
+#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:39
 msgid "Created successfully"
 msgstr "创建成功"
 
@@ -488,13 +504,18 @@ msgstr "创建成功"
 msgid "Creation counts"
 msgstr "创作数量"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:226
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:227
 msgid "Creation deleted successfully"
 msgstr "创作删除成功"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:56
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:66
 msgid "Creations"
 msgstr "创作"
+
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:58
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:29
+msgid "Custom AI Provider"
+msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:143
 msgid "Daily"
@@ -537,7 +558,7 @@ msgstr "删除"
 msgid "Delete account"
 msgstr "删除账户"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:241
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:242
 msgid "Delete Creation"
 msgstr "删除创作"
 
@@ -545,7 +566,7 @@ msgstr "删除创作"
 msgid "Delete record"
 msgstr "删除记录"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:271
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:274
 msgid "Delete Struct"
 msgstr "删除结构体"
 
@@ -624,7 +645,7 @@ msgstr "编辑属性"
 msgid "Edit struct"
 msgstr "编辑结构体"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:117
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:118
 msgid "Edit Struct"
 msgstr "编辑结构体"
 
@@ -659,11 +680,15 @@ msgstr "邮箱登录"
 
 #: apps/mobile/src/components/MobilePropList/PropItem.tsx:54
 #: apps/mobile/src/components/MobilePropList/PropItem.tsx:91
+#: packages/components/src/Creation/PropList/UrlInputProp.tsx:21
+#: packages/components/src/Creation/PropList/TextareaProp.tsx:20
+#: packages/components/src/Creation/PropList/TextInputProp.tsx:20
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:61
-#: packages/components/src/Creation/PropList/PropItem.tsx:57
-#: packages/components/src/Creation/PropList/PropItem.tsx:99
-#: packages/components/src/Creation/PropList/PropItem.tsx:111
-#: packages/components/src/Creation/PropList/PasswordProp.tsx:13
+#: packages/components/src/Creation/PropList/PropItem.tsx:77
+#: packages/components/src/Creation/PropList/PropItem.tsx:87
+#: packages/components/src/Creation/PropList/PropItem.tsx:95
+#: packages/components/src/Creation/PropList/PasswordProp.tsx:22
+#: packages/components/src/Creation/PropList/NumberInputProp.tsx:22
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:60
 msgid "Empty"
 msgstr "空白"
@@ -684,8 +709,8 @@ msgstr "端到端加密"
 msgid "Execute Changes"
 msgstr "执行更改"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:231
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:261
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:232
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:264
 msgid "Failed to delete"
 msgstr "删除失败"
 
@@ -698,7 +723,7 @@ msgid "Failed to execute changes. Please try again."
 msgstr "执行更改失败，请重试。"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:113
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:35
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:45
 #: packages/widgets/src/WidgetName.tsx:30
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:102
 msgid "Favorites"
@@ -725,7 +750,7 @@ msgstr "免费"
 msgid "Fri"
 msgstr "周五"
 
-#: packages/libs/src/getDefaultStructs.ts:295
+#: packages/libs/src/getDefaultStructs.ts:326
 msgid "Gallery"
 msgstr "画廊"
 
@@ -785,9 +810,8 @@ msgstr "我有优惠码，现在去使用。"
 msgid "Icon"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:375
+#: packages/libs/src/getDefaultStructs.ts:408
 #: packages/components/src/ColumnTypeName.tsx:27
-#: packages/components/src/AppProvider/AppService.ts:206
 msgid "Image"
 msgstr "图片"
 
@@ -832,7 +856,7 @@ msgstr "日记布局"
 msgid "Journals"
 msgstr "日记"
 
-#: packages/libs/src/getDefaultStructs.ts:227
+#: packages/libs/src/getDefaultStructs.ts:258
 msgid "Keyword"
 msgstr "关键词"
 
@@ -859,13 +883,13 @@ msgstr "评价 PenX"
 msgid "Light"
 msgstr "浅色"
 
-#: packages/libs/src/getDefaultStructs.ts:246
+#: packages/libs/src/getDefaultStructs.ts:277
 msgid "Link"
 msgstr "链接"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
 #: packages/libs/src/getDefaultStructs.ts:134
-#: packages/libs/src/getDefaultStructs.ts:309
+#: packages/libs/src/getDefaultStructs.ts:340
 #: packages/components/src/AppProvider/lib/fixTaskStruct.ts:70
 msgid "List"
 msgstr "列表"
@@ -895,7 +919,7 @@ msgstr ""
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
 #: packages/components/src/ProfileButton.tsx:285
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:93
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:98
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
 msgstr "退出登录"
@@ -946,6 +970,10 @@ msgstr "会员"
 msgid "Model"
 msgstr "模型"
 
+#: packages/libs/src/getDefaultStructs.ts:227
+msgid "Model select"
+msgstr ""
+
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:97
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/JournalTitleWidget.tsx:61
@@ -960,19 +988,19 @@ msgstr "月"
 msgid "Monthly"
 msgstr "每月"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:182
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:183
 msgid "Move Down in Favorites"
 msgstr "在收藏中下移"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:158
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:159
 msgid "Move Up in Favorites"
 msgstr "在收藏中上移"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:168
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:169
 msgid "Moved down in Favorites"
 msgstr "已在收藏中下移"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:147
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:148
 msgid "Moved up in Favorites"
 msgstr "已在收藏中上移"
 
@@ -1022,7 +1050,6 @@ msgstr "我的结构体"
 #: apps/mobile/src/components/MobileTags/AddTagDrawer.tsx:76
 #: apps/mobile/src/components/AreasMenu/CreateArea.tsx:61
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:52
-#: packages/components/src/StructDialog/EditStructForm.tsx:94
 #: packages/components/src/StructDialog/CreateStructForm.tsx:65
 #: packages/components/src/SettingsDialog/Profile.tsx:93
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:52
@@ -1046,7 +1073,7 @@ msgstr "创建列表"
 msgid "New property"
 msgstr "新建属性"
 
-#: apps/electron/src/renderer/src/components/WatchEvent.tsx:96
+#: apps/electron/src/renderer/src/components/WatchEvent.tsx:130
 msgid "New version available, restarting to update..."
 msgstr "新版本可用，正在重启以更新..."
 
@@ -1077,7 +1104,7 @@ msgstr "暂无创作！"
 msgid "No introduction for the struct"
 msgstr "该结构体暂无介绍！"
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:87
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:89
 msgid "No results found"
 msgstr "未找到结果"
 
@@ -1109,7 +1136,7 @@ msgstr "无"
 msgid "Not enabled"
 msgstr "未启用"
 
-#: packages/libs/src/getDefaultStructs.ts:369
+#: packages/libs/src/getDefaultStructs.ts:400
 msgid "Note"
 msgstr "笔记"
 
@@ -1150,7 +1177,7 @@ msgstr "在新面板中打开"
 msgid "Open Search Panel"
 msgstr "打开搜索面板"
 
-#: packages/libs/src/getDefaultStructs.ts:258
+#: packages/libs/src/getDefaultStructs.ts:289
 msgid "Open with"
 msgstr "打开方式"
 
@@ -1164,7 +1191,7 @@ msgstr "操作"
 msgid "Options"
 msgstr "选项"
 
-#: packages/libs/src/getDefaultStructs.ts:352
+#: packages/libs/src/getDefaultStructs.ts:383
 msgid "Page"
 msgstr "页面"
 
@@ -1176,7 +1203,6 @@ msgstr "页面"
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:102
 #: packages/components/src/ColumnTypeName.tsx:26
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:56
 #: packages/components/src/SettingsDialog/Password.tsx:85
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:113
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverManually.tsx:66
@@ -1194,7 +1220,7 @@ msgstr "同步服务器密码，密码仅本地存储。"
 msgid "Passwords do not match"
 msgstr "密码不匹配"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:156
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:155
 msgid "PenX Account"
 msgstr "PenX 账户"
 
@@ -1244,13 +1270,9 @@ msgstr "请查看您的邮箱获取验证码。"
 msgid "Please enter the verification code."
 msgstr "请输入验证码"
 
-#: packages/components/src/AIChat/multimodal-input.tsx:155
+#: packages/components/src/AIChat/multimodal-input.tsx:177
 msgid "Please wait for the model to finish its response!"
 msgstr "请等待模型完成回复！"
-
-#: packages/components/src/StructDialog/EditStructForm.tsx:110
-msgid "Plural name"
-msgstr "复数名称"
 
 #: packages/components/src/Creation/Tags.tsx:124
 msgid "Press Enter to add a tag."
@@ -1297,13 +1319,13 @@ msgstr "专业版年付"
 msgid "Processing..."
 msgstr "处理中..."
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:45
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:25
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:47
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:26
 msgid "Profile"
 msgstr "个人信息"
 
-#: packages/libs/src/getDefaultStructs.ts:414
-#: packages/components/src/AppProvider/AppService.ts:235
+#: packages/libs/src/getDefaultStructs.ts:215
+#: packages/libs/src/getDefaultStructs.ts:450
 msgid "Prompt"
 msgstr "提示词"
 
@@ -1322,6 +1344,10 @@ msgstr "属性"
 msgid "Publish"
 msgstr "发布"
 
+#: apps/electron/src/renderer/src/components/Panel/pages/PageEditStruct.tsx:25
+msgid "Publish Struct"
+msgstr ""
+
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:81
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:81
 #: packages/components/src/database-ui/TableInfo.tsx:68
@@ -1336,8 +1362,7 @@ msgstr "发布您的创作"
 msgid "Quick input"
 msgstr "快速输入"
 
-#: packages/libs/src/getDefaultStructs.ts:409
-#: packages/components/src/AppProvider/AppService.ts:250
+#: packages/libs/src/getDefaultStructs.ts:444
 msgid "Quicklink"
 msgstr "快速链接"
 
@@ -1376,8 +1401,12 @@ msgstr "恢复失败"
 msgid "Recovery password"
 msgstr "恢复密码"
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:62
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:28
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:61
+msgid "Recovery Password"
+msgstr ""
+
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:67
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:30
 msgid "Recovery phrase"
 msgstr "恢复短语"
 
@@ -1407,7 +1436,7 @@ msgstr "提醒"
 msgid "remove"
 msgstr "移除"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:209
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:210
 msgid "Remove from Favorites"
 msgstr "从收藏中移除"
 
@@ -1420,7 +1449,7 @@ msgstr "删除提醒"
 msgid "Removed {0} items"
 msgstr "已移除 {0} 项"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:194
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:195
 msgid "Removed from Favorites"
 msgstr "已从收藏中移除"
 
@@ -1465,7 +1494,7 @@ msgstr "保存"
 msgid "Search"
 msgstr "搜索"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:149
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:141
 msgid "Search for actions..."
 msgstr "搜索操作..."
 
@@ -1487,7 +1516,7 @@ msgstr "选择颜色"
 msgid "Select property type"
 msgstr "选择属性类型"
 
-#: packages/components/src/AIChat/multimodal-input.tsx:137
+#: packages/components/src/AIChat/multimodal-input.tsx:156
 msgid "Send a message..."
 msgstr "发送消息..."
 
@@ -1500,7 +1529,7 @@ msgid "Setting"
 msgstr "设置"
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:196
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:195
 #: packages/components/src/ProfileButton.tsx:236
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
@@ -1515,8 +1544,8 @@ msgstr "分享"
 msgid "Share note to friends"
 msgstr "分享笔记"
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:52
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:29
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:54
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:31
 msgid "Shortcuts"
 msgstr "快捷键"
 
@@ -1532,7 +1561,7 @@ msgstr "显示恢复短语"
 msgid "Sign in"
 msgstr "登录"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:39
+#: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:38
 msgid "Sign in to PenX"
 msgstr "登录 PenX"
 
@@ -1551,8 +1580,7 @@ msgstr "单选"
 msgid "Slug"
 msgstr "别名"
 
-#: packages/libs/src/getDefaultStructs.ts:404
-#: packages/components/src/AppProvider/AppService.ts:222
+#: packages/libs/src/getDefaultStructs.ts:439
 msgid "Snippet"
 msgstr "代码片段"
 
@@ -1576,7 +1604,7 @@ msgstr "状态"
 msgid "Status"
 msgstr "状态"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:255
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:256
 msgid "Struct deleted successfully"
 msgstr "结构体删除成功"
 
@@ -1589,7 +1617,7 @@ msgstr "安装结构体成功！"
 msgid "Struct marketplace"
 msgstr "结构体市场"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:116
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:115
 msgid "Struct Marketplace"
 msgstr ""
 
@@ -1608,7 +1636,7 @@ msgstr "发布结构体成功！"
 #: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:16
 #: apps/mobile/src/components/Profile/StructsMenu.tsx:24
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:46
+#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:56
 #: packages/widgets/src/WidgetName.tsx:22
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
@@ -1673,8 +1701,8 @@ msgstr "立即同步"
 msgid "Sync only over Wi-Fi"
 msgstr "只通过 Wi-Fi 同步"
 
-#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:68
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:30
+#: packages/components/src/SettingsDialog/SettingsSidebar.tsx:73
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:32
 msgid "Sync server"
 msgstr "同步服务器"
 
@@ -1699,7 +1727,7 @@ msgstr "同步中..."
 msgid "System"
 msgstr "跟随系统"
 
-#: packages/libs/src/getDefaultStructs.ts:281
+#: packages/libs/src/getDefaultStructs.ts:312
 msgid "Table"
 msgstr "表格"
 
@@ -1722,7 +1750,7 @@ msgstr "标签名"
 msgid "Tags"
 msgstr "标签"
 
-#: packages/libs/src/getDefaultStructs.ts:393
+#: packages/libs/src/getDefaultStructs.ts:426
 msgid "Task"
 msgstr "待办"
 
@@ -1791,8 +1819,8 @@ msgstr "今天"
 msgid "Tomorrow"
 msgstr "明天"
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:136
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:101
+#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:135
+#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:100
 msgid "Translate"
 msgstr ""
 
@@ -1800,7 +1828,7 @@ msgstr ""
 msgid "Translate failed, please try again"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:114
+#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:113
 msgid "Translate text"
 msgstr ""
 
@@ -1834,7 +1862,7 @@ msgstr "无限创建笔记"
 msgid "Unstar"
 msgstr "取消收藏"
 
-#: apps/electron/src/renderer/src/components/Panel/ListItemUI.tsx:95
+#: apps/electron/src/renderer/src/components/Panel/ListItemUI.tsx:98
 msgid "Untitled"
 msgstr "无标题"
 
@@ -1847,7 +1875,7 @@ msgstr "无标题"
 msgid "Upcoming"
 msgstr "未来"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:158
+#: packages/components/src/StructDialog/EditStructForm.tsx:259
 msgid "Update"
 msgstr "更新"
 
@@ -1856,7 +1884,7 @@ msgstr "更新"
 msgid "Update area"
 msgstr "更新领域"
 
-#: packages/components/src/SettingsDialog/SettingsContent.tsx:26
+#: packages/components/src/SettingsDialog/SettingsContent.tsx:27
 msgid "Update password"
 msgstr "修改密码"
 
@@ -1864,7 +1892,7 @@ msgstr "修改密码"
 msgid "Update struct"
 msgstr "更新结构体"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:77
+#: packages/components/src/StructDialog/EditStructForm.tsx:195
 msgid "Update struct successfully"
 msgstr "结构体更新成功"
 
@@ -1903,7 +1931,7 @@ msgstr "正在调用{toolName}..."
 msgid "Using coupon code"
 msgstr "使用优惠码"
 
-#: packages/libs/src/getDefaultStructs.ts:399
+#: packages/libs/src/getDefaultStructs.ts:433
 msgid "Voice"
 msgstr "语音"
 
@@ -1938,6 +1966,10 @@ msgstr "年"
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:155
 msgid "Yearly"
 msgstr "每年"
+
+#: packages/components/src/AISetting/provider-setting.tsx:48
+msgid "Your Providers"
+msgstr ""
 
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:97
 msgid "Your sync server host, e.g. https://sync.penx.io"

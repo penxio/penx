@@ -14,7 +14,6 @@ export function PageLogin() {
       className=""
       hideFooter
       headerBordered={false}
-      command={currentCommand}
       // actions={
       //   <ActionPanel>
       //     <Action.Item title={<Trans>Create</Trans>} />

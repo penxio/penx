@@ -16,7 +16,6 @@ export function PageConfigureShortcut() {
       // hideFooter
       headerBordered={false}
       title={<Trans>Configure shortcut</Trans>}
-      command={currentCommand}
       // actions={
       //   <ActionPanel>
       //     <Action.Item title={<Trans>Create</Trans>} />

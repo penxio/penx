@@ -26,7 +26,6 @@ export function PageSettings() {
       hideHeader
       hideFooter
       headerBordered={false}
-      command={currentCommand}
       // actions={
       //   <ActionPanel>
       //     <Action.Item title={<Trans>Create</Trans>} />

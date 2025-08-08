@@ -128,7 +128,6 @@ export const createAreaInputSchema = z.object({
 export type CreateAreaInput = z.infer<typeof createAreaInputSchema>
 
 export const publishStructInputSchema = z.object({
-  id: z.string().uuid(),
   name: z.string().min(1, { message: 'Type name is required' }),
   pluralName: z.string().min(1, { message: 'Type name is required' }),
   type: z.string(),

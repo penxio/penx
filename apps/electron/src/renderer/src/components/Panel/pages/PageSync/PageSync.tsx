@@ -6,12 +6,7 @@ export function PageSync() {
   const { currentCommand } = useCurrentCommand()
 
   return (
-    <DetailApp
-      className=""
-      hideFooter
-      headerBordered={false}
-      command={currentCommand}
-    >
+    <DetailApp className="" hideFooter headerBordered={false}>
       <SyncContent />
     </DetailApp>
   )

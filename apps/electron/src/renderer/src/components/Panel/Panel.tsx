@@ -1,5 +1,6 @@
 import { setConfig } from '@fower/react'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
+import { PublishStructDialog } from '@penx/components/PublishStructDialog/PublishStructDialog'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { LocaleProvider } from '@penx/locales'
 import { WatchEvent } from '../WatchEvent'
@@ -25,6 +26,7 @@ export function Panel() {
         disableTransitionOnChange
       >
         <DashboardProviders>
+          <PublishStructDialog />
           <CommandPalette />
           <WatchEvent />
         </DashboardProviders>

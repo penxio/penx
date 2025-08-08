@@ -13,13 +13,7 @@ export function PageStructMarketplace() {
   const { data = [], isLoading } = useStructTemplates()
 
   return (
-    <ListApp
-      className=""
-      hideFooter
-      command={currentCommand}
-      isLoading={isLoading}
-      isDetailVisible
-    >
+    <ListApp className="" hideFooter isLoading={isLoading} isDetailVisible>
       {data.map((item, index) => (
         <ListItem
           key={index}

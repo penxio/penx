@@ -10,14 +10,9 @@ export function PageEditCreation() {
   const { creation } = useCurrentCreation()
   const { currentCommand } = useCurrentCommand()
   const creationId = useMemo(() => {
-    console.log('111111111111creation:', creation)
-
     if (creation) return creation.id
-    console.log('222222222222222')
 
     if (currentCommand?.data?.creation) {
-      console.log('33333333333333333333')
-
       return currentCommand.data.creation.id
     }
   }, [creation, currentCommand])
@@ -34,7 +29,6 @@ export function PageEditCreation() {
   return (
     <DetailApp
       className=" bg-white/65 dark:bg-neutral-900/80"
-      command={currentCommand}
       headerBordered={false}
       // actions={
       //   <ActionPanel>

@@ -191,52 +191,38 @@ export class AppService {
       } as IShortcutNode)
     }
 
-    const imageStruct = structs.find((s) => s.props.type === StructType.IMAGE)
-    if (!imageStruct) {
-      const newStruct = generateStructNode({
-        type: StructType.IMAGE,
-        name: t`Image`,
-        spaceId: space.id,
-        userId: space.userId,
-        areaId: area.id,
-      })
-      await localDB.addStruct(newStruct)
-      structs.push(newStruct)
-    }
+    // const imageStruct = structs.find((s) => s.props.type === StructType.IMAGE)
+    // if (!imageStruct) {
+    //   const newStruct = generateStructNode({
+    //     type: StructType.IMAGE,
+    //     name: t`Image`,
+    //     spaceId: space.id,
+    //     userId: space.userId,
+    //     areaId: area.id,
+    //   })
+    //   await localDB.addStruct(newStruct)
+    //   structs.push(newStruct)
+    // }
 
-    const snippetStruct = structs.find(
-      (s) => s.props.type === StructType.SNIPPET,
-    )
-
-    if (!snippetStruct) {
-      const newStruct = generateStructNode({
-        type: StructType.SNIPPET,
-        name: t`Snippet`,
-        spaceId: space.id,
-        userId: space.userId,
-        areaId: area.id,
-      })
-      await localDB.addStruct(newStruct)
-      structs.push(newStruct)
-    }
-
-    const promptStruct = structs.find((s) => s.props.type === StructType.PROMPT)
-    if (!promptStruct) {
-      const newStruct = generateStructNode({
-        type: StructType.PROMPT,
-        name: t`Prompt`,
-        spaceId: space.id,
-        userId: space.userId,
-        areaId: area.id,
-      })
-      await localDB.addStruct(newStruct)
-      structs.push(newStruct)
-    }
+    // const promptStruct = structs.find((s) => s.props.type === StructType.PROMPT)
+    // if (!promptStruct) {
+    //   const newStruct = generateStructNode({
+    //     type: StructType.PROMPT,
+    //     name: t`Prompt`,
+    //     spaceId: space.id,
+    //     userId: space.userId,
+    //     areaId: area.id,
+    //   })
+    //   await localDB.addStruct(newStruct)
+    //   structs.push(newStruct)
+    // }
 
     {
       const aiCommandStruct = structs.find(
         (s) => s.props.type === StructType.AI_COMMAND,
       )
+      console.log('========aiCommandStruct:', aiCommandStruct)
+
       if (!aiCommandStruct) {
         const newStruct = generateStructNode({
           type: StructType.AI_COMMAND,
@@ -245,25 +231,26 @@ export class AppService {
           userId: space.userId,
           areaId: area.id,
         })
+
         await localDB.addStruct(newStruct)
         structs.push(newStruct)
       }
     }
 
-    const quicklinkStruct = structs.find(
-      (s) => s.props.type === StructType.QUICK_LINK,
-    )
-    if (!quicklinkStruct) {
-      const newStruct = generateStructNode({
-        type: StructType.QUICK_LINK,
-        name: t`Quicklink`,
-        spaceId: space.id,
-        userId: space.userId,
-        areaId: area.id,
-      })
-      await localDB.addStruct(newStruct)
-      structs.push(newStruct)
-    }
+    // const quicklinkStruct = structs.find(
+    //   (s) => s.props.type === StructType.QUICK_LINK,
+    // )
+    // if (!quicklinkStruct) {
+    //   const newStruct = generateStructNode({
+    //     type: StructType.QUICK_LINK,
+    //     name: t`Quicklink`,
+    //     spaceId: space.id,
+    //     userId: space.userId,
+    //     areaId: area.id,
+    //   })
+    //   await localDB.addStruct(newStruct)
+    //   structs.push(newStruct)
+    // }
 
     structs = await fixTaskStruct(area.id, structs)
     structs = await fixBookmarkStruct(area.id, structs)

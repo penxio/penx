@@ -143,31 +143,51 @@ export declare class EventParseError extends NodeFnListenerError {
 
 // Constants
 export const EVENT_TYPES: {
-  KEYDOWN: 'keydown';
-  KEYUP: 'keyup';
+  readonly KEYDOWN: 'keydown';
+  readonly KEYUP: 'keyup';
+} = {
+  KEYDOWN: 'keydown',
+  KEYUP: 'keyup',
 };
 
 export const LISTENER_STATES: {
-  IDLE: 'idle';
-  STARTING: 'starting';
-  RUNNING: 'running';
-  STOPPING: 'stopping';
-  ERROR: 'error';
+  readonly IDLE: 'idle';
+  readonly STARTING: 'starting';
+  readonly RUNNING: 'running';
+  readonly STOPPING: 'stopping';
+  readonly ERROR: 'error';
+} = {
+  IDLE: 'idle',
+  STARTING: 'starting',
+  RUNNING: 'running',
+  STOPPING: 'stopping',
+  ERROR: 'error',
 };
 
 export const ERROR_TYPES: {
-  PERMISSION_DENIED: 'PERMISSION_DENIED';
-  LISTENER_ALREADY_RUNNING: 'LISTENER_ALREADY_RUNNING';
-  LISTENER_NOT_RUNNING: 'LISTENER_NOT_RUNNING';
-  NATIVE_MODULE_ERROR: 'NATIVE_MODULE_ERROR';
-  INVALID_EVENT_MESSAGE: 'INVALID_EVENT_MESSAGE';
+  readonly PERMISSION_DENIED: 'PERMISSION_DENIED';
+  readonly LISTENER_ALREADY_RUNNING: 'LISTENER_ALREADY_RUNNING';
+  readonly LISTENER_NOT_RUNNING: 'LISTENER_NOT_RUNNING';
+  readonly NATIVE_MODULE_ERROR: 'NATIVE_MODULE_ERROR';
+  readonly INVALID_EVENT_MESSAGE: 'INVALID_EVENT_MESSAGE';
+} = {
+  PERMISSION_DENIED: 'PERMISSION_DENIED',
+  LISTENER_ALREADY_RUNNING: 'LISTENER_ALREADY_RUNNING',
+  LISTENER_NOT_RUNNING: 'LISTENER_NOT_RUNNING',
+  NATIVE_MODULE_ERROR: 'NATIVE_MODULE_ERROR',
+  INVALID_EVENT_MESSAGE: 'INVALID_EVENT_MESSAGE',
 };
 
 export const LOG_LEVELS: {
-  DEBUG: 0;
-  INFO: 1;
-  WARN: 2;
-  ERROR: 3;
+  readonly DEBUG: 0;
+  readonly INFO: 1;
+  readonly WARN: 2;
+  readonly ERROR: 3;
+} = {
+  DEBUG: 0,
+  INFO: 1,
+  WARN: 2,
+  ERROR: 3,
 };
 
 // Utility functions

@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { ReactNode, useCallback, useEffect, useMemo, useRef } from 'react'
 import isEqual from 'react-fast-compare'
 import { useForm, type UseFormReturn } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { useDebouncedCallback } from 'use-debounce'
 import { z } from 'zod'
 import { type Struct } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
 import { localDB } from '@penx/local-db'
 import { store } from '@penx/store'
 import { Button } from '@penx/uikit/button'
@@ -118,26 +119,10 @@ function useAutoSave(
   }, [currentValues, isPanel, struct, debouncedSave, initialValues])
 }
 
-// Custom hook for type field formatting
-function useTypeFormatter(form: UseFormReturn<FormData>) {
-  const type = form.watch('type')
-
-  useEffect(() => {
-    if (type && !/^[A-Z0-9]*$/.test(type)) {
-      const formattedType = type
-        .toUpperCase()
-        .trim()
-        .replace(/[^A-Z0-9]/g, '')
-
-      form.setValue('type', formattedType, { shouldValidate: true })
-    }
-  }, [type, form])
-}
-
 // Reusable form field component
 interface FormFieldWrapperProps {
   name: keyof FormData
-  label: string
+  label: ReactNode
   form: UseFormReturn<FormData>
   children: (field: any) => React.ReactElement
   className?: string
@@ -174,9 +159,6 @@ export function EditStructForm({ struct: propStruct, isPanel }: Props) {
 
   const { form, initialValues } = useStructForm(struct)
 
-  // Format type field automatically
-  useTypeFormatter(form)
-
   const handleSubmit = useCallback(
     async (data: FormData) => {
       if (!struct) return
@@ -190,6 +172,8 @@ export function EditStructForm({ struct: propStruct, isPanel }: Props) {
 
       store.structs.updateStruct(struct.id, newStruct)
       await localDB.updateStructProps(struct.id, data)
+
+      appEmitter.emit('REFRESH_COMMANDS')
 
       if (!isPanel) {
         toast.info(t`Update struct successfully`)
@@ -215,21 +199,29 @@ export function EditStructForm({ struct: propStruct, isPanel }: Props) {
         <div className="flex-1 space-y-4">
           <FormFieldWrapper name="name" label="Name" form={form}>
             {(field) => (
-              <Input placeholder="Enter name" {...field} className="w-full" />
-            )}
-          </FormFieldWrapper>
-
-          <FormFieldWrapper name="pluralName" label="Plural name" form={form}>
-            {(field) => (
               <Input
-                placeholder="Enter plural name"
+                placeholder={t`Enter name`}
                 {...field}
                 className="w-full"
               />
             )}
           </FormFieldWrapper>
 
-          <FormFieldWrapper name="name" label="Color" form={form}>
+          <FormFieldWrapper
+            name="pluralName"
+            label={t`Plural name`}
+            form={form}
+          >
+            {(field) => (
+              <Input
+                placeholder={t`Enter plural name`}
+                {...field}
+                className="w-full"
+              />
+            )}
+          </FormFieldWrapper>
+
+          <FormFieldWrapper name="name" label={t`Color`} form={form}>
             {(field) => (
               <ColorSelector
                 value={field.value || ''}
@@ -240,12 +232,13 @@ export function EditStructForm({ struct: propStruct, isPanel }: Props) {
 
           <FormFieldWrapper
             name="showDetail"
-            label="Show detail panel"
+            label={<Trans>Show detail panel</Trans>}
             form={form}
             className="flex w-full items-center justify-between"
           >
             {(field) => (
               <Switch
+                className="data-[state=unchecked]:bg-foreground/20"
                 checked={field.value || false}
                 onCheckedChange={field.onChange}
               />

@@ -10,6 +10,7 @@ import { tinykeys } from 'tinykeys'
 import { Kbd } from '@penx/components/Kbd'
 import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
+import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { useValue } from '~/hooks/useValue'
 import { ICommandItem } from '~/lib/types'
 import { ListItemIcon } from '../Panel/ListItemIcon'
@@ -35,7 +36,6 @@ interface IConfirm {
 interface Props {
   className?: string
   bodyClassName?: string
-  command: ICommandItem
   confirm?: IConfirm
   hideFooter?: boolean
   headerBordered?: boolean
@@ -48,12 +48,13 @@ export function ListApp({
   isLoading,
   bodyClassName,
   children,
-  command,
   confirm,
   hideFooter = false,
   headerBordered = true,
   isDetailVisible,
 }: PropsWithChildren<Props>) {
+  const { currentCommand: command } = useCurrentCommand()
+
   const itemIcon = useMemo(() => {
     const assets = command?.data?.assets || {}
     return assets[command.icon as string] || command.icon

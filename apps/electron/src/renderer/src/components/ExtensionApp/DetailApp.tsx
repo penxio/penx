@@ -2,6 +2,7 @@ import { PropsWithChildren, ReactNode, useEffect, useMemo } from 'react'
 import { tinykeys } from 'tinykeys'
 import { Kbd } from '@penx/components/Kbd'
 import { cn } from '@penx/utils'
+import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { ICommandItem } from '~/lib/types'
 import { ListItemIcon } from '../Panel/ListItemIcon'
 import { SearchInput } from '../Panel/SearchBar/SearchInput'
@@ -24,13 +25,13 @@ interface IConfirm {
 interface Props {
   className?: string
   bodyClassName?: string
-  command: ICommandItem
   actions?: ReactNode
   confirm?: IConfirm
   hideHeader?: boolean
   hideFooter?: boolean
   headerBordered?: boolean
   title?: ReactNode
+  footerPostfix?: ReactNode
   showSearch?: boolean
 }
 
@@ -38,19 +39,22 @@ export function DetailApp({
   className,
   bodyClassName,
   children,
-  command,
   actions,
   confirm,
   hideHeader = false,
   hideFooter = false,
   headerBordered = true,
   showSearch = false,
+  footerPostfix,
   title,
 }: PropsWithChildren<Props>) {
+  const { currentCommand: command } = useCurrentCommand()
   const itemIcon = useMemo(() => {
     const assets = command?.data?.assets || {}
-    return assets[command.icon as string] || command.icon
+    return assets[command?.icon as string] || command?.icon
   }, [command])
+
+  if (!command) return <div>Henel</div>
 
   return (
     <div className={cn('flex h-full w-full flex-col', className)}>
@@ -95,6 +99,7 @@ export function DetailApp({
           </div>
           {actions}
           {confirm && <Confirm confirm={confirm} />}
+          {footerPostfix}
         </div>
       )}
     </div>

@@ -82,10 +82,6 @@ export const CommandPalette = () => {
       return <PageRoot />
     }
 
-    if (current.path === '/edit-struct') {
-      return <PageEditStruct />
-    }
-
     if (current.path === '/configure-shortcut') {
       return <PageConfigureShortcut />
     }
@@ -120,6 +116,10 @@ export const CommandPalette = () => {
       return <PageAICommand />
     }
 
+    if (current.path === '/edit-struct') {
+      return <PageEditStruct />
+    }
+
     return (
       <>
         {header}
@@ -148,7 +148,7 @@ export const CommandPalette = () => {
     <Command
       id="command-palette"
       label="Command Menu"
-      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/65 dark:bg-neutral-900/80"
+      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/70 dark:bg-neutral-900/80"
       // loop={false}
       value={value}
       onValueChange={(v) => {
