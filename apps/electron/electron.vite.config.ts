@@ -7,13 +7,12 @@ export default defineConfig({
   main: {
     build: {
       rollupOptions: {
-        // external: ['node-fn-listener'],
+        // external: [],
       },
     },
     plugins: [
       externalizeDepsPlugin({
         exclude: [
-          // "node-fn-listener",
           '@penx/api',
           '@penx/components',
           '@penx/constants',

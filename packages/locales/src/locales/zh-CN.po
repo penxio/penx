@@ -18,7 +18,7 @@ msgstr ""
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} 个待办"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:160
+#: packages/components/src/StructDialog/EditStructForm.tsx:145
 msgid "{label}"
 msgstr ""
 
@@ -173,6 +173,7 @@ msgid "AI Chat"
 msgstr "AI 聊天"
 
 #: packages/libs/src/getDefaultStructs.ts:456
+#: packages/components/src/AppProvider/AppService.ts:229
 msgid "AI Command"
 msgstr ""
 
@@ -381,6 +382,7 @@ msgid "Collection"
 msgstr "合集"
 
 #: apps/mobile/src/components/ColorSelector.tsx:45
+#: packages/components/src/StructDialog/EditStructForm.tsx:224
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:49
 msgid "Color"
 msgstr "颜色"
@@ -704,6 +706,14 @@ msgstr "已启用"
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:65
 msgid "End-to-end encryption"
 msgstr "端到端加密"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:203
+msgid "Enter name"
+msgstr ""
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:217
+msgid "Enter plural name"
+msgstr ""
 
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:515
 msgid "Execute Changes"
@@ -1274,6 +1284,10 @@ msgstr "请输入验证码"
 msgid "Please wait for the model to finish its response!"
 msgstr "请等待模型完成回复！"
 
+#: packages/components/src/StructDialog/EditStructForm.tsx:212
+msgid "Plural name"
+msgstr ""
+
 #: packages/components/src/Creation/Tags.tsx:124
 msgid "Press Enter to add a tag."
 msgstr "按回车键添加标签。"
@@ -1344,7 +1358,16 @@ msgstr "属性"
 msgid "Publish"
 msgstr "发布"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageEditStruct.tsx:25
+#. placeholder {0}: struct?.name
+#: packages/components/src/PublishStructDialog/PublishStructDialog.tsx:32
+msgid "Publish <0>{0}</0> to marketplace"
+msgstr ""
+
+#: packages/components/src/PublishStructDialog/PublishStructDialog.tsx:29
+msgid "Publish struct"
+msgstr ""
+
+#: apps/electron/src/renderer/src/components/Panel/pages/PageEditStruct.tsx:45
 msgid "Publish Struct"
 msgstr ""
 
@@ -1553,6 +1576,10 @@ msgstr "快捷键"
 msgid "Show all"
 msgstr "显示全部"
 
+#: packages/components/src/StructDialog/EditStructForm.tsx:235
+msgid "Show detail panel"
+msgstr ""
+
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:95
 msgid "Show recovery phrase"
 msgstr "显示恢复短语"
@@ -1630,6 +1657,7 @@ msgstr "结构体名称"
 
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
+#: packages/components/src/PublishStructDialog/PublishStructContent.tsx:94
 msgid "Struct published successfully!"
 msgstr "发布结构体成功！"
 
@@ -1838,6 +1866,10 @@ msgstr ""
 msgid "Tue"
 msgstr "周二"
 
+#: packages/components/src/PublishStructDialog/PublishStructContent.tsx:81
+msgid "Unique ID is required"
+msgstr ""
+
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:355
 msgid "Unknown Struct"
 msgstr "未知结构体"
@@ -1875,7 +1907,7 @@ msgstr "无标题"
 msgid "Upcoming"
 msgstr "未来"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:259
+#: packages/components/src/StructDialog/EditStructForm.tsx:252
 msgid "Update"
 msgstr "更新"
 
@@ -1892,7 +1924,7 @@ msgstr "修改密码"
 msgid "Update struct"
 msgstr "更新结构体"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:195
+#: packages/components/src/StructDialog/EditStructForm.tsx:179
 msgid "Update struct successfully"
 msgstr "结构体更新成功"
 

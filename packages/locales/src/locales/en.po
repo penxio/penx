@@ -18,7 +18,7 @@ msgstr ""
 msgid "{doneCount}/{0} tasks"
 msgstr "{doneCount}/{0} tasks"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:160
+#: packages/components/src/StructDialog/EditStructForm.tsx:145
 msgid "{label}"
 msgstr "{label}"
 
@@ -173,6 +173,7 @@ msgid "AI Chat"
 msgstr "AI Chat"
 
 #: packages/libs/src/getDefaultStructs.ts:456
+#: packages/components/src/AppProvider/AppService.ts:229
 msgid "AI Command"
 msgstr "AI Command"
 
@@ -381,6 +382,7 @@ msgid "Collection"
 msgstr "Collection"
 
 #: apps/mobile/src/components/ColorSelector.tsx:45
+#: packages/components/src/StructDialog/EditStructForm.tsx:224
 #: packages/components/src/DashboardLayout/panel-renderer/ManageTags/ManageTags.tsx:49
 msgid "Color"
 msgstr "Color"
@@ -704,6 +706,14 @@ msgstr "Enabled"
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:65
 msgid "End-to-end encryption"
 msgstr "End-to-end encryption"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:203
+msgid "Enter name"
+msgstr "Enter name"
+
+#: packages/components/src/StructDialog/EditStructForm.tsx:217
+msgid "Enter plural name"
+msgstr "Enter plural name"
 
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:515
 msgid "Execute Changes"
@@ -1274,6 +1284,10 @@ msgstr "Please enter the verification code."
 msgid "Please wait for the model to finish its response!"
 msgstr "Please wait for the model to finish its response!"
 
+#: packages/components/src/StructDialog/EditStructForm.tsx:212
+msgid "Plural name"
+msgstr "Plural name"
+
 #: packages/components/src/Creation/Tags.tsx:124
 msgid "Press Enter to add a tag."
 msgstr "Press Enter to add a tag."
@@ -1344,7 +1358,16 @@ msgstr "Properties"
 msgid "Publish"
 msgstr "Publish"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageEditStruct.tsx:25
+#. placeholder {0}: struct?.name
+#: packages/components/src/PublishStructDialog/PublishStructDialog.tsx:32
+msgid "Publish <0>{0}</0> to marketplace"
+msgstr "Publish <0>{0}</0> to marketplace"
+
+#: packages/components/src/PublishStructDialog/PublishStructDialog.tsx:29
+msgid "Publish struct"
+msgstr "Publish struct"
+
+#: apps/electron/src/renderer/src/components/Panel/pages/PageEditStruct.tsx:45
 msgid "Publish Struct"
 msgstr "Publish Struct"
 
@@ -1553,6 +1576,10 @@ msgstr "Shortcuts"
 msgid "Show all"
 msgstr "Show all"
 
+#: packages/components/src/StructDialog/EditStructForm.tsx:235
+msgid "Show detail panel"
+msgstr "Show detail panel"
+
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:95
 msgid "Show recovery phrase"
 msgstr "Show recovery phrase"
@@ -1630,6 +1657,7 @@ msgstr "Struct name"
 
 #: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
 #: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
+#: packages/components/src/PublishStructDialog/PublishStructContent.tsx:94
 msgid "Struct published successfully!"
 msgstr "Struct published successfully!"
 
@@ -1838,6 +1866,10 @@ msgstr "Translate text"
 msgid "Tue"
 msgstr "Tue"
 
+#: packages/components/src/PublishStructDialog/PublishStructContent.tsx:81
+msgid "Unique ID is required"
+msgstr "Unique ID is required"
+
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:355
 msgid "Unknown Struct"
 msgstr "Unknown Struct"
@@ -1875,7 +1907,7 @@ msgstr "Untitled"
 msgid "Upcoming"
 msgstr "Upcoming"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:259
+#: packages/components/src/StructDialog/EditStructForm.tsx:252
 msgid "Update"
 msgstr "Update"
 
@@ -1892,7 +1924,7 @@ msgstr "Update password"
 msgid "Update struct"
 msgstr "Update struct"
 
-#: packages/components/src/StructDialog/EditStructForm.tsx:195
+#: packages/components/src/StructDialog/EditStructForm.tsx:179
 msgid "Update struct successfully"
 msgstr "Update struct successfully"
 
