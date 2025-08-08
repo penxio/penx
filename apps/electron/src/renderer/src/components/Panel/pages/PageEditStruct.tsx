@@ -15,7 +15,7 @@ export function PageEditStruct() {
     <DatabaseProvider struct={struct}>
       <div className="divide-foreground/10 flex  h-full justify-between divide-x">
         <div className="flex-1 overflow-auto p-3">
-          <EditStructForm struct={struct} />
+          <EditStructForm struct={struct} isPanel />
         </div>
         <div className="flex-1 overflow-auto p-1">
           <StructInfo struct={struct} />
