@@ -55,6 +55,7 @@ const dropAnimationConfig: DropAnimation = {
 
 interface Props {
   struct: Struct
+  readonly?: boolean
 }
 
 export const ColumnList = ({ struct }: Props) => {

@@ -8,18 +8,19 @@ import { StructPropDrawer } from './StructPropDrawer'
 
 interface Props {
   struct: Struct
+  readonly?: boolean
 }
 
-export function StructInfo({ struct }: Props) {
+export function StructInfo({ struct, readonly = false }: Props) {
   return (
     <div className="flex flex-1 flex-col gap-4">
       <div className="flex items-center justify-between">
         <div className="px-3 font-bold">
           <Trans>Properties</Trans>
         </div>
-        <AddColumnBtn struct={struct} />
+        {!readonly && <AddColumnBtn struct={struct} />}
       </div>
-      <ColumnList struct={struct} />
+      <ColumnList struct={struct} readonly={readonly} />
       <StructPropDrawer />
     </div>
   )

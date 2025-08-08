@@ -57,6 +57,8 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
   const { setState } = useStructPropDrawer()
   if (!column) return null
 
+  const isReadonly = !!(struct as any)?.publishedAt
+
   return (
     <div
       ref={ref}
@@ -74,16 +76,18 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
         )}
       >
         <div className="flex items-center gap-2 px-2">
-          <div
-            className={cn(
-              'inline-flex',
-              index === 0 && 'disabled cursor-not-allowed',
-            )}
-          >
-            <div className="" {...attributes} {...listeners}>
-              <GripVerticalIcon className="text-foreground/50 size-5" />
+          {!isReadonly && (
+            <div
+              className={cn(
+                'inline-flex',
+                index === 0 && 'disabled cursor-not-allowed',
+              )}
+            >
+              <div className="" {...attributes} {...listeners}>
+                <GripVerticalIcon className="text-foreground/50 size-5" />
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="flex items-center gap-1">
             <FieldIcon columnType={column.columnType} />
@@ -96,40 +100,42 @@ export const ColumnItem = forwardRef<HTMLDivElement, Props>(function Item(
         </div>
         {/* <ColumnMenuPopover column={column} index={index!} /> */}
 
-        <div>
-          <ConfirmDialog
-            title={<Trans>Delete this property?</Trans>}
-            content={
-              <Trans>Are you sure you want to delete this property?</Trans>
-            }
-            tooltipContent={<Trans>Delete this property</Trans>}
-            onConfirm={async () => {
-              store.structs.deleteColumn(struct, column.id)
-            }}
-          >
+        {!isReadonly && (
+          <div>
+            <ConfirmDialog
+              title={<Trans>Delete this property?</Trans>}
+              content={
+                <Trans>Are you sure you want to delete this property?</Trans>
+              }
+              tooltipContent={<Trans>Delete this property</Trans>}
+              onConfirm={async () => {
+                store.structs.deleteColumn(struct, column.id)
+              }}
+            >
+              <Button
+                variant="ghost"
+                className=" hover:bg-foreground/10 size-7 rounded-md text-red-500/60 hover:text-red-500"
+                size="icon"
+              >
+                <Trash2Icon className="size-4" />
+              </Button>
+            </ConfirmDialog>
             <Button
               variant="ghost"
-              className=" hover:bg-foreground/10 size-7 rounded-md text-red-500/60 hover:text-red-500"
+              className="hover:bg-foreground/10 size-7 rounded-md"
               size="icon"
+              onClick={() => {
+                setState({
+                  index: index!,
+                  open: true,
+                  column,
+                })
+              }}
             >
-              <Trash2Icon className="size-4" />
+              <EllipsisIcon className="text-foreground/40 size-5" />
             </Button>
-          </ConfirmDialog>
-          <Button
-            variant="ghost"
-            className="hover:bg-foreground/10 size-7 rounded-md"
-            size="icon"
-            onClick={() => {
-              setState({
-                index: index!,
-                open: true,
-                column,
-              })
-            }}
-          >
-            <EllipsisIcon className="text-foreground/40 size-5" />
-          </Button>
-        </div>
+          </div>
+        )}
       </div>
     </div>
   )

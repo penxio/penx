@@ -1,6 +1,7 @@
 import { get } from 'idb-keyval'
 import _ky from 'ky'
 import {
+  AI_SERVICE_HOST,
   CheckoutInput,
   CreateAssetInput,
   isDesktop,
@@ -164,8 +165,14 @@ export const api = {
 
   async listStructTemplate() {
     return ky
-      .get(`${ROOT_HOST}/api/struct-template/list`)
-      .json<(IStructNode['props'] & { id: string })[]>()
+      .get(`${AI_SERVICE_HOST}/api/struct-template/list`)
+      .json<
+        (IStructNode['props'] & {
+          id: string
+          publishedAt: Date
+          usedCount: number
+        })[]
+      >()
   },
 
   async publishStruct(input: PublishStructInput) {

@@ -7,6 +7,7 @@ import { ListApp } from '~/components/ExtensionApp/ListApp'
 import { ListItem } from '~/components/ExtensionApp/ListItem'
 import { useCurrentCommand } from '~/hooks/useCurrentCommand'
 import { navigation } from '~/hooks/useNavigation'
+import { StructInfo } from '../CommandApp/DatabaseApp/StructInfo'
 
 export function PageStructMarketplace() {
   const { currentCommand } = useCurrentCommand()
@@ -29,15 +30,15 @@ export function PageStructMarketplace() {
           }}
           detail={
             <div>
-              <div>id: {item.id}</div>
-              <div>title: {item.name}</div>
+              <StructInfo struct={item as any} readonly />
             </div>
           }
-
-          // accessories={[
-          //   { icon: { name: 'mdi--home' }, text: item.descendants || 0 },
-          //   { icon: { name: 'mdi--user' }, text: item.score || 0 },
-          // ]}
+          accessories={[
+            {
+              icon: { name: 'icon-[material-symbols--download]' },
+              text: item.usedCount || 0,
+            },
+          ]}
           // actions={
           //   <ActionPanel>
           //     <Action.OpenInBrowser
