@@ -56,8 +56,8 @@
               "<(module_root_dir)/build/Release"
             ]
           }
-        }, {
-          # For non-Mac platforms, create a dummy target that does nothing
+        }],
+        ['OS!="mac"', {
           "sources": [
             "src/native/stub.cpp"
           ],

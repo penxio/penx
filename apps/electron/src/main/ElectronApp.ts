@@ -219,7 +219,9 @@ export class ElectronApp {
       10 * 60 * 1000,
     )
 
-    this.initFnListener()
+    if (platform.isMacOS) {
+      this.initFnListener()
+    }
   }
 
   private async initFnListener() {

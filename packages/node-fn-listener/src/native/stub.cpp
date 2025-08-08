@@ -1,4 +1,7 @@
-#include <nan.h>
+// Stub implementations for non-Mac platforms
+// This file provides dummy implementations that don't require nan.h
+
+#include <node.h>
 #include <string>
 
 using namespace v8;
@@ -6,61 +9,61 @@ using namespace v8;
 // Stub implementations for non-Mac platforms
 // These functions provide the same API but return appropriate fallback values
 
-NAN_METHOD(CheckAccessibilityPermission) {
+void CheckAccessibilityPermission(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(RequestAccessibilityPermission) {
+void RequestAccessibilityPermission(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(StartListening) {
+void StartListening(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(StopListening) {
+void StopListening(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(IsListening) {
+void IsListening(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(GetFnKeyCode) {
+void GetFnKeyCode(const FunctionCallbackInfo<Value>& args) {
     // Return default fn key code (63 is common for fn key)
-    info.GetReturnValue().Set(Nan::New(63));
+    args.GetReturnValue().Set(63);
 }
 
-NAN_METHOD(IsFnPressed) {
+void IsFnPressed(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(SimulateFnKeydown) {
+void SimulateFnKeydown(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_METHOD(SimulateFnKeyup) {
+void SimulateFnKeyup(const FunctionCallbackInfo<Value>& args) {
     // Always return false on non-Mac platforms
-    info.GetReturnValue().Set(Nan::New(false));
+    args.GetReturnValue().Set(false);
 }
 
-NAN_MODULE_INIT(Init) {
-    Nan::Export(target, "checkAccessibilityPermission", CheckAccessibilityPermission);
-    Nan::Export(target, "requestAccessibilityPermission", RequestAccessibilityPermission);
-    Nan::Export(target, "startListening", StartListening);
-    Nan::Export(target, "stopListening", StopListening);
-    Nan::Export(target, "isListening", IsListening);
-    Nan::Export(target, "getFnKeyCode", GetFnKeyCode);
-    Nan::Export(target, "isFnPressed", IsFnPressed);
-    Nan::Export(target, "simulateFnKeydown", SimulateFnKeydown);
-    Nan::Export(target, "simulateFnKeyup", SimulateFnKeyup);
+void Initialize(Local<Object> exports) {
+    NODE_SET_METHOD(exports, "checkAccessibilityPermission", CheckAccessibilityPermission);
+    NODE_SET_METHOD(exports, "requestAccessibilityPermission", RequestAccessibilityPermission);
+    NODE_SET_METHOD(exports, "startListening", StartListening);
+    NODE_SET_METHOD(exports, "stopListening", StopListening);
+    NODE_SET_METHOD(exports, "isListening", IsListening);
+    NODE_SET_METHOD(exports, "getFnKeyCode", GetFnKeyCode);
+    NODE_SET_METHOD(exports, "isFnPressed", IsFnPressed);
+    NODE_SET_METHOD(exports, "simulateFnKeydown", SimulateFnKeydown);
+    NODE_SET_METHOD(exports, "simulateFnKeyup", SimulateFnKeyup);
 }
 
-NODE_MODULE(node_fn_listener, Init) 
+NODE_MODULE(node_fn_listener, Initialize) 
