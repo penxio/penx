@@ -228,11 +228,9 @@ export class ElectronApp {
     console.log('Fn Key Code:', fnListener.fnKeyCode)
     console.log('Permission status:', fnListener.checkPermission())
 
-    // 定义回调函数
     const callback: FnCallback = (message: string) => {
       console.log('Fn key event:', message)
 
-      // 解析事件
       const event: FnEvent | null = NodeFnListener.parseEvent(message)
       if (event) {
         console.log('Parsed event:', {
