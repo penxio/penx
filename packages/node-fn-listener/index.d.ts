@@ -20,6 +20,12 @@ export interface CompatibilityInfo {
   isSupported: boolean;
   isArm64: boolean;
   isX64: boolean;
+  supportedFeatures: {
+    fnKeyListening: boolean;
+    fnKeySimulation: boolean;
+    accessibilityPermissions: boolean;
+  };
+  platformName: string;
 }
 
 export interface StateChangeEvent {
@@ -54,6 +60,7 @@ export interface NodeFnListener {
   simulateKeydown(): Promise<boolean>;
   simulateKeyup(): Promise<boolean>;
   parseEvent(message: string): FnEvent | null;
+  readonly compatibility: CompatibilityInfo;
   destroy(): void;
   
   // EventEmitter methods
@@ -77,6 +84,7 @@ export declare class NodeFnListener {
   simulateKeydown(): Promise<boolean>;
   simulateKeyup(): Promise<boolean>;
   parseEvent(message: string): FnEvent | null;
+  readonly compatibility: CompatibilityInfo;
   destroy(): void;
   
   // EventEmitter methods
@@ -164,6 +172,7 @@ export const LOG_LEVELS: {
 
 // Utility functions
 export declare function parseEvent(message: string): FnEvent | null;
+export declare function checkCompatibility(): CompatibilityInfo;
 export declare const createError: {
   permission(message?: string, cause?: Error): PermissionError;
   listenerAlreadyRunning(cause?: Error): ListenerStateError;

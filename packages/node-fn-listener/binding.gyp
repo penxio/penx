@@ -2,14 +2,14 @@
   "targets": [
     {
       "target_name": "node_fn_listener",
-      "sources": [
-        "src/native/fn-listener.cpp"
-      ],
-      "include_dirs": [
-        "<!@(node -p \"require('nan').include\")"
-      ],
       "conditions": [
         ['OS=="mac"', {
+          "sources": [
+            "src/native/fn-listener.cpp"
+          ],
+          "include_dirs": [
+            "<!@(node -p \"require('nan').include\")"
+          ],
           "xcode_settings": {
             "OTHER_CPLUSPLUSFLAGS": [
               "-std=c++20",
@@ -56,6 +56,14 @@
               "<(module_root_dir)/build/Release"
             ]
           }
+        }, {
+          # For non-Mac platforms, create a dummy target that does nothing
+          "sources": [
+            "src/native/stub.cpp"
+          ],
+          "include_dirs": [
+            "<!@(node -p \"require('nan').include\")"
+          ]
         }]
       ]
     }

@@ -1,5 +1,5 @@
 const NodeFnListenerImpl = require('./lib/impl');
-const { parseEvent } = require('./lib/utils');
+const { parseEvent, checkCompatibility } = require('./lib/utils');
 const { Logger } = require('./lib/logger');
 const { createError } = require('./lib/errors');
 
@@ -9,6 +9,7 @@ const NodeFnListener = NodeFnListenerImpl;
 // Export utility functions and classes
 module.exports = NodeFnListener;
 module.exports.parseEvent = parseEvent;
+module.exports.checkCompatibility = checkCompatibility;
 module.exports.Logger = Logger;
 module.exports.createError = createError;
 module.exports.default = NodeFnListener;

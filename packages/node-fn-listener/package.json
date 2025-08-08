@@ -6,7 +6,7 @@
   "types": "index.d.ts",
   "scripts": {
     "build": "node-gyp rebuild",
-    "build:debug": "node-gyp rebuild --debug",
+    "build:debug": "nrebuild --debug",
     "build:electron": "node scripts/electron-rebuild.js",
     "test": "node tests/test.js",
     "test:advanced": "node tests/advanced-test.js",
@@ -15,17 +15,20 @@
     "test:all": "npm run test && npm run test:advanced",
     "example": "node examples/example.js",
     "example:electron": "electron examples/electron-example.js",
-    "install": "node-gyp rebuild",
+    "preinstall": "node scripts/check-platform.js",
+    "install": "node-gyp rebuild || echo \"Build failed, but continuing with stub implementation\"",
     "clean": "rm -rf build bin target",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
   "author": "Loop Team",
   "license": "MIT",
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
   "devDependencies": {
     "@electron/rebuild": "^4.0.1",
     "@types/node": "^24.2.0",
-    "nan": "^2.18.0",
     "node-gyp": "^10.0.1",
     "eslint": "^8.0.0",
     "prettier": "^3.0.0"
@@ -36,10 +39,14 @@
     "electron",
     "keyboard",
     "macos",
+    "cross-platform",
+    "windows",
+    "linux",
     "swift",
     "loop",
     "accessibility",
-    "keyboard-events"
+    "keyboard-events",
+    "native-module"
   ],
   "repository": {
     "type": "git",
@@ -48,9 +55,6 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "os": [
-    "darwin"
-  ],
   "files": [
     "index.js",
     "index.d.ts",

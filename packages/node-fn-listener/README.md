@@ -14,11 +14,36 @@ Global fn key listener for Node.js and Electron applications.
 - 📱 **Electron Ready**: Works seamlessly in Electron applications
 - 🍎 **macOS Optimized**: Native macOS integration with accessibility APIs
 
+## Platform Compatibility
+
+| Platform | Support Level | Fn Key Listening | Key Simulation | Accessibility Permissions |
+|----------|---------------|------------------|----------------|---------------------------|
+| **macOS** | ✅ Full | ✅ Yes | ✅ Yes | ✅ Yes |
+| **Windows** | ⚠️ Limited | ❌ No | ❌ No | ❌ No |
+| **Linux** | ⚠️ Limited | ❌ No | ❌ No | ❌ No |
+
+### Cross-Platform Behavior
+
+- **macOS**: Full functionality with native Swift implementation
+- **Windows/Linux**: Stub implementation that provides the same API but returns appropriate fallback values
+- **All platforms**: Package installs successfully and provides consistent API
+
+The package is designed to work across all platforms without breaking your application. On unsupported platforms, all methods are available but return sensible defaults:
+
+- `start()` returns `false` and logs a warning
+- `checkPermission()` returns `false`
+- `requestPermission()` returns `false`
+- `simulateKeydown()/simulateKeyup()` return `false`
+- `fnPressed` returns `false`
+- `fnKeyCode` returns `63` (default fn key code)
+
 ## Installation
 
 ```bash
 npm install node-fn-listener
 ```
+
+The installation process automatically detects your platform and builds the appropriate implementation.
 
 ## Quick Start
 

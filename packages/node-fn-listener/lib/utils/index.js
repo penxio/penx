@@ -135,7 +135,19 @@ function checkCompatibility() {
     arch,
     isSupported: platform === 'darwin',
     isArm64: arch === 'arm64',
-    isX64: arch === 'x64'
+    isX64: arch === 'x64',
+    supportedFeatures: {
+      fnKeyListening: platform === 'darwin',
+      fnKeySimulation: platform === 'darwin',
+      accessibilityPermissions: platform === 'darwin'
+    },
+    platformName: {
+      'win32': 'Windows',
+      'darwin': 'macOS',
+      'linux': 'Linux',
+      'freebsd': 'FreeBSD',
+      'openbsd': 'OpenBSD'
+    }[platform] || platform
   };
 }
 

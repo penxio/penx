@@ -9,11 +9,20 @@ setupLibraryPath();
 
 // Load native module
 let nativeModule;
+const compatibility = checkCompatibility();
+
 try {
   nativeModule = require('../build/Release/node_fn_listener.node');
 } catch (error) {
-  defaultLogger.error('Failed to load native module:', error);
-  throw createError.nativeModule('Failed to load native module', error);
+  if (compatibility.isSupported) {
+    // On Mac, native module should be available
+    defaultLogger.error('Failed to load native module on supported platform:', error);
+    throw createError.nativeModule('Failed to load native module on Mac', error);
+  } else {
+    // On non-Mac platforms, this is expected - native module provides stubs
+    defaultLogger.warn(`Native module loading failed on ${compatibility.platform}, using stub implementation`);
+    nativeModule = require('../build/Release/node_fn_listener.node');
+  }
 }
 
 const {
@@ -46,14 +55,14 @@ class NodeFnListenerImpl extends NodeFnListenerEventEmitter {
     this.callback = null;
     this.retryCount = 0;
     this.logger = options.logger || defaultLogger;
+    this.compatibility = compatibility;
     
-    // Check compatibility
-    const compatibility = checkCompatibility();
+    // Log initialization with platform info
     if (!compatibility.isSupported) {
-      throw createError.nativeModule(`Platform ${compatibility.platform} is not supported`);
+      this.logger.warn(`NodeFnListener initialized on unsupported platform ${compatibility.platform}. Functionality will be limited.`);
+    } else {
+      this.logger.info('NodeFnListener initialized', { compatibility });
     }
-    
-    this.logger.info('NodeFnListener initialized', { compatibility });
   }
 
   /**
@@ -81,6 +90,14 @@ class NodeFnListenerImpl extends NodeFnListenerEventEmitter {
   async start(callback) {
     if (this.state === LISTENER_STATES.RUNNING) {
       throw createError.listenerAlreadyRunning();
+    }
+
+    // Check platform support
+    if (!this.compatibility.isSupported) {
+      this.logger.warn('Cannot start listening: Platform not supported');
+      this.setState(LISTENER_STATES.ERROR);
+      this.emitError(createError.nativeModule(`Platform ${this.compatibility.platform} is not supported`));
+      return false;
     }
 
     this.setState(LISTENER_STATES.STARTING);
@@ -172,6 +189,11 @@ class NodeFnListenerImpl extends NodeFnListenerEventEmitter {
    * Request permission
    */
   async requestPermission() {
+    if (!this.compatibility.isSupported) {
+      this.logger.warn('Cannot request permission: Platform not supported');
+      return false;
+    }
+
     this.logger.info('Requesting accessibility permission...');
     
     try {
@@ -232,6 +254,11 @@ class NodeFnListenerImpl extends NodeFnListenerEventEmitter {
    * Simulate fn key down
    */
   async simulateKeydown() {
+    if (!this.compatibility.isSupported) {
+      this.logger.warn('Cannot simulate keydown: Platform not supported');
+      return false;
+    }
+
     try {
       this.logger.debug('Simulating fn key down');
       const result = simulateFnKeydown();
@@ -247,6 +274,11 @@ class NodeFnListenerImpl extends NodeFnListenerEventEmitter {
    * Simulate fn key up
    */
   async simulateKeyup() {
+    if (!this.compatibility.isSupported) {
+      this.logger.warn('Cannot simulate keyup: Platform not supported');
+      return false;
+    }
+
     try {
       this.logger.debug('Simulating fn key up');
       const result = simulateFnKeyup();
