@@ -97,6 +97,11 @@ window.electron.ipcRenderer.on('open-quick-input', () => {
   }, 0)
 })
 
+window.electron.ipcRenderer.on('open-window-after-subscription', () => {
+  console.log('name......')
+  refreshSession()
+})
+
 window.electron.ipcRenderer.on(
   'open-ai-command',
   async (

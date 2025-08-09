@@ -53,7 +53,6 @@ export function PlanList() {
             { ok: true, text: 'Unlimit device' },
             { ok: true, text: '2GB/month storage' },
             { ok: true, text: 'AI features for notes' },
-            { ok: true, text: 'AI transcription for voice' },
           ]}
         />
         {/* <PlanItem

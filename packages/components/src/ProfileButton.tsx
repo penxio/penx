@@ -250,6 +250,12 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
                 //   return
                 // }
                 // location.href = path
+                if (isDesktop) {
+                  window.electron.ipcRenderer.send(
+                    'open-url',
+                    `${ROOT_HOST}/pricing?from=desktop`,
+                  )
+                }
               }}
             >
               <Sparkles />

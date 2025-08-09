@@ -109,11 +109,6 @@ export function UpgradeContent({ onSubscribeSuccess }: Props) {
               <Trans>AI features for notes</Trans>
             </BenefitItem>
           )}
-          {isPro && (
-            <BenefitItem>
-              <Trans>AI transcription for voice</Trans>
-            </BenefitItem>
-          )}
         </div>
       </div>
       <div

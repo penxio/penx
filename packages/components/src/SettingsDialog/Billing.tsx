@@ -7,6 +7,7 @@ import { format } from 'date-fns'
 import { toast } from 'sonner'
 import { api } from '@penx/api'
 import { usePlanListDialog } from '@penx/components/PlanList/usePlanListDialog'
+import { isDesktop, ROOT_HOST } from '@penx/constants'
 import { useSiteContext } from '@penx/contexts/SiteContext'
 import { refreshSession, useSession } from '@penx/session'
 import { BillingCycle } from '@penx/types'
@@ -76,7 +77,12 @@ export function Billing({}: Props) {
           <Button
             size="lg"
             onClick={() => {
-              planDialog.setIsOpen(true)
+              if (isDesktop) {
+                window.electron.ipcRenderer.send(
+                  'open-url',
+                  `${ROOT_HOST}/pricing?from=desktop`,
+                )
+              }
             }}
           >
             {!session?.isFree && session?.subscriptionStatus !== 'canceled' ? (

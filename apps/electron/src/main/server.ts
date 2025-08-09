@@ -80,6 +80,17 @@ export class HonoServer {
       })
     })
 
+    this.app.get('/open-window-after-subscription', (c) => {
+      this.windows.panelWindow?.show()
+      this.windows.panelWindow?.focus()
+      this.windows.panelWindow?.webContents.send(
+        'open-window-after-subscription',
+      )
+      return c.json({
+        status: 'ok',
+      })
+    })
+
     const api = this.app.basePath('/api')
 
     api.route('/bookmark', bookmarkRouter)
