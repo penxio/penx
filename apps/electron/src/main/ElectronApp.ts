@@ -171,10 +171,14 @@ export class ElectronApp {
       this.panelWindow.on('blur', async () => {
         console.log('blur panel..........isDev:', is.dev)
 
-        const pinned = await this.conf.get('pinned')
-        if (!is.dev && !pinned) {
-          this.panelWindow.hide()
-        }
+        // Add a small delay to prevent immediate hiding when switching between windows
+        setTimeout(async () => {
+          const pinned = await this.conf.get('pinned')
+          // Only hide if the window is still not focused and not pinned
+          if (!is.dev && !pinned && !this.panelWindow.isFocused()) {
+            this.panelWindow.hide()
+          }
+        }, 100)
 
         // if (!pinned) {
         //   this.panelWindow.hide()
@@ -186,14 +190,14 @@ export class ElectronApp {
       app.on('activate', () => {
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
+        // For PenX, we want to show the panel window when activated
 
-        if (!this.mainWindow) {
-          this.toggleMainWindow()
+        if (!this.panelWindow || this.panelWindow.isDestroyed()) {
+          this.windows.panelWindow = createPanelWindow()
         }
 
-        // if (BrowserWindow.getAllWindows().length === 0) {
-        //   this.windows.mainWindow = createMainWindow()
-        // }
+        // Show and focus the panel window when app is activated
+        this.togglePanelWindow({ openOnly: true })
       })
     } catch (error) {
       console.error('Failed to initialize app:', error)
