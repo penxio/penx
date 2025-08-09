@@ -62,7 +62,6 @@ export function PublishedStructList({}: Props) {
               disabled={installed}
               onClick={() => {
                 store.structs.installStruct({
-                  id: struct.id,
                   name: struct.name,
                   pluralName: struct.pluralName,
                   columns: columns,
