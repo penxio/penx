@@ -12,7 +12,6 @@ import { StoreType } from '../store-types'
 export const structsAtom = atom<IStructNode[]>([])
 
 export type InstallStructInput = {
-  id: string
   name: string
   pluralName?: string
   description?: string

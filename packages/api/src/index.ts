@@ -164,21 +164,27 @@ export const api = {
   },
 
   async listStructTemplate() {
-    return ky
-      .get(`${AI_SERVICE_HOST}/api/struct-template/list`)
-      .json<
-        (IStructNode['props'] & {
-          id: string
-          publishedAt: Date
-          usedCount: number
-        })[]
-      >()
+    return ky.get(`${AI_SERVICE_HOST}/api/struct-template/list`).json<
+      (IStructNode['props'] & {
+        id: string
+        publishedAt: Date
+        usedCount: number
+      })[]
+    >()
   },
 
   async publishStruct(input: PublishStructInput) {
     return ky
       .post(`${ROOT_HOST}/api/struct-template/publish`, {
         json: input,
+      })
+      .json()
+  },
+
+  async installStruct(id: string) {
+    return ky
+      .post(`${ROOT_HOST}/api/struct-template/install`, {
+        json: { id },
       })
       .json()
   },

@@ -30,7 +30,7 @@ interface IConfirm {
     modifiers: ShortcutModifier[]
     key: ShortcutKey
   }
-  onConfirm: () => any
+  onConfirm: (id?: string) => any
 }
 
 interface Props {

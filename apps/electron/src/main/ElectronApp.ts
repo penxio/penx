@@ -323,6 +323,9 @@ export class ElectronApp {
         setWindowPos()
         showAndFocus()
         panelWindow.webContents.send('panel-window-show')
+
+        const appUpdater = new AppUpdater(this.windows)
+        appUpdater.checkForUpdates()
       }
     }
 
