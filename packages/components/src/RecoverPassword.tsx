@@ -50,10 +50,10 @@ export function RecoverPassword({ className }: Props) {
           src="https://penx.io/images/logo.svg"
           className="shadow-popover size-20 rounded-2xl"
         />
-        <div className="text-foreground text-xl font-bold">
+        <div className="text-foreground no-drag text-xl font-bold">
           <Trans>Recovery password</Trans>
         </div>
-        <div className="text-foreground/60">
+        <div className="text-foreground/60 no-drag">
           <Trans>Input your recovery password to sync your data.</Trans>
         </div>
         <Input

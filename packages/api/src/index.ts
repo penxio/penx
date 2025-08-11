@@ -209,6 +209,19 @@ export const api = {
     return ky.post(`${ROOT_HOST}/api/user/getMe`).json<Me>()
   },
 
+  async isEarlyAccessCodeValid(code: string) {
+    try {
+      const { data } = await ky
+        .get(`${ROOT_HOST}/api/user/isEarlyAccessCodeValid`, {
+          searchParams: { code },
+        })
+        .json<ApiRes<boolean>>()
+      return data
+    } catch (error) {
+      return false
+    }
+  },
+
   async updateProfile(input: UpdateProfileInput) {
     return ky
       .post(`${ROOT_HOST}/api/user/updateProfile`, {

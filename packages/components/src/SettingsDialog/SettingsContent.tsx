@@ -46,7 +46,7 @@ export function SettingsContent({ className }: Props) {
           <span className="no-drag font-bold">{titleNames[navName]}</span>
         </div>
         <Separator className="my-4" />
-        <div className="no-drag">
+        <div className="no-drag flex flex-1 flex-col">
           {navName === SettingsNav.APPEARANCE && <Appearance />}
           {navName === SettingsNav.PROFILE && <Profile />}
           {navName === SettingsNav.PASSWORD && <Password />}

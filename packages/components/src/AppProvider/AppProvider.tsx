@@ -1,4 +1,5 @@
 import { createContext, FC, PropsWithChildren, useEffect, useRef } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { useAtomValue } from 'jotai'
 import { isBrowser, isServer } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
@@ -13,6 +14,9 @@ import {
 import { Button } from '@penx/uikit/ui/button'
 import { LogoSpinner } from '@penx/widgets/LogoSpinner'
 import { runWorker } from '@penx/worker'
+import { DesktopLogin } from '../DesktopLogin'
+import { DesktopWelcome } from '../DesktopWelcome'
+import { EarlyAccessCode } from '../EarlyAccessCode'
 import { RecoverPassword } from '../RecoverPassword'
 import { AppService } from './AppService'
 
@@ -32,6 +36,18 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   const appRef = useRef(new AppService())
   const { Provider } = appContext
   const journalLayout = useJournalLayout()
+
+  const {
+    isLoading: isBoardedLoading,
+    data: isBoarded,
+    refetch,
+  } = useQuery({
+    queryKey: ['isFistTime'],
+    queryFn: async () => {
+      const isBoarded = localStorage.getItem('PENX_IS_BOARDED')
+      return !!isBoarded
+    },
+  })
 
   useEffect(() => {
     if (isLoading) return
@@ -72,15 +88,31 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     )
   }
 
+  if (isLoading) return null
+
+  if (!session) {
+    return <DesktopLogin />
+  }
+
+  if (!session?.earlyAccessCode) {
+    return <EarlyAccessCode />
+  }
+
   if (passwordNeed) {
     return <RecoverPassword />
   }
 
-  if (loading || journalLayout.isLoading) {
+  if (loading || isBoardedLoading) {
     return (
       <div className="flex h-[80vh] items-center justify-center">
         <LogoSpinner />
       </div>
+    )
+  }
+
+  if (!isBoarded) {
+    return (
+      <DesktopWelcome isLoading={isBoardedLoading} onGetStarted={refetch} />
     )
   }
 

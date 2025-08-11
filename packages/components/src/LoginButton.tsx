@@ -2,8 +2,8 @@
 
 import { Trans } from '@lingui/react/macro'
 import { CircleIcon, UserCircle, UserCircle2 } from 'lucide-react'
-import { Button, ButtonProps } from '@penx/uikit/button'
 import { useAuthStatus } from '@penx/hooks/useAuthStatus'
+import { Button, ButtonProps } from '@penx/uikit/button'
 import { useLoginDialog } from '@penx/widgets/useLoginDialog'
 
 interface Props extends ButtonProps {
@@ -17,7 +17,10 @@ export function LoginButton({ appearance = 'button', ...rest }: Props) {
       size={appearance === 'button' ? 'sm' : 'icon'}
       variant={appearance === 'button' ? 'default' : 'ghost'}
       {...rest}
-      onClick={() => {
+      onClick={(e) => {
+        if (rest.onClick) {
+          return rest.onClick(e)
+        }
         setIsOpen(true)
         setAuthStatus({ type: 'login' })
       }}

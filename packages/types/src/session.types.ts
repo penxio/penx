@@ -15,6 +15,7 @@ export interface SessionData {
   pid: string
   publicKey: string
   email: string
+  earlyAccessCode: string
   name: string
   picture: string
   image: string

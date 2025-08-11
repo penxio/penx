@@ -28,7 +28,7 @@ import {
 } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useMySpace } from '@penx/hooks/useMySpace'
-import { useSession } from '@penx/session'
+import { updateSession, useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button, ButtonProps } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
@@ -108,6 +108,7 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
         authToken,
       })
       console.log('desktop ====session:', session)
+      updateSession(session)
 
       appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
     } catch (error) {
