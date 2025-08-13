@@ -526,14 +526,6 @@ export class ElectronApp {
       app.exit()
     })
 
-    ipcMain.on('hide-panel-window', () => {
-      this.togglePanelWindow()
-    })
-
-    ipcMain.on('hide-ai-command-window', () => {
-      this.hideAICommandWindow()
-    })
-
     ipcMain.handle('register-shortcut', (event, shortcut: Shortcut) => {
       const key = convertKeysToHotkey(shortcut.keys)
       const ret = globalShortcut.register(key, () => {
@@ -568,6 +560,14 @@ export class ElectronApp {
     //   this.toggleMainWindow()
     // })
 
+    ipcMain.on('hide-panel-window', () => {
+      this.togglePanelWindow()
+    })
+
+    ipcMain.on('hide-ai-command-window', () => {
+      this.hideAICommandWindow()
+    })
+
     ipcMain.on('toggle-panel-window', () => {
       this.togglePanelWindow()
     })
@@ -587,6 +587,10 @@ export class ElectronApp {
 
     ipcMain.on('pinned', (_, pinned) => {
       this.panelWindow.setAlwaysOnTop(pinned)
+    })
+
+    ipcMain.on('translate-text', (_, text: string) => {
+      console.log('>>>>>>>>>translate-text:', text)
     })
 
     ipcMain.on('open-url', async (_, url: string) => {

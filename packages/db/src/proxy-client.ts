@@ -7,7 +7,7 @@ export const createProxyClient = (
 ) => {
   return drizzle(async (sql, params, method) => {
     try {
-      const response = await fetch(`${baseUrl}/api/query`, {
+      const response = await fetch(`${baseUrl}/api/db/query`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

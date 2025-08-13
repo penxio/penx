@@ -15,7 +15,7 @@
 
 ## Introduction
 
-A Local-first, Privacy-first place to store structure data.
+A local-first, privacy-first place to store structured data.
 
 ## Features
 

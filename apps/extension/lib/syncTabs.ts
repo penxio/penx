@@ -31,7 +31,5 @@ export async function syncTabs() {
   console.log('sync tabs.....')
 
   let tabs = await chrome.tabs.query({})
-  console.log('==========tabs:', tabs)
-
-  tabs[0].active
+  console.log('==========tabs1:', tabs)
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import useWebSocket from 'react-use-websocket'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
@@ -29,7 +30,39 @@ export function PageTranslate() {
   const [loading, setLoading] = useState(false)
   const { copy } = useCopyToClipboard()
 
+  const {
+    sendMessage,
+    sendJsonMessage,
+    lastMessage,
+    lastJsonMessage,
+    readyState,
+    getWebSocket,
+  } = useWebSocket('ws://localhost:14158/ws', {
+    onOpen: () => {
+      console.log('>>>>>>>>>>>>>opened:')
+    },
+    //Will attempt to reconnect on all close events, such as server shutting down
+    shouldReconnect: (closeEvent) => true,
+  })
+
+  useEffect(() => {
+    const msg = lastJsonMessage as { type: string; payload: string }
+    if (msg?.type === 'translate-output') {
+      console.log('====lastJsonMessage:', lastJsonMessage)
+      setResult(msg.payload)
+    }
+  }, [lastJsonMessage])
+
   const debouncedTranslate = useDebouncedCallback(async (text: string) => {
+    // window.electron.ipcRenderer.send('translate-text', text)
+    sendMessage(
+      JSON.stringify({
+        type: 'translate-input',
+        payload: text,
+      }),
+    )
+    return
+
     const session = await getSession()
     if (!session.accessToken) return
     if (loading) return
@@ -126,6 +159,7 @@ export function PageTranslate() {
             onChange={async (e) => {
               const newInput = e.target.value
               setInput(newInput)
+              debouncedTranslate(newInput)
             }}
           />
         </div>

@@ -121,8 +121,8 @@ export async function syncNodesToLocal(spaceId: string) {
     stream.unsubscribeAll()
   })
 
-  const site = await localDB.getSpace(spaceId)
-  return site
+  const space = await localDB.getSpace(spaceId)
+  return space
 }
 
 async function sync(

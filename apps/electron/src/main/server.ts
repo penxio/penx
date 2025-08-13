@@ -1,15 +1,17 @@
 import { existsSync, mkdirSync } from 'fs'
 import { Server } from 'http'
 import { serve } from '@hono/node-server'
+import { createNodeWebSocket, NodeWebSocket } from '@hono/node-ws'
 import { app as electronApp } from 'electron'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
-import { db, pg } from '@penx/db/client'
+import { WSContext } from 'hono/ws'
 import aiRouter from './routers/ai'
 import bookmarkRouter from './routers/bookmark'
+import dbProxyRouter from './routers/db-proxy'
 import nodeRouter from './routers/node'
 import { Windows } from './types'
 
@@ -24,11 +26,19 @@ export class HonoServer {
   private server: Server | null = null
   private app: Hono
 
+  private ws: NodeWebSocket
+  private wsConnections: Set<WSContext<WebSocket>> = new Set()
+
   constructor(
     private config: ServerConfig,
     private windows: Windows,
   ) {
     this.app = new Hono()
+
+    this.ws = createNodeWebSocket({
+      app: this.app,
+    })
+
     this.setupMiddleware()
     this.setupRoutes()
   }
@@ -63,6 +73,25 @@ export class HonoServer {
     })
   }
 
+  private broadcast(message: string) {
+    console.log(`Broadcasting to ${this.wsConnections.size} clients:`, message)
+    this.wsConnections.forEach((ws) => {
+      try {
+        if (ws.readyState === 1) {
+          // WebSocket.OPEN
+          ws.send(message)
+        } else {
+          console.log('delete ws.......')
+
+          this.wsConnections.delete(ws)
+        }
+      } catch (error) {
+        console.error('Error broadcasting message:', error)
+        this.wsConnections.delete(ws)
+      }
+    })
+  }
+
   private setupRoutes() {
     this.app.get('/health', (c) =>
       c.json({
@@ -91,6 +120,50 @@ export class HonoServer {
       })
     })
 
+    this.app.get(
+      '/ws',
+      this.ws.upgradeWebSocket((c) => {
+        const server = this
+        return {
+          // https://hono.dev/helpers/websocket
+          onOpen(evt, ws) {
+            console.log('New WebSocket connection established', ws)
+            server.wsConnections.add(ws)
+          },
+          onMessage: (evt, ws) => {
+            console.log('>>>>>>>>>>>>>Received message from client:', evt.data)
+
+            server.broadcast(`size: ${server.wsConnections.size}`)
+
+            if (typeof evt.data === 'string') {
+              try {
+                const data = JSON.parse(evt.data)
+                if (data.type === 'translate-input') {
+                  console.log('====data:', data.payload)
+                  server.broadcast(evt.data)
+                }
+
+                if (data.type === 'translate-output') {
+                  console.log('====data:', data.payload)
+                  server.broadcast(evt.data)
+                }
+              } catch (error) {
+                //
+              }
+            }
+          },
+          onClose(evt, ws) {
+            console.log('WebSocket connection closed:', evt.code, evt.reason)
+            server.wsConnections.delete(ws)
+          },
+          onError(err, ws) {
+            console.error('WebSocket error:', err)
+            server.wsConnections.delete(ws)
+          },
+        }
+      }),
+    )
+
     const api = this.app.basePath('/api')
 
     api.route('/bookmark', bookmarkRouter)
@@ -98,47 +171,7 @@ export class HonoServer {
     api.route('/ai', aiRouter)
 
     // Drizzle Proxy endpoint
-    api.post('/query', async (c) => {
-      try {
-        const { sql, params, method } = await c.req.json()
-
-        // Prevent multiple queries
-        const sqlBody = sql.replace(/;/g, '')
-
-        // console.log(
-        //   '>>>>>>>>sqlBody:',
-        //   sqlBody,
-        //   'params:',
-        //   params,
-        //   'method:',
-        //   method,
-        // )
-
-        const result = await pg.query(sql, params, {
-          rowMode: method === 'all' ? 'array' : undefined,
-        })
-
-        // console.log('======result:', result)
-
-        // Return raw data from database, let client handle date processing
-        // return c.json({ rows: result.rows })
-        return c.json(result)
-      } catch (error: any) {
-        console.error('Database query error:', error)
-        return c.json({ error: error.message }, 500)
-      }
-    })
-
-    api.get('/files', async (c) => {
-      const { dataDir } = this.config
-      if (!existsSync(dataDir)) {
-        mkdirSync(dataDir, { recursive: true })
-      }
-      return c.json({
-        message: 'Files endpoint',
-        dataDir,
-      })
-    })
+    api.route('/db', dbProxyRouter)
 
     api.get('/system', (c) => {
       return c.json({
@@ -178,6 +211,8 @@ export class HonoServer {
             resolve()
           },
         ) as Server
+
+        this.ws.injectWebSocket(this.server)
 
         this.setupGracefulShutdown()
       } catch (error) {
