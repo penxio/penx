@@ -177,7 +177,7 @@ export function Chat({
     // run()
 
     setTimeout(() => {
-      appEmitter.emit('SUBMIT_AI_CHAT')
+      appEmitter.emit('SUBMIT_AI_CHAT', selection.text!)
     }, 100)
 
     // append({

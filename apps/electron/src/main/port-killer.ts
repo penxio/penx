@@ -59,7 +59,7 @@ async function killPortWindows(port: number): Promise<void> {
 
 async function killPortUnix(port: number): Promise<void> {
   try {
-    // 使用 lsof 查找进程
+    // Use lsof to find processes
     const { stdout } = await execAsync(`lsof -ti:${port}`)
 
     if (!stdout.trim()) {

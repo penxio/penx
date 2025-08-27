@@ -1,12 +1,3 @@
-import { format } from 'date-fns'
-import {
-  ELEMENT_FILE,
-  ELEMENT_FILE_CONTAINER,
-  ELEMENT_IMG,
-  ELEMENT_TODO,
-  FILE_DATABASE_NAME,
-  TODO_DATABASE_NAME,
-} from '@penx/constants'
 import { INode, NodeType } from '@penx/model-type'
 
 export class Node {
@@ -40,6 +31,14 @@ export class Node {
 
   get isArea() {
     return this.type === NodeType.AREA
+  }
+
+  get isStruct() {
+    return this.type === NodeType.STRUCT
+  }
+
+  get isCreation() {
+    return this.type === NodeType.CREATION
   }
 
   get createdAt() {

@@ -19,8 +19,10 @@
   },
   "dependencies": {
     "@penx/constants": "workspace:*",
+    "@penx/db": "workspace:*",
     "@penx/encryption": "workspace:*",
     "@penx/mnemonic": "workspace:*",
+    "@penx/domain": "workspace:*",
     "@penx/store": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/model-type": "workspace:*",

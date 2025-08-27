@@ -51,13 +51,6 @@ export const CommandPaletteFooter = ({}: Props) => {
           Clear DB (dev only)
         </Button>
       )}
-      <Button
-        onClick={() => {
-          //
-        }}
-      >
-        AI test
-      </Button>
       {/* <Box
         className="drag flex-1 h-full"
         onClick={() => {

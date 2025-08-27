@@ -114,6 +114,9 @@ function PureMultimodalInput({
   }, [chatType, isAICommand])
 
   const submit = useCallback(() => {
+    console.log('alert.....xx')
+
+    return
     handleSubmit(undefined, {
       body: {
         text: input,
@@ -153,7 +156,8 @@ function PureMultimodalInput({
         <textarea
           ref={textareaRef}
           data-testid="multimodal-input"
-          placeholder={t`Send a message...`}
+          // placeholder={t`Send a message...`}
+          placeholder={t`Chat with my data...`}
           value={input}
           autoFocus
           onChange={handleInput}
@@ -184,9 +188,9 @@ function PureMultimodalInput({
         />
         <div className="flex w-full items-center justify-between gap-3">
           <div>
-            {!isAICommand && (
+            {/* {!isAICommand && (
               <ChatTypeSelect value={chatType} onSelect={setChatType} />
-            )}
+            )} */}
           </div>
           {status === 'submitted' ? (
             <StopButton stop={stop} setMessages={setMessages} />

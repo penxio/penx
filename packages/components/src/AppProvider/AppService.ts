@@ -71,10 +71,12 @@ export class AppService {
       }
     }
 
+    console.log('======session:', session)
+
     try {
       const space = await this.getInitialSpace(session)
 
-      // console.log('===========getInital=space:', space)
+      console.log('===========getInital=space:', space)
       await this.initStore(space)
     } catch (error) {
       console.log('init error=====>>>:', error)
@@ -118,9 +120,9 @@ export class AppService {
         return space
       }
 
-      const remoteSite = await syncNodesToLocal(session.spaceId)
+      const remoteSpace = await syncNodesToLocal(session.spaceId)
 
-      return remoteSite
+      return remoteSpace
     }
 
     let space = await localDB.getSpaceByUserId(session.userId)
@@ -151,6 +153,8 @@ export class AppService {
   }
 
   private async initStore(space: ISpaceNode) {
+    console.log('=======space:', space)
+
     await store.space.save(space)
 
     const nodes = await localDB.listSpaceNodes(space.id)

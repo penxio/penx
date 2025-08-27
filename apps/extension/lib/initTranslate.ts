@@ -38,7 +38,15 @@ export async function initTranslate() {
 
             const stream = await askQuestion(data.payload)
 
+            wsClient.send(
+              JSON.stringify({
+                type: 'chrome-ai-prompt-output',
+                payload: '{{AI-RESPONSE-STARTED}}',
+              }),
+            )
             for await (const chunk of stream) {
+              console.log('======chunk:', chunk)
+
               wsClient.send(
                 JSON.stringify({
                   type: 'chrome-ai-prompt-output',
@@ -46,6 +54,13 @@ export async function initTranslate() {
                 }),
               )
             }
+
+            wsClient.send(
+              JSON.stringify({
+                type: 'chrome-ai-prompt-output',
+                payload: '{{AI-RESPONSE-ENDED}}',
+              }),
+            )
           }
         } catch (error) {
           //

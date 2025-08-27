@@ -22,9 +22,7 @@ function getOptionName(options: any[], id: string) {
  * @param userId - The user ID to query nodes for
  * @returns Array of CreationNodeStruct
  */
-export async function userCreationConvert(
-  nodes: any[],
-): Promise<CreationNodeStruct[]> {
+export function userCreationConvert(nodes: any[]): CreationNodeStruct[] {
   // Build a map of struct nodes by their type
   const structMap = new Map<string, any>()
   nodes.forEach((node) => {
@@ -129,8 +127,7 @@ export async function buildMDocumentFromCreations(
 ): Promise<MDocument[]> {
   console.log(nodes[0].props.content)
 
-  const creationStructList: CreationNodeStruct[] =
-    await userCreationConvert(nodes)
+  const creationStructList: CreationNodeStruct[] = userCreationConvert(nodes)
 
   const documents: MDocument[] = []
   for (const creation of creationStructList) {

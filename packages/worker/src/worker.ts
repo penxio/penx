@@ -3,6 +3,7 @@ import { WorkerEvents } from '@penx/constants'
 import { pollingBackupToGoogle } from './pollingBackupToGoogle'
 import { pollingCheckTodayJournal } from './pollingCheckTodayJournal'
 import { pollingCloudSync } from './pollingCloudSync'
+import { pollingCreateEmbeddings } from './pollingCreateEmbeddings'
 import { pollingSyncToRemote } from './pollingSyncToRemote'
 
 self.Buffer = Buffer
@@ -12,7 +13,11 @@ self.addEventListener('message', async (event) => {
     console.log('===========start polling......')
     // pollingBackupToGoogle()
     // pollingCloudSync()
+
     pollingSyncToRemote()
+
+    pollingCreateEmbeddings()
+
     setTimeout(() => {
       pollingCheckTodayJournal()
     }, 10 * 1000)

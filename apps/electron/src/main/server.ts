@@ -1,7 +1,9 @@
-import { existsSync, mkdirSync } from 'fs'
 import { Server } from 'http'
 import { serve } from '@hono/node-server'
 import { createNodeWebSocket, NodeWebSocket } from '@hono/node-ws'
+import { zValidator } from '@hono/zod-validator'
+import { FeatureExtractionPipeline } from '@xenova/transformers'
+import { and, eq, inArray } from 'drizzle-orm'
 import { app as electronApp } from 'electron'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
@@ -9,6 +11,14 @@ import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
 import { WSContext } from 'hono/ws'
+import { z } from 'zod'
+import { db } from '@penx/db/client'
+import { embeddings, nodes } from '@penx/db/schema'
+import { ICreationNode, NodeType } from '@penx/model-type'
+import { loadModel } from './lib/loadModel'
+import { searchSimilarContent } from './lib/retrieve'
+import { retrieveCreations } from './lib/retrieveCreations'
+import { userCreationConvert } from './lib/userCreationChunk'
 import aiRouter from './routers/ai'
 import bookmarkRouter from './routers/bookmark'
 import dbProxyRouter from './routers/db-proxy'
@@ -28,6 +38,7 @@ export class HonoServer {
 
   private ws: NodeWebSocket
   private wsConnections: Set<WSContext<WebSocket>> = new Set()
+  extractor: FeatureExtractionPipeline
 
   constructor(
     private config: ServerConfig,
@@ -92,7 +103,7 @@ export class HonoServer {
     })
   }
 
-  private setupRoutes() {
+  private async setupRoutes() {
     this.app.get('/health', (c) =>
       c.json({
         status: 'ok',
@@ -180,6 +191,41 @@ export class HonoServer {
     api.route('/node', nodeRouter)
     api.route('/ai', aiRouter)
 
+    api.post(
+      '/rag/retrieve',
+      zValidator(
+        'json',
+        z.object({
+          text: z.string(),
+        }),
+      ),
+      async (c) => {
+        const input = c.req.valid('json')
+
+        return c.json({
+          success: true,
+          data: await retrieveCreations(this.extractor, input.text),
+        })
+      },
+    )
+
+    api.post(
+      '/rag/embed',
+      zValidator(
+        'json',
+        z.object({
+          node: z.any(),
+        }),
+      ),
+      async (c) => {
+        const input = c.req.valid('json')
+
+        return c.json({
+          success: true,
+        })
+      },
+    )
+
     // Drizzle Proxy endpoint
     api.route('/db', dbProxyRouter)
 
@@ -206,6 +252,7 @@ export class HonoServer {
   }
 
   async start(): Promise<void> {
+    this.extractor = await loadModel()
     return new Promise((resolve, reject) => {
       try {
         this.server = serve(

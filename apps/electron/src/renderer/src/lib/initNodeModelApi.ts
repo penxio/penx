@@ -46,6 +46,7 @@ export const initNodeModelApi = () => {
     },
 
     async insertMany<T = INode>(data: Partial<T>[]) {
+      if (!data.length) return
       await db.insert(nodes).values(data as any[])
     },
 

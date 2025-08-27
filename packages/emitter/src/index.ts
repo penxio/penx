@@ -59,7 +59,7 @@ export type AppEvent = {
   SUBMIT_QUICK_INPUT: undefined
   SUBMIT_CREATE_STRUCT: undefined
 
-  SUBMIT_AI_CHAT: undefined
+  SUBMIT_AI_CHAT: string
 }
 
 export const appEmitter = mitt<AppEvent>()

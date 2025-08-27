@@ -8,6 +8,8 @@ import { checkMnemonic } from '@penx/libs/checkMnemonic'
 import { encryptByPublicKey } from '@penx/mnemonic'
 import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
+import { getChanges } from './getChanges'
+import { mergeChanges } from './mergeChanges'
 
 export async function syncNodesToServer() {
   const session = (await get('SESSION')) as SessionData
@@ -20,24 +22,7 @@ export async function syncNodesToServer() {
 
   await checkMnemonic(session)
 
-  const getChanges = async () => {
-    const changes = await idb.change
-      .where({ spaceId: session.spaceId, synced: 0 })
-      .sortBy('id')
-
-    return changes.filter((change) => {
-      if (
-        Reflect.has(change.data, 'userId') &&
-        change.data.userId !== session.userId
-      ) {
-        return false
-      }
-      if (change.synced) return false
-      return true
-    })
-  }
-
-  const changes = await getChanges()
+  const changes = await getChanges(session)
 
   const grouped = changes.reduce(
     (acc, cur) => {
@@ -48,51 +33,7 @@ export async function syncNodesToServer() {
     {} as Record<string, IChange[]>,
   )
 
-  const mergedChanges = Object.values(grouped)
-    .map((list) => {
-      const first = _.first(list) as IChange
-      const last = _.last(list) as IChange
-      const isAllUpdate = list.every(
-        (change) => change.operation === OperationType.UPDATE,
-      )
-      if (isAllUpdate) {
-        const data = list.reduce(
-          (acc, cur) => ({ ...acc, ...cur.data }),
-          {} as Record<string, any>,
-        )
-        return { ...last, data }
-      }
-
-      if (
-        first?.operation === OperationType.CREATE &&
-        last?.operation === OperationType.DELETE
-      ) {
-        return null
-      }
-
-      if (last?.operation === OperationType.DELETE) {
-        return last as IChange
-      }
-
-      if (list[0].operation === OperationType.CREATE) {
-        if (list.length === 1) return first
-        const [_, ...updateList] = list
-
-        const props = updateList.reduce(
-          (acc, cur) => ({ ...acc, ...cur.data }),
-          first.data.props,
-        )
-
-        return produce(first, (draft) => {
-          draft.createdAt = first.data.createdAt
-          draft.data.props = props
-          draft.data.createdAt = first.data.createdAt
-          draft.data.updatedAt = last.data.updatedAt
-        })
-      }
-      return null
-    })
-    .filter((change) => !!change)
+  const mergedChanges = mergeChanges(changes)
 
   const mergedChangeIds = mergedChanges.map((change) => change.id)
 
@@ -106,7 +47,7 @@ export async function syncNodesToServer() {
     await idb.change.update(id, rest)
   }
 
-  const newChanges = await getChanges()
+  const newChanges = await getChanges(session)
 
   const errors: any = []
 

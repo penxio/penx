@@ -71,6 +71,8 @@ export async function syncNodesToLocal(spaceId: string) {
     ...metadata,
   })
 
+  console.log('=========metadata:', metadata)
+
   /** init data (first time) */
   {
     const nodes = await localDB.listSpaceNodes(spaceId)
@@ -157,8 +159,13 @@ async function sync(
       ...nodes.map((n) => new Date(n.updatedAt).getTime()),
     )
 
+    console.log('=======changes:', changes)
+
     const changesLatestUpdated = Math.max(
-      ...changes.map((c: any) => Number(c.value.updatedAt.toString())),
+      ...changes.map((c: any) => {
+        const updatedAt = c.value?.updatedAt || c.value?.props?.updatedAt
+        return Number(updatedAt.toString())
+      }),
     )
 
     console.log(
