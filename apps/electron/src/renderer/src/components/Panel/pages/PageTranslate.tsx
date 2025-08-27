@@ -51,16 +51,32 @@ export function PageTranslate() {
       console.log('====lastJsonMessage:', lastJsonMessage)
       setResult(msg.payload)
     }
+
+    if (msg?.type === 'chrome-ai-prompt-output') {
+      console.log('====lastJsonMessage:', lastJsonMessage)
+      setResult(result + msg.payload)
+    }
   }, [lastJsonMessage])
 
   const debouncedTranslate = useDebouncedCallback(async (text: string) => {
     // window.electron.ipcRenderer.send('translate-text', text)
+    // sendMessage(
+    //   JSON.stringify({
+    //     type: 'translate-input',
+    //     payload: text,
+    //   }),
+    // )
+
+    console.log('sender......')
+
+    setResult('')
     sendMessage(
       JSON.stringify({
-        type: 'translate-input',
+        type: 'chrome-ai-prompt-input',
         payload: text,
       }),
     )
+
     return
 
     const session = await getSession()
@@ -117,7 +133,7 @@ export function PageTranslate() {
     console.log('=====nav.data:', current.data)
     if (current.data?.text) {
       setInput(current.data?.text)
-      debouncedTranslate(current.data?.text)
+      // debouncedTranslate(current.data?.text)
     }
   }, [current])
 
@@ -159,7 +175,7 @@ export function PageTranslate() {
             onChange={async (e) => {
               const newInput = e.target.value
               setInput(newInput)
-              debouncedTranslate(newInput)
+              // debouncedTranslate(newInput)
             }}
           />
         </div>

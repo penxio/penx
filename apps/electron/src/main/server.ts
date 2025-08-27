@@ -147,6 +147,16 @@ export class HonoServer {
                   console.log('====data:', data.payload)
                   server.broadcast(evt.data)
                 }
+
+                if (data.type === 'chrome-ai-prompt-input') {
+                  console.log('====data:', data.payload)
+                  server.broadcast(evt.data)
+                }
+
+                if (data.type === 'chrome-ai-prompt-output') {
+                  console.log('====data:', data.payload)
+                  server.broadcast(evt.data)
+                }
               } catch (error) {
                 //
               }

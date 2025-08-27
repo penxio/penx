@@ -1,5 +1,5 @@
+import { askQuestion } from './askQuestion'
 import { translateText } from './translateText'
-import type { Translator } from './translator.types'
 import { WebSocketClient } from './WebSocketClient'
 
 export async function initTranslate() {
@@ -31,6 +31,21 @@ export async function initTranslate() {
                 payload: result,
               }),
             )
+          }
+
+          if (data.type === 'chrome-ai-prompt-input') {
+            console.log('====data:', data.payload)
+
+            const stream = await askQuestion(data.payload)
+
+            for await (const chunk of stream) {
+              wsClient.send(
+                JSON.stringify({
+                  type: 'chrome-ai-prompt-output',
+                  payload: chunk,
+                }),
+              )
+            }
           }
         } catch (error) {
           //

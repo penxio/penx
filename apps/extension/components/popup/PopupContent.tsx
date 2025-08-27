@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSession } from '@/hooks/useSession'
 import { ACTIONS, AppType, BACKGROUND_EVENTS, BASE_URL } from '@/lib/constants'
+import { sendMessage } from '@/lib/message'
 import { getUrl } from '@/lib/utils'
 import {
   ArrowLeft,
@@ -14,6 +15,7 @@ import {
 import { toast } from 'sonner'
 import { useAreas } from '@penx/hooks/useAreas'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
+import { Button } from '@penx/uikit/ui/button'
 import { AddBookmark } from '../content/AddBookmark/AddBookmark'
 import { useAppType } from '../content/hooks/useAppType'
 import { FeatureEntry } from './FeatureEntry'
@@ -52,6 +54,16 @@ export function PopupContent() {
           )}
         </div>
       </div>
+      <Button
+        onClick={async () => {
+          const result = await sendMessage('prompt', {
+            messages: [],
+          })
+          console.log('=======result:', result)
+        }}
+      >
+        Hello world
+      </Button>
 
       <div className="grid grid-cols-2 gap-2">
         <FeatureEntry
