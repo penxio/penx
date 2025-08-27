@@ -17,7 +17,10 @@ import { checkAccessibilityPermissions, getSelection } from 'node-selection'
 import { windowManager } from 'node-window-manager'
 import { uIOhook, UiohookKey } from 'uiohook-napi'
 import { SHORTCUT_LIST } from '@penx/constants'
+import { db } from '@penx/db/client'
+import { embeddings } from '@penx/db/schema'
 import { Shortcut, ShortcutType } from '@penx/model-type'
+import { uniqueId } from '@penx/unique-id'
 import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
 import trayIcon from '../../resources/tray-16.png?asset'
@@ -26,6 +29,10 @@ import { createAICommandWindow } from './createAICommandWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
 import { initPGLite } from './initPGLite'
+import { createEmbeddings } from './lib/createEmbeddings'
+import { loadModel } from './lib/loadModel'
+import { retrieve } from './lib/retrieve'
+import { buildMDocument } from './lib/userCreationChunk'
 import {
   activateVisualFocus,
   FrontAppMeta,
@@ -35,6 +42,7 @@ import {
 import { isPortInUse, killPort } from './port-killer'
 import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
+import { initEmbeddings } from './lib/initEmbeddings'
 
 const port = 14158
 
@@ -139,6 +147,9 @@ export class ElectronApp {
       this.initSelection()
 
       this.runIOHook()
+
+      initEmbeddings()
+
 
       const schemeName = 'penx'
       if (is.dev) {

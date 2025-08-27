@@ -127,7 +127,7 @@ export class HonoServer {
         return {
           // https://hono.dev/helpers/websocket
           onOpen(evt, ws) {
-            console.log('New WebSocket connection established', ws)
+            console.log('New WebSocket connection established!')
             server.wsConnections.add(ws)
           },
           onMessage: (evt, ws) => {

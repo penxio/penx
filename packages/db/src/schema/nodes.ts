@@ -5,6 +5,7 @@ import {
   text,
   timestamp,
   uuid,
+  vector,
 } from 'drizzle-orm/pg-core'
 
 export const nodes = pgTable(
@@ -27,3 +28,4 @@ export const nodes = pgTable(
     index('idx_node_space_type').on(table.spaceId, table.type),
   ],
 )
+
