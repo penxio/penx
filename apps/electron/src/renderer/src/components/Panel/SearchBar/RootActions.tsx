@@ -4,6 +4,7 @@ import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import {
   BracesIcon,
+  CopyIcon,
   DoorOpenIcon,
   EditIcon,
   EyeOffIcon,
@@ -20,6 +21,7 @@ import {
 import { toast } from 'sonner'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
+import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { useStructs } from '@penx/hooks/useStructs'
 import { isBuiltinStruct } from '@penx/libs/isBuiltinStruct'
 import { store } from '@penx/store'
@@ -42,6 +44,8 @@ export function RootActions({ command, close }: RootActionsProps) {
   const { structs } = useStructs()
   const { items } = useItems()
   const struct = structs.find((s) => s.id === value)
+
+  const { copy } = useCopyToClipboard()
 
   const handleSelect = useHandleSelect()
   const selectStruct = useSelectStruct()
@@ -246,35 +250,56 @@ export function RootActions({ command, close }: RootActionsProps) {
       )}
 
       {isStruct && !isBuiltinStruct(struct.type) && (
-        <ActionCommandItem
-          shortcut=""
-          onSelect={async () => {
-            if (!struct) return
+        <>
+          <ActionCommandItem
+            shortcut=""
+            onSelect={async () => {
+              if (!struct) return
+              copy(struct.id)
+              toast.info(t`Copy ID to clipboard`)
+              close()
+            }}
+          >
+            <Box toCenterY gap2 inlineFlex>
+              <div>
+                <CopyIcon />
+              </div>
+              <div>
+                <Trans>Copy Struct ID</Trans>
+              </div>
+            </Box>
+          </ActionCommandItem>
 
-            try {
-              await store.structs.deleteStruct(struct.id)
-              toast.success(t`Struct deleted successfully`)
-              setTimeout(() => {
-                appEmitter.emit('REFRESH_COMMANDS', struct.id)
-                reset()
-              }, 10)
-            } catch (error) {
-              console.log('========error:', error)
+          <ActionCommandItem
+            shortcut=""
+            onSelect={async () => {
+              if (!struct) return
 
-              toast.error(t`Failed to delete`)
-            }
-            close()
-          }}
-        >
-          <Box toCenterY gap2 inlineFlex className="text-red-500">
-            <div>
-              <Trash2Icon />
-            </div>
-            <div>
-              <Trans>Delete Struct</Trans>
-            </div>
-          </Box>
-        </ActionCommandItem>
+              try {
+                await store.structs.deleteStruct(struct.id)
+                toast.success(t`Struct deleted successfully`)
+                setTimeout(() => {
+                  appEmitter.emit('REFRESH_COMMANDS', struct.id)
+                  reset()
+                }, 10)
+              } catch (error) {
+                console.log('========error:', error)
+
+                toast.error(t`Failed to delete`)
+              }
+              close()
+            }}
+          >
+            <Box toCenterY gap2 inlineFlex className="text-red-500">
+              <div>
+                <Trash2Icon />
+              </div>
+              <div>
+                <Trans>Delete Struct</Trans>
+              </div>
+            </Box>
+          </ActionCommandItem>
+        </>
       )}
     </>
   )

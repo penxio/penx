@@ -7,13 +7,19 @@ import {
   uuid,
   vector,
 } from 'drizzle-orm/pg-core'
+import { sql } from 'drizzle-orm'
+
+type Props = {
+  title: string
+  structId: string
+}
 
 export const nodes = pgTable(
   'node',
   {
     id: uuid('id').notNull().defaultRandom().primaryKey(),
     type: text('type').notNull(),
-    props: jsonb('props').notNull(),
+    props: jsonb('props').notNull(), // Props
     createdAt: timestamp('created_at', { mode: 'date' }).notNull(),
     updatedAt: timestamp('updated_at', { mode: 'date' }).notNull(),
 
@@ -26,6 +32,9 @@ export const nodes = pgTable(
     index('idx_node_area').on(table.areaId),
     index('idx_node_space_area').on(table.spaceId, table.areaId),
     index('idx_node_space_type').on(table.spaceId, table.type),
+    index('idx_node_props_struct_id')
+      .using('gin', sql`(${table.props}->>'structId')`),
   ],
 )
 
+// CREATE INDEX idx_node_props_struct_id ON node USING gin ((props->>'structId'));

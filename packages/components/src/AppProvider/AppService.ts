@@ -225,7 +225,7 @@ export class AppService {
       const aiCommandStruct = structs.find(
         (s) => s.props.type === StructType.AI_COMMAND,
       )
-      console.log('========aiCommandStruct:', aiCommandStruct)
+      // console.log('========aiCommandStruct:', aiCommandStruct)
 
       if (!aiCommandStruct) {
         const newStruct = generateStructNode({

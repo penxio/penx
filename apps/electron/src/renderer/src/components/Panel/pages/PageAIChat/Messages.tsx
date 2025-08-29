@@ -1,6 +1,4 @@
-import { memo } from 'react'
-import type { UseChatHelpers } from '@ai-sdk/react'
-import type { UIMessage } from 'ai'
+import { memo, useMemo } from 'react'
 import equal from 'fast-deep-equal'
 import { Greeting } from './Greeting'
 import { ChatMessage } from './hooks/useMessages'
@@ -9,12 +7,17 @@ import { PreviewMessage, ThinkingMessage } from './Message'
 
 interface MessagesProps {
   chatId: string
-  status: UseChatHelpers['status']
   messages: ChatMessage[]
   isReadonly: boolean
+  loading: boolean
 }
 
-function PureMessages({ chatId, status, messages, isReadonly }: MessagesProps) {
+function PureMessages({
+  chatId,
+  messages,
+  loading,
+  isReadonly,
+}: MessagesProps) {
   const [messagesContainerRef, messagesEndRef] =
     useScrollToBottom<HTMLDivElement>()
 
@@ -25,19 +28,17 @@ function PureMessages({ chatId, status, messages, isReadonly }: MessagesProps) {
     >
       {messages.length === 0 && <Greeting />}
 
-      {messages.map((message, index) => (
-        <PreviewMessage
-          key={message.id}
-          chatId={chatId}
-          message={message}
-          isLoading={status === 'streaming' && messages.length - 1 === index}
-          isReadonly={isReadonly}
-        />
-      ))}
-
-      {status === 'submitted' &&
-        messages.length > 0 &&
-        messages[messages.length - 1].role === 'user' && <ThinkingMessage />}
+      {messages.map((message, index) => {
+        return (
+          <PreviewMessage
+            key={message.id}
+            chatId={chatId}
+            message={message}
+            loading={loading && messages.length - 1 === index}
+            isReadonly={isReadonly}
+          />
+        )
+      })}
 
       <div
         ref={messagesEndRef}
@@ -48,8 +49,6 @@ function PureMessages({ chatId, status, messages, isReadonly }: MessagesProps) {
 }
 
 export const Messages = memo(PureMessages, (prevProps, nextProps) => {
-  if (prevProps.status !== nextProps.status) return false
-  if (prevProps.status && nextProps.status) return false
   if (prevProps.messages.length !== nextProps.messages.length) return false
   if (!equal(prevProps.messages, nextProps.messages)) return false
 

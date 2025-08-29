@@ -21,6 +21,10 @@ export class Node {
     return this.raw.userId
   }
 
+  get structId(): string {
+    return this.raw.props.structId
+  }
+
   get type(): string {
     return this.raw?.type || ''
   }

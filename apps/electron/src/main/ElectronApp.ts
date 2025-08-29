@@ -28,8 +28,10 @@ import { AppUpdater } from './AppUpdater'
 import { createAICommandWindow } from './createAICommandWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
-import { initPGLite } from './initPGLite'
 import { createEmbeddings } from './lib/createEmbeddings'
+import { deleteEmbeddingTable } from './lib/deleteEmbeddingTable'
+import { initEmbeddings } from './lib/initEmbeddings'
+import { initPGLite } from './lib/initPGLite'
 import { loadModel } from './lib/loadModel'
 import { retrieve } from './lib/retrieve'
 import { buildMDocument } from './lib/userCreationChunk'
@@ -42,7 +44,6 @@ import {
 import { isPortInUse, killPort } from './port-killer'
 import { HonoServer, ServerConfig } from './server'
 import { Windows } from './types'
-import { initEmbeddings } from './lib/initEmbeddings'
 
 const port = 14158
 
@@ -150,7 +151,6 @@ export class ElectronApp {
 
       initEmbeddings()
 
-
       const schemeName = 'penx'
       if (is.dev) {
         app.setAsDefaultProtocolClient(schemeName, process.execPath, [
@@ -235,6 +235,7 @@ export class ElectronApp {
   }
 
   private async initPGLite() {
+    // await deleteEmbeddingTable()
     await initPGLite()
   }
 

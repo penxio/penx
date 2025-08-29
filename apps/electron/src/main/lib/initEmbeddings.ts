@@ -25,7 +25,9 @@ export async function initEmbeddings() {
       const testQuery = 'What is the bank card number?'
 
       // Test the new recommended method
-      console.log('\n=== Using searchSimilarContent (AI SDK recommended method) ===')
+      console.log(
+        '\n=== Using searchSimilarContent (AI SDK recommended method) ===',
+      )
       const results1 = await searchSimilarContent(extractor, testQuery, 3, 0.3)
       console.log(`Found ${results1.length} similar records:`)
 
@@ -73,9 +75,9 @@ export async function initEmbeddings() {
   for (const document of documents) {
     const chunks = await document.chunk({
       strategy: 'recursive',
-      size: 256,
+      maxSize: 256,
       overlap: 32,
-      separator: '\n',
+      keepSeparator: 'end',
     })
 
     //

@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useState } from 'react'
+import { memo, useMemo, useState } from 'react'
 import { UseChatHelpers } from '@ai-sdk/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
@@ -8,6 +8,7 @@ import type { UIMessage } from 'ai'
 import cx from 'classnames'
 import equal from 'fast-deep-equal'
 import { AnimatePresence, motion } from 'motion/react'
+import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { cn } from '@penx/utils'
 import { ChatMessage } from './hooks/useMessages'
 import { SparklesIcon } from './icons'
@@ -16,12 +17,12 @@ import { Markdown } from './Markdown'
 const PurePreviewMessage = ({
   chatId,
   message,
-  isLoading,
+  loading,
   isReadonly,
 }: {
   chatId: string
   message: ChatMessage
-  isLoading: boolean
+  loading: boolean
   isReadonly: boolean
 }) => {
   const [mode, setMode] = useState<'view' | 'edit'>('view')
@@ -61,7 +62,12 @@ const PurePreviewMessage = ({
                     message.role === 'user',
                 })}
               >
-                <Markdown>{message.content}</Markdown>
+                {!loading && <Markdown>{message.content}</Markdown>}
+                {loading && (
+                  <div>
+                    <LoadingDots className="bg-foreground" />
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -74,7 +80,7 @@ const PurePreviewMessage = ({
 export const PreviewMessage = memo(
   PurePreviewMessage,
   (prevProps, nextProps) => {
-    if (prevProps.isLoading !== nextProps.isLoading) return false
+    if (prevProps.loading !== nextProps.loading) return false
     if (prevProps.message.id !== nextProps.message.id) return false
     if (!equal(prevProps.message.content, nextProps.message.content))
       return false
@@ -82,36 +88,3 @@ export const PreviewMessage = memo(
     return true
   },
 )
-
-export const ThinkingMessage = () => {
-  const role = 'assistant'
-
-  return (
-    <motion.div
-      data-testid="message-assistant-loading"
-      className="group/message mx-auto w-full max-w-3xl px-4 "
-      initial={{ y: 5, opacity: 0 }}
-      animate={{ y: 0, opacity: 1, transition: { delay: 1 } }}
-      data-role={role}
-    >
-      <div
-        className={cx(
-          'flex w-full gap-4 rounded-xl group-data-[role=user]/message:ml-auto group-data-[role=user]/message:w-fit group-data-[role=user]/message:max-w-2xl group-data-[role=user]/message:px-3 group-data-[role=user]/message:py-2',
-          {
-            'group-data-[role=user]/message:bg-muted': true,
-          },
-        )}
-      >
-        <div className="ring-border flex size-8 shrink-0 items-center justify-center rounded-full ring-1">
-          <SparklesIcon size={14} />
-        </div>
-
-        <div className="flex w-full flex-col gap-2">
-          <div className="text-muted-foreground flex flex-col gap-4">
-            <Trans>Hmm...</Trans>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}

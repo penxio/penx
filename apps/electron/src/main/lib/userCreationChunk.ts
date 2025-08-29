@@ -112,7 +112,7 @@ export async function buildMDocument(userId = ''): Promise<MDocument[]> {
   // Query all nodes for the user
   const nodes = await db.query.nodes.findMany()
 
-  return buildMDocumentFromCreations(userId, nodes)
+  return buildMDocumentFromCreations(nodes)
 }
 
 /**
@@ -121,12 +121,7 @@ export async function buildMDocument(userId = ''): Promise<MDocument[]> {
  * @param userId - The user ID for the documents
  * @returns Array of MDocument
  */
-export async function buildMDocumentFromCreations(
-  userId: string,
-  nodes: any[],
-): Promise<MDocument[]> {
-  console.log(nodes[0].props.content)
-
+export function buildMDocumentFromCreations(nodes: any[]): MDocument[] {
   const creationStructList: CreationNodeStruct[] = userCreationConvert(nodes)
 
   const documents: MDocument[] = []

@@ -32,7 +32,14 @@ export function useItems() {
 
   const filterCommandBySearch = (item: ICommandItem) => {
     if (!search) return true
-    const s = search.toLowerCase()
+
+    let s = search.toLowerCase()
+    if (s.startsWith('{')) {
+      if (item.data.type !== 'Struct') return false
+      // console.log('======search:', search, 'item:', item)
+      s = s.replace(/^{\s?/, '')
+    }
+
     if (item.data?.alias) {
       if (item.data?.alias.toLowerCase().includes(s)) {
         return true
@@ -47,11 +54,16 @@ export function useItems() {
 
   const filterCreationBySearch = (item: Creation) => {
     if (!search) return true
-    const t = search.toLowerCase()
+    let s = search.toLowerCase()
 
-    if (item.title.toLowerCase().includes(t)) return true
+    if (s.startsWith('{')) {
+      if (item.data.type !== 'Struct') return false
+      s = s.replace(/^{\s?/, '')
+    }
+
+    if (item.title.toLowerCase().includes(s)) return true
     const contentStr = docToString(item.content)
-    if (contentStr.toLowerCase().includes(t)) return true
+    if (contentStr.toLowerCase().includes(s)) return true
 
     if (!item.cells) {
       return false
@@ -63,9 +75,9 @@ export function useItems() {
       if (!v) return false
 
       if (typeof v === 'string') {
-        return v.toLowerCase().includes(t)
+        return v.toLowerCase().includes(s)
       }
-      return JSON.stringify(v).toLowerCase().includes(t)
+      return JSON.stringify(v).toLowerCase().includes(s)
     })
   }
 

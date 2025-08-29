@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import useWebSocket from 'react-use-websocket'
 import { produce } from 'immer'
 import ky from 'ky'
@@ -6,7 +6,7 @@ import { ApiRes } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { uniqueId } from '@penx/unique-id'
 import { useInput } from './hooks/useInput'
-import { useMessages } from './hooks/useMessages'
+import { getMessages, useMessages } from './hooks/useMessages'
 import { Messages } from './Messages'
 import { SendBox } from './SendBox'
 
@@ -46,7 +46,11 @@ Begin your answer below:
 
 export function Chat() {
   const { messages, setMessages } = useMessages()
+
+  console.log('=====messages:', messages)
+
   const { setInput } = useInput()
+  const [loading, setLoading] = useState(false)
   const {
     sendMessage,
     sendJsonMessage,
@@ -68,6 +72,7 @@ export function Chat() {
     if (msg?.type === 'chrome-ai-prompt-output') {
       console.log('====lastJsonMessage:', lastJsonMessage)
       if (msg.payload === '{{AI-RESPONSE-STARTED}}') {
+        setLoading(false)
         const newMessages = produce(messages, (draft) => {
           draft.push({ id: uniqueId(), content: '', role: 'assistant' })
         })
@@ -85,6 +90,8 @@ export function Chat() {
 
   useEffect(() => {
     async function handleSubmit(text: string) {
+      setLoading(true)
+      const messages = getMessages()
       const newMessages = produce(messages, (draft) => {
         draft.push({ id: uniqueId(), content: text, role: 'user' })
       })
@@ -117,7 +124,7 @@ export function Chat() {
       <div className="min-h-0 w-full flex-1">
         <Messages
           chatId={''}
-          status={'ready'}
+          loading={loading}
           messages={messages}
           isReadonly={true}
         />

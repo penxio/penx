@@ -1,5 +1,6 @@
 import { produce } from 'immer'
 import { atom } from 'jotai'
+import ky from 'ky'
 import { localDB } from '@penx/local-db'
 import { ICreationNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
@@ -81,11 +82,24 @@ export class CreationsStore {
   async deleteCreation(creation: ICreationNode) {
     await localDB.deleteCreation(creation.id)
     await this.refetchCreations()
+    this.deleteNodeEmbedding(creation)
   }
 
   async refetchCreations(areaId?: string) {
     const area = this.store.area.get()
     const newCreations = await localDB.listCreationsByArea(areaId || area.id)
     this.set(newCreations)
+  }
+
+  private async deleteNodeEmbedding(creation: ICreationNode) {
+    try {
+      await ky
+        .post('http://localhost:14158/api/rag/deleteEmbedding', {
+          json: { nodeId: creation.id, isStruct: false },
+        })
+        .json()
+    } catch (error) {
+      console.log('delete node embedding error:', error)
+    }
   }
 }

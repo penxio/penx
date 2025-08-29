@@ -20,9 +20,9 @@ export function generateStructNode({
 }: Partial<IStructNode['props']> & MetaInfo) {
   const { type, name } = props
 
-  let columns: IColumn[] = []
+  let columns = props?.columns as IColumn[]
 
-  if (!props.columns) {
+  if (!columns?.length) {
     columns = [
       {
         id: uniqueId(),

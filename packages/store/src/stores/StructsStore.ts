@@ -1,10 +1,11 @@
 import { produce } from 'immer'
 import { atom } from 'jotai'
+import ky from 'ky'
 import { Struct } from '@penx/domain'
 import { getRandomColorName } from '@penx/libs/color-helper'
 import { generateStructNode } from '@penx/libs/getDefaultStructs'
 import { localDB } from '@penx/local-db'
-import { IColumn, IStructNode } from '@penx/model-type'
+import { IColumn, INode, IStructNode } from '@penx/model-type'
 import { ColumnType, Option } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { StoreType } from '../store-types'
@@ -85,6 +86,7 @@ export class StructsStore {
     const panel = panels.find((p) => p.widget?.structId === id)
     if (panel) this.store.panels.closePanel(panel.id)
     await this.refetchStructs()
+    this.deleteNodeEmbedding(id)
   }
 
   updateStruct(id: string, newStruct: IStructNode) {
@@ -330,5 +332,17 @@ export class StructsStore {
       columns: newColumns,
     })
     return newColumns
+  }
+
+  private async deleteNodeEmbedding(nodeId: string) {
+    try {
+      await ky
+        .post('http://localhost:14158/api/rag/deleteEmbedding', {
+          json: { nodeId, isStruct: true },
+        })
+        .json()
+    } catch (error) {
+      console.log('delete node embedding error:', error)
+    }
   }
 }

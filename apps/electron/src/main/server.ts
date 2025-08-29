@@ -13,8 +13,10 @@ import { timeout } from 'hono/timeout'
 import { WSContext } from 'hono/ws'
 import { z } from 'zod'
 import { db } from '@penx/db/client'
-import { embeddings, nodes } from '@penx/db/schema'
 import { ICreationNode, NodeType } from '@penx/model-type'
+import { createNodeEmbedding } from './lib/createNodeEmbedding'
+import { deleteNodeEmbedding } from './lib/deleteNodeEmbedding'
+import { getNodeEmbedding } from './lib/getNodeEmbedding'
 import { loadModel } from './lib/loadModel'
 import { searchSimilarContent } from './lib/retrieve'
 import { retrieveCreations } from './lib/retrieveCreations'
@@ -210,7 +212,26 @@ export class HonoServer {
     )
 
     api.post(
-      '/rag/embed',
+      '/rag/getEmbedding',
+      zValidator(
+        'json',
+        z.object({
+          nodeId: z.string(),
+        }),
+      ),
+      async (c) => {
+        const input = c.req.valid('json')
+        const data = await getNodeEmbedding(input.nodeId)
+
+        return c.json({
+          success: true,
+          data,
+        })
+      },
+    )
+
+    api.post(
+      '/rag/createEmbedding',
       zValidator(
         'json',
         z.object({
@@ -219,6 +240,27 @@ export class HonoServer {
       ),
       async (c) => {
         const input = c.req.valid('json')
+        const data = await createNodeEmbedding(this.extractor, input.node)
+
+        return c.json({
+          success: true,
+          data,
+        })
+      },
+    )
+
+    api.post(
+      '/rag/deleteEmbedding',
+      zValidator(
+        'json',
+        z.object({
+          nodeId: z.string(),
+          isStruct: z.boolean(),
+        }),
+      ),
+      async (c) => {
+        const input = c.req.valid('json')
+        await deleteNodeEmbedding(input.nodeId, input.isStruct)
 
         return c.json({
           success: true,

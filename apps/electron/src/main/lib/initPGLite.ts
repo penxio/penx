@@ -1,19 +1,19 @@
 import { sql } from 'drizzle-orm'
 import { db } from '@penx/db/client'
-import { nodes } from '@penx/db/schema/nodes'
 import { embeddings } from '@penx/db/schema/embeddings'
+import { nodes } from '@penx/db/schema/nodes'
 
 export async function initPGLite() {
   try {
     // Check if tables exist
     const tableStatus = await checkTablesExist()
-    
+
     // Create tables that don't exist
     if (!tableStatus.nodeExists) {
       await createNodeTable()
     }
-    
-    if (!tableStatus.embeddingsExists) {
+
+    if (!tableStatus.embeddingExists) {
       await createEmbeddingsTable()
     }
 
@@ -26,7 +26,7 @@ export async function initPGLite() {
 
 async function checkTablesExist() {
   let nodeExists = false
-  let embeddingsExists = false
+  let embeddingExists = false
 
   try {
     await db.select().from(nodes).limit(1)
@@ -38,13 +38,13 @@ async function checkTablesExist() {
 
   try {
     await db.select().from(embeddings).limit(1)
-    embeddingsExists = true
+    embeddingExists = true
     console.log('Embeddings table exists')
   } catch (error: any) {
     console.log('Embeddings table does not exist, will create it')
   }
 
-  return { nodeExists, embeddingsExists }
+  return { nodeExists, embeddingExists }
 }
 
 async function createNodeTable() {
@@ -77,6 +77,11 @@ async function createNodeTable() {
     await db.execute(
       sql`CREATE INDEX "idx_node_space_type" ON "node" USING btree ("space_id","type")`,
     )
+
+    await db.execute(
+      sql`CREATE INDEX "idx_node_props_struct_id" ON "node" USING gin (("props"->>'structId'))`,
+    )
+
     console.log('Created node table indexes')
   } catch (error: any) {
     // If table already exists, that's fine
@@ -100,20 +105,29 @@ async function createEmbeddingsTable() {
 
     // Create embeddings table
     await db.execute(sql`
-      CREATE TABLE "embeddings" (
+      CREATE TABLE "embedding" (
         "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
         "node_id" uuid,
         "metadata" jsonb NOT NULL,
         "embedding" vector(384) NOT NULL
       )
     `)
-    console.log('Created embeddings table')
+    console.log('Created embedding table')
 
     // Create HNSW index for vector similarity search
     await db.execute(
-      sql`CREATE INDEX "embedding_index" ON "embeddings" USING hnsw ("embedding" vector_cosine_ops)`
+      sql`CREATE INDEX "embedding_index" ON "embedding" USING hnsw ("embedding" vector_cosine_ops)`,
     )
-    console.log('Created embeddings table index')
+
+    await db.execute(
+      sql`CREATE INDEX "idx_embedding_props_struct_id" ON "embedding" USING gin (("metadata"->>'structId'))`,
+    )
+
+    await db.execute(
+      sql`CREATE INDEX "idx_embedding_props_node_id" ON "embedding" USING gin (("metadata"->>'nodeId'))`,
+    )
+
+    console.log('Created embedding table index')
   } catch (error: any) {
     // If table already exists, that's fine
     if (

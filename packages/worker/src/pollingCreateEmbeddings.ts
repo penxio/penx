@@ -6,8 +6,10 @@ import { isDesktop } from '@penx/constants'
 import { nodes } from '@penx/db'
 import { createProxyClient } from '@penx/db/proxy-client'
 import { Node } from '@penx/domain'
+import { calculateSHA256FromString } from '@penx/encryption'
 import { INode } from '@penx/model-type'
 import { sleep } from '@penx/utils'
+import { embeddedCache } from './lib/EmbeddedCache'
 
 export async function pollingCreateEmbeddings() {
   let pollingInterval = 10 * 1000
@@ -49,13 +51,17 @@ async function createEmbeddings() {
 
   // TODO: Process these nodes for embedding creation
   for (const node of recentlyModifiedNodes) {
-    ky.post('http://localhost:14158/api/rag/retrieve', {
-      json: { node },
-    }).json()
-    // console.log(
-    //   `Processing node: ${node.id}, type: ${node.type}, updated: ${node.updatedAt}`,
-    // )
-    // Add embedding logic here
-    console.log('=======>>>>>>>>node', node)
+    const hash = calculateSHA256FromString(JSON.stringify(node))
+    if (await embeddedCache.has(hash)) continue
+
+    console.log('=======>>>>>>>>node', node, 'hash:', hash)
+
+    await ky
+      .post('http://localhost:14158/api/rag/createEmbedding', {
+        json: { node },
+      })
+      .json()
+
+    await embeddedCache.push(hash)
   }
 }
