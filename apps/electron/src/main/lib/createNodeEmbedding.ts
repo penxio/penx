@@ -6,6 +6,7 @@ import { Node } from '@penx/domain'
 import { INode } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
 import { createEmbeddings } from './createEmbeddings'
+import { initEmbeddings } from './initEmbeddings'
 import { buildMDocumentFromCreations } from './userCreationChunk'
 
 export async function createNodeEmbedding(
@@ -14,6 +15,14 @@ export async function createNodeEmbedding(
 ) {
   const node = new Node(nodeRaw)
   if (!node.isCreation) return
+
+  const embedding = await db.query.embeddings.findFirst({
+    where: eq(embeddings.userId, node.userId),
+  })
+
+  if (!embedding) {
+    await initEmbeddings()
+  }
 
   try {
     return await db.transaction(async (tx) => {
@@ -31,6 +40,7 @@ export async function createNodeEmbedding(
       const embeddingValues: Array<{
         id: string
         nodeId: string
+        userId: string
         embedding: number[]
         metadata: any
       }> = []
@@ -54,6 +64,7 @@ export async function createNodeEmbedding(
           embeddingValues.push({
             id: uniqueId(),
             nodeId: chunk.metadata.nodeId,
+            userId: chunk.metadata.userId,
             embedding: embeddingList[0],
             metadata: chunk.metadata,
           })

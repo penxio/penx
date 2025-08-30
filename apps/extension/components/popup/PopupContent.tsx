@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { useSession } from '@/hooks/useSession'
 import { ACTIONS, AppType, BACKGROUND_EVENTS, BASE_URL } from '@/lib/constants'
-import { sendMessage } from '@/lib/message'
 import { getUrl } from '@/lib/utils'
+import { Trans } from '@lingui/react/macro'
 import {
   ArrowLeft,
   BookmarkPlusIcon,
@@ -22,24 +21,6 @@ import { FeatureEntry } from './FeatureEntry'
 
 export function PopupContent() {
   const { session } = useSession()
-  const { appType, setAppType } = useAppType()
-
-  useAreas()
-
-  const initPopup = async () => {
-    await chrome.runtime.sendMessage({
-      type: BACKGROUND_EVENTS.INIT_POPUP,
-      payload: {},
-    })
-  }
-
-  useEffect(() => {
-    initPopup()
-  }, [])
-
-  if (appType === AppType.BOOKMARK) {
-    return <AddBookmark />
-  }
 
   return (
     <div className="bg-background flex flex-1 flex-col justify-between gap-3 p-3">
@@ -47,75 +28,28 @@ export function PopupContent() {
         <div className="flex items-center justify-between gap-2">
           <div className="text-base font-bold">PenX</div>
           {session && (
-            <Avatar className="h-7 w-7">
+            <Avatar
+              className="h-7 w-7 cursor-pointer"
+              onClick={() => {
+                window.open('https://penx.io/account')
+              }}
+            >
               <AvatarImage src={getUrl(session.image || '')} />
               <AvatarFallback>{session.name.slice(0, 1)}</AvatarFallback>
             </Avatar>
           )}
         </div>
       </div>
-      <Button
-        onClick={async () => {
-          const result = await sendMessage('prompt', {
-            messages: [],
-          })
-          console.log('=======result:', result)
-        }}
-      >
-        Hello world
-      </Button>
 
-      <div className="grid grid-cols-2 gap-2">
-        <FeatureEntry
-          name="Add note"
-          icon={Text}
-          type={AppType.NOTE}
-          // className="text-amber-600"
-          onClick={async () => {
-            const [tab] = await chrome.tabs.query({
-              active: true,
-              currentWindow: true,
-            })
-
-            chrome.tabs.sendMessage(tab.id!, {
-              type: ACTIONS.AreaSelect,
-              payload: {
-                action: AppType.NOTE,
-              },
-            })
-
-            window.close()
-          }}
-        />
-        <FeatureEntry
-          name="Add bookmark"
-          icon={BookmarkPlusIcon}
-          type={AppType.BOOKMARK}
-          // className="text-red-600"
+      <div>
+        <Button
+          className="w-full"
           onClick={() => {
-            setAppType(AppType.BOOKMARK)
+            fetch('http://localhost:14158/open-window')
           }}
-        />
-        <FeatureEntry
-          name="Clip page..."
-          icon={Scissors}
-          type={AppType.CLIP_PAGE}
-          // className="text-green-600"
-          onClick={() => {
-            toast.success('Coming soon!')
-          }}
-        />
-        <FeatureEntry
-          name="Write"
-          icon={FeatherIcon}
-          type={AppType.WRITE}
-          // className="text-blue-600"
-          onClick={() => {
-            window.open(`${BASE_URL}/~`)
-            window.close()
-            return
-          }}
-        />
+        >
+          <Trans>Open PenX Desktop</Trans>
+        </Button>
       </div>
     </div>
   )

@@ -27,28 +27,19 @@ export function Login({
       {...props}
     >
       <Logo className="h-14 w-14" />
-      <h1
-        className="rounded-2xl border  p-3 text-xl font-bold shadow-2xl"
-        style={
-          {
-            // boxShadow: '0 10px 20px rgba(0, 0, 0, 0.19)',
-          }
-        }
-      >
+      <h1 className="p-3 text-xl font-bold">
         <Trans>Welcome to PenX</Trans>
       </h1>
       <>
         <Button
           size="lg"
-          className={cn('w-full gap-2 rounded-full')}
+          className={cn('w-full gap-2')}
           onClick={() => {
-            // window.open('https://penx.io')
-            window.open(BASE_URL)
+            window.open('https://penx.io/account')
           }}
         >
-          <IconGoogle className="h-4 w-4" />
           <div className="">
-            <Trans>Google login</Trans>
+            <Trans>Login</Trans>
           </div>
         </Button>
       </>

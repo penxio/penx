@@ -54,8 +54,6 @@ async function createEmbeddings() {
     const hash = calculateSHA256FromString(JSON.stringify(node))
     if (await embeddedCache.has(hash)) continue
 
-    console.log('=======>>>>>>>>node', node, 'hash:', hash)
-
     await ky
       .post('http://localhost:14158/api/rag/createEmbedding', {
         json: { node },

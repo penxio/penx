@@ -24,21 +24,20 @@ function getPrompt(query: string, references: Reference[]) {
   console.log('======refTexts:', refTexts)
 
   return `
-You are an expert assistant specialized in providing accurate answers based on provided reference documents. Your task is to answer the user's question using only the given information. Do not invent or assume any facts outside the documents.
+You are an expert assistant specialized in providing accurate answers based solely on the provided reference documents. Your task is to answer the user’s question using only the given information. Follow these rules exactly:
 
-User question:
-${query}
+1. Base your answer only on the reference documents.
+2. If the references lack the necessary information, respond with “No relevant information found.”
+3. Structure your answer clearly and concisely.
+4. Use bullet points or numbered lists when presenting multiple points.
+5. Respond in the same language as the user’s question.
+6. Do not add unrelated content or speculation.
 
 Reference documents:
 ${refTexts}
 
-Please follow these rules strictly:
-1. Base your answer only on the reference documents above.
-2. If information is missing or unclear in the references, respond with "No relevant information found."
-3. Write a clear, concise, and structured answer.
-4. Use bullet points or numbered lists if multiple points are needed.
-5. Respond in the same language as the user's question.
-6. Avoid unrelated content or speculation.
+User question:
+${query}
 
 Begin your answer below:
   `.trim()
@@ -46,8 +45,6 @@ Begin your answer below:
 
 export function Chat() {
   const { messages, setMessages } = useMessages()
-
-  console.log('=====messages:', messages)
 
   const { setInput } = useInput()
   const [loading, setLoading] = useState(false)

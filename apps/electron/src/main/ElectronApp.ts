@@ -20,6 +20,7 @@ import { SHORTCUT_LIST } from '@penx/constants'
 import { db } from '@penx/db/client'
 import { embeddings } from '@penx/db/schema'
 import { Shortcut, ShortcutType } from '@penx/model-type'
+import { SessionData } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
 import { convertKeysToHotkey } from '@penx/utils'
 import icon from '../../resources/icon.png?asset'
@@ -29,6 +30,7 @@ import { createAICommandWindow } from './createAICommandWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
 import { createEmbeddings } from './lib/createEmbeddings'
+import { deleteDatabase } from './lib/deleteDatabase'
 import { deleteEmbeddingTable } from './lib/deleteEmbeddingTable'
 import { initEmbeddings } from './lib/initEmbeddings'
 import { initPGLite } from './lib/initPGLite'
@@ -237,6 +239,7 @@ export class ElectronApp {
   private async initPGLite() {
     // await deleteEmbeddingTable()
     await initPGLite()
+    // await deleteDatabase()
   }
 
   private async startServer() {

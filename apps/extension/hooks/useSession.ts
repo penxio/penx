@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import { storage } from '@/lib/storage'
 import { useQuery } from '@tanstack/react-query'
 import { get, set } from 'idb-keyval'
 import { ROOT_HOST } from '@penx/constants'
@@ -44,20 +45,18 @@ async function fetchJson<JSON = unknown>(
 }
 
 export function useSession() {
-  const { isPending, data: session } = useQuery({
+  const {
+    isPending,
+    data: session,
+    ...rest
+  } = useQuery({
     queryKey: ['session'],
     queryFn: async () => {
-      // const localSession = await get(SESSION_KEY)
-      // if (localSession) return localSession as SessionData
-      // console.log('========sessionApiRoute:', sessionApiRoute)
-
-      const session = await fetchJson<SessionData>(sessionApiRoute)
-      if (session.isLoggedIn) {
-        await set(SESSION_KEY, session)
-      }
-      return session
+      const localSession = await storage.getSession()
+      console.log('=====localSession:', localSession)
+      return localSession
     },
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    // staleTime: 1000 * 60 * 5, // 5 minutes
   })
 
   async function login(data: LoginData & { host?: string }) {
@@ -147,5 +146,6 @@ export function useSession() {
     update,
     isLoading: isPending,
     subscriptions: [] as any,
+    ...rest,
   }
 }

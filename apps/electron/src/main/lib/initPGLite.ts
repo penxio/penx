@@ -1,7 +1,8 @@
-import { sql } from 'drizzle-orm'
-import { db } from '@penx/db/client'
-import { embeddings } from '@penx/db/schema/embeddings'
-import { nodes } from '@penx/db/schema/nodes'
+import { sql } from 'drizzle-orm';
+import { db } from '@penx/db/client';
+import { embeddings } from '@penx/db/schema/embeddings';
+import { nodes } from '@penx/db/schema/nodes';
+
 
 export async function initPGLite() {
   try {
@@ -14,7 +15,7 @@ export async function initPGLite() {
     }
 
     if (!tableStatus.embeddingExists) {
-      await createEmbeddingsTable()
+      await createEmbeddingTable()
     }
 
     console.log('PGLite database initialized successfully')
@@ -79,7 +80,7 @@ async function createNodeTable() {
     )
 
     await db.execute(
-      sql`CREATE INDEX "idx_node_props_struct_id" ON "node" USING gin (("props"->>'structId'))`,
+      sql`CREATE INDEX "idx_node_props_struct_id" ON "node" USING btree (("props"->>'structId'))`,
     )
 
     console.log('Created node table indexes')
@@ -97,7 +98,7 @@ async function createNodeTable() {
   }
 }
 
-async function createEmbeddingsTable() {
+async function createEmbeddingTable() {
   try {
     // Ensure vector extension is enabled
     await db.execute(sql`CREATE EXTENSION IF NOT EXISTS vector`)
@@ -108,11 +109,20 @@ async function createEmbeddingsTable() {
       CREATE TABLE "embedding" (
         "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
         "node_id" uuid,
+        "user_id" uuid,
         "metadata" jsonb NOT NULL,
         "embedding" vector(384) NOT NULL
       )
     `)
     console.log('Created embedding table')
+
+    await db.execute(
+      sql`CREATE INDEX "idx_embedding_node_id" ON "embedding" USING btree ("node_id")`,
+    )
+
+    await db.execute(
+      sql`CREATE INDEX "idx_embedding_user_id" ON "embedding" USING btree ("user_id")`,
+    )
 
     // Create HNSW index for vector similarity search
     await db.execute(
@@ -120,11 +130,11 @@ async function createEmbeddingsTable() {
     )
 
     await db.execute(
-      sql`CREATE INDEX "idx_embedding_props_struct_id" ON "embedding" USING gin (("metadata"->>'structId'))`,
+      sql`CREATE INDEX "idx_embedding_props_struct_id" ON "embedding" USING btree (("metadata"->>'structId'))`,
     )
 
     await db.execute(
-      sql`CREATE INDEX "idx_embedding_props_node_id" ON "embedding" USING gin (("metadata"->>'nodeId'))`,
+      sql`CREATE INDEX "idx_embedding_props_node_id" ON "embedding" USING btree (("metadata"->>'nodeId'))`,
     )
 
     console.log('Created embedding table index')

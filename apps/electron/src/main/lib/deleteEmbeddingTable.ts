@@ -10,7 +10,7 @@ export async function deleteEmbeddingTable() {
     const tableExists = await checkEmbeddingsTableExists()
 
     if (!tableExists) {
-      console.log('Embeddings table does not exist, nothing to delete')
+      console.log('Embedding table does not exist, nothing to delete')
       return
     }
 

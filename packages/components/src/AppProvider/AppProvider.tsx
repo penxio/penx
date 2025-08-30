@@ -1,7 +1,7 @@
 import { createContext, FC, PropsWithChildren, useEffect, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useAtomValue } from 'jotai'
-import { isBrowser, isServer } from '@penx/constants'
+import { isBrowser, isDesktop, isServer } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { useSession } from '@penx/session'
@@ -61,11 +61,13 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
       appRef.current.init(session)
     }
     appEmitter.on('APP_LOGIN_SUCCESS', handleInit)
+    appEmitter.on('DESKTOP_LOGIN_SUCCESS', handleInit)
     appEmitter.on('DELETE_ACCOUNT', handleInit)
 
     return () => {
       appEmitter.off('APP_LOGIN_SUCCESS', handleInit)
       appEmitter.off('DELETE_ACCOUNT', handleInit)
+      appEmitter.off('DESKTOP_LOGIN_SUCCESS', handleInit)
     }
   }, [])
 
@@ -90,7 +92,7 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 
   if (isLoading) return null
 
-  if (!session) {
+  if (!session && isDesktop) {
     return <DesktopLogin />
   }
 

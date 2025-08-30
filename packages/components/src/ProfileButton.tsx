@@ -111,6 +111,8 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
       updateSession(session)
 
       appEmitter.emit('DESKTOP_LOGIN_SUCCESS', session)
+
+      fetch('http://localhost:14158/open-window')
     } catch (error) {
       toast.error(t`Log in failed`)
     }

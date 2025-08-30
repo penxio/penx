@@ -16,7 +16,6 @@ export async function initEmbeddings() {
   const extractor = await loadModel()
 
   const lists = await db.query.embeddings.findMany()
-  console.log('>>>>>>>>>>>>>>====embeddings=lists:', lists.length)
 
   if (lists.length) {
     // If data already exists, perform test query
@@ -96,6 +95,7 @@ export async function initEmbeddings() {
 
       await db.insert(embeddings).values({
         id: uniqueId(),
+        userId: chunk.metadata.userId,
         nodeId: chunk.metadata.nodeId,
         embedding: embeddingList[0],
         metadata: chunk.metadata,

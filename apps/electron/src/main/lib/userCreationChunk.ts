@@ -6,6 +6,7 @@ import { tiptapToMarkdown } from '@penx/utils/tiptapToMarkdown'
 export type CreationNodeStruct = {
   nodeId: string
   structId: string
+  userId: string
   structName: string
   header: Record<string, any>
   content: string
@@ -19,7 +20,6 @@ function getOptionName(options: any[], id: string) {
 
 /**
  * Convert user creation nodes to structured data with header mapping.
- * @param userId - The user ID to query nodes for
  * @returns Array of CreationNodeStruct
  */
 export function userCreationConvert(nodes: any[]): CreationNodeStruct[] {
@@ -99,6 +99,7 @@ export function userCreationConvert(nodes: any[]): CreationNodeStruct[] {
     const contentWithHeader = `${yamlHeader}${markdownContext}`
 
     return {
+      userId: creation.userId,
       nodeId: creation.id,
       structId: props?.structId,
       structName: struct?.props?.name,
@@ -108,7 +109,7 @@ export function userCreationConvert(nodes: any[]): CreationNodeStruct[] {
   })
 }
 
-export async function buildMDocument(userId = ''): Promise<MDocument[]> {
+export async function buildMDocument(): Promise<MDocument[]> {
   // Query all nodes for the user
   const nodes = await db.query.nodes.findMany()
 
@@ -128,7 +129,7 @@ export function buildMDocumentFromCreations(nodes: any[]): MDocument[] {
   for (const creation of creationStructList) {
     documents.push(
       MDocument.fromMarkdown(creation.content, {
-        // userId: userId,
+        userId: creation.userId,
         nodeId: creation.nodeId,
         structId: creation.structId,
         structName: creation.structName,
