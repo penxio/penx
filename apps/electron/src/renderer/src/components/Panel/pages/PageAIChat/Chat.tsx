@@ -5,6 +5,7 @@ import ky from 'ky'
 import { ApiRes } from '@penx/api'
 import { appEmitter } from '@penx/emitter'
 import { uniqueId } from '@penx/unique-id'
+import { sleep } from '@penx/utils'
 import { useInput } from './hooks/useInput'
 import { getMessages, useMessages } from './hooks/useMessages'
 import { Messages } from './Messages'
@@ -21,7 +22,7 @@ interface Reference {
 function getPrompt(query: string, references: Reference[]) {
   const refTexts = references.map((i) => i.content).join('\n---------------\n')
 
-  console.log('======refTexts:', refTexts)
+  // console.log('======refTexts:', refTexts)
 
   return `
 You are an expert assistant specialized in providing accurate answers based solely on the provided reference documents. Your task is to answer the user’s question using only the given information. Follow these rules exactly:

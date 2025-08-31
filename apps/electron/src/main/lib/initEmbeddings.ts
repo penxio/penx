@@ -38,7 +38,7 @@ export async function initEmbeddings() {
         const item = await db.query.nodes.findFirst({
           where: eq(nodes.id, result.nodeId!),
         })
-        console.log('=====item:', item)
+        // console.log('=====item:', item)
 
         if (result.metadata) {
           console.log(

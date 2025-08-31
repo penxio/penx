@@ -16,7 +16,7 @@ import { Conf } from 'electron-conf/main'
 import { checkAccessibilityPermissions, getSelection } from 'node-selection'
 import { windowManager } from 'node-window-manager'
 import { uIOhook, UiohookKey } from 'uiohook-napi'
-import { SHORTCUT_LIST } from '@penx/constants'
+import { CHROME_INFO, SHORTCUT_LIST } from '@penx/constants'
 import { db } from '@penx/db/client'
 import { embeddings } from '@penx/db/schema'
 import { Shortcut, ShortcutType } from '@penx/model-type'
@@ -132,6 +132,10 @@ export class ElectronApp {
 
       app.setAccessibilitySupportEnabled(true)
 
+      this.conf = new Conf()
+
+      this.conf.set(CHROME_INFO, null)
+
       // registerShortcut({
       //   windows: this.windows,
       //   onCreateWindow: () => {
@@ -141,7 +145,6 @@ export class ElectronApp {
       await this.startServer()
       await this.initPGLite()
 
-      this.conf = new Conf()
       this.conf.registerRendererListener()
 
       this.createTray()

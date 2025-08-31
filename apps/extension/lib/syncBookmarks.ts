@@ -1,4 +1,5 @@
 import ky from 'ky'
+import { api } from './api'
 import { syncTabs } from './syncTabs'
 
 type BookmarkTreeNode = chrome.bookmarks.BookmarkTreeNode
@@ -8,11 +9,8 @@ export async function syncBookmarks() {
 
   chrome.bookmarks.getTree(async (bookmarkTreeNodes) => {
     const bookmarks = flattenBookmarkTree(bookmarkTreeNodes)
-    await ky
-      .post('http://localhost:14158/api/bookmark/createMany', {
-        json: { bookmarks },
-      })
-      .json()
+
+    await api.createBookmarks(bookmarks)
   })
 
   chrome.bookmarks.onCreated.addListener((id, node) => {

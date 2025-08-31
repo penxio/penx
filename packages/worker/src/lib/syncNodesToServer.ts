@@ -1,10 +1,17 @@
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
+import ky from 'ky'
 import _ from 'lodash'
 import { api } from '@penx/api'
-import { isDesktop, isMobileApp, ROOT_HOST } from '@penx/constants'
+import {
+  APP_LOCAL_HOST,
+  isDesktop,
+  isMobileApp,
+  ROOT_HOST,
+} from '@penx/constants'
 import { idb } from '@penx/indexeddb'
 import { checkMnemonic } from '@penx/libs/checkMnemonic'
+import { localDB } from '@penx/local-db'
 import { encryptByPublicKey } from '@penx/mnemonic'
 import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
@@ -23,15 +30,6 @@ export async function syncNodesToServer() {
   await checkMnemonic(session)
 
   const changes = await getChanges(session)
-
-  const grouped = changes.reduce(
-    (acc, cur) => {
-      if (!acc[cur.key]) acc[cur.key] = []
-      acc[cur.key].push(cur)
-      return acc
-    },
-    {} as Record<string, IChange[]>,
-  )
 
   const mergedChanges = mergeChanges(changes)
 
@@ -133,6 +131,23 @@ export async function syncNodesToServer() {
       await idb.change.delete(change.id)
     } catch (error) {
       console.log('error syncing change:', error)
+      console.log('change>>>>>>>>>>:', change)
+
+      if (error.errorCode === 'NODE_NOT_EXISTED') {
+        // await idb.change.delete(change.id)
+        if (isDesktop) {
+          await idb.change.delete(change.id)
+          // const node = await ky
+          //   .get(`${APP_LOCAL_HOST}/api/get`, {
+          //     searchParams: { id: change.key },
+          //   })
+          //   .json()
+
+          // console.log('=======>>>>>NODE_NOT_EXISTED:node:', node)
+        }
+
+        // await idb.change.delete(change.id)
+      }
       errors.push(error)
     }
   }

@@ -114,9 +114,6 @@ function PureMultimodalInput({
   }, [chatType, isAICommand])
 
   const submit = useCallback(() => {
-    console.log('alert.....xx')
-
-    return
     handleSubmit(undefined, {
       body: {
         text: input,

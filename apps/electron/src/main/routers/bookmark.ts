@@ -11,6 +11,7 @@ import { Creation } from '@penx/domain'
 import { ICreationNode, IStructNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { auth } from '../lib/auth'
 
 export interface BookmarkTreeNode {
   dateAdded?: number
@@ -70,6 +71,7 @@ app.get(
 
 app.post(
   '/createMany',
+  auth,
   zValidator('json', AddBookmarksInputSchema),
   async (c) => {
     const conf = new Conf()

@@ -3,7 +3,7 @@ import equal from 'fast-deep-equal'
 import { Greeting } from './Greeting'
 import { ChatMessage } from './hooks/useMessages'
 import { useScrollToBottom } from './hooks/useScrollToBottom'
-import { PreviewMessage, ThinkingMessage } from './Message'
+import { PreviewMessage } from './Message'
 
 interface MessagesProps {
   chatId: string

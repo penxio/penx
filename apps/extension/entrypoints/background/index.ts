@@ -1,4 +1,5 @@
 // import { BACKGROUND_EVENTS } from './lib/constants'
+import { initWebsocket } from '@/entrypoints/background/initWebsocket'
 import { BACKGROUND_EVENTS } from '@/lib/constants'
 import {
   AREAS_KEY,
@@ -8,7 +9,6 @@ import {
   type MsgRes,
   type TabInfo,
 } from '@/lib/helper'
-import { initTranslate } from '@/lib/initTranslate'
 import { parsePreparedContent } from '@/lib/parser'
 import { syncBookmarks } from '@/lib/syncBookmarks'
 import { syncTabs } from '@/lib/syncTabs'
@@ -18,14 +18,14 @@ import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
 import { stringToDoc } from '@penx/utils/editorHelper'
+import { checkExtension } from './checkExtension'
 import { setupMessage } from './setupMessage'
-
-const storage = new Storage()
 
 export default defineBackground(() => {
   syncTabs()
   syncBookmarks()
-  initTranslate()
+  initWebsocket()
 
   setupMessage()
+  // checkExtension()
 })

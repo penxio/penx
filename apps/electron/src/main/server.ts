@@ -5,15 +5,19 @@ import { zValidator } from '@hono/zod-validator'
 import { FeatureExtractionPipeline } from '@xenova/transformers'
 import { and, eq, inArray } from 'drizzle-orm'
 import { app as electronApp } from 'electron'
+import { Conf } from 'electron-conf/main'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
+import { HTTPException } from 'hono/http-exception'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { timeout } from 'hono/timeout'
 import { WSContext } from 'hono/ws'
 import { z } from 'zod'
+import { CHROME_INFO } from '@penx/constants'
 import { db } from '@penx/db/client'
 import { ICreationNode, NodeType } from '@penx/model-type'
+import { BusinessError } from './lib/BusinessError'
 import { createNodeEmbedding } from './lib/createNodeEmbedding'
 import { deleteNodeEmbedding } from './lib/deleteNodeEmbedding'
 import { getNodeEmbedding } from './lib/getNodeEmbedding'
@@ -24,8 +28,15 @@ import { userCreationConvert } from './lib/userCreationChunk'
 import aiRouter from './routers/ai'
 import bookmarkRouter from './routers/bookmark'
 import dbProxyRouter from './routers/db-proxy'
+import extensionRouter from './routers/extension'
 import nodeRouter from './routers/node'
 import { Windows } from './types'
+
+declare module 'hono' {
+  interface ContextVariableMap {
+    userId: string
+  }
+}
 
 export interface ServerConfig {
   port: number
@@ -42,6 +53,8 @@ export class HonoServer {
   private wsConnections: Set<WSContext<WebSocket>> = new Set()
   extractor: FeatureExtractionPipeline
 
+  conf = new Conf()
+
   constructor(
     private config: ServerConfig,
     private windows: Windows,
@@ -54,6 +67,43 @@ export class HonoServer {
 
     this.setupMiddleware()
     this.setupRoutes()
+
+    this.app.onError((err, c) => {
+      if (err instanceof HTTPException) {
+        return c.json(
+          {
+            error: {
+              message: err.message || 'Unauthorized',
+              type: 'unauthorized',
+            },
+          },
+          err.status || 401,
+        )
+      }
+
+      if (err instanceof BusinessError) {
+        // console.log('BusinessError>>>>>>>>>error.status:', err.status)
+
+        return c.json(
+          {
+            success: false,
+            code: err.code,
+            message: err.message,
+            stack: err.stack,
+          },
+          err.code === 'UNAUTHORIZED' ? 401 : err.status || 400,
+        )
+      }
+
+      return c.json(
+        {
+          success: false,
+          message: err.message || 'Internal Server Error',
+          stack: err.stack,
+        },
+        500,
+      )
+    })
   }
 
   private setupMiddleware() {
@@ -73,6 +123,18 @@ export class HonoServer {
         credentials: true,
       }),
     )
+
+    this.app.use(async (c, next) => {
+      let authorization = c.req.header('authorization') || ''
+
+      const userId = authorization.split(' ')[1]
+
+      if (userId) {
+        c.set('userId', userId)
+      }
+
+      await next()
+    })
 
     this.app.onError((err, c) => {
       console.error('Server error:', err)
@@ -146,9 +208,16 @@ export class HonoServer {
           onMessage: (evt, ws) => {
             console.log('>>>>>>>>>>>>>Received message from client:', evt.data)
 
-            server.broadcast(`size: ${server.wsConnections.size}`)
-
             if (typeof evt.data === 'string') {
+              const data = JSON.parse(evt.data)
+
+              if (data.type === 'ping') {
+                console.log('Received ping, sending pong response')
+                this.conf.set(CHROME_INFO, data)
+                ws.send('pong')
+                return
+              }
+
               try {
                 const data = JSON.parse(evt.data)
                 if (data.type === 'translate-input') {
@@ -171,7 +240,7 @@ export class HonoServer {
                   server.broadcast(evt.data)
                 }
               } catch (error) {
-                //
+                console.error('Error parsing WebSocket message:', error)
               }
             }
           },
@@ -192,6 +261,7 @@ export class HonoServer {
     api.route('/bookmark', bookmarkRouter)
     api.route('/node', nodeRouter)
     api.route('/ai', aiRouter)
+    api.route('/extension', extensionRouter)
 
     api.post(
       '/rag/retrieve',

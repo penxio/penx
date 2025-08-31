@@ -9,17 +9,17 @@ export async function askQuestion(
   const available = await LanguageModel.availability()
 
   if (available === 'unavailable') {
-    console.error('Prompt API 模型不可用，请检查硬件和系统要求')
-    throw new Error('模型不可用')
+    console.error('Prompt API model unavailable, please check hardware and system requirements')
+    throw new Error('Model unavailable')
   }
 
   const session = await LanguageModel.create({
     monitor(m) {
       m.addEventListener('downloadprogress', (e: any) => {
-        // 显示实时百分比进度 (0-100)
+        // Display real-time percentage progress (0-100)
         const percent = Math.floor(e.loaded * 100)
-        // 可替换为进度条提示
-        console.log(`Gemini Nano下载进度：${percent}%`)
+        // Can be replaced with progress bar prompt
+        console.log(`Gemini Nano download progress: ${percent}%`)
       })
     },
   })
@@ -27,8 +27,8 @@ export async function askQuestion(
   const params = await LanguageModel.params()
 
   const initialPrompts: IPromptMessage[] = [
-    // { role: 'system', content: '你是一名专业的法律助手。' },
-    // { role: 'user', content: '请用专业但通俗的语言解答我的法律问题。' },
+    // { role: 'system', content: 'You are a professional legal assistant.' },
+    // { role: 'user', content: 'Please answer my legal questions in professional but accessible language.' },
   ]
 
   const controller = new AbortController()
@@ -41,19 +41,19 @@ export async function askQuestion(
   })
 
   try {
-    // 动态拼接用户输入
+    // Dynamically concatenate user input
     // const result = await sessionWithContext.prompt([
     //   { role: 'user', content: question },
     // ])
 
-    // console.log('模型回答：', result)
+    // console.log('Model response:', result)
 
     // return result
 
     const stream = sessionWithContext.promptStreaming(question)
     return stream
   } catch (e) {
-    console.error('Prompt API调用异常', e)
+    console.error('Prompt API call exception', e)
     return null
   }
 }

@@ -44,3 +44,5 @@ export const BACKGROUND_EVENTS = {
   INIT_POPUP: 'background/init_popup',
   QUERY_AREAS: 'QUERY_AREAS',
 }
+
+export const PENX_SERVER_HOST = 'http://localhost:14158'

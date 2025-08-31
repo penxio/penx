@@ -27,6 +27,18 @@ const PurePreviewMessage = ({
 }) => {
   const [mode, setMode] = useState<'view' | 'edit'>('view')
 
+  const content = useMemo(() => {
+    if (message.role === 'user') return <Markdown>{message.content}</Markdown>
+    if (!message.content || loading) {
+      return (
+        <div>
+          <LoadingDots className="bg-foreground" />
+        </div>
+      )
+    }
+    return <Markdown>{message.content}</Markdown>
+  }, [message, loading])
+
   return (
     <AnimatePresence>
       <motion.div
@@ -62,12 +74,7 @@ const PurePreviewMessage = ({
                     message.role === 'user',
                 })}
               >
-                {!loading && <Markdown>{message.content}</Markdown>}
-                {loading && (
-                  <div>
-                    <LoadingDots className="bg-foreground" />
-                  </div>
-                )}
+                {content}
               </div>
             </div>
           </div>

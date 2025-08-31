@@ -52,6 +52,7 @@
     "puppeteer-core": "^21.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "reconnecting-eventsource": "^1.6.4",
     "turndown": "^7.2.0",
     "tw-animate-css": "^1.2.4"
   },

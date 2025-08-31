@@ -46,9 +46,6 @@ export class WebSocketClient {
   }
 
   private connect(): void {
-    console.log('=====>>>>>>>>>>>>111')
-    console.log('=====WebSocket:', WebSocket)
-
     if (this.reconnectAttempts >= this.maxReconnectAttempts) {
       console.warn('Maximum reconnection attempts reached, will not reconnect.')
       return

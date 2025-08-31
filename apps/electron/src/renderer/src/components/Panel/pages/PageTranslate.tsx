@@ -79,54 +79,54 @@ export function PageTranslate() {
 
     return
 
-    const session = await getSession()
-    if (!session.accessToken) return
-    if (loading) return
-    setLoading(true)
-    try {
-      const stream = await client.chat.completions.create(
-        {
-          model: 'openai',
-          // model: 'openai-fast',
-          // model: 'phi',
-          messages: [
-            {
-              role: 'system',
-              content: Prompt.TRANSLATE,
-            },
-            {
-              role: 'user',
-              content: text.trim(),
-            },
-          ],
-          stream: true,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${session.accessToken}`,
-          },
-        },
-      )
+    // const session = await getSession()
+    // if (!session.accessToken) return
+    // if (loading) return
+    // setLoading(true)
+    // try {
+    //   const stream = await client.chat.completions.create(
+    //     {
+    //       model: 'openai',
+    //       // model: 'openai-fast',
+    //       // model: 'phi',
+    //       messages: [
+    //         {
+    //           role: 'system',
+    //           content: Prompt.TRANSLATE,
+    //         },
+    //         {
+    //           role: 'user',
+    //           content: text.trim(),
+    //         },
+    //       ],
+    //       stream: true,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${session.accessToken}`,
+    //       },
+    //     },
+    //   )
 
-      let fullText = ''
-      for await (const chunk of stream) {
-        setLoading(false)
-        try {
-          const content = chunk.choices[0].delta?.content
+    //   let fullText = ''
+    //   for await (const chunk of stream) {
+    //     setLoading(false)
+    //     try {
+    //       const content = chunk.choices[0].delta?.content
 
-          if (content) {
-            fullText += content
-            console.log('=======fullText:', fullText)
-            setResult(fullText)
-          }
-        } catch (error) {
-          console.log('=======error:', error)
-        }
-      }
-    } catch (error) {
-      setLoading(false)
-      setResult(t`Translate failed, please try again`)
-    }
+    //       if (content) {
+    //         fullText += content
+    //         console.log('=======fullText:', fullText)
+    //         setResult(fullText)
+    //       }
+    //     } catch (error) {
+    //       console.log('=======error:', error)
+    //     }
+    //   }
+    // } catch (error) {
+    //   setLoading(false)
+    //   setResult(t`Translate failed, please try again`)
+    // }
   }, 200)
 
   useEffect(() => {

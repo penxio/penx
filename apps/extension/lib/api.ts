@@ -1,66 +1,57 @@
-import ky from 'ky'
-import { z } from 'zod'
-import '@penx/types'
-import { BASE_URL } from './constants'
+import { storage } from '@/lib/storage'
+import _ky from 'ky'
+import { APP_LOCAL_HOST } from '@penx/constants'
 
-enum CreationStatus {
-  PUBLISHED = 'PUBLISHED',
-  CONTRIBUTED = 'CONTRIBUTED',
-  DRAFT = 'DRAFT',
-  ARCHIVED = 'ARCHIVED',
+async function getHeaders(): Promise<Record<string, any>> {
+  const session = await storage.getSession()
+  if (session?.accessToken) {
+    return {
+      Authorization: `Bearer ${session.userId}`,
+    }
+  }
+
+  return {}
 }
 
-const API_BASE_URL = `${BASE_URL}/api/v1`
-
-export const addCreationInputSchema = z.object({
-  type: z.string(),
-  title: z.string().optional(),
-  description: z.string().optional(),
-  content: z.string().optional(),
-  image: z.string().optional(),
-  status: z.nativeEnum(CreationStatus).optional(),
-  userId: z.string().optional(),
-  areaId: z.string(),
-  props: z.record(z.string(), z.any()).optional(),
-  tagIds: z.array(z.string()).optional(),
-  isPublishDirectly: z.boolean().optional(),
+export const ky = _ky.extend({
+  prefixUrl: APP_LOCAL_HOST,
+  hooks: {
+    beforeRequest: [
+      async (request) => {
+        const headers = await getHeaders()
+        Object.entries(headers).forEach(([key, value]) => {
+          request.headers.set(key, value)
+        })
+      },
+    ],
+    beforeError: [
+      async (error) => {
+        if (error.response) {
+          try {
+            const errorBody = await error.response.json()
+            return errorBody as any
+          } catch (parseError) {
+            return error
+          }
+        } else {
+          return error
+        }
+      },
+    ],
+  },
 })
 
-export type AddCreationInput = z.infer<typeof addCreationInputSchema>
-
-export async function addCreation(input: AddCreationInput) {
-  const url = `${API_BASE_URL}/creations`
-  const res = await ky.post(url, { json: input }).json()
-  return res
+export interface ApiRes<T = any> {
+  success: boolean
+  data: T
 }
 
-interface CreateTagInput {
-  spaceId: string
-  name: string
-}
-
-export async function createTag(input: CreateTagInput) {
-  const url = `${API_BASE_URL}/tags`
-  const res = await ky.post<any>(url, { json: input }).json()
-  return res
-}
-
-export const addCreationTagInputSchema = z.object({
-  tagId: z.string(),
-  spaceId: z.string(),
-  postId: z.string(),
-})
-
-export type AddCreationTagInput = z.infer<typeof addCreationTagInputSchema>
-
-export async function addCreationTag(input: AddCreationTagInput) {
-  const url = `${API_BASE_URL}/creation-tags`
-  const res = await ky.post(url, { json: input }).json()
-  return res
-}
-
-export async function getAreas() {
-  const url = `${API_BASE_URL}/areas`
-  const res = await ky.get<any[]>(url).json()
-  return res
+export const api = {
+  async createBookmarks(bookmarks: any[]) {
+    await ky
+      .post('api/bookmark/createMany', {
+        json: { bookmarks },
+      })
+      .json()
+  },
 }

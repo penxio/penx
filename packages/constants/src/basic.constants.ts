@@ -445,3 +445,4 @@ export enum TaskNav {
 }
 
 export const SHORTCUT_LIST = 'SHORTCUT_LIST'
+export const CHROME_INFO = 'CHROME_INFO'
