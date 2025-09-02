@@ -104,6 +104,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.60.0(react@19.1.0))
+      '@iconify/react':
+        specifier: ^6.0.0
+        version: 6.0.0(react@19.1.0)
       '@ionic/react':
         specifier: ^8.6.1
         version: 8.6.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -638,6 +641,9 @@ importers:
       react-use:
         specifier: ^17.6.0
         version: 17.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-use-websocket:
+        specifier: ^4.13.0
+        version: 4.13.0
       reading-time:
         specifier: ^1.5.0
         version: 1.5.0
@@ -764,7 +770,7 @@ importers:
         version: 5.3.1(typescript@5.8.2)
       '@lingui/loader':
         specifier: 5.3.1
-        version: 5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14))
       '@lingui/swc-plugin':
         specifier: 5.5.2
         version: 5.5.2(@lingui/core@5.3.1(@lingui/babel-plugin-lingui-macro@5.3.1(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(@swc/core@1.12.14)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))
@@ -851,7 +857,7 @@ importers:
         version: 1.0.11
       '@vanilla-extract/next-plugin':
         specifier: ^2.4.10
-        version: 2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14))
       electron-vite:
         specifier: ^4.0.0
         version: 4.0.0(@swc/core@1.12.14)(vite@6.3.5(@types/node@22.16.4)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
@@ -972,7 +978,7 @@ importers:
     devDependencies:
       '@lingui/vite-plugin':
         specifier: ^5.3.2
-        version: 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.8.2)(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+        version: 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
       '@tailwindcss/vite':
         specifier: ^4.1.4
         version: 4.1.11(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
@@ -1018,9 +1024,6 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.7.2
         version: 0.7.2(hono@4.8.5)(zod@3.25.76)
-      '@iconify/react':
-        specifier: ^6.0.0
-        version: 6.0.0(react@19.1.0)
       '@mastra/core':
         specifier: ^0.10.15
         version: 0.10.15(@hono/zod-validator@0.7.2(hono@4.8.5)(zod@3.25.76))(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76)
@@ -1084,6 +1087,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../../packages/novel-editor
+      '@penx/panel-app':
+        specifier: workspace:*
+        version: link:../../packages/panel-app
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
@@ -1159,9 +1165,6 @@ importers:
       node-window-manager:
         specifier: ^2.2.4
         version: 2.2.4
-      react-use-websocket:
-        specifier: ^4.13.0
-        version: 4.13.0
       run-applescript:
         specifier: ^7.0.0
         version: 7.0.0
@@ -1665,7 +1668,7 @@ importers:
         version: 10.4.18(postcss@8.5.6)
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14))
       cypress:
         specifier: ^13.5.0
         version: 13.17.0
@@ -1686,7 +1689,7 @@ importers:
         version: 5.1.0
       style-loader:
         specifier: ^4.0.0
-        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14))
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.11
@@ -1750,6 +1753,9 @@ importers:
       '@penx/novel-editor':
         specifier: workspace:*
         version: link:../../packages/novel-editor
+      '@penx/panel-app':
+        specifier: workspace:*
+        version: link:../../packages/panel-app
       '@penx/query-client':
         specifier: workspace:*
         version: link:../../packages/query-client
@@ -1831,7 +1837,7 @@ importers:
         version: 10.4.21(postcss@8.5.6)
       css-loader:
         specifier: ^7.1.2
-        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 7.1.2(webpack@5.100.1(@swc/core@1.12.14))
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.4.4
@@ -1843,7 +1849,7 @@ importers:
         version: 8.5.6
       style-loader:
         specifier: ^4.0.0
-        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+        version: 4.0.0(webpack@5.100.1(@swc/core@1.12.14))
       tailwindcss:
         specifier: ^4.1.4
         version: 4.1.11
@@ -2404,6 +2410,106 @@ importers:
       '@penx/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
+
+  packages/panel-app:
+    dependencies:
+      '@penx/api':
+        specifier: workspace:*
+        version: link:../api
+      '@penx/components':
+        specifier: workspace:*
+        version: link:../components
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../contexts
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../emitter
+      '@penx/extension-api':
+        specifier: workspace:*
+        version: link:../extension-api
+      '@penx/hooks':
+        specifier: workspace:*
+        version: link:../hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../local-db
+      '@penx/locales':
+        specifier: workspace:*
+        version: link:../locales
+      '@penx/mnemonic':
+        specifier: workspace:*
+        version: link:../mnemonic
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../model-type
+      '@penx/novel-editor':
+        specifier: workspace:*
+        version: link:../novel-editor
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../query-client
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../store
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@penx/vaul':
+        specifier: workspace:*
+        version: link:../vaul
+      '@penx/widgets':
+        specifier: workspace:*
+        version: link:../widgets
+      '@penx/worker':
+        specifier: workspace:*
+        version: link:../worker
+      electron-conf:
+        specifier: ^1.3.0
+        version: 1.3.0(electron@37.2.5)
+      tinykeys:
+        specifier: ^3.0.0
+        version: 3.0.0
+    devDependencies:
+      '@electron-toolkit/preload':
+        specifier: ^3.0.1
+        version: 3.0.2(electron@37.2.5)
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      postcss:
+        specifier: ^8.5.1
+        version: 8.5.6
+      tailwindcss:
+        specifier: ^4.1.4
+        version: 4.1.11
 
   packages/query-client:
     devDependencies:
@@ -22349,12 +22455,12 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/loader@5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))':
+  '@lingui/loader@5.3.1(typescript@5.8.2)(webpack@5.100.1(@swc/core@1.12.14))':
     dependencies:
       '@babel/runtime': 7.27.6
       '@lingui/cli': 5.3.1(typescript@5.8.2)
       '@lingui/conf': 5.3.1(typescript@5.8.2)
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -22395,16 +22501,6 @@ snapshots:
       - supports-color
       - typescript
 
-  '@lingui/vite-plugin@5.3.3(babel-plugin-macros@3.1.0)(typescript@5.8.2)(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))':
-    dependencies:
-      '@lingui/cli': 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.8.2)
-      '@lingui/conf': 5.3.3(typescript@5.8.2)
-      vite: 6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
-    transitivePeerDependencies:
-      - babel-plugin-macros
-      - supports-color
-      - typescript
-
   '@lingui/vite-plugin@5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)(vite@6.3.5(@types/node@20.11.30)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))':
     dependencies:
       '@lingui/cli': 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)
@@ -22420,6 +22516,16 @@ snapshots:
       '@lingui/cli': 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)
       '@lingui/conf': 5.3.3(typescript@5.9.2)
       vite: 6.3.5(@types/node@22.16.4)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - supports-color
+      - typescript
+
+  '@lingui/vite-plugin@5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))':
+    dependencies:
+      '@lingui/cli': 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)
+      '@lingui/conf': 5.3.3(typescript@5.9.2)
+      vite: 6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -27656,9 +27762,9 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@vanilla-extract/next-plugin@2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))':
+  '@vanilla-extract/next-plugin@2.4.14(babel-plugin-macros@3.1.0)(next@15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(webpack@5.100.1(@swc/core@1.12.14))':
     dependencies:
-      '@vanilla-extract/webpack-plugin': 2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+      '@vanilla-extract/webpack-plugin': 2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14))
       next: 15.4.1(@babel/core@7.28.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -27667,13 +27773,13 @@ snapshots:
 
   '@vanilla-extract/private@1.0.9': {}
 
-  '@vanilla-extract/webpack-plugin@2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))':
+  '@vanilla-extract/webpack-plugin@2.3.22(babel-plugin-macros@3.1.0)(webpack@5.100.1(@swc/core@1.12.14))':
     dependencies:
       '@vanilla-extract/integration': 8.0.4(babel-plugin-macros@3.1.0)
       debug: 4.4.1(supports-color@8.1.1)
       loader-utils: 2.0.4
       picocolors: 1.1.1
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -29430,7 +29536,7 @@ snapshots:
     dependencies:
       utrie: 1.0.2
 
-  css-loader@7.1.2(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)):
+  css-loader@7.1.2(webpack@5.100.1(@swc/core@1.12.14)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.6)
       postcss: 8.5.6
@@ -29441,7 +29547,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.7.2
     optionalDependencies:
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
 
   css-mediaquery@0.1.2: {}
 
@@ -30580,8 +30686,8 @@ snapshots:
       '@typescript-eslint/parser': 8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2)
       eslint: 9.31.0(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.31.0(jiti@2.4.2))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-react: 7.37.5(eslint@9.31.0(jiti@2.4.2))
       eslint-plugin-react-hooks: 5.2.0(eslint@9.31.0(jiti@2.4.2))
@@ -30604,7 +30710,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.31.0(jiti@2.4.2)):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.1(supports-color@8.1.1)
@@ -30615,22 +30721,22 @@ snapshots:
       tinyglobby: 0.2.14
       unrs-resolver: 1.11.1
     optionalDependencies:
-      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.31.0(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)):
+  eslint-module-utils@2.12.1(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)):
     dependencies:
       debug: 3.2.7(supports-color@8.1.1)
     optionalDependencies:
       '@typescript-eslint/parser': 8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2)
       eslint: 9.31.0(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.31.0(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)):
+  eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-typescript@3.10.1)(eslint@9.31.0(jiti@2.4.2)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.9
@@ -30641,7 +30747,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.31.0(jiti@2.4.2)
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))
+      eslint-module-utils: 2.12.1(@typescript-eslint/parser@8.37.0(eslint@9.31.0(jiti@2.4.2))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.31.0(jiti@2.4.2)))(eslint@9.31.0(jiti@2.4.2))
       hasown: 2.0.2
       is-core-module: 2.16.1
       is-glob: 4.0.3
@@ -38198,9 +38304,9 @@ snapshots:
 
   stubborn-fs@1.2.5: {}
 
-  style-loader@4.0.0(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)):
+  style-loader@4.0.0(webpack@5.100.1(@swc/core@1.12.14)):
     dependencies:
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
 
   style-mod@4.1.2: {}
 
@@ -38371,17 +38477,16 @@ snapshots:
       type-fest: 0.16.0
       unique-string: 2.0.0
 
-  terser-webpack-plugin@5.3.14(@swc/core@1.12.14)(esbuild@0.25.6)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)):
+  terser-webpack-plugin@5.3.14(@swc/core@1.12.14)(webpack@5.100.1(@swc/core@1.12.14)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.29
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.43.1
-      webpack: 5.100.1(@swc/core@1.12.14)(esbuild@0.25.6)
+      webpack: 5.100.1(@swc/core@1.12.14)
     optionalDependencies:
       '@swc/core': 1.12.14(@swc/helpers@0.5.17)
-      esbuild: 0.25.6
 
   terser@5.43.1:
     dependencies:
@@ -39468,7 +39573,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6):
+  webpack@5.100.1(@swc/core@1.12.14):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.8
@@ -39492,7 +39597,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.2
       tapable: 2.2.2
-      terser-webpack-plugin: 5.3.14(@swc/core@1.12.14)(esbuild@0.25.6)(webpack@5.100.1(@swc/core@1.12.14)(esbuild@0.25.6))
+      terser-webpack-plugin: 5.3.14(@swc/core@1.12.14)(webpack@5.100.1(@swc/core@1.12.14))
       watchpack: 2.4.4
       webpack-sources: 3.3.3
     transitivePeerDependencies:

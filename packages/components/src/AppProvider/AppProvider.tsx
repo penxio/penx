@@ -28,12 +28,15 @@ if (!isServer) {
 
 export const appContext = createContext({} as { app: AppService })
 
+const appService = new AppService()
+
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   const { session, isLoading } = useSession()
   const loading = useAtomValue(appLoadingAtom)
   const passwordNeed = useAtomValue(appPasswordNeededAtom)
   const error = useAtomValue(appErrorAtom)
-  const appRef = useRef(new AppService())
+  // const appRef = useRef(new AppService())
+  const inited = useRef(false)
   const { Provider } = appContext
   const journalLayout = useJournalLayout()
 
@@ -49,16 +52,21 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     },
   })
 
+  console.log('===============>>>>>loading:', loading)
+
   useEffect(() => {
     if (isLoading) return
-    if (!appRef.current.inited) {
-      appRef.current.init(session)
+    if (inited.current) return
+    inited.current = true
+    if (!appService.inited) {
+      console.log('helo......>>>>>>>>>')
+      appService.init(session)
     }
   }, [isLoading, session])
 
   useEffect(() => {
     function handleInit(session: any) {
-      appRef.current.init(session)
+      appService.init(session)
     }
     appEmitter.on('APP_LOGIN_SUCCESS', handleInit)
     appEmitter.on('DESKTOP_LOGIN_SUCCESS', handleInit)
@@ -80,7 +88,7 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
             <Button
               className="no-drag"
               onClick={() => {
-                appRef.current.init(session)
+                appService.init(session)
               }}
             >
               Reload App
@@ -113,11 +121,11 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     )
   }
 
-  if (!isBoarded) {
+  if (!isBoarded && isDesktop) {
     return (
       <DesktopWelcome isLoading={isBoardedLoading} onGetStarted={refetch} />
     )
   }
 
-  return <Provider value={{ app: appRef.current }}>{children}</Provider>
+  return <Provider value={{ app: appService }}>{children}</Provider>
 }

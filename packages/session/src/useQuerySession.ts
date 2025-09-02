@@ -69,6 +69,7 @@ export function useQuerySession() {
       if (isDesktop || isMobileApp || !navigator.onLine) {
         return localSession || null
       }
+
       const remoteSession = await fetchJson<SessionData>(sessionApiRoute)
 
       // console.log('===remoteSession:', remoteSession)

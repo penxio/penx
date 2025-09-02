@@ -33,7 +33,6 @@
     "@fower/react": "^2.1.3",
     "@hono/node-ws": "^1.2.0",
     "@hono/zod-validator": "^0.7.2",
-    "@iconify/react": "^6.0.0",
     "@mastra/core": "^0.10.15",
     "@mastra/rag": "^1.2.2",
     "@penx/api": "workspace:*",
@@ -55,6 +54,7 @@
     "@penx/mnemonic": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/novel-editor": "workspace:*",
+    "@penx/panel-app": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/services": "workspace:*",
     "@penx/session": "workspace:*",
@@ -80,7 +80,6 @@
     "node-mac-permissions": "^2.5.0",
     "node-selection": "0.2.0-alpha.1",
     "node-window-manager": "^2.2.4",
-    "react-use-websocket": "^4.13.0",
     "run-applescript": "^7.0.0",
     "uiohook-napi": "^1.5.4",
     "xxhash-wasm": "^1.1.0"

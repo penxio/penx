@@ -51,6 +51,8 @@ export class AppService {
   inited = false
 
   async init(session: SessionData) {
+    console.log('init=====>>>>>=>>>>......')
+
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return: data

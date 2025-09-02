@@ -30,6 +30,7 @@
     "@penx/math": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/novel-editor": "workspace:*",
+    "@penx/panel-app": "workspace:*",
     "@penx/query-client": "workspace:*",
     "@penx/services": "workspace:*",
     "@penx/session": "workspace:*",
