@@ -76,7 +76,7 @@ export class AppService {
     try {
       const space = await this.getInitialSpace(session)
 
-      console.log('===========getInital=space:', space)
+      // console.log('===========getInital=space:', space)
       await this.initStore(space)
     } catch (error) {
       console.log('init error=====>>>:', error)

@@ -97,7 +97,7 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     return <DesktopLogin />
   }
 
-  if (!session?.earlyAccessCode) {
+  if (session && !session?.earlyAccessCode) {
     return <EarlyAccessCode />
   }
 

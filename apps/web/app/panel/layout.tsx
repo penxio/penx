@@ -92,7 +92,8 @@ export default async function RootLayout({
                 />
 
                 <WatchAppEvent />
-                <DashboardLayout>{children}</DashboardLayout>
+                {/* <DashboardLayout>{children}</DashboardLayout> */}
+                {children}
               </ThemeProvider>
             </DashboardProviders>
           </NodeModelApiInjector>
