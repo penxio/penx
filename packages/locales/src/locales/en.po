@@ -88,6 +88,11 @@ msgstr "5 minutes early"
 msgid "A brief your introduction."
 msgstr "A brief your introduction."
 
+#: packages/components/src/DesktopWelcome.tsx:30
+#: packages/components/src/DesktopLogin.tsx:19
+msgid "A local-first tool for for personal data management."
+msgstr "A local-first tool for for personal data management."
+
 #: apps/mobile/src/components/Profile/Profile.tsx:116
 #: apps/mobile/src/components/Profile/AboutMenu.tsx:28
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:84
@@ -150,7 +155,7 @@ msgstr "Add sync server"
 msgid "Add tag"
 msgstr "Add tag"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:212
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:216
 msgid "Add to Favorites"
 msgstr "Add to Favorites"
 
@@ -158,7 +163,7 @@ msgstr "Add to Favorites"
 msgid "Add widget"
 msgstr "Add widget"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:198
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:202
 msgid "Added to Favorites"
 msgstr "Added to Favorites"
 
@@ -173,7 +178,7 @@ msgid "AI Chat"
 msgstr "AI Chat"
 
 #: packages/libs/src/getDefaultStructs.ts:456
-#: packages/components/src/AppProvider/AppService.ts:229
+#: packages/components/src/AppProvider/AppService.ts:233
 msgid "AI Command"
 msgstr "AI Command"
 
@@ -195,10 +200,6 @@ msgstr "AI transcribe"
 #: packages/components/src/CreationCard/CreationCard.tsx:175
 msgid "AI Transcribing"
 msgstr "AI Transcribing"
-
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:114
-msgid "AI transcription for voice"
-msgstr "AI transcription for voice"
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
 #: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:30
@@ -256,11 +257,11 @@ msgstr "Apple login"
 msgid "Are you sure delete it permanently?"
 msgstr "Are you sure delete it permanently?"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:94
+#: packages/components/src/SettingsDialog/Billing.tsx:100
 msgid "Are you sure you want to cancel subscription?"
 msgstr "Are you sure you want to cancel subscription?"
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:103
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:108
 msgid "Are you sure you want to delete this property?"
 msgstr "Are you sure you want to delete this property?"
 
@@ -292,6 +293,10 @@ msgstr "Backup to google drive successful!"
 #: packages/components/src/AISetting/ProviderDialog.tsx:156
 msgid "Base URL"
 msgstr "Base URL"
+
+#: packages/components/src/PlanList/PricingSlogan.tsx:12
+msgid "Become a member of PenX"
+msgstr "Become a member of PenX"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:45
 #: packages/components/src/ProfileBasicInfo.tsx:22
@@ -341,15 +346,15 @@ msgstr "Built {0} items"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:102
+#: packages/components/src/SettingsDialog/Billing.tsx:108
 msgid "Cancel subscription"
 msgstr "Cancel subscription"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:98
+#: packages/components/src/SettingsDialog/Billing.tsx:104
 msgid "Cancel subscription successfully"
 msgstr "Cancel subscription successfully"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:93
+#: packages/components/src/SettingsDialog/Billing.tsx:99
 msgid "Cancel subscription?"
 msgstr "Cancel subscription?"
 
@@ -361,7 +366,7 @@ msgstr "Capture the beautiful moments"
 msgid "Card"
 msgstr "Card"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:83
+#: packages/components/src/SettingsDialog/Billing.tsx:89
 msgid "Change plan"
 msgstr "Change plan"
 
@@ -369,6 +374,11 @@ msgstr "Change plan"
 #: packages/components/src/Creation/ChangeType.tsx:36
 msgid "Change type"
 msgstr "Change type"
+
+#: apps/electron/src/renderer/src/components/Panel/pages/PageAIChat/SendBox.tsx:25
+#: packages/components/src/AIChat/multimodal-input.tsx:157
+msgid "Chat with my data..."
+msgstr "Chat with my data..."
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
 #: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:175
@@ -399,7 +409,7 @@ msgstr "Config"
 msgid "Configure shortcut"
 msgstr "Configure shortcut"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:136
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:140
 msgid "Configure Shortcut"
 msgstr "Configure Shortcut"
 
@@ -422,7 +432,7 @@ msgstr "Confirm Publishing"
 msgid "Content"
 msgstr "Content"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:137
+#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:187
 #: packages/components/src/ProfileBasicInfo.tsx:53
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:39
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:106
@@ -437,6 +447,19 @@ msgstr "Copy"
 #: packages/components/src/Creation/CreationMoreMenu.tsx:67
 msgid "Copy html"
 msgstr "Copy html"
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:95
+msgid "Copy ID"
+msgstr "Copy ID"
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:86
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:259
+msgid "Copy ID to clipboard"
+msgstr "Copy ID to clipboard"
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:268
+msgid "Copy Struct ID"
+msgstr "Copy Struct ID"
 
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:108
 msgid "Copy to clipboard"
@@ -506,7 +529,7 @@ msgstr "Created successfully"
 msgid "Creation counts"
 msgstr "Creation counts"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:227
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:231
 msgid "Creation deleted successfully"
 msgstr "Creation deleted successfully"
 
@@ -560,15 +583,15 @@ msgstr "Delete"
 msgid "Delete account"
 msgstr "Delete account"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:242
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:246
 msgid "Delete Creation"
 msgstr "Delete Creation"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:105
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:133
 msgid "Delete record"
 msgstr "Delete record"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:274
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:298
 msgid "Delete Struct"
 msgstr "Delete Struct"
 
@@ -581,12 +604,12 @@ msgstr "Delete tag"
 msgid "Delete this option?"
 msgstr "Delete this option?"
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:105
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:110
 msgid "Delete this property"
 msgstr "Delete this property"
 
 #: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:92
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:101
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:106
 msgid "Delete this property?"
 msgstr "Delete this property?"
 
@@ -616,6 +639,14 @@ msgstr "Doing"
 msgid "Done"
 msgstr "Done"
 
+#: packages/components/src/EarlyAccessCode.tsx:77
+msgid "Early access code"
+msgstr "Early access code"
+
+#: packages/components/src/EarlyAccessCode.tsx:48
+msgid "Early Access Code"
+msgstr "Early Access Code"
+
 #: apps/mobile/src/pages/PageHome/AllStructs/StructList.tsx:52
 #: apps/mobile/src/components/Profile/EditTagDrawer.tsx:48
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/CreationItem/CreationItem.tsx:316
@@ -623,8 +654,8 @@ msgstr "Done"
 msgid "Edit"
 msgstr "Edit"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:67
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:73
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:76
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:77
 msgid "Edit content"
 msgstr "Edit content"
 
@@ -647,7 +678,7 @@ msgstr "Edit props"
 msgid "Edit struct"
 msgstr "Edit struct"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:118
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:122
 msgid "Edit Struct"
 msgstr "Edit Struct"
 
@@ -719,8 +750,8 @@ msgstr "Enter plural name"
 msgid "Execute Changes"
 msgstr "Execute Changes"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:232
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:264
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:236
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:288
 msgid "Failed to delete"
 msgstr "Failed to delete"
 
@@ -750,7 +781,7 @@ msgstr "Find or create option"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:46
 #: packages/components/src/ProfileBasicInfo.tsx:23
-#: packages/components/src/SettingsDialog/Billing.tsx:37
+#: packages/components/src/SettingsDialog/Billing.tsx:38
 msgid "Free"
 msgstr "Free"
 
@@ -768,12 +799,15 @@ msgstr "Gallery"
 msgid "Gate this post, config who can read this post."
 msgstr "Gate this post, config who can read this post."
 
+#: packages/components/src/DesktopWelcome.tsx:48
+msgid "Get Started"
+msgstr "Get Started"
+
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:46
 msgid "Google drive backup password"
 msgstr "Google drive backup password"
 
 #: apps/mobile/src/components/Login/GoogleLoginButton.tsx:79
-#: apps/extension/components/Login.tsx:51
 #: packages/widgets/src/GoogleOauthButton.tsx:70
 msgid "Google login"
 msgstr "Google login"
@@ -783,6 +817,7 @@ msgstr "Google login"
 msgid "Guide of PenX"
 msgstr "Guide of PenX"
 
+#: apps/electron/src/renderer/src/components/Panel/pages/PageAIChat/Greeting.tsx:17
 #: packages/components/src/AIChat/greeting.tsx:17
 msgid "Hello there!"
 msgstr "Hello there!"
@@ -807,6 +842,7 @@ msgstr "Home"
 msgid "Host"
 msgstr "Host"
 
+#: apps/electron/src/renderer/src/components/Panel/pages/PageAIChat/Greeting.tsx:26
 #: packages/components/src/AIChat/greeting.tsx:26
 msgid "How can I help you today?"
 msgstr "How can I help you today?"
@@ -830,6 +866,7 @@ msgid "Input your recovery password to sync your data."
 msgstr "Input your recovery password to sync your data."
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:80
+#: apps/electron/src/renderer/src/components/Panel/pages/PageStructMarketplace.tsx:40
 msgid "Install"
 msgstr "Install"
 
@@ -846,6 +883,11 @@ msgstr "Instruction"
 msgid "Introduction"
 msgstr "Introduction"
 
+#: packages/components/src/EarlyAccessCode.tsx:33
+#: packages/components/src/EarlyAccessCode.tsx:36
+msgid "Invalid early access code!"
+msgstr "Invalid early access code!"
+
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:35
 msgid "Invalid phone number."
 msgstr "Invalid phone number."
@@ -854,6 +896,10 @@ msgstr "Invalid phone number."
 #: packages/components/src/RecoverPassword.tsx:38
 msgid "Invalid recovery password!"
 msgstr "Invalid recovery password!"
+
+#: packages/components/src/EarlyAccessCode.tsx:98
+msgid "Join PenX"
+msgstr "Join PenX"
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:35
 msgid "Journal layout"
@@ -918,23 +964,24 @@ msgstr "Local backup"
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
 #: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:145
+#: packages/components/src/ProfileButton.tsx:148
 msgid "Log in"
 msgstr "Log in"
 
-#: packages/components/src/ProfileButton.tsx:114
+#: packages/components/src/ProfileButton.tsx:117
 msgid "Log in failed"
 msgstr "Log in failed"
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:285
+#: packages/components/src/ProfileButton.tsx:294
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:98
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
 msgstr "Log out"
 
 #: apps/mobile/src/pages/PageLogin.tsx:11
+#: apps/extension/components/Login.tsx:42
 msgid "Login"
 msgstr "Login"
 
@@ -990,7 +1037,7 @@ msgstr "Model select"
 msgid "Mon"
 msgstr "Mon"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:136
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:131
 msgid "month"
 msgstr "month"
 
@@ -998,19 +1045,19 @@ msgstr "month"
 msgid "Monthly"
 msgstr "Monthly"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:183
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:187
 msgid "Move Down in Favorites"
 msgstr "Move Down in Favorites"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:159
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:163
 msgid "Move Up in Favorites"
 msgstr "Move Up in Favorites"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:169
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:173
 msgid "Moved down in Favorites"
 msgstr "Moved down in Favorites"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:148
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:152
 msgid "Moved up in Favorites"
 msgstr "Moved up in Favorites"
 
@@ -1083,7 +1130,7 @@ msgstr "New list"
 msgid "New property"
 msgstr "New property"
 
-#: apps/electron/src/renderer/src/components/WatchEvent.tsx:130
+#: apps/electron/src/renderer/src/components/WatchEvent.tsx:135
 msgid "New version available, restarting to update..."
 msgstr "New version available, restarting to update..."
 
@@ -1169,11 +1216,11 @@ msgstr "On time"
 msgid "Once deleted, You can't undo this action."
 msgstr "Once deleted, You can't undo this action."
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:98
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:102
 msgid "Open Command"
 msgstr "Open Command"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:49
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:58
 msgid "Open in browser"
 msgstr "Open in browser"
 
@@ -1182,6 +1229,10 @@ msgstr "Open in browser"
 #: packages/components/src/area-widgets/CreationItem.tsx:113
 msgid "Open in new panel"
 msgstr "Open in new panel"
+
+#: apps/extension/components/popup/PopupContent.tsx:51
+msgid "Open PenX Desktop"
+msgstr "Open PenX Desktop"
 
 #: packages/components/src/SettingsDialog/EditShortcuts.tsx:24
 msgid "Open Search Panel"
@@ -1280,7 +1331,7 @@ msgstr "Please check your email for the verification code."
 msgid "Please enter the verification code."
 msgstr "Please enter the verification code."
 
-#: packages/components/src/AIChat/multimodal-input.tsx:177
+#: packages/components/src/AIChat/multimodal-input.tsx:178
 msgid "Please wait for the model to finish its response!"
 msgstr "Please wait for the model to finish its response!"
 
@@ -1291,6 +1342,10 @@ msgstr "Plural name"
 #: packages/components/src/Creation/Tags.tsx:124
 msgid "Press Enter to add a tag."
 msgstr "Press Enter to add a tag."
+
+#: packages/components/src/PlanList/PricingSlogan.tsx:8
+msgid "Pricing"
+msgstr "Pricing"
 
 #: apps/mobile/src/components/TaskCreation/Priority.tsx:40
 #: packages/libs/src/getDefaultStructs.ts:79
@@ -1313,19 +1368,19 @@ msgstr "PRO"
 msgid "PRO + AI"
 msgstr "PRO + AI"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:125
 msgid "Pro + AI monthly"
 msgstr "Pro + AI monthly"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:145
 msgid "Pro + AI yearly"
 msgstr "Pro + AI yearly"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:130
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:125
 msgid "PRO monthly"
 msgstr "PRO monthly"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:145
 msgid "PRO yearly"
 msgstr "PRO yearly"
 
@@ -1350,7 +1405,7 @@ msgstr "Prop type"
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:89
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/StructInfo.tsx:18
+#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/StructInfo.tsx:19
 msgid "Properties"
 msgstr "Properties"
 
@@ -1459,7 +1514,7 @@ msgstr "Reminder"
 msgid "remove"
 msgstr "remove"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:210
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:214
 msgid "Remove from Favorites"
 msgstr "Remove from Favorites"
 
@@ -1472,7 +1527,7 @@ msgstr "Remove reminder"
 msgid "Removed {0} items"
 msgstr "Removed {0} items"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:195
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:199
 msgid "Removed from Favorites"
 msgstr "Removed from Favorites"
 
@@ -1539,10 +1594,6 @@ msgstr "Select a color"
 msgid "Select property type"
 msgstr "Select property type"
 
-#: packages/components/src/AIChat/multimodal-input.tsx:156
-msgid "Send a message..."
-msgstr "Send a message..."
-
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:83
 msgid "Set password"
 msgstr "Set password"
@@ -1553,13 +1604,13 @@ msgstr "Setting"
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
 #: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:195
-#: packages/components/src/ProfileButton.tsx:236
+#: packages/components/src/ProfileButton.tsx:239
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr "Settings"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:83
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:111
 msgid "Share"
 msgstr "Share"
 
@@ -1584,7 +1635,7 @@ msgstr "Show detail panel"
 msgid "Show recovery phrase"
 msgstr "Show recovery phrase"
 
-#: packages/components/src/LoginButton.tsx:28
+#: packages/components/src/LoginButton.tsx:31
 msgid "Sign in"
 msgstr "Sign in"
 
@@ -1631,11 +1682,17 @@ msgstr "status"
 msgid "Status"
 msgstr "Status"
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:256
+#. placeholder {0}: item.name
+#: apps/electron/src/renderer/src/components/Panel/pages/PageStructMarketplace.tsx:49
+msgid "Struct {0} is installed!"
+msgstr "Struct {0} is installed!"
+
+#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:280
 msgid "Struct deleted successfully"
 msgstr "Struct deleted successfully"
 
 #: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:77
+#: apps/electron/src/renderer/src/components/Panel/pages/PageStructMarketplace.tsx:60
 msgid "Struct installed successfully!"
 msgstr "Struct installed successfully!"
 
@@ -1671,11 +1728,11 @@ msgstr "Struct published successfully!"
 msgid "Structs"
 msgstr "Structs"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:197
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:192
 msgid "Subscribe now"
 msgstr "Subscribe now"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:60
+#: packages/components/src/SettingsDialog/Billing.tsx:61
 msgid "Subscribe to PenX to support us in building the best product."
 msgstr "Subscribe to PenX to support us in building the best product."
 
@@ -1694,7 +1751,7 @@ msgstr "Successfully {0}."
 msgid "Sun"
 msgstr "Sun"
 
-#: packages/components/src/ProfileButton.tsx:265
+#: packages/components/src/ProfileButton.tsx:274
 msgid "Support"
 msgstr "Support"
 
@@ -1848,15 +1905,11 @@ msgid "Tomorrow"
 msgstr "Tomorrow"
 
 #: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:135
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:100
+#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:149
 msgid "Translate"
 msgstr "Translate"
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:79
-msgid "Translate failed, please try again"
-msgstr "Translate failed, please try again"
-
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:113
+#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:162
 msgid "Translate text"
 msgstr "Translate text"
 
@@ -1938,13 +1991,13 @@ msgstr "Updated At"
 msgid "Updated successfully!"
 msgstr "Updated successfully!"
 
-#: packages/components/src/SettingsDialog/Billing.tsx:85
+#: packages/components/src/SettingsDialog/Billing.tsx:91
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:143
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:149
 msgid "Upgrade"
 msgstr "Upgrade"
 
-#: packages/components/src/ProfileButton.tsx:256
+#: packages/components/src/ProfileButton.tsx:265
 msgid "Upgrade to Pro"
 msgstr "Upgrade to Pro"
 
@@ -1978,7 +2031,7 @@ msgid "Weekly"
 msgstr "Weekly"
 
 #: apps/mobile/src/components/Login/LoginContent.tsx:35
-#: apps/extension/components/Login.tsx:38
+#: apps/extension/components/Login.tsx:31
 #: packages/widgets/src/LoginDialog/LoginDialog.tsx:30
 msgid "Welcome to PenX"
 msgstr "Welcome to PenX"
@@ -1991,7 +2044,7 @@ msgstr "when to remind?"
 msgid "Widget"
 msgstr "Widget"
 
-#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:155
+#: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
 msgid "year"
 msgstr "year"
 

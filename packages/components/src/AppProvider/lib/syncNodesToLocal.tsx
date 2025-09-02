@@ -83,17 +83,18 @@ export async function syncNodesToLocal(spaceId: string) {
     if (!nodes?.length || !site) {
       // await localDB.node.where({ spaceId }).delete()
 
-      console.log('First time sync......')
-
       const shape = new Shape(stream)
       const rows = await shape.rows
+      console.log('First time sync......', rows)
       // console.log('======>>>>>>mnemonic:', mnemonic)
 
       await localDB.node.insertMany(
         rows.map((row) => {
           const node = produce(row as any as INode, (draft) => {
-            draft.createdAt = new Date(Number(draft.createdAt?.toString()))
-            draft.updatedAt = new Date(Number(draft.updatedAt?.toString()))
+            const createdAt = draft.createdAt || draft.updatedAt || Date.now()
+            const updatedAt = draft.updatedAt || draft.createdAt || Date.now()
+            draft.createdAt = new Date(Number(createdAt.toString()))
+            draft.updatedAt = new Date(Number(updatedAt.toString()))
             if (draft.type === NodeType.CREATION) {
               const props = draft.props as ICreationNode['props']
               props.title = decrypt(props.title, mnemonic, false)

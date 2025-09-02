@@ -73,11 +73,12 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 
   if (error) {
     return (
-      <div className="text-foreground/60 flex h-screen items-center justify-center text-lg">
+      <div className="text-foreground/60 drag flex h-screen items-center justify-center text-lg">
         <div className="flex flex-col items-center justify-center gap-2">
           <div>{error}</div>
           <div>
             <Button
+              className="no-drag"
               onClick={() => {
                 appRef.current.init(session)
               }}
