@@ -20,6 +20,7 @@ import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
 import { stringToDoc } from '@penx/utils/editorHelper'
 import { checkExtension } from './checkExtension'
 import { setupMessage } from './setupMessage'
+import { setupSidePanel } from './setupSidePanel'
 
 export default defineBackground(() => {
   syncTabs()
@@ -27,5 +28,7 @@ export default defineBackground(() => {
   initWebsocket()
 
   setupMessage()
+  setupSidePanel()
   // checkExtension()
 })
+

@@ -4,12 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PenX</title>
-  <meta name="manifest.type" content="browser_action" />
+  <title>PenX Side Panel</title>
+  
+  <!-- Side Panel manifest options -->
+  <meta name="manifest.open_at_install" content="true" />
+  <meta name="manifest.browser_style" content="false" />
+  
+  <link rel="stylesheet" href="./sidepanel/style.css" />
 </head>
 
 <body>
-
   <div id="root"></div>
   <script type="module">
     import RefreshRuntime from 'http://localhost:3000/@react-refresh'
@@ -18,7 +22,8 @@
     window.$RefreshSig$ = () => (type) => type
     window.__vite_plugin_react_preamble_installed__ = true
   </script>
-  <script type="module" src="./main.tsx"></script>
+
+  <script type="module" src="./sidepanel/main.tsx"></script>
 </body>
 
 </html>

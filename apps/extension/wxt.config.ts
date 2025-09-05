@@ -27,7 +27,15 @@ export default defineConfig({
     name: 'PenX',
     description: 'AI Powered Personal Data Hub',
     host_permissions: ['<all_urls>'],
-    permissions: ['bookmarks', 'storage', 'tabs', 'activeTab', 'favicon'],
+    action: {},
+    permissions: [
+      'bookmarks',
+      'storage',
+      'tabs',
+      'activeTab',
+      'favicon',
+      'sidePanel',
+    ],
     web_accessible_resources: [
       {
         resources: ['_favicon/*'],
