@@ -18,16 +18,16 @@ import {
   getPublicKey,
   setMnemonicToLocal,
 } from '@penx/mnemonic'
+import { currentCommandAtom } from '@penx/panel-app/hooks/useCurrentCommand'
+import { currentCreationAtom } from '@penx/panel-app/hooks/useCurrentCreation'
+import { navigation, setNavigations } from '@penx/panel-app/hooks/useNavigation'
+import { creationToCommand } from '@penx/panel-app/lib/creationToCommand'
+import { openCommand } from '@penx/panel-app/lib/openCommand'
 import { queryClient } from '@penx/query-client'
 import { refreshSession, useSession } from '@penx/session'
 import { store } from '@penx/store'
 import { syncNodesToServer } from '@penx/worker/lib/syncNodesToServer'
-import { currentCommandAtom } from '~/hooks/useCurrentCommand'
-import { currentCreationAtom } from '~/hooks/useCurrentCreation'
-import { navigation, setNavigations } from '~/hooks/useNavigation'
 import { Selection } from '~/hooks/useSelection'
-import { creationToCommand } from '~/lib/creationToCommand'
-import { openCommand } from '~/lib/openCommand'
 
 tinykeys(window, {
   // '$mod+Alt+KeyS': (event) => {

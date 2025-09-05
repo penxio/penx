@@ -20,7 +20,7 @@ export const CommandPaletteFooter = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()
   return (
     <Box
-      className="border-foreground/10 bg-foreground/5 border-t"
+      className="border-foreground/6 bg-foreground/2 border-t"
       h={footerHeight}
       toCenterY
       px3

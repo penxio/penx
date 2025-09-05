@@ -12,9 +12,7 @@ import { Creation } from '@penx/domain'
 import { useCreations } from '@penx/hooks/useCreations'
 import { useStructs } from '@penx/hooks/useStructs'
 import { cn } from '@penx/utils'
-import { navigation } from '~/hooks/useNavigation'
 import { getSelection, useSelection } from '~/hooks/useSelection'
-import { openCommand } from '~/lib/openCommand'
 
 const conf = new Conf()
 export function AICommandApp() {

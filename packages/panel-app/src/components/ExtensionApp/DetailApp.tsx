@@ -85,7 +85,7 @@ export function DetailApp({
 
       {!hideFooter && (
         <div
-          className="border-foreground/10 bg-foreground/5 flex items-center justify-between border-t px-3"
+          className="border-foreground/6 bg-foreground/2 flex items-center justify-between border-t px-3"
           style={{
             height: footerHeight,
           }}

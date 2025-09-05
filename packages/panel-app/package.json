@@ -8,7 +8,9 @@
   "types": "./src/index.ts",
   "exports": {
     "./tailwind.css": "./src/style/tailwind.css",
-    "./*": "./src/*.tsx"
+    "./*": "./src/*.tsx",
+    "./lib/*": "./src/lib/*.ts",
+    "./hooks/*": "./src/hooks/*.ts"
   },
   "scripts": {
     "brl": "barrelsby --delete -d ./src",

@@ -3,6 +3,7 @@ import { Box } from '@fower/react'
 import { isDesktop } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { store } from '@penx/store'
+import { cn } from '@penx/utils'
 import { useCommandAppLoading } from '../../hooks/useCommandAppLoading'
 import { commandUIAtom, useCommandAppUI } from '../../hooks/useCommandAppUI'
 import { useCurrentCommand } from '../../hooks/useCurrentCommand'
@@ -65,6 +66,8 @@ export const CommandPalette = () => {
   const { current, isLoading } = useQueryNavigations()
 
   const isIframe = currentCommand?.data?.runtime === 'iframe'
+
+  const isWeb = location.href.includes('/panel')
 
   const header = useMemo(() => {
     return (
@@ -151,7 +154,10 @@ export const CommandPalette = () => {
     <Command
       id="command-palette"
       label="Command Menu"
-      className="command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/70 dark:bg-neutral-900/80"
+      className={cn(
+        'command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/70 dark:bg-neutral-900/80',
+        isWeb && 'shadow-popover rounded-lg',
+      )}
       // loop={false}
       value={value}
       onValueChange={(v) => {
