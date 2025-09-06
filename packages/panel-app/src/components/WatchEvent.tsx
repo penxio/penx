@@ -25,6 +25,7 @@ import { store } from '@penx/store'
 import { currentCommandAtom } from '../hooks/useCurrentCommand'
 import { currentCreationAtom } from '../hooks/useCurrentCreation'
 import { navigation, setNavigations } from '../hooks/useNavigation'
+import { usePanel } from '../hooks/usePanel'
 import { Selection } from '../hooks/useSelection'
 import { creationToCommand } from '../lib/creationToCommand'
 import { openCommand } from '../lib/openCommand'
@@ -126,6 +127,9 @@ if (isDesktop) {
 }
 
 export function WatchEvent() {
+  const { panel } = usePanel()
+  console.log('=======panel:', panel)
+
   useEffect(() => {
     if (isDesktop) {
       window.electron.ipcRenderer.on('quick-input-success', () => {
@@ -156,8 +160,10 @@ export function WatchEvent() {
   function registerShortcuts() {
     for (const item of shortcuts) {
       // console.log('=============shortcut:', item)
-      window.customElectronApi.shortcut.unregister(item)
-      window.customElectronApi.shortcut.register(item)
+      if (isDesktop) {
+        window.customElectronApi.shortcut.unregister(item)
+        window.customElectronApi.shortcut.register(item)
+      }
     }
   }
 

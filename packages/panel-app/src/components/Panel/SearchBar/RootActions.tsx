@@ -240,7 +240,7 @@ export function RootActions({ command, close }: RootActionsProps) {
         >
           <Box toCenterY gap2 inlineFlex className="text-red-500">
             <div>
-              <Trash2Icon />
+              <Trash2Icon size={16} />
             </div>
             <div>
               <Trans>Delete Creation</Trans>

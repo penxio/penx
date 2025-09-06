@@ -137,7 +137,7 @@ export const ActionPopover = ({}: Props) => {
             </CommandGroup>
           </CommandList>
           <CommandInput
-            className="border-foreground/10 border-t px-3 py-3"
+            className="border-foreground/10 w-full border-t px-3 py-3 focus-visible:outline-none"
             placeholder={t`Search for actions...`}
           />
         </Command>

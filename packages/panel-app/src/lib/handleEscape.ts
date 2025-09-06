@@ -1,3 +1,4 @@
+import { isDesktop } from '@penx/constants'
 import { store } from '@penx/store'
 import { actionPopoverAtom } from '../hooks/useActionPopover'
 import { currentCommandAtom } from '../hooks/useCurrentCommand'
@@ -20,7 +21,7 @@ export async function handleEscape() {
 
       const navigations = navigation.getNavigations()
 
-      console.log('=======navigations:', navigations)
+      // console.log('=======navigations:', navigations)
 
       if (navigations.length === 1) {
         console.log('=======navigations:', navigations)
@@ -28,7 +29,7 @@ export async function handleEscape() {
         if (search.length) {
           store.set(searchAtom, '')
         } else {
-          window.electron.ipcRenderer.send('hide-panel-window')
+          isDesktop && window.electron.ipcRenderer.send('hide-panel-window')
         }
       } else {
         if (currentCommand?.id === 'quick-input') {

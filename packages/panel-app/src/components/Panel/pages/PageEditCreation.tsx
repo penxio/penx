@@ -28,7 +28,7 @@ export function PageEditCreation() {
 
   return (
     <DetailApp
-      className=" bg-white/65 dark:bg-neutral-900/80"
+      className="h-screen flex-1 dark:bg-neutral-900/80"
       headerBordered={false}
       // actions={
       //   <ActionPanel>

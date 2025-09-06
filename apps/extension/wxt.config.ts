@@ -35,6 +35,7 @@ export default defineConfig({
       'activeTab',
       'favicon',
       'sidePanel',
+      'commands',
     ],
     web_accessible_resources: [
       {
@@ -42,5 +43,14 @@ export default defineConfig({
         matches: ['<all_urls>'],
       },
     ],
+    commands: {
+      'toggle-sidepanel': {
+        suggested_key: {
+          default: 'Ctrl+I',
+          mac: 'Command+I',
+        },
+        description: 'Toggle sidepanel',
+      },
+    },
   },
 })

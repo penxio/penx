@@ -9,6 +9,7 @@ import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
 import { docToString } from '@penx/utils/editorHelper'
 import { currentCreationAtom } from '../../../../hooks/useCurrentCreation'
+import { usePanel } from '../../../../hooks/usePanel'
 import { useValue } from '../../../../hooks/useValue'
 import { CommandEmpty, CommandGroup } from '../../CommandComponents'
 import { CreationDetail } from '../../CreationDetail'
@@ -26,6 +27,7 @@ export function DatabaseDetail(props: Props) {
   const { text } = props
   const struct = new Struct(props.struct)
   const rows = creations.filter((c) => c.structId === struct.id)
+  const { isSidepanel } = usePanel()
 
   const filteredRows = useMemo(() => {
     const t = text.toLowerCase()
@@ -104,7 +106,7 @@ export function DatabaseDetail(props: Props) {
         <StructCommandList creations={filteredRows} struct={struct} />
       )}
 
-      {struct.showDetail && (
+      {struct.showDetail && !isSidepanel && (
         <>
           <Separator orientation="vertical" />
 

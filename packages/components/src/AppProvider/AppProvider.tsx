@@ -52,14 +52,13 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     },
   })
 
-  console.log('===============>>>>>loading:', loading)
+  // console.log('===============>>>>>loading:', loading)
 
   useEffect(() => {
     if (isLoading) return
     if (inited.current) return
     inited.current = true
     if (!appService.inited) {
-      console.log('helo......>>>>>>>>>')
       appService.init(session)
     }
   }, [isLoading, session])

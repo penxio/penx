@@ -24,27 +24,20 @@ export function DashboardProviders({
   children: React.ReactNode
   cookies?: string | null
 }) {
-  const content = useMemo(() => {
-    if (isExtension) return children
-    return (
-      <AppProvider>
-        <AreaDialog />
-        <StructDialog />
-        <DeleteCreationDialog />
-        {children}
-      </AppProvider>
-    )
-  }, [])
-
   return (
-    <>
+    <StoreProvider>
       <Toaster className="dark:hidden" />
       <Toaster theme="dark" className="hidden dark:block" />
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
-          <StoreProvider>{content}</StoreProvider>
+          <AppProvider>
+            <AreaDialog />
+            <StructDialog />
+            <DeleteCreationDialog />
+            {children}
+          </AppProvider>
         </SessionProvider>
       </QueryClientProvider>
-    </>
+    </StoreProvider>
   )
 }

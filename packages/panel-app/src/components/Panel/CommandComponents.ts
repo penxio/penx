@@ -1,4 +1,3 @@
-import { styled } from '@fower/react'
 import { Command as CmdkCommand } from 'cmdk'
 
 export const Command = CmdkCommand

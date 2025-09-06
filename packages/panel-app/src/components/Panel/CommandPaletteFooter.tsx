@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Box } from '@fower/react'
 import { ProfileButton } from '@penx/components/ProfileButton'
-import { isProd } from '@penx/constants'
+import { isDesktop, isProd } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useAreas } from '@penx/hooks/useAreas'
 import { localDB } from '@penx/local-db'
@@ -41,7 +41,7 @@ export const CommandPaletteFooter = ({}: Props) => {
           />
         </div>
       )}
-      {!isProd && (
+      {!isProd && isDesktop && (
         <Button
           onClick={async () => {
             const nodes = await localDB.node.findMany({})

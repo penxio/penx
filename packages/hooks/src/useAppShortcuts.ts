@@ -5,6 +5,6 @@ export function useAppShortcuts() {
   const shortcutNode = useAtomValue(appShortcutAtom)
 
   return {
-    shortcuts: shortcutNode.props.shortcuts || [],
+    shortcuts: shortcutNode?.props?.shortcuts || [],
   }
 }

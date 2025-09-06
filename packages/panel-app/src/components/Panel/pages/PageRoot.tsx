@@ -7,6 +7,7 @@ import { Separator } from '@penx/uikit/ui/separator'
 import { useActionPopover } from '../../../hooks/useActionPopover'
 import { useHandleSelect } from '../../../hooks/useHandleSelect'
 import { useItems } from '../../../hooks/useItems'
+import { usePanel } from '../../../hooks/usePanel'
 import { useSearch } from '../../../hooks/useSearch'
 import { useSelectStruct } from '../../../hooks/useSelectStruct'
 import { useValue } from '../../../hooks/useValue'
@@ -18,6 +19,7 @@ import { ListItemUI } from '../ListItemUI'
 export function PageRoot() {
   const { commandItems, favorItems, structItems, creationItems, items } =
     useItems()
+
   const { value, setValue } = useValue()
   const { search } = useSearch()
   const selectStruct = useSelectStruct()
@@ -25,6 +27,7 @@ export function PageRoot() {
   const { setOpen } = useActionPopover()
   const { area } = useArea()
   const { structs } = useStructs()
+  const { isSidepanel } = usePanel()
 
   const currentItem = items.find(
     (item) => item.id === value && item.data.type === 'Creation',
@@ -115,7 +118,7 @@ export function PageRoot() {
 
   return (
     <CommandList className="absolute inset-0 flex overflow-hidden outline-none">
-      <div className="absolute inset-0 flex overflow-hidden">
+      <div className="absolute inset-0 flex w-full overflow-hidden">
         <div
           ref={parentRef}
           className="flex-[2] overflow-auto px-2 py-2"
@@ -158,7 +161,7 @@ export function PageRoot() {
           </CommandGroup>
         </div>
 
-        {currentItem?.data?.creation && struct?.showDetail && (
+        {currentItem?.data?.creation && struct?.showDetail && !isSidepanel && (
           <>
             <Separator orientation="vertical" />
             <div className="flex flex-[3] flex-col overflow-auto">

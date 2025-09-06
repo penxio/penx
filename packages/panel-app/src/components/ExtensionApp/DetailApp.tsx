@@ -53,7 +53,7 @@ export function DetailApp({
     return assets[command?.icon as string] || command?.icon
   }, [command])
 
-  if (!command) return <div>Henel</div>
+  if (!command) return <div></div>
 
   return (
     <div className={cn('flex h-full w-full flex-col', className)}>
