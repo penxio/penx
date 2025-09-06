@@ -155,6 +155,7 @@ export const CommandPalette = () => {
     <Command
       id="command-palette"
       label="Command Menu"
+      disablePointerSelection
       className={cn(
         'command-panel text-foreground/80 absolute bottom-0 left-0 right-0 top-0 z-10 flex w-full flex-col bg-white/70 dark:bg-neutral-900/80',
         isWeb && 'shadow-popover rounded-lg',
@@ -162,7 +163,7 @@ export const CommandPalette = () => {
       // loop={false}
       value={value}
       onValueChange={(v) => {
-        // console.log('============v:', v)
+        console.log('============v:', v)
         setValue(v)
       }}
       // shouldFilter={false}

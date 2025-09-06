@@ -1,13 +1,12 @@
-import { KeyboardEventHandler, memo, useEffect, useRef } from 'react';
-import { appEmitter } from '@penx/emitter';
-import { cn } from '@penx/utils';
-import { useHandleSelect } from '../../../hooks/useHandleSelect';
-import { useCommands, useItems } from '../../../hooks/useItems';
-import { navigation, useQueryNavigations } from '../../../hooks/useNavigation';
-import { useSearch } from '../../../hooks/useSearch';
-import { openCommand } from '../../../lib/openCommand';
-import { CommandInput } from '../CommandComponents';
-
+import { KeyboardEventHandler, memo, useEffect, useRef } from 'react'
+import { appEmitter } from '@penx/emitter'
+import { cn } from '@penx/utils'
+import { useHandleSelect } from '../../../hooks/useHandleSelect'
+import { useCommands, useItems } from '../../../hooks/useItems'
+import { navigation, useQueryNavigations } from '../../../hooks/useNavigation'
+import { useSearch } from '../../../hooks/useSearch'
+import { openCommand } from '../../../lib/openCommand'
+import { CommandInput } from '../CommandComponents'
 
 interface SearchInputProps {
   className?: string
@@ -104,6 +103,11 @@ export const SearchInput = ({ searchBarHeight, placeholder }: Props) => {
         }
       }}
       onKeyDown={(e) => {
+        if (!search.length && e.code === 'Space') {
+          e.preventDefault()
+          return
+        }
+
         if (e.key === 'Backspace' || e.key === 'delete') {
           if (!search) {
             // if (isCommandAppDetail) {

@@ -1,6 +1,7 @@
-import { ReactNode, useMemo } from 'react'
+import { ReactNode, useEffect, useMemo } from 'react'
 import { Box, css, FowerHTMLProps } from '@fower/react'
 import { Trans } from '@lingui/react/macro'
+import { tinykeys } from 'tinykeys'
 import { useStructs } from '@penx/hooks/useStructs'
 import { cn } from '@penx/utils'
 import { useCurrentCommand } from '../../hooks/useCurrentCommand'
@@ -70,10 +71,21 @@ export const ListItemUI = ({
     return item.data?.type
   }, [item])
 
+  // useEffect(() => {
+  //   let unsubscribe = tinykeys(window, {
+  //     Enter: () => {
+  //       onSelect?.(item)
+  //     },
+  //   })
+  //   return () => {
+  //     unsubscribe()
+  //   }
+  // }, [item, onSelect])
+
   return (
     <CommandItem
       className={cn(
-        "text-foreground data-[selected='true']:bg-foreground/10 flex h-[38px] cursor-pointer items-center justify-between gap-4 rounded-lg px-2",
+        "text-foreground data-[selected='true']:bg-foreground/10 hover:bg-foreground/5 flex h-[38px] cursor-pointer items-center justify-between gap-4 rounded-lg px-2",
         className,
       )}
       value={value || title}
@@ -81,26 +93,29 @@ export const ListItemUI = ({
       onSelect={() => {
         onSelect?.(item)
       }}
-      onClick={() => {
+      // onClick={() => {
+      //   onSelect?.(item)
+      // }}
+      onDoubleClick={() => {
         onSelect?.(item)
       }}
       {...rest}
     >
-      <Box toCenterY gap2>
+      <div className="flex items-center gap-2">
         {prefix}
         {showIcon &&
           (icon ?? <ListItemIcon icon={itemIcon as string} item={item} />)}
         <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
-          <Box
-            text-14
-            className={cn('line-clamp-1', !title && 'text-foreground/50')}
+          <div
+            className={cn(
+              'line-clamp-1 text-sm',
+              !title && 'text-foreground/50',
+            )}
           >
             {title || <Trans>Untitled</Trans>}
-          </Box>
+          </div>
           {subtitle && (
-            <Box text-12 zinc400>
-              {subtitle}
-            </Box>
+            <div className="text-foreground/40 text-xs">{subtitle}</div>
           )}
 
           {isFavorite && (
@@ -113,17 +128,17 @@ export const ListItemUI = ({
             </div>
           )}
         </Box>
-      </Box>
+      </div>
       <div className="flex items-center gap-1">
         {showType && !!type && (
           <div className="text-foreground/50 shrink-0 text-xs">{type}</div>
         )}
         {item?.extra && (
-          <Box toCenterY gap2 textXS gray600>
+          <div className="text-foreground/60 flex items-center gap-2 text-xs">
             {item.extra.map((extra, index) => (
               <Accessory key={index} item={extra} />
             ))}
-          </Box>
+          </div>
         )}
       </div>
     </CommandItem>
@@ -139,7 +154,7 @@ function Accessory({ item }: AccessoryProps) {
 
   let text: ReactNode = useMemo(() => {
     if (typeof item.text === 'string' || typeof item.text === 'number') {
-      return <Box>{item.text}</Box>
+      return <div>{item.text}</div>
     }
     if (isAccessoryObjectText(item.text)) {
       return (
@@ -159,10 +174,10 @@ function Accessory({ item }: AccessoryProps) {
   ) : null
 
   return (
-    <Box toCenterY gap1>
+    <div className="flex items-center gap-1">
       {icon}
       {text}
       {tag}
-    </Box>
+    </div>
   )
 }

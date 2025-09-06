@@ -23,7 +23,7 @@ export function Panel(props: Props) {
     <LocaleProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme={props.defaultTheme || 'system'}
         enableSystem
         disableTransitionOnChange
       >
@@ -42,8 +42,9 @@ export function Panel(props: Props) {
 function HydrateAtoms({
   children,
   location = 'normal',
+  defaultTheme = 'system',
 }: PropsWithChildren<Props>) {
-  useHydrateAtoms([[panelAtom, { location }]])
+  useHydrateAtoms([[panelAtom, { location, defaultTheme }]])
   return <>{children}</>
 }
 

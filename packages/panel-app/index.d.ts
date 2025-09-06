@@ -10,8 +10,6 @@ type Navigation = {
   data?: Record<string, any>
 }
 
-// declare module 'tinykeys'
-
 declare global {
   interface Window {
     nodeModelApi: NodeModelApi

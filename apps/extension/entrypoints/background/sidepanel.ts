@@ -21,7 +21,6 @@ export async function openSidepanel(tabId: number) {
       console.error('Failed to open side panel (fallback):', fallbackError)
     }
   }
-
 }
 
 export async function closeSidepanel() {
