@@ -162,6 +162,7 @@ export function useQueryCommands() {
 
   useEffect(() => {
     appEmitter.on('REFRESH_COMMANDS', refetch)
+    console.log('refetch.......commands...')
     return () => {
       appEmitter.off('REFRESH_COMMANDS', refetch)
     }
@@ -171,6 +172,15 @@ export function useQueryCommands() {
     appEmitter.on('ON_AREA_SELECTED', refetch)
     return () => {
       appEmitter.off('ON_AREA_SELECTED', refetch)
+    }
+  }, [])
+
+  useEffect(() => {
+    appEmitter.on('UPDATE_BROWSER_TAB', refetch)
+    console.log('refetch.......UPDATE_BROWSER_TAB')
+
+    return () => {
+      appEmitter.off('UPDATE_BROWSER_TAB', refetch)
     }
   }, [])
 

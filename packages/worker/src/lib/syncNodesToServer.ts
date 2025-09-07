@@ -47,6 +47,8 @@ export async function syncNodesToServer() {
 
   const newChanges = await getChanges(session)
 
+  console.log('========newChanges:', newChanges)
+
   const errors: any = []
 
   // const mnemonic = await getMnemonicFromLocal

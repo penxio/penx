@@ -177,7 +177,14 @@ async function sync(
       localLatestUpdated - changesLatestUpdated,
     )
 
-    if (localLatestUpdated >= changesLatestUpdated) return
+    if (localLatestUpdated >= changesLatestUpdated) {
+      await setElectricSyncState(spaceId, {
+        handle: stream.shapeHandle!,
+        offset: stream.lastOffset,
+        last_lsn: lsn,
+      })
+      return
+    }
   }
 
   const getDecryptedNode = (value: INode, isInsert = false) => {
@@ -250,6 +257,8 @@ async function sync(
 
   // console.log('synced:', updated, '=====changeNodes:', changeNodes)
   // console.log('======>>>>>>>>equal1:', changeNodes)
+
+  console.log('>>>>>>>setElectricSyncState', stream)
 
   await setElectricSyncState(spaceId, {
     handle: stream.shapeHandle!,

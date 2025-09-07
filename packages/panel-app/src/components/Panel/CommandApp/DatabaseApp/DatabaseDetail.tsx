@@ -79,7 +79,7 @@ export function DatabaseDetail(props: Props) {
   // console.log('=======filteredRows:', filteredRows, 'value:', value)
   const currentItem = filteredRows.find((item) => item.id === value)
 
-  console.log('=======currentItem:', currentItem)
+  // console.log('=======currentItem:', currentItem)
 
   if (currentItem) {
     store.set(currentCreationAtom, currentItem.raw)

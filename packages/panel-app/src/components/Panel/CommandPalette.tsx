@@ -163,7 +163,7 @@ export const CommandPalette = () => {
       // loop={false}
       value={value}
       onValueChange={(v) => {
-        console.log('============v:', v)
+        // console.log('============v:', v)
         setValue(v)
       }}
       // shouldFilter={false}

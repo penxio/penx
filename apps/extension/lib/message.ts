@@ -14,6 +14,8 @@ interface ProtocolMap {
   login: (data: { session: SessionData }) => any
 
   closeSidePanel: (data: {}) => any
+
+  updateBrowserTab: (data: {}) => any
 }
 
 export const { sendMessage, onMessage } =

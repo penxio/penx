@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { addDays, format } from 'date-fns'
 import { PlusIcon } from 'lucide-react'
-import { TaskNav } from '@penx/constants'
 import { Creation, Struct } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
 import { updateCreationProps } from '@penx/hooks/useCreation'
+import { getCreationFields } from '@penx/libs/getCreationFields'
 import { Button } from '@penx/uikit/ui/button'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { cn } from '@penx/utils'
@@ -54,6 +54,13 @@ export function StructCommandList({ creations, struct }: Props) {
 
               if (struct.isAICommand) {
                 navigation.push({ path: '/ai-command' })
+                return
+              }
+
+              if (struct.isBrowserTab) {
+                const fields = getCreationFields(struct, item)
+                console.log('=======fields:', fields)
+                appEmitter.emit('OPEN_BROWSER_TAB', fields)
                 return
               }
 

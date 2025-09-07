@@ -138,8 +138,9 @@ export function getStructTypeConfig() {
       name: t`Browser tab`,
       columns: [
         createBaseColumn('id', t`ID`, ColumnType.NUMBER),
-        createBaseColumn('title', t`Title`, ColumnType.TEXT),
+        createBaseColumn('windowId', t`Window ID`, ColumnType.NUMBER),
         createBaseColumn('url', t`URL`, ColumnType.URL),
+        createBaseColumn('favIconUrl', t`Favicon URL`, ColumnType.URL),
         createBaseColumn('active', t`Active`, ColumnType.BOOLEAN),
         createBaseColumn('muted', t`Muted`, ColumnType.BOOLEAN),
         createBaseColumn('pinned', t`Pinned`, ColumnType.BOOLEAN),

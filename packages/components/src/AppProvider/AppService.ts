@@ -283,20 +283,6 @@ export class AppService {
     structs = await fixBookmarkStruct(area.id, structs)
     structs = await fixStructsViews(area.id, structs)
 
-    for (const struct of structs) {
-      if (struct.props.type === StructType.BROWSER_TAB) {
-        await localDB.updateNodeProps(struct.id, {
-          ...struct.props,
-          syncable: false,
-        })
-      } else {
-        await localDB.updateNodeProps(struct.id, {
-          ...struct.props,
-          syncable: true,
-        })
-      }
-    }
-
     // console.log('======journals:', journals)
 
     // const mergedJournals = mergeJournals(journals)

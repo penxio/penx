@@ -60,6 +60,10 @@ export type AppEvent = {
   SUBMIT_CREATE_STRUCT: undefined
 
   SUBMIT_AI_CHAT: string
+
+  OPEN_BROWSER_TAB: any
+
+  UPDATE_BROWSER_TAB: any
 }
 
 export const appEmitter = mitt<AppEvent>()

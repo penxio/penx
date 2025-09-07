@@ -1,9 +1,16 @@
 import { onMessage } from '@/lib/message'
 import { browser } from '#imports'
+import { appEmitter } from '@penx/emitter'
+import { store } from '@penx/store'
 
 export function setupPort() {
   onMessage('closeSidePanel', () => {
     window.close()
+  })
+
+  onMessage('updateBrowserTab', async () => {
+    appEmitter.emit('UPDATE_BROWSER_TAB')
+    await store.creations.refetchCreations()
   })
 
   const port = browser.runtime.connect({ name: 'sidepanel-port' })

@@ -86,6 +86,10 @@ export class Struct {
     return this.type === StructType.BOOKMARK
   }
 
+  get isBrowserTab() {
+    return this.type === StructType.BROWSER_TAB
+  }
+
   get isNote() {
     return this.type === StructType.NOTE
   }
