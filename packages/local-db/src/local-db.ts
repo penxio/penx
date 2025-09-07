@@ -52,7 +52,7 @@ class LocalDB {
     id: string,
     input: Partial<T['props']>,
   ) => {
-    const node = await this.getNode(id)
+    const node = await this.getNode<ICreationNode>(id)
     const updatedAt = new Date()
 
     await this.node.update(id, {
@@ -63,10 +63,21 @@ class LocalDB {
       },
     })
 
-    await this.addChange(id, OperationType.UPDATE, {
-      updatedAt,
-      ...input,
-    })
+    if (node.type === NodeType.CREATION) {
+      const struct = await this.getNode<IStructNode>(node.props.structId)
+
+      if (struct?.props?.syncable) {
+        await this.addChange(id, OperationType.UPDATE, {
+          updatedAt,
+          ...input,
+        })
+      }
+    } else {
+      await this.addChange(id, OperationType.UPDATE, {
+        updatedAt,
+        ...input,
+      })
+    }
   }
 
   getSpace = (id: string) => {
@@ -175,10 +186,16 @@ class LocalDB {
   addCreation = async <T extends ICreationNode>(
     node: Partial<T>,
   ): Promise<T> => {
-    const newNode = await this.addNode<ICreationNode>({
-      type: NodeType.CREATION,
-      ...node,
-    } as T)
+    const struct = await this.getNode<IStructNode>(node.props?.structId!)
+
+    const newNode = await this.addNode<ICreationNode>(
+      {
+        type: NodeType.CREATION,
+        ...node,
+      } as T,
+      struct?.props?.syncable,
+    )
+
     return newNode as T
   }
 

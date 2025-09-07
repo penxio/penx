@@ -355,6 +355,7 @@ export function generateStructNode({
     id: props.id || uniqueId(),
     type: NodeType.STRUCT,
     props: {
+      syncable: true,
       ...props,
       name: props.name!,
       pluralName: `${name}s`,
@@ -460,6 +461,12 @@ export function getDefaultStructs(input: MetaInfo): IStructNode[] {
     generateStructNode({
       type: StructType.BOOKMARK,
       name: t`Bookmark`,
+      ...input,
+    }),
+    generateStructNode({
+      type: StructType.BROWSER_TAB,
+      name: t`Browser tab`,
+      syncable: false,
       ...input,
     }),
     // {

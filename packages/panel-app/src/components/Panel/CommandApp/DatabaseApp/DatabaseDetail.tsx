@@ -87,7 +87,7 @@ export function DatabaseDetail(props: Props) {
 
   if (!filteredRows.length) {
     return (
-      <div className="text-foreground/50 pl-3 pt-2">
+      <div className="text-foreground/50 pl-3 pt-2 text-sm">
         <Trans>No results found</Trans>
       </div>
     )

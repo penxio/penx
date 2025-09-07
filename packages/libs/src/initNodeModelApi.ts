@@ -53,6 +53,6 @@ export const initNodeModelApi = () => {
     },
   }
 
-  ;(window as any).nodeModelApi = nodeModelApi
+  ;(self as any).nodeModelApi = nodeModelApi
   localDB.node = nodeModelApi
 }

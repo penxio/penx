@@ -14,6 +14,7 @@ import { syncBookmarks } from '@/lib/syncBookmarks'
 import { syncTabs } from '@/lib/syncTabs'
 import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
+import { initNodeModelApi } from '@penx/libs/initNodeModelApi'
 import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
@@ -21,6 +22,8 @@ import { stringToDoc } from '@penx/utils/editorHelper'
 import { checkExtension } from './checkExtension'
 import { setupMessage } from './setupMessage'
 import { setupSidePanel } from './setupSidePanel'
+
+initNodeModelApi()
 
 export default defineBackground(() => {
   syncTabs()
@@ -31,4 +34,3 @@ export default defineBackground(() => {
   setupSidePanel()
   // checkExtension()
 })
-

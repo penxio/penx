@@ -78,7 +78,7 @@ export class AppService {
     try {
       const space = await this.getInitialSpace(session)
 
-      // console.log('===========getInital=space:', space)
+      console.log('===========getInitial=space:', space)
       await this.initStore(space)
     } catch (error) {
       console.log('init error=====>>>:', error)
@@ -224,6 +224,27 @@ export class AppService {
     // }
 
     {
+      const tabStruct = structs.find(
+        (s) => s.props.type === StructType.BROWSER_TAB,
+      )
+      // console.log('========aiCommandStruct:', aiCommandStruct)
+
+      if (!tabStruct) {
+        const newStruct = generateStructNode({
+          type: StructType.BROWSER_TAB,
+          name: t`Browser tab`,
+          spaceId: space.id,
+          userId: space.userId,
+          areaId: area.id,
+          syncable: false,
+        })
+
+        await localDB.addStruct(newStruct)
+        structs.push(newStruct)
+      }
+    }
+
+    {
       const aiCommandStruct = structs.find(
         (s) => s.props.type === StructType.AI_COMMAND,
       )
@@ -261,6 +282,20 @@ export class AppService {
     structs = await fixTaskStruct(area.id, structs)
     structs = await fixBookmarkStruct(area.id, structs)
     structs = await fixStructsViews(area.id, structs)
+
+    for (const struct of structs) {
+      if (struct.props.type === StructType.BROWSER_TAB) {
+        await localDB.updateNodeProps(struct.id, {
+          ...struct.props,
+          syncable: false,
+        })
+      } else {
+        await localDB.updateNodeProps(struct.id, {
+          ...struct.props,
+          syncable: true,
+        })
+      }
+    }
 
     // console.log('======journals:', journals)
 

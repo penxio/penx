@@ -124,6 +124,7 @@ export interface IStructNode extends INode {
     columns: IColumn[]
     views: IView[]
     showDetail?: boolean
+    syncable?: boolean
   }
 }
 

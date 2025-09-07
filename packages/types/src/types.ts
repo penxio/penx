@@ -255,6 +255,7 @@ export enum StructType {
   AI_COMMAND = 'AI_COMMAND',
   FRIEND = 'FRIEND',
   PROJECT = 'PROJECT',
+  BROWSER_TAB = 'BROWSER_TAB',
 }
 
 export enum GateType {
