@@ -2,7 +2,7 @@ import { get, set } from 'idb-keyval'
 import { atom } from 'jotai'
 import { ACTIVE_SPACE, CreateAreaInput, WidgetType } from '@penx/constants'
 import { idb } from '@penx/indexeddb'
-import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
+import { getDefaultStructs } from '@penx/libs/struct-generator/struct-generator'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {

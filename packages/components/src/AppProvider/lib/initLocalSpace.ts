@@ -1,7 +1,7 @@
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { defaultEditorContent, defaultNavLinks } from '@penx/constants'
-import { getDefaultStructs } from '@penx/libs/getDefaultStructs'
+import { getDefaultStructs } from '@penx/libs/struct-generator/struct-generator'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
 import { localDB } from '@penx/local-db'
 import {

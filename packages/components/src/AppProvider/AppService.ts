@@ -6,7 +6,7 @@ import { api } from '@penx/api'
 import { isDesktop } from '@penx/constants'
 import { widgetAtom } from '@penx/hooks/useWidget'
 import { checkMnemonic } from '@penx/libs/checkMnemonic'
-import { generateStructNode } from '@penx/libs/getDefaultStructs'
+import { generateStructNode } from '@penx/libs/struct-generator/struct-generator'
 import { localDB } from '@penx/local-db'
 import { getMnemonicFromLocal } from '@penx/mnemonic'
 import {

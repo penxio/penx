@@ -7,9 +7,11 @@ import { useStructTemplates } from '@penx/hooks/useStructTemplates'
 import { isBuiltinStruct } from '@penx/libs/isBuiltinStruct'
 import { useSession } from '@penx/session'
 import { Button } from '@penx/uikit/ui/button'
+import { cn } from '@penx/utils'
 import { DetailApp } from '../../../components/ExtensionApp/DetailApp'
 import { useCurrentStruct } from '../../../hooks/useCurrentStruct'
 import { navigation } from '../../../hooks/useNavigation'
+import { usePanel } from '../../../hooks/usePanel'
 import { openCommand } from '../../../lib/openCommand'
 import { StructInfo } from '../CommandApp/DatabaseApp/StructInfo'
 
@@ -18,6 +20,7 @@ export function PageEditStruct() {
     struct: { id },
   } = useCurrentStruct()
   const { structs } = useStructs()
+  const { isSidepanel } = usePanel()
 
   const struct = structs.find((s) => s.id === id)!
   const { setState } = usePublishStructDialog()
@@ -48,11 +51,17 @@ export function PageEditStruct() {
       }
     >
       <DatabaseProvider struct={struct}>
-        <div className="divide-foreground/10 flex  h-full justify-between divide-x">
-          <div className="flex-1 overflow-auto p-3">
+        <div
+          className={cn(
+            'divide-foreground/10 flex  h-full divide-x',
+            !isSidepanel && 'justify-between',
+            isSidepanel && 'flex-col',
+          )}
+        >
+          <div className={cn('p-3', !isSidepanel && 'flex-1 overflow-auto')}>
             <EditStructForm struct={struct} isPanel />
           </div>
-          <div className="flex-1 overflow-auto p-1">
+          <div className={cn(!isSidepanel && 'flex-1 overflow-auto p-1')}>
             <StructInfo struct={struct} />
           </div>
         </div>

@@ -36,6 +36,8 @@ export async function syncTabs() {
 
   let tabs = await chrome.tabs.query({})
 
+  console.log('==========tabs:', tabs)
+
   const session = await storage.getSession()
 
   console.log('=====session:', session)
@@ -55,6 +57,4 @@ export async function syncTabs() {
   )
   console.log('=======>>>>>>>>>tabNodes:', tabNodes)
   if (tabNodes.length) return
-
-  console.log('==========tabs1:', tabs)
 }
