@@ -127,9 +127,6 @@ if (isDesktop) {
 }
 
 export function WatchEvent() {
-  const { panel } = usePanel()
-  console.log('=======panel:', panel)
-
   useEffect(() => {
     if (isDesktop) {
       window.electron.ipcRenderer.on('quick-input-success', () => {

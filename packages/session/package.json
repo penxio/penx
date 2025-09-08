@@ -21,6 +21,7 @@
     "@penx/constants": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/indexeddb": "workspace:*",
+    "@penx/emitter": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/query-client": "workspace:*"
   }

@@ -2550,6 +2550,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../emitter
       '@penx/indexeddb':
         specifier: workspace:*
         version: link:../indexeddb

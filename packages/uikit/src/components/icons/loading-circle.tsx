@@ -1,10 +1,20 @@
-export default function LoadingCircle({ dimensions }: { dimensions?: string }) {
+import { cn } from '@penx/utils'
+
+export default function LoadingCircle({
+  dimensions,
+  className,
+}: {
+  dimensions?: string
+  className?: string
+}) {
   return (
     <svg
       aria-hidden="true"
-      className={`${
-        dimensions || 'h-4 w-4'
-      } animate-spin fill-stone-600 text-stone-200`}
+      className={cn(
+        'fill-foreground/60 text-foreground/20 h-4 w-4 animate-spin',
+        dimensions,
+        className,
+      )}
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

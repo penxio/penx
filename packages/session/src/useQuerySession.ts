@@ -13,6 +13,7 @@ import {
   PLATFORM,
   ROOT_HOST,
 } from '@penx/constants'
+import { appEmitter } from '@penx/emitter'
 import { queryClient } from '@penx/query-client'
 import {
   BillingCycle,
@@ -66,7 +67,7 @@ export function useQuerySession() {
       const localSession = await get<SessionData>(SESSION)
       // console.log('======isDesktop:', isDesktop, 'localSession:', localSession)
 
-      if (isDesktop || isMobileApp || !navigator.onLine) {
+      if (isDesktop || isExtension || isMobileApp || !navigator.onLine) {
         return localSession || null
       }
 
@@ -81,6 +82,28 @@ export function useQuerySession() {
       return remoteSession as SessionData
     },
     // staleTime: 5 * 60 * 1000,
+  })
+
+  // watch web login
+  window.addEventListener('message', async (event) => {
+    if (
+      event.data &&
+      event.data.type === 'penx-logout' &&
+      event.data.source === 'penx-account'
+    ) {
+      alert('1111111111')
+      logout()
+    }
+
+    if (
+      event.data &&
+      event.data.type === 'penx-login' &&
+      event.data.source === 'penx-account'
+    ) {
+      alert('2222222222')
+      await set(SESSION, event.data.payload)
+      refetch()
+    }
   })
 
   async function login(data: LoginData & { host?: string }) {

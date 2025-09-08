@@ -39,7 +39,6 @@ export function LoginForm({}: Props) {
   const { setIsOpen } = useLoginDialog()
   const { setAuthStatus } = useAuthStatus()
   const { login } = useSession()
-  const { push } = useRouter()
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),

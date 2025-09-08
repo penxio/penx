@@ -3,18 +3,21 @@
 import { ReactNode, useState } from 'react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
+import { PopoverClose } from '@radix-ui/react-popover'
 // import { fetch } from '@tauri-apps/plugin-http'
 import { openUrl } from '@tauri-apps/plugin-opener'
 import ky from 'ky'
 import {
   BadgeCheck,
   Bell,
+  CircleUserRoundIcon,
   CogIcon,
   LogOut,
   MessageCircleIcon,
   Moon,
   Sparkles,
   Sun,
+  UserIcon,
 } from 'lucide-react'
 import { nanoid } from 'nanoid'
 import { toast } from 'sonner'
@@ -31,6 +34,7 @@ import { useMySpace } from '@penx/hooks/useMySpace'
 import { updateSession, useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button, ButtonProps } from '@penx/uikit/button'
+import LoadingCircle from '@penx/uikit/components/icons/loading-circle'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
 import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
 import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
@@ -120,6 +124,11 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
       return
     }
 
+    if (isExtension) {
+      window.open('https://penx.io/account')
+      return
+    }
+
     loginDialog.setIsOpen(true)
   }
 
@@ -137,10 +146,22 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
 
   if (!session) {
     if (loginButton) return loginButton
+
     return (
-      <Button size="sm" disabled={loading} onClick={handleLogin} {...rest}>
-        <Trans>Log in</Trans>
-        {loading && <LoadingDots className="text-background" />}
+      <Button
+        variant="ghost"
+        size="icon"
+        disabled={loading}
+        onClick={handleLogin}
+        {...rest}
+        className={cn(
+          'text-foreground/60 bg-foreground/10 hover:bg-foreground/15 size-8 shrink-0 rounded-full p-0',
+          rest.className,
+        )}
+      >
+        {!loading && <UserIcon className="size-5" />}
+        {/* <Trans>Log in</Trans> */}
+        {loading && <LoadingCircle />}
       </Button>
     )
   }
@@ -211,79 +232,90 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
 
         {!isMobileApp && (
           <div className="p-1">
-            <MenuItem
-              onClick={async () => {
-                if (typeof onOpenSettings === 'function') {
-                  return onOpenSettings()
-                }
-                settings.setOpen(true)
-                // if (isExtension) {
-                //   window.open(`${ROOT_HOST}/~/settings`)
-                //   return
-                // }
-                // if (isDesktop) {
-                //   console.log('is desktop....')
-                //   return
-                // }
-                // appEmitter.emit('ROUTE_TO_SETTINGS')
-              }}
-            >
-              <CogIcon className="size-5" />
-              <Trans>Settings</Trans>
-            </MenuItem>
+            <PopoverClose asChild>
+              <MenuItem
+                onClick={async () => {
+                  if (typeof onOpenSettings === 'function') {
+                    return onOpenSettings()
+                  }
+                  settings.setOpen(true)
+                  // if (isExtension) {
+                  //   window.open(`${ROOT_HOST}/~/settings`)
+                  //   return
+                  // }
+                  // if (isDesktop) {
+                  //   console.log('is desktop....')
+                  //   return
+                  // }
+                  // appEmitter.emit('ROUTE_TO_SETTINGS')
+                }}
+              >
+                <CogIcon className="size-5" />
+                <Trans>Settings</Trans>
+              </MenuItem>
+            </PopoverClose>
 
             {/* <MenuItem>
                 <CreditCard />
                 <Trans>Billing</Trans>
               </MenuItem> */}
 
-            <MenuItem
-              onClick={async () => {
-                settings.setOpen(true)
-                // const path = `${ROOT_HOST}/~/settings/subscription`
-                // if (isExtension) {
-                //   window.open(path)
-                //   return
-                // }
-                // location.href = path
-                if (isDesktop) {
-                  window.electron.ipcRenderer.send(
-                    'open-url',
-                    `${ROOT_HOST}/pricing?from=desktop`,
-                  )
-                }
-              }}
-            >
-              <Sparkles className="size-5" />
-              <Trans>Upgrade to Pro</Trans>
-            </MenuItem>
+            <PopoverClose asChild>
+              <MenuItem
+                onClick={async () => {
+                  settings.setOpen(true)
 
-            <MenuItem
-              onClick={() => {
-                window.open('https://discord.gg/nyVpH9njDu')
-              }}
-            >
-              <MessageCircleIcon className="size-5" />
-              <Trans>Support</Trans>
-            </MenuItem>
+                  const path = `${ROOT_HOST}/pricing?from=desktop`
+
+                  if (isExtension) {
+                    window.open(path)
+                    return
+                  }
+
+                  if (isDesktop) {
+                    window.electron.ipcRenderer.send('open-url', path)
+                  }
+                }}
+              >
+                <Sparkles className="size-5" />
+                <Trans>Upgrade to Pro</Trans>
+              </MenuItem>
+            </PopoverClose>
+
+            <PopoverClose asChild>
+              <MenuItem
+                onClick={() => {
+                  window.open('https://discord.gg/nyVpH9njDu')
+                }}
+              >
+                <MessageCircleIcon className="size-5" />
+                <Trans>Support</Trans>
+              </MenuItem>
+            </PopoverClose>
 
             {/* <MenuItem>
                 <Bell />
                 Notifications
               </MenuItem> */}
 
-            <MenuItem
-              className="text-red-500"
-              onClick={async () => {
-                try {
-                  await logout()
-                  appEmitter.emit('ON_LOGOUT_SUCCESS')
-                } catch (error) {}
-              }}
-            >
-              <LogOut className="size-5" />
-              <Trans>Log out</Trans>
-            </MenuItem>
+            <PopoverClose asChild>
+              <MenuItem
+                className="text-red-500"
+                onClick={async () => {
+                  if (isExtension) {
+                    window.open('https://penx.io/account')
+                    return
+                  }
+                  try {
+                    await logout()
+                    appEmitter.emit('ON_LOGOUT_SUCCESS')
+                  } catch (error) {}
+                }}
+              >
+                <LogOut className="size-5" />
+                <Trans>Log out</Trans>
+              </MenuItem>
+            </PopoverClose>
           </div>
         )}
       </PopoverContent>

@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react'
 import { setConfig } from '@fower/react'
-import { useQuery } from '@tanstack/react-query'
 import { createStore, Provider, useAtom } from 'jotai'
 import { useHydrateAtoms } from 'jotai/utils'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
@@ -8,6 +7,7 @@ import { PublishStructDialog } from '@penx/components/PublishStructDialog/Publis
 import { ThemeProvider } from '@penx/components/ThemeProvider'
 import { LocaleProvider } from '@penx/locales'
 import { useQuerySession, useSession } from '@penx/session'
+import { LoginDialog } from '@penx/widgets/LoginDialog'
 import { panelAtom, PanelState, usePanel } from '../../hooks/usePanel'
 import { WatchEvent } from '../WatchEvent'
 import { CommandPalette } from './CommandPalette'
@@ -18,7 +18,7 @@ setConfig({
 
 interface Props extends Partial<PanelState> {}
 
-export function Panel(props: Props) {
+export function Panel({ children, ...props }: PropsWithChildren<Props>) {
   return (
     <LocaleProvider>
       <ThemeProvider
@@ -29,8 +29,10 @@ export function Panel(props: Props) {
       >
         <DashboardProviders>
           <PublishStructDialog />
+          <LoginDialog />
           <HydrateAtoms {...props}>
             <CommandPalette />
+            {children}
           </HydrateAtoms>
           <WatchEvent />
         </DashboardProviders>

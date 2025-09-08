@@ -1,5 +1,5 @@
 import { askQuestion } from '@/lib/askQuestion'
-import { onMessage } from '@/lib/message'
+import { onMessage, sendMessage } from '@/lib/message'
 import { storage } from '@/lib/storage'
 
 export async function setupMessage() {

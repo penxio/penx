@@ -64,6 +64,9 @@ export type AppEvent = {
   OPEN_BROWSER_TAB: any
 
   UPDATE_BROWSER_TAB: any
+
+  WEB_LOGIN_SUCCESS: any
+  WEB_LOGOUT_SUCCESS: any
 }
 
 export const appEmitter = mitt<AppEvent>()

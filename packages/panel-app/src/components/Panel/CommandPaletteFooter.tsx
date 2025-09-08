@@ -19,7 +19,7 @@ export const CommandPaletteFooter = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()
   return (
     <div
-      className="border-foreground/6 bg-foreground/2 flex items-center justify-between border-t px-3"
+      className="border-foreground/6 bg-foreground/2 flex items-center justify-between border-t px-2"
       style={{
         height: footerHeight,
       }}
@@ -30,7 +30,6 @@ export const CommandPaletteFooter = ({}: Props) => {
         <div className="inline-flex">
           {/* <AreasPopover /> */}
           <ProfileButton
-            // variant="outline-solid"
             size="xs"
             className="text-sm"
             onOpenSettings={() => {
