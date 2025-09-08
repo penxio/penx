@@ -82,10 +82,10 @@ export const FilterPopover = ({}: Props) => {
           <div>
             <div>{getLabel(value || TaskNav.TODAY)}</div>
           </div>
-          <Box toCenterY gap1>
+          <div className="flex items-center gap-1">
             <Kbd>⌘</Kbd>
             <Kbd>F</Kbd>
-          </Box>
+          </div>
         </div>
       </PopoverTrigger>
       {open && (
@@ -153,12 +153,12 @@ function MenuItem({
       {...rest}
     >
       {children}
-      <Box toBetween toCenterY ml-auto gap1>
+      <div className="ml-auto flex items-center justify-between gap-1">
         {shortcut &&
           shortcut.split(' ').map((key) => {
             return <Kbd key={key}>{key}</Kbd>
           })}
-      </Box>
+      </div>
     </CommandItem>
   )
 }
@@ -181,9 +181,9 @@ function StructActions({}: StructActionsProps) {
             // console.log('========key:', key)
           }}
         >
-          <Box toCenterY gap2 inlineFlex>
+          <div className="inline-flex items-center gap-2">
             <div>{getLabel(key)}</div>
-          </Box>
+          </div>
         </MenuItem>
       ))}
     </>

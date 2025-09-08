@@ -9,10 +9,10 @@ interface DataListItemProps {
 export const DataListItem = memo(
   function DataListItem({ item }: DataListItemProps) {
     return (
-      <Box toBetween toCenterY>
-        <Box>{item.label}</Box>
-        <Box>{item.value}</Box>
-      </Box>
+      <div className="flex items-center justify-between">
+        <div>{item.label}</div>
+        <div>{item.value}</div>
+      </div>
     )
   },
   (prev, next) => {

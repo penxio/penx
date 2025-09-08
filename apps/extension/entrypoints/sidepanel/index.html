@@ -10,7 +10,10 @@
   <meta name="manifest.open_at_install" content="true" />
   <meta name="manifest.browser_style" content="false" />
 
-  <link rel="stylesheet" href="./style.css" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src *; style-src 'self' 'unsafe-inline'; connect-src *; img-src * data:" />
+
+  <!-- <link rel="stylesheet" href="./style.css" /> -->
 </head>
 
 <body>

@@ -37,18 +37,17 @@ export function PageStructCreations() {
           <DatabaseApp />
         </CommandList>
       </div>
-      <Box
-        className="border-foreground/10 bg-foreground/5 border-t"
-        h={footerHeight}
-        toCenterY
-        px3
-        toBetween
+      <div
+        className="border-foreground/10 bg-foreground/5 flex items-center justify-between border-t px-3"
+        style={{
+          height: footerHeight,
+        }}
       >
-        <Box toCenterY gap1>
+        <div className="flex items-center gap-1">
           <DatabaseName />
-        </Box>
+        </div>
         <ActionPopover />
-      </Box>
+      </div>
     </>
   )
 }

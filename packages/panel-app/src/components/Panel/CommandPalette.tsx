@@ -107,26 +107,20 @@ export const CommandPalette = () => {
     if (!current) return null
     if (isExtension) {
       if (!currentCommand) return null
-
       return <ExtensionComponent />
     }
-
     if (current.path === '/configure-shortcut') {
       return <PageConfigureShortcut />
     }
-
     if (current.path === '/struct-creations') {
       return <PageStructCreations />
     }
-
     if (current.path === '/ai-command') {
       return <PageAICommand />
     }
-
     if (current.path === '/edit-struct') {
       return <PageEditStruct />
     }
-
     return (
       <>
         {header}

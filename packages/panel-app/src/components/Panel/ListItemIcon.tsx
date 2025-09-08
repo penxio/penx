@@ -49,15 +49,11 @@ export const ListItemIcon = memo(
 
       return (
         <Box
-          flexShrink-0
-          square={size}
-          bgNeutral300
-          rounded-6
-          toCenter
-          textXS
-          uppercase
-          white
-          shadowSM
+          className="flex shrink-0 items-center justify-center rounded-[6px] text-xs text-white"
+          style={{
+            height: size,
+            width: size,
+          }}
           bgGradientX={arr}
           {...rest}
         >
@@ -80,17 +76,16 @@ export const ListItemIcon = memo(
       ]
 
       return (
-        <Box
-          square={size}
-          flexShrink-0
-          rounded-6
-          toCenter
-          textXS
-          white
-          bgGradientX={arr}
+        <div
+          className="flex shrink-0 items-center justify-center rounded-[6px] text-xs text-white"
+          style={{
+            height: size,
+            width: size,
+          }}
+          // bgGradientX={arr}
         >
           {icon}
-        </Box>
+        </div>
       )
     }
 
@@ -99,15 +94,10 @@ export const ListItemIcon = memo(
       if (icon.value === '#') {
         return (
           <Box
-            className="shadow-md"
-            square={size}
-            flexShrink-0
-            rounded-6
-            toCenter
-            textXS
-            white
-            // bgGradientX={['green500', 'blue500']}
-            bg={icon.bg || 'gray500'}
+            className="flex shrink-0 items-center justify-center rounded-[6px] text-xs text-white shadow-md"
+            style={{ width: size, height: size }}
+            bgGradientX={['green500', 'blue500']}
+            // bg={icon.bg || 'gray500'}
           >
             {icon.value}
           </Box>
@@ -117,13 +107,14 @@ export const ListItemIcon = memo(
 
     if (icon.startsWith('/')) {
       return (
-        <Box
-          as="img"
+        <img
           src={icon}
           alt=""
-          width={size}
-          height={size}
-          style={{ borderRadius: 6 }}
+          style={{
+            borderRadius: 6,
+            width: size,
+            height: size,
+          }}
         />
       )
     }
@@ -140,10 +131,12 @@ export const ListItemIcon = memo(
       )
     }
     return (
-      <Box
-        as="img"
-        square={size}
-        rounded-6
+      <img
+        className="rounded-lg"
+        style={{
+          height: size,
+          width: size,
+        }}
         src={`data:image/png;base64, ${icon}`}
       />
     )
@@ -155,13 +148,13 @@ export const ListItemIcon = memo(
 
 function IconifyIcon(icon: IconifyIconType) {
   return (
-    <Box
+    <div
       className={cn(
         'flex size-5 items-center justify-center rounded-[6px] p-[3px] text-sm text-white shadow-md',
         icon.className,
       )}
     >
       <Icon className="" icon={icon.name.split('--').join(':')} />
-    </Box>
+    </div>
   )
 }

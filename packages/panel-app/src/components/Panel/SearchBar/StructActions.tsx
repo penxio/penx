@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { Box } from '@fower/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import {
@@ -50,14 +49,14 @@ export function StructActions({ close }: StructActionsProps) {
             close()
           }}
         >
-          <Box toCenterY gap2 inlineFlex>
+          <div className="inline-flex items-center gap-2">
             <div className="">
               <GlobeIcon size={16} />
             </div>
             <div>
               <Trans>Open in browser</Trans>
             </div>
-          </Box>
+          </div>
         </ActionCommandItem>
       )}
 
@@ -68,14 +67,14 @@ export function StructActions({ close }: StructActionsProps) {
           close()
         }}
       >
-        <Box toCenterY gap2 inlineFlex>
+        <div className="inline-flex items-center gap-2">
           <div className="">
             <EditIcon size={16} />
           </div>
           <div>
             <Trans>Edit content</Trans>
           </div>
-        </Box>
+        </div>
       </ActionCommandItem>
       <ActionCommandItem
         shortcut=""
@@ -87,14 +86,14 @@ export function StructActions({ close }: StructActionsProps) {
           close()
         }}
       >
-        <Box toCenterY gap2 inlineFlex>
+        <div className="inline-flex items-center gap-2">
           <div className="">
             <CopyIcon size={16} />
           </div>
           <div>
             <Trans>Copy ID</Trans>
           </div>
-        </Box>
+        </div>
       </ActionCommandItem>
       <ActionCommandItem
         shortcut=""
@@ -103,14 +102,14 @@ export function StructActions({ close }: StructActionsProps) {
           close()
         }}
       >
-        <Box toCenterY gap2 inlineFlex>
+        <div className="inline-flex items-center gap-2">
           <div>
             <ShareIcon size={16} />
           </div>
           <div>
             <Trans>Share</Trans>
           </div>
-        </Box>
+        </div>
       </ActionCommandItem>
       <ActionCommandItem
         shortcut=""
@@ -125,14 +124,14 @@ export function StructActions({ close }: StructActionsProps) {
           }, 0)
         }}
       >
-        <Box toCenterY gap2 inlineFlex>
+        <div className="inline-flex items-center gap-2">
           <div>
             <Trash2Icon size={16} />
           </div>
           <div>
             <Trans>Delete record</Trans>
           </div>
-        </Box>
+        </div>
       </ActionCommandItem>
     </>
   )

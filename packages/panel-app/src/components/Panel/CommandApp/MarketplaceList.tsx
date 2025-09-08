@@ -1,5 +1,5 @@
 import SVG from 'react-inlinesvg'
-import { Box, css } from '@fower/react'
+import { css } from '@fower/react'
 
 interface ItemIconProps {
   icon: string
@@ -8,13 +8,21 @@ export function ExtensionIcon({ icon }: ItemIconProps) {
   const size = 48
   const rounded = 12
   if (!icon) {
-    return <Box square={size} bgNeutral300 rounded={rounded}></Box>
+    return (
+      <div
+        className="bg-foreground/30"
+        style={{
+          height: size,
+          width: size,
+          borderRadius: rounded,
+        }}
+      ></div>
+    )
   }
 
   if (icon.startsWith('/')) {
     return (
-      <Box
-        as="img"
+      <img
         src={icon}
         alt=""
         width={size}
@@ -27,14 +35,23 @@ export function ExtensionIcon({ icon }: ItemIconProps) {
   const isSVG = icon.startsWith('<svg')
   if (isSVG) {
     return (
-      <SVG className={css({ square: size, rounded })} src={icon as string} />
+      <SVG
+        style={{
+          height: size,
+          width: size,
+          borderRadius: rounded,
+        }}
+        src={icon as string}
+      />
     )
   }
   return (
-    <Box
-      as="img"
-      square={size}
-      rounded={rounded}
+    <img
+      style={{
+        height: size,
+        width: size,
+        borderRadius: rounded,
+      }}
       src={`data:image/png;base64, ${icon}`}
     />
   )

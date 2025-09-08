@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { Box } from '@fower/react'
 import { ColorfulStructIcon } from '@penx/components/ColorfulStructIcon'
 import { useStructs } from '@penx/hooks/useStructs'
 import { getBgColor } from '@penx/libs/color-helper'
@@ -23,7 +22,7 @@ export const DatabaseName = () => {
 
   if (!struct) return null
   return (
-    <Box className="text-foreground flex h-[30px] items-center gap-1 rounded-full text-sm">
+    <div className="text-foreground flex h-[30px] items-center gap-1 rounded-full text-sm">
       <ColorfulStructIcon
         struct={struct}
         iconClassName="size-4"
@@ -31,6 +30,6 @@ export const DatabaseName = () => {
       />
 
       <div>{struct.name}</div>
-    </Box>
+    </div>
   )
 }

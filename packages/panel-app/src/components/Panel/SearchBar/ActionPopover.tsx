@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Box } from '@fower/react'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { Kbd } from '@penx/components/Kbd'
@@ -95,10 +94,10 @@ export const ActionPopover = ({}: Props) => {
           <div>
             <Trans>Actions</Trans>
           </div>
-          <Box toCenterY gap1>
+          <div className="flex items-center gap-1">
             <Kbd>⌘</Kbd>
             <Kbd>K</Kbd>
-          </Box>
+          </div>
         </div>
       </PopoverTrigger>
       {open && (

@@ -50,12 +50,13 @@ interface Tab {
   lastAccessed?: number | undefined
 }
 
-syncTabs
-
 export async function syncTabs() {
   const session = await storage.getSession()
 
+  console.log('=========>>>>>session:', session)
+
   if (!session) return
+
   syncInitialTabs(session)
 
   browser.tabs.onCreated.addListener((tab) => {

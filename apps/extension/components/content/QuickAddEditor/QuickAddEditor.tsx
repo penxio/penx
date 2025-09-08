@@ -7,6 +7,7 @@ import { cn, getUrl } from '@/lib/utils'
 import { PopoverClose, Portal } from '@radix-ui/react-popover'
 import { SendHorizontal, X } from 'lucide-react'
 import { motion, useMotionValue } from 'motion/react'
+import { Panel } from '@penx/panel-app/components/Panel/Panel'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button } from '@penx/uikit/button'
 import { Checkbox } from '@penx/uikit/checkbox'
@@ -70,7 +71,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
       }
     }
 
-    const boxWidth = 360
+    const boxWidth = 760
     const boxHeight = 200
 
     const posX = x || window.innerWidth / 2 - boxWidth / 2
@@ -98,6 +99,7 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
         style={{
           zIndex: 500000,
           minWidth: boxWidth,
+          height: 400,
           x: containerX,
           y: containerY,
           // left: posX,
@@ -108,119 +110,17 @@ export const QuickAddEditor = forwardRef<HTMLDivElement, Props>(
         }}
       >
         <MotionBox
-          className="flex h-10 cursor-move items-center justify-between px-4"
+          className="relative flex h-10 cursor-move items-center justify-between px-4"
           onPan={(e, info) => {
             containerX.set(containerX.get() + info.delta.x)
             containerY.set(containerY.get() + info.delta.y)
           }}
         >
-          <div className="flex items-center gap-2">
-            <div className="text-xl font-bold">Add note</div>
-            {tips && <div className="text-xs text-red-500">{tips}</div>}
-          </div>
-
-          <div
-            className="text-foreground/40 flex h-7 w-7 cursor-pointer items-center justify-center"
-            onClick={() => destroy()}
-          >
-            <X size={20} />
-          </div>
+          {/* <div>Hello</div> */}
+          {/* <div>l1234</div> */}
         </MotionBox>
 
-        <div className="flex flex-1 flex-col px-4 py-1">
-          <TextareaAutosize
-            className="dark:placeholder-text-600 placeholder:text-foreground/40 w-full resize-none border-none bg-transparent px-0 text-base focus:outline-0 focus:ring-0"
-            placeholder="Write a note..."
-            value={note}
-            style={{
-              boxShadow: 'none',
-            }}
-            minRows={8}
-            autoFocus
-            onChange={(e) => {
-              setNote(e.target.value)
-              setTips('')
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && e.metaKey) {
-                e.preventDefault()
-              }
-            }}
-          />
-        </div>
-
-        <div className="flex items-center justify-between px-3 pb-2">
-          <div className="flex items-center gap-1">
-            <div className="text-foreground/50 text-xs">Save to</div>
-            <Popover>
-              <PopoverTrigger asChild>
-                <div
-                  className={cn(
-                    'hover:bg-foreground/7 bg-foreground/5 line-clamp-1 flex cursor-pointer items-center gap-1 rounded-full px-2 py-1',
-                  )}
-                >
-                  {area ? (
-                    <>
-                      {/* <Avatar className="size-5">
-                        <AvatarImage src={getUrl(area?.logo || '')} />
-                        <AvatarFallback>
-                          {area?.name.slice(0, 1)}
-                        </AvatarFallback>
-                      </Avatar> */}
-                      <span className="text-sm">{area?.name}</span>
-                    </>
-                  ) : (
-                    <span className="text-sm">Select an area</span>
-                  )}
-                </div>
-              </PopoverTrigger>
-              <PopoverContent
-                side="top"
-                align="center"
-                isPortal={false}
-                className="flex w-48 flex-col gap-1 p-1"
-              >
-                {areas.map((field) => (
-                  <PopoverClose key={field.id}>
-                    <div
-                      className={cn(
-                        'hover:bg-foreground/5 flex cursor-pointer items-center gap-1 rounded px-2 py-2',
-                        areaId === field.id && 'bg-foreground/5',
-                      )}
-                      onClick={() => setAreaId(field.id)}
-                    >
-                      <Avatar className="size-6">
-                        <AvatarImage src={getUrl(field.logo || '')} />
-                        <AvatarFallback>
-                          {field.name.slice(0, 1)}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span className="text-sm">{field.name}</span>
-                    </div>
-                  </PopoverClose>
-                ))}
-              </PopoverContent>
-            </Popover>
-          </div>
-          {/* <div className="flex items-center gap-1">
-            <Checkbox id="penx-note-publish" />
-            <Label htmlFor="penx-note-publish">Publish directly?</Label>
-          </div> */}
-          <Button
-            size="sm"
-            disabled={loading}
-            className="flex w-20 gap-1 rounded-xl"
-            onClick={() => onSubmit()}
-          >
-            {loading && <LoadingDots className="bg-background" />}
-            {!loading && (
-              <>
-                <SendHorizontal size={16} />
-                <div className="text-sm">Send</div>
-              </>
-            )}
-          </Button>
-        </div>
+        <Panel />
       </MotionBox>
     )
   },

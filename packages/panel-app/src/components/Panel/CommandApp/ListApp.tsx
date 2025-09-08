@@ -2,8 +2,8 @@ import { memo, useEffect } from 'react'
 import { Box } from '@fower/react'
 import { ListJSON } from '@penx/extension-api'
 import { Separator } from '@penx/uikit/ui/separator'
-import { useSearch } from '~/hooks/useSearch'
-import { useValue } from '~/hooks/useValue'
+import { useSearch } from '../../../hooks/useSearch'
+import { useValue } from '../../../hooks/useValue'
 import { CommandGroup } from '../CommandComponents'
 import { ListItemUI } from '../ListItemUI'
 import { DataListItem } from './DataListItem'
@@ -71,23 +71,21 @@ export const ListApp = memo(function ListApp({ component }: ListAppProps) {
     return listJSX
   }
   return (
-    <Box toLeft overflowHidden absolute top0 bottom0 left0 right0>
+    <div className="absolute inset-0 flex overflow-hidden">
       {listJSX}
       {isShowingDetail && (
         <>
           <Separator orientation="vertical" />
-          <Box className="command-app-list-detail" flex-3 overflowAuto p3>
-            <Box text2XL fontBold mb2>
-              Detail
-            </Box>
-            <Box column gap1>
+          <div className="command-app-list-detail flex-[3] overflow-auto p-3">
+            <div className="mb-2 text-2xl font-bold">Detail</div>
+            <div className="flex flex-col gap-1">
               {dataList.map((item) => (
                 <DataListItem key={item.label} item={item} />
               ))}
-            </Box>
-          </Box>
+            </div>
+          </div>
         </>
       )}
-    </Box>
+    </div>
   )
 })

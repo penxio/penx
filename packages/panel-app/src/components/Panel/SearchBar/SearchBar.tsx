@@ -1,4 +1,3 @@
-import { Conf } from 'electron-conf/renderer'
 import { Struct } from '@penx/domain'
 import { cn } from '@penx/utils'
 import { PopButton } from '../../../components/ExtensionApp/widgets/PopButton'

@@ -15,6 +15,8 @@ interface ProtocolMap {
 
   closeSidePanel: (data: {}) => any
 
+  togglePanel: (data: {}) => any
+
   updateBrowserTab: (data: {}) => any
 }
 

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Box } from '@fower/react'
 import { ProfileButton } from '@penx/components/ProfileButton'
 import { isDesktop, isProd } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
@@ -19,12 +18,11 @@ const footerHeight = 44
 export const CommandPaletteFooter = ({}: Props) => {
   const { currentCommand } = useCurrentCommand()
   return (
-    <Box
-      className="border-foreground/6 bg-foreground/2 border-t"
-      h={footerHeight}
-      toCenterY
-      px3
-      toBetween
+    <div
+      className="border-foreground/6 bg-foreground/2 flex items-center justify-between border-t px-3"
+      style={{
+        height: footerHeight,
+      }}
     >
       {currentCommand && currentCommand.data.extensionIcon ? (
         <ListItemIcon icon={currentCommand.data.extensionIcon} />
@@ -59,6 +57,6 @@ export const CommandPaletteFooter = ({}: Props) => {
       ></Box> */}
 
       <ActionPopover />
-    </Box>
+    </div>
   )
 }

@@ -33,12 +33,12 @@ export function ActionCommandItem({
       {...rest}
     >
       {children}
-      <Box toBetween toCenterY ml-auto gap1>
+      <div className="ml-auto flex items-center justify-between gap-1">
         {shortcut &&
           shortcut.split(' ').map((key) => {
             return <Kbd key={key}>{key}</Kbd>
           })}
-      </Box>
+      </div>
     </CommandItem>
   )
 }

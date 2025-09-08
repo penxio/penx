@@ -32,15 +32,9 @@ import { updateSession, useSession } from '@penx/session'
 import { Avatar, AvatarFallback, AvatarImage } from '@penx/uikit/avatar'
 import { Button, ButtonProps } from '@penx/uikit/button'
 import { LoadingDots } from '@penx/uikit/components/icons/loading-dots'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@penx/uikit/dropdown-menu'
+import { Popover, PopoverContent, PopoverTrigger } from '@penx/uikit/popover'
+import { MenuItem } from '@penx/uikit/ui/menu/MenuItem'
+import { Separator } from '@penx/uikit/ui/separator'
 import { useIsMobile } from '@penx/uikit/use-mobile'
 import { cn, getUrl, sleep } from '@penx/utils'
 import { generateGradient } from '@penx/utils/generateGradient'
@@ -152,8 +146,8 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <Popover>
+      <PopoverTrigger asChild>
         <Avatar className="h-7 w-7 cursor-pointer rounded-lg">
           <AvatarImage src={getUrl(session.image || '')} alt={session?.name} />
           <AvatarFallback
@@ -165,38 +159,37 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
             {session?.name?.slice(0, 1)}
           </AvatarFallback>
         </Avatar>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+      </PopoverTrigger>
+      <PopoverContent
+        className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg p-0"
         side={isMobile ? 'bottom' : 'top'}
         align="start"
         sideOffset={16}
       >
-        <DropdownMenuLabel className="p-0 font-normal">
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar className="h-8 w-8 rounded-lg">
-              <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
-              <AvatarFallback
-                className={cn(
-                  'rounded-lg text-white',
-                  generateGradient(session.name),
-                )}
-              >
-                {session?.name.slice(0, 1)}
-              </AvatarFallback>
-            </Avatar>
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">{session?.name}</span>
-              <span className="truncate text-xs">{session?.email}</span>
-            </div>
+        <div className="flex items-center gap-2 px-3 py-2 text-left text-sm">
+          <Avatar className="h-8 w-8 rounded-lg">
+            <AvatarImage src={getUrl(session?.image)} alt={session?.name} />
+            <AvatarFallback
+              className={cn(
+                'rounded-lg text-white',
+                generateGradient(session.name),
+              )}
+            >
+              {session?.name.slice(0, 1)}
+            </AvatarFallback>
+          </Avatar>
+          <div className="grid flex-1 text-left text-sm leading-tight">
+            <span className="truncate font-medium">{session?.name}</span>
+            <span className="truncate text-xs">{session?.email}</span>
           </div>
-        </DropdownMenuLabel>
-        {/* <DropdownMenuSeparator /> */}
+        </div>
 
-        {/* <DropdownMenuGroup>
-          <DropdownMenuLabel>Sites</DropdownMenuLabel>
+        {/* <PopoverSeparator /> */}
+
+        {/* <PopoverGroup>
+          <PopoverLabel>Sites</PopoverLabel>
           {sites.map((site) => (
-            <DropdownMenuItem
+            <MenuItem
               key={site.id}
               className="flex cursor-pointer items-center gap-2"
               onClick={() => {
@@ -211,14 +204,14 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
               <div className="ml-auto">
                 {session?.activeSpaceId === site.id && <CheckIcon />}
               </div>
-            </DropdownMenuItem>
+            </MenuItem>
           ))}
-        </DropdownMenuGroup> */}
-        {!isMobileApp && <DropdownMenuSeparator />}
+        </PopoverGroup> */}
+        {!isMobileApp && <Separator />}
 
         {!isMobileApp && (
-          <DropdownMenuGroup>
-            <DropdownMenuItem
+          <div className="p-1">
+            <MenuItem
               onClick={async () => {
                 if (typeof onOpenSettings === 'function') {
                   return onOpenSettings()
@@ -235,16 +228,16 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
                 // appEmitter.emit('ROUTE_TO_SETTINGS')
               }}
             >
-              <CogIcon />
+              <CogIcon className="size-5" />
               <Trans>Settings</Trans>
-            </DropdownMenuItem>
+            </MenuItem>
 
-            {/* <DropdownMenuItem>
+            {/* <MenuItem>
                 <CreditCard />
                 <Trans>Billing</Trans>
-              </DropdownMenuItem> */}
+              </MenuItem> */}
 
-            <DropdownMenuItem
+            <MenuItem
               onClick={async () => {
                 settings.setOpen(true)
                 // const path = `${ROOT_HOST}/~/settings/subscription`
@@ -261,39 +254,39 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
                 }
               }}
             >
-              <Sparkles />
+              <Sparkles className="size-5" />
               <Trans>Upgrade to Pro</Trans>
-            </DropdownMenuItem>
+            </MenuItem>
 
-            <DropdownMenuItem
+            <MenuItem
               onClick={() => {
                 window.open('https://discord.gg/nyVpH9njDu')
               }}
             >
-              <MessageCircleIcon />
+              <MessageCircleIcon className="size-5" />
               <Trans>Support</Trans>
-            </DropdownMenuItem>
+            </MenuItem>
 
-            {/* <DropdownMenuItem>
+            {/* <MenuItem>
                 <Bell />
                 Notifications
-              </DropdownMenuItem> */}
-          </DropdownMenuGroup>
-        )}
+              </MenuItem> */}
 
-        <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={async () => {
-            try {
-              await logout()
-              appEmitter.emit('ON_LOGOUT_SUCCESS')
-            } catch (error) {}
-          }}
-        >
-          <LogOut />
-          <Trans>Log out</Trans>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+            <MenuItem
+              className="text-red-500"
+              onClick={async () => {
+                try {
+                  await logout()
+                  appEmitter.emit('ON_LOGOUT_SUCCESS')
+                } catch (error) {}
+              }}
+            >
+              <LogOut className="size-5" />
+              <Trans>Log out</Trans>
+            </MenuItem>
+          </div>
+        )}
+      </PopoverContent>
+    </Popover>
   )
 }

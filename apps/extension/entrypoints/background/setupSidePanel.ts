@@ -1,3 +1,4 @@
+import { sendMessage } from '@/lib/message'
 import { browser } from '#imports'
 import { closeSidepanel, openSidepanel } from './sidepanel'
 import { state } from './state'
@@ -32,6 +33,10 @@ export async function setupSidePanel() {
           openSidepanel(tabs[0].id!)
         })
       }
+    }
+
+    if (command === 'toggle-panel') {
+      sendMessage('togglePanel', {})
     }
   })
 }

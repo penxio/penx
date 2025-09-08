@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import { Box } from '@fower/react'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@penx/uikit/select'
 import { appEmitter } from '@penx/emitter'
 import { FilterItem } from '@penx/types'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@penx/uikit/select'
 
 interface Props {
   filters: Record<string, FilterItem[]>
@@ -13,16 +19,16 @@ export const SearchBarFilter = ({ filters }: Props) => {
       const find = filters[key].find((item) => item.selected)
       return {
         ...acc,
-        [key]: find?.value ?? undefined
+        [key]: find?.value ?? undefined,
       }
     },
-    {} as Record<string, any>
+    {} as Record<string, any>,
   )
 
   const [filterValue, setFilterValue] = useState(initialValue)
 
   return (
-    <Box mr2 toCenterY gap1>
+    <div className="mr-2 flex items-center gap-1">
       {Object.keys(filters).map((key) => {
         const items = filters[key]
         return (
@@ -38,7 +44,7 @@ export const SearchBarFilter = ({ filters }: Props) => {
           />
         )
       })}
-    </Box>
+    </div>
   )
 }
 
@@ -50,17 +56,17 @@ interface FilterSelectProps {
 function FilterSelect({ value, onChange, items }: FilterSelectProps) {
   return (
     <Select value={value} onValueChange={(v: string) => onChange(v)}>
-      <SelectTrigger className="flex-1 text-sm w-[120px]">
+      <SelectTrigger className="w-[120px] flex-1 text-sm">
         <SelectValue flexShrink-0 placeholder=""></SelectValue>
       </SelectTrigger>
-      <SelectContent className="w-[200px] max-h-[240px] overflow-auto">
+      <SelectContent className="max-h-[240px] w-[200px] overflow-auto">
         {items.map((item) => (
           <SelectItem
             key={item.value + item.value.toString()}
             value={item.value as string}
             className="flex justify-between"
           >
-            <Box flex-1>{item.label}</Box>
+            <div className="flex-1">{item.label}</div>
           </SelectItem>
         ))}
       </SelectContent>

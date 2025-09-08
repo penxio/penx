@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { browser } from '#imports'
 import App from './App.tsx'
-import './style.css'
 
 export default defineContentScript({
   matches: ['*://*/*'],

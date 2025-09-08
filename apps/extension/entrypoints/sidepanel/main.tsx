@@ -4,6 +4,7 @@ import { initNodeModelApi } from '@penx/libs/initNodeModelApi'
 import App from './App'
 import { setupPort } from './setupPort'
 import { watchEvent } from './watchEvent'
+import './style.css'
 
 initNodeModelApi()
 setupPort()

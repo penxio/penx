@@ -105,7 +105,12 @@ export const ListItemUI = ({
         {prefix}
         {showIcon &&
           (icon ?? <ListItemIcon icon={itemIcon as string} item={item} />)}
-        <Box flexDirection={titleLayout} gapY1 toCenterY gapX2>
+        <div
+          className="flex items-center gap-x-2 gap-y-1"
+          style={{
+            flexDirection: titleLayout,
+          }}
+        >
           <div
             className={cn(
               'line-clamp-1 text-sm',
@@ -127,7 +132,7 @@ export const ListItemUI = ({
               {item.data.alias}
             </div>
           )}
-        </Box>
+        </div>
       </div>
       <div className="flex items-center gap-1">
         {showType && !!type && (
@@ -157,16 +162,14 @@ function Accessory({ item }: AccessoryProps) {
       return <div>{item.text}</div>
     }
     if (isAccessoryObjectText(item.text)) {
-      return (
-        <Box color={item.text.color || 'gray600'}>{item.text?.value || ''}</Box>
-      )
+      return <div className="text-foreground/60">{item.text?.value || ''}</div>
     }
     return null
   }, [item.text])
   let tag: ReactNode = item.tag ? (
-    <Box bgAmber500 white h-24 rounded px2 toCenterY>
+    <div className="flex h-6 items-center rounded bg-amber-500 px-2 text-white">
       {item.tag.value}
-    </Box>
+    </div>
   ) : null
 
   let icon: ReactNode = item.icon ? (

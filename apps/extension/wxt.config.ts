@@ -46,11 +46,18 @@ export default defineConfig({
     commands: {
       'toggle-sidepanel': {
         suggested_key: {
-          default: 'Ctrl+I',
-          mac: 'Command+I',
+          default: 'Alt+S',
+          mac: 'Alt+S',
         },
         description: 'Toggle sidepanel',
       },
+      // 'toggle-panel': {
+      //   suggested_key: {
+      //     default: 'Alt+P',
+      //     mac: 'Alt+P',
+      //   },
+      //   description: 'Toggle panel',
+      // },
     },
   },
 })

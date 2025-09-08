@@ -67,8 +67,8 @@ export const BindHotkey = ({ type, commandId, ...rest }: Props) => {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Box className="bg-foreground/10 flex h-10 w-[160px] cursor-pointer items-center justify-center rounded-full">
-          <Box toCenterY gap1>
+        <div className="bg-foreground/10 flex h-10 w-[160px] cursor-pointer items-center justify-center rounded-full">
+          <div className="flex items-center gap-1">
             {keys.length > 0 &&
               keys.map((item) => <Kbd key={item}>{item}</Kbd>)}
             {keys.length === 0 && (
@@ -76,8 +76,8 @@ export const BindHotkey = ({ type, commandId, ...rest }: Props) => {
                 <Trans>Record shortcut</Trans>
               </div>
             )}
-          </Box>
-        </Box>
+          </div>
+        </div>
       </PopoverTrigger>
       <PopoverContent className="flex h-[100px] w-[200px] flex-col justify-center p-4">
         <Content setOpen={setOpen} shortcut={shortcut} commandId={commandId} />
@@ -192,32 +192,30 @@ function Content({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <Box column toBetween h-100p toCenterX>
+    <div className="flex h-full flex-col items-center justify-between">
       {!keys.length && (
-        <Box toCenterY leadingNone gap2>
-          <Box textSM neutral500>
-            e.g.
-          </Box>
+        <div className="flex items-center gap-2 leading-none">
+          <div className="text-foreground/50 text-xs">e.g.</div>
 
-          <Box toCenterY gap1>
+          <div className="flex items-center gap-1">
             <Kbd>⌘</Kbd>
             <Kbd>⇧</Kbd>
             <Kbd>Space</Kbd>
-          </Box>
-        </Box>
+          </div>
+        </div>
       )}
       {keys.length > 0 && (
-        <Box toCenterY gap1>
+        <div className="flex items-center gap-1">
           {keys.map((key) => (
             <Kbd className={cn(ok && 'bg-green-100 text-green-700')} key={key}>
               {key}
             </Kbd>
           ))}
-        </Box>
+        </div>
       )}
-      <Box neutral500 textXS>
+      <div className="text-foreground/50 text-xs">
         <Trans>Recording...</Trans>
-      </Box>
-    </Box>
+      </div>
+    </div>
   )
 }

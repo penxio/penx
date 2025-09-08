@@ -69,14 +69,14 @@ export function RootActions({ command, close }: RootActionsProps) {
             close()
           }}
         >
-          <Box toCenterY gap2 inlineFlex>
+          <div className="inline-flex items-center gap-2">
             <div className="">
               <EditIcon size={16} />
             </div>
             <div>
               <Trans>Edit content</Trans>
             </div>
-          </Box>
+          </div>
         </ActionCommandItem>
       )}
       {!isCreation && (
@@ -94,14 +94,14 @@ export function RootActions({ command, close }: RootActionsProps) {
             close()
           }}
         >
-          <Box toCenterY gap2 inlineFlex>
+          <div className="inline-flex items-center gap-2">
             <div className="">
               <DoorOpenIcon size={16} />
             </div>
             <div>
               <Trans>Open Command</Trans>
             </div>
-          </Box>
+          </div>
         </ActionCommandItem>
       )}
       {!!struct && (
@@ -114,14 +114,14 @@ export function RootActions({ command, close }: RootActionsProps) {
             close()
           }}
         >
-          <Box toCenterY gap2 inlineFlex>
+          <div className="inline-flex items-center gap-2">
             <div className="">
               <BracesIcon size={16} />
             </div>
             <div>
               <Trans>Edit Struct</Trans>
             </div>
-          </Box>
+          </div>
         </ActionCommandItem>
       )}
       <ActionCommandItem
@@ -132,14 +132,14 @@ export function RootActions({ command, close }: RootActionsProps) {
           close()
         }}
       >
-        <Box toCenterY gap2 inlineFlex>
+        <div className="inline-flex items-center gap-2">
           <div className="">
             <KeyboardIcon size={16} />
           </div>
           <div>
             <Trans>Configure Shortcut</Trans>
           </div>
-        </Box>
+        </div>
       </ActionCommandItem>
       {isFavor && (
         <>
@@ -155,14 +155,14 @@ export function RootActions({ command, close }: RootActionsProps) {
             }}
             aria-disabled={area.favorCommands.indexOf(currentItem.id!) === 0}
           >
-            <Box toCenterY gap2 inlineFlex>
+            <div className="inline-flex items-center gap-2">
               <div>
                 <MoveUp size={16} />
               </div>
               <div>
                 <Trans>Move Up in Favorites</Trans>
               </div>
-            </Box>
+            </div>
           </ActionCommandItem>
           <ActionCommandItem
             shortcut=""
@@ -179,14 +179,14 @@ export function RootActions({ command, close }: RootActionsProps) {
               area.favorCommands.length - 1
             }
           >
-            <Box toCenterY gap2 inlineFlex>
+            <div className="inline-flex items-center gap-2">
               <div>
                 <MoveDownIcon size={16} />
               </div>
               <div>
                 <Trans>Move Down in Favorites</Trans>
               </div>
-            </Box>
+            </div>
           </ActionCommandItem>
         </>
       )}
@@ -204,7 +204,7 @@ export function RootActions({ command, close }: RootActionsProps) {
           close()
         }}
       >
-        <Box toCenterY gap2 inlineFlex>
+        <div className="inline-flex items-center gap-2">
           <div>
             {isFavor && <StarOffIcon size={16} />}
             {!isFavor && <StarIcon size={16} />}
@@ -216,7 +216,7 @@ export function RootActions({ command, close }: RootActionsProps) {
               <Trans>Add to Favorites</Trans>
             )}
           </div>
-        </Box>
+        </div>
       </ActionCommandItem>
 
       {isCreation && (
@@ -238,14 +238,14 @@ export function RootActions({ command, close }: RootActionsProps) {
             close()
           }}
         >
-          <Box toCenterY gap2 inlineFlex className="text-red-500">
+          <div className="flex items-center gap-2  text-red-500">
             <div>
               <Trash2Icon size={16} />
             </div>
             <div>
               <Trans>Delete Creation</Trans>
             </div>
-          </Box>
+          </div>
         </ActionCommandItem>
       )}
 
@@ -260,14 +260,14 @@ export function RootActions({ command, close }: RootActionsProps) {
               close()
             }}
           >
-            <Box toCenterY gap2 inlineFlex>
+            <div className="inline-flex items-center gap-2">
               <div>
                 <CopyIcon />
               </div>
               <div>
                 <Trans>Copy Struct ID</Trans>
               </div>
-            </Box>
+            </div>
           </ActionCommandItem>
 
           <ActionCommandItem
@@ -290,14 +290,14 @@ export function RootActions({ command, close }: RootActionsProps) {
               close()
             }}
           >
-            <Box toCenterY gap2 inlineFlex className="text-red-500">
+            <div className="flex items-center gap-2  text-red-500">
               <div>
                 <Trash2Icon />
               </div>
               <div>
                 <Trans>Delete Struct</Trans>
               </div>
-            </Box>
+            </div>
           </ActionCommandItem>
         </>
       )}

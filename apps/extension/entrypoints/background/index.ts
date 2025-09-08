@@ -27,8 +27,8 @@ initNodeModelApi()
 
 export default defineBackground(() => {
   syncTabs()
-  syncBookmarks()
-  initWebsocket()
+  // syncBookmarks()
+  // initWebsocket()
 
   setupMessage()
   setupSidePanel()
