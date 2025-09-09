@@ -3,8 +3,8 @@ import { and, eq, inArray } from 'drizzle-orm'
 import { db } from '@penx/db/client'
 import { nodes } from '@penx/db/schema'
 import { ICreationNode, NodeType } from '@penx/model-type'
-import { searchSimilarContent } from './retrieve'
-import { userCreationConvert } from './userCreationChunk'
+import { searchSimilarContent } from './embeddings/retrieve'
+import { userCreationConvert } from './embeddings/userCreationChunk'
 
 export async function retrieveCreations(
   extractor: FeatureExtractionPipeline,

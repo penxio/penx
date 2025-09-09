@@ -4,12 +4,15 @@ import { browser, storage as wxtStorage } from '#imports'
 import { set } from 'idb-keyval'
 import { Panel } from '@penx/panel-app/components/Panel/Panel'
 import { useSession } from '@penx/session'
+import { HealthCheck } from './HealthCheck'
 
 function App() {
   return (
-    <Panel location="sidepanel" defaultTheme="light">
-      <WatchSession></WatchSession>
-    </Panel>
+    <HealthCheck>
+      <Panel location="sidepanel" defaultTheme="light">
+        <WatchSession></WatchSession>
+      </Panel>
+    </HealthCheck>
   )
 }
 

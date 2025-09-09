@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
 import useWebSocket from 'react-use-websocket'
+import { text } from 'stream/consumers'
 import { t } from '@lingui/core/macro'
 import { Trans } from '@lingui/react/macro'
 import { toast } from 'sonner'
 import { useDebouncedCallback } from 'use-debounce'
+import { translateText } from '@penx/chrome-ai'
 import { Markdown } from '@penx/components/AIChat/markdown'
 import { ProfileButton } from '@penx/components/ProfileButton'
-import { Prompt } from '@penx/constants'
+import { isExtension, Prompt } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useCopyToClipboard } from '@penx/hooks/useCopyToClipboard'
 import { getOpenAIClient } from '@penx/libs/getOpenAIClient'
@@ -58,17 +60,18 @@ export function PageTranslate() {
   }, [lastJsonMessage])
 
   const debouncedTranslate = useDebouncedCallback(async (text: string) => {
-    // window.electron.ipcRenderer.send('translate-text', text)
-    // sendMessage(
-    //   JSON.stringify({
-    //     type: 'translate-input',
-    //     payload: text,
-    //   }),
-    // )
-
-    console.log('sender......')
+    console.log('text-----:', text)
 
     setResult('')
+
+    if (isExtension) {
+      //
+      const result = await translateText(text, 'en', 'zh')
+      console.log('=======result:', result)
+
+      setResult(result)
+      return
+    }
     sendMessage(
       JSON.stringify({
         type: 'chrome-ai-prompt-input',
@@ -174,7 +177,7 @@ export function PageTranslate() {
             onChange={async (e) => {
               const newInput = e.target.value
               setInput(newInput)
-              // debouncedTranslate(newInput)
+              debouncedTranslate(newInput)
             }}
           />
         </div>

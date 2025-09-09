@@ -4,16 +4,16 @@ import { createRoot } from 'react-dom/client'
 import { setConfig } from '@fower/react'
 import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { ThemeProvider } from '@penx/components/ThemeProvider'
+import { initPGLiteNodeModelApi } from '@penx/libs/initPGLiteNodeModelApi'
 import { LocaleProvider } from '@penx/locales'
 import { AICommandApp } from './components/AICommandApp/AICommandApp'
 import { setSelection } from './hooks/useSelection'
-import { initNodeModelApi } from './lib/initNodeModelApi'
 
 setConfig({
   prefix: 'penx-',
 })
 
-initNodeModelApi()
+initPGLiteNodeModelApi()
 
 window.electron.ipcRenderer.on('ai-command-window-show', () => {
   //

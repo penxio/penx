@@ -5,9 +5,9 @@ import { embeddings, nodes } from '@penx/db/schema'
 import { Node } from '@penx/domain'
 import { INode } from '@penx/model-type'
 import { uniqueId } from '@penx/unique-id'
-import { createEmbeddings } from './createEmbeddings'
-import { initEmbeddings } from './initEmbeddings'
-import { buildMDocumentFromCreations } from './userCreationChunk'
+import { createEmbeddings } from './embeddings/createEmbeddings'
+import { initEmbeddings } from './embeddings/initEmbeddings'
+import { buildMDocumentFromCreations } from './embeddings/userCreationChunk'
 
 export async function createNodeEmbedding(
   extractor: FeatureExtractionPipeline,

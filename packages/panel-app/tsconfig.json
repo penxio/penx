@@ -1,7 +1,7 @@
 {
   "extends": "@penx/typescript-config/internal-package.json",
   "compilerOptions": {
-    "lib": ["DOM"],
+    "lib": ["DOM", "ESNext"],
     "strict": true,
     "strictNullChecks": true
   },

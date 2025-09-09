@@ -1,4 +1,3 @@
-import { askQuestion } from '@/lib/askQuestion'
 import { onMessage, sendMessage } from '@/lib/message'
 import { storage } from '@/lib/storage'
 

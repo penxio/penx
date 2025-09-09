@@ -1,12 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { initNodeModelApi } from '@penx/libs/initNodeModelApi'
+import { initPGLiteNodeModelApi } from '@penx/libs/initPGLiteNodeModelApi'
 import App from './App'
 import { setupPort } from './setupPort'
 import { watchEvent } from './watchEvent'
 import './style.css'
 
-initNodeModelApi()
+initPGLiteNodeModelApi()
 setupPort()
 watchEvent()
 

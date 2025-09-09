@@ -24,6 +24,7 @@
     "@penx/constants": "workspace:*",
     "@penx/indexeddb": "workspace:*",
     "@penx/local-db": "workspace:*",
+    "@penx/db": "workspace:*",
     "@penx/mnemonic": "workspace:*",
     "@penx/api": "workspace:*",
     "@penx/unique-id": "workspace:*",

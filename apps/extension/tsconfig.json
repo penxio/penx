@@ -2,7 +2,7 @@
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],

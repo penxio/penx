@@ -1026,7 +1026,7 @@ importers:
         version: 0.10.15(@hono/zod-validator@0.7.2(hono@4.8.5)(zod@3.25.76))(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76)
       '@mastra/rag':
         specifier: ^1.2.2
-        version: 1.2.2(@mastra/core@0.10.15(@hono/zod-validator@0.7.2(hono@4.8.5)(zod@3.25.76))(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76))(ai@4.3.19(react@19.1.0)(zod@3.25.76))(encoding@0.1.13)(zod@3.25.76)
+        version: 1.2.2(@mastra/core@0.10.15(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76))(ai@4.3.19(react@19.1.0)(zod@3.25.76))(encoding@0.1.13)(zod@3.25.76)
       '@penx/api':
         specifier: workspace:*
         version: link:../../packages/api
@@ -1241,9 +1241,18 @@ importers:
 
   apps/extension:
     dependencies:
+      '@electric-sql/pglite':
+        specifier: ^0.3.6
+        version: 0.3.6
+      '@mastra/rag':
+        specifier: ^1.2.2
+        version: 1.2.2(@mastra/core@0.10.15(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76))(ai@4.3.19(react@19.1.0)(zod@3.25.76))(encoding@0.1.13)(zod@3.25.76)
       '@mozilla/readability':
         specifier: ^0.6.0
         version: 0.6.0
+      '@penx/chrome-ai':
+        specifier: workspace:*
+        version: link:../../packages/chrome-ai
       '@penx/components':
         specifier: workspace:*
         version: link:../../packages/components
@@ -1256,6 +1265,9 @@ importers:
       '@penx/contexts':
         specifier: workspace:*
         version: link:../../packages/contexts
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@penx/domain':
         specifier: workspace:*
         version: link:../../packages/domain
@@ -1331,6 +1343,9 @@ importers:
       '@webext-core/messaging':
         specifier: ^2.3.0
         version: 2.3.0
+      '@xenova/transformers':
+        specifier: ^2.17.2
+        version: 2.17.2
       addressparser:
         specifier: ^1.0.1
         version: 1.0.1
@@ -1885,6 +1900,28 @@ importers:
         specifier: workspace:*
         version: link:../typescript-config
 
+  packages/chrome-ai:
+    dependencies:
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../emitter
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../indexeddb
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../local-db
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@penx/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
   packages/components:
     dependencies:
       '@penx/api':
@@ -2238,6 +2275,9 @@ importers:
       '@penx/constants':
         specifier: workspace:*
         version: link:../constants
+      '@penx/db':
+        specifier: workspace:*
+        version: link:../db
       '@penx/domain':
         specifier: workspace:*
         version: link:../domain
@@ -2419,6 +2459,9 @@ importers:
       '@penx/api':
         specifier: workspace:*
         version: link:../api
+      '@penx/chrome-ai':
+        specifier: workspace:*
+        version: link:../chrome-ai
       '@penx/components':
         specifier: workspace:*
         version: link:../components
@@ -22868,7 +22911,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mastra/rag@1.2.2(@mastra/core@0.10.15(@hono/zod-validator@0.7.2(hono@4.8.5)(zod@3.25.76))(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76))(ai@4.3.19(react@19.1.0)(zod@3.25.76))(encoding@0.1.13)(zod@3.25.76)':
+  '@mastra/rag@1.2.2(@mastra/core@0.10.15(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76))(ai@4.3.19(react@19.1.0)(zod@3.25.76))(encoding@0.1.13)(zod@3.25.76)':
     dependencies:
       '@mastra/core': 0.10.15(@hono/zod-validator@0.7.2(hono@4.8.5)(zod@3.25.76))(effect@3.10.3)(encoding@0.1.13)(openapi-types@12.1.3)(react@19.1.0)(zod@3.25.76)
       '@paralleldrive/cuid2': 2.2.2

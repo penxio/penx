@@ -1,12 +1,12 @@
 'use client'
 
 import { PropsWithChildren, useEffect, useMemo } from 'react'
-import { initNodeModelApi } from '@penx/libs/initNodeModelApi'
+import { initIDBNodeModelApi } from '@penx/libs/initIDBNodeModelApi'
 
 export function NodeModelApiInjector({ children }: PropsWithChildren) {
   useMemo(() => {
     console.log('=======initNodeModelApi......')
-    initNodeModelApi()
+    initIDBNodeModelApi()
   }, [])
 
   if (!window.nodeModelApi) return null

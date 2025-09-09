@@ -24,6 +24,10 @@ class LocalDB {
     return this.node.get(id)
   }
 
+  listNodes = () => {
+    return this.node.findMany({})
+  }
+
   listSpaceNodes = (spaceId: string) => {
     return this.node.findMany({ spaceId })
   }

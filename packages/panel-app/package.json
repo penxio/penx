@@ -27,6 +27,7 @@
     "@penx/api": "workspace:*",
     "@penx/types": "workspace:*",
     "@penx/constants": "workspace:*",
+    "@penx/chrome-ai": "workspace:*",
     "@penx/local-db": "workspace:*",
     "@penx/emitter": "workspace:*",
     "@penx/indexeddb": "workspace:*",

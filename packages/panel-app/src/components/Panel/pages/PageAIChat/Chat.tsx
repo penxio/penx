@@ -3,52 +3,23 @@ import useWebSocket from 'react-use-websocket'
 import { produce } from 'immer'
 import ky from 'ky'
 import { ApiRes } from '@penx/api'
+import { askQuestion } from '@penx/chrome-ai'
+import { APP_LOCAL_HOST, isDesktop, isExtension } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { uniqueId } from '@penx/unique-id'
 import { sleep } from '@penx/utils'
 import { useInput } from './hooks/useInput'
 import { getMessages, useMessages } from './hooks/useMessages'
+import { getPrompt } from './lib/getPrompt'
 import { Messages } from './Messages'
 import { SendBox } from './SendBox'
-
-interface Reference {
-  nodeId: string
-  structId: string
-  structName: string
-  header: string
-  content: string
-}
-
-function getPrompt(query: string, references: Reference[]) {
-  const refTexts = references.map((i) => i.content).join('\n---------------\n')
-
-  // console.log('======refTexts:', refTexts)
-
-  return `
-You are an expert assistant specialized in providing accurate answers based solely on the provided reference documents. Your task is to answer the user’s question using only the given information. Follow these rules exactly:
-
-1. Base your answer only on the reference documents.
-2. If the references lack the necessary information, respond with “No relevant information found.”
-3. Structure your answer clearly and concisely.
-4. Use bullet points or numbered lists when presenting multiple points.
-5. Respond in the same language as the user’s question.
-6. Do not add unrelated content or speculation.
-
-Reference documents:
-${refTexts}
-
-User question:
-${query}
-
-Begin your answer below:
-  `.trim()
-}
 
 export function Chat() {
   const { messages, setMessages } = useMessages()
 
   const { setInput } = useInput()
   const [loading, setLoading] = useState(false)
+
   const {
     sendMessage,
     sendJsonMessage,
@@ -97,19 +68,47 @@ export function Chat() {
       setInput('')
 
       const { data } = await ky
-        .post('http://localhost:14158/api/rag/retrieve', {
+        .post(`${APP_LOCAL_HOST}/api/rag/retrieve`, {
           json: { text },
         })
         .json<ApiRes<any[]>>()
 
-      console.log('=======data:', data)
+      // console.log('=======data:', data)
+      if (isExtension) {
+        const stream = await askQuestion(getPrompt(text, data))
+        if (!stream) return
+        setLoading(false)
 
-      sendMessage(
-        JSON.stringify({
-          type: 'chrome-ai-prompt-input',
-          payload: getPrompt(text, data),
-        }),
-      )
+        const messages = getMessages()
+        const newMessages = produce(messages, (draft) => {
+          draft.push({ id: uniqueId(), content: '', role: 'assistant' })
+        })
+
+        setMessages(newMessages)
+        await sleep(1)
+
+        for await (const chunk of stream as ReadableStream<string> &
+          AsyncIterable<string>) {
+          // console.log('======chunk:', chunk)
+
+          const messages = getMessages()
+          const newMessages = produce(messages, (draft) => {
+            draft[draft.length - 1].content += chunk
+          })
+          setMessages(newMessages)
+        }
+      }
+
+      console.log('=======isDesktop:', isDesktop)
+
+      if (isDesktop) {
+        sendMessage(
+          JSON.stringify({
+            type: 'chrome-ai-prompt-input',
+            payload: getPrompt(text, data),
+          }),
+        )
+      }
     }
     appEmitter.on('SUBMIT_AI_CHAT', handleSubmit)
     return () => {
@@ -118,7 +117,7 @@ export function Chat() {
   }, [])
 
   return (
-    <div className="flex min-h-0 w-full flex-1 flex-col">
+    <div className="flex min-h-0 w-full flex-1 flex-col text-base">
       <div className="min-h-0 w-full flex-1">
         <Messages
           chatId={''}

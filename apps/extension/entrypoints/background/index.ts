@@ -1,4 +1,3 @@
-// import { BACKGROUND_EVENTS } from './lib/constants'
 import { initWebsocket } from '@/entrypoints/background/initWebsocket'
 import { BACKGROUND_EVENTS } from '@/lib/constants'
 import {
@@ -12,9 +11,11 @@ import {
 import { parsePreparedContent } from '@/lib/parser'
 import { syncBookmarks } from '@/lib/syncBookmarks'
 import { syncTabs } from '@/lib/syncTabs'
+import { PGlite } from '@electric-sql/pglite'
+import { vector } from '@electric-sql/pglite/vector'
 import { Storage } from '@plasmohq/storage'
 import { get } from 'idb-keyval'
-import { initNodeModelApi } from '@penx/libs/initNodeModelApi'
+import { initPGLiteNodeModelApi } from '@penx/libs/initPGLiteNodeModelApi'
 import { localDB } from '@penx/local-db'
 import { IAreaNode, ICreationNode, NodeType } from '@penx/model-type'
 import { CreationStatus, GateType, SessionData, StructType } from '@penx/types'
@@ -23,12 +24,12 @@ import { checkExtension } from './checkExtension'
 import { setupMessage } from './setupMessage'
 import { setupSidePanel } from './setupSidePanel'
 
-initNodeModelApi()
+initPGLiteNodeModelApi()
 
 export default defineBackground(() => {
   syncTabs()
   // syncBookmarks()
-  // initWebsocket()
+  initWebsocket()
 
   setupMessage()
   setupSidePanel()

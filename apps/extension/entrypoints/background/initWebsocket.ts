@@ -1,6 +1,5 @@
 import { getChromeInfo } from '@/lib/getChromeVersion'
-import { askQuestion } from '../../lib/askQuestion'
-import { translateText } from '../../lib/translateText'
+import { askQuestion, translateText } from '@penx/chrome-ai'
 import { WebSocketClient } from '../../lib/WebSocketClient'
 
 export async function initWebsocket() {
@@ -49,6 +48,7 @@ export async function initWebsocket() {
               payload: '{{AI-RESPONSE-STARTED}}',
             }),
           )
+
           for await (const chunk of stream) {
             console.log('======chunk:', chunk)
 
