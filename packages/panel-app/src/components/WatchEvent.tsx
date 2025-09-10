@@ -168,7 +168,9 @@ export function WatchEvent() {
     if (registered.current) return
     registered.current = true
     // console.log('===========shortcuts:', shortcuts)
-    registerShortcuts()
+    if (isDesktop) {
+      registerShortcuts()
+    }
   }, [])
 
   const { session } = useSession()

@@ -49,7 +49,7 @@ const SearchInputMemo = memo(
         style={{
           height: searchBarHeight,
         }}
-        placeholder={placeholder || 'Search something...'}
+        placeholder={placeholder || 'Search or Tab to Ask AI'}
         autoFocus
         value={search}
         onValueChange={onValueChange}

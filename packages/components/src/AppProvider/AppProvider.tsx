@@ -100,7 +100,8 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 
   if (isLoading) return null
 
-  if (!session && isDesktop) {
+  // if (!session && isDesktop) {
+  if (!session) {
     return <DesktopLogin />
   }
 

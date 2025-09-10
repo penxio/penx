@@ -47,11 +47,15 @@ import { usePlanListDialog } from './PlanList/usePlanListDialog'
 import { useSettingsDialog } from './SettingsDialog/useSettingsDialog'
 
 interface Props extends ButtonProps {
-  loginButton?: ReactNode
   onOpenSettings?: () => void
+  loginButtonVariant?: 'avatar' | 'button'
 }
 
-export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
+export function ProfileButton({
+  loginButtonVariant = 'button',
+  onOpenSettings,
+  ...rest
+}: Props) {
   const { login } = useSession()
   const { session, data, logout, update } = useSession()
   const isMobile = useIsMobile()
@@ -145,25 +149,31 @@ export function ProfileButton({ loginButton, onOpenSettings, ...rest }: Props) {
   // }
 
   if (!session) {
-    if (loginButton) return loginButton
-
-    return (
-      <Button
-        variant="ghost"
-        size="icon"
-        disabled={loading}
-        onClick={handleLogin}
-        {...rest}
-        className={cn(
-          'text-foreground/60 bg-foreground/10 hover:bg-foreground/15 size-8 shrink-0 rounded-full p-0',
-          rest.className,
-        )}
-      >
-        {!loading && <UserIcon className="size-5" />}
-        {/* <Trans>Log in</Trans> */}
-        {loading && <LoadingCircle />}
-      </Button>
-    )
+    if (loginButtonVariant === 'avatar') {
+      return (
+        <Button
+          variant="ghost"
+          size="icon"
+          disabled={loading}
+          onClick={handleLogin}
+          {...rest}
+          className={cn(
+            'text-foreground/60 bg-foreground/10 hover:bg-foreground/15 size-8 shrink-0 rounded-full p-0',
+            rest.className,
+          )}
+        >
+          {!loading && <UserIcon className="size-5" />}
+          {loading && <LoadingCircle />}
+        </Button>
+      )
+    } else {
+      return (
+        <Button disabled={loading} onClick={handleLogin} {...rest}>
+          <Trans>Log in</Trans>
+          {loading && <LoadingDots className="text-background" />}
+        </Button>
+      )
+    }
   }
 
   return (

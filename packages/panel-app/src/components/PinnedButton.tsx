@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Conf } from 'electron-conf/renderer'
 import { PinIcon } from 'lucide-react'
+import { isDesktop } from '@penx/constants'
 import { cn } from '@penx/utils'
 
 const conf = new Conf()
@@ -23,6 +24,8 @@ export const PinnedButton = ({ className }: Props) => {
     window.electron.ipcRenderer.send('pinned', !pinned)
     refetch()
   }
+
+  if (!isDesktop) return null
 
   return (
     <PinIcon

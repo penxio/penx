@@ -3,7 +3,10 @@
 /**
  * Translation model availability status
  */
-type TranslatorAvailability = 'available' | 'downloadable' | 'unavailable'
+export type TranslatorAvailability =
+  | 'available'
+  | 'downloadable'
+  | 'unavailable'
 
 /**
  * Download progress event type, progress ranges from 0 to 1
@@ -16,7 +19,7 @@ interface DownloadProgressEvent extends Event {
 /**
  * Monitor interface used for observing Translator download events
  */
-interface TranslatorMonitor extends EventTarget {
+export interface TranslatorMonitor extends EventTarget {
   addEventListener(
     type: 'downloadprogress' | 'downloadcomplete',
     listener: (event: DownloadProgressEvent | Event) => void,
@@ -30,7 +33,7 @@ interface TranslatorMonitor extends EventTarget {
 /**
  * Translator instance interface, representing a specific translator
  */
-interface TranslatorInstance extends EventTarget {
+export interface TranslatorInstance extends EventTarget {
   /**
    * Translate the given text and return the text in the target language
    * @param text The text to be translated
@@ -57,7 +60,7 @@ interface TranslatorInstance extends EventTarget {
 /**
  * Options parameter for Translator.create method, includes optional monitor callback
  */
-interface TranslatorCreateOptions {
+export interface TranslatorCreateOptions {
   sourceLanguage: string
   targetLanguage: string
 
@@ -71,7 +74,7 @@ interface TranslatorCreateOptions {
 /**
  * Translator global interface representing the Chrome built-in Translator API object
  */
-interface Translator {
+export interface Translator {
   /**
    * Get the translation model availability for a specified language pair
    * @param options An object containing sourceLanguage and targetLanguage
@@ -89,16 +92,4 @@ interface Translator {
    * @returns A Promise resolving to a TranslatorInstance
    */
   create(options: TranslatorCreateOptions): Promise<TranslatorInstance>
-}
-
-// Declare the global Translator variable
-declare const Translator: Translator
-
-export {
-  Translator,
-  TranslatorInstance,
-  TranslatorAvailability,
-  DownloadProgressEvent,
-  TranslatorMonitor,
-  TranslatorCreateOptions,
 }
