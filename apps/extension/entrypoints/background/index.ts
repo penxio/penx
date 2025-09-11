@@ -30,7 +30,6 @@ export default defineBackground(() => {
   syncTabs()
   // syncBookmarks()
   initWebsocket()
-
   setupMessage()
   setupSidePanel()
   // checkExtension()

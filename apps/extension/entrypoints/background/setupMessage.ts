@@ -9,8 +9,8 @@ export async function setupMessage() {
   })
 
   onMessage('logout', () => {
-    console.log('extension logou....')
-    storage.setSession(null)
+    console.log('extension logout....')
+    storage.setSession(null as any)
   })
 
   onMessage('login', ({ data }) => {

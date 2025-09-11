@@ -98,6 +98,8 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
     )
   }
 
+  console.log('appProvider========session:', session)
+
   if (isLoading) return null
 
   // if (!session && isDesktop) {

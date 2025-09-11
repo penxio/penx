@@ -32,7 +32,6 @@ export function Panel({ children, ...props }: PropsWithChildren<Props>) {
           <LoginDialog />
           <HydrateAtoms {...props}>
             <CommandPalette />
-            {children}
           </HydrateAtoms>
           <WatchEvent />
         </DashboardProviders>

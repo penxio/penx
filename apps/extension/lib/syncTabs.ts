@@ -171,7 +171,7 @@ async function getSpaceInfo() {
   // console.log('=======structs:', structs)
 
   const tabStruct = structs.find((s) => s.props.type === StructType.BROWSER_TAB)
-  if (!tabStruct) return
+  if (!tabStruct) throw new Error('No tab struct')
 
   const tabNodes = (await localDB.listCreations(area.id)).filter(
     (c) => c.props.structId === tabStruct.id,
@@ -207,7 +207,7 @@ function getCells(tab: Tab, tabStruct: IStructNode) {
       if (column.slug === 'url') value = tab.url
       if (column.slug === 'favIconUrl') value = tab.favIconUrl
       if (column.slug === 'active') value = tab.active
-      if (column.slug === 'muted') value = tab.mutedInfo.muted
+      if (column.slug === 'muted') value = tab.mutedInfo?.muted
       if (column.slug === 'pinned') value = tab.pinned
       if (column.slug === 'lastAccessed') value = tab.lastAccessed
       if (column.slug === 'index') value = tab.index

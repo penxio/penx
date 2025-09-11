@@ -29,14 +29,13 @@ import { AppUpdater } from './AppUpdater'
 import { createAICommandWindow } from './createAICommandWindow'
 // import { createMainWindow } from './createMainWindow'
 import { createPanelWindow } from './createPanelWindow'
-import { createEmbeddings } from './lib/embeddings/createEmbeddings'
 import { deleteDatabase } from './lib/deleteDatabase'
 import { deleteEmbeddingTable } from './lib/deleteEmbeddingTable'
+import { createEmbeddings } from './lib/embeddings/createEmbeddings'
 import { initEmbeddings } from './lib/embeddings/initEmbeddings'
-import { initPGLite } from './lib/initPGLite'
 import { loadModel } from './lib/embeddings/loadModel'
-import { retrieve } from './lib/retrieve'
 import { buildMDocument } from './lib/embeddings/userCreationChunk'
+import { initPGLite } from './lib/initPGLite'
 import {
   activateVisualFocus,
   FrontAppMeta,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 // import { fetch as tauriFetch } from '@tauri-apps/plugin-http'
 import { get, set } from 'idb-keyval'
@@ -84,27 +84,16 @@ export function useQuerySession() {
     // staleTime: 5 * 60 * 1000,
   })
 
-  // watch web login
-  window.addEventListener('message', async (event) => {
-    if (
-      event.data &&
-      event.data.type === 'penx-logout' &&
-      event.data.source === 'penx-account'
-    ) {
-      alert('1111111111')
-      logout()
-    }
-
-    if (
-      event.data &&
-      event.data.type === 'penx-login' &&
-      event.data.source === 'penx-account'
-    ) {
-      alert('2222222222')
-      await set(SESSION, event.data.payload)
+  useEffect(() => {
+    async function handle(session: any) {
+      await set(SESSION, session)
       refetch()
     }
-  })
+    appEmitter.on('SESSION_CHANGED', handle)
+    return () => {
+      appEmitter.off('SESSION_CHANGED', handle)
+    }
+  }, [])
 
   async function login(data: LoginData & { host?: string }) {
     console.log('=========sessionApiRoute:', sessionApiRoute)

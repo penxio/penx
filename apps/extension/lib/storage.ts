@@ -6,7 +6,7 @@ export const storage = {
     session: 'local:session',
   } as const,
   async getSession() {
-    return await s.getItem<SessionData>(storage.keys.session)
+    return (await s.getItem<SessionData>(storage.keys.session))!
   },
 
   async setSession(value: SessionData) {

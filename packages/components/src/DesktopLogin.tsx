@@ -1,13 +1,11 @@
-import { Trans } from '@lingui/react/macro';
-import { Logo } from '@penx/widgets/Logo';
+import { Trans } from '@lingui/react/macro'
+import { Logo } from '@penx/widgets/Logo'
 import { ProfileButton } from './ProfileButton'
 
-
-interface DesktopWelcomeProps {
-}
+interface DesktopWelcomeProps {}
 export function DesktopLogin({}: DesktopWelcomeProps) {
   return (
-    <div className="drag text-foreground flex h-full w-full flex-col items-center justify-center gap-3 bg-white/70 dark:bg-neutral-900/70">
+    <div className="drag text-foreground flex h-screen w-full flex-col items-center justify-center gap-3 bg-white/70 dark:bg-neutral-900/70">
       <div className="flex flex-col items-center gap-3">
         <Logo className="border-foreground/10 rounded-2xl border" />
         <div className="flex flex-col items-center justify-center">
