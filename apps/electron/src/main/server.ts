@@ -17,6 +17,7 @@ import { z } from 'zod'
 import { CHROME_INFO } from '@penx/constants'
 import { db } from '@penx/db/client'
 import { ICreationNode, NodeType } from '@penx/model-type'
+import { auth } from './lib/auth'
 import { BusinessError } from './lib/BusinessError'
 import { createNodeEmbedding } from './lib/createNodeEmbedding'
 import { deleteNodeEmbedding } from './lib/deleteNodeEmbedding'
@@ -261,6 +262,30 @@ export class HonoServer {
     api.route('/node', nodeRouter)
     api.route('/ai', aiRouter)
     api.route('/extension', extensionRouter)
+
+    api.post(
+      '/createChange',
+      // auth,
+      zValidator(
+        'json',
+        z.object({
+          operation: z.any(),
+          spaceId: z.string(),
+          synced: z.number(),
+          createdAt: z.any(),
+          key: z.string(),
+          data: z.any(),
+        }),
+      ),
+      async (c) => {
+        const input = c.req.valid('json')
+        this.windows.panelWindow?.webContents.send('create-change', input)
+
+        return c.json({
+          success: true,
+        })
+      },
+    )
 
     api.post(
       '/rag/retrieve',

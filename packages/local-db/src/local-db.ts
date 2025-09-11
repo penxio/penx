@@ -1,5 +1,6 @@
 import { get } from 'idb-keyval'
-import { ACTIVE_SPACE } from '@penx/constants'
+import ky from 'ky'
+import { ACTIVE_SPACE, APP_LOCAL_HOST, isExtension } from '@penx/constants'
 import { idb } from '@penx/indexeddb'
 import {
   IAreaNode,
@@ -370,6 +371,7 @@ class LocalDB {
     data = {} as Record<string, any>,
   ) {
     const space = (await get(ACTIVE_SPACE)) as ISpaceNode
+
     if (space?.props.isRemote) {
       const change = {
         operation: op,
@@ -379,7 +381,17 @@ class LocalDB {
         key: id,
         data,
       } as IChange
-      await idb.change.add(change)
+
+      if (isExtension) {
+        await ky
+          .post(`${APP_LOCAL_HOST}/api/createChange`, {
+            json: change,
+          })
+          .json()
+        //
+      } else {
+        await idb.change.add(change)
+      }
     }
   }
 

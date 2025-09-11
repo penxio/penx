@@ -1,5 +1,5 @@
 import { Buffer } from 'buffer'
-import { isDesktop, WorkerEvents } from '@penx/constants'
+import { isDesktop, isExtension, WorkerEvents } from '@penx/constants'
 import { pollingBackupToGoogle } from './pollingBackupToGoogle'
 import { pollingCheckTodayJournal } from './pollingCheckTodayJournal'
 import { pollingCloudSync } from './pollingCloudSync'
@@ -14,7 +14,9 @@ self.addEventListener('message', async (event) => {
     // pollingBackupToGoogle()
     // pollingCloudSync()
 
-    pollingSyncToRemote()
+    if (!isExtension) {
+      pollingSyncToRemote()
+    }
 
     if (isDesktop) {
       pollingCreateEmbeddings()
