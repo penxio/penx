@@ -1,6 +1,5 @@
 import { get, set } from 'idb-keyval'
 import { produce } from 'immer'
-import ky from 'ky'
 import _ from 'lodash'
 import { api } from '@penx/api'
 import {
@@ -9,13 +8,16 @@ import {
   isMobileApp,
   ROOT_HOST,
 } from '@penx/constants'
-import { idb } from '@penx/indexeddb'
 import { checkMnemonic } from '@penx/libs/checkMnemonic'
-import { localDB } from '@penx/local-db'
 import { encryptByPublicKey } from '@penx/mnemonic'
 import { IChange, ICreationNode, OperationType } from '@penx/model-type'
 import { SessionData } from '@penx/types'
-import { getChanges } from './getChanges'
+import {
+  deleteChange,
+  deleteChangeByIds,
+  getChanges,
+  updateChange,
+} from './change.helper'
 import { mergeChanges } from './mergeChanges'
 
 export async function syncNodesToServer() {
@@ -28,8 +30,10 @@ export async function syncNodesToServer() {
   // if (!site) return
 
   await checkMnemonic(session)
+  console.log('>>>>>>>>>meno:', session)
 
   const changes = await getChanges(session)
+  console.log('=======>>>>>>changes:', changes)
 
   const mergedChanges = mergeChanges(changes)
 
@@ -39,10 +43,10 @@ export async function syncNodesToServer() {
     .filter((c) => !mergedChangeIds.includes(c.id))
     .map((c) => c.id)
 
-  await idb.change.where('id').anyOf(deleteChangeIds).delete()
+  await deleteChangeByIds(deleteChangeIds)
 
-  for (const { id, ...rest } of mergedChanges) {
-    await idb.change.update(id, rest)
+  for (const change of mergedChanges) {
+    await updateChange(change)
   }
 
   const newChanges = await getChanges(session)
@@ -130,15 +134,15 @@ export async function syncNodesToServer() {
 
       // console.log('>>>>>change synced:', change)
       await api.sync(url, encryptedInput)
-      await idb.change.delete(change.id)
+
+      await deleteChange(change.id)
     } catch (error) {
       console.log('error syncing change:', error)
       console.log('change>>>>>>>>>>:', change)
 
       if (error.errorCode === 'NODE_NOT_EXISTED') {
-        // await idb.change.delete(change.id)
         if (isDesktop) {
-          await idb.change.delete(change.id)
+          await deleteChange(change.id)
           // const node = await ky
           //   .get(`${APP_LOCAL_HOST}/api/get`, {
           //     searchParams: { id: change.key },
@@ -148,7 +152,7 @@ export async function syncNodesToServer() {
           // console.log('=======>>>>>NODE_NOT_EXISTED:node:', node)
         }
 
-        // await idb.change.delete(change.id)
+        await deleteChange(change.id)
       }
       errors.push(error)
     }

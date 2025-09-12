@@ -27,6 +27,7 @@ import { getNodeEmbedding } from './lib/getNodeEmbedding'
 import { retrieveCreations } from './lib/retrieveCreations'
 import aiRouter from './routers/ai'
 import bookmarkRouter from './routers/bookmark'
+import changeRouter from './routers/change'
 import dbProxyRouter from './routers/db-proxy'
 import extensionRouter from './routers/extension'
 import nodeRouter from './routers/node'
@@ -262,30 +263,7 @@ export class HonoServer {
     api.route('/node', nodeRouter)
     api.route('/ai', aiRouter)
     api.route('/extension', extensionRouter)
-
-    api.post(
-      '/createChange',
-      // auth,
-      zValidator(
-        'json',
-        z.object({
-          operation: z.any(),
-          spaceId: z.string(),
-          synced: z.number(),
-          createdAt: z.any(),
-          key: z.string(),
-          data: z.any(),
-        }),
-      ),
-      async (c) => {
-        const input = c.req.valid('json')
-        this.windows.panelWindow?.webContents.send('create-change', input)
-
-        return c.json({
-          success: true,
-        })
-      },
-    )
+    api.route('/change', changeRouter)
 
     api.post(
       '/rag/retrieve',

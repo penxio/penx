@@ -18,6 +18,7 @@ export const SyncIntervalSelect = ({}: Props) => {
     queryKey: ['syncInterval'],
     queryFn: async () => {
       const interval = await get(key)
+
       return (interval as number) || 1000 * 60 * 30
     },
   })
@@ -61,20 +62,21 @@ export const SyncIntervalSelect = ({}: Props) => {
       <span>
         <Trans>Time interval</Trans>
       </span>
-      <Select value={value} onValueChange={setValue}>
+      <Select
+        value={value}
+        onValueChange={async (v) => {
+          console.log('v========vv:', v)
+          setValue(v)
+          await set(key, Number(v))
+          refetch()
+        }}
+      >
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Interval" />
         </SelectTrigger>
         <SelectContent>
           {options.map((item) => (
-            <SelectItem
-              key={item.value}
-              value={item.value.toString()}
-              onClick={async () => {
-                await set(key, item.value)
-                refetch()
-              }}
-            >
+            <SelectItem key={item.value} value={item.value.toString()}>
               {item.label}
             </SelectItem>
           ))}

@@ -26,6 +26,7 @@ export function PageQuickInput() {
         },
         onConfirm: () => {
           navigation.pop()
+          alert('hlllo')
           appEmitter.emit('SUBMIT_QUICK_INPUT')
         },
       }}

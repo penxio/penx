@@ -115,7 +115,7 @@ export class AppService {
       const spaces = await localDB.listAllSpaceByUserId(session.userId)
       const space = spaces.find((s) => s.props.isRemote)
 
-      console.log('=======spaces:', spaces)
+      // console.log('=======spaces:', spaces)
 
       if (space) {
         await syncNodesToLocal(space.id)

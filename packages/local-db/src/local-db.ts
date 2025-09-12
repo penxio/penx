@@ -1,6 +1,11 @@
 import { get } from 'idb-keyval'
 import ky from 'ky'
-import { ACTIVE_SPACE, APP_LOCAL_HOST, isExtension } from '@penx/constants'
+import {
+  ACTIVE_SPACE,
+  APP_LOCAL_HOST,
+  isDesktop,
+  isExtension,
+} from '@penx/constants'
 import { idb } from '@penx/indexeddb'
 import {
   IAreaNode,
@@ -382,13 +387,12 @@ class LocalDB {
         data,
       } as IChange
 
-      if (isExtension) {
+      if (isExtension || isDesktop) {
         await ky
-          .post(`${APP_LOCAL_HOST}/api/createChange`, {
+          .post(`${APP_LOCAL_HOST}/api/change/create`, {
             json: change,
           })
           .json()
-        //
       } else {
         await idb.change.add(change)
       }

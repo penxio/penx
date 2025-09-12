@@ -148,6 +148,8 @@ export function JournalQuickInput({
         title: noteTitle,
       })
     }, 0)
+
+    appEmitter.emit('REFRESH_COMMANDS')
   }
 
   useEffect(() => {

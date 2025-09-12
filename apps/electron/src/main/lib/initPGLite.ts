@@ -2,6 +2,7 @@ import { sql } from 'drizzle-orm';
 import { db } from '@penx/db/client';
 import { embeddings } from '@penx/db/schema/embeddings';
 import { nodes } from '@penx/db/schema/nodes';
+import { changes } from '@penx/db/schema/change';
 
 
 export async function initPGLite() {
@@ -18,6 +19,10 @@ export async function initPGLite() {
       await createEmbeddingTable()
     }
 
+    if (!tableStatus.changeExists) {
+      await createChangeTable()
+    }
+
     console.log('PGLite database initialized successfully')
   } catch (error: any) {
     console.error('Failed to initialize PGLite database:', error)
@@ -28,6 +33,7 @@ export async function initPGLite() {
 async function checkTablesExist() {
   let nodeExists = false
   let embeddingExists = false
+  let changeExists = false
 
   try {
     await db.select().from(nodes).limit(1)
@@ -45,7 +51,15 @@ async function checkTablesExist() {
     console.log('Embeddings table does not exist, will create it')
   }
 
-  return { nodeExists, embeddingExists }
+  try {
+    await db.select().from(changes).limit(1)
+    changeExists = true
+    console.log('Change table exists')
+  } catch (error: any) {
+    console.log('Change table does not exist, will create it')
+  }
+
+  return { nodeExists, embeddingExists, changeExists }
 }
 
 async function createNodeTable() {
@@ -147,6 +161,48 @@ async function createEmbeddingTable() {
       console.log('Embeddings table or index already exists, skipping creation')
     } else {
       console.error('Embeddings table creation error:', error)
+      throw error
+    }
+  }
+}
+
+async function createChangeTable() {
+  try {
+    // Create change table
+    await db.execute(sql`
+      CREATE TABLE "change" (
+        "id" integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY (sequence name "change_id_seq" INCREMENT BY 1 MINVALUE 1 MAXVALUE 2147483647 START WITH 1 CACHE 1),
+        "operation" text NOT NULL,
+        "space_id" uuid NOT NULL,
+        "key" text NOT NULL,
+        "data" jsonb,
+        "synced" integer DEFAULT 0 NOT NULL,
+        "created_at" timestamp DEFAULT now() NOT NULL
+      )
+    `)
+    console.log('Created change table')
+
+    // Create indexes
+    await db.execute(
+      sql`CREATE INDEX "idx_change_space_id" ON "change" USING btree ("space_id")`,
+    )
+    await db.execute(
+      sql`CREATE INDEX "idx_change_synced" ON "change" USING btree ("synced")`,
+    )
+    await db.execute(
+      sql`CREATE INDEX "idx_change_space_synced" ON "change" USING btree ("space_id","synced")`,
+    )
+
+    console.log('Created change table indexes')
+  } catch (error: any) {
+    // If table already exists, that's fine
+    if (
+      error.message?.includes('already exists') ||
+      error.message?.includes('duplicate key')
+    ) {
+      console.log('Change table or index already exists, skipping creation')
+    } else {
+      console.error('Change table creation error:', error)
       throw error
     }
   }
