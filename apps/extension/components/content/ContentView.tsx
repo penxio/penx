@@ -39,10 +39,6 @@ export const ContentView = () => {
     }
   }, [setAppType])
 
-  // return (
-  //   <div className="fixed left-0 top-0 z-50 h-40 w-40 bg-green-200">Test</div>
-  // )
-
   return (
     <>
       {/* <QuickAddEditor x={clientX} y={clientY} /> */}

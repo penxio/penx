@@ -45,6 +45,8 @@ export default defineConfig({
       'favicon',
       'sidePanel',
       'commands',
+      'userScripts',
+      'scripting',
     ],
     content_security_policy: {
       extension_pages:

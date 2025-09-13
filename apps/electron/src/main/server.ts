@@ -31,6 +31,7 @@ import changeRouter from './routers/change'
 import dbProxyRouter from './routers/db-proxy'
 import extensionRouter from './routers/extension'
 import nodeRouter from './routers/node'
+import userscriptRouter from './routers/userscript'
 import { Windows } from './types'
 
 declare module 'hono' {
@@ -264,6 +265,7 @@ export class HonoServer {
     api.route('/ai', aiRouter)
     api.route('/extension', extensionRouter)
     api.route('/change', changeRouter)
+    api.route('/userscript', userscriptRouter)
 
     api.post(
       '/rag/retrieve',

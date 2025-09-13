@@ -19,6 +19,7 @@ import {
   StructType,
 } from '@penx/types'
 import { uniqueId } from '@penx/unique-id'
+import { getSpaceInfo } from './getSpaceInfo'
 import { sendMessage } from './message'
 
 interface Tab {
@@ -53,7 +54,7 @@ interface Tab {
 export async function syncTabs() {
   const session = await storage.getSession()
 
-  console.log('=========>>>>>session:', session)
+  // console.log('=========>>>>>session:', session)
 
   if (!session) return
 
@@ -67,7 +68,7 @@ export async function syncTabs() {
     // console.log('Tab updated:', tabId, changeInfo, tab)
 
     if (changeInfo.status === 'complete') {
-      console.log('>>>>>>Tab ' + tabId + ' finished loading:', tab.url, tab)
+      // console.log('>>>>>>Tab ' + tabId + ' finished loading:', tab.url, tab)
 
       const { tabNodes, tabStruct, area } = await getSpaceInfo()
       const existed = tabNodes.find((t) => {
@@ -159,37 +160,13 @@ export async function syncTabs() {
   })
 }
 
-async function getSpaceInfo() {
-  const session = await storage.getSession()
-  // console.log('=====session:', session)
-  const areas = await localDB.listAreas(session.spaceId)
-
-  const area = areas[0]
-
-  const structs = await localDB.listStructs(area.id)
-
-  // console.log('=======structs:', structs)
-
-  const tabStruct = structs.find((s) => s.props.type === StructType.BROWSER_TAB)
-  if (!tabStruct) throw new Error('No tab struct')
-
-  const tabNodes = (await localDB.listCreations(area.id)).filter(
-    (c) => c.props.structId === tabStruct.id,
-  )
-  return {
-    tabStruct,
-    tabNodes,
-    area,
-  }
-}
-
 async function syncInitialTabs(session: SessionData) {
   let tabs = await browser.tabs.query({})
 
-  console.log('==========tabs:', tabs)
+  // console.log('==========tabs:', tabs)
 
   const { tabNodes, tabStruct, area } = await getSpaceInfo()
-  console.log('=======>>>>>>>>>tabNodes:', tabNodes)
+  // console.log('=======>>>>>>>>>tabNodes:', tabNodes)
 
   if (tabNodes.length) return
 

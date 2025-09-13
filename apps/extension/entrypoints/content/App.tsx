@@ -12,7 +12,7 @@ import { watchAuth } from '@/lib/watchAuth'
 watchAuth()
 
 export default () => {
-  return <div></div>
+  return null
   // return (
   //   <ThemeProvider>
   //     <QueryClientProvider client={queryClient}>
