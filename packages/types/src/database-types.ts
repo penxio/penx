@@ -22,6 +22,8 @@ export enum ColumnType {
 
   MODEL_SELECT = 'MODEL_SELECT',
 
+  CODE_EDITOR = 'CODE_EDITOR',
+
   DATE = 'DATE',
   CREATED_AT = 'CREATED_AT',
   UPDATED_AT = 'UPDATED_AT',

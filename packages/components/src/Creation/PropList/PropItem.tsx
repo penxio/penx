@@ -4,6 +4,7 @@ import { format } from 'date-fns'
 import { Creation, Struct } from '@penx/domain'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
+import { Switch } from '@penx/uikit/ui/switch'
 import { cn } from '@penx/utils'
 import { AIModelSelect } from '../../AIModelSelect'
 import { FieldIcon } from '../../FieldIcon'
@@ -44,6 +45,8 @@ export const PropItem = ({
 
   const handleChange = useCallback(
     (v: any) => {
+      console.log('=======vLLLLLL:', v)
+
       onUpdateProps({
         ...cells,
         [column.id]: v,
@@ -90,6 +93,14 @@ export const PropItem = ({
           />
         )
       case ColumnType.LONG_TEXT:
+        return (
+          <TextareaProp
+            placeholder={t`Empty`}
+            value={value}
+            onChange={handleChange}
+          />
+        )
+      case ColumnType.CODE_EDITOR:
         return (
           <TextareaProp
             placeholder={t`Empty`}
@@ -167,6 +178,15 @@ export const PropItem = ({
         )
       case ColumnType.RATE:
         return <RateProp value={value} onChange={handleChange} />
+
+      case ColumnType.BOOLEAN:
+        return (
+          <Switch
+            className="ml-auto"
+            checked={!!value}
+            onCheckedChange={handleChange}
+          />
+        )
       default:
         return null
     }

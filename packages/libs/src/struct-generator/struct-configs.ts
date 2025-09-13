@@ -150,6 +150,27 @@ export function getStructTypeConfig() {
       syncable: false,
     },
 
+    [StructType.USERSCRIPT]: {
+      name: t`Userscript`,
+      columns: [
+        createBaseColumn('enabled', t`Enabled`, ColumnType.BOOLEAN),
+        createBaseColumn('version', t`Version`, ColumnType.URL),
+        createBaseColumn('description', t`Description`, ColumnType.LONG_TEXT),
+        createBaseColumn('homepage', t`Home page`, ColumnType.URL),
+        createBaseColumn('downloadURL', t`Download URL`, ColumnType.URL),
+        createBaseColumn('match', t`Match`, ColumnType.LONG_TEXT),
+        createBaseColumn('exclude', t`Exclude`, ColumnType.LONG_TEXT),
+        createBaseColumn('include', t`Include`, ColumnType.LONG_TEXT),
+        createBaseColumn('code', t`Code`, ColumnType.CODE_EDITOR),
+        createBaseColumn(
+          'isRunInSandbox',
+          t`Run in Sandbox`,
+          ColumnType.BOOLEAN,
+        ),
+      ],
+      showDetail: true,
+    },
+
     // Unused struct types, provide default configuration
     [StructType.ARTICLE]: {
       name: t`Article`,

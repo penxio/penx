@@ -249,7 +249,7 @@ export function RootActions({ command, close }: RootActionsProps) {
         </ActionCommandItem>
       )}
 
-      {isStruct && !isBuiltinStruct(struct.type) && (
+      {isStruct && isBuiltinStruct(struct.type) && (
         <>
           <ActionCommandItem
             shortcut=""

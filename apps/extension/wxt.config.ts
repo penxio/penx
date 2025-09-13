@@ -45,7 +45,6 @@ export default defineConfig({
       'favicon',
       'sidePanel',
       'commands',
-      'unlimitedStorage',
     ],
     content_security_policy: {
       extension_pages:

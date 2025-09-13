@@ -73,12 +73,12 @@ export class AppService {
       }
     }
 
-    console.log('======session:', session)
+    // console.log('======session:', session)
 
     try {
       const space = await this.getInitialSpace(session)
 
-      console.log('===========getInitial=space:', space)
+      // console.log('===========getInitial=space:', space)
       await this.initStore(space)
     } catch (error) {
       console.log('init error=====>>>:', error)
@@ -237,6 +237,25 @@ export class AppService {
           userId: space.userId,
           areaId: area.id,
           syncable: false,
+        })
+
+        await localDB.addStruct(newStruct)
+        structs.push(newStruct)
+      }
+    }
+
+    {
+      const scriptStruct = structs.find(
+        (s) => s.props.type === StructType.USERSCRIPT,
+      )
+
+      if (!scriptStruct) {
+        const newStruct = generateStructNode({
+          type: StructType.USERSCRIPT,
+          name: t`Userscript`,
+          spaceId: space.id,
+          userId: space.userId,
+          areaId: area.id,
         })
 
         await localDB.addStruct(newStruct)
