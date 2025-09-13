@@ -1,7 +1,7 @@
 import { createContext, FC, PropsWithChildren, useEffect, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useAtomValue } from 'jotai'
-import { isBrowser, isDesktop, isServer } from '@penx/constants'
+import { isBrowser, isDesktop, isMobileApp, isServer } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useJournalLayout } from '@penx/hooks/useJournalLayout'
 import { useSession } from '@penx/session'
@@ -103,11 +103,11 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
   if (isLoading) return null
 
   // if (!session && isDesktop) {
-  if (!session) {
+  if (!session && !isMobileApp) {
     return <DesktopLogin />
   }
 
-  if (session && !session?.earlyAccessCode) {
+  if (session && !session?.earlyAccessCode && !isMobileApp) {
     return <EarlyAccessCode />
   }
 

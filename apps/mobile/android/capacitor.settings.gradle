@@ -9,7 +9,7 @@ include ':capacitor-community-safe-area'
 project(':capacitor-community-safe-area').projectDir = new File('../../../node_modules/.pnpm/@capacitor-community+safe-area@7.0.0-alpha.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/safe-area/android')
 
 include ':capacitor-community-speech-recognition'
-project(':capacitor-community-speech-recognition').projectDir = new File('../../../node_modules/.pnpm/@capacitor-community+speech-recognition@7.0.0_@capacitor+core@7.2.0/node_modules/@capacitor-community/speech-recognition/android')
+project(':capacitor-community-speech-recognition').projectDir = new File('../../../node_modules/.pnpm/@capacitor-community+speech-recognition@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor-community/speech-recognition/android')
 
 include ':capacitor-app'
 project(':capacitor-app').projectDir = new File('../../../node_modules/.pnpm/@capacitor+app@7.0.1_@capacitor+core@7.2.0/node_modules/@capacitor/app/android')
@@ -57,13 +57,13 @@ include ':capawesome-capacitor-app-shortcuts'
 project(':capawesome-capacitor-app-shortcuts').projectDir = new File('../../../node_modules/.pnpm/@capawesome+capacitor-app-shortcuts@7.5.0_@capacitor+core@7.2.0/node_modules/@capawesome/capacitor-app-shortcuts/android')
 
 include ':capgo-capacitor-navigation-bar'
-project(':capgo-capacitor-navigation-bar').projectDir = new File('../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.19_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar/android')
+project(':capgo-capacitor-navigation-bar').projectDir = new File('../../../node_modules/.pnpm/@capgo+capacitor-navigation-bar@7.1.21_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-navigation-bar/android')
 
 include ':capgo-capacitor-social-login'
 project(':capgo-capacitor-social-login').projectDir = new File('../../../node_modules/.pnpm/@capgo+capacitor-social-login@7.5.9_@capacitor+core@7.2.0/node_modules/@capgo/capacitor-social-login/android')
 
 include ':revenuecat-purchases-capacitor'
-project(':revenuecat-purchases-capacitor').projectDir = new File('../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.4_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor/android')
+project(':revenuecat-purchases-capacitor').projectDir = new File('../../../node_modules/.pnpm/@revenuecat+purchases-capacitor@10.3.8_@capacitor+core@7.2.0/node_modules/@revenuecat/purchases-capacitor/android')
 
 include ':capacitor-voice-recorder'
-project(':capacitor-voice-recorder').projectDir = new File('../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.5_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.1_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder/android')
+project(':capacitor-voice-recorder').projectDir = new File('../../../node_modules/.pnpm/capacitor-voice-recorder@7.0.6_@capacitor+core@7.2.0_@capacitor+filesystem@7.1.2_@capacitor+core@7.2.0_/node_modules/capacitor-voice-recorder/android')

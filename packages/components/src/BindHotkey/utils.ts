@@ -1,8 +1,8 @@
 import { Conf } from 'electron-conf/renderer'
 import { produce } from 'immer'
+import { isDesktop } from '@penx/constants'
 import { Shortcut } from '@penx/model-type'
 import { SHORTCUT_LIST } from './constants'
-import { isDesktop } from '@penx/constants'
 
 const conf = new Conf()
 
@@ -30,7 +30,7 @@ export async function upsertShortcut(value: Shortcut) {
 }
 
 export async function unregisterHotkey(shortcut: Shortcut) {
-  if(!isDesktop) return
+  if (!isDesktop) return
   try {
     await window.customElectronApi.shortcut.unregister(shortcut)
   } catch (error) {
@@ -48,8 +48,7 @@ export function convertKeysToHotkey(keys: string[]) {
 }
 
 export async function registerHotkey(shortcut: Shortcut) {
-
-  if(!isDesktop) return
+  if (!isDesktop) return
   try {
     await window.customElectronApi.shortcut.unregister(shortcut)
   } catch (error) {}

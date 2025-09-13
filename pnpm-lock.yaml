@@ -889,115 +889,6 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
-  apps/desktop:
-    dependencies:
-      '@penx/components':
-        specifier: workspace:*
-        version: link:../../packages/components
-      '@penx/constants':
-        specifier: workspace:*
-        version: link:../../packages/constants
-      '@penx/content-render':
-        specifier: workspace:*
-        version: link:../../packages/content-render
-      '@penx/contexts':
-        specifier: workspace:*
-        version: link:../../packages/contexts
-      '@penx/domain':
-        specifier: workspace:*
-        version: link:../../packages/domain
-      '@penx/emitter':
-        specifier: workspace:*
-        version: link:../../packages/emitter
-      '@penx/encryption':
-        specifier: workspace:*
-        version: link:../../packages/encryption
-      '@penx/hooks':
-        specifier: workspace:*
-        version: link:../../packages/hooks
-      '@penx/icons':
-        specifier: workspace:*
-        version: link:../../packages/icons
-      '@penx/indexeddb':
-        specifier: workspace:*
-        version: link:../../packages/indexeddb
-      '@penx/libs':
-        specifier: workspace:*
-        version: link:../../packages/libs
-      '@penx/local-db':
-        specifier: workspace:*
-        version: link:../../packages/local-db
-      '@penx/locales':
-        specifier: workspace:*
-        version: link:../../packages/locales
-      '@penx/model-type':
-        specifier: workspace:*
-        version: link:../../packages/model-type
-      '@penx/novel-editor':
-        specifier: workspace:*
-        version: link:../../packages/novel-editor
-      '@penx/query-client':
-        specifier: workspace:*
-        version: link:../../packages/query-client
-      '@penx/services':
-        specifier: workspace:*
-        version: link:../../packages/services
-      '@penx/session':
-        specifier: workspace:*
-        version: link:../../packages/session
-      '@penx/store':
-        specifier: workspace:*
-        version: link:../../packages/store
-      '@penx/types':
-        specifier: workspace:*
-        version: link:../../packages/types
-      '@penx/uikit':
-        specifier: workspace:*
-        version: link:../../packages/uikit
-      '@penx/unique-id':
-        specifier: workspace:*
-        version: link:../../packages/unique-id
-      '@penx/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
-      '@penx/vaul':
-        specifier: workspace:*
-        version: link:../../packages/vaul
-      '@penx/widgets':
-        specifier: workspace:*
-        version: link:../../packages/widgets
-      '@tauri-apps/plugin-shell':
-        specifier: ^2.2.0
-        version: 2.3.0
-      react:
-        specifier: ^19.0.0
-        version: 19.1.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.1.0(react@19.1.0)
-    devDependencies:
-      '@lingui/vite-plugin':
-        specifier: ^5.3.2
-        version: 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
-      '@tailwindcss/vite':
-        specifier: ^4.1.4
-        version: 4.1.11(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
-      '@tauri-apps/cli':
-        specifier: ^2
-        version: 2.6.2
-      '@types/react':
-        specifier: ^19.0.7
-        version: 19.1.8
-      '@types/react-dom':
-        specifier: ^19.0.3
-        version: 19.1.6(@types/react@19.1.8)
-      '@vitejs/plugin-react':
-        specifier: ^4.3.4
-        version: 4.6.0(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
-      vite:
-        specifier: ^6.3.5
-        version: 6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
-
   apps/electron:
     dependencies:
       '@ai-sdk/provider':
@@ -1720,6 +1611,115 @@ importers:
       vitest:
         specifier: ^0.34.6
         version: 0.34.6(jsdom@22.1.0(bufferutil@4.0.8)(utf-8-validate@6.0.3))(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)
+
+  apps/tauri:
+    dependencies:
+      '@penx/components':
+        specifier: workspace:*
+        version: link:../../packages/components
+      '@penx/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
+      '@penx/content-render':
+        specifier: workspace:*
+        version: link:../../packages/content-render
+      '@penx/contexts':
+        specifier: workspace:*
+        version: link:../../packages/contexts
+      '@penx/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
+      '@penx/emitter':
+        specifier: workspace:*
+        version: link:../../packages/emitter
+      '@penx/encryption':
+        specifier: workspace:*
+        version: link:../../packages/encryption
+      '@penx/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
+      '@penx/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
+      '@penx/indexeddb':
+        specifier: workspace:*
+        version: link:../../packages/indexeddb
+      '@penx/libs':
+        specifier: workspace:*
+        version: link:../../packages/libs
+      '@penx/local-db':
+        specifier: workspace:*
+        version: link:../../packages/local-db
+      '@penx/locales':
+        specifier: workspace:*
+        version: link:../../packages/locales
+      '@penx/model-type':
+        specifier: workspace:*
+        version: link:../../packages/model-type
+      '@penx/novel-editor':
+        specifier: workspace:*
+        version: link:../../packages/novel-editor
+      '@penx/query-client':
+        specifier: workspace:*
+        version: link:../../packages/query-client
+      '@penx/services':
+        specifier: workspace:*
+        version: link:../../packages/services
+      '@penx/session':
+        specifier: workspace:*
+        version: link:../../packages/session
+      '@penx/store':
+        specifier: workspace:*
+        version: link:../../packages/store
+      '@penx/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      '@penx/uikit':
+        specifier: workspace:*
+        version: link:../../packages/uikit
+      '@penx/unique-id':
+        specifier: workspace:*
+        version: link:../../packages/unique-id
+      '@penx/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@penx/vaul':
+        specifier: workspace:*
+        version: link:../../packages/vaul
+      '@penx/widgets':
+        specifier: workspace:*
+        version: link:../../packages/widgets
+      '@tauri-apps/plugin-shell':
+        specifier: ^2.2.0
+        version: 2.3.0
+      react:
+        specifier: ^19.0.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.1.0(react@19.1.0)
+    devDependencies:
+      '@lingui/vite-plugin':
+        specifier: ^5.3.2
+        version: 5.3.3(babel-plugin-macros@3.1.0)(typescript@5.9.2)(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+      '@tailwindcss/vite':
+        specifier: ^4.1.4
+        version: 4.1.11(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+      '@tauri-apps/cli':
+        specifier: ^2
+        version: 2.6.2
+      '@types/react':
+        specifier: ^19.0.7
+        version: 19.1.8
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.1.6(@types/react@19.1.8)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.4
+        version: 4.6.0(vite@6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0))
+      vite:
+        specifier: ^6.3.5
+        version: 6.3.5(@types/node@24.2.0)(jiti@2.4.2)(lightningcss@1.30.1)(sass-embedded@1.89.2)(sass@1.92.1)(terser@5.43.1)(tsx@4.20.3)(yaml@2.8.0)
 
   apps/web:
     dependencies:

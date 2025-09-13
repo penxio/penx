@@ -40,6 +40,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/vite-env.d.ts"],
+  "include": ["src", "src/vite-env.d.ts", "../../packages/components/index.d.ts"],
   "exclude": ["node_modules", "dist", "src-tauri"]
 }

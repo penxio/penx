@@ -56,7 +56,6 @@ export const StructInfoFooter = ({ structId }: Props) => {
             if (value) {
               try {
                 await mutateAsync({
-                  id: structId,
                   name: struct.name,
                   pluralName: struct.name,
                   type: struct.type,

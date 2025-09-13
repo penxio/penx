@@ -41,7 +41,7 @@ export function RecoverPassword({ className }: Props) {
   return (
     <div
       className={cn(
-        'drag bg-background/80 flex h-screen w-full items-center justify-center',
+        'drag bg-background/80 mx-5 flex h-screen w-full items-center justify-center',
         className,
       )}
     >

@@ -68,7 +68,9 @@ export function ProfileButton({
     const authToken = nanoid()
     const url = `${ROOT_HOST}/desktop-login?token=${authToken}`
     // openUrl()
-    window.electron.ipcRenderer.send('open-url', url)
+    if (isDesktop) {
+      window.electron.ipcRenderer.send('open-url', url)
+    }
 
     setLoading(true)
 

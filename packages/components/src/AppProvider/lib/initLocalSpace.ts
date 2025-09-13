@@ -1,8 +1,8 @@
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { defaultEditorContent, defaultNavLinks } from '@penx/constants'
-import { getDefaultStructs } from '@penx/libs/struct-generator/struct-generator'
 import { getInitialWidgets } from '@penx/libs/getInitialWidgets'
+import { getDefaultStructs } from '@penx/libs/struct-generator/struct-generator'
 import { localDB } from '@penx/local-db'
 import {
   IAreaNode,
@@ -54,6 +54,7 @@ export async function initLocalSpace(uid?: string) {
     updatedAt: new Date(),
     userId,
   }
+
   await localDB.node.insert(newSpace)
 
   const newArea = await localDB.node.insert({
@@ -76,6 +77,7 @@ export async function initLocalSpace(uid?: string) {
     spaceId,
     userId,
   } as IAreaNode)
+  console.log('=========newArea:', newArea)
 
   const { id: areaId } = newArea
 

@@ -17,6 +17,7 @@ import { DashboardProviders } from '@penx/components/DashboardProviders'
 import { LinguiClientProvider } from '@penx/components/LinguiClientProvider'
 import { GOOGLE_OAUTH_REDIRECT_URI } from '@penx/constants'
 import { useMobileNav } from '@penx/hooks/useMobileNav'
+import { initIDBNodeModelApi } from '@penx/libs/initIDBNodeModelApi'
 import Menu from './components/Menu'
 import PageHome from './pages/PageHome/PageHome'
 /* Core CSS required for Ionic components to work properly */
@@ -80,6 +81,9 @@ import { PageTasks } from './pages/PageTasks/PageTasks'
 import { PageWidget } from './pages/PageWidget'
 
 const platform = Capacitor.getPlatform()
+
+initIDBNodeModelApi()
+
 async function init() {
   // const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
 

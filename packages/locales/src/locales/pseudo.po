@@ -31,7 +31,7 @@ msgid "1 day early"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:44
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:46
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:47
 msgid "1 hour"
 msgstr ""
 
@@ -44,12 +44,12 @@ msgid "1 week early"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:36
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:38
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:39
 msgid "10 minutes"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:48
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:50
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:51
 msgid "12 hours"
 msgstr ""
 
@@ -58,7 +58,7 @@ msgid "1GB/month storage"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:52
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:54
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:55
 msgid "24 hours"
 msgstr ""
 
@@ -67,7 +67,7 @@ msgid "2GB/month storage"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:40
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:42
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:43
 msgid "30 minutes"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgid "30 minutes early"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:32
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:34
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:35
 msgid "5 minutes"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgid "A brief your introduction."
 msgstr ""
 
 #: packages/components/src/DesktopWelcome.tsx:30
-#: packages/components/src/DesktopLogin.tsx:19
+#: packages/components/src/DesktopLogin.tsx:17
 msgid "A local-first tool for for personal data management."
 msgstr ""
 
@@ -112,8 +112,12 @@ msgstr ""
 msgid "Account deletion in progress..."
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:96
+#: packages/panel-app/src/components/Panel/SearchBar/ActionPopover.tsx:95
 msgid "Actions"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:144
+msgid "Active"
 msgstr ""
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:62
@@ -134,7 +138,7 @@ msgstr ""
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/AddOptionButton.tsx:30
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/OptionDrawer.tsx:86
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/AddOptionButton.tsx:30
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/OptionListField.tsx:76
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/OptionListField.tsx:76
 msgid "Add option"
 msgstr ""
 
@@ -155,7 +159,7 @@ msgstr ""
 msgid "Add tag"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:216
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:216
 msgid "Add to Favorites"
 msgstr ""
 
@@ -163,7 +167,7 @@ msgstr ""
 msgid "Add widget"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:202
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:202
 msgid "Added to Favorites"
 msgstr ""
 
@@ -173,12 +177,12 @@ msgstr ""
 msgid "AI chat"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:43
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:43
 msgid "AI Chat"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:456
-#: packages/components/src/AppProvider/AppService.ts:233
+#: packages/libs/src/struct-generator/struct-configs.ts:122
+#: packages/components/src/AppProvider/AppService.ts:256
 msgid "AI Command"
 msgstr ""
 
@@ -202,7 +206,7 @@ msgid "AI Transcribing"
 msgstr ""
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:24
-#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:30
+#: packages/panel-app/src/components/Panel/FilterPopover.tsx:30
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:22
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:30
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/StructTypeSelect.tsx:66
@@ -234,7 +238,7 @@ msgstr ""
 msgid "Already have an account"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:65
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:66
 msgid "An area for sharing thoughts, stories, and insights."
 msgstr ""
 
@@ -261,7 +265,7 @@ msgstr ""
 msgid "Are you sure you want to cancel subscription?"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:108
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:108
 msgid "Are you sure you want to delete this property?"
 msgstr ""
 
@@ -276,6 +280,14 @@ msgstr ""
 
 #: apps/mobile/src/components/AreasMenu/AreasMenu.tsx:71
 msgid "Areas"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:155
+msgid "Article"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:165
+msgid "Audio"
 msgstr ""
 
 #: packages/components/src/AIChat/rag-setting-dialog.tsx:334
@@ -315,12 +327,17 @@ msgstr ""
 msgid "Bio"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:462
+#: packages/libs/src/struct-generator/struct-configs.ts:130
 msgid "Bookmark"
 msgstr ""
 
 #: packages/components/src/ColumnTypeName.tsx:18
 msgid "Boolean"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:138
+#: packages/components/src/AppProvider/AppService.ts:235
+msgid "Browser tab"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:66
@@ -337,7 +354,7 @@ msgid "Built {0} items"
 msgstr ""
 
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:46
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:148
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:148
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:81
 #: packages/components/src/Creation/PublishDialog/PublishForm.tsx:243
 #: packages/components/src/Creation/DeleteCreationDialog/DeleteCreationDialog.tsx:66
@@ -375,13 +392,13 @@ msgstr ""
 msgid "Change type"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageAIChat/SendBox.tsx:25
+#: packages/panel-app/src/components/Panel/pages/PageAIChat/SendBox.tsx:25
 #: packages/components/src/AIChat/multimodal-input.tsx:157
 msgid "Chat with my data..."
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:83
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:175
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:175
 msgid "Cloud sync"
 msgstr ""
 
@@ -397,7 +414,7 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:61
+#: packages/panel-app/src/components/Panel/pages/PageRoot.tsx:64
 msgid "Commands"
 msgstr ""
 
@@ -405,11 +422,11 @@ msgstr ""
 msgid "Config"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageConfigureShortcut.tsx:18
+#: packages/panel-app/src/components/Panel/pages/PageConfigureShortcut.tsx:18
 msgid "Configure shortcut"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:140
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:140
 msgid "Configure Shortcut"
 msgstr ""
 
@@ -428,11 +445,11 @@ msgstr ""
 msgid "Confirm Publishing"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:246
+#: packages/libs/src/struct-generator/struct-configs.ts:99
 msgid "Content"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:187
+#: packages/panel-app/src/components/Panel/pages/PageTranslate.tsx:189
 #: packages/components/src/ProfileBasicInfo.tsx:53
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:39
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoveryPhrase.tsx:106
@@ -448,16 +465,16 @@ msgstr ""
 msgid "Copy html"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:95
+#: packages/panel-app/src/components/Panel/SearchBar/StructActions.tsx:94
 msgid "Copy ID"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:86
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:259
+#: packages/panel-app/src/components/Panel/SearchBar/StructActions.tsx:85
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:259
 msgid "Copy ID to clipboard"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:268
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:268
 msgid "Copy Struct ID"
 msgstr ""
 
@@ -469,10 +486,10 @@ msgstr ""
 msgid "Coupon code applied successfully"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSettings.tsx:35
-#: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:22
-#: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:23
-#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:21
+#: packages/panel-app/src/components/Panel/pages/PageSettings.tsx:34
+#: packages/panel-app/src/components/Panel/pages/PageQuickInput.tsx:22
+#: packages/panel-app/src/components/Panel/pages/PageLogin.tsx:23
+#: packages/panel-app/src/components/Panel/pages/PageCreateQuicklink.tsx:21
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/MyListForm.tsx:64
 #: packages/components/src/StructDialog/CreateStructForm.tsx:82
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:49
@@ -490,7 +507,7 @@ msgstr ""
 msgid "Create new area"
 msgstr ""
 
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:131
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:130
 msgid "Create one"
 msgstr ""
 
@@ -501,7 +518,7 @@ msgstr ""
 msgid "Create struct"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:67
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:67
 msgid "Create Struct"
 msgstr ""
 
@@ -509,7 +526,7 @@ msgstr ""
 msgid "Create Tag"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:25
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:25
 #: packages/components/src/ColumnTypeName.tsx:29
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:25
 msgid "Created At"
@@ -520,8 +537,8 @@ msgid "Created date"
 msgstr ""
 
 #: apps/electron/src/renderer/src/components/QuickInputApp/QuickInputApp.tsx:58
-#: apps/electron/src/renderer/src/components/Panel/pages/PageQuickInput.tsx:40
-#: apps/electron/src/renderer/src/components/Panel/pages/PageCreateQuicklink.tsx:39
+#: packages/panel-app/src/components/Panel/pages/PageQuickInput.tsx:41
+#: packages/panel-app/src/components/Panel/pages/PageCreateQuicklink.tsx:39
 msgid "Created successfully"
 msgstr ""
 
@@ -529,11 +546,11 @@ msgstr ""
 msgid "Creation counts"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:231
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:231
 msgid "Creation deleted successfully"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:66
+#: packages/panel-app/src/components/Panel/pages/PageRoot.tsx:69
 msgid "Creations"
 msgstr ""
 
@@ -556,8 +573,8 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:24
-#: packages/libs/src/getDefaultStructs.ts:110
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:24
+#: packages/libs/src/struct-generator/struct-configs.ts:84
 #: packages/components/src/ColumnTypeName.tsx:28
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:24
 #: packages/components/src/Creation/PropList/TaskDate.tsx:25
@@ -583,15 +600,15 @@ msgstr ""
 msgid "Delete account"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:246
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:246
 msgid "Delete Creation"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:133
+#: packages/panel-app/src/components/Panel/SearchBar/StructActions.tsx:132
 msgid "Delete record"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:298
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:298
 msgid "Delete Struct"
 msgstr ""
 
@@ -604,12 +621,12 @@ msgstr ""
 msgid "Delete this option?"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:110
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:110
 msgid "Delete this property"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/ColumnItem.tsx:92
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:106
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnItem.tsx:106
 msgid "Delete this property?"
 msgstr ""
 
@@ -625,17 +642,17 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:77
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:77
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:35
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/ColumnMenu.tsx:68
 msgid "Display name"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:61
+#: packages/libs/src/struct-generator/struct-configs.ts:76
 msgid "Doing"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:67
+#: packages/libs/src/struct-generator/struct-configs.ts:77
 msgid "Done"
 msgstr ""
 
@@ -654,8 +671,8 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:76
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:77
+#: packages/panel-app/src/components/Panel/SearchBar/StructActions.tsx:75
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:77
 msgid "Edit content"
 msgstr ""
 
@@ -678,7 +695,7 @@ msgstr ""
 msgid "Edit struct"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:122
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:122
 msgid "Edit Struct"
 msgstr ""
 
@@ -702,7 +719,7 @@ msgstr ""
 #: apps/mobile/src/components/Login/RegisterForm.tsx:89
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:91
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:83
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:87
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:86
 msgid "Email"
 msgstr ""
 
@@ -750,8 +767,8 @@ msgstr ""
 msgid "Execute Changes"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:236
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:288
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:236
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:288
 msgid "Failed to delete"
 msgstr ""
 
@@ -763,9 +780,13 @@ msgstr ""
 msgid "Failed to execute changes. Please try again."
 msgstr ""
 
+#: packages/libs/src/struct-generator/struct-configs.ts:143
+msgid "Favicon URL"
+msgstr ""
+
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:113
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:45
 #: packages/widgets/src/WidgetName.tsx:30
+#: packages/panel-app/src/components/Panel/pages/PageRoot.tsx:48
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:102
 msgid "Favorites"
 msgstr ""
@@ -791,7 +812,11 @@ msgstr ""
 msgid "Fri"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:326
+#: packages/libs/src/struct-generator/struct-configs.ts:170
+msgid "Friend"
+msgstr ""
+
+#: packages/libs/src/struct-generator/view-factory.ts:33
 msgid "Gallery"
 msgstr ""
 
@@ -817,7 +842,7 @@ msgstr ""
 msgid "Guide of PenX"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageAIChat/Greeting.tsx:17
+#: packages/panel-app/src/components/Panel/pages/PageAIChat/Greeting.tsx:17
 #: packages/components/src/AIChat/greeting.tsx:17
 msgid "Hello there!"
 msgstr ""
@@ -826,7 +851,7 @@ msgstr ""
 msgid "Hide recovery phrase"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:98
+#: packages/libs/src/struct-generator/struct-configs.ts:82
 msgid "High"
 msgstr ""
 
@@ -842,7 +867,7 @@ msgstr ""
 msgid "Host"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageAIChat/Greeting.tsx:26
+#: packages/panel-app/src/components/Panel/pages/PageAIChat/Greeting.tsx:26
 #: packages/components/src/AIChat/greeting.tsx:26
 msgid "How can I help you today?"
 msgstr ""
@@ -851,30 +876,38 @@ msgstr ""
 msgid "I have a coupon code, apply it now."
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:153
+#: packages/libs/src/struct-generator/struct-configs.ts:132
 #: packages/components/src/AppProvider/lib/fixBookmarkStruct.ts:25
 msgid "Icon"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:408
+#: packages/libs/src/struct-generator/struct-configs.ts:140
+msgid "ID"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:66
 #: packages/components/src/ColumnTypeName.tsx:27
 msgid "Image"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:148
+msgid "Index"
 msgstr ""
 
 #: packages/components/src/RecoverPassword.tsx:57
 msgid "Input your recovery password to sync your data."
 msgstr ""
 
-#: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:80
-#: apps/electron/src/renderer/src/components/Panel/pages/PageStructMarketplace.tsx:40
+#: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:79
+#: packages/panel-app/src/components/Panel/pages/PageStructMarketplace.tsx:39
 msgid "Install"
 msgstr ""
 
-#: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:80
+#: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:79
 msgid "Installed"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:184
+#: packages/libs/src/struct-generator/struct-configs.ts:116
 msgid "Instruction"
 msgstr ""
 
@@ -912,7 +945,7 @@ msgstr ""
 msgid "Journals"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:258
+#: packages/libs/src/struct-generator/struct-configs.ts:100
 msgid "Keyword"
 msgstr ""
 
@@ -930,6 +963,10 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: packages/libs/src/struct-generator/struct-configs.ts:147
+msgid "Last Accessed"
+msgstr ""
+
 #: apps/mobile/src/components/Profile/ReviewMenu.tsx:27
 msgid "Leave a review"
 msgstr ""
@@ -939,13 +976,13 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:277
+#: packages/libs/src/struct-generator/struct-configs.ts:108
 msgid "Link"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:84
-#: packages/libs/src/getDefaultStructs.ts:134
-#: packages/libs/src/getDefaultStructs.ts:340
+#: packages/libs/src/struct-generator/view-factory.ts:34
+#: packages/libs/src/struct-generator/struct-configs.ts:86
 #: packages/components/src/AppProvider/lib/fixTaskStruct.ts:70
 msgid "List"
 msgstr ""
@@ -963,18 +1000,18 @@ msgstr ""
 #: apps/mobile/src/components/Login/PhoneLoginForm.tsx:105
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:128
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:133
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:119
-#: packages/components/src/ProfileButton.tsx:148
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:118
+#: packages/components/src/ProfileButton.tsx:174
 msgid "Log in"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:117
+#: packages/components/src/ProfileButton.tsx:121
 msgid "Log in failed"
 msgstr ""
 
 #: apps/mobile/src/components/Profile/Profile.tsx:173
 #: apps/mobile/src/components/Profile/Profile.tsx:183
-#: packages/components/src/ProfileButton.tsx:294
+#: packages/components/src/ProfileButton.tsx:328
 #: packages/components/src/SettingsDialog/SettingsSidebar.tsx:98
 #: packages/components/src/Profile/ProfilePopover.tsx:149
 msgid "Log out"
@@ -998,7 +1035,7 @@ msgstr ""
 msgid "logo"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:86
+#: packages/libs/src/struct-generator/struct-configs.ts:80
 msgid "Low"
 msgstr ""
 
@@ -1015,7 +1052,7 @@ msgstr ""
 msgid "Marketplace"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:92
+#: packages/libs/src/struct-generator/struct-configs.ts:81
 msgid "Medium"
 msgstr ""
 
@@ -1023,11 +1060,11 @@ msgstr ""
 msgid "Member"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:196
+#: packages/libs/src/struct-generator/struct-configs.ts:117
 msgid "Model"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:227
+#: packages/libs/src/struct-generator/struct-configs.ts:125
 msgid "Model select"
 msgstr ""
 
@@ -1045,23 +1082,23 @@ msgstr ""
 msgid "Monthly"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:187
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:187
 msgid "Move Down in Favorites"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:163
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:163
 msgid "Move Up in Favorites"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:173
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:173
 msgid "Moved down in Favorites"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:152
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:152
 msgid "Moved up in Favorites"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:23
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:23
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:23
 msgid "Multiple select"
 msgstr ""
@@ -1070,7 +1107,11 @@ msgstr ""
 msgid "Multiple Select"
 msgstr ""
 
-#: packages/components/src/AppProvider/lib/initLocalSpace.ts:64
+#: packages/libs/src/struct-generator/struct-configs.ts:145
+msgid "Muted"
+msgstr ""
+
+#: packages/components/src/AppProvider/lib/initLocalSpace.ts:65
 msgid "My area"
 msgstr ""
 
@@ -1131,10 +1172,11 @@ msgid "New property"
 msgstr ""
 
 #: apps/electron/src/renderer/src/components/WatchEvent.tsx:135
+#: packages/panel-app/src/components/WatchEvent.tsx:141
 msgid "New version available, restarting to update..."
 msgstr ""
 
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:125
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:124
 msgid "No account"
 msgstr ""
 
@@ -1161,7 +1203,7 @@ msgstr ""
 msgid "No introduction for the struct"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:89
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/DatabaseDetail.tsx:91
 msgid "No results found"
 msgstr ""
 
@@ -1193,7 +1235,7 @@ msgstr ""
 msgid "Not enabled"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:400
+#: packages/libs/src/struct-generator/struct-configs.ts:60
 msgid "Note"
 msgstr ""
 
@@ -1201,7 +1243,7 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:18
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:18
 #: packages/components/src/ColumnTypeName.tsx:16
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:18
 msgid "Number"
@@ -1216,11 +1258,11 @@ msgstr ""
 msgid "Once deleted, You can't undo this action."
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:102
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:102
 msgid "Open Command"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:58
+#: packages/panel-app/src/components/Panel/SearchBar/StructActions.tsx:57
 msgid "Open in browser"
 msgstr ""
 
@@ -1238,7 +1280,7 @@ msgstr ""
 msgid "Open Search Panel"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:289
+#: packages/libs/src/struct-generator/struct-configs.ts:109
 msgid "Open with"
 msgstr ""
 
@@ -1248,20 +1290,20 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:87
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:86
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:126
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:126
 msgid "Options"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:383
+#: packages/libs/src/struct-generator/struct-configs.ts:55
 msgid "Page"
 msgstr ""
 
 #: apps/mobile/src/components/Login/RegisterForm.tsx:105
 #: apps/mobile/src/components/Login/RegisterForm.tsx:111
 #: apps/mobile/src/components/Login/EmailLoginForm.tsx:111
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:19
 #: packages/widgets/src/LoginDialog/RegisterForm.tsx:99
-#: packages/widgets/src/LoginDialog/LoginForm.tsx:102
+#: packages/widgets/src/LoginDialog/LoginForm.tsx:101
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:19
 #: packages/components/src/ColumnTypeName.tsx:26
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:19
 #: packages/components/src/SettingsDialog/Password.tsx:85
@@ -1281,18 +1323,18 @@ msgstr ""
 msgid "Passwords do not match"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:155
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:155
 msgid "PenX Account"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:32
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncContent.tsx:29
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncContent.tsx:29
 #: packages/components/src/Sidebar/SyncButton.tsx:36
 msgid "PenX is a Local-first App, supporting offline use and multi-device sync."
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:29
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncContent.tsx:26
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncContent.tsx:26
 #: packages/components/src/Sidebar/SyncButton.tsx:33
 msgid "PenX Sync"
 msgstr ""
@@ -1316,6 +1358,10 @@ msgstr ""
 #: packages/components/src/Creation/PropList/TaskDate.tsx:46
 #: packages/components/src/Creation/PropList/DateProp.tsx:45
 msgid "Pick a date"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:146
+msgid "Pinned"
 msgstr ""
 
 #: apps/mobile/src/pages/PagePlan.tsx:6
@@ -1348,7 +1394,7 @@ msgid "Pricing"
 msgstr ""
 
 #: apps/mobile/src/components/TaskCreation/Priority.tsx:40
-#: packages/libs/src/getDefaultStructs.ts:79
+#: packages/libs/src/struct-generator/struct-configs.ts:79
 msgid "Priority"
 msgstr ""
 
@@ -1393,19 +1439,23 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:215
-#: packages/libs/src/getDefaultStructs.ts:450
+#: packages/libs/src/struct-generator/struct-configs.ts:175
+msgid "Project"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:114
+#: packages/libs/src/struct-generator/struct-configs.ts:124
 msgid "Prompt"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:109
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:109
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:55
 msgid "Prop type"
 msgstr ""
 
 #: apps/mobile/src/pages/PageStructInfo/PageStructInfo.tsx:103
 #: apps/mobile/src/pages/PagePublishedStructInfo/PagePublishedStructInfo.tsx:89
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/StructInfo.tsx:19
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/StructInfo.tsx:19
 msgid "Properties"
 msgstr ""
 
@@ -1422,12 +1472,12 @@ msgstr ""
 msgid "Publish struct"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageEditStruct.tsx:45
+#: packages/panel-app/src/components/Panel/pages/PageEditStruct.tsx:48
 msgid "Publish Struct"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:81
-#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:81
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:80
+#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:80
 #: packages/components/src/database-ui/TableInfo.tsx:68
 msgid "Publish to marketplace"
 msgstr ""
@@ -1436,15 +1486,15 @@ msgstr ""
 msgid "Publish your creation"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:17
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:17
 msgid "Quick input"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:444
+#: packages/libs/src/struct-generator/struct-configs.ts:106
 msgid "Quicklink"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:21
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:21
 #: packages/components/src/ColumnTypeName.tsx:24
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:21
 msgid "Rate"
@@ -1466,7 +1516,7 @@ msgstr ""
 msgid "Record shortcut"
 msgstr ""
 
-#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:219
+#: packages/components/src/BindHotkey/ui/BindHotkey.tsx:217
 msgid "Recording..."
 msgstr ""
 
@@ -1504,7 +1554,7 @@ msgstr ""
 msgid "Remind me..."
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:122
+#: packages/libs/src/struct-generator/struct-configs.ts:85
 #: packages/components/src/ColumnTypeName.tsx:25
 #: packages/components/src/AppProvider/lib/fixTaskStruct.ts:20
 msgid "Reminder"
@@ -1514,7 +1564,7 @@ msgstr ""
 msgid "remove"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:214
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:214
 msgid "Remove from Favorites"
 msgstr ""
 
@@ -1527,7 +1577,7 @@ msgstr ""
 msgid "Removed {0} items"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:199
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:199
 msgid "Removed from Favorites"
 msgstr ""
 
@@ -1560,7 +1610,7 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageNewCreation.tsx:97
 #: apps/mobile/src/components/ui/DrawerHeader.tsx:67
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:151
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/ColumnMenu.tsx:151
 #: packages/components/src/database-ui/views/TableView/ColumnMenu/EditField.tsx:84
 #: packages/components/src/SettingsDialog/Profile.tsx:131
 #: packages/components/src/SettingsDialog/SyncServer/SyncServerForm.tsx:138
@@ -1572,11 +1622,11 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/ActionPopover.tsx:141
+#: packages/panel-app/src/components/Panel/SearchBar/ActionPopover.tsx:140
 msgid "Search for actions..."
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:110
+#: packages/panel-app/src/components/Panel/FilterPopover.tsx:110
 msgid "Search..."
 msgstr ""
 
@@ -1603,14 +1653,14 @@ msgid "Setting"
 msgstr ""
 
 #: apps/mobile/src/pages/PageProfile.tsx:13
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:195
-#: packages/components/src/ProfileButton.tsx:239
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:195
+#: packages/components/src/ProfileButton.tsx:266
 #: packages/components/src/Profile/ProfilePopover.tsx:123
 #: packages/components/src/AreasPopover/AreaMenu.tsx:85
 msgid "Settings"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/StructActions.tsx:111
+#: packages/panel-app/src/components/Panel/SearchBar/StructActions.tsx:110
 msgid "Share"
 msgstr ""
 
@@ -1639,11 +1689,11 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageLogin.tsx:38
+#: packages/panel-app/src/components/Panel/pages/PageLogin.tsx:38
 msgid "Sign in to PenX"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:22
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:22
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:22
 msgid "Single select"
 msgstr ""
@@ -1658,7 +1708,7 @@ msgstr ""
 msgid "Slug"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:439
+#: packages/libs/src/struct-generator/struct-configs.ts:97
 msgid "Snippet"
 msgstr ""
 
@@ -1678,21 +1728,21 @@ msgstr ""
 msgid "status"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:48
+#: packages/libs/src/struct-generator/struct-configs.ts:74
 msgid "Status"
 msgstr ""
 
 #. placeholder {0}: item.name
-#: apps/electron/src/renderer/src/components/Panel/pages/PageStructMarketplace.tsx:49
+#: packages/panel-app/src/components/Panel/pages/PageStructMarketplace.tsx:48
 msgid "Struct {0} is installed!"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/SearchBar/RootActions.tsx:280
+#: packages/panel-app/src/components/Panel/SearchBar/RootActions.tsx:280
 msgid "Struct deleted successfully"
 msgstr ""
 
-#: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:77
-#: apps/electron/src/renderer/src/components/Panel/pages/PageStructMarketplace.tsx:60
+#: apps/mobile/src/pages/PageHome/AllStructs/StructMarketplace.tsx:76
+#: packages/panel-app/src/components/Panel/pages/PageStructMarketplace.tsx:59
 msgid "Struct installed successfully!"
 msgstr ""
 
@@ -1701,7 +1751,7 @@ msgstr ""
 msgid "Struct marketplace"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:115
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:115
 msgid "Struct Marketplace"
 msgstr ""
 
@@ -1712,8 +1762,8 @@ msgstr ""
 msgid "Struct name"
 msgstr ""
 
-#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
-#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:70
+#: apps/mobile/src/pages/PageStructInfo/StructInfoFooter/StructInfoFooter.tsx:69
+#: apps/mobile/src/pages/PagePublishedStructInfo/StructInfoFooter/StructInfoFooter.tsx:69
 #: packages/components/src/PublishStructDialog/PublishStructContent.tsx:94
 msgid "Struct published successfully!"
 msgstr ""
@@ -1721,8 +1771,8 @@ msgstr ""
 #: apps/mobile/src/pages/PageAllStructs/PageAllStructs.tsx:16
 #: apps/mobile/src/components/Profile/StructsMenu.tsx:24
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:148
-#: apps/electron/src/renderer/src/components/Panel/pages/PageRoot.tsx:56
 #: packages/widgets/src/WidgetName.tsx:22
+#: packages/panel-app/src/components/Panel/pages/PageRoot.tsx:59
 #: packages/components/src/area-widgets/AddWidgetButton.tsx:136
 #: packages/components/src/DashboardLayout/panel-renderer/PanelStructs/PanelStructs.tsx:27
 msgid "Structs"
@@ -1751,7 +1801,7 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:274
+#: packages/components/src/ProfileButton.tsx:304
 msgid "Support"
 msgstr ""
 
@@ -1764,7 +1814,7 @@ msgid "Sync data using you own server"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:52
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncContent.tsx:48
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncContent.tsx:48
 #: packages/components/src/Sidebar/SyncButton.tsx:55
 msgid "Sync failed, please try again."
 msgstr ""
@@ -1776,13 +1826,13 @@ msgstr ""
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:58
 #: apps/mobile/src/components/Menu.tsx:109
 #: apps/mobile/src/components/Profile/SyncMenu.tsx:35
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncContent.tsx:54
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncContent.tsx:54
 #: packages/components/src/Sidebar/SyncButton.tsx:61
 msgid "Sync now"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/WifiSwitch.tsx:23
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/WifiSwitch.tsx:22
+#: packages/panel-app/src/components/Panel/pages/PageSync/WifiSwitch.tsx:22
 msgid "Sync only over Wi-Fi"
 msgstr ""
 
@@ -1796,13 +1846,13 @@ msgid "Sync server host"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:50
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncContent.tsx:46
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncContent.tsx:46
 #: packages/components/src/Sidebar/SyncButton.tsx:53
 msgid "Sync successful!"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncContent.tsx:49
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncContent.tsx:45
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncContent.tsx:45
 #: packages/components/src/Sidebar/SyncButton.tsx:52
 msgid "Syncing..."
 msgstr ""
@@ -1812,7 +1862,7 @@ msgstr ""
 msgid "System"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:312
+#: packages/libs/src/struct-generator/view-factory.ts:32
 msgid "Table"
 msgstr ""
 
@@ -1835,7 +1885,7 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:426
+#: packages/libs/src/struct-generator/struct-configs.ts:72
 msgid "Task"
 msgstr ""
 
@@ -1843,7 +1893,7 @@ msgstr ""
 msgid "Test connection"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:17
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:17
 #: packages/components/src/ColumnTypeName.tsx:15
 #: packages/components/src/ColumnTypeName.tsx:31
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:17
@@ -1874,20 +1924,20 @@ msgid "Thu"
 msgstr ""
 
 #: apps/mobile/src/pages/PageSync/SyncIntervalSelect.tsx:67
-#: apps/electron/src/renderer/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:62
+#: packages/panel-app/src/components/Panel/pages/PageSync/SyncIntervalSelect.tsx:63
 msgid "Time interval"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:31
+#: packages/libs/src/struct-generator/struct-generator.ts:83
 msgid "Title"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:55
+#: packages/libs/src/struct-generator/struct-configs.ts:75
 msgid "To Do"
 msgstr ""
 
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:21
-#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:27
+#: packages/panel-app/src/components/Panel/FilterPopover.tsx:27
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:19
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:27
 #: packages/components/src/DashboardLayout/panel-renderer/PanelJournal/MobileJournalShortcut.tsx:28
@@ -1897,19 +1947,19 @@ msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:93
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:22
-#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:28
+#: packages/panel-app/src/components/Panel/FilterPopover.tsx:28
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:20
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:23
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:28
 msgid "Tomorrow"
 msgstr ""
 
-#: apps/electron/src/renderer/src/lib/getBuiltinCommands.ts:135
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:149
+#: packages/panel-app/src/lib/getBuiltinCommands.ts:135
+#: packages/panel-app/src/components/Panel/pages/PageTranslate.tsx:151
 msgid "Translate"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/pages/PageTranslate.tsx:162
+#: packages/panel-app/src/components/Panel/pages/PageTranslate.tsx:164
 msgid "Translate text"
 msgstr ""
 
@@ -1947,13 +1997,13 @@ msgstr ""
 msgid "Unstar"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/ListItemUI.tsx:98
+#: packages/panel-app/src/components/Panel/ListItemUI.tsx:120
 msgid "Untitled"
 msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:31
 #: apps/mobile/src/components/StructCreations/TaskList/TaskSection.tsx:23
-#: apps/electron/src/renderer/src/components/Panel/FilterPopover.tsx:29
+#: packages/panel-app/src/components/Panel/FilterPopover.tsx:29
 #: packages/components/src/area-widgets/widgets/TaskNavWidget/TaskNavWidget.tsx:21
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:29
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/PanelTasks.tsx:38
@@ -1981,7 +2031,7 @@ msgstr ""
 msgid "Update struct successfully"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:26
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:26
 #: packages/components/src/ColumnTypeName.tsx:30
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:26
 msgid "Updated At"
@@ -1997,12 +2047,13 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: packages/components/src/ProfileButton.tsx:265
+#: packages/components/src/ProfileButton.tsx:293
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: apps/electron/src/renderer/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:20
-#: packages/libs/src/getDefaultStructs.ts:165
+#: packages/panel-app/src/components/Panel/CommandApp/DatabaseApp/ColumnMenu/FieldSelectPopover.tsx:20
+#: packages/libs/src/struct-generator/struct-configs.ts:133
+#: packages/libs/src/struct-generator/struct-configs.ts:142
 #: packages/components/src/ColumnTypeName.tsx:17
 #: packages/components/src/database-ui/views/TableView/FieldSelectPopover.tsx:20
 msgid "URL"
@@ -2016,7 +2067,11 @@ msgstr ""
 msgid "Using coupon code"
 msgstr ""
 
-#: packages/libs/src/getDefaultStructs.ts:433
+#: packages/libs/src/struct-generator/struct-configs.ts:160
+msgid "Video"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:92
 msgid "Voice"
 msgstr ""
 
@@ -2042,6 +2097,10 @@ msgstr ""
 
 #: apps/mobile/src/components/Profile/JournalLayoutMenu.tsx:56
 msgid "Widget"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:141
+msgid "Window ID"
 msgstr ""
 
 #: apps/mobile/src/components/UpgradeDrawer/UpgradeContent.tsx:150
