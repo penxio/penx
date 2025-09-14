@@ -98,6 +98,10 @@ export class Struct {
     return this.type === StructType.AI_COMMAND
   }
 
+  get isUserscript() {
+    return this.type === StructType.USERSCRIPT
+  }
+
   get createdAt() {
     return new Date(this.raw.createdAt)
   }

@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { t } from '@lingui/core/macro'
 import { format } from 'date-fns'
 import { Creation, Struct } from '@penx/domain'
+import { appEmitter } from '@penx/emitter'
 import { IColumn } from '@penx/model-type'
 import { ColumnType } from '@penx/types'
 import { Switch } from '@penx/uikit/ui/switch'
@@ -11,6 +12,7 @@ import { FieldIcon } from '../../FieldIcon'
 import { FileUpload } from '../../FileUpload'
 import { usePanelCreationContext } from '../PanelCreationProvider'
 import { AIModelSelectProp } from './AIModelSelectProp'
+import { CodeEditorProp } from './CodeEditorProp'
 import { DateProp } from './DateProp'
 import { MultipleSelectProp } from './MultipleSelectProp'
 import { NumberInputProp } from './NumberInputProp'
@@ -26,7 +28,8 @@ interface Props {
   struct: Struct
   creation?: Creation
   isPanel?: boolean
-  onUpdateProps: (cells: any) => void
+  containerWidth?: number
+  onUpdateProps: (cells: any) => any
 }
 
 export const PropItem = ({
@@ -34,6 +37,7 @@ export const PropItem = ({
   struct,
   column,
   isPanel,
+  containerWidth,
   ...rest
 }: Props) => {
   const creation = rest.creation ?? usePanelCreationContext()
@@ -44,10 +48,8 @@ export const PropItem = ({
   const value = cells[column.id]
 
   const handleChange = useCallback(
-    (v: any) => {
-      console.log('=======vLLLLLL:', v)
-
-      onUpdateProps({
+    async (v: any) => {
+      await onUpdateProps({
         ...cells,
         [column.id]: v,
       })
@@ -102,10 +104,18 @@ export const PropItem = ({
         )
       case ColumnType.CODE_EDITOR:
         return (
-          <TextareaProp
+          <CodeEditorProp
             placeholder={t`Empty`}
             value={value}
-            onChange={handleChange}
+            onChange={async (v) => {
+              await handleChange(v)
+
+              if (struct.isUserscript) {
+                setTimeout(() => {
+                  appEmitter.emit('UPDATE_USERSCRIPT_CODE')
+                }, 0)
+              }
+            }}
           />
         )
       case ColumnType.DATE:
@@ -192,19 +202,29 @@ export const PropItem = ({
     }
   }
 
+  const isCol = [ColumnType.LONG_TEXT, ColumnType.CODE_EDITOR].includes(
+    column.columnType,
+  )
   return (
     <div
       className={cn(
-        'flex items-center gap-2',
+        'flex items-center gap-x-2',
         isPanel && 'h-9 justify-between px-2',
-        column.columnType === ColumnType.LONG_TEXT && 'items-start',
+        isCol && 'items-start',
+        isCol && 'flex-col',
       )}
     >
-      <div className="text-foreground/60 flex w-32 items-center gap-1">
+      <div className="text-foreground/80 flex w-32 items-center gap-1">
         {!isPanel && <FieldIcon columnType={column.columnType} />}
-        <span className="">{column.name}</span>
+        <span className="text-sm">{column.name}</span>
       </div>
-      <div className={cn('flex flex-1', isPanel && 'justify-end')}>
+      <div
+        className={cn(
+          'flex flex-1',
+          isPanel && 'justify-end',
+          isCol && 'w-full',
+        )}
+      >
         {renderInput()}
       </div>
     </div>

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Trans } from '@lingui/react/macro'
+import { useSize } from 'ahooks'
 import { format } from 'date-fns'
 import { CalendarDays, CalendarDaysIcon, CalendarIcon } from 'lucide-react'
 import { Creation, Struct } from '@penx/domain'
@@ -15,7 +16,7 @@ interface Props {
   className?: string
   struct: Struct
   creation: Creation
-  onUpdateProps: (cells: any) => void
+  onUpdateProps: (cells: any) => any
   isPanel?: boolean
 }
 
@@ -26,18 +27,22 @@ export const PropList = ({
   className,
   isPanel,
 }: Props) => {
+  const ref = useRef(null)
+  const size = useSize(ref)
   if (!struct) return null
 
   if (struct.columns.length < 2) return null
   return (
-    <div className={cn('mt-4 flex flex-col gap-1', className)}>
+    <div ref={ref} className={cn('mt-4 flex flex-col gap-2', className)}>
       {struct.columns.map((column, i) => {
+        if (!size?.width) return null
         return (
           <PropItem
             key={column.id}
             creation={creation}
             column={column}
             struct={struct}
+            containerWidth={size?.width!}
             isPanel={isPanel}
             onUpdateProps={onUpdateProps}
           />

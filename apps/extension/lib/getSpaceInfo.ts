@@ -1,9 +1,9 @@
 import { storage } from '@/lib/storage'
 import { localDB } from '@penx/local-db'
-import { StructType } from '@penx/types'
+import { SessionData, StructType } from '@penx/types'
 
-export async function getSpaceInfo() {
-  const session = await storage.getSession()
+export async function getSpaceInfo(s?: SessionData) {
+  const session = s || (await storage.getSession())
   // console.log('=====session:', session)
   const areas = await localDB.listAreas(session.spaceId)
 

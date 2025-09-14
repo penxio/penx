@@ -66,6 +66,8 @@ export type AppEvent = {
   UPDATE_BROWSER_TAB: any
 
   SESSION_CHANGED: any
+
+  UPDATE_USERSCRIPT_CODE: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

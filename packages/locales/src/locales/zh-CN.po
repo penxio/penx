@@ -182,7 +182,7 @@ msgid "AI Chat"
 msgstr "AI 聊天"
 
 #: packages/libs/src/struct-generator/struct-configs.ts:122
-#: packages/components/src/AppProvider/AppService.ts:256
+#: packages/components/src/AppProvider/AppService.ts:275
 msgid "AI Command"
 msgstr ""
 
@@ -282,11 +282,11 @@ msgstr "你确定要将这个结构体发布到市场吗？"
 msgid "Areas"
 msgstr "领域"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:155
+#: packages/libs/src/struct-generator/struct-configs.ts:174
 msgid "Article"
 msgstr ""
 
-#: packages/libs/src/struct-generator/struct-configs.ts:165
+#: packages/libs/src/struct-generator/struct-configs.ts:184
 msgid "Audio"
 msgstr ""
 
@@ -401,6 +401,10 @@ msgstr ""
 #: packages/panel-app/src/lib/getBuiltinCommands.ts:175
 msgid "Cloud sync"
 msgstr "云端同步"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:162
+msgid "Code"
+msgstr ""
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:109
 #: packages/widgets/src/WidgetName.tsx:26
@@ -638,6 +642,7 @@ msgstr "发送您的简报"
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:78
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:108
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
+#: packages/libs/src/struct-generator/struct-configs.ts:158
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
 msgstr "描述"
@@ -655,6 +660,10 @@ msgstr "进行中"
 #: packages/libs/src/struct-generator/struct-configs.ts:77
 msgid "Done"
 msgstr "已完成"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:160
+msgid "Download URL"
+msgstr ""
 
 #: packages/components/src/EarlyAccessCode.tsx:77
 msgid "Early access code"
@@ -734,12 +743,14 @@ msgstr "邮箱登录"
 #: packages/components/src/Creation/PropList/TextareaProp.tsx:20
 #: packages/components/src/Creation/PropList/TextInputProp.tsx:20
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:61
-#: packages/components/src/Creation/PropList/PropItem.tsx:77
-#: packages/components/src/Creation/PropList/PropItem.tsx:87
-#: packages/components/src/Creation/PropList/PropItem.tsx:95
+#: packages/components/src/Creation/PropList/PropItem.tsx:80
+#: packages/components/src/Creation/PropList/PropItem.tsx:90
+#: packages/components/src/Creation/PropList/PropItem.tsx:98
+#: packages/components/src/Creation/PropList/PropItem.tsx:106
 #: packages/components/src/Creation/PropList/PasswordProp.tsx:22
 #: packages/components/src/Creation/PropList/NumberInputProp.tsx:22
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:60
+#: packages/components/src/Creation/PropList/CodeEditorProp.tsx:52
 msgid "Empty"
 msgstr "空白"
 
@@ -747,6 +758,7 @@ msgstr "空白"
 msgid "Enable custom sync server"
 msgstr "启用自定义同步服务器"
 
+#: packages/libs/src/struct-generator/struct-configs.ts:156
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:75
 msgid "Enabled"
 msgstr "已启用"
@@ -791,7 +803,6 @@ msgstr ""
 msgid "Favorites"
 msgstr "收藏"
 
-#: apps/extension/components/content/AddBookmark/Tags.tsx:69
 #: packages/components/src/cells/single-select-cell.tsx:178
 #: packages/components/src/cells/multiple-select-cell.tsx:174
 #: packages/components/src/Creation/Tags.tsx:116
@@ -812,7 +823,7 @@ msgstr "免费"
 msgid "Fri"
 msgstr "周五"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:170
+#: packages/libs/src/struct-generator/struct-configs.ts:189
 msgid "Friend"
 msgstr ""
 
@@ -862,6 +873,10 @@ msgstr "让我想想……"
 #: packages/components/src/Profile/ProfilePopover.tsx:88
 msgid "Home"
 msgstr "首页"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:159
+msgid "Home page"
+msgstr ""
 
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:60
 msgid "Host"
@@ -1051,6 +1066,10 @@ msgstr "管理您的知识库"
 #: apps/mobile/src/pages/PageHome/AllStructs/StructNav.tsx:19
 msgid "Marketplace"
 msgstr "市场"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:161
+msgid "Match"
+msgstr ""
 
 #: packages/libs/src/struct-generator/struct-configs.ts:81
 msgid "Medium"
@@ -1439,7 +1458,7 @@ msgstr "处理中..."
 msgid "Profile"
 msgstr "个人信息"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:175
+#: packages/libs/src/struct-generator/struct-configs.ts:194
 msgid "Project"
 msgstr ""
 
@@ -1601,6 +1620,10 @@ msgstr "恢复"
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:28
 msgid "Restore from google drive"
 msgstr "从 Google 云盘恢复"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:165
+msgid "Run in Sandbox"
+msgstr ""
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:102
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:32
@@ -2059,6 +2082,11 @@ msgstr "升级到专业版"
 msgid "URL"
 msgstr "网址"
 
+#: packages/libs/src/struct-generator/struct-configs.ts:154
+#: packages/components/src/AppProvider/AppService.ts:255
+msgid "Userscript"
+msgstr ""
+
 #: packages/components/src/AIChat/message.tsx:145
 msgid "Using {toolName}..."
 msgstr "正在调用{toolName}..."
@@ -2067,7 +2095,11 @@ msgstr "正在调用{toolName}..."
 msgid "Using coupon code"
 msgstr "使用优惠码"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:160
+#: packages/libs/src/struct-generator/struct-configs.ts:157
+msgid "Version"
+msgstr ""
+
+#: packages/libs/src/struct-generator/struct-configs.ts:179
 msgid "Video"
 msgstr ""
 

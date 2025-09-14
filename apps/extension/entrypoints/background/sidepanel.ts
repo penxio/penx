@@ -13,7 +13,7 @@ export async function openSidepanel(tabId: number) {
     // Fallback: open side panel without specific tab
     try {
       await browser.sidePanel.open({
-        windowId: chrome.windows.WINDOW_ID_CURRENT,
+        windowId: browser.windows.WINDOW_ID_CURRENT,
       })
       state.isOpen = true
       console.log('Side panel opened successfully (fallback)')

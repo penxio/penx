@@ -50,12 +50,13 @@ export default defineConfig({
     ],
     content_security_policy: {
       extension_pages:
-        "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' http://localhost:3000; style-src 'self' 'unsafe-inline'; img-src * data:; connect-src 'self' ws://localhost:3000 http://localhost:3000 https://penx.io https://sync.penx.io https://api.iconify.design https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.2/dist/ort-wasm-simd-threaded.wasm http://localhost:14158 ws://localhost:14158;",
+        "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' http://localhost:3000; style-src 'self' 'unsafe-inline'; img-src * data:; connect-src 'self' ws://localhost:3000 http://localhost:3000 https://penx.io https://sync.penx.io https://api.iconify.design https://cdn.jsdelivr.net http://localhost:14158 ws://localhost:14158; font-src http://localhost:3000 data: blob:",
     },
 
     web_accessible_resources: [
       {
-        resources: ['_favicon/*', 'pglite/*'],
+        resources: ['_favicon/*'],
+
         matches: ['<all_urls>'],
       },
     ],

@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import { browser } from '#imports'
 import App from './App.tsx'
+import { initUserscript } from './initUserscript.ts'
 
 export default defineContentScript({
   matches: ['*://*/*'],
@@ -19,6 +20,9 @@ export default defineContentScript({
 
         const root = ReactDOM.createRoot(wrapper)
         root.render(<App />)
+
+        initUserscript()
+
         return { root, wrapper }
       },
       onRemove: (elements) => {

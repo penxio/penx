@@ -93,9 +93,9 @@ export const ListItemUI = ({
       onSelect={() => {
         onSelect?.(item)
       }}
-      // onClick={() => {
-      //   onSelect?.(item)
-      // }}
+      onClick={() => {
+        onSelect?.(item)
+      }}
       onDoubleClick={() => {
         onSelect?.(item)
       }}

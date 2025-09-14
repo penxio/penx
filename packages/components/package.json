@@ -157,6 +157,7 @@
     "electron": "37.2.5"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
     "@penx/api": "workspace:*",
     "@penx/constants": "workspace:*",
     "@penx/content-render": "workspace:*",
@@ -167,9 +168,9 @@
     "@penx/google-drive": "workspace:*",
     "@penx/hooks": "workspace:*",
     "@penx/icons": "workspace:*",
+    "@penx/indexeddb": "workspace:*",
     "@penx/libs": "workspace:*",
     "@penx/local-db": "workspace:*",
-    "@penx/indexeddb": "workspace:*",
     "@penx/mnemonic": "workspace:*",
     "@penx/model-type": "workspace:*",
     "@penx/novel-editor": "workspace:*",
@@ -184,6 +185,8 @@
     "@penx/vaul": "workspace:*",
     "@penx/widgets": "workspace:*",
     "@penx/worker": "workspace:*",
-    "electron-conf": "^1.3.0"
+    "ahooks": "^3.9.5",
+    "electron-conf": "^1.3.0",
+    "monaco-editor": "^0.53.0"
   }
 }

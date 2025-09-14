@@ -18,6 +18,8 @@ interface ProtocolMap {
   togglePanel: (data: {}) => any
 
   updateBrowserTab: (data: {}) => any
+
+  setupUserscript: (data: { url: string }) => any
 }
 
 export const { sendMessage, onMessage } =

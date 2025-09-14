@@ -182,7 +182,7 @@ msgid "AI Chat"
 msgstr "AI Chat"
 
 #: packages/libs/src/struct-generator/struct-configs.ts:122
-#: packages/components/src/AppProvider/AppService.ts:256
+#: packages/components/src/AppProvider/AppService.ts:275
 msgid "AI Command"
 msgstr "AI Command"
 
@@ -282,11 +282,11 @@ msgstr "Are you sure you want to publish this struct to the marketplace?"
 msgid "Areas"
 msgstr "Areas"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:155
+#: packages/libs/src/struct-generator/struct-configs.ts:174
 msgid "Article"
 msgstr "Article"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:165
+#: packages/libs/src/struct-generator/struct-configs.ts:184
 msgid "Audio"
 msgstr "Audio"
 
@@ -401,6 +401,10 @@ msgstr "Chat with my data..."
 #: packages/panel-app/src/lib/getBuiltinCommands.ts:175
 msgid "Cloud sync"
 msgstr "Cloud sync"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:162
+msgid "Code"
+msgstr "Code"
 
 #: apps/mobile/src/components/EditWidget/AddWidgetButton.tsx:109
 #: packages/widgets/src/WidgetName.tsx:26
@@ -638,6 +642,7 @@ msgstr "Deliver your newsletter"
 #: apps/mobile/src/pages/PageStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:78
 #: apps/mobile/src/pages/PagePublishedStructInfo/AddPropertyButton.tsx:108
 #: apps/mobile/src/pages/PagePublishedStructInfo/EditPropertyDrawer/EditPropertyDrawer.tsx:77
+#: packages/libs/src/struct-generator/struct-configs.ts:158
 #: packages/components/src/AreaDialog/AreaForm.tsx:199
 msgid "Description"
 msgstr "Description"
@@ -655,6 +660,10 @@ msgstr "Doing"
 #: packages/libs/src/struct-generator/struct-configs.ts:77
 msgid "Done"
 msgstr "Done"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:160
+msgid "Download URL"
+msgstr "Download URL"
 
 #: packages/components/src/EarlyAccessCode.tsx:77
 msgid "Early access code"
@@ -734,12 +743,14 @@ msgstr "Email login"
 #: packages/components/src/Creation/PropList/TextareaProp.tsx:20
 #: packages/components/src/Creation/PropList/TextInputProp.tsx:20
 #: packages/components/src/Creation/PropList/SingleSelectProp.tsx:61
-#: packages/components/src/Creation/PropList/PropItem.tsx:77
-#: packages/components/src/Creation/PropList/PropItem.tsx:87
-#: packages/components/src/Creation/PropList/PropItem.tsx:95
+#: packages/components/src/Creation/PropList/PropItem.tsx:80
+#: packages/components/src/Creation/PropList/PropItem.tsx:90
+#: packages/components/src/Creation/PropList/PropItem.tsx:98
+#: packages/components/src/Creation/PropList/PropItem.tsx:106
 #: packages/components/src/Creation/PropList/PasswordProp.tsx:22
 #: packages/components/src/Creation/PropList/NumberInputProp.tsx:22
 #: packages/components/src/Creation/PropList/MultipleSelectProp.tsx:60
+#: packages/components/src/Creation/PropList/CodeEditorProp.tsx:52
 msgid "Empty"
 msgstr "Empty"
 
@@ -747,6 +758,7 @@ msgstr "Empty"
 msgid "Enable custom sync server"
 msgstr "Enable custom sync server"
 
+#: packages/libs/src/struct-generator/struct-configs.ts:156
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:75
 msgid "Enabled"
 msgstr "Enabled"
@@ -791,7 +803,6 @@ msgstr "Favicon URL"
 msgid "Favorites"
 msgstr "Favorites"
 
-#: apps/extension/components/content/AddBookmark/Tags.tsx:69
 #: packages/components/src/cells/single-select-cell.tsx:178
 #: packages/components/src/cells/multiple-select-cell.tsx:174
 #: packages/components/src/Creation/Tags.tsx:116
@@ -812,7 +823,7 @@ msgstr "Free"
 msgid "Fri"
 msgstr "Fri"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:170
+#: packages/libs/src/struct-generator/struct-configs.ts:189
 msgid "Friend"
 msgstr "Friend"
 
@@ -862,6 +873,10 @@ msgstr "Hmm..."
 #: packages/components/src/Profile/ProfilePopover.tsx:88
 msgid "Home"
 msgstr "Home"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:159
+msgid "Home page"
+msgstr "Home page"
 
 #: packages/components/src/SettingsDialog/SyncServer/SyncServer.tsx:60
 msgid "Host"
@@ -1051,6 +1066,10 @@ msgstr "Manage your knowledge base"
 #: apps/mobile/src/pages/PageHome/AllStructs/StructNav.tsx:19
 msgid "Marketplace"
 msgstr "Marketplace"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:161
+msgid "Match"
+msgstr "Match"
 
 #: packages/libs/src/struct-generator/struct-configs.ts:81
 msgid "Medium"
@@ -1439,7 +1458,7 @@ msgstr "Processing..."
 msgid "Profile"
 msgstr "Profile"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:175
+#: packages/libs/src/struct-generator/struct-configs.ts:194
 msgid "Project"
 msgstr "Project"
 
@@ -1601,6 +1620,10 @@ msgstr "Restore"
 #: packages/components/src/SettingsDialog/RecoveryPhrase/RecoverFromGoogleDialog.tsx:28
 msgid "Restore from google drive"
 msgstr "Restore from google drive"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:165
+msgid "Run in Sandbox"
+msgstr "Run in Sandbox"
 
 #: apps/mobile/src/pages/PageTasks/PageTasks.tsx:102
 #: packages/components/src/DashboardLayout/panel-renderer/PanelTasks/UpcomingTasks.tsx:32
@@ -2059,6 +2082,11 @@ msgstr "Upgrade to Pro"
 msgid "URL"
 msgstr "URL"
 
+#: packages/libs/src/struct-generator/struct-configs.ts:154
+#: packages/components/src/AppProvider/AppService.ts:255
+msgid "Userscript"
+msgstr "Userscript"
+
 #: packages/components/src/AIChat/message.tsx:145
 msgid "Using {toolName}..."
 msgstr "Using {toolName}..."
@@ -2067,7 +2095,11 @@ msgstr "Using {toolName}..."
 msgid "Using coupon code"
 msgstr "Using coupon code"
 
-#: packages/libs/src/struct-generator/struct-configs.ts:160
+#: packages/libs/src/struct-generator/struct-configs.ts:157
+msgid "Version"
+msgstr "Version"
+
+#: packages/libs/src/struct-generator/struct-configs.ts:179
 msgid "Video"
 msgstr "Video"
 

@@ -38,6 +38,16 @@ export function StructIcon({ type, className = 'size-4' }: Props) {
     return <span className={cn('icon-[mynaui--image-solid]', className)} />
   }
 
+  if (type === StructType.USERSCRIPT) {
+    return <span className={cn('', className)}>JS</span>
+  }
+
+  if (type === StructType.BROWSER_TAB) {
+    return (
+      <span className={cn('icon-[material-symbols--tab-outline]', className)} />
+    )
+  }
+
   if (type === StructType.PAGE) {
     return <span className={cn('icon-[iconoir--page]', className)} />
   }

@@ -20,7 +20,7 @@ export function CreationDetail({ creation }: Props) {
   const struct = structs.find((s) => s.id === creation.structId)!
   if (!struct) return null
 
-  console.log('========creation:', creation)
+  // console.log('========creation:', creation)
 
   return (
     <div className="flex h-full flex-col">
@@ -37,8 +37,8 @@ export function CreationDetail({ creation }: Props) {
         isPanel
         struct={struct}
         creation={creation}
-        onUpdateProps={(newCells) => {
-          updateCreationProps(creation.id, { cells: newCells })
+        onUpdateProps={async (newCells) => {
+          await updateCreationProps(creation.id, { cells: newCells })
         }}
       />
     </div>
