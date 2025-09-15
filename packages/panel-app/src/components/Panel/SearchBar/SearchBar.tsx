@@ -1,9 +1,8 @@
+import { isDesktop } from '@penx/constants'
 import { Struct } from '@penx/domain'
 import { cn } from '@penx/utils'
 import { PopButton } from '../../../components/ExtensionApp/widgets/PopButton'
 import { PinnedButton } from '../../../components/PinnedButton'
-import { useCurrentCommand } from '../../../hooks/useCurrentCommand'
-import { useCurrentStruct } from '../../../hooks/useCurrentStruct'
 import { navigation, useQueryNavigations } from '../../../hooks/useNavigation'
 import { useSearch } from '../../../hooks/useSearch'
 import { AddRowButton } from './AddRowButton'
@@ -20,7 +19,7 @@ export const SearchBar = ({ searchBarHeight }: Props) => {
     return (
       <>
         <SearchInput searchBarHeight={searchBarHeight} />
-        {!search && <div className="h-full flex-1"></div>}
+        {!search && isDesktop && <div className="h-full flex-1"></div>}
         <PinnedButton />
       </>
     )

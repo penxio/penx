@@ -52,7 +52,7 @@ export type AppEvent = {
 
   CLOSE_ACTION_POPOVER: undefined
 
-  DELETE_CREATION_SUCCESS: string
+  DELETE_CREATION_SUCCESS: ICreationNode
 
   REFRESH_COMMANDS: any
 
@@ -68,6 +68,8 @@ export type AppEvent = {
   SESSION_CHANGED: any
 
   UPDATE_USERSCRIPT_CODE: undefined
+
+  BOOKMARK_UPDATED: undefined
 }
 
 export const appEmitter = mitt<AppEvent>()

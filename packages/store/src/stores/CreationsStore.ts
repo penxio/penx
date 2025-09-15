@@ -1,6 +1,7 @@
 import { produce } from 'immer'
 import { atom } from 'jotai'
 import ky from 'ky'
+import { appEmitter } from '@penx/emitter'
 import { localDB } from '@penx/local-db'
 import { ICreationNode } from '@penx/model-type'
 import { StoreType } from '../store-types'
@@ -83,6 +84,10 @@ export class CreationsStore {
     await localDB.deleteCreation(creation.id)
     await this.refetchCreations()
     this.deleteNodeEmbedding(creation)
+
+    setTimeout(() => {
+      appEmitter.emit('DELETE_CREATION_SUCCESS', creation)
+    }, 0)
   }
 
   async refetchCreations(areaId?: string) {

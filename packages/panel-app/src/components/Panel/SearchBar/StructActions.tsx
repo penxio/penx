@@ -17,7 +17,6 @@ import { store } from '@penx/store'
 import { useCurrentStruct } from '../../../hooks/useCurrentStruct'
 import { navigation } from '../../../hooks/useNavigation'
 import { useValue } from '../../../hooks/useValue'
-import { getBookmarkUrl } from '../../../lib/getBookmarkUrl'
 import { ActionCommandItem } from './ActionCommandItem'
 
 interface StructActionsProps {
@@ -35,16 +34,14 @@ export function StructActions({ close }: StructActionsProps) {
 
   const struct = new Struct(raw)
 
-  const url = useMemo(() => {
-    return getBookmarkUrl(struct, creation!)
-  }, [struct, creation])
-
   return (
     <>
       {struct.isBookmark && (
         <ActionCommandItem
           shortcut=""
           onSelect={() => {
+            if (!creation) return
+            const { url } = creation!.getCells<{ url: string }>(struct)
             window.electron.ipcRenderer.send('open-url', url)
             close()
           }}
@@ -119,9 +116,6 @@ export function StructActions({ close }: StructActionsProps) {
           const creation = creations.find((c) => c.id === value)!
           store.creations.deleteCreation(creation)
           close()
-          setTimeout(() => {
-            appEmitter.emit('DELETE_CREATION_SUCCESS', creation.id)
-          }, 0)
         }}
       >
         <div className="inline-flex items-center gap-2">

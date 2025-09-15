@@ -179,6 +179,7 @@ export class StructsStore {
         config: {},
         options: [],
         columnType,
+        isReadonly: false,
         createdAt: new Date(),
         updatedAt: new Date(),
       })

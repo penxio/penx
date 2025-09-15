@@ -3,15 +3,13 @@ import { PlusIcon } from 'lucide-react'
 import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { updateCreationProps } from '@penx/hooks/useCreation'
-import { getCreationFields } from '@penx/libs/getCreationFields'
 import { Button } from '@penx/uikit/ui/button'
 import { Checkbox } from '@penx/uikit/ui/checkbox'
 import { cn } from '@penx/utils'
 import { useFilterPopover } from '../../../../hooks/useFilterPopover'
+import { useHandleSelect } from '../../../../hooks/useHandleSelect'
 import { navigation } from '../../../../hooks/useNavigation'
 import { creationToCommand } from '../../../../lib/creationToCommand'
-import { getBookmarkIcon } from '../../../../lib/getBookmarkIcon'
-import { getBookmarkUrl } from '../../../../lib/getBookmarkUrl'
 import { hidePanelWindow } from '../../../../lib/hidePanelWindow'
 import { CommandGroup } from '../../CommandComponents'
 import { getLabel } from '../../FilterPopover'
@@ -24,6 +22,7 @@ interface Props {
 }
 
 export function StructCommandList({ creations, struct }: Props) {
+  const handleSelect = useHandleSelect()
   return (
     <CommandGroup
       className={cn(
@@ -45,26 +44,7 @@ export function StructCommandList({ creations, struct }: Props) {
             key={index}
             showType={false}
             onSelect={() => {
-              if (struct.isBookmark) {
-                const url = getBookmarkUrl(struct, item)
-                window.electron.ipcRenderer.send('open-url', url)
-                hidePanelWindow()
-                return
-              }
-
-              if (struct.isAICommand) {
-                navigation.push({ path: '/ai-command' })
-                return
-              }
-
-              if (struct.isBrowserTab) {
-                const fields = getCreationFields(struct, item)
-                console.log('=======fields:', fields)
-                appEmitter.emit('OPEN_BROWSER_TAB', fields)
-                return
-              }
-
-              navigation.push({ path: '/edit-creation' })
+              handleSelect(creationToCommand(item))
             }}
             prefix={
               item.isTask ? (

@@ -228,6 +228,7 @@ export function RootActions({ command, close }: RootActionsProps) {
               await store.creations.deleteCreation(
                 currentItem.data.creation.raw,
               )
+
               toast.success(t`Creation deleted successfully`)
               setTimeout(() => {
                 appEmitter.emit('REFRESH_COMMANDS')
@@ -249,7 +250,7 @@ export function RootActions({ command, close }: RootActionsProps) {
         </ActionCommandItem>
       )}
 
-      {isStruct && isBuiltinStruct(struct.type) && (
+      {isStruct && !isBuiltinStruct(struct.type) && (
         <>
           <ActionCommandItem
             shortcut=""

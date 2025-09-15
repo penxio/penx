@@ -4,9 +4,8 @@ import { onMessage } from '@/lib/message'
 import { storage } from '@/lib/storage'
 import { browser } from '#imports'
 import { Creation, Struct } from '@penx/domain'
-import { getCreationFields } from '@penx/libs/getCreationFields'
 import { localDB } from '@penx/local-db'
-import { Userscript } from '@penx/model-type'
+import { UserscriptProps } from '@penx/model-type'
 
 export async function setupUserscripts() {
   onMessage('setupUserscript', async ({ data, ...rest }) => {
@@ -19,10 +18,8 @@ export async function setupUserscripts() {
     // console.log('=========userscriptNodes:', userscriptNodes)
 
     for (const item of userscriptNodes) {
-      const fields = getCreationFields<Userscript>(
-        new Struct(userscriptStruct),
-        new Creation(item),
-      )
+      const creation = new Creation(item)
+      const fields = creation.getCells<UserscriptProps>(new Struct(userscriptStruct))
 
       if (!fields.enabled) continue
 

@@ -9,6 +9,7 @@ export interface IColumn {
   config: any
   options: Option[]
   isPrimary: boolean
+  isReadonly: boolean
   createdAt: Date
   updatedAt: Date
 }

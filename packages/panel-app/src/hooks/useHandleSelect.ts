@@ -1,5 +1,7 @@
+import { isDesktop } from '@penx/constants'
 import { appEmitter } from '@penx/emitter'
 import { useStructs } from '@penx/hooks/useStructs'
+import { hidePanelWindow } from '../lib/hidePanelWindow'
 import { ICommandItem } from '../lib/types'
 import { useCommandAppLoading } from './useCommandAppLoading'
 import { useCommandAppUI } from './useCommandAppUI'
@@ -26,15 +28,33 @@ export function useHandleSelect() {
 
     if (item.data.type === 'Creation') {
       setCreation(item.data.creation?.raw!)
-      const struct = structs.find((s) => s.id === item.data.creation?.structId)
+      const struct = structs.find((s) => s.id === item.data.creation?.structId)!
+
+      const cells = item.data.creation!.getCells(struct!)
+
       if (struct?.isQuicklink) {
-        const linkColumn = struct.columns.find((c) => c.slug === 'link')
-        const link = item.data.creation?.cells?.[linkColumn?.id!]
+        const link = cells.link
         if (link) {
-          window.electron.ipcRenderer.send('open-url', link)
+          if (isDesktop) {
+            window.electron.ipcRenderer.send('open-url', link)
+          } else {
+            window.open(link)
+          }
         }
         setSearch('')
-        window.customElectronApi.togglePanelWindow()
+        isDesktop && window.customElectronApi.togglePanelWindow()
+        return
+      }
+
+      if (struct.isBookmark) {
+        const url = cells.url
+
+        if (isDesktop) {
+          window.electron.ipcRenderer.send('open-url', url)
+          hidePanelWindow()
+        } else {
+          window.open(url)
+        }
         return
       }
 
@@ -42,6 +62,13 @@ export function useHandleSelect() {
         navigation.push({ path: '/ai-command' })
         return
       }
+
+      if (struct.isBrowserTab) {
+        appEmitter.emit('OPEN_BROWSER_TAB', cells)
+        return
+      }
+
+      navigation.push({ path: '/edit-creation' })
 
       // alert('name.....')
       navigation.push({ path: '/edit-creation' })

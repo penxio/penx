@@ -6,6 +6,10 @@ import { Creation, Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useArea } from '@penx/hooks/useArea'
 import { useCreations } from '@penx/hooks/useCreations'
+import { localDB } from '@penx/local-db'
+import { isAreaNode, isCreationNode, isStructNode } from '@penx/model-type'
+import { queryClient } from '@penx/query-client'
+import { getSession } from '@penx/session'
 import { store } from '@penx/store'
 import { docToString } from '@penx/utils/editorHelper'
 import { creationToCommand } from '../lib/creationToCommand'
@@ -176,11 +180,19 @@ export function useQueryCommands() {
   }, [])
 
   useEffect(() => {
-    appEmitter.on('UPDATE_BROWSER_TAB', refetch)
+    appEmitter.on('UPDATE_BROWSER_TAB', refetchCommands)
     console.log('refetch.......UPDATE_BROWSER_TAB')
 
     return () => {
-      appEmitter.off('UPDATE_BROWSER_TAB', refetch)
+      appEmitter.off('UPDATE_BROWSER_TAB', refetchCommands)
+    }
+  }, [])
+
+  useEffect(() => {
+    appEmitter.on('BOOKMARK_UPDATED', refetchCommands)
+
+    return () => {
+      appEmitter.off('BOOKMARK_UPDATED', refetchCommands)
     }
   }, [])
 
@@ -190,4 +202,39 @@ export function useQueryCommands() {
       setCommands(data)
     }
   }, [data, setItems, setCommands])
+
+  return {
+    data,
+    refetch,
+  }
+}
+
+export async function refetchCommands() {
+  const session = await getSession()
+  const nodes = await localDB.listSpaceNodes(session.spaceId)
+  const areas = nodes.filter((n) => isAreaNode(n))
+  const area = areas[0]
+
+  const areaNodes = nodes.filter((n) => n.areaId === area.id)
+  const structs = areaNodes.filter((n) => isStructNode(n))
+  const creations = areaNodes.filter((n) => isCreationNode(n))
+
+  const structCommands = structs.map<ICommandItem>((item) => {
+    const struct = new Struct(item)
+    return structToCommand(struct)
+  })
+
+  const builtinCommands = getBuiltinCommands()
+
+  const creationCommands = creations.map((c) =>
+    creationToCommand(new Creation(c)),
+  )
+
+  const commands = [
+    ...structCommands,
+    ...builtinCommands,
+    ...creationCommands,
+  ] as ICommandItem[]
+
+  queryClient.setQueryData(['commands'], commands)
 }

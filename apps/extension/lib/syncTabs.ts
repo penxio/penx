@@ -2,10 +2,9 @@ import { storage } from '@/lib/storage'
 import { format } from 'date-fns'
 import { defaultEditorContent } from '@penx/constants'
 import { Creation, Struct } from '@penx/domain'
-import { getCreationFields } from '@penx/libs/getCreationFields'
 import { localDB } from '@penx/local-db'
 import {
-  BrowserTab,
+  BrowserTabProps,
   IAreaNode,
   ICreationNode,
   IStructNode,
@@ -54,11 +53,9 @@ interface Tab {
 export async function syncTabs() {
   const session = await storage.getSession()
 
-  // console.log('=========>>>>>session:', session)
-
-  if (!session) return
-
-  syncInitialTabs(session)
+  if (session) {
+    syncInitialTabs(session)
+  }
 
   browser.tabs.onCreated.addListener((tab) => {
     console.log('Tab created:', tab)
@@ -71,20 +68,17 @@ export async function syncTabs() {
       // console.log('>>>>>>Tab ' + tabId + ' finished loading:', tab.url, tab)
 
       const { tabNodes, tabStruct, area } = await getSpaceInfo()
+
       const existed = tabNodes.find((t) => {
-        const fields = getCreationFields<BrowserTab>(
-          new Struct(tabStruct),
-          new Creation(t),
-        )
+        const creation = new Creation(t)
+        const fields = creation.getCells<BrowserTabProps>(new Struct(tabStruct))
         return fields.id === tab.id
       })
 
       // console.log('======existed:', existed)
       if (existed) {
-        const fields = getCreationFields<BrowserTab>(
-          new Struct(tabStruct),
-          new Creation(existed),
-        )
+        const creation = new Creation(existed)
+        const fields = creation.getCells<BrowserTabProps>(new Struct(tabStruct))
         if (fields.url !== tab.url) {
           const cells = getCells(tab, tabStruct)
           await localDB.updateCreationProps(existed.id, {
@@ -114,13 +108,13 @@ export async function syncTabs() {
     console.log('Tab removed:', tabId, removeInfo)
 
     const { tabNodes, tabStruct } = await getSpaceInfo()
+
     const existed = tabNodes.find((t) => {
-      const fields = getCreationFields<BrowserTab>(
-        new Struct(tabStruct),
-        new Creation(t),
-      )
+      const creation = new Creation(t)
+      const fields = creation.getCells<BrowserTabProps>(new Struct(tabStruct))
       return fields.id === tabId
     })
+
     if (existed) {
       await localDB.node.delete(existed.id)
       sendMessage('updateBrowserTab', {})

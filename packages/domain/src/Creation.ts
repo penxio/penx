@@ -3,6 +3,7 @@ import { ICreationNode, NodeType } from '@penx/model-type'
 import { StructType } from '@penx/types'
 import { getUrl } from '@penx/utils'
 import { docToString } from '@penx/utils/editorHelper'
+import { Struct } from './Struct'
 
 export class Creation {
   props: ICreationNode['props']
@@ -138,5 +139,15 @@ export class Creation {
 
   get formattedTime() {
     return format(this.createdAt, 'HH:mm:ss')
+  }
+
+  getCells<T = Record<string, any>>(struct: Struct) {
+    return struct.columns.reduce((acc, cur) => {
+      return {
+        ...acc,
+        [cur.slug]: this.cells[cur.id],
+        title: this.title,
+      }
+    }, {} as T)
   }
 }

@@ -3,7 +3,7 @@ import { Trans } from '@lingui/react/macro'
 import { Struct } from '@penx/domain'
 import { appEmitter } from '@penx/emitter'
 import { useCreations } from '@penx/hooks/useCreations'
-import { IStructNode } from '@penx/model-type'
+import { ICreationNode, IStructNode } from '@penx/model-type'
 import { store } from '@penx/store'
 import { Separator } from '@penx/uikit/ui/separator'
 import { cn } from '@penx/utils'
@@ -59,7 +59,7 @@ export function DatabaseDetail(props: Props) {
   }, [])
 
   useEffect(() => {
-    const handle = (id: string) => {
+    const handle = ({ id }: ICreationNode) => {
       if (filteredRows.length) {
         const newValue =
           filteredRows[0].id === id ? filteredRows[1].id : filteredRows[0].id

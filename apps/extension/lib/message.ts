@@ -1,4 +1,5 @@
 import { defineExtensionMessaging } from '@webext-core/messaging'
+import { ICreationNode } from '@penx/model-type'
 import { SessionData } from '@penx/types'
 
 interface ProtocolMap {
@@ -20,6 +21,10 @@ interface ProtocolMap {
   updateBrowserTab: (data: {}) => any
 
   setupUserscript: (data: { url: string }) => any
+
+  bookmarkUpdated: () => any
+
+  deleteCreation: (data: { creation: ICreationNode }) => any
 }
 
 export const { sendMessage, onMessage } =

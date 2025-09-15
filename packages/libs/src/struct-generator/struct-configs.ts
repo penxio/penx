@@ -8,6 +8,7 @@ export function createBaseColumn(
   slug: string,
   name: string,
   columnType: ColumnType,
+  isReadonly = false,
   isPrimary = false,
 ): IColumn {
   return {
@@ -19,6 +20,7 @@ export function createBaseColumn(
     config: {},
     options: [],
     isPrimary,
+    isReadonly,
     createdAt: new Date(),
     updatedAt: new Date(),
   }
@@ -129,6 +131,7 @@ export function getStructTypeConfig() {
     [StructType.BOOKMARK]: {
       name: t`Bookmark`,
       columns: [
+        createBaseColumn('id', t`ID`, ColumnType.TEXT, true),
         createBaseColumn('icon', t`Icon`, ColumnType.URL),
         createBaseColumn('url', t`URL`, ColumnType.URL),
       ],
@@ -137,15 +140,20 @@ export function getStructTypeConfig() {
     [StructType.BROWSER_TAB]: {
       name: t`Browser tab`,
       columns: [
-        createBaseColumn('id', t`ID`, ColumnType.NUMBER),
-        createBaseColumn('windowId', t`Window ID`, ColumnType.NUMBER),
+        createBaseColumn('id', t`ID`, ColumnType.NUMBER, true),
+        createBaseColumn('windowId', t`Window ID`, ColumnType.NUMBER, true),
         createBaseColumn('url', t`URL`, ColumnType.URL),
-        createBaseColumn('favIconUrl', t`Favicon URL`, ColumnType.URL),
-        createBaseColumn('active', t`Active`, ColumnType.BOOLEAN),
-        createBaseColumn('muted', t`Muted`, ColumnType.BOOLEAN),
-        createBaseColumn('pinned', t`Pinned`, ColumnType.BOOLEAN),
-        createBaseColumn('lastAccessed', t`Last Accessed`, ColumnType.NUMBER),
-        createBaseColumn('index', t`Index`, ColumnType.NUMBER),
+        createBaseColumn('favIconUrl', t`Favicon URL`, ColumnType.URL, true),
+        createBaseColumn('active', t`Active`, ColumnType.BOOLEAN, true),
+        createBaseColumn('muted', t`Muted`, ColumnType.BOOLEAN, true),
+        createBaseColumn('pinned', t`Pinned`, ColumnType.BOOLEAN, true),
+        createBaseColumn(
+          'lastAccessed',
+          t`Last Accessed`,
+          ColumnType.NUMBER,
+          true,
+        ),
+        createBaseColumn('index', t`Index`, ColumnType.NUMBER, true),
       ],
       syncable: false,
     },

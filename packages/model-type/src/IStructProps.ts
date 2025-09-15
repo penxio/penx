@@ -1,4 +1,4 @@
-export type BrowserTab = {
+export type BrowserTabProps = {
   id: number
   windowId: number
   url: string
@@ -10,7 +10,7 @@ export type BrowserTab = {
   index: string
 }
 
-export type Userscript = {
+export type UserscriptProps = {
   enabled: boolean
   version: string
   description: string
@@ -19,4 +19,10 @@ export type Userscript = {
   match: string
   code: string
   isRunInSandbox: boolean
+}
+
+export type BookmarkProps = {
+  id: number
+  icon: string
+  url: string
 }

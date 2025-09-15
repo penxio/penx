@@ -24,7 +24,7 @@ initPGLiteNodeModelApi()
 
 export default defineBackground(async () => {
   syncTabs()
-  // syncBookmarks()
+  syncBookmarks()
   initWebsocket()
   setupMessage()
   setupSidePanel()

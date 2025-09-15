@@ -23,6 +23,7 @@ export async function fixTaskStruct(areaId: string, structs: IStructNode[]) {
           config: {},
           options: [],
           isPrimary: false,
+          isReadonly: false,
           createdAt: new Date(),
           updatedAt: new Date(),
         })
@@ -73,6 +74,7 @@ export async function fixTaskStruct(areaId: string, structs: IStructNode[]) {
             config: {},
             options: [],
             isPrimary: false,
+            isReadonly: false,
             createdAt: new Date(),
             updatedAt: new Date(),
           })

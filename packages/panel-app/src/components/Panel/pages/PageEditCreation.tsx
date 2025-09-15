@@ -17,12 +17,12 @@ export function PageEditCreation() {
     }
   }, [creation, currentCommand])
 
-  console.log(
-    '======creationId:',
-    creationId,
-    'currentCommand:',
-    currentCommand,
-  )
+  // console.log(
+  //   '======creationId:',
+  //   creationId,
+  //   'currentCommand:',
+  //   currentCommand,
+  // )
 
   if (!creationId) return null
 

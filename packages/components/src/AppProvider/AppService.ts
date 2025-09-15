@@ -264,6 +264,25 @@ export class AppService {
     }
 
     {
+      const bookmarkStruct = structs.find(
+        (s) => s.props.type === StructType.BOOKMARK,
+      )
+
+      if (!bookmarkStruct) {
+        const newStruct = generateStructNode({
+          type: StructType.BOOKMARK,
+          name: t`Bookmark`,
+          spaceId: space.id,
+          userId: space.userId,
+          areaId: area.id,
+        })
+
+        await localDB.addStruct(newStruct)
+        structs.push(newStruct)
+      }
+    }
+
+    {
       const aiCommandStruct = structs.find(
         (s) => s.props.type === StructType.AI_COMMAND,
       )

@@ -28,6 +28,7 @@ export async function fixBookmarkStruct(
           config: {},
           options: [],
           isPrimary: false,
+          isReadonly: false,
           createdAt: new Date(),
           updatedAt: new Date(),
         })

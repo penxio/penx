@@ -22,10 +22,21 @@ export async function getSpaceInfo(s?: SessionData) {
   const userscriptStruct = structs.find(
     (s) => s.props.type === StructType.USERSCRIPT,
   )
+
   if (!userscriptStruct) throw new Error('No userscript struct')
 
   const userscriptNodes = creations.filter(
     (c) => c.props.structId === userscriptStruct.id,
+  )
+
+  const bookmarkStruct = structs.find(
+    (s) => s.props.type === StructType.BOOKMARK,
+  )
+
+  if (!bookmarkStruct) throw new Error('No bookmark struct')
+
+  const bookmarkNodes = creations.filter(
+    (c) => c.props.structId === bookmarkStruct.id,
   )
 
   return {
@@ -34,5 +45,7 @@ export async function getSpaceInfo(s?: SessionData) {
     tabNodes,
     userscriptStruct,
     userscriptNodes,
+    bookmarkStruct,
+    bookmarkNodes,
   }
 }
