@@ -41,6 +41,7 @@ import { fixTaskStruct } from './lib/fixTaskStruct'
 import { initLocalSpace } from './lib/initLocalSpace'
 import { isRowsEqual } from './lib/isRowsEqual'
 import { syncNodesToLocal } from './lib/syncNodesToLocal'
+import { waitForHealth } from './lib/waitForHealth'
 
 const PANELS = 'PANELS'
 
@@ -56,6 +57,9 @@ export class AppService {
     store.app.setAppLoading(true)
     // store.app.setAppLoading(false)
     // return: data
+
+    const healthy = await waitForHealth()
+    if (!healthy) throw Error('Some thing wrong in local server')
 
     if (session) {
       try {

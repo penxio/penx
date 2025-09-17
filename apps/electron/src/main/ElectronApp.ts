@@ -116,9 +116,6 @@ export class ElectronApp {
 
   private async initialize() {
     try {
-      this.conf = new Conf()
-      await this.initPGLite()
-      await this.startServer()
       // this.windows.mainWindow = createMainWindow()
       this.windows.panelWindow = createPanelWindow()
       this.windows.aiCommandWindow = createAICommandWindow()
@@ -134,6 +131,8 @@ export class ElectronApp {
 
       app.setAccessibilitySupportEnabled(true)
 
+      this.conf = new Conf()
+
       this.conf.set(CHROME_INFO, null)
 
       // registerShortcut({
@@ -142,6 +141,8 @@ export class ElectronApp {
       //     this.windows.panelWindow = createPanelWindow()
       //   },
       // })
+      await this.startServer()
+      await this.initPGLite()
 
       this.conf.registerRendererListener()
 
